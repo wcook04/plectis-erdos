@@ -24,7 +24,7 @@ nothing better does (see [Attribution](#attribution)).
 **Export.** `scripts/export_argument_continuations.lean` runs in an
 environment that imports the two default roots (`Erdos249257` and
 `ErdosProblems`) together with every target of the coverage build, whose list
-belongs to the [coverage workflow](../.github/workflows/lean-coverage-build.yml)
+belongs to the [coverage workflow](../../.github/workflows/lean-coverage-build.yml)
 and is printed by `scripts/coverage_build_targets.py`: many of the declarations
 the paper-to-Lean ledger cites live in modules only the coverage build
 compiles. When those targets cannot be built or imported together, the job
@@ -135,7 +135,7 @@ checked. Its keys are the main export's, and the builder reads it as a
 reduction: with no residual for a given hypothesis, to the residual otherwise.
 
 The export runs in continuous integration
-([workflow](../.github/workflows/argument-continuations.yml)) because it needs
+([workflow](../../.github/workflows/argument-continuations.yml)) because it needs
 the corpus built: on a push to `main` or to a `claude/argument-*` or
 `codex/argument-*` branch that changes the exporter, or by hand
 (`workflow_dispatch`) on any branch. Its stream is uploaded as an artifact together with
@@ -295,7 +295,7 @@ projection lists the chains per
 problem (paper-cited theorems first) under `interfaces`, and for every
 interface statement the paper results whose chains need it (`needed_by`).
 
-The [barrier registry](semantic/barriers.json) lists the corpus's barrier
+The [barrier registry](../semantic/barriers.json) lists the corpus's barrier
 theorems: countermodels, endpoint equivalences, method ceilings, finite
 blindness results and scoped failures, each checked against its source by
 `scripts/check_barrier_registry.py`. The builder attaches each barrier to the
@@ -309,8 +309,8 @@ kernel probe; a proof settles the question, and a failed attempt says only that
 this countermodel does not obviously apply.
 
 One construction blocks a class of routes in four problems
-([`Synthesis/RoundingBarrier.lean`](../lean/ErdosProblems/Synthesis/RoundingBarrier.lean),
-[`Synthesis/RealBaseRounding.lean`](../lean/ErdosProblems/Synthesis/RealBaseRounding.lean)).
+([`Synthesis/RoundingBarrier.lean`](../../lean/ErdosProblems/Synthesis/RoundingBarrier.lean),
+[`Synthesis/RealBaseRounding.lean`](../../lean/ErdosProblems/Synthesis/RealBaseRounding.lean)).
 For a series `∑ c(n)/2^n` with a convergent value, a modulus `q ≥ 1` and a cutoff, subtracting
 `q` times the binary digits of a suitable real number beyond the cutoff (when `c ≥ q` there), or
 adding them, gives a sequence equal to `c` up to the cutoff, congruent to it modulo `q`, within
@@ -327,7 +327,7 @@ block.
 
 Each theorem is joined to the paper results that cite it, short or long, with
 the label, the TeX line and the Comparator status recorded in the
-[paper-to-Lean ledger](paper_lean_coverage.json). The builder also checks two
+[paper-to-Lean ledger](../paper_lean_coverage.json). The builder also checks two
 authored layers against the graph. Every semantic node labelled as a
 conditional implication should still depend on a statement the graph does not
 supply: an open or refuted closed hypothesis, or a schematic one, which counts
@@ -335,7 +335,7 @@ as a condition because the graph cannot tell a side condition on a variable
 from an open assumption. The audit reports a node whose theorems depend only
 on supplied statements, and a node whose open hypotheses the proofs never use
 (by the idle rows). Every authored open antecedent in the
-[semantic frontier](semantic/frontier.json) should still be open; this check
+[semantic frontier](../semantic/frontier.json) should still be open; this check
 reads the graph statements that mention the antecedent's Lean constants, a set
 that can be wider than the antecedent itself.
 
@@ -448,7 +448,7 @@ Binding each row to the hypothesis it stands for is the caller's work.
 ## The argument frontier: findings as library theorems
 
 The graph's findings about a proof live in an export stream. The module
-[`ErdosProblems.ArgumentGraph.Derive`](../lean/ErdosProblems/ArgumentGraph/Derive.lean)
+[`ErdosProblems.ArgumentGraph.Derive`](../../lean/ErdosProblems/ArgumentGraph/Derive.lean)
 rebuilds them inside the library, so a paper, the ledger or another proof can
 cite them by name. Its commands read a theorem's proof term and add, after a
 kernel check:
@@ -494,7 +494,7 @@ kernel check:
   stated modulo a named input may so have parts that hold without it.
 
 The module
-[`ErdosProblems.ArgumentGraph.Factor`](../lean/ErdosProblems/ArgumentGraph/Factor.lean)
+[`ErdosProblems.ArgumentGraph.Factor`](../../lean/ErdosProblems/ArgumentGraph/Factor.lean)
 adds one command that changes where a theorem's hypotheses sit in its
 statement:
 
@@ -546,7 +546,7 @@ only by `P n ∼ n log n`. On the way it derives the factorings of
 `long_joint_prime_gap_countermodel`, of `prime_polylogarithmic_interval` (whose
 growth clause alone needs `ε < 1` and the prime number theorem) and of the
 lemmas beneath them.
-[`ArgumentGraph.Results.Erdos251`](../lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean)
+[`ArgumentGraph.Results.Erdos251`](../../lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean)
 states both countermodels in this form.
 
 For the excluded-cofactor estimate of #249, `prop_badcof` assumes the prime
@@ -559,7 +559,7 @@ first two conjuncts of `prop_badcof` (the offset bound and the identification
 of the excluded set) need neither the prime number theorem nor the density
 hypothesis, and `derive_conjuncts prop_badcof` states them so.
 
-[`scripts/build_argument_frontier.py`](../scripts/build_argument_frontier.py)
+[`scripts/build_argument_frontier.py`](../../scripts/build_argument_frontier.py)
 writes the commands for every theorem a paper cites, one module per problem
 under `lean/ErdosProblems/ArgumentGraph/Derived/`, with
 `argumentGraph.strict` set so that a derivation the export reported and the
@@ -567,7 +567,7 @@ library cannot rebuild fails the build. Derivations the export does not decide
 in advance (conjunct splits, factorings, frontiers discharged by corpus
 theorems) are tried in a kernel probe first (`--probes DIR` writes one probe
 per problem): given the probe's verdicts (`--verified`, read by
-[`scripts/frontier_verdicts.py`](../scripts/frontier_verdicts.py)), the
+[`scripts/frontier_verdicts.py`](../../scripts/frontier_verdicts.py)), the
 generator keeps each one that added what it was asked for, and failed at
 nothing, as a strict command; one that added it and failed at another part (a
 frontier that discharges one hypothesis and not another) runs outside strict
@@ -629,7 +629,7 @@ the baseline included, supplies it.
 ## Residualisation: what a demand still needs
 
 The producer search asks whether a corpus theorem supplies a statement. The
-module [`ErdosProblems.ArgumentGraph.Residualise`](../lean/ErdosProblems/ArgumentGraph/Residualise.lean)
+module [`ErdosProblems.ArgumentGraph.Residualise`](../../lean/ErdosProblems/ArgumentGraph/Residualise.lean)
 asks what a statement still needs, given some suppliers. The command
 
 ```lean
@@ -687,7 +687,7 @@ The residualiser keeps each clause that no supplier gives as it stands. A clause
 quantities often mentions some that other corpus theorems already control, such as a cardinality
 with a proved lower bound, and asking for the clause as it stands asks for more than the corpus
 needs. The module
-[`ErdosProblems.ArgumentGraph.Abduce`](../lean/ErdosProblems/ArgumentGraph/Abduce.lean) restates
+[`ErdosProblems.ArgumentGraph.Abduce`](../../lean/ErdosProblems/ArgumentGraph/Abduce.lean) restates
 such a clause in the quantities no fact controls.
 
 Fix the linear facts `Γ` in scope and a comparison `C`. An atom of `C` or of a fact is *hidden*
@@ -710,7 +710,7 @@ and `60.3`, and their difference always lies in `(0, 9/10]`. The tactic `abduce`
 `R*`, and closes it when the facts give it; `abduce [o₁, …]` fixes the observable atoms and
 `abduce using f₁, …` the facts.
 
-[`ErdosProblems.ArgumentGraph.AbduceCorpus`](../lean/ErdosProblems/ArgumentGraph/AbduceCorpus.lean)
+[`ErdosProblems.ArgumentGraph.AbduceCorpus`](../../lean/ErdosProblems/ArgumentGraph/AbduceCorpus.lean)
 takes the facts from the corpus. The comparison readings of corpus theorems, and their eventual
 comparison readings `∀ᶠ X in f, F X`, are indexed by the corpus constants they mention; a clause
 retrieves the readings that share its constants, instantiated by unifying their subterms with its
@@ -735,7 +735,7 @@ is the new theorem; for a proposition `D`, `N : D' → D`. The kernel checks `N`
 is recomputed whenever the module is built.
 
 On #249,
-[`Results/Erdos249Abduction.lean`](../lean/ErdosProblems/ArgumentGraph/Results/Erdos249Abduction.lean)
+[`Results/Erdos249Abduction.lean`](../../lean/ErdosProblems/ArgumentGraph/Results/Erdos249Abduction.lean)
 restates the subset-barrier clause on the good bases, `∑_{N good} cos(2π A_{h,N,L}/2^L) ≤ (9/10)·#good`
 for arbitrarily large `X` at the minimal depth, against the single supplier
 `eventually_card_pivotGoodBases_gt` (more than `67X/100` good bases for all large `X`). The count is
@@ -761,7 +761,7 @@ restatements is an upper bound.
 A corpus build needs several gigabytes. A research session without one can
 push scratch files under `research/probes/` to a `claude/kernel-probe-*` or
 `codex/kernel-probe-*` branch; the [kernel probe
-workflow](../.github/workflows/kernel-probe.yml) builds the corpus roots from
+workflow](../../.github/workflows/kernel-probe.yml) builds the corpus roots from
 the main-branch cache, runs each probe with `lake env lean` and uploads a
 verdict per file (`scripts/run_kernel_probes.py`). A probe is accepted when
 Lean exits cleanly with no error and no `sorry`, the file declares no axiom,
@@ -813,5 +813,5 @@ remain judgements for a mathematician. A disguise class records equivalences
 through recorded reductions; a statement outside every class may still be
 equivalent to a target by an argument the corpus does not contain. The novelty
 of a composed statement is unassessed. Lean remains the proof authority, and
-the [claim record](claims.json) remains the authority on what the project
+the [claim record](../claims.json) remains the authority on what the project
 claims.

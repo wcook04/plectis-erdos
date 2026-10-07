@@ -10,34 +10,16 @@ itself promote a reviewed claim.
 
 ## Canonical routes
 
-For cold-clone orientation, begin with the [reader orientation](../ORIENTATION.md)
-and choose a bounded problem route from the generated [problem index](../problems.json),
-then return here to record the exact evidence and attributable outcome.
-When the return names a problem, preserve its exact stable `erdos_<n>` route id
-from `python3 scripts/query_corpus.py --route erdos_<n>` and use the
-[complete eight-problem return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix)
-for the human crosswalk; do not invent an anchor from wave chronology.
-
-Start with the [agent workbench cold-start route](../agents/AGENT_WORKBENCH.md) and
-keep the [accepted-contribution index](CONTRIBUTIONS.md) beside the return.
-For continuation, retain the route-memory sidecar described in section 4 and
-follow the selected problem's frontier route in the [complete eight-problem
-return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix). The
-[accepted-receipt recognition and impact view](CONTRIBUTION_RECOGNITION.md)
-and its [machine-readable projection](contribution-recognition.json) expose
-contributor, artifact, result, evidence, review, promotion, correction, and
-release-inclusion details only after an accepted receipt exists. They preserve
-distinct human, operator, collaborator, model, and provider identities and do
-not rank activity. The generated [accepted-contributions view](CONTRIBUTIONS.md)
-remains the compact receipt-backed artifact-credit index. After acceptance, follow
-the row's `public_frontier` path and use the matching row in the [complete
-eight-problem return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix);
-it exposes
-the complete result-family frontier and surviving boundary, but creates no extra
-recognition credit. Validate a saved return with
-[`scripts/validate_research_return.py`](../../scripts/validate_research_return.py);
-if the return would change a reviewed claim, consult the authoritative
-[methodology](../methodology.json).
+Start from [AGENTS.md](../../AGENTS.md) and the selected public skill.
+For a numbered problem, retain its stable `erdos_<n>` route from
+`python3 scripts/query_corpus.py --route erdos_<n>` and its row in the
+[complete eight-problem return matrix](../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix).
+For architecture work, use the [architecture path](ARCHITECTURE_CONTRIBUTIONS.md).
+[Credit policy](CREDIT_POLICY.md) owns attribution, acceptance and correction
+rules; the [commons index](README.md) locates accepted records and dated examples.
+Validate a saved return with
+[`scripts/validate_research_return.py`](../../scripts/validate_research_return.py).
+Claim changes also follow [methodology](../methodology.json).
 
 ## Start a structured continuation
 
@@ -164,7 +146,7 @@ For the public problem route, start with the generated
 entry—its mechanism, exact scope, Lean route, and open boundary—before you
 follow named Lean interfaces. For the reader-facing proof/paper/source
 crosswalk and compact grouped route to its strongest distinct public results,
-use the [complete eight-problem return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix);
+use the [complete eight-problem return matrix](../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix);
 the
 legacy `strongest_result` field must not stand in for that full frontier. For
 the complete family census and a reverse route to one selected family, run
@@ -176,7 +158,7 @@ the all-eight proof-to-paper/source dispatch table, use the
 It is a navigation aid, not proof authority.
 
 For the paper-to-formal crosswalk, use the
-[complete eight-problem return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix).
+[complete eight-problem return matrix](../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix).
 For a registered problem note, continue through its exact note-anchor
 crosswalk in that matrix before
 following the returned declaration and source-coordinate route. The map

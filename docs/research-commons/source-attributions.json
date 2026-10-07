@@ -15856,9 +15856,9 @@
         },
         {
           "path": "docs/EXTERNAL_VERIFICATION.md",
-          "line_start": 4,
-          "line_end": 14,
-          "excerpt_sha256": "sha256:841f2dd16d4a52b7d08408468dd3f4f231b7d8aeb174d9ffad383abbde1acfe9"
+          "line_start": 10,
+          "line_end": 22,
+          "excerpt_sha256": "sha256:68b48b26909458d634ec4498042279edb1db1066ab031f0dd4d2e15464a7af1c"
         }
       ],
       "relation": "Implemented advice to classify each selected result, expose exact statements, proof provenance, novelty status, sorry count, axiom budget, and boundaries in formalization.yaml, and to provide a cheap Comparator inspection route with an altered-statement rejection fixture. The current public surface has evolved beyond the original interface count; the durable implementation is the manifest-plus-Comparator pattern and its explicit scope ceiling.",
@@ -15924,10 +15924,10 @@
           "excerpt_sha256": "sha256:b323e9a098414f61b29469d542453a446713a6650efbe384accb4d657f9a1e7e"
         },
         {
-          "path": "docs/EXTERNAL_VERIFICATION.md",
-          "line_start": 534,
-          "line_end": 544,
-          "excerpt_sha256": "sha256:cb49ade0a57a20d0355d24a8ebc443b2be0b82e0f3c2bdd61f361abe2913a17b"
+          "path": "docs/external_verification_packet.json",
+          "line_start": 1030,
+          "line_end": 1043,
+          "excerpt_sha256": "sha256:44b2d03394f71d1c7674ade0f59d393612a219ff02810ce8544e458bb95128ea"
         }
       ],
       "relation": "Implemented advice to lead with the exact finite-level rank and basis, give the CRT/Dirichlet-style independence mechanism, compare the result precisely with Allouche–Shallit, Coons, Martin, and adjacent k-kernel literature, and link a minimal Lean entry. The paper states the exact rank k^e+1 and basis, records that Coons already proved non-k-regularity and Martin supplies a broader external affine-independence antecedent while the public Lean proof establishes all-base independence separately, and keeps the unbounded #249 irrationality endpoint open. No proof verification, novelty judgment, or progress-on-parent-problem judgment is attributed to the correspondent.",

@@ -7,13 +7,13 @@ an inspectable result and the existing open obligations. These are research ques
 not difficulty ratings: some are equivalent to the original problem.
 
 The programme entry module is one starting point, not the source of every result.
-Follow the papers' inline Lean notes and the [full source map](SOURCE_MAP.md)
+Follow the papers' inline Lean notes and the [full source map](../reference/SOURCE_MAP.md)
 for the declarations behind a particular statement.
 
 A correction, argument, useful reference, failed route or explanation can be returned
-without running Lean. You can also [develop a method](../paper/synthesis/README.md)
-or [improve the machinery](research-commons/ARCHITECTURE_CONTRIBUTIONS.md).
-[Submission and credit](../CONTRIBUTING.md#return-what-you-learned) are shared.
+without running Lean. You can also [develop a method](../../paper/synthesis/README.md)
+or [improve the machinery](ARCHITECTURE_CONTRIBUTIONS.md).
+[Submission and credit](../../CONTRIBUTING.md#return-what-you-learned) are shared.
 
 ## Problem 68
 
@@ -23,11 +23,11 @@ The exact integral normal form: the series is irrational if and only if the stri
 
 Lean proves that S = ∑_{n≥2} 1/(n! − 1) is irrational if and only if, for infinitely many m, m does not divide ⌊m!·S_m⌋ + 1, where S_m is the prefix sum through n = m (irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses); equivalently, the factorial-gap carry differs from 1 for infinitely many m (irrational_factorialGapSeries_iff_cofinal_nonunit_carries). Lean also proves liminf log L_N/(N^{3/2} log N) ≥ 2√2/3 for the common denominator L_N = lcm_{2≤n≤N}(n! − 1) before cancellation (common_denominator_growth_liminf). The irrationality of S remains open: the checked reductions and finite obstructions do not supply the required cofinal non-unit carries.
 
-[Short paper](../paper/68/erdos-68-factorial-denominator-irrationality.pdf) · [Read as text](../docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md)
+[Short paper](../../paper/68/erdos-68-factorial-denominator-irrationality.pdf) · [Read as text](../../docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md)
 
-[Long record](../paper/68/erdos68-factorial-reasoning-surface.pdf) · [Read as text](../docs/papers/full-text/erdos68-factorial-reasoning-surface.md)
+[Long record](../../paper/68/erdos68-factorial-reasoning-surface.pdf) · [Read as text](../../docs/papers/full-text/erdos68-factorial-reasoning-surface.md)
 
-[Programme entry module](../lean/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
+[Programme entry module](../../lean/ErdosProblems/Erdos68/FactorialGapPlateauCore.lean) · [Full source map](../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](../REPRODUCIBILITY.md#try-one-claim-without-lean)
 
 Existing questions:
 
@@ -37,7 +37,7 @@ Existing questions:
 - For infinitely many odd primes, rule out both exact p^2-divisibility branches at index 2p by coupling the carry value to the predecessor residue.
 - Construct an unbounded factorial-grid family whose exact Cramer residual is nonintegral, using a determinant, valuation, cancellation, or gcd-of-minors certificate that controls the finite sign-changing block.
 
-[Return work on #68](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%2368&question=Erd%C5%91s+%2368%3A+Is+the+series+sum_%7Bn+%3E%3D+2%7D+1%2F%28n%21+-+1%29+irrational%3F) · [Email and credit preferences](../CONTRIBUTING.md#return-what-you-learned)
+[Return work on #68](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%2368&question=Erd%C5%91s+%2368%3A+Is+the+series+sum_%7Bn+%3E%3D+2%7D+1%2F%28n%21+-+1%29+irrational%3F) · [Email and credit preferences](../../CONTRIBUTING.md#return-what-you-learned)
 
 For a coding agent:
 
@@ -54,11 +54,11 @@ Lean proves cubic_rate_irrationality_unconditional for positive StrictMono zero-
 
 Lean proves that if a is a strictly increasing sequence of positive integers with n^λ(a(n)²/a(n+1) − 1 − λ/n) → 0, then the reciprocal sum ∑ 1/a(n) is irrational, for every non-integer λ > 1, where Lean also derives convergence (nonintegral_regular_rate_irrational), and for λ = 3 whenever the sum converges (cubic_rate_irrationality_unconditional). Both theorems are zero-indexed; the paper transfers them to one-based indexing by an ordinary finite-prefix argument. Without such a rate the eventual Sylvester recurrence assertion remains open: the bounded-rise barrier and the conditional negative-part reductions leave the mixed-sign unbounded regime unresolved.
 
-[Short paper](../paper/243/erdos-243-reciprocal-tail-rigidity.pdf) · [Read as text](../docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md)
+[Short paper](../../paper/243/erdos-243-reciprocal-tail-rigidity.pdf) · [Read as text](../../docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md)
 
-[Long record](../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf) · [Read as text](../docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md)
+[Long record](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf) · [Read as text](../../docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md)
 
-[Programme entry module](../lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
+[Programme entry module](../../lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean) · [Full source map](../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](../REPRODUCIBILITY.md#try-one-claim-without-lean)
 
 Existing questions:
 
@@ -66,7 +66,7 @@ Existing questions:
 - Derive a lower bound on centred error from the original growth and rational-sum hypotheses, control unbounded negative excursions another way, or construct a counterexample.
 - Kernel-check the Erdos-Straus weighted criterion and Duverney's conditional characterisation under explicit analytic hypotheses.
 
-[Return work on #243](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%23243&question=Erd%C5%91s+%23243%3A+Under+a+rapid-growth+hypothesis+on+an+integer+sequence%2C+does+rationality+of+its+reciprocal+sum+force+the+sequence+to+satisfy+the+Sylvester+recurrence+eventually%3F) · [Email and credit preferences](../CONTRIBUTING.md#return-what-you-learned)
+[Return work on #243](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%23243&question=Erd%C5%91s+%23243%3A+Under+a+rapid-growth+hypothesis+on+an+integer+sequence%2C+does+rationality+of+its+reciprocal+sum+force+the+sequence+to+satisfy+the+Sylvester+recurrence+eventually%3F) · [Email and credit preferences](../../CONTRIBUTING.md#return-what-you-learned)
 
 For a coding agent:
 
@@ -83,11 +83,11 @@ For every e >= 1, the complete dyadic totient kernel through level e has rationa
 
 Lean proves that S = ∑ φ(n)/2ⁿ is irrational if, for every h ≥ 1, there are arbitrarily large X at which the real part of the first-harmonic sum over the good indices is at most 603X/1000 (irrational_totient_series_of_goodBase_gap); the good indices are the assigned indices N in [X, 2X) at the minimal admissible depth with s = 26 whose cofactor m satisfies φ(m) ≥ m/1000. For all large X more than 67X/100 indices are good (eventually_card_pivotGoodBases_gt), and 603/1000 = (9/10)(67/100). Lean also proves that S is irrational if and only if certified non-integrality witnesses occur at unbounded parameters (irrational_totient_series_iff_certificate_supply). The 603X/1000 bound and that unbounded certificate supply are open, so S is not proved irrational.
 
-[Short paper](../paper/249/erdos-249-binary-totient-series.pdf) · [Read as text](../docs/papers/full-text/erdos-249-binary-totient-series.md)
+[Short paper](../../paper/249/erdos-249-binary-totient-series.pdf) · [Read as text](../../docs/papers/full-text/erdos-249-binary-totient-series.md)
 
-[Long record](../paper/249/erdos249-totient-reasoning-surface.pdf) · [Read as text](../docs/papers/full-text/erdos249-totient-reasoning-surface.md)
+[Long record](../../paper/249/erdos249-totient-reasoning-surface.pdf) · [Read as text](../../docs/papers/full-text/erdos249-totient-reasoning-surface.md)
 
-[Programme entry module](../lean/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
+[Programme entry module](../../lean/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean) · [Full source map](../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](../REPRODUCIBILITY.md#try-one-claim-without-lean)
 
 Existing questions:
 
@@ -97,7 +97,7 @@ Existing questions:
 - Realise the layer system by cyclic resultants and prove prime-support escape with the growth estimates needed to contradict a rational carry orbit.
 - Prove the sharp cusp asymptotic and then supply a non-formal bridge from the geometric parameter regime to the exact totient value.
 
-[Return work on #249](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%23249&question=Erd%C5%91s+%23249%3A+Is+the+binary+Lambert+series+sum+phi%28n%29%2F2%5En+irrational%3F) · [Email and credit preferences](../CONTRIBUTING.md#return-what-you-learned)
+[Return work on #249](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%23249&question=Erd%C5%91s+%23249%3A+Is+the+binary+Lambert+series+sum+phi%28n%29%2F2%5En+irrational%3F) · [Email and credit preferences](../../CONTRIBUTING.md#return-what-you-learned)
 
 For a coding agent:
 
@@ -114,11 +114,11 @@ The finite summation-by-parts identity relating the prime dyadic partial sums to
 
 Lean proves that Π = ∑_{n≥1} p_n/2ⁿ equals 2 plus the prime-gap dyadic series and that Π is irrational if and only if that gap series is (tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional, irrational_tsum_primeDyadicTerm_iff_primeGap), with summability from the elementary bound p_n ≤ 1250(n+1)^4; the identity is the known summation by parts. Lean also proves that the consecutive prime gaps are unbounded and not eventually periodic (exists_primeGap0_gt, primeGap0_not_eventually_periodic). The irrationality of Π remains open: these facts do not supply the required cofinal escape for the actual prime gaps.
 
-[Short paper](../paper/251/erdos-251-prime-gap-dyadic-series.pdf) · [Read as text](../docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md)
+[Short paper](../../paper/251/erdos-251-prime-gap-dyadic-series.pdf) · [Read as text](../../docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md)
 
-[Long record](../paper/251/erdos251-prime-gap-reasoning-surface.pdf) · [Read as text](../docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md)
+[Long record](../../paper/251/erdos251-prime-gap-reasoning-surface.pdf) · [Read as text](../../docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md)
 
-[Programme entry module](../lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
+[Programme entry module](../../lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean) · [Full source map](../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](../REPRODUCIBILITY.md#try-one-claim-without-lean)
 
 Existing questions:
 
@@ -126,7 +126,7 @@ Existing questions:
 - For every fixed h >= 1 and every N0, find N >= N0 such that both adjacent full tail shifts have absolute value less than 1 and g_{N+h+1} != g_{N+1}. The checked local consumer then excludes eventual integrality of the h-shift.
 - Formalise summability of the actual prime and prime-gap dyadic series and identify the concrete infinite prime-gap tail with the checked real/rational dyadic recurrence, so the local consumer reaches the target series without a paper-only analytic bridge.
 
-[Return work on #251](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%23251&question=Erd%C5%91s+%23251%3A+Is+the+dyadic+series+of+consecutive+primes+irrational%3F+Equivalently%2C+is+the+corresponding+consecutive-prime-gap+dyadic+series+irrational%3F) · [Email and credit preferences](../CONTRIBUTING.md#return-what-you-learned)
+[Return work on #251](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%23251&question=Erd%C5%91s+%23251%3A+Is+the+dyadic+series+of+consecutive+primes+irrational%3F+Equivalently%2C+is+the+corresponding+consecutive-prime-gap+dyadic+series+irrational%3F) · [Email and credit preferences](../../CONTRIBUTING.md#return-what-you-learned)
 
 For a coding agent:
 
@@ -143,18 +143,18 @@ Irrationality at every integer base for the classical full support, reciprocal-s
 
 Lean proves that for every integer base b ≥ 2 and every finite nonempty set P of primes, with h(a) the largest divisor of a supported on P, every infinite set A of positive integers with ∑_{a∈A} h(a)/(a(b^{h(a)} − 1)) finite has ∑_{n∈A} 1/(bⁿ − 1) irrational (divisibilityWeightedClaim). Lean also proves irrationality at every such base for every infinite A with ∑_{a∈A} 1/a finite (irrational_erdosSupportSeries_of_summable_reciprocal), and exhibits sets with divergent reciprocal sum all of whose infinite subsets have irrational series at every such base (finite_monotone_witness_rule_realised). Irrationality of ∑_{n∈A} 1/(2ⁿ − 1) for every infinite A remains open.
 
-[Short paper](../paper/257/erdos-257-mersenne-support-subseries.pdf) · [Read as text](../docs/papers/full-text/erdos-257-mersenne-support-subseries.md)
+[Short paper](../../paper/257/erdos-257-mersenne-support-subseries.pdf) · [Read as text](../../docs/papers/full-text/erdos-257-mersenne-support-subseries.md)
 
-[Long record](../paper/257/erdos257-mersenne-reasoning-surface.pdf) · [Read as text](../docs/papers/full-text/erdos257-mersenne-reasoning-surface.md)
+[Long record](../../paper/257/erdos257-mersenne-reasoning-surface.pdf) · [Read as text](../../docs/papers/full-text/erdos257-mersenne-reasoning-surface.md)
 
-[Programme entry module](../lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
+[Programme entry module](../../lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean) · [Full source map](../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](../REPRODUCIBILITY.md#try-one-claim-without-lean)
 
 Existing questions:
 
 - Convert hereditary unique coding into an arithmetic obstruction to rational values for every infinite support, including zero-measure Cantor supports.
 - Extend the measure dichotomy to Bernoulli laws and periodic-stride dimensions without implying arithmetic consequences.
 
-[Return work on #257](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%23257&question=Erd%C5%91s+%23257%3A+Is+the+sum+of+1%2F%282%5En-1%29+over+every+infinite+set+of+positive+exponents+irrational%3F) · [Email and credit preferences](../CONTRIBUTING.md#return-what-you-learned)
+[Return work on #257](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%23257&question=Erd%C5%91s+%23257%3A+Is+the+sum+of+1%2F%282%5En-1%29+over+every+infinite+set+of+positive+exponents+irrational%3F) · [Email and credit preferences](../../CONTRIBUTING.md#return-what-you-learned)
 
 For a coding agent:
 
@@ -171,11 +171,11 @@ That for three pairwise distinct primes the least common multiple of the smooth 
 
 For every finite set P of at least two primes, the distinct-height sum D_P (each running LCM value of the P-smooth integers counted once) is irrational (res:distinct-height-all; ordinary proof checked by a second AI agent, no human review), as Erdős asserted without an argument in 1973; for |P| = 2 it follows from Hecke-Mahler transcendence, and D_{2,3,5} is Lean-checked (res:distinct-height-235; Comparator not yet run). Each single-prime sub-sum E_p of the catalogue sum is irrational (res:single-prime-subsums; same evidence class as D_P). The catalogue sum for three or more primes is unresolved in this release: for {2,3,5} the rationality-to-positive-reduced-carry bridge is checked, and the remaining endpoint is cofinal local-window escape, equivalently exclusion of the integral branch.
 
-[Long record](../paper/269/erdos269-running-lcm-reasoning-surface.pdf) · [Read as text](../docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md)
+[Long record](../../paper/269/erdos269-running-lcm-reasoning-surface.pdf) · [Read as text](../../docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md)
 
-[Short paper](../paper/269/erdos-269-three-prime-running-lcm.pdf) · [Read as text](../docs/papers/full-text/erdos-269-three-prime-running-lcm.md)
+[Short paper](../../paper/269/erdos-269-three-prime-running-lcm.pdf) · [Read as text](../../docs/papers/full-text/erdos-269-three-prime-running-lcm.md)
 
-[Programme entry module](../lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
+[Programme entry module](../../lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean) · [Full source map](../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](../REPRODUCIBILITY.md#try-one-claim-without-lean)
 
 Existing questions:
 
@@ -184,7 +184,7 @@ Existing questions:
 - Prove a genuinely higher-dimensional analytic theorem for the phase cocycle or the associated contraction.
 - Replace one finite denominator exclusion by a family whose exclusion bound tends to infinity.
 
-[Return work on #269](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%23269&question=Erd%C5%91s+%23269%3A+For+a+finite+set+of+at+least+two+primes%2C+is+the+sum+of+reciprocals+of+the+running+least+common+multiples+of+the+smooth+numbers+irrational%3F+This+library+treats+the+three-prime+case.) · [Email and credit preferences](../CONTRIBUTING.md#return-what-you-learned)
+[Return work on #269](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%23269&question=Erd%C5%91s+%23269%3A+For+a+finite+set+of+at+least+two+primes%2C+is+the+sum+of+reciprocals+of+the+running+least+common+multiples+of+the+smooth+numbers+irrational%3F+This+library+treats+the+three-prime+case.) · [Email and credit preferences](../../CONTRIBUTING.md#return-what-you-learned)
 
 For a coding agent:
 
@@ -201,11 +201,11 @@ For ani’s degree-seven polynomial, every preconnected strict-lemniscate set co
 
 Using ani's explicit monic degree-seven polynomial, Lean proves that every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than 2. This refutes the exact Formal Conjectures path-image-length statement and its total-variation counterpart. The reported family is not formalised, and independent human review of correspondence with the 1958 wording is not recorded.
 
-[Short paper](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) · [Read as text](../docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md)
+[Short paper](../../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) · [Read as text](../../docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md)
 
-[Long record](../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf) · [Read as text](../docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md)
+[Long record](../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf) · [Read as text](../../docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md)
 
-[Programme entry module](../lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
+[Programme entry module](../../lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean) · [Full source map](../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](../REPRODUCIBILITY.md#try-one-claim-without-lean)
 
 Existing questions:
 
@@ -216,7 +216,7 @@ Existing questions:
 - Given a selected connector with strict slack, quantify a two-stage perturbation preserving roots, component, collars, ray separation, and slack; no universal existence claim follows.
 - Under explicit component, saddle, and corrected metric hypotheses, derive a restricted root-to-root Newton-flow connector without a universal sub-two claim.
 
-[Return work on #1041](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%231041&question=Erd%C5%91s+%231041%3A+Must+two+roots+of+a+monic+polynomial+in+the+open+unit+disc+be+joined+by+a+sub-two-length+curve+inside+its+unit+lemniscate%3F+Ani%E2%80%99s+degree-seven+example+refutes+the+exact+Formal+Conjectures+statement%3B+correspondence+with+the+1958+wording+awaits+human+review.) · [Email and credit preferences](../CONTRIBUTING.md#return-what-you-learned)
+[Return work on #1041](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%231041&question=Erd%C5%91s+%231041%3A+Must+two+roots+of+a+monic+polynomial+in+the+open+unit+disc+be+joined+by+a+sub-two-length+curve+inside+its+unit+lemniscate%3F+Ani%E2%80%99s+degree-seven+example+refutes+the+exact+Formal+Conjectures+statement%3B+correspondence+with+the+1958+wording+awaits+human+review.) · [Email and credit preferences](../../CONTRIBUTING.md#return-what-you-learned)
 
 For a coding agent:
 
@@ -233,17 +233,17 @@ Lean checks irrationality and the stated irrationality-exponent bound for ration
 
 For natural numbers 0 < b < a in the Zudilin contour region, Lean proves that F(a/b) is irrational with irrationality exponent at most rationalBaseMeasureBound a b (rational_base_region, rational_base_measure), from the constructed polynomial forms and analytic estimates; in particular F((31/4)^r) is irrational for every positive integer r (thirtyone_four_powers). The universal rational-base assertion remains open; 3/2 lies outside this region and is unresolved here.
 
-[Short paper](../paper/1049/erdos-1049-rational-base-lambert.pdf) · [Read as text](../docs/papers/full-text/erdos-1049-rational-base-lambert.md)
+[Short paper](../../paper/1049/erdos-1049-rational-base-lambert.pdf) · [Read as text](../../docs/papers/full-text/erdos-1049-rational-base-lambert.md)
 
-[Long record](../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) · [Read as text](../docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md)
+[Long record](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) · [Read as text](../../docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md)
 
-[Programme entry module](../lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
+[Programme entry module](../../lean/ErdosProblems/Erdos1049/RationalBaseLambert.lean) · [Full source map](../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](../REPRODUCIBILITY.md#try-one-claim-without-lean)
 
 Existing questions:
 
 - After rowwise primitive normalisation, exhibit at least 4R_n+2S_n coefficient pairs at positive quadratic depths from a non-collapsed deformation; preserve the two- and three-adic gain; then show that one checked {-1,0,1} collision has a nonzero polynomial pair outside the analytic remainder nullspace, or prove an exact rank obstruction.
 
-[Return work on #1049](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%231049&question=Erd%C5%91s+%231049%3A+For+which+rational+bases+is+the+corresponding+series+irrational%3F+The+first+resistant+explicit+base+is+three+halves.) · [Email and credit preferences](../CONTRIBUTING.md#return-what-you-learned)
+[Return work on #1049](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%231049&question=Erd%C5%91s+%231049%3A+For+which+rational+bases+is+the+corresponding+series+irrational%3F+The+first+resistant+explicit+base+is+three+halves.) · [Email and credit preferences](../../CONTRIBUTING.md#return-what-you-learned)
 
 For a coding agent:
 

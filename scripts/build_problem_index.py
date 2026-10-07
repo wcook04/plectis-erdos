@@ -49,9 +49,8 @@ SOURCE = ROOT / "docs" / "problem_index_source.json"
 OUTPUT = ROOT / "docs" / "problems.json"
 LIBRARY_OUTPUT = ROOT / "docs" / "problem_library.json"
 AGENT_GUIDE = ROOT / "docs" / "agents" / "AGENT_GUIDE.md"
-RESULTS = ROOT / "docs" / "RESULTS.md"
-READING_GUIDE = ROOT / "docs" / "READING_GUIDE.md"
-CONTRIBUTION_GUIDE = ROOT / "docs" / "CONTRIBUTE_BY_PAPER.md"
+READING_GUIDE = ROOT / "docs" / "README.md"
+CONTRIBUTION_GUIDE = ROOT / "docs" / "research-commons" / "CONTRIBUTE_BY_PAPER.md"
 CARD_BEGIN = "<!-- BEGIN problem_programme_card -->"
 CARD_END = "<!-- END problem_programme_card -->"
 PUBLIC_REPO = "https://github.com/wcook04/plectis-erdos"
@@ -220,7 +219,7 @@ def render_problem_questions(payload: dict, *, prose: bool = False) -> str:
     if prose:
         return "\n\n".join(
             f"[Problem {row['erdos_number']}](../{row['note']['rendered_path']}). {row['question']} "
-            f"[Work on this paper](CONTRIBUTE_BY_PAPER.md#problem-{row['erdos_number']})."
+            f"[Work on this paper](research-commons/CONTRIBUTE_BY_PAPER.md#problem-{row['erdos_number']})."
             for row in payload["problems"]
         )
     lines = ["_Questions generated from `docs/problem_index_source.json`._", "",
@@ -239,12 +238,12 @@ def render_contribution_guide(payload: dict, corpus: dict) -> str:
              "an inspectable result and the existing open obligations. These are research questions,",
              "not difficulty ratings: some are equivalent to the original problem.", "",
              "The programme entry module is one starting point, not the source of every result.",
-             "Follow the papers' inline Lean notes and the [full source map](SOURCE_MAP.md)",
+             "Follow the papers' inline Lean notes and the [full source map](../reference/SOURCE_MAP.md)",
              "for the declarations behind a particular statement.", "",
              "A correction, argument, useful reference, failed route or explanation can be returned",
-             "without running Lean. You can also [develop a method](../paper/synthesis/README.md)",
-             "or [improve the machinery](research-commons/ARCHITECTURE_CONTRIBUTIONS.md).",
-             "[Submission and credit](../CONTRIBUTING.md#return-what-you-learned) are shared.", ""]
+             "without running Lean. You can also [develop a method](../../paper/synthesis/README.md)",
+             "or [improve the machinery](ARCHITECTURE_CONTRIBUTIONS.md).",
+             "[Submission and credit](../../CONTRIBUTING.md#return-what-you-learned) are shared.", ""]
     for row in payload["problems"]:
         n = row["erdos_number"]
         lines += [f"## Problem {n}", "", row["question"], "",
@@ -254,17 +253,17 @@ def render_contribution_guide(payload: dict, corpus: dict) -> str:
                   and paper.get("local_source", "").startswith(f"paper/{n}/")]
         for paper in papers:
             role = "Long record" if paper.get("form") == "Reasoning surface" else "Short paper"
-            lines += [f"[{role}](../{paper['local_pdf']}) · [Read as text](../{paper['local_full_text']})", ""]
+            lines += [f"[{role}](../../{paper['local_pdf']}) · [Read as text](../../{paper['local_full_text']})", ""]
         principal = row["modules"][0]
-        lines += [f"[Programme entry module](../{principal['path']}) · "
-                  f"[Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · "
-                  f"[Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)", "", "Existing questions:", ""]
+        lines += [f"[Programme entry module](../../{principal['path']}) · "
+                  f"[Full source map](../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix) · "
+                  f"[Reproduce a claim](../REPRODUCIBILITY.md#try-one-claim-without-lean)", "", "Existing questions:", ""]
         for obligation in row["open_obligations"]:
             lines += [f"- {obligation['statement']}"]
         query = urlencode({"template": "research_progress.yml", "title": f"[research progress] Erdős #{n}",
                            "question": f"Erdős #{n}: {row['question']}"})
         lines += ["", f"[Return work on #{n}]({PUBLIC_REPO}/issues/new?{query}) · "
-                  "[Email and credit preferences](../CONTRIBUTING.md#return-what-you-learned)", "",
+                  "[Email and credit preferences](../../CONTRIBUTING.md#return-what-you-learned)", "",
                   "For a coding agent:", "", "```sh",
                   f'python3 scripts/agent_entry.py --entry "Work on problem {n}" --purpose research --scope "problem:{n}"',
                   f"python3 scripts/query_route_memory.py --problem {n}", "```", ""]
@@ -726,8 +725,6 @@ def main() -> int:
     guide_projection = update_programme_card(
         guide_text, render_programme_card(problem_index, claims)
     )
-    results_text = RESULTS.read_text(encoding="utf-8")
-    results_projection = update_programme_card(results_text, render_problem_questions(problem_index))
     reading_text = READING_GUIDE.read_text(encoding="utf-8")
     reading_projection = update_programme_card(reading_text, render_problem_questions(problem_index, prose=True))
     contribution_projection = render_contribution_guide(problem_index, corpus or {})
@@ -742,9 +739,6 @@ def main() -> int:
             return 1
         if reading_text != reading_projection:
             print("reading-guide question inventory is stale; run python3 scripts/build_problem_index.py")
-            return 1
-        if results_text != results_projection:
-            print("results question inventory is stale; run python3 scripts/build_problem_index.py")
             return 1
         if guide_text != guide_projection:
             print("agent programme card is stale; run python3 scripts/build_problem_index.py")
@@ -766,7 +760,6 @@ def main() -> int:
     OUTPUT.write_bytes(payload)
     LIBRARY_OUTPUT.write_bytes(library_payload)
     AGENT_GUIDE.write_text(guide_projection, encoding="utf-8")
-    RESULTS.write_text(results_projection, encoding="utf-8")
     READING_GUIDE.write_text(reading_projection, encoding="utf-8")
     print(
         f"wrote docs/problems.json: {len(source['problems'])} problem(s), "

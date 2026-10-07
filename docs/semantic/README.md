@@ -124,7 +124,7 @@ python3 scripts/query_semantic.py structural-backlog --problem 257
 The semantic graph is an interpretation layer, not a replacement for
 problem-owned evidence. For public problem → strongest checked result → paper
 or source record → exact frontier traversal, start at the canonical [complete
-eight-problem return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix).
+eight-problem return matrix](../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix).
 It is also the reverse route for a semantic reader: use
 `python3 scripts/query_corpus.py --source <module.lean:line>` or
 `--paper-anchor <TeX_label_or_source_ref>` to recover the corresponding claim
@@ -299,3 +299,29 @@ and evaluation questions.
 `claims.json` stays small and reviewed. Expanding it to one row per declaration
 would destroy the thing it is for. It selects from this graph; it does not
 replace it.
+
+## Corpus census
+
+<!-- BEGIN semantic_public_census -->
+Only after those theorem-level facts comes the corpus census. The current semantic graph provides three diagnostic views across every indexed Erdős problem:
+
+| View | #68 | #243 | #249 | #251 | #257 | #269 | #1041 | #1049 | both | shared | total |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| mechanically nonrecurring candidates | 0 | 3 | 90 | 0 | 169 | 0 | 0 | 5 | 0 | 20 | 287 |
+| classical/prior-art formalisations | 0 | 1 | 36 | 0 | 23 | 0 | 0 | 1 | 0 | 40 | 101 |
+| bare open-problem equivalences | 0 | 0 | 15 | 0 | 15 | 0 | 0 | 0 | 0 | 2 | 32 |
+
+The nonrecurring view contains 185 unconditional object theorems, 56 scoped barriers, and 46 reductions or transports after aliases, open antecedents, bare equivalences, finite/generated instances, infrastructure, classical results, and routine corollaries are removed.
+
+The internal adjudicated frontier shortlist contains 11 nodes; it is distinct from the 7-node public prior-art review queue. 232 nonrecurring candidates remain unassessed for prior art. The live authored open-antecedent surface has 52 clusters, of which 10 are marked endpoint-equivalent. None of these populations is a novelty census.
+
+Agents use the live owners rather than a frozen restatement sample:
+
+- `python3 scripts/query_corpus.py --overview --format card` for reviewed claim status and exact registered Lean interfaces;
+- `python3 scripts/query_corpus.py --route <route_id> --format card` for one problem programme and its open boundary;
+- `python3 scripts/query_semantic.py node <node_id>` and `family-relations <family_id>` for cross-paper statement and relation navigation;
+- `docs/PALOMAR_RESULT_SHOWCASE.json` for the current candidate universe and screening dispositions; and
+- `scripts/residual_evaluator.py` for a kernel-backed comparison of one proposed reduction with its target.
+
+The claim registry covers selected registered claims, not every sentence in every paper. Semantic relations and Palomar screening are navigation and review surfaces; neither is proof, novelty, significance or peer review.
+<!-- END semantic_public_census -->

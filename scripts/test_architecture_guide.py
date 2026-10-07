@@ -105,13 +105,61 @@ def check_public_root_inventory() -> None:
         assert any("loose corpus" in error for error in errors())
 
 
+
+def check_documentation_inventory() -> None:
+    with tempfile.TemporaryDirectory(prefix="public-docs-layout-") as raw:
+        root = Path(raw)
+        docs = root / "docs"
+        docs.mkdir()
+        (root / "README.md").write_text("Public entry\n")
+        (root / ".gitignore").write_text("docs/LOCAL.md\n")
+        (docs / "README.md").write_text("[Results](RESULTS.md)\n")
+        (docs / "RESULTS.md").write_text("Current results\n")
+        nested = docs / "reference"
+        nested.mkdir()
+        (nested / "README.md").write_text("[New record](NEW.md)\n")
+        (nested / "NEW.md").write_text("A specialist record\n")
+
+        def errors():
+            with patch.object(check_release, "ROOT", root), patch.object(check_release, "ERRORS", []):
+                check_release.check_root_layout()
+                return list(check_release.ERRORS)
+
+        # Source archives lack Git but retain the same public-doc placement rule.
+        assert not errors(), "indexed nested documentation rejected in source archive"
+        (docs / "LOOSE.md").write_text("Unclassified guide\n")
+        assert any("LOOSE.md" in e for e in errors())
+        (docs / "LOOSE.md").unlink()
+        (docs / "README.md").write_text("No route to results\n")
+        assert any("must link" in e and "RESULTS.md" in e for e in errors())
+        (docs / "README.md").write_text("[Results](./RESULTS.md#current)\n")
+        assert not errors(), "fragment-bearing root guide link rejected"
+
+        def git(*args):
+            subprocess.run(["git", "-C", str(root), *args], check=True,
+                           capture_output=True, env=check_release.clean_environment())
+
+        git("init", "-q")
+        git("add", ".gitignore", "README.md", "docs")
+        (docs / "LOCAL.md").write_text("Local ignored notes\n")
+        assert not errors(), "ignored local notes treated as published guides"
+        git("add", "-f", "docs/LOCAL.md")
+        assert any("LOCAL.md" in e for e in errors()), "staged ignored guide escaped inventory"
+
+
 def check_v2_guide_mutations(guide: str) -> None:
     mutations = (
         (
+            guide.replace("[Results and limits](RESULTS.md)", "[Verification](EXTERNAL_VERIFICATION.md)", 1),
+            "current mathematical status owner removed",
+        ),
+        (
             reflow_tolerant_replace(
-                guide, checker.external_status_boundary(), ""
+                guide,
+                "Supporting declarations need not have a claim record",
+                "Every supporting declaration automatically acquires public claim authority",
             ),
-            "open-problem boundary removed",
+            "supporting declaration promoted to public claim authority",
         ),
         (
             reflow_tolerant_replace(
@@ -148,8 +196,8 @@ def check_v2_guide_mutations(guide: str) -> None:
         (
             reflow_tolerant_replace(
                 guide,
-                "The archived combined #249/#257 PDF is not a default reading route.",
-                "The combined #249/#257 PDF is the default reading route.",
+                "is archived provenance only, not an active gateway.",
+                "is the default active mathematical gateway.",
             ),
             "retired combined manuscript restored as default gateway",
         ),
@@ -160,12 +208,14 @@ def check_v2_guide_mutations(guide: str) -> None:
         (guide + "\nM8 achieved 9/10.\n", "evaluation shorthand introduced"),
     )
     for mutated, label in mutations:
+        if mutated == guide:
+            raise AssertionError(f"architecture-guide mutation anchor missing: {label}")
         assert_rejected(mutated, label)
-        pass
 
 
 def main() -> int:
     check_public_root_inventory()
+    check_documentation_inventory()
     check_safe_input_boundary()
     guide = checker.GUIDE.read_text(encoding="utf-8")
     readme = checker.README.read_text(encoding="utf-8")

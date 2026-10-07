@@ -29,7 +29,7 @@ RETURNS = ROOT / "docs/research-commons/returns"
 JSON_OUTPUT = ROOT / "docs/research-commons/contributions.json"
 MARKDOWN_OUTPUT = ROOT / "docs/research-commons/CONTRIBUTIONS.md"
 SCHEMA = "accepted-research-contributions/1"
-PUBLIC_PROBLEM_ENTRY_PATH = "docs/CONTRIBUTE_BY_PAPER.md"
+PUBLIC_PROBLEM_ENTRY_PATH = "docs/research-commons/CONTRIBUTE_BY_PAPER.md"
 PUBLIC_SUBJECT_FRONTIER_PATH = "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"
 PUBLIC_SUBJECT_FRONTIER_ANCHOR = "subject-frontier"
 GIT_CONTEXT_KEYS = frozenset(
@@ -337,7 +337,7 @@ def public_result_family_route(problem: Any) -> dict[str, str]:
     return {
         "repository_path": PUBLIC_PROBLEM_ENTRY_PATH,
         "anchor": f"problem-{problem}",
-        "relative_link": f"../CONTRIBUTE_BY_PAPER.md#problem-{problem}",
+        "relative_link": f"CONTRIBUTE_BY_PAPER.md#problem-{problem}",
     }
 
 

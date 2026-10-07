@@ -189,7 +189,7 @@ def main() -> int:
         public_recognition = recognition.build_recognition(accepted_sources)
     for problem in contributions.route_memory_receipt.ROSTER:
         route = contributions.public_result_family_route(problem)
-        require(route["repository_path"] == "docs/CONTRIBUTE_BY_PAPER.md"
+        require(route["repository_path"] == "docs/research-commons/CONTRIBUTE_BY_PAPER.md"
                 and route["anchor"] == f"problem-{problem}",
                 f"problem {problem} credit lacks its actual public entry")
     contribution_text = contributions.human_projection(public_credit).decode("utf-8")
@@ -206,9 +206,9 @@ def main() -> int:
     require(public_credit["filters"]["by_problem"] == {"257": [correction["return_id"]]},
             "an architecture idea entered mathematical problem credit")
     require(public_credit["chronological"][0]["public_frontier"] == {
-        "repository_path": "docs/CONTRIBUTE_BY_PAPER.md",
+        "repository_path": "docs/research-commons/CONTRIBUTE_BY_PAPER.md",
         "anchor": "problem-257",
-        "relative_link": "../CONTRIBUTE_BY_PAPER.md#problem-257",
+        "relative_link": "CONTRIBUTE_BY_PAPER.md#problem-257",
     }, "mathematical credit does not lead to the real public contribution entry")
     require(public_credit["filters"]["by_architecture_area"] ==
             {"public_experience": [architecture["return_id"]]},

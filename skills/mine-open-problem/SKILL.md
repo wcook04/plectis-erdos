@@ -45,7 +45,7 @@ continuation state. Problem selection in `query_corpus.py` uses
 `--route erdos_<number>` or ordinary-language `--ask`; it has no `--problem`
 selector.
 
-The [argument graph](../../docs/ARGUMENT_GRAPH.md) gives the same frontier as
+The [argument graph](../../docs/agents/ARGUMENT_GRAPH.md) gives the same frontier as
 the kernel sees it: the open targets of a problem, the theorems that reduce to
 them, the paper results that assume them, the open statements that are the
 target in other coordinates, and what each missing input would settle.

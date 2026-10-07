@@ -576,6 +576,26 @@ def main() -> int:
     assert_human_rejected(summary, mutated, "first-contact section contract")
     checks += 1
 
+    # Consolidated setup routes to its validation owners; removing the route
+    # or either owner's focused command must still fail without duplicating
+    # the complete build manual on the front page.
+    for path, token in (
+        ("docs/REPRODUCIBILITY.md", "lean-concurrent-validation/SKILL.md"),
+        ("docs/agents/AGENT_GUIDE.md", "--changed-from"),
+        ("skills/lean-concurrent-validation/SKILL.md", "--changed-from"),
+    ):
+        mutated_incremental = copy.deepcopy(incremental_surfaces)
+        original = mutated_incremental[path]
+        mutated_incremental[path] = original.replace(token, "removed-owner-guidance")
+        require(mutated_incremental[path] != original,
+                f"validation owner fixture did not remove {token} from {path}")
+        try:
+            diagnostic.validate_incremental_build_contract(mutated_incremental)
+        except AssertionError:
+            checks += 1
+        else:
+            raise AssertionError(f"missing linked validation capability escaped: {path}: {token}")
+
     mutated_incremental = copy.deepcopy(incremental_surfaces)
     mutated_incremental[".github/workflows/lean.yml"] = mutated_incremental[
         ".github/workflows/lean.yml"
@@ -696,8 +716,8 @@ def main() -> int:
     checks += 1
 
     mutated_census = copy.deepcopy(census_surfaces)
-    mutated_census["docs/RESULTS.md"] = mutated_census[
-        "docs/RESULTS.md"
+    mutated_census["docs/semantic/README.md"] = mutated_census[
+        "docs/semantic/README.md"
     ].replace(
         "| mechanically nonrecurring candidates |",
         "| mechanically nonrecurring candidates CORRUPTED |",
@@ -711,16 +731,16 @@ def main() -> int:
     route = "python3 scripts/query_semantic.py node <node_id>"
     begin = "<!-- BEGIN semantic_public_census -->"
     end = "<!-- END semantic_public_census -->"
-    text = census_surfaces["docs/RESULTS.md"]
+    text = census_surfaces["docs/semantic/README.md"]
     start, stop = text.index(begin), text.index(end)
     block = text[start:stop]
     require(route in block, "semantic route mutation must change its owned block")
     duplicated_route = copy.deepcopy(census_surfaces)
-    duplicated_route["docs/RESULTS.md"] = text + "\n" + route + "\n"
+    duplicated_route["docs/semantic/README.md"] = text + "\n" + route + "\n"
     diagnostic.validate_public_semantic_census(census, duplicated_route)
     checks += 1
     mutated_census = copy.deepcopy(duplicated_route)
-    mutated_census["docs/RESULTS.md"] = (
+    mutated_census["docs/semantic/README.md"] = (
         text[:start]
         + block.replace(route, "read a frozen restatement report", 1)
         + text[stop:] + "\n" + route + "\n"
@@ -737,7 +757,7 @@ def main() -> int:
          .replace(end, begin, 1).replace("CENSUS_BEGIN_PLACEHOLDER", end, 1)),
     ):
         mutated_census = copy.deepcopy(census_surfaces)
-        mutated_census["docs/RESULTS.md"] = malformed
+        mutated_census["docs/semantic/README.md"] = malformed
         assert_census_rejected(census, mutated_census, label)
         checks += 1
 

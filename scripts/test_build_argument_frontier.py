@@ -14,6 +14,7 @@ import json
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -410,6 +411,39 @@ class Modules(unittest.TestCase):
     def test_lean_ident_escapes(self):
         self.assertEqual(frontier.lean_ident("A.b_c.d'"), "A.b_c.d'")
         self.assertEqual(frontier.lean_ident("A.1x"), "A.«1x»")
+
+
+class HistoricalSnapshotTests(unittest.TestCase):
+    def test_snapshot_only_needs_no_graph_and_preserves_manifest(self):
+        with tempfile.TemporaryDirectory() as raw:
+            root = Path(raw)
+            (root / "docs").mkdir()
+            manifest = {"source": {"source_revision": "a" * 40, "lean_tree": "b" * 40},
+                        "rows": {}, "named_inputs": []}
+            path = root / "docs" / "argument_frontier.json"
+            original = json.dumps(manifest)
+            path.write_text(original)
+            with patch.object(frontier, "load_graph", side_effect=AssertionError("graph read forbidden")):
+                self.assertEqual(frontier.main(["--root", raw, "--snapshot-only"]), 0)
+                output = root / "docs" / "reference" / "ARGUMENT_FRONTIER.md"
+                text = output.read_text()
+                self.assertIn("Historical argument frontier snapshot", text)
+                self.assertIn("a" * 40, text)
+                self.assertIn("not a fresh export", text)
+                self.assertIn("../RESULTS.md", text)
+                self.assertIn("query_corpus.py --open", text)
+                self.assertEqual(frontier.main(["--root", raw, "--snapshot-only", "--check"]), 0)
+                output.write_text(text + "stale")
+                self.assertEqual(frontier.main(["--root", raw, "--snapshot-only", "--check"]), 1)
+            self.assertEqual(path.read_text(), original)
+            self.assertFalse((root / "lean").exists())
+
+    def test_projection_pipeline_uses_snapshot_mode_for_both_operations(self):
+        import refresh_projections as refresh
+        builder = "scripts/build_argument_frontier.py"
+        self.assertIn(builder, refresh.BUILDERS)
+        self.assertEqual(refresh.WRITE_FLAGS[builder], ("--snapshot-only",))
+        self.assertEqual(refresh.PREFLIGHT_CHECKS[builder], ("--snapshot-only", "--check"))
 
 
 if __name__ == "__main__":

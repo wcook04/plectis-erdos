@@ -9,7 +9,7 @@ from unittest.mock import patch
 import build_problem_index as builder
 
 class ProblemLibraryTests(unittest.TestCase):
-    def test_question_inventory_follows_owner_in_both_reader_guides(self):
+    def test_question_inventory_has_one_reader_owner(self):
         row = {"erdos_number": 68, "question": "Before | correction?",
                "note": {"rendered_path": "paper/before.pdf"}}
         body = f"Authored context\n{builder.CARD_BEGIN}\n{builder.CARD_END}\nAuthored proof\n"
@@ -27,7 +27,7 @@ class ProblemLibraryTests(unittest.TestCase):
             json.loads(builder.CLAIMS.read_text()),
             json.loads(builder.CORPUS.read_text()),
         )
-        for path in (builder.RESULTS, builder.READING_GUIDE):
+        for path in (builder.READING_GUIDE,):
             card = builder.render_problem_questions(payload, prose=path == builder.READING_GUIDE)
             self.assertEqual(path.read_text(), builder.update_programme_card(path.read_text(), card))
 

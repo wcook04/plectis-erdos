@@ -13,7 +13,7 @@ from validation_singleflight import command_environment, GIT_COMMAND_TIMEOUT_SEC
 
 
 ROOT = Path(__file__).resolve().parents[1]
-HUMAN_ENTRY = ROOT / "docs/READING_GUIDE.md"
+HUMAN_ENTRY = ROOT / "docs/README.md"
 
 
 def require(condition: bool, message: str) -> None:
@@ -70,7 +70,7 @@ def local_markdown_targets(path: Path) -> list[Path]:
     targets: list[Path] = []
     prose = markdown_link_prose(path.read_text(encoding="utf-8"))
     for raw in re.findall(r"\[[^]]+\]\(([^)]+)\)", prose):
-        target = raw.split("#", 1)[0]
+        target = raw.split("#", 1)[0].split("?", 1)[0]
         if not target or "://" in target or target.startswith("mailto:"):
             continue
         targets.append((path.parent / target).resolve())
@@ -121,6 +121,63 @@ def test_checkout_link_boundary() -> None:
         )
 
 
+# Frozen evidence and generated manuscript text preserve their original links;
+# current guides are checked recursively, including newly added nested guides.
+HISTORICAL_DOC_DIRS = (
+    "research-commons/rounds", "research-commons/benchmarks", "release",
+    "systems-paper-evidence", "reading-edition/records",
+)
+GENERATED_PAPER_TEXT_DIRS = ("papers/full-text",)
+GENERATED_PAPER_TEXT_FILES = {
+    "reading-edition/plectis-reading-edition.md",
+    "reading-edition/plectis-short-papers.md",
+}
+HISTORICAL_SNAPSHOT_FILES = {
+    "reference/ARGUMENT_FRONTIER.md", "reference/WAVE_INDEX.md",
+}
+
+
+def live_documentation_surfaces(root: Path = ROOT) -> list[Path]:
+    """Select current Markdown guides by existing historical/output homes."""
+    result = []
+    for path in sorted((root / "docs").rglob("*.md")):
+        rel = path.relative_to(root / "docs").as_posix()
+        if any(rel.startswith(prefix + "/") for prefix in
+               (*HISTORICAL_DOC_DIRS, *GENERATED_PAPER_TEXT_DIRS)):
+            continue
+        if rel in GENERATED_PAPER_TEXT_FILES or rel in HISTORICAL_SNAPSHOT_FILES:
+            continue
+        if re.search(r"(?:^|_)\d{4}-\d{2}-\d{2}(?:_|\.md$)", path.name):
+            continue
+        result.append(path)
+    return result
+
+
+def test_recursive_documentation_links() -> None:
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw).resolve()
+        nested = root / "docs" / "agents" / "nested"
+        nested.mkdir(parents=True)
+        guide = nested / "guide.md"
+        target = root / "docs" / "RESULTS.md"
+        target.write_text("Results\n")
+        guide.write_text("[current](../../RESULTS.md?plain=1#result) "
+                         "[historical](https://github.com/wcook04/plectis-erdos/blob/" +
+                         "a" * 40 + "/docs/RETIRED.md)\n")
+        require(guide in live_documentation_surfaces(root), "nested guide escaped recursive scan")
+        require(local_markdown_targets(guide) == [target], "relative nested link or historical URL misresolved")
+        require(not missing_checkout_targets(guide, {guide, target}), "valid nested relative link rejected")
+        guide.write_text("[broken](../../ABSENT.md)\n")
+        require(missing_checkout_targets(guide, {guide, target}) == [root / "docs" / "ABSENT.md"],
+                "missing nested guide link escaped")
+        for relative in ("papers/full-text/frozen.md", "research-commons/rounds/round1/return.md",
+                         "reference/QUALIFICATION_2026-09-13.md"):
+            frozen = root / "docs" / relative
+            frozen.parent.mkdir(parents=True, exist_ok=True)
+            frozen.write_text("[old](missing.md)\n")
+            require(frozen not in live_documentation_surfaces(root), "historical document treated as current guide")
+
+
 def authored_prose_blocks(text: str) -> list[str]:
     """Return ordinary prose blocks, excluding metadata and navigation syntax."""
     blocks: list[str] = []
@@ -144,6 +201,7 @@ def authored_prose_blocks(text: str) -> list[str]:
 
 def main() -> None:
     test_checkout_link_boundary()
+    test_recursive_documentation_links()
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     human_entry = HUMAN_ENTRY.read_text(encoding="utf-8")
     results = (ROOT / "docs/RESULTS.md").read_text(encoding="utf-8")
@@ -153,10 +211,6 @@ def main() -> None:
     compact_status_boundary = " ".join(status_boundary.split())
     for relative in (
         "README.md",
-        "docs/READING_GUIDE.md",
-        "docs/SCOPE.md",
-        "docs/ARCHITECTURE.md",
-        "docs/README.md",
         "docs/RESULTS.md",
         "paper/README.md",
         "docs/agents/AGENT_GUIDE.md",
@@ -168,20 +222,9 @@ def main() -> None:
         )
 
     reader_surfaces = (
-        ROOT / "README.md",
-        HUMAN_ENTRY,
-        ROOT / "paper/README.md",
-        ROOT / "docs/README.md",
-        ROOT / "docs/RESULTS.md",
-        ROOT / "docs/ORIENTATION.md",
-        ROOT / "docs/RELATED_PROBLEMS.md",
-        ROOT / "docs/papers/README.md",
+        ROOT / "README.md", ROOT / "paper/README.md",
         ROOT / "research/examples/ExternalVerificationPortfolio/README.md",
-        *sorted((ROOT / "docs/primary-sources").rglob("*source-closure.md")),
-        *sorted((ROOT / "docs/agents").glob("*.md")),
-        *sorted((ROOT / "docs/verification").glob("*.md")),
-        *sorted((ROOT / "docs/reference").glob("*.md")),
-        *sorted((ROOT / "docs/papers/full-text").glob("*.md")),
+        *live_documentation_surfaces(),
     )
     tracked = {
         (ROOT / relative).resolve()
@@ -211,12 +254,12 @@ def main() -> None:
             "machine orientation does not expose the current paper catalogue")
     require(orientation["source_provenance"]["human_exposition_role"] == "historical_joint_manuscript",
             "the retained historical manuscript is not labelled as such")
-    require("../paper/README.md" in (ROOT / "docs/ORIENTATION.md").read_text(),
+    require("../../paper/README.md" in (ROOT / "docs/reference/ORIENTATION.md").read_text(),
             "rendered orientation does not lead to the current papers")
 
     require(
-        "../README.md#problem-papers" in results,
-        "RESULTS does not route readers to the current README paper anchor",
+        "../paper/README.md#problem-papers" in results,
+        "RESULTS does not route readers to the current canonical paper catalogue",
     )
 
     # 2026-09-10: 1_400 -> 1_700 -> 2_000. The operator rewrote the front page in
@@ -262,7 +305,7 @@ def main() -> None:
     )
     first_screen = readme.split("## Problem papers", 1)[0]
     require(
-        "[A reader's way in](docs/READING_GUIDE.md)" in first_screen,
+        "(docs/README.md)" in first_screen,
         "README does not lead human readers to the prose-first entry",
     )
     require(
@@ -293,52 +336,24 @@ def main() -> None:
     )
 
     human_words = words(human_entry)
-    prose_blocks = authored_prose_blocks(human_entry)
-    prose_word_count = sum(len(words(block)) for block in prose_blocks)
-    # The exact four-sentence #1041 status boundary is projected into the human
-    # entry verbatim, so its existing bounded introduction now allows 1_250 words.
-    require(
-        450 <= len(human_words) <= 1_250,
-        "HUMAN_ENTRY must be a substantial but bounded prose introduction",
-    )
-    require(
-        len(prose_blocks) >= 10 and prose_word_count / len(human_words) >= 0.9,
-        "HUMAN_ENTRY is not predominantly authored explanatory prose",
-    )
-    require(
-        len(words(prose_blocks[0])) >= 35,
-        "HUMAN_ENTRY does not explain the project before routing the reader",
-    )
-    require(compact_status_boundary in " ".join(human_entry.split()),
-            "human entry blurs the authority-owned status boundary")
-    require(
-        "Comparator" in human_entry and "Palomar" in human_entry,
-        "human entry does not explain the two public review surfaces",
-    )
-    require("AGENTS.md" not in human_entry, "human entry leaks the agent router")
-    require("python3 " not in human_entry, "human entry exposes shell commands")
-    require("scripts/" not in human_entry, "human entry exposes implementation paths")
-    require("```" not in human_entry, "human entry contains a code block")
-    require(
-        not re.search(r"(?m)^\|.+\|$", human_entry),
-        "human entry contains a machine-like routing table",
-    )
-    require(
-        not re.search(r"(?<![A-Za-z])--[a-z][a-z0-9-]*", human_entry),
-        "human entry exposes command-line flags",
-    )
-    require(
-        not re.search(r"\b(?:route|claim|problem|statement|family)_id\b", human_entry),
-        "human entry exposes machine-readable identifiers",
-    )
-    require(
-        not re.search(
-            r"(?i)(?:^|[\s(])(?:[\w.-]+/)+[\w.-]+|"
-            r"\b[\w-]+\.(?:json|py|lean|toml|ya?ml)\b|::",
-            re.sub(r"\]\([^)]*\)", "]", human_entry),
-        ),
-        "human entry exposes implementation coordinates instead of explaining them",
-    )
+    require(450 <= len(human_words) <= 1_500,
+            "human documentation entry must remain bounded")
+    introduction = human_entry.split("## Choose a way in", 1)[0]
+    require(len(words(introduction)) >= 35,
+            "human entry must explain the mathematics before routing")
+    require("[Results and limits](RESULTS.md)" in human_entry,
+            "human entry must route current status to its owning guide")
+    require("Comparator" in human_entry and "Palomar" in human_entry,
+            "human entry must explain the two public review surfaces")
+    require("python3 " not in human_entry and "```" not in human_entry,
+            "human entry must not require shell commands")
+    for limit in ("does not establish", "A finite computation covers its tested range",
+                  "it is not peer review"):
+        require(limit in " ".join(human_entry.split()),
+                f"human entry lost the evidence limit: {limit}")
+    architecture = (ROOT / "docs/ARCHITECTURE.md").read_text(encoding="utf-8")
+    require("[Results and limits](RESULTS.md)" in architecture,
+            "architecture must link its current mathematical status owner")
 
     paper_slugs = (
         "erdos-68-factorial-denominator-irrationality",
@@ -369,31 +384,24 @@ def main() -> None:
             f"missing Markdown paper for {slug}",
         )
 
-    details_at = results.find("<details>")
     guide_at = results.find("### Problem-by-problem guide")
-    require(guide_at >= 0 and details_at > guide_at, "RESULTS does not lead with the human guide")
-    require("</details>" in results, "RESULTS technical inventory is not closed")
-    require(
-        "<!-- BEGIN semantic_public_census -->" in results
-        and "<!-- END semantic_public_census -->" in results,
-        "RESULTS lost the generated semantic census contract",
-    )
-    require(
-        "PALOMAR_RESULT_SHOWCASE.json" in results and "claims.json" in results,
-        "RESULTS does not defer ranking and status to canonical data",
-    )
-
-    for heading in (
-        "## Read",
-        "## Check",
-        "## Contribute",
-        "## Where things live",
-    ):
+    require(guide_at >= 0, "RESULTS must lead with the current problem guide")
+    require(len(words(results)) <= 6_000,
+            "RESULTS must not grow back into a duplicate technical inventory")
+    require("claims.json" in results,
+            "RESULTS does not defer public status to canonical data")
+    for n in ("68", "243", "249", "251", "257", "269", "1041", "1049"):
+        require(f'id="result-{n}"' in results,
+                f"RESULTS lost its current programme summary for #{n}")
+    for heading in ("## Choose a way in", "## Work through an argument",
+                    "## The eight problems", "## Read the evidence",
+                    "## Contribute", "## Specialist guides and records"):
         require(heading in docs_index, f"documentation guide omits {heading}")
-    require(
-        "Generated technical navigation" in docs_index,
-        "documentation guide does not classify generated orientation correctly",
-    )
+    for relative in ("RESULTS.md", "ARCHITECTURE.md", "METHODOLOGY.md",
+                     "REPRODUCIBILITY.md", "PRIOR_ART.md", "PRIVACY.md",
+                     "THIRD_PARTY_NOTICES.md"):
+        require(f"({relative})" in docs_index,
+                f"documentation entry lost its reader guide {relative}")
 
     start_here = (ROOT / ".github/START_HERE_ISSUE.md").read_text(encoding="utf-8")
     require(

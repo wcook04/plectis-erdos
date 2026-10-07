@@ -89,7 +89,9 @@ def test_public_agent_assets_exist() -> None:
     skill_text = skill.read_text(encoding="utf-8")
     assert "Lean source checked by the pinned Lean kernel" in skill_text
     assert "No private" in skill_text
-    assert (ROOT / "docs/agents" / "PROOF_COCKPIT.md").is_file()
+    guide = ROOT / "docs/agents" / "AGENT_WORKBENCH.md"
+    assert guide.is_file()
+    assert "## Proof cockpit" in guide.read_text(encoding="utf-8")
 
 
 def main() -> int:

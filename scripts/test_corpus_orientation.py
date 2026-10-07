@@ -73,7 +73,7 @@ def test_palomar_signal_join_and_first_read_order() -> None:
     generated_orientation = json.loads(
         (ROOT / "docs" / "orientation.json").read_text(encoding="utf-8")
     )
-    generated_markdown = (ROOT / "docs" / "ORIENTATION.md").read_text(
+    generated_markdown = (ROOT / "docs" / "reference" / "ORIENTATION.md").read_text(
         encoding="utf-8"
     )
     queries = orientation["queries"]
@@ -97,14 +97,16 @@ def test_palomar_signal_join_and_first_read_order() -> None:
     ]
     assert presentation["relational_placements"]
     assert generated_markdown == markdown
-    assert markdown.index("## Release provenance") < markdown.index(
-        "## Mathematical signal first"
-    ) < markdown.index("## What a claim status asserts")
-    assert "### Reader tiers and relational boundaries" in markdown
-    assert "conditional endpoint leverage" in markdown
-    assert "deep mechanism and classification" in markdown
-    assert "supporting and long tail" in markdown
-    assert markdown.count("| ") >= len(ranking)
+    assert markdown.index("## Release provenance") < markdown.index("## What a claim status asserts")
+    assert "--publication-architecture" in markdown
+    assert "../EXTERNAL_VERIFICATION.md" in markdown
+    assert "../orientation.json" in markdown
+    assert "## Mathematical signal first" not in markdown
+    assert "Interface, source declaration, and exact boundary, by rank" not in markdown
+    for row in orientation["remaining_open_propositions"]:
+        assert row["id"] in markdown and row["statement"] in markdown
+    for row in orientation["mathematical_programmes"]:
+        assert row["id"] in markdown and row["title"] in markdown and row["claim_ceiling"] in markdown
     assert len(
         (json.dumps(orientation, ensure_ascii=False, separators=(",", ":")) + "\n").encode(
             "utf-8"

@@ -627,9 +627,6 @@ def markdown(index: dict[str, Any]) -> bytes:
         title=sources[source_id]["title"]
         short=title if len(title)<=70 else title[:67].rstrip()+"…"
         return f"[{esc(short)}](#source-{anchor(source_id)})"
-    usage_by_source=defaultdict(list)
-    for usage in index["paper_inventory"]["citation_usages"]:
-        if usage.get("source_id"): usage_by_source[usage["source_id"]].append(usage)
     lines = ["# Source attributions", "", "_Generated from the authored source registry; do not hand-edit._", "", "This index shows which public sources informed which papers, problems, Lean-facing records, and implemented changes. Source credit does not establish proof, novelty, endorsement, peer review, or complete historical coverage.", "", "Private correspondence appears only under a neutral anonymous identity until public naming is confirmed. Its email, mailbox location, message text, and private evidence remain outside this repository.", "", "## Coverage and anonymous implementation credits", "", f"The registry contains `{len(index['sources'])}` curated sources across `{index['paper_inventory']['paper_denominator']}` registered papers and `{index['lean_inventory']['library_file_denominator']}` Lean library files.", ""]
     states = {row["key"]: row["source_ids"] for row in index["facets"]["by_verification_state"]}
     lines += ["Source review states: " + "; ".join(f"`{state}`: `{len(ids)}`" for state, ids in sorted(states.items())) + ".", "", "Bibliography coverage records attribution already present in the corpus. A `bibliography_only` record still needs direct source-passage verification; a completed lexical review does not certify a source-to-theorem correspondence.", ""]
@@ -664,19 +661,15 @@ def markdown(index: dict[str, Any]) -> bytes:
             for item in source["artifact_coordinates"]:
                 lines.append(f"- {local_link(item)} — lines `{item['line_start']}–{item['line_end']}`; excerpt `{item['excerpt_sha256']}`")
             lines.append("")
-        if source.get("paper_reported_coordinates"):
-            lines += ["Paper-reported locations (the paper reports this relationship; the label alone is not independent verification):", ""]
-            for item in source["paper_reported_coordinates"]:
-                lines.append(f"- {local_link(item,item['locator'])} — `{item['path']}:{item['line_start']}–{item['line_end']}`")
-            lines.append("")
-        if usage_by_source[source["id"]]:
-            lines += ["Paper citation usages:", ""]
-            groups=defaultdict(list)
-            for item in usage_by_source[source["id"]]: groups[item["paper_id"]].append(item)
-            for paper_id, items in sorted(groups.items()):
-                links=", ".join(local_link(item,f"{item['command']} at {item['path']}:{item['line_start']}") for item in items)
-                lines.append(f"- `{esc(paper_id)}`: {links}")
-            lines.append("")
+        # Full citation inventories remain in the lossless JSON projection.
+        # Keep each public identity and anchor here without printing every use.
+        lines += [
+            "Complete locations, paper-reported mappings and citation uses: "
+            "[source-attribution-index.json](source-attribution-index.json) "
+            f"(source id `{esc(source['id'])}`).",
+            f"Query this record: `python3 scripts/build_source_attributions.py --query {source['id']}`.",
+            "",
+        ]
     lines += ["## Coverage requiring review", "", "These gaps are shown explicitly so the catalogue cannot be mistaken for complete historical knowledge.", "", f"- Registered papers scanned: `{index['paper_inventory']['paper_denominator']}`; TeX source files scanned after local includes: `{index['paper_inventory']['scanned_source_file_denominator']}`.", f"- Citation keys without a local bibliography definition: `{index['coverage']['unmatched_citation_key_count']}`", f"- Bibliography entries without a curated source link: `{index['coverage']['bibliography_without_curated_link_count']}`", f"- Lean lexical candidates awaiting review: `{index['coverage']['lean_candidate_awaiting_review_count']}`", f"- Unresolved local TeX includes: `{len(index['paper_inventory']['unresolved_includes'])}`", "", "Machine-readable inventories, hashes, unresolved keys, and lexical candidates: [source-attribution-index.json](source-attribution-index.json).", ""]
     return "\n".join(lines).encode()
 

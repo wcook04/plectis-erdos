@@ -497,7 +497,7 @@
         "docs/problem_index_source.json",
         "lean/ErdosProblems.lean",
         "docs/publication_contract.json",
-        "docs/SCOPE.md"
+        "docs/METHODOLOGY.md"
       ],
       "query_steps": [
         "python3 scripts/query_corpus.py --publication-artifact <publication_artifact_id>",

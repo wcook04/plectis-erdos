@@ -505,7 +505,15 @@ def resolve_link(root: Path, link: dict[str, Any]) -> dict[str, Any]:
     if not isinstance(link, dict) or not isinstance(link.get("path"), str) or unsafe_path(link["path"]):
         raise ReanchorError(f"patch artifact link needs a safe repository-relative path: {link!r}")
     if "find" not in link:
-        return dict(link)
+        row = dict(link)
+        lines = (root / row["path"]).read_text(encoding="utf-8").splitlines()
+        if not valid_range(row) or row["line_end"] > len(lines):
+            raise ReanchorError(f"{row['path']}: numeric patch span is outside the working file")
+        if not matches(lines, row):
+            raise ReanchorError(f"{row['path']}: numeric patch span does not match its digest or expected_text")
+        # New numeric patches are reviewed byte bindings, not unchecked coordinates.
+        row["excerpt_sha256"] = sha(excerpt(lines, row["line_start"], row["line_end"]))
+        return row
     lines = (root / link["path"]).read_text(encoding="utf-8").splitlines()
     hits = [number for number, text in enumerate(lines, 1) if link["find"] in text]
     if len(hits) != 1:

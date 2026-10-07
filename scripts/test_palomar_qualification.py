@@ -1092,7 +1092,7 @@ def test_cross_programme_source_result_spine_is_claim_bound() -> None:
     assert "3/2" in rows[1]["boundary"]
     assert "Ani supplied the polynomial" in rows[2]["boundary"]
     assert "1958 wording" in rows[2]["boundary"]
-    source_map = (ROOT / "docs/SOURCE_MAP.md").read_text()
+    source_map = (ROOT / "docs/reference/SOURCE_MAP.md").read_text()
     assert "`source_result_spine`" in source_map
     assert "`candidate_ranking`" in source_map
 

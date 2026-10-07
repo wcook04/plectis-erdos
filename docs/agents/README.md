@@ -5,7 +5,7 @@
 
 Start a research session from [AGENTS.md](../../AGENTS.md). It routes the task
 to the relevant skill and a small set of files. If you are deciding what to
-work on, the [research-shift guide](../FRONTIER_RELAY.md) explains how to choose
+work on, the [research-shift guide](FRONTIER_RELAY.md) explains how to choose
 a question, record what happened and return the work.
 
 These guides are for the next step, once you have a problem, statement or tool
@@ -102,7 +102,7 @@ or with the mathematics itself. For learning, specify how much help you want.
 
 | Task to give your agent | Useful result |
 |---|---|
-| Help me work through the #257 weighted theorem, one hint at a time | The named statement and one hint matched to your background, followed by space for your attempt. [Reading guidance](../READING_GUIDE.md#work-through-an-argument) |
+| Help me work through the #257 weighted theorem, one hint at a time | The named statement and one hint matched to your background, followed by space for your attempt. [Reading guidance](../README.md#work-through-an-argument) |
 | Show me the open questions and help me choose one | The list from `python3 scripts/query_corpus.py --open`, one chosen row, and the checked results that bear on it |
 | Read the corpus and decide what is worth developing | A direction stated early with its reason, the sources it rests on, what was proved, computed or conjectured, the prior work found, and the next question. [One investigation](../../research/experiments/choices_contraction/README.md) shows the shape |
 | Explain how this repo works to a newcomer | A source-linked map and one relevant next action |
@@ -122,11 +122,12 @@ not itself establish a new mathematical result.
 | Your next step | Guide | What you get |
 |---|---|---|
 | Find a claim, source declaration, paper passage or check | [Agent workbench](AGENT_WORKBENCH.md) | Commands grouped by the question they answer. |
-| Inspect the evidence before choosing a task | [Proof cockpit](PROOF_COCKPIT.md) | A compact view of the current records and routes into the details. |
+| Inspect the evidence before choosing a task | [Proof cockpit](AGENT_WORKBENCH.md#proof-cockpit) | A compact view of the current records and routes into the details. |
 | Work from an actual Lean goal | [Proof-state compiler](PROOF_STATE_COMPILER.md) | The proof context, relevant source and available follow-up tools. |
 | Understand how statements and relationships are indexed | [Semantic compiler](SEMANTIC_COMPILER.md) | The query layer and the source records behind it. |
+| Trace an argument through its dependencies | [Argument graph](ARGUMENT_GRAPH.md) | The graph's scope, edge types and source evidence. |
 | Change source, claims or public wording | [Agent guide](AGENT_GUIDE.md) | Authority, change order, validation and contribution rules. |
-| Offer research sessions through a community or hosted service | [Frontier distribution](FRONTIER_DISTRIBUTION.md) | Setup and distribution instructions. |
+| Offer research sessions through a community or hosted service | [Frontier distribution](FRONTIER_RELAY.md#distribution-and-community-operation) | Setup and distribution instructions. |
 
 ## Make and return a change
 

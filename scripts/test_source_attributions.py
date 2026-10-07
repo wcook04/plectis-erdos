@@ -131,12 +131,23 @@ class SourceAttributionTests(unittest.TestCase):
         with self.assertRaisesRegex(subject.AttributionError,"must stay outside"):
             subject.build(root,registry,root/"docs/papers/corpus.json")
 
-    def test_human_view_links_sources_artifacts_and_citation_coordinates(self):
-        _root, result=self.build(); rendered=subject.markdown(result).decode()
+    def test_human_view_links_sources_artifacts_and_complete_index(self):
+        _root, result=self.build()
+        before = subject.canonical(result)
+        rendered=subject.markdown(result).decode()
+        self.assertEqual(subject.canonical(result), before)
+        self.assertTrue(result["paper_inventory"]["citation_usages"])
+        for source in result["sources"]:
+            self.assertIn(f'<a id="source-{subject.anchor_id(source["id"])}"></a>', rendered)
+            self.assertIn(source["id"], rendered)
+            for author in source["authors"]:
+                self.assertIn(subject.md_escape(author), rendered)
         self.assertIn("[Alpha source](https://example.org/a)",rendered)
         self.assertIn("[Theorem 1](https://example.org/a)",rendered)
         self.assertIn("../../paper/test.tex#L1-L1",rendered)
-        self.assertIn("Paper citation usages:",rendered)
+        self.assertNotIn("Paper citation usages:",rendered)
+        self.assertIn("[source-attribution-index.json](source-attribution-index.json)",rendered)
+        self.assertIn("python3 scripts/build_source_attributions.py --query",rendered)
         self.assertIn("../../paper/test.tex#L1-L1",rendered)
         self.assertLess(rendered.index("## Sources and exact uses"),rendered.index("## Coverage requiring review"))
 

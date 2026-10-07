@@ -3,132 +3,43 @@
 
 # The research commons
 
-Contributors can clone this repository, work independently, and send back a
-proof, correction, failed attempt or tooling improvement. The research commons
-documents how to record the starting commit, evidence and contributor roles,
-and how maintainers record acceptance. The records, examples, validation
-programs and accepted credit pages all live in this repository.
+Return proofs, corrections, counterexamples, failed attempts or infrastructure
+improvements through the [contributor guide](../../CONTRIBUTING.md). An ordinary
+issue or pull request is enough; structured sessions are optional.
 
-Research readers can inspect the [development relation benchmark](benchmarks/RESTATEMENT_DEVELOPMENT.md)
-and [controlled reader protocol](benchmarks/READER_STUDY.md). These distinguish
-source-bound examples, actual run evidence and independent grading. They do
-not report a measured performance advantage.
+## Current workflows and records
 
-The [round-8 transfer record](rounds/round8/README.md) links the reviewed
-mathematical extensions, exact finite controls and the next development
-evaluation materials. Its ordinary proofs, kernel evidence and unrun study
-proposals have separate dispositions in the research journal.
+| Task | Owner |
+|---|---|
+| Choose a paper and recorded research question | [Contribute by paper](CONTRIBUTE_BY_PAPER.md) |
+| Improve workflows, navigation, validation or tooling | [Architecture contribution path](ARCHITECTURE_CONTRIBUTIONS.md) |
+| Record and package resumable work | [Public return package](RETURN_PACKAGE_TEMPLATE.md#start-a-structured-continuation) |
+| Return mathematics broader than one numbered problem | [Subject frontier](RETURN_PACKAGE_TEMPLATE.md#subject-frontier) |
+| Understand attribution, older-clone integration and corrections | [Credit and stewardship policy](CREDIT_POLICY.md) |
+| Inspect accepted artifacts and their evidence | [Accepted contributions](CONTRIBUTIONS.md) · [Recognition and impact](CONTRIBUTION_RECOGNITION.md) |
+| Trace implemented advice and scholarly sources | [Credit ledger](CREDIT_LEDGER.md) · [Source attributions](SOURCE_ATTRIBUTIONS.md) |
+| Inspect the public #257 and #243 Prove2Me statements | [Weighted #257 packet](PROVE2ME_WEIGHTED_257_PACKET.md) · [Cubic #243 packet](PROVE2ME_CUBIC_243_PACKET.md) |
+| Replay the separate source-bound offline adapter | [Prove2Me compatibility](PROVE2ME_COMPAT.md) |
+| Trace return custody, review and consumer dispositions | [Research record](../reference/RESEARCH_RECORD.md) |
 
-Mathematical work and architecture work use the same contribution records. The
-[architecture contribution path](ARCHITECTURE_CONTRIBUTIONS.md) welcomes ideas
-and implementations for workflows, navigation, validation, reproducibility,
-tooling, governance, and contributor experience without assigning them a fake
-Erdős problem number.
+Accepted receipts record adoption and attributable work. They do not establish
+novelty, mathematical truth, peer review or external endorsement. Before
+packaging a stable result, follow the
+[consequence-propagation workflow](../../skills/propagate-research-consequences/SKILL.md).
 
-A mathematical contribution may matter beyond the problem it started from. A
-general theorem, a new representation, a cross-problem mechanism, or a new
-research question with evidence can be returned under its own
-[subject frontier](RETURN_PACKAGE_TEMPLATE.md#subject-frontier). Name the
-subject in ordinary words and list the roster problems it relates to, which may
-be none. Do not invent a problem number for work that does not belong to one
-problem.
+## Dated evidence and evaluation materials
 
-A contributor starts from a particular public commit and follows a bounded
-question. They might return a proof, correction, counterexample, negative
-result, useful stopping point, or tooling improvement. The return says where
-the work began, what changed, what another person can check, what conclusion
-the evidence supports, and what remains unresolved.
+The [round-6 returns](rounds/round6/README.md),
+[round-7 review and replay](rounds/round7/README.md) and
+[round-8 transfer record](rounds/round8/README.md) preserve the original
+investigations and their dispositions. The
+[August #1041 frontier](ERDOS1041_CAPACITY_GREEN_FRONTIER_20260828.md) predates
+later counterexamples; use its current-status note before relying on it.
 
-The default mathematical routes are authored in the public problem corpus and
-expose their exact question, source neighbourhood, permitted experiment,
-expected evidence, and stop condition. A compute donor does not have to invent
-a research objective or decide whether an agent has solved a problem. A growth
-phase should add qualified mathematical review before these packets are
-distributed at scale; such review is not claimed for every present route.
-
-An agent's `solution found` message remains an unreviewed candidate. Maintainers
-and reviewers can rerun its evidence commands, ask independent contributors or
-agents to look for errors, compare the formal and informal statements, and
-decide whether to request specialist review. A mature formal result may then be packaged with
-Comparator for [Palomar](https://palomar-registry.org/), and relevant
-mathematical work can be placed before the
-[Erdős Problems](https://www.erdosproblems.com/) community. Those are external
-routes. Palomar is a formal registry and automated filter rather than human
-peer review, and this repository cannot grant novelty, endorsement, or broad
-mathematical acceptance.
-
-## Native Prove2Me theorems
-
-Two bounded results have public Prove2Me theorem pages with accepted proofs:
-
-- [#257 paper Theorem 1](https://prove2.me/theorems/f6d332dc-466f-4f2a-a207-6b0455c0fbbd) has a [reader packet](PROVE2ME_WEIGHTED_257_PACKET.md#try-changing-a-hypothesis) with a changed-base exercise, the exact accepted wrapper Solution, its pinned sources, and proved consequences.
-- [#243 cubic-rate irrationality](https://prove2.me/theorems/51fbd303-588d-4586-9bbc-f5813513b52c) has a [reader packet](PROVE2ME_CUBIC_243_PACKET.md) with the exact accepted Solution, the paper's finite-prefix index bridge, and a proved every-tail consequence.
-
-Each theorem page is visible without an account, but **View graph** currently
-asks signed-out readers to sign in. The packets print the accepted Solutions
-for inspection without that step. Neither result settles its unrestricted
-Erdős problem or establishes independent mathematical review. For the older
-source-bound offline adapter, see the
-[Prove2Me compatibility path](PROVE2ME_COMPAT.md); its blocked export is not
-the status of these native theorems.
-
-A contributor can open an ordinary [pull request](../../CONTRIBUTING.md) or
-[research-progress issue](../../.github/ISSUE_TEMPLATE/research_progress.yml)
-and describe the work in their own words. Include the starting commit, changed
-files or failed route, commands actually run and their results, limitations,
-and who did the work. No structured session or JSON package is required.
-
-For an optional structured package, [start a continuation session](RETURN_PACKAGE_TEMPLATE.md#start-a-structured-continuation)
-from a clean checkout before editing. `continue_research.py start` records the
-current commit, question and identities under `research/workbench/sessions/<session>/`.
-After the work, [fill the return files, close the session and package them](RETURN_PACKAGE_TEMPLATE.md#fill-and-package-the-structured-return).
-The output directory contains `return.json`, `route-memory.json`, session
-records, a `source/` snapshot of every declared changed path, and a
-`package.json` manifest listing the packaged files and hashes. The packager
-rejects omitted changed paths against a proposed commit, or against observed
-tracked and nonignored untracked worktree edits when the session began clean.
-The template gives the recipient's
-[replay instructions](RETURN_PACKAGE_TEMPLATE.md#4-evidence-and-replay).
-
-When maintainers accept returned work, a committed receipt ties it to the
-accepted commit. It records the contributor, collaborators, tool operators,
-and any disclosed model systems as separate roles. The public credit pages are
-rebuilt from those receipts. Acceptance does not establish novelty, peer
-review, mathematical truth, or a stronger claim.
-
-The receipt and accepted artifact are ordinary tracked files, so older clones
-receive both when they update. Work returned from an older starting commit is
-reviewed in two passes: the original delta is replayed from its common ancestor,
-then the accepted substance is reconciled with current main and checked again.
-Any material conflict resolution is preserved as separately credited
-integration work. A later correction points back to the earlier receipt
-instead of erasing it. The history therefore records who did what, what was
-known at the time, and what the work did not establish.
-
-After a stable result, agents follow the clone-local consequence-propagation
-skill to inspect the Lean, claim, paper, computation, route, validation, and
-contributor files that may now be stale. Each candidate is updated, verified unchanged,
-deferred with a re-entry condition, or excluded with a reason before the
-return is packaged.
-
-Several independent contributions may make a candidate cheaper for an expert
-to inspect, but headcount is not evidence. The useful signal is legible work:
-independent replay, adversarial checking, repaired failure modes, a stable
-formal interface, and an exposition that a specialist can audit.
-
-Begin with the [human contributor guide](../../CONTRIBUTING.md). Read the
-[credit and stewardship policy](CREDIT_POLICY.md) when attribution matters.
-The [return package template](RETURN_PACKAGE_TEMPLATE.md) is the detailed
-agent-facing contract, while [accepted contributions](CONTRIBUTIONS.md) and
-[contribution recognition](CONTRIBUTION_RECOGNITION.md) are generated views of
-work that has actually been accepted. Advice sent privately that changed the
-public record is listed in the generated [credit ledger](CREDIT_LEDGER.md), with
-what changed and where to see it; names stay withheld until each person confirms.
-
-Scholarly sources and implemented external advice use a separate rail. Read
-the generated [source-attribution index](SOURCE_ATTRIBUTIONS.md), or query its
-machine-readable owner with
-`python3 scripts/build_source_attributions.py --query <name-or-problem-or-id>`.
-Check projection freshness with
-`python3 scripts/build_source_attributions.py --check`. These source records
-do not create accepted contribution receipts or imply endorsement.
+The [development relation benchmark](benchmarks/RESTATEMENT_DEVELOPMENT.md)
+and [reader-study protocol](benchmarks/READER_STUDY.md) distinguish frozen
+examples, actual run evidence and proposed studies. Their
+[round-8 candidate bank](benchmarks/round8_candidate_development/README.md)
+and [historical reader-pilot material](benchmarks/round8_reader_pilot/README.md)
+are dated evidence, not current workflow instructions or measured performance
+claims. Preserve their pinned sources and recorded editions.

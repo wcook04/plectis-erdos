@@ -447,7 +447,7 @@
       ],
       "read": [
         "skills/explain-public-system/SKILL.md#help-a-reader-work-through-an-argument",
-        "docs/READING_GUIDE.md#work-through-an-argument"
+        "docs/README.md#work-through-an-argument"
       ],
       "commands": [
         "python3 scripts/query_corpus.py --ask \"<question>\""
@@ -676,7 +676,7 @@
         "mine-open-problem"
       ],
       "read": [
-        "docs/FRONTIER_RELAY.md"
+        "docs/agents/FRONTIER_RELAY.md"
       ],
       "commands": [
         "python3 scripts/query_corpus.py --open",

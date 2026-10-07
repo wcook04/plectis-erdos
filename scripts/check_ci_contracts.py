@@ -31,6 +31,8 @@ TESTS = (
     "test_external_verification_release.py",
     "test_erdos249_totient_kernel_comparator.py",
     "test_refresh_projections_coverage.py",
+    "test_paper_corpus_refresh.py",
+    "test_reanchor_source_attributions.py",
     "test_run_release_check.py",
     "test_check_release_ref.py",
     "test_check_push.py",

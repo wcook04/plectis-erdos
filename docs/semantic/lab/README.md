@@ -95,7 +95,7 @@ python3 scripts/query_semantic.py benchmark
 
 ## Return to public evidence
 
-Follow the [complete eight-problem return matrix](../../SOURCE_MAP.md#complete-eight-problem-return-matrix)
+Follow the [complete eight-problem return matrix](../../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix)
 back to the problem's source, paper and open boundary. Exact reverse routes are
 available through `python3 scripts/query_corpus.py` with `--source
 <module.lean:line>`, `--paper-anchor <TeX_label_or_source_ref>`, or

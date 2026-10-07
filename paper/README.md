@@ -20,7 +20,7 @@ statements, axioms and kernel acceptance; it does not assess novelty or
 historical correspondence. The papers report partial results, failed or
 equivalent routes, finite evidence, and the exact obligations that survive.
 If the problem numbers or formalisation are unfamiliar, read
-[a reader's way in](../docs/READING_GUIDE.md) first. For the design of the tools
+[a reader's way in](../docs/README.md) first. For the design of the tools
 and the research process, go to the [project papers](#project-papers).
 
 ## Problem papers
@@ -70,7 +70,7 @@ step or find its source, that is useful feedback through
 Some results are checked in Lean; others are ordinary mathematical arguments
 or applications of cited external theorems. Each paper states the boundary for
 its own claims. [Results and limits](../docs/RESULTS.md) gives the result beside
-what remains open, and the [source map](../docs/SOURCE_MAP.md) connects the
+what remains open, and the [source map](../docs/reference/SOURCE_MAP.md) connects the
 paper to supporting declarations. Lean files are proof authority only for the
 exact declarations they check; [`docs/claims.json`](../docs/claims.json)
 records the selected public claim interfaces.
@@ -96,7 +96,7 @@ to the revisions they describe.
 | [From a Cold Clone to a Proof Receipt](systems/cold-clone-to-proof-receipt.pdf) ([source](systems/cold-clone-to-proof-receipt.tex)) | Navigation, recorded proof checks and incremental validation. |
 | [From Spare Compute to Cumulative Mathematics](systems/open-source-mathematics-strategy.pdf) ([source](systems/open-source-mathematics-strategy.tex)) | Contribution protocol, compute, credit and governance. |
 
-For current use, follow [the reading guide](../docs/READING_GUIDE.md),
+For current use, follow [the reading guide](../docs/README.md),
 [agent instructions](../AGENTS.md) or [Contributing](../CONTRIBUTING.md).
 
 For the repository layout, sources of truth, build path, and release
@@ -136,7 +136,7 @@ above for the current work.
 The notes are exposition, not proof authority.  To return from any note to the
 machine-owned problem record, run the matching route below.  Each problem route
 returns its exact paper/source record, checked module inventory, and open
-obligation handles; the [complete eight-problem source map](../docs/SOURCE_MAP.md#complete-eight-problem-return-matrix)
+obligation handles; the [complete eight-problem source map](../docs/reference/SOURCE_MAP.md#complete-eight-problem-return-matrix)
 keeps the same joins readable.  For a source-fingerprinted continuation packet,
 use the route-memory command in the last column.
 

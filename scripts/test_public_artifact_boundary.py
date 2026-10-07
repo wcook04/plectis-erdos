@@ -245,6 +245,13 @@ def related_problem_errors(related: str) -> list[str]:
         "--claim sigma_transcendence",
         "records an `advances_open_target` edge",
         "untouched analogy",
+        "## July 2026 catalogue snapshot",
+        "preserved historical evidence",
+        "not a fresh observation",
+        "](../RESULTS.md)",
+        "](../claims.json)",
+        "](../RESULTS.md#result-1041)",
+        "](../RESULTS.md#result-269)",
     )
     return [
         f"related-problem map lost typed relation boundary: {phrase}"
@@ -353,12 +360,12 @@ def main() -> int:
     """Assert that every first-contact surface preserves the public membrane."""
     check_read_path_boundary()
     agents = read("docs/agents/AGENT_GUIDE.md")
-    scope = read("docs/SCOPE.md")
+    scope = read("docs/METHODOLOGY.md")
     readme = read("README.md")
     claims = json.loads(read("docs/claims.json"))
     methodology = json.loads(read("docs/methodology.json"))
     prior_art = read("docs/PRIOR_ART.md")
-    related = read("docs/RELATED_PROBLEMS.md")
+    related = read("docs/reference/RELATED_PROBLEMS.md")
     summary = summary_packet()
     require(
         not boundary_errors(agents, scope, readme, claims, methodology, summary),
@@ -453,6 +460,20 @@ def main() -> int:
         ),
         "missing open-target handle was accepted",
     )
+    for phrase in ("preserved historical evidence", "not a fresh observation", "](../claims.json)"):
+        require(related_problem_errors(related.replace(phrase, "", 1)),
+                f"related-problem map accepted missing historical/status owner boundary: {phrase}")
+    from check_release import source_map_entry_errors
+    source_map = read("docs/reference/SOURCE_MAP.md")
+    require(not source_map_entry_errors(source_map), "source map lost its bounded evidence routes")
+    for phrase in ("](../RESULTS.md)", "](../claims.json)", "](../problems.json)",
+                   "](../declaration_atlas.json)", "## Complete eight-problem return matrix"):
+        require(source_map_entry_errors(source_map.replace(phrase, "")),
+                f"source map accepted missing evidence owner: {phrase}")
+    for problem in PUBLIC_PROBLEM_IDS:
+        require(source_map_entry_errors(source_map.replace(
+            f"python3 scripts/query_corpus.py --route erdos_{problem}`", "missing`", 1)),
+                f"source map accepted missing programme route: {problem}")
     missing_problem_portfolio = deepcopy(verification_packet)
     missing_problem_portfolio["main_results"] = [
         row

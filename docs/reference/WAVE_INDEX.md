@@ -9,9 +9,9 @@ Wave labels are **development chronology**, not Lean import order.
 
 Read order for humans:
 
-1. `docs/orientation.json` or `docs/ORIENTATION.md` — select one mathematical
+1. `docs/orientation.json` or `docs/reference/ORIENTATION.md` — select one mathematical
    programme, claim, or exact remaining open proposition.
-2. `docs/SOURCE_MAP.md` — follow that selected intention into a bounded module
+2. `docs/reference/SOURCE_MAP.md` — follow that selected intention into a bounded module
    route.
 3. [Current papers](../../paper/README.md) — read the selected problem's
    short paper, longer research record, and source handles.
@@ -86,7 +86,7 @@ Base 2 is the unique self-normalising point of the geometric law.
 **The squared transform** `L₂(f) = ∑ f(d)/(2^d−1)² = E[(f * ζ)(gcd(X,Y))]`,
 since gcd-divisibility factorises across independent coordinates. Yields
 `L₂(μ) = S − 1/2`, the gcd-moment ladder, and Pillai's gcd-sum function.
-The exact family return is the [probabilistic gcd-geometry route](../SOURCE_MAP.md#complete-eight-problem-return-matrix):
+The exact family return is the [probabilistic gcd-geometry route](SOURCE_MAP.md#complete-eight-problem-return-matrix):
 the [totient gcd-moment declaration](../../lean/Erdos249257/GcdMomentCalculus.lean#L235)
 and
 the [Stern–Brocot cylinder recursion](../../lean/Erdos249257/GcdMomentCalculus.lean#L474),
@@ -370,7 +370,7 @@ open status of #1041, and its machine rows must not be read as Lean claims.
 
 The five expansion roots have no shared Lean-wave chronology. Their exact
 paper/source joins and open boundaries live in the
-[complete eight-problem return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix)
+[complete eight-problem return matrix](SOURCE_MAP.md#complete-eight-problem-return-matrix)
 and the generated [`problems.json`](../problems.json) index. The paper notes are
 the shortest first read:
 

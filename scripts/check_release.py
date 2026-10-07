@@ -17,7 +17,7 @@ This script verifies that every other public surface agrees with it:
      stated line.
   4. Every paper source link (\\lref / \\lrefx / \\lloc) resolves: the file
      exists and the named declaration appears at the stated line.
-  5. docs/SCOPE.md lists exactly the machine identifiers in claims.json.
+  5. docs/METHODOLOGY.md lists exactly the machine identifiers in claims.json.
   6. README.md carries the headline declarations, states the release tag,
      uses only taxonomy statuses in its status table, and contains none of
      the banned drift phrases.
@@ -685,42 +685,36 @@ def contributor_gate_posture_errors(contributing: str) -> list[str]:
 
 
 def source_map_entry_errors(source_map: str) -> list[str]:
-    """Keep source navigation bounded and subordinate to mathematical owners."""
+    """Require usable evidence routes, leaving mathematical status in its owners."""
     required = (
         "docs/orientation.json",
         "python3 scripts/query_corpus.py --route <programme_id>",
         "python3 scripts/query_corpus.py --claim <claim_id>",
         "python3 scripts/query_corpus.py --open <remaining_open.id>",
         "Lean source checked by the pinned Lean kernel is proof authority",
-        "Erdős #249",
-        "universal form of #257 remain open",
-        "for every natural `t ≤ 82`",
-        "supplies nothing at `t = 83`",
+        "](../RESULTS.md)",
+        "](../claims.json)",
+        "](../problems.json)",
+        "](../problem_library.json)",
+        "](../declaration_atlas.json)",
+        "## Complete eight-problem return matrix",
+        "](../../lean/Erdos249257.lean)",
+        "](../../lean/ErdosProblems.lean)",
     )
-    # Compare through flattened() on both sides. These are prose-presence
-    # requirements, so the property is "the document still says this", not
-    # "the document wraps this line where it wrapped in 2026". Matching raw
-    # text pinned one requirement to an accidental markdown wrap position
-    # ("for every\n  natural `t <= 82`"), which would have failed on a pure
-    # reflow that changed no meaning. (2026-08-15)
     flat_source_map = flattened(source_map)
     errors = [
-        f"docs/SOURCE_MAP.md lost bounded first-contact route: {phrase}"
+        f"docs/reference/SOURCE_MAP.md lost bounded first-contact route: {phrase}"
         for phrase in required
         if flattened(phrase) not in flat_source_map
     ]
-    if "Read `Erdos249257.lean` or `ErdosProblems.lean` only when package topology" not in flat_source_map:
-        errors.append(
-            "docs/SOURCE_MAP.md must not send first-contact readers directly "
-            "into the full import graph"
-        )
-    if "currently assembled at 28 explicit scales through `t = 64`" in source_map:
-        errors.append(
-            "docs/SOURCE_MAP.md still presents the historical deposit list "
-            "as the current certificate frontier"
-        )
+    for problem in (68, 243, 249, 251, 257, 269, 1041, 1049):
+        route = f"python3 scripts/query_corpus.py --route erdos_{problem}"
+        row = next((line for line in source_map.splitlines() if line.startswith(f"| #{problem} |")), "")
+        if route not in row or "](../../lean/" not in row or "](../../paper/" not in row:
+            errors.append(f"docs/reference/SOURCE_MAP.md lost paper/source return for #{problem}")
+    if "only when package topology" not in flat_source_map:
+        errors.append("docs/reference/SOURCE_MAP.md must keep full-root imports subordinate to the bounded source query")
     return errors
-
 
 def ordinary_proof_claim_errors(claim: dict, families: list[dict], root: Path) -> list[str]:
     """Admit a non-Lean result only with an authored proof and explicit ceiling."""
@@ -846,7 +840,7 @@ def wave_index_entry_errors(wave_index: str) -> list[str]:
     """Keep development chronology downstream of bounded mathematical entry."""
     required = (
         "docs/orientation.json",
-        "docs/SOURCE_MAP.md",
+        "docs/reference/SOURCE_MAP.md",
         "recover development chronology only when chronology is the",
         "inspect package topology only",
         "Lean source checked by the pinned Lean kernel is proof authority",
@@ -1351,6 +1345,12 @@ APPROVED_ROOT_DIRS = {
     "skills": "distinct public skill-distribution surface",
     "verification": "Comparator packets, large certificates, and failed-route records",
 }
+APPROVED_DOCS_ROOT_MARKDOWN = {
+    "EXTERNAL_VERIFICATION.md",
+    "README.md", "RESULTS.md", "ARCHITECTURE.md", "METHODOLOGY.md",
+    "REPRODUCIBILITY.md", "PRIOR_ART.md", "PRIVACY.md", "THIRD_PARTY_NOTICES.md",
+}
+
 FORBIDDEN_LOOSE_ROOT_DIRS = (
     "Erdos243V5",
     "Erdos249257",
@@ -1375,6 +1375,8 @@ def check_root_layout() -> None:
     # A used clone also contains ignored build products and local evidence.
     # Inspect the publication candidate; a tracked file remains in scope even
     # when its pathname matches an ignore rule.
+    candidate_paths = {path.relative_to(ROOT).as_posix() for path in (ROOT / "docs").glob("*")
+                       if path.is_file()}
     entries = {path.name for path in ROOT.iterdir()}
     git_root = subprocess.run(
         ["git", "-C", str(ROOT), "rev-parse", "--show-toplevel"],
@@ -1388,7 +1390,8 @@ def check_root_layout() -> None:
         check(inventory.returncode == 0, "public root candidate inventory could not be read")
         if inventory.returncode != 0:
             return
-        entries = {rel.split("/", 1)[0] for rel in inventory.stdout.split("\0") if rel}
+        candidate_paths = {rel for rel in inventory.stdout.split("\0") if rel}
+        entries = {rel.split("/", 1)[0] for rel in candidate_paths}
     root_pdfs = sorted(
         name for name in entries if name.endswith(".pdf") and not name.startswith(".")
     )
@@ -1410,6 +1413,27 @@ def check_root_layout() -> None:
         "unexplained top-level entries need a functional reason: "
         + ", ".join(sorted(unexplained)),
     )
+
+
+    # Reader documents have one home. Nested specialist and historical records
+    # remain governed by their existing directory indexes and source owners.
+    docs_markdown = {Path(rel).name for rel in candidate_paths
+                     if Path(rel).parent == Path("docs") and Path(rel).suffix.lower() == ".md"}
+    unexplained_docs = sorted(docs_markdown - APPROVED_DOCS_ROOT_MARKDOWN)
+    check(not unexplained_docs,
+          "unclassified docs-root guides belong in an indexed specialist directory: "
+          + ", ".join(unexplained_docs))
+    index = ROOT / "docs" / "README.md"
+    if docs_markdown:
+        check(index.is_file(), "docs-root guides need docs/README.md")
+        if index.is_file():
+            links = set(re.findall(r"\]\(<?([^\s)>]+)>?(?:\s+[^)]*)?\)",
+                                   index.read_text(encoding="utf-8")))
+            linked = {target.split("#", 1)[0].removeprefix("./") for target in links}
+            missing_links = sorted((docs_markdown & APPROVED_DOCS_ROOT_MARKDOWN)
+                                   - {"README.md"} - linked)
+            check(not missing_links, "docs/README.md must link its root guides: "
+                  + ", ".join(missing_links))
 
 
 def check_proof_trust() -> None:
@@ -2352,14 +2376,14 @@ def main(argv: list[str] | None = None) -> int:
                 check(name_at_line(lines, name, line),
                       f"{paper_path} \\{macro}: {name} not at {rel}:{line} (±{LINE_WINDOW})")
 
-    # --- 5. docs/SCOPE.md ----------------------------------------------------------
-    scope = read(ROOT / "docs/SCOPE.md")
+    # --- 5. docs/METHODOLOGY.md ----------------------------------------------------------
+    scope = read(ROOT / "docs/METHODOLOGY.md")
     declared = {nc["id"] for nc in data["non_claims"]}
     listed = set(re.findall(r"`(not_[a-z0-9_]+)`", scope))
     check(declared == listed,
-          f"docs/SCOPE.md identifiers {sorted(listed)} != claims.json {sorted(declared)}")
+          f"docs/METHODOLOGY.md identifiers {sorted(listed)} != claims.json {sorted(declared)}")
     check(has_release_status_boundary(scope, data),
-          "docs/SCOPE.md must state the open boundary in plain language")
+          "docs/METHODOLOGY.md must state the open boundary in plain language")
 
     # --- 6. README ------------------------------------------------------------
     readme = read(ROOT / "README.md")
@@ -2445,7 +2469,7 @@ def main(argv: list[str] | None = None) -> int:
                 ".github/copilot-instructions.md",
                 "docs/ARCHITECTURE.md",
                 "docs/METHODOLOGY.md",
-                "docs/SCOPE.md",
+                "docs/METHODOLOGY.md",
                 ".github/CODE_OF_CONDUCT.md",
                 "CONTRIBUTING.md",
                 ".github/SECURITY.md",
@@ -2519,12 +2543,12 @@ def main(argv: list[str] | None = None) -> int:
     for required in (
         "docs/ARCHITECTURE.md",
         "docs/orientation.json",
-        "docs/ORIENTATION.md",
+        "docs/reference/ORIENTATION.md",
         "docs/claims.json",
         "docs/corpus_descriptor.json",
         "docs/methodology.json",
         "docs/METHODOLOGY.md",
-        "docs/SCOPE.md",
+        "docs/METHODOLOGY.md",
         "Erdos249257.lean",
         "ErdosProblems.lean",
         "scripts/check_release.py",
@@ -2751,7 +2775,7 @@ def main(argv: list[str] | None = None) -> int:
     contributing_errors = contributor_gate_posture_errors(contributing)
     check(not contributing_errors, "; ".join(contributing_errors))
 
-    source_map = read(ROOT / "docs" / "SOURCE_MAP.md")
+    source_map = read(ROOT / "docs" / "reference" / "SOURCE_MAP.md")
     source_map_errors = source_map_entry_errors(source_map)
     check(not source_map_errors, "; ".join(source_map_errors))
 

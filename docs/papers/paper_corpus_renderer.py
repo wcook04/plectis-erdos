@@ -1664,14 +1664,14 @@ def _readme(
             "",
         ]
         if target_repo == "plectis-erdos":
-            portfolio_path = repo_root / "docs" / "RELATED_PROBLEMS.md"
+            portfolio_path = repo_root / "docs" / "reference" / "RELATED_PROBLEMS.md"
             if not portfolio_path.is_file():
                 raise FileNotFoundError(
                     "Lean paper portfolio route requires "
                     f"{portfolio_path.relative_to(repo_root)}"
                 )
             lines += [
-                "The [problem summaries](../RELATED_PROBLEMS.md) introduce the "
+                "The [problem summaries](../reference/RELATED_PROBLEMS.md) introduce the "
                 "mathematics. `docs/problems.json` contains the corresponding "
                 "file paths and identifiers for programs and coding agents.",
                 "",

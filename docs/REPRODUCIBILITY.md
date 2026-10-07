@@ -10,7 +10,7 @@ Everything below uses this public checkout and public tools.
 | What you want to do | Start here | What you need |
 |---|---|---|
 | Follow one result to its evidence | [Try one claim](#try-one-claim-without-lean) | Git and Python 3.11 or later |
-| Inspect an accepted native #243 or #257 proof | [Native theorem reader routes](research-commons/README.md#native-prove2me-theorems) | A web browser; the public packets print the accepted Solutions without sign-in |
+| Inspect an accepted native #243 or #257 proof | [Native theorem reader routes](research-commons/PROVE2ME_COMPAT.md) | A web browser; the public packets print the accepted Solutions without sign-in |
 | Replay the #257 weighted theorem against a separate statement | [Weighted theorem replay](verification/EXTERNAL_VERIFICATION_REPLAY.md#reviewer-replay) | Linux, Git, Python 3.11+, Elan/Lake, Go, and systemd |
 | Rerun the #257 exact-rational example | [Try the late rejection](#reproduce-the-257-exact-rational-example) | Python 3.11 or later; no extra packages |
 | Rerun a #251 finite computation | [Reproduce the #251 computations](#reproduce-a-finite-computation) | Python 3.11 or later; the first run needs no extra packages |
@@ -192,7 +192,7 @@ python3 scripts/query_corpus.py --route erdos_251
 Replace `251` with any of `68`, `243`, `249`, `257`, `269`, `1041` or `1049`
 to follow another problem. The result links its paper, source modules and
 remaining questions.
-[The source map](SOURCE_MAP.md) offers a reading route through the same work;
+[The source map](reference/SOURCE_MAP.md) offers a reading route through the same work;
 [the query reference](agents/SEMANTIC_COMPILER.md) explains the more detailed
 selectors.
 
@@ -328,17 +328,56 @@ statements and their limits are in the source and [claim record](claims.json).
 
 ### Use the library in another Lean project
 
-[The dependency guide](DOWNSTREAM_REUSE.md) gives the pinned Lake package
-recipe and distinguishes a separate consumer from the internal `Examples`
-target. After the complete build above, check that package boundary with:
+Match this checkout's `lean-toolchain` in your project. In your project's
+`lakefile.toml`, add the dependency below alongside your own package and target
+declarations. The package name is `erdos249257`; the repository name is
+`plectis-erdos`.
+
+```toml
+[[require]]
+name = "erdos249257"
+git = "https://github.com/wcook04/plectis-erdos.git"
+rev = "d59af724cc30a1fb87c4c105807255fa366b0bde"
+```
+
+This pins an accepted public revision. Choose a different full commit hash
+deliberately when upgrading, and use that revision's toolchain and dependency
+lock. A floating `main` revision does not preserve a reproducible input.
+Then import the library in your Lean file:
+
+```lean
+import Erdos249257
+import ErdosProblems
+```
+
+From your project, fetch the pinned dependencies, obtain their Mathlib cache,
+and build the two imported library targets:
+
+```sh
+lake update
+lake exe cache get
+lake build @erdos249257/Erdos249257 @erdos249257/ErdosProblems
+```
+
+Your project's normal Lake build can then check your own files. The first
+build still needs the Lean and Mathlib space described in [the build prerequisites](#2-reproduce-the-pinned-lean-environment). For
+local development, replace the `git` and `rev` fields with
+`path = "../plectis-erdos"`, adjusted to your checkout's location.
+
+To verify the package boundary using an already built clone, run from this
+repository after the [complete build](#2-reproduce-the-pinned-lean-environment):
 
 ```sh
 python3 scripts/check_downstream_reuse.py
 ```
 
-The checker creates a separate Lake project and checks the unchanged consumer
-examples under the host build lock. A missing build or dependency is a failed
-check; the checker does not rebuild or download dependencies.
+This creates a separate temporary Lake project, adds this checkout as a path
+dependency, and checks an unchanged copy of the consumer examples through
+Lake's package resolution. It reuses the prepared dependency files and runs
+under the same host build lock. It does not fetch another copy of Mathlib or
+claim that an absent build cache is a successful check. CI runs this check
+after building the libraries and examples.
+
 
 ## 3. Run the release-surface checks
 

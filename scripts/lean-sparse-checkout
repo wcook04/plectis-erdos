@@ -14,13 +14,13 @@
 /CONTRIBUTING.md
 /lean/Erdos249257.lean
 /lean/ErdosProblems.lean
-/docs/READING_GUIDE.md
+/docs/README.md
 /LICENSE
 /docs/METHODOLOGY.md
 /docs/PRIVACY.md
 /README.md
 /REUSE.toml
-/docs/SCOPE.md
+/docs/METHODOLOGY.md
 /.github/SECURITY.md
 /docs/repository_identity.json
 /formalization.yaml

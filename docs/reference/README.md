@@ -12,6 +12,10 @@ use [results and limits](../RESULTS.md).
 
 | What you are looking for | Record | How to use it |
 |---|---|---|
+| Select a programme or source owner | [Corpus orientation](ORIENTATION.md) | Read the generated navigation map; current statements and status belong to claim records. |
+| Find papers, modules and replay evidence | [Source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) | Choose one of the eight programme routes or a specialist module group. |
+| Compare neighbouring numbered questions | [Related problems](RELATED_PROBLEMS.md) | Inspect specific relations; its July 2026 catalogue table is historical. |
+| Inspect a frozen argument-frontier export | [Argument frontier](ARGUMENT_FRONTIER.md) | This report is bound to revision `6f9f5f13f3af5159415b66bace072f361c5de63f`; use `python3 scripts/query_corpus.py --problem <n>` for the current programme record. |
 | The route from a problem's papers and Lean sources to the website | [Paper and source library](PROBLEM_LIBRARY.md) | Inspect the public library format and its rebuild instructions. |
 | Current claim status and correction responsibilities | [Methodology](../METHODOLOGY.md) · [claim records](../claims.json) | Follow the current statement, its evidence and the review required to change its public status. |
 | Every registered claim and its source context | [Complete claim register](CORPUS_REGISTER.md) | Browse the generated source-bound view; its status labels do not supply new proof or semantic admission. |
@@ -22,8 +26,8 @@ use [results and limits](../RESULTS.md).
 | A factual account of a selected verification result | [Outreach evidence capsules](OUTREACH_EVIDENCE_CAPSULES.md) | Inspect the recorded check and its limits before reusing its description. |
 
 Development order is not reading order. Historical records explain how a
-result arrived; the [source map](../SOURCE_MAP.md) locates the current evidence,
-and [scope](../SCOPE.md) gives the release boundary. A correction or a larger
+result arrived; the [source map](SOURCE_MAP.md) locates the current evidence,
+and [scope](../METHODOLOGY.md#release-scope) gives the release boundary. A correction or a larger
 inventory does not by itself change what has been proved.
 
 To change the indexing or publication tools, use the

@@ -11,7 +11,7 @@ all save future work.
 
 ## Choose where to begin
 
-**Work on a paper.** Open [one problem's contribution page](docs/CONTRIBUTE_BY_PAPER.md)
+**Work on a paper.** Open [one problem's contribution page](docs/research-commons/CONTRIBUTE_BY_PAPER.md)
 for the short and long accounts, a source result to inspect, and current
 questions. You can send an ordinary mathematical argument without cloning,
 using Lean, or using an AI.

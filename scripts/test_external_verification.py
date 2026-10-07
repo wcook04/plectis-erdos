@@ -49,6 +49,23 @@ def run_builder_check() -> subprocess.CompletedProcess[str]:
 
 
 class ExternalVerificationContractTest(unittest.TestCase):
+    def test_outreach_capsules_follow_authored_family_boundaries(self) -> None:
+        packet = json.loads((ROOT / "docs/claims.json").read_text())["external_verification_packet"]
+        changed = deepcopy(packet)
+        for programme in changed["review_matrix"]:
+            for family in programme["families"]:
+                if family["id"] in ("totient_kernel_all_base_index", "finite_prime_weighted_support"):
+                    family["summary"] = "Updated source-owned result " + family["id"]
+                    family["boundary"] = "Updated source-owned boundary " + family["id"]
+        outreach = builder.render_outreach(changed)
+        for family_id in ("totient_kernel_all_base_index", "finite_prime_weighted_support"):
+            self.assertIn("Updated source-owned result " + family_id, outreach)
+            self.assertIn("Updated source-owned boundary " + family_id, outreach)
+        current = builder.render_outreach(packet)
+        self.assertIn("separately proves canonical all-base independence", current)
+        self.assertNotIn("Martin supplies", current)
+        self.assertIn("Binary mass is required", current)
+
     def test_sorry_census_is_independent_of_checkout_parent_names(self) -> None:
         with tempfile.TemporaryDirectory(prefix="verification-census-") as temporary:
             for location in ("ordinary", ".lake/snapshot"):
@@ -124,38 +141,28 @@ class ExternalVerificationContractTest(unittest.TestCase):
         with self.assertRaises(KeyError):
             builder.render_qualification(authority)
 
-    def test_generated_human_signal_spine_is_frontier_first(self) -> None:
-        human = (ROOT / "docs/EXTERNAL_VERIFICATION.md").read_text(encoding="utf-8")
-        spine_start = human.index("## Mathematical signal spine")
-        inventory_start = human.index("**Programmes.**")
-        first_dossier = human.index("## #68:")
-        self.assertLess(spine_start, inventory_start)
-        self.assertLess(inventory_start, first_dossier)
-        spine = human[spine_start:inventory_start]
-        self.assertIn("Comparator coverage is the exhaustive evidence inventory", spine)
-        self.assertIn("**Reader tier.** completed direct result", spine)
-        self.assertIn("**Reader tier.** conditional endpoint route", spine)
-        self.assertIn("**Reader tier.** exact reduction or structural result", spine)
-        self.assertIn("repository's authored `candidate_ranking` for a possible Palomar submission", spine)
-        self.assertNotIn("Palomar's mathematical `candidate_ranking`", spine)
-        for rank, title, tier in (
-            (2, "Known irrational supports", "completed direct result"),
-            (7, "First harmonic pivot decomposition", "conditional endpoint route"),
-            (8, "Strict prime tail orbit gap", "conditional endpoint route"),
-            (11, "Totient carry anti compression", "exact reduction or structural result"),
-            (12, "Half membership seam classification", "exact reduction or structural result"),
-        ):
-            start = spine.index(f"{rank}. **{title}**")
-            end = spine.index("\n\n", start)
-            self.assertIn(f"**Reader tier.** {tier}", spine[start:end])
-        self.assertIn("### Natural friction and no-go boundaries", spine)
-        self.assertIn("### Complete inventory, kept subordinate", spine)
-        for family_id in (
-            "coefficient_only_no_go",
-            "fixed_precision_transport_no_go",
-            "height_and_pade_arithmetic",
-        ):
-            self.assertIn(family_id, spine)
+    def test_generated_human_guide_is_compact_and_routes_full_evidence(self) -> None:
+        _, packet, source, projection = load_owner()
+        before = deepcopy(packet)
+        human = builder.render_human(packet, source, projection, builder.load_signal_authority())
+        self.assertLess(len(human.split()), 3000)
+        self.assertLess(len(human.encode()), 24000)
+        self.assertIn("# External verification guide", human)
+        for target in ("external_verification_packet.json", "claims.json", "../verification/comparator.json",
+                       "verification/EXTERNAL_VERIFICATION_REPLAY.md", "verification/PALOMAR_QUALIFICATION.md"):
+            self.assertIn("](" + target + ")", human)
+        for number in (68, 243, 249, 251, 257, 269, 1041, 1049):
+            self.assertEqual(human.count(f'<a id="programme-{number}"></a>'), 1)
+            self.assertIn(f"#programme-{number}", human)
+            self.assertIn(f"RESULTS.md#result-{number}", human)
+        for duplicate in ("Mathematical signal spine", "Complete serious-result universe",
+                          "Contribution families", "Technical registry and Comparator routing"):
+            self.assertNotIn(duplicate, human)
+        self.assertIn("configured axiom budget", human)
+        self.assertIn("A named altered statement must fail", human)
+        self.assertIn("`READY` does not establish", human)
+        self.assertIn(f"{len(packet['main_results'])} documented interfaces", human)
+        self.assertEqual(packet, before)
 
     def test_projection_and_statement_isolation_are_current(self) -> None:
         run_builder_check()
@@ -229,123 +236,29 @@ class ExternalVerificationContractTest(unittest.TestCase):
             {row["novelty_status"] for row in packet["main_results"]},
             {"unassessed_no_priority_claim"},
         )
-        human = (ROOT / "docs/EXTERNAL_VERIFICATION.md").read_text(encoding="utf-8")
+        _, owner, source, projection = load_owner()
+        human = builder.render_human(owner, source, projection, builder.load_signal_authority())
         self.assertIn("> [!IMPORTANT]", human)
-        self.assertIn("# Plectis verification: eight Erdős problem programmes", human)
-        self.assertIn("## Mathematical signal spine", human)
-        self.assertIn("**Completed direct results:**", human)
-        self.assertIn("**Conditional endpoint routes:**", human)
-        self.assertIn("**Exact endpoint reductions and structural results:**", human)
-        self.assertIn("### Natural friction and no-go boundaries", human)
-        self.assertIn("### Complete inventory, kept subordinate", human)
-        signal_end = human.index("**Programmes.**")
-        signal_spine = human[:signal_end]
-        self.assertLess(human.index("## Mathematical signal spine"), human.index("## #68:"))
-        ranked_declarations = [
-            row["declaration"]
-            for row in builder.load_signal_authority()["candidate_ranking"]
-        ]
-        self.assertEqual(
-            sorted(
-                (signal_spine.index(declaration), declaration)
-                for declaration in ranked_declarations
-            ),
-            [
-                (signal_spine.index(declaration), declaration)
-                for declaration in ranked_declarations
-            ],
-        )
-        for family_id in (
-            "coefficient_only_no_go",
-            "fixed_precision_transport_no_go",
-            "height_and_pade_arithmetic",
-        ):
-            self.assertIn(family_id, signal_spine)
-        self.assertIn("## #68: Factorial-denominator series", human)
-        self.assertIn("## #269: Three-prime running least common multiples", human)
-        self.assertIn("**Question.** Is the series", human)
-        self.assertIn("**Read.** [Programme paper]", human)
-        self.assertIn("[Lean source]", human)
-        self.assertIn("**Checked frontier.**", human)
-        self.assertIn("**Open boundary.**", human)
-        self.assertIn("<details>", human)
-        self.assertIn("<summary>Representative checked declaration</summary>", human)
-        problem_249 = next(
-            problem for problem in packet["review_matrix"] if problem["problem"] == 249
-        )
-        family_count_249 = len(problem_249["families"])
-        self.assertIn(
-            f"<summary>Contribution families ({family_count_249})</summary>", human
-        )
-        self.assertIn(
-            f"<summary>Technical registry and Comparator routing ({family_count_249})</summary>",
-            human,
-        )
-        self.assertIn("## Comparator interface appendix", human)
-        self.assertIn(
-            f"<summary>Show {len(packet['main_results'])} documented statement-isolated interfaces</summary>",
-            human,
-        )
-        # Identifiers are emitted verbatim: <wbr> is stripped by GitHub's HTML
-        # sanitiser, and zero-width or soft-hyphen breaks survive but corrupt
-        # copy-paste of a Lean declaration name.
-        self.assertNotIn("<wbr>", human)
-        self.assertNotIn("&shy;", human)
-        self.assertNotIn("\u00ad", human)
-        self.assertNotIn("\u200b", human)
-        self.assertNotIn("—", human)
-        self.assertIn("Source and priority note", human)
-        self.assertIn("Steve Fan", human)
+        self.assertIn("# External verification guide", human)
         self.assertIn("**Programmes.**", human)
         self.assertIn("#programme-68", human)
-        self.assertIn("- **Factorial carry characterisation**", human)
-        self.assertIn("*Evidence.*", human)
-        self.assertIn("Exact registry keys and Comparator routing are listed separately.", human)
-        # Human-first dossiers: no serial two-pass headings, no snake_case H4s, no table era.
-        self.assertNotIn("## Programme disclosure", human)
-        self.assertNotIn("## Contribution and evidence matrix", human)
-        self.assertNotIn("eight-programme rows", human)
-        self.assertNotIn("#### `factorial_carry_characterisation`", human)
-        self.assertNotIn("**Contribution.**", human)
-        self.assertNotIn("**Class / evidence.**", human)
-        self.assertNotIn("cold mathematical reviewer", human)
-        self.assertNotIn("cold mathematical reviewer", packet["purpose"])
-        self.assertNotIn(
-            "| Problem | Representative checked declaration | Checked frontier | Still open |",
-            human,
-        )
-        self.assertNotIn(
-            "| Problem | Family | Contribution class | What is contributed | Evidence | Comparator disposition | Boundary |",
-            human,
-        )
-        # Sibling disclosures only: no nested <details>.
-        self.assertNotIn("<details>\n<details>", human)
-        self.assertNotIn("</details>\n<details>\n<details>", human)
-        # Comparator policy appears once at contract level, not inside every family disclosure.
-        policy = (
-            "Comparator is used only for exact Lean-owned propositions that can be isolated "
-            "without importing their proofs"
-        )
+        self.assertIn("[Programme paper]", human)
+        self.assertIn("[Representative Lean source]", human)
+        self.assertLess(len(human.split()), 3000)
+        for corrupted_identifier in ("<wbr>", "&shy;", "\u00ad", "\u200b"):
+            self.assertNotIn(corrupted_identifier, human)
+        policy = "Comparator is used only for exact Lean-owned propositions that can be isolated without importing their proofs"
         self.assertEqual(human.count(policy), 1)
-        # Lossless inventory: every family id and disposition once; every interface preserved.
-        _, owner, _, _ = load_owner()
-        family_rows = [
-            family
-            for problem in owner["review_matrix"]
-            for family in problem["families"]
-        ]
-        family_ids = [family["id"] for family in family_rows]
-        self.assertEqual(len(family_ids), len(set(family_ids)))
-        code_spans = re.findall(r"<code>(.*?)</code>", human, flags=re.S)
-        for family in family_rows:
-            self.assertEqual(code_spans.count(family["id"]), 1, family["id"])
-            self.assertIn(family["comparator_disposition"], code_spans)
-            self.assertIn(family["boundary"], human)
-            self.assertIn(family["summary"].replace("—", ":"), human)
-        # Each identifier is a whole code span, so copying it yields a name that
-        # still compiles and greps.
-        for row in owner["main_results"]:
-            self.assertIn(row["wrapper_declaration"], code_spans)
+        # The compact guide routes to a lossless JSON inventory rather than repeating it.
+        self.assertIn("](external_verification_packet.json)", human)
+        self.assertEqual(packet["review_matrix"], owner["review_matrix"])
+        self.assertEqual(
+            [row["wrapper_declaration"] for row in packet["main_results"]],
+            [row["wrapper_declaration"] for row in owner["main_results"]],
+        )
+        for emitted, original in zip(packet["main_results"], owner["main_results"]):
+            for field, value in original.items():
+                self.assertEqual(emitted[field], value)
         challenge = checkout_source_path("ExternalVerification/Challenge.lean").read_text()
         solution = checkout_source_path("ExternalVerification/Solution.lean").read_text()
         self.assertEqual(challenge.count("sorry"), 1)
@@ -403,7 +316,7 @@ class ExternalVerificationContractTest(unittest.TestCase):
                     f"contains {len(roster['theorem_names'])} theorem declarations", human
                 )
                 self.assertIn("those interfaces and companion declarations", human)
-                self.assertIn(f"Show {selected_count} documented statement-isolated interfaces", human)
+                self.assertIn(f"{selected_count} documented interfaces", human)
                 self.assertNotIn(f"The {selected_count} selected propositions", human)
                 self.assertNotIn("Show all", human)
         self.assertEqual(len(packet["main_results"]), selected_count)
@@ -420,57 +333,14 @@ class ExternalVerificationContractTest(unittest.TestCase):
         for problem in packet["review_matrix"]:
             problem["families"].reverse()
 
+        # Ranking remains in its structured owner; the human guide does not duplicate it.
+        before_packet = deepcopy(packet)
+        before_authority = deepcopy(signal_authority)
         human = builder.render_human(packet, source, projection, signal_authority)
-        spine = human[: human.index("**Programmes.**")]
-        expected = [
-            row["declaration"]
-            for row in sorted(
-                signal_authority["candidate_ranking"], key=lambda row: row["rank"]
-            )
-        ]
-        positions = [spine.index(declaration) for declaration in expected]
-        self.assertEqual(positions, sorted(positions))
-        self.assertIn("**Reader tier.** completed direct result", spine)
-        self.assertIn("**Reader tier.** conditional endpoint route", spine)
-        self.assertIn("**Reader tier.** exact reduction or structural result", spine)
-
-        self.assertEqual(human.count("### First-contact mathematical order"), 8)
-
-        def first_contact(problem: int, next_problem: int | None) -> str:
-            start = human.index(f'<a id="programme-{problem}"></a>')
-            end = (
-                human.index(f'<a id="programme-{next_problem}"></a>', start)
-                if next_problem is not None
-                else human.index("## Comparator interface appendix", start)
-            )
-            dossier = human[start:end]
-            order_start = dossier.index("### First-contact mathematical order")
-            order_end = dossier.index("<details>", order_start)
-            return dossier[order_start:order_end]
-
-        order_251 = first_contact(251, 257)
-        expected_251 = [
-            "`prime_gap_reformulation`",
-            "`small_mismatch_criterion`",
-            "`dyadic_tail_integrality_classification`",
-            "`coefficient_only_no_go`",
-        ]
-        positions_251 = [order_251.index(marker) for marker in expected_251]
-        self.assertEqual(positions_251, sorted(positions_251))
-
-        order_269 = first_contact(269, 1041)
-        expected_269 = [
-            "`conditional_carry_escape`",
-            "`weighted_phase_carry_observer`",
-            "`rank_two_kernel_no_go`",
-            "`three_prime_lcm_cells`",
-        ]
-        positions_269 = [order_269.index(marker) for marker in expected_269]
-        self.assertEqual(positions_269, sorted(positions_269))
-        self.assertIn("CofinalLocalWindowEscape", order_269)
-        self.assertIn("source-specific cofinal escape remains unproved", order_269)
-        self.assertIn("actual-series reduction is given", order_269)
-
+        self.assertIn("](PALOMAR_RESULT_SHOWCASE.json)", human)
+        self.assertNotIn("Mathematical signal spine", human)
+        self.assertEqual(packet, before_packet)
+        self.assertEqual(signal_authority, before_authority)
         rows_by_problem = builder._programme_signal_rows(packet, signal_authority)
         represented = {
             family_id
@@ -513,16 +383,6 @@ class ExternalVerificationContractTest(unittest.TestCase):
         order_249["family_ids"].remove("first_harmonic_pivot_decomposition")
         with self.assertRaisesRegex(ValueError, "not signal-complete"):
             builder._programme_signal_rows(packet, damaged)
-
-        universe = signal_authority["candidate_universe"][
-            "source_family_dispositions"
-        ]
-        complete_start = human.index("### Complete serious-result universe")
-        complete_end = human.index("**Programmes.**", complete_start)
-        complete = human[complete_start:complete_end]
-        self.assertIn(f"All {len(universe)} source-current review families", complete)
-        for family_id in universe:
-            self.assertEqual(complete.count(f"`{family_id}`"), 1, family_id)
 
     def test_builder_check_environment(self) -> None:
         completed = subprocess.CompletedProcess(["fixture"], 0, "", "")
@@ -734,7 +594,8 @@ class ExternalVerificationContractTest(unittest.TestCase):
                     self.assertEqual(result.returncode, expected, result.stdout + result.stderr)
 
     def test_human_markdown_links_use_current_storage_paths(self) -> None:
-        human = (ROOT / "docs/EXTERNAL_VERIFICATION.md").read_text(encoding="utf-8")
+        _, packet, source, projection = load_owner()
+        human = builder.render_human(packet, source, projection, builder.load_signal_authority())
         self.assertNotIn("](../ErdosProblems/", human)
         self.assertNotIn("](../ExternalVerification/", human)
         self.assertNotIn("](../Erdos249257/", human)

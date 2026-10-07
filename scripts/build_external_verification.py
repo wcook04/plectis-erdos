@@ -1355,231 +1355,146 @@ def render_human(
     signal_authority: dict,
     comparator_source: dict | None = None,
 ) -> str:
+    """Render a verification guide; exhaustive mathematics stays in its owners."""
     if comparator_source is None:
         comparator_source, _ = load_comparator_source(packet)
     source_by_id = {row["problem_id"]: row for row in problem_source["problems"]}
-    families_by_problem = {
-        int(problem["problem"]): problem["families"] for problem in packet["review_matrix"]
-    }
-    interfaces_by_problem: dict[int, list[dict]] = {}
-    for row in packet["main_results"]:
-        interfaces_by_problem.setdefault(int(row["problem"]), []).append(row)
-    programme_signal = _programme_signal_rows(packet, signal_authority)
-
-    index_links: list[str] = []
-    dossier_blocks: list[str] = []
+    selected_count = len(packet["main_results"])
+    roster_count = len(comparator_source["theorem_names"])
+    family_count = sum(len(row["families"]) for row in packet["review_matrix"])
+    index_links = []
+    routes = []
     for row in problem_projection["problems"]:
-        source = source_by_id[row["problem_id"]]
         number = int(row["erdos_number"])
         title = _programme_display_title(row["short_title"])
         anchor = _programme_anchor(number)
-        index_links.append(f"[#{number}: {title}](#{anchor})")
-
-        representative = source["required_note_declarations"][0]
-        full_name = (
-            representative["module"].rsplit(".", 1)[0] + "." + representative["declaration"]
-        )
+        index_links.append(f"[#{number}](#{anchor})")
+        representative = source_by_id[row["problem_id"]]["required_note_declarations"][0]
         source_path = representative["module"].replace(".", "/") + ".lean"
-        paper = row["paper"]
-        families = families_by_problem[number]
-        family_items: list[str] = []
-        routing_items: list[str] = []
-        for family in families:
-            family_items.extend(_render_family_item(family))
-            routing_items.extend(_render_routing_item(family))
-        if family_items and family_items[-1] == "":
-            family_items.pop()
-        if routing_items and routing_items[-1] == "":
-            routing_items.pop()
-
-        dossier_blocks.extend(
-            [
-                f'<a id="{anchor}"></a>',
-                f"## #{number}: {title}",
-                "",
-                f"**Question.** {row['question']}",
-                "",
-                f"**Checked frontier.** {row['what_is_checked'][0]}",
-                "",
-                f"**Open boundary.** {row['what_is_not_checked'][0]}",
-                "",
-                (
-                    f"**Read.** [Programme paper](../{paper['pdf']}) · "
-                    f"[Lean source](../{public_markdown_href(source_path)})"
-                ),
-                "",
-            ]
-        )
-        priority_note = source.get("source_priority_note")
-        if isinstance(priority_note, str) and priority_note.strip():
-            dossier_blocks.extend(
-                _details_block(
-                    "Source and priority note",
-                    [priority_note.strip()],
-                )
-            )
-        research = row.get("research_corpus")
-        if isinstance(research, dict):
-            files = research.get("files", {})
-            strongest = research.get("strongest_result_summary", {})
-            dossier_blocks.extend(
-                _details_block(
-                    "Source-current research frontier",
-                    [
-                        (
-                            f"[Dated frontier](../{files['frontier']['path']}) · "
-                            f"[strongest-result map](../{files['strongest_results']['path']}) · "
-                            f"[corpus manifest](../{files['manifest']['path']}) · "
-                            f"[checkpoint](../{files['checkpoint']['path']})"
-                        ),
-                        "",
-                        (
-                            f"This source-fingerprinted route contains {strongest['result_count']} "
-                            f"activated research results at source checkpoint "
-                            f"`{strongest['source_checkpoint']}`. Read the dated frontier first: "
-                            "the map preserves hypotheses, falsifiers, and open gaps."
-                        ),
-                        "",
-                        (
-                            "Authority boundary: these are public research evidence, not reviewed "
-                            "claim-registry entries or Comparator interfaces. They do not close "
-                            "Erdős #1041 or promote research-corpus rows into the checked result set."
-                        ),
-                    ],
-                )
-            )
-        dossier_blocks.extend(
-            _details_block(
-                "Representative checked declaration",
-                [_md_code(full_name)],
-            )
-        )
-        dossier_blocks.extend(_render_programme_signal(programme_signal.get(number, [])))
-        dossier_blocks.extend(
-            _details_block(
-                f"Contribution families ({len(families)})",
-                [
-                    "Exact registry keys and Comparator routing are listed separately.",
-                    "",
-                    *family_items,
-                ],
-            )
-        )
-        dossier_blocks.extend(
-            _details_block(
-                f"Technical registry and Comparator routing ({len(families)})",
-                routing_items,
-            )
-        )
-        dossier_blocks.append("---")
-        dossier_blocks.append("")
-
-    interface_body: list[str] = []
-    for row in problem_projection["problems"]:
-        number = int(row["erdos_number"])
-        title = _programme_display_title(row["short_title"])
-        interfaces = interfaces_by_problem.get(number, [])
-        if not interfaces:
-            continue
-        interface_body.extend([f"**#{number}: {title}**", ""])
-        for item in interfaces:
-            status = canonical_claim_status(item)
-            interface_body.extend(
-                [
-                    f"- {_md_code(item['wrapper_declaration'])}",
-                    f"  - **Class.** {item['contribution_class']}",
-                    f"  - **Statement.** {item['statement']}",
-                    f"  - **Canonical claim status.** `{status}`",
-                    "  - **Novelty.** unassessed; no priority claim",
-                    f"  - **Boundary.** {item['boundary']}",
-                    "",
-                ]
-            )
-
-    human = "\n".join(
-        [
-            "<!-- Generated by scripts/build_external_verification.py; do not edit. -->",
-            "# Plectis verification: eight Erdős problem programmes",
+        interfaces = sum(int(result["problem"]) == number for result in packet["main_results"])
+        routes.extend([
+            f'<a id="{anchor}"></a>',
+            f"### #{number}: {title}",
             "",
-            "> [!IMPORTANT]",
-            f"> **Status boundary:** {packet['boundary']}",
-            f"> **Review posture:** {packet['review_status'][0].upper() + packet['review_status'][1:]}.",
+            f"[Programme paper](../{row['paper']['pdf']}) · "
+            f"[Representative Lean source](../{public_markdown_href(source_path)}) · "
+            f"[Result and remaining boundary](RESULTS.md#result-{number})",
             "",
-            (
-                "**What this is.** Plectis is an AI-assisted research system. This public "
-                "surface shows one checked frontier for each of eight Erdős problem programmes. "
-                "For each programme, read the question, the exact checked object, and the "
-                "remaining open step before opening the technical registry."
-            ),
+            f"Recorded programme status: **{row['status']}**. "
+            f"The packet's `main_results` contains {interfaces} selected interface(s) for this programme. "
+            f"Use `python3 scripts/query_corpus.py --problem {number}` for its source-linked record; "
+            f"filter the packet's `main_results` and `review_matrix` by `problem: {number}` "
+            "for exact statements, hypotheses, evidence classes and remaining boundaries.",
             "",
-            # The dossiers below use "Comparator" from their first line onward.
-            # Before this paragraph existed the term appeared roughly ninety
-            # times and was only explained in the closing section, so a reviewer
-            # met it as undefined jargon for the whole document. Define it once,
-            # here, ahead of first use. (2026-08-15)
-            (
-                f"**How verification works.** This dossier describes {len(packet['main_results'])} "
-                "selected interfaces. The executable [Comparator roster](../verification/comparator.json) "
-                f"contains {len(comparator_source['theorem_names'])} theorem declarations, including "
-                "those interfaces and companion declarations. Their statements are declared again "
-                "without proofs. Comparator checks that the selected proof declarations match "
-                "those separately declared statements and respect the configured axiom budget. A named "
-                "altered statement must fail. This checks formal propositions only. It "
-                "does not assess exposition, citations, intended meaning, novelty, or "
-                "significance. Technical detail is in the [Comparator interface appendix]"
-                "(#comparator-interface-appendix)."
-            ),
-            "",
-            *_render_signal_spine(packet, signal_authority),
-            "**Programmes.** " + " · ".join(index_links),
-            "",
-            "---",
-            "",
-            *dossier_blocks,
-            "## Comparator interface appendix",
-            "",
-            *_details_block(
-                f"Show {len(packet['main_results'])} documented statement-isolated interfaces",
-                interface_body,
-            ),
-            "## Verification contract and replay",
-            "",
-            (
-                "Comparator is used only for exact Lean-owned propositions that can be isolated "
-                "without importing their proofs; paper deductions, cited theorems, and external "
-                "computations retain their own evidence classes."
-            ),
-            (
-                "The `main_results` key in `formalization.yaml` is the format's list of selected "
-                "executable interfaces. It is not the canonical claim registry and does not make "
-                "an unregistered declaration a principal result."
-            ),
-            (
-                f"The {len(packet['main_results'])} documented interfaces cover all eight programmes. "
-                "Local proof provenance is recorded separately from novelty, which remains "
-                "unassessed unless a source-fidelity row says otherwise. The trusted challenge "
-                "contains one proposition-package fixture and imports only "
-                "`ExternalVerification.Statements` and Mathlib."
-            ),
-            "The proof-bearing modules occur only in `ExternalVerification.Solution`.",
-            "CI runs the pinned real Linux sandbox and uploads a commit-bound JSON receipt.",
-            (
-                "For a reviewer-run Linux check and the immutable release-asset contract, see "
-                "`docs/verification/EXTERNAL_VERIFICATION_REPLAY.md`."
-            ),
-            "",
-            (
-                "Use the precise phrase **Comparator-checked against a separately declared "
-                "statement and axiom budget** only when the receipt for the displayed commit is "
-                "green. Do not replace it with “independently verified”."
-            ),
-            "",
-        ]
-    )
+        ])
+    human = "\n".join([
+        "<!-- Generated by scripts/build_external_verification.py; do not edit. -->",
+        "# External verification guide",
+        "",
+        "> [!IMPORTANT]",
+        f"> **Status boundary:** {packet['boundary']}",
+        f"> **Review posture:** {packet['review_status'][0].upper() + packet['review_status'][1:]}.",
+        "",
+        "This guide explains how to inspect selected formal statements and their recorded checks. "
+        "Read the [results and limits](RESULTS.md), programme papers and [claim registry](claims.json) "
+        "for the mathematics. Lean source checked by the pinned Lean kernel is proof authority; "
+        "generated documentation is a route to that evidence.",
+        "",
+        "## What Comparator checks",
+        "",
+        f"This dossier describes {selected_count} selected interfaces. "
+        f"The executable [Comparator roster](../verification/comparator.json) contains {roster_count} "
+        "theorem declarations, including those interfaces and companion declarations. "
+        "Comparator checks that proof declarations match separately declared statements and respect "
+        "the configured axiom budget. A named altered statement must fail. It does not assess "
+        "exposition, intended historical meaning, citations, novelty, significance or human peer review.",
+        "",
+        "Comparator is used only for exact Lean-owned propositions that can be isolated "
+        "without importing their proofs; paper deductions, cited theorems and external computations "
+        "retain their own evidence classes. The trusted challenge imports only "
+        "`ExternalVerification.Statements` and Mathlib, contains one proposition-package fixture, "
+        "and has no proof-bearing internal imports. Proof-bearing modules occur only in "
+        "`ExternalVerification.Solution`.",
+        "",
+        "[Challenge](../verification/ExternalVerification/Challenge.lean) · "
+        "[Separately declared statements](../verification/ExternalVerification/Statements.lean) · "
+        "[Solution transports](../verification/ExternalVerification/Solution.lean) · "
+        "[Negative mismatch roster](../verification/comparator-negative-mismatch.json)",
+        "",
+        "## Evidence inventory",
+        "",
+        f"The [structured verification packet](external_verification_packet.json) retains all "
+        f"{selected_count} documented interfaces and {family_count} contribution families across "
+        "eight programmes. Its `main_results` records exact statements, original source and wrapper "
+        "declarations, canonical claim status, contribution class and boundaries. Its `review_matrix` "
+        "records every family, evidence mode and Comparator disposition. `source_fidelity` records "
+        "mappings to prior results; `problem_index` supplies the source-linked programme records. "
+        "These inventories are retained in full rather than repeated here.",
+        "",
+        "The `main_results` key in [formalization.yaml](../formalization.yaml) is the format's list "
+        "of selected executable interfaces. It is not the canonical claim registry and does not "
+        "make an unregistered interface a principal claim. Local proof provenance, prior-art "
+        "attribution and novelty are separate questions. Mathematical selection and ranking belong "
+        "to the [selection record](PALOMAR_RESULT_SHOWCASE.json); roster order is not a ranking.",
+        "",
+        "## Programme routes",
+        "",
+        "**Programmes.** " + " · ".join(index_links),
+        "",
+        *routes,
+        "## Replay and receipt boundaries",
+        "",
+        "Follow [the external verification replay instructions](verification/EXTERNAL_VERIFICATION_REPLAY.md) "
+        "for a reviewer-run Linux sandbox check and the immutable release-asset contract. CI runs "
+        "the pinned real Linux sandbox and uploads a commit-bound JSON receipt. Match its repository, "
+        "commit, configuration and outcome to the displayed statement before reporting a check. "
+        "A local projection freshness check does not perform a new Comparator replay.",
+        "",
+        "```sh",
+        "python3 scripts/build_external_verification.py --check",
+        "python3 scripts/query_corpus.py --route comparator_assurance",
+        "```",
+        "",
+        "The first command checks the recorded projections and challenge isolation. The query "
+        "reports selected statements, axioms and recorded receipts. Neither establishes a new "
+        "external service outcome. Use **Comparator-checked against a separately declared statement "
+        "and axiom budget** only when the receipt for the displayed commit is green; do not "
+        "replace it with “independently verified”.",
+        "",
+        "## Palomar qualification",
+        "",
+        "Comparator checks formal propositions. Palomar qualification checks repository-local "
+        "candidate and packaging requirements against dated policy captures. Read "
+        "[the qualification guide](verification/PALOMAR_QUALIFICATION.md) and "
+        "[policy record](PALOMAR_POLICY_RECONCILIATION.json), then inspect both `ok` and `decision`:",
+        "",
+        "```sh",
+        "python3 scripts/query_corpus.py --route palomar_qualification",
+        "python3 scripts/check_palomar_qualification.py --json",
+        "```",
+        "",
+        "`READY` does not establish independent replay, editorial review, submission, registration, "
+        "publication, acceptance or endorsement. External status belongs to the exact repository "
+        "unit, revision and service receipt. These commands do not submit or register a result.",
+        "",
+    ])
     return human.replace("—", ":")
 
 
 def render_outreach(packet: dict) -> str:
+    """Reuse authored result boundaries instead of maintaining a second account."""
+    families = {
+        (int(programme["problem"]), family["id"]): family
+        for programme in packet["review_matrix"]
+        for family in programme["families"]
+    }
+
+    def capsule(problem: int, family_ids: tuple[str, ...]) -> str:
+        selected = [families[(problem, family_id)] for family_id in family_ids]
+        return "> " + " ".join(
+            f"{family['summary']} {family['boundary']}" for family in selected
+        ) + " Comparator checks its selected separately declared statements and configured axiom budget."
+
     return "\n".join([
         "<!-- Generated by scripts/build_external_verification.py; do not edit. -->",
         "# Outreach evidence capsules",
@@ -1592,11 +1507,11 @@ def render_outreach(packet: dict) -> str:
         "",
         "## #249 boundary capsule",
         "",
-        "> The checked local result is the exact rank `2^e+1` of the dyadic totient kernel through level `e`; the full-kernel infinite-dimensionality declaration is also kernel-checked, but is recorded as a formalised consequence of Coons rather than an independent contribution. For every base `k >= 2`, Lean separately checks the arithmetic reduction, exact finite residue coordinates, unconditional spanning by the canonical family, and exact rank `k^e+1` conditional on that family being linearly independent. Martin supplies the paper's all-base independence step externally and is not formalised. Comparator checks its selected statements and axiom budget. The missing rationality-to-finite-rank or unbounded-certificate bridge remains open, so Erdős #249 is not solved.",
+        capsule(249, ("totient_kernel_rank", "totient_kernel_all_base_index")),
         "",
         "## #257 boundary capsule",
         "",
-        "> The checked result is the measure-one geometry of the Mersenne achievement set, plus a separate formalisation of the classical full-support Erdős–Borwein irrationality theorem. Comparator checks those statements and their axiom budget. Universal Erdős #257, including the rational targets `1/2` and `1/21`, remains open.",
+        capsule(257, ("achievement_set_geometry", "known_irrational_supports", "finite_prime_weighted_support")),
         "",
     ])
 

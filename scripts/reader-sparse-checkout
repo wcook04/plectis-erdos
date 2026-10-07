@@ -2,10 +2,10 @@
 /.github/system-map.png
 /docs/agents/AGENT_WORKBENCH.md
 /docs/ARCHITECTURE.md
-/docs/ORIENTATION.md
-/docs/agents/PROOF_COCKPIT.md
+/docs/reference/ORIENTATION.md
+/docs/agents/AGENT_WORKBENCH.md
 /docs/REPRODUCIBILITY.md
-/docs/SOURCE_MAP.md
+/docs/reference/SOURCE_MAP.md
 /docs/claims.json
 /docs/problems.json
 /docs/problem_library.json
@@ -18,9 +18,9 @@
 /CITATION.cff
 /LICENSE
 /REUSE.toml
-/docs/SCOPE.md
+/docs/METHODOLOGY.md
 /docs/agents/AGENT_GUIDE.md
-/docs/READING_GUIDE.md
+/docs/README.md
 /docs/METHODOLOGY.md
 /docs/PRIVACY.md
 /.github/SECURITY.md

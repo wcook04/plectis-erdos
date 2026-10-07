@@ -8866,7 +8866,7 @@ def problem_query_facets(query: str, constraint: dict[str, Any]) -> list[dict[st
             "instruction": "Use the named paper; give one hint and wait when requested.",
             "read": [
                 "skills/explain-public-system/SKILL.md#help-a-reader-work-through-an-argument",
-                "docs/READING_GUIDE.md#work-through-an-argument",
+                "docs/README.md#work-through-an-argument",
             ],
             "commands": [f"python3 scripts/query_corpus.py --route {route_id} --format json"],
         })
@@ -10868,7 +10868,7 @@ def repository_overview_packet(query: str | None = None) -> dict[str, Any]:
         "schema_version": "erdos249257-repository-overview/2",
         "authority_posture": "bounded_public_orientation_not_proof_authority",
         "reader_entry": {
-            "human_entry": "docs/READING_GUIDE.md",
+            "human_entry": "docs/README.md",
             "instant_orientation": (
                 "python3 scripts/query_corpus.py --route instant_orientation"
             ),

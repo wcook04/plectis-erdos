@@ -68,7 +68,7 @@ BUILDERS = (
 PROJECTIONS = (
     "docs/corpus_descriptor.json",
     "docs/orientation.json",
-    "docs/ORIENTATION.md",
+    "docs/reference/ORIENTATION.md",
     "docs/declaration_atlas.json",
     "docs/declaration_atlas_check.json",
     "docs/methodology.json",

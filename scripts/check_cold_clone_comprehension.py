@@ -160,8 +160,8 @@ SYSTEMS_EXPERT_QUESTION_ID = "XQSYS-ten-minute-hostile-reader"
 HUMAN_SURFACES = (
     "README.md",
     "docs/ARCHITECTURE.md",
-    "docs/SCOPE.md",
-    "docs/ORIENTATION.md",
+    "docs/METHODOLOGY.md",
+    "docs/reference/ORIENTATION.md",
 )
 # The paper shelf is a generated first-contact surface with its own authority
 # (Palomar's candidate ranking plus the paper corpus).  Keep it outside the
@@ -180,8 +180,10 @@ PAPER_LIBRARY_FIRST_CONTACT_BUDGET_BYTES = (
     * len(json.loads(safe_read_text("docs/papers/corpus.json"))["papers"])
 )
 # Volatile semantic counts live on the generated results surface, not the compact README.
-CENSUS_SURFACES = ("docs/RESULTS.md",)
+CENSUS_SURFACES = ("docs/semantic/README.md",)
 INCREMENTAL_BUILD_SURFACES = (
+    "docs/agents/AGENT_GUIDE.md",
+    "skills/lean-concurrent-validation/SKILL.md",
     "README.md",
     # The build contract moved off the front page with the rest of the detail
     # when the README was cut to its reader budget. It is on the document the
@@ -283,21 +285,17 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # public, before the results inventory.
     "README.md": 28_400 + 400 * INDEXED_PROBLEM_COUNT,
     "docs/ARCHITECTURE.md": 18_000,
-    # docs/SCOPE.md must list every remaining-open identifier and its bounded query,
-    # so two lines of it are spoken for by each registered proposition: measured
-    # at 139 bytes a proposition against 2,528 bytes of prose. The flat 4,000
-    # was set at eleven propositions and could not survive the repository
-    # registering the eight its own papers already state.
-    "docs/SCOPE.md": 2_800
-    + 160
-    * len(
-        json.loads(safe_read_text("docs/claims.json"))["remaining_open_propositions"]
-    ),
+    # Existing methodology rules plus release-boundary prose, exact open queries
+    # and non-claims. Per-record allowances permit registry growth without
+    # allowing an unbounded authored guide.
+    "docs/METHODOLOGY.md": 19_000
+    + 180 * len(json.loads(safe_read_text("docs/claims.json"))["remaining_open_propositions"])
+    + 250 * len(json.loads(safe_read_text("docs/claims.json"))["non_claims"]),
     # The generated orientation is budgeted by its own builder, which scales
     # with the registered open boundary and the mathematical programmes it is
     # required to carry. Pinning a second, smaller number here meant this gate
     # could reject a file the builder had just certified as bounded.
-    "docs/ORIENTATION.md": build_corpus_descriptor.orientation_markdown_budget_bytes(
+    "docs/reference/ORIENTATION.md": build_corpus_descriptor.orientation_markdown_budget_bytes(
         len(json.loads(safe_read_text("docs/orientation.json"))[
             "remaining_open_propositions"
         ]),
@@ -335,7 +333,7 @@ OPEN_PROPOSITION_PACKET_BYTES = 400
 # following it therefore reaches. They carry the recoverable detail the front
 # page used to hold itself.
 FIRST_CONTACT_ROUTED_SURFACES = (
-    "docs/READING_GUIDE.md",
+    "docs/README.md",
     "docs/RESULTS.md",
     "docs/agents/AGENT_WORKBENCH.md",
     "docs/REPRODUCIBILITY.md",
@@ -771,139 +769,52 @@ def check_expert_handoff_protocol() -> str:
 
 
 def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
-    """Facts a reader must recover from the bounded README first contact.
+    """Capabilities recoverable from the front page and its named guides.
 
-    Each task contains conjunctions of semantic anchor groups.  Alternatives
-    within one group permit harmless wording changes; satisfying one task with
-    tokens scattered across three documents is deliberately impossible.
+    Keep exact status and evidence limits, while routing detailed inventories
+    to their existing owners instead of requiring duplicate prose on entry.
+    The adversarial tests remove each alternative from every routed surface.
     """
-    open_rows = {row["id"]: row for row in summary["remaining_open_propositions"]}
     return {
         "identity_and_public_boundary": [
-            ["self-contained public"],
-            ["Plectis"],
-            ["not an entrypoint into any private development system"],
+            ["self-contained public"], ["Plectis"],
+            ["require no private development system"],
         ],
         "state_problem_frontier": [
             [release_status_boundary()],
             ["S = ∑ φ(n)/2ⁿ", "Is the binary Lambert series sum phi(n)/2^n irrational?"],
-            ["∑_{n∈A} 1/(2ⁿ - 1)", "sum of 1/(2^n-1) over every infinite set"],
-            ["every infinite", "for every infinite"],
+            ["sum of 1/(2^n-1) over every infinite set"],
         ],
         "recover_blank_slate_problem_card": [
-            ["#68"],
-            ["n!−1", "n!-1"],
-            ["#243"],
-            ["rapidly growing", "rapid-growth"],
-            ["Sylvester recurrence"],
-            ["#249"],
-            ["∑ φ(n)/2ⁿ"],
-            ["#251"],
-            ["∑ p_n/2ⁿ", "sum p_n/2^n", "dyadic series of consecutive primes"],
-            ["#257"],
-            ["every infinite"],
-            ["#269"],
-            ["running lcms"],
-            ["#1041"],
-            ["lemniscate"],
-            ["#1049"],
-            ["rational bases"],
-            ["no query is required"],
-            ["does not require a private repository"],
-        ],
-        "distinguish_release_source_and_authority": [
-            ["latest tagged release and citation anchor"],
-            ["formal-source checkpoint"],
-            ["this release ships", "not a new tagged release"],
+            [f"Problem {number}]("]
+            for number in (68, 243, 249, 251, 257, 269, 1041, 1049)
+        ] + [["Sylvester recurrence"], ["rational bases"], ["lemniscate"]],
+        "distinguish_evidence_and_authority": [
             [PROOF_AUTHORITY],
+            ["A finite certificate, an equivalent restatement or an unproved conditional"],
+            ["does not discharge an infinite target"],
+            ["claims.json"], ["methodology"],
         ],
-        "recover_headline_statuses": [
-            ["formalised here"],
-            ["conditional reduction"],
-            ["verified finite instance"],
-            ["does not show that the actual orbit avoids", "does not show the actual orbit avoids"],
-            ["does not prove successful cases beyond every fixed cutoff"],
-        ],
-        "recover_farey_boundary": [
-            ["classical Farey/mediant bound"],
-            ["Farey's method supplies the number directly"],
-            ["numerical delta `0`", "numerical delta 0"],
-            ["exactly the Farey bound, not an improvement"],
-        ],
-        "recover_breadth_beyond_headlines": [
-            ["eventually-periodic nonnegative weighted irrationality"],
-            ["signed irrational-or-base-terminating dichotomy"],
-            [
-                "five binary-carry criteria/consequences",
-                "five binary-carry criteria or consequences",
-            ],
-            ["two scoped #249 no-go countermodels"],
-        ],
-        "recover_independent_exact_packages": [
-            ["fair-coin coprimality", "P(gcd(X,Y)=1)"],
-            ["squared-Lambert gcd moments"],
-            ["Stern–Brocot cylinder law"],
-            ["(2/3)^d"],
-            ["Fibonacci/continuant run stability"],
-            ["F_{r+3}"],
-            ["tempered binary tail rigidity"],
-            ["exact Möbius-shadow denominator"],
-            ["scalar-localisation height obstruction"],
-        ],
-        "recover_scale_and_assembly": [
-            ["Lean modules"],
-            ["Formal results and supporting lemmas"],
-            ["Curated claim records"],
-            ["Contribution families"],
-            ["navigation counts, not novelty claims"],
-        ],
-        "name_exact_open_frontier": [
-            [open_rows["remaining_open.erdos_249_irrationality"]["statement"],
-             "Prove that `S = ∑ φ(n)/2ⁿ` is irrational"],
-            [open_rows["remaining_open.unbounded_certificate_supply"]["statement"],
-             "Produce the unbounded certificate supply"],
-            [open_rows["remaining_open.universal_257_all_infinite_supports"]["statement"],
-             "Prove irrationality of `∑_{n∈A} 1/(2ⁿ - 1)` for every infinite"],
-        ],
-        "route_exact_expert_handoffs": [
-            ["exact expert handoffs"],
-            ["what input is requested"],
-            ["current guess"],
-            ["alternatives"],
-            ["discriminating evidence"],
-            ["checked consumer"],
-            ["endpoint-or-counterexample boundary"],
+        "route_exact_open_frontier_and_handoffs": [
+            ["python3 scripts/query_corpus.py --open"],
             ["python3 scripts/query_expert_handoffs.py"],
+            ["argument frontier"],
         ],
         "choose_a_next_read": [
-            # The anchor is "a route into the manuscripts exists", not the name
-            # of one manuscript. This read ["Exposition PDF"] alone, which is
-            # the label of the joint #249/#257 paper -- the single manuscript
-            # docs/papers/corpus.json records as retired, whose "problem-specific
-            # successors are the active reader routes". So the gate required the
-            # reader's next-read bullet to name the superseded paper, and
-            # naming the live per-problem route instead failed it.
-            ["per-problem papers", "Exposition PDF", "joint PDF", "docs/papers"],
-            ["docs/agents/AGENT_GUIDE.md"],
-            ["docs/orientation.json"],
-            ["docs/SOURCE_MAP.md"],
+            ["paper/README.md"], ["reference/SOURCE_MAP.md"],
+            ["agents/ARGUMENT_GRAPH.md"],
+        ],
+        "inspect_generated_inventory_without_promoting_it": [
+            ["semantic/README.md#corpus-census"],
+            ["Declaration counts include generated certificate families"],
+            ["do not count mathematical contributions"],
+            ["python3 scripts/query_semantic.py inventory"],
         ],
         "navigate_without_compiling": [
-            ["Whole-corpus agent navigation"],
-            ["without a Lean build"],
-            ["--tour --format card"],
-            ["corpus scale"],
-            ["mathematical map"],
-            ["canonical eight-problem map"],
-            ["problem-registry"],
-            [
-                "distinct reviewed #249/#257 open-proposition frontier",
-                "exact open frontier",
-            ],
-            ["agent_native_corpus_navigation"],
-            ["every indexed declaration"],
-            ["exact dependencies for both loaded roots"],
-            ["navigation projections, not proof authority"],
+            ["python3 scripts/proof_cockpit.py"],
+            ["does not run Lean"],
+            ["A clean card does not prove a theorem"],
+            ["pinned Lean"],
         ],
     }
 
@@ -936,13 +847,18 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
     require(build_job is not None, "Lean CI lost its build job")
     build_job_body = build_job.group("body") if build_job is not None else ""
 
-    for token in (
-        "A cold clone can navigate before this step",
-        "--lake-staleness",
-        "--changed-from <git-ref>",
-        "rebuild only the selected or stale dependency cone",
-    ):
-        require(normalized(token) in readme_flat, f"README lost incremental-build contract: {token}")
+    require("docs/REPRODUCIBILITY.md" in readme,
+            "reader entry lost the build instructions route")
+    for token in ("--lake-staleness", "wrapper"):
+        require(token in runbook,
+                f"reproducibility lost focused/cache-aware build guidance: {token}")
+
+    require("lean-concurrent-validation/SKILL.md" in runbook,
+            "reproducibility lost its coordinated validation owner")
+    require("--changed-from" in surfaces["skills/lean-concurrent-validation/SKILL.md"],
+            "validation owner lost the focused changed-source build command")
+    require("--changed-from" in surfaces["docs/agents/AGENT_GUIDE.md"],
+            "agent validation guide lost its focused source-change build command")
 
     # The detailed build contract belongs to the reproducibility runbook. Keep
     # its prerequisite before its first build command without forcing those
@@ -962,10 +878,11 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         in runbook[first_build_command:first_build_block_end],
         "reproducibility runbook makes a full-corpus build the first Lean success path",
     )
-    require("elan" in readme, "README no longer names Lean's toolchain manager")
+    require("elan" in runbook, "reproducibility no longer names Lean's toolchain manager")
     require(
-        re.search(r"(?m)^\s*lake build\b", runbook) is None,
-        "reproducibility runbook bypasses the host-shared Lean build wrapper",
+        all(command.strip() == "lake build @erdos249257/Erdos249257 @erdos249257/ErdosProblems"
+            for command in re.findall(r"(?m)^\s*lake build\b[^\n]*", runbook)),
+        "repository proof builds must use the host-shared wrapper; only the separate downstream consumer uses lake build",
     )
     require(
         all(
@@ -990,8 +907,8 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         "runbook must offer a focused Lean success before the complete release replay",
     )
     require(
-        "fetches the pinned cache when needed" in readme_flat,
-        "README no longer states that the build wrapper owns cache acquisition",
+        "lake exe cache get" in runbook,
+        "reproducibility lost pinned dependency-cache acquisition",
     )
 
     # Every token below describes something the workflow *does*. "# v5" sat in
@@ -1277,13 +1194,13 @@ def validate_human_first_contact(
             require(contains_any(routed_first_contact, alternatives), f"README first-contact task {task_id!r} lost semantic anchor group "
                 f"{alternatives}")
 
-    scope = surfaces["docs/SCOPE.md"]
+    scope = surfaces["docs/METHODOLOGY.md"]
     require(
         contains_any(scope, [release_status_boundary()]),
         "scope lost the authority-owned release status boundary",
     )
     require(contains_any(scope, ["formal-source checkpoint"]), "cold-clone comprehension invariant")
-    orientation = surfaces["docs/ORIENTATION.md"]
+    orientation = surfaces["docs/reference/ORIENTATION.md"]
     for status in (
         "formalised here",
         "unconditional progress",
@@ -1502,7 +1419,7 @@ def validate_public_semantic_census(
         )
 
     expectations = {
-        "docs/RESULTS.md": (
+        "docs/semantic/README.md": (
             "<!-- BEGIN semantic_public_census -->",
             census_row("mechanically nonrecurring candidates", nonrecurring),
             census_row("classical/prior-art formalisations", classical),

@@ -63,10 +63,10 @@ Lean-checked statements, conditional results and finite computations.
 
 ## Where to start
 
-- **Read and understand.** [A reader's way in](docs/READING_GUIDE.md) introduces
+- **Read and understand.** [A reader's way in](docs/README.md) introduces
   the questions. The [reading edition](docs/reading-edition/README.md) collects
   the opening of each paper in one file, also suitable for sharing with an AI.
-  [Work through one argument](docs/READING_GUIDE.md#work-through-an-argument)
+  [Work through one argument](docs/README.md#work-through-an-argument)
   on your own or ask an agent for hints. No clone, Lean or model account is
   needed to read the papers.
 - **Inspect or reproduce.** [Follow one claim](docs/REPRODUCIBILITY.md#try-one-claim-without-lean)
@@ -128,7 +128,7 @@ systems paper and the earlier accounts retained for historical context.
 ## What Lean and Comparator verify
 
 Lean checks whether a proof establishes the exact formal statement written in
-its source. The [source map](docs/SOURCE_MAP.md) connects paper passages to
+its source. The [source map](docs/reference/SOURCE_MAP.md) connects paper passages to
 those declarations. [Claim records](docs/claims.json) state their public status
 and limits; [prior art](docs/PRIOR_ART.md) identifies earlier results and their
 relationship to this work.
@@ -150,14 +150,14 @@ An idea, correction, earlier reference, counterexample, useful failed approach
 or clearer explanation can help. You need not solve an Erdős problem or write
 Lean. I can help formalise an argument while preserving its attribution.
 
-- **Mathematics or exposition:** [work on a paper](docs/CONTRIBUTE_BY_PAPER.md)
+- **Mathematics or exposition:** [work on a paper](docs/research-commons/CONTRIBUTE_BY_PAPER.md)
   or [develop a method across problems](paper/synthesis/README.md).
 - **Software:** improve navigation, checks or the contributor experience through
   the [architecture contribution guide](docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md).
 - **A question or correction:** use the
   [research-progress form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
   or [email me](https://wcook04.github.io/plectis/#contact).
-- **An investigation with your own agent:** the [frontier relay](docs/FRONTIER_RELAY.md)
+- **An investigation with your own agent:** the [frontier relay](docs/agents/FRONTIER_RELAY.md)
   explains how to return the argument, evidence, limits and next question.
 
 [CONTRIBUTING](CONTRIBUTING.md) explains what to send,
@@ -173,7 +173,7 @@ or an intermediate result helped, please cite the relevant work and say how.
 | Location | Contents |
 |---|---|
 | [paper/](paper/README.md) | PDFs and manuscript sources by problem. |
-| [lean/](docs/SOURCE_MAP.md) | Formal proofs in the `Erdos249257` and `ErdosProblems` libraries. |
+| [lean/](docs/reference/SOURCE_MAP.md) | Formal proofs in the `Erdos249257` and `ErdosProblems` libraries. |
 | [docs/](docs/README.md) | Guides, claim records and source maps. |
 | [research/](research/README.md) | Experiments, examples and investigations. |
 | [research_corpus/](research_corpus/README.md) | Dated research returns and unresolved obligations. |
@@ -197,7 +197,7 @@ and the [agent workbench](docs/agents/AGENT_WORKBENCH.md). The
 
 ## Corpus at a glance
 
-The reviewed layer a mathematician should judge: 160 curated claim records in 38 contribution families, reaching Lean source through 478 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
+The reviewed layer a mathematician should judge: 160 curated claim records in 38 contribution families, reaching Lean source through 478 principal declaration links. `docs/METHODOLOGY.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
 
 The rest is engineering inventory. About 87% of the 164,639 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
@@ -221,7 +221,7 @@ These are navigation counts, not novelty claims. They still need expert validati
 ## Following a result into Lean
 
 The paper links each headline result to the relevant source. For a particular
-topic, start with the [source map](docs/SOURCE_MAP.md); it gives the module
+topic, start with the [source map](docs/reference/SOURCE_MAP.md); it gives the module
 order without asking you to decode Lean declaration names first.
 <!-- END generated_principal_declaration_anchors -->
 
@@ -235,7 +235,7 @@ Four merged changes: [#257](https://github.com/google-deepmind/formal-conjecture
 for solved variants of Erdős's 1948 theorem; a [#1041 correction](https://github.com/google-deepmind/formal-conjectures/pull/6505)
 using ani's counterexample. [Trace the #1041 Lean proof](docs/case-studies/formal-conjectures-1041.md).
 
-The [Prove2Me #243/#257 proof packets](docs/research-commons/README.md#native-prove2me-theorems)
+The [Prove2Me #243/#257 proof packets](docs/research-commons/PROVE2ME_COMPAT.md)
 and [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean) provide
 additional selected statement checks and their recorded outcomes.
 The [paper catalogue](docs/papers/README.md) links versioned aiXiv editions;
@@ -263,5 +263,5 @@ distinguish earlier results, formalisation and local use.
 
 Code, scripts and documentation are Apache-2.0; manuscript sources and PDFs
 are CC-BY-4.0. [REUSE.toml](REUSE.toml) records exceptions. See also
-[scope](docs/SCOPE.md), [privacy](docs/PRIVACY.md) and the
+[scope](docs/METHODOLOGY.md#release-scope), [privacy](docs/PRIVACY.md) and the
 [code of conduct](.github/CODE_OF_CONDUCT.md).

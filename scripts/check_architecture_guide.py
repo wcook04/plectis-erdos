@@ -148,7 +148,7 @@ SECTION_ORDER = (
 REQUIRED_ANCHOR_GROUPS = {
     "purpose_and_boundary": (
         "eight mathematical problem programmes",
-        "self-contained public release",
+        "public release is self-contained",
     ),
     "three_decisions": (
         "Lean decides whether a formal proof",
@@ -183,7 +183,6 @@ REQUIRED_ANCHOR_GROUPS = {
     "paper_lifecycle_boundary": (
         "The eight individual problem papers are the active mathematical routes",
         "archived provenance only, not an active gateway",
-        "The archived combined #249/#257 PDF is not a default reading route",
     ),
 }
 
@@ -197,8 +196,8 @@ REQUIRED_PATHS = (
     "verification/comparator.json",
     "docs/verification/PALOMAR_QUALIFICATION.md",
     "docs/PALOMAR_POLICY_RECONCILIATION.json",
-    "docs/ORIENTATION.md",
-    "docs/SOURCE_MAP.md",
+    "docs/reference/ORIENTATION.md",
+    "docs/reference/SOURCE_MAP.md",
     "scripts/check_release.py",
     "scripts/check_cold_clone_comprehension.py",
     ".github/workflows/lean.yml",
@@ -473,8 +472,16 @@ def validate_guide(text: str) -> None:
     validate_claim_scope(text, json.loads(safe_architecture_text(ROOT / "docs/claims.json")))
 
     compact = normalise_tex(text)
-    require(external_status_boundary().casefold() in compact.casefold(),
-            "architecture guide lost the authority-owned status boundary")
+    require("[Results and limits](RESULTS.md)" in text,
+            "architecture guide must route current mathematical status to RESULTS")
+    results = safe_architecture_text(ROOT / "docs/RESULTS.md")
+    require(external_status_boundary().casefold() in normalise_tex(results).casefold(),
+            "architecture status route lost the authority-owned boundary")
+    for limit in ("Supporting declarations need not have a claim record",
+                  "A stronger Lean theorem needs a checked implication",
+                  "A mathematician decides whether the public wording"):
+        require(normalise(limit).casefold() in compact.casefold(),
+                f"architecture guide lost evidence responsibility: {limit}")
     for group_id, anchors in REQUIRED_ANCHOR_GROUPS.items():
         for anchor in anchors:
             require(normalise(anchor).casefold() in compact.casefold(), (

@@ -137,14 +137,14 @@ def main() -> int:
     packet = entry_packet(catalog, "Refine the proof paper", purpose="infrastructure", scope="problem:257")
     require(packet["primary_lane"]["id"] == "repository_architecture" and packet["scope"] == "problem:257", "explicit purpose or scope lost")
     require(packet["task"] == "Refine the proof paper", "original request lost")
-    guide = text("docs/CONTRIBUTE_BY_PAPER.md")
+    guide = text("docs/research-commons/CONTRIBUTE_BY_PAPER.md")
     for row in json.loads(text("docs/problems.json"))["problems"]:
         number = row["erdos_number"]
         require(f"## Problem {number}" in guide, f"missing paper entry {number}")
         section = guide.split(f"## Problem {number}\n", 1)[1].split("\n## Problem ", 1)[0]
         for label in ("Short paper", "Long record"):
             targets = re.findall(r"\[" + label + r"\]\(([^)]+)\)", section)
-            require(len(targets) == 1 and targets[0].startswith(f"../paper/{number}/"),
+            require(len(targets) == 1 and targets[0].startswith(f"../../paper/{number}/"),
                     f"problem {number} lost its own {label.lower()}")
         texts = re.findall(r"\[Read as text\]\(([^)]+)\)", section)
         require(len(texts) == 2 and len(set(texts)) == 2,
@@ -207,8 +207,8 @@ def main() -> int:
 
     for source in (
         "CONTRIBUTING.md",
-        "docs/CONTRIBUTE_BY_PAPER.md",
-        "docs/READING_GUIDE.md",
+        "docs/research-commons/CONTRIBUTE_BY_PAPER.md",
+        "docs/README.md",
         "docs/research-commons/README.md",
         "docs/research-commons/CREDIT_POLICY.md",
         "docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md",

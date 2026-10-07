@@ -18,7 +18,7 @@ file remains the deeper authority, mutation, and validation contract.
 For a cold-clone status question, continuation, proof-frontier scan, or first
 action, run `python3 scripts/proof_cockpit.py --format card` before opening
 large registries or source trees. Its public-native contract is
-[docs/agents/PROOF_COCKPIT.md](PROOF_COCKPIT.md). The card composes public facts;
+[docs/agents/AGENT_WORKBENCH.md](AGENT_WORKBENCH.md#proof-cockpit). The card composes public facts;
 it never imports private workflow state and is not proof authority.
 
 For any reader-facing mathematical Markdown or manuscript edit, load
@@ -203,7 +203,7 @@ Lean build when a result must be checked.
 1. Read `docs/orientation.json`. It is the bounded first-read capsule: release
    scale, exact open propositions, mathematical programme routes, principal
    claim routes, and typed drilldowns. Its human projection is
-   `docs/ORIENTATION.md`. Both are generated navigation, not proof authority.
+   `docs/reference/ORIENTATION.md`. Both are generated navigation, not proof authority.
 2. Drill into `docs/claims.json` only for the selected claim or route. Its
    `machine_readable_paper` object owns the complete map from paper claims to
    Lean declarations, module imports, argument relationships, validation, and
@@ -255,7 +255,7 @@ Lean build when a result must be checked.
    `scripts/run_publication_mutations.py` provide a separately versioned,
    deterministic reconstruction of the ten mutation classes; they are not the
    missing original run logs or exact targets.
-7. Read `docs/SCOPE.md` before describing what the project proves. Erdős #249 and
+7. Read `docs/METHODOLOGY.md` before describing what the project proves. Erdős #249 and
    the universal form of #257 remain open.
 8. For one claim, use `docs/papers/corpus.json` to resolve its `paper_label`
    to the owning individual problem paper, then follow its `declarations` to
@@ -350,7 +350,7 @@ Lean build when a result must be checked.
 14. Use `Erdos249257.lean` for the reviewed #249/#257 root and
    `ErdosProblems.lean` for the problem-owned expansion root. Kernel checking
    the expansion root does not promote its declarations into reviewed public
-   claims. Use `docs/SOURCE_MAP.md` for intention-based routes and
+   claims. Use `docs/reference/SOURCE_MAP.md` for intention-based routes and
    `docs/reference/WAVE_INDEX.md` for mathematical chronology. For arbitrary Lean,
    including auxiliary modules intentionally excluded from compact import
    roots, start with the module-agnostic inventory:

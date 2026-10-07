@@ -54,24 +54,25 @@ def main() -> None:
                     "The degree-seven example refutes Erdős #1041."):
         require(not has_release_status_boundary(missing, claims),
                 "release boundary check accepted missing formulation or review limits")
-    for path in ("README.md", "docs/SCOPE.md"):
+    for path in ("README.md", "docs/METHODOLOGY.md"):
         require(has_release_status_boundary(read(path), claims),
                 f"{path} differs from the current claim-owner boundary")
-    human = read("docs/READING_GUIDE.md")
+    human = read("docs/README.md")
     require("```" not in human, "HUMAN_ENTRY must not make readers begin with commands")
-    require("\n|" not in human, "HUMAN_ENTRY must remain prose rather than a table")
+    first_heading = human.find("## Choose a way in")
+    require(first_heading > 0 and "\n|" not in human[:first_heading],
+            "human entry must explain the mathematics before a guide table")
     require(human.count("\n\n") >= 10, "HUMAN_ENTRY has lost its prose structure")
     # Boundaries are matched across line wrapping, so reflowing a paragraph
     # cannot hide or fake one.
     prose = " ".join(human.split())
-    boundaries = (
-        release_status_boundary(),
-        "The other seven targets remain open",
-        "Independent human review of correspondence with the 1958 wording has not been recorded",
-        "peer review",
-    )
-    for boundary in boundaries:
-        require(boundary in prose, f"HUMAN_ENTRY lost claim boundary: {boundary}")
+    require("[Results and limits](RESULTS.md)" in human,
+            "human entry lost its current status route")
+    require(has_release_status_boundary(read("docs/RESULTS.md"), claims),
+            "human status route lost the exact authority-owned boundary")
+    for boundary in ("A finite computation covers its tested range",
+                     "it is not peer review", "does not establish"):
+        require(boundary in prose, f"human entry lost evidence limit: {boundary}")
 
     # Current systems manuscripts are also public entry points. Their examples
     # may be historical, but their descriptions of the present corpus must not
@@ -133,13 +134,13 @@ def main() -> None:
         ROOT / ".github/START_HERE_ISSUE.md",
         ROOT / "README.md",
         ROOT / "docs/README.md",
-        ROOT / "docs/READING_GUIDE.md",
-        ROOT / "docs/SCOPE.md",
+        ROOT / "docs/README.md",
+        ROOT / "docs/METHODOLOGY.md",
         ROOT / "docs/RESULTS.md",
         ROOT / "CONTRIBUTING.md",
         ROOT / "AGENTS.md",
-        ROOT / "docs/RELATED_PROBLEMS.md",
-        ROOT / "docs/FRONTIER_RELAY.md",
+        ROOT / "docs/reference/RELATED_PROBLEMS.md",
+        ROOT / "docs/agents/FRONTIER_RELAY.md",
         ROOT / "docs/agents/README.md",
         ROOT / "docs/reading-edition/INTRODUCTION.md",
         *sorted((ROOT / "skills").glob("*/SKILL.md")),
@@ -168,8 +169,8 @@ def main() -> None:
     drift_surfaces = (
         "README.md",
         "docs/README.md",
-        "docs/READING_GUIDE.md",
-        "docs/SCOPE.md",
+        "docs/README.md",
+        "docs/METHODOLOGY.md",
         "docs/ARCHITECTURE.md",
         "docs/RESULTS.md",
         "docs/agents/AGENT_GUIDE.md",
@@ -246,7 +247,7 @@ def main() -> None:
         )
 
     readme = read("README.md")
-    human_link = readme.find("docs/READING_GUIDE.md")
+    human_link = readme.find("docs/README.md")
     first_table = readme.find("\n|")
     first_fence = readme.find("```")
     require(human_link >= 0, "README no longer links the human entry")

@@ -320,6 +320,43 @@ class ReanchorSourceAttributionTests(unittest.TestCase):
         self.reanchor("--write", expect=2)
         self.assertEqual(self.registry_bytes(), before)
 
+    def test_numeric_patch_binds_new_path_bytes_and_rejects_stale_digest(self) -> None:
+        alternate = "docs/replacement.json"
+        self.write(alternate, ["prefix", "reviewed exact evidence", "suffix"])
+        patch = self.root / "patch.json"
+        patch.write_text(json.dumps([{
+            "id": "alpha",
+            "artifact_links": [{"path": alternate, "line_start": 2, "line_end": 2}],
+        }]), encoding="utf-8")
+        self.reanchor("--write", "--patch", str(patch))
+        row = self.links(self.registry(), "alpha")[-1]
+        self.assert_anchored(row, alternate)
+        before = self.registry_bytes()
+        self.reanchor("--check", "--preserve-excerpts")
+        self.assertEqual(self.registry_bytes(), before)
+        self.write(alternate, ["prefix", "different evidence", "suffix"])
+        patch.write_text(json.dumps([{"id": "alpha", "artifact_links": [row]}]), encoding="utf-8")
+        run = subprocess.run(
+            [sys.executable, str(SCRIPT), "--root", str(self.root), "--base", "HEAD", "--patch", str(patch)],
+            cwd=self.root, env=ENVIRONMENT, capture_output=True, text=True,
+        )
+        self.assertEqual(run.returncode, 2, run.stdout + run.stderr)
+        self.assertIn("does not match its digest", run.stderr)
+        self.assertEqual(self.registry_bytes(), before)
+
+    def test_numeric_patch_rejects_span_outside_working_file(self) -> None:
+        patch = self.root / "patch.json"
+        patch.write_text(json.dumps([{
+            "id": "alpha",
+            "artifact_links": [{"path": PAPER, "line_start": 1, "line_end": 10000}],
+        }]), encoding="utf-8")
+        run = subprocess.run(
+            [sys.executable, str(SCRIPT), "--root", str(self.root), "--base", "HEAD", "--patch", str(patch)],
+            cwd=self.root, env=ENVIRONMENT, capture_output=True, text=True,
+        )
+        self.assertEqual(run.returncode, 2, run.stdout + run.stderr)
+        self.assertIn("outside the working file", run.stderr)
+
     def test_patch_resolves_find_links_to_exact_bibitem_spans(self) -> None:
         self.write(PAPER, PAPER_LINES[:20] + BETA_ITEM + PAPER_LINES[20:])
         patch = self.root / "patch.json"

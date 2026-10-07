@@ -77,6 +77,8 @@ BUILDERS = (
     # Keeping this first makes entry drift visible before expensive projections.
     "scripts/agent_skill_catalog.py",
     "scripts/build_methodology.py",
+    # Render only the recorded historical manifest; no current graph export or Lean.
+    "scripts/build_argument_frontier.py",
     "scripts/build_module_graph.py",
     "scripts/build_declaration_atlas.py",
     # This compressed speed path is bound to the atlas fingerprint and must
@@ -105,6 +107,8 @@ BUILDERS = (
     # Normalize the paper corpus before the problem index reads its paper
     # routes and fingerprints it in docs/problem_library.json.
     "docs/papers/build_publication_taxonomy.py",
+    # Index presentation reads the normalized corpus without converting manuscripts.
+    "docs/papers/refresh_paper_corpus.py",
     # The no-clone reading edition is assembled from the normalized paper
     # corpus, the generated paper text and the shared research instruction in
     # skills/explore-the-corpus/SKILL.md. Listing it here makes the release
@@ -142,6 +146,8 @@ BUILDERS = (
 # argument parser and fails when a builder that declares --write is missing
 # from this table.
 WRITE_FLAGS: dict[str, tuple[str, ...]] = {
+    "docs/papers/refresh_paper_corpus.py": ("--index-only", "--write"),
+    "scripts/build_argument_frontier.py": ("--snapshot-only",),
     "scripts/corpus_substrate.py": ("--write",),
     "scripts/reanchor_source_attributions.py": ("--write", "--preserve-excerpts", "--base", "HEAD"),
     "scripts/build_off_diagonal_certificate_roster.py": ("--write",),
@@ -156,6 +162,8 @@ PREFLIGHT_BUDGET_SECONDS = 1200
 
 PREFLIGHT_CHECKS: dict[str, tuple[str, ...]] = {
     **{builder: ("--check",) for builder in BUILDERS},
+    "docs/papers/refresh_paper_corpus.py": ("--index-only", "--check"),
+    "scripts/build_argument_frontier.py": ("--snapshot-only", "--check"),
     "scripts/check_release.py": ("--source-identity-only", "--route-budgets-only", "--trust-only"),
     "scripts/check_publication_contract.py": (),
     "scripts/build_declaration_atlas.py": ("--check",),

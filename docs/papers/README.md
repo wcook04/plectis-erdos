@@ -255,7 +255,7 @@ not currently earn scarce first-contact attention.
 
 The mathematical papers cover Erdős #68, Erdős #243, Erdős #249, Erdős #251, Erdős #257, Erdős #269, Erdős #1041, Erdős #1049. They state the results obtained and what remains unproved. Retired papers are marked below.
 
-The [problem summaries](../RELATED_PROBLEMS.md) introduce the mathematics. `docs/problems.json` contains the corresponding file paths and identifiers for programs and coding agents.
+The [problem summaries](../reference/RELATED_PROBLEMS.md) introduce the mathematics. `docs/problems.json` contains the corresponding file paths and identifiers for programs and coding agents.
 
 ### Which exact denominator exclusions are proved for Erdős #68, and what still blocks irrationality?
 

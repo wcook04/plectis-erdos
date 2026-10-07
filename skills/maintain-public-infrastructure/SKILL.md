@@ -199,6 +199,14 @@ the other a route pointer or a generated projection. Do not copy a private
 system's full doctrine into this repository; port only the public capability
 and the check that proves it works here.
 
+When reorganising documentation, merge overlapping explanations into their
+existing owner before moving files; retire duplicates rather than preserving
+two current guides. Update source authorities, builder destinations and consumer
+links before regenerating a moved projection. The root-guide inventory in
+`scripts/check_release.py::check_root_layout` and its architecture fixtures
+prevent loose guides from accumulating; extend that existing gate rather than
+adding another inventory document.
+
 When reorganising the checkout, keep one shared root `AGENTS.md` and keep
 provider adapters limited to loading that entry. Keep the main reader guides
 in `docs/`, operational agent guides in `docs/agents/`, specialist checking

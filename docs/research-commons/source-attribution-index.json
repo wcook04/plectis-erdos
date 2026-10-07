@@ -125180,7 +125180,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:3444a7d9a1ab07275212b4f2d6b0c6512e43530d12fcdd9124dff0d68a568ff6",
+  "source_registry_sha256": "sha256:221502d734f63904ee54cc7ac5f49bf5cadfac5e9c460dc09e3795681ceffa35",
   "sources": [
     {
       "artifact_coordinates": [
@@ -126176,11 +126176,11 @@
           "sha256": "sha256:43aca5f4da7f5f42baf826e53324c045e4fa11acd20ffd1743609e20b5084157"
         },
         {
-          "excerpt_sha256": "sha256:841f2dd16d4a52b7d08408468dd3f4f231b7d8aeb174d9ffad383abbde1acfe9",
-          "line_end": 14,
-          "line_start": 4,
+          "excerpt_sha256": "sha256:68b48b26909458d634ec4498042279edb1db1066ab031f0dd4d2e15464a7af1c",
+          "line_end": 22,
+          "line_start": 10,
           "path": "docs/EXTERNAL_VERIFICATION.md",
-          "sha256": "sha256:47184e48546e05683695d30d72cdfa02fefba99a65cc8fc83913a6cfba36d8e1"
+          "sha256": "sha256:34bc99326a70fec63827c0e786ecf05ae5427e5bc08fc0a3a4a008a2b439ff22"
         }
       ],
       "artifact_links": [
@@ -126203,9 +126203,9 @@
           "path": "verification/comparator-negative-mismatch.json"
         },
         {
-          "excerpt_sha256": "sha256:841f2dd16d4a52b7d08408468dd3f4f231b7d8aeb174d9ffad383abbde1acfe9",
-          "line_end": 14,
-          "line_start": 4,
+          "excerpt_sha256": "sha256:68b48b26909458d634ec4498042279edb1db1066ab031f0dd4d2e15464a7af1c",
+          "line_end": 22,
+          "line_start": 10,
           "path": "docs/EXTERNAL_VERIFICATION.md"
         }
       ],
@@ -126290,11 +126290,11 @@
           "sha256": "sha256:717498a2f6365833715f1e241de3bcfba3daf431dc650cd36133eb27ce1a9a3d"
         },
         {
-          "excerpt_sha256": "sha256:cb49ade0a57a20d0355d24a8ebc443b2be0b82e0f3c2bdd61f361abe2913a17b",
-          "line_end": 544,
-          "line_start": 534,
-          "path": "docs/EXTERNAL_VERIFICATION.md",
-          "sha256": "sha256:47184e48546e05683695d30d72cdfa02fefba99a65cc8fc83913a6cfba36d8e1"
+          "excerpt_sha256": "sha256:44b2d03394f71d1c7674ade0f59d393612a219ff02810ce8544e458bb95128ea",
+          "line_end": 1043,
+          "line_start": 1030,
+          "path": "docs/external_verification_packet.json",
+          "sha256": "sha256:b80302c29945f751b7ed0ed26f4a97dbe2da4dceadc2292694a1205bdbf8e657"
         }
       ],
       "artifact_links": [
@@ -126329,10 +126329,10 @@
           "path": "formalization.yaml"
         },
         {
-          "excerpt_sha256": "sha256:cb49ade0a57a20d0355d24a8ebc443b2be0b82e0f3c2bdd61f361abe2913a17b",
-          "line_end": 544,
-          "line_start": 534,
-          "path": "docs/EXTERNAL_VERIFICATION.md"
+          "excerpt_sha256": "sha256:44b2d03394f71d1c7674ade0f59d393612a219ff02810ce8544e458bb95128ea",
+          "line_end": 1043,
+          "line_start": 1030,
+          "path": "docs/external_verification_packet.json"
         }
       ],
       "authors": [
@@ -126485,7 +126485,7 @@
           "line_end": 215,
           "line_start": 204,
           "path": "skills/public-mathematical-writing/SKILL.md",
-          "sha256": "sha256:6bf9f059fccee30b02e8852e46061a8fa184f94a221b9d235ad94cbf72c2644f"
+          "sha256": "sha256:43d8e1048b7ef8e6674f4326430d1f7f8b5ca4898bc9e4c453ca4e1f3fb9dbd2"
         },
         {
           "excerpt_sha256": "sha256:43ae7aa3892935664831547944b3b27f554b3fd290c430f00cc870396a0f8a9e",

@@ -1,6 +1,6 @@
 {
   "schema": "erdos249257-claims/3",
-  "comment": "Single owner of release identity, mathematical claim status, typed remaining-open propositions, and the machine-readable paper map. Human surfaces (README, paper, docs/SCOPE.md, CITATION.cff) project from this file; Lean remains proof authority, docs/methodology.json owns claim-transition rules, and scripts/check_release.py fails the build when a checked projection or graph edge drifts.",
+  "comment": "Single owner of release identity, mathematical claim status, typed remaining-open propositions, and the machine-readable paper map. Human surfaces (README, paper, docs/METHODOLOGY.md, CITATION.cff) project from this file; Lean remains proof authority, docs/methodology.json owns claim-transition rules, and scripts/check_release.py fails the build when a checked projection or graph edge drifts.",
   "machine_readable_paper": {
     "schema": "erdos249257-machine-readable-paper/1",
     "purpose": "Give humans and agent harnesses one bounded map from the open problems and paper argument to claim status, Lean declarations, module dependencies, validation, and explicit non-claims.",
@@ -9,7 +9,7 @@
       "docs/claims.json for release identity, status taxonomy, remaining-open propositions, coordinates, and navigation relationships",
       "docs/methodology.json for mathematical methodology and claim-transition requirements",
       "the authored exposition for mathematical explanation",
-      "README.md, docs/SCOPE.md, docs/SOURCE_MAP.md, and docs/reference/WAVE_INDEX.md as reader projections"
+      "README.md, docs/METHODOLOGY.md, docs/reference/SOURCE_MAP.md, and docs/reference/WAVE_INDEX.md as reader projections"
     ],
     "projection_boundary": "The module graph records exact internal Lean imports. The argument graph is an authored navigation map, not an additional proof object and not a novelty or priority claim.",
     "entrypoints": [
@@ -27,7 +27,7 @@
         ],
         "read": [
           "docs/orientation.json",
-          "docs/SCOPE.md"
+          "docs/METHODOLOGY.md"
         ],
         "query_steps": [
           "python3 scripts/query_corpus.py --format card",
@@ -138,7 +138,7 @@
         ],
         "read": [
           "docs/orientation.json",
-          "docs/SCOPE.md"
+          "docs/METHODOLOGY.md"
         ],
         "query_steps": [
           "python3 scripts/query_corpus.py --status <claim_status>",
@@ -203,7 +203,7 @@
         ],
         "authority_owners": [
           "docs/claims.json::machine_readable_paper.argument_graph",
-          "docs/SOURCE_MAP.md",
+          "docs/reference/SOURCE_MAP.md",
           "docs/reference/WAVE_INDEX.md"
         ],
         "adjacent_handle_classes": [
@@ -877,7 +877,7 @@
         ],
         "read": [
           "docs/METHODOLOGY.md",
-          "docs/SCOPE.md"
+          "docs/METHODOLOGY.md"
         ],
         "query_steps": [
           "python3 scripts/query_corpus.py --open <remaining_open_proposition_id>",
@@ -887,7 +887,7 @@
         "authority_owners": [
           "docs/methodology.json",
           "docs/claims.json::remaining_open_propositions",
-          "docs/SCOPE.md"
+          "docs/METHODOLOGY.md"
         ],
         "adjacent_handle_classes": [
           "open_proposition_id",
@@ -1471,7 +1471,7 @@
           ],
           "status_summary": "Exact reduced-denominator transport, block-safety and primitive-overshoot equivalences, conditional half-membership consumers, and explicit failures of naive induction.",
           "prior_art_posture": "Exact rational and greedy-block formalisation; no priority claim is made for the assembled source-level package.",
-          "primary_narrative_owner": "docs/SOURCE_MAP.md",
+          "primary_narrative_owner": "docs/reference/SOURCE_MAP.md",
           "source_route": "python3 scripts/query_corpus.py --claim dyadic_prefix_block_safety_interfaces",
           "consumer_or_open_obligation": "Supply actual block-safety, raw-margin, or primitive-overshoot witnesses cofinally; no such unbounded producer is proved. Until the qualified #257 companion has a citable low-duplication theorem spine, this package remains source-map material rather than another gateway inventory.",
           "view_decision": "source_map_now_qualified_future_257_companion_source_only"
@@ -1960,7 +1960,7 @@
       },
       {
         "id": "bounded_human_orientation",
-        "path": "docs/ORIENTATION.md",
+        "path": "docs/reference/ORIENTATION.md",
         "role": "Generated human projection of the same bounded first-read capsule.",
         "authority": "navigation_projection_not_proof_authority",
         "build": "python3 scripts/build_corpus_descriptor.py",
