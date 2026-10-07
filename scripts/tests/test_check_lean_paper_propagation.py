@@ -559,8 +559,38 @@ def test_clause_a_reads_only_tracked_lean_files_of_a_separately_built_library() 
     require(problem is None, f"the #251 certificate theorem does not resolve: {problem}")
 
 
+def test_inline_source_layout_migration_preserves_scientific_rows() -> None:
+    import assemble_reasoning_surfaces as assembler
+    ledger = json.loads(check.LEDGER.read_text())
+    prior = copy.deepcopy(ledger)
+    for key, layout in assembler.PAPERS.items():
+        removed = [(layout['directory'] / f'{name}.tex').relative_to(check.ROOT).as_posix()
+                   for name in assembler.INLINE_PARTS[key]]
+        paper = next(row for row in prior['papers']
+                     if row['problem'] == int(key) and row['side'] == 'long')
+        paper['sources'].extend(removed)
+    migrated = check.migrate_inline_source_layout(prior)
+    require(migrated['rows'] == prior['rows'], 'scientific rows changed')
+    require(migrated['lean_pin'] == prior['lean_pin'], 'replay pin changed')
+    currency, _ = check.locate_rows(migrated, check.read_repository_text)
+    require(not currency.missing, 'migrated sources unreadable')
+    def changed_owner(path):
+        text = check.read_repository_text(path)
+        return text + '\n# mutation\n' if path == 'scripts/assemble_reasoning_surfaces.py' else text
+    currency, _ = check.locate_rows(migrated, changed_owner)
+    require(any('owner digest changed' in error for error in currency.missing),
+            'changed inline owner accepted')
+    def missing_core(path):
+        if path.endswith('/erdos68/core.tex'):
+            raise FileNotFoundError(path)
+        return check.read_repository_text(path)
+    currency, _ = check.locate_rows(migrated, missing_core)
+    require(any('core.tex' in error for error in currency.missing), 'missing scientific source accepted')
+
+
 def main() -> int:
     tests = [
+        test_inline_source_layout_migration_preserves_scientific_rows,
         test_repaired_fixture_passes,
         test_clause_a_missing_renamed_alias_and_untracked_declarations_fail,
         test_clause_b_fails_until_every_declaration_is_rendered,

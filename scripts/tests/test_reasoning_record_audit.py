@@ -174,6 +174,18 @@ class CorpusTests(unittest.TestCase):
                              if 'erdos68/' in path))
         self.assertIn('scripts/assemble_reasoning_surfaces.py', self.base['input_sha256'])
 
+    def test_alternate_root_inline_owner_mutation_refuses(self):
+        root = self.clone_inputs()
+        path = root / 'scripts/assemble_reasoning_surfaces.py'
+        source = path.read_text()
+        changed = source.replace('"extended_record": "",',
+                                 '"extended_record": "changed inline source",', 1)
+        self.assertNotEqual(source, changed)
+        path.write_text(changed)
+        value = audit.report(root, [68])
+        self.assertEqual(value['status'], 'refusal')
+        self.assertIn('captured assembler INLINE_PARTS', value['reason'])
+
     def test_missing_substantive_part_still_refuses(self):
         root = self.clone_inputs()
         (root / 'paper/reasoning-parts/erdos68/core.tex').unlink()

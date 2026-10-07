@@ -110,37 +110,81 @@
       "id": "coverage",
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
-      "end_line": 29162,
-      "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
-      "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
-      "kind": "source"
+      "end_line": 29218,
+      "sha256": "d16c50a5e78ee1ae97f74fac47196ee2801e9a63a18159393825925bd96179b5",
+      "excerpt_sha256": "d16c50a5e78ee1ae97f74fac47196ee2801e9a63a18159393825925bd96179b5",
+      "kind": "source",
+      "rebind_review": {
+        "reason": "Reviewed source-layout migration removes only34empty/terminal file inventory entries and binds their assembler owner. All689scientific ledger rows, statement IDs/statuses, warrants and replay pins are byte-for-byte invariant; flat manuscripts and PDF build identities remain unchanged.",
+        "previous_binding": {
+          "path": "docs/paper_lean_coverage.json",
+          "start_line": 1,
+          "end_line": 29162,
+          "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
+          "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
+        },
+        "boundary": "Structural source inventory only; no scientific or verification status upgrade."
+      }
     },
     {
       "id": "coverage-1041",
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
-      "end_line": 29162,
+      "end_line": 29218,
       "kind": "supplied_snapshot",
-      "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
-      "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
+      "sha256": "d16c50a5e78ee1ae97f74fac47196ee2801e9a63a18159393825925bd96179b5",
+      "excerpt_sha256": "d16c50a5e78ee1ae97f74fac47196ee2801e9a63a18159393825925bd96179b5",
+      "rebind_review": {
+        "reason": "Reviewed source-layout migration removes only34empty/terminal file inventory entries and binds their assembler owner. All689scientific ledger rows, statement IDs/statuses, warrants and replay pins are byte-for-byte invariant; flat manuscripts and PDF build identities remain unchanged.",
+        "previous_binding": {
+          "path": "docs/paper_lean_coverage.json",
+          "start_line": 1,
+          "end_line": 29162,
+          "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
+          "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
+        },
+        "boundary": "Structural source inventory only; no scientific or verification status upgrade."
+      }
     },
     {
       "id": "coverage-reciprocal",
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
-      "end_line": 29162,
+      "end_line": 29218,
       "kind": "supplied_snapshot",
-      "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
-      "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
+      "sha256": "d16c50a5e78ee1ae97f74fac47196ee2801e9a63a18159393825925bd96179b5",
+      "excerpt_sha256": "d16c50a5e78ee1ae97f74fac47196ee2801e9a63a18159393825925bd96179b5",
+      "rebind_review": {
+        "reason": "Reviewed source-layout migration removes only34empty/terminal file inventory entries and binds their assembler owner. All689scientific ledger rows, statement IDs/statuses, warrants and replay pins are byte-for-byte invariant; flat manuscripts and PDF build identities remain unchanged.",
+        "previous_binding": {
+          "path": "docs/paper_lean_coverage.json",
+          "start_line": 1,
+          "end_line": 29162,
+          "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
+          "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
+        },
+        "boundary": "Structural source inventory only; no scientific or verification status upgrade."
+      }
     },
     {
       "id": "coverage-weighted",
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
-      "end_line": 29162,
+      "end_line": 29218,
       "kind": "supplied_snapshot",
-      "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
-      "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
+      "sha256": "d16c50a5e78ee1ae97f74fac47196ee2801e9a63a18159393825925bd96179b5",
+      "excerpt_sha256": "d16c50a5e78ee1ae97f74fac47196ee2801e9a63a18159393825925bd96179b5",
+      "rebind_review": {
+        "reason": "Reviewed source-layout migration removes only34empty/terminal file inventory entries and binds their assembler owner. All689scientific ledger rows, statement IDs/statuses, warrants and replay pins are byte-for-byte invariant; flat manuscripts and PDF build identities remain unchanged.",
+        "previous_binding": {
+          "path": "docs/paper_lean_coverage.json",
+          "start_line": 1,
+          "end_line": 29162,
+          "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
+          "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
+        },
+        "boundary": "Structural source inventory only; no scientific or verification status upgrade."
+      }
     },
     {
       "id": "credit",
