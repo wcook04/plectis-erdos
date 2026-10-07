@@ -7,6 +7,9 @@ The repository works without installation: an agent can read
 ``AGENTS.md`` and the files under ``skills/`` directly.  Installation
 only makes the named skills available from other working directories.
 
+Destination operations default to the namespaced plectis-frontier companion.
+Clone workflows require --skill NAME or explicit --all-clone-skills opt-in.
+
 The command is deliberately preview-first.  It changes the destination only
 when ``--apply`` is present, and it never replaces a different installed skill
 unless ``--force`` is also present.
@@ -123,8 +126,10 @@ def parser() -> argparse.ArgumentParser:
     destination = result.add_mutually_exclusive_group()
     destination.add_argument("--target", choices=("codex", "codex-legacy", "claude"))
     destination.add_argument("--target-dir", type=Path)
-    result.add_argument("--companion", action="store_true", help="install only the portable plectis-frontier companion")
-    result.add_argument("--skill", action="append", help="install only this named skill")
+    selection = result.add_mutually_exclusive_group()
+    selection.add_argument("--companion", action="store_true", help="select the portable companion (the installation default)")
+    selection.add_argument("--skill", action="append", help="select this named clone workflow; repeat for multiple workflows")
+    selection.add_argument("--all-clone-skills", action="store_true", help="explicitly select the complete clone workflow catalog")
     result.add_argument("--mode", choices=("copy", "symlink"), default="copy")
     result.add_argument("--apply", action="store_true", help="perform the displayed changes")
     result.add_argument("--check", action="store_true", help="fail unless every selection is current")
@@ -137,22 +142,25 @@ def main() -> int:
     try:
         catalog = load_catalog()
         available = skill_directories(catalog)
-        if args.companion:
-            if args.skill:
-                raise SkillCatalogError("--companion cannot be combined with --skill")
-            available = {"plectis-frontier": ROOT / ".agents/skills/plectis-frontier"}
-    except (OSError, SkillCatalogError) as exc:
+        companion = {"plectis-frontier": ROOT / ".agents/skills/plectis-frontier"}
+        # Listing remains catalog discovery. Installation never treats an
+        # omitted selector as consent to install every generic clone workflow.
+        chosen = selected_skills(args, available) if args.skill or args.all_clone_skills else companion
+    except (OSError, ValueError, SkillCatalogError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
     if args.list:
-        for row in ([{"id": "plectis-frontier", "description": "Portable task-routed Plectis companion", "path": ".agents/skills/plectis-frontier/SKILL.md"}] if args.companion else catalog["skills"]):
+        if args.companion:
+            rows = [{"id": "plectis-frontier", "description": "Portable task-routed Plectis companion", "path": ".agents/skills/plectis-frontier/SKILL.md"}]
+        else:
+            rows = [row for row in catalog["skills"] if not args.skill or row["id"] in chosen]
+        for row in rows:
             print(f"{row['id']}\t{row['description']}\t{row['path']}")
         if args.target is None and args.target_dir is None:
             return 0
 
     try:
         target = target_directory(args)
-        chosen = selected_skills(args, available)
     except ValueError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2

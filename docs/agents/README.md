@@ -106,11 +106,11 @@ or with the mathematics itself. For learning, specify how much help you want.
 | Show me the open questions and help me choose one | The list from `python3 scripts/query_corpus.py --open`, one chosen row, and the checked results that bear on it |
 | Read the corpus and decide what is worth developing | A direction stated early with its reason, the sources it rests on, what was proved, computed or conjectured, the prior work found, and the next question. [One investigation](../../research/experiments/choices_contraction/README.md) shows the shape |
 | Explain how this repo works to a newcomer | A source-linked map and one relevant next action |
-| Independently reproduce the checked claim `eb_full_support` | Verifier output, checkout commit, assumptions and remaining open boundary |
+| Check the claim records for `eb_full_support` | Record-check output, checkout commit, assumptions and remaining open boundary; no Lean compilation |
 | Improve cold clone navigation | One reproduced failure, a focused repair and the corresponding regression check |
 | Package the work from my old checkout for maintainers | A contribution with the original starting commit and replay evidence |
 
-For the reproduction task, run `python3 scripts/verify_claims.py --claim
+For the record-checking task, run `python3 scripts/verify_claims.py --claim
 eb_full_support`. This checks the recorded claim trail; it does not elaborate
 Lean. For proof, computation, or paper work, let the task router choose the
 workflow and its stronger validation. [CONTRIBUTING](../../CONTRIBUTING.md)

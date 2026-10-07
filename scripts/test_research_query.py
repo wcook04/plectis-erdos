@@ -67,6 +67,83 @@ class ResearchQueryTests(unittest.TestCase):
         expected = next(row for row in actual["claims"] if row["id"] == "finite_prime_weighted_support")
         self.assertEqual(response["object"]["statement"], expected["statement"])
 
+    def exposition_fixture(self, module="Erdos249257/CertificateKernel.lean"):
+        registry = write_registry(self.root, module=module)
+        registry["claims"][0]["paper_label"] = "res:fixture"
+        registry["claims"][0]["declarations"][0]["name"] = "shared_result"
+        (self.root / "docs/claims.json").write_text(json.dumps(registry))
+        papers = [
+            {"paper_id": "historical", "publication_state": "retired", "local_source": "paper/archive/record.tex"},
+            {"paper_id": "active", "publication_state": "active", "local_source": "paper/257/note.tex"},
+            {"paper_id": "wrong-module", "publication_state": "active", "local_source": "paper/other/wrong.tex"},
+            {"paper_id": "commented", "publication_state": "active", "local_source": "paper/other/comment.tex"},
+            {"paper_id": "pending", "publication_state": "pending", "local_source": "paper/other/pending.tex"},
+        ]
+        text = {
+            "historical": r"\label{res:fixture} \mword{Erdos249257/CertificateKernel.lean}{1}{shared_result}{result}",
+            "active": r"\mword{Erdos249257/CertificateKernel.lean}{1}{shared_result}{result}",
+            "wrong-module": r"\mword{Erdos249257/Other.lean}{1}{shared_result}{result}",
+            "commented": r"% \label{res:fixture} \mword{Erdos249257/CertificateKernel.lean}{1}{shared_result}{result}",
+            "pending": r"\mword{Erdos249257/CertificateKernel.lean}{1}{shared_result}{result}",
+        }
+        for paper in papers:
+            source = self.root / paper["local_source"]
+            source.parent.mkdir(parents=True, exist_ok=True)
+            source.write_text(text[paper["paper_id"]])
+        inventory = self.root / "docs/papers/corpus.json"
+        inventory.parent.mkdir(exist_ok=True)
+        inventory.write_text(json.dumps({"papers": papers}))
+        return papers
+
+    def test_actual_shared_module_has_historical_and_current_exposition(self):
+        snapshot = reader.Snapshot(ROOT)
+        response = snapshot.request("get", kind="claim", ident="eb_full_support")
+        self.assertTrue(response["ok"], response)
+        self.assertEqual([p["local_source"] for p in response["record_exposition"]],
+                         ["paper/archive/erdos249-257-main-paper.tex"])
+        current = response["current_exposition"]
+        self.assertEqual([p["local_source"] for p in current],
+                         ["paper/257/erdos-257-mersenne-support-subseries.tex"])
+        self.assertEqual(current[0]["navigation_basis"], "exact_module_declaration_link")
+        self.assertEqual(current[0]["matched_declarations"], [{
+            "module": "Erdos249257/CertificateKernel.lean", "name": "irrational_erdosSum_full_support"}])
+        expected = next(c for c in snapshot.claims["claims"] if c["id"] == "eb_full_support")
+        self.assertEqual(response["object"], {"kind": "claim", **expected})
+        self.assertFalse(response["execution"]["lean_run"])
+        self.assertIn("paper/archive/erdos249-257-main-paper.tex",
+                      [h["handle"] for h in response["source_handles"]])
+
+    def test_exposition_matches_exact_module_and_excludes_comments_and_retired(self):
+        self.exposition_fixture()
+        snapshot = reader.Snapshot(self.root)
+        with patch("subprocess.run", side_effect=AssertionError("exposition must not inspect Git")):
+            response = snapshot.request("get", kind="claim", ident="claim0")
+        self.assertTrue(response["ok"], response)
+        self.assertEqual([p["paper_id"] for p in response["current_exposition"]], ["active"])
+        self.assertEqual([p["paper_id"] for p in response["record_exposition"]], ["historical"])
+        self.assertEqual(response["record_exposition"][0]["publication_state"], "retired")
+        # Remove the sole active exact match: a same basename in another module,
+        # a comment, and a non-active paper must not stand in for that source.
+        (self.root / "paper/257/note.tex").write_text("No declaration link.")
+        fresh = reader.Snapshot(self.root)
+        self.assertEqual(fresh.request("get", kind="claim", ident="claim0")["current_exposition"], [])
+        self.assertEqual(snapshot.request("get", kind="claim", ident="claim0"), response)
+        self.assertIsNone(response["snapshot"]["checkout_commit"])
+
+    def test_exposition_fallback_is_explicitly_related_and_exact_links_take_priority(self):
+        papers = self.exposition_fixture(module="lean/ErdosProblems/Erdos257/Target.lean")
+        snapshot = reader.Snapshot(self.root)
+        response = snapshot.request("get", kind="claim", ident="claim0")
+        self.assertEqual([p["paper_id"] for p in response["current_exposition"]], ["active"])
+        self.assertEqual(response["current_exposition"][0]["navigation_basis"], "related_problem_scope")
+        (self.root / papers[2]["local_source"]).write_text(
+            r"\lword{Erdos257/Target.lean}{7}{shared_result}{result}")
+        fresh = reader.Snapshot(self.root).request("get", kind="claim", ident="claim0")
+        self.assertEqual([p["paper_id"] for p in fresh["current_exposition"]], ["wrong-module"])
+        self.assertEqual(fresh["current_exposition"][0]["navigation_basis"], "exact_module_declaration_link")
+        self.assertEqual(fresh["current_exposition"][0]["matched_declarations"][0]["module"],
+                         "ErdosProblems/Erdos257/Target.lean")
+
     def test_unknown_structured_error(self):
         snapshot = reader.Snapshot(self.root)
         self.error_code(snapshot.request("get", kind="claim", ident="missing"), "unknown_id")

@@ -23,6 +23,9 @@ import check_release_ref
 
 
 TIMEOUT_SECONDS = 1
+# Git clone/checkout and external-disk startup precede the cancellation test.
+# Keep their readiness budget separate from the production gate timeout.
+FIXTURE_SETUP_TIMEOUT_SECONDS = 30
 
 
 def require(condition: bool, message: str) -> None:
@@ -455,13 +458,28 @@ class SnapshotLifecycleTests(unittest.TestCase):
         git(source, "commit", "-qm", "tiny owned release fixture")
         return source, git(source, "rev-parse", "HEAD")
 
-    def wait_file(self, path):
-        deadline = time.monotonic() + 8
+    def wait_file(self, path, *, owner=None, deadline=None):
+        if deadline is None:
+            deadline = time.monotonic() + 8
         while time.monotonic() < deadline:
             if path.exists() and path.read_text().strip():
                 return path.read_text().strip()
+            if owner is not None and owner.poll() is not None:
+                out, err = owner.communicate(timeout=1)
+                self.fail(f"fixture owner exited {owner.returncode} before publishing {path}:\n"
+                          f"stdout: {out}\nstderr: {err}")
             time.sleep(.02)
         self.fail(f"fixture never published {path}")
+
+    def test_readiness_reports_owner_failure_without_waiting_for_setup_deadline(self):
+        owner = SimpleNamespace(poll=lambda: 7, returncode=7,
+                                communicate=lambda **_kwargs: ('clone output', 'checkout failed'))
+        with tempfile.TemporaryDirectory() as raw:
+            with self.assertRaisesRegex(AssertionError, 'owner exited 7.*publishing') as failed:
+                self.wait_file(Path(raw) / 'missing', owner=owner,
+                               deadline=time.monotonic() + FIXTURE_SETUP_TIMEOUT_SECONDS)
+        self.assertIn('clone output', str(failed.exception))
+        self.assertIn('checkout failed', str(failed.exception))
 
     def test_probe_does_not_submit_or_collect_a_release_owner(self):
         with tempfile.TemporaryDirectory() as raw:
@@ -594,7 +612,11 @@ class SnapshotLifecycleTests(unittest.TestCase):
                           f"c.main()")
                 proc = subprocess.Popen([sys.executable, '-c', driver, '--singleflight-worker','--ref',commit,'--timeout-seconds','8'], cwd=source, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
                 try:
-                    snapshot = Path(self.wait_file(ready)); pid = int(self.wait_file(child_pid))
+                    # A single setup deadline covers both the cloned gate and
+                    # its descendant; signal/cleanup waits below stay unchanged.
+                    deadline = time.monotonic() + FIXTURE_SETUP_TIMEOUT_SECONDS
+                    snapshot = Path(self.wait_file(ready, owner=proc, deadline=deadline))
+                    pid = int(self.wait_file(child_pid, owner=proc, deadline=deadline))
                     proc.send_signal(signal.SIGTERM)
                     out, err = proc.communicate(timeout=10)
                     self.assertEqual(proc.returncode, 128 + signal.SIGTERM, (out,err))

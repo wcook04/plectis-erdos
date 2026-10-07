@@ -20,6 +20,7 @@ import subprocess
 import stat
 import sys
 
+from check_problem_note_sources import links, library_relative, strip_comments
 from claim_relationships import resolve_claim_boundary
 from lean_source import library_storage_path
 from validation_singleflight import command_environment
@@ -180,6 +181,40 @@ class Snapshot:
             row["reason"] = self.unavailable.get(handle, "not_registered")
         return row
 
+    def _exposition(self, claim):
+        """Navigate captured paper text; this does not validate printed proof links."""
+        declarations = {
+            (library_relative(d["module"].removeprefix("lean/")), d["name"])
+            for d in claim.get("declarations", []) if isinstance(d.get("name"), str)
+        }
+        problems = {m.group(1) for d in claim.get("declarations", [])
+                    if (m := re.search(r"/Erdos(\d+)/", library_storage_path(d["module"])))}
+        current, related, recorded = [], [], []
+        label = claim.get("paper_label")
+        for paper in self.papers:
+            handle = paper.get("local_source")
+            text = self.sources.get(handle, b"").decode("utf-8")
+            summary = {key: paper.get(key) for key in (
+                "paper_id", "title", "local_source", "local_full_text",
+                "canonical_source_commit", "source_sha256", "publication_state")}
+            if isinstance(label, str) and label in {
+                value.strip() for value in re.findall(r"\\label\s*\{([^{}]+)\}", strip_comments(text))
+            }:
+                recorded.append({**summary, "navigation_basis": "literal_record_label", "paper_label": label})
+            if paper.get("publication_state") != "active":
+                continue
+            matched = declarations & {
+                (library_relative(module.removeprefix("lean/")), name)
+                for module, _, name in links(text) if name is not None
+            }
+            if matched:
+                current.append({**summary, "navigation_basis": "exact_module_declaration_link",
+                                "matched_declarations": [{"module": module, "name": name}
+                                                         for module, name in sorted(matched)]})
+            elif handle and any(handle.startswith(f"paper/{number}/") for number in problems):
+                related.append({**summary, "navigation_basis": "related_problem_scope"})
+        return recorded, current or related
+
     def _get(self, kind, ident):
         if kind not in self.objects:
             raise QueryError("unsupported_operation", f"Unsupported object kind: {kind}")
@@ -196,13 +231,9 @@ class Snapshot:
             result["remaining_open_relationships"] = boundary["remaining_open_relationships"]
             modules = [library_storage_path(d["module"]) for d in row.get("declarations", [])]
             sources.extend(modules)
-            problems = {m.group(1) for module in modules if (m := re.search(r"/Erdos(\d+)/", module))}
-            result["current_exposition"] = [
-                {key: p.get(key) for key in ("paper_id", "title", "local_source", "local_full_text", "canonical_source_commit", "source_sha256")}
-                for p in self.papers if p.get("publication_state") != "retired"
-                and any(p.get("local_source", "").startswith(f"paper/{n}/") for n in problems)
-            ]
-            sources.extend(p["local_source"] for p in result["current_exposition"] if p["local_source"])
+            result["record_exposition"], result["current_exposition"] = self._exposition(row)
+            sources.extend(p["local_source"] for p in
+                           result["record_exposition"] + result["current_exposition"] if p["local_source"])
         if kind == "open" and row.get("paper_anchor", {}).get("source"):
             sources.append(row["paper_anchor"]["source"])
         result["source_handles"] = [self._source(path) for path in dict.fromkeys(sources)]

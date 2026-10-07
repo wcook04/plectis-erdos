@@ -569,8 +569,8 @@
       "path": "docs/agents/README.md",
       "start_line": 1,
       "end_line": 150,
-      "sha256": "2142161b42b50ae0f852bcf3ec4fb58edeb055ed40a9dfbeecb066763cd82b85",
-      "excerpt_sha256": "2142161b42b50ae0f852bcf3ec4fb58edeb055ed40a9dfbeecb066763cd82b85",
+      "sha256": "3394f956d083f9532742c65b45222727ec21891beaa6a530e12ce0ff4ab3773b",
+      "excerpt_sha256": "3394f956d083f9532742c65b45222727ec21891beaa6a530e12ce0ff4ab3773b",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
     {
