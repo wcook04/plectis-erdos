@@ -22,7 +22,7 @@ body:
         [return contract](https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/RETURN_PACKAGE_TEMPLATE.md),
         [resume and replay state](https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#4-evidence-and-replay),
         [bounded frontier route](https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#2-bounded-route), and
-        [accepted contributions](https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/CONTRIBUTIONS.md).
+        [accepted contributions](https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/CONTRIBUTION_RECOGNITION.md).
         Choose the frontier recorded in `return.json`: one numbered problem, a
         mathematical subject spanning zero or more problems, or an architecture
         area. A subject or architecture return must not invent a problem number.

@@ -15,39 +15,39 @@ on:
       - "docs/research-commons/schema/research-contribution-recognition.schema.json"
       - "docs/repository_identity.json"
       - "CONTRIBUTING.md"
-      - "docs/READING_GUIDE.md"
+      - "docs/README.md"
       - "AGENTS.md"
       - "return.json"
       - "route-memory.json"
       - "docs/research-commons/**"
       - "scripts/accept_research_return.py"
       - "scripts/check_research_return_intake.py"
-      - "scripts/test_research_return_intake.py"
+      - "scripts/tests/test_research_return_intake.py"
       - "scripts/build_research_contributions.py"
       - "scripts/continue_research.py"
-      - "scripts/test_continue_research.py"
+      - "scripts/tests/test_continue_research.py"
       - "scripts/proof_workbench.py"
-      - "scripts/test_proof_workbench.py"
-      - "scripts/test_accept_research_return.py"
-      - "scripts/test_research_contributions.py"
+      - "scripts/tests/test_proof_workbench.py"
+      - "scripts/tests/test_accept_research_return.py"
+      - "scripts/tests/test_research_contributions.py"
       - "scripts/route_memory_receipt.py"
       - "scripts/query_route_memory.py"
-      - "scripts/test_query_route_memory.py"
-      - "scripts/test_research_return_workflow.py"
-      - "scripts/test_contribution_entry.py"
-      - "scripts/test_validate_research_return.py"
-      - "scripts/test_contribution_contract_agreement.py"
+      - "scripts/tests/test_query_route_memory.py"
+      - "scripts/tests/test_research_return_workflow.py"
+      - "scripts/tests/test_contribution_entry.py"
+      - "scripts/tests/test_validate_research_return.py"
+      - "scripts/tests/test_contribution_contract_agreement.py"
       - "docs/research-commons/schema/research-return-receipt-v2.schema.json"
       - "scripts/validate_research_return.py"
       - "scripts/repository_identity.py"
       - "scripts/build_research_contribution_recognition.py"
       - "scripts/check_research_contribution_recognition.py"
-      - "scripts/test_research_contribution_recognition.py"
+      - "scripts/tests/test_research_contribution_recognition.py"
       - "skills/README.md"
       - "skills/erdos-research-return/**"
-      - "scripts/test_research_contributions_source_safety.py"
-      - "scripts/test_research_contributions_symlink_safety.py"
-      - "scripts/test_research_contributions_committed_sources.py"
+      - "scripts/tests/test_research_contributions_source_safety.py"
+      - "scripts/tests/test_research_contributions_symlink_safety.py"
+      - "scripts/tests/test_research_contributions_committed_sources.py"
   push:
     branches: [main]
     paths:
@@ -61,39 +61,39 @@ on:
       - "docs/research-commons/schema/research-contribution-recognition.schema.json"
       - "docs/repository_identity.json"
       - "CONTRIBUTING.md"
-      - "docs/READING_GUIDE.md"
+      - "docs/README.md"
       - "AGENTS.md"
       - "return.json"
       - "route-memory.json"
       - "docs/research-commons/**"
       - "scripts/accept_research_return.py"
       - "scripts/check_research_return_intake.py"
-      - "scripts/test_research_return_intake.py"
+      - "scripts/tests/test_research_return_intake.py"
       - "scripts/build_research_contributions.py"
       - "scripts/continue_research.py"
-      - "scripts/test_continue_research.py"
+      - "scripts/tests/test_continue_research.py"
       - "scripts/proof_workbench.py"
-      - "scripts/test_proof_workbench.py"
-      - "scripts/test_accept_research_return.py"
-      - "scripts/test_research_contributions.py"
+      - "scripts/tests/test_proof_workbench.py"
+      - "scripts/tests/test_accept_research_return.py"
+      - "scripts/tests/test_research_contributions.py"
       - "scripts/route_memory_receipt.py"
       - "scripts/query_route_memory.py"
-      - "scripts/test_query_route_memory.py"
-      - "scripts/test_research_return_workflow.py"
-      - "scripts/test_contribution_entry.py"
-      - "scripts/test_validate_research_return.py"
-      - "scripts/test_contribution_contract_agreement.py"
+      - "scripts/tests/test_query_route_memory.py"
+      - "scripts/tests/test_research_return_workflow.py"
+      - "scripts/tests/test_contribution_entry.py"
+      - "scripts/tests/test_validate_research_return.py"
+      - "scripts/tests/test_contribution_contract_agreement.py"
       - "docs/research-commons/schema/research-return-receipt-v2.schema.json"
       - "scripts/validate_research_return.py"
       - "scripts/repository_identity.py"
       - "scripts/build_research_contribution_recognition.py"
       - "scripts/check_research_contribution_recognition.py"
-      - "scripts/test_research_contribution_recognition.py"
+      - "scripts/tests/test_research_contribution_recognition.py"
       - "skills/README.md"
       - "skills/erdos-research-return/**"
-      - "scripts/test_research_contributions_source_safety.py"
-      - "scripts/test_research_contributions_symlink_safety.py"
-      - "scripts/test_research_contributions_committed_sources.py"
+      - "scripts/tests/test_research_contributions_source_safety.py"
+      - "scripts/tests/test_research_contributions_symlink_safety.py"
+      - "scripts/tests/test_research_contributions_committed_sources.py"
   workflow_dispatch:
 
 permissions:
@@ -161,14 +161,14 @@ jobs:
 
       - name: Verify the read-only workflow and issue intake contract
         run: |
-          python3 scripts/test_research_return_workflow.py
-          python3 -O scripts/test_research_return_workflow.py
-          python3 scripts/test_contribution_entry.py
-          python3 -O scripts/test_contribution_entry.py
-          python3 scripts/test_contribution_contract_agreement.py
-          python3 -O scripts/test_contribution_contract_agreement.py
-          python3 scripts/test_research_return_intake.py
-          python3 -O scripts/test_research_return_intake.py
+          python3 scripts/tests/test_research_return_workflow.py
+          python3 -O scripts/tests/test_research_return_workflow.py
+          python3 scripts/tests/test_contribution_entry.py
+          python3 -O scripts/tests/test_contribution_entry.py
+          python3 scripts/tests/test_contribution_contract_agreement.py
+          python3 -O scripts/tests/test_contribution_contract_agreement.py
+          python3 scripts/tests/test_research_return_intake.py
+          python3 -O scripts/tests/test_research_return_intake.py
 
       - name: Keep unaccepted GitHub returns out of promotion and recognition
         run: |
@@ -211,20 +211,20 @@ jobs:
       - name: Verify accepted-only recognition and impact projections
         run: |
           set -euo pipefail
-          python3 scripts/test_research_contribution_recognition.py
-          python3 -O scripts/test_research_contribution_recognition.py
+          python3 scripts/tests/test_research_contribution_recognition.py
+          python3 -O scripts/tests/test_research_contribution_recognition.py
           python3 scripts/check_research_contribution_recognition.py
           python3 -O scripts/check_research_contribution_recognition.py
-          python3 scripts/test_research_contributions_result_classes.py
-          python3 -O scripts/test_research_contributions_result_classes.py
-          python3 scripts/test_research_contributions_output_safety.py
-          python3 -O scripts/test_research_contributions_output_safety.py
-          python3 scripts/test_research_contributions_source_safety.py
-          python3 -O scripts/test_research_contributions_source_safety.py
-          python3 scripts/test_research_contributions_symlink_safety.py
-          python3 -O scripts/test_research_contributions_symlink_safety.py
-          python3 scripts/test_research_contributions_committed_sources.py
-          python3 -O scripts/test_research_contributions_committed_sources.py
+          python3 scripts/tests/test_research_contributions_result_classes.py
+          python3 -O scripts/tests/test_research_contributions_result_classes.py
+          python3 scripts/tests/test_research_contributions_output_safety.py
+          python3 -O scripts/tests/test_research_contributions_output_safety.py
+          python3 scripts/tests/test_research_contributions_source_safety.py
+          python3 -O scripts/tests/test_research_contributions_source_safety.py
+          python3 scripts/tests/test_research_contributions_symlink_safety.py
+          python3 -O scripts/tests/test_research_contributions_symlink_safety.py
+          python3 scripts/tests/test_research_contributions_committed_sources.py
+          python3 -O scripts/tests/test_research_contributions_committed_sources.py
 
       - name: Validate the pull-request return artifact when present
         if: ${{ github.event_name == 'pull_request' }}
@@ -239,22 +239,22 @@ jobs:
       - name: Exercise start, package, and adversarial return validation
         run: |
           set -euo pipefail
-          python3 scripts/test_validate_research_return.py
-          python3 -O scripts/test_validate_research_return.py
-          python3 scripts/test_proof_workbench.py
-          python3 scripts/test_continue_research.py
-          python3 -O scripts/test_continue_research.py
-          python3 scripts/test_query_route_memory.py
-          python3 -O scripts/test_query_route_memory.py
+          python3 scripts/tests/test_validate_research_return.py
+          python3 -O scripts/tests/test_validate_research_return.py
+          python3 scripts/tests/test_proof_workbench.py
+          python3 scripts/tests/test_continue_research.py
+          python3 -O scripts/tests/test_continue_research.py
+          python3 scripts/tests/test_query_route_memory.py
+          python3 -O scripts/tests/test_query_route_memory.py
 
       - name: Validate accepted receipts and generated attribution views
         run: |
           set -euo pipefail
-          python3 scripts/test_accept_research_return.py
-          python3 -O scripts/test_accept_research_return.py
-          python3 scripts/test_research_contributions.py
+          python3 scripts/tests/test_accept_research_return.py
+          python3 -O scripts/tests/test_accept_research_return.py
+          python3 scripts/tests/test_research_contributions.py
           # Keep the accepted-only generated projection checked when Python
           # assertions are disabled, as on optimized downstream invocations.
-          python3 -O scripts/test_research_contributions.py
+          python3 -O scripts/tests/test_research_contributions.py
           python3 scripts/build_research_contributions.py --check
           python3 -O scripts/build_research_contributions.py --check

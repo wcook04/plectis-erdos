@@ -12,14 +12,18 @@ procedures and platform-specific requirements.
 For one concrete replay, use the [#257 weighted theorem](../docs/verification/EXTERNAL_VERIFICATION_REPLAY.md#reviewer-replay).
 Its prerequisites and deliberate failure controls are part of the procedure.
 
-| Files | Role |
+| Source or configuration | Role |
 |---|---|
-| [formalization.yaml](../formalization.yaml) | Root manifest selecting the formal interfaces. |
-| [ExternalVerification/](ExternalVerification/) and other named Lean directories | Challenge statements, solution wrappers and supporting modules for selected checks. |
-| [Solutions/](Solutions/) | Solutions for additional selected interfaces. |
-| [NegativeSolutions/](NegativeSolutions/) and files named `NegativeSolution` | Deliberately invalid controls used to test rejection. |
-| [comparator.json](comparator.json) and the other Comparator configurations | Selected modules and permitted assumptions for each replay. |
-| [external-verification-release-contract.json](external-verification-release-contract.json) | The evidence required by the release checks. |
+| [Root manifest](../formalization.yaml) and [root Comparator configuration](comparator.json) | Select the headline interfaces in [ExternalVerification](ExternalVerification/). The configuration owns the roster. |
+| [Weighted-support configuration](comparator-weighted-support.json) | Focused #257 replay; use the reviewer procedure above. |
+| [Feedback-policy configuration](comparator-feedback-policy.json) | Selected feedback-policy interface and its axiom budget. |
+| [#1049 configuration](comparator-1049-numerical-height.json) and [metadata](comparator-1049-numerical-height.metadata.json) | Numerical-height packet in [ExternalVerification1049](ExternalVerification1049/); [replay guide](../docs/verification/COMPARATOR_1049_NUMERICAL_HEIGHT.md). |
+| [#1041 solved-family packet](ExternalVerification1041SolvedFamilies/README.md) | Exact selected polynomial-family statements and their proof boundaries. |
+| [#249 kernel-basis packet](ExternalVerification249TotientKernelBasis/README.md) | Independent Challenge statements and separate positive/negative solution libraries. |
+| [Large #251 certificate](Erdos251LargeCertificate/) | Non-default Lake library for the restartable finite certificate. [Reproduction and limits](../research/experiments/erdos251/README.md); the library's explicit source ownership is in [lakefile.toml](../lakefile.toml). |
+| [Solutions](Solutions/), [NegativeSolutions](NegativeSolutions/) and configurations named `negative-mismatch` | Proof-bearing wrappers and deliberately invalid rejection controls. Negative controls must not become ordinary proof sources. |
+| [#243 density](erdos243-density-validation.json), [#249 validation](erdos249-v8-validation.json), [#269 validation](erdos269-wavea-validation.json), [#68 interval](erdos68-strict-successor.json), [#1041 audit](erdos1041-returned-r18-v5-full-audit-evidence.json) | Separate validation/export records, each with its own source and scope. |
+| [Release contract](external-verification-release-contract.json) | Evidence required by the release checks. |
 
 A configured interface is not a record of a successful replay. Consult the
 dossier for the selected statement, source revision and recorded outcome.

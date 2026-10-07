@@ -3,148 +3,52 @@
 
 # Working with a coding agent
 
-Start a research session from [AGENTS.md](../../AGENTS.md). It routes the task
-to the relevant skill and a small set of files. If you are deciding what to
-work on, the [research-shift guide](../FRONTIER_RELAY.md) explains how to choose
-a question, record what happened and return the work.
+## Start with current public work
 
-These guides are for the next step, once you have a problem, statement or tool
-to inspect. Without a clone, give your model the
-[reading edition](../reading-edition/README.md); it carries the same research
-instruction as the clone.
+Start with [AGENTS.md](../../AGENTS.md) and route your actual question through
+`python3 scripts/agent_entry.py --entry "<task>"`. Follow the selected skill;
+its task boundaries and validation determine what the agent should do.
+[Reproducibility](../REPRODUCIBILITY.md) owns clone setup and proof execution.
+No private checkout, plugin or model API key is required for repository routing.
 
 ## Apply a result to a changed example
 
-Start with the [small weighted #257 task packet](../reading-edition/weighted-257-task.md).
-It works without a clone; save the [raw text](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/weighted-257-task.md)
-for offline reading. Choose one hint, a second hint, or the full worked answer.
-
-> Help me apply the weighted #257 criterion to $A(c,p)$ in the task packet.
-> Decide the three cases $c=2,p=1,b=2$; $c=2,p=1,b=3$; and $c=2,p=2$
-> at every integer base at least two. Give me one hint first and stop.
-> When I ask for the answer, state the failed or satisfied hypothesis,
-> exact source and open boundary. Distinguish the Lean-checked criterion
-> from the ordinary deduction for this family.
-
-For an agent started elsewhere, see the [portable companion](PORTABLE_COMPANION.md)
-for the directory skill package, supported installation routes and observed client limits.
-
-With a clone, use Git and Python 3; Lean is needed only for proof compilation.
-After the setup below, route the actual task:
-
-```sh
-python3 scripts/agent_entry.py --entry "Can you explain when the weighted criterion applies and help me change a hypothesis?"
-python3 scripts/research_query.py get claim finite_prime_weighted_support
-python3 scripts/query_corpus.py --open remaining_open.universal_257_all_infinite_supports --format json
-```
-
-Read the task packet and selected sources, then do the mathematical task.
-Printing a query response alone does not answer it. `verify_claims.py` checks
-recorded source relationships; it does not compile a proof. The Lean build
-instructions in [reproducibility](../REPRODUCIBILITY.md) cover proof execution.
+The [weighted #257 task packet](../reading-edition/weighted-257-task.md) works
+without a clone. Ask for one hint, a second hint or the worked answer, and
+identify the exact failed or satisfied hypothesis. Its
+[observation protocol](../reading-edition/weighted-257-task.md#observe-an-outside-attempt)
+explains how to record a willing reader's attempt without claiming measured
+outcomes. For broader reading without a clone, use the
+[reading edition](../reading-edition/README.md).
 
 ### Observe an outside attempt
 
-For a willing reader, use the same packet and chosen learning depth. Record
-edition fingerprint, environment, selected case, requested hints, interventions,
-answer and source locations. Assess whether the answer respects all hypotheses,
-withholds an arithmetic verdict when the test fails, distinguishes the ordinary
-deduction from the formal criterion, and identifies the unresolved universal
-claim. Ask the reader for one related question of their own; record time and
-obstacles when they agree. Return observations or corrections through
-[Contributing](../../CONTRIBUTING.md), preserving attribution and any limits.
-This is an attempt protocol; it records no participants or measured outcomes.
-
-## Start with current public work
-
-Use a coding agent that can read local files and run terminal commands. Its
-provider does not matter; the shared entry is the root `AGENTS.md`. No plugin,
-private checkout, model API key or Lean installation is needed to route a task.
-Proof work later uses the toolchain described by its selected skill.
-
-For a new workspace, use Git and Python 3:
-
-```sh
-git clone --filter=blob:none --branch main https://github.com/wcook04/plectis-erdos.git
-cd plectis-erdos
-python3 scripts/agent_entry.py --checkout --check-upstream
-python3 scripts/agent_entry.py --entry "Can you explain when the weighted criterion applies and help me change a hypothesis?"
-```
-
-The version check reads public `main` without fetching or changing your files.
-It distinguishes an equal commit, a different commit, and an unavailable
-comparison, and reports local modifications separately. An offline task still
-works; omit `--check-upstream`. Matching `main` is an observation at check time,
-not a promise that no new commit will appear. Record the starting commit.
-
-If you already have a clone with work in it, keep it. Compare its revision first;
-do not reset or overwrite it to obtain newer material. A separate clone in a
-new directory gives you current public work while preserving the old delta.
-For a historical reproduction, check out the requested tag explicitly.
-[Issue #106](https://github.com/wcook04/plectis-erdos/issues/106) reproduces a
-frozen edition; [#105](https://github.com/wcook04/plectis-erdos/issues/105)
-introduces research frontiers. This checkout's router and source files describe
-the capabilities actually available to your agent.
-
-Give the agent this prompt, replacing the bracketed task:
-
-> Read the root AGENTS.md. My task is [a concrete question or change, or: read
-> the corpus and decide what is worth developing]. Route it
-> with scripts/agent_entry.py and follow the selected skill. Record the checkout
-> commit and local modifications; check public main if I asked for latest work.
-> Read the smallest relevant source set, do the task, and run its relevant
-> checks. Return the source paths, result, exact commands and outcomes, and any
-> remaining assumptions or unresolved step. Preserve unrelated work. Prepare
-> proposed contributions using this repository's contribution workflow.
-
-Start with a task below. For research, you can begin with a listed question
-or with the mathematics itself. For learning, specify how much help you want.
-
-| Task to give your agent | Useful result |
-|---|---|
-| Help me work through the #257 weighted theorem, one hint at a time | The named statement and one hint matched to your background, followed by space for your attempt. [Reading guidance](../READING_GUIDE.md#work-through-an-argument) |
-| Show me the open questions and help me choose one | The list from `python3 scripts/query_corpus.py --open`, one chosen row, and the checked results that bear on it |
-| Read the corpus and decide what is worth developing | A direction stated early with its reason, the sources it rests on, what was proved, computed or conjectured, the prior work found, and the next question. [One investigation](../../research/experiments/choices_contraction/README.md) shows the shape |
-| Explain how this repo works to a newcomer | A source-linked map and one relevant next action |
-| Check the claim records for `eb_full_support` | Record-check output, checkout commit, assumptions and remaining open boundary; no Lean compilation |
-| Improve cold clone navigation | One reproduced failure, a focused repair and the corresponding regression check |
-| Package the work from my old checkout for maintainers | A contribution with the original starting commit and replay evidence |
-
-For the record-checking task, run `python3 scripts/verify_claims.py --claim
-eb_full_support`. This checks the recorded claim trail; it does not elaborate
-Lean. For proof, computation, or paper work, let the task router choose the
-workflow and its stronger validation. [CONTRIBUTING](../../CONTRIBUTING.md)
-explains how to return work and receive credit. An agent's successful run does
-not itself establish a new mathematical result.
+Follow the task packet's [observation protocol](../reading-edition/weighted-257-task.md#observe-an-outside-attempt)
+to preserve the reader's consent, requested help, source identity and evidence limits.
 
 ## Find the tool for the job
 
-| Your next step | Guide | What you get |
-|---|---|---|
-| Find a claim, source declaration, paper passage or check | [Agent workbench](AGENT_WORKBENCH.md) | Commands grouped by the question they answer. |
-| Inspect the evidence before choosing a task | [Proof cockpit](PROOF_COCKPIT.md) | A compact view of the current records and routes into the details. |
-| Work from an actual Lean goal | [Proof-state compiler](PROOF_STATE_COMPILER.md) | The proof context, relevant source and available follow-up tools. |
-| Understand how statements and relationships are indexed | [Semantic compiler](SEMANTIC_COMPILER.md) | The query layer and the source records behind it. |
-| Change source, claims or public wording | [Agent guide](AGENT_GUIDE.md) | Authority, change order, validation and contribution rules. |
-| Offer research sessions through a community or hosted service | [Frontier distribution](FRONTIER_DISTRIBUTION.md) | Setup and distribution instructions. |
+| Your next step | Maintained guide |
+|---|---|
+| Find a claim, declaration, paper passage or check | [Agent workbench](AGENT_WORKBENCH.md) |
+| Inspect the current evidence and routes | [Proof cockpit](AGENT_WORKBENCH.md#proof-cockpit) |
+| Compile the context of an actual Lean goal | [Proof-state compiler](PROOF_STATE_COMPILER.md) |
+| Query indexed statements, relationships and captured sources | [Semantic compiler](SEMANTIC_COMPILER.md), including the [compact query contract](SEMANTIC_COMPILER.md#compact-research-queries) |
+| Trace an argument through dependencies | [Argument graph](ARGUMENT_GRAPH.md) |
+| Change source, claims or public wording | [Agent guide](AGENT_GUIDE.md) |
+| Choose bounded research and return a checkable result | [Research shift](FRONTIER_RELAY.md) |
+| Install the companion from another workspace | [Portable companion](PORTABLE_COMPANION.md) |
+| Offer a community or hosted research session | [Distribution runbook](FRONTIER_RELAY.md#distribution-and-community-operation) |
 
 ## Make and return a change
 
-Read [Contributing](../../CONTRIBUTING.md) before preparing a return. It accepts
-an ordinary issue or pull request; a structured research package is useful
-when another session needs to resume your investigation. The
-[research commons](../research-commons/README.md) explains how provenance,
-review and credit stay with the returned work.
+[Contributing](../../CONTRIBUTING.md) owns issues, pull requests, provenance and
+credit; the [research commons](../research-commons/README.md) explains structured
+returns. Follow the [agent guide](AGENT_GUIDE.md#validation) for the affected
+owner's checks. Query and record-check outputs locate evidence; they do not
+compile a proof or establish a new mathematical result.
 
-Use [reproducibility](../REPRODUCIBILITY.md) for the clone and proof-build
-instructions, and the [agent guide](AGENT_GUIDE.md) for checks specific to the
-kind of change. Run the relevant tool's own tests as well. Keep mathematical
-judgement with the researcher: a query result helps locate evidence, while
-Lean checks the exact formal proof submitted to it.
-
-For the design behind these tools, read [the architecture guide](../ARCHITECTURE.md)
-or the [project papers](../../paper/README.md#project-papers).
-For the mathematics, return to [the problem papers](../../paper/README.md#problem-papers).
+Read [architecture](../ARCHITECTURE.md) for the tool design, the
+[project papers](../../paper/README.md#project-papers) for its exposition, and
+the [problem papers](../../paper/README.md#problem-papers) for mathematics.
 [All documentation](../README.md).
-
-The [compact query contract](RESEARCH_QUERY.md) describes source snapshots, structured errors, bounded reading and the four read-only operations.

@@ -514,6 +514,38 @@ def span_specs(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return specs
 
 
+def migrate_inline_source_layout(ledger: dict[str, Any]) -> dict[str, Any]:
+    """Retire only assembler-declared nonmathematical source slots."""
+    import copy
+    import assemble_reasoning_surfaces as assembler
+    updated = copy.deepcopy(ledger)
+    owner_path = 'scripts/assemble_reasoning_surfaces.py'
+    owner_digest = hashlib.sha256((ROOT / owner_path).read_bytes()).hexdigest()
+    for key, layout in assembler.PAPERS.items():
+        output = layout['output'].relative_to(ROOT).as_posix()
+        if assembler.assemble(key) != read_repository_text(output):
+            raise LedgerFormatError(f'{key}: flat manuscript differs from assembly')
+        slots = {(layout['directory'] / f'{name}.tex').relative_to(ROOT).as_posix(): value
+                 for name, value in assembler.INLINE_PARTS[key].items()}
+        if any(value not in ('', '\\end{document}\n') for value in slots.values()):
+            raise LedgerFormatError('inline migration may remove only empty/terminal boilerplate')
+        for paper in updated['papers']:
+            removed = [path for path in paper['sources'] if path in slots]
+            if not removed:
+                continue
+            if any(row.get('path') in removed or str(row.get('source', '')).split(':', 1)[0] in removed
+                   for row in updated['rows']):
+                raise LedgerFormatError('inline source slot carries a scientific row')
+            paper['sources'] = [path for path in paper['sources'] if path not in slots]
+            paper['assembly_source_layout'] = {
+                'owner': owner_path, 'sha256': owner_digest,
+                'retired_boilerplate_sources': removed,
+                'boundary': 'Empty or terminal slots only; flat manuscript bytes, scientific rows and replay pins unchanged.',
+            }
+    updated['content_digest'] = content_digest(updated)
+    return updated
+
+
 def locate_rows(
     ledger: dict[str, Any], read: Callable[[str], str]
 ) -> tuple[Currency, dict[str, str]]:
@@ -524,6 +556,14 @@ def locate_rows(
     for row in ledger.get("rows", []):
         rows_by_paper.setdefault(row.get("paper_id"), []).append(row)
     for paper in ledger.get("papers", []):
+        binding = paper.get('assembly_source_layout')
+        if binding:
+            try:
+                actual = hashlib.sha256(read(binding['owner']).encode()).hexdigest()
+                if actual != binding['sha256']:
+                    currency.missing.append(f"{paper.get('paper_id')}: assembly source layout owner digest changed")
+            except (OSError, UnsafeSourceInput, KeyError) as error:
+                currency.missing.append(f"{paper.get('paper_id')}: assembly source layout owner unreadable: {error}")
         paper_rows = rows_by_paper.get(paper.get("paper_id"), [])
         sources: list[tuple[str, str]] = []
         for path in paper.get("sources", []):
@@ -1419,6 +1459,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--claim-evidence", action="store_true",
                         help="run the structural claim-evidence admission gate, including named gaps")
     parser.add_argument("--json", action="store_true", help="print the full result as JSON")
+    parser.add_argument("--migrate-inline-source-layout", action="store_true",
+                        help="retire reviewed assembler-owned empty/terminal source slots only")
     parser.add_argument("--restamp", action="store_true",
                         help="rewrite moved source lines, the summary block and the content "
                              "digest, then check")
@@ -1438,6 +1480,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.rows is not None:
         print_rows(matching_rows(ledger, args.rows))
         return 0
+    if args.migrate_inline_source_layout:
+        ledger = migrate_inline_source_layout(ledger)
+        LEDGER.write_text(json.dumps(ledger, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     if args.restamp:
         currency, _texts = locate_rows(ledger, read_repository_text)
         ledger = restamped(ledger, currency.drift)

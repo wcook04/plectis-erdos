@@ -160,8 +160,8 @@ SYSTEMS_EXPERT_QUESTION_ID = "XQSYS-ten-minute-hostile-reader"
 HUMAN_SURFACES = (
     "README.md",
     "docs/ARCHITECTURE.md",
-    "docs/SCOPE.md",
-    "docs/ORIENTATION.md",
+    "docs/METHODOLOGY.md",
+    "docs/reference/ORIENTATION.md",
 )
 # The paper shelf is a generated first-contact surface with its own authority
 # (Palomar's candidate ranking plus the paper corpus).  Keep it outside the
@@ -180,8 +180,10 @@ PAPER_LIBRARY_FIRST_CONTACT_BUDGET_BYTES = (
     * len(json.loads(safe_read_text("docs/papers/corpus.json"))["papers"])
 )
 # Volatile semantic counts live on the generated results surface, not the compact README.
-CENSUS_SURFACES = ("docs/RESULTS.md",)
+CENSUS_SURFACES = ("docs/semantic/README.md",)
 INCREMENTAL_BUILD_SURFACES = (
+    "docs/agents/AGENT_GUIDE.md",
+    "skills/lean-concurrent-validation/SKILL.md",
     "README.md",
     # The build contract moved off the front page with the rest of the detail
     # when the README was cut to its reader budget. It is on the document the
@@ -283,21 +285,17 @@ HUMAN_SURFACE_BUDGET_BYTES = {
     # public, before the results inventory.
     "README.md": 28_400 + 400 * INDEXED_PROBLEM_COUNT,
     "docs/ARCHITECTURE.md": 18_000,
-    # docs/SCOPE.md must list every remaining-open identifier and its bounded query,
-    # so two lines of it are spoken for by each registered proposition: measured
-    # at 139 bytes a proposition against 2,528 bytes of prose. The flat 4,000
-    # was set at eleven propositions and could not survive the repository
-    # registering the eight its own papers already state.
-    "docs/SCOPE.md": 2_800
-    + 160
-    * len(
-        json.loads(safe_read_text("docs/claims.json"))["remaining_open_propositions"]
-    ),
+    # Existing methodology rules plus release-boundary prose, exact open queries
+    # and non-claims. Per-record allowances permit registry growth without
+    # allowing an unbounded authored guide.
+    "docs/METHODOLOGY.md": 19_000
+    + 180 * len(json.loads(safe_read_text("docs/claims.json"))["remaining_open_propositions"])
+    + 250 * len(json.loads(safe_read_text("docs/claims.json"))["non_claims"]),
     # The generated orientation is budgeted by its own builder, which scales
     # with the registered open boundary and the mathematical programmes it is
     # required to carry. Pinning a second, smaller number here meant this gate
     # could reject a file the builder had just certified as bounded.
-    "docs/ORIENTATION.md": build_corpus_descriptor.orientation_markdown_budget_bytes(
+    "docs/reference/ORIENTATION.md": build_corpus_descriptor.orientation_markdown_budget_bytes(
         len(json.loads(safe_read_text("docs/orientation.json"))[
             "remaining_open_propositions"
         ]),
@@ -335,12 +333,22 @@ OPEN_PROPOSITION_PACKET_BYTES = 400
 # following it therefore reaches. They carry the recoverable detail the front
 # page used to hold itself.
 FIRST_CONTACT_ROUTED_SURFACES = (
-    "docs/READING_GUIDE.md",
+    "paper/README.md",
+    "docs/EXTERNAL_VERIFICATION.md",
+    "docs/semantic/README.md",
+    "docs/corpus_descriptor.json",
+    "docs/README.md",
     "docs/RESULTS.md",
     "docs/agents/AGENT_WORKBENCH.md",
     "docs/REPRODUCIBILITY.md",
     "CONTRIBUTING.md",
 )
+FIRST_CONTACT_ROUTED_BUDGET_BYTES = {
+    "paper/README.md": 20_000,
+    "docs/EXTERNAL_VERIFICATION.md": 16_000,
+    "docs/semantic/README.md": 24_000,
+    "docs/corpus_descriptor.json": 64_000,
+}
 PACKET_BUDGET_BYTES = (
     20_480 + OPEN_PROPOSITION_PACKET_BYTES * REMAINING_OPEN_PROPOSITION_COUNT
 )
@@ -771,139 +779,52 @@ def check_expert_handoff_protocol() -> str:
 
 
 def human_tasks(summary: dict[str, Any]) -> dict[str, list[list[str]]]:
-    """Facts a reader must recover from the bounded README first contact.
+    """Capabilities recoverable from the front page and its named guides.
 
-    Each task contains conjunctions of semantic anchor groups.  Alternatives
-    within one group permit harmless wording changes; satisfying one task with
-    tokens scattered across three documents is deliberately impossible.
+    Keep exact status and evidence limits, while routing detailed inventories
+    to their existing owners instead of requiring duplicate prose on entry.
+    The adversarial tests remove each alternative from every routed surface.
     """
-    open_rows = {row["id"]: row for row in summary["remaining_open_propositions"]}
     return {
         "identity_and_public_boundary": [
-            ["self-contained public"],
-            ["Plectis"],
-            ["not an entrypoint into any private development system"],
+            ["self-contained public"], ["Plectis"],
+            ["require no private development system"],
         ],
         "state_problem_frontier": [
             [release_status_boundary()],
             ["S = ∑ φ(n)/2ⁿ", "Is the binary Lambert series sum phi(n)/2^n irrational?"],
-            ["∑_{n∈A} 1/(2ⁿ - 1)", "sum of 1/(2^n-1) over every infinite set"],
-            ["every infinite", "for every infinite"],
+            ["sum of 1/(2^n-1) over every infinite set"],
         ],
         "recover_blank_slate_problem_card": [
-            ["#68"],
-            ["n!−1", "n!-1"],
-            ["#243"],
-            ["rapidly growing", "rapid-growth"],
-            ["Sylvester recurrence"],
-            ["#249"],
-            ["∑ φ(n)/2ⁿ"],
-            ["#251"],
-            ["∑ p_n/2ⁿ", "sum p_n/2^n", "dyadic series of consecutive primes"],
-            ["#257"],
-            ["every infinite"],
-            ["#269"],
-            ["running lcms"],
-            ["#1041"],
-            ["lemniscate"],
-            ["#1049"],
-            ["rational bases"],
-            ["no query is required"],
-            ["does not require a private repository"],
-        ],
-        "distinguish_release_source_and_authority": [
-            ["latest tagged release and citation anchor"],
-            ["formal-source checkpoint"],
-            ["this release ships", "not a new tagged release"],
+            [f"Problem {number}]("]
+            for number in (68, 243, 249, 251, 257, 269, 1041, 1049)
+        ] + [["Sylvester recurrence"], ["rational bases"], ["lemniscate"]],
+        "distinguish_evidence_and_authority": [
             [PROOF_AUTHORITY],
+            ["A finite certificate, an equivalent restatement or an unproved conditional"],
+            ["does not discharge an infinite target"],
+            ["claims.json"], ["methodology"],
         ],
-        "recover_headline_statuses": [
-            ["formalised here"],
-            ["conditional reduction"],
-            ["verified finite instance"],
-            ["does not show that the actual orbit avoids", "does not show the actual orbit avoids"],
-            ["does not prove successful cases beyond every fixed cutoff"],
-        ],
-        "recover_farey_boundary": [
-            ["classical Farey/mediant bound"],
-            ["Farey's method supplies the number directly"],
-            ["numerical delta `0`", "numerical delta 0"],
-            ["exactly the Farey bound, not an improvement"],
-        ],
-        "recover_breadth_beyond_headlines": [
-            ["eventually-periodic nonnegative weighted irrationality"],
-            ["signed irrational-or-base-terminating dichotomy"],
-            [
-                "five binary-carry criteria/consequences",
-                "five binary-carry criteria or consequences",
-            ],
-            ["two scoped #249 no-go countermodels"],
-        ],
-        "recover_independent_exact_packages": [
-            ["fair-coin coprimality", "P(gcd(X,Y)=1)"],
-            ["squared-Lambert gcd moments"],
-            ["Stern–Brocot cylinder law"],
-            ["(2/3)^d"],
-            ["Fibonacci/continuant run stability"],
-            ["F_{r+3}"],
-            ["tempered binary tail rigidity"],
-            ["exact Möbius-shadow denominator"],
-            ["scalar-localisation height obstruction"],
-        ],
-        "recover_scale_and_assembly": [
-            ["Lean modules"],
-            ["Formal results and supporting lemmas"],
-            ["Curated claim records"],
-            ["Contribution families"],
-            ["navigation counts, not novelty claims"],
-        ],
-        "name_exact_open_frontier": [
-            [open_rows["remaining_open.erdos_249_irrationality"]["statement"],
-             "Prove that `S = ∑ φ(n)/2ⁿ` is irrational"],
-            [open_rows["remaining_open.unbounded_certificate_supply"]["statement"],
-             "Produce the unbounded certificate supply"],
-            [open_rows["remaining_open.universal_257_all_infinite_supports"]["statement"],
-             "Prove irrationality of `∑_{n∈A} 1/(2ⁿ - 1)` for every infinite"],
-        ],
-        "route_exact_expert_handoffs": [
-            ["exact expert handoffs"],
-            ["what input is requested"],
-            ["current guess"],
-            ["alternatives"],
-            ["discriminating evidence"],
-            ["checked consumer"],
-            ["endpoint-or-counterexample boundary"],
+        "route_exact_open_frontier_and_handoffs": [
+            ["python3 scripts/query_corpus.py --open"],
             ["python3 scripts/query_expert_handoffs.py"],
+            ["argument frontier"],
         ],
         "choose_a_next_read": [
-            # The anchor is "a route into the manuscripts exists", not the name
-            # of one manuscript. This read ["Exposition PDF"] alone, which is
-            # the label of the joint #249/#257 paper -- the single manuscript
-            # docs/papers/corpus.json records as retired, whose "problem-specific
-            # successors are the active reader routes". So the gate required the
-            # reader's next-read bullet to name the superseded paper, and
-            # naming the live per-problem route instead failed it.
-            ["per-problem papers", "Exposition PDF", "joint PDF", "docs/papers"],
-            ["docs/agents/AGENT_GUIDE.md"],
-            ["docs/orientation.json"],
-            ["docs/SOURCE_MAP.md"],
+            ["paper/README.md"], ["reference/SOURCE_MAP.md"],
+            ["agents/ARGUMENT_GRAPH.md"],
+        ],
+        "inspect_generated_inventory_without_promoting_it": [
+            ["semantic/README.md#corpus-census"],
+            ["Declaration counts include generated certificate families"],
+            ["do not count mathematical contributions"],
+            ["python3 scripts/query_semantic.py inventory"],
         ],
         "navigate_without_compiling": [
-            ["Whole-corpus agent navigation"],
-            ["without a Lean build"],
-            ["--tour --format card"],
-            ["corpus scale"],
-            ["mathematical map"],
-            ["canonical eight-problem map"],
-            ["problem-registry"],
-            [
-                "distinct reviewed #249/#257 open-proposition frontier",
-                "exact open frontier",
-            ],
-            ["agent_native_corpus_navigation"],
-            ["every indexed declaration"],
-            ["exact dependencies for both loaded roots"],
-            ["navigation projections, not proof authority"],
+            ["python3 scripts/proof_cockpit.py"],
+            ["does not run Lean"],
+            ["A clean card does not prove a theorem"],
+            ["pinned Lean"],
         ],
     }
 
@@ -936,13 +857,18 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
     require(build_job is not None, "Lean CI lost its build job")
     build_job_body = build_job.group("body") if build_job is not None else ""
 
-    for token in (
-        "A cold clone can navigate before this step",
-        "--lake-staleness",
-        "--changed-from <git-ref>",
-        "rebuild only the selected or stale dependency cone",
-    ):
-        require(normalized(token) in readme_flat, f"README lost incremental-build contract: {token}")
+    require("docs/REPRODUCIBILITY.md" in readme,
+            "reader entry lost the build instructions route")
+    for token in ("--lake-staleness", "wrapper"):
+        require(token in runbook,
+                f"reproducibility lost focused/cache-aware build guidance: {token}")
+
+    require("lean-concurrent-validation/SKILL.md" in runbook,
+            "reproducibility lost its coordinated validation owner")
+    require("--changed-from" in surfaces["skills/lean-concurrent-validation/SKILL.md"],
+            "validation owner lost the focused changed-source build command")
+    require("--changed-from" in surfaces["docs/agents/AGENT_GUIDE.md"],
+            "agent validation guide lost its focused source-change build command")
 
     # The detailed build contract belongs to the reproducibility runbook. Keep
     # its prerequisite before its first build command without forcing those
@@ -962,10 +888,11 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         in runbook[first_build_command:first_build_block_end],
         "reproducibility runbook makes a full-corpus build the first Lean success path",
     )
-    require("elan" in readme, "README no longer names Lean's toolchain manager")
+    require("elan" in runbook, "reproducibility no longer names Lean's toolchain manager")
     require(
-        re.search(r"(?m)^\s*lake build\b", runbook) is None,
-        "reproducibility runbook bypasses the host-shared Lean build wrapper",
+        all(command.strip() == "lake build @erdos249257/Erdos249257 @erdos249257/ErdosProblems"
+            for command in re.findall(r"(?m)^\s*lake build\b[^\n]*", runbook)),
+        "repository proof builds must use the host-shared wrapper; only the separate downstream consumer uses lake build",
     )
     require(
         all(
@@ -990,8 +917,8 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         "runbook must offer a focused Lean success before the complete release replay",
     )
     require(
-        "fetches the pinned cache when needed" in readme_flat,
-        "README no longer states that the build wrapper owns cache acquisition",
+        "lake exe cache get" in runbook,
+        "reproducibility lost pinned dependency-cache acquisition",
     )
 
     # Every token below describes something the workflow *does*. "# v5" sat in
@@ -1115,17 +1042,15 @@ def first_contact_surface_text(surfaces: dict[str, str], path: str) -> str:
     docs/RESULTS.md from disk, so deleting `Plectis` on the front page left the
     token alive in RESULTS and the mutation escaped.
     """
-    text = surfaces.get(path)
-    if text is None:
-        return safe_read_text(path)
-    return text
+    require(path in surfaces, f"first-contact fixture must include its routed owner: {path}")
+    return surfaces[path]
 
 
 def validate_human_first_contact(
     summary: dict[str, Any], surfaces: dict[str, str]
 ) -> None:
     allowed = set(HUMAN_SURFACES) | set(FIRST_CONTACT_ROUTED_SURFACES)
-    require(set(HUMAN_SURFACES) <= set(surfaces) <= allowed, "cold-clone comprehension invariant")
+    require(set(surfaces) == allowed, "first-contact must validate every directly routed owner from the provided snapshot")
     for path, budget in HUMAN_SURFACE_BUDGET_BYTES.items():
         size = len(surfaces[path].encode("utf-8"))
         require(size <= budget, f"{path} is {size} bytes (budget {budget})")
@@ -1133,6 +1058,10 @@ def validate_human_first_contact(
         for phrase in SELF_APPRAISAL_PHRASES:
             require(phrase not in lowered, f"{path} uses self-appraisal phrase {phrase!r}; expose objective "
                 "mathematical and formal facts instead")
+
+    for path, budget in FIRST_CONTACT_ROUTED_BUDGET_BYTES.items():
+        require(len(surfaces[path].encode("utf-8")) <= budget,
+                f"routed first-contact owner {path} exceeds {budget} bytes")
 
     check_architecture_guide.validate_guide(surfaces["docs/ARCHITECTURE.md"])
 
@@ -1142,11 +1071,11 @@ def validate_human_first_contact(
     )
     contribution_guide = first_contact_surface_text(surfaces, "CONTRIBUTING.md")
     require(
-        "[REPRODUCIBILITY](docs/REPRODUCIBILITY.md)" in readme_prefix,
+        "](docs/REPRODUCIBILITY.md)" in readme_prefix,
         "README no longer routes detailed clone and build work to REPRODUCIBILITY",
     )
     require(
-        "[CONTRIBUTING](CONTRIBUTING.md)" in readme_prefix,
+        "](CONTRIBUTING.md)" in readme_prefix,
         "README no longer routes corrections and returned work to CONTRIBUTING",
     )
     for command in (
@@ -1171,12 +1100,22 @@ def validate_human_first_contact(
     verification_sections = [
         heading
         for heading, body in zip(sections[1::2], sections[2::2])
-        if "(formalization.yaml)" in body and "(docs/EXTERNAL_VERIFICATION.md)" in body
+        if "(docs/EXTERNAL_VERIFICATION.md)" in body
     ]
     require(
         len(verification_sections) == 1,
         "README must have one section linking selected statements and their verification dossier",
     )
+    verification = first_contact_surface_text(surfaces, "docs/EXTERNAL_VERIFICATION.md")
+    require("](../formalization.yaml)" in verification,
+            "the linked verification dossier lost its selected-statement manifest")
+    require("configured axiom budget" in normalized(verification),
+            "the linked verification dossier lost its assumption boundary")
+    papers = first_contact_surface_text(surfaces, "paper/README.md")
+    require("](paper/README.md#problem-papers)" in readme_prefix,
+            "README lost the directly linked complete paper catalogue")
+    require("## Problem papers" in papers, "paper catalogue anchor no longer resolves")
+
     section_order = (
         "## Problem papers",
         verification_sections[0],
@@ -1215,8 +1154,8 @@ def validate_human_first_contact(
         ),
         "README no longer exposes the current unified systems paper",
     )
-    def readme_exposes_pdf(filename: str) -> bool:
-        return bool(re.search(rf"\]\([^)\n]*{re.escape(filename)}\)", readme_prefix))
+    def catalogue_exposes_pdf(filename: str) -> bool:
+        return bool(re.search(rf"\]\([^)\n]*{re.escape(filename)}\)", papers))
 
     for problem, filename in (
         ("#68", "erdos-68-factorial-denominator-irrationality.pdf"),
@@ -1228,29 +1167,42 @@ def validate_human_first_contact(
         ("#1041", "erdos-1041-lemniscate-newton-flow.pdf"),
         ("#1049", "erdos-1049-rational-base-lambert.pdf"),
     ):
-        require(problem in readme_prefix and readme_exposes_pdf(filename), f"README no longer exposes the individual Erdős {problem} paper")
+        require(problem in readme_prefix and catalogue_exposes_pdf(filename), f"the directly linked catalogue no longer exposes the individual Erdős {problem} paper")
     for filename in (
         "erdos249-totient-reasoning-surface.pdf",
         "erdos257-mersenne-reasoning-surface.pdf",
     ):
-        require(readme_exposes_pdf(filename), f"README no longer exposes the full reasoning record {filename}")
+        require(catalogue_exposes_pdf(filename), f"the directly linked catalogue no longer exposes the full reasoning record {filename}")
 
     problem_portfolio = readme_prefix.find("## Problem papers")
-    raw_inventory = readme_prefix.find("## Corpus at a glance")
-    require(problem_portfolio >= 0, "README lost the all-problem discovery surface")
-    require(raw_inventory >= 0, "README lost the raw corpus-inventory boundary")
-    problem_positions = [
-        readme_prefix.find(f"#{problem}", problem_portfolio)
-        for problem in sorted(INDEXED_PROBLEM_NUMBERS)
-    ]
-    require(
-        all(position >= problem_portfolio for position in problem_positions),
-        "README no longer exposes every indexed problem before inventory",
-    )
-    require(
-        all(position < raw_inventory for position in problem_positions),
-        "README places raw scale or numeric inventory before all-problem discovery",
-    )
+    require(problem_portfolio >= 0, "README lost all-problem discovery")
+    inventory_headings = ("## Corpus at a glance", "## Corpus inventory", "## Engineering inventory")
+    for heading in inventory_headings:
+        location = readme_prefix.find(heading)
+        require(location < 0 or location > problem_portfolio,
+                "README places raw inventory before mathematical discovery")
+    require("generated_corpus_at_a_glance" not in readme_prefix,
+            "README restored its duplicate generated inventory")
+    require("docs/corpus_descriptor.json" in readme_prefix
+            and "docs/semantic/README.md#corpus-census" in readme_prefix,
+            "README lost its maintained inventory owners")
+    try:
+        descriptor = json.loads(first_contact_surface_text(surfaces, "docs/corpus_descriptor.json"))
+    except (TypeError, ValueError) as exc:
+        raise AssertionError("the directly linked corpus descriptor is malformed") from exc
+    for key in ("module_count", "declaration_count", "theorem_like_count",
+                "generated_certificate_declaration_count", "principal_claim_link_count"):
+        require(isinstance(descriptor.get("summary", {}).get(key), int)
+                and descriptor["summary"][key] > 0,
+                f"inventory owner lost its recorded {key}")
+    require(bool(descriptor.get("compact_graph", {}).get("principal_declaration_handles")),
+            "descriptor lost its exact principal source handles")
+    require("not proof authority" in descriptor.get("authority_posture", {}).get("navigation", ""),
+            "descriptor lost its navigation-only boundary")
+    semantic_reference = first_contact_surface_text(surfaces, "docs/semantic/README.md")
+    require("<!-- BEGIN semantic_public_census -->" in semantic_reference
+            and "<!-- END semantic_public_census -->" in semantic_reference,
+            "semantic reference lost its generated census owner")
 
     # The README is the human front door and is held to a word budget, so the
     # recoverable detail a cold reader needs is not all on the front page any
@@ -1277,13 +1229,13 @@ def validate_human_first_contact(
             require(contains_any(routed_first_contact, alternatives), f"README first-contact task {task_id!r} lost semantic anchor group "
                 f"{alternatives}")
 
-    scope = surfaces["docs/SCOPE.md"]
+    scope = surfaces["docs/METHODOLOGY.md"]
     require(
         contains_any(scope, [release_status_boundary()]),
         "scope lost the authority-owned release status boundary",
     )
     require(contains_any(scope, ["formal-source checkpoint"]), "cold-clone comprehension invariant")
-    orientation = surfaces["docs/ORIENTATION.md"]
+    orientation = surfaces["docs/reference/ORIENTATION.md"]
     for status in (
         "formalised here",
         "unconditional progress",
@@ -1300,133 +1252,31 @@ def validate_human_first_contact(
 
 
 def validate_paper_library_first_contact(
-    paper_readme: str, *, ranking: list[dict[str, Any]] | None = None
+    paper_readme: str, *, surfaces: dict[str, str] | None = None
 ) -> None:
-    """Ensure the generated paper shelf leads with canonical mathematical signal.
-
-    The exporter owns the prose; this consumer only checks the public contract:
-    Palomar's ranked families come before the complete inventory, and the
-    generated shelf keeps represented friction and subordinate/long-tail
-    boundaries visible.  Ranking authority is loaded from the committed
-    Palomar showcase rather than duplicated here.
-    """
-    require(
-        len(paper_readme.encode("utf-8")) <= PAPER_LIBRARY_FIRST_CONTACT_BUDGET_BYTES,
-        "paper-library README exceeds its bounded first-contact budget",
-    )
-    if ranking is None:
-        showcase = json.loads(read("docs/PALOMAR_RESULT_SHOWCASE.json"))
-        ranking = showcase.get("candidate_ranking")
-    require(isinstance(ranking, list) and ranking, "Palomar candidate ranking is missing")
-    signal_heading = paper_readme.find("## Mathematical signal first")
-    ranked_heading = paper_readme.find("### Ranked frontier")
-    friction_heading = paper_readme.find("### Represented natural friction")
-    long_tail_heading = paper_readme.find(
-        "### Explicitly subordinate, rejected, and long tail"
-    )
-    inventory_match = re.search(
-        r"^## (?:Problem portfolio \(complete \d+-paper inventory\)|All papers \(\d+\))$",
-        paper_readme,
-        re.MULTILINE,
-    )
-    inventory_heading = inventory_match.start() if inventory_match else -1
-    positions = (
-        signal_heading,
-        ranked_heading,
-        friction_heading,
-        long_tail_heading,
-        inventory_heading,
-    )
-    require(
-        all(position >= 0 for position in positions),
-        "paper-library README lost signal, friction, long-tail, or inventory headings",
-    )
-    require(
-        list(positions) == sorted(positions),
-        "paper-library README moved exhaustive inventory ahead of mathematical signal",
-    )
-    paper_flat = normalized(paper_readme)
-    require("candidate_ranking" in paper_flat,
-            "paper-library README lost Palomar ranking authority")
-    require(
-        (
-            "not a proof, novelty, or closure claim" in paper_flat
-            or "not a proof, novelty, review, or closure claim" in paper_flat
-        ),
-        "paper-library README lost Palomar evidence boundary",
-    )
-    ranked_candidates = sorted(ranking, key=lambda row: row.get("rank", 0))
-    ranks = [candidate.get("rank") for candidate in ranked_candidates]
-    require(
-        all(isinstance(rank, int) and rank > 0 for rank in ranks),
-        "Palomar candidate ranking has a non-positive or malformed rank",
-    )
-    require(
-        len(ranks) == len(set(ranks)),
-        "Palomar candidate ranking reuses an explicit rank",
-    )
-    previous = -1
-    marker_positions: list[int] = []
-    for candidate in ranked_candidates:
-        rank = candidate.get("rank")
-        family_id = candidate.get("family_id")
-        declaration = candidate.get("declaration")
-        require(isinstance(rank, int) and isinstance(family_id, str) and family_id,
-                "Palomar candidate ranking row is malformed")
-        require(
-            isinstance(declaration, str) and declaration,
-            f"Palomar candidate {family_id} lacks its checked declaration",
-        )
-        for field in (
-            "evidence_certainty",
-            "overclaim_risk",
-            "mechanism_depth_and_natural_friction",
-        ):
-            require(
-                isinstance(candidate.get(field), str) and candidate[field].strip(),
-                f"Palomar candidate {family_id} lacks {field}",
-            )
-        marker = f"#### {rank}."
-        marker_position = paper_readme.find(marker, ranked_heading)
-        require(
-            marker_position >= 0 and marker_position > previous,
-            f"paper-library README lost canonical ranked family {family_id}",
-        )
-        family_position = paper_readme.find(f"`{family_id}`", marker_position)
-        require(
-            family_position >= marker_position and family_position < friction_heading,
-            f"paper-library README detached ranked family {family_id} from frontier",
-        )
-        marker_positions.append(marker_position)
-        previous = marker_position
-
-    for index, candidate in enumerate(ranked_candidates):
-        entry_end = (
-            marker_positions[index + 1]
-            if index + 1 < len(marker_positions)
-            else friction_heading
-        )
-        entry = paper_readme[marker_positions[index]:entry_end]
-        # The exporter owns this prose and renamed three of its labels; the
-        # fields themselves are all still there. This consumer checks that each
-        # ranked family still carries its interface, its source declaration, the
-        # mechanism, the evidence ceiling and the boundary, under the names the
-        # shelf actually prints.
-        for label in (
-            "**Checked interface:**",
-            "**Source declaration:**",
-            "**Hard mechanism:**",
-            "**Evidence:**",
-            "**Boundary:**",
-        ):
-            require(
-                label in entry,
-                f"paper-library README ranked family {candidate['family_id']} lost {label}",
-            )
-        require(
-            candidate["declaration"] in entry,
-            f"paper-library README ranked family {candidate['family_id']} lost its exact checked interface",
-        )
+    """Validate visible routes from the compact shelf to captured reader owners."""
+    from check_release import visible_owner_routes
+    require(len(paper_readme.encode()) <= PAPER_LIBRARY_FIRST_CONTACT_BUDGET_BYTES,
+            "paper-library README exceeds its bounded first-contact budget")
+    owners = ('paper/README.md', 'docs/RESULTS.md')
+    if surfaces is None:
+        surfaces = {path: read(path) for path in owners}
+    documents = dict(surfaces, **{PAPER_LIBRARY_SURFACE: paper_readme})
+    reached = visible_owner_routes(PAPER_LIBRARY_SURFACE, documents, depth=1)
+    for path in owners:
+        require(path in surfaces, f"paper shelf missing captured owner: {path}")
+        require(path in reached, f"paper shelf lost visible owner link: {path}")
+        owner = normalized(first_contact_surface_text(surfaces, path)).casefold()
+        require(normalized(release_status_boundary()).casefold() in owner,
+                f"paper shelf owner lost exact current status boundary: {path}")
+        require('comparator checks only selected exact statements' in owner
+                and 'does not assess novelty' in owner,
+                f"paper shelf owner lost Comparator scope boundary: {path}")
+    results = normalized(first_contact_surface_text(surfaces, 'docs/RESULTS.md')).casefold()
+    require('pinned lean kernel is proof authority' in results,
+            "paper shelf result owner lost formal proof authority")
+    require('<a id="problem-portfolio"></a>' in paper_readme,
+            "paper shelf lost stable programme inventory anchor")
 
 
 def semantic_census_from_public(public: dict[str, Any]) -> dict[str, Any]:
@@ -1502,7 +1352,7 @@ def validate_public_semantic_census(
         )
 
     expectations = {
-        "docs/RESULTS.md": (
+        "docs/semantic/README.md": (
             "<!-- BEGIN semantic_public_census -->",
             census_row("mechanically nonrecurring candidates", nonrecurring),
             census_row("classical/prior-art formalisations", classical),
@@ -1635,39 +1485,26 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
             require(phrase not in lowered, f"{path} uses self-appraisal phrase {phrase!r}; route to objective "
                 "claims, scale, and verification receipts instead")
     for token in (
-        "docs/orientation.json",
-        "docs/claims.json",
-        "Eight-problem cold-start card",
-        "must not already know a query command",
-        "erdos-68-factorial-denominator-irrationality.pdf",
-        "erdos-243-reciprocal-tail-rigidity.pdf",
-        "erdos-249-binary-totient-series.pdf",
-        "erdos-251-prime-gap-dyadic-series.pdf",
-        "erdos-257-mersenne-support-subseries.pdf",
-        "erdos-269-three-prime-running-lcm.pdf",
-        "erdos-1041-lemniscate-newton-flow.pdf",
-        "erdos-1049-rational-base-lambert.pdf",
-        "no `ai_workflow`",
+        "docs/claims.json", "docs/methodology.json",
+        "## Programme owners", "## Authority and change order", "## Validation",
         "Lean source checked by the pinned Lean kernel",
-        "not an entrypoint into any private development system",
+        "Do not infer results from private files",
+        "The update order stays fixed", "--changed-from HEAD",
+        "../RESULTS.md", "../semantic/README.md#corpus-census",
+        "This menu supplies no new claim status",
     ):
-        require(contains_any(agents, [token]), f"docs/agents/AGENT_GUIDE.md lost shared invariant {token!r}")
-    # The card is generated from the same authored questions and claim owner
-    # as the query index. Check every exact question and boundary, rather than
-    # freezing a second set of mathematical spellings in this validator.
+        require(contains_any(agents, [token]),
+                f"agent authority guide lost maintained invariant {token!r}")
     source = json.loads(read("docs/problem_index_source.json"))
     claims = {row["id"]: row for row in json.loads(read("docs/claims.json"))["claims"]}
     for row in source["problems"]:
-        require(contains_any(agents, [row["question"]]),
-                f"agent card lost question {row['problem_id']}")
-        target = claims.get(row["programme_claim_id"])
-        require(target is not None, f"agent card lacks registered target {row['problem_id']}")
-        require(contains_any(agents, [target["statement"]]),
-                f"agent card lost programme boundary {row['problem_id']}")
-    require(
-        contains_any(agents, [release_status_boundary()]),
-        "docs/agents/AGENT_GUIDE.md lost the authority-owned release status boundary",
-    )
+        number = row["erdos_number"]
+        require(row["programme_claim_id"] in claims,
+                f"programme menu lacks registered target {row['problem_id']}")
+        for target in (f"../RESULTS.md#result-{number}",
+                       f"../research-commons/CONTRIBUTE_BY_PAPER.md#problem-{number}",
+                       f"query_corpus.py --route {row['problem_id']}"):
+            require(target in agents, f"agent menu lost its exact programme owner {target}")
     require("@AGENTS.md" in claude, "Claude must import the shared compact entry")
     require("docs/agents/AGENT_GUIDE.md" in claude, "Claude lost the deep-guide route")
     require("## First read" not in claude, "Claude duplicated the shared manual")
@@ -3142,7 +2979,7 @@ def run_quick_check() -> int:
     semantic_receipt = check_semantic_corpus_freshness()
     check_route_memory_descriptor()
     summary = quick_summary()
-    human_surfaces = {path: read(path) for path in HUMAN_SURFACES}
+    human_surfaces = {path: read(path) for path in (*HUMAN_SURFACES, *FIRST_CONTACT_ROUTED_SURFACES)}
     validate_human_first_contact(summary, human_surfaces)
     validate_paper_library_first_contact(read(PAPER_LIBRARY_SURFACE))
     validate_public_semantic_census(
@@ -3234,7 +3071,7 @@ def main(argv: list[str] | None = None) -> int:
     check_route_memory_descriptor()
     packets = collect_agent_packets()
     summary = packets["summary"]
-    human_surfaces = {path: read(path) for path in HUMAN_SURFACES}
+    human_surfaces = {path: read(path) for path in (*HUMAN_SURFACES, *FIRST_CONTACT_ROUTED_SURFACES)}
     validate_human_first_contact(summary, human_surfaces)
     validate_paper_library_first_contact(read(PAPER_LIBRARY_SURFACE))
     validate_public_semantic_census(

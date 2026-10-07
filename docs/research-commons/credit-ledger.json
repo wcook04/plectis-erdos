@@ -153,10 +153,10 @@
           "path": "formalization.yaml"
         },
         {
-          "excerpt_sha256": "sha256:cb49ade0a57a20d0355d24a8ebc443b2be0b82e0f3c2bdd61f361abe2913a17b",
-          "line_end": 544,
-          "line_start": 534,
-          "path": "docs/EXTERNAL_VERIFICATION.md"
+          "excerpt_sha256": "sha256:44b2d03394f71d1c7674ade0f59d393612a219ff02810ce8544e458bb95128ea",
+          "line_end": 1043,
+          "line_start": 1030,
+          "path": "docs/external_verification_packet.json"
         }
       ],
       "changed": "The #249 paper now opens with the exact rank and basis, compares the result with work of Allouche and Shallit, Coons and Martin, and links a minimal Lean entry; the irrationality question stays open.",
@@ -200,9 +200,9 @@
           "path": "verification/comparator-negative-mismatch.json"
         },
         {
-          "excerpt_sha256": "sha256:841f2dd16d4a52b7d08408468dd3f4f231b7d8aeb174d9ffad383abbde1acfe9",
-          "line_end": 14,
-          "line_start": 4,
+          "excerpt_sha256": "sha256:68b48b26909458d634ec4498042279edb1db1066ab031f0dd4d2e15464a7af1c",
+          "line_end": 22,
+          "line_start": 10,
           "path": "docs/EXTERNAL_VERIFICATION.md"
         }
       ],
@@ -294,5 +294,5 @@
   "naming_policy": "Every entry starts with the name withheld. A name appears only after that person confirms the public name they want, and an entry stays anonymous if they ask. Private messages stay outside this repository.",
   "schema": "plectis-credit-ledger/1",
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:3444a7d9a1ab07275212b4f2d6b0c6512e43530d12fcdd9124dff0d68a568ff6"
+  "source_registry_sha256": "sha256:221502d734f63904ee54cc7ac5f49bf5cadfac5e9c460dc09e3795681ceffa35"
 }

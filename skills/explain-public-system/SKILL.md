@@ -23,7 +23,7 @@ explanation. Follow only the selected record and its cited sources.
 
 | Question | Route |
 |---|---|
-| Which declaration supports this result? | Query the claim with `python3 scripts/query_corpus.py --ask "<question>"`; follow its paper label or declaration handle into the source. [SOURCE_MAP](../../docs/SOURCE_MAP.md) explains those links. |
+| Which declaration supports this result? | Query the claim with `python3 scripts/query_corpus.py --ask "<question>"`; follow its paper label or declaration handle into the source. [SOURCE_MAP](../../docs/reference/SOURCE_MAP.md) explains those links. |
 | Who proved this, and what should I cite? | Use `python3 scripts/query_corpus.py --route trace_prior_art`, then `python3 scripts/build_source_attributions.py --query "<name-or-problem-or-id>"`. Read the original statement and distinguish mathematical authorship, formalisation and local use. |
 | Which paper edition or proof packet is recorded? | [Paper editions](../../docs/papers/README.md), [archive versions](../../docs/papers/archive_versions.json), and [Prove2Me packets](../../docs/research-commons/README.md#native-prove2me-theorems) identify the particular objects. Do not equate an archived edition with today's manuscript. |
 | How does a formal statement match the upstream question? | Read the [Formal Conjectures crosswalk](../../docs/verification/FORMAL_CONJECTURES_CROSSWALK.md) and run `python3 scripts/query_corpus.py --route comparator_assurance` for the configured evidence. Compare the actual hypotheses and conclusions. |
@@ -98,7 +98,7 @@ every paper. Stop when the requested claim trail and its limitations are clear.
 
 ## Build the explanation from the clone
 
-1. Read `README.md` and `docs/READING_GUIDE.md` for the public promise.
+1. Read `README.md` and `docs/README.md` for the public promise.
 2. Run the complete bounded overview:
 
    ```sh
@@ -137,7 +137,7 @@ Identify the difficulty that makes the decisive construction useful. Keep a
 pedagogical reconstruction distinct from the recorded discovery history. When
 checking a reader's attempt, point to the first unsupported step and preserve
 what works. Do not turn a request to learn an existing argument into autonomous
-research on an open problem. The [reading guide](../../docs/READING_GUIDE.md#work-through-an-argument)
+research on an open problem. The [reading guide](../../docs/README.md#work-through-an-argument)
 offers a learner-facing entry. An explanation or successful navigation check
 does not demonstrate that a reader has understood the result.
 

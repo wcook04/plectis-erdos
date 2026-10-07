@@ -16,6 +16,8 @@ import re
 import subprocess
 import sys
 import time
+import threading
+from concurrent.futures import Future
 from pathlib import Path
 
 import validation_singleflight as singleflight
@@ -27,134 +29,134 @@ TIMEOUT_SECONDS = 360
 COMMANDS = (
     ('computations/check_enclosure_product_use.py',),
     ('-O', 'computations/check_enclosure_product_use.py'),
-    ('scripts/test_paper_claim_evidence.py',),
-    ('-O', 'scripts/test_paper_claim_evidence.py'),
-    ('scripts/test_short_paper_writer.py',),
-    ('-O', 'scripts/test_short_paper_writer.py'),
-    ('scripts/test_reasoning_record_audit.py',),
-    ('-O', 'scripts/test_reasoning_record_audit.py'),
+    ('scripts/tests/test_paper_claim_evidence.py',),
+    ('-O', 'scripts/tests/test_paper_claim_evidence.py'),
+    ('scripts/tests/test_short_paper_writer.py',),
+    ('-O', 'scripts/tests/test_short_paper_writer.py'),
+    ('scripts/tests/test_reasoning_record_audit.py',),
+    ('-O', 'scripts/tests/test_reasoning_record_audit.py'),
     ('research/experiments/round8_finite/test_round8_finite.py',),
     ('-O', 'research/experiments/round8_finite/test_round8_finite.py'),
-    ('scripts/test_round8_native_port.py',),
-    ('-O', 'scripts/test_round8_native_port.py'),
-    ('scripts/test_restatement_benchmark.py',),
-    ('-O', 'scripts/test_restatement_benchmark.py'),
-    ('scripts/test_research_decision.py',),
-    ('-O', 'scripts/test_research_decision.py'),
-    ('scripts/test_research_episode.py',),
-    ('-O', 'scripts/test_research_episode.py'),
-    ('scripts/test_relation_binding.py',),
-    ('-O', 'scripts/test_relation_binding.py'),
-    ('scripts/test_probe_semantics.py',),
-    ('-O', 'scripts/test_probe_semantics.py'),
-    ('scripts/test_research_return_gate.py',),
-    ('-O', 'scripts/test_research_return_gate.py'),
-    ('scripts/test_native_adapter_regressions.py',),
-    ('-O', 'scripts/test_native_adapter_regressions.py'),
-    ('scripts/test_corpus_substrate.py',),
-    ('-O', 'scripts/test_corpus_substrate.py'),
+    ('scripts/tests/test_round8_native_port.py',),
+    ('-O', 'scripts/tests/test_round8_native_port.py'),
+    ('scripts/tests/test_restatement_benchmark.py',),
+    ('-O', 'scripts/tests/test_restatement_benchmark.py'),
+    ('scripts/tests/test_research_decision.py',),
+    ('-O', 'scripts/tests/test_research_decision.py'),
+    ('scripts/tests/test_research_episode.py',),
+    ('-O', 'scripts/tests/test_research_episode.py'),
+    ('scripts/tests/test_relation_binding.py',),
+    ('-O', 'scripts/tests/test_relation_binding.py'),
+    ('scripts/tests/test_probe_semantics.py',),
+    ('-O', 'scripts/tests/test_probe_semantics.py'),
+    ('scripts/tests/test_research_return_gate.py',),
+    ('-O', 'scripts/tests/test_research_return_gate.py'),
+    ('scripts/tests/test_native_adapter_regressions.py',),
+    ('-O', 'scripts/tests/test_native_adapter_regressions.py'),
+    ('scripts/tests/test_corpus_substrate.py',),
+    ('-O', 'scripts/tests/test_corpus_substrate.py'),
     ('scripts/check_corpus_substrate_release.py',),
-    ('scripts/test_packet_safety_patch.py',),
-    ('-O', 'scripts/test_packet_safety_patch.py'),
-    ('scripts/test_research_packet_profile.py',),
-    ('-O', 'scripts/test_research_packet_profile.py'),
-    ('scripts/test_research_round_plan.py',),
-    ('-O', 'scripts/test_research_round_plan.py'),
-    ('scripts/test_transfer_obligations.py',),
-    ('-O', 'scripts/test_transfer_obligations.py'),
-    ('scripts/test_insight_engine.py',),
-    ('-O', 'scripts/test_insight_engine.py'),
-    ('scripts/test_research_evidence.py',),
-    ('-O', 'scripts/test_research_evidence.py'),
+    ('scripts/tests/test_packet_safety_patch.py',),
+    ('-O', 'scripts/tests/test_packet_safety_patch.py'),
+    ('scripts/tests/test_research_packet_profile.py',),
+    ('-O', 'scripts/tests/test_research_packet_profile.py'),
+    ('scripts/tests/test_research_round_plan.py',),
+    ('-O', 'scripts/tests/test_research_round_plan.py'),
+    ('scripts/tests/test_transfer_obligations.py',),
+    ('-O', 'scripts/tests/test_transfer_obligations.py'),
+    ('scripts/tests/test_insight_engine.py',),
+    ('-O', 'scripts/tests/test_insight_engine.py'),
+    ('scripts/tests/test_research_evidence.py',),
+    ('-O', 'scripts/tests/test_research_evidence.py'),
     ('scripts/check_erdos1041_research_corpus.py',),
-    ('scripts/test_erdos1041_research_corpus.py',),
-    ('-O', 'scripts/test_erdos1041_research_corpus.py'),
-    ('scripts/test_dependency_lock_contract.py',),
-    ('scripts/test_lean_workflow_environment.py',),
-    ('-O', 'scripts/test_lean_workflow_environment.py'),
+    ('scripts/tests/test_erdos1041_research_corpus.py',),
+    ('-O', 'scripts/tests/test_erdos1041_research_corpus.py'),
+    ('scripts/tests/test_dependency_lock_contract.py',),
+    ('scripts/tests/test_lean_workflow_environment.py',),
+    ('-O', 'scripts/tests/test_lean_workflow_environment.py'),
     ('scripts/check_architecture_guide.py',),
     ('scripts/check_agent_navigation_paper.py',),
-    ('scripts/test_architecture_guide.py',),
-    ('scripts/test_build_systems_paper_counts.py',),
-    ('-O', 'scripts/test_build_systems_paper_counts.py'),
-    ('scripts/test_verify_claims.py',),
-    ('scripts/test_problem_library.py',),
+    ('scripts/tests/test_architecture_guide.py',),
+    ('scripts/tests/test_build_systems_paper_counts.py',),
+    ('-O', 'scripts/tests/test_build_systems_paper_counts.py'),
+    ('scripts/tests/test_verify_claims.py',),
+    ('scripts/tests/test_problem_library.py',),
     ('scripts/check_publication_contract.py',),
     ('scripts/check_erdos269_dyadic_windows.py',),
     ('scripts/check_farey_denominator_scaling.py',),
     ('scripts/check_formal_conjectures_crosswalk.py',),
-    ('-m', 'unittest', 'scripts.test_formal_conjectures_crosswalk', '-v'),
-    ('scripts/test_residual_evaluator.py',),
+    ('-m', 'unittest', 'scripts.tests.test_formal_conjectures_crosswalk', '-v'),
+    ('scripts/tests/test_residual_evaluator.py',),
     ('scripts/check_markdown_table_render.py', '--fail-on', 'overflow', '.'),
-    ('-m', 'unittest', 'scripts.test_markdown_table_render', '-v'),
-    ('scripts/test_projection_checkout_independence.py',),
-    ('scripts/test_release_source_identity.py',),
-    ('scripts/test_expert_handoffs.py',),
-    ('-O', 'scripts/test_expert_handoffs.py'),
-    ('scripts/test_check_release_ref.py',),
-    ('scripts/test_check_push.py',),
-    ('scripts/test_scope_source_identity.py',),
-    ('scripts/test_public_artifact_boundary.py',),
-    ('scripts/test_root_import_closure.py',),
-    ('scripts/test_downstream_example_contract.py',),
-    ('scripts/test_public_writing_contract.py',),
-    ('scripts/test_methodology_contract.py',),
-    ('scripts/test_publication_artifact_contract.py',),
-    ('scripts/test_publication_contract_restamp.py',),
-    ('scripts/test_paper_build_manifest.py',),
-    ('scripts/test_sync_publication_pdfs.py',),
-    ('scripts/test_claim_packet_boundaries.py',),
-    ('scripts/test_publication_evidence_time_axis.py',),
-    ('docs/papers/check_paper_corpus.py',),
-    ('docs/papers/check_publication_taxonomy.py',),
-    ('docs/papers/build_publication_taxonomy.py', '--check'),
-    ('scripts/test_status_question_search.py',),
+    ('-m', 'unittest', 'scripts.tests.test_markdown_table_render', '-v'),
+    ('scripts/tests/test_projection_checkout_independence.py',),
+    ('scripts/tests/test_release_source_identity.py',),
+    ('scripts/tests/test_expert_handoffs.py',),
+    ('-O', 'scripts/tests/test_expert_handoffs.py'),
+    ('scripts/tests/test_check_release_ref.py',),
+    ('scripts/tests/test_check_push.py',),
+    ('scripts/tests/test_scope_source_identity.py',),
+    ('scripts/tests/test_public_artifact_boundary.py',),
+    ('scripts/tests/test_root_import_closure.py',),
+    ('scripts/tests/test_downstream_example_contract.py',),
+    ('scripts/tests/test_public_writing_contract.py',),
+    ('scripts/tests/test_methodology_contract.py',),
+    ('scripts/tests/test_publication_artifact_contract.py',),
+    ('scripts/tests/test_publication_contract_restamp.py',),
+    ('scripts/tests/test_paper_build_manifest.py',),
+    ('scripts/tests/test_sync_publication_pdfs.py',),
+    ('scripts/tests/test_claim_packet_boundaries.py',),
+    ('scripts/tests/test_publication_evidence_time_axis.py',),
+    ('scripts/papers/check_paper_corpus.py',),
+    ('scripts/papers/check_publication_taxonomy.py',),
+    ('scripts/papers/build_publication_taxonomy.py', '--check'),
+    ('scripts/tests/test_status_question_search.py',),
     ('scripts/check_metadata.py',),
-    ('scripts/test_citation_identity_contract.py',),
-    ('scripts/test_checkout_sync.py',),
-    ('scripts/test_license_map_contract.py',),
-    ('scripts/test_build_benchmark_packet_environment.py',),
-    ('scripts/test_check_metadata_environment.py',),
-    ('scripts/test_check_rendered_paper_boundary_environment.py',),
-    ('scripts/test_checked_diagonal_depth_roster.py',),
-    ('scripts/test_corpus_orientation.py',),
-    ('scripts/test_declaration_atlas.py',),
-    ('scripts/test_expansion_semantic_zones.py',),
-    ('scripts/test_full_coverage_agent_entry.py',),
-    ('scripts/test_historical_bridge_environment.py',),
-    ('scripts/test_layout_conservation.py',),
-    ('scripts/test_lean_package_share.py',),
-    ('scripts/test_lean_source_layout.py',),
-    ('scripts/test_off_diagonal_certificate_roster.py',),
-    ('scripts/test_palomar_qualification_order_contract.py',),
-    ('scripts/test_primary_source_dispositions.py',),
-    ('scripts/test_probe_certificate_supply.py',),
-    ('scripts/test_probe_second_channel_separation.py',),
-    ('scripts/test_problem_note_sources.py',),
-    ('scripts/test_proof_state_compiler.py',),
-    ('scripts/test_public_paper_links.py',),
-    ('scripts/test_publication_artifact_census.py',),
-    ('scripts/test_reanchor_source_attributions.py',),
-    ('scripts/test_refresh_projections_coverage.py',),
-    ('scripts/test_refresh_projections_environment.py',),
-    ('scripts/test_release_child_status.py',),
-    ('scripts/test_repository_identity.py',),
-    ('scripts/test_semantic_corpus_check_receipt.py',),
-    ('scripts/test_semantic_family_compiler.py',),
-    ('scripts/test_semantic_review_rebind.py',),
-    ('scripts/test_shard_closure_t64.py',),
-    ('scripts/test_source_bound_reproduction.py',),
-    ('scripts/test_strict_prime_semantic_digest.py',),
+    ('scripts/tests/test_citation_identity_contract.py',),
+    ('scripts/tests/test_checkout_sync.py',),
+    ('scripts/tests/test_license_map_contract.py',),
+    ('scripts/tests/test_build_benchmark_packet_environment.py',),
+    ('scripts/tests/test_check_metadata_environment.py',),
+    ('scripts/tests/test_check_rendered_paper_boundary_environment.py',),
+    ('scripts/tests/test_checked_diagonal_depth_roster.py',),
+    ('scripts/tests/test_corpus_orientation.py',),
+    ('scripts/tests/test_declaration_atlas.py',),
+    ('scripts/tests/test_expansion_semantic_zones.py',),
+    ('scripts/tests/test_full_coverage_agent_entry.py',),
+    ('scripts/tests/test_historical_bridge_environment.py',),
+    ('scripts/tests/test_layout_conservation.py',),
+    ('scripts/tests/test_lean_package_share.py',),
+    ('scripts/tests/test_lean_source_layout.py',),
+    ('scripts/tests/test_off_diagonal_certificate_roster.py',),
+    ('scripts/tests/test_palomar_qualification_order_contract.py',),
+    ('scripts/tests/test_primary_source_dispositions.py',),
+    ('scripts/tests/test_probe_certificate_supply.py',),
+    ('scripts/tests/test_probe_second_channel_separation.py',),
+    ('scripts/tests/test_problem_note_sources.py',),
+    ('scripts/tests/test_proof_state_compiler.py',),
+    ('scripts/tests/test_public_paper_links.py',),
+    ('scripts/tests/test_publication_artifact_census.py',),
+    ('scripts/tests/test_reanchor_source_attributions.py',),
+    ('scripts/tests/test_refresh_projections_coverage.py',),
+    ('scripts/tests/test_refresh_projections_environment.py',),
+    ('scripts/tests/test_release_child_status.py',),
+    ('scripts/tests/test_repository_identity.py',),
+    ('scripts/tests/test_semantic_corpus_check_receipt.py',),
+    ('scripts/tests/test_semantic_family_compiler.py',),
+    ('scripts/tests/test_semantic_review_rebind.py',),
+    ('scripts/tests/test_shard_closure_t64.py',),
+    ('scripts/tests/test_source_bound_reproduction.py',),
+    ('scripts/tests/test_strict_prime_semantic_digest.py',),
     # The research record: journal custody, relation rows, the contrast ledger
     # and the research-packet compiler, then the committed record data.
-    ('scripts/test_research_record.py',),
-    ('-O', 'scripts/test_research_record.py'),
-    ('scripts/test_relation_registry.py',),
-    ('-O', 'scripts/test_relation_registry.py'),
-    ('scripts/test_contrast_ledger.py',),
-    ('-O', 'scripts/test_contrast_ledger.py'),
-    ('scripts/test_compile_research_packet.py',),
-    ('-O', 'scripts/test_compile_research_packet.py'),
+    ('scripts/tests/test_research_record.py',),
+    ('-O', 'scripts/tests/test_research_record.py'),
+    ('scripts/tests/test_relation_registry.py',),
+    ('-O', 'scripts/tests/test_relation_registry.py'),
+    ('scripts/tests/test_contrast_ledger.py',),
+    ('-O', 'scripts/tests/test_contrast_ledger.py'),
+    ('scripts/tests/test_compile_research_packet.py',),
+    ('-O', 'scripts/tests/test_compile_research_packet.py'),
     ('scripts/research_record.py', 'verify'),
     ('scripts/relation_registry.py', 'check'),
     ('scripts/contrast_ledger.py', 'check'),
@@ -169,10 +171,10 @@ def workflow_errors(source: str) -> list[str]:
     steps = re.split(r"(?m)^      - ", match.group(1))[1:]
     allowed = {
         "Check content-addressed Erdős 1041 research corpus": "python3 scripts/check_erdos1041_research_corpus.py",
-        "Test public corpus privacy boundary": "python3 scripts/test_erdos1041_research_corpus.py\npython3 -O scripts/test_erdos1041_research_corpus.py",
+        "Test public corpus privacy boundary": "python3 scripts/tests/test_erdos1041_research_corpus.py\npython3 -O scripts/tests/test_erdos1041_research_corpus.py",
         "Cross-surface release checks (proof trust, claims, projections)": "python3 scripts/check_release.py",
-        "Test problem papers for corpus-only changes": "python3 scripts/test_problem_library.py",
-        "Test public-artifact boundary": "python3 scripts/test_public_artifact_boundary.py",
+        "Test problem papers for corpus-only changes": "python3 scripts/tests/test_problem_library.py",
+        "Test public-artifact boundary": "python3 scripts/tests/test_public_artifact_boundary.py",
         "Install metadata validators": "python3 -m pip install --disable-pip-version-check --no-cache-dir --require-hashes --requirement scripts/requirements-release.txt\npython_bin_dir=\"$(python3 -c 'import os, sys; print(os.path.dirname(sys.executable))')\"\necho \"$python_bin_dir\" >> \"$GITHUB_PATH\"",
     }
     seen = set()
@@ -224,32 +226,96 @@ def escape_annotation(value: str) -> str:
     return value.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
 
 
-def run_suite(commands=COMMANDS, *, root: Path = ROOT,
-              timeout: float = TIMEOUT_SECONDS) -> dict:
+class SharedCommandRuns:
+    """Share exact leaf executions within one immutable release invocation.
+
+    No workers or persistent cache live here. The caller's bounded pools run
+    the first request; concurrent consumers wait on that same result or error.
+    """
+
+    def __init__(self, runner=None):
+        self.runner = runner or singleflight.run_bounded
+        self.lock = threading.Lock()
+        self.futures: dict[tuple, Future] = {}
+
+    def run(self, command, *, cwd, env, timeout, **kwargs):
+        # Python's script position is separate from .py-valued data/options.
+        argv = list(command)
+        index = 1
+        while index < len(argv):
+            value = argv[index]
+            if value == "-" or value.startswith(("-m", "-c")):
+                break
+            if value in ("-X", "-W"):
+                index += 2
+                continue
+            if value == "--":
+                index += 1
+                if index >= len(argv):
+                    break
+                value = argv[index]
+            elif value.startswith("-"):
+                index += 1
+                continue
+            candidate = Path(value)
+            if not candidate.is_absolute():
+                candidate = Path(cwd) / candidate
+            if candidate.is_file():
+                argv[index] = str(candidate.resolve())
+            break
+        key = (tuple(argv), str(Path(cwd).resolve()), tuple(sorted(env.items())),
+               timeout, tuple(sorted(kwargs.items())))
+        with self.lock:
+            owner = key not in self.futures
+            if owner:
+                self.futures[key] = Future()
+            future = self.futures[key]
+        if owner:
+            try:
+                future.set_result(self.runner(command, cwd=cwd, env=env,
+                                              timeout=timeout, **kwargs))
+            except BaseException as exc:
+                future.set_exception(exc)
+        return future.result()
+
+
+def run_suite(commands=None, *, root: Path = ROOT,
+              timeout: float = TIMEOUT_SECONDS, runner=None, emit=print,
+              overall_timeout: float | None = None) -> dict:
+    commands = COMMANDS if commands is None else commands
+    runner = runner or singleflight.run_bounded
+    deadline = time.monotonic() + overall_timeout if overall_timeout is not None else None
     results = []
     for command in commands:
         label = "python3 " + " ".join(command)
         started = time.monotonic()
         if os.environ.get("GITHUB_ACTIONS") == "true":
-            print(f"::group::{label}", flush=True)
+            emit(f"::group::{label}", flush=True)
         try:
-            child = singleflight.run_bounded([sys.executable, *command], cwd=root,
+            remaining = deadline - time.monotonic() if deadline is not None else timeout
+            if remaining <= 0:
+                raise subprocess.TimeoutExpired(command, overall_timeout or 0)
+            child = runner([sys.executable, *command], cwd=root,
                                    env=singleflight.command_environment(),
-                                   text=True, capture_output=True, timeout=timeout)
+                                   text=True, capture_output=True, timeout=min(timeout, remaining))
             code, detail = child.returncode, (child.stdout + "\n" + child.stderr).strip()
             timed_out = False
-        except subprocess.TimeoutExpired:
-            code, detail, timed_out = 124, f"timed out after {timeout}s", True
+        except subprocess.TimeoutExpired as exc:
+            def text(value):
+                return value.decode(errors="replace") if isinstance(value, bytes) else (value or "")
+            detail = (text(exc.stdout) + "\n" + text(exc.stderr)
+                      + f"\ntimed out after {exc.timeout}s").strip()
+            code, timed_out = 124, True
         except OSError as exc:
             code, detail, timed_out = 127, str(exc), False
         results.append({"command": list(command), "exit_code": code,
                         "timed_out": timed_out, "seconds": round(time.monotonic() - started, 3),
                         "output_tail": detail[-12000:]})
-        print(f"{'FAIL' if code else 'PASS'} {label}" + (f"\n{detail[-12000:]}" if code else ""), flush=True)
+        emit(f"{'FAIL' if code else 'PASS'} {label}" + (f"\n{detail[-12000:]}" if code else ""), flush=True)
         if os.environ.get("GITHUB_ACTIONS") == "true":
-            print("::endgroup::", flush=True)
+            emit("::endgroup::", flush=True)
             if code:
-                print("::error::" + escape_annotation(f"{label}: exit {code}; {detail[-2000:]}"), flush=True)
+                emit("::error::" + escape_annotation(f"{label}: exit {code}; {detail[-2000:]}"), flush=True)
     failures = sum(row["exit_code"] != 0 for row in results)
     return {"schema": "shared_ci_release_checks_v1", "status": "failed" if failures else "passed",
             "configured": len(commands), "completed": len(results), "failed": failures,
@@ -269,6 +335,9 @@ def main() -> int:
         args.receipt.parent.mkdir(parents=True, exist_ok=True)
         args.receipt.write_text(json.dumps(result, indent=2) + "\n")
     print(f"shared CI release checks: {result['completed'] - result['failed']}/{result['configured']} passed")
+    for row in result["results"]:
+        if row["exit_code"]:
+            print("failed command: python3 " + " ".join(row["command"]))
     return int(result["failed"] != 0)
 
 

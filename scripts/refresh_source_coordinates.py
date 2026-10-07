@@ -15,8 +15,8 @@ import re
 import sys
 from pathlib import Path
 
-from lean_source import library_storage_variants
-from query_corpus import canonical_lean_module_path, canonical_paper_title
+from lean_source import canonical_lean_module_path, library_storage_variants
+from query_corpus import canonical_paper_title
 
 ROOT = Path(__file__).resolve().parent.parent
 CLAIMS = ROOT / "docs" / "claims.json"
@@ -102,6 +102,7 @@ def render() -> tuple[str, dict[Path, str]]:
         module = canonical_lean_module_path(
             filename,
             bool(re.match(r"Erdos\d+/", filename) or macro.startswith("m")),
+            root=ROOT,
         )
         key = (module, name)
         if key not in lines:

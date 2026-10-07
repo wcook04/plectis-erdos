@@ -37,7 +37,7 @@ is retained as historical background.
 
 When a session begins from a problem number, read the matching row in the
 generated [problem index](../problems.json), then follow the detailed
-[source map](../SOURCE_MAP.md). The row supplies the question, status, paper
+[source map](../reference/SOURCE_MAP.md). The row supplies the question, status, paper
 note, module inventory, paper/source coordinates, and open obligations; the
 source map supplies the bounded proof/paper/source traversal. The current
 mathematical gateways are the eight individual problem papers:
@@ -69,7 +69,7 @@ The packet returns the problem question, public status, note, formal module
 coverage, and exact open-obligation handles. Follow the matching row in
 `problems.json` for its `modules`, `paper`, `note.source_path`,
 `note.rendered_path`, and exact open-obligation statements, then use the
-[complete eight-problem return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix)
+[complete eight-problem return matrix](../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix)
 for source entry points, paper records and exact frontier routes. Read each
 row's `what_is_checked`, `what_is_not_checked` and `claim_registration` together.
 Follow `registered_claim_ids` into `docs/claims.json` for each statement's
@@ -88,8 +88,34 @@ changes problem status or turns source-level records into reviewed claims.
 
 ## The instrument panel
 
-Six instruments. Each states the question it answers exactly, then its entry
-point.
+Each instrument states the question it answers and its entry point.
+
+### Proof cockpit
+
+Inspect checkout identity, pinned Lean release, exact open propositions,
+per-problem obligations and recorded sessions:
+
+```sh
+python3 scripts/proof_cockpit.py
+python3 scripts/proof_cockpit.py --problem 257
+python3 scripts/proof_cockpit.py --format json
+python3 scripts/proof_cockpit.py --check
+```
+
+The default card is cheap and read-only. `--check` runs the fast record and
+navigation checks; it does not run Lean. The card names
+`python3 scripts/lean_fast_build.py --jobs 2` as the formal-proof gate.
+A clean card does not prove a theorem, establish novelty or change claim status.
+
+### Recorded continuation sessions
+
+`continue_research.py` combines corpus lookup with a recorded session. Use
+`--purpose research|method|infrastructure` and a scope such as
+`--scope "problem:257"`; purpose takes priority over words in the scope.
+Architecture sessions use `continue_research.py start --area`; the
+[session example](../research-commons/ARCHITECTURE_CONTRIBUTIONS.md#optional-resumable-session)
+shows that workflow. Start structured continuation before editing, and preserve
+its source revision, inputs and receipts for the return.
 
 **Proof-state compiler.** Which candidate applications does Lean actually
 accept from this exact goal, and what are the exact resulting obligations?
@@ -124,12 +150,9 @@ this goal (nomination only — never applicability)?
 python3 scripts/query_corpus.py
 ```
 
-**The corpus itself.** More than 150,000 indexed declarations — 8,171 of them
-explicitly marked as generated certificate shards (a floor: further emitted
-families predate the markers), counted as source rather than as claims —
-across the reviewed library, problem-owned expansion, and auxiliary inventory
-forest; exact dependency neighborhoods cover both compact roots. Entry:
-`Erdos249257/`, `ErdosProblems/`, and:
+**Corpus inventory.** Read the generated inventory when scale or dependency
+coverage matters. Declaration counts include generated certificate families
+and do not count mathematical contributions:
 
 ```sh
 python3 scripts/query_semantic.py inventory
@@ -213,8 +236,8 @@ and the rung is part of the claim:
 3. **Prospective invention.** The agent proved a theorem that did not
    exist anywhere — in this corpus or its history — when the session
    opened. Blindness holds by construction: there was no answer to
-   leak. This is the strongest rung, and the only one that supports the
-   word "new".
+   leak. This records a corpus-local first derivation; it does not establish
+   independent novelty or priority against external mathematical literature.
 
 Rung-3 sessions are the point of the whole design. The first landed
 example is the carry-pivot session recorded in
@@ -265,8 +288,11 @@ For a bounded agent session, follow:
 
 Every step must carry its own hypotheses and evidence class. These files are
 source-level research records, not entries in the reviewed `docs/claims.json`
-authority. The parent problem remains open; the exact remaining producers are
-listed in `FRONTIER.md`. The paper-facing checked route is
+authority. The dated frontier predates the checked degree-seven counterexample and does
+not own current #1041 status. The exact Formal Conjectures statement is refuted;
+independent review of its correspondence with the 1958 wording remains open.
+Use [results and limits](../RESULTS.md#result-1041) for that current boundary;
+degree-restricted research questions retain their own hypotheses. The paper-facing checked route is
 [`erdos-1041-lemniscate-newton-flow.md`](../papers/full-text/erdos-1041-lemniscate-newton-flow.md),
 which leads back to the Lean declaration coordinates without upgrading the
 source-only frontier.
@@ -281,197 +307,10 @@ source-only frontier.
 - Sessions record cognition; they do not certify that the cognition was
   optimal. The honesty is the feature.
 - Nothing here claims progress on the open problem statuses tracked in
-  `docs/RELATED_PROBLEMS.md` unless a landed theorem says so.
+  `docs/reference/RELATED_PROBLEMS.md` unless a landed theorem says so.
 
-The README is held to a short word budget as the human front door. The two sections below were moved here verbatim so an agent following the front page still reaches the whole-corpus navigation contract.
 
-## Recovered from the front page: read or run it
-
-A single claim can be followed without installing Lean. `verify_claims.py`,
-shown above, also prints the Lean proof text, and both it and `--verify-all`
-work on a `git clone --depth 1` checkout. Run with no argument it performs an
-environment check, which exits `2` and prints `git fetch --unshallow` when a
-truncated history cannot reach the gates that read pinned commits; it never
-exits `1` in that case, so a shallow clone cannot be misread as a claim that
-failed. `check_release.py` remains the authority for locators.
-
-A mathematician can follow the reading order above and then trace one result
-from the [SOURCE MAP](../SOURCE_MAP.md) into Lean. The per-problem papers
-are the live route; the [joint PDF](../../paper/archive/erdos249-257-main-paper.pdf) is retired.
-
-A coding agent starts from an ordinary-language task. The clone-local router
-returns a bounded lane, minimum read set, and skill:
-
-```bash
-python3 scripts/agent_entry.py --entry "improve cold-clone skill discovery"
-python3 scripts/agent_entry.py --skills
-```
-
-Use `--purpose research|method|infrastructure` with
-`--scope "problem:257"`; purpose wins over scope words. Architecture sessions use `continue_research.py start --area`; see the
-[session example](../research-commons/ARCHITECTURE_CONTRIBUTIONS.md#optional-resumable-session).
-
-Skills run from the clone root. `scripts/install_agent_skills.py --list` only
-exposes them to an agent harness. Read
-[`AGENTS.md`](../../AGENTS.md), then the bounded
-[`orientation.json`](../orientation.json), and expand one programme or claim;
-[`docs/agents/AGENT_GUIDE.md`](AGENT_GUIDE.md) is the full reference.
-
-Whole-corpus agent navigation runs without a Lean build.
-`python3 scripts/query_corpus.py --tour --format card` and
-`python3 scripts/query_corpus.py --route agent_native_corpus_navigation`
-expose corpus scale, the mathematical map, the canonical eight-problem map,
-the distinct reviewed #249/#257 open-proposition frontier, and authority
-boundaries. `query_semantic.py problem-registry` lists every indexed problem
-and `structural-backlog` lists authored replacement. Committed indexes expose
-every indexed declaration and exact dependencies for both loaded roots;
-coverage keeps direct evidence, family context, and structural discovery
-distinct. These are navigation projections, not proof authority.
-
-The [proof cockpit](PROOF_COCKPIT.md) produces one cold-clone
-status and frontier card (`python3 scripts/proof_cockpit.py`), and
-[the Agent Workbench](AGENT_WORKBENCH.md) records typed reasoning moves
-and kernel probes under `research/workbench/sessions/`. The one landed prospective
-session,
-[`carry_pivot_2026_07_27`](../../research/workbench/sessions/carry_pivot_2026_07_27/ledger.jsonl),
-produced [`SuffixCylinderCarryPivot.lean`](../../lean/Erdos249257/SuffixCylinderCarryPivot.lean).
-Only kernel receipts assert; ledger notes and static nominations stay
-advisory.
-
-For proof-search construction, `hypOf%` lifts an unresolved hypothesis out of
-binder position into a `Prop`, so whether a sketch's remaining obligation
-differs from the target it started from becomes a question for the kernel
-rather than for a rater; this is the failure mode
-[AlphaProof Nexus](https://arxiv.org/abs/2605.22763) reports prompting could
-not prevent. [Deciding whether a sketch reduced its target or renamed
-it](../reference/RESIDUAL_PROGRESS.md) documents the evaluator, its eight labelled
-fixtures, and what it refuses to decide.
-[The proof-state compiler](PROOF_STATE_COMPILER.md) asks the pinned Lean
-environment which candidate applications it actually accepts from a goal, and
-[the semantic compiler](SEMANTIC_COMPILER.md) nominates declarations
-structurally without claiming they apply.
-
-Publication topology is reported by
-`python3 scripts/query_corpus.py --publication-architecture` and
-`python3 scripts/query_corpus.py --publication-family <id>`.
-
-The [Formal Conjectures crosswalk](../verification/FORMAL_CONJECTURES_CROSSWALK.md)
-places the corpus against the public benchmark: it binds all eight programmes
-to Google DeepMind's Formal Conjectures statements at a pinned upstream
-commit, with a SHA-256 per source file and the indexing, ambient-type, and
-cast differences a reviewer must inspect. It is statement identity and
-adapter-review metadata, not a Lean equivalence proof or a
-submission-readiness decision; every row is `not_ready_to_submit`.
-[Related problems](../RELATED_PROBLEMS.md) places five of the eight
-programmes among the neighbouring numbered problems, each external status as
-listed on its erdosproblems.com page.
-
-`python3 scripts/check_cold_clone_comprehension.py --quick` checks the
-reading surfaces without Lean; `python3 scripts/check_release.py` runs the
-full public-surface and query sweep.
-
-## Recovered from the front page: how the repository fits together
-
-The package has two compact supported roots. [`Erdos249257.lean`](../../lean/Erdos249257.lean)
-preserves the reviewed #249/#257 corpus. [`ErdosProblems.lean`](../../lean/ErdosProblems.lean)
-is the problem-owned expansion surface: work lives under its actual Erdős
-problem number instead of being forced into the historical #249/#257 tree.
-Kernel checking of that second root establishes its exact Lean propositions;
-it does not by itself promote them into the reviewed claim registry or claim
-that an open problem is solved.
-
-The source has five reader-facing layers. The assembled kernel,
-[`CertificateKernel.lean`](../../lean/Erdos249257/CertificateKernel.lean), contains the
-common series machinery, the full-support Erdős-Borwein theorem, named
-support-family interfaces, and the unconditional #249 denominator exclusion.
-The #249 reduction spine, comprising the period-killer, lcm-diagonal, cone,
-diagonal pincer, fresh-loss, and transport modules, turns the open
-irrationality problem into exact certificate or avoidance obligations; finite
-certificate modules verify explicit parameters and do not supply the
-unbounded family required by the reduction. The #257 carry trunk, comprising
-the tail-orbit, achievement-set, Boolean-Möbius carry, reciprocal-mass, and
-divisor-coverage modules, gives exact criteria and necessary conditions, not
-the universal #257 theorem. The navigation layer finds every declaration and
-import through the atlas; selected semantic meanings carry scoped reviews
-(`python3 scripts/query_semantic.py semantic-reviews`), which are neither
-human, novelty, nor proof authority, and the theory lab records nine
-mechanisms, nine transfer capsules, and three failure receipts, with four
-holdouts that have no results, so no measured transfer is claimed. The
-problem-owned expansion, `ErdosProblems/Erdos<N>/`, contains bounded results
-and explicit open frontiers for one problem at a time; new entries remain
-outside the reviewed claim registry until mathematical review establishes
-their intended meaning and public framing.
-
-[SOURCE MAP](../SOURCE_MAP.md) gives module order; [METHODOLOGY](../METHODOLOGY.md)
-governs claim changes; [WAVE INDEX](../reference/WAVE_INDEX.md) gives chronology, not
-reading order.
-
-## Recovered from the front page: build and verify
-
-Everything above this heading runs with Python alone. Building the Lean source
-needs the toolchain, and `lake` arrives with it: install `elan`, Lean's
-toolchain manager, from the
-[Lean setup guide](https://leanprover-community.github.io/get_started.html).
-`elan` then reads [`lean-toolchain`](../../lean-toolchain) and selects
-`leanprover/lean4:v4.29.1`; [`lake-manifest.json`](../../lake-manifest.json) pins the
-matching Mathlib.
-
-```sh
-python3 scripts/lean_fast_build.py --jobs 2 \
-  ErdosProblems.Erdos249.PeriodMultipleEscape
-```
-
-The wrapper fetches the pinned cache when needed. A focused build uses
-`python3 scripts/lean_fast_build.py --jobs 2 [target]`. With restored `.lake`
-outputs, `--lake-staleness` makes it trust Lake content traces, not checkout
-times. Configuration-timestamp-only candidates go through those traces too, so
-an unchanged `lakefile.toml`, manifest or toolchain file does not rebuild
-restored outputs. Source changes, missing outputs and configuration content
-changes still rebuild when Lake marks them stale, and every successful run ends
-with the serialized Lake authority build. Without a target it checks both roots;
-`--plan` reports waves without building. Partial caches stay on that path even
-when a root output is absent. One verbose no-build verdict identifies the stale
-frontier, expanded through local import dependents; same-wave targets then share
-Lake graph scans in batches capped by `--jobs`.
-A cold clone can navigate before this step; formal editing needs the
-pinned toolchain. Later builds reuse outputs and rebuild only the selected or
-stale dependency cone; `--changed-from <git-ref>` selects changed modules.
-For source edits, use `--changed-from HEAD` before the untargeted integration
-build so a local proof iteration does not pay for unrelated generated modules.
-The dependency-index validator stores an exact `.lake` receipt: unchanged
-inputs make `--check` constant-time; `--check --full-check` forces an audit.
-
-The public release surfaces are checked separately:
-
-```sh
-python3 scripts/check_cold_clone_comprehension.py --quick
-python3 scripts/check_release.py
-python3 scripts/test_methodology_contract.py
-```
-
-The pinned public Lean proof corpus contains no `sorry`, `admit`, project-defined
-`axiom`, or `native_decide`; finite computations use kernel-checked `decide`.
-One deliberate exception is outside the default build:
-[`ExternalVerification/Challenge.lean`](../../verification/ExternalVerification/Challenge.lean)
-states the trusted propositions Comparator checks the solution against; they
-carry `sorry` by construction.
-
-## Use as a Lean package
-
-Use the [dependency recipe and separate-project check](../DOWNSTREAM_REUSE.md).
-
-The reviewed #249/#257 root is imported with:
-
-```lean
-import Erdos249257
-```
-
-The problem-owned expansion surface is imported with:
-
-```lean
-import ErdosProblems
-```
-
-[`examples/Examples.lean`](../../research/examples/Examples.lean) is the minimal downstream
-consumer; its conditional shell-pressure example leaves the analytic
-hypothesis explicit and does not prove universal #257.
+For setup, use the [agent quickstart](README.md#start-with-current-public-work).
+[Reproducibility](../REPRODUCIBILITY.md) owns build instructions and the
+[downstream-package recipe](../REPRODUCIBILITY.md#use-the-library-in-another-lean-project);
+[architecture](../ARCHITECTURE.md) explains the evidence layers.

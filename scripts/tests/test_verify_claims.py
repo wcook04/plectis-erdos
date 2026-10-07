@@ -1,0 +1,762 @@
+#!/usr/bin/env python3
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+"""Prove the claim-following verb reports drift instead of absorbing it.
+
+A checker that cannot be shown failing is decoration. The register is currently
+sound, so running `verify_claims.py` against this repository proves only that it
+says yes. These fixtures give it registers that are wrong in each of the ways a
+register goes wrong -- a shifted line, a renamed declaration, a status outside
+the taxonomy, an open proposition pointing at a claim that no longer exists --
+and require a report for every one.
+
+Two of the fixtures also pin the Lean spellings that a naive matcher gets wrong,
+because both mistakes were made while writing the checker: a declaration whose
+name wraps onto the line below its `theorem` keyword, and a declaration written
+inside a namespace but registered under its qualified name.
+"""
+
+from __future__ import annotations
+
+import _test_bootstrap  # noqa: F401
+
+import io
+import json
+import os
+import shutil
+import subprocess
+import sys
+import tempfile
+from contextlib import redirect_stderr, redirect_stdout
+from pathlib import Path
+from unittest.mock import patch
+
+import verify_claims
+
+# Deliberately awkward, and all of it real Lean shape from this corpus:
+# a wrapped `theorem`, a namespaced declaration, and a modifier before `def`.
+SAMPLE_MODULE = """\
+import Mathlib
+
+namespace Sample
+
+/-- **Wrapped declaration.**  The name sits below the keyword. -/
+theorem
+    alpha (n : Nat) : n = n := rfl
+
+/-- **Modifier before the keyword.** -/
+noncomputable def beta : Nat := 0
+
+end Sample
+"""
+
+# Line numbers into SAMPLE_MODULE above (1-indexed). `alpha` is recorded at the
+# `theorem` keyword on line 6 with its name on line 7, which is how the real
+# register records wrapped declarations.
+ALPHA_KEYWORD_LINE = 6
+BETA_LINE = 10
+
+TAXONOMY = {"proved here": "Lean theorem in the committed formal-source checkpoint"}
+
+
+def require(condition: bool, message: str) -> None:
+    """Keep claims-verification failures active when run with ``python -O``."""
+    if not condition:
+        raise AssertionError(message)
+
+
+def check_comparator_context_scope() -> None:
+    """A selected claim must identify a broader packet's unrelated context."""
+    selected = claim("Sample.alpha", ALPHA_KEYWORD_LINE)
+    selected["declarations"] = []
+    row = {
+        "id": "selected_interface",
+        "claim_id": "sample_claim",
+        "original_declaration": "Sample.alpha",
+        "wrapper_declaration": "Challenge.alpha",
+        "boundary": "This selected interface has a restricted conclusion.",
+    }
+    register = build_register([selected], main_results=[row])
+    packet_context = "A different programme supplies the packet's headline result."
+    register["external_verification_packet"]["boundary"] = packet_context
+    for rows, expected in (([row], "bound"), ([], "not_bound")):
+        register["external_verification_packet"]["main_results"] = rows
+        report = verify_claims.follow_claim("sample_claim", register, {})
+        rendered = verify_claims.render_claim(report)
+        require(report["comparator"]["status"] == expected, "interface binding changed")
+        heading = "  packet-wide context (may concern other claims):"
+        require(heading in rendered, "selected claim did not identify packet-wide context")
+        require(rendered.index(heading) < rendered.index(packet_context),
+                "packet scope label did not precede its unrelated account")
+        require("what Comparator does and does not settle:" not in rendered,
+                "packet-wide account was still presented as the selected claim's explanation")
+        if rows:
+            require(row["boundary"] in rendered, "selected interface boundary disappeared")
+            require(rendered.index(row["boundary"]) < rendered.index(heading),
+                    "selected and packet boundaries lost their separate scopes")
+    register.pop("external_verification_packet")
+    rendered = verify_claims.render_claim(verify_claims.follow_claim("sample_claim", register, {}))
+    require("packet-wide context" not in rendered, "absent packet acquired invented context")
+
+
+def check_safe_read_boundary() -> None:
+    original_root = verify_claims.REPO_ROOT
+    with tempfile.TemporaryDirectory(prefix="claims-input-") as raw_workspace:
+        workspace = Path(raw_workspace)
+        verify_claims.REPO_ROOT = workspace
+        regular = workspace / "regular.txt"
+        regular.write_text("claims input\n", encoding="utf-8")
+        require(
+            verify_claims.safe_read_text(regular) == "claims input\n",
+            "claims verifier rejected a regular source file",
+        )
+
+        directory = workspace / "directory"
+        directory.mkdir()
+        require(
+            verify_claims.safe_read_text(directory) is None,
+            "claims verifier accepted a directory input",
+        )
+
+        symlink = workspace / "symlink.txt"
+        symlink.symlink_to(regular)
+        require(
+            verify_claims.safe_read_text(symlink) is None,
+            "claims verifier followed a symlinked source input",
+        )
+
+        if hasattr(os, "mkfifo"):
+            fifo = workspace / "fifo"
+            os.mkfifo(fifo)
+            require(
+                verify_claims.safe_read_text(fifo) is None,
+                "claims verifier accepted a FIFO source input",
+            )
+    verify_claims.REPO_ROOT = original_root
+
+
+def build_register(
+    claims: list[dict],
+    open_props: list[dict] | None = None,
+    main_results: list[dict] | None = None,
+) -> dict:
+    register = {
+        "schema": "erdos249257-claims/3",
+        "release": {"version": "test", "formal_source": {}},
+        "status_taxonomy": TAXONOMY,
+        "non_claims": [],
+        "remaining_open_propositions": open_props or [],
+        "claims": claims,
+    }
+    if main_results is not None:
+        register["external_verification_packet"] = {
+            "boundary": "Comparator checks statements, not significance.",
+            "comparator": {"permitted_axioms": ["propext"], "config": "verification/comparator.json"},
+            "claim_status_contract": {"unregistered_interface": "Not a canonical reviewed claim."},
+            "main_results": main_results,
+        }
+    return register
+
+
+def claim(
+    decl_name: str,
+    line: int,
+    status: str = "proved here",
+    paper_label: str | None = None,
+    module: str = "Sample.lean",
+) -> dict:
+    return {
+        "id": "sample_claim",
+        "label": "Sample",
+        "status": status,
+        "statement": "A sample statement.",
+        "paper_label": paper_label,
+        "declarations": [
+            {"name": decl_name, "module": module, "line": line}
+        ],
+    }
+
+
+def run_case(root: Path, register: dict) -> dict:
+    (root / "docs").mkdir(parents=True, exist_ok=True)
+    (root / "docs" / "claims.json").write_text(json.dumps(register), encoding="utf-8")
+    verify_claims.REPO_ROOT = root
+    verify_claims.CLAIMS_PATH = root / "docs" / "claims.json"
+    return verify_claims.verify_all_claims(register)
+
+
+def statuses(report: dict) -> set[str]:
+    return {problem.get("status") for problem in report["problems"]}
+
+
+def check_gate_timeout_contract() -> None:
+    """Keep Git probes and every gate child inside explicit time ceilings."""
+    observed: list[int | None] = []
+
+    def fake_run(argv: list[str], *, cwd: Path, timeout: int | None = None) -> subprocess.CompletedProcess[str]:
+        observed.append(timeout)
+        if len(observed) == 1:
+            raise subprocess.TimeoutExpired(argv, timeout)
+        return subprocess.CompletedProcess(argv, 0, stdout="", stderr="")
+
+    with patch.object(verify_claims, "run", side_effect=fake_run):
+        gates = verify_claims.run_gates({"shallow_clone": False})
+
+    require(observed, "the gate runner did not launch any child")
+    require(
+        observed[0] == verify_claims.GATE_TIMEOUT_SECONDS,
+        "gate runner lost the canonical worker timeout",
+    )
+    require(
+        gates["failed"] >= 1
+        and any(
+            row.get("returncode") == verify_claims.singleflight.WORKER_TIMEOUT_EXIT_CODE
+            for row in gates["results"]
+        ),
+        "gate runner did not report a timed-out child as a bounded failure",
+    )
+
+    with patch.object(verify_claims, "run", return_value=subprocess.CompletedProcess([], 0, "", "")) as runner:
+        verify_claims.git_output("rev-parse", "HEAD")
+    require(
+        runner.call_args.kwargs["timeout"]
+        == verify_claims.singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        "Git probe lost the canonical command timeout",
+    )
+
+
+def check_optional_tool_discovery_contract() -> None:
+    """Optional gate availability must ignore a hostile caller PATH."""
+    observed_paths: list[str | None] = []
+
+    def fake_which(tool: str, mode: int = os.F_OK, path: str | None = None) -> None:
+        del tool, mode
+        observed_paths.append(path)
+        return None
+
+    hostile = {"PATH": "/private/host-tools/bin"}
+    with patch.dict(os.environ, hostile, clear=False):
+        with patch.object(verify_claims.shutil, "which", side_effect=fake_which):
+            require(
+                not verify_claims.optional_tool_available("cffconvert"),
+                "hostile optional-tool lookup unexpectedly reported availability",
+            )
+    require(len(observed_paths) == 1, "optional-tool discovery made an unexpected lookup count")
+    require(
+        observed_paths[0]
+        == os.pathsep.join((str(Path(sys.executable).resolve().parent), os.defpath)),
+        "optional-tool discovery consulted ambient PATH",
+    )
+
+    calls: list[str] = []
+    with patch.object(
+        verify_claims,
+        "optional_tool_available",
+        side_effect=lambda tool: calls.append(tool) or False,
+    ):
+        with patch.object(verify_claims, "git_output", return_value=None):
+            verify_claims.describe_environment({})
+        with patch.object(
+            verify_claims,
+            "run",
+            return_value=subprocess.CompletedProcess([], 0, "", ""),
+        ):
+            verify_claims.run_gates({"shallow_clone": True})
+    require(calls.count("cffconvert") == 2, "both optional-gate consumers must use the isolated lookup")
+
+
+def fixture_cli(root: Path, *args: str) -> tuple[int, str]:
+    output = io.StringIO()
+    with (
+        patch.object(verify_claims, "REPO_ROOT", root),
+        patch.object(verify_claims, "CLAIMS_PATH", root / "docs" / "claims.json"),
+        patch.object(sys, "argv", ["verify_claims.py", *args]),
+        redirect_stdout(output),
+        redirect_stderr(output),
+    ):
+        code = verify_claims.main()
+    return code, output.getvalue()
+
+
+def check_declaration_identity() -> None:
+    """The real claim CLI must resolve a declaration, never merely mention it."""
+    cases = (
+        ("comment", "namespace Sample\n-- theorem gone : True := by trivial\nend Sample\n", 2),
+        ("string", 'namespace Sample\ndef narration : String := "theorem gone : True := by trivial"\nend Sample\n', 2),
+        ("call site", "namespace Sample\ntheorem neighbor : True := by\n  exact gone\nend Sample\n", 3),
+        ("wrong namespace", "namespace Other\ntheorem gone : True := by trivial\nend Other\n", 2),
+        ("invented namespace", "theorem gone : True := by trivial\n", 1),
+    )
+    original_root, original_claims = verify_claims.REPO_ROOT, verify_claims.CLAIMS_PATH
+    with tempfile.TemporaryDirectory(prefix="claim-declaration-identity-") as tmp:
+        root = Path(tmp)
+        for label, source, line in cases:
+            (root / "Sample.lean").write_text(source, encoding="utf-8")
+            register = build_register([claim("Sample.gone", line)])
+            run_case(root, register)
+            code, output = fixture_cli(root, "--claim", "sample_claim", "--json")
+            result = json.loads(output)
+            require(code == 1 and not result["result"]["current_records_verified"],
+                    f"{label} was accepted as a real declaration")
+            require(result["claim"]["declarations"][0]["status"] == "declaration_missing",
+                    f"{label} failure did not name the missing declaration")
+
+        # Short aliases are allowed only when the shared resolver finds one identity.
+        (root / "Sample.lean").write_text(
+            "namespace First\ntheorem gone : True := by trivial\nend First\n"
+            "namespace Second\ntheorem gone : True := by trivial\nend Second\n",
+            encoding="utf-8",
+        )
+        require(not run_case(root, build_register([claim("gone", 2)]))["verified"],
+                "ambiguous basename was accepted as one declaration")
+
+        (root / "Sample.lean").write_text(SAMPLE_MODULE, encoding="utf-8")
+        for name, line in (("Sample.alpha", ALPHA_KEYWORD_LINE), ("Sample.beta", BETA_LINE)):
+            report = run_case(root, build_register([claim(name, line)]))
+            require(report["verified"], f"real declaration rejected: {name}")
+        wrapped = verify_claims.resolve_declaration(
+            {"name": "Sample.alpha", "module": "Sample.lean", "line": ALPHA_KEYWORD_LINE}
+        )
+        require(wrapped["resolved_line"] == ALPHA_KEYWORD_LINE
+                and "Wrapped declaration" in (wrapped["docstring"] or ""),
+                "wrapped declaration did not land at its keyword and attached explanation")
+    verify_claims.REPO_ROOT, verify_claims.CLAIMS_PATH = original_root, original_claims
+
+
+def check_history_scope_contract() -> None:
+    """Replay record checks and history gates in real, network-free Git fixtures."""
+    def git(root: Path, *args: str) -> str:
+        completed = subprocess.run(
+            ["git", "-c", "user.name=Claim fixture", "-c", "user.email=fixture@example.invalid",
+             "-c", "commit.gpgSign=false", *args],
+            cwd=root,
+            env=verify_claims.clean_environment(),
+            text=True,
+            capture_output=True,
+            check=True,
+            timeout=30,
+        )
+        return completed.stdout.strip()
+
+    with tempfile.TemporaryDirectory(prefix="claims-history-") as raw:
+        workspace = Path(raw).resolve()
+        full = workspace / "full"
+        full.mkdir()
+        git(full, "init", "--quiet")
+        (full / "Sample.lean").write_text(SAMPLE_MODULE, encoding="utf-8")
+        git(full, "add", "Sample.lean")
+        git(full, "commit", "--quiet", "-m", "Formal source")
+        formal_ref = git(full, "rev-parse", "HEAD")
+        register = build_register([claim("Sample.alpha", ALPHA_KEYWORD_LINE)])
+        register["release"]["formal_source"]["ref"] = formal_ref
+        (full / "docs").mkdir()
+        (full / "docs" / "claims.json").write_text(json.dumps(register), encoding="utf-8")
+        (full / "scripts").mkdir()
+        for name in ("check_publication_contract.py", "check_records.py"):
+            (full / "scripts" / name).write_text("print('fixture passed')\n", encoding="utf-8")
+        git(full, "add", "docs", "scripts")
+        git(full, "commit", "--quiet", "-m", "Publish claim records")
+
+        shallow = workspace / "shallow"
+        git(workspace, "clone", "--quiet", "--depth", "1", full.as_uri(), str(shallow))
+        require(git(shallow, "rev-parse", "--is-shallow-repository") == "true", "fixture is not shallow")
+
+        missing = workspace / "missing-history"
+        archive = workspace / "archive"
+        nested_archive = full / "unpacked-archive"
+        for root in (missing, archive, nested_archive):
+            root.mkdir()
+            shutil.copyfile(full / "Sample.lean", root / "Sample.lean")
+            shutil.copytree(full / "docs", root / "docs")
+            shutil.copytree(full / "scripts", root / "scripts")
+        git(missing, "init", "--quiet")
+        git(missing, "add", ".")
+        git(missing, "commit", "--quiet", "-m", "Unrelated history")
+
+        fixtures = (
+            (full, True, None),
+            (shallow, False, "git fetch --unshallow --tags origin"),
+            (missing, False, "git fetch --tags origin"),
+            (archive, False, "git clone --filter=blob:none"),
+            (nested_archive, False, "git clone --filter=blob:none"),
+        )
+        for root, history_complete, remedy in fixtures:
+            for args, report_key in ((["--claim", "sample_claim"], "claim"), (["--verify-all"], "verification")):
+                code, output = fixture_cli(root, *args, "--json")
+                payload = json.loads(output)
+                result = payload["result"]
+                require(code == 0 and payload[report_key]["verified"], f"{root.name}: valid current records failed: {output}")
+                require(result == {
+                    "verification_scope": "current_checkout_records",
+                    "status": "verified",
+                    "verified": True,
+                    "current_records_verified": True,
+                    "history_complete": history_complete,
+                    "history_verification": "not_run",
+                    "exit_code": 0,
+                }, f"{root.name}: current records and history were conflated: {result}")
+                environment = payload["environment"]
+                require(environment["history_complete"] == history_complete, f"{root.name}: wrong history classification")
+                if remedy:
+                    require(remedy in " ".join(environment["blocks"]), f"{root.name}: missing usable remedy")
+                if root in (archive, nested_archive):
+                    require(not environment["git_worktree"] and environment["head"] is None, f"{root.name}: borrowed unrelated Git history")
+                    require("git fetch" not in " ".join(environment["blocks"]), f"{root.name}: archive told to fetch")
+                code, human = fixture_cli(root, *args)
+                require(code == 0 and "Current records: verified." in human, f"{root.name}: human record verdict absent")
+                require("History-dependent gates and Lean were not run." in human, f"{root.name}: human check scope absent")
+                require(("[history advisory]" in human) == (not history_complete), f"{root.name}: history advisory lost")
+
+            code, output = fixture_cli(root, "--json")
+            require(code == (0 if history_complete else 2), f"{root.name}: environment diagnostic returned {code}: {output}")
+            code, output = fixture_cli(root, "--gates", "--json")
+            gates = json.loads(output)["gates"]
+            require(code == (0 if history_complete else 2), f"{root.name}: gates returned {code}: {output}")
+            require(gates["failed"] == 0 and gates["blocked"] == (0 if history_complete else 1), f"{root.name}: history absence reported as gate failure")
+            require(gates["passed"] == (2 if history_complete else 1), f"{root.name}: current-file gate did not run")
+
+            # Actual invalid records must fail even where history is unavailable.
+            (root / "Sample.lean").write_text(SAMPLE_MODULE.replace("alpha (", "renamed ("), encoding="utf-8")
+            for args in (["--claim", "sample_claim"], ["--verify-all"]):
+                code, output = fixture_cli(root, *args, "--json")
+                result = json.loads(output)["result"]
+                require(code == 1 and not result["current_records_verified"], f"{root.name}: invalid claim hidden by history status")
+                require(result["status"] == "invalid" and result["history_complete"] == history_complete, f"{root.name}: invalid verdict lost its scope")
+
+            (root / "scripts" / "check_records.py").write_text("raise SystemExit(1)\n", encoding="utf-8")
+            code, output = fixture_cli(root, "--gates", "--json")
+            require(code == 1 and json.loads(output)["gates"]["failed"] == 1, f"{root.name}: genuine gate failure masked")
+
+
+def check_claim_local_comparator_boundary() -> None:
+    """A one-claim card separates typed contracts from labelled packet context."""
+    register = json.loads(verify_claims.CLAIMS_PATH.read_text(encoding="utf-8"))
+    packet = register["external_verification_packet"]
+    packet["boundary"] = "UNRELATED_PACKET_NARRATIVE about a different problem."
+    for claim_id in ("eb_full_support", "dyadic_totient_certificate_interface", "erdos_1041"):
+        report = verify_claims.follow_claim(claim_id, register, label_index=None)
+        comparator = report["comparator"]
+        rendered = "".join(verify_claims.render_claim(report).split())
+        heading = "packet-widecontext(mayconcernotherclaims):"
+        require(heading in rendered and "UNRELATED_PACKET_NARRATIVE" in rendered,
+                f"{claim_id}: accepted packet context or its scope label disappeared")
+        require(rendered.index(heading) < rendered.index("UNRELATED_PACKET_NARRATIVE"),
+                f"{claim_id}: unrelated packet narrative lost its preceding scope label")
+        require(comparator["boundary"] == packet["boundary"]
+                and comparator["boundary_scope"] == packet["scope"],
+                f"{claim_id}: JSON packet context lost its source or scope")
+        for interface in comparator["interfaces"]:
+            require("".join(interface["boundary"].split()) in rendered,
+                    f"{claim_id}: selected interface boundary was dropped")
+        contract = "registered_claim" if comparator["status"] == "bound" else "unregistered_interface"
+        require("".join(packet["claim_status_contract"][contract].split()) in rendered,
+                f"{claim_id}: claim binding contract was dropped")
+        require("".join(packet["claim_status_contract"]["novelty"].split()) in rendered,
+                f"{claim_id}: novelty limit was dropped")
+    register.pop("external_verification_packet")
+    report = verify_claims.follow_claim("eb_full_support", register, label_index=None)
+    require(report["comparator"]["status"] == "packet_absent"
+            and "SECOND FORMAL CHECK" not in verify_claims.render_claim(report),
+            "absent Comparator packet was turned into a formal-check claim")
+
+
+def main() -> int:
+    check_claim_local_comparator_boundary()
+    check_gate_timeout_contract()
+    check_optional_tool_discovery_contract()
+    check_history_scope_contract()
+    failures: list[str] = []
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw)
+        (root / "Sample.lean").write_text(SAMPLE_MODULE, encoding="utf-8")
+
+        # A published checkout must not let caller Git selectors redirect the
+        # child process to a private repository, namespace, or replacement map.
+        hostile_environment = {
+            "GIT_DIR": "/private/wrong-git-dir",
+            "GIT_WORK_TREE": "/private/wrong-work-tree",
+            "GIT_INDEX_FILE": "/private/wrong-index",
+            "GIT_NAMESPACE": "wrong-namespace",
+            "GIT_REPLACE_REF_BASE": "refs/replacements/wrong",
+            "GIT_OBJECT_DIRECTORY": "/private/wrong-objects",
+            "GIT_ALTERNATE_OBJECT_DIRECTORIES": "/private/wrong-alternates",
+            "GIT_COMMON_DIR": "/private/wrong-common",
+            "PYTHONHOME": "/private/wrong-python-home",
+            "PYTHONPATH": "/private/wrong-python-path",
+            "PYTHONOPTIMIZE": "2",
+            "LC_ALL": "C",
+            "LANG": "C",
+            "LANGUAGE": "C",
+            "PATH": "/private/wrong-bin",
+        }
+        with patch.dict(os.environ, hostile_environment, clear=False):
+            sanitized = verify_claims.clean_environment()
+            require(
+                all(
+                    key not in sanitized
+                    for key in hostile_environment
+                    if key not in {"LC_ALL", "LANG", "LANGUAGE", "PATH"}
+                ),
+                "claims verifier retained a hostile selector",
+            )
+            require(
+                sanitized["PATH"] == os.defpath,
+                "claims verifier did not pin PATH",
+            )
+            require(
+                sanitized["LC_ALL"] == "C.UTF-8"
+                and sanitized["LANG"] == "C.UTF-8"
+                and sanitized["LANGUAGE"] == "C.UTF-8",
+                "claims verifier did not pin locale",
+            )
+            require(
+                verify_claims.describe_environment({})["subprocess_environment"]
+                == {
+                    "contract": verify_claims.ENVIRONMENT_CONTRACT,
+                    "sanitized_git_selectors": list(
+                        verify_claims.SANITIZED_GIT_ENVIRONMENT_KEYS
+                    ),
+                    "sanitized_runtime_selectors": list(
+                        verify_claims.SANITIZED_RUNTIME_ENVIRONMENT_KEYS
+                    ),
+                    "canonical_values": {
+                        "PATH": os.defpath,
+                        "LC_ALL": "C.UTF-8",
+                        "LANG": "C.UTF-8",
+                        "LANGUAGE": "C.UTF-8",
+                    },
+                },
+                "claims verifier environment receipt drifted",
+            )
+            child = verify_claims.run(
+                [
+                    sys.executable,
+                    "-c",
+                    "import json, os; print(json.dumps({k: os.environ[k] for k in "
+                    "('GIT_DIR', 'GIT_NAMESPACE', 'GIT_REPLACE_REF_BASE', "
+                    "'PYTHONPATH', 'PYTHONHOME', 'PYTHONOPTIMIZE', 'LC_ALL', "
+                    "'LANG', 'LANGUAGE', 'PATH') "
+                    "if k in os.environ}))",
+                ],
+                cwd=root,
+            )
+            require(child.returncode == 0, "claims verifier child process failed")
+            require(
+                json.loads(child.stdout)
+                == {
+                    "LC_ALL": "C.UTF-8",
+                    "LANG": "C.UTF-8",
+                    "LANGUAGE": "C.UTF-8",
+                    "PATH": os.defpath,
+                },
+                "claims verifier child inherited ambient execution state",
+            )
+
+        # A claim register is untrusted input too: source and paper references
+        # must not make the verifier follow a symlink or an absolute path out of
+        # the checkout while trying to prove that the register is sound.
+        outside_module = root.parent / "outside.lean"
+        outside_module.write_text(SAMPLE_MODULE, encoding="utf-8")
+        (root / "linked.lean").symlink_to(outside_module)
+        report = run_case(
+            root,
+            build_register(
+                [claim("Sample.alpha", ALPHA_KEYWORD_LINE, module="linked.lean")]
+            ),
+        )
+        require(
+            statuses(report) == {"module_missing"},
+            "claims verifier followed a symlinked source path",
+        )
+        report = run_case(
+            root,
+            build_register(
+                [claim("Sample.alpha", ALPHA_KEYWORD_LINE, module=str(outside_module))]
+            ),
+        )
+        require(
+            statuses(report) == {"module_missing"},
+            "claims verifier accepted a source path outside the checkout",
+        )
+
+        # A wrapped declaration recorded at its keyword line must resolve, and a
+        # namespaced declaration registered under its qualified name must too.
+        for name, line, label in (
+            ("Sample.alpha", ALPHA_KEYWORD_LINE, "wrapped namespaced theorem"),
+            ("Sample.beta", BETA_LINE, "noncomputable def"),
+        ):
+            report = run_case(root, build_register([claim(name, line)]))
+            if not report["verified"]:
+                failures.append(f"{label}: sound register reported as broken {report['problems']}")
+
+        # A shifted line is drift, and drift must be named.
+        report = run_case(root, build_register([claim("Sample.alpha", 2)]))
+        if "drifted" not in statuses(report):
+            failures.append(f"shifted line not reported as drift: {report['problems']}")
+
+        # A renamed declaration is a citation pointing at nothing.
+        report = run_case(root, build_register([claim("Sample.gone", ALPHA_KEYWORD_LINE)]))
+        if "declaration_missing" not in statuses(report):
+            failures.append(f"renamed declaration not reported: {report['problems']}")
+
+        # A status outside the declared taxonomy means the ceiling is undefined.
+        report = run_case(
+            root, build_register([claim("Sample.alpha", ALPHA_KEYWORD_LINE, "definitely true")])
+        )
+        if "status_outside_taxonomy" not in statuses(report):
+            failures.append(f"undeclared status not reported: {report['problems']}")
+
+        # An open proposition must not outlive the claim it targets.
+        report = run_case(
+            root,
+            build_register(
+                [claim("Sample.alpha", ALPHA_KEYWORD_LINE)],
+                [{"id": "remaining_open.orphan", "open_target_claim": "deleted_claim"}],
+            ),
+        )
+        if "open_proposition_targets_unknown_claim" not in statuses(report):
+            failures.append(f"orphaned open proposition not reported: {report['problems']}")
+
+        # A missing forward boundary reference fails the whole-register gate.
+        forward_claim = claim("Sample.alpha", ALPHA_KEYWORD_LINE)
+        forward_claim["remaining_open_proposition_ids"] = ["remaining_open.deleted"]
+        report = run_case(root, build_register([forward_claim]))
+        if "claim_references_unknown_open_proposition" not in statuses(report):
+            failures.append(f"dangling forward boundary not reported: {report['problems']}")
+
+        # The same edge on the Comparator side: a selected interface may name a
+        # claim id, and that binding must not outlive the claim either.
+        report = run_case(
+            root,
+            build_register(
+                [claim("Sample.alpha", ALPHA_KEYWORD_LINE)],
+                main_results=[{"id": "iface", "claim_id": "deleted_claim"}],
+            ),
+        )
+        if "comparator_interface_targets_unknown_claim" not in statuses(report):
+            failures.append(f"orphaned Comparator binding not reported: {report['problems']}")
+
+        # A claim whose paper label no paper carries sends a reader after prose
+        # that is not there.
+        (root / "paper").mkdir(exist_ok=True)
+        (root / "paper" / "sample.tex").write_text(
+            "\\label{res:present}\n", encoding="utf-8"
+        )
+        report = run_case(
+            root,
+            build_register([claim("Sample.alpha", ALPHA_KEYWORD_LINE, paper_label="res:absent")]),
+        )
+        if "paper_label_resolves_to_no_paper" not in statuses(report):
+            failures.append(f"unresolvable paper label not reported: {report['problems']}")
+
+        # ...and a label a paper does carry is not reported.
+        report = run_case(
+            root,
+            build_register([claim("Sample.alpha", ALPHA_KEYWORD_LINE, paper_label="res:present")]),
+        )
+        if not report["verified"]:
+            failures.append(f"resolvable paper label reported as broken: {report['problems']}")
+
+        # A paper label carried only by a symlink is not evidence from this
+        # checkout and must not be indexed as though it were a committed paper.
+        outside_paper = root.parent / "outside.tex"
+        outside_paper.write_text("\\label{res:leaked}\n", encoding="utf-8")
+        (root / "paper" / "linked.tex").symlink_to(outside_paper)
+        report = run_case(
+            root,
+            build_register([claim("Sample.alpha", ALPHA_KEYWORD_LINE, paper_label="res:leaked")]),
+        )
+        if "paper_label_resolves_to_no_paper" not in statuses(report):
+            failures.append(f"symlinked paper label was accepted: {report['problems']}")
+        (root / "paper" / "linked.tex").unlink()
+
+        # Absent paper sources are an environment fact, not a claim fault. A
+        # checkout without the write-ups must still verify, or the exposition
+        # check would convert a truncated clone into a broken register -- the
+        # exact conflation this module separates everywhere else.
+        (root / "paper" / "sample.tex").unlink()
+        (root / "paper").rmdir()
+        report = run_case(
+            root,
+            build_register([claim("Sample.alpha", ALPHA_KEYWORD_LINE, paper_label="res:absent")]),
+        )
+        if not report["verified"]:
+            failures.append(f"absent paper sources reported as a claim fault: {report['problems']}")
+
+    if failures:
+        for failure in failures:
+            print(f"  FAIL {failure}")
+        return 1
+    print(
+        "test_verify_claims: drift, renames, undeclared statuses, orphaned open "
+        "propositions, forward/reverse boundary links, orphaned Comparator bindings, and unresolvable paper "
+        "labels are each reported; absent paper sources are not; current-record "
+        "checks remain distinct from history gates in full, shallow, missing-history, "
+        "and source-archive fixtures"
+    )
+    return 0
+
+
+
+def check_open_boundary_relationships() -> None:
+    from claim_relationships import audit_claim_relationships, resolve_claim_boundary
+
+    progress = {"id": "progress", "status": "proved",
+                "remaining_open_proposition_ids": ["open.shared", "open.shared", "open.both"]}
+    target = {"id": "target"}
+    props = [
+        {"id": "open.reverse", "open_target_claim": "progress"},
+        {"id": "open.shared", "open_target_claim": "target"},
+        {"id": "open.both", "open_target_claim": "progress"},
+    ]
+    register = build_register([progress, target], props)
+    result = resolve_claim_boundary(progress, register)
+    assert [row["id"] for row in result["remaining_open"]] == [
+        "open.shared", "open.both", "open.reverse"
+    ]
+    assert result["remaining_open_relationships"] == [
+        {"proposition_id": "open.shared", "relation_kinds": ["remaining_open_proposition_ids"]},
+        {"proposition_id": "open.both", "relation_kinds": ["remaining_open_proposition_ids", "open_target_claim"]},
+        {"proposition_id": "open.reverse", "relation_kinds": ["open_target_claim"]},
+    ]
+    assert not result["inconsistencies"]
+    assert not audit_claim_relationships(register)
+    progress["remaining_open_proposition_ids"] += ["open.missing", "open.missing"]
+    result = resolve_claim_boundary(progress, register)
+    assert len(result["inconsistencies"]) == 1
+    assert result["inconsistencies"][0]["status"] == "claim_references_unknown_open_proposition"
+    assert len(audit_claim_relationships(register)) == 1
+    dangling_only = dict(progress, remaining_open_proposition_ids=["open.missing"])
+    dangling_register = build_register([dangling_only], [])
+    report = verify_claims.follow_claim("progress", dangling_register, {})
+    assert not report["verified"]
+    rendered = verify_claims.render_claim(report)
+    assert "registry inconsistency" in rendered
+    assert "no remaining open proposition" not in rendered
+    props[1]["open_target_claim"] = "deleted"
+    assert any(row["status"] == "open_proposition_targets_unknown_claim"
+               for row in resolve_claim_boundary(progress, register)["inconsistencies"])
+
+    # Exhaustive actual-registry regression: every forward edge is displayed
+    # or receives a specific inconsistency; it can never silently disappear.
+    actual = json.loads(verify_claims.CLAIMS_PATH.read_text())
+    assert not audit_claim_relationships(actual)
+    for row in actual["claims"]:
+        boundary = verify_claims.boundary_for(row, actual)
+        shown = {prop["id"] for prop in boundary["remaining_open"]}
+        rejected = {issue["proposition_id"] for issue in boundary["inconsistencies"]}
+        assert set(row.get("remaining_open_proposition_ids", [])) <= shown | rejected, row["id"]
+    weighted = next(row for row in actual["claims"]
+                    if row["id"] == "finite_prime_weighted_support")
+    boundary = verify_claims.boundary_for(weighted, actual)
+    assert "remaining_open.universal_257_all_infinite_supports" in {
+        row["id"] for row in boundary["remaining_open"]
+    }
+
+
+if __name__ == "__main__":
+    check_open_boundary_relationships()
+    check_comparator_context_scope()
+    check_safe_read_boundary()
+    check_declaration_identity()
+    raise SystemExit(main())

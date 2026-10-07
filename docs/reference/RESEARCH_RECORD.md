@@ -96,7 +96,7 @@ A relation row is `attested` only when its certificate is listed with the
 recorded signature hash, has the right type head and sits in a compiled
 module. A row that meets the first two and fails the third is
 `listed_not_compiled`, and `relation_registry.py check` fails on it. A test in
-`scripts/test_lean_fast_build.py` requires every auxiliary root of the module
+`scripts/tests/test_lean_fast_build.py` requires every auxiliary root of the module
 graph to be a compiled target or a named exclusion with its reason.
 
 ## The four command-line tools

@@ -70,6 +70,25 @@ collision, and `--check` fails. Preserve user edits before an explicitly chosen
 installed namespace and remove only that `plectis-frontier` directory (or its
 symlink in symlink mode). This does not remove or reset research work.
 
+### OpenClaw workspace installation
+
+For an owner-approved OpenClaw workspace, use the reviewed directory:
+
+```sh
+SKILL_DIR="$PWD/.agents/skills/plectis-frontier"
+openclaw skills install "$SKILL_DIR" --as plectis-frontier
+openclaw skills info plectis-frontier
+openclaw skills check
+```
+
+Use a named agent only when the owner selected one. Direct Git installation
+expects a root `SKILL.md`, so the nested directory is not a working
+`openclaw skills install git:wcook04/plectis-erdos` shortcut. Inspect the
+[current client documentation](https://docs.openclaw.ai/cli/skills) before use;
+the [distribution runbook](FRONTIER_RELAY.md#packaging-sources-checked-4-september-2026)
+records the dated packaging sources. Record the client version and actual
+entry outcome. Discovery alone does not establish a completed research shift.
+
 ## Use from another working directory
 
 Invoke `plectis-frontier` through the client's skill mechanism. Resolve its
@@ -124,7 +143,7 @@ execution, isolated onboarding, independent review or outside adoption.
 Focused checks:
 
 ```sh
-python3 scripts/test_frontier_skill.py
-python3 scripts/test_clone_skills.py
-python3 scripts/test_companion_package.py
+python3 scripts/tests/test_frontier_skill.py
+python3 scripts/tests/test_clone_skills.py
+python3 scripts/tests/test_companion_package.py
 ```

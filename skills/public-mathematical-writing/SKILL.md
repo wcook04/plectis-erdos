@@ -5,7 +5,7 @@ description: Write or revise reader-facing mathematics in this public Lean repos
 
 # Public mathematical writing
 
-Use this skill for `docs/READING_GUIDE.md`, the reader-facing parts of `README.md`,
+Use this skill for `docs/README.md`, the reader-facing parts of `README.md`,
 result and scope guides, paper full text, and manuscript prose. It travels with
 the public clone and depends only on files in this repository.
 
@@ -277,8 +277,8 @@ it; otherwise remove the dependency and state the evidence boundary plainly.
 
 When shortening shared entry guides, keep contract-required provenance and
 authority wording intact. Measure the whole first-read bundle, then run
-`scripts/test_cold_clone_comprehension.py` and
-`scripts/test_public_artifact_boundary.py`; a local readability check alone
+`scripts/tests/test_cold_clone_comprehension.py` and
+`scripts/tests/test_public_artifact_boundary.py`; a local readability check alone
 does not cover those contracts.
 
 ## Propagate each settled correction
@@ -331,7 +331,7 @@ this skill.
 
 ```sh
 python3 scripts/proof_cockpit.py --check
-python3 scripts/test_public_writing_contract.py
+python3 scripts/tests/test_public_writing_contract.py
 python3 scripts/check_problem_note_sources.py --coverage
 python3 scripts/run_release_check.py
 ```
@@ -340,11 +340,11 @@ Run `python3 scripts/lean_fast_build.py --jobs 2` after Lean changes. For paper
 changes, rebuild the owning manuscript and run its registered link and corpus
 checks; do not regenerate authored prose mechanically. For a native TeX edit,
 build the changed PDF and run `scripts/sync_publication_pdfs.py` before
-`docs/papers/refresh_paper_corpus.py --write`: the corpus records the PDF
+`scripts/papers/refresh_paper_corpus.py --write`: the corpus records the PDF
 digest as well as the manuscript text. Then restamp the source/PDF pair through
 `python3 scripts/check_publication_contract.py --restamp --apply`, reanchor any
 moved source attributions, and refresh projections. Run
-`python3 docs/papers/refresh_paper_corpus.py --check`,
+`python3 scripts/papers/refresh_paper_corpus.py --check`,
 `python3 scripts/check_publication_contract.py`, and the release check. This
 native corpus refresh preserves imported companion
 provenance; a Python projection refresh alone does not rebuild registered paper

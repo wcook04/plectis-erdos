@@ -48,7 +48,7 @@ investigation keeps the two apart.
 
 Write `w_n = 1/(2^n - 1)`, let `R_N` be the sum of `w_n` over `n > N`, and let
 `𝒜` be the set of all subseries sums. The
-[short paper](../../../docs/papers/full-text/erdos-257-mersenne-support-subseries.md#unique-coding-and-arithmetic-membership)
+[short paper](../../../docs/papers/full-text/erdos-257-mersenne-support-subseries.md#sec:geometry)
 proves the following.
 
 - `2^-N < R_N < w_N` for every `N >= 1`. Every weight exceeds its tail, so a
@@ -199,7 +199,7 @@ The upper bound follows by summing
 `1/(2^k - 1) <= 2^-k + 2*4^-k` over `k > 17`.
 The existing [exact certificate](../sparse_interpolation/late_rejection.py)
 checks every earlier skip and the final gap, both for `189/388` and its
-translate `577/388`. The [probe regression](../../../scripts/test_choices_contraction_probe.py)
+translate `577/388`. The [probe regression](../../../scripts/tests/test_choices_contraction_probe.py)
 also checks that both fractions are undecided at depth 16 and excluded at
 depth 17. Thus deeper computation can produce new nonmembership certificates;
 survival through any finite depth remains only finite evidence.

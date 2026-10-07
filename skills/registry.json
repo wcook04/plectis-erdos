@@ -447,7 +447,7 @@
       ],
       "read": [
         "skills/explain-public-system/SKILL.md#help-a-reader-work-through-an-argument",
-        "docs/READING_GUIDE.md#work-through-an-argument"
+        "docs/README.md#work-through-an-argument"
       ],
       "commands": [
         "python3 scripts/query_corpus.py --ask \"<question>\""
@@ -676,7 +676,7 @@
         "mine-open-problem"
       ],
       "read": [
-        "docs/FRONTIER_RELAY.md"
+        "docs/agents/FRONTIER_RELAY.md"
       ],
       "commands": [
         "python3 scripts/query_corpus.py --open",
@@ -1414,6 +1414,24 @@
             "citations",
             "cff"
           ]
+        },
+        {
+          "actions": [
+            "consolidate",
+            "consolidating",
+            "organize",
+            "organise",
+            "organizing",
+            "organising",
+            "reorganize",
+            "reorganise"
+          ],
+          "objects": [
+            "documentation",
+            "docs",
+            "folders",
+            "directories"
+          ]
         }
       ],
       "skills": [
@@ -1424,8 +1442,8 @@
       ],
       "commands": [
         "python3 scripts/agent_skill_catalog.py --check",
-        "python3 scripts/test_agent_entry.py",
-        "python3 scripts/test_compact_agent_entry.py",
+        "python3 scripts/tests/test_agent_entry.py",
+        "python3 scripts/tests/test_compact_agent_entry.py",
         "python3 scripts/check_cold_clone_comprehension.py --quick"
       ],
       "boundary": "Repair the public owner surface and preserve the observed journey as a fixture; do not depend on private infrastructure or hand-edit generated projections.",

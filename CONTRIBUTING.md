@@ -11,7 +11,7 @@ all save future work.
 
 ## Choose where to begin
 
-**Work on a paper.** Open [one problem's contribution page](docs/CONTRIBUTE_BY_PAPER.md)
+**Work on a paper.** Open [one problem's contribution page](docs/research-commons/CONTRIBUTE_BY_PAPER.md)
 for the short and long accounts, a source result to inspect, and current
 questions. You can send an ordinary mathematical argument without cloning,
 using Lean, or using an AI.
@@ -157,7 +157,7 @@ different roles instead of collapsing them into one author field. The project
 does not rank people by commit count, diff size, or the number of generated
 records. See the
 [credit and stewardship policy](docs/research-commons/CREDIT_POLICY.md) for the
-full boundary and the [accepted contributions](docs/research-commons/CONTRIBUTIONS.md)
+full boundary and the [accepted contributions](docs/research-commons/CONTRIBUTION_RECOGNITION.md)
 for the public, receipt-backed view.
 
 Artifact credit may also carry CRediT-aligned contribution roles such as
@@ -222,34 +222,18 @@ and lists the related problems; it never borrows a problem number.
 
 ## For agents and maintainers
 
-The human route above is the contract. The machinery below implements it; none
-of it is a prerequisite for reporting a useful result. Agents should use the
-clone-local [research-return skill](skills/erdos-research-return/SKILL.md), and
-the [consequence-propagation skill](skills/propagate-research-consequences/SKILL.md)
-after a stable result, and
-the [pull-request submission skill](skills/submit-pull-request/SKILL.md) when
-turning owned work into commits and a proposed GitHub return. That skill stops
-before pushing or opening the pull request unless the contributor explicitly
-authorises those external actions. Maintainers should preserve the
-contributor's prose rather than replacing it with machine field names.
+The human route above is the contract. Preserve the contributor's prose rather
+than replacing it with machine field names. The clone-local
+[research-return skill](skills/erdos-research-return/SKILL.md) owns structured
+sessions, validation, acceptance and credit generation; the
+[return template](docs/research-commons/RETURN_PACKAGE_TEMPLATE.md) owns fields.
+Submitted package files are intake artifacts, not accepted receipts or public
+claim authority. They do not belong on the accepted main branch. Acceptance
+must not silently strengthen `docs/claims.json`.
 
-To open and package a bounded, attributable structured research session, use
-`scripts/continue_research.py`. Its `start`, `check`, and `package` commands
-bind the public origin, starting commit, contributor identity, problem route,
-evidence, and route-memory receipt. The resulting `return.json` and
-`route-memory.json` may accompany a pull request. Validate them with
-`scripts/validate_research_return.py` before submission. The detailed field
-contract is in the [return package template](docs/research-commons/RETURN_PACKAGE_TEMPLATE.md).
-
-After a contribution has actually landed, `scripts/accept_research_return.py`
-can bind the reviewed result to its accepted public commit. Then
-`scripts/build_research_contributions.py` and
-`scripts/build_research_contribution_recognition.py` rebuild the accepted-only
-credit views. A submitted return must never appear there before acceptance,
-and an accepted receipt must never silently strengthen `docs/claims.json`.
-
-For an ordinary source change, run the narrow checks named by the agent entry
-and the affected subsystem. Lean changes must build with the pinned toolchain.
-Changes to claims, papers, or generated projections must follow the authority
-and builder order in the [agent guide](docs/agents/AGENT_GUIDE.md). CI exercises the public return
-validator, the acceptance boundary, and the accepted-only attribution views.
+After a stable result, follow the
+[consequence workflow](skills/propagate-research-consequences/SKILL.md).
+For commits and a proposed pull request, follow the
+[submission skill](skills/submit-pull-request/SKILL.md); pushing or opening it
+requires the contributor's explicit authorisation. The
+[agent guide](docs/agents/AGENT_GUIDE.md) owns source validation and builder order.

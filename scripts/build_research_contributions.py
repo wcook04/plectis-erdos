@@ -29,7 +29,7 @@ RETURNS = ROOT / "docs/research-commons/returns"
 JSON_OUTPUT = ROOT / "docs/research-commons/contributions.json"
 MARKDOWN_OUTPUT = ROOT / "docs/research-commons/CONTRIBUTIONS.md"
 SCHEMA = "accepted-research-contributions/1"
-PUBLIC_PROBLEM_ENTRY_PATH = "docs/CONTRIBUTE_BY_PAPER.md"
+PUBLIC_PROBLEM_ENTRY_PATH = "docs/research-commons/CONTRIBUTE_BY_PAPER.md"
 PUBLIC_SUBJECT_FRONTIER_PATH = "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"
 PUBLIC_SUBJECT_FRONTIER_ANCHOR = "subject-frontier"
 GIT_CONTEXT_KEYS = frozenset(
@@ -337,7 +337,7 @@ def public_result_family_route(problem: Any) -> dict[str, str]:
     return {
         "repository_path": PUBLIC_PROBLEM_ENTRY_PATH,
         "anchor": f"problem-{problem}",
-        "relative_link": f"../CONTRIBUTE_BY_PAPER.md#problem-{problem}",
+        "relative_link": f"CONTRIBUTE_BY_PAPER.md#problem-{problem}",
     }
 
 
@@ -491,191 +491,10 @@ def markdown_text(value: Any) -> str:
     return text
 
 
-def code_text(value: Any) -> str:
-    return " ".join(str(value).split()).replace("`", "'")
-
-
-def disclosure_text(value: dict[str, Any] | None) -> str:
-    if not value:
-        return "undisclosed"
-    state = str(value.get("state", "undisclosed"))
-    if state != "disclosed":
-        return state
-    parts = [str(value.get("name", "disclosed"))]
-    if value.get("version"):
-        parts.append(str(value["version"]))
-    resources = value.get("resources")
-    if isinstance(resources, list) and resources:
-        parts.append("resources: " + ", ".join(str(item) for item in resources))
-    return " — ".join(parts)
-
-
-def artifact_credit_text(items: list[dict[str, Any]]) -> str:
-    return "; ".join(
-        f"{item['name']}"
-        + (
-            f" ({', '.join(item['contribution_roles'])})"
-            if item.get("contribution_roles")
-            else ""
-        )
-        + f": {', '.join(item['artifact_paths'])}"
-        for item in items
-    )
-
-
-def correction_lineage_text(value: dict[str, Any]) -> str:
-    prior = value["prior_return_reference"]
-    affected = ", ".join(value["affected_paths"])
-    return (
-        f"prior={prior}; affected={affected}; starting_commit={value['starting_commit']}; "
-        f"change={value['changed_evidence_or_wording']}; reason={value['reason']}; "
-        f"disposition={value['disposition']}"
-    )
-
-
 def receipt_link(row: dict[str, Any]) -> str:
     name = Path(row["receipt_path"]).name
     encoded_name = quote(name, safe="-._~")
     return f"[receipt:{markdown_text(row['return_id'])}](returns/{encoded_name})"
-
-
-def filtered_section(title: str, groups: dict[str, list[str]], links: dict[str, str]) -> list[str]:
-    lines = [f"## {title}", ""]
-    for key, return_ids in groups.items():
-        lines.extend([f"### {markdown_text(key)}", ""])
-        lines.extend(f"- {links[return_id]}" for return_id in return_ids)
-        lines.append("")
-    return lines
-
-
-def human_projection(projection: dict[str, Any]) -> bytes:
-    rows = projection["chronological"]
-    links = {row["return_id"]: receipt_link(row) for row in rows}
-    # REUSE-IgnoreStart — these strings are emitted into the generated
-    # projection's own header; they do not license this script.
-    lines = [
-        "<!-- SPDX-FileCopyrightText: 2026 Will Cook -->",
-        "<!-- SPDX-License-Identifier: Apache-2.0 -->",
-    # REUSE-IgnoreEnd
-        "",
-        "# Accepted research contributions",
-        "",
-        "This file is generated from strict `accepted_receipt` JSON artifacts. It is an",
-        "artifact-attribution view, not mathematical proof, claim authority, novelty review,",
-        "release inclusion, a contributor comparison, or evidence about model quality.",
-        "",
-        "Negative and inconclusive artifacts appear on exactly the same chronological rail",
-        "when repository acceptance records that they saved reproducible work.",
-        "",
-        "For each accepted record, follow its `public_frontier` route to inspect either the",
-        "material result family or the architecture contribution contract. This",
-        "canonical navigation does not change the credited artifact or its claim ceiling.",
-        "",
-        "For receipt-bound identity, impact, evidence, review, correction, promotion, and",
-        "tagged-release facets, see the [accepted contribution recognition view](CONTRIBUTION_RECOGNITION.md)",
-        "and its [machine-readable projection](contribution-recognition.json). Those views",
-        "use the same accepted receipts and do not turn activity into scientific credit.",
-        "Detached route-memory sidecars may bind intake, but they remain separate route authority",
-        "and are not copied into or counted by this accepted-receipt attribution view.",
-        "",
-        "## Chronological accepted artifacts",
-        "",
-    ]
-    for row in rows:
-        identity = row["identity"]
-        result = row["result"]
-        repository = row["repository"]
-        review = row["review"]
-        operator = identity["operator"]
-        collaborators = identity.get("material_collaborators", [])
-        collaborator_text = (
-            "; ".join(f"{item['name']} ({item['role']})" for item in collaborators)
-            if collaborators
-            else "none recorded"
-        )
-        review_text = "; ".join(f"{name}={decision['state']}" for name, decision in review.items())
-        evidence_text = "; ".join(
-            f"{item['exit_state']}/{item['replay_state']}" for item in row["evidence"]
-        )
-        scope_label = contribution_scope_label(row["frontier"])
-        track = contribution_track(row["frontier"])
-        related_problems = contribution_related_problems(row["frontier"])
-        if track != "mathematics":
-            route_label = "architecture contribution path"
-        elif "problem" in row["frontier"]:
-            route_label = f"Erdős #{row['frontier']['problem']} current fan-in"
-        else:
-            route_label = "subject frontier contract"
-        lines.extend(
-            [
-                f"### {markdown_text(row['accepted_at'])} — {markdown_text(scope_label)} — {markdown_text(result['class'])}",
-                "",
-                f"- Receipt: {links[row['return_id']]}",
-                f"- Contributor: {markdown_text(identity['contributor']['name'])}",
-                f"- Operator: {markdown_text(operator['relationship'])} — {markdown_text(operator.get('name') or 'undisclosed')}",
-                f"- Model/system disclosure: {markdown_text(disclosure_text(identity.get('model_system')))}",
-                f"- Provider disclosure: {markdown_text(disclosure_text(identity.get('provider')))}",
-                f"- Material collaborators: {markdown_text(collaborator_text)}",
-                f"- Requested display: {markdown_text(row['attribution']['requested_display'])}",
-                f"- Artifact credit: {markdown_text(artifact_credit_text(row['attribution']['artifact_credit']))}",
-                f"- Track: `{code_text(track)}`",
-                *(
-                    [
-                        "- Related problems: "
-                        + markdown_text(
-                            ", ".join(f"#{problem}" for problem in related_problems)
-                            or "none recorded"
-                        )
-                    ]
-                    if track == "mathematics" and "problem" not in row["frontier"]
-                    else []
-                ),
-                f"- Frontier: `{code_text(row['frontier']['handle'])}`",
-                f"- Public frontier: [{markdown_text(route_label)}]({row['public_frontier']['relative_link']})",
-                f"- Starting commit: `{repository['starting_commit']}`",
-                f"- Proposed commit: `{repository['proposed_commit']}`",
-                f"- Accepted commit: `{repository['accepted_commit']}`",
-                f"- Public repository: `{code_text(repository['origin'])}`",
-                f"- Changed public paths: {markdown_text(', '.join(repository['changed_paths']))}",
-                f"- Result as submitted: {markdown_text(result['summary'])}",
-                f"- Claim ceiling: `{code_text(result['claim_ceiling'])}`",
-                f"- Submission-time surviving boundary: {markdown_text(result['surviving_boundary'])}",
-                f"- Evidence/replay states: {markdown_text(evidence_text)}",
-                f"- Review states: {markdown_text(review_text)}",
-                f"- Submission-time limitations: {markdown_text('; '.join(result['limitations']))}",
-                f"- Requested disposition: `{code_text(result['requested_disposition'])}`",
-                *(
-                    [
-                        "- Correction lineage: "
-                        + markdown_text(correction_lineage_text(row["correction_lineage"]))
-                    ]
-                    if "correction_lineage" in row
-                    else []
-                ),
-                "",
-            ]
-        )
-    filters = projection["filters"]
-    lines.extend(filtered_section("Filter by contribution track", filters["by_track"], links))
-    lines.extend(filtered_section("Filter by Erdős problem", filters["by_problem"], links))
-    lines.extend(filtered_section("Filter by architecture area", filters["by_architecture_area"], links))
-    lines.extend(filtered_section("Filter by result class", filters["by_result_class"], links))
-    lines.extend(
-        filtered_section(
-            "Filter by requested disposition",
-            filters["by_requested_disposition"],
-            links,
-        )
-    )
-    lines.extend(
-        [
-            "The source receipts remain the attribution evidence. Git history and GitHub issues",
-            "or pull requests remain delivery history; neither this view nor a receipt changes",
-            "`docs/claims.json` or any release state.",
-            "",
-        ]
-    )
-    return "\n".join(lines).encode("utf-8")
 
 
 def output_is_current(path: Path, payload: bytes) -> bool:
@@ -690,13 +509,18 @@ def output_is_current(path: Path, payload: bytes) -> bool:
 
 def write_projection_outputs(
     json_payload: bytes,
-    markdown_payload: bytes,
+    markdown_payload: bytes | None = None,
     *,
     json_output: Path = JSON_OUTPUT,
     markdown_output: Path = MARKDOWN_OUTPUT,
 ) -> None:
-    """Replace both generated views without writing through output symlinks."""
-    outputs = ((json_output, json_payload), (markdown_output, markdown_payload))
+    """Publish JSON and optional Markdown without following output symlinks.
+
+    Recognition retains the paired-output API; attribution owns JSON only.
+    """
+    outputs = ((json_output, json_payload),)
+    if markdown_payload is not None:
+        outputs += ((markdown_output, markdown_payload),)
     for path, _payload in outputs:
         if path.is_symlink():
             raise ValueError(f"{path.name}: generated output must not be a symbolic link")
@@ -774,7 +598,7 @@ def write_projection_outputs(
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--check", action="store_true", help="fail when either generated view is stale")
+    parser.add_argument("--check", action="store_true", help="fail when the accepted contribution JSON is stale")
     parser.add_argument(
         "--repository-identity",
         type=Path,
@@ -796,22 +620,20 @@ def main(argv: list[str] | None = None) -> int:
         print(f"build_research_contributions: {exc}")
         return 1
     json_payload = canonical(projection)
-    markdown_payload = human_projection(projection)
     if args.check:
         if (
             not output_is_current(JSON_OUTPUT, json_payload)
-            or not output_is_current(MARKDOWN_OUTPUT, markdown_payload)
         ):
             print("research contribution views are stale; run python3 scripts/build_research_contributions.py")
             return 1
         print("research contribution views current: accepted receipts only")
         return 0
     try:
-        write_projection_outputs(json_payload, markdown_payload)
+        write_projection_outputs(json_payload)
     except (OSError, ValueError) as exc:
         print(f"build_research_contributions: {exc}")
         return 1
-    print("wrote accepted-only research contribution JSON and Markdown views")
+    print("wrote accepted-only research contribution JSON; recognition owns the human view")
     return 0
 
 

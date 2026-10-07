@@ -10,34 +10,16 @@ itself promote a reviewed claim.
 
 ## Canonical routes
 
-For cold-clone orientation, begin with the [reader orientation](../ORIENTATION.md)
-and choose a bounded problem route from the generated [problem index](../problems.json),
-then return here to record the exact evidence and attributable outcome.
-When the return names a problem, preserve its exact stable `erdos_<n>` route id
-from `python3 scripts/query_corpus.py --route erdos_<n>` and use the
-[complete eight-problem return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix)
-for the human crosswalk; do not invent an anchor from wave chronology.
-
-Start with the [agent workbench cold-start route](../agents/AGENT_WORKBENCH.md) and
-keep the [accepted-contribution index](CONTRIBUTIONS.md) beside the return.
-For continuation, retain the route-memory sidecar described in section 4 and
-follow the selected problem's frontier route in the [complete eight-problem
-return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix). The
-[accepted-receipt recognition and impact view](CONTRIBUTION_RECOGNITION.md)
-and its [machine-readable projection](contribution-recognition.json) expose
-contributor, artifact, result, evidence, review, promotion, correction, and
-release-inclusion details only after an accepted receipt exists. They preserve
-distinct human, operator, collaborator, model, and provider identities and do
-not rank activity. The generated [accepted-contributions view](CONTRIBUTIONS.md)
-remains the compact receipt-backed artifact-credit index. After acceptance, follow
-the row's `public_frontier` path and use the matching row in the [complete
-eight-problem return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix);
-it exposes
-the complete result-family frontier and surviving boundary, but creates no extra
-recognition credit. Validate a saved return with
-[`scripts/validate_research_return.py`](../../scripts/validate_research_return.py);
-if the return would change a reviewed claim, consult the authoritative
-[methodology](../methodology.json).
+Start from [AGENTS.md](../../AGENTS.md) and the selected public skill.
+For a numbered problem, retain its stable `erdos_<n>` route from
+`python3 scripts/query_corpus.py --route erdos_<n>` and its row in the
+[complete eight-problem return matrix](../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix).
+For architecture work, use the [architecture path](ARCHITECTURE_CONTRIBUTIONS.md).
+[Credit policy](CREDIT_POLICY.md) owns attribution, acceptance and correction
+rules; the [commons index](README.md) locates accepted records and dated examples.
+Validate a saved return with
+[`scripts/validate_research_return.py`](../../scripts/validate_research_return.py).
+Claim changes also follow [methodology](../methodology.json).
 
 ## Start a structured continuation
 
@@ -119,75 +101,17 @@ assigned a problem number of its own.
 
 ## Formal handoff from exposition
 
-Resolve the public navigation handle before filling the bounded route. For a
-paper or reviewed packet with a canonical paper label, start at the paper
-anchor; for a registered problem-owned note, start at the problem packet:
+Follow the [proof-state public-evidence route](../agents/PROOF_STATE_COMPILER.md#return-to-public-evidence)
+for paper-anchor, problem-note, module and declaration queries. Use the
+[complete eight-problem return matrix](../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix)
+to resolve the selected programme and its exact paper/source crosswalk.
 
-```sh
-# For a reviewed paper or claim packet, use:
-python3 scripts/query_corpus.py --paper-anchor <canonical_paper_label>
-# For a registered problem-owned note, start with:
-python3 scripts/query_corpus.py --route erdos_<number>
-# Then continue with the registered note artifact:
-python3 scripts/query_corpus.py --publication-artifact erdos_<number>_note
-# To enumerate that note's exact paper anchors, use its returned artifact id:
-python3 scripts/query_corpus.py --search "erdos_<number>_note::" --limit 100
-python3 scripts/query_corpus.py --paper-anchor erdos_<number>_note::<label>
-# For source-only #68 or #1041, continue with the module returned above:
-python3 scripts/query_corpus.py --module <module-or-path returned by the problem route>
-```
-
-The namespaced `<artifact_id>::<label>` handle keeps repeated paper labels
-attached to the correct problem note; the [public-evidence return route](../agents/PROOF_STATE_COMPILER.md#return-to-public-evidence)
-documents the same bridge. A note's `source_path` or
-`paper.source_ref` remains a reading locator, not a selector input; the
-source-only #68 and #1041 routes continue through their returned Lean module.
-
-Then carry the returned claim, declaration, and source handles into the
-formal evidence section:
-
-```sh
-python3 scripts/query_corpus.py --claim <claim_id_from_packet>
-python3 scripts/query_corpus.py --module <module-or-path>
-python3 scripts/query_corpus.py --declaration <qualified_declaration>
-python3 scripts/query_corpus.py --source <module>:<positive_line>
-```
-
-Use the module query as the context-preserving step between a returned claim
-and its exact declaration: it exposes imports and the declaration inventory
-before a reviewer narrows to a source coordinate. It is a navigation witness,
-not proof authority; preserve the pinned Lean source, registered claim, and
-problem boundary in the return.
-
-For the public problem route, start with the generated
-[problem index](../problems.json), which exposes every `material_result_families`
-entry—its mechanism, exact scope, Lean route, and open boundary—before you
-follow named Lean interfaces. For the reader-facing proof/paper/source
-crosswalk and compact grouped route to its strongest distinct public results,
-use the [complete eight-problem return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix);
-the
-legacy `strongest_result` field must not stand in for that full frontier. For
-the complete family census and a reverse route to one selected family, run
-`python3 scripts/query_corpus.py --search "all result families"`, then
-`python3 scripts/query_corpus.py --publication-family <family_id>`. The returned
-`significance_rank` is a navigation order, not a novelty or priority claim. For
-the all-eight proof-to-paper/source dispatch table, use the
-[proof-state public-evidence route](../agents/PROOF_STATE_COMPILER.md#return-to-public-evidence).
-It is a navigation aid, not proof authority.
-
-For the paper-to-formal crosswalk, use the
-[complete eight-problem return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix).
-For a registered problem note, continue through its exact note-anchor
-crosswalk in that matrix before
-following the returned declaration and source-coordinate route. The map
-connects canonical paper and source records to problem, claim, module,
-declaration, and source-coordinate routes; it is a navigation aid, not proof
-authority.
-
-The packet's `paper.source_ref` or note `source_path` is a manuscript locator,
-not proof authority and not necessarily a selector input. Record the exact
-declaration and source-coordinate results actually used; checked Lean source,
-the registered claim, and the problem boundary remain the authorities.
+Copy the claim, declaration and source-coordinate handles actually used into
+this return. A manuscript path is a reading locator, not necessarily a query
+selector. Keep the statement's hypotheses and surviving problem boundary
+beside its evidence; navigation and family ranking do not establish proof,
+novelty or priority. Record the complete selected family rather than silently
+substituting a legacy `strongest_result` field for the public frontier.
 
 ## 1. Identity and starting generation
 

@@ -1,0 +1,91 @@
+#!/usr/bin/env python3
+"""Focused tests for the rendered public-paper link auditor."""
+
+from __future__ import annotations
+
+import _test_bootstrap  # noqa: F401
+
+import importlib.util
+import sys
+from pathlib import Path
+
+
+MODULE_PATH = Path(__file__).resolve().parent.parent / ("check_public_paper_links.py")
+SPEC = importlib.util.spec_from_file_location("check_public_paper_links", MODULE_PATH)
+assert SPEC and SPEC.loader
+MODULE = importlib.util.module_from_spec(SPEC)
+sys.modules[SPEC.name] = MODULE
+SPEC.loader.exec_module(MODULE)
+
+
+def test_without_fragment_preserves_query() -> None:
+    assert MODULE.without_fragment("https://example.test/a?q=1#L42") == "https://example.test/a?q=1"
+
+
+def test_remote_destination_is_resolved_without_browser_fragment_prefix(monkeypatch) -> None:
+    class Reader:
+        def __init__(self, _path):
+            self.named_destinations = {"record257:weighted-proof": object()}
+    monkeypatch.setattr(MODULE, "_load_pdf_reader", lambda: Reader)
+    rows = [
+        MODULE.LinkOccurrence("short.pdf", 1, "cross_pdf", "long.pdf", "record257:weighted-proof"),
+        MODULE.LinkOccurrence("short.pdf", 2, "cross_pdf", "long.pdf", "nameddest=record257:weighted-proof"),
+    ]
+    assert MODULE.missing_named_destinations(rows, [Path("long.pdf")]) == [rows[1]]
+
+
+def test_offline_audit_rejects_local_and_missing_cross_pdf(monkeypatch) -> None:
+    monkeypatch.setattr(MODULE, "contract_pdfs", lambda: [MODULE.ROOT / "one.pdf"])
+    monkeypatch.setattr(
+        MODULE,
+        "pdf_links",
+        lambda _paths: [
+            MODULE.LinkOccurrence("one.pdf", 2, "uri", "file:///Users/will/private.txt"),
+            MODULE.LinkOccurrence("one.pdf", 3, "cross_pdf", "absent.pdf"),
+        ],
+    )
+    receipt = MODULE.audit(network=False, jobs=1, timeout=1.0)
+    assert not receipt["ok"]
+    assert receipt["local_uri_rows"][0]["page"] == 2
+    assert receipt["missing_cross_pdf_rows"][0]["target"] == "absent.pdf"
+
+
+def test_offline_audit_accepts_flattened_shipped_pdf_name(monkeypatch) -> None:
+    monkeypatch.setattr(
+        MODULE,
+        "contract_pdfs",
+        lambda: [MODULE.ROOT / "paper" / "one" / "one.pdf", MODULE.ROOT / "paper" / "two" / "two.pdf"],
+    )
+    monkeypatch.setattr(
+        MODULE,
+        "pdf_links",
+        lambda _paths: [MODULE.LinkOccurrence("paper/one/one.pdf", 1, "cross_pdf", "two.pdf")],
+    )
+    receipt = MODULE.audit(network=False, jobs=1, timeout=1.0)
+    assert receipt["ok"]
+    assert receipt["missing_cross_pdf_rows"] == []
+
+
+def test_network_classification_distinguishes_broken_and_access_control(monkeypatch) -> None:
+    monkeypatch.setattr(MODULE, "contract_pdfs", lambda: [MODULE.ROOT / "one.pdf"])
+    monkeypatch.setattr(
+        MODULE,
+        "pdf_links",
+        lambda _paths: [
+            MODULE.LinkOccurrence("one.pdf", 1, "uri", "https://example.test/gone#page=2"),
+            MODULE.LinkOccurrence("one.pdf", 2, "uri", "https://example.test/blocked"),
+        ],
+    )
+    monkeypatch.setattr(
+        MODULE,
+        "run_network",
+        lambda _urls, jobs, timeout: [
+            MODULE.NetworkResult("https://example.test/gone", 404, "", "Not Found"),
+            MODULE.NetworkResult("https://example.test/blocked", 403, "", "Forbidden"),
+            MODULE.NetworkResult("https://example.test/timeout", 0, "", "TimeoutError"),
+        ],
+    )
+    receipt = MODULE.audit(network=True, jobs=2, timeout=1.0)
+    assert not receipt["ok"]
+    assert [row["status"] for row in receipt["broken_network_rows"]] == [404]
+    assert [row["status"] for row in receipt["inconclusive_network_rows"]] == [403, 0]

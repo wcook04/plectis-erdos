@@ -10,7 +10,7 @@ artifacts, task routing, evidence checks, review, contribution history and
 revisions. The main text is written for researchers unfamiliar with the
 repository; the mathematical calculation is in an optional appendix.
 
-For current instructions, use the [reading guide](../../docs/READING_GUIDE.md),
+For current instructions, use the [reading guide](../../docs/README.md),
 [agent entry](../../AGENTS.md), [workbench guide](../../docs/agents/AGENT_WORKBENCH.md)
 or [contribution guide](../../CONTRIBUTING.md). The
 [architecture guide](../../docs/ARCHITECTURE.md) identifies the source owners

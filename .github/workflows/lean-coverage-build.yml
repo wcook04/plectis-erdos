@@ -19,7 +19,7 @@ name: Compile the paper-coverage Lean modules
 # supported root set, and the dependency index exported from it, keep their
 # meaning.
 #
-# `scripts/test_lean_fast_build.py`, which the required build job runs, pins
+# `scripts/tests/test_lean_fast_build.py`, which the required build job runs, pins
 # the target list below. Every module holding a declaration that
 # `docs/paper_lean_coverage.json` names in an exact, exact_or_stronger or
 # modulo_named_input row must be reached by the supported roots or by these
@@ -67,7 +67,7 @@ jobs:
     # covers cache transfer, toolchain setup and dependency artifacts.
     timeout-minutes: 240
     # The same environment-neutral command contract as lean.yml and
-    # lean-cache-warm.yml; scripts/test_lean_workflow_environment.py keeps the
+    # lean-cache-warm.yml; scripts/tests/test_lean_workflow_environment.py keeps the
     # three identical.
     env:
       GIT_CONFIG_NOSYSTEM: "1"
@@ -112,8 +112,8 @@ jobs:
 
       - name: Test post-merge workflow command environment
         run: |
-          python3 scripts/test_lean_cache_warm_environment.py
-          python3 -O scripts/test_lean_cache_warm_environment.py
+          python3 scripts/tests/test_lean_cache_warm_environment.py
+          python3 -O scripts/tests/test_lean_cache_warm_environment.py
 
       # The coverage cache has its own `lake-coverage-` prefix. lean.yml and
       # lean-cache-warm.yml restore by the `lake-<os>-<arch>` prefix, so they

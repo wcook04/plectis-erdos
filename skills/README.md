@@ -79,7 +79,7 @@ fixture, and run the clone-local checks before propagation.
 ```sh
 python3 scripts/agent_skill_catalog.py
 python3 scripts/agent_skill_catalog.py --check
-python3 scripts/test_agent_entry.py
-python3 scripts/test_clone_skills.py
+python3 scripts/tests/test_agent_entry.py
+python3 scripts/tests/test_clone_skills.py
 python3 scripts/check_cold_clone_comprehension.py --quick
 ```

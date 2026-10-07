@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-FileCopyrightText: 2026 Will Cook
 # SPDX-License-Identifier: Apache-2.0
-"""Build the methodology guide from docs/methodology.json."""
+"""Build the methodology guide from docs/methodology.json and docs/claims.json."""
 
 from __future__ import annotations
 

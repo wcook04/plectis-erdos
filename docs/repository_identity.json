@@ -43,8 +43,7 @@
         "docs/repository_identity.json"
       ],
       "outputs": [
-        "docs/research-commons/contributions.json",
-        "docs/research-commons/CONTRIBUTIONS.md"
+        "docs/research-commons/contributions.json"
       ]
     },
     {

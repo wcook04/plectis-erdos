@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import collections
 import hashlib
+import html
 import importlib
 import json
 import os
@@ -553,11 +554,32 @@ class View:
                 "boundary": "A recorded transfer idea, failed attempt, and checked instantiated theorem are distinct. No outcome or cost transports automatically."}
 
     def register(self) -> str:
-        lines = ["# Complete registered-claim view", "", f"Snapshot: `{self.meta['snapshot_id']}`", "", BOUNDARY, ""]
-        for row in self.rows("claim"):
-            claim = row["record"]
-            lines += [f"## {claim['id']}", "", f"Recorded status: {claim['status']}", "", claim["statement"], "",
-                      f"Source: `{row['source']['path']}` `{row['source']['pointer']}` `{row['source']['sha256']}`", ""]
+        """Index every claim once; complete owner records remain queryable."""
+        rows = self.rows("claim")
+        groups: dict[str, list[dict[str, Any]]] = collections.defaultdict(list)
+        for row in rows:
+            groups[row["record"]["status"]].append(row)
+        lines = ["# Registered-claim index", "", f"Snapshot: `{self.meta['snapshot_id']}`", "", BOUNDARY, "",
+                 "The [claim registry](../claims.json) owns the complete statements, declarations and boundaries. "
+                 "This index groups every registered identifier by its recorded status; neither group nor identifier order ranks mathematical value.", "",
+                 f"Registered claims: `{len(rows)}`. Each appears once below, including claims not assigned to a numbered programme.", "",
+                 "## Retrieve complete evidence records", "",
+                 "Run from the repository root. Build the disposable query cache from current source bytes, "
+                 "then retrieve one complete record or export them all:", "", "```sh",
+                 "python3 scripts/corpus_substrate.py --build",
+                 "python3 scripts/corpus_substrate.py --node claim <claim-id>",
+                 "python3 scripts/corpus_substrate.py --rows claim > /tmp/plectis-claim-records.json",
+                 "```", "",
+                 "Records retain the full statement, source pointer and source hash. A stale cache is refused; "
+                 "rerun `--build` after source changes. The compact read-only route "
+                 "`python3 scripts/research_query.py get claim <claim-id>` works without that cache.", "",
+                 "## Recorded status groups", ""]
+        for status, members in sorted(groups.items()):
+            lines += [f"### {status} ({len(members)})", ""]
+            for row in members:
+                ident = row["id"]
+                lines.append(f'- <a id="{html.escape(ident, quote=True)}"></a>`{ident}`')
+            lines.append("")
         return "\n".join(lines).rstrip() + "\n"
 
 

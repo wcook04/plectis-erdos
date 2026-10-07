@@ -184,8 +184,8 @@ Run the checks relevant to what changed. For skill/routing changes:
 ```sh
 python3 scripts/agent_skill_catalog.py
 python3 scripts/agent_skill_catalog.py --check
-python3 scripts/test_agent_entry.py
-python3 scripts/test_compact_agent_entry.py
+python3 scripts/tests/test_agent_entry.py
+python3 scripts/tests/test_compact_agent_entry.py
 python3 scripts/check_cold_clone_comprehension.py --quick
 ```
 

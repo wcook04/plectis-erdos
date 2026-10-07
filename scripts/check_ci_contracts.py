@@ -31,6 +31,8 @@ TESTS = (
     "test_external_verification_release.py",
     "test_erdos249_totient_kernel_comparator.py",
     "test_refresh_projections_coverage.py",
+    "test_paper_corpus_refresh.py",
+    "test_reanchor_source_attributions.py",
     "test_run_release_check.py",
     "test_check_release_ref.py",
     "test_check_push.py",
@@ -70,7 +72,7 @@ def workflow_tests(workflow: str, jobs: tuple[str, ...]) -> set[str]:
             args = words[1:]
             if args and args[0] == "-O":
                 args = args[1:]
-            if len(args) == 1 and re.fullmatch(r"scripts/test_\w+\.py", args[0]):
+            if len(args) == 1 and re.fullmatch(r"scripts/tests/test_\w+\.py", args[0]):
                 result.add(Path(args[0]).name)
             else:
                 raise ValueError(f"unregistered test invocation syntax in {job}: {command}")
@@ -85,8 +87,8 @@ def coverage_errors(root: Path = ROOT, tests: tuple[str, ...] = TESTS) -> list[s
     if len(tests) != len(set(tests)):
         errors.append("CI contract registry repeats a test")
     for test in tests:
-        if not (root / "scripts" / test).is_file():
-            errors.append(f"missing CI contract: scripts/{test}")
+        if not (root / "scripts" / "tests" / test).is_file():
+            errors.append(f"missing CI contract: scripts/tests/{test}")
     for workflow, jobs in WORKFLOW_JOBS.items():
         try:
             discovered = workflow_tests((root / ".github/workflows" / workflow).read_text(), jobs)
@@ -100,7 +102,7 @@ def coverage_errors(root: Path = ROOT, tests: tuple[str, ...] = TESTS) -> list[s
 def run_test(test: str, optimized: bool, *, root: Path = ROOT,
              timeout: float = TIMEOUT_SECONDS) -> tuple[str, str | None]:
     label = test + (" (-O)" if optimized else "")
-    argv = [sys.executable, *(["-O"] if optimized else []), str(root / "scripts" / test)]
+    argv = [sys.executable, *(["-O"] if optimized else []), str(root / "scripts" / "tests" / test)]
     try:
         result = singleflight.run_bounded(argv, cwd=root, env=singleflight.command_environment(),
                                 text=True, capture_output=True, timeout=timeout)

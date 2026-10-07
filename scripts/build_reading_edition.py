@@ -426,7 +426,7 @@ def complete(target: Path) -> None:
 def build_records() -> dict[Path, str]:
     """Build navigators from the live native audit; never load a stale saved report."""
     import reasoning_record_audit as records
-    sys.path.insert(0, str(ROOT / "docs/papers"))
+    sys.path.insert(0, str(ROOT / "scripts/papers"))
     try:
         import paper_corpus_renderer as renderer
     finally:
@@ -529,6 +529,16 @@ def build_weighted_task() -> dict[Path, str]:
               "Can a different fixed finite prime witness decide the case where this test diverges? "
               "Return an argument, obstruction, or precise non-answer with its source and assumptions. "
               "Failure of this witness does not settle the universal question.",
+              "## Observe an outside attempt",
+              "For a willing reader, use this packet and their chosen learning depth. Record "
+              "edition fingerprint, environment, selected case, requested hints, interventions, "
+              "answer and source locations. Assess whether the answer respects all hypotheses, "
+              "withholds an arithmetic verdict when the test fails, distinguishes the ordinary "
+              "deduction from the formal criterion, and identifies the unresolved universal claim. "
+              "Ask for one related question of their own; record time and obstacles when they agree. "
+              "Return observations or corrections through [Contributing](" + BLOB + "CONTRIBUTING.md), "
+              "preserving attribution and any limits. This is an attempt protocol; it records no "
+              "participants or measured outcomes.",
               "## Source content identities",
               "\n".join(f"- `{path}`: SHA-256 `{value}`" for path, value in source_hashes.items()),
               "[Public paper text](" + RAW + "docs/papers/full-text/erdos-257-mersenne-support-subseries.md) · "

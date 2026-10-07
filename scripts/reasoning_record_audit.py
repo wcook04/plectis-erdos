@@ -13,6 +13,7 @@ All reads are local. No model, network, Lean, or TeX execution occurs here.
 from __future__ import annotations
 
 import argparse
+import ast
 from collections import Counter, defaultdict
 import difflib
 import hashlib
@@ -23,11 +24,17 @@ import sys
 from typing import Any
 
 import check_lean_paper_propagation as coverage
-from assemble_reasoning_surfaces import PAPERS
+from assemble_reasoning_surfaces import INLINE_PARTS, PAPERS
 from lean_source import qualified_declaration_lines, lean_code_without_comments_and_strings
 
 ROOT = Path(__file__).resolve().parents[1]
 LINKS = 'paper/reasoning-parts/record_links.json'
+# Legacy coverage manifests may still name assembler-owned boilerplate slots.
+INLINE_SOURCE_TEXT = {
+    (row['directory'].relative_to(ROOT) / f'{name}.tex').as_posix(): text
+    for key, row in PAPERS.items()
+    for name, text in INLINE_PARTS[key].items()
+}
 REPORT = 'docs/reading-edition/record_audit.json'
 SCHEMA = 'plectis-long-record-audit/1'
 LINK_SCHEMA = 'plectis-short-long-links/1'
@@ -69,8 +76,32 @@ class Inputs:
         self.root = root.resolve()
         self.texts: dict[str, str] = {}
         self.hashes: dict[str, str] = {}
+        self._inline_contract_checked = False
+
+    def check_inline_contract(self) -> None:
+        """Bind imported virtual values to this audit's captured owner, fail closed."""
+        if self._inline_contract_checked:
+            return
+        source = self.read('scripts/assemble_reasoning_surfaces.py')
+        try:
+            tree = ast.parse(source)
+            assignments = [node for node in tree.body if isinstance(node, ast.Assign)
+                           and any(isinstance(target, ast.Name) and target.id == 'INLINE_PARTS'
+                                   for target in node.targets)]
+            if len(assignments) != 1:
+                raise ValueError('expected one literal INLINE_PARTS assignment')
+            captured = ast.literal_eval(assignments[0].value)
+        except (SyntaxError, ValueError, TypeError) as error:
+            raise RecordInputError(f'invalid captured assembler inline contract: {error}') from error
+        if captured != INLINE_PARTS:
+            raise RecordInputError('captured assembler INLINE_PARTS differs from loaded audit contract')
+        self._inline_contract_checked = True
 
     def read(self, relative: str) -> str:
+        if relative in INLINE_SOURCE_TEXT:
+            # Bound by the assembler source input, not a nonexistent authored file.
+            self.check_inline_contract()
+            return INLINE_SOURCE_TEXT[relative]
         if relative not in self.texts:
             raw = safe_path(self.root, relative).read_bytes()
             self.hashes[relative] = digest(raw)
@@ -233,7 +264,7 @@ def _report(root: Path = ROOT, problems: list[int] | None = None) -> dict:
         return statement_text(loc, '', counter_lines=statement_lines[loc.path])
     for rel in ('scripts/reasoning_record_audit.py', 'scripts/assemble_reasoning_surfaces.py',
                 'scripts/check_lean_paper_propagation.py', 'scripts/lean_source.py',
-                'scripts/build_reading_edition.py', 'docs/papers/paper_corpus_renderer.py'):
+                'scripts/build_reading_edition.py', 'scripts/papers/paper_corpus_renderer.py'):
         inputs.read(rel)
     try:
         ledger = inputs.json('docs/paper_lean_coverage.json')
@@ -298,9 +329,15 @@ def _report(root: Path = ROOT, problems: list[int] | None = None) -> dict:
         assembly = PAPERS[str(problem)]
         directory = assembly['directory'].relative_to(ROOT).as_posix()
         output = assembly['output'].relative_to(ROOT).as_posix()
+        inputs.check_inline_contract()
         expected = inputs.read(directory + '/preamble.tex')
         for part in assembly['parts']:
-            expected += f'% ---- part {part} ----\n' + inputs.read(directory + '/' + part + '.tex')
+            # The assembler owns virtual empty/terminal slots; its source digest
+            # above binds them. Substantive authored parts still require a file.
+            content = (INLINE_PARTS[str(problem)][part]
+                       if part in INLINE_PARTS[str(problem)]
+                       else inputs.read(directory + '/' + part + '.tex'))
+            expected += f'% ---- part {part} ----\n' + content
         if expected != inputs.read(output):
             findings.append({'code': 'stale_assembly', 'severity': 'error', 'detail': output,
                              'short_claims': [r['id'] for r in short], 'long_location': locator(output, 1)})

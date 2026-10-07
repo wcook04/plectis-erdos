@@ -17,7 +17,7 @@ This script verifies that every other public surface agrees with it:
      stated line.
   4. Every paper source link (\\lref / \\lrefx / \\lloc) resolves: the file
      exists and the named declaration appears at the stated line.
-  5. docs/SCOPE.md lists exactly the machine identifiers in claims.json.
+  5. docs/METHODOLOGY.md lists exactly the machine identifiers in claims.json.
   6. README.md carries the headline declarations, states the release tag,
      uses only taxonomy statuses in its status table, and contains none of
      the banned drift phrases.
@@ -105,6 +105,7 @@ from systems_paper_evidence import (
 )
 import validation_singleflight as singleflight
 import refresh_projections
+import check_ci_release
 
 ROOT = Path(__file__).resolve().parent.parent
 ERRORS: list[str] = []
@@ -116,6 +117,7 @@ _SUBPROCESS_RUN = subprocess.run
 PROJECTION_CHECK_WORKERS = refresh_projections.CHECK_WORKERS
 RELEASE_CHECK_WORKERS = 4
 _PROJECTION_CHECK_RESULTS: dict[str, subprocess.CompletedProcess[str]] | None = None
+_SHARED_LEAF_RUNS = check_ci_release.SharedCommandRuns()
 
 
 def clean_environment() -> dict[str, str]:
@@ -215,14 +217,43 @@ def run_independent_checks(
 
 
 def _run_independent_check(argv: list[str]) -> subprocess.CompletedProcess[str]:
+    if argv == [sys.executable, str(ROOT / "scripts/check_ci_release.py")]:
+        errors = check_ci_release.registry_errors() + check_ci_release.workflow_errors(
+            (ROOT / ".github/workflows/lean.yml").read_text()
+        )
+        if errors:
+            return subprocess.CompletedProcess(argv, 1, "", "\n".join(errors))
+        lines: list[str] = []
+        report = check_ci_release.run_suite(
+            root=ROOT, runner=_SHARED_LEAF_RUNS.run,
+            overall_timeout=SUBPROCESS_TIMEOUT_SECONDS,
+            emit=lambda line, **kwargs: lines.append(line),
+        )
+        lines.append(f"shared CI release checks: {report['completed'] - report['failed']}"
+                     f"/{report['configured']} passed")
+        return subprocess.CompletedProcess(argv, int(report["failed"] != 0),
+                                           "\n".join(lines), "")
+    relative = tuple(str(Path(arg).relative_to(ROOT))
+                     if Path(arg).is_absolute() and Path(arg).is_relative_to(ROOT)
+                     else arg for arg in argv[1:])
+    if argv[0] == sys.executable and relative in check_ci_release.COMMANDS:
+        try:
+            # The shared CI registry's stricter leaf deadline already governs
+            # acceptance of these commands in the full gate.
+            return _SHARED_LEAF_RUNS.run(
+                argv, cwd=ROOT, capture_output=True, text=True,
+                timeout=check_ci_release.TIMEOUT_SECONDS, env=clean_environment(),
+            )
+        except subprocess.TimeoutExpired as exc:
+            def text(value):
+                return value.decode(errors="replace") if isinstance(value, bytes) else (value or "")
+            return subprocess.CompletedProcess(argv, 124, text(exc.stdout),
+                                               text(exc.stderr) + f"\ntimed out after {exc.timeout}s")
+        except OSError as exc:
+            return subprocess.CompletedProcess(argv, 127, "", str(exc))
     return _SUBPROCESS_RUN(
-        argv,
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-        env=clean_environment(),
-        timeout=SUBPROCESS_TIMEOUT_SECONDS,
+        argv, cwd=ROOT, capture_output=True, text=True, check=False,
+        env=clean_environment(), timeout=SUBPROCESS_TIMEOUT_SECONDS,
     )
 
 
@@ -258,47 +289,47 @@ def late_check_commands() -> dict[str, list[str]]:
         # These are the two long readers in this two-worker pool. Start both
         # immediately; queuing cold-clone checks behind short diagnostics left
         # several seconds of avoidable work on the release critical path.
-        "query": [sys.executable, str(ROOT / "scripts" / "test_query_corpus.py")],
+        "query": [sys.executable, str(ROOT / "scripts" / "tests" / "test_query_corpus.py")],
         "cold_clone_adversarial": [
             sys.executable,
-            str(ROOT / "scripts" / "test_cold_clone_comprehension.py"),
+            str(ROOT / "scripts" / "tests" / "test_cold_clone_comprehension.py"),
         ],
-        "claim_records": [sys.executable, str(ROOT / "scripts" / "test_verify_claims.py")],
-        "research_query": [sys.executable, str(ROOT / "scripts" / "test_research_query.py")],
-        "companion_package": [sys.executable, str(ROOT / "scripts" / "test_companion_package.py")],
-        "reading_edition_weighted": [sys.executable, str(ROOT / "scripts" / "test_reading_edition_weighted.py")],
+        "claim_records": [sys.executable, str(ROOT / "scripts" / "tests" / "test_verify_claims.py")],
+        "research_query": [sys.executable, str(ROOT / "scripts" / "tests" / "test_research_query.py")],
+        "companion_package": [sys.executable, str(ROOT / "scripts" / "tests" / "test_companion_package.py")],
+        "reading_edition_weighted": [sys.executable, str(ROOT / "scripts" / "tests" / "test_reading_edition_weighted.py")],
         "github_release_contracts": [sys.executable, str(ROOT / "scripts" / "check_ci_release.py")],
         "semantic_queries": [
             sys.executable,
-            str(ROOT / "scripts" / "test_query_semantic_tiers.py"),
+            str(ROOT / "scripts" / "tests" / "test_query_semantic_tiers.py"),
         ],
         "semantic_storage": [
             sys.executable,
-            str(ROOT / "scripts" / "test_semantic_corpus_storage.py"),
+            str(ROOT / "scripts" / "tests" / "test_semantic_corpus_storage.py"),
         ],
         "semantic_relation_parity": [
             sys.executable,
-            str(ROOT / "scripts" / "test_semantic_relation_parity.py"),
+            str(ROOT / "scripts" / "tests" / "test_semantic_relation_parity.py"),
         ],
         "release_environment": [
             sys.executable,
-            str(ROOT / "scripts" / "test_check_release_environment.py"),
+            str(ROOT / "scripts" / "tests" / "test_check_release_environment.py"),
         ],
         "release_preparation": [
             sys.executable,
-            str(ROOT / "scripts" / "test_run_release_check.py"),
+            str(ROOT / "scripts" / "tests" / "test_run_release_check.py"),
         ],
         "proof_workbench": [
             sys.executable,
-            str(ROOT / "scripts" / "test_proof_workbench.py"),
+            str(ROOT / "scripts" / "tests" / "test_proof_workbench.py"),
         ],
         "proof_state_compiler": [
             sys.executable,
-            str(ROOT / "scripts" / "test_proof_state_compiler.py"),
+            str(ROOT / "scripts" / "tests" / "test_proof_state_compiler.py"),
         ],
         "computation_replay": [
             sys.executable,
-            str(ROOT / "scripts" / "test_erdos251_computation_replay.py"),
+            str(ROOT / "scripts" / "tests" / "test_erdos251_computation_replay.py"),
         ],
         "replay_routes": [
             sys.executable,
@@ -306,7 +337,7 @@ def late_check_commands() -> dict[str, list[str]]:
         ],
         "totient_normal_form": [
             sys.executable,
-            str(ROOT / "scripts" / "test_totient_kernel_normal_form.py"),
+            str(ROOT / "scripts" / "tests" / "test_totient_kernel_normal_form.py"),
         ],
         "finite_dilation_normal_form": [
             sys.executable,
@@ -345,11 +376,11 @@ def late_check_commands() -> dict[str, list[str]]:
         ],
         "mutation_harness": [
             sys.executable,
-            str(ROOT / "scripts" / "test_publication_mutation_harness.py"),
+            str(ROOT / "scripts" / "tests" / "test_publication_mutation_harness.py"),
         ],
         "public_boundary": [
             sys.executable,
-            str(ROOT / "scripts" / "test_public_artifact_boundary.py"),
+            str(ROOT / "scripts" / "tests" / "test_public_artifact_boundary.py"),
         ],
         "primary_source_disposition": [
             sys.executable,
@@ -357,7 +388,7 @@ def late_check_commands() -> dict[str, list[str]]:
         ],
         "proof_cockpit": [
             sys.executable,
-            str(ROOT / "scripts" / "test_proof_cockpit.py"),
+            str(ROOT / "scripts" / "tests" / "test_proof_cockpit.py"),
         ],
         "lean_paper_propagation": [
             sys.executable,
@@ -365,7 +396,7 @@ def late_check_commands() -> dict[str, list[str]]:
         ],
         "lean_paper_propagation_fixtures": [
             sys.executable,
-            str(ROOT / "scripts" / "test_check_lean_paper_propagation.py"),
+            str(ROOT / "scripts" / "tests" / "test_check_lean_paper_propagation.py"),
         ],
         "paper_evidence": [
             sys.executable,
@@ -374,7 +405,7 @@ def late_check_commands() -> dict[str, list[str]]:
         ],
         "paper_evidence_fixtures": [
             sys.executable,
-            str(ROOT / "scripts" / "test_paper_evidence.py"),
+            str(ROOT / "scripts" / "tests" / "test_paper_evidence.py"),
         ],
         "paper_evidence_pdfs": [
             sys.executable,
@@ -382,11 +413,11 @@ def late_check_commands() -> dict[str, list[str]]:
         ],
         "paper_evidence_pdf_fixtures": [
             sys.executable,
-            str(ROOT / "scripts" / "test_check_paper_evidence_pdfs.py"),
+            str(ROOT / "scripts" / "tests" / "test_check_paper_evidence_pdfs.py"),
         ],
         "clone_footprint": [
             sys.executable,
-            str(ROOT / "scripts" / "test_clone_footprint.py"),
+            str(ROOT / "scripts" / "tests" / "test_clone_footprint.py"),
         ],
         "markdown_table_render": [
             sys.executable,
@@ -417,7 +448,7 @@ def publication_stage_check_results() -> dict[str, subprocess.CompletedProcess[s
         {
             "external_verification_release": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_external_verification_release.py"),
+                str(ROOT / "scripts" / "tests" / "test_external_verification_release.py"),
             ],
             "note_source": [
                 sys.executable,
@@ -426,15 +457,15 @@ def publication_stage_check_results() -> dict[str, subprocess.CompletedProcess[s
             ],
             "paper_corpus": [
                 sys.executable,
-                str(ROOT / "docs" / "papers" / "check_paper_corpus.py"),
+                str(ROOT / "scripts" / "papers" / "check_paper_corpus.py"),
             ],
             "publication_taxonomy": [
                 sys.executable,
-                str(ROOT / "docs" / "papers" / "check_publication_taxonomy.py"),
+                str(ROOT / "scripts" / "papers" / "check_publication_taxonomy.py"),
             ],
             "publication_archive_versions": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_publication_archive_versions.py"),
+                str(ROOT / "scripts" / "tests" / "test_publication_archive_versions.py"),
             ],
         }
     )
@@ -655,6 +686,60 @@ def has_release_status_boundary(text: str, claims: dict) -> bool:
             and flattened(boundary) in flattened(text))
 
 
+def visible_owner_routes(start: str, documents: dict[str, str], *, depth: int = 4) -> set[str]:
+    """Follow visible local Markdown links through admitted guide snapshots.
+
+    A filename mentioned in code or prose is not a reader route. Documents are
+    supplied explicitly, so an unlinked owner cannot be silently read from disk.
+    """
+    reached = {start}
+    frontier = {start}
+    for _ in range(depth):
+        following = set()
+        for source in frontier:
+            text = documents.get(source, "")
+            text = re.sub(r"```.*?```", "", text, flags=re.DOTALL)
+            text = re.sub(r"`[^`]*`", "", text)
+            for raw in re.findall(r"\[[^]]+\]\(([^)]+)\)", text):
+                destination = raw.split("#", 1)[0].split("?", 1)[0]
+                if not destination or "://" in destination or destination.startswith("mailto:"):
+                    continue
+                target = (ROOT / Path(source).parent / destination).resolve()
+                if target.is_relative_to(ROOT):
+                    following.add(target.relative_to(ROOT).as_posix())
+        following -= reached
+        reached |= following
+        frontier = following
+    return reached
+
+
+def entry_owner_route_errors(documents: dict[str, str], claims: dict, problem_count: int) -> list[str]:
+    """Keep compact entries usable without duplicating their maintained owners."""
+    errors = []
+    reader = visible_owner_routes("README.md", documents)
+    agent = visible_owner_routes("docs/agents/AGENT_GUIDE.md", documents)
+    for target in ("docs/EXTERNAL_VERIFICATION.md", "formalization.yaml"):
+        if target not in reader:
+            errors.append(f"README reader route does not reach {target}")
+    for target in ("docs/ARCHITECTURE.md", "docs/orientation.json",
+                   "docs/reference/ORIENTATION.md", "docs/METHODOLOGY.md",
+                   "lean/Erdos249257.lean", "lean/ErdosProblems.lean", "docs/RESULTS.md"):
+        if target not in agent:
+            errors.append(f"agent guide reader route does not reach {target}")
+    dossier = documents.get("docs/EXTERNAL_VERIFICATION.md", "")
+    count_word = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
+                  6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten"}.get(problem_count, str(problem_count))
+    if not re.search(rf"across (?:{count_word}|{problem_count}) programmes", flattened(dossier)):
+        errors.append("linked verification dossier lost indexed programme coverage")
+    if not has_release_status_boundary(documents.get("docs/RESULTS.md", ""), claims):
+        errors.append("linked results owner lost exact open-problem boundary")
+    orientation = flattened(documents.get("docs/reference/ORIENTATION.md", ""))
+    if ("larger ongoing formal-mathematics workflow" not in orientation
+            or "No public claim depends on private or unreleased work" not in orientation):
+        errors.append("linked orientation owner lost public-projection provenance boundary")
+    return errors
+
+
 def contributor_gate_posture_errors(contributing: str) -> list[str]:
     """Reject contributor guidance that understates cold-reader validation."""
     flat = " ".join(contributing.split())
@@ -685,42 +770,36 @@ def contributor_gate_posture_errors(contributing: str) -> list[str]:
 
 
 def source_map_entry_errors(source_map: str) -> list[str]:
-    """Keep source navigation bounded and subordinate to mathematical owners."""
+    """Require usable evidence routes, leaving mathematical status in its owners."""
     required = (
         "docs/orientation.json",
         "python3 scripts/query_corpus.py --route <programme_id>",
         "python3 scripts/query_corpus.py --claim <claim_id>",
         "python3 scripts/query_corpus.py --open <remaining_open.id>",
         "Lean source checked by the pinned Lean kernel is proof authority",
-        "Erdős #249",
-        "universal form of #257 remain open",
-        "for every natural `t ≤ 82`",
-        "supplies nothing at `t = 83`",
+        "](../RESULTS.md)",
+        "](../claims.json)",
+        "](../problems.json)",
+        "](../problem_library.json)",
+        "](../declaration_atlas.json)",
+        "## Complete eight-problem return matrix",
+        "](../../lean/Erdos249257.lean)",
+        "](../../lean/ErdosProblems.lean)",
     )
-    # Compare through flattened() on both sides. These are prose-presence
-    # requirements, so the property is "the document still says this", not
-    # "the document wraps this line where it wrapped in 2026". Matching raw
-    # text pinned one requirement to an accidental markdown wrap position
-    # ("for every\n  natural `t <= 82`"), which would have failed on a pure
-    # reflow that changed no meaning. (2026-08-15)
     flat_source_map = flattened(source_map)
     errors = [
-        f"docs/SOURCE_MAP.md lost bounded first-contact route: {phrase}"
+        f"docs/reference/SOURCE_MAP.md lost bounded first-contact route: {phrase}"
         for phrase in required
         if flattened(phrase) not in flat_source_map
     ]
-    if "Read `Erdos249257.lean` or `ErdosProblems.lean` only when package topology" not in flat_source_map:
-        errors.append(
-            "docs/SOURCE_MAP.md must not send first-contact readers directly "
-            "into the full import graph"
-        )
-    if "currently assembled at 28 explicit scales through `t = 64`" in source_map:
-        errors.append(
-            "docs/SOURCE_MAP.md still presents the historical deposit list "
-            "as the current certificate frontier"
-        )
+    for problem in (68, 243, 249, 251, 257, 269, 1041, 1049):
+        route = f"python3 scripts/query_corpus.py --route erdos_{problem}"
+        row = next((line for line in source_map.splitlines() if line.startswith(f"| #{problem} |")), "")
+        if route not in row or "](../../lean/" not in row or "](../../paper/" not in row:
+            errors.append(f"docs/reference/SOURCE_MAP.md lost paper/source return for #{problem}")
+    if "only when package topology" not in flat_source_map:
+        errors.append("docs/reference/SOURCE_MAP.md must keep full-root imports subordinate to the bounded source query")
     return errors
-
 
 def ordinary_proof_claim_errors(claim: dict, families: list[dict], root: Path) -> list[str]:
     """Admit a non-Lean result only with an authored proof and explicit ceiling."""
@@ -846,7 +925,7 @@ def wave_index_entry_errors(wave_index: str) -> list[str]:
     """Keep development chronology downstream of bounded mathematical entry."""
     required = (
         "docs/orientation.json",
-        "docs/SOURCE_MAP.md",
+        "docs/reference/SOURCE_MAP.md",
         "recover development chronology only when chronology is the",
         "inspect package topology only",
         "Lean source checked by the pinned Lean kernel is proof authority",
@@ -1351,6 +1430,12 @@ APPROVED_ROOT_DIRS = {
     "skills": "distinct public skill-distribution surface",
     "verification": "Comparator packets, large certificates, and failed-route records",
 }
+APPROVED_DOCS_ROOT_MARKDOWN = {
+    "EXTERNAL_VERIFICATION.md",
+    "README.md", "RESULTS.md", "ARCHITECTURE.md", "METHODOLOGY.md",
+    "REPRODUCIBILITY.md", "PRIOR_ART.md", "PRIVACY.md", "THIRD_PARTY_NOTICES.md",
+}
+
 FORBIDDEN_LOOSE_ROOT_DIRS = (
     "Erdos243V5",
     "Erdos249257",
@@ -1375,6 +1460,11 @@ def check_root_layout() -> None:
     # A used clone also contains ignored build products and local evidence.
     # Inspect the publication candidate; a tracked file remains in scope even
     # when its pathname matches an ignore rule.
+    candidate_paths = {path.relative_to(ROOT).as_posix() for path in (ROOT / "docs").rglob("*")
+                       if path.is_file()}
+    candidate_paths.update(path.relative_to(ROOT).as_posix()
+                           for path in (ROOT / "scripts").rglob("*")
+                           if path.is_file())
     entries = {path.name for path in ROOT.iterdir()}
     git_root = subprocess.run(
         ["git", "-C", str(ROOT), "rev-parse", "--show-toplevel"],
@@ -1388,7 +1478,8 @@ def check_root_layout() -> None:
         check(inventory.returncode == 0, "public root candidate inventory could not be read")
         if inventory.returncode != 0:
             return
-        entries = {rel.split("/", 1)[0] for rel in inventory.stdout.split("\0") if rel}
+        candidate_paths = {rel for rel in inventory.stdout.split("\0") if rel}
+        entries = {rel.split("/", 1)[0] for rel in candidate_paths}
     root_pdfs = sorted(
         name for name in entries if name.endswith(".pdf") and not name.startswith(".")
     )
@@ -1410,6 +1501,42 @@ def check_root_layout() -> None:
         "unexplained top-level entries need a functional reason: "
         + ", ".join(sorted(unexplained)),
     )
+
+
+    misplaced_tests = sorted(rel for rel in candidate_paths
+                             if Path(rel).parent == Path("scripts")
+                             and Path(rel).match("test_*.py"))
+    check(not misplaced_tests, "behavioral tests belong in scripts/tests/: "
+          + ", ".join(misplaced_tests))
+    misplaced_lean_tools = sorted(rel for rel in candidate_paths
+                                 if rel.startswith("scripts/") and rel.endswith(".lean")
+                                 and not rel.startswith("scripts/lean/"))
+    check(not misplaced_lean_tools, "Lean tooling belongs in scripts/lean/: "
+          + ", ".join(misplaced_lean_tools))
+    documentation_code = sorted(rel for rel in candidate_paths
+                                if rel.startswith("docs/") and rel.endswith(".py"))
+    check(not documentation_code, "executable documentation tools belong in scripts/: "
+          + ", ".join(documentation_code))
+
+    # Reader documents have one home. Nested specialist and historical records
+    # remain governed by their existing directory indexes and source owners.
+    docs_markdown = {Path(rel).name for rel in candidate_paths
+                     if Path(rel).parent == Path("docs") and Path(rel).suffix.lower() == ".md"}
+    unexplained_docs = sorted(docs_markdown - APPROVED_DOCS_ROOT_MARKDOWN)
+    check(not unexplained_docs,
+          "unclassified docs-root guides belong in an indexed specialist directory: "
+          + ", ".join(unexplained_docs))
+    index = ROOT / "docs" / "README.md"
+    if docs_markdown:
+        check(index.is_file(), "docs-root guides need docs/README.md")
+        if index.is_file():
+            links = set(re.findall(r"\]\(<?([^\s)>]+)>?(?:\s+[^)]*)?\)",
+                                   index.read_text(encoding="utf-8")))
+            linked = {target.split("#", 1)[0].removeprefix("./") for target in links}
+            missing_links = sorted((docs_markdown & APPROVED_DOCS_ROOT_MARKDOWN)
+                                   - {"README.md"} - linked)
+            check(not missing_links, "docs/README.md must link its root guides: "
+                  + ", ".join(missing_links))
 
 
 def check_proof_trust() -> None:
@@ -1629,6 +1756,8 @@ def main(argv: list[str] | None = None) -> int:
     # ``read`` is a per-run immutable snapshot, not a cross-run file cache.
     # Clearing here keeps repeated in-process invocations source-current while
     # letting the thousands of consumers below share one admitted read.
+    global _SHARED_LEAF_RUNS
+    _SHARED_LEAF_RUNS = check_ci_release.SharedCommandRuns()
     read.cache_clear()
     cache: dict[tuple[str, str | None], list[str] | None] = {}
 
@@ -1752,7 +1881,7 @@ def main(argv: list[str] | None = None) -> int:
         f"{child_output(archive_version_check)}",
     )
     publication_taxonomy_current = _PROJECTION_CHECK_RESULTS[
-        "docs/papers/build_publication_taxonomy.py"
+        "scripts/papers/build_publication_taxonomy.py"
     ]
     check(
         publication_taxonomy_current.returncode == 0,
@@ -2352,14 +2481,14 @@ def main(argv: list[str] | None = None) -> int:
                 check(name_at_line(lines, name, line),
                       f"{paper_path} \\{macro}: {name} not at {rel}:{line} (±{LINE_WINDOW})")
 
-    # --- 5. docs/SCOPE.md ----------------------------------------------------------
-    scope = read(ROOT / "docs/SCOPE.md")
+    # --- 5. docs/METHODOLOGY.md ----------------------------------------------------------
+    scope = read(ROOT / "docs/METHODOLOGY.md")
     declared = {nc["id"] for nc in data["non_claims"]}
     listed = set(re.findall(r"`(not_[a-z0-9_]+)`", scope))
     check(declared == listed,
-          f"docs/SCOPE.md identifiers {sorted(listed)} != claims.json {sorted(declared)}")
+          f"docs/METHODOLOGY.md identifiers {sorted(listed)} != claims.json {sorted(declared)}")
     check(has_release_status_boundary(scope, data),
-          "docs/SCOPE.md must state the open boundary in plain language")
+          "docs/METHODOLOGY.md must state the open boundary in plain language")
 
     # --- 6. README ------------------------------------------------------------
     readme = read(ROOT / "README.md")
@@ -2367,42 +2496,23 @@ def main(argv: list[str] | None = None) -> int:
           "README must route readers to the checked release citation owner")
     check("docs/METHODOLOGY.md" in readme and "SOURCE_MAP.md" in readme,
           "README must route readers to the methodology and source map")
-    check(
-        "formalization.yaml" in readme and "docs/EXTERNAL_VERIFICATION.md" in readme,
-        "README must route readers to the external verification packet",
-    )
-    # Derive the scope sentence from the problem registry rather than pinning
-    # one fixed English sentence. The property is "the README states that the
-    # manifest and packet cover every indexed problem programme". Matching the
-    # literal "cover all eight problem programmes" both broke on an honest
-    # rewording ("covers") and would have stayed silent if a ninth problem were
-    # indexed while the sentence still said eight. (2026-08-15)
     indexed_problem_count = int(
-        json.loads(read(ROOT / "docs" / "problems.json")).get("problem_count", 0)
+        json.loads(read(ROOT / "docs/problems.json")).get("problem_count", 0)
     )
-    count_words = {
-        1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
-        6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten",
+    check(has_release_status_boundary(readme, data),
+          "README must state the open boundary in plain language")
+    entry_documents = {
+        relative: read(ROOT / relative)
+        for relative in (
+            "README.md", "AGENTS.md", "docs/README.md", "docs/RESULTS.md",
+            "docs/ARCHITECTURE.md", "docs/REPRODUCIBILITY.md", "docs/METHODOLOGY.md",
+            "docs/EXTERNAL_VERIFICATION.md", "docs/reference/SOURCE_MAP.md",
+            "docs/reference/ORIENTATION.md", "docs/agents/AGENT_GUIDE.md",
+            "docs/agents/AGENT_WORKBENCH.md",
+        )
     }
-    count_word = count_words.get(indexed_problem_count, "")
-    count_pattern = "|".join(
-        re.escape(token) for token in (count_word, str(indexed_problem_count)) if token
-    )
-    check(
-        has_release_status_boundary(readme, data),
-        "README must state the open boundary in plain language",
-    )
-    check(
-        bool(
-            re.search(
-                rf"(?:covers?\s+all\s+(?:{count_pattern})\s+problem(?:\s+programmes|s)"
-                rf"|selected\s+statements\s+across\s+all\s+(?:{count_pattern})\s+problems)",
-                flattened(readme),
-            )
-        ),
-        "README must state that the external-verification packet covers all "
-        f"{indexed_problem_count} indexed problem programmes",
-    )
+    for error in entry_owner_route_errors(entry_documents, data, indexed_problem_count):
+        check(False, error)
     leaked_identifier = re.search(r"method_axiom\.|anti_principle\.|principle\.[a-z_]|transition\.[a-z_]", readme)
     check(leaked_identifier is None,
           f"README leaks a methodology machine identifier: {leaked_identifier.group(0) if leaked_identifier else ''}")
@@ -2445,7 +2555,7 @@ def main(argv: list[str] | None = None) -> int:
                 ".github/copilot-instructions.md",
                 "docs/ARCHITECTURE.md",
                 "docs/METHODOLOGY.md",
-                "docs/SCOPE.md",
+                "docs/METHODOLOGY.md",
                 ".github/CODE_OF_CONDUCT.md",
                 "CONTRIBUTING.md",
                 ".github/SECURITY.md",
@@ -2517,31 +2627,18 @@ def main(argv: list[str] | None = None) -> int:
     # --- 8. agent entry ------------------------------------------------------------
     agents = read(ROOT / "docs/agents/AGENT_GUIDE.md")
     for required in (
-        "docs/ARCHITECTURE.md",
-        "docs/orientation.json",
-        "docs/ORIENTATION.md",
-        "docs/claims.json",
-        "docs/corpus_descriptor.json",
-        "docs/methodology.json",
-        "docs/METHODOLOGY.md",
-        "docs/SCOPE.md",
-        "Erdos249257.lean",
-        "ErdosProblems.lean",
-        "scripts/check_release.py",
-        "scripts/test_agent_entry.py",
-        "skills/maintain-public-infrastructure/SKILL.md",
-        "scripts/query_corpus.py",
+        "docs/claims.json", "docs/corpus_descriptor.json", "docs/methodology.json",
+        "scripts/check_release.py", "scripts/tests/test_agent_entry.py",
+        "skills/maintain-public-infrastructure/SKILL.md", "scripts/query_corpus.py",
     ):
-        check(required in agents, f"docs/agents/AGENT_GUIDE.md does not route through {required}")
-    flat_agents = flattened(agents)
-    check("remain open" in flat_agents,
-          "docs/agents/AGENT_GUIDE.md must preserve the open-problem boundary")
-    check("proof authority" in flat_agents,
+        check(required in agents, f"docs/agents/AGENT_GUIDE.md lost operational owner {required}")
+    check("proof authority" in flattened(agents),
           "docs/agents/AGENT_GUIDE.md must state the proof-authority boundary")
-    check("larger ongoing formal-mathematics workflow" in flat_agents,
-          "docs/agents/AGENT_GUIDE.md must preserve the public-projection provenance boundary")
-    check("mathematical programme" in flat_agents,
-          "docs/agents/AGENT_GUIDE.md must expose mathematical programme routes")
+    for problem in json.loads(read(ROOT / "docs/problems.json"))["problems"]:
+        number = problem["erdos_number"]
+        if number is not None:
+            check(f"--route erdos_{number}" in agents,
+                  f"agent guide lost programme route for #{number}")
 
     mid_checks = run_independent_checks(
         {
@@ -2551,43 +2648,43 @@ def main(argv: list[str] | None = None) -> int:
             ],
             "architecture_fixtures": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_architecture_guide.py"),
+                str(ROOT / "scripts" / "tests" / "test_architecture_guide.py"),
             ],
             "agent_entry": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_agent_entry.py"),
+                str(ROOT / "scripts" / "tests" / "test_agent_entry.py"),
             ],
             "clone_skills": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_clone_skills.py"),
+                str(ROOT / "scripts" / "tests" / "test_clone_skills.py"),
             ],
             "contribution_entry": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_contribution_entry.py"),
+                str(ROOT / "scripts" / "tests" / "test_contribution_entry.py"),
             ],
             "continuation_journeys": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_continue_research.py"),
+                str(ROOT / "scripts" / "tests" / "test_continue_research.py"),
             ],
             "contribution_contract_agreement": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_contribution_contract_agreement.py"),
+                str(ROOT / "scripts" / "tests" / "test_contribution_contract_agreement.py"),
             ],
             "source_attribution_fixtures": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_source_attributions.py"),
+                str(ROOT / "scripts" / "tests" / "test_source_attributions.py"),
             ],
             "human_first_contact": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_human_first_contact.py"),
+                str(ROOT / "scripts" / "tests" / "test_human_first_contact.py"),
             ],
             "downstream_example": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_downstream_example_contract.py"),
+                str(ROOT / "scripts" / "tests" / "test_downstream_example_contract.py"),
             ],
             "downstream_reuse": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_downstream_reuse.py"),
+                str(ROOT / "scripts" / "tests" / "test_downstream_reuse.py"),
             ],
             "agent_navigation_paper": [
                 sys.executable,
@@ -2609,7 +2706,7 @@ def main(argv: list[str] | None = None) -> int:
             ],
             "semantic_receipt_fixtures": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_semantic_corpus_check_receipt.py"),
+                str(ROOT / "scripts" / "tests" / "test_semantic_corpus_check_receipt.py"),
             ],
             "semantic_review": [
                 sys.executable,
@@ -2618,19 +2715,19 @@ def main(argv: list[str] | None = None) -> int:
             ],
             "semantic_review_fixtures": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_semantic_review.py"),
+                str(ROOT / "scripts" / "tests" / "test_semantic_review.py"),
             ],
             "semantic_rebind_fixtures": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_semantic_review_rebind.py"),
+                str(ROOT / "scripts" / "tests" / "test_semantic_review_rebind.py"),
             ],
             "formal_source_identity_fixtures": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_release_source_identity.py"),
+                str(ROOT / "scripts" / "tests" / "test_release_source_identity.py"),
             ],
             "palomar_qualification_fixtures": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_palomar_qualification.py"),
+                str(ROOT / "scripts" / "tests" / "test_palomar_qualification.py"),
             ],
             "theory_lab_contract": [
                 sys.executable,
@@ -2638,24 +2735,24 @@ def main(argv: list[str] | None = None) -> int:
             ],
             "theory_lab_git_fixtures": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_check_theory_lab_environment.py"),
+                str(ROOT / "scripts" / "tests" / "test_check_theory_lab_environment.py"),
                 "--fixtures-only",
             ],
             "argument_graph_builder": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_build_argument_continuations.py"),
+                str(ROOT / "scripts" / "tests" / "test_build_argument_continuations.py"),
             ],
             "argument_frontier_generator": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_build_argument_frontier.py"),
+                str(ROOT / "scripts" / "tests" / "test_build_argument_frontier.py"),
             ],
             "argument_frontier_verdicts": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_frontier_verdicts.py"),
+                str(ROOT / "scripts" / "tests" / "test_frontier_verdicts.py"),
             ],
             "argument_export_comparison": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_compare_argument_exports.py"),
+                str(ROOT / "scripts" / "tests" / "test_compare_argument_exports.py"),
             ],
             "barrier_registry_source": [
                 sys.executable,
@@ -2663,7 +2760,7 @@ def main(argv: list[str] | None = None) -> int:
             ],
             "reasoning_coordinates": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_reasoning_source_coordinates.py"),
+                str(ROOT / "scripts" / "tests" / "test_reasoning_source_coordinates.py"),
             ],
             "reasoning_assembly": [
                 sys.executable,
@@ -2672,7 +2769,7 @@ def main(argv: list[str] | None = None) -> int:
             ],
             "paper_crosslinks": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_paper_crosslinks.py"),
+                str(ROOT / "scripts" / "tests" / "test_paper_crosslinks.py"),
             ],
             "formal_conjectures_crosswalk": [
                 sys.executable,
@@ -2685,7 +2782,7 @@ def main(argv: list[str] | None = None) -> int:
             ],
             "concyclic_paper_boundary": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_concyclic_alternation_paper_boundary.py"),
+                str(ROOT / "scripts" / "tests" / "test_concyclic_alternation_paper_boundary.py"),
             ],
         }
     )
@@ -2751,7 +2848,7 @@ def main(argv: list[str] | None = None) -> int:
     contributing_errors = contributor_gate_posture_errors(contributing)
     check(not contributing_errors, "; ".join(contributing_errors))
 
-    source_map = read(ROOT / "docs" / "SOURCE_MAP.md")
+    source_map = read(ROOT / "docs" / "reference" / "SOURCE_MAP.md")
     source_map_errors = source_map_entry_errors(source_map)
     check(not source_map_errors, "; ".join(source_map_errors))
 

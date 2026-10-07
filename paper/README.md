@@ -20,7 +20,7 @@ statements, axioms and kernel acceptance; it does not assess novelty or
 historical correspondence. The papers report partial results, failed or
 equivalent routes, finite evidence, and the exact obligations that survive.
 If the problem numbers or formalisation are unfamiliar, read
-[a reader's way in](../docs/READING_GUIDE.md) first. For the design of the tools
+[a reader's way in](../docs/README.md) first. For the design of the tools
 and the research process, go to the [project papers](#project-papers).
 
 ## Problem papers
@@ -70,7 +70,7 @@ step or find its source, that is useful feedback through
 Some results are checked in Lean; others are ordinary mathematical arguments
 or applications of cited external theorems. Each paper states the boundary for
 its own claims. [Results and limits](../docs/RESULTS.md) gives the result beside
-what remains open, and the [source map](../docs/SOURCE_MAP.md) connects the
+what remains open, and the [source map](../docs/reference/SOURCE_MAP.md) connects the
 paper to supporting declarations. Lean files are proof authority only for the
 exact declarations they check; [`docs/claims.json`](../docs/claims.json)
 records the selected public claim interfaces.
@@ -96,7 +96,7 @@ to the revisions they describe.
 | [From a Cold Clone to a Proof Receipt](systems/cold-clone-to-proof-receipt.pdf) ([source](systems/cold-clone-to-proof-receipt.tex)) | Navigation, recorded proof checks and incremental validation. |
 | [From Spare Compute to Cumulative Mathematics](systems/open-source-mathematics-strategy.pdf) ([source](systems/open-source-mathematics-strategy.tex)) | Contribution protocol, compute, credit and governance. |
 
-For current use, follow [the reading guide](../docs/READING_GUIDE.md),
+For current use, follow [the reading guide](../docs/README.md),
 [agent instructions](../AGENTS.md) or [Contributing](../CONTRIBUTING.md).
 
 For the repository layout, sources of truth, build path, and release
@@ -136,7 +136,7 @@ above for the current work.
 The notes are exposition, not proof authority.  To return from any note to the
 machine-owned problem record, run the matching route below.  Each problem route
 returns its exact paper/source record, checked module inventory, and open
-obligation handles; the [complete eight-problem source map](../docs/SOURCE_MAP.md#complete-eight-problem-return-matrix)
+obligation handles; the [complete eight-problem source map](../docs/reference/SOURCE_MAP.md#complete-eight-problem-return-matrix)
 keeps the same joins readable.  For a source-fingerprinted continuation packet,
 use the route-memory command in the last column.
 
@@ -206,7 +206,7 @@ coverage against the current proofs:
 
 ```sh
 python3 scripts/check_problem_note_sources.py --coverage
-python3 docs/papers/check_paper_corpus.py
+python3 scripts/papers/check_paper_corpus.py
 ```
 
 The last check rejects a Markdown mirror or recorded PDF that no longer
@@ -216,7 +216,44 @@ made stale by your manuscript edit, say so in the pull request; do not
 hand-edit the copy to make the check pass.
 
 Refresh generated full text and paper-corpus records with
-`python3 docs/papers/refresh_paper_corpus.py --write`, then run
+`python3 scripts/papers/refresh_paper_corpus.py --write`, then run
 `python3 scripts/refresh_projections.py` and
-`python3 docs/papers/check_paper_corpus.py` before merging. These owners are
+`python3 scripts/papers/check_paper_corpus.py` before merging. These owners are
 included in the public checkout; do not edit their generated output by hand.
+
+## Maintain the publication library
+
+[Choose a problem on the website](https://wcook04.github.io/plectis/maths/).
+Every problem has a short paper, a long paper, and a searchable source map.
+PDF and TeX links point to stable file paths on this repository's `main` branch.
+The website's HTML reader is a published snapshot.
+
+`docs/problem_library.json` is the public machine-readable source for that view.
+It is separate from the bounded `docs/problems.json` entry index. Each problem
+contains `papers`, `paper_roles`, and a `source_map` with module nodes and import
+edges. Import arrows describe source dependencies, not theorem strength or
+mathematical credit. Only local Lean modules are included.
+
+To refresh the library after changing source or paper records, run from a full
+checkout (the reader-only sparse checkout intentionally omits Lean source):
+
+```sh
+python3 scripts/build_problem_index.py
+python3 scripts/build_problem_index.py --check
+python3 scripts/tests/test_problem_library.py
+```
+
+Paper identities and short/long roles come from `docs/papers/corpus.json`.
+Keep a paper's `paper_id` and file paths when revising it; rebuild and commit its
+PDF with the TeX source. Title and page-count changes do not change its URL.
+When adding a paper, its corpus record needs explicit problem membership
+(`problem_ids`, or its existing numbered `subject`), publication state, form,
+and paths to the PDF, TeX, and full text. Missing files fail the build.
+The long manuscripts are assembled from `paper/reasoning-parts/`; use
+`python3 scripts/assemble_reasoning_surfaces.py --check` to check agreement.
+
+Source-map roots come from each problem directory, principal and companion
+modules, reviewed result sources, and explicitly linked claims. The builder
+reads actual Lean imports and follows their local dependencies recursively.
+Each node carries its source digest and current GitHub URL; the library records
+input digests so consumers can reject a mismatched claim snapshot.

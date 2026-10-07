@@ -281,54 +281,7 @@ the full-support series.
 
 ## Historical offline adapter
 
-The offline adapter described below predates this hosted release. It remains
-a source-bound experiment against this checkout's older toolchain; its
-blocked validation is **not** a verdict on the separately ported and accepted
-Prove2Me objects.
-
-The default unit `erdos257_finite_prime_weighted_support` presents a direct
-irrationality theorem that applies to some supports with divergent reciprocal
-sums.
-The separately checked mixed weighted-cover theorem (`res:mixed-supports`)
-covers further supports under its additional cover hypotheses.
-The weighted theorem was already proved locally before its native port.
-Neither the adapter nor this note submits or registers anything.
-
-### Prepare a source-bound packet
-
-From a checkout with `origin/main` available:
-
-```sh
-python3 scripts/prove2me_compat.py prepare \
-  --out /tmp/erdos257-weighted-p2m/packet.json
-python3 scripts/prove2me_compat.py validate \
-  --packet /tmp/erdos257-weighted-p2m/packet.json \
-  --out /tmp/erdos257-weighted-p2m/validation.json
-```
-
-This older adapter candidate is deliberately blocked. The local source is pinned to Lean
-v4.29.1 and Mathlib `5e932f97dd25535344f80f9dd8da3aab83df0fe6`.
-The authenticated environment inventory recorded on 23 September 2026 in
-`PROVE2ME_COMPAT.md` contained no matching pair. An official
-[Prove2Me environment](https://github.com/prove2me/prove2me_workspace/blob/main/references/prove.md)
-is identified by both toolchain and Mathlib revision. The current service
-inventory must be checked again by an authorized contributor before any port;
-this packet does not claim compatibility with any service environment.
-
-The official
-[whole-project guide](https://github.com/prove2me/prove2me_workspace/blob/main/references/upload_full_project.md)
-requires a matching environment, declaration and sketch extraction, a
-compiled staged tree, and an exact elaborated-type comparison. The local
-adapter requires receipts for those steps before exporting a review draft.
-Its checks cannot themselves certify that a port preserved the theorem.
-Prove2Me's
-[contribution guide](https://github.com/prove2me/prove2me_workspace/blob/main/references/contribute.md)
-distinguishes a queued publish job from a published theorem ID; no such job
-or ID is created by this offline adapter packet. The public theorem linked
-above was delivered through a separate native port.
-
-The narrower reciprocal-summable result remains selectable with
-`--unit erdos257_reciprocal_summable_support` as a smaller portability pilot.
-It retains its own Erdős attribution and the same environment and staged-port
-blockers. Default selection changes neither the claim registry nor any
-mission state.
+The separate [offline compatibility adapter](PROVE2ME_COMPAT.md) predates
+this native hosted release. Follow that owner for preparation, environment
+matching, staging and export checks. Its blocked validation concerns the
+older local toolchain; it is not a verdict on the accepted native theorem.

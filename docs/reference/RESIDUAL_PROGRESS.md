@@ -126,7 +126,7 @@ costs the branch that would have worked.
 elementary targets — the sum of the first `n` odd numbers, and a divisor-count
 identity — including deliberate restatement, self-assumption, false-residual
 and hallucinated-literature specimens, plus two controls that must **not** be
-vetoed.  Labels live in `scripts/residualbench_manifest.json` and are compared
+vetoed.  Labels live in `research/experiments/residual-progress/manifest.json` and are compared
 against the run; the evaluator refuses a manifest that tries to author a
 verdict rather than declare an expectation.
 
@@ -170,7 +170,7 @@ Requires a built Mathlib for this toolchain.
 ```
 python3 scripts/lean_fast_build.py ResidualBench
 python3 scripts/residual_evaluator.py \
-  --manifest scripts/residualbench_manifest.json \
+  --manifest research/experiments/residual-progress/manifest.json \
   --lean-root . \
   --no-cross
 ```

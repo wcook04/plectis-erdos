@@ -42,10 +42,10 @@ ROSTER_VALIDATORS = {
     "cold-clone": "scripts/check_cold_clone_comprehension.py",
     "toolchain-cache": "lean-toolchain",
     "lean": "scripts/lean_fast_build.py",
-    "paper": "docs/papers/check_paper_corpus.py",
+    "paper": "scripts/papers/check_paper_corpus.py",
     "release": "scripts/check_release_ref.py",
     "release-worktree": "scripts/check_release.py",
-    "reachable-history": "scripts/test_reachable_release_history.py",
+    "reachable-history": "scripts/tests/test_reachable_release_history.py",
     "comparator": "scripts/verify-comparator.sh",
     "historical": "scripts/historical_bridge_experiment.py",
     "dogfood": "scripts/dogfood_semantic_proof.py",
@@ -826,10 +826,10 @@ def validator_spec(
         sources = [ROOT / row["local_source"] for row in entries if isinstance(row, dict) and isinstance(row.get("local_source"), str)]
         command = [
             sys.executable,
-            "docs/papers/check_paper_corpus.py",
+            "scripts/papers/check_paper_corpus.py",
             "--singleflight-worker",
         ]
-        authority_paths = [ROOT / "docs/papers/check_paper_corpus.py", corpus, *sources]
+        authority_paths = [ROOT / "scripts/papers/check_paper_corpus.py", corpus, *sources]
     elif kind == "release":
         if type(release_timeout_seconds) is not int or release_timeout_seconds <= 0:
             raise ValidationError("release timeout must be a positive integer")
@@ -870,11 +870,11 @@ def validator_spec(
             )
         command = [
             sys.executable,
-            "scripts/test_reachable_release_history.py",
+            "scripts/tests/test_reachable_release_history.py",
             f"--{targets[0]}",
         ]
         authority_paths = [
-            ROOT / "scripts/test_reachable_release_history.py",
+            ROOT / "scripts/tests/test_reachable_release_history.py",
             ROOT / "scripts/audit_reachable_release_history.py",
             ROOT / "docs/release/reachable-history-audit.json",
         ]
@@ -936,7 +936,7 @@ def validator_spec(
         command.append("--singleflight-worker")
         authority_paths = [
             ROOT / "scripts/build_lean_dependency_index.py",
-            ROOT / "scripts/export_lean_dependency_edges.lean",
+            ROOT / "scripts/lean/export_lean_dependency_edges.lean",
             ROOT / "scripts/query_corpus.py",
             ROOT / "docs/declaration_atlas.json",
             ROOT / "docs/claims.json",

@@ -48,12 +48,13 @@ Use `--checkout --check-upstream` for an explicit live comparison with canonical
 public main. Never label a cached remote ref, a release tag, or an offline
 checkout as latest. Preserve older-clone work and its starting commit; a
 different revision is not evidence that the contributor's work is invalid.
-Keep the human clone/prompt instructions in `docs/agents/README.md`
-and the behavioral provenance cases in `scripts/test_agent_entry.py`, which
+Keep the human task entry in `docs/agents/README.md`, linked to the canonical
+clone and proof setup in `docs/REPRODUCIBILITY.md`,
+and the behavioral provenance cases in `scripts/tests/test_agent_entry.py`, which
 the release gate already runs. Exercise forks, tags, archives, dirty worktrees,
 and unavailable network access without requiring a network in tests. Check the
-combined first-contact route budget as well as each entry file: newcomer setup
-belongs in the agent index, not in an already full technical reading bundle.
+combined first-contact route budget as well as each entry file: link newcomers
+to the setup owner without duplicating its commands in every reading bundle.
 
 ## Separate contribution discovery from mathematical work
 
@@ -78,7 +79,7 @@ clone-local paths. GitHub issue-form Markdown is rendered on `issues/new`, so a
 relative link that works beside the YAML source can leave the repository or
 point to an issue path. Use public repository file URLs and actual
 `issues/new?template=<filename>` form URLs. Preserve field IDs and contribution
-or credit boundaries; validate destinations in `scripts/test_contribution_entry.py`
+or credit boundaries; validate destinations in `scripts/tests/test_contribution_entry.py`
 and inspect the rendered form without entering or submitting a report.
 
 ## Preserve boundaries across every reader
@@ -159,7 +160,7 @@ Choose the first matching class:
 
 1. **Routing drift** — the correct skill exists but the task selects another
    lane. Repair task cues or priority in the registry and add the exact task to
-   `scripts/test_agent_entry.py`.
+   `scripts/tests/test_agent_entry.py`.
 2. **Catalog drift** — a skill, family, description, or lifecycle edge exists
    in one surface but not another. Repair registry/frontmatter authority, then
    regenerate the catalog.
@@ -199,15 +200,57 @@ the other a route pointer or a generated projection. Do not copy a private
 system's full doctrine into this repository; port only the public capability
 and the check that proves it works here.
 
-When reorganising the checkout, keep one shared root `AGENTS.md` and keep
-provider adapters limited to loading that entry. Keep the main reader guides
-in `docs/`, operational agent guides in `docs/agents/`, specialist checking
-instructions in `docs/verification/`, and research/tool records in
-`docs/reference/`. Link each guide from its folder index. Preserve stable
-machine-readable corpus paths when reorganising reader documents. Preserve root filenames required by Lake, Comparator,
-citation and licence tools. A move must update relative links, sparse checkout
-manifests, CI, source registries and their builders together. Pinned historical
-artifacts retain the filenames belonging to their recorded revision.
+When reorganising documentation, merge overlapping explanations into their
+existing owner before moving files; retire duplicates rather than preserving
+two current guides. Update source authorities, builder destinations and consumer
+links before regenerating a moved projection. The root-guide inventory in
+`scripts/check_release.py::check_root_layout` and its architecture fixtures
+prevent loose guides from accumulating; extend that existing gate rather than
+adding another inventory document.
+
+Keep the root README a human introduction and AGENTS.md the agent's operational
+entry. Details belong with their existing owner: do not require the README or
+agent guide to reproduce complete paper, theorem or generated-count inventories.
+Tests must check that a reader can follow the maintained route to those facts.
+After merging a guide, validate the visible link and its captured destination's
+actual boundaries; a required phrase copied into every entrypoint defeats
+consolidation. Code examples and broken links cannot satisfy that route.
+Positive navigation tests must read the shipped guide and its captured owners.
+Do not tolerate that guide failing while a synthetic replacement passes; mutate
+the passing real route to exercise missing links and weakened boundaries.
+These boundaries follow the [AGENTS.md convention](https://agents.md/) and
+[Google's documentation guidance](https://google.github.io/styleguide/docguide/best_practices.html):
+keep reader and agent instructions distinct, remove dead documentation, and
+link to one maintained explanation. Apply [Diátaxis](https://diataxis.fr/) to
+the reader's purpose; do not create empty categories or another parallel guide.
+
+When reorganising the checkout, retain its existing functional homes:
+
+| Material | Owner location |
+|---|---|
+| Human introduction; agent entry | Root `README.md`; shared `AGENTS.md` with thin provider adapters |
+| Reader guides; agent operations; specialised checks; reference | `docs/`; `docs/agents/`; `docs/verification/`; `docs/reference/` |
+| Python tools; behavioural tests; Lean exporters; paper tools | `scripts/`; `scripts/tests/`; `scripts/lean/`; `scripts/papers/` |
+| Paper corpus data and rendered reading text | `docs/papers/` |
+| Experiment manifests and inputs | The owning experiment under `research/experiments/` |
+
+Link guides from their folder index. A catalogue should locate records; route
+interpretation to the existing results, paper or recognition owner instead of
+repeating its account. Keep complete machine records even when their rendered
+index becomes shorter. Preserve root filenames required by Lake, Comparator,
+citation and licence tools, and stable machine-readable corpus paths. A move
+must update links, imports, sparse-checkout manifests, CI, source registries
+and builders together. Check consumers outside this checkout too. Pinned
+historical artifacts retain the paths and bytes of their recorded revision.
+
+Use established repositories as evidence for a specific decision.
+[Mathlib CI](https://github.com/leanprover-community/mathlib-ci) separates Lean
+tooling, tests and workflow orchestration; the
+[Scientific Python template](https://github.com/scientific-python/cookie)
+links its checks to documented practices. Borrow applicable boundaries and
+checks through this workflow. A package template does not justify turning
+clone-local commands into a distributable Python package; a new folder or
+skill needs a distinct responsibility, not another taxonomy.
 
 ## Validate behavior, not decoration
 
@@ -250,13 +293,18 @@ During the edit, run the narrow owner checks:
 
 ```sh
 python3 scripts/agent_skill_catalog.py --check
-python3 scripts/test_agent_entry.py
-python3 scripts/test_clone_skills.py
-python3 scripts/test_contribution_entry.py
-python3 scripts/test_compact_agent_entry.py
+python3 scripts/tests/test_agent_entry.py
+python3 scripts/tests/test_clone_skills.py
+python3 scripts/tests/test_contribution_entry.py
+python3 scripts/tests/test_compact_agent_entry.py
 python3 scripts/check_cold_clone_comprehension.py --quick
-python3 scripts/test_human_first_contact.py
+python3 scripts/tests/test_human_first_contact.py
 ```
+
+Run standalone test modules directly, or with `python3 -m scripts.tests.test_<name>`.
+Some suites use `main()` rather than `unittest.TestCase`; generic `unittest`
+discovery can succeed after running zero tests. Verify the suite's reported
+work, not just its process exit code.
 
 Use the exact previously failing task with `agent_entry.py --entry` as a manual
 smoke. Before publication, run `python3 scripts/check_release.py` once; do not

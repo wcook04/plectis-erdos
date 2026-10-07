@@ -135,6 +135,28 @@ def library_module_id(path: Path, root: Path) -> str:
     return ".".join(library_module_parts(path, root))
 
 
+def canonical_lean_module_path(module: str, prefer_problems: bool = False, *, root: Path) -> str:
+    """Resolve a paper shorthand against the selected checkout's library files.
+
+    Nested directories do not determine the library. Prefer a file that exists,
+    accepting current and historical storage, then retain the macro convention
+    as a fallback when neither library contains the shorthand.
+    """
+    if module.startswith(tuple(f"{library}/" for library in LIBRARY_ROOTS)):
+        nested = f"lean/{module}"
+        if (root / nested).is_file():
+            return nested
+        return module
+    roots = (
+        tuple(reversed(LIBRARY_ROOTS)) if prefer_problems else LIBRARY_ROOTS
+    )
+    for library in roots:
+        for candidate in (f"lean/{library}/{module}", f"{library}/{module}"):
+            if (root / candidate).is_file():
+                return candidate
+    return f"lean/{roots[0]}/{module}"
+
+
 def library_identity_path(relative: str) -> str:
     """Strip the ``lean/`` storage prefix from a corpus file path."""
     prefix = f"{LIBRARY_SOURCE_DIR}/"

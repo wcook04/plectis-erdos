@@ -21,11 +21,12 @@
         {
           "kind": "source_span",
           "path": "docs/RESULTS.md",
-          "start_line": 586,
-          "end_line": 593,
+          "start_line": 468,
+          "end_line": 475,
           "must_contain": [
-            "Degree-restricted #1041 positive routes remain open",
-            "min_c L(c) ≤ 2"
+            "one-dimensional Hausdorff measure greater than two",
+            "This refutes the exact",
+            "correspondence with the 1958 wording remains unreviewed."
           ]
         },
         {
@@ -54,6 +55,11 @@
           "kind": "round",
           "ref": "round-6",
           "detail": "Reported by the round-6 synthesis: earlier returns claimed complete proofs of the bound before the counterexample was known."
+        },
+        {
+          "kind": "commit",
+          "ref": "cf41120472efc0c264b5e331e9d7424de458509f",
+          "detail": "Pre-consolidation docs/RESULTS.md:586-593 preserved the earlier positive-route wording: Degree-restricted #1041 positive routes remain open ; min_c L(c) ≤ 2. The current evidence span below records the counterexample rather than that historical reading."
         }
       ],
       "triggers": {
@@ -704,9 +710,9 @@
       "evidence": [
         {
           "kind": "source_span",
-          "path": "docs/ORIENTATION.md",
-          "start_line": 102,
-          "end_line": 103,
+          "path": "docs/reference/ORIENTATION.md",
+          "start_line": 26,
+          "end_line": 27,
           "must_contain": [
             "| formalised here | Known mathematics represented and checked in Lean |",
             "| unconditional progress | Genuine theorem that does not settle the open problem |"

@@ -602,9 +602,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1104-L1110) — lines `1104–1110`; excerpt `sha256:0a56177bf9ee04c7eb8c56e6cdf4582861b8073e14f40dffc4804702603020b0`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:653](../../paper/systems/claim-faithful-publication-systems-paper.tex#L653-L653), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:660](../../paper/systems/claim-faithful-publication-systems-paper.tex#L660-L660)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `agmai\_20260929\_responsible\_release`).
+Query this record: `python3 scripts/build_source_attributions.py --query agmai_20260929_responsible_release`.
 
 <a id="source-ai-essay-antieau-20260915-fast-math-slow-math"></a>
 
@@ -622,9 +621,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1350-L1351) — lines `1350–1351`; excerpt `sha256:e6c89924a4cd473044338ab4fc20aab3daf6d1b197c0f08b9472a7eb66e2f7cd`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1055](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1055-L1055)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `ai\_essay\_antieau\_20260915\_fast\_math\_slow\_math`).
+Query this record: `python3 scripts/build_source_attributions.py --query ai_essay_antieau_20260915_fast_math_slow_math`.
 
 <a id="source-ai-essay-chu-20260809-ai-dissenter-viewpoint"></a>
 
@@ -642,9 +640,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1332-L1336) — lines `1332–1336`; excerpt `sha256:5136e66cbb7aa726a4eba02e1ee74ebc36796ad2770d611cf4e96b785da6ef25`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1055](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1055-L1055)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `ai\_essay\_chu\_20260809\_ai\_dissenter\_viewpoint`).
+Query this record: `python3 scripts/build_source_attributions.py --query ai_essay_chu_20260809_ai_dissenter_viewpoint`.
 
 <a id="source-ai-essay-cohn-20260915-technical-debt"></a>
 
@@ -662,9 +659,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1088-L1092) — lines `1088–1092`; excerpt `sha256:1f3c81b19f794be86d53650e08f9626446c906889d77d4da17985117e7947f30`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1054](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1054-L1054)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `ai\_essay\_cohn\_20260915\_technical\_debt`).
+Query this record: `python3 scripts/build_source_attributions.py --query ai_essay_cohn_20260915_technical_debt`.
 
 <a id="source-ai-essay-fields-medallists-20260911-severe-misalignment"></a>
 
@@ -682,9 +678,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1095-L1100) — lines `1095–1100`; excerpt `sha256:553ba84c17dccb37ab70dd4506f101c56d8b207258ef5f556721aa2d84a92767`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1055](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1055-L1055)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `ai\_essay\_fields\_medallists\_20260911\_severe\_misalignment`).
+Query this record: `python3 scripts/build_source_attributions.py --query ai_essay_fields_medallists_20260911_severe_misalignment`.
 
 <a id="source-ai-essay-gowers-20260917-why-i-didnt-sign"></a>
 
@@ -702,9 +697,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1342-L1346) — lines `1342–1346`; excerpt `sha256:30a6ad65c6c978c4097cc16f982b354864ca71e82129c8fa9065966a7a99cbc7`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1055](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1055-L1055)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `ai\_essay\_gowers\_20260917\_why\_i\_didnt\_sign`).
+Query this record: `python3 scripts/build_source_attributions.py --query ai_essay_gowers_20260917_why_i_didnt_sign`.
 
 <a id="source-ai-essay-koukoulopoulos-20260917-cern-for-ai-science"></a>
 
@@ -722,9 +716,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1346-L1350) — lines `1346–1350`; excerpt `sha256:b315d91d429f123ac74c77414dc4454141f8d52412fece95c0b8c814e70403ab`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1055](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1055-L1055)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `ai\_essay\_koukoulopoulos\_20260917\_cern\_for\_ai\_science`).
+Query this record: `python3 scripts/build_source_attributions.py --query ai_essay_koukoulopoulos_20260917_cern_for_ai_science`.
 
 <a id="source-ai-essay-kra-20260913-deep-theorems"></a>
 
@@ -742,9 +735,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1083-L1088) — lines `1083–1088`; excerpt `sha256:e61243701770aa4a88c533a5d157859a8aa852eed7eaa9c15ea1f717f235830c`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1054](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1054-L1054)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `ai\_essay\_kra\_20260913\_deep\_theorems`).
+Query this record: `python3 scripts/build_source_attributions.py --query ai_essay_kra_20260913_deep_theorems`.
 
 <a id="source-ai-essay-litt-20260913-a-beginning-for-mathematics"></a>
 
@@ -762,9 +754,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1329-L1332) — lines `1329–1332`; excerpt `sha256:ee9093a8c86cbeb2eb9fab28c7202c32fd65ef7cfab1714fde3545451c0fb674`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1054](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1054-L1054)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `ai\_essay\_litt\_20260913\_a\_beginning\_for\_mathematics`).
+Query this record: `python3 scripts/build_source_attributions.py --query ai_essay_litt_20260913_a_beginning_for_mathematics`.
 
 <a id="source-ai-essay-ringer-20260917-becoming-a-benchmark"></a>
 
@@ -782,9 +773,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1201-L1205) — lines `1201–1205`; excerpt `sha256:92b92f334ac258aae259af8de72a10cc1aa303685716b7dbf5e840cead2d885c`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1055](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1055-L1055)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `ai\_essay\_ringer\_20260917\_becoming\_a\_benchmark`).
+Query this record: `python3 scripts/build_source_attributions.py --query ai_essay_ringer_20260917_becoming_a_benchmark`.
 
 <a id="source-ai-essay-sanderson-20260918-more-than-proof"></a>
 
@@ -802,9 +792,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1100-L1104) — lines `1100–1104`; excerpt `sha256:a1bece4a654c92fc6c6c1c2396621144c9c8eb394e2c5b5ec7d7bfc65fb34896`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1054](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1054-L1054)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `ai\_essay\_sanderson\_20260918\_more\_than\_proof`).
+Query this record: `python3 scripts/build_source_attributions.py --query ai_essay_sanderson_20260918_more_than_proof`.
 
 <a id="source-ai-essay-tao-20260908-mining-open-problems"></a>
 
@@ -822,9 +811,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1092-L1095) — lines `1092–1095`; excerpt `sha256:96881ad1e94a3efbaf8da36596bf04f78b3013bdcaa5fe8fb4f4e218e14bf4c0`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1054](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1054-L1054)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `ai\_essay\_tao\_20260908\_mining\_open\_problems`).
+Query this record: `python3 scripts/build_source_attributions.py --query ai_essay_tao_20260908_mining_open_problems`.
 
 <a id="source-arxiv-2309-05942"></a>
 
@@ -842,10 +830,8 @@ Exact source locations:
 
 - [Sections End-to-End Exercise (including Method), Student Recommendations, and Discussion and Additional Recommendations. Two student teams worked through timing-hardware documentation; task and survey evidence, not evaluation of this mathematical repository.](https://arxiv.org/abs/2309.05942v1)
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1050](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1050-L1050)
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:1253](../../paper/systems/open-source-mathematics-strategy.tex#L1253-L1253)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `arxiv\_2309\_05942`).
+Query this record: `python3 scripts/build_source_attributions.py --query arxiv_2309_05942`.
 
 <a id="source-arxiv-2412-03815"></a>
 
@@ -873,10 +859,8 @@ Exact source locations:
 - [Versioned source archive, docs/threats\_validity.tex, lines 5–18 (limitations\_boundary).](https://arxiv.org/src/2412.03815v2)
 - [Versioned source archive, docs/conclusion.tex, lines 3–4 (limitations\_boundary).](https://arxiv.org/src/2412.03815v2)
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1045](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1045-L1045)
-- `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:507](../../paper/systems/cold-clone-to-proof-receipt.tex#L507-L507)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `arxiv\_2412\_03815`).
+Query this record: `python3 scripts/build_source_attributions.py --query arxiv_2412_03815`.
 
 <a id="source-arxiv-2509-13978"></a>
 
@@ -904,10 +888,8 @@ Exact source locations:
 - [Versioned source archive, sections/llm\_evaluation.tex, lines 56–61 (limitations\_boundary).](https://arxiv.org/src/2509.13978v2)
 - [Versioned source archive, sections/conclusion.tex, lines 1–3 (limitations\_boundary).](https://arxiv.org/src/2509.13978v2)
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1053](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1053-L1053)
-- `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:393](../../paper/systems/cold-clone-to-proof-receipt.tex#L393-L393)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `arxiv\_2509\_13978`).
+Query this record: `python3 scripts/build_source_attributions.py --query arxiv_2509_13978`.
 
 <a id="source-bishop-eremenko-lazebnik-2025-shapes-of-rational-lemniscates"></a>
 
@@ -933,10 +915,8 @@ Public implementation or evidence coordinates:
 - [paper/1041/erdos1041-lemniscate-reasoning-surface.tex](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L5482-L5488) — lines `5482–5488`; excerpt `sha256:26d60d27d7d495f7259334fef196a51735ac5030652cb8728846fed7b1146393`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5432-L5438) — lines `5432–5438`; excerpt `sha256:26d60d27d7d495f7259334fef196a51735ac5030652cb8728846fed7b1146393`
 
-Paper citation usages:
-
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:1078](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1078-L1078)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4419](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4419-L4419), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4422](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4422-L4422), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4490](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4490-L4490), [cite at paper/reasoning-parts/erdos1041/core.tex:4369](../../paper/reasoning-parts/erdos1041/core.tex#L4369-L4369), [cite at paper/reasoning-parts/erdos1041/core.tex:4372](../../paper/reasoning-parts/erdos1041/core.tex#L4372-L4372), [cite at paper/reasoning-parts/erdos1041/core.tex:4440](../../paper/reasoning-parts/erdos1041/core.tex#L4440-L4440)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `bishop\_eremenko\_lazebnik\_2025\_shapes\_of\_rational\_lemniscates`).
+Query this record: `python3 scripts/build_source_attributions.py --query bishop_eremenko_lazebnik_2025_shapes_of_rational_lemniscates`.
 
 <a id="source-correspondence-001"></a>
 
@@ -960,7 +940,10 @@ Public implementation or evidence coordinates:
 - [formalization.yaml](../../formalization.yaml#L1-L60) — lines `1–60`; excerpt `sha256:301b260737a1b5176e64724b27eb990eaeda45fba3a6cb92b482ca3bfe6bfd0f`
 - [verification/comparator.json](../../verification/comparator.json#L1-L40) — lines `1–40`; excerpt `sha256:8b08466c661aa5a0f1977d62d091fd0a355dd90ba5d7d74a51ca6c578639737f`
 - [verification/comparator-negative-mismatch.json](../../verification/comparator-negative-mismatch.json#L1-L13) — lines `1–13`; excerpt `sha256:43aca5f4da7f5f42baf826e53324c045e4fa11acd20ffd1743609e20b5084157`
-- [docs/EXTERNAL\_VERIFICATION.md](../../docs/EXTERNAL_VERIFICATION.md#L4-L14) — lines `4–14`; excerpt `sha256:841f2dd16d4a52b7d08408468dd3f4f231b7d8aeb174d9ffad383abbde1acfe9`
+- [docs/EXTERNAL\_VERIFICATION.md](../../docs/EXTERNAL_VERIFICATION.md#L10-L22) — lines `10–22`; excerpt `sha256:68b48b26909458d634ec4498042279edb1db1066ab031f0dd4d2e15464a7af1c`
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `correspondence-001`).
+Query this record: `python3 scripts/build_source_attributions.py --query correspondence-001`.
 
 <a id="source-correspondence-002"></a>
 
@@ -986,7 +969,10 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos-249-binary-totient-series.tex](../../paper/249/erdos-249-binary-totient-series.tex#L78-L78) — lines `78–78`; excerpt `sha256:c1960cd50c0146b008839691c83ef53220ec6bdf251ce3c02d30ff006670e01a`
 - [lean/Erdos249257/TotientMahlerDefect.lean](../../lean/Erdos249257/TotientMahlerDefect.lean#L935-L1145) — lines `935–1145`; excerpt `sha256:e4bbeef9407526e58653fc7ed307d51530c41af7bd6d225f36388486dc845a6e`
 - [formalization.yaml](../../formalization.yaml#L159-L216) — lines `159–216`; excerpt `sha256:b323e9a098414f61b29469d542453a446713a6650efbe384accb4d657f9a1e7e`
-- [docs/EXTERNAL\_VERIFICATION.md](../../docs/EXTERNAL_VERIFICATION.md#L534-L544) — lines `534–544`; excerpt `sha256:cb49ade0a57a20d0355d24a8ebc443b2be0b82e0f3c2bdd61f361abe2913a17b`
+- [docs/external\_verification\_packet.json](../../docs/external_verification_packet.json#L1030-L1043) — lines `1030–1043`; excerpt `sha256:44b2d03394f71d1c7674ade0f59d393612a219ff02810ce8544e458bb95128ea`
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `correspondence-002`).
+Query this record: `python3 scripts/build_source_attributions.py --query correspondence-002`.
 
 <a id="source-correspondence-003"></a>
 
@@ -1011,6 +997,9 @@ Public implementation or evidence coordinates:
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L878-L878) — lines `878–878`; excerpt `sha256:5e2e6c2c874886e16da148e50ad853ae95b8bd51917063f56898eede0c49e406`
 - [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L389-L393) — lines `389–393`; excerpt `sha256:c9f8d191bbf7d39a3e75436d9d7036604d3f396d1223d6f8d505668cafc4971e`
 - [lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean](../../lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean#L1-L100) — lines `1–100`; excerpt `sha256:2869c3db2da5857a4c9fc56be272d52f5a7b1242f3633bd8ed0b01f0da016724`
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `correspondence-003`).
+Query this record: `python3 scripts/build_source_attributions.py --query correspondence-003`.
 
 <a id="source-correspondence-004"></a>
 
@@ -1037,6 +1026,9 @@ Public implementation or evidence coordinates:
 - [docs/papers/SHORT\_PAPER\_CONTRACT.md](../../docs/papers/SHORT_PAPER_CONTRACT.md#L15-L15) — lines `15–15`; excerpt `sha256:43ae7aa3892935664831547944b3b27f554b3fd290c430f00cc870396a0f8a9e`
 - [docs/papers/SHORT\_PAPER\_CONTRACT.md](../../docs/papers/SHORT_PAPER_CONTRACT.md#L23-L23) — lines `23–23`; excerpt `sha256:ff5754db474f064134ae8227c14f4824529f41415521823ca5a324a5154ab45c`
 
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `correspondence-004`).
+Query this record: `python3 scripts/build_source_attributions.py --query correspondence-004`.
+
 <a id="source-correspondence-005"></a>
 
 ### Showing where methods and ideas come from
@@ -1058,6 +1050,9 @@ Public implementation or evidence coordinates:
 
 - [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L68-L73) — lines `68–73`; excerpt `sha256:1ab1c0d45ed163c3d6109bb69e7ef350daad697816ad030e33bac851a4b79ca4`
 - [docs/papers/SHORT\_PAPER\_CONTRACT.md](../../docs/papers/SHORT_PAPER_CONTRACT.md#L19-L19) — lines `19–19`; excerpt `sha256:25842c87b62e2854557a2e4add69568a3d3398b523afd982a2f0348cca448abf`
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `correspondence-005`).
+Query this record: `python3 scripts/build_source_attributions.py --query correspondence-005`.
 
 <a id="source-erdos1041-ani-degree-seven-candidate-counterexample"></a>
 
@@ -1083,9 +1078,8 @@ Public implementation or evidence coordinates:
 - [lean/ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean](../../lean/ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean#L23-L40) — lines `23–40`; excerpt `sha256:de7c9f67adba5db7a57c763684b751678c107891d725c6a4a3296b34acb2b7c2`
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1157-L1159) — lines `1157–1159`; excerpt `sha256:4e4234729ca246120c50642f617d7062a456fa5a1f0900f82ed49b3a7e16a132`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1000](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1000-L1000), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1057](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1057-L1057)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `erdos1041\_ani\_degree\_seven\_candidate\_counterexample`).
+Query this record: `python3 scripts/build_source_attributions.py --query erdos1041_ani_degree_seven_candidate_counterexample`.
 
 <a id="source-erdos1041-morluto-independent-check"></a>
 
@@ -1103,6 +1097,9 @@ Exact source locations:
 
 - [Comment posted 9 Sep 2026 by morluto; exact HTML element permalink #post-8925](https://www.erdosproblems.com/forum/thread/1041?order=oldest#post-8925)
 
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `erdos1041\_morluto\_independent\_check`).
+Query this record: `python3 scripts/build_source_attributions.py --query erdos1041_morluto_independent_check`.
+
 <a id="source-erdos1041-pendyala-quartic"></a>
 
 ### [Quartic case of Erdős #1041](https://www.erdosproblems.com/forum/thread/1041?order=oldest#post-7175)
@@ -1118,6 +1115,9 @@ Exact source locations:
 Exact source locations:
 
 - [Comment posted 24 Jun 2026 by Venkata Pendyala; exact HTML element permalink #post-7175](https://www.erdosproblems.com/forum/thread/1041?order=oldest#post-7175)
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `erdos1041\_pendyala\_quartic`).
+Query this record: `python3 scripts/build_source_attributions.py --query erdos1041_pendyala_quartic`.
 
 <a id="source-erdos1049-bloom-chowla-scan-retrieval"></a>
 
@@ -1141,6 +1141,9 @@ Public implementation or evidence coordinates:
 - [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L78-L82) — lines `78–82`; excerpt `sha256:c2864518e4865dd44a4a7f0e412686c80f1580a48114e8077d016e2b7ddcb64b`
 - [docs/primary-sources/reciprocal-tail/chowla-1947-source-closure.md](../../docs/primary-sources/reciprocal-tail/chowla-1947-source-closure.md#L1-L1) — lines `1–1`; excerpt `sha256:e84a307e279c842107b65ddf94e864ecb813914844df302a5f2c28509b7ee1db`
 
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `erdos1049\_bloom\_chowla\_scan\_retrieval`).
+Query this record: `python3 scripts/build_source_attributions.py --query erdos1049_bloom_chowla_scan_retrieval`.
+
 <a id="source-erdos243-kovac-koizumi-pointer"></a>
 
 ### [Koizumi pseudo-greedy equivalence and computation pointer](https://www.erdosproblems.com/forum/thread/243?order=oldest#post-439)
@@ -1162,6 +1165,9 @@ Public implementation or evidence coordinates:
 - [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L272-L282) — lines `272–282`; excerpt `sha256:9ec6b8b09de1bfee382a968ad6339f9789fe914f34ddd80289565b2b929a0fc7`
 - [docs/primary-sources/reciprocal-tail/koizumi-2026-source-closure.md](../../docs/primary-sources/reciprocal-tail/koizumi-2026-source-closure.md#L1-L1) — lines `1–1`; excerpt `sha256:6126bfd0669f6bbbaf09f65bc95f02fb185baddaac42274887a3cba79bdb3118`
 
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `erdos243\_kovac\_koizumi\_pointer`).
+Query this record: `python3 scripts/build_source_attributions.py --query erdos243_kovac_koizumi_pointer`.
+
 <a id="source-erdos243-tao-tail-pair-recurrence"></a>
 
 ### [Rational-tail deterministic pair recurrence and open-boundary reduction](https://www.erdosproblems.com/forum/thread/243?order=oldest#post-438)
@@ -1179,6 +1185,9 @@ Exact source locations:
 - [Comment posted 11 Sep 2025 by Terence Tao; exact HTML element permalink #post-438](https://www.erdosproblems.com/forum/thread/243?order=oldest#post-438)
 - [Comment posted 11 Sep 2025 by Terence Tao; exact HTML element permalink #post-459](https://www.erdosproblems.com/forum/thread/243?order=oldest#post-459)
 
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `erdos243\_tao\_tail\_pair\_recurrence`).
+Query this record: `python3 scripts/build_source_attributions.py --query erdos243_tao_tail_pair_recurrence`.
+
 <a id="source-erdos249-fan-mobius-transform"></a>
 
 ### [Möbius-transform identity for the binary totient constant](https://www.erdosproblems.com/forum/thread/249?order=oldest#post-6489)
@@ -1194,6 +1203,9 @@ Exact source locations:
 Exact source locations:
 
 - [Comment posted 16 May 2026 by Steve Fan; exact HTML element permalink #post-6489](https://www.erdosproblems.com/forum/thread/249?order=oldest#post-6489)
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `erdos249\_fan\_mobius\_transform`).
+Query this record: `python3 scripts/build_source_attributions.py --query erdos249_fan_mobius_transform`.
 
 <a id="source-erdos249-rafik-sparse-power-two-subseries"></a>
 
@@ -1211,6 +1223,9 @@ Exact source locations:
 
 - [Comment posted 15 May 2026 by Zeraoulia Rafik; exact HTML element permalink #post-6476](https://www.erdosproblems.com/forum/thread/249?order=oldest#post-6476)
 
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `erdos249\_rafik\_sparse\_power\_two\_subseries`).
+Query this record: `python3 scripts/build_source_attributions.py --query erdos249_rafik_sparse_power_two_subseries`.
+
 <a id="source-erdos251-alfaiz-schlage-puchta-pointer"></a>
 
 ### [Schlage-Puchta Theorem 2 literature pointer](https://www.erdosproblems.com/forum/thread/251?order=oldest#post-5404)
@@ -1226,6 +1241,9 @@ Exact source locations:
 Exact source locations:
 
 - [Comment posted 15 Apr 2026 by Alfaiz; exact HTML element permalink #post-5404](https://www.erdosproblems.com/forum/thread/251?order=oldest#post-5404)
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `erdos251\_alfaiz\_schlage\_puchta\_pointer`).
+Query this record: `python3 scripts/build_source_attributions.py --query erdos251_alfaiz_schlage_puchta_pointer`.
 
 <a id="source-erdos251-kovac-variable-denominator-counterexample"></a>
 
@@ -1249,6 +1267,9 @@ Public implementation or evidence coordinates:
 - [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L286-L290) — lines `286–290`; excerpt `sha256:0f62f937441a579688654793f759c8d3a907ac15bb22aa83897d45df1462216a`
 - [lean/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean](../../lean/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean#L27-L30) — lines `27–30`; excerpt `sha256:1fdbe78f7474100bd312810adac9f1ef95fe6de93652e252348899dffa4e15c6`
 
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `erdos251\_kovac\_variable\_denominator\_counterexample`).
+Query this record: `python3 scripts/build_source_attributions.py --query erdos251_kovac_variable_denominator_counterexample`.
+
 <a id="source-erdos251-land-conditional-proof-lean"></a>
 
 ### [Conditional #251 proof under Kuperberg Conjecture 1.3 and Lean formalization](https://www.erdosproblems.com/forum/thread/251?order=oldest#post-8820)
@@ -1265,6 +1286,9 @@ Exact source locations:
 
 - [Comment posted 6 Sep 2026 by Johan Land; exact HTML element permalink #post-8820](https://www.erdosproblems.com/forum/thread/251?order=oldest#post-8820)
 - [Comment posted 6 Sep 2026 by Johan Land; exact HTML element permalink #post-8823](https://www.erdosproblems.com/forum/thread/251?order=oldest#post-8823)
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `erdos251\_land\_conditional\_proof\_lean`).
+Query this record: `python3 scripts/build_source_attributions.py --query erdos251_land_conditional_proof_lean`.
 
 <a id="source-erdos251-tao-prime-gap-equivalence"></a>
 
@@ -1288,6 +1312,9 @@ Public implementation or evidence coordinates:
 - [lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean](../../lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L138-L172) — lines `138–172`; excerpt `sha256:df88134179386f6161b138662a0cf1e7faf8a0ff67d5a839a7ac4608d03ad1c2`
 - [research/adapters/FormalConjecturesVariants.lean](../../research/adapters/FormalConjecturesVariants.lean#L404-L435) — lines `404–435`; excerpt `sha256:912d421ce3a607706d9b45fcb033ab97d4d81f834be36a029c3407aca9e05ae8`
 
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `erdos251\_tao\_prime\_gap\_equivalence`).
+Query this record: `python3 scripts/build_source_attributions.py --query erdos251_tao_prime_gap_equivalence`.
+
 <a id="source-erdos257-kovac-context-bundle"></a>
 
 ### [Earlier variants, interval-filling negative variant, and fat-Cantor boundary](https://www.erdosproblems.com/forum/thread/257?order=oldest#post-2)
@@ -1310,6 +1337,9 @@ Public implementation or evidence coordinates:
 - [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L156-L160) — lines `156–160`; excerpt `sha256:badb6c16b351f142047e83c1c8631e63319c82edabf1973f16a616deead6f4d6`
 - [docs/primary-sources/reciprocal-tail/kovac-tao-2025-source-closure.md](../../docs/primary-sources/reciprocal-tail/kovac-tao-2025-source-closure.md#L1-L1) — lines `1–1`; excerpt `sha256:afa5eea7ce02b26464e36300842105a356651d8f78c7fafa103c54075c0b9979`
 
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `erdos257\_kovac\_context\_bundle`).
+Query this record: `python3 scripts/build_source_attributions.py --query erdos257_kovac_context_bundle`.
+
 <a id="source-erdos257-kovac-older-special-case-attribution"></a>
 
 ### [Older Erdős and Borwein attribution for even/odd supports](https://www.erdosproblems.com/forum/thread/257?order=oldest#post-332)
@@ -1331,6 +1361,9 @@ Public implementation or evidence coordinates:
 - [docs/primary-sources/totient-kernel/erdos-1948-lambert-source-closure.md](../../docs/primary-sources/totient-kernel/erdos-1948-lambert-source-closure.md#L1-L1) — lines `1–1`; excerpt `sha256:15d4e4847c661dbad3433bbb57367700e448f59ce576437f988dc0d04eb98762`
 - [docs/primary-sources/reciprocal-tail/borwein-1991-qn-r-source-closure.md](../../docs/primary-sources/reciprocal-tail/borwein-1991-qn-r-source-closure.md#L1-L1) — lines `1–1`; excerpt `sha256:588b231fb7c44e99046d30f840d6eb897e87b715544cff4b2864b476aea9fc7b`
 
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `erdos257\_kovac\_older\_special\_case\_attribution`).
+Query this record: `python3 scripts/build_source_attributions.py --query erdos257_kovac_older_special_case_attribution`.
+
 <a id="source-erdos257-tang-tachiya-period-two"></a>
 
 ### [Period-two Lambert theorem applied to even and odd supports](https://www.erdosproblems.com/forum/thread/257?order=oldest#post-330)
@@ -1346,6 +1379,9 @@ Public implementation or evidence coordinates:
 Exact source locations:
 
 - [Comment posted 5 Sep 2025 by Quanyu Tang; exact HTML element permalink #post-330](https://www.erdosproblems.com/forum/thread/257?order=oldest#post-330)
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `erdos257\_tang\_tachiya\_period\_two`).
+Query this record: `python3 scripts/build_source_attributions.py --query erdos257_tang_tachiya_period_two`.
 
 <a id="source-erdos269-fan-infinite-p-proof-repair"></a>
 
@@ -1364,6 +1400,9 @@ Exact source locations:
 - [Comment posted 11 Oct 2025 by Steve Fan; exact HTML element permalink #post-1000](https://www.erdosproblems.com/forum/thread/269?order=oldest#post-1000)
 - [Comment posted 11 Oct 2025 by Thomas Bloom; exact HTML element permalink #post-1002](https://www.erdosproblems.com/forum/thread/269?order=oldest#post-1002)
 - [Comment posted 11 Oct 2025 by Steve Fan; exact HTML element permalink #post-1013](https://www.erdosproblems.com/forum/thread/269?order=oldest#post-1013)
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `erdos269\_fan\_infinite\_p\_proof\_repair`).
+Query this record: `python3 scripts/build_source_attributions.py --query erdos269_fan_infinite_p_proof_repair`.
 
 <a id="source-erdos269-fan-two-prime-disclosure"></a>
 
@@ -1385,6 +1424,9 @@ Exact source locations:
 Public implementation or evidence coordinates:
 
 - [docs/PRIOR\_ART.md](../../docs/PRIOR_ART.md#L330-L346) — lines `330–346`; excerpt `sha256:f4d1278504a386c4d49236ab4efd039ef5ddd233f5bae878c29728b527bd5417`
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `erdos269\_fan\_two\_prime\_disclosure`).
+Query this record: `python3 scripts/build_source_attributions.py --query erdos269_fan_two_prime_disclosure`.
 
 <a id="source-erdos-problems-catalog-eight-problem-context"></a>
 
@@ -1454,23 +1496,8 @@ Public implementation or evidence coordinates:
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1149-L1153) — lines `1149–1153`; excerpt `sha256:33dec8bc1acd3ac4b9b6a3607c65aa0df85e610d6c5b426244f817177fde3b78`
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1068-L1071) — lines `1068–1071`; excerpt `sha256:78a4c894e36fc15f59c4cdc58d03271ad69a3f67a8366ca747b59cae0138bb2e`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:108](../../paper/systems/claim-faithful-publication-systems-paper.tex#L108-L108), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:813](../../paper/systems/claim-faithful-publication-systems-paper.tex#L813-L813), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1000](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1000-L1000), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1052](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1052-L1052), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1057](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1057-L1057)
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:73](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L73-L73)
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1213](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1213-L1213)
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:71](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L71-L71)
-- `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:787](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L787-L787)
-- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:1001](../../paper/269/erdos-269-three-prime-running-lcm.tex#L1001-L1001)
-- `erdos-68-factorial-denominator-irrationality`: [cite at paper/68/erdos-68-factorial-denominator-irrationality.tex:50](../../paper/68/erdos-68-factorial-denominator-irrationality.tex#L50-L50)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:98](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L98-L98), [cite at paper/reasoning-parts/erdos1041/core.tex:48](../../paper/reasoning-parts/erdos1041/core.tex#L48-L48)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:63](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L63-L63), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5074](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5074-L5074), [cite at paper/reasoning-parts/erdos1049/core.tex:32](../../paper/reasoning-parts/erdos1049/core.tex#L32-L32), [cite at paper/reasoning-parts/erdos1049/core.tex:5043](../../paper/reasoning-parts/erdos1049/core.tex#L5043-L5043)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:77](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L77-L77), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:876](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L876-L876), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:3751](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3751-L3751), [cite at paper/reasoning-parts/erdos243/core.tex:38](../../paper/reasoning-parts/erdos243/core.tex#L38-L38), [cite at paper/reasoning-parts/erdos243/core.tex:837](../../paper/reasoning-parts/erdos243/core.tex#L837-L837), [cite at paper/reasoning-parts/erdos243/core.tex:3712](../../paper/reasoning-parts/erdos243/core.tex#L3712-L3712)
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:197](../../paper/archive/erdos249-257-main-paper.tex#L197-L197), [cite at paper/archive/erdos249-257-main-paper.tex:4521](../../paper/archive/erdos249-257-main-paper.tex#L4521-L4521)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:73](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L73-L73), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2116](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2116-L2116), [cite at paper/reasoning-parts/erdos251/core.tex:31](../../paper/reasoning-parts/erdos251/core.tex#L31-L31), [cite at paper/reasoning-parts/erdos251/core.tex:2074](../../paper/reasoning-parts/erdos251/core.tex#L2074-L2074)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:119](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L119-L119), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3866](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3866-L3866), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3884](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3884-L3884), [cite at paper/reasoning-parts/erdos269/core.tex:61](../../paper/reasoning-parts/erdos269/core.tex#L61-L61), [cite at paper/reasoning-parts/erdos269/core.tex:3808](../../paper/reasoning-parts/erdos269/core.tex#L3808-L3808), [cite at paper/reasoning-parts/erdos269/core.tex:3826](../../paper/reasoning-parts/erdos269/core.tex#L3826-L3826)
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:64](../../paper/68/erdos68-factorial-reasoning-surface.tex#L64-L64), [cite at paper/reasoning-parts/erdos68/core.tex:29](../../paper/reasoning-parts/erdos68/core.tex#L29-L29)
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:571](../../paper/systems/open-source-mathematics-strategy.tex#L571-L571), [cite at paper/systems/open-source-mathematics-strategy.tex:789](../../paper/systems/open-source-mathematics-strategy.tex#L789-L789)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `erdos\_problems\_catalog\_eight\_problem\_context`).
+Query this record: `python3 scripts/build_source_attributions.py --query erdos_problems_catalog_eight_problem_context`.
 
 <a id="source-eremenko-2007-markov-type-inequality-plane-continua"></a>
 
@@ -1495,10 +1522,8 @@ Public implementation or evidence coordinates:
 - [paper/1041/erdos1041-lemniscate-reasoning-surface.tex](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L5476-L5482) — lines `5476–5482`; excerpt `sha256:23a731c181be1a3d3f4f814b84774f68a8a5b6bcebb7b8717ac21e9917899da5`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5426-L5432) — lines `5426–5432`; excerpt `sha256:23a731c181be1a3d3f4f814b84774f68a8a5b6bcebb7b8717ac21e9917899da5`
 
-Paper citation usages:
-
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:1130](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1130-L1130)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:2367](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L2367-L2367), [cite at paper/reasoning-parts/erdos1041/core.tex:2317](../../paper/reasoning-parts/erdos1041/core.tex#L2317-L2317)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `eremenko\_2007\_markov\_type\_inequality\_plane\_continua`).
+Query this record: `python3 scripts/build_source_attributions.py --query eremenko_2007_markov_type_inequality_plane_continua`.
 
 <a id="source-eremenko-lempert-1994-extremal-problem-for-polynomials"></a>
 
@@ -1523,10 +1548,8 @@ Public implementation or evidence coordinates:
 - [paper/1041/erdos1041-lemniscate-reasoning-surface.tex](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L5471-L5476) — lines `5471–5476`; excerpt `sha256:2ca5100ac1e4e768257b05ac88a40e2a04ae625930bbba2c8e7c147703d176a6`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5421-L5426) — lines `5421–5426`; excerpt `sha256:2ca5100ac1e4e768257b05ac88a40e2a04ae625930bbba2c8e7c147703d176a6`
 
-Paper citation usages:
-
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:1129](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1129-L1129)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:2365](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L2365-L2365), [cite at paper/reasoning-parts/erdos1041/core.tex:2315](../../paper/reasoning-parts/erdos1041/core.tex#L2315-L2315)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `eremenko\_lempert\_1994\_extremal\_problem\_for\_polynomials`).
+Query this record: `python3 scripts/build_source_attributions.py --query eremenko_lempert_1994_extremal_problem_for_polynomials`.
 
 <a id="source-eremenko-yuditskii-2012-comb-functions"></a>
 
@@ -1553,10 +1576,8 @@ Public implementation or evidence coordinates:
 - [paper/1041/erdos1041-lemniscate-reasoning-surface.tex](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L5467-L5471) — lines `5467–5471`; excerpt `sha256:42b99f9986d17fa7c89618f299bdc5940ef3f67b0a8129937e2dcd5521a15379`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5417-L5421) — lines `5417–5421`; excerpt `sha256:42b99f9986d17fa7c89618f299bdc5940ef3f67b0a8129937e2dcd5521a15379`
 
-Paper citation usages:
-
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:919](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L919-L919)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:2350](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L2350-L2350), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:2358](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L2358-L2358), [cite at paper/reasoning-parts/erdos1041/core.tex:2300](../../paper/reasoning-parts/erdos1041/core.tex#L2300-L2300), [cite at paper/reasoning-parts/erdos1041/core.tex:2308](../../paper/reasoning-parts/erdos1041/core.tex#L2308-L2308)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `eremenko\_yuditskii\_2012\_comb\_functions`).
+Query this record: `python3 scripts/build_source_attributions.py --query eremenko_yuditskii_2012_comb_functions`.
 
 <a id="source-formal-conjectures-adapter-problem-1049"></a>
 
@@ -1578,6 +1599,9 @@ Public implementation or evidence coordinates:
 
 - [research/adapters/FormalConjecturesAdapter.lean](../../research/adapters/FormalConjecturesAdapter.lean#L95-L108) — lines `95–108`; excerpt `sha256:6103702256378b99f284f4867d0c51dd9dd0c5c5e808b1d22f64210a0dbd2253`
 
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `formal\_conjectures\_adapter\_problem\_1049`).
+Query this record: `python3 scripts/build_source_attributions.py --query formal_conjectures_adapter_problem_1049`.
+
 <a id="source-formal-conjectures-adapter-problem-249"></a>
 
 ### [Formal Conjectures compatibility surface for Erdős #249](https://github.com/google-deepmind/formal-conjectures/tree/398958d3964d738886bd24433918c365df4a2aab/FormalConjectures/ErdosProblems)
@@ -1597,6 +1621,9 @@ Exact source locations:
 Public implementation or evidence coordinates:
 
 - [research/adapters/FormalConjecturesVariants.lean](../../research/adapters/FormalConjecturesVariants.lean#L284-L302) — lines `284–302`; excerpt `sha256:12a5b1f7563cefb7d10a26be861ae84e01bcba9b150a9655b9c3e2aabd93108b`
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `formal\_conjectures\_adapter\_problem\_249`).
+Query this record: `python3 scripts/build_source_attributions.py --query formal_conjectures_adapter_problem_249`.
 
 <a id="source-formal-conjectures-adapter-problem-251"></a>
 
@@ -1618,6 +1645,9 @@ Public implementation or evidence coordinates:
 
 - [research/adapters/FormalConjecturesVariants.lean](../../research/adapters/FormalConjecturesVariants.lean#L376-L440) — lines `376–440`; excerpt `sha256:4db989ccba90a32a255fe9bd93b65967fa391e1cf1c9974d07cfa64d5d0e92c8`
 
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `formal\_conjectures\_adapter\_problem\_251`).
+Query this record: `python3 scripts/build_source_attributions.py --query formal_conjectures_adapter_problem_251`.
+
 <a id="source-formal-conjectures-adapter-problem-257"></a>
 
 ### [Formal Conjectures compatibility surface for Erdős #257](https://github.com/google-deepmind/formal-conjectures/tree/398958d3964d738886bd24433918c365df4a2aab/FormalConjectures/ErdosProblems)
@@ -1638,6 +1668,9 @@ Public implementation or evidence coordinates:
 
 - [research/adapters/FormalConjecturesVariants.lean](../../research/adapters/FormalConjecturesVariants.lean#L356-L374) — lines `356–374`; excerpt `sha256:7ff63cde13f349a5f42b41b5bbc6f9160c468a7a7ae2a92d8cd54b5d8afc85d6`
 
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `formal\_conjectures\_adapter\_problem\_257`).
+Query this record: `python3 scripts/build_source_attributions.py --query formal_conjectures_adapter_problem_257`.
+
 <a id="source-formal-conjectures-adapter-problem-68"></a>
 
 ### [Formal Conjectures compatibility surface for Erdős #68](https://github.com/google-deepmind/formal-conjectures/tree/398958d3964d738886bd24433918c365df4a2aab/FormalConjectures/ErdosProblems)
@@ -1657,6 +1690,9 @@ Exact source locations:
 Public implementation or evidence coordinates:
 
 - [research/adapters/FormalConjecturesVariants.lean](../../research/adapters/FormalConjecturesVariants.lean#L485-L518) — lines `485–518`; excerpt `sha256:5bd0c8f1316751bbcc0c8dd95f60449cc49b395f5984c254b1db288a24fda020`
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `formal\_conjectures\_adapter\_problem\_68`).
+Query this record: `python3 scripts/build_source_attributions.py --query formal_conjectures_adapter_problem_68`.
 
 <a id="source-formal-conjectures-eight-problem-coverage-boundary"></a>
 
@@ -1683,6 +1719,9 @@ Public implementation or evidence coordinates:
 - [docs/case-studies/formal-conjectures-1041.md](../../docs/case-studies/formal-conjectures-1041.md#L12-L12) — lines `12–12`; excerpt `sha256:92f1c74787cba286feffec250ded2fbf4944d6ac40f80c655b6b9370623f920c`
 - [docs/case-studies/formal-conjectures-1041.md](../../docs/case-studies/formal-conjectures-1041.md#L74-L74) — lines `74–74`; excerpt `sha256:630e2b08b1fc43aaea823cabc9d314e0e96ad4d7a5d571d1203febbcb140df69`
 
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `formal\_conjectures\_eight\_problem\_coverage\_boundary`).
+Query this record: `python3 scripts/build_source_attributions.py --query formal_conjectures_eight_problem_coverage_boundary`.
+
 <a id="source-lean4-toolchain-v4-29-1"></a>
 
 ### [Lean 4 theorem prover](https://lean-lang.org/papers/system.pdf)
@@ -1704,6 +1743,9 @@ Public implementation or evidence coordinates:
 
 - [lean-toolchain](../../lean-toolchain#L1-L1) — lines `1–1`; excerpt `sha256:7dc000621e0046d1aada809e2b7177e64454645cf4c741e9daaf79c99ec2e7a2`
 - [CITATION.cff](../../CITATION.cff#L168-L182) — lines `168–182`; excerpt `sha256:20ed248984e0372fbfcc616d3d61f895f70cb37bf9a5e14498b7618a6f5f137b`
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `lean4\_toolchain\_v4\_29\_1`).
+Query this record: `python3 scripts/build_source_attributions.py --query lean4_toolchain_v4_29_1`.
 
 <a id="source-mathlib4-pin-5e932f97"></a>
 
@@ -1727,6 +1769,9 @@ Public implementation or evidence coordinates:
 - [lake-manifest.json](../../lake-manifest.json#L5-L15) — lines `5–15`; excerpt `sha256:b0f750acfc6ef6e2955d978ed32fc02884e8fa180faa9f99bc1ec15ba856defc`
 - [CITATION.cff](../../CITATION.cff#L183-L187) — lines `183–187`; excerpt `sha256:b732cf902522394d45614cbb39c73530e2cde6315917ace5f34708b2e268bdb8`
 
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `mathlib4\_pin\_5e932f97`).
+Query this record: `python3 scripts/build_source_attributions.py --query mathlib4_pin_5e932f97`.
+
 <a id="source-open-letter-royal-society-fellows-20260917"></a>
 
 ### [Open Letter to Sir Paul Nurse, President of the Royal Society](https://proofsandprompts.com/2026/09/17/open-letter-to-sir-paul-nurse-president-of-the-royal-society/)
@@ -1743,9 +1788,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1336-L1342) — lines `1336–1342`; excerpt `sha256:ddd868bf0de48975e181eeb67636c48b7e6b2302a12ac524c3140adace3bd8e3`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1055](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1055-L1055)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `open\_letter\_royal\_society\_fellows\_20260917`).
+Query this record: `python3 scripts/build_source_attributions.py --query open_letter_royal_society_fellows_20260917`.
 
 <a id="source-proposed-direct-0ef4f73f93ceed"></a>
 
@@ -1767,6 +1811,9 @@ Public implementation or evidence coordinates:
 
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L976-L976) — lines `976–976`; excerpt `sha256:a823ade08a65d3c98027889c7115050e03936df38c795fc73ce75bf9d4ff0d07`
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L1278-L1278) — lines `1278–1278`; excerpt `sha256:603c399e18eec54e4b76bcb455d51b93adf56ce7a26e699ca50aa8527aaa25fa`
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `proposed-direct-0ef4f73f93ceed`).
+Query this record: `python3 scripts/build_source_attributions.py --query proposed-direct-0ef4f73f93ceed`.
 
 <a id="source-proposed-direct-329775d58148a9"></a>
 
@@ -1798,12 +1845,8 @@ Public implementation or evidence coordinates:
 - [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9641-L9650) — lines `9641–9650`; excerpt `sha256:29419ac25750a3ca44cb2c1c49ac4bd44f6206b9eff9cc840572a0d12a962f43`
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L9441-L9450) — lines `9441–9450`; excerpt `sha256:29419ac25750a3ca44cb2c1c49ac4bd44f6206b9eff9cc840572a0d12a962f43`
 
-Paper citation usages:
-
-- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:449](../../paper/249/erdos-249-binary-totient-series.tex#L449-L449)
-- `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:329](../../paper/257/erdos-257-mersenne-support-subseries.tex#L329-L329)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:690](../../paper/249/erdos249-totient-reasoning-surface.tex#L690-L690), [cite at paper/249/erdos249-totient-reasoning-surface.tex:696](../../paper/249/erdos249-totient-reasoning-surface.tex#L696-L696), [cite at paper/249/erdos249-totient-reasoning-surface.tex:698](../../paper/249/erdos249-totient-reasoning-surface.tex#L698-L698), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:498](../../paper/reasoning-parts/erdos249/a249_front.tex#L498-L498), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:504](../../paper/reasoning-parts/erdos249/a249_front.tex#L504-L504), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:506](../../paper/reasoning-parts/erdos249/a249_front.tex#L506-L506)
-- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:720](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L720-L720), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:520](../../paper/reasoning-parts/erdos257/a257_front.tex#L520-L520)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `proposed-direct-329775d58148a9`).
+Query this record: `python3 scripts/build_source_attributions.py --query proposed-direct-329775d58148a9`.
 
 <a id="source-proposed-direct-4e797194f74404"></a>
 
@@ -1841,10 +1884,8 @@ Public implementation or evidence coordinates:
 - [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9688-L9693) — lines `9688–9693`; excerpt `sha256:0b4989fd169ff765ea3d5b38ef8e6aea0f4cd59a60283d86861edd55ca023917`
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L9488-L9493) — lines `9488–9493`; excerpt `sha256:0b4989fd169ff765ea3d5b38ef8e6aea0f4cd59a60283d86861edd55ca023917`
 
-Paper citation usages:
-
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:8442](../../paper/249/erdos249-totient-reasoning-surface.tex#L8442-L8442), [cite at paper/249/erdos249-totient-reasoning-surface.tex:8445](../../paper/249/erdos249-totient-reasoning-surface.tex#L8445-L8445), [cite at paper/249/erdos249-totient-reasoning-surface.tex:8447](../../paper/249/erdos249-totient-reasoning-surface.tex#L8447-L8447), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:8250](../../paper/reasoning-parts/erdos249/a249_front.tex#L8250-L8250), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:8253](../../paper/reasoning-parts/erdos249/a249_front.tex#L8253-L8253), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:8255](../../paper/reasoning-parts/erdos249/a249_front.tex#L8255-L8255)
-- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:8096](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L8096-L8096), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:7896](../../paper/reasoning-parts/erdos257/a257_front.tex#L7896-L7896)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `proposed-direct-4e797194f74404`).
+Query this record: `python3 scripts/build_source_attributions.py --query proposed-direct-4e797194f74404`.
 
 <a id="source-proposed-direct-595203db1f6891"></a>
 
@@ -1872,10 +1913,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10337-L10343) — lines `10337–10343`; excerpt `sha256:1e409fb0093faa23ebcc4e5651da0b5eac48a708ad25c90724afa7a140769712`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10145-L10151) — lines `10145–10151`; excerpt `sha256:1e409fb0093faa23ebcc4e5651da0b5eac48a708ad25c90724afa7a140769712`
 
-Paper citation usages:
-
-- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:831](../../paper/249/erdos-249-binary-totient-series.tex#L831-L831)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:10188](../../paper/249/erdos249-totient-reasoning-surface.tex#L10188-L10188), [cite at paper/249/erdos249-totient-reasoning-surface.tex:10190](../../paper/249/erdos249-totient-reasoning-surface.tex#L10190-L10190), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:9996](../../paper/reasoning-parts/erdos249/a249_front.tex#L9996-L9996), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:9998](../../paper/reasoning-parts/erdos249/a249_front.tex#L9998-L9998)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `proposed-direct-595203db1f6891`).
+Query this record: `python3 scripts/build_source_attributions.py --query proposed-direct-595203db1f6891`.
 
 <a id="source-proposed-direct-6c67db53ef5f8c"></a>
 
@@ -1901,9 +1940,8 @@ Public implementation or evidence coordinates:
 - [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9693-L9697) — lines `9693–9697`; excerpt `sha256:c5c4489e4688d8773d399bf748456a2ae9b05460c54f6faafd532fa836da5957`
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L9493-L9497) — lines `9493–9497`; excerpt `sha256:c5c4489e4688d8773d399bf748456a2ae9b05460c54f6faafd532fa836da5957`
 
-Paper citation usages:
-
-- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:8098](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L8098-L8098), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:7898](../../paper/reasoning-parts/erdos257/a257_front.tex#L7898-L7898)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `proposed-direct-6c67db53ef5f8c`).
+Query this record: `python3 scripts/build_source_attributions.py --query proposed-direct-6c67db53ef5f8c`.
 
 <a id="source-proposed-direct-6f90767d1d01dd"></a>
 
@@ -1929,9 +1967,8 @@ Public implementation or evidence coordinates:
 - [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9697-L9701) — lines `9697–9701`; excerpt `sha256:6d0851d07c69f2ae700a812b4b5fc31762d09234debac02cca0ca4ff63212261`
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L9497-L9501) — lines `9497–9501`; excerpt `sha256:6d0851d07c69f2ae700a812b4b5fc31762d09234debac02cca0ca4ff63212261`
 
-Paper citation usages:
-
-- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:8100](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L8100-L8100), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:7900](../../paper/reasoning-parts/erdos257/a257_front.tex#L7900-L7900)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `proposed-direct-6f90767d1d01dd`).
+Query this record: `python3 scripts/build_source_attributions.py --query proposed-direct-6f90767d1d01dd`.
 
 <a id="source-proposed-direct-7f278004ad452a"></a>
 
@@ -1953,6 +1990,9 @@ Public implementation or evidence coordinates:
 
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L7973-L7973) — lines `7973–7973`; excerpt `sha256:df8b5a08361a8b2709dbfbc190e9e72f41b2ef5c5874a6274b6c15c70054b621`
 
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `proposed-direct-7f278004ad452a`).
+Query this record: `python3 scripts/build_source_attributions.py --query proposed-direct-7f278004ad452a`.
+
 <a id="source-proposed-direct-d4ac203509248c"></a>
 
 ### [Adamczewski–Bugeaud subword-complexity method context](https://annals.math.princeton.edu/2007/165-2/p04)
@@ -1973,6 +2013,9 @@ Public implementation or evidence coordinates:
 
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L8424-L8424) — lines `8424–8424`; excerpt `sha256:be78c26f277d33338d36a1396ef173f2016a8d8cd7654b87697206f4f4ceb081`
 
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `proposed-direct-d4ac203509248c`).
+Query this record: `python3 scripts/build_source_attributions.py --query proposed-direct-d4ac203509248c`.
+
 <a id="source-proposed-direct-f7f90747134dba"></a>
 
 ### [Note on normal numbers](https://doi.org/10.1090/S0002-9904-1946-08657-7)
@@ -1988,6 +2031,9 @@ Public implementation or evidence coordinates:
 Exact source locations:
 
 - [Primary public publication record.](https://doi.org/10.1090/S0002-9904-1946-08657-7)
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `proposed-direct-f7f90747134dba`).
+Query this record: `python3 scripts/build_source_attributions.py --query proposed-direct-f7f90747134dba`.
 
 <a id="source-software-comparator-statement-checker"></a>
 
@@ -2005,9 +2051,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1143-L1146) — lines `1143–1146`; excerpt `sha256:a0dabd3a68ddafea15a4462241af10cb793e90e59c6324a84b883eac434e638d`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:293](../../paper/systems/claim-faithful-publication-systems-paper.tex#L293-L293), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1041](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1041-L1041)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `software\_comparator\_statement\_checker`).
+Query this record: `python3 scripts/build_source_attributions.py --query software_comparator_statement_checker`.
 
 <a id="source-software-nanoda-lib-independent-lean-checker"></a>
 
@@ -2025,9 +2070,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1146-L1149) — lines `1146–1149`; excerpt `sha256:decf3e535ef53dc9a412ddb4ade7e5eae7af85a715a810421802b58ffa0eec49`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:293](../../paper/systems/claim-faithful-publication-systems-paper.tex#L293-L293), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1041](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1041-L1041)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `software\_nanoda\_lib\_independent\_lean\_checker`).
+Query this record: `python3 scripts/build_source_attributions.py --query software_nanoda_lib_independent_lean_checker`.
 
 <a id="source-source-011f43e5a781d7"></a>
 
@@ -2045,9 +2089,8 @@ Public implementation or evidence coordinates:
 
 - [docs/papers/mirror/plectis-public-system.tex](../../docs/papers/mirror/plectis-public-system.tex#L1312-L1318) — lines `1312–1318`; excerpt `sha256:f06c40636e471872b987aaee6322971311baed24c1120af1f18cddd808e50e98`
 
-Paper citation usages:
-
-- `plectis-public-system`: [cite at docs/papers/mirror/plectis-public-system.tex:394](../../docs/papers/mirror/plectis-public-system.tex#L394-L394), [cite at docs/papers/mirror/plectis-public-system.tex:397](../../docs/papers/mirror/plectis-public-system.tex#L397-L397)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-011f43e5a781d7`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-011f43e5a781d7`.
 
 <a id="source-source-02fc1f0e6f0418"></a>
 
@@ -2070,9 +2113,8 @@ Public implementation or evidence coordinates:
 - [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L3256-L3260) — lines `3256–3260`; excerpt `sha256:bddcb7495409ba674f37573e14998a223896847e01c9d7d112a430f0cca41d03`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L3221-L3225) — lines `3221–3225`; excerpt `sha256:bddcb7495409ba674f37573e14998a223896847e01c9d7d112a430f0cca41d03`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1982](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1982-L1982), [cite at paper/reasoning-parts/erdos68/core.tex:1947](../../paper/reasoning-parts/erdos68/core.tex#L1947-L1947)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-02fc1f0e6f0418`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-02fc1f0e6f0418`.
 
 <a id="source-source-04603f785c9e7f"></a>
 
@@ -2095,9 +2137,8 @@ Public implementation or evidence coordinates:
 - [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L3244-L3248) — lines `3244–3248`; excerpt `sha256:a14aa06f222d10c851dd2bfa10beea5352390803145dcffcbdd0759d84e41498`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L3209-L3213) — lines `3209–3213`; excerpt `sha256:a14aa06f222d10c851dd2bfa10beea5352390803145dcffcbdd0759d84e41498`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1992](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1992-L1992), [cite at paper/reasoning-parts/erdos68/core.tex:1957](../../paper/reasoning-parts/erdos68/core.tex#L1957-L1957)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-04603f785c9e7f`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-04603f785c9e7f`.
 
 <a id="source-source-05a4915b796443"></a>
 
@@ -2118,6 +2159,9 @@ Exact source locations:
 Public implementation or evidence coordinates:
 
 - [docs/research-commons/rounds/round7/README.md](../../docs/research-commons/rounds/round7/README.md#L65-L68) — lines `65–68`; excerpt `sha256:92b7b9cc64a1acc947637d28189aed2eaf7a81277bae40c024328d6a919e0414`
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-05a4915b796443`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-05a4915b796443`.
 
 <a id="source-source-06457731c60720"></a>
 
@@ -2141,9 +2185,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L4395-L4398) — lines `4395–4398`; excerpt `sha256:0db3df8cac9eaa008e4ba1fc69bf370097ffa91fb0e512033da28a1cab6e2dbc`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L318-L318) — lines `318–318`; excerpt `sha256:a48dbfded735816b42a100262684c9bca03496f8812e5b3646266716ccf5cc33`
 
-Paper citation usages:
-
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:376](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L376-L376), [cite at paper/reasoning-parts/erdos269/core.tex:318](../../paper/reasoning-parts/erdos269/core.tex#L318-L318)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-06457731c60720`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-06457731c60720`.
 
 <a id="source-source-07d2ca69e611b7"></a>
 
@@ -2161,10 +2204,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/cold-clone-to-proof-receipt.tex](../../paper/systems/cold-clone-to-proof-receipt.tex#L723-L728) — lines `723–728`; excerpt `sha256:361c5b2fa1f2778906e262b1d0e58a126d4e7d28ea4d10e58c4b3607ef4706e2`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1040](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1040-L1040)
-- `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:517](../../paper/systems/cold-clone-to-proof-receipt.tex#L517-L517)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-07d2ca69e611b7`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-07d2ca69e611b7`.
 
 <a id="source-source-0a6b8c93371570"></a>
 
@@ -2189,9 +2230,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5226-L5235) — lines `5226–5235`; excerpt `sha256:559ea13819baf75b04cc9d7303f6c7c0c031c962cc19c07bc95ad20eac0a8832`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L4708-L4708) — lines `4708–4708`; excerpt `sha256:255e468ab972fcdcc21a815a58d107099746c2882b841d319f2239751a44e4fe`
 
-Paper citation usages:
-
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4739](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4739-L4739), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5132](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5132-L5132), [cite at paper/reasoning-parts/erdos1049/core.tex:4708](../../paper/reasoning-parts/erdos1049/core.tex#L4708-L4708), [cite at paper/reasoning-parts/erdos1049/core.tex:5101](../../paper/reasoning-parts/erdos1049/core.tex#L5101-L5101)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-0a6b8c93371570`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-0a6b8c93371570`.
 
 <a id="source-source-0aca0e5e4e03c0"></a>
 
@@ -2218,10 +2258,8 @@ Public implementation or evidence coordinates:
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L3045-L3047) — lines `3045–3047`; excerpt `sha256:b7e63e9f291863fbd6b9fd3c4dc4951de337b3fe54505a8871c92d96d21d90a9`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L3003-L3005) — lines `3003–3005`; excerpt `sha256:b7e63e9f291863fbd6b9fd3c4dc4951de337b3fe54505a8871c92d96d21d90a9`
 
-Paper citation usages:
-
-- `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:457](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L457-L457)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:789](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L789-L789), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:1555](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L1555-L1555), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:1624](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L1624-L1624), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2271](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2271-L2271), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2566](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2566-L2566), [cite at paper/reasoning-parts/erdos251/core.tex:747](../../paper/reasoning-parts/erdos251/core.tex#L747-L747), [cite at paper/reasoning-parts/erdos251/core.tex:1513](../../paper/reasoning-parts/erdos251/core.tex#L1513-L1513), [cite at paper/reasoning-parts/erdos251/core.tex:1582](../../paper/reasoning-parts/erdos251/core.tex#L1582-L1582), [cite at paper/reasoning-parts/erdos251/core.tex:2229](../../paper/reasoning-parts/erdos251/core.tex#L2229-L2229), [cite at paper/reasoning-parts/erdos251/core.tex:2524](../../paper/reasoning-parts/erdos251/core.tex#L2524-L2524)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-0aca0e5e4e03c0`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-0aca0e5e4e03c0`.
 
 <a id="source-source-0d338bb41b8987"></a>
 
@@ -2239,10 +2277,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1722-L1727) — lines `1722–1727`; excerpt `sha256:6ab1870a7b04b9f3cc30d59640dcc05a0b6fcd49f9ea44245ecb129aba0f4c4e`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1050](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1050-L1050)
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:779](../../paper/systems/open-source-mathematics-strategy.tex#L779-L779), [cite at paper/systems/open-source-mathematics-strategy.tex:1018](../../paper/systems/open-source-mathematics-strategy.tex#L1018-L1018)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-0d338bb41b8987`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-0d338bb41b8987`.
 
 <a id="source-source-0dd4239a1d50da"></a>
 
@@ -2261,9 +2297,8 @@ Public implementation or evidence coordinates:
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5397-L5406) — lines `5397–5406`; excerpt `sha256:94ae85ad39b40622ea590cddfc409ecb93f19d077df9ec9c6ab543560d0d1a1a`
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L976-L976) — lines `976–976`; excerpt `sha256:a823ade08a65d3c98027889c7115050e03936df38c795fc73ce75bf9d4ff0d07`
 
-Paper citation usages:
-
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:2239](../../paper/archive/erdos249-257-main-paper.tex#L2239-L2239)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-0dd4239a1d50da`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-0dd4239a1d50da`.
 
 <a id="source-source-0e12f93aeac487"></a>
 
@@ -2287,9 +2322,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5413-L5417) — lines `5413–5417`; excerpt `sha256:7968722d9338768846f85bc2ef2063b55804e78527ad41a2e77023c434d04535`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L1643-L1643) — lines `1643–1643`; excerpt `sha256:adaee106fc9f14bfa32c5f6ab3ba20afe848ed080f83389485ba7fbd8b3be932`
 
-Paper citation usages:
-
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1693](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1693-L1693), [cite at paper/reasoning-parts/erdos1041/core.tex:1643](../../paper/reasoning-parts/erdos1041/core.tex#L1643-L1643)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-0e12f93aeac487`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-0e12f93aeac487`.
 
 <a id="source-source-0e9b7210b29d99"></a>
 
@@ -2308,9 +2342,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10353-L10357) — lines `10353–10357`; excerpt `sha256:2ffe3c91d993950605f8bf070b0a5a11ffc1f8ef39055137701039e8577a8e67`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10161-L10165) — lines `10161–10165`; excerpt `sha256:2ffe3c91d993950605f8bf070b0a5a11ffc1f8ef39055137701039e8577a8e67`
 
-Paper citation usages:
-
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:8285](../../paper/249/erdos249-totient-reasoning-surface.tex#L8285-L8285), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:8093](../../paper/reasoning-parts/erdos249/a249_front.tex#L8093-L8093)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-0e9b7210b29d99`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-0e9b7210b29d99`.
 
 <a id="source-source-0ec7ca07508557"></a>
 
@@ -2337,9 +2370,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L495-L495) — lines `495–495`; excerpt `sha256:f0be293a894eaec58b1c7ed38efb4953996ef87f9ac22c7627561bf7e65657c8`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L495-L495) — lines `495–495`; excerpt `sha256:f0be293a894eaec58b1c7ed38efb4953996ef87f9ac22c7627561bf7e65657c8`
 
-Paper citation usages:
-
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:537](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L537-L537), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:1926](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L1926-L1926), [cite at paper/reasoning-parts/erdos251/core.tex:495](../../paper/reasoning-parts/erdos251/core.tex#L495-L495), [cite at paper/reasoning-parts/erdos251/core.tex:1884](../../paper/reasoning-parts/erdos251/core.tex#L1884-L1884)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-0ec7ca07508557`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-0ec7ca07508557`.
 
 <a id="source-source-0ecb074e507b86"></a>
 
@@ -2358,9 +2390,8 @@ Public implementation or evidence coordinates:
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5332-L5335) — lines `5332–5335`; excerpt `sha256:888488ef48fd0e622a7a10d9a3365f11c2438983c6865da31232ee81ad07c437`
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L1209-L1209) — lines `1209–1209`; excerpt `sha256:2f13d854d17862e3e84cfe8260e36f3e508b7165189455204d23c133aeac237e`
 
-Paper citation usages:
-
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:5068](../../paper/archive/erdos249-257-main-paper.tex#L5068-L5068), [cite at paper/archive/erdos249-257-main-paper.tex:5108](../../paper/archive/erdos249-257-main-paper.tex#L5108-L5108)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-0ecb074e507b86`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-0ecb074e507b86`.
 
 <a id="source-source-0f03e2dab0b8c2"></a>
 
@@ -2385,10 +2416,8 @@ Public implementation or evidence coordinates:
 - [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L4168-L4174) — lines `4168–4174`; excerpt `sha256:c6ad3b74ba433b2451bb8a22ac558445aec5cb56ecfef0b9118236d8dbc841ac`
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L4129-L4135) — lines `4129–4135`; excerpt `sha256:c6ad3b74ba433b2451bb8a22ac558445aec5cb56ecfef0b9118236d8dbc841ac`
 
-Paper citation usages:
-
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:991](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L991-L991)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:938](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L938-L938), [cite at paper/reasoning-parts/erdos243/core.tex:899](../../paper/reasoning-parts/erdos243/core.tex#L899-L899)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-0f03e2dab0b8c2`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-0f03e2dab0b8c2`.
 
 <a id="source-source-0f1a3708d62674"></a>
 
@@ -2417,9 +2446,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L2165-L2165) — lines `2165–2165`; excerpt `sha256:c6c8cf9b68fb541c95c305abe93492fb959422799957e770844d1c594c99ab29`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L2165-L2165) — lines `2165–2165`; excerpt `sha256:c6c8cf9b68fb541c95c305abe93492fb959422799957e770844d1c594c99ab29`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2200](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2200-L2200), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2610](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2610-L2610), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2623](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2623-L2623), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2625](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2625-L2625), [cite at paper/reasoning-parts/erdos68/core.tex:2165](../../paper/reasoning-parts/erdos68/core.tex#L2165-L2165), [cite at paper/reasoning-parts/erdos68/core.tex:2575](../../paper/reasoning-parts/erdos68/core.tex#L2575-L2575), [cite at paper/reasoning-parts/erdos68/core.tex:2588](../../paper/reasoning-parts/erdos68/core.tex#L2588-L2588), [cite at paper/reasoning-parts/erdos68/core.tex:2590](../../paper/reasoning-parts/erdos68/core.tex#L2590-L2590)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-0f1a3708d62674`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-0f1a3708d62674`.
 
 <a id="source-source-0f46dee5024c66"></a>
 
@@ -2442,9 +2470,8 @@ Public implementation or evidence coordinates:
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5377-L5380) — lines `5377–5380`; excerpt `sha256:e321a18827767ed58cdd1dd982eeeb9a39803cd37871901a8449163cbd346499`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5346-L5349) — lines `5346–5349`; excerpt `sha256:e321a18827767ed58cdd1dd982eeeb9a39803cd37871901a8449163cbd346499`
 
-Paper citation usages:
-
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2929](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2929-L2929), [cite at paper/reasoning-parts/erdos1049/core.tex:2898](../../paper/reasoning-parts/erdos1049/core.tex#L2898-L2898)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-0f46dee5024c66`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-0f46dee5024c66`.
 
 <a id="source-source-0f61ad0796acdf"></a>
 
@@ -2469,10 +2496,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10268-L10272) — lines `10268–10272`; excerpt `sha256:fb74fd71f49bc3b483f5ac1feed5de8f28b2cb86a5c35567b0628c644acf4527`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10076-L10080) — lines `10076–10080`; excerpt `sha256:fb74fd71f49bc3b483f5ac1feed5de8f28b2cb86a5c35567b0628c644acf4527`
 
-Paper citation usages:
-
-- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:454](../../paper/249/erdos-249-binary-totient-series.tex#L454-L454)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:702](../../paper/249/erdos249-totient-reasoning-surface.tex#L702-L702), [cite at paper/249/erdos249-totient-reasoning-surface.tex:10176](../../paper/249/erdos249-totient-reasoning-surface.tex#L10176-L10176), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:510](../../paper/reasoning-parts/erdos249/a249_front.tex#L510-L510), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:9984](../../paper/reasoning-parts/erdos249/a249_front.tex#L9984-L9984)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-0f61ad0796acdf`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-0f61ad0796acdf`.
 
 <a id="source-source-10545f868b3e88"></a>
 
@@ -2527,19 +2552,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10098-L10102) — lines `10098–10102`; excerpt `sha256:727de5144fdf771c479a2e03e7b875cffecf9400543450974b25f25aced90f03`
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1115-L1119) — lines `1115–1119`; excerpt `sha256:cf7b027cd3e9245f607b100b8d844bf31558425e35d45828ba319ee30f657f6b`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1057](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1057-L1057)
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:69](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L69-L69)
-- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:144](../../paper/249/erdos-249-binary-totient-series.tex#L144-L144)
-- `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:53](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L53-L53)
-- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:78](../../paper/269/erdos-269-three-prime-running-lcm.tex#L78-L78)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:75](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L75-L75), [cite at paper/reasoning-parts/erdos243/core.tex:36](../../paper/reasoning-parts/erdos243/core.tex#L36-L36)
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:193](../../paper/archive/erdos249-257-main-paper.tex#L193-L193), [cite at paper/archive/erdos249-257-main-paper.tex:194](../../paper/archive/erdos249-257-main-paper.tex#L194-L194)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:284](../../paper/249/erdos249-totient-reasoning-surface.tex#L284-L284), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:92](../../paper/reasoning-parts/erdos249/a249_front.tex#L92-L92)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:74](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L74-L74), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:559](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L559-L559), [cite at paper/reasoning-parts/erdos251/core.tex:32](../../paper/reasoning-parts/erdos251/core.tex#L32-L32), [cite at paper/reasoning-parts/erdos251/core.tex:517](../../paper/reasoning-parts/erdos251/core.tex#L517-L517)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:118](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L118-L118), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3912](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3912-L3912), [cite at paper/reasoning-parts/erdos269/core.tex:60](../../paper/reasoning-parts/erdos269/core.tex#L60-L60), [cite at paper/reasoning-parts/erdos269/core.tex:3854](../../paper/reasoning-parts/erdos269/core.tex#L3854-L3854)
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:72](../../paper/synthesis/optimal-sparse-perturbations.tex#L72-L72), [cite at paper/synthesis/optimal-sparse-perturbations.tex:852](../../paper/synthesis/optimal-sparse-perturbations.tex#L852-L852)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-10545f868b3e88`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-10545f868b3e88`.
 
 <a id="source-source-11b46a0435368f"></a>
 
@@ -2591,11 +2605,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10264-L10268) — lines `10264–10268`; excerpt `sha256:c97e654465265fb62b6de801d7921a842ace01171d8790c26144b859fefa809c`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10072-L10076) — lines `10072–10076`; excerpt `sha256:c97e654465265fb62b6de801d7921a842ace01171d8790c26144b859fefa809c`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:990](../../paper/systems/claim-faithful-publication-systems-paper.tex#L990-L990), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1056](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1056-L1056)
-- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:124](../../paper/249/erdos-249-binary-totient-series.tex#L124-L124), [cite at paper/249/erdos-249-binary-totient-series.tex:176](../../paper/249/erdos-249-binary-totient-series.tex#L176-L176), [cite at paper/249/erdos-249-binary-totient-series.tex:509](../../paper/249/erdos-249-binary-totient-series.tex#L509-L509)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:291](../../paper/249/erdos249-totient-reasoning-surface.tex#L291-L291), [cite at paper/249/erdos249-totient-reasoning-surface.tex:7006](../../paper/249/erdos249-totient-reasoning-surface.tex#L7006-L7006), [cite at paper/249/erdos249-totient-reasoning-surface.tex:7111](../../paper/249/erdos249-totient-reasoning-surface.tex#L7111-L7111), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:99](../../paper/reasoning-parts/erdos249/a249_front.tex#L99-L99), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:6814](../../paper/reasoning-parts/erdos249/a249_front.tex#L6814-L6814), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:6919](../../paper/reasoning-parts/erdos249/a249_front.tex#L6919-L6919)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-11b46a0435368f`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-11b46a0435368f`.
 
 <a id="source-source-120bebce1ffe8c"></a>
 
@@ -2661,12 +2672,8 @@ Public implementation or evidence coordinates:
 - [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9676-L9682) — lines `9676–9682`; excerpt `sha256:b26157f8e2462fe6a9cb317178ca1aa00c80c57d6b9c2a7ae528d32e670113ad`
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L9476-L9482) — lines `9476–9482`; excerpt `sha256:b26157f8e2462fe6a9cb317178ca1aa00c80c57d6b9c2a7ae528d32e670113ad`
 
-Paper citation usages:
-
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:115](../../paper/1049/erdos-1049-rational-base-lambert.tex#L115-L115), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:655](../../paper/1049/erdos-1049-rational-base-lambert.tex#L655-L655), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:658](../../paper/1049/erdos-1049-rational-base-lambert.tex#L658-L658), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:707](../../paper/1049/erdos-1049-rational-base-lambert.tex#L707-L707), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:738](../../paper/1049/erdos-1049-rational-base-lambert.tex#L738-L738), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:749](../../paper/1049/erdos-1049-rational-base-lambert.tex#L749-L749), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:760](../../paper/1049/erdos-1049-rational-base-lambert.tex#L760-L760), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:766](../../paper/1049/erdos-1049-rational-base-lambert.tex#L766-L766), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:857](../../paper/1049/erdos-1049-rational-base-lambert.tex#L857-L857), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:962](../../paper/1049/erdos-1049-rational-base-lambert.tex#L962-L962), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1052](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1052-L1052)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:69](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L69-L69), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:183](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L183-L183), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:215](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L215-L215), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:226](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L226-L226), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:260](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L260-L260), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:282](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L282-L282), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:307](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L307-L307), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:321](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L321-L321), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:324](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L324-L324), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:357](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L357-L357), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:508](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L508-L508), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:543](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L543-L544), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:867](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L867-L867), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:880](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L880-L880), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1169](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1169-L1169), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1178](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1178-L1178), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1309](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1309-L1309), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:3302](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3302-L3302), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:3458](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3458-L3458), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:3802](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3802-L3802), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5020](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5020-L5020), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5062](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5062-L5062), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5103](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5103-L5103), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5104](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5104-L5104), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5109](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5109-L5109), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5256](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5256-L5256), [cite at paper/reasoning-parts/erdos1049/core.tex:38](../../paper/reasoning-parts/erdos1049/core.tex#L38-L38), [cite at paper/reasoning-parts/erdos1049/core.tex:152](../../paper/reasoning-parts/erdos1049/core.tex#L152-L152), [cite at paper/reasoning-parts/erdos1049/core.tex:184](../../paper/reasoning-parts/erdos1049/core.tex#L184-L184), [cite at paper/reasoning-parts/erdos1049/core.tex:195](../../paper/reasoning-parts/erdos1049/core.tex#L195-L195), [cite at paper/reasoning-parts/erdos1049/core.tex:229](../../paper/reasoning-parts/erdos1049/core.tex#L229-L229), [cite at paper/reasoning-parts/erdos1049/core.tex:251](../../paper/reasoning-parts/erdos1049/core.tex#L251-L251), [cite at paper/reasoning-parts/erdos1049/core.tex:276](../../paper/reasoning-parts/erdos1049/core.tex#L276-L276), [cite at paper/reasoning-parts/erdos1049/core.tex:290](../../paper/reasoning-parts/erdos1049/core.tex#L290-L290), [cite at paper/reasoning-parts/erdos1049/core.tex:293](../../paper/reasoning-parts/erdos1049/core.tex#L293-L293), [cite at paper/reasoning-parts/erdos1049/core.tex:326](../../paper/reasoning-parts/erdos1049/core.tex#L326-L326), [cite at paper/reasoning-parts/erdos1049/core.tex:477](../../paper/reasoning-parts/erdos1049/core.tex#L477-L477), [cite at paper/reasoning-parts/erdos1049/core.tex:512](../../paper/reasoning-parts/erdos1049/core.tex#L512-L513), [cite at paper/reasoning-parts/erdos1049/core.tex:836](../../paper/reasoning-parts/erdos1049/core.tex#L836-L836), [cite at paper/reasoning-parts/erdos1049/core.tex:849](../../paper/reasoning-parts/erdos1049/core.tex#L849-L849), [cite at paper/reasoning-parts/erdos1049/core.tex:1138](../../paper/reasoning-parts/erdos1049/core.tex#L1138-L1138), [cite at paper/reasoning-parts/erdos1049/core.tex:1147](../../paper/reasoning-parts/erdos1049/core.tex#L1147-L1147), [cite at paper/reasoning-parts/erdos1049/core.tex:1278](../../paper/reasoning-parts/erdos1049/core.tex#L1278-L1278), [cite at paper/reasoning-parts/erdos1049/core.tex:3271](../../paper/reasoning-parts/erdos1049/core.tex#L3271-L3271), [cite at paper/reasoning-parts/erdos1049/core.tex:3427](../../paper/reasoning-parts/erdos1049/core.tex#L3427-L3427), [cite at paper/reasoning-parts/erdos1049/core.tex:3771](../../paper/reasoning-parts/erdos1049/core.tex#L3771-L3771), [cite at paper/reasoning-parts/erdos1049/core.tex:4989](../../paper/reasoning-parts/erdos1049/core.tex#L4989-L4989), [cite at paper/reasoning-parts/erdos1049/core.tex:5031](../../paper/reasoning-parts/erdos1049/core.tex#L5031-L5031), [cite at paper/reasoning-parts/erdos1049/core.tex:5072](../../paper/reasoning-parts/erdos1049/core.tex#L5072-L5072), [cite at paper/reasoning-parts/erdos1049/core.tex:5073](../../paper/reasoning-parts/erdos1049/core.tex#L5073-L5073), [cite at paper/reasoning-parts/erdos1049/core.tex:5078](../../paper/reasoning-parts/erdos1049/core.tex#L5078-L5078), [cite at paper/reasoning-parts/erdos1049/core.tex:5225](../../paper/reasoning-parts/erdos1049/core.tex#L5225-L5225)
-- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1478](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1478-L1478), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:7435](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L7435-L7435), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:1278](../../paper/reasoning-parts/erdos257/a257_front.tex#L1278-L1278), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:7235](../../paper/reasoning-parts/erdos257/a257_front.tex#L7235-L7235)
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:943](../../paper/synthesis/optimal-sparse-perturbations.tex#L943-L943)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-120bebce1ffe8c`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-120bebce1ffe8c`.
 
 <a id="source-source-169c3d67838965"></a>
 
@@ -2692,9 +2699,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L831-L831) — lines `831–831`; excerpt `sha256:fbce7f2db65bdd8d9f109301fb1bc86d09291626cd9714baf8b44fb0defea1c4`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L831-L831) — lines `831–831`; excerpt `sha256:fbce7f2db65bdd8d9f109301fb1bc86d09291626cd9714baf8b44fb0defea1c4`
 
-Paper citation usages:
-
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:862](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L862-L862), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5057](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5057-L5057), [cite at paper/reasoning-parts/erdos1049/core.tex:831](../../paper/reasoning-parts/erdos1049/core.tex#L831-L831), [cite at paper/reasoning-parts/erdos1049/core.tex:5026](../../paper/reasoning-parts/erdos1049/core.tex#L5026-L5026)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-169c3d67838965`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-169c3d67838965`.
 
 <a id="source-source-1713b9ad6350bd"></a>
 
@@ -2720,9 +2726,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L1004-L1004) — lines `1004–1004`; excerpt `sha256:adfa536049be0e74065800037ce0ba5a0d022d83f1cf5dfdd9d4c0dda34e205f`
 - [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1043-L1043) — lines `1043–1043`; excerpt `sha256:adfa536049be0e74065800037ce0ba5a0d022d83f1cf5dfdd9d4c0dda34e205f`
 
-Paper citation usages:
-
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1043](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1043-L1043), [cite at paper/reasoning-parts/erdos243/core.tex:1004](../../paper/reasoning-parts/erdos243/core.tex#L1004-L1004)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-1713b9ad6350bd`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-1713b9ad6350bd`.
 
 <a id="source-source-176d35cb60b651"></a>
 
@@ -2747,9 +2752,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L3422-L3422) — lines `3422–3422`; excerpt `sha256:7d171ed1577013457353cdde13d778d34a71fbed4c861b7ce3d975c634196d90`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L3422-L3422) — lines `3422–3422`; excerpt `sha256:7d171ed1577013457353cdde13d778d34a71fbed4c861b7ce3d975c634196d90`
 
-Paper citation usages:
-
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:3453](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3453-L3453), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5025](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5025-L5025), [cite at paper/reasoning-parts/erdos1049/core.tex:3422](../../paper/reasoning-parts/erdos1049/core.tex#L3422-L3422), [cite at paper/reasoning-parts/erdos1049/core.tex:4994](../../paper/reasoning-parts/erdos1049/core.tex#L4994-L4994)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-176d35cb60b651`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-176d35cb60b651`.
 
 <a id="source-source-1a7535a5e17a8c"></a>
 
@@ -2775,11 +2779,8 @@ Public implementation or evidence coordinates:
 - [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L4475-L4478) — lines `4475–4478`; excerpt `sha256:d7d4cedfe807acd8fbf6994b4c4ea185099dead717184730b0485ff8e4adf7fe`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L4417-L4420) — lines `4417–4420`; excerpt `sha256:d7d4cedfe807acd8fbf6994b4c4ea185099dead717184730b0485ff8e4adf7fe`
 
-Paper citation usages:
-
-- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:419](../../paper/269/erdos-269-three-prime-running-lcm.tex#L419-L419), [cite at paper/269/erdos-269-three-prime-running-lcm.tex:971](../../paper/269/erdos-269-three-prime-running-lcm.tex#L971-L971)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:363](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L363-L363), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:2547](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L2547-L2547), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3933](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3933-L3933), [cite at paper/reasoning-parts/erdos269/core.tex:305](../../paper/reasoning-parts/erdos269/core.tex#L305-L305), [cite at paper/reasoning-parts/erdos269/core.tex:2489](../../paper/reasoning-parts/erdos269/core.tex#L2489-L2489), [cite at paper/reasoning-parts/erdos269/core.tex:3875](../../paper/reasoning-parts/erdos269/core.tex#L3875-L3875)
-- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/revisions.tex:58](../../paper/exposition/parts/revisions.tex#L58-L58)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-1a7535a5e17a8c`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-1a7535a5e17a8c`.
 
 <a id="source-source-1b9324cc5f4641"></a>
 
@@ -2808,9 +2809,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L4101-L4105) — lines `4101–4105`; excerpt `sha256:d1521927de67d3175dadffc4db2ca2b2786b8297ec43e4eec74b73a350d2d98c`
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L2908-L2908) — lines `2908–2908`; excerpt `sha256:7031adbd8ee1ddab8aa252c4d2184fcfd608e6225a7ebbe27418145af8fd95d2`
 
-Paper citation usages:
-
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2947](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2947-L2947), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2951](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2951-L2951), [cite at paper/reasoning-parts/erdos243/core.tex:2908](../../paper/reasoning-parts/erdos243/core.tex#L2908-L2908), [cite at paper/reasoning-parts/erdos243/core.tex:2912](../../paper/reasoning-parts/erdos243/core.tex#L2912-L2912)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-1b9324cc5f4641`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-1b9324cc5f4641`.
 
 <a id="source-source-20c650f8cf3744"></a>
 
@@ -2834,10 +2834,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L2979-L2981) — lines `2979–2981`; excerpt `sha256:e12f144375e5514cf3ca5b5c578990d0af610fa16c55c2bbfa94d6d3dc603533`
 - [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L827-L829) — lines `827–829`; excerpt `sha256:9f99ab4abb9eff1473257f6e3d761345f3ec4a6ed070161011aa5016e99df64b`
 
-Paper citation usages:
-
-- `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:399](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L399-L399)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2127](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2127-L2127), [cite at paper/reasoning-parts/erdos251/core.tex:2085](../../paper/reasoning-parts/erdos251/core.tex#L2085-L2085)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-20c650f8cf3744`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-20c650f8cf3744`.
 
 <a id="source-source-21738452dcb95c"></a>
 
@@ -2864,10 +2862,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L2054-L2054) — lines `2054–2054`; excerpt `sha256:648252499ac55afe59d7ced844519f662c0143a05709aa5780b718a027ea6304`
 - [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L819-L821) — lines `819–821`; excerpt `sha256:3221315fa09146b40ebe5676dd2da36df0ffdcf48a5f7e9dafca3ccc5ff205c8`
 
-Paper citation usages:
-
-- `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:508](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L508-L508)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:474](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L474-L474), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2097](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2097-L2097), [cite at paper/reasoning-parts/erdos251/core.tex:432](../../paper/reasoning-parts/erdos251/core.tex#L432-L432), [cite at paper/reasoning-parts/erdos251/core.tex:2055](../../paper/reasoning-parts/erdos251/core.tex#L2055-L2055)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-21738452dcb95c`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-21738452dcb95c`.
 
 <a id="source-source-21cdeefea4c8ec"></a>
 
@@ -2896,12 +2892,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L79-L79) — lines `79–79`; excerpt `sha256:af947109aab559bea882df279e8e9f19ecaf9561d6fded648d1ef904f80ea733`
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1181-L1185) — lines `1181–1185`; excerpt `sha256:b41b2811598b55fde36f7dc6b7e396d5cd3f5f9fea25411ab4689bfbf0303bb0`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:984](../../paper/systems/claim-faithful-publication-systems-paper.tex#L984-L984), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1057](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1057-L1057)
-- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:111](../../paper/269/erdos-269-three-prime-running-lcm.tex#L111-L111), [cite at paper/269/erdos-269-three-prime-running-lcm.tex:630](../../paper/269/erdos-269-three-prime-running-lcm.tex#L630-L630)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:137](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L137-L137), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:1850](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L1850-L1850), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3813](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3813-L3813), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3862](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3862-L3862), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3943](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3943-L3943), [cite at paper/reasoning-parts/erdos269/core.tex:79](../../paper/reasoning-parts/erdos269/core.tex#L79-L79), [cite at paper/reasoning-parts/erdos269/core.tex:1792](../../paper/reasoning-parts/erdos269/core.tex#L1792-L1792), [cite at paper/reasoning-parts/erdos269/core.tex:3755](../../paper/reasoning-parts/erdos269/core.tex#L3755-L3755), [cite at paper/reasoning-parts/erdos269/core.tex:3804](../../paper/reasoning-parts/erdos269/core.tex#L3804-L3804), [cite at paper/reasoning-parts/erdos269/core.tex:3885](../../paper/reasoning-parts/erdos269/core.tex#L3885-L3885)
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1855](../../paper/synthesis/optimal-sparse-perturbations.tex#L1855-L1855)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-21cdeefea4c8ec`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-21cdeefea4c8ec`.
 
 <a id="source-source-22aba734190d65"></a>
 
@@ -2928,10 +2920,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L4364-L4367) — lines `4364–4367`; excerpt `sha256:c96fc6ec675af873515b2c54bc711717a8fc43e0ef49d8237f9f330492b2bfa1`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L3832-L3832) — lines `3832–3832`; excerpt `sha256:8dbf333f1a138fb93ccef0608ac25e384cc5c3099760d92e2c9e99b5995e8837`
 
-Paper citation usages:
-
-- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:97](../../paper/269/erdos-269-three-prime-running-lcm.tex#L97-L97)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:105](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L105-L105), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:650](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L650-L650), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3890](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3890-L3890), [cite at paper/reasoning-parts/erdos269/core.tex:47](../../paper/reasoning-parts/erdos269/core.tex#L47-L47), [cite at paper/reasoning-parts/erdos269/core.tex:592](../../paper/reasoning-parts/erdos269/core.tex#L592-L592), [cite at paper/reasoning-parts/erdos269/core.tex:3832](../../paper/reasoning-parts/erdos269/core.tex#L3832-L3832)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-22aba734190d65`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-22aba734190d65`.
 
 <a id="source-source-22ce74d28ddb49"></a>
 
@@ -2955,9 +2945,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10314-L10319) — lines `10314–10319`; excerpt `sha256:6b26831b0198ae83ddcc51944fe34abc4a33f500ca85d17497481409ce3268b5`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10122-L10127) — lines `10122–10127`; excerpt `sha256:6b26831b0198ae83ddcc51944fe34abc4a33f500ca85d17497481409ce3268b5`
 
-Paper citation usages:
-
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:1928](../../paper/249/erdos249-totient-reasoning-surface.tex#L1928-L1929), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:1736](../../paper/reasoning-parts/erdos249/a249_front.tex#L1736-L1737)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-22ce74d28ddb49`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-22ce74d28ddb49`.
 
 <a id="source-source-22ef36d016ca81"></a>
 
@@ -2983,10 +2972,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5205-L5212) — lines `5205–5212`; excerpt `sha256:037d8d669c712adb2ce488ddaad6988ca8a9e433e3271c97496d29be910f9ded`
 - [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1294-L1301) — lines `1294–1301`; excerpt `sha256:f964675e399704b559c29b51eea44fc7fd16035cbb7bfee0f3491e3f1433945c`
 
-Paper citation usages:
-
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1091](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1091-L1091)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1463](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1463-L1463), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1465](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1465-L1465), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:3196](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3196-L3196), [cite at paper/reasoning-parts/erdos1049/core.tex:1432](../../paper/reasoning-parts/erdos1049/core.tex#L1432-L1432), [cite at paper/reasoning-parts/erdos1049/core.tex:1434](../../paper/reasoning-parts/erdos1049/core.tex#L1434-L1434), [cite at paper/reasoning-parts/erdos1049/core.tex:3165](../../paper/reasoning-parts/erdos1049/core.tex#L3165-L3165)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-22ef36d016ca81`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-22ef36d016ca81`.
 
 <a id="source-source-25efc27ed2130d"></a>
 
@@ -3004,9 +2991,8 @@ Public implementation or evidence coordinates:
 
 - [docs/papers/mirror/plectis-public-system.tex](../../docs/papers/mirror/plectis-public-system.tex#L1306-L1312) — lines `1306–1312`; excerpt `sha256:4ece33472f9eb3ee10b399b4e65ea39cee778bd9cd7f3f8e4f59aca5de46732f`
 
-Paper citation usages:
-
-- `plectis-public-system`: [cite at docs/papers/mirror/plectis-public-system.tex:158](../../docs/papers/mirror/plectis-public-system.tex#L158-L158), [cite at docs/papers/mirror/plectis-public-system.tex:205](../../docs/papers/mirror/plectis-public-system.tex#L205-L205), [cite at docs/papers/mirror/plectis-public-system.tex:206](../../docs/papers/mirror/plectis-public-system.tex#L206-L206)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-25efc27ed2130d`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-25efc27ed2130d`.
 
 <a id="source-source-27575f46a101c1"></a>
 
@@ -3032,9 +3018,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L2975-L2977) — lines `2975–2977`; excerpt `sha256:b4c77ac8d585a2bd2069a38e1c79a60b2fad942e48f3b3f28ef5324369021f67`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L514-L514) — lines `514–514`; excerpt `sha256:6145f1750639419f2be2c1cc3dd58772864138a3bf33e3321107e49b5b3fd1b3`
 
-Paper citation usages:
-
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:556](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L556-L556), [cite at paper/reasoning-parts/erdos251/core.tex:514](../../paper/reasoning-parts/erdos251/core.tex#L514-L514)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-27575f46a101c1`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-27575f46a101c1`.
 
 <a id="source-source-278e74bfddddf0"></a>
 
@@ -3052,9 +3037,8 @@ Public implementation or evidence coordinates:
 
 - [docs/papers/mirror/plectis-public-system.tex](../../docs/papers/mirror/plectis-public-system.tex#L1361-L1365) — lines `1361–1365`; excerpt `sha256:e451a824e41d073b225ae1abab1c62ca244baecf39aa9ed66d457b7b7eae3586`
 
-Paper citation usages:
-
-- `plectis-public-system`: [cite at docs/papers/mirror/plectis-public-system.tex:928](../../docs/papers/mirror/plectis-public-system.tex#L928-L928)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-278e74bfddddf0`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-278e74bfddddf0`.
 
 <a id="source-source-285ee90c8dcd62"></a>
 
@@ -3081,9 +3065,8 @@ Public implementation or evidence coordinates:
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5283-L5287) — lines `5283–5287`; excerpt `sha256:009f0d973b996ec8f00395a65152d98054ea2ab49f230fdc01672a16b260f5cc`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5252-L5256) — lines `5252–5256`; excerpt `sha256:009f0d973b996ec8f00395a65152d98054ea2ab49f230fdc01672a16b260f5cc`
 
-Paper citation usages:
-
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4982](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4982-L4982), [cite at paper/reasoning-parts/erdos1049/core.tex:4951](../../paper/reasoning-parts/erdos1049/core.tex#L4951-L4951)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-285ee90c8dcd62`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-285ee90c8dcd62`.
 
 <a id="source-source-296ff41148fff7"></a>
 
@@ -3127,10 +3110,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10258-L10264) — lines `10258–10264`; excerpt `sha256:de208be728552e87a1ec173f99d8429dd11fd4df8ecf144d7252710e5141acaa`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10066-L10072) — lines `10066–10072`; excerpt `sha256:de208be728552e87a1ec173f99d8429dd11fd4df8ecf144d7252710e5141acaa`
 
-Paper citation usages:
-
-- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:516](../../paper/249/erdos-249-binary-totient-series.tex#L516-L516), [cite at paper/249/erdos-249-binary-totient-series.tex:545](../../paper/249/erdos-249-binary-totient-series.tex#L545-L545)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:7094](../../paper/249/erdos249-totient-reasoning-surface.tex#L7094-L7094), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:6902](../../paper/reasoning-parts/erdos249/a249_front.tex#L6902-L6902)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-296ff41148fff7`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-296ff41148fff7`.
 
 <a id="source-source-29bdada58b414a"></a>
 
@@ -3154,10 +3135,8 @@ Public implementation or evidence coordinates:
 - [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L4496-L4499) — lines `4496–4499`; excerpt `sha256:c38b879eb5217d10f2aed8b52d4612ade541384e4d3e5da0fc7060cf204a573b`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L4438-L4441) — lines `4438–4441`; excerpt `sha256:c38b879eb5217d10f2aed8b52d4612ade541384e4d3e5da0fc7060cf204a573b`
 
-Paper citation usages:
-
-- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:981](../../paper/269/erdos-269-three-prime-running-lcm.tex#L981-L981)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3333](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3333-L3333), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3921](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3921-L3921), [cite at paper/reasoning-parts/erdos269/core.tex:3275](../../paper/reasoning-parts/erdos269/core.tex#L3275-L3275), [cite at paper/reasoning-parts/erdos269/core.tex:3863](../../paper/reasoning-parts/erdos269/core.tex#L3863-L3863)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-29bdada58b414a`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-29bdada58b414a`.
 
 <a id="source-source-29cbac966b8b76"></a>
 
@@ -3180,9 +3159,8 @@ Public implementation or evidence coordinates:
 - [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L3260-L3264) — lines `3260–3264`; excerpt `sha256:3aaa23b0ee5980d4b7a569cd8945d5e49ec49e7301ec40d1a5ab10ee81d75a3f`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L3225-L3229) — lines `3225–3229`; excerpt `sha256:3aaa23b0ee5980d4b7a569cd8945d5e49ec49e7301ec40d1a5ab10ee81d75a3f`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1999](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1999-L1999), [cite at paper/reasoning-parts/erdos68/core.tex:1964](../../paper/reasoning-parts/erdos68/core.tex#L1964-L1964)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-29cbac966b8b76`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-29cbac966b8b76`.
 
 <a id="source-source-2a10c7287879c3"></a>
 
@@ -3206,10 +3184,8 @@ Public implementation or evidence coordinates:
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5368-L5372) — lines `5368–5372`; excerpt `sha256:67bdfa0d9c73d3ef9074f492e01b18101ff6ce673d7d7e006e7add28eefa7c93`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5337-L5341) — lines `5337–5341`; excerpt `sha256:67bdfa0d9c73d3ef9074f492e01b18101ff6ce673d7d7e006e7add28eefa7c93`
 
-Paper citation usages:
-
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1087](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1087-L1087)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2828](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2828-L2828), [cite at paper/reasoning-parts/erdos1049/core.tex:2797](../../paper/reasoning-parts/erdos1049/core.tex#L2797-L2797)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-2a10c7287879c3`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-2a10c7287879c3`.
 
 <a id="source-source-2a3af2a360bb15"></a>
 
@@ -3237,10 +3213,8 @@ Public implementation or evidence coordinates:
 - [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L4125-L4130) — lines `4125–4130`; excerpt `sha256:0b698c4756fa8f99456ed34f52b4cf9be3600160caf3f3dec408e04cc0d7d111`
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L4086-L4091) — lines `4086–4091`; excerpt `sha256:0b698c4756fa8f99456ed34f52b4cf9be3600160caf3f3dec408e04cc0d7d111`
 
-Paper citation usages:
-
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:612](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L612-L612), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:793](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L793-L793)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1488](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1488-L1488), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1904](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1904-L1904), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:3002](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3002-L3002), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:3265](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3265-L3265), [cite at paper/reasoning-parts/erdos243/core.tex:1449](../../paper/reasoning-parts/erdos243/core.tex#L1449-L1449), [cite at paper/reasoning-parts/erdos243/core.tex:1865](../../paper/reasoning-parts/erdos243/core.tex#L1865-L1865), [cite at paper/reasoning-parts/erdos243/core.tex:2963](../../paper/reasoning-parts/erdos243/core.tex#L2963-L2963), [cite at paper/reasoning-parts/erdos243/core.tex:3226](../../paper/reasoning-parts/erdos243/core.tex#L3226-L3226)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-2a3af2a360bb15`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-2a3af2a360bb15`.
 
 <a id="source-source-2a86f52125aec0"></a>
 
@@ -3267,10 +3241,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5372-L5378) — lines `5372–5378`; excerpt `sha256:2bbaf57338864a16529f3ab7d08eeeff8fb2358b4fafc7034087e3c4761985ee`
 - [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1268-L1273) — lines `1268–1273`; excerpt `sha256:b596c679afdf485909e77c3fe5c891b6e74ed84091d4e552b784d92fb5a71aff`
 
-Paper citation usages:
-
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:1086](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1086-L1086)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4514](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4514-L4514), [cite at paper/reasoning-parts/erdos1041/core.tex:4464](../../paper/reasoning-parts/erdos1041/core.tex#L4464-L4464)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-2a86f52125aec0`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-2a86f52125aec0`.
 
 <a id="source-source-2aa4970cfda278"></a>
 
@@ -3288,9 +3260,8 @@ Public implementation or evidence coordinates:
 
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5335-L5338) — lines `5335–5338`; excerpt `sha256:de50551571b8b9704ef2811a545a407c263e582e69b12f840cbb9d96750d359e`
 
-Paper citation usages:
-
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:2371](../../paper/archive/erdos249-257-main-paper.tex#L2371-L2371)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-2aa4970cfda278`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-2aa4970cfda278`.
 
 <a id="source-source-2b0038d2c239f5"></a>
 
@@ -3310,9 +3281,8 @@ Public implementation or evidence coordinates:
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L3075-L3077) — lines `3075–3077`; excerpt `sha256:3ba50a821565d47f20a7cf904fc3290b1f3c5126a28229eafe3917129456236e`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L3033-L3035) — lines `3033–3035`; excerpt `sha256:3ba50a821565d47f20a7cf904fc3290b1f3c5126a28229eafe3917129456236e`
 
-Paper citation usages:
-
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:621](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L621-L621), [cite at paper/reasoning-parts/erdos251/core.tex:579](../../paper/reasoning-parts/erdos251/core.tex#L579-L579)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-2b0038d2c239f5`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-2b0038d2c239f5`.
 
 <a id="source-source-2ec6bf87654604"></a>
 
@@ -3335,10 +3305,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L647-L647) — lines `647–647`; excerpt `sha256:e9af8055987c041e602fc36e4a30d002d7968c9be42fc2308fabbfc5f03eda0d`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L2088-L2088) — lines `2088–2088`; excerpt `sha256:513d9455ccd8f11d7bcdd4c503ae02528701d9a1e8bef30b6c9cb257b35a2b5f`
 
-Paper citation usages:
-
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:767](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L767-L767)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1121](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1121-L1121), [cite at paper/reasoning-parts/erdos1041/core.tex:1071](../../paper/reasoning-parts/erdos1041/core.tex#L1071-L1071)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-2ec6bf87654604`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-2ec6bf87654604`.
 
 <a id="source-source-2ee394177d0f38"></a>
 
@@ -3366,10 +3334,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L32-L32) — lines `32–32`; excerpt `sha256:9ac9f5c746a4ed69413e2f364cc0753ee3aa969eb39b5d87a0c1c8e8d6797e46`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L32-L32) — lines `32–32`; excerpt `sha256:9ac9f5c746a4ed69413e2f364cc0753ee3aa969eb39b5d87a0c1c8e8d6797e46`
 
-Paper citation usages:
-
-- `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:53](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L53-L53)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:74](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L74-L74), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:526](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L526-L526), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:540](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L540-L540), [cite at paper/reasoning-parts/erdos251/core.tex:32](../../paper/reasoning-parts/erdos251/core.tex#L32-L32), [cite at paper/reasoning-parts/erdos251/core.tex:484](../../paper/reasoning-parts/erdos251/core.tex#L484-L484), [cite at paper/reasoning-parts/erdos251/core.tex:498](../../paper/reasoning-parts/erdos251/core.tex#L498-L498)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-2ee394177d0f38`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-2ee394177d0f38`.
 
 <a id="source-source-3068a3586a5e8b"></a>
 
@@ -3392,9 +3358,8 @@ Public implementation or evidence coordinates:
 - [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L3268-L3272) — lines `3268–3272`; excerpt `sha256:0237824e9b1bc6846e06ebc8479034b15e0574bcf800f0b614d1d0a682ca52bb`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L3233-L3237) — lines `3233–3237`; excerpt `sha256:0237824e9b1bc6846e06ebc8479034b15e0574bcf800f0b614d1d0a682ca52bb`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2107](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2107-L2107), [cite at paper/reasoning-parts/erdos68/core.tex:2072](../../paper/reasoning-parts/erdos68/core.tex#L2072-L2072)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-3068a3586a5e8b`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-3068a3586a5e8b`.
 
 <a id="source-source-317a740451ce03"></a>
 
@@ -3455,15 +3420,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L9450-L9465) — lines `9450–9465`; excerpt `sha256:639844231444857a119025ab8e330a05e28514cf1dc9e9c65fdc92da1d687928`
 - [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1275-L1282) — lines `1275–1282`; excerpt `sha256:1efaad4cfc934457449068fdeec1040f4a4c014a88951973ae9338a1d554132d`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:821](../../paper/systems/claim-faithful-publication-systems-paper.tex#L821-L821), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1056](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1056-L1056)
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1141](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1141-L1141)
-- `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:269](../../paper/257/erdos-257-mersenne-support-subseries.tex#L269-L269), [cite at paper/257/erdos-257-mersenne-support-subseries.tex:852](../../paper/257/erdos-257-mersenne-support-subseries.tex#L852-L852), [cite at paper/257/erdos-257-mersenne-support-subseries.tex:987](../../paper/257/erdos-257-mersenne-support-subseries.tex#L987-L987)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5009](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5009-L5009), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5010](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5010-L5010), [cite at paper/reasoning-parts/erdos1049/core.tex:4978](../../paper/reasoning-parts/erdos1049/core.tex#L4978-L4978), [cite at paper/reasoning-parts/erdos1049/core.tex:4979](../../paper/reasoning-parts/erdos1049/core.tex#L4979-L4979)
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:738](../../paper/archive/erdos249-257-main-paper.tex#L738-L738)
-- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1480](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1480-L1480), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:3286](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L3286-L3286), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:1280](../../paper/reasoning-parts/erdos257/a257_front.tex#L1280-L1280), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:3086](../../paper/reasoning-parts/erdos257/a257_front.tex#L3086-L3086)
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1986](../../paper/synthesis/optimal-sparse-perturbations.tex#L1986-L1987)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-317a740451ce03`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-317a740451ce03`.
 
 <a id="source-source-318b37ba5af2eb"></a>
 
@@ -3508,10 +3466,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L4061-L4066) — lines `4061–4066`; excerpt `sha256:ee897c806cc6764f8001bdbab28ecd44a7ae784f93c8b76cdca0c229578e334b`
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L1653-L1653) — lines `1653–1653`; excerpt `sha256:2df19ae3d0b16a50ae460b309f4d509936436c1b79c214baa753b21bb87891dd`
 
-Paper citation usages:
-
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:986](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L986-L986)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:952](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L952-L953), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1692](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1692-L1692), [cite at paper/reasoning-parts/erdos243/core.tex:913](../../paper/reasoning-parts/erdos243/core.tex#L913-L914), [cite at paper/reasoning-parts/erdos243/core.tex:1653](../../paper/reasoning-parts/erdos243/core.tex#L1653-L1653)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-318b37ba5af2eb`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-318b37ba5af2eb`.
 
 <a id="source-source-318ee5e7cf6d74"></a>
 
@@ -3535,9 +3491,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5355-L5360) — lines `5355–5360`; excerpt `sha256:620501b65c595f397bcb8546b8f32f2dc7376a436f617b51b629ce031def07e1`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L4193-L4193) — lines `4193–4193`; excerpt `sha256:018d096210a7ffec3eb82decf527d824cd58c2bd4eb4f692250cc5c4b2b8caa9`
 
-Paper citation usages:
-
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4243](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4243-L4243), [cite at paper/reasoning-parts/erdos1041/core.tex:4193](../../paper/reasoning-parts/erdos1041/core.tex#L4193-L4193)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-318ee5e7cf6d74`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-318ee5e7cf6d74`.
 
 <a id="source-source-3479bad7869d7c"></a>
 
@@ -3560,9 +3515,8 @@ Public implementation or evidence coordinates:
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5348-L5353) — lines `5348–5353`; excerpt `sha256:58eae42e166b8f8a536b9cfe4c4577e41e70667815b654f00bc6a6c1c848d0dc`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5317-L5322) — lines `5317–5322`; excerpt `sha256:58eae42e166b8f8a536b9cfe4c4577e41e70667815b654f00bc6a6c1c848d0dc`
 
-Paper citation usages:
-
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:3058](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3058-L3058), [cite at paper/reasoning-parts/erdos1049/core.tex:3027](../../paper/reasoning-parts/erdos1049/core.tex#L3027-L3027)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-3479bad7869d7c`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-3479bad7869d7c`.
 
 <a id="source-source-34b520c561ee3c"></a>
 
@@ -3591,9 +3545,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L1062-L1062) — lines `1062–1062`; excerpt `sha256:1a52c485d1fdebe90cd0c446b9b2a978037b65c10e172426cb4f473a12f1a0bd`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L3141-L3145) — lines `3141–3145`; excerpt `sha256:0758379961a43fb0431ee76d95c75e47c003353f90b6a707964f44a842f3ea87`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1097](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1097-L1097), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2059](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2059-L2059), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2321](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2321-L2321), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2693](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2693-L2693), [cite at paper/reasoning-parts/erdos68/core.tex:1062](../../paper/reasoning-parts/erdos68/core.tex#L1062-L1062), [cite at paper/reasoning-parts/erdos68/core.tex:2024](../../paper/reasoning-parts/erdos68/core.tex#L2024-L2024), [cite at paper/reasoning-parts/erdos68/core.tex:2286](../../paper/reasoning-parts/erdos68/core.tex#L2286-L2286), [cite at paper/reasoning-parts/erdos68/core.tex:2658](../../paper/reasoning-parts/erdos68/core.tex#L2658-L2658)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-34b520c561ee3c`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-34b520c561ee3c`.
 
 <a id="source-source-365c2b5cf46ebe"></a>
 
@@ -3616,9 +3569,8 @@ Public implementation or evidence coordinates:
 - [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L3236-L3240) — lines `3236–3240`; excerpt `sha256:c81f5719e7e0059427c6fe7295699d3523c4215f7fe430b755be834cb594cfe9`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L3201-L3205) — lines `3201–3205`; excerpt `sha256:c81f5719e7e0059427c6fe7295699d3523c4215f7fe430b755be834cb594cfe9`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1984](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1984-L1984), [cite at paper/reasoning-parts/erdos68/core.tex:1949](../../paper/reasoning-parts/erdos68/core.tex#L1949-L1949)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-365c2b5cf46ebe`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-365c2b5cf46ebe`.
 
 <a id="source-source-36f533b76bc247"></a>
 
@@ -3637,10 +3589,8 @@ Public implementation or evidence coordinates:
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1707-L1712) — lines `1707–1712`; excerpt `sha256:c89d595871311eec76167add03b720a82202963564fd46493036b4e96b08de98`
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1189-L1193) — lines `1189–1193`; excerpt `sha256:f1a3aeaeeeae0343e3ac3f2056c0987792e2a1fcc155d61514b74881c3a74206`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:111](../../paper/systems/claim-faithful-publication-systems-paper.tex#L111-L111), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:597](../../paper/systems/claim-faithful-publication-systems-paper.tex#L597-L597), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:597](../../paper/systems/claim-faithful-publication-systems-paper.tex#L597-L597), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:601](../../paper/systems/claim-faithful-publication-systems-paper.tex#L601-L601), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1049](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1049-L1049)
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:898](../../paper/systems/open-source-mathematics-strategy.tex#L898-L898), [cite at paper/systems/open-source-mathematics-strategy.tex:940](../../paper/systems/open-source-mathematics-strategy.tex#L940-L940), [cite at paper/systems/open-source-mathematics-strategy.tex:1028](../../paper/systems/open-source-mathematics-strategy.tex#L1028-L1028)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-36f533b76bc247`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-36f533b76bc247`.
 
 <a id="source-source-39690ee8e07b0c"></a>
 
@@ -3664,9 +3614,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10390-L10394) — lines `10390–10394`; excerpt `sha256:e8efab4ceb7a738eebd6f794631df1b61792fb0a00d2d6d557380dd4e37f9c41`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10198-L10202) — lines `10198–10202`; excerpt `sha256:e8efab4ceb7a738eebd6f794631df1b61792fb0a00d2d6d557380dd4e37f9c41`
 
-Paper citation usages:
-
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:8165](../../paper/249/erdos249-totient-reasoning-surface.tex#L8165-L8165), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:7973](../../paper/reasoning-parts/erdos249/a249_front.tex#L7973-L7973)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-39690ee8e07b0c`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-39690ee8e07b0c`.
 
 <a id="source-source-39e4fc546549fd"></a>
 
@@ -3689,9 +3638,8 @@ Public implementation or evidence coordinates:
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5388-L5394) — lines `5388–5394`; excerpt `sha256:bd367f3dba72019c86ec01aacbc2dc2ba3af36d5b42d189d2c16647299c55964`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5357-L5363) — lines `5357–5363`; excerpt `sha256:bd367f3dba72019c86ec01aacbc2dc2ba3af36d5b42d189d2c16647299c55964`
 
-Paper citation usages:
-
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:3189](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3189-L3189), [cite at paper/reasoning-parts/erdos1049/core.tex:3158](../../paper/reasoning-parts/erdos1049/core.tex#L3158-L3158)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-39e4fc546549fd`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-39e4fc546549fd`.
 
 <a id="source-source-3bc828513b4d63"></a>
 
@@ -3727,13 +3675,8 @@ Public implementation or evidence coordinates:
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5322-L5328) — lines `5322–5328`; excerpt `sha256:44a0e3e721340d6f0b081dd1ebb6cd8cae7f421a3666d648a9c42a21cc2d2f00`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5291-L5297) — lines `5291–5297`; excerpt `sha256:44a0e3e721340d6f0b081dd1ebb6cd8cae7f421a3666d648a9c42a21cc2d2f00`
 
-Paper citation usages:
-
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1150](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1150-L1150)
-- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:528](../../paper/249/erdos-249-binary-totient-series.tex#L528-L528)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4677](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4677-L4677), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5265](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5265-L5265), [cite at paper/reasoning-parts/erdos1049/core.tex:4646](../../paper/reasoning-parts/erdos1049/core.tex#L4646-L4646), [cite at paper/reasoning-parts/erdos1049/core.tex:5234](../../paper/reasoning-parts/erdos1049/core.tex#L5234-L5234)
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:3181](../../paper/archive/erdos249-257-main-paper.tex#L3181-L3181)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:10212](../../paper/249/erdos249-totient-reasoning-surface.tex#L10212-L10212), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:10020](../../paper/reasoning-parts/erdos249/a249_front.tex#L10020-L10020)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-3bc828513b4d63`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-3bc828513b4d63`.
 
 <a id="source-source-3d300ccd5e4cbb"></a>
 
@@ -3757,9 +3700,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10357-L10363) — lines `10357–10363`; excerpt `sha256:5ea3e979eefb577068ea145beb2c4d5913b323a0f5a413f315280b716ec5eb58`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10165-L10171) — lines `10165–10171`; excerpt `sha256:5ea3e979eefb577068ea145beb2c4d5913b323a0f5a413f315280b716ec5eb58`
 
-Paper citation usages:
-
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:8057](../../paper/249/erdos249-totient-reasoning-surface.tex#L8057-L8057), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:7865](../../paper/reasoning-parts/erdos249/a249_front.tex#L7865-L7865)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-3d300ccd5e4cbb`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-3d300ccd5e4cbb`.
 
 <a id="source-source-3fb9e4907eec24"></a>
 
@@ -3783,9 +3725,8 @@ Public implementation or evidence coordinates:
 - [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L3220-L3224) — lines `3220–3224`; excerpt `sha256:01afe33226c434943312f632a5b1272516885eec61dfda3c99448c38f71ab1f1`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L3185-L3189) — lines `3185–3189`; excerpt `sha256:01afe33226c434943312f632a5b1272516885eec61dfda3c99448c38f71ab1f1`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1028](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1028-L1028), [cite at paper/reasoning-parts/erdos68/core.tex:993](../../paper/reasoning-parts/erdos68/core.tex#L993-L993)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-3fb9e4907eec24`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-3fb9e4907eec24`.
 
 <a id="source-source-40bc4064b92788"></a>
 
@@ -3814,10 +3755,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5336-L5342) — lines `5336–5342`; excerpt `sha256:428989f59406f939d2c86c6f7824295f410f97de0a786684b7faeddbd01f4a71`
 - [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1194-L1200) — lines `1194–1200`; excerpt `sha256:cd02a3f4bd4ab2831d4e82f0258f2e99b98627ee1ba71dc7fcd33aaae61f7342`
 
-Paper citation usages:
-
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:531](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L531-L531), [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:768](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L768-L768)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:697](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L697-L697), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1121](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1121-L1121), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1244](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1244-L1244), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1413](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1413-L1413), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1486](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1486-L1486), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1665](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1665-L1665), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1665](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1665-L1665), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:2002](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L2002-L2002), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:2190](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L2190-L2190), [cite at paper/reasoning-parts/erdos1041/core.tex:647](../../paper/reasoning-parts/erdos1041/core.tex#L647-L647), [cite at paper/reasoning-parts/erdos1041/core.tex:1071](../../paper/reasoning-parts/erdos1041/core.tex#L1071-L1071), [cite at paper/reasoning-parts/erdos1041/core.tex:1194](../../paper/reasoning-parts/erdos1041/core.tex#L1194-L1194), [cite at paper/reasoning-parts/erdos1041/core.tex:1363](../../paper/reasoning-parts/erdos1041/core.tex#L1363-L1363), [cite at paper/reasoning-parts/erdos1041/core.tex:1436](../../paper/reasoning-parts/erdos1041/core.tex#L1436-L1436), [cite at paper/reasoning-parts/erdos1041/core.tex:1615](../../paper/reasoning-parts/erdos1041/core.tex#L1615-L1615), [cite at paper/reasoning-parts/erdos1041/core.tex:1615](../../paper/reasoning-parts/erdos1041/core.tex#L1615-L1615), [cite at paper/reasoning-parts/erdos1041/core.tex:1952](../../paper/reasoning-parts/erdos1041/core.tex#L1952-L1952), [cite at paper/reasoning-parts/erdos1041/core.tex:2140](../../paper/reasoning-parts/erdos1041/core.tex#L2140-L2140)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-40bc4064b92788`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-40bc4064b92788`.
 
 <a id="source-source-41df26fdff66cb"></a>
 
@@ -3850,14 +3789,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10236-L10240) — lines `10236–10240`; excerpt `sha256:7ec6c33f36b32e11bbec81e8c966173b30a2c50d056c1ab9103fffc5afc23d94`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L7335-L7335) — lines `7335–7335`; excerpt `sha256:b5f7725d9d9b224c30c605af2ec45cbedb389b6e64791915712d49c8c2ee5bd0`
 
-Paper citation usages:
-
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:1199](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L1199-L1199), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:1259](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L1259-L1259)
-- `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:71](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L71-L71), [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:332](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L332-L332)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1031](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1031-L1031), [cite at paper/reasoning-parts/erdos243/core.tex:992](../../paper/reasoning-parts/erdos243/core.tex#L992-L992)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:7527](../../paper/249/erdos249-totient-reasoning-surface.tex#L7527-L7527), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:7335](../../paper/reasoning-parts/erdos249/a249_front.tex#L7335-L7335)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:372](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L372-L372), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:576](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L576-L576), [cite at paper/reasoning-parts/erdos251/core.tex:330](../../paper/reasoning-parts/erdos251/core.tex#L330-L330), [cite at paper/reasoning-parts/erdos251/core.tex:534](../../paper/reasoning-parts/erdos251/core.tex#L534-L534)
-- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/revisions.tex:34](../../paper/exposition/parts/revisions.tex#L34-L34)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-41df26fdff66cb`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-41df26fdff66cb`.
 
 <a id="source-source-43a734be32736f"></a>
 
@@ -3882,10 +3815,8 @@ Public implementation or evidence coordinates:
 - [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L3160-L3164) — lines `3160–3164`; excerpt `sha256:b938d408a670bde68b8522a01fa71ee3a1b30b4fbb78368431f5fb9cded5f0f9`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L3125-L3129) — lines `3125–3129`; excerpt `sha256:b938d408a670bde68b8522a01fa71ee3a1b30b4fbb78368431f5fb9cded5f0f9`
 
-Paper citation usages:
-
-- `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:869](../../paper/257/erdos-257-mersenne-support-subseries.tex#L869-L869)
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2198](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2198-L2198), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2330](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2330-L2330), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2603](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2603-L2603), [cite at paper/reasoning-parts/erdos68/core.tex:2163](../../paper/reasoning-parts/erdos68/core.tex#L2163-L2163), [cite at paper/reasoning-parts/erdos68/core.tex:2295](../../paper/reasoning-parts/erdos68/core.tex#L2295-L2295), [cite at paper/reasoning-parts/erdos68/core.tex:2568](../../paper/reasoning-parts/erdos68/core.tex#L2568-L2568)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-43a734be32736f`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-43a734be32736f`.
 
 <a id="source-source-45037c29c04bed"></a>
 
@@ -3905,10 +3836,8 @@ Public implementation or evidence coordinates:
 - [paper/1041/erdos1041-lemniscate-reasoning-surface.tex](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L5508-L5512) — lines `5508–5512`; excerpt `sha256:906433dd170c41415919219e15b60b8e1b97efac405ace13999d8cc6451fa785`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5458-L5462) — lines `5458–5462`; excerpt `sha256:906433dd170c41415919219e15b60b8e1b97efac405ace13999d8cc6451fa785`
 
-Paper citation usages:
-
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:854](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L854-L854), [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:981](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L981-L981), [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:1113](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1113-L1113)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1446](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1446-L1446), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:2211](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L2211-L2211), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:3187](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L3187-L3187), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:3900](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L3900-L3900), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4025](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4025-L4025), [cite at paper/reasoning-parts/erdos1041/core.tex:1396](../../paper/reasoning-parts/erdos1041/core.tex#L1396-L1396), [cite at paper/reasoning-parts/erdos1041/core.tex:2161](../../paper/reasoning-parts/erdos1041/core.tex#L2161-L2161), [cite at paper/reasoning-parts/erdos1041/core.tex:3137](../../paper/reasoning-parts/erdos1041/core.tex#L3137-L3137), [cite at paper/reasoning-parts/erdos1041/core.tex:3850](../../paper/reasoning-parts/erdos1041/core.tex#L3850-L3850), [cite at paper/reasoning-parts/erdos1041/core.tex:3975](../../paper/reasoning-parts/erdos1041/core.tex#L3975-L3975)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-45037c29c04bed`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-45037c29c04bed`.
 
 <a id="source-source-450aed97015b8f"></a>
 
@@ -3927,9 +3856,8 @@ Public implementation or evidence coordinates:
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L3077-L3079) — lines `3077–3079`; excerpt `sha256:c13202ba0e0b2c61e1309389eeaf97212f8f3b05eea87b49c4ad2e8748454dc3`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L3035-L3037) — lines `3035–3037`; excerpt `sha256:c13202ba0e0b2c61e1309389eeaf97212f8f3b05eea87b49c4ad2e8748454dc3`
 
-Paper citation usages:
-
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:659](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L659-L659), [cite at paper/reasoning-parts/erdos251/core.tex:617](../../paper/reasoning-parts/erdos251/core.tex#L617-L617)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-450aed97015b8f`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-450aed97015b8f`.
 
 <a id="source-source-45ae653f011748"></a>
 
@@ -3951,10 +3879,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/cold-clone-to-proof-receipt.tex](../../paper/systems/cold-clone-to-proof-receipt.tex#L711-L714) — lines `711–714`; excerpt `sha256:facbf8174f29ec644aa87ad59cf5ec179262bc093a6f37a813598d55c1c8af77`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1043](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1043-L1043)
-- `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:496](../../paper/systems/cold-clone-to-proof-receipt.tex#L496-L496)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-45ae653f011748`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-45ae653f011748`.
 
 <a id="source-source-463b7e9f7264b1"></a>
 
@@ -3972,9 +3898,8 @@ Public implementation or evidence coordinates:
 
 - [docs/papers/mirror/plectis-public-system.tex](../../docs/papers/mirror/plectis-public-system.tex#L1329-L1334) — lines `1329–1334`; excerpt `sha256:b72eaf7771719b0f871cf252ff08d155c348754cbbc333e06e0587f20db646de`
 
-Paper citation usages:
-
-- `plectis-public-system`: [cite at docs/papers/mirror/plectis-public-system.tex:418](../../docs/papers/mirror/plectis-public-system.tex#L418-L418)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-463b7e9f7264b1`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-463b7e9f7264b1`.
 
 <a id="source-source-490b1875016ea4"></a>
 
@@ -3997,9 +3922,8 @@ Public implementation or evidence coordinates:
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5380-L5388) — lines `5380–5388`; excerpt `sha256:17a9f0c77da491dc851c4a65e945725b1c61e75da287cb94849f3bb840ee6c33`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5349-L5357) — lines `5349–5357`; excerpt `sha256:17a9f0c77da491dc851c4a65e945725b1c61e75da287cb94849f3bb840ee6c33`
 
-Paper citation usages:
-
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2929](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2929-L2929), [cite at paper/reasoning-parts/erdos1049/core.tex:2898](../../paper/reasoning-parts/erdos1049/core.tex#L2898-L2898)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-490b1875016ea4`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-490b1875016ea4`.
 
 <a id="source-source-4afc43674f7082"></a>
 
@@ -4025,10 +3949,8 @@ Public implementation or evidence coordinates:
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L3067-L3069) — lines `3067–3069`; excerpt `sha256:6e5c026e217aafc0c8b121d5e6586f0139ff79cbf8c2871b89cdc840c4041993`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L3025-L3027) — lines `3025–3027`; excerpt `sha256:6e5c026e217aafc0c8b121d5e6586f0139ff79cbf8c2871b89cdc840c4041993`
 
-Paper citation usages:
-
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:10220](../../paper/249/erdos249-totient-reasoning-surface.tex#L10220-L10220), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:10028](../../paper/reasoning-parts/erdos249/a249_front.tex#L10028-L10028)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:646](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L646-L646), [cite at paper/reasoning-parts/erdos251/core.tex:604](../../paper/reasoning-parts/erdos251/core.tex#L604-L604)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-4afc43674f7082`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-4afc43674f7082`.
 
 <a id="source-source-4bb571f8383293"></a>
 
@@ -4050,9 +3972,8 @@ Public implementation or evidence coordinates:
 
 - [paper/257/erdos-257-mersenne-support-subseries.tex](../../paper/257/erdos-257-mersenne-support-subseries.tex#L1637-L1642) — lines `1637–1642`; excerpt `sha256:25cf3513f78fba977dc2a6cefb4a67e70b7815d304207cbac09e637aaa5db383`
 
-Paper citation usages:
-
-- `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:1572](../../paper/257/erdos-257-mersenne-support-subseries.tex#L1572-L1572)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-4bb571f8383293`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-4bb571f8383293`.
 
 <a id="source-source-4f5fd0d7405e29"></a>
 
@@ -4138,19 +4059,8 @@ Public implementation or evidence coordinates:
 - [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L801-L803) — lines `801–803`; excerpt `sha256:1386a45340d81984e945f5e55245e8ffbe9117cc649c342ae293feaf6fea972a`
 - [paper/269/erdos-269-three-prime-running-lcm.tex](../../paper/269/erdos-269-three-prime-running-lcm.tex#L1061-L1064) — lines `1061–1064`; excerpt `sha256:9c3c5db10d94904b54c40a45565db137f38253e6cc98c36fb7f0446f37302911`
 
-Paper citation usages:
-
-- `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:72](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L72-L72)
-- `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:1104](../../paper/257/erdos-257-mersenne-support-subseries.tex#L1104-L1104)
-- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:988](../../paper/269/erdos-269-three-prime-running-lcm.tex#L988-L988)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5035](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5035-L5035), [cite at paper/reasoning-parts/erdos1049/core.tex:5004](../../paper/reasoning-parts/erdos1049/core.tex#L5004-L5004)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1013](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1013-L1013), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1016](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1016-L1016), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1025](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1025-L1025), [cite at paper/reasoning-parts/erdos243/core.tex:974](../../paper/reasoning-parts/erdos243/core.tex#L974-L974), [cite at paper/reasoning-parts/erdos243/core.tex:977](../../paper/reasoning-parts/erdos243/core.tex#L977-L977), [cite at paper/reasoning-parts/erdos243/core.tex:986](../../paper/reasoning-parts/erdos243/core.tex#L986-L986)
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:824](../../paper/archive/erdos249-257-main-paper.tex#L824-L824), [cite at paper/archive/erdos249-257-main-paper.tex:825](../../paper/archive/erdos249-257-main-paper.tex#L825-L825), [cite at paper/archive/erdos249-257-main-paper.tex:2146](../../paper/archive/erdos249-257-main-paper.tex#L2146-L2146), [cite at paper/archive/erdos249-257-main-paper.tex:4673](../../paper/archive/erdos249-257-main-paper.tex#L4673-L4673), [cite at paper/archive/erdos249-257-main-paper.tex:5064](../../paper/archive/erdos249-257-main-paper.tex#L5064-L5064), [cite at paper/archive/erdos249-257-main-paper.tex:5110](../../paper/archive/erdos249-257-main-paper.tex#L5110-L5110)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:10181](../../paper/249/erdos249-totient-reasoning-surface.tex#L10181-L10181), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:9989](../../paper/reasoning-parts/erdos249/a249_front.tex#L9989-L9989)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:377](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L377-L377), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:585](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L585-L585), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:680](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L680-L680), [cite at paper/reasoning-parts/erdos251/core.tex:335](../../paper/reasoning-parts/erdos251/core.tex#L335-L335), [cite at paper/reasoning-parts/erdos251/core.tex:543](../../paper/reasoning-parts/erdos251/core.tex#L543-L543), [cite at paper/reasoning-parts/erdos251/core.tex:638](../../paper/reasoning-parts/erdos251/core.tex#L638-L638)
-- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:9207](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9207-L9207), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:9007](../../paper/reasoning-parts/erdos257/a257_front.tex#L9007-L9007)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:184](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L184-L184), [cite at paper/reasoning-parts/erdos269/core.tex:126](../../paper/reasoning-parts/erdos269/core.tex#L126-L126)
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:879](../../paper/synthesis/optimal-sparse-perturbations.tex#L879-L879), [cite at paper/synthesis/optimal-sparse-perturbations.tex:906](../../paper/synthesis/optimal-sparse-perturbations.tex#L906-L906), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1013](../../paper/synthesis/optimal-sparse-perturbations.tex#L1013-L1013), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1029](../../paper/synthesis/optimal-sparse-perturbations.tex#L1029-L1029), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1852](../../paper/synthesis/optimal-sparse-perturbations.tex#L1852-L1852), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1971](../../paper/synthesis/optimal-sparse-perturbations.tex#L1971-L1971), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1974](../../paper/synthesis/optimal-sparse-perturbations.tex#L1974-L1974)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-4f5fd0d7405e29`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-4f5fd0d7405e29`.
 
 <a id="source-source-5122572a1e7312"></a>
 
@@ -4176,9 +4086,8 @@ Public implementation or evidence coordinates:
 - [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L3212-L3216) — lines `3212–3216`; excerpt `sha256:c1feb1fd30f80a42ea7b93c301207ea72abff8a1961dc7646ef336d6bf938b73`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L3177-L3181) — lines `3177–3181`; excerpt `sha256:c1feb1fd30f80a42ea7b93c301207ea72abff8a1961dc7646ef336d6bf938b73`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1198](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1198-L1198), [cite at paper/reasoning-parts/erdos68/core.tex:1163](../../paper/reasoning-parts/erdos68/core.tex#L1163-L1163)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-5122572a1e7312`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-5122572a1e7312`.
 
 <a id="source-source-5270112e32002d"></a>
 
@@ -4201,9 +4110,8 @@ Public implementation or evidence coordinates:
 - [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L4487-L4490) — lines `4487–4490`; excerpt `sha256:53305164d06918956b307b2a2bd9e37d95e4d93aff557246b8ebc65eee173fbd`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L4429-L4432) — lines `4429–4432`; excerpt `sha256:53305164d06918956b307b2a2bd9e37d95e4d93aff557246b8ebc65eee173fbd`
 
-Paper citation usages:
-
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3140](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3140-L3140), [cite at paper/reasoning-parts/erdos269/core.tex:3082](../../paper/reasoning-parts/erdos269/core.tex#L3082-L3082)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-5270112e32002d`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-5270112e32002d`.
 
 <a id="source-source-53a2a9c4a9e7c2"></a>
 
@@ -4227,10 +4135,8 @@ Public implementation or evidence coordinates:
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5394-L5398) — lines `5394–5398`; excerpt `sha256:3b958d96041c8d7357ca2a6320bad4a5c5dd5c24e66c13f3fdcb75343dfb1596`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5363-L5367) — lines `5363–5367`; excerpt `sha256:3b958d96041c8d7357ca2a6320bad4a5c5dd5c24e66c13f3fdcb75343dfb1596`
 
-Paper citation usages:
-
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1088](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1088-L1088)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:3053](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3053-L3053), [cite at paper/reasoning-parts/erdos1049/core.tex:3022](../../paper/reasoning-parts/erdos1049/core.tex#L3022-L3022)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-53a2a9c4a9e7c2`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-53a2a9c4a9e7c2`.
 
 <a id="source-source-573a79feb36d47"></a>
 
@@ -4257,9 +4163,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L3893-L3893) — lines `3893–3893`; excerpt `sha256:70156aa149e95bc051830fe62c9e4dead62a9dfae84a47de933e386647c09bdb`
 - [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3951-L3951) — lines `3951–3951`; excerpt `sha256:70156aa149e95bc051830fe62c9e4dead62a9dfae84a47de933e386647c09bdb`
 
-Paper citation usages:
-
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3931](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3931-L3931), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3951](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3951-L3951), [cite at paper/reasoning-parts/erdos269/core.tex:3873](../../paper/reasoning-parts/erdos269/core.tex#L3873-L3873), [cite at paper/reasoning-parts/erdos269/core.tex:3893](../../paper/reasoning-parts/erdos269/core.tex#L3893-L3893)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-573a79feb36d47`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-573a79feb36d47`.
 
 <a id="source-source-5752bb5009e4de"></a>
 
@@ -4285,11 +4190,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10248-L10253) — lines `10248–10253`; excerpt `sha256:1faa5900afcaadc94dc78596f20f82bc542cdeea10be862bbe3be3e9ca92f21f`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10056-L10061) — lines `10056–10061`; excerpt `sha256:1faa5900afcaadc94dc78596f20f82bc542cdeea10be862bbe3be3e9ca92f21f`
 
-Paper citation usages:
-
-- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:78](../../paper/249/erdos-249-binary-totient-series.tex#L78-L78)
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:3173](../../paper/archive/erdos249-257-main-paper.tex#L3173-L3173)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:8737](../../paper/249/erdos249-totient-reasoning-surface.tex#L8737-L8737), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:8545](../../paper/reasoning-parts/erdos249/a249_front.tex#L8545-L8545)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-5752bb5009e4de`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-5752bb5009e4de`.
 
 <a id="source-source-57adfd0cdcd8c2"></a>
 
@@ -4325,9 +4227,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L988-L988) — lines `988–988`; excerpt `sha256:e52805e976c27402da4d5287575f00f9b1b37c362bb1528322e7c65132fd96e3`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L990-L990) — lines `990–990`; excerpt `sha256:833f277049f234d19cee90708049d8bb8d106262d2830e645962cc3683abfb63`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1025](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1025-L1025), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1109](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1109-L1109), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2324](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2324-L2324), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2327](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2327-L2327), [cite at paper/reasoning-parts/erdos68/core.tex:990](../../paper/reasoning-parts/erdos68/core.tex#L990-L990), [cite at paper/reasoning-parts/erdos68/core.tex:1074](../../paper/reasoning-parts/erdos68/core.tex#L1074-L1074), [cite at paper/reasoning-parts/erdos68/core.tex:2289](../../paper/reasoning-parts/erdos68/core.tex#L2289-L2289), [cite at paper/reasoning-parts/erdos68/core.tex:2292](../../paper/reasoning-parts/erdos68/core.tex#L2292-L2292)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-57adfd0cdcd8c2`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-57adfd0cdcd8c2`.
 
 <a id="source-source-57fe330e419648"></a>
 
@@ -4353,10 +4254,8 @@ Public implementation or evidence coordinates:
 - [paper/1041/erdos1041-lemniscate-reasoning-surface.tex](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L5500-L5505) — lines `5500–5505`; excerpt `sha256:9976334d2d074f47b0f36053eafc88c2da992e02c4c4c2eb6956f0ecc319a48b`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5450-L5455) — lines `5450–5455`; excerpt `sha256:9976334d2d074f47b0f36053eafc88c2da992e02c4c4c2eb6956f0ecc319a48b`
 
-Paper citation usages:
-
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:1132](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1132-L1132)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1567](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1567-L1567), [cite at paper/reasoning-parts/erdos1041/core.tex:1517](../../paper/reasoning-parts/erdos1041/core.tex#L1517-L1517)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-57fe330e419648`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-57fe330e419648`.
 
 <a id="source-source-5857f9959e7529"></a>
 
@@ -4380,9 +4279,8 @@ Public implementation or evidence coordinates:
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5328-L5332) — lines `5328–5332`; excerpt `sha256:1f93dd63fdcecc1c50a9e4192bb21b88580fe393bef2b1a4a2bd32200489b8f2`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5297-L5301) — lines `5297–5301`; excerpt `sha256:1f93dd63fdcecc1c50a9e4192bb21b88580fe393bef2b1a4a2bd32200489b8f2`
 
-Paper citation usages:
-
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1696](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1696-L1696), [cite at paper/reasoning-parts/erdos1049/core.tex:1665](../../paper/reasoning-parts/erdos1049/core.tex#L1665-L1665)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-5857f9959e7529`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-5857f9959e7529`.
 
 <a id="source-source-5911448b65fdf9"></a>
 
@@ -4409,10 +4307,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L4967-L4967) — lines `4967–4967`; excerpt `sha256:4cba849220b6d89a05527440677a635fe05b976de1d3d125b3c7d9e3b37a61fe`
 - [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1270-L1275) — lines `1270–1275`; excerpt `sha256:8d3a5a9309dacce42b935afcf56eac11bf777dafe926a5de5f7e5dbb71726aca`
 
-Paper citation usages:
-
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1140](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1140-L1140)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4998](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4998-L4998), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5001](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5001-L5001), [cite at paper/reasoning-parts/erdos1049/core.tex:4967](../../paper/reasoning-parts/erdos1049/core.tex#L4967-L4967), [cite at paper/reasoning-parts/erdos1049/core.tex:4970](../../paper/reasoning-parts/erdos1049/core.tex#L4970-L4970)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-5911448b65fdf9`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-5911448b65fdf9`.
 
 <a id="source-source-5b5c84cd208fff"></a>
 
@@ -4430,9 +4326,8 @@ Public implementation or evidence coordinates:
 
 - [docs/papers/mirror/plectis-public-system.tex](../../docs/papers/mirror/plectis-public-system.tex#L1318-L1324) — lines `1318–1324`; excerpt `sha256:0b4c870e91ea3111d69ea85b7c94783a709618f7b2b3124f463426effcfb8ffc`
 
-Paper citation usages:
-
-- `plectis-public-system`: [cite at docs/papers/mirror/plectis-public-system.tex:400](../../docs/papers/mirror/plectis-public-system.tex#L400-L400), [cite at docs/papers/mirror/plectis-public-system.tex:404](../../docs/papers/mirror/plectis-public-system.tex#L404-L404)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-5b5c84cd208fff`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-5b5c84cd208fff`.
 
 <a id="source-source-5c72388a6ca10f"></a>
 
@@ -4499,13 +4394,8 @@ Public implementation or evidence coordinates:
 - [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9607-L9610) — lines `9607–9610`; excerpt `sha256:7a684bfaefd18d542b221d902849314551f3d7d7c0bdd860824a938e6896ecd7`
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L9407-L9410) — lines `9407–9410`; excerpt `sha256:7a684bfaefd18d542b221d902849314551f3d7d7c0bdd860824a938e6896ecd7`
 
-Paper citation usages:
-
-- `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:55](../../paper/257/erdos-257-mersenne-support-subseries.tex#L55-L55), [cite at paper/257/erdos-257-mersenne-support-subseries.tex:817](../../paper/257/erdos-257-mersenne-support-subseries.tex#L817-L817)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:64](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L64-L64), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:3826](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L3826-L3826), [cite at paper/reasoning-parts/erdos1049/core.tex:33](../../paper/reasoning-parts/erdos1049/core.tex#L33-L33), [cite at paper/reasoning-parts/erdos1049/core.tex:3795](../../paper/reasoning-parts/erdos1049/core.tex#L3795-L3795)
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:115](../../paper/archive/erdos249-257-main-paper.tex#L115-L115), [cite at paper/archive/erdos249-257-main-paper.tex:619](../../paper/archive/erdos249-257-main-paper.tex#L619-L619), [cite at paper/archive/erdos249-257-main-paper.tex:622](../../paper/archive/erdos249-257-main-paper.tex#L622-L622)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:1845](../../paper/249/erdos249-totient-reasoning-surface.tex#L1845-L1845), [cite at paper/249/erdos249-totient-reasoning-surface.tex:1868](../../paper/249/erdos249-totient-reasoning-surface.tex#L1868-L1868), [cite at paper/249/erdos249-totient-reasoning-surface.tex:2795](../../paper/249/erdos249-totient-reasoning-surface.tex#L2795-L2795), [cite at paper/249/erdos249-totient-reasoning-surface.tex:5708](../../paper/249/erdos249-totient-reasoning-surface.tex#L5708-L5708), [cite at paper/249/erdos249-totient-reasoning-surface.tex:8081](../../paper/249/erdos249-totient-reasoning-surface.tex#L8081-L8081), [cite at paper/249/erdos249-totient-reasoning-surface.tex:8091](../../paper/249/erdos249-totient-reasoning-surface.tex#L8091-L8091), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:1653](../../paper/reasoning-parts/erdos249/a249_front.tex#L1653-L1653), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:1676](../../paper/reasoning-parts/erdos249/a249_front.tex#L1676-L1676), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:2603](../../paper/reasoning-parts/erdos249/a249_front.tex#L2603-L2603), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:5516](../../paper/reasoning-parts/erdos249/a249_front.tex#L5516-L5516), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:7889](../../paper/reasoning-parts/erdos249/a249_front.tex#L7889-L7889), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:7899](../../paper/reasoning-parts/erdos249/a249_front.tex#L7899-L7899)
-- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1176](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1176-L1176), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1477](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1477-L1477), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:3026](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L3026-L3026), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:6923](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L6923-L6923), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:976](../../paper/reasoning-parts/erdos257/a257_front.tex#L976-L976), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:1277](../../paper/reasoning-parts/erdos257/a257_front.tex#L1277-L1277), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:2826](../../paper/reasoning-parts/erdos257/a257_front.tex#L2826-L2826), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:6723](../../paper/reasoning-parts/erdos257/a257_front.tex#L6723-L6723)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-5c72388a6ca10f`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-5c72388a6ca10f`.
 
 <a id="source-source-5cac1ad51acb12"></a>
 
@@ -4528,9 +4418,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10386-L10390) — lines `10386–10390`; excerpt `sha256:77de149e1b9e4c1cbd9c39690b007e9959c56e7732149a19d644b96ce9c396c8`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10194-L10198) — lines `10194–10198`; excerpt `sha256:77de149e1b9e4c1cbd9c39690b007e9959c56e7732149a19d644b96ce9c396c8`
 
-Paper citation usages:
-
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:4384](../../paper/249/erdos249-totient-reasoning-surface.tex#L4384-L4384), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:4192](../../paper/reasoning-parts/erdos249/a249_front.tex#L4192-L4192)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-5cac1ad51acb12`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-5cac1ad51acb12`.
 
 <a id="source-source-5edeb2408c36bd"></a>
 
@@ -4549,10 +4438,8 @@ Public implementation or evidence coordinates:
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1681-L1686) — lines `1681–1686`; excerpt `sha256:573f52e0c7b894eeeb44cdeb82b9844001ad1c0155ff50cf96d645b233996e9d`
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1373-L1374) — lines `1373–1374`; excerpt `sha256:ed477db421c75bd2bf0fc9a8324059f75c74acbb2096b75ffc57c88c0fabd274`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1000](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1000-L1000), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1052](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1052-L1052)
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:574](../../paper/systems/open-source-mathematics-strategy.tex#L574-L574), [cite at paper/systems/open-source-mathematics-strategy.tex:1002](../../paper/systems/open-source-mathematics-strategy.tex#L1002-L1002)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-5edeb2408c36bd`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-5edeb2408c36bd`.
 
 <a id="source-source-5ee5f85bd606ee"></a>
 
@@ -4579,10 +4466,8 @@ Public implementation or evidence coordinates:
 - [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L4490-L4493) — lines `4490–4493`; excerpt `sha256:3bb82e6b41bc7ebd606d251e5b57d3c92e82927c527268e1c978c3131c24c529`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L4432-L4435) — lines `4432–4435`; excerpt `sha256:3bb82e6b41bc7ebd606d251e5b57d3c92e82927c527268e1c978c3131c24c529`
 
-Paper citation usages:
-
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:1364](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L1364-L1364), [cite at paper/reasoning-parts/erdos251/core.tex:1322](../../paper/reasoning-parts/erdos251/core.tex#L1322-L1322)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3119](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3119-L3119), [cite at paper/reasoning-parts/erdos269/core.tex:3061](../../paper/reasoning-parts/erdos269/core.tex#L3061-L3061)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-5ee5f85bd606ee`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-5ee5f85bd606ee`.
 
 <a id="source-source-5f85fb0bd75b8b"></a>
 
@@ -4614,9 +4499,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L988-L988) — lines `988–988`; excerpt `sha256:e52805e976c27402da4d5287575f00f9b1b37c362bb1528322e7c65132fd96e3`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L988-L988) — lines `988–988`; excerpt `sha256:e52805e976c27402da4d5287575f00f9b1b37c362bb1528322e7c65132fd96e3`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1023](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1023-L1023), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1108](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1108-L1108), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2324](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2324-L2324), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2326](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2326-L2326), [cite at paper/reasoning-parts/erdos68/core.tex:988](../../paper/reasoning-parts/erdos68/core.tex#L988-L988), [cite at paper/reasoning-parts/erdos68/core.tex:1073](../../paper/reasoning-parts/erdos68/core.tex#L1073-L1073), [cite at paper/reasoning-parts/erdos68/core.tex:2289](../../paper/reasoning-parts/erdos68/core.tex#L2289-L2289), [cite at paper/reasoning-parts/erdos68/core.tex:2291](../../paper/reasoning-parts/erdos68/core.tex#L2291-L2291)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-5f85fb0bd75b8b`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-5f85fb0bd75b8b`.
 
 <a id="source-source-608828559136f9"></a>
 
@@ -4634,10 +4518,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/cold-clone-to-proof-receipt.tex](../../paper/systems/cold-clone-to-proof-receipt.tex#L717-L720) — lines `717–720`; excerpt `sha256:6e5e795918967c2ca83bcb0a103c3da562b3b3aa08b5719dc822b75f46a612b9`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1043](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1043-L1043)
-- `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:499](../../paper/systems/cold-clone-to-proof-receipt.tex#L499-L499)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-608828559136f9`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-608828559136f9`.
 
 <a id="source-source-619de19af78c4c"></a>
 
@@ -4663,10 +4545,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10319-L10326) — lines `10319–10326`; excerpt `sha256:168b06eeef0d655602ef10d79d4d5a2c298c562e5b09b730a812b94d0458d1a2`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10127-L10134) — lines `10127–10134`; excerpt `sha256:168b06eeef0d655602ef10d79d4d5a2c298c562e5b09b730a812b94d0458d1a2`
 
-Paper citation usages:
-
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:489](../../paper/archive/erdos249-257-main-paper.tex#L489-L489), [cite at paper/archive/erdos249-257-main-paper.tex:4083](../../paper/archive/erdos249-257-main-paper.tex#L4083-L4083), [cite at paper/archive/erdos249-257-main-paper.tex:4782](../../paper/archive/erdos249-257-main-paper.tex#L4782-L4782)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:1896](../../paper/249/erdos249-totient-reasoning-surface.tex#L1896-L1897), [cite at paper/249/erdos249-totient-reasoning-surface.tex:10184](../../paper/249/erdos249-totient-reasoning-surface.tex#L10184-L10184), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:1704](../../paper/reasoning-parts/erdos249/a249_front.tex#L1704-L1705), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:9992](../../paper/reasoning-parts/erdos249/a249_front.tex#L9992-L9992)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-619de19af78c4c`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-619de19af78c4c`.
 
 <a id="source-source-61ce6ad8b2f0ff"></a>
 
@@ -4710,11 +4590,8 @@ Public implementation or evidence coordinates:
 - [lean/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean](../../lean/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean#L47-L52) — lines `47–52`; excerpt `sha256:33cfc2f7e37e3a2c10db006bdf734166bb372b874a1933fa3324a066b6552b44`
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1153-L1157) — lines `1153–1157`; excerpt `sha256:30a59f5e096ba7505dd35cd675d019c9ca2baccd756374cea58317676ce9b011`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1000](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1000-L1000), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1057](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1057-L1057)
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:70](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L70-L70), [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:913](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L913-L913)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:83](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L83-L83), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1717](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1717-L1717), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:2329](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L2329-L2329), [cite at paper/reasoning-parts/erdos1041/core.tex:33](../../paper/reasoning-parts/erdos1041/core.tex#L33-L33), [cite at paper/reasoning-parts/erdos1041/core.tex:1667](../../paper/reasoning-parts/erdos1041/core.tex#L1667-L1667), [cite at paper/reasoning-parts/erdos1041/core.tex:2279](../../paper/reasoning-parts/erdos1041/core.tex#L2279-L2279)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-61ce6ad8b2f0ff`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-61ce6ad8b2f0ff`.
 
 <a id="source-source-62ee65065db497"></a>
 
@@ -4740,10 +4617,8 @@ Public implementation or evidence coordinates:
 - [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L4481-L4484) — lines `4481–4484`; excerpt `sha256:a90c5dfbfb8e145cf527f538fca7dae79167bd3b9090eb55e85806bc4d0edba4`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L4423-L4426) — lines `4423–4426`; excerpt `sha256:a90c5dfbfb8e145cf527f538fca7dae79167bd3b9090eb55e85806bc4d0edba4`
 
-Paper citation usages:
-
-- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:973](../../paper/269/erdos-269-three-prime-running-lcm.tex#L973-L973)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:2229](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L2229-L2229), [cite at paper/reasoning-parts/erdos269/core.tex:2171](../../paper/reasoning-parts/erdos269/core.tex#L2171-L2171)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-62ee65065db497`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-62ee65065db497`.
 
 <a id="source-source-62f9190aeb7d34"></a>
 
@@ -4778,9 +4653,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5150-L5154) — lines `5150–5154`; excerpt `sha256:ba25c19782edca439fc59536016a13c5d36a33cd2f359c1c6f2080fb7a229a6d`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L4895-L4895) — lines `4895–4895`; excerpt `sha256:c2aaa0c462b306e178c3f673ec026c7a33d2885dc0bdb20b45061a7ba1d2ad52`
 
-Paper citation usages:
-
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4926](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4926-L4926), [cite at paper/reasoning-parts/erdos1049/core.tex:4895](../../paper/reasoning-parts/erdos1049/core.tex#L4895-L4895)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-62f9190aeb7d34`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-62f9190aeb7d34`.
 
 <a id="source-source-6346eeeac5036d"></a>
 
@@ -4809,10 +4683,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10304-L10309) — lines `10304–10309`; excerpt `sha256:786abf98fbd01e8ff40ec5a22574fff70c8c6565197a70a1b1cf5f71fbf62c38`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10112-L10117) — lines `10112–10117`; excerpt `sha256:786abf98fbd01e8ff40ec5a22574fff70c8c6565197a70a1b1cf5f71fbf62c38`
 
-Paper citation usages:
-
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:518](../../paper/archive/erdos249-257-main-paper.tex#L518-L518), [cite at paper/archive/erdos249-257-main-paper.tex:549](../../paper/archive/erdos249-257-main-paper.tex#L549-L549)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:2794](../../paper/249/erdos249-totient-reasoning-surface.tex#L2794-L2794), [cite at paper/249/erdos249-totient-reasoning-surface.tex:3980](../../paper/249/erdos249-totient-reasoning-surface.tex#L3980-L3980), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:2602](../../paper/reasoning-parts/erdos249/a249_front.tex#L2602-L2602), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:3788](../../paper/reasoning-parts/erdos249/a249_front.tex#L3788-L3788)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-6346eeeac5036d`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-6346eeeac5036d`.
 
 <a id="source-source-63a234b13e4427"></a>
 
@@ -4841,11 +4713,8 @@ Public implementation or evidence coordinates:
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L3083-L3085) — lines `3083–3085`; excerpt `sha256:17a384a1fdc66bdc50bfc789563acfc6b6e42f091c58ab6c6108261e4a3dd127`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L3041-L3043) — lines `3041–3043`; excerpt `sha256:17a384a1fdc66bdc50bfc789563acfc6b6e42f091c58ab6c6108261e4a3dd127`
 
-Paper citation usages:
-
-- `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:1098](../../paper/257/erdos-257-mersenne-support-subseries.tex#L1098-L1098), [cite at paper/257/erdos-257-mersenne-support-subseries.tex:1569](../../paper/257/erdos-257-mersenne-support-subseries.tex#L1569-L1569)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:629](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L629-L629), [cite at paper/reasoning-parts/erdos251/core.tex:587](../../paper/reasoning-parts/erdos251/core.tex#L587-L587)
-- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1409](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1409-L1409), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:2405](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L2405-L2405), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:5613](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L5613-L5613), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:9549](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9549-L9549), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:1209](../../paper/reasoning-parts/erdos257/a257_front.tex#L1209-L1209), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:2205](../../paper/reasoning-parts/erdos257/a257_front.tex#L2205-L2205), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:5413](../../paper/reasoning-parts/erdos257/a257_front.tex#L5413-L5413), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:9349](../../paper/reasoning-parts/erdos257/a257_front.tex#L9349-L9349)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-63a234b13e4427`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-63a234b13e4427`.
 
 <a id="source-source-6564b203677735"></a>
 
@@ -4875,10 +4744,8 @@ Public implementation or evidence coordinates:
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L3043-L3045) — lines `3043–3045`; excerpt `sha256:e0cdf66cd89fa67f2f9a3d3c6f323475758efe2e39f2801613ca5fd24480d6c8`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L3001-L3003) — lines `3001–3003`; excerpt `sha256:e0cdf66cd89fa67f2f9a3d3c6f323475758efe2e39f2801613ca5fd24480d6c8`
 
-Paper citation usages:
-
-- `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:751](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L751-L751)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2082](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2082-L2082), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2084](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2084-L2084), [cite at paper/reasoning-parts/erdos251/core.tex:2040](../../paper/reasoning-parts/erdos251/core.tex#L2040-L2040), [cite at paper/reasoning-parts/erdos251/core.tex:2042](../../paper/reasoning-parts/erdos251/core.tex#L2042-L2042)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-6564b203677735`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-6564b203677735`.
 
 <a id="source-source-685765cbd1ebe2"></a>
 
@@ -4936,12 +4803,8 @@ Public implementation or evidence coordinates:
 - [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9665-L9676) — lines `9665–9676`; excerpt `sha256:3171372fd423eb3435f8b30446d71ac1de6f8b8a34d05c55191952194f66d6dd`
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L9465-L9476) — lines `9465–9476`; excerpt `sha256:3171372fd423eb3435f8b30446d71ac1de6f8b8a34d05c55191952194f66d6dd`
 
-Paper citation usages:
-
-- `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:832](../../paper/257/erdos-257-mersenne-support-subseries.tex#L832-L832)
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:756](../../paper/archive/erdos249-257-main-paper.tex#L756-L757)
-- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:2249](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L2249-L2249), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:2049](../../paper/reasoning-parts/erdos257/a257_front.tex#L2049-L2049)
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1854](../../paper/synthesis/optimal-sparse-perturbations.tex#L1854-L1854)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-685765cbd1ebe2`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-685765cbd1ebe2`.
 
 <a id="source-source-691e9cc3c46273"></a>
 
@@ -4966,11 +4829,8 @@ Public implementation or evidence coordinates:
 - [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9720-L9726) — lines `9720–9726`; excerpt `sha256:e9c60c753e365223406c899dee816ed5743af3cc67081cc3002ceb4f8cf6b1da`
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L9520-L9526) — lines `9520–9526`; excerpt `sha256:e9c60c753e365223406c899dee816ed5743af3cc67081cc3002ceb4f8cf6b1da`
 
-Paper citation usages:
-
-- `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:1097](../../paper/257/erdos-257-mersenne-support-subseries.tex#L1097-L1097)
-- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:9548](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9548-L9548), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:9348](../../paper/reasoning-parts/erdos257/a257_front.tex#L9348-L9348)
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:877](../../paper/synthesis/optimal-sparse-perturbations.tex#L877-L877), [cite at paper/synthesis/optimal-sparse-perturbations.tex:904](../../paper/synthesis/optimal-sparse-perturbations.tex#L904-L904), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1969](../../paper/synthesis/optimal-sparse-perturbations.tex#L1969-L1969)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-691e9cc3c46273`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-691e9cc3c46273`.
 
 <a id="source-source-6a5bf83735fdef"></a>
 
@@ -4994,9 +4854,8 @@ Public implementation or evidence coordinates:
 - [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L3232-L3236) — lines `3232–3236`; excerpt `sha256:e676e6cb0116aea00ea8f9c6ab98b451db00b3a8f7711be43649ec04855f1014`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L3197-L3201) — lines `3197–3201`; excerpt `sha256:e676e6cb0116aea00ea8f9c6ab98b451db00b3a8f7711be43649ec04855f1014`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1868](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1868-L1868), [cite at paper/reasoning-parts/erdos68/core.tex:1833](../../paper/reasoning-parts/erdos68/core.tex#L1833-L1833)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-6a5bf83735fdef`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-6a5bf83735fdef`.
 
 <a id="source-source-6accca20cd5e44"></a>
 
@@ -5033,12 +4892,8 @@ Public implementation or evidence coordinates:
 - [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9619-L9630) — lines `9619–9630`; excerpt `sha256:dc3b6825148962fe6dcac631ca31bbed24b0c5d155adf89e2b13951655dda752`
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L9419-L9430) — lines `9419–9430`; excerpt `sha256:dc3b6825148962fe6dcac631ca31bbed24b0c5d155adf89e2b13951655dda752`
 
-Paper citation usages:
-
-- `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:1567](../../paper/257/erdos-257-mersenne-support-subseries.tex#L1567-L1567)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5006](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5006-L5006), [cite at paper/reasoning-parts/erdos1049/core.tex:4975](../../paper/reasoning-parts/erdos1049/core.tex#L4975-L4975)
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:707](../../paper/archive/erdos249-257-main-paper.tex#L707-L707), [cite at paper/archive/erdos249-257-main-paper.tex:709](../../paper/archive/erdos249-257-main-paper.tex#L709-L709), [cite at paper/archive/erdos249-257-main-paper.tex:713](../../paper/archive/erdos249-257-main-paper.tex#L713-L713), [cite at paper/archive/erdos249-257-main-paper.tex:715](../../paper/archive/erdos249-257-main-paper.tex#L715-L715), [cite at paper/archive/erdos249-257-main-paper.tex:718](../../paper/archive/erdos249-257-main-paper.tex#L718-L718), [cite at paper/archive/erdos249-257-main-paper.tex:3850](../../paper/archive/erdos249-257-main-paper.tex#L3850-L3851), [cite at paper/archive/erdos249-257-main-paper.tex:3856](../../paper/archive/erdos249-257-main-paper.tex#L3856-L3856)
-- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1180](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1180-L1180), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1183](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1183-L1183), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1289](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1289-L1289), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:2357](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L2357-L2357), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:2384](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L2384-L2384), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:3118](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L3118-L3118), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:3149](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L3149-L3149), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:3153](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L3153-L3153), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:3274](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L3274-L3274), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:7039](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L7039-L7039), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:7196](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L7196-L7196), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:9540](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9540-L9540), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:980](../../paper/reasoning-parts/erdos257/a257_front.tex#L980-L980), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:983](../../paper/reasoning-parts/erdos257/a257_front.tex#L983-L983), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:1089](../../paper/reasoning-parts/erdos257/a257_front.tex#L1089-L1089), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:2157](../../paper/reasoning-parts/erdos257/a257_front.tex#L2157-L2157), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:2184](../../paper/reasoning-parts/erdos257/a257_front.tex#L2184-L2184), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:2918](../../paper/reasoning-parts/erdos257/a257_front.tex#L2918-L2918), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:2949](../../paper/reasoning-parts/erdos257/a257_front.tex#L2949-L2949), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:2953](../../paper/reasoning-parts/erdos257/a257_front.tex#L2953-L2953), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:3074](../../paper/reasoning-parts/erdos257/a257_front.tex#L3074-L3074), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:6839](../../paper/reasoning-parts/erdos257/a257_front.tex#L6839-L6839), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:6996](../../paper/reasoning-parts/erdos257/a257_front.tex#L6996-L6996), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:9340](../../paper/reasoning-parts/erdos257/a257_front.tex#L9340-L9340)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-6accca20cd5e44`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-6accca20cd5e44`.
 
 <a id="source-source-6ade6fbcd34d79"></a>
 
@@ -5056,9 +4911,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1230-L1234) — lines `1230–1234`; excerpt `sha256:efda1bcea3bdd260e4c65a32ee535929550041f56b1b8d4bea22ef144c19c9b4`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1051](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1051-L1051)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-6ade6fbcd34d79`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-6ade6fbcd34d79`.
 
 <a id="source-source-6b460d123159d9"></a>
 
@@ -5082,10 +4936,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10399-L10405) — lines `10399–10405`; excerpt `sha256:baac1f8ff06d86954ea6fb3d6ea4be3f7ba3e7cc9c207ea61e4e3d1c42db53d0`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10207-L10213) — lines `10207–10213`; excerpt `sha256:baac1f8ff06d86954ea6fb3d6ea4be3f7ba3e7cc9c207ea61e4e3d1c42db53d0`
 
-Paper citation usages:
-
-- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:518](../../paper/249/erdos-249-binary-totient-series.tex#L518-L518)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:299](../../paper/249/erdos249-totient-reasoning-surface.tex#L299-L300), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:107](../../paper/reasoning-parts/erdos249/a249_front.tex#L107-L108)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-6b460d123159d9`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-6b460d123159d9`.
 
 <a id="source-source-6c2fbacaba626f"></a>
 
@@ -5117,12 +4969,8 @@ Public implementation or evidence coordinates:
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5338-L5344) — lines `5338–5344`; excerpt `sha256:ae062de55b96a5c30b121b0f18d20452951075be7688d2b736a0ddcd2277483b`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5307-L5313) — lines `5307–5313`; excerpt `sha256:ae062de55b96a5c30b121b0f18d20452951075be7688d2b736a0ddcd2277483b`
 
-Paper citation usages:
-
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1076](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1076-L1076)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1237](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1237-L1237), [cite at paper/reasoning-parts/erdos1049/core.tex:1206](../../paper/reasoning-parts/erdos1049/core.tex#L1206-L1206)
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:3967](../../paper/archive/erdos249-257-main-paper.tex#L3967-L3968)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:1912](../../paper/249/erdos249-totient-reasoning-surface.tex#L1912-L1912), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:1720](../../paper/reasoning-parts/erdos249/a249_front.tex#L1720-L1720)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-6c2fbacaba626f`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-6c2fbacaba626f`.
 
 <a id="source-source-6cfe654e650970"></a>
 
@@ -5145,9 +4993,8 @@ Public implementation or evidence coordinates:
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5363-L5368) — lines `5363–5368`; excerpt `sha256:4948c1fb7d6744d97873f78ed67c6b8f64ed69d62dfe299bf8c4335148a7d850`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5332-L5337) — lines `5332–5337`; excerpt `sha256:4948c1fb7d6744d97873f78ed67c6b8f64ed69d62dfe299bf8c4335148a7d850`
 
-Paper citation usages:
-
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5012](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5012-L5012), [cite at paper/reasoning-parts/erdos1049/core.tex:4981](../../paper/reasoning-parts/erdos1049/core.tex#L4981-L4981)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-6cfe654e650970`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-6cfe654e650970`.
 
 <a id="source-source-6d8837bbc174ce"></a>
 
@@ -5166,9 +5013,8 @@ Public implementation or evidence coordinates:
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L3087-L3089) — lines `3087–3089`; excerpt `sha256:4b2c462e9156fcefa9deab67573f0793906c11306432364ce53464dbb6c19538`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L3045-L3047) — lines `3045–3047`; excerpt `sha256:4b2c462e9156fcefa9deab67573f0793906c11306432364ce53464dbb6c19538`
 
-Paper citation usages:
-
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:634](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L634-L634), [cite at paper/reasoning-parts/erdos251/core.tex:592](../../paper/reasoning-parts/erdos251/core.tex#L592-L592)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-6d8837bbc174ce`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-6d8837bbc174ce`.
 
 <a id="source-source-6dbbb774ff928e"></a>
 
@@ -5185,6 +5031,9 @@ Paper citation usages:
 Exact source locations:
 
 - [Public bibliographic identity and author record; metadata checked on 2026-09-12. This does not verify a mathematical use.](https://scsc.uk/gsn-standard)
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-6dbbb774ff928e`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-6dbbb774ff928e`.
 
 <a id="source-source-71037224a1dd7c"></a>
 
@@ -5210,10 +5059,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10282-L10286) — lines `10282–10286`; excerpt `sha256:bb9e02a0cb308737040e1d9af54ab2a42d227d1dbf584528d1d8763f1f2fe1e1`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10090-L10094) — lines `10090–10094`; excerpt `sha256:bb9e02a0cb308737040e1d9af54ab2a42d227d1dbf584528d1d8763f1f2fe1e1`
 
-Paper citation usages:
-
-- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:692](../../paper/249/erdos-249-binary-totient-series.tex#L692-L692)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:1753](../../paper/249/erdos249-totient-reasoning-surface.tex#L1753-L1753), [cite at paper/249/erdos249-totient-reasoning-surface.tex:9870](../../paper/249/erdos249-totient-reasoning-surface.tex#L9870-L9870), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:1561](../../paper/reasoning-parts/erdos249/a249_front.tex#L1561-L1561), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:9678](../../paper/reasoning-parts/erdos249/a249_front.tex#L9678-L9678)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-71037224a1dd7c`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-71037224a1dd7c`.
 
 <a id="source-source-71fb76f6e1363b"></a>
 
@@ -5241,10 +5088,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L2173-L2173) — lines `2173–2173`; excerpt `sha256:b87bb3e4a7af82e9910a8693bb635b75f50fdfb4e5b86a06543454c0545aca25`
 - [paper/269/erdos-269-three-prime-running-lcm.tex](../../paper/269/erdos-269-three-prime-running-lcm.tex#L974-L974) — lines `974–974`; excerpt `sha256:25f62404517277408df2984823356363c2bc4a97bfc1509a78dca579fdbc0562`
 
-Paper citation usages:
-
-- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:974](../../paper/269/erdos-269-three-prime-running-lcm.tex#L974-L974)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:2231](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L2231-L2231), [cite at paper/reasoning-parts/erdos269/core.tex:2173](../../paper/reasoning-parts/erdos269/core.tex#L2173-L2173)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-71fb76f6e1363b`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-71fb76f6e1363b`.
 
 <a id="source-source-724fef812699b7"></a>
 
@@ -5267,9 +5112,8 @@ Public implementation or evidence coordinates:
 - [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L3252-L3256) — lines `3252–3256`; excerpt `sha256:a48ddc588b042ca4c1ef063504be6dd2e3c0c0d8f6ce9a6a0b3fe1989375c081`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L3217-L3221) — lines `3217–3221`; excerpt `sha256:a48ddc588b042ca4c1ef063504be6dd2e3c0c0d8f6ce9a6a0b3fe1989375c081`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1979](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1979-L1979), [cite at paper/reasoning-parts/erdos68/core.tex:1944](../../paper/reasoning-parts/erdos68/core.tex#L1944-L1944)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-724fef812699b7`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-724fef812699b7`.
 
 <a id="source-source-741da55b02c5a9"></a>
 
@@ -5323,12 +5167,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10253-L10258) — lines `10253–10258`; excerpt `sha256:5cedcebcfca20ab63e92ba4441d035c85b0a632e564a43408ffe6b79fe30ae48`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10061-L10066) — lines `10061–10066`; excerpt `sha256:5cedcebcfca20ab63e92ba4441d035c85b0a632e564a43408ffe6b79fe30ae48`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:990](../../paper/systems/claim-faithful-publication-systems-paper.tex#L990-L990), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1056](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1056-L1056)
-- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:79](../../paper/249/erdos-249-binary-totient-series.tex#L79-L79), [cite at paper/249/erdos-249-binary-totient-series.tex:512](../../paper/249/erdos-249-binary-totient-series.tex#L512-L512)
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:3176](../../paper/archive/erdos249-257-main-paper.tex#L3176-L3176)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:287](../../paper/249/erdos249-totient-reasoning-surface.tex#L287-L287), [cite at paper/249/erdos249-totient-reasoning-surface.tex:7005](../../paper/249/erdos249-totient-reasoning-surface.tex#L7005-L7005), [cite at paper/249/erdos249-totient-reasoning-surface.tex:8742](../../paper/249/erdos249-totient-reasoning-surface.tex#L8742-L8742), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:95](../../paper/reasoning-parts/erdos249/a249_front.tex#L95-L95), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:6813](../../paper/reasoning-parts/erdos249/a249_front.tex#L6813-L6813), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:8550](../../paper/reasoning-parts/erdos249/a249_front.tex#L8550-L8550)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-741da55b02c5a9`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-741da55b02c5a9`.
 
 <a id="source-source-75e79d15dfab15"></a>
 
@@ -5346,10 +5186,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1642-L1646) — lines `1642–1646`; excerpt `sha256:0e32e51882f8449928d597050d67e151bf67b120c65ffffdeb1ad3182cbfbb6a`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1054](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1054-L1054)
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:434](../../paper/systems/open-source-mathematics-strategy.tex#L434-L434), [cite at paper/systems/open-source-mathematics-strategy.tex:1107](../../paper/systems/open-source-mathematics-strategy.tex#L1107-L1107)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-75e79d15dfab15`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-75e79d15dfab15`.
 
 <a id="source-source-77333436a9e579"></a>
 
@@ -5375,10 +5213,8 @@ Public implementation or evidence coordinates:
 - [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9726-L9732) — lines `9726–9732`; excerpt `sha256:e118982ef9fb8a4e691c79683424d1b891a905dfc8672b0a0f1e9237f5fb3d99`
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L9526-L9532) — lines `9526–9532`; excerpt `sha256:e118982ef9fb8a4e691c79683424d1b891a905dfc8672b0a0f1e9237f5fb3d99`
 
-Paper citation usages:
-
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:628](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L628-L628), [cite at paper/reasoning-parts/erdos251/core.tex:586](../../paper/reasoning-parts/erdos251/core.tex#L586-L586)
-- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:9550](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9550-L9550), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:9350](../../paper/reasoning-parts/erdos257/a257_front.tex#L9350-L9350)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-77333436a9e579`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-77333436a9e579`.
 
 <a id="source-source-779915b8355ac1"></a>
 
@@ -5398,9 +5234,8 @@ Public implementation or evidence coordinates:
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L3073-L3075) — lines `3073–3075`; excerpt `sha256:a876ac96db99087a07bfa49f869f9990f286e49a52310ceab8423d7980641577`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L3031-L3033) — lines `3031–3033`; excerpt `sha256:a876ac96db99087a07bfa49f869f9990f286e49a52310ceab8423d7980641577`
 
-Paper citation usages:
-
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:623](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L623-L623), [cite at paper/reasoning-parts/erdos251/core.tex:581](../../paper/reasoning-parts/erdos251/core.tex#L581-L581)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-779915b8355ac1`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-779915b8355ac1`.
 
 <a id="source-source-77ddbf43e364f7"></a>
 
@@ -5429,12 +5264,8 @@ Public implementation or evidence coordinates:
 - [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L4493-L4496) — lines `4493–4496`; excerpt `sha256:45604844b23b875721c499f1d941719928dcc2b6bb269b97c8564702e5d3051b`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L4435-L4438) — lines `4435–4438`; excerpt `sha256:45604844b23b875721c499f1d941719928dcc2b6bb269b97c8564702e5d3051b`
 
-Paper citation usages:
-
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:1198](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L1198-L1198), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:1253](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L1253-L1253)
-- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:976](../../paper/269/erdos-269-three-prime-running-lcm.tex#L976-L976)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:846](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L846-L846), [cite at paper/reasoning-parts/erdos243/core.tex:807](../../paper/reasoning-parts/erdos243/core.tex#L807-L807)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:2590](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L2590-L2590), [cite at paper/reasoning-parts/erdos269/core.tex:2532](../../paper/reasoning-parts/erdos269/core.tex#L2532-L2532)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-77ddbf43e364f7`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-77ddbf43e364f7`.
 
 <a id="source-source-78565c625f0ea3"></a>
 
@@ -5458,9 +5289,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L4392-L4395) — lines `4392–4395`; excerpt `sha256:5eafead45851c5d9d3dbc7e8333b2811c3bfb396c82d092e088a35955fc4a00e`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L122-L122) — lines `122–122`; excerpt `sha256:46b167725fbe089dbde15bd1c1125d18dbd277b79357403bbf40c73a4a9a1c6c`
 
-Paper citation usages:
-
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:180](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L180-L180), [cite at paper/reasoning-parts/erdos269/core.tex:122](../../paper/reasoning-parts/erdos269/core.tex#L122-L122)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-78565c625f0ea3`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-78565c625f0ea3`.
 
 <a id="source-source-7935fe19eb831b"></a>
 
@@ -5496,9 +5326,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L4909-L4909) — lines `4909–4909`; excerpt `sha256:e85a60b5f00cd26f892425661c3e141ada248c650f76fa1bbab1b0d4d117a642`
 - [lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean](../../lean/ErdosProblems/Erdos1049/QAperyDiagonalNonEquivalence.lean#L88-L95) — lines `88–95`; excerpt `sha256:2223d196ea50c7aa4910ff7135c17302d35865756bc58597c18dfb8b05e931ac`
 
-Paper citation usages:
-
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4940](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4940-L4940), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4961](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4961-L4961), [cite at paper/reasoning-parts/erdos1049/core.tex:4909](../../paper/reasoning-parts/erdos1049/core.tex#L4909-L4909), [cite at paper/reasoning-parts/erdos1049/core.tex:4930](../../paper/reasoning-parts/erdos1049/core.tex#L4930-L4930)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-7935fe19eb831b`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-7935fe19eb831b`.
 
 <a id="source-source-79afab8abaf9d5"></a>
 
@@ -5522,10 +5351,8 @@ Public implementation or evidence coordinates:
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1139-L1143) — lines `1139–1143`; excerpt `sha256:10b6425a7219ff0ff262d8974728a77849f4d7543b958b9923084c67335ca1f3`
 - [docs/research-commons/rounds/round7/README.md](../../docs/research-commons/rounds/round7/README.md#L56-L60) — lines `56–60`; excerpt `sha256:1d66252ee7cb6baaf5065f96ec3ab4dad3e7296eca6d2c98ed0d5c7e41e08a97`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1051](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1051-L1051)
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:742](../../paper/systems/open-source-mathematics-strategy.tex#L742-L742), [cite at paper/systems/open-source-mathematics-strategy.tex:822](../../paper/systems/open-source-mathematics-strategy.tex#L822-L822), [cite at paper/systems/open-source-mathematics-strategy.tex:854](../../paper/systems/open-source-mathematics-strategy.tex#L854-L854), [cite at paper/systems/open-source-mathematics-strategy.tex:1064](../../paper/systems/open-source-mathematics-strategy.tex#L1064-L1064)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-79afab8abaf9d5`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-79afab8abaf9d5`.
 
 <a id="source-source-7a9657920d576b"></a>
 
@@ -5549,10 +5376,8 @@ Public implementation or evidence coordinates:
 - [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L4499-L4502) — lines `4499–4502`; excerpt `sha256:b9e2249bc4d01297697400d9029b3c8e7883b75d69de50546f4bde27319bc74f`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L4441-L4444) — lines `4441–4444`; excerpt `sha256:b9e2249bc4d01297697400d9029b3c8e7883b75d69de50546f4bde27319bc74f`
 
-Paper citation usages:
-
-- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:981](../../paper/269/erdos-269-three-prime-running-lcm.tex#L981-L981)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3394](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3394-L3394), [cite at paper/reasoning-parts/erdos269/core.tex:3336](../../paper/reasoning-parts/erdos269/core.tex#L3336-L3336)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-7a9657920d576b`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-7a9657920d576b`.
 
 <a id="source-source-7aa96129ebb643"></a>
 
@@ -5570,9 +5395,8 @@ Public implementation or evidence coordinates:
 
 - [docs/papers/mirror/plectis-public-system.tex](../../docs/papers/mirror/plectis-public-system.tex#L1324-L1329) — lines `1324–1329`; excerpt `sha256:8c9e993b368de8fbbc0268799b73c63a9a57820cb67067d572137c49613f2ef8`
 
-Paper citation usages:
-
-- `plectis-public-system`: [cite at docs/papers/mirror/plectis-public-system.tex:410](../../docs/papers/mirror/plectis-public-system.tex#L410-L410), [cite at docs/papers/mirror/plectis-public-system.tex:664](../../docs/papers/mirror/plectis-public-system.tex#L664-L664)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-7aa96129ebb643`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-7aa96129ebb643`.
 
 <a id="source-source-7ac8693558c1a2"></a>
 
@@ -5592,10 +5416,8 @@ Public implementation or evidence coordinates:
 - [paper/1041/erdos1041-lemniscate-reasoning-surface.tex](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L5505-L5508) — lines `5505–5508`; excerpt `sha256:6aaf6da69e5a056c56565ce65b93dc9624cd8a22480a7b32eacbb405f875508a`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5455-L5458) — lines `5455–5458`; excerpt `sha256:6aaf6da69e5a056c56565ce65b93dc9624cd8a22480a7b32eacbb405f875508a`
 
-Paper citation usages:
-
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:980](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L980-L980)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:3182](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L3182-L3182), [cite at paper/reasoning-parts/erdos1041/core.tex:3132](../../paper/reasoning-parts/erdos1041/core.tex#L3132-L3132)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-7ac8693558c1a2`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-7ac8693558c1a2`.
 
 <a id="source-source-7c8ba4ea6eea79"></a>
 
@@ -5621,11 +5443,8 @@ Public implementation or evidence coordinates:
 - [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L4508-L4512) — lines `4508–4512`; excerpt `sha256:ef78f91a2a53616a917a9b8d574a5da55953d5024938b45990e8decb1515b07b`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L4450-L4454) — lines `4450–4454`; excerpt `sha256:ef78f91a2a53616a917a9b8d574a5da55953d5024938b45990e8decb1515b07b`
 
-Paper citation usages:
-
-- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:982](../../paper/269/erdos-269-three-prime-running-lcm.tex#L982-L982)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:8616](../../paper/249/erdos249-totient-reasoning-surface.tex#L8616-L8616), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:8424](../../paper/reasoning-parts/erdos249/a249_front.tex#L8424-L8424)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3520](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3520-L3520), [cite at paper/reasoning-parts/erdos269/core.tex:3462](../../paper/reasoning-parts/erdos269/core.tex#L3462-L3462)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-7c8ba4ea6eea79`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-7c8ba4ea6eea79`.
 
 <a id="source-source-7d871bf2920e53"></a>
 
@@ -5642,6 +5461,9 @@ Paper citation usages:
 Exact source locations:
 
 - [Public bibliographic identity and author record; metadata checked on 2026-09-12. This does not verify a mathematical use.](https://arxiv.org/abs/2604.26311v1)
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-7d871bf2920e53`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-7d871bf2920e53`.
 
 <a id="source-source-7d923cace5602a"></a>
 
@@ -5664,9 +5486,8 @@ Public implementation or evidence coordinates:
 - [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L3272-L3276) — lines `3272–3276`; excerpt `sha256:ea1e57fc8df0e5e2dc90fc296ae5b3eb8139cdc0ae9ec706f448b795a1933541`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L3237-L3241) — lines `3237–3241`; excerpt `sha256:ea1e57fc8df0e5e2dc90fc296ae5b3eb8139cdc0ae9ec706f448b795a1933541`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2102](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2102-L2102), [cite at paper/reasoning-parts/erdos68/core.tex:2067](../../paper/reasoning-parts/erdos68/core.tex#L2067-L2067)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-7d923cace5602a`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-7d923cace5602a`.
 
 <a id="source-source-7dc956ce55b7a0"></a>
 
@@ -5732,18 +5553,8 @@ Public implementation or evidence coordinates:
 - [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L4158-L4162) — lines `4158–4162`; excerpt `sha256:7534aa59bb234c308a55714341b32d4a03d5c73d5381c36bf619a6d8cdc5e0c4`
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L4119-L4123) — lines `4119–4123`; excerpt `sha256:7534aa59bb234c308a55714341b32d4a03d5c73d5381c36bf619a6d8cdc5e0c4`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:817](../../paper/systems/claim-faithful-publication-systems-paper.tex#L817-L817), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1056](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1056-L1056)
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:1196](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L1196-L1196), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:1250](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L1250-L1250)
-- `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:56](../../paper/257/erdos-257-mersenne-support-subseries.tex#L56-L56), [cite at paper/257/erdos-257-mersenne-support-subseries.tex:136](../../paper/257/erdos-257-mersenne-support-subseries.tex#L136-L136), [cite at paper/257/erdos-257-mersenne-support-subseries.tex:914](../../paper/257/erdos-257-mersenne-support-subseries.tex#L914-L914), [cite at paper/257/erdos-257-mersenne-support-subseries.tex:927](../../paper/257/erdos-257-mersenne-support-subseries.tex#L927-L927), [cite at paper/257/erdos-257-mersenne-support-subseries.tex:1566](../../paper/257/erdos-257-mersenne-support-subseries.tex#L1566-L1566)
-- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:418](../../paper/269/erdos-269-three-prime-running-lcm.tex#L418-L418), [cite at paper/269/erdos-269-three-prime-running-lcm.tex:970](../../paper/269/erdos-269-three-prime-running-lcm.tex#L970-L970)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:841](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L841-L841), [cite at paper/reasoning-parts/erdos243/core.tex:802](../../paper/reasoning-parts/erdos243/core.tex#L802-L802)
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:694](../../paper/archive/erdos249-257-main-paper.tex#L694-L694)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:1951](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L1951-L1951), [cite at paper/reasoning-parts/erdos251/core.tex:1909](../../paper/reasoning-parts/erdos251/core.tex#L1909-L1909)
-- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1178](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1178-L1178), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:978](../../paper/reasoning-parts/erdos257/a257_front.tex#L978-L978)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:362](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L362-L362), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:2542](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L2542-L2542), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3932](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3932-L3932), [cite at paper/reasoning-parts/erdos269/core.tex:304](../../paper/reasoning-parts/erdos269/core.tex#L304-L304), [cite at paper/reasoning-parts/erdos269/core.tex:2484](../../paper/reasoning-parts/erdos269/core.tex#L2484-L2484), [cite at paper/reasoning-parts/erdos269/core.tex:3874](../../paper/reasoning-parts/erdos269/core.tex#L3874-L3874)
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:938](../../paper/synthesis/optimal-sparse-perturbations.tex#L938-L938)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-7dc956ce55b7a0`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-7dc956ce55b7a0`.
 
 <a id="source-source-7f1f2a3fd9238c"></a>
 
@@ -5772,10 +5583,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L1641-L1641) — lines `1641–1641`; excerpt `sha256:9b744f2b7f5621dd470311a82aeee2e8b051a79200911c2b6b0f3b283301c6d6`
 - [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1207-L1212) — lines `1207–1212`; excerpt `sha256:03547751579bddb06550186cbd4cd5363e790e059ff80b147b313232f2329016`
 
-Paper citation usages:
-
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:1126](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1126-L1126)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1691](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1691-L1691), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:2362](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L2362-L2362), [cite at paper/reasoning-parts/erdos1041/core.tex:1641](../../paper/reasoning-parts/erdos1041/core.tex#L1641-L1641), [cite at paper/reasoning-parts/erdos1041/core.tex:2312](../../paper/reasoning-parts/erdos1041/core.tex#L2312-L2312)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-7f1f2a3fd9238c`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-7f1f2a3fd9238c`.
 
 <a id="source-source-80c9ae60b7f7be"></a>
 
@@ -5799,10 +5608,8 @@ Public implementation or evidence coordinates:
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1363-L1365) — lines `1363–1365`; excerpt `sha256:2791c8042dc468854cefb24a74e27b8ce018aa3c98bb4987cd94e39599e9c97d`
 - [docs/research-commons/rounds/round7/README.md](../../docs/research-commons/rounds/round7/README.md#L61-L64) — lines `61–64`; excerpt `sha256:874b2be52514deae844bef1f44fcbc81dfb88cf010c98a26bf6bc0cfa4dae767`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:111](../../paper/systems/claim-faithful-publication-systems-paper.tex#L111-L111), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1042](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1042-L1042)
-- `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:477](../../paper/systems/cold-clone-to-proof-receipt.tex#L477-L477)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-80c9ae60b7f7be`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-80c9ae60b7f7be`.
 
 <a id="source-source-811205223e0788"></a>
 
@@ -5827,10 +5634,8 @@ Public implementation or evidence coordinates:
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L3035-L3037) — lines `3035–3037`; excerpt `sha256:5cfb10540069185577d738da52c429d1b74a4f8ce94c54018d941550c730eeaf`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L2993-L2995) — lines `2993–2995`; excerpt `sha256:5cfb10540069185577d738da52c429d1b74a4f8ce94c54018d941550c730eeaf`
 
-Paper citation usages:
-
-- `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:476](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L476-L476)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:490](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L490-L490), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:657](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L657-L657), [cite at paper/reasoning-parts/erdos251/core.tex:448](../../paper/reasoning-parts/erdos251/core.tex#L448-L448), [cite at paper/reasoning-parts/erdos251/core.tex:615](../../paper/reasoning-parts/erdos251/core.tex#L615-L615)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-811205223e0788`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-811205223e0788`.
 
 <a id="source-source-818467bc1cb170"></a>
 
@@ -5856,10 +5661,8 @@ Public implementation or evidence coordinates:
 - [paper/1041/erdos1041-lemniscate-reasoning-surface.tex](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L5492-L5497) — lines `5492–5497`; excerpt `sha256:dd81dda92210816aa997d12725fdd2b3d2f7a70097cbd438d5ef8102c0c13e44`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5442-L5447) — lines `5442–5447`; excerpt `sha256:dd81dda92210816aa997d12725fdd2b3d2f7a70097cbd438d5ef8102c0c13e44`
 
-Paper citation usages:
-
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:1122](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1122-L1122)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:5127](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L5127-L5127), [cite at paper/reasoning-parts/erdos1041/core.tex:5077](../../paper/reasoning-parts/erdos1041/core.tex#L5077-L5077)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-818467bc1cb170`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-818467bc1cb170`.
 
 <a id="source-source-81b67bfd835ac9"></a>
 
@@ -5877,9 +5680,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/cold-clone-to-proof-receipt.tex](../../paper/systems/cold-clone-to-proof-receipt.tex#L714-L717) — lines `714–717`; excerpt `sha256:ebb7c8c62fa7ff44ee571f137c47de8e5508a51405cbdd51807c60b2bad5a1f3`
 
-Paper citation usages:
-
-- `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:496](../../paper/systems/cold-clone-to-proof-receipt.tex#L496-L496)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-81b67bfd835ac9`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-81b67bfd835ac9`.
 
 <a id="source-source-82459d858b7d75"></a>
 
@@ -5901,10 +5703,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/cold-clone-to-proof-receipt.tex](../../paper/systems/cold-clone-to-proof-receipt.tex#L720-L723) — lines `720–723`; excerpt `sha256:8662990def0156ee9fa798ccb6915b9367683e2590ac54e5debcf5a71f027cb9`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1043](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1043-L1043)
-- `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:499](../../paper/systems/cold-clone-to-proof-receipt.tex#L499-L499)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-82459d858b7d75`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-82459d858b7d75`.
 
 <a id="source-source-86d1745e2d139b"></a>
 
@@ -5978,10 +5778,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L199-L199) — lines `199–199`; excerpt `sha256:8994330960bdf9e6d8836c94468834265a2e79cdf99b7892977ebbb3dc21c6a2`
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L199-L199) — lines `199–199`; excerpt `sha256:8994330960bdf9e6d8836c94468834265a2e79cdf99b7892977ebbb3dc21c6a2`
 
-Paper citation usages:
-
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:98](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L98-L98), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:158](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L158-L158), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:522](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L522-L522), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:527](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L527-L527), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:675](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L675-L675), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:1139](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L1139-L1140)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:238](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L238-L238), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:859](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L859-L859), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:879](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L879-L879), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:961](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L961-L961), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:967](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L967-L967), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:978](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L978-L978), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:991](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L991-L991), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:992](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L992-L992), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:994](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L994-L994), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1000](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1000-L1000), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1077](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1077-L1077), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2440](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2440-L2440), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2449](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2449-L2449), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2474](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2474-L2474), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2525](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2525-L2525), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2585](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2585-L2585), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2900](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2900-L2900), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2904](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2904-L2904), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:3199](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3199-L3199), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:3279](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3279-L3279), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:3280](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3280-L3280), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:3584](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3584-L3584), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:3587](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3587-L3587), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:3593](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3593-L3593), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:3978](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3978-L3979), [cite at paper/reasoning-parts/erdos243/core.tex:199](../../paper/reasoning-parts/erdos243/core.tex#L199-L199), [cite at paper/reasoning-parts/erdos243/core.tex:820](../../paper/reasoning-parts/erdos243/core.tex#L820-L820), [cite at paper/reasoning-parts/erdos243/core.tex:840](../../paper/reasoning-parts/erdos243/core.tex#L840-L840), [cite at paper/reasoning-parts/erdos243/core.tex:922](../../paper/reasoning-parts/erdos243/core.tex#L922-L922), [cite at paper/reasoning-parts/erdos243/core.tex:928](../../paper/reasoning-parts/erdos243/core.tex#L928-L928), [cite at paper/reasoning-parts/erdos243/core.tex:939](../../paper/reasoning-parts/erdos243/core.tex#L939-L939), [cite at paper/reasoning-parts/erdos243/core.tex:952](../../paper/reasoning-parts/erdos243/core.tex#L952-L952), [cite at paper/reasoning-parts/erdos243/core.tex:953](../../paper/reasoning-parts/erdos243/core.tex#L953-L953), [cite at paper/reasoning-parts/erdos243/core.tex:955](../../paper/reasoning-parts/erdos243/core.tex#L955-L955), [cite at paper/reasoning-parts/erdos243/core.tex:961](../../paper/reasoning-parts/erdos243/core.tex#L961-L961), [cite at paper/reasoning-parts/erdos243/core.tex:1038](../../paper/reasoning-parts/erdos243/core.tex#L1038-L1038), [cite at paper/reasoning-parts/erdos243/core.tex:2401](../../paper/reasoning-parts/erdos243/core.tex#L2401-L2401), [cite at paper/reasoning-parts/erdos243/core.tex:2410](../../paper/reasoning-parts/erdos243/core.tex#L2410-L2410), [cite at paper/reasoning-parts/erdos243/core.tex:2435](../../paper/reasoning-parts/erdos243/core.tex#L2435-L2435), [cite at paper/reasoning-parts/erdos243/core.tex:2486](../../paper/reasoning-parts/erdos243/core.tex#L2486-L2486), [cite at paper/reasoning-parts/erdos243/core.tex:2546](../../paper/reasoning-parts/erdos243/core.tex#L2546-L2546), [cite at paper/reasoning-parts/erdos243/core.tex:2861](../../paper/reasoning-parts/erdos243/core.tex#L2861-L2861), [cite at paper/reasoning-parts/erdos243/core.tex:2865](../../paper/reasoning-parts/erdos243/core.tex#L2865-L2865), [cite at paper/reasoning-parts/erdos243/core.tex:3160](../../paper/reasoning-parts/erdos243/core.tex#L3160-L3160), [cite at paper/reasoning-parts/erdos243/core.tex:3240](../../paper/reasoning-parts/erdos243/core.tex#L3240-L3240), [cite at paper/reasoning-parts/erdos243/core.tex:3241](../../paper/reasoning-parts/erdos243/core.tex#L3241-L3241), [cite at paper/reasoning-parts/erdos243/core.tex:3545](../../paper/reasoning-parts/erdos243/core.tex#L3545-L3545), [cite at paper/reasoning-parts/erdos243/core.tex:3548](../../paper/reasoning-parts/erdos243/core.tex#L3548-L3548), [cite at paper/reasoning-parts/erdos243/core.tex:3554](../../paper/reasoning-parts/erdos243/core.tex#L3554-L3554), [cite at paper/reasoning-parts/erdos243/core.tex:3939](../../paper/reasoning-parts/erdos243/core.tex#L3939-L3940)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-86d1745e2d139b`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-86d1745e2d139b`.
 
 <a id="source-source-8710374c3e8c9f"></a>
 
@@ -6006,9 +5804,8 @@ Public implementation or evidence coordinates:
 
 - [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1183-L1189) — lines `1183–1189`; excerpt `sha256:82d28a8215cfaad9830f9c69ac73ab8a39b6b8fde4ba10c62ec7be6337dc3ff0`
 
-Paper citation usages:
-
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:1140](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1140-L1140)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-8710374c3e8c9f`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-8710374c3e8c9f`.
 
 <a id="source-source-892c567092d6f3"></a>
 
@@ -6048,12 +5845,8 @@ Public implementation or evidence coordinates:
 - [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9739-L9748) — lines `9739–9748`; excerpt `sha256:d09ac96b0131bd7dfc76f01dbf0e7d50ec3b4558035379307812584b13065d36`
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L9539-L9548) — lines `9539–9548`; excerpt `sha256:d09ac96b0131bd7dfc76f01dbf0e7d50ec3b4558035379307812584b13065d36`
 
-Paper citation usages:
-
-- `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:873](../../paper/257/erdos-257-mersenne-support-subseries.tex#L873-L873)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:588](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L588-L588), [cite at paper/reasoning-parts/erdos251/core.tex:546](../../paper/reasoning-parts/erdos251/core.tex#L546-L546)
-- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:9214](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9214-L9214), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:9014](../../paper/reasoning-parts/erdos257/a257_front.tex#L9014-L9014)
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1852](../../paper/synthesis/optimal-sparse-perturbations.tex#L1852-L1852), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1853](../../paper/synthesis/optimal-sparse-perturbations.tex#L1853-L1853), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1972](../../paper/synthesis/optimal-sparse-perturbations.tex#L1972-L1972)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-892c567092d6f3`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-892c567092d6f3`.
 
 <a id="source-source-8935df46fb4693"></a>
 
@@ -6079,10 +5872,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10326-L10331) — lines `10326–10331`; excerpt `sha256:68764d4d7a89374c4c04bae75c94f6c2e0e288f6e20da9c4a285948259753998`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10134-L10139) — lines `10134–10139`; excerpt `sha256:68764d4d7a89374c4c04bae75c94f6c2e0e288f6e20da9c4a285948259753998`
 
-Paper citation usages:
-
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:486](../../paper/archive/erdos249-257-main-paper.tex#L486-L486), [cite at paper/archive/erdos249-257-main-paper.tex:487](../../paper/archive/erdos249-257-main-paper.tex#L487-L487), [cite at paper/archive/erdos249-257-main-paper.tex:4082](../../paper/archive/erdos249-257-main-paper.tex#L4082-L4082), [cite at paper/archive/erdos249-257-main-paper.tex:4781](../../paper/archive/erdos249-257-main-paper.tex#L4781-L4781)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:10183](../../paper/249/erdos249-totient-reasoning-surface.tex#L10183-L10183), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:9991](../../paper/reasoning-parts/erdos249/a249_front.tex#L9991-L9991)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-8935df46fb4693`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-8935df46fb4693`.
 
 <a id="source-source-89b9a294db76bb"></a>
 
@@ -6102,9 +5893,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5397-L5402) — lines `5397–5402`; excerpt `sha256:2eb3162258360253b5cf7a590c5d7eefeabfb1b4633350ee641a14035d11359c`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L1640-L1640) — lines `1640–1640`; excerpt `sha256:5b6b0635f8d7bc8209166c68611d1605127309d1ef4997e63819762365a6909a`
 
-Paper citation usages:
-
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1690](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1690-L1690), [cite at paper/reasoning-parts/erdos1041/core.tex:1640](../../paper/reasoning-parts/erdos1041/core.tex#L1640-L1640)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-89b9a294db76bb`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-89b9a294db76bb`.
 
 <a id="source-source-8ac37c92429a46"></a>
 
@@ -6126,9 +5916,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L1423-L1423) — lines `1423–1423`; excerpt `sha256:05ae035c98ef1be04452fd7e72676d785c26a101271763e5bf6acf84902d1963`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L1423-L1423) — lines `1423–1423`; excerpt `sha256:05ae035c98ef1be04452fd7e72676d785c26a101271763e5bf6acf84902d1963`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1458](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1458-L1458), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2310](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2310-L2310), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2500](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2500-L2500), [cite at paper/reasoning-parts/erdos68/core.tex:1423](../../paper/reasoning-parts/erdos68/core.tex#L1423-L1423), [cite at paper/reasoning-parts/erdos68/core.tex:2275](../../paper/reasoning-parts/erdos68/core.tex#L2275-L2275), [cite at paper/reasoning-parts/erdos68/core.tex:2465](../../paper/reasoning-parts/erdos68/core.tex#L2465-L2465)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-8ac37c92429a46`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-8ac37c92429a46`.
 
 <a id="source-source-91756d895a28a8"></a>
 
@@ -6158,11 +5947,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L4401-L4405) — lines `4401–4405`; excerpt `sha256:e828b32afe869265193334410009d5198e4188e0ff2dbfb72332db658f289473`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L1873-L1873) — lines `1873–1873`; excerpt `sha256:16452cca21c31d1c0ed13a43089946f8ae7c468e95a04481e8bfeb79ff69f18c`
 
-Paper citation usages:
-
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1104](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1104-L1104)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4539](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4539-L4539), [cite at paper/reasoning-parts/erdos1049/core.tex:4508](../../paper/reasoning-parts/erdos1049/core.tex#L4508-L4508)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:1931](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L1931-L1931), [cite at paper/reasoning-parts/erdos269/core.tex:1873](../../paper/reasoning-parts/erdos269/core.tex#L1873-L1873)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-91756d895a28a8`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-91756d895a28a8`.
 
 <a id="source-source-91aa380a16dba9"></a>
 
@@ -6182,10 +5968,8 @@ Public implementation or evidence coordinates:
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L3081-L3083) — lines `3081–3083`; excerpt `sha256:b91b61385dc89f0e6767647854a990d52e4590e0b3e52ac921e4d46e37c4a36b`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L3039-L3041) — lines `3039–3041`; excerpt `sha256:b91b61385dc89f0e6767647854a990d52e4590e0b3e52ac921e4d46e37c4a36b`
 
-Paper citation usages:
-
-- `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:751](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L751-L751), [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:754](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L754-L754)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2086](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2086-L2086), [cite at paper/reasoning-parts/erdos251/core.tex:2044](../../paper/reasoning-parts/erdos251/core.tex#L2044-L2044)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-91aa380a16dba9`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-91aa380a16dba9`.
 
 <a id="source-source-92b0dfb67f5009"></a>
 
@@ -6213,10 +5997,8 @@ Public implementation or evidence coordinates:
 - [paper/1041/erdos1041-lemniscate-reasoning-surface.tex](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L5410-L5415) — lines `5410–5415`; excerpt `sha256:bfa2ad242e4a6f037e19e479a20a53b503839419b0cda9e5daa5e3cb598fe13a`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5360-L5365) — lines `5360–5365`; excerpt `sha256:bfa2ad242e4a6f037e19e479a20a53b503839419b0cda9e5daa5e3cb598fe13a`
 
-Paper citation usages:
-
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:1014](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1014-L1014)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4238](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4238-L4238), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4244](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4244-L4244), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4246](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4246-L4246), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4257](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4257-L4257), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4311](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4311-L4311), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4345](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4345-L4345), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4509](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4509-L4509), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4996](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4996-L4996), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:5000](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L5000-L5000), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:5004](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L5004-L5004), [cite at paper/reasoning-parts/erdos1041/core.tex:4188](../../paper/reasoning-parts/erdos1041/core.tex#L4188-L4188), [cite at paper/reasoning-parts/erdos1041/core.tex:4194](../../paper/reasoning-parts/erdos1041/core.tex#L4194-L4194), [cite at paper/reasoning-parts/erdos1041/core.tex:4196](../../paper/reasoning-parts/erdos1041/core.tex#L4196-L4196), [cite at paper/reasoning-parts/erdos1041/core.tex:4207](../../paper/reasoning-parts/erdos1041/core.tex#L4207-L4207), [cite at paper/reasoning-parts/erdos1041/core.tex:4261](../../paper/reasoning-parts/erdos1041/core.tex#L4261-L4261), [cite at paper/reasoning-parts/erdos1041/core.tex:4295](../../paper/reasoning-parts/erdos1041/core.tex#L4295-L4295), [cite at paper/reasoning-parts/erdos1041/core.tex:4459](../../paper/reasoning-parts/erdos1041/core.tex#L4459-L4459), [cite at paper/reasoning-parts/erdos1041/core.tex:4946](../../paper/reasoning-parts/erdos1041/core.tex#L4946-L4946), [cite at paper/reasoning-parts/erdos1041/core.tex:4950](../../paper/reasoning-parts/erdos1041/core.tex#L4950-L4950), [cite at paper/reasoning-parts/erdos1041/core.tex:4954](../../paper/reasoning-parts/erdos1041/core.tex#L4954-L4954)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-92b0dfb67f5009`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-92b0dfb67f5009`.
 
 <a id="source-source-944a1a754b1f3a"></a>
 
@@ -6235,10 +6017,8 @@ Public implementation or evidence coordinates:
 - [paper/systems/cold-clone-to-proof-receipt.tex](../../paper/systems/cold-clone-to-proof-receipt.tex#L688-L692) — lines `688–692`; excerpt `sha256:bb8a82a2eaf9299171683c436633a3cdfe8688aba06e1bc995a951bd364c907e`
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1205-L1207) — lines `1205–1207`; excerpt `sha256:9f7cd13126bc86bb2e14538da4a22cac99dbf4eaaabadfd3aba8c94ea897364f`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:111](../../paper/systems/claim-faithful-publication-systems-paper.tex#L111-L111), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:593](../../paper/systems/claim-faithful-publication-systems-paper.tex#L593-L593), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1042](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1042-L1042)
-- `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:474](../../paper/systems/cold-clone-to-proof-receipt.tex#L474-L474)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-944a1a754b1f3a`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-944a1a754b1f3a`.
 
 <a id="source-source-951f70d8dfc418"></a>
 
@@ -6269,10 +6049,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L50-L50) — lines `50–50`; excerpt `sha256:8cd1420d63ac6dba85e07a367f50e3b3fbcbda60ea0f87fa3c34a8351bb2ee01`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L50-L50) — lines `50–50`; excerpt `sha256:8cd1420d63ac6dba85e07a367f50e3b3fbcbda60ea0f87fa3c34a8351bb2ee01`
 
-Paper citation usages:
-
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:83](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L83-L83)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:100](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L100-L100), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1784](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1784-L1784), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:3067](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L3067-L3067), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:3068](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L3068-L3068), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:3146](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L3146-L3146), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:3148](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L3148-L3148), [cite at paper/reasoning-parts/erdos1041/core.tex:50](../../paper/reasoning-parts/erdos1041/core.tex#L50-L50), [cite at paper/reasoning-parts/erdos1041/core.tex:1734](../../paper/reasoning-parts/erdos1041/core.tex#L1734-L1734), [cite at paper/reasoning-parts/erdos1041/core.tex:3017](../../paper/reasoning-parts/erdos1041/core.tex#L3017-L3017), [cite at paper/reasoning-parts/erdos1041/core.tex:3018](../../paper/reasoning-parts/erdos1041/core.tex#L3018-L3018), [cite at paper/reasoning-parts/erdos1041/core.tex:3096](../../paper/reasoning-parts/erdos1041/core.tex#L3096-L3096), [cite at paper/reasoning-parts/erdos1041/core.tex:3098](../../paper/reasoning-parts/erdos1041/core.tex#L3098-L3098)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-951f70d8dfc418`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-951f70d8dfc418`.
 
 <a id="source-source-967c9acd787096"></a>
 
@@ -6290,10 +6068,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1646-L1651) — lines `1646–1651`; excerpt `sha256:b08b660d84c300da10b0cff0235eddaac275ba376ce6b7d77fbee66ccfb561fd`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:609](../../paper/systems/claim-faithful-publication-systems-paper.tex#L609-L609), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1052](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1052-L1052)
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:585](../../paper/systems/open-source-mathematics-strategy.tex#L585-L585), [cite at paper/systems/open-source-mathematics-strategy.tex:926](../../paper/systems/open-source-mathematics-strategy.tex#L926-L926), [cite at paper/systems/open-source-mathematics-strategy.tex:984](../../paper/systems/open-source-mathematics-strategy.tex#L984-L984)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-967c9acd787096`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-967c9acd787096`.
 
 <a id="source-source-96aef073e2ea33"></a>
 
@@ -6342,10 +6118,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5154-L5160) — lines `5154–5160`; excerpt `sha256:62e9f12c9446297c621f7f486af4e1739cd6b6e5b979419191df4d31b8bb4cdc`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L4926-L4926) — lines `4926–4926`; excerpt `sha256:5fd985589a096c7284944042b00248690d1d7fceed1258356a6e91864e8e051c`
 
-Paper citation usages:
-
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4957](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4957-L4957), [cite at paper/reasoning-parts/erdos1049/core.tex:4926](../../paper/reasoning-parts/erdos1049/core.tex#L4926-L4926)
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:631](../../paper/archive/erdos249-257-main-paper.tex#L631-L631)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-96aef073e2ea33`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-96aef073e2ea33`.
 
 <a id="source-source-9733ab875d6048"></a>
 
@@ -6363,10 +6137,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1686-L1692) — lines `1686–1692`; excerpt `sha256:50025897e9875f1e8eb278c5a5c91ea2be1d03b9c7afc2bedf2dcec1c82f6162`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1052](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1052-L1052)
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:579](../../paper/systems/open-source-mathematics-strategy.tex#L579-L579), [cite at paper/systems/open-source-mathematics-strategy.tex:785](../../paper/systems/open-source-mathematics-strategy.tex#L785-L785)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-9733ab875d6048`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-9733ab875d6048`.
 
 <a id="source-source-97b4e6a82335a7"></a>
 
@@ -6390,9 +6162,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5348-L5355) — lines `5348–5355`; excerpt `sha256:ac93a1f2c5c87957117830efd99688e57dc988e65987811c68128cdf2f71aa9f`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L4362-L4362) — lines `4362–4362`; excerpt `sha256:789975730662255be1953f14644da72f9bee1ce16a61867e38c8b7ddd266fcb5`
 
-Paper citation usages:
-
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4412](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4412-L4412), [cite at paper/reasoning-parts/erdos1041/core.tex:4362](../../paper/reasoning-parts/erdos1041/core.tex#L4362-L4362)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-97b4e6a82335a7`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-97b4e6a82335a7`.
 
 <a id="source-source-984f2b78d220ea"></a>
 
@@ -6415,11 +6186,8 @@ Public implementation or evidence coordinates:
 - [paper/systems/cold-clone-to-proof-receipt.tex](../../paper/systems/cold-clone-to-proof-receipt.tex#L697-L700) — lines `697–700`; excerpt `sha256:6a2d98ee6e3166e49ad37af7f7fe86c949a4155e4ba493a60d73e7ff90e2c8e9`
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1666-L1671) — lines `1666–1671`; excerpt `sha256:a4a2cd5ff74bcf8ec7bc773aba6629192b6c1e90033142603ec6d7509d3e306e`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:609](../../paper/systems/claim-faithful-publication-systems-paper.tex#L609-L609), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1052](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1052-L1052)
-- `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:482](../../paper/systems/cold-clone-to-proof-receipt.tex#L482-L482)
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:999](../../paper/systems/open-source-mathematics-strategy.tex#L999-L999)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-984f2b78d220ea`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-984f2b78d220ea`.
 
 <a id="source-source-99385343e032a3"></a>
 
@@ -6444,10 +6212,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L317-L317) — lines `317–317`; excerpt `sha256:714f7e7837698f5625120d30f22eb2fd6a2f960836d9458c5bd06eb68baabd97`
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5322-L5325) — lines `5322–5325`; excerpt `sha256:d83b8379aa5d3a8d993822c9518436371502939df5b9c449f945ffb60730454b`
 
-Paper citation usages:
-
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:484](../../paper/archive/erdos249-257-main-paper.tex#L484-L484), [cite at paper/archive/erdos249-257-main-paper.tex:4081](../../paper/archive/erdos249-257-main-paper.tex#L4081-L4081), [cite at paper/archive/erdos249-257-main-paper.tex:4675](../../paper/archive/erdos249-257-main-paper.tex#L4675-L4675), [cite at paper/archive/erdos249-257-main-paper.tex:4779](../../paper/archive/erdos249-257-main-paper.tex#L4779-L4779)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:375](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L375-L375), [cite at paper/reasoning-parts/erdos269/core.tex:317](../../paper/reasoning-parts/erdos269/core.tex#L317-L317)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-99385343e032a3`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-99385343e032a3`.
 
 <a id="source-source-99c2f3cb190b95"></a>
 
@@ -6473,10 +6239,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10286-L10290) — lines `10286–10290`; excerpt `sha256:6f68ca842cab80e0e80859b0448d856556a74a77fbf2793f408455173289681c`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10094-L10098) — lines `10094–10098`; excerpt `sha256:6f68ca842cab80e0e80859b0448d856556a74a77fbf2793f408455173289681c`
 
-Paper citation usages:
-
-- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:693](../../paper/249/erdos-249-binary-totient-series.tex#L693-L693)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:1755](../../paper/249/erdos249-totient-reasoning-surface.tex#L1755-L1755), [cite at paper/249/erdos249-totient-reasoning-surface.tex:9872](../../paper/249/erdos249-totient-reasoning-surface.tex#L9872-L9872), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:1563](../../paper/reasoning-parts/erdos249/a249_front.tex#L1563-L1563), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:9680](../../paper/reasoning-parts/erdos249/a249_front.tex#L9680-L9680)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-99c2f3cb190b95`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-99c2f3cb190b95`.
 
 <a id="source-source-9a04cbea11fd0b"></a>
 
@@ -6494,10 +6258,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/cold-clone-to-proof-receipt.tex](../../paper/systems/cold-clone-to-proof-receipt.tex#L705-L711) — lines `705–711`; excerpt `sha256:915b21de98fc6d842625837028364b4383eeb5ccd9db3a58c6484bb7d7791545`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1043](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1043-L1043)
-- `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:405](../../paper/systems/cold-clone-to-proof-receipt.tex#L405-L405), [cite at paper/systems/cold-clone-to-proof-receipt.tex:488](../../paper/systems/cold-clone-to-proof-receipt.tex#L488-L488)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-9a04cbea11fd0b`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-9a04cbea11fd0b`.
 
 <a id="source-source-9a38b2d8b0dada"></a>
 
@@ -6528,10 +6290,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L441-L441) — lines `441–441`; excerpt `sha256:3411ca8b06103cfe9c649bff064c056e7f9e43045265fcc7e8409ac7f0236feb`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L3021-L3023) — lines `3021–3023`; excerpt `sha256:a68775eea867950e9742ad93dd4089e04252a31cf488340177ac456e7b57c84f`
 
-Paper citation usages:
-
-- `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:477](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L477-L477)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:483](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L483-L483), [cite at paper/reasoning-parts/erdos251/core.tex:441](../../paper/reasoning-parts/erdos251/core.tex#L441-L441)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-9a38b2d8b0dada`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-9a38b2d8b0dada`.
 
 <a id="source-source-9b23918ce33c38"></a>
 
@@ -6554,9 +6314,8 @@ Public implementation or evidence coordinates:
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L3049-L3051) — lines `3049–3051`; excerpt `sha256:2bdb1af734a1c86a2ea7603f390d84d3309c1d1abf8a8f4eb21930714a5a0c9d`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L3007-L3009) — lines `3007–3009`; excerpt `sha256:2bdb1af734a1c86a2ea7603f390d84d3309c1d1abf8a8f4eb21930714a5a0c9d`
 
-Paper citation usages:
-
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:1365](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L1365-L1365), [cite at paper/reasoning-parts/erdos251/core.tex:1323](../../paper/reasoning-parts/erdos251/core.tex#L1323-L1323)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-9b23918ce33c38`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-9b23918ce33c38`.
 
 <a id="source-source-9c2776b87b1155"></a>
 
@@ -6579,9 +6338,8 @@ Public implementation or evidence coordinates:
 - [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L4512-L4517) — lines `4512–4517`; excerpt `sha256:4d3c475c2dd44a15da10bb68d05eedaa5bb7ef373c98a81bf0994e003e8022e6`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L4454-L4459) — lines `4454–4459`; excerpt `sha256:4d3c475c2dd44a15da10bb68d05eedaa5bb7ef373c98a81bf0994e003e8022e6`
 
-Paper citation usages:
-
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3621](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3621-L3621), [cite at paper/reasoning-parts/erdos269/core.tex:3563](../../paper/reasoning-parts/erdos269/core.tex#L3563-L3563)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-9c2776b87b1155`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-9c2776b87b1155`.
 
 <a id="source-source-9ce84321e202f1"></a>
 
@@ -6606,10 +6364,8 @@ Public implementation or evidence coordinates:
 - [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9701-L9707) — lines `9701–9707`; excerpt `sha256:3f90c9c82f80686f1efe4c911cd5f754201a1464c150d626d59690b5e96927f9`
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L9501-L9507) — lines `9501–9507`; excerpt `sha256:3f90c9c82f80686f1efe4c911cd5f754201a1464c150d626d59690b5e96927f9`
 
-Paper citation usages:
-
-- `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:1567](../../paper/257/erdos-257-mersenne-support-subseries.tex#L1567-L1567)
-- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1288](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1288-L1288), [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:9540](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9540-L9540), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:1088](../../paper/reasoning-parts/erdos257/a257_front.tex#L1088-L1088), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:9340](../../paper/reasoning-parts/erdos257/a257_front.tex#L9340-L9340)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-9ce84321e202f1`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-9ce84321e202f1`.
 
 <a id="source-source-9db8c3859cdc81"></a>
 
@@ -6627,9 +6383,8 @@ Public implementation or evidence coordinates:
 
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5338-L5341) — lines `5338–5341`; excerpt `sha256:3ac7773843e9a2678e1438fae3c683df643a9de180d07f049ef248f6010429ec`
 
-Paper citation usages:
-
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:4087](../../paper/archive/erdos249-257-main-paper.tex#L4087-L4087)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-9db8c3859cdc81`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-9db8c3859cdc81`.
 
 <a id="source-source-9e37cc2fe7db3e"></a>
 
@@ -6655,10 +6410,8 @@ Public implementation or evidence coordinates:
 - [paper/1041/erdos1041-lemniscate-reasoning-surface.tex](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L5415-L5422) — lines `5415–5422`; excerpt `sha256:ff50af06cc617795c60c2ca89ddaec781a6c4593028140edc22775c58cb3e3a9`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5365-L5372) — lines `5365–5372`; excerpt `sha256:ff50af06cc617795c60c2ca89ddaec781a6c4593028140edc22775c58cb3e3a9`
 
-Paper citation usages:
-
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:140](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L140-L140), [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:377](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L377-L377), [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:563](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L563-L563)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:490](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L490-L490), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:702](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L702-L702), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1604](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1604-L1604), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1722](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1722-L1722), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1858](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1858-L1858), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:3923](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L3923-L3923), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4413](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4413-L4413), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4510](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4510-L4510), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4590](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4590-L4590), [cite at paper/reasoning-parts/erdos1041/core.tex:440](../../paper/reasoning-parts/erdos1041/core.tex#L440-L440), [cite at paper/reasoning-parts/erdos1041/core.tex:652](../../paper/reasoning-parts/erdos1041/core.tex#L652-L652), [cite at paper/reasoning-parts/erdos1041/core.tex:1554](../../paper/reasoning-parts/erdos1041/core.tex#L1554-L1554), [cite at paper/reasoning-parts/erdos1041/core.tex:1672](../../paper/reasoning-parts/erdos1041/core.tex#L1672-L1672), [cite at paper/reasoning-parts/erdos1041/core.tex:1808](../../paper/reasoning-parts/erdos1041/core.tex#L1808-L1808), [cite at paper/reasoning-parts/erdos1041/core.tex:3873](../../paper/reasoning-parts/erdos1041/core.tex#L3873-L3873), [cite at paper/reasoning-parts/erdos1041/core.tex:4363](../../paper/reasoning-parts/erdos1041/core.tex#L4363-L4363), [cite at paper/reasoning-parts/erdos1041/core.tex:4460](../../paper/reasoning-parts/erdos1041/core.tex#L4460-L4460), [cite at paper/reasoning-parts/erdos1041/core.tex:4540](../../paper/reasoning-parts/erdos1041/core.tex#L4540-L4540)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-9e37cc2fe7db3e`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-9e37cc2fe7db3e`.
 
 <a id="source-source-9ef9271dbecbce"></a>
 
@@ -6676,10 +6429,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1742-L1747) — lines `1742–1747`; excerpt `sha256:a2823f7bc0eabe07dcb16e2476c88ca0a6ae7777617c24762b0674c83ce2e1da`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:642](../../paper/systems/claim-faithful-publication-systems-paper.tex#L642-L642), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1052](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1052-L1052)
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:946](../../paper/systems/open-source-mathematics-strategy.tex#L946-L946)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-9ef9271dbecbce`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-9ef9271dbecbce`.
 
 <a id="source-source-a028dc6bb31c0c"></a>
 
@@ -6698,10 +6449,8 @@ Public implementation or evidence coordinates:
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1717-L1722) — lines `1717–1722`; excerpt `sha256:17dfc81b2347996ae518d9ae35b9f4cbbe428802c4df971c821bb500a90d87de`
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1193-L1197) — lines `1193–1197`; excerpt `sha256:2595846643eaeb52b16f7156659896435256034246319719e7ecd470260c4445`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1051](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1051-L1051)
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:683](../../paper/systems/open-source-mathematics-strategy.tex#L683-L683), [cite at paper/systems/open-source-mathematics-strategy.tex:753](../../paper/systems/open-source-mathematics-strategy.tex#L753-L753), [cite at paper/systems/open-source-mathematics-strategy.tex:832](../../paper/systems/open-source-mathematics-strategy.tex#L832-L832), [cite at paper/systems/open-source-mathematics-strategy.tex:961](../../paper/systems/open-source-mathematics-strategy.tex#L961-L961), [cite at paper/systems/open-source-mathematics-strategy.tex:1076](../../paper/systems/open-source-mathematics-strategy.tex#L1076-L1076)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-a028dc6bb31c0c`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-a028dc6bb31c0c`.
 
 <a id="source-source-a0d109b4492fba"></a>
 
@@ -6725,10 +6474,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10394-L10399) — lines `10394–10399`; excerpt `sha256:1afac1390d37599a1aabc74b5e4f00b9c13fe3b5510b23747164aafc5cabb79f`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10202-L10207) — lines `10202–10207`; excerpt `sha256:1afac1390d37599a1aabc74b5e4f00b9c13fe3b5510b23747164aafc5cabb79f`
 
-Paper citation usages:
-
-- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:131](../../paper/249/erdos-249-binary-totient-series.tex#L131-L131)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:296](../../paper/249/erdos249-totient-reasoning-surface.tex#L296-L296), [cite at paper/249/erdos249-totient-reasoning-surface.tex:298](../../paper/249/erdos249-totient-reasoning-surface.tex#L298-L298), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:104](../../paper/reasoning-parts/erdos249/a249_front.tex#L104-L104), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:106](../../paper/reasoning-parts/erdos249/a249_front.tex#L106-L106)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-a0d109b4492fba`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-a0d109b4492fba`.
 
 <a id="source-source-a38774d9a4f1f9"></a>
 
@@ -6746,10 +6493,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1727-L1732) — lines `1727–1732`; excerpt `sha256:d7199ff140a739a7be732b44e20113885c623918791626d0f99bd6c7e2a83cc2`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1050](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1050-L1050)
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:779](../../paper/systems/open-source-mathematics-strategy.tex#L779-L779), [cite at paper/systems/open-source-mathematics-strategy.tex:1020](../../paper/systems/open-source-mathematics-strategy.tex#L1020-L1020)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-a38774d9a4f1f9`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-a38774d9a4f1f9`.
 
 <a id="source-source-a67b8dc01791ec"></a>
 
@@ -6776,9 +6521,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5407-L5413) — lines `5407–5413`; excerpt `sha256:bcdad75ad0ef6a705b6fe89763d0da02f0663ec648798c57bec9c5455264dc47`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L1638-L1638) — lines `1638–1638`; excerpt `sha256:8f0116d285182c3169d8171b8d13c4c752a018a50c51df8dfd0a78fe648e1fe0`
 
-Paper citation usages:
-
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1688](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1688-L1688), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1692](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1692-L1692), [cite at paper/reasoning-parts/erdos1041/core.tex:1638](../../paper/reasoning-parts/erdos1041/core.tex#L1638-L1638), [cite at paper/reasoning-parts/erdos1041/core.tex:1642](../../paper/reasoning-parts/erdos1041/core.tex#L1642-L1642)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-a67b8dc01791ec`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-a67b8dc01791ec`.
 
 <a id="source-source-a87fa25f28c7b0"></a>
 
@@ -6808,10 +6552,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L1427-L1427) — lines `1427–1427`; excerpt `sha256:5139a5f6ebb95c3e704baeace6907b8ca37b7f8ea44fd4d7e73ced8285e38c76`
 - [paper/68/erdos-68-factorial-denominator-irrationality.tex](../../paper/68/erdos-68-factorial-denominator-irrationality.tex#L546-L550) — lines `546–550`; excerpt `sha256:e8cae7318c8c143094d52d1da99fd4dda7271236e256e02a746de55f05d72d67`
 
-Paper citation usages:
-
-- `erdos-68-factorial-denominator-irrationality`: [cite at paper/68/erdos-68-factorial-denominator-irrationality.tex:91](../../paper/68/erdos-68-factorial-denominator-irrationality.tex#L91-L91)
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1462](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1462-L1462), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2312](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2312-L2312), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2551](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2551-L2551), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2558](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2558-L2558), [cite at paper/reasoning-parts/erdos68/core.tex:1427](../../paper/reasoning-parts/erdos68/core.tex#L1427-L1427), [cite at paper/reasoning-parts/erdos68/core.tex:2277](../../paper/reasoning-parts/erdos68/core.tex#L2277-L2277), [cite at paper/reasoning-parts/erdos68/core.tex:2516](../../paper/reasoning-parts/erdos68/core.tex#L2516-L2516), [cite at paper/reasoning-parts/erdos68/core.tex:2523](../../paper/reasoning-parts/erdos68/core.tex#L2523-L2523)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-a87fa25f28c7b0`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-a87fa25f28c7b0`.
 
 <a id="source-source-aa2d5c249362f1"></a>
 
@@ -6839,9 +6581,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L4712-L4712) — lines `4712–4712`; excerpt `sha256:54e3d1ef752ffcb54e8ee1bfe7534ff85b97adcfec7a02daa218a664d09cd7f7`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L4712-L4712) — lines `4712–4712`; excerpt `sha256:54e3d1ef752ffcb54e8ee1bfe7534ff85b97adcfec7a02daa218a664d09cd7f7`
 
-Paper citation usages:
-
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4743](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4743-L4743), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4909](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4909-L4909), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4914](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4914-L4914), [cite at paper/reasoning-parts/erdos1049/core.tex:4712](../../paper/reasoning-parts/erdos1049/core.tex#L4712-L4712), [cite at paper/reasoning-parts/erdos1049/core.tex:4878](../../paper/reasoning-parts/erdos1049/core.tex#L4878-L4878), [cite at paper/reasoning-parts/erdos1049/core.tex:4883](../../paper/reasoning-parts/erdos1049/core.tex#L4883-L4883)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-aa2d5c249362f1`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-aa2d5c249362f1`.
 
 <a id="source-source-ab6d6d6b890f57"></a>
 
@@ -6865,10 +6606,8 @@ Public implementation or evidence coordinates:
 - [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L4502-L4505) — lines `4502–4505`; excerpt `sha256:56c3313573f1c66b97e759caddfa08857ff02beecce742ca74aa60516751dfb8`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L4444-L4447) — lines `4444–4447`; excerpt `sha256:56c3313573f1c66b97e759caddfa08857ff02beecce742ca74aa60516751dfb8`
 
-Paper citation usages:
-
-- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:987](../../paper/269/erdos-269-three-prime-running-lcm.tex#L987-L987)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:180](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L180-L180), [cite at paper/reasoning-parts/erdos269/core.tex:122](../../paper/reasoning-parts/erdos269/core.tex#L122-L122)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-ab6d6d6b890f57`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-ab6d6d6b890f57`.
 
 <a id="source-source-abedb02f9939e5"></a>
 
@@ -6893,10 +6632,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L4095-L4101) — lines `4095–4101`; excerpt `sha256:114c6c590cc9d93a8ef21180697160ce21e5fd0ef2e6801cfa8c3bd3dc16e78c`
 - [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L1417-L1423) — lines `1417–1423`; excerpt `sha256:4a2a8e4fc977c8352311e72ae7979c821e66a3545b5d72c4ade3b36bc5e51666`
 
-Paper citation usages:
-
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:346](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L346-L346)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:389](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L389-L389), [cite at paper/reasoning-parts/erdos243/core.tex:350](../../paper/reasoning-parts/erdos243/core.tex#L350-L350)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-abedb02f9939e5`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-abedb02f9939e5`.
 
 <a id="source-source-ae32306341559a"></a>
 
@@ -6915,11 +6652,8 @@ Public implementation or evidence coordinates:
 - [paper/systems/cold-clone-to-proof-receipt.tex](../../paper/systems/cold-clone-to-proof-receipt.tex#L728-L732) — lines `728–732`; excerpt `sha256:3a090cc943cde6fe32e768b3fec5c8f9941b86fe85cffb0b1e502eff8703ea31`
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1697-L1702) — lines `1697–1702`; excerpt `sha256:990e7e409c51244fcd270d46681ee6ca48f5d9a561bcdbc931d9db6b4df3c30c`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1043](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1043-L1043)
-- `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:522](../../paper/systems/cold-clone-to-proof-receipt.tex#L522-L522)
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:1009](../../paper/systems/open-source-mathematics-strategy.tex#L1009-L1009)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-ae32306341559a`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-ae32306341559a`.
 
 <a id="source-source-ae5cc4ddfa6af5"></a>
 
@@ -6937,9 +6671,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1692-L1697) — lines `1692–1697`; excerpt `sha256:ba3b7d334c4533a7eb892544f07793a641502451252ef40f9dd35e8d49823e68`
 
-Paper citation usages:
-
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:1007](../../paper/systems/open-source-mathematics-strategy.tex#L1007-L1007)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-ae5cc4ddfa6af5`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-ae5cc4ddfa6af5`.
 
 <a id="source-source-ae9859af28fdcd"></a>
 
@@ -6982,10 +6715,8 @@ Public implementation or evidence coordinates:
 - [lean/ErdosProblems/Erdos1049/AllRow/Producer.lean](../../lean/ErdosProblems/Erdos1049/AllRow/Producer.lean#L139-L144) — lines `139–144`; excerpt `sha256:d91ba4591cce7012da8fb4b68e2c502744e2a86cbff69f02ac661f05bbbc77f0`
 - [lean/ErdosProblems/Erdos1049/ZudilinSharpHankelCoefficient.lean](../../lean/ErdosProblems/Erdos1049/ZudilinSharpHankelCoefficient.lean#L675-L679) — lines `675–679`; excerpt `sha256:f4bd612442f7360245d4b631cbdc499c687fc3d6d13818a39db22dc67e091077`
 
-Paper citation usages:
-
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:56](../../paper/1049/erdos-1049-rational-base-lambert.tex#L56-L56), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:78](../../paper/1049/erdos-1049-rational-base-lambert.tex#L78-L78), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:623](../../paper/1049/erdos-1049-rational-base-lambert.tex#L623-L623), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1050](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1050-L1050)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:67](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L67-L67), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:865](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L865-L865), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1463](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1463-L1463), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1466](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1466-L1466), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1483](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1483-L1483), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1494](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1494-L1494), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1518](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1518-L1518), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1810](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1810-L1810), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2791](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2791-L2791), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5046](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5046-L5046), [cite at paper/reasoning-parts/erdos1049/core.tex:36](../../paper/reasoning-parts/erdos1049/core.tex#L36-L36), [cite at paper/reasoning-parts/erdos1049/core.tex:834](../../paper/reasoning-parts/erdos1049/core.tex#L834-L834), [cite at paper/reasoning-parts/erdos1049/core.tex:1432](../../paper/reasoning-parts/erdos1049/core.tex#L1432-L1432), [cite at paper/reasoning-parts/erdos1049/core.tex:1435](../../paper/reasoning-parts/erdos1049/core.tex#L1435-L1435), [cite at paper/reasoning-parts/erdos1049/core.tex:1452](../../paper/reasoning-parts/erdos1049/core.tex#L1452-L1452), [cite at paper/reasoning-parts/erdos1049/core.tex:1463](../../paper/reasoning-parts/erdos1049/core.tex#L1463-L1463), [cite at paper/reasoning-parts/erdos1049/core.tex:1487](../../paper/reasoning-parts/erdos1049/core.tex#L1487-L1487), [cite at paper/reasoning-parts/erdos1049/core.tex:1779](../../paper/reasoning-parts/erdos1049/core.tex#L1779-L1779), [cite at paper/reasoning-parts/erdos1049/core.tex:2760](../../paper/reasoning-parts/erdos1049/core.tex#L2760-L2760), [cite at paper/reasoning-parts/erdos1049/core.tex:5015](../../paper/reasoning-parts/erdos1049/core.tex#L5015-L5015)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-ae9859af28fdcd`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-ae9859af28fdcd`.
 
 <a id="source-source-af9e99293e9dd0"></a>
 
@@ -7003,10 +6734,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1656-L1661) — lines `1656–1661`; excerpt `sha256:6f2b691dbea0a4758a07048f06dca1acfc4049444971d8bdfab57f8bf75e6a02`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:609](../../paper/systems/claim-faithful-publication-systems-paper.tex#L609-L609), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1052](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1052-L1052)
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:583](../../paper/systems/open-source-mathematics-strategy.tex#L583-L583), [cite at paper/systems/open-source-mathematics-strategy.tex:992](../../paper/systems/open-source-mathematics-strategy.tex#L992-L992)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-af9e99293e9dd0`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-af9e99293e9dd0`.
 
 <a id="source-source-b0b779fff5defe"></a>
 
@@ -7067,11 +6796,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L2161-L2161) — lines `2161–2161`; excerpt `sha256:29422f1117ddf0cfe478b48719a3b1d57db703b18e788e0dd9e85d0344241384`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L2161-L2161) — lines `2161–2161`; excerpt `sha256:29422f1117ddf0cfe478b48719a3b1d57db703b18e788e0dd9e85d0344241384`
 
-Paper citation usages:
-
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:988](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L988-L988)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:896](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L896-L896), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1766](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1766-L1766), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:3731](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3731-L3731), [cite at paper/reasoning-parts/erdos243/core.tex:857](../../paper/reasoning-parts/erdos243/core.tex#L857-L857), [cite at paper/reasoning-parts/erdos243/core.tex:1727](../../paper/reasoning-parts/erdos243/core.tex#L1727-L1727), [cite at paper/reasoning-parts/erdos243/core.tex:3692](../../paper/reasoning-parts/erdos243/core.tex#L3692-L3692)
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2196](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2196-L2196), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2591](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2591-L2591), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2594](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2594-L2594), [cite at paper/reasoning-parts/erdos68/core.tex:2161](../../paper/reasoning-parts/erdos68/core.tex#L2161-L2161), [cite at paper/reasoning-parts/erdos68/core.tex:2556](../../paper/reasoning-parts/erdos68/core.tex#L2556-L2556), [cite at paper/reasoning-parts/erdos68/core.tex:2559](../../paper/reasoning-parts/erdos68/core.tex#L2559-L2559)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-b0b779fff5defe`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-b0b779fff5defe`.
 
 <a id="source-source-b10b965e63a00d"></a>
 
@@ -7098,10 +6824,8 @@ Public implementation or evidence coordinates:
 - [paper/1041/erdos1041-lemniscate-reasoning-surface.tex](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L5488-L5492) — lines `5488–5492`; excerpt `sha256:e71562d62b7120e70fe7b834f65baa80911382d9eec508f8396928584ab1dacf`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5438-L5442) — lines `5438–5442`; excerpt `sha256:e71562d62b7120e70fe7b834f65baa80911382d9eec508f8396928584ab1dacf`
 
-Paper citation usages:
-
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:977](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L977-L977), [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:1085](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1085-L1085)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:3165](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L3165-L3165), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4513](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4513-L4513), [cite at paper/reasoning-parts/erdos1041/core.tex:3115](../../paper/reasoning-parts/erdos1041/core.tex#L3115-L3115), [cite at paper/reasoning-parts/erdos1041/core.tex:4463](../../paper/reasoning-parts/erdos1041/core.tex#L4463-L4463)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-b10b965e63a00d`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-b10b965e63a00d`.
 
 <a id="source-source-b202a3f125817d"></a>
 
@@ -7127,9 +6851,8 @@ Public implementation or evidence coordinates:
 - [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L791-L793) — lines `791–793`; excerpt `sha256:dedbedb4b5e1a08ab2446808a684bf784d81c2ed1909441478d6080382ea7852`
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L667-L667) — lines `667–667`; excerpt `sha256:afde66f79f7325fc6e5739cbb7f5cf67d57b23b919e011448cce112b14fd5df0`
 
-Paper citation usages:
-
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:667](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L667-L667), [cite at paper/reasoning-parts/erdos251/core.tex:625](../../paper/reasoning-parts/erdos251/core.tex#L625-L625)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-b202a3f125817d`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-b202a3f125817d`.
 
 <a id="source-source-b378189f39ed98"></a>
 
@@ -7203,20 +6926,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L3117-L3121) — lines `3117–3121`; excerpt `sha256:b630a0f0ca592293699970eda53a16eea623a9f1d81f881c6dc903179a78eeec`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L25-L25) — lines `25–25`; excerpt `sha256:eedf58c8921c99e121942c72f945730fb30f151860f8a859f47e2254e6ba7731`
 
-Paper citation usages:
-
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:110](../../paper/1049/erdos-1049-rational-base-lambert.tex#L110-L110)
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:70](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L70-L70)
-- `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:54](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L54-L54)
-- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:78](../../paper/269/erdos-269-three-prime-running-lcm.tex#L78-L78)
-- `erdos-68-factorial-denominator-irrationality`: [cite at paper/68/erdos-68-factorial-denominator-irrationality.tex:49](../../paper/68/erdos-68-factorial-denominator-irrationality.tex#L49-L49)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:62](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L62-L62), [cite at paper/reasoning-parts/erdos1049/core.tex:31](../../paper/reasoning-parts/erdos1049/core.tex#L31-L31)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:75](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L75-L75), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:876](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L876-L876), [cite at paper/reasoning-parts/erdos243/core.tex:36](../../paper/reasoning-parts/erdos243/core.tex#L36-L36), [cite at paper/reasoning-parts/erdos243/core.tex:837](../../paper/reasoning-parts/erdos243/core.tex#L837-L837)
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:193](../../paper/archive/erdos249-257-main-paper.tex#L193-L193), [cite at paper/archive/erdos249-257-main-paper.tex:195](../../paper/archive/erdos249-257-main-paper.tex#L195-L195)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:75](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L75-L75), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:531](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L531-L531), [cite at paper/reasoning-parts/erdos251/core.tex:33](../../paper/reasoning-parts/erdos251/core.tex#L33-L33), [cite at paper/reasoning-parts/erdos251/core.tex:489](../../paper/reasoning-parts/erdos251/core.tex#L489-L489)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:118](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L118-L118), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3882](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3882-L3882), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3918](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3918-L3918), [cite at paper/reasoning-parts/erdos269/core.tex:60](../../paper/reasoning-parts/erdos269/core.tex#L60-L60), [cite at paper/reasoning-parts/erdos269/core.tex:3824](../../paper/reasoning-parts/erdos269/core.tex#L3824-L3824), [cite at paper/reasoning-parts/erdos269/core.tex:3860](../../paper/reasoning-parts/erdos269/core.tex#L3860-L3860)
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:60](../../paper/68/erdos68-factorial-reasoning-surface.tex#L60-L60), [cite at paper/reasoning-parts/erdos68/core.tex:25](../../paper/reasoning-parts/erdos68/core.tex#L25-L25)
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:72](../../paper/synthesis/optimal-sparse-perturbations.tex#L72-L72)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-b378189f39ed98`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-b378189f39ed98`.
 
 <a id="source-source-b3b7518e07e159"></a>
 
@@ -7253,9 +6964,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L1159-L1159) — lines `1159–1159`; excerpt `sha256:21b00254a22f32bf11e90837e00d0f531d2814ce4b95f53698972da9cea9aef4`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L1159-L1159) — lines `1159–1159`; excerpt `sha256:21b00254a22f32bf11e90837e00d0f531d2814ce4b95f53698972da9cea9aef4`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1194](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1194-L1194), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1195](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1195-L1195), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1197](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1197-L1197), [cite at paper/reasoning-parts/erdos68/core.tex:1159](../../paper/reasoning-parts/erdos68/core.tex#L1159-L1159), [cite at paper/reasoning-parts/erdos68/core.tex:1160](../../paper/reasoning-parts/erdos68/core.tex#L1160-L1160), [cite at paper/reasoning-parts/erdos68/core.tex:1162](../../paper/reasoning-parts/erdos68/core.tex#L1162-L1162)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-b3b7518e07e159`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-b3b7518e07e159`.
 
 <a id="source-source-b3decc410aa4b5"></a>
 
@@ -7278,9 +6988,8 @@ Public implementation or evidence coordinates:
 - [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L3248-L3252) — lines `3248–3252`; excerpt `sha256:3505a37c28e494a2a50e4fe25e04a275f47dea02e877ed8c2299dbfd058f927a`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L3213-L3217) — lines `3213–3217`; excerpt `sha256:3505a37c28e494a2a50e4fe25e04a275f47dea02e877ed8c2299dbfd058f927a`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1977](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1977-L1977), [cite at paper/reasoning-parts/erdos68/core.tex:1942](../../paper/reasoning-parts/erdos68/core.tex#L1942-L1942)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-b3decc410aa4b5`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-b3decc410aa4b5`.
 
 <a id="source-source-b46f8a083b4271"></a>
 
@@ -7300,9 +7009,8 @@ Public implementation or evidence coordinates:
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L3085-L3087) — lines `3085–3087`; excerpt `sha256:4d23f3968fb1ccd53933b23fc840988fd48072550d470fc5a28559b929df023f`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L3043-L3045) — lines `3043–3045`; excerpt `sha256:4d23f3968fb1ccd53933b23fc840988fd48072550d470fc5a28559b929df023f`
 
-Paper citation usages:
-
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:635](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L635-L635), [cite at paper/reasoning-parts/erdos251/core.tex:593](../../paper/reasoning-parts/erdos251/core.tex#L593-L593)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-b46f8a083b4271`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-b46f8a083b4271`.
 
 <a id="source-source-b4b0f2811b1d2d"></a>
 
@@ -7321,9 +7029,8 @@ Public implementation or evidence coordinates:
 - [paper/1041/erdos1041-lemniscate-reasoning-surface.tex](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L5512-L5516) — lines `5512–5516`; excerpt `sha256:7634243bb1a190b0aeb3ad7cffcd772a6f9cb9cb1e54e1b3ea7d5bf9c9b18a25`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5462-L5466) — lines `5462–5466`; excerpt `sha256:7634243bb1a190b0aeb3ad7cffcd772a6f9cb9cb1e54e1b3ea7d5bf9c9b18a25`
 
-Paper citation usages:
-
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:3184](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L3184-L3184), [cite at paper/reasoning-parts/erdos1041/core.tex:3134](../../paper/reasoning-parts/erdos1041/core.tex#L3134-L3134)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-b4b0f2811b1d2d`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-b4b0f2811b1d2d`.
 
 <a id="source-source-b6603e42453ff3"></a>
 
@@ -7351,13 +7058,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L104-L104) — lines `104–104`; excerpt `sha256:8e56484cbb8a2a51938d6d95f9eb16930424134d3eb232b2a1c1323f9489b0f2`
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1110-L1115) — lines `1110–1115`; excerpt `sha256:c5fd8bab00b679d203057c594bf20120be28a4b4637d2f3f497872234e129474`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:108](../../paper/systems/claim-faithful-publication-systems-paper.tex#L108-L108), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:593](../../paper/systems/claim-faithful-publication-systems-paper.tex#L593-L593), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1040](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1040-L1040)
-- `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:764](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L764-L764)
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:3770](../../paper/archive/erdos249-257-main-paper.tex#L3770-L3770)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2244](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2244-L2244), [cite at paper/reasoning-parts/erdos251/core.tex:2202](../../paper/reasoning-parts/erdos251/core.tex#L2202-L2202)
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:572](../../paper/systems/open-source-mathematics-strategy.tex#L572-L572)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-b6603e42453ff3`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-b6603e42453ff3`.
 
 <a id="source-source-b6d577df139d85"></a>
 
@@ -7380,9 +7082,8 @@ Public implementation or evidence coordinates:
 - [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L3264-L3268) — lines `3264–3268`; excerpt `sha256:e3b1d19fa4854f7153d25ef24896c1b7f697c819f9574977485c2759ead98276`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L3229-L3233) — lines `3229–3233`; excerpt `sha256:e3b1d19fa4854f7153d25ef24896c1b7f697c819f9574977485c2759ead98276`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2106](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2106-L2106), [cite at paper/reasoning-parts/erdos68/core.tex:2071](../../paper/reasoning-parts/erdos68/core.tex#L2071-L2071)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-b6d577df139d85`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-b6d577df139d85`.
 
 <a id="source-source-b791f5b49e0da6"></a>
 
@@ -7406,10 +7107,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10409-L10415) — lines `10409–10415`; excerpt `sha256:e10593522712515931ddcbaa7131d36a55628516394338e405b737d442819636`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10217-L10223) — lines `10217–10223`; excerpt `sha256:e10593522712515931ddcbaa7131d36a55628516394338e405b737d442819636`
 
-Paper citation usages:
-
-- `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:531](../../paper/249/erdos-249-binary-totient-series.tex#L531-L531)
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:10214](../../paper/249/erdos249-totient-reasoning-surface.tex#L10214-L10214), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:10022](../../paper/reasoning-parts/erdos249/a249_front.tex#L10022-L10022)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-b791f5b49e0da6`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-b791f5b49e0da6`.
 
 <a id="source-source-b95bf142df7fb5"></a>
 
@@ -7433,10 +7132,8 @@ Public implementation or evidence coordinates:
 - [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L4185-L4188) — lines `4185–4188`; excerpt `sha256:68ea153c3563a568a2f8dd959b99f6641b703032a1460306b051df5a3a19d4f9`
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L4146-L4149) — lines `4146–4149`; excerpt `sha256:68ea153c3563a568a2f8dd959b99f6641b703032a1460306b051df5a3a19d4f9`
 
-Paper citation usages:
-
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:1203](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L1203-L1203)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:667](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L667-L667), [cite at paper/reasoning-parts/erdos243/core.tex:628](../../paper/reasoning-parts/erdos243/core.tex#L628-L628)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-b95bf142df7fb5`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-b95bf142df7fb5`.
 
 <a id="source-source-b9d7160919621f"></a>
 
@@ -7464,10 +7161,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L84-L84) — lines `84–84`; excerpt `sha256:83a2da03f72cdfe7d20a66a82e8d957584ade075bfcbcc042444582792ef211e`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L84-L84) — lines `84–84`; excerpt `sha256:83a2da03f72cdfe7d20a66a82e8d957584ade075bfcbcc042444582792ef211e`
 
-Paper citation usages:
-
-- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:688](../../paper/269/erdos-269-three-prime-running-lcm.tex#L688-L688)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:142](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L142-L142), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:588](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L588-L588), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:1345](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L1345-L1345), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:1628](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L1628-L1628), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3904](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3904-L3904), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:4396](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L4396-L4396), [cite at paper/reasoning-parts/erdos269/core.tex:84](../../paper/reasoning-parts/erdos269/core.tex#L84-L84), [cite at paper/reasoning-parts/erdos269/core.tex:530](../../paper/reasoning-parts/erdos269/core.tex#L530-L530), [cite at paper/reasoning-parts/erdos269/core.tex:1287](../../paper/reasoning-parts/erdos269/core.tex#L1287-L1287), [cite at paper/reasoning-parts/erdos269/core.tex:1570](../../paper/reasoning-parts/erdos269/core.tex#L1570-L1570), [cite at paper/reasoning-parts/erdos269/core.tex:3846](../../paper/reasoning-parts/erdos269/core.tex#L3846-L3846), [cite at paper/reasoning-parts/erdos269/core.tex:4338](../../paper/reasoning-parts/erdos269/core.tex#L4338-L4338)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-b9d7160919621f`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-b9d7160919621f`.
 
 <a id="source-source-bae14c21d3e920"></a>
 
@@ -7485,9 +7180,8 @@ Public implementation or evidence coordinates:
 
 - [docs/papers/mirror/plectis-public-system.tex](../../docs/papers/mirror/plectis-public-system.tex#L1367-L1373) — lines `1367–1373`; excerpt `sha256:848005fb515337995c8dbc8192771103fe3414debe3bde5da05f345ee7b14055`
 
-Paper citation usages:
-
-- `plectis-public-system`: [cite at docs/papers/mirror/plectis-public-system.tex:1260](../../docs/papers/mirror/plectis-public-system.tex#L1260-L1260)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-bae14c21d3e920`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-bae14c21d3e920`.
 
 <a id="source-source-baker-harman-pintz-2001"></a>
 
@@ -7509,6 +7203,9 @@ Exact source locations:
 Public implementation or evidence coordinates:
 
 - [lean/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean](../../lean/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean#L19-L20) — lines `19–20`; excerpt `sha256:e24d4fe9967be0a811dc1c113c9c1c4b79c42b042947459ceca902012638f6ec`
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-baker-harman-pintz-2001`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-baker-harman-pintz-2001`.
 
 <a id="source-source-bbb68df5b83380"></a>
 
@@ -7532,10 +7229,8 @@ Public implementation or evidence coordinates:
 - [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L4505-L4508) — lines `4505–4508`; excerpt `sha256:d2de58d8a1aef218af5e1cbe7a8d2d2e6c1b7fa33cca90bcee80d5265ac4b37f`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L4447-L4450) — lines `4447–4450`; excerpt `sha256:d2de58d8a1aef218af5e1cbe7a8d2d2e6c1b7fa33cca90bcee80d5265ac4b37f`
 
-Paper citation usages:
-
-- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:987](../../paper/269/erdos-269-three-prime-running-lcm.tex#L987-L987)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:182](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L182-L182), [cite at paper/reasoning-parts/erdos269/core.tex:124](../../paper/reasoning-parts/erdos269/core.tex#L124-L124)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-bbb68df5b83380`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-bbb68df5b83380`.
 
 <a id="source-source-bc5d16b84e62c7"></a>
 
@@ -7559,9 +7254,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10343-L10348) — lines `10343–10348`; excerpt `sha256:3b4314143d0179f0e80db37bd37b8d4c9238a3d5a98cff4c888fcdf15fd2d416`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10151-L10156) — lines `10151–10156`; excerpt `sha256:3b4314143d0179f0e80db37bd37b8d4c9238a3d5a98cff4c888fcdf15fd2d416`
 
-Paper citation usages:
-
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:8273](../../paper/249/erdos249-totient-reasoning-surface.tex#L8273-L8273), [cite at paper/249/erdos249-totient-reasoning-surface.tex:8274](../../paper/249/erdos249-totient-reasoning-surface.tex#L8274-L8274), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:8081](../../paper/reasoning-parts/erdos249/a249_front.tex#L8081-L8081), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:8082](../../paper/reasoning-parts/erdos249/a249_front.tex#L8082-L8082)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-bc5d16b84e62c7`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-bc5d16b84e62c7`.
 
 <a id="source-source-bd5fabd398bdfa"></a>
 
@@ -7579,9 +7273,8 @@ Public implementation or evidence coordinates:
 
 - [docs/papers/mirror/plectis-public-system.tex](../../docs/papers/mirror/plectis-public-system.tex#L1334-L1340) — lines `1334–1340`; excerpt `sha256:18a8d4297efae6feb71647744dd95041e21981acc49c27a0e1687c67df212362`
 
-Paper citation usages:
-
-- `plectis-public-system`: [cite at docs/papers/mirror/plectis-public-system.tex:422](../../docs/papers/mirror/plectis-public-system.tex#L422-L422)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-bd5fabd398bdfa`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-bd5fabd398bdfa`.
 
 <a id="source-source-c29036ef9c4da8"></a>
 
@@ -7599,10 +7292,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1661-L1666) — lines `1661–1666`; excerpt `sha256:a61b861ef9dfbc8c5a24e60e162f7b7fa072c019024917cf1a7847ac064e8432`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:483](../../paper/systems/claim-faithful-publication-systems-paper.tex#L483-L483), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1040](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1040-L1040)
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:999](../../paper/systems/open-source-mathematics-strategy.tex#L999-L999), [cite at paper/systems/open-source-mathematics-strategy.tex:1421](../../paper/systems/open-source-mathematics-strategy.tex#L1421-L1421)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-c29036ef9c4da8`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-c29036ef9c4da8`.
 
 <a id="source-source-c32d672658410d"></a>
 
@@ -7627,10 +7318,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L3011-L3013) — lines `3011–3013`; excerpt `sha256:5bb26410e95839b64ea4bf5f23b0e11414c0841dab9afdc4a31c006cc4754751`
 - [lean/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean](../../lean/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean#L21-L21) — lines `21–21`; excerpt `sha256:07dad1a6dbaa03c54631370154c906de91a50cd710b3b9c6e143f85e14b3c973`
 
-Paper citation usages:
-
-- `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:750](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L750-L750)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2079](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2079-L2079), [cite at paper/reasoning-parts/erdos251/core.tex:2037](../../paper/reasoning-parts/erdos251/core.tex#L2037-L2037)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-c32d672658410d`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-c32d672658410d`.
 
 <a id="source-source-c61a0cf3f328ce"></a>
 
@@ -7654,10 +7343,8 @@ Public implementation or evidence coordinates:
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5372-L5377) — lines `5372–5377`; excerpt `sha256:e0b4d65450b872a2ec9473172bcabec68557987449286f48db42d3c226f70988`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5341-L5346) — lines `5341–5346`; excerpt `sha256:e0b4d65450b872a2ec9473172bcabec68557987449286f48db42d3c226f70988`
 
-Paper citation usages:
-
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1086](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1086-L1086)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2999](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2999-L2999), [cite at paper/reasoning-parts/erdos1049/core.tex:2968](../../paper/reasoning-parts/erdos1049/core.tex#L2968-L2968)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-c61a0cf3f328ce`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-c61a0cf3f328ce`.
 
 <a id="source-source-c6e97d89c9fa5f"></a>
 
@@ -7686,12 +7373,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L4141-L4146) — lines `4141–4146`; excerpt `sha256:24a478d3e71a9e5ce6ab2dcf8084cf9ba533270acd0b15cdfd19710d0c338733`
 - [paper/269/erdos-269-three-prime-running-lcm.tex](../../paper/269/erdos-269-three-prime-running-lcm.tex#L1064-L1067) — lines `1064–1067`; excerpt `sha256:997988654d9ef70ccc079da055de714cc3514f6ed4822ee4b84eab7c073da669`
 
-Paper citation usages:
-
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:1200](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L1200-L1200), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:1256](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L1256-L1256)
-- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:977](../../paper/269/erdos-269-three-prime-running-lcm.tex#L977-L977)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1050](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1050-L1050), [cite at paper/reasoning-parts/erdos243/core.tex:1011](../../paper/reasoning-parts/erdos243/core.tex#L1011-L1011)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:2549](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L2549-L2549), [cite at paper/reasoning-parts/erdos269/core.tex:2491](../../paper/reasoning-parts/erdos269/core.tex#L2491-L2491)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-c6e97d89c9fa5f`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-c6e97d89c9fa5f`.
 
 <a id="source-source-c742deb980b53c"></a>
 
@@ -7714,9 +7397,8 @@ Public implementation or evidence coordinates:
 
 - [paper/257/erdos-257-mersenne-support-subseries.tex](../../paper/257/erdos-257-mersenne-support-subseries.tex#L1649-L1653) — lines `1649–1653`; excerpt `sha256:156df176c039566fa6a406e54730ac45e0fabbf03ff99eaeb3b08442cc0945c5`
 
-Paper citation usages:
-
-- `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:872](../../paper/257/erdos-257-mersenne-support-subseries.tex#L872-L872)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-c742deb980b53c`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-c742deb980b53c`.
 
 <a id="source-source-c786f202d47318"></a>
 
@@ -7740,9 +7422,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10309-L10314) — lines `10309–10314`; excerpt `sha256:cda83ebde02e28a432b8ceb19002a8a337d3c75febb082deef2e12df21f76d3e`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10117-L10122) — lines `10117–10122`; excerpt `sha256:cda83ebde02e28a432b8ceb19002a8a337d3c75febb082deef2e12df21f76d3e`
 
-Paper citation usages:
-
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:2688](../../paper/249/erdos249-totient-reasoning-surface.tex#L2688-L2688), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:2496](../../paper/reasoning-parts/erdos249/a249_front.tex#L2496-L2496)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-c786f202d47318`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-c786f202d47318`.
 
 <a id="source-source-c835bc94aad831"></a>
 
@@ -7773,10 +7454,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L2614-L2614) — lines `2614–2614`; excerpt `sha256:eaef0eb562b2565c4e6cca9b9e2071d569a2d058ca3df8fe1a95c3b9fbbe116f`
 - [paper/68/erdos-68-factorial-denominator-irrationality.tex](../../paper/68/erdos-68-factorial-denominator-irrationality.tex#L550-L554) — lines `550–554`; excerpt `sha256:dda39d0b8061ef15651d6453ded0f99da28a8186817fb5bf3e6a3ea605fd1b5c`
 
-Paper citation usages:
-
-- `erdos-68-factorial-denominator-irrationality`: [cite at paper/68/erdos-68-factorial-denominator-irrationality.tex:85](../../paper/68/erdos-68-factorial-denominator-irrationality.tex#L85-L86)
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1350](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1350-L1351), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2316](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2316-L2317), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2649](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2649-L2649), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2652](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2652-L2652), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2660](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2660-L2660), [cite at paper/reasoning-parts/erdos68/core.tex:1315](../../paper/reasoning-parts/erdos68/core.tex#L1315-L1316), [cite at paper/reasoning-parts/erdos68/core.tex:2281](../../paper/reasoning-parts/erdos68/core.tex#L2281-L2282), [cite at paper/reasoning-parts/erdos68/core.tex:2614](../../paper/reasoning-parts/erdos68/core.tex#L2614-L2614), [cite at paper/reasoning-parts/erdos68/core.tex:2617](../../paper/reasoning-parts/erdos68/core.tex#L2617-L2617), [cite at paper/reasoning-parts/erdos68/core.tex:2625](../../paper/reasoning-parts/erdos68/core.tex#L2625-L2625)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-c835bc94aad831`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-c835bc94aad831`.
 
 <a id="source-source-c9b987093aaf4e"></a>
 
@@ -7795,9 +7474,8 @@ Public implementation or evidence coordinates:
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L3079-L3081) — lines `3079–3081`; excerpt `sha256:e6fc69e63673756998024749e72cb913b9a0094933c34fd8e81d93f0eeca483e`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L3037-L3039) — lines `3037–3039`; excerpt `sha256:e6fc69e63673756998024749e72cb913b9a0094933c34fd8e81d93f0eeca483e`
 
-Paper citation usages:
-
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:661](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L661-L661), [cite at paper/reasoning-parts/erdos251/core.tex:619](../../paper/reasoning-parts/erdos251/core.tex#L619-L619)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-c9b987093aaf4e`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-c9b987093aaf4e`.
 
 <a id="source-source-ca19e504149107"></a>
 
@@ -7821,9 +7499,8 @@ Public implementation or evidence coordinates:
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5277-L5283) — lines `5277–5283`; excerpt `sha256:b6b59c3f516fe753628de797f741e46ad1554bcd562427e309cfd40f794a23f8`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5246-L5252) — lines `5246–5252`; excerpt `sha256:b6b59c3f516fe753628de797f741e46ad1554bcd562427e309cfd40f794a23f8`
 
-Paper citation usages:
-
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4979](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4979-L4979), [cite at paper/reasoning-parts/erdos1049/core.tex:4948](../../paper/reasoning-parts/erdos1049/core.tex#L4948-L4948)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-ca19e504149107`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-ca19e504149107`.
 
 <a id="source-source-cbaba7aeeb0f71"></a>
 
@@ -7847,10 +7524,8 @@ Public implementation or evidence coordinates:
 - [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L4105-L4109) — lines `4105–4109`; excerpt `sha256:8a847cb8c6d7ed0d59130cbc1d2e6cc75ca5363d7b766e4b4549f87e237f59d6`
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L4066-L4070) — lines `4066–4070`; excerpt `sha256:8a847cb8c6d7ed0d59130cbc1d2e6cc75ca5363d7b766e4b4549f87e237f59d6`
 
-Paper citation usages:
-
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:968](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L968-L968), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:986](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L986-L986)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:882](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L882-L882), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:1693](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L1693-L1693), [cite at paper/reasoning-parts/erdos243/core.tex:843](../../paper/reasoning-parts/erdos243/core.tex#L843-L843), [cite at paper/reasoning-parts/erdos243/core.tex:1654](../../paper/reasoning-parts/erdos243/core.tex#L1654-L1654)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-cbaba7aeeb0f71`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-cbaba7aeeb0f71`.
 
 <a id="source-source-cc1c19967d418f"></a>
 
@@ -7868,10 +7543,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1651-L1656) — lines `1651–1656`; excerpt `sha256:3b1c1f707242e20b5d386d4825b37ac2214783f7d5eabb0ada5326605f0fc4cd`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:609](../../paper/systems/claim-faithful-publication-systems-paper.tex#L609-L609), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1052](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1052-L1052)
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:585](../../paper/systems/open-source-mathematics-strategy.tex#L585-L585), [cite at paper/systems/open-source-mathematics-strategy.tex:929](../../paper/systems/open-source-mathematics-strategy.tex#L929-L929), [cite at paper/systems/open-source-mathematics-strategy.tex:984](../../paper/systems/open-source-mathematics-strategy.tex#L984-L984)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-cc1c19967d418f`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-cc1c19967d418f`.
 
 <a id="source-source-cc823e517ced81"></a>
 
@@ -7888,6 +7561,9 @@ Paper citation usages:
 Exact source locations:
 
 - [Public bibliographic identity and author record; metadata checked on 2026-09-12. This does not verify a mathematical use.](https://arxiv.org/abs/2606.13662v2)
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-cc823e517ced81`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-cc823e517ced81`.
 
 <a id="source-source-cd126799fede94"></a>
 
@@ -7937,12 +7613,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L9513-L9520) — lines `9513–9520`; excerpt `sha256:c67b14d05ad70fe87ae10882e6666f671b4fb879b6ad3b2ac2f9cd21da8d1764`
 - [paper/1049/erdos-1049-rational-base-lambert.tex](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1282-L1288) — lines `1282–1288`; excerpt `sha256:72d40703f422b4e9c77e9b7f7d1db51028590dcfa3b80e0dfd26187887ef7b98`
 
-Paper citation usages:
-
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1074](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1074-L1074)
-- `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:1035](../../paper/257/erdos-257-mersenne-support-subseries.tex#L1035-L1035)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:878](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L878-L878), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2806](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2806-L2806), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4930](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4930-L4930), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4934](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4934-L4934), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4956](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4956-L4956), [cite at paper/reasoning-parts/erdos1049/core.tex:847](../../paper/reasoning-parts/erdos1049/core.tex#L847-L847), [cite at paper/reasoning-parts/erdos1049/core.tex:2775](../../paper/reasoning-parts/erdos1049/core.tex#L2775-L2775), [cite at paper/reasoning-parts/erdos1049/core.tex:4899](../../paper/reasoning-parts/erdos1049/core.tex#L4899-L4899), [cite at paper/reasoning-parts/erdos1049/core.tex:4903](../../paper/reasoning-parts/erdos1049/core.tex#L4903-L4903), [cite at paper/reasoning-parts/erdos1049/core.tex:4925](../../paper/reasoning-parts/erdos1049/core.tex#L4925-L4925)
-- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:9544](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9544-L9544), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:9344](../../paper/reasoning-parts/erdos257/a257_front.tex#L9344-L9344)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-cd126799fede94`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-cd126799fede94`.
 
 <a id="source-source-ce27d27dd5ec77"></a>
 
@@ -7962,9 +7634,8 @@ Public implementation or evidence coordinates:
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L3089-L3091) — lines `3089–3091`; excerpt `sha256:6287f2e5f5563289d4064e0d820c7d7f4d40b15e0efeaa8af2f7bf000182a58a`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L3047-L3049) — lines `3047–3049`; excerpt `sha256:6287f2e5f5563289d4064e0d820c7d7f4d40b15e0efeaa8af2f7bf000182a58a`
 
-Paper citation usages:
-
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:639](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L639-L639), [cite at paper/reasoning-parts/erdos251/core.tex:597](../../paper/reasoning-parts/erdos251/core.tex#L597-L597)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-ce27d27dd5ec77`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-ce27d27dd5ec77`.
 
 <a id="source-source-ce5fddc99aff3f"></a>
 
@@ -7982,9 +7653,8 @@ Public implementation or evidence coordinates:
 
 - [docs/papers/mirror/plectis-public-system.tex](../../docs/papers/mirror/plectis-public-system.tex#L1346-L1351) — lines `1346–1351`; excerpt `sha256:82ba5ed7e06a2f42df45b4196b5caba7c6b634aab7fa76273b92a7cc6bf3768e`
 
-Paper citation usages:
-
-- `plectis-public-system`: [cite at docs/papers/mirror/plectis-public-system.tex:437](../../docs/papers/mirror/plectis-public-system.tex#L437-L437)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-ce5fddc99aff3f`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-ce5fddc99aff3f`.
 
 <a id="source-source-cf94fac28d0ff1"></a>
 
@@ -8005,6 +7675,9 @@ Exact source locations:
 Public implementation or evidence coordinates:
 
 - [docs/research-commons/rounds/round7/README.md](../../docs/research-commons/rounds/round7/README.md#L69-L72) — lines `69–72`; excerpt `sha256:cd2254d00d767097a5253778989b0a7f0e7faeb4113eb8147432197bdcc8ac18`
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-cf94fac28d0ff1`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-cf94fac28d0ff1`.
 
 <a id="source-source-coons-nonautomaticity-0810-3709v3"></a>
 
@@ -8029,9 +7702,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10240-L10244) — lines `10240–10244`; excerpt `sha256:2f294b2503d2448477ab88b5f01e57b82be38261f6866fa51e12cb42fdaf1931`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L7461-L7461) — lines `7461–7461`; excerpt `sha256:ea2c18fcbd108947a85f0c7ad3832b7c5a50121404e6ee760f1a053d967d615f`
 
-Paper citation usages:
-
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:7653](../../paper/249/erdos249-totient-reasoning-surface.tex#L7653-L7653), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:7461](../../paper/reasoning-parts/erdos249/a249_front.tex#L7461-L7461)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-coons-nonautomaticity-0810.3709v3`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-coons-nonautomaticity-0810.3709v3`.
 
 <a id="source-source-corvaja-zannier-2002-subspace"></a>
 
@@ -8054,9 +7726,8 @@ Public implementation or evidence coordinates:
 - [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2209-L2214) — lines `2209–2214`; excerpt `sha256:de88340cc2b28c69940b64cf1bcdbf90dd118bb326ff5edd71abe0001f11021c`
 - [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L1350-L1350) — lines `1350–1350`; excerpt `sha256:c5730ed1aecc44a1cef58487cebc75be161e05aa5a960b5dcbb3825e6b92cf96`
 
-Paper citation usages:
-
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1282](../../paper/synthesis/optimal-sparse-perturbations.tex#L1282-L1282), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1350](../../paper/synthesis/optimal-sparse-perturbations.tex#L1350-L1350)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-corvaja-zannier-2002-subspace`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-corvaja-zannier-2002-subspace`.
 
 <a id="source-source-d14cd7f6920a31"></a>
 
@@ -8074,9 +7745,8 @@ Public implementation or evidence coordinates:
 
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5412-L5419) — lines `5412–5419`; excerpt `sha256:93d139a71e461686d30e06c7802e159563a317a1df01f8e655071348c500dd47`
 
-Paper citation usages:
-
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:2246](../../paper/archive/erdos249-257-main-paper.tex#L2246-L2246)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-d14cd7f6920a31`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-d14cd7f6920a31`.
 
 <a id="source-source-d1710db60eae06"></a>
 
@@ -8107,9 +7777,8 @@ Public implementation or evidence coordinates:
 - [lean/ErdosProblems/Erdos68/PrimeZeroBranch.lean](../../lean/ErdosProblems/Erdos68/PrimeZeroBranch.lean#L3134-L3139) — lines `3134–3139`; excerpt `sha256:c866f4949ed4ad3259541be1ab078fcd2c3b951e2dcb35d831286f21d4ff0dae`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L3145-L3149) — lines `3145–3149`; excerpt `sha256:3460ef54d7c16f79f21ea0acd344175689e099e53fd07f95423bbc149ab01fcc`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:987](../../paper/68/erdos68-factorial-reasoning-surface.tex#L987-L987), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2047](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2047-L2047), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2094](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2094-L2094), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2098](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2098-L2098), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2308](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2308-L2308), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2942](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2942-L2942), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2943](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2943-L2943), [cite at paper/reasoning-parts/erdos68/core.tex:952](../../paper/reasoning-parts/erdos68/core.tex#L952-L952), [cite at paper/reasoning-parts/erdos68/core.tex:2012](../../paper/reasoning-parts/erdos68/core.tex#L2012-L2012), [cite at paper/reasoning-parts/erdos68/core.tex:2059](../../paper/reasoning-parts/erdos68/core.tex#L2059-L2059), [cite at paper/reasoning-parts/erdos68/core.tex:2063](../../paper/reasoning-parts/erdos68/core.tex#L2063-L2063), [cite at paper/reasoning-parts/erdos68/core.tex:2273](../../paper/reasoning-parts/erdos68/core.tex#L2273-L2273), [cite at paper/reasoning-parts/erdos68/core.tex:2907](../../paper/reasoning-parts/erdos68/core.tex#L2907-L2907), [cite at paper/reasoning-parts/erdos68/core.tex:2908](../../paper/reasoning-parts/erdos68/core.tex#L2908-L2908)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-d1710db60eae06`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-d1710db60eae06`.
 
 <a id="source-source-d31e3bc51f2784"></a>
 
@@ -8127,9 +7796,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1387-L1389) — lines `1387–1389`; excerpt `sha256:c66e4c643708ca23615d9d6c9473c802267b432d3f477cb5deb758c7fb5f7d69`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1049](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1049-L1049)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-d31e3bc51f2784`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-d31e3bc51f2784`.
 
 <a id="source-source-d3995db1508bc9"></a>
 
@@ -8157,10 +7825,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L2047-L2047) — lines `2047–2047`; excerpt `sha256:eaaaa84d309b1a0c1d56fc36e531a59a4fa33af5709a256b9b48f214908ca467`
 - [lean/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean](../../lean/ErdosProblems/Erdos251/BoundedPerturbationCountermodel.lean#L22-L22) — lines `22–22`; excerpt `sha256:6fe10d86cfbff9e425bdd6578dd696a5a4e58cae9a09bb6b9e1d399e6bd9e791`
 
-Paper citation usages:
-
-- `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:752](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L752-L752)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:1095](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L1095-L1095), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2090](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2090-L2090), [cite at paper/reasoning-parts/erdos251/core.tex:1053](../../paper/reasoning-parts/erdos251/core.tex#L1053-L1053), [cite at paper/reasoning-parts/erdos251/core.tex:2048](../../paper/reasoning-parts/erdos251/core.tex#L2048-L2048)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-d3995db1508bc9`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-d3995db1508bc9`.
 
 <a id="source-source-d471eacdba0f87"></a>
 
@@ -8191,10 +7857,8 @@ Public implementation or evidence coordinates:
 - [lean/ErdosProblems/Erdos251/ActualPrimePaperR11.lean](../../lean/ErdosProblems/Erdos251/ActualPrimePaperR11.lean#L7-L23) — lines `7–23`; excerpt `sha256:321f1f193ba6cea89edee0e703684bdf6234e2bc38d8b5dc53a6395d1b42cf33`
 - [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L825-L827) — lines `825–827`; excerpt `sha256:a3a48dc0af2ce0549ba6c3e9eea30a30f6e3554c01f26cebd6566dc236f816dc`
 
-Paper citation usages:
-
-- `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:426](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L426-L426), [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:445](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L445-L445), [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:623](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L623-L623)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:529](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L529-L529), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:564](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L564-L564), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:571](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L571-L571), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:1442](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L1442-L1442), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:1548](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L1548-L1548), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:1560](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L1560-L1560), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:1607](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L1607-L1607), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:1616](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L1616-L1616), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:1671](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L1671-L1671), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:1678](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L1678-L1678), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2266](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2266-L2266), [cite at paper/reasoning-parts/erdos251/core.tex:487](../../paper/reasoning-parts/erdos251/core.tex#L487-L487), [cite at paper/reasoning-parts/erdos251/core.tex:522](../../paper/reasoning-parts/erdos251/core.tex#L522-L522), [cite at paper/reasoning-parts/erdos251/core.tex:529](../../paper/reasoning-parts/erdos251/core.tex#L529-L529), [cite at paper/reasoning-parts/erdos251/core.tex:1400](../../paper/reasoning-parts/erdos251/core.tex#L1400-L1400), [cite at paper/reasoning-parts/erdos251/core.tex:1506](../../paper/reasoning-parts/erdos251/core.tex#L1506-L1506), [cite at paper/reasoning-parts/erdos251/core.tex:1518](../../paper/reasoning-parts/erdos251/core.tex#L1518-L1518), [cite at paper/reasoning-parts/erdos251/core.tex:1565](../../paper/reasoning-parts/erdos251/core.tex#L1565-L1565), [cite at paper/reasoning-parts/erdos251/core.tex:1574](../../paper/reasoning-parts/erdos251/core.tex#L1574-L1574), [cite at paper/reasoning-parts/erdos251/core.tex:1629](../../paper/reasoning-parts/erdos251/core.tex#L1629-L1629), [cite at paper/reasoning-parts/erdos251/core.tex:1636](../../paper/reasoning-parts/erdos251/core.tex#L1636-L1636), [cite at paper/reasoning-parts/erdos251/core.tex:2224](../../paper/reasoning-parts/erdos251/core.tex#L2224-L2224)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-d471eacdba0f87`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-d471eacdba0f87`.
 
 <a id="source-source-d517c8a2d6f84d"></a>
 
@@ -8212,10 +7876,8 @@ Public implementation or evidence coordinates:
 
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1737-L1742) — lines `1737–1742`; excerpt `sha256:0e1fe3e7471b6a0f3864ce0578266000a9fbb85f892248701cd17ba615c3e182`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:489](../../paper/systems/claim-faithful-publication-systems-paper.tex#L489-L489), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1052](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1052-L1052)
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:845](../../paper/systems/open-source-mathematics-strategy.tex#L845-L845)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-d517c8a2d6f84d`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-d517c8a2d6f84d`.
 
 <a id="source-source-d7a43109c64c0c"></a>
 
@@ -8241,9 +7903,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5129-L5129) — lines `5129–5129`; excerpt `sha256:a687d79281dfe79c9bc043998a9b0da79a7a7066f72571d9b7a84107de6bf44d`
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5160-L5160) — lines `5160–5160`; excerpt `sha256:a687d79281dfe79c9bc043998a9b0da79a7a7066f72571d9b7a84107de6bf44d`
 
-Paper citation usages:
-
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5160](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5160-L5160), [cite at paper/reasoning-parts/erdos1049/core.tex:5129](../../paper/reasoning-parts/erdos1049/core.tex#L5129-L5129)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-d7a43109c64c0c`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-d7a43109c64c0c`.
 
 <a id="source-source-d8b2a7c411bc2d"></a>
 
@@ -8270,12 +7931,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L2999-L3001) — lines `2999–3001`; excerpt `sha256:d72e98994bd66ed7b43de80a46537b74234c2d45f82d4b6ff1a1a24103ce7117`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L2202-L2202) — lines `2202–2202`; excerpt `sha256:b1ae69e2196d41354ed68c8e0ab198e7acf792ec623ef06ddcd83aa926219a98`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:108](../../paper/systems/claim-faithful-publication-systems-paper.tex#L108-L108), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:593](../../paper/systems/claim-faithful-publication-systems-paper.tex#L593-L593), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1040](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1040-L1040)
-- `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:765](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L765-L765)
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:3772](../../paper/archive/erdos249-257-main-paper.tex#L3772-L3772)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2244](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2244-L2244), [cite at paper/reasoning-parts/erdos251/core.tex:2202](../../paper/reasoning-parts/erdos251/core.tex#L2202-L2202)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-d8b2a7c411bc2d`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-d8b2a7c411bc2d`.
 
 <a id="source-source-dbbc7de069eeee"></a>
 
@@ -8295,9 +7952,8 @@ Public implementation or evidence coordinates:
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L3069-L3071) — lines `3069–3071`; excerpt `sha256:0ff84f114bce1e696b9859dc6944ea26811f851d98955e2f5cf233d48165ac05`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L3027-L3029) — lines `3027–3029`; excerpt `sha256:0ff84f114bce1e696b9859dc6944ea26811f851d98955e2f5cf233d48165ac05`
 
-Paper citation usages:
-
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:606](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L606-L606), [cite at paper/reasoning-parts/erdos251/core.tex:564](../../paper/reasoning-parts/erdos251/core.tex#L564-L564)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-dbbc7de069eeee`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-dbbc7de069eeee`.
 
 <a id="source-source-dcbe400c96be59"></a>
 
@@ -8318,10 +7974,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5392-L5397) — lines `5392–5397`; excerpt `sha256:8c9bd3c3345cf07ffa6815f7ec1a90485fe63e2b80e1724053327490204d780a`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L2075-L2075) — lines `2075–2075`; excerpt `sha256:bf660f22b7c2b5ad1586f91c21fc4e625ed74e4ec29b524be165def32d7d016d`
 
-Paper citation usages:
-
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:772](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L772-L772)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:2125](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L2125-L2125), [cite at paper/reasoning-parts/erdos1041/core.tex:2075](../../paper/reasoning-parts/erdos1041/core.tex#L2075-L2075)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-dcbe400c96be59`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-dcbe400c96be59`.
 
 <a id="source-source-e13ecb7c94852a"></a>
 
@@ -8349,9 +8003,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L1424-L1424) — lines `1424–1424`; excerpt `sha256:ad8298ac69c418e00f4fc3862912b0d4b44decd465a1ec66f04646c9f5d5ecfb`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L1424-L1424) — lines `1424–1424`; excerpt `sha256:ad8298ac69c418e00f4fc3862912b0d4b44decd465a1ec66f04646c9f5d5ecfb`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1459](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1459-L1459), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2313](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2313-L2313), [cite at paper/reasoning-parts/erdos68/core.tex:1424](../../paper/reasoning-parts/erdos68/core.tex#L1424-L1424), [cite at paper/reasoning-parts/erdos68/core.tex:2278](../../paper/reasoning-parts/erdos68/core.tex#L2278-L2278)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-e13ecb7c94852a`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-e13ecb7c94852a`.
 
 <a id="source-source-e2bdd690015cad"></a>
 
@@ -8370,10 +8023,8 @@ Public implementation or evidence coordinates:
 - [paper/systems/cold-clone-to-proof-receipt.tex](../../paper/systems/cold-clone-to-proof-receipt.tex#L700-L705) — lines `700–705`; excerpt `sha256:e1fb69819625ee4c623683e8876546bfaeba103a154bb24b05f891cf455291a5`
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1226-L1228) — lines `1226–1228`; excerpt `sha256:5c3c73cac106465de37f6b0d206a52293b5061ddb965921d239f718eb722db0e`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1043](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1043-L1043)
-- `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:403](../../paper/systems/cold-clone-to-proof-receipt.tex#L403-L403), [cite at paper/systems/cold-clone-to-proof-receipt.tex:488](../../paper/systems/cold-clone-to-proof-receipt.tex#L488-L488)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-e2bdd690015cad`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-e2bdd690015cad`.
 
 <a id="source-source-e33bdf934f939f"></a>
 
@@ -8421,11 +8072,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L638-L638) — lines `638–638`; excerpt `sha256:135bd438efff4d1cc9eb4aa85885a7a589e44741d435f5882864ba601bb76893`
 - [lean/ErdosProblems/Erdos68/FactorialZeroPlateauSupplement.lean](../../lean/ErdosProblems/Erdos68/FactorialZeroPlateauSupplement.lean#L30-L32) — lines `30–32`; excerpt `sha256:1139eed2569eedcc245358cbde7bff884c8a36c06c78b0a38246a82257dae3ec`
 
-Paper citation usages:
-
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:964](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L964-L964)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:868](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L868-L868), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2438](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2438-L2439), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2589](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2589-L2589), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:3726](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3726-L3726), [cite at paper/reasoning-parts/erdos243/core.tex:829](../../paper/reasoning-parts/erdos243/core.tex#L829-L829), [cite at paper/reasoning-parts/erdos243/core.tex:2399](../../paper/reasoning-parts/erdos243/core.tex#L2399-L2400), [cite at paper/reasoning-parts/erdos243/core.tex:2550](../../paper/reasoning-parts/erdos243/core.tex#L2550-L2550), [cite at paper/reasoning-parts/erdos243/core.tex:3687](../../paper/reasoning-parts/erdos243/core.tex#L3687-L3687)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:680](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L680-L680), [cite at paper/reasoning-parts/erdos251/core.tex:638](../../paper/reasoning-parts/erdos251/core.tex#L638-L638)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-e33bdf934f939f`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-e33bdf934f939f`.
 
 <a id="source-source-e535117ac620e6"></a>
 
@@ -8449,11 +8097,8 @@ Public implementation or evidence coordinates:
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5353-L5358) — lines `5353–5358`; excerpt `sha256:f203205a4c16098f6ea390c2eb9ffeedc8e3c1bc649018114be1c761d0cbad7b`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5322-L5327) — lines `5322–5327`; excerpt `sha256:f203205a4c16098f6ea390c2eb9ffeedc8e3c1bc649018114be1c761d0cbad7b`
 
-Paper citation usages:
-
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1085](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1085-L1085)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2908](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2908-L2908), [cite at paper/reasoning-parts/erdos1049/core.tex:2877](../../paper/reasoning-parts/erdos1049/core.tex#L2877-L2877)
-- `writing-mathematics-from-reviewed-revisions`: [cite at paper/exposition/parts/reading.tex:136](../../paper/exposition/parts/reading.tex#L136-L136)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-e535117ac620e6`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-e535117ac620e6`.
 
 <a id="source-source-e553241a97e580"></a>
 
@@ -8498,10 +8143,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L95-L95) — lines `95–95`; excerpt `sha256:5c955cffe3f917b2bdd49ab1e2c3c923e754d64fd159f4452cd5726135089931`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L95-L95) — lines `95–95`; excerpt `sha256:5c955cffe3f917b2bdd49ab1e2c3c923e754d64fd159f4452cd5726135089931`
 
-Paper citation usages:
-
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:126](../../paper/1049/erdos-1049-rational-base-lambert.tex#L126-L126), [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1038](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1038-L1038)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:126](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L126-L126), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:637](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L637-L637), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:847](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L847-L847), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:875](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L875-L875), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1161](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1161-L1161), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:4057](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L4057-L4057), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5039](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5039-L5039), [cite at paper/reasoning-parts/erdos1049/core.tex:95](../../paper/reasoning-parts/erdos1049/core.tex#L95-L95), [cite at paper/reasoning-parts/erdos1049/core.tex:606](../../paper/reasoning-parts/erdos1049/core.tex#L606-L606), [cite at paper/reasoning-parts/erdos1049/core.tex:816](../../paper/reasoning-parts/erdos1049/core.tex#L816-L816), [cite at paper/reasoning-parts/erdos1049/core.tex:844](../../paper/reasoning-parts/erdos1049/core.tex#L844-L844), [cite at paper/reasoning-parts/erdos1049/core.tex:1130](../../paper/reasoning-parts/erdos1049/core.tex#L1130-L1130), [cite at paper/reasoning-parts/erdos1049/core.tex:4026](../../paper/reasoning-parts/erdos1049/core.tex#L4026-L4026), [cite at paper/reasoning-parts/erdos1049/core.tex:5008](../../paper/reasoning-parts/erdos1049/core.tex#L5008-L5008)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-e553241a97e580`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-e553241a97e580`.
 
 <a id="source-source-e5f2924d82c59f"></a>
 
@@ -8526,9 +8169,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5219-L5226) — lines `5219–5226`; excerpt `sha256:ca3ad143147a5d2804f66fa9a2b445b365c705a19273a1ae8c77f2c257c09062`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5032-L5032) — lines `5032–5032`; excerpt `sha256:a9816f01cbbbed3606bb3c7105e1f1bc81607266eee3e3bc860ed90c8624c684`
 
-Paper citation usages:
-
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5063](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5063-L5063), [cite at paper/reasoning-parts/erdos1049/core.tex:5032](../../paper/reasoning-parts/erdos1049/core.tex#L5032-L5032)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-e5f2924d82c59f`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-e5f2924d82c59f`.
 
 <a id="source-source-e66e0693f05f0a"></a>
 
@@ -8552,9 +8194,8 @@ Public implementation or evidence coordinates:
 - [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L3224-L3228) — lines `3224–3228`; excerpt `sha256:301c9e11ac561f9aaaabc33c46f271f3f0cecc122a99db652c476daecd2fda2a`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L3189-L3193) — lines `3189–3193`; excerpt `sha256:301c9e11ac561f9aaaabc33c46f271f3f0cecc122a99db652c476daecd2fda2a`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1144](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1144-L1144), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1146](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1146-L1146), [cite at paper/reasoning-parts/erdos68/core.tex:1109](../../paper/reasoning-parts/erdos68/core.tex#L1109-L1109), [cite at paper/reasoning-parts/erdos68/core.tex:1111](../../paper/reasoning-parts/erdos68/core.tex#L1111-L1111)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-e66e0693f05f0a`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-e66e0693f05f0a`.
 
 <a id="source-source-e6716218a1ac07"></a>
 
@@ -8572,9 +8213,8 @@ Public implementation or evidence coordinates:
 
 - [docs/papers/mirror/plectis-public-system.tex](../../docs/papers/mirror/plectis-public-system.tex#L1356-L1361) — lines `1356–1361`; excerpt `sha256:8f4293a0a02295b79306f2dd39994ae87fe5e3c104ae2b67eeec226a473b145e`
 
-Paper citation usages:
-
-- `plectis-public-system`: [cite at docs/papers/mirror/plectis-public-system.tex:605](../../docs/papers/mirror/plectis-public-system.tex#L605-L605)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-e6716218a1ac07`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-e6716218a1ac07`.
 
 <a id="source-source-e7f2f796dbcdb6"></a>
 
@@ -8597,9 +8237,8 @@ Public implementation or evidence coordinates:
 - [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L4517-L4521) — lines `4517–4521`; excerpt `sha256:66c2a5257f58be1672dd0343ef38da2c5d2f46e01935b51c3b7cec7dcf17b0ea`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L4459-L4463) — lines `4459–4463`; excerpt `sha256:66c2a5257f58be1672dd0343ef38da2c5d2f46e01935b51c3b7cec7dcf17b0ea`
 
-Paper citation usages:
-
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3648](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3648-L3648), [cite at paper/reasoning-parts/erdos269/core.tex:3590](../../paper/reasoning-parts/erdos269/core.tex#L3590-L3590)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-e7f2f796dbcdb6`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-e7f2f796dbcdb6`.
 
 <a id="source-source-e99ce64694b554"></a>
 
@@ -8618,10 +8257,8 @@ Public implementation or evidence coordinates:
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1732-L1737) — lines `1732–1737`; excerpt `sha256:4fa78969a75193c23aeb06cdd0323df94e0a5887673d1bf5c44d740748d12774`
 - [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1197-L1201) — lines `1197–1201`; excerpt `sha256:fea9fc446cc883ee74a3abe2b9d747aa1da68232d0315a8d8bef6e40e8b574ed`
 
-Paper citation usages:
-
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1051](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1051-L1051)
-- `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:1097](../../paper/systems/open-source-mathematics-strategy.tex#L1097-L1097)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-e99ce64694b554`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-e99ce64694b554`.
 
 <a id="source-source-eaeb7980382323"></a>
 
@@ -8645,11 +8282,8 @@ Public implementation or evidence coordinates:
 - [paper/269/erdos269-running-lcm-reasoning-surface.tex](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L4521-L4527) — lines `4521–4527`; excerpt `sha256:f0b413584f891c1a725c23699a9efae2e7cbaba89e97347422243d21325f0020`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L4463-L4469) — lines `4463–4469`; excerpt `sha256:f0b413584f891c1a725c23699a9efae2e7cbaba89e97347422243d21325f0020`
 
-Paper citation usages:
-
-- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:983](../../paper/269/erdos-269-three-prime-running-lcm.tex#L983-L983)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3651](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3651-L3651), [cite at paper/reasoning-parts/erdos269/core.tex:3593](../../paper/reasoning-parts/erdos269/core.tex#L3593-L3593)
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1952](../../paper/synthesis/optimal-sparse-perturbations.tex#L1952-L1952)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-eaeb7980382323`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-eaeb7980382323`.
 
 <a id="source-source-eca9e699590922"></a>
 
@@ -8677,10 +8311,8 @@ Public implementation or evidence coordinates:
 - [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9682-L9688) — lines `9682–9688`; excerpt `sha256:a764b921cc13bcb1cc2ca1ce687e7493ad39d0ad55326278645b6b44ec94cfdc`
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L9482-L9488) — lines `9482–9488`; excerpt `sha256:a764b921cc13bcb1cc2ca1ce687e7493ad39d0ad55326278645b6b44ec94cfdc`
 
-Paper citation usages:
-
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:2242](../../paper/archive/erdos249-257-main-paper.tex#L2242-L2243)
-- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1484](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1484-L1484), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:1284](../../paper/reasoning-parts/erdos257/a257_front.tex#L1284-L1284)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-eca9e699590922`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-eca9e699590922`.
 
 <a id="source-source-ee991edd431d57"></a>
 
@@ -8706,10 +8338,8 @@ Public implementation or evidence coordinates:
 - [paper/243/erdos243-reciprocal-tail-reasoning-surface.tex](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L4130-L4134) — lines `4130–4134`; excerpt `sha256:40aecd254891fc812f0e8980ec61fe681a524880f510bb6cfc26f94b02d1b732`
 - [paper/reasoning-parts/erdos243/core.tex](../../paper/reasoning-parts/erdos243/core.tex#L4091-L4095) — lines `4091–4095`; excerpt `sha256:40aecd254891fc812f0e8980ec61fe681a524880f510bb6cfc26f94b02d1b732`
 
-Paper citation usages:
-
-- `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:764](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L764-L764)
-- `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:2712](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L2712-L2712), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:3263](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3263-L3263), [cite at paper/reasoning-parts/erdos243/core.tex:2673](../../paper/reasoning-parts/erdos243/core.tex#L2673-L2673), [cite at paper/reasoning-parts/erdos243/core.tex:3224](../../paper/reasoning-parts/erdos243/core.tex#L3224-L3224)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-ee991edd431d57`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-ee991edd431d57`.
 
 <a id="source-source-eeff3fa685af8a"></a>
 
@@ -8733,9 +8363,8 @@ Public implementation or evidence coordinates:
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10348-L10353) — lines `10348–10353`; excerpt `sha256:32599e7a2120d5129deed6138e89e7ebef17cd091f20f82776fde8449312e5ca`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10156-L10161) — lines `10156–10161`; excerpt `sha256:32599e7a2120d5129deed6138e89e7ebef17cd091f20f82776fde8449312e5ca`
 
-Paper citation usages:
-
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:8284](../../paper/249/erdos249-totient-reasoning-surface.tex#L8284-L8284), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:8092](../../paper/reasoning-parts/erdos249/a249_front.tex#L8092-L8092)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-eeff3fa685af8a`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-eeff3fa685af8a`.
 
 <a id="source-source-ef6233b59b95cb"></a>
 
@@ -8764,9 +8393,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L814-L814) — lines `814–814`; excerpt `sha256:7a549791ed341c1373f0b0c9b40e13b147f3aa3b9484ded64b1ef2f2a94aefa9`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L814-L814) — lines `814–814`; excerpt `sha256:7a549791ed341c1373f0b0c9b40e13b147f3aa3b9484ded64b1ef2f2a94aefa9`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:849](../../paper/68/erdos68-factorial-reasoning-surface.tex#L849-L849), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2328](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2328-L2328), [cite at paper/reasoning-parts/erdos68/core.tex:814](../../paper/reasoning-parts/erdos68/core.tex#L814-L814), [cite at paper/reasoning-parts/erdos68/core.tex:2293](../../paper/reasoning-parts/erdos68/core.tex#L2293-L2293)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-ef6233b59b95cb`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-ef6233b59b95cb`.
 
 <a id="source-source-endpoint2026-logarithmic-repair"></a>
 
@@ -8785,6 +8413,9 @@ Public implementation or evidence coordinates:
 - [paper/257/erdos-257-mersenne-support-subseries.tex](../../paper/257/erdos-257-mersenne-support-subseries.tex#L845-L845) — lines `845–845`; excerpt `sha256:2b4bc5fe17fd8e238debc2df722a5d5ae84b5416fb38720f4a94b13b2f06e216`
 - [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9202-L9202) — lines `9202–9202`; excerpt `sha256:ec7c5a5f4b94d4c2488e3f5a57b5af9b264fc4f248b588252be6eb05d0e88fe2`
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L9002-L9002) — lines `9002–9002`; excerpt `sha256:ec7c5a5f4b94d4c2488e3f5a57b5af9b264fc4f248b588252be6eb05d0e88fe2`
+
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-endpoint2026-logarithmic-repair`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-endpoint2026-logarithmic-repair`.
 
 <a id="source-source-evertse-ferretti-2013-author2012"></a>
 
@@ -8807,9 +8438,8 @@ Public implementation or evidence coordinates:
 - [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2308-L2314) — lines `2308–2314`; excerpt `sha256:47977a6056cdfc3896fa8809315451f7388750fbf3c2c4dc8cecc22c8db23ce3`
 - [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L1348-L1348) — lines `1348–1348`; excerpt `sha256:96ba3449869250ee797a74c61af26bb684a11fdafa259cc3adebbfc6c0c854c7`
 
-Paper citation usages:
-
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1348](../../paper/synthesis/optimal-sparse-perturbations.tex#L1348-L1348)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-evertse-ferretti-2013-author2012`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-evertse-ferretti-2013-author2012`.
 
 <a id="source-source-f0af8e6f36727f"></a>
 
@@ -8835,10 +8465,8 @@ Public implementation or evidence coordinates:
 - [paper/1041/erdos1041-lemniscate-reasoning-surface.tex](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L5497-L5500) — lines `5497–5500`; excerpt `sha256:a2ea0b0d9fe464fd26b77c94c6b482f3c945b98a5fd53c85d7624d1728340989`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L5447-L5450) — lines `5447–5450`; excerpt `sha256:a2ea0b0d9fe464fd26b77c94c6b482f3c945b98a5fd53c85d7624d1728340989`
 
-Paper citation usages:
-
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:1137](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1137-L1137)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:5130](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L5130-L5130), [cite at paper/reasoning-parts/erdos1041/core.tex:5080](../../paper/reasoning-parts/erdos1041/core.tex#L5080-L5080)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-f0af8e6f36727f`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-f0af8e6f36727f`.
 
 <a id="source-source-f1a42898642b5f"></a>
 
@@ -8861,9 +8489,8 @@ Public implementation or evidence coordinates:
 - [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L3240-L3244) — lines `3240–3244`; excerpt `sha256:9840d0a92d94f920800cfb600e645cca774371293151ecea13c66a6cce76d3c8`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L3205-L3209) — lines `3205–3209`; excerpt `sha256:9840d0a92d94f920800cfb600e645cca774371293151ecea13c66a6cce76d3c8`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1984](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1984-L1984), [cite at paper/reasoning-parts/erdos68/core.tex:1949](../../paper/reasoning-parts/erdos68/core.tex#L1949-L1949)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-f1a42898642b5f`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-f1a42898642b5f`.
 
 <a id="source-source-f1c687cb5e9ae4"></a>
 
@@ -8889,10 +8516,8 @@ Public implementation or evidence coordinates:
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5201-L5205) — lines `5201–5205`; excerpt `sha256:985c11e75c32024f7b85ea003ea9eddbd077703fea826834a3b574b6cc2d115c`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5170-L5174) — lines `5170–5174`; excerpt `sha256:985c11e75c32024f7b85ea003ea9eddbd077703fea826834a3b574b6cc2d115c`
 
-Paper citation usages:
-
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:859](../../paper/1049/erdos-1049-rational-base-lambert.tex#L859-L859)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:285](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L285-L285), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:509](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L509-L509), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5110](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5110-L5110), [cite at paper/reasoning-parts/erdos1049/core.tex:254](../../paper/reasoning-parts/erdos1049/core.tex#L254-L254), [cite at paper/reasoning-parts/erdos1049/core.tex:478](../../paper/reasoning-parts/erdos1049/core.tex#L478-L478), [cite at paper/reasoning-parts/erdos1049/core.tex:5079](../../paper/reasoning-parts/erdos1049/core.tex#L5079-L5079)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-f1c687cb5e9ae4`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-f1c687cb5e9ae4`.
 
 <a id="source-source-f213b302ada43a"></a>
 
@@ -8918,9 +8543,8 @@ Public implementation or evidence coordinates:
 - [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L3216-L3220) — lines `3216–3220`; excerpt `sha256:d0240691fa5956d3f42d0e151a25cfaa8d0a16e7b1cc510ba6b9ef168ed084dc`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L3181-L3185) — lines `3181–3185`; excerpt `sha256:d0240691fa5956d3f42d0e151a25cfaa8d0a16e7b1cc510ba6b9ef168ed084dc`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1927](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1927-L1927), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1956](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1956-L1956), [cite at paper/68/erdos68-factorial-reasoning-surface.tex:2331](../../paper/68/erdos68-factorial-reasoning-surface.tex#L2331-L2331), [cite at paper/reasoning-parts/erdos68/core.tex:1892](../../paper/reasoning-parts/erdos68/core.tex#L1892-L1892), [cite at paper/reasoning-parts/erdos68/core.tex:1921](../../paper/reasoning-parts/erdos68/core.tex#L1921-L1921), [cite at paper/reasoning-parts/erdos68/core.tex:2296](../../paper/reasoning-parts/erdos68/core.tex#L2296-L2296)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-f213b302ada43a`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-f213b302ada43a`.
 
 <a id="source-source-f2a047037bae55"></a>
 
@@ -8938,9 +8562,8 @@ Public implementation or evidence coordinates:
 
 - [docs/papers/mirror/plectis-public-system.tex](../../docs/papers/mirror/plectis-public-system.tex#L1340-L1346) — lines `1340–1346`; excerpt `sha256:afa42db0c4dfb2114be595de4a2efc8acb377b5e1bb8f446e52f2791f475b1eb`
 
-Paper citation usages:
-
-- `plectis-public-system`: [cite at docs/papers/mirror/plectis-public-system.tex:434](../../docs/papers/mirror/plectis-public-system.tex#L434-L434)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-f2a047037bae55`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-f2a047037bae55`.
 
 <a id="source-source-f300911fb03a5c"></a>
 
@@ -8962,10 +8585,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L4348-L4348) — lines `4348–4348`; excerpt `sha256:636651adc41018ae6f90faa70e4010583deaa28671fcc1c916acccd02f62d5c8`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L4348-L4348) — lines `4348–4348`; excerpt `sha256:636651adc41018ae6f90faa70e4010583deaa28671fcc1c916acccd02f62d5c8`
 
-Paper citation usages:
-
-- `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:1073](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L1073-L1073)
-- `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4395](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4395-L4395), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:4398](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L4398-L4398), [cite at paper/reasoning-parts/erdos1041/core.tex:4345](../../paper/reasoning-parts/erdos1041/core.tex#L4345-L4345), [cite at paper/reasoning-parts/erdos1041/core.tex:4348](../../paper/reasoning-parts/erdos1041/core.tex#L4348-L4348)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-f300911fb03a5c`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-f300911fb03a5c`.
 
 <a id="source-source-f42f9e04743a4c"></a>
 
@@ -8992,10 +8613,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L2056-L2056) — lines `2056–2056`; excerpt `sha256:ad49b5aa94a8d9963ee6dcb001d2d84dc32e0776315128832b860e41fd3a9cf0`
 - [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L805-L807) — lines `805–807`; excerpt `sha256:82eaf36e749d94b9bc85e72cb6decbd8b7ce392b18e1edb0f50d7c491ba8f4cf`
 
-Paper citation usages:
-
-- `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:474](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L474-L474)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:482](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L482-L482), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2099](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2099-L2099), [cite at paper/reasoning-parts/erdos251/core.tex:440](../../paper/reasoning-parts/erdos251/core.tex#L440-L440), [cite at paper/reasoning-parts/erdos251/core.tex:2057](../../paper/reasoning-parts/erdos251/core.tex#L2057-L2057)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-f42f9e04743a4c`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-f42f9e04743a4c`.
 
 <a id="source-source-f4ad17717c8fd4"></a>
 
@@ -9036,9 +8655,8 @@ Public implementation or evidence coordinates:
 
 - [paper/archive/erdos249-257-main-paper.tex](../../paper/archive/erdos249-257-main-paper.tex#L5392-L5397) — lines `5392–5397`; excerpt `sha256:4caf7a23e043524edc0b28f6c56ff51ffc65fbd8e9bcea766fda7d8bd0b07263`
 
-Paper citation usages:
-
-- `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:912](../../paper/archive/erdos249-257-main-paper.tex#L912-L912), [cite at paper/archive/erdos249-257-main-paper.tex:4671](../../paper/archive/erdos249-257-main-paper.tex#L4671-L4671), [cite at paper/archive/erdos249-257-main-paper.tex:4706](../../paper/archive/erdos249-257-main-paper.tex#L4706-L4706)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-f4ad17717c8fd4`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-f4ad17717c8fd4`.
 
 <a id="source-source-f67bf9959aa230"></a>
 
@@ -9064,10 +8682,8 @@ Public implementation or evidence coordinates:
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5222-L5227) — lines `5222–5227`; excerpt `sha256:6e2271ffb0543bc3fdc177f643ec7c22e54002e1c42ef7828bffd0cf406d75df`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5191-L5196) — lines `5191–5196`; excerpt `sha256:6e2271ffb0543bc3fdc177f643ec7c22e54002e1c42ef7828bffd0cf406d75df`
 
-Paper citation usages:
-
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:91](../../paper/1049/erdos-1049-rational-base-lambert.tex#L91-L91)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1757](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1757-L1757), [cite at paper/reasoning-parts/erdos1049/core.tex:1726](../../paper/reasoning-parts/erdos1049/core.tex#L1726-L1726)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-f67bf9959aa230`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-f67bf9959aa230`.
 
 <a id="source-source-f6e839bcb8a60f"></a>
 
@@ -9085,9 +8701,8 @@ Public implementation or evidence coordinates:
 
 - [docs/papers/mirror/plectis-public-system.tex](../../docs/papers/mirror/plectis-public-system.tex#L1351-L1356) — lines `1351–1356`; excerpt `sha256:53b40a353a433ace78f48f685ef15ac1819dc844bcf364ec37ff3b127cdfeaba`
 
-Paper citation usages:
-
-- `plectis-public-system`: [cite at docs/papers/mirror/plectis-public-system.tex:596](../../docs/papers/mirror/plectis-public-system.tex#L596-L596), [cite at docs/papers/mirror/plectis-public-system.tex:599](../../docs/papers/mirror/plectis-public-system.tex#L599-L599), [cite at docs/papers/mirror/plectis-public-system.tex:616](../../docs/papers/mirror/plectis-public-system.tex#L616-L616)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-f6e839bcb8a60f`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-f6e839bcb8a60f`.
 
 <a id="source-source-f6ee6890db85d9"></a>
 
@@ -9112,10 +8727,8 @@ Public implementation or evidence coordinates:
 - [paper/257/erdos257-mersenne-reasoning-surface.tex](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9707-L9713) — lines `9707–9713`; excerpt `sha256:6c20454741356816e2d6d22e0fde01df4c611d7435ed3814f610e86ef368a80d`
 - [paper/reasoning-parts/erdos257/a257\_front.tex](../../paper/reasoning-parts/erdos257/a257_front.tex#L9507-L9513) — lines `9507–9513`; excerpt `sha256:6c20454741356816e2d6d22e0fde01df4c611d7435ed3814f610e86ef368a80d`
 
-Paper citation usages:
-
-- `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:988](../../paper/257/erdos-257-mersenne-support-subseries.tex#L988-L988)
-- `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:9540](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L9540-L9540), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:9340](../../paper/reasoning-parts/erdos257/a257_front.tex#L9340-L9340)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-f6ee6890db85d9`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-f6ee6890db85d9`.
 
 <a id="source-source-f9fd9214c9ef11"></a>
 
@@ -9139,9 +8752,8 @@ Public implementation or evidence coordinates:
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5231-L5236) — lines `5231–5236`; excerpt `sha256:bd1db09a836b7bae7294afc1da1a7ae1ba135a083600d289e0dd8b45d24c10e4`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5200-L5205) — lines `5200–5205`; excerpt `sha256:bd1db09a836b7bae7294afc1da1a7ae1ba135a083600d289e0dd8b45d24c10e4`
 
-Paper citation usages:
-
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:1462](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L1462-L1462), [cite at paper/reasoning-parts/erdos1049/core.tex:1431](../../paper/reasoning-parts/erdos1049/core.tex#L1431-L1431)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-f9fd9214c9ef11`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-f9fd9214c9ef11`.
 
 <a id="source-source-fb4194cadb150b"></a>
 
@@ -9166,11 +8778,8 @@ Public implementation or evidence coordinates:
 - [paper/251/erdos251-prime-gap-reasoning-surface.tex](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L3029-L3031) — lines `3029–3031`; excerpt `sha256:509f2c022f6bb16fcc6561688a6ee2a68568c8655480a3a52794977fbfd3eeec`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L2987-L2989) — lines `2987–2989`; excerpt `sha256:509f2c022f6bb16fcc6561688a6ee2a68568c8655480a3a52794977fbfd3eeec`
 
-Paper citation usages:
-
-- `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:69](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L69-L69)
-- `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:376](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L376-L376), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:582](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L582-L582), [cite at paper/reasoning-parts/erdos251/core.tex:334](../../paper/reasoning-parts/erdos251/core.tex#L334-L334), [cite at paper/reasoning-parts/erdos251/core.tex:540](../../paper/reasoning-parts/erdos251/core.tex#L540-L540)
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:877](../../paper/synthesis/optimal-sparse-perturbations.tex#L877-L877), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1012](../../paper/synthesis/optimal-sparse-perturbations.tex#L1012-L1012), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1852](../../paper/synthesis/optimal-sparse-perturbations.tex#L1852-L1852), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1969](../../paper/synthesis/optimal-sparse-perturbations.tex#L1969-L1969)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-fb4194cadb150b`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-fb4194cadb150b`.
 
 <a id="source-source-fb64da05c3acc7"></a>
 
@@ -9193,9 +8802,8 @@ Public implementation or evidence coordinates:
 - [paper/68/erdos68-factorial-reasoning-surface.tex](../../paper/68/erdos68-factorial-reasoning-surface.tex#L3228-L3232) — lines `3228–3232`; excerpt `sha256:913a7268d821938b55f3e6c38752a0db175dd6dca90b4edd9be62c706db57416`
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L3193-L3197) — lines `3193–3197`; excerpt `sha256:913a7268d821938b55f3e6c38752a0db175dd6dca90b4edd9be62c706db57416`
 
-Paper citation usages:
-
-- `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:1973](../../paper/68/erdos68-factorial-reasoning-surface.tex#L1973-L1973), [cite at paper/reasoning-parts/erdos68/core.tex:1938](../../paper/reasoning-parts/erdos68/core.tex#L1938-L1938)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-fb64da05c3acc7`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-fb64da05c3acc7`.
 
 <a id="source-source-fcf73a15ff9c7c"></a>
 
@@ -9223,11 +8831,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L83-L83) — lines `83–83`; excerpt `sha256:072346b11faedd93181d1f5ba983b7885b1d5fd9b4292dcfa07310184ac025ab`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L83-L83) — lines `83–83`; excerpt `sha256:072346b11faedd93181d1f5ba983b7885b1d5fd9b4292dcfa07310184ac025ab`
 
-Paper citation usages:
-
-- `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:693](../../paper/269/erdos-269-three-prime-running-lcm.tex#L693-L693)
-- `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:141](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L141-L141), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:590](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L590-L590), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:1346](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L1346-L1346), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3903](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3903-L3903), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:4397](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L4397-L4397), [cite at paper/reasoning-parts/erdos269/core.tex:83](../../paper/reasoning-parts/erdos269/core.tex#L83-L83), [cite at paper/reasoning-parts/erdos269/core.tex:532](../../paper/reasoning-parts/erdos269/core.tex#L532-L532), [cite at paper/reasoning-parts/erdos269/core.tex:1288](../../paper/reasoning-parts/erdos269/core.tex#L1288-L1288), [cite at paper/reasoning-parts/erdos269/core.tex:3845](../../paper/reasoning-parts/erdos269/core.tex#L3845-L3845), [cite at paper/reasoning-parts/erdos269/core.tex:4339](../../paper/reasoning-parts/erdos269/core.tex#L4339-L4339)
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1291](../../paper/synthesis/optimal-sparse-perturbations.tex#L1291-L1291)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-fcf73a15ff9c7c`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-fcf73a15ff9c7c`.
 
 <a id="source-source-habiro-2004-cyclotomic"></a>
 
@@ -9252,9 +8857,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10244-L10249) — lines `10244–10249`; excerpt `sha256:5ab6928799e39a4d3e26716ecba39c7c67a800837b04a83ce236837f3eae312d`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L7464-L7464) — lines `7464–7464`; excerpt `sha256:6137621520080ad6f0ea38d5b86775d92fec7d19b870807a765fdfd728e9362c`
 
-Paper citation usages:
-
-- `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:7656](../../paper/249/erdos249-totient-reasoning-surface.tex#L7656-L7656), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:7464](../../paper/reasoning-parts/erdos249/a249_front.tex#L7464-L7464)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-habiro-2004-cyclotomic`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-habiro-2004-cyclotomic`.
 
 <a id="source-source-kozhan-vaktnas-2407-13946v1"></a>
 
@@ -9279,9 +8883,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5313-L5317) — lines `5313–5317`; excerpt `sha256:284f2b11997d11abbeb3afe292b15bc5217f0f0f9edf5787e81581abdf458efa`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L2736-L2736) — lines `2736–2736`; excerpt `sha256:e45056ad57ac969b6825cff487af5bde054739cf76036caa64219404edfb82fe`
 
-Paper citation usages:
-
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2767](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2767-L2767), [cite at paper/reasoning-parts/erdos1049/core.tex:2736](../../paper/reasoning-parts/erdos1049/core.tex#L2736-L2736)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-kozhan-vaktnas-2407.13946v1`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-kozhan-vaktnas-2407.13946v1`.
 
 <a id="source-source-le-intersective-0910-1880"></a>
 
@@ -9303,9 +8906,8 @@ Public implementation or evidence coordinates:
 
 - [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2109-L2113) — lines `2109–2113`; excerpt `sha256:5404323f44e0bf7745e5f12de10c65654b41f753d8706832e970ae20416d06be`
 
-Paper citation usages:
-
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1799](../../paper/synthesis/optimal-sparse-perturbations.tex#L1799-L1799), [cite at paper/synthesis/optimal-sparse-perturbations.tex:1826](../../paper/synthesis/optimal-sparse-perturbations.tex#L1826-L1826)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-le-intersective-0910-1880`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-le-intersective-0910-1880`.
 
 <a id="source-source-mishra-quadratic-2102-08379"></a>
 
@@ -9327,9 +8929,8 @@ Public implementation or evidence coordinates:
 
 - [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2117-L2121) — lines `2117–2121`; excerpt `sha256:3d65436d31201d414ea230e03345193de1bd649376c50acdc800ef0e44b497c7`
 
-Paper citation usages:
-
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1808](../../paper/synthesis/optimal-sparse-perturbations.tex#L1808-L1808)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-mishra-quadratic-2102-08379`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-mishra-quadratic-2102-08379`.
 
 <a id="source-source-rice-pintersective-1111-6559"></a>
 
@@ -9351,9 +8952,8 @@ Public implementation or evidence coordinates:
 
 - [paper/synthesis/optimal-sparse-perturbations.tex](../../paper/synthesis/optimal-sparse-perturbations.tex#L2113-L2117) — lines `2113–2117`; excerpt `sha256:dd7f0d46e967844319c928981d430ccea291c9ca3135f81eb0cc7cfe494ff39b`
 
-Paper citation usages:
-
-- `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1801](../../paper/synthesis/optimal-sparse-perturbations.tex#L1801-L1801)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-rice-pintersective-1111-6559`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-rice-pintersective-1111-6559`.
 
 <a id="source-source-vinroot-2010-multivariate-rogers-szego"></a>
 
@@ -9376,10 +8976,8 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5367-L5374) — lines `5367–5374`; excerpt `sha256:737d5477a37bdfbe338d30af01c736674dfc46101542dd73448f0906325c87ee`
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5398-L5405) — lines `5398–5405`; excerpt `sha256:737d5477a37bdfbe338d30af01c736674dfc46101542dd73448f0906325c87ee`
 
-Paper citation usages:
-
-- `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:350](../../paper/1049/erdos-1049-rational-base-lambert.tex#L350-L350)
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2005](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2005-L2005), [cite at paper/reasoning-parts/erdos1049/core.tex:1974](../../paper/reasoning-parts/erdos1049/core.tex#L1974-L1974)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-vinroot-2010-multivariate-rogers-szego`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-vinroot-2010-multivariate-rogers-szego`.
 
 <a id="source-source-zudilin-determinantal-1507-05697v2"></a>
 
@@ -9404,15 +9002,14 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5196-L5200) — lines `5196–5200`; excerpt `sha256:4e24fef998f109ce93696a8d9d04b5a1a6af4b7a9e8b88bd4ccee7a4154cfd88`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L2722-L2722) — lines `2722–2722`; excerpt `sha256:7a145aa9594fa020d57e86e4eea374a60a878af8c1b11118e150c4a10410fe93`
 
-Paper citation usages:
-
-- `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:2753](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L2753-L2753), [cite at paper/reasoning-parts/erdos1049/core.tex:2722](../../paper/reasoning-parts/erdos1049/core.tex#L2722-L2722)
+Complete locations, paper-reported mappings and citation uses: [source-attribution-index.json](source-attribution-index.json) (source id `source-zudilin-determinantal-1507.05697v2`).
+Query this record: `python3 scripts/build_source_attributions.py --query source-zudilin-determinantal-1507.05697v2`.
 
 ## Coverage requiring review
 
 These gaps are shown explicitly so the catalogue cannot be mistaken for complete historical knowledge.
 
-- Registered papers scanned: `24`; TeX source files scanned after local includes: `98`.
+- Registered papers scanned: `24`; TeX source files scanned after local includes: `64`.
 - Citation keys without a local bibliography definition: `0`
 - Bibliography entries without a curated source link: `120`
 - Lean lexical candidates awaiting review: `827`

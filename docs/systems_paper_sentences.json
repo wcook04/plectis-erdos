@@ -43,10 +43,21 @@
       "id": "assembler",
       "path": "scripts/assemble_reasoning_surfaces.py",
       "start_line": 1,
-      "end_line": 150,
-      "sha256": "0d8f6426d736fd371921e11e7bd2e721413f2d881b10da0be88c6f19b5ffb2b2",
-      "excerpt_sha256": "96b755ed5f7490f1f00da06317879bd9efa73ae257444e6e76c0e22454ea99fe",
-      "kind": "source"
+      "end_line": 242,
+      "sha256": "8ab9daf5938b884e140ff4a3c5455a190bbf2836dfe72e66b650fe5660fbdfa1",
+      "excerpt_sha256": "8ab9daf5938b884e140ff4a3c5455a190bbf2836dfe72e66b650fe5660fbdfa1",
+      "kind": "source",
+      "rebind_review": {
+        "reason": "The assembly owner now inlines explicitly enumerated empty slots and terminal boilerplate, retaining all part markers. All eight assembled flat manuscripts match HEAD byte-for-byte; substantive authored parts remain required and bootstrap rejects noncanonical inline content. This preserves the authored-argument and freshness warrants.",
+        "previous_binding": {
+          "path": "scripts/assemble_reasoning_surfaces.py",
+          "start_line": 1,
+          "end_line": 150,
+          "sha256": "0d8f6426d736fd371921e11e7bd2e721413f2d881b10da0be88c6f19b5ffb2b2",
+          "excerpt_sha256": "96b755ed5f7490f1f00da06317879bd9efa73ae257444e6e76c0e22454ea99fe"
+        },
+        "boundary": "Source organization only; manuscript scientific units, classifications, warrants and original source commit unchanged. No mathematical, empirical or external-review outcome asserted."
+      }
     },
     {
       "id": "audit-code",
@@ -62,9 +73,20 @@
       "path": "docs/papers/corpus.json",
       "start_line": 1,
       "end_line": 9326,
-      "sha256": "02d1accf8907ce2677ab31b38639dc05dcc3a126c146b39bcfdce03d7e2ce2fb",
-      "excerpt_sha256": "02d1accf8907ce2677ab31b38639dc05dcc3a126c146b39bcfdce03d7e2ce2fb",
-      "kind": "source"
+      "sha256": "fd5c582864cf8e20aedbc668f4194cb88bc14bc77b4dbc37f928430a28d4e042",
+      "excerpt_sha256": "fd5c582864cf8e20aedbc668f4194cb88bc14bc77b4dbc37f928430a28d4e042",
+      "kind": "source",
+      "rebind_review": {
+        "reason": "Reviewed corpus delta changes only generated taxonomy owner path and native refresh command; every paper record remains identical. It records no new proof, review, publication or archival identity.",
+        "previous_binding": {
+          "path": "docs/papers/corpus.json",
+          "start_line": 1,
+          "end_line": 9326,
+          "sha256": "02d1accf8907ce2677ab31b38639dc05dcc3a126c146b39bcfdce03d7e2ce2fb",
+          "excerpt_sha256": "02d1accf8907ce2677ab31b38639dc05dcc3a126c146b39bcfdce03d7e2ce2fb"
+        },
+        "boundary": "Source-location and infrastructure consolidation only; manuscript units, evidence classes and historical observations remain unchanged. No asserted upgrade or new mathematical/empirical execution."
+      }
     },
     {
       "id": "counts",
@@ -88,37 +110,81 @@
       "id": "coverage",
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
-      "end_line": 29162,
-      "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
-      "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
-      "kind": "source"
+      "end_line": 29218,
+      "sha256": "d16c50a5e78ee1ae97f74fac47196ee2801e9a63a18159393825925bd96179b5",
+      "excerpt_sha256": "d16c50a5e78ee1ae97f74fac47196ee2801e9a63a18159393825925bd96179b5",
+      "kind": "source",
+      "rebind_review": {
+        "reason": "Reviewed source-layout migration removes only34empty/terminal file inventory entries and binds their assembler owner. All689scientific ledger rows, statement IDs/statuses, warrants and replay pins are byte-for-byte invariant; flat manuscripts and PDF build identities remain unchanged.",
+        "previous_binding": {
+          "path": "docs/paper_lean_coverage.json",
+          "start_line": 1,
+          "end_line": 29162,
+          "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
+          "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
+        },
+        "boundary": "Structural source inventory only; no scientific or verification status upgrade."
+      }
     },
     {
       "id": "coverage-1041",
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
-      "end_line": 29162,
+      "end_line": 29218,
       "kind": "supplied_snapshot",
-      "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
-      "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
+      "sha256": "d16c50a5e78ee1ae97f74fac47196ee2801e9a63a18159393825925bd96179b5",
+      "excerpt_sha256": "d16c50a5e78ee1ae97f74fac47196ee2801e9a63a18159393825925bd96179b5",
+      "rebind_review": {
+        "reason": "Reviewed source-layout migration removes only34empty/terminal file inventory entries and binds their assembler owner. All689scientific ledger rows, statement IDs/statuses, warrants and replay pins are byte-for-byte invariant; flat manuscripts and PDF build identities remain unchanged.",
+        "previous_binding": {
+          "path": "docs/paper_lean_coverage.json",
+          "start_line": 1,
+          "end_line": 29162,
+          "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
+          "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
+        },
+        "boundary": "Structural source inventory only; no scientific or verification status upgrade."
+      }
     },
     {
       "id": "coverage-reciprocal",
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
-      "end_line": 29162,
+      "end_line": 29218,
       "kind": "supplied_snapshot",
-      "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
-      "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
+      "sha256": "d16c50a5e78ee1ae97f74fac47196ee2801e9a63a18159393825925bd96179b5",
+      "excerpt_sha256": "d16c50a5e78ee1ae97f74fac47196ee2801e9a63a18159393825925bd96179b5",
+      "rebind_review": {
+        "reason": "Reviewed source-layout migration removes only34empty/terminal file inventory entries and binds their assembler owner. All689scientific ledger rows, statement IDs/statuses, warrants and replay pins are byte-for-byte invariant; flat manuscripts and PDF build identities remain unchanged.",
+        "previous_binding": {
+          "path": "docs/paper_lean_coverage.json",
+          "start_line": 1,
+          "end_line": 29162,
+          "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
+          "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
+        },
+        "boundary": "Structural source inventory only; no scientific or verification status upgrade."
+      }
     },
     {
       "id": "coverage-weighted",
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
-      "end_line": 29162,
+      "end_line": 29218,
       "kind": "supplied_snapshot",
-      "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
-      "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
+      "sha256": "d16c50a5e78ee1ae97f74fac47196ee2801e9a63a18159393825925bd96179b5",
+      "excerpt_sha256": "d16c50a5e78ee1ae97f74fac47196ee2801e9a63a18159393825925bd96179b5",
+      "rebind_review": {
+        "reason": "Reviewed source-layout migration removes only34empty/terminal file inventory entries and binds their assembler owner. All689scientific ledger rows, statement IDs/statuses, warrants and replay pins are byte-for-byte invariant; flat manuscripts and PDF build identities remain unchanged.",
+        "previous_binding": {
+          "path": "docs/paper_lean_coverage.json",
+          "start_line": 1,
+          "end_line": 29162,
+          "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
+          "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
+        },
+        "boundary": "Structural source inventory only; no scientific or verification status upgrade."
+      }
     },
     {
       "id": "credit",
@@ -135,8 +201,19 @@
       "start_line": 1,
       "end_line": 36351,
       "kind": "supplied_snapshot",
-      "sha256": "3444a7d9a1ab07275212b4f2d6b0c6512e43530d12fcdd9124dff0d68a568ff6",
-      "excerpt_sha256": "3444a7d9a1ab07275212b4f2d6b0c6512e43530d12fcdd9124dff0d68a568ff6"
+      "sha256": "221502d734f63904ee54cc7ac5f49bf5cadfac5e9c460dc09e3795681ceffa35",
+      "excerpt_sha256": "221502d734f63904ee54cc7ac5f49bf5cadfac5e9c460dc09e3795681ceffa35",
+      "rebind_review": {
+        "reason": "Registry delta changes only Comparator evidence locators: compact guide opening and structured all-base totient packet. Attribution identities and relations remain unchanged.",
+        "previous_binding": {
+          "path": "docs/research-commons/source-attributions.json",
+          "start_line": 1,
+          "end_line": 36351,
+          "sha256": "3444a7d9a1ab07275212b4f2d6b0c6512e43530d12fcdd9124dff0d68a568ff6",
+          "excerpt_sha256": "3444a7d9a1ab07275212b4f2d6b0c6512e43530d12fcdd9124dff0d68a568ff6"
+        },
+        "boundary": "Documentation consolidation/source-location repair only; manuscript sentences, historical pinned links and evidence classes remain unchanged. No new mathematical, empirical or external verification outcome asserted."
+      }
     },
     {
       "id": "essay-pages",
@@ -152,9 +229,20 @@
       "path": "docs/publication_evidence.json",
       "start_line": 1,
       "end_line": 209,
-      "sha256": "4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
-      "excerpt_sha256": "4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
-      "kind": "source"
+      "sha256": "4ae34a8682ab2997ed3ca3dea2d29b12eecae537551a25e340e984c608d89327",
+      "excerpt_sha256": "4ae34a8682ab2997ed3ca3dea2d29b12eecae537551a25e340e984c608d89327",
+      "kind": "source",
+      "rebind_review": {
+        "reason": "Only the current reconstruction harness self-test command moves to scripts/tests. Historical evaluation outcomes, timings, provenance ceilings and post-repair results are unchanged; no original trial is rerun.",
+        "previous_binding": {
+          "path": "docs/publication_evidence.json",
+          "start_line": 1,
+          "end_line": 209,
+          "sha256": "4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
+          "excerpt_sha256": "4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3"
+        },
+        "boundary": "Source-location and infrastructure consolidation only; manuscript units, evidence classes and historical observations remain unchanged. No asserted upgrade or new mathematical/empirical execution."
+      }
     },
     {
       "id": "house-provenance",
@@ -441,17 +529,39 @@
       "path": "docs/papers/SHORT_PAPER_CONTRACT.md",
       "start_line": 1,
       "end_line": 132,
-      "sha256": "c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa",
-      "excerpt_sha256": "c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa"
+      "sha256": "a921220b480fda04e935d6a0911291cebd0323e0c55fb3e6d4d588a0a2e30957",
+      "excerpt_sha256": "a921220b480fda04e935d6a0911291cebd0323e0c55fb3e6d4d588a0a2e30957",
+      "rebind_review": {
+        "reason": "The writing contract retains proposal, source review, integration and evidence obligations; its live test command now names scripts/tests/test_paper_refinement.py.",
+        "previous_binding": {
+          "path": "docs/papers/SHORT_PAPER_CONTRACT.md",
+          "start_line": 1,
+          "end_line": 132,
+          "sha256": "c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa",
+          "excerpt_sha256": "c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa"
+        },
+        "boundary": "Source-location and infrastructure consolidation only; manuscript units, evidence classes and historical observations remain unchanged. No asserted upgrade or new mathematical/empirical execution."
+      }
     },
     {
       "id": "refinement-tests",
       "kind": "source",
-      "path": "scripts/test_paper_refinement.py",
+      "path": "scripts/tests/test_paper_refinement.py",
       "start_line": 1,
-      "end_line": 76,
-      "sha256": "f6dc140fc71949d4148416e6666979ec6ef60006556804d9b9438b17825ac88a",
-      "excerpt_sha256": "f6dc140fc71949d4148416e6666979ec6ef60006556804d9b9438b17825ac88a"
+      "end_line": 78,
+      "sha256": "f1ebe342b01e14d98a0abcb0a81d550c2f356b3918e700b0640ad2d2b07704d8",
+      "excerpt_sha256": "f1ebe342b01e14d98a0abcb0a81d550c2f356b3918e700b0640ad2d2b07704d8",
+      "rebind_review": {
+        "reason": "The same editorial exchange regression tests now reside in scripts/tests, with a shared local-import bootstrap. Existing mutation/rejection semantics remain intact; this rebinding reports no new paper or proof outcome.",
+        "previous_binding": {
+          "path": "scripts/test_paper_refinement.py",
+          "start_line": 1,
+          "end_line": 76,
+          "sha256": "f6dc140fc71949d4148416e6666979ec6ef60006556804d9b9438b17825ac88a",
+          "excerpt_sha256": "f6dc140fc71949d4148416e6666979ec6ef60006556804d9b9438b17825ac88a"
+        },
+        "boundary": "Source-location and infrastructure consolidation only; manuscript units, evidence classes and historical observations remain unchanged. No asserted upgrade or new mathematical/empirical execution."
+      }
     },
     {
       "id": "lit-agmai",
@@ -464,12 +574,23 @@
     },
     {
       "id": "reader-guide",
-      "path": "docs/READING_GUIDE.md",
+      "path": "docs/README.md",
       "start_line": 1,
-      "end_line": 147,
+      "end_line": 119,
       "kind": "source",
-      "sha256": "f3ba7f71cfdf586710c63e1f5286e53221d805f05af620492b365d975c6bce4c",
-      "excerpt_sha256": "f3ba7f71cfdf586710c63e1f5286e53221d805f05af620492b365d975c6bce4c"
+      "sha256": "165a618db747cd7b2808b8999c901842a1bf3c8b10e5a1e1030de92257548cf2",
+      "excerpt_sha256": "165a618db747cd7b2808b8999c901842a1bf3c8b10e5a1e1030de92257548cf2",
+      "rebind_review": {
+        "reason": "Consolidated guide retains one-problem and cross-paper reading, synthesis link, example/reconstruction/hypothesis exercises, optional agent help, contributions and credit routes.",
+        "previous_binding": {
+          "path": "docs/READING_GUIDE.md",
+          "start_line": 1,
+          "end_line": 147,
+          "sha256": "f3ba7f71cfdf586710c63e1f5286e53221d805f05af620492b365d975c6bce4c",
+          "excerpt_sha256": "f3ba7f71cfdf586710c63e1f5286e53221d805f05af620492b365d975c6bce4c"
+        },
+        "boundary": "Documentation consolidation/source-location repair only; manuscript sentences, historical pinned links and evidence classes remain unchanged. No new mathematical, empirical or external verification outcome asserted."
+      }
     },
     {
       "id": "explanation-depth",
@@ -477,35 +598,79 @@
       "start_line": 1,
       "end_line": 192,
       "kind": "source",
-      "sha256": "91c8e240abe1e68f69985f027c8e470b5bc1e68841d6e9c1fc9e9cf0186d2cb4",
-      "excerpt_sha256": "91c8e240abe1e68f69985f027c8e470b5bc1e68841d6e9c1fc9e9cf0186d2cb4"
+      "sha256": "0c24765d03af591d53d43f16332de2bdc165dba2e21671f070eab5b33da7ea60",
+      "excerpt_sha256": "0c24765d03af591d53d43f16332de2bdc165dba2e21671f070eab5b33da7ea60",
+      "rebind_review": {
+        "reason": "Explanation skill retains the reader-selected depth and one-hint-at-a-time rule; source-lookup links follow relocated reference guides.",
+        "previous_binding": {
+          "path": "skills/explain-public-system/SKILL.md",
+          "start_line": 1,
+          "end_line": 192,
+          "sha256": "91c8e240abe1e68f69985f027c8e470b5bc1e68841d6e9c1fc9e9cf0186d2cb4",
+          "excerpt_sha256": "91c8e240abe1e68f69985f027c8e470b5bc1e68841d6e9c1fc9e9cf0186d2cb4"
+        },
+        "boundary": "Documentation consolidation/source-location repair only; manuscript sentences, historical pinned links and evidence classes remain unchanged. No new mathematical, empirical or external verification outcome asserted."
+      }
     },
     {
       "id": "agent-entry",
       "path": "AGENTS.md",
       "start_line": 1,
-      "end_line": 161,
+      "end_line": 77,
       "kind": "source",
-      "sha256": "fd4d5d246731891853c4bf6dfa921637a28fb0a1c808213bae88f57c36cc37cb",
-      "excerpt_sha256": "fd4d5d246731891853c4bf6dfa921637a28fb0a1c808213bae88f57c36cc37cb"
+      "sha256": "88e290d543d3d6c4ccc5eabc816ee611ca6c1449829c8ba8c6f6dbf940f642cb",
+      "excerpt_sha256": "88e290d543d3d6c4ccc5eabc816ee611ca6c1449829c8ba8c6f6dbf940f642cb",
+      "rebind_review": {
+        "reason": "Compact AGENTS retains the public checkout, exact task routing, optional agent workflows, evidence/claim responsibilities, requested learning depth, research bounds, contribution and scoped review paths. It delegates detailed commands to their existing owners.",
+        "previous_binding": {
+          "path": "AGENTS.md",
+          "start_line": 1,
+          "end_line": 161,
+          "sha256": "fd4d5d246731891853c4bf6dfa921637a28fb0a1c808213bae88f57c36cc37cb",
+          "excerpt_sha256": "fd4d5d246731891853c4bf6dfa921637a28fb0a1c808213bae88f57c36cc37cb"
+        },
+        "boundary": "Source-location and infrastructure consolidation only; manuscript units, evidence classes and historical observations remain unchanged. No asserted upgrade or new mathematical/empirical execution."
+      }
     },
     {
       "id": "workbench-guide",
       "path": "docs/agents/AGENT_WORKBENCH.md",
       "start_line": 1,
-      "end_line": 477,
+      "end_line": 316,
       "kind": "source",
-      "sha256": "b2c276c755b8ba301fbd43323ddcd379a5f29523ae07cf9eab438d0bccbf0544",
-      "excerpt_sha256": "b2c276c755b8ba301fbd43323ddcd379a5f29523ae07cf9eab438d0bccbf0544"
+      "sha256": "371c1c3d425a4942cc404cd1b9b810c141248a4143c8b5ef2c6581ee78fc893a",
+      "excerpt_sha256": "371c1c3d425a4942cc404cd1b9b810c141248a4143c8b5ef2c6581ee78fc893a",
+      "rebind_review": {
+        "reason": "Workbench retains optional recorded sessions, accepted-probe/formal-claim distinction, typed lookup, source routes and contribution protocol. Consolidation removes duplicated command listings without requiring sessions for ordinary contributions. Final footer repair makes the downstream-package recipe fragment explicit; optional sessions and contribution roles remain unchanged.",
+        "previous_binding": {
+          "path": "docs/agents/AGENT_WORKBENCH.md",
+          "start_line": 1,
+          "end_line": 477,
+          "sha256": "b2c276c755b8ba301fbd43323ddcd379a5f29523ae07cf9eab438d0bccbf0544",
+          "excerpt_sha256": "b2c276c755b8ba301fbd43323ddcd379a5f29523ae07cf9eab438d0bccbf0544"
+        },
+        "boundary": "Documentation consolidation/source-location repair only; manuscript sentences, historical pinned links and evidence classes remain unchanged. No new mathematical, empirical or external verification outcome asserted."
+      }
     },
     {
       "id": "contribution-guide",
       "path": "CONTRIBUTING.md",
       "start_line": 1,
-      "end_line": 255,
+      "end_line": 239,
       "kind": "source",
-      "sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f",
-      "excerpt_sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f"
+      "sha256": "62141804eb0120f354e5948ed57831216837453273300e643cf46cb57b8ec44f",
+      "excerpt_sha256": "62141804eb0120f354e5948ed57831216837453273300e643cf46cb57b8ec44f",
+      "rebind_review": {
+        "reason": "The human contribution guide retains review, acceptance, credit, starting revision, reconciliation and evidence limits. Detailed continuation/package/acceptance commands now route visibly to the existing research-return skill. The accepted-recognition page replaces a duplicate roster; no adoption or scientific claim boundary changes.",
+        "previous_binding": {
+          "path": "CONTRIBUTING.md",
+          "start_line": 1,
+          "end_line": 255,
+          "sha256": "2bf1694fa40b4a4eb80042bc6976865411a81ec96705de4ef522c98c5d8e74d6",
+          "excerpt_sha256": "2bf1694fa40b4a4eb80042bc6976865411a81ec96705de4ef522c98c5d8e74d6"
+        },
+        "boundary": "Repository organization and documentation consolidation only. Manuscript units, warrants, evidence classes, original source commit and historical pins remain unchanged; no new scientific or execution outcome."
+      }
     },
     {
       "id": "software-citation",
@@ -538,20 +703,42 @@
       "id": "architecture-contribution-guide",
       "path": "docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md",
       "start_line": 1,
-      "end_line": 115,
+      "end_line": 114,
       "kind": "source",
-      "sha256": "31b23d2facdea99c35009cc5af3de808d9cf08b6ce680b471d784e791813be52",
-      "excerpt_sha256": "31b23d2facdea99c35009cc5af3de808d9cf08b6ce680b471d784e791813be52"
+      "sha256": "1870c14a7b3ac42b269b2e3c403e74aa13d8a95bc974db91a64cc04bba15e7b5",
+      "excerpt_sha256": "1870c14a7b3ac42b269b2e3c403e74aa13d8a95bc974db91a64cc04bba15e7b5",
+      "rebind_review": {
+        "reason": "The same architecture acceptance and review contract now links the sole accepted-contribution recognition page. Its non-scalar credit boundary and executable-contribution limits remain unchanged.",
+        "previous_binding": {
+          "path": "docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md",
+          "start_line": 1,
+          "end_line": 115,
+          "sha256": "31b23d2facdea99c35009cc5af3de808d9cf08b6ce680b471d784e791813be52",
+          "excerpt_sha256": "31b23d2facdea99c35009cc5af3de808d9cf08b6ce680b471d784e791813be52"
+        },
+        "boundary": "Repository organization and documentation consolidation only. Manuscript units, warrants, evidence classes, original source commit and historical pins remain unchanged; no new scientific or execution outcome."
+      }
     },
     {
       "id": "r8-architecture",
       "kind": "source",
       "path": "docs/ARCHITECTURE.md",
       "start_line": 1,
-      "end_line": 150,
-      "sha256": "9cfff690ac9439ffb1a6e75c48892e835b426d325ae9d69e9b715f58963f4a9c",
-      "excerpt_sha256": "9133d275f6467b414f3dfb9c5be6ef343b21087433390a238624d8da538b50ef",
-      "custody": "Current native public file inspected as source; no fresh execution."
+      "end_line": 268,
+      "sha256": "b42d3ddedd822f121428ec35c45654aa1a1c310a90cb54f199cb4b1e500fcced",
+      "excerpt_sha256": "b42d3ddedd822f121428ec35c45654aa1a1c310a90cb54f199cb4b1e500fcced",
+      "custody": "Current native public file inspected as source; no fresh execution.",
+      "rebind_review": {
+        "reason": "Architecture retains persistent authored records vs derived navigation, source owners and ordered builders, contribution review, proof-vs-prose responsibilities and evidence limits. Consolidation changes routes and removes parallel guide prose. Final link repair directs the certificate example to the extant Organisation paper anchor and complete eight-programme source matrix; explanatory statements remain unchanged. Structural consolidation review: Architecture guide now links folder role guides and moved test commands while retaining authored-vs-generated records, source/query boundaries, maintainer review/adoption, and proof-vs-prose evidence limits.",
+        "previous_binding": {
+          "path": "docs/ARCHITECTURE.md",
+          "start_line": 1,
+          "end_line": 150,
+          "sha256": "9cfff690ac9439ffb1a6e75c48892e835b426d325ae9d69e9b715f58963f4a9c",
+          "excerpt_sha256": "9133d275f6467b414f3dfb9c5be6ef343b21087433390a238624d8da538b50ef"
+        },
+        "boundary": "Documentation consolidation/source-location repair only; manuscript sentences, historical pinned links and evidence classes remain unchanged. No new mathematical, empirical or external verification outcome asserted."
+      }
     },
     {
       "id": "r8-entry",
@@ -568,20 +755,42 @@
       "kind": "source",
       "path": "docs/agents/README.md",
       "start_line": 1,
-      "end_line": 150,
-      "sha256": "3394f956d083f9532742c65b45222727ec21891beaa6a530e12ce0ff4ab3773b",
-      "excerpt_sha256": "3394f956d083f9532742c65b45222727ec21891beaa6a530e12ce0ff4ab3773b",
-      "custody": "Current native public file inspected as source; no fresh execution."
+      "end_line": 54,
+      "sha256": "d1701ba39f82f80f81087469c6be71fbfe896e97f6fde8b1d3bfce4d56be55be",
+      "excerpt_sha256": "d1701ba39f82f80f81087469c6be71fbfe896e97f6fde8b1d3bfce4d56be55be",
+      "custody": "Current native public file inspected as source; no fresh execution.",
+      "rebind_review": {
+        "reason": "Agent guide retains ordinary-language task routing, exact-checkout provenance, source lookup and return workflow. Added changed-example entry does not alter actor/adoption responsibilities. Final quickstart adds an argument-graph source-evidence lookup row; task routing, actor responsibilities and adoption boundaries remain unchanged. The compact agent index retains file-and-terminal task routing and contribution/review responsibilities, linking clone/proof setup to REPRODUCIBILITY and detailed protocols to their maintained guides. No distinct reviewer or measured adoption is implied.",
+        "previous_binding": {
+          "path": "docs/agents/README.md",
+          "start_line": 1,
+          "end_line": 150,
+          "sha256": "3394f956d083f9532742c65b45222727ec21891beaa6a530e12ce0ff4ab3773b",
+          "excerpt_sha256": "3394f956d083f9532742c65b45222727ec21891beaa6a530e12ce0ff4ab3773b"
+        },
+        "boundary": "Documentation consolidation/source-location repair only; manuscript sentences, historical pinned links and evidence classes remain unchanged. No new mathematical, empirical or external verification outcome asserted."
+      }
     },
     {
       "id": "r8-lookup",
       "kind": "source",
       "path": "scripts/query_corpus.py",
-      "start_line": 6609,
-      "end_line": 6738,
-      "sha256": "4f32be2ee0a8da5ed14aceb7aeb0ab5f203b2bf96394a333f48509b10a65f808",
+      "start_line": 6589,
+      "end_line": 6718,
+      "sha256": "95c91fbed03524b618d5a8c387c13dc2a69c6470f4305716cbc6391ccf7e9bd8",
       "excerpt_sha256": "2f13aac684bc48891582a60d8b501c1c1d357db9bfddfbe0c49e4cbb26c8da8b",
-      "custody": "Current native public file inspected as source; no fresh execution."
+      "custody": "Current native public file inspected as source; no fresh execution.",
+      "rebind_review": {
+        "reason": "The original reviewed excerpt is retained byte-for-byte; only the enclosing file digest and shifted coordinates are rebound. Structural consolidation review: The retained reviewed excerpt remains byte-for-byte identical; changes elsewhere in the file only update its enclosing digest. The registered problem-route excerpt remains byte-for-byte unchanged at shifted coordinates. Elsewhere the cached module adapter delegates the identical checkout-aware resolution to lean_source; no formal statement is inferred from prose.",
+        "previous_binding": {
+          "path": "scripts/query_corpus.py",
+          "start_line": 6609,
+          "end_line": 6738,
+          "sha256": "4f32be2ee0a8da5ed14aceb7aeb0ab5f203b2bf96394a333f48509b10a65f808",
+          "excerpt_sha256": "2f13aac684bc48891582a60d8b501c1c1d357db9bfddfbe0c49e4cbb26c8da8b"
+        },
+        "boundary": "Documentation consolidation/source-location repair only; manuscript sentences, historical pinned links and evidence classes remain unchanged. No new mathematical, empirical or external verification outcome asserted."
+      }
     },
     {
       "id": "r8-probe",
@@ -678,40 +887,84 @@
       "kind": "source",
       "path": "scripts/refresh_projections.py",
       "start_line": 1,
-      "end_line": 110,
-      "sha256": "f838561a7e3609572cd1963cf107cd3b82a79d2d8176c16e796f00394988422e",
-      "excerpt_sha256": "106846e848945585e0a96183db9f073eff7794d5a495622a2624c06bb5ea7dc9",
-      "custody": "Current native public file inspected as source; no fresh execution."
+      "end_line": 139,
+      "sha256": "de30013d4ae7e2a0d9927686310d9c676c22779df10d9dfe8bc75cd682d2c344",
+      "excerpt_sha256": "2e26bbb01ce98e297eefb7792ec83376aaec0d725f5a9987da6b9458284a8013",
+      "custody": "Current native public file inspected as source; no fresh execution.",
+      "rebind_review": {
+        "reason": "Ordered builder registry still runs Python-owned projections before dependent descriptors. New owner paths follow relocated docs and merged reading guide; no Lean execution or autonomous scheduling added. Structural consolidation review: Explicit ordered builder list now uses scripts/papers for paper tools and includes the existing bounded argument-frontier historical-snapshot builder. These are projection mechanisms, not mathematical acceptance or autonomous task selection.",
+        "previous_binding": {
+          "path": "scripts/refresh_projections.py",
+          "start_line": 1,
+          "end_line": 110,
+          "sha256": "f838561a7e3609572cd1963cf107cd3b82a79d2d8176c16e796f00394988422e",
+          "excerpt_sha256": "106846e848945585e0a96183db9f073eff7794d5a495622a2624c06bb5ea7dc9"
+        },
+        "boundary": "Documentation consolidation/source-location repair only; manuscript sentences, historical pinned links and evidence classes remain unchanged. No new mathematical, empirical or external verification outcome asserted."
+      }
     },
     {
       "id": "r8-projection-refresh",
       "kind": "source",
       "path": "scripts/refresh_projections.py",
-      "start_line": 278,
-      "end_line": 356,
-      "sha256": "f838561a7e3609572cd1963cf107cd3b82a79d2d8176c16e796f00394988422e",
+      "start_line": 286,
+      "end_line": 364,
+      "sha256": "de30013d4ae7e2a0d9927686310d9c676c22779df10d9dfe8bc75cd682d2c344",
       "excerpt_sha256": "51e8c5123dc12eb550e761be722b2ce39773abba5c0a8bd116686fb2194bc71a",
-      "custody": "Current native public file inspected as source; no fresh execution."
+      "custody": "Current native public file inspected as source; no fresh execution.",
+      "rebind_review": {
+        "reason": "The original reviewed excerpt is retained byte-for-byte; only the enclosing file digest and shifted coordinates are rebound. Structural consolidation review: The retained reviewed excerpt remains byte-for-byte identical; changes elsewhere in the file only update its enclosing digest.",
+        "previous_binding": {
+          "path": "scripts/refresh_projections.py",
+          "start_line": 278,
+          "end_line": 356,
+          "sha256": "f838561a7e3609572cd1963cf107cd3b82a79d2d8176c16e796f00394988422e",
+          "excerpt_sha256": "51e8c5123dc12eb550e761be722b2ce39773abba5c0a8bd116686fb2194bc71a"
+        },
+        "boundary": "Documentation consolidation/source-location repair only; manuscript sentences, historical pinned links and evidence classes remain unchanged. No new mathematical, empirical or external verification outcome asserted."
+      }
     },
     {
       "id": "r8-release",
       "kind": "source",
       "path": "scripts/check_release.py",
-      "start_line": 1662,
-      "end_line": 1738,
-      "sha256": "282c8d8b9b3aee376f4d6e6e9e8c87f5a3f18995501712c93748851c4b177129",
+      "start_line": 1791,
+      "end_line": 1867,
+      "sha256": "d750bdce7e4f6c6de55096b5aa28e8ba0490dd658f89b6ddcd097380e95fc3d2",
       "excerpt_sha256": "da39690f9c38fd66ca7b1f7496108ac87673b67260a7c1c234b842008edd0adb",
-      "custody": "Current native public file inspected as source; no fresh execution."
+      "custody": "Current native public file inspected as source; no fresh execution.",
+      "rebind_review": {
+        "reason": "The reviewed publication-validation excerpt is byte-identical. Its coordinates shift because the layout check now keeps Lean tooling under scripts/lean; no mathematical or historical assertion changes.",
+        "previous_binding": {
+          "path": "scripts/check_release.py",
+          "start_line": 1785,
+          "end_line": 1861,
+          "sha256": "1b248964b7e91eb209ffe3509986c5603804c43d6b32b767584f1ee407934217",
+          "excerpt_sha256": "da39690f9c38fd66ca7b1f7496108ac87673b67260a7c1c234b842008edd0adb"
+        },
+        "boundary": "Repository organization and documentation consolidation only. Manuscript units, warrants, evidence classes, original source commit and historical pins remain unchanged; no new scientific or execution outcome."
+      }
     },
     {
       "id": "r8-contribution",
       "kind": "source",
       "path": "CONTRIBUTING.md",
       "start_line": 1,
-      "end_line": 89,
-      "sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f",
-      "excerpt_sha256": "9dddfc8f6ceefc14e83ed1967c38a10de331ac98552bfb9efa825ec06e2009c4",
-      "custody": "Current native public file inspected as source; no fresh execution."
+      "end_line": 239,
+      "sha256": "62141804eb0120f354e5948ed57831216837453273300e643cf46cb57b8ec44f",
+      "excerpt_sha256": "62141804eb0120f354e5948ed57831216837453273300e643cf46cb57b8ec44f",
+      "custody": "Current native public file inspected as source; no fresh execution.",
+      "rebind_review": {
+        "reason": "The contribution guide retains explicit maintainer adoption, reproducible starting context, and intake-versus-accepted-evidence boundaries. Repeated operational commands move behind its visible link to the existing research-return skill; no autonomous research or fresh-review outcome is asserted.",
+        "previous_binding": {
+          "path": "CONTRIBUTING.md",
+          "start_line": 1,
+          "end_line": 255,
+          "sha256": "2bf1694fa40b4a4eb80042bc6976865411a81ec96705de4ef522c98c5d8e74d6",
+          "excerpt_sha256": "2bf1694fa40b4a4eb80042bc6976865411a81ec96705de4ef522c98c5d8e74d6"
+        },
+        "boundary": "Repository organization and documentation consolidation only. Manuscript units, warrants, evidence classes, original source commit and historical pins remain unchanged; no new scientific or execution outcome."
+      }
     },
     {
       "id": "r8-paper-resolve",
@@ -827,11 +1080,22 @@
       "id": "r9-session-guide",
       "kind": "source",
       "path": "docs/agents/AGENT_WORKBENCH.md",
-      "start_line": 175,
-      "end_line": 202,
-      "sha256": "b2c276c755b8ba301fbd43323ddcd379a5f29523ae07cf9eab438d0bccbf0544",
+      "start_line": 198,
+      "end_line": 225,
+      "sha256": "371c1c3d425a4942cc404cd1b9b810c141248a4143c8b5ef2c6581ee78fc893a",
       "excerpt_sha256": "81134a83c49fab0e628fcb25d139a389b829e01c716dac0375b8e22342574d91",
-      "custody": "Type A current implementation inspection for R9 systems integration; no new probe run."
+      "custody": "Type A current implementation inspection for R9 systems integration; no new probe run.",
+      "rebind_review": {
+        "reason": "The original reviewed excerpt is retained byte-for-byte; only the enclosing file digest and shifted coordinates are rebound. Final footer route repair is outside this unchanged session excerpt.",
+        "previous_binding": {
+          "path": "docs/agents/AGENT_WORKBENCH.md",
+          "start_line": 175,
+          "end_line": 202,
+          "sha256": "b2c276c755b8ba301fbd43323ddcd379a5f29523ae07cf9eab438d0bccbf0544",
+          "excerpt_sha256": "81134a83c49fab0e628fcb25d139a389b829e01c716dac0375b8e22342574d91"
+        },
+        "boundary": "Documentation consolidation/source-location repair only; manuscript sentences, historical pinned links and evidence classes remain unchanged. No new mathematical, empirical or external verification outcome asserted."
+      }
     },
     {
       "id": "r11-prove2me-edition",
@@ -849,9 +1113,20 @@
       "path": "docs/research-commons/source-attributions.json",
       "start_line": 16125,
       "end_line": 16173,
-      "sha256": "3444a7d9a1ab07275212b4f2d6b0c6512e43530d12fcdd9124dff0d68a568ff6",
+      "sha256": "221502d734f63904ee54cc7ac5f49bf5cadfac5e9c460dc09e3795681ceffa35",
       "excerpt_sha256": "be573b258326739443f43f30c79a51b73a63520dd6054cd5bebdc5f8eec113b6",
-      "custody": "Public attribution inventory, marked bibliography_only. Used for feature attribution, not for its conflicting first-publication chronology. Direct claims are checked against the enclosed original v2 in this pass."
+      "custody": "Public attribution inventory, marked bibliography_only. Used for feature attribution, not for its conflicting first-publication chronology. Direct claims are checked against the enclosed original v2 in this pass.",
+      "rebind_review": {
+        "reason": "The original reviewed excerpt is retained byte-for-byte; only the enclosing file digest and shifted coordinates are rebound.",
+        "previous_binding": {
+          "path": "docs/research-commons/source-attributions.json",
+          "start_line": 16125,
+          "end_line": 16173,
+          "sha256": "3444a7d9a1ab07275212b4f2d6b0c6512e43530d12fcdd9124dff0d68a568ff6",
+          "excerpt_sha256": "be573b258326739443f43f30c79a51b73a63520dd6054cd5bebdc5f8eec113b6"
+        },
+        "boundary": "Documentation consolidation/source-location repair only; manuscript sentences, historical pinned links and evidence classes remain unchanged. No new mathematical, empirical or external verification outcome asserted."
+      }
     },
     {
       "id": "r12-resolver-relations",
@@ -931,8 +1206,19 @@
       "start_line": 1,
       "end_line": 42,
       "kind": "source",
-      "sha256": "45d46df84010206304316771c8dbd46dc139a769ec712a58e60a005fa6815635",
-      "excerpt_sha256": "8ae455f30db225c2403202b65aa4c23e947cb95b29ab8a7785bcefdab2bdc670"
+      "sha256": "dae867f3c109391da5bae929b341e003687a1651e26ca815314213bb58953a70",
+      "excerpt_sha256": "8ae455f30db225c2403202b65aa4c23e947cb95b29ab8a7785bcefdab2bdc670",
+      "rebind_review": {
+        "reason": "The original reviewed excerpt is retained byte-for-byte; only the enclosing file digest and shifted coordinates are rebound. Final results-link/carry-boundary edits lie outside the retained introduction excerpt, which remains byte-for-byte unchanged.",
+        "previous_binding": {
+          "path": "docs/RESULTS.md",
+          "start_line": 1,
+          "end_line": 42,
+          "sha256": "45d46df84010206304316771c8dbd46dc139a769ec712a58e60a005fa6815635",
+          "excerpt_sha256": "8ae455f30db225c2403202b65aa4c23e947cb95b29ab8a7785bcefdab2bdc670"
+        },
+        "boundary": "Documentation consolidation/source-location repair only; manuscript sentences, historical pinned links and evidence classes remain unchanged. No new mathematical, empirical or external verification outcome asserted."
+      }
     }
   ],
   "sentences": [
@@ -1201,7 +1487,7 @@
         "r8-projection-refresh",
         "r8-journal"
       ],
-      "warrant": "ARCHITECTURE.md distinguishes authored sources, generated views and reviewed claim status. refresh_projections.py lines 278–356 separates read-only freshness comparisons from regeneration in builder order. These operations can locate a changed summary at its input but do not themselves adopt a mathematical claim.",
+      "warrant": "ARCHITECTURE.md distinguishes authored sources, generated views and reviewed claim status. refresh_projections.py lines 286–364 separates read-only freshness comparisons from regeneration in builder order. These operations can locate a changed summary at its input but do not themselves adopt a mathematical claim.",
       "section": "sec:world"
     },
     {
@@ -1666,7 +1952,7 @@
         "r8-weighted-proof",
         "reader-guide"
       ],
-      "warrant": "The short-paper writing contract asks the author to select a result, retain its conditions and explain the decisive step, with access to the full argument. This is an authoring purpose and review obligation, not a measured reader outcome.",
+      "warrant": "The short-paper writing contract asks the author to select a result, retain its conditions and explain the decisive step, with access to the full argument. This is an authoring purpose and review obligation, not a measured reader outcome. The former docs/READING_GUIDE.md is consolidated into docs/README.md; the manuscript link remains at its historical pinned revision.",
       "statement_sha256": "3eefef686416de01be683083fd06c34fdb269093ba1b023bc8dd1970c90c27b4",
       "section": "sec:paper"
     },
@@ -1722,7 +2008,7 @@
         "reader-guide",
         "explanation-depth"
       ],
-      "warrant": "The reading guide asks readers to reconstruct the decisive step or change a hypothesis; the explanation skill respects a requested hint or full argument. These are authoring instructions, with no measured learning or comprehension outcome.",
+      "warrant": "The reading guide asks readers to reconstruct the decisive step or change a hypothesis; the explanation skill respects a requested hint or full argument. These are authoring instructions, with no measured learning or comprehension outcome. The former docs/READING_GUIDE.md is consolidated into docs/README.md; the manuscript link remains at its historical pinned revision.",
       "text": "The reading guide invites readers to try an example, reconstruct a step or vary a hypothesis. The reader chooses the amount of help; an explaining agent is instructed to respect the requested depth. These authoring choices are not measurements of understanding.",
       "statement_sha256": "2833aee1edca3cbfe7875d8213ba7fed282bd07ee1683780917fc12dd8cb5742"
     },
@@ -2700,7 +2986,7 @@
         "audit-code",
         "r8-exchange"
       ],
-      "warrant": "The reading guide offers paper-first routes, the architecture describes records and formal entry points, and the document checker tests stored correspondence. The exchange specification omits the complete proof tree. These sources support different prerequisites for reading, inspecting records and replaying Lean.",
+      "warrant": "The reading guide offers paper-first routes, the architecture describes records and formal entry points, and the document checker tests stored correspondence. The exchange specification omits the complete proof tree. These sources support different prerequisites for reading, inspecting records and replaying Lean. The former docs/READING_GUIDE.md is consolidated into docs/README.md; the manuscript link remains at its historical pinned revision.",
       "statement_sha256": "e379aefd409525afe5dc3b96e2ab687eeb18970a6d9ddfb3390e54067a72a18f",
       "section": "app:repro"
     },
@@ -2717,7 +3003,7 @@
         "credit",
         "software-citation"
       ],
-      "warrant": "The reading guide explicitly offers one-problem and cross-paper routes, including the synthesis. The linked agent, workbench, contribution and credit guides describe optional agent operation, recorded sessions and submission roles; they do not make agent use a prerequisite for reading a result.",
+      "warrant": "The reading guide explicitly offers one-problem and cross-paper routes, including the synthesis. The linked agent, workbench, contribution and credit guides describe optional agent operation, recorded sessions and submission roles; they do not make agent use a prerequisite for reading a result. The former docs/READING_GUIDE.md is consolidated into docs/README.md; the manuscript link remains at its historical pinned revision.",
       "statement_sha256": "a32993613486d2f074ecb0a6a3ee85d0f32827949860a8c18a257b05c08ae01e",
       "section": "app:repro"
     },

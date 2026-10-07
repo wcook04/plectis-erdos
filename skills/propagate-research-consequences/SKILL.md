@@ -163,7 +163,7 @@ its required literals; a changed passage needs renewed review. Run this check
 before committing and the default committed-ref check before full release
 admission. A successful projection refresh alone does not validate those spans.
 Use
-`python3 docs/papers/refresh_paper_corpus.py --write --paper <paper-id>`
+`python3 scripts/papers/refresh_paper_corpus.py --write --paper <paper-id>`
 after a native manuscript or PDF edit, including provenance-only changes: this
 owner refreshes the full text and source/PDF digests. Then run
 `python3 scripts/refresh_projections.py` for the registered projection chain,

@@ -26,7 +26,7 @@ status, author mathematical exposition, or promote an unproved bridge.
 
 ```sh
 python3 scripts/proof_state_compiler.py --pilot-controls
-python3 scripts/test_proof_state_compiler.py
+python3 scripts/tests/test_proof_state_compiler.py
 ```
 
 The pilot contains three causally related controls:
@@ -105,7 +105,7 @@ argument text is a complete dump of Lean's internal metavariable assignment.
 
 A proof-state packet is a typed continuation artifact, not a public claim. When
 a candidate closes (or the compiler abstains), return to the [complete
-eight-problem return matrix](../SOURCE_MAP.md#complete-eight-problem-return-matrix).
+eight-problem return matrix](../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix).
 Select the matching row in [`docs/problems.json`](../problems.json) to recover its
 exact note, paper/source joins, and open-obligation statement; then use the
 packet's declaration and source coordinates to verify the corresponding Lean
@@ -159,11 +159,11 @@ prospective unseen-bridge result.
 ```sh
 python3 -m py_compile \
   scripts/proof_state_compiler.py \
-  scripts/test_proof_state_compiler.py \
+  scripts/tests/test_proof_state_compiler.py \
   scripts/historical_bridge_experiment.py
-python3 scripts/test_proof_state_compiler.py
+python3 scripts/tests/test_proof_state_compiler.py
 python3 scripts/historical_bridge_experiment.py
-python3 scripts/test_query_corpus_resilience.py
+python3 scripts/tests/test_query_corpus_resilience.py
 python3 scripts/dogfood_semantic_proof.py
 ```
 

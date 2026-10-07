@@ -21,16 +21,9 @@ build creates no public claim. The two Lean roots reflect the development's
 history, not different standards of evidence.
 [Methodology](METHODOLOGY.md) explains the review and change rules.
 
-Using the degree-seven polynomial constructed by the erdosproblems.com
-contributor ani, Lean proves that every preconnected strict-lemniscate set
-containing two distinct roots has one-dimensional Hausdorff measure greater
-than two. This refutes the exact Formal Conjectures path-image-length
-statement; the separate total-variation bound is also checked. The other
-seven targets remain open. Independent human review of correspondence with
-the 1958 wording has not been recorded. Comparator checks only selected exact
-statements, axioms and kernel acceptance; it does not assess novelty or
-historical correspondence. This is a self-contained public release: its use
-and its mathematical claims do not depend on private files.
+[Results and limits](RESULTS.md) gives the current mathematical conclusions.
+This public release is self-contained: its claims and use do not depend on
+private files.
 
 ## Why preserve explanations and failed approaches?
 
@@ -42,7 +35,7 @@ Grant Sanderson's [essay on explanations](https://terrytao.wordpress.com/2026/09
 asks writers to show why a construction is needed and how one might arrive at it.
 
 Plectis keeps arguments, sources and failed routes together. The
-[reading guide](READING_GUIDE.md#work-through-an-argument) offers an active way
+[reading guide](README.md#work-through-an-argument) offers an active way
 in; [contributions](../CONTRIBUTING.md) include explanations of existing results.
 An explanation still needs a reader to work through it and assess its use.
 Whether this record helps more than papers, source and an on-demand model remains
@@ -104,7 +97,7 @@ Lean and the release checks test different parts of that route:
   match, and required limitations remain present.
 
 Those are responsibilities, not a claim that independent mathematical review
-has occurred. The [reading guide](READING_GUIDE.md#contributing) states the
+has occurred. The [reading guide](README.md#contribute) states the
 project's authorship and current review position.
 
 ## Which file is authoritative for what
@@ -115,7 +108,7 @@ project's authorship and current review position.
 | What does the selected public claim say? | [docs/claims.json](claims.json) | Wording, status, supporting declarations, finite ranges and remaining open propositions. |
 | What review does a claim change require? | [docs/methodology.json](methodology.json), rendered as [methodology](METHODOLOGY.md) | The evidence and review required for each kind of change. |
 | Which papers are shipped? | [docs/publication_contract.json](publication_contract.json) | Manuscript roles, file identities and reading routes. |
-| Where is the evidence for one result? | [docs/SOURCE_MAP.md](SOURCE_MAP.md) | Routes between problems, claims, paper passages and Lean source. |
+| Where is the evidence for one result? | [docs/reference/SOURCE_MAP.md](reference/SOURCE_MAP.md) | Routes between problems, claims, paper passages and Lean source. |
 | Which statement does Comparator compare? | [verification/comparator.json](../verification/comparator.json) and [external verification](EXTERNAL_VERIFICATION.md) | The selected challenge, solution, permitted axioms and replay boundary. |
 | What is ready for Palomar? | [docs/verification/PALOMAR_QUALIFICATION.md](verification/PALOMAR_QUALIFICATION.md) and [docs/PALOMAR_POLICY_RECONCILIATION.json](PALOMAR_POLICY_RECONCILIATION.json) | Repository qualification, with external actions and outcomes recorded separately. |
 | What did a research round return, and what does it still owe? | [The research record](reference/RESEARCH_RECORD.md) | Custody of each return, its dispositions, computed milestones, relation rows and contrasts. |
@@ -126,7 +119,7 @@ volatile facts—paper lists, source locations, selected interfaces and status
 summaries—from the records that own them. The programme card in the
 [agent guide](agents/AGENT_GUIDE.md) comes from the problem and claim owners;
 [Palomar qualification](verification/PALOMAR_QUALIFICATION.md) comes from its
-selection record. The [orientation](ORIENTATION.md), atlas and module index
+selection record. The [orientation](reference/ORIENTATION.md), atlas and module index
 are generated too. `python3 scripts/refresh_projections.py` updates these
 surfaces; the release gate rejects stale copies. Dated development and campaign
 records live in [technical reference](reference/README.md).
@@ -138,50 +131,30 @@ is archived provenance only, not an active gateway.
 
 ## Repository map
 
-| Location | What it contains |
-|---|---|
-| [paper/](../paper/README.md) | Short papers, longer research records, manuscript sources and PDFs. |
-| [lean/Erdos249257.lean](../lean/Erdos249257.lean) and [lean/Erdos249257/](../lean/Erdos249257/) | The historical library for #249/#257 and machinery used by later work. |
-| [lean/ErdosProblems.lean](../lean/ErdosProblems.lean) and [lean/ErdosProblems/](../lean/ErdosProblems/) | Formal work grouped by problem; claim status is recorded separately. |
-| [research/examples/](../research/examples/Examples.lean) | A small downstream Lean user of the library. |
-| [docs/](README.md) | Reading guides, claim records and generated indexes. |
-| [scripts/](../scripts/README.md) | Queries, builders, release checks and tests. |
-| [verification/](../verification/README.md) | Comparator statements and configuration, replay tools and external-statement comparisons. |
-| [evidence/](../evidence/README.md) | Paper-to-proof records and stored Comparator replay reports. |
-| [computations/](../computations/README.md) | Exact arithmetic certificates with independent recomputation programs. |
-| [skills/](../skills/README.md) | Workflows for research, validation and contribution. |
-| [research/](../research/README.md) | Runnable experiments, downstream examples, adapters and session records. |
-| [research_corpus/](../research_corpus/README.md) | Dated research returns with source manifests, corrections and explicit local evidence boundaries. |
-
-Start from a problem or a statement, then follow the source map to its
-modules. The [agent workbench](agents/AGENT_WORKBENCH.md) documents the query
-commands for a problem, claim, module, declaration or paper passage. The
-[Formal Conjectures crosswalk](verification/FORMAL_CONJECTURES_CROSSWALK.md)
-provides the corresponding routes into the pinned upstream statement collection.
-
-The [research commons](research-commons/README.md) explains how independent
-work returns to the repository with its starting commit, evidence and credit.
-This checkout contains the mathematics and the tools needed to work with it.
-The companion [selected verification repository](https://github.com/wcook04/plectis-erdos-lean)
-packages individual statements for external checking; it is not required to
-read or build this corpus.
+The [front-page map](../README.md#repository-map) identifies the libraries,
+papers, tools and working records. The [documentation index](README.md)
+separates reader guides from agent instructions, specialist verification and
+technical reference.
 
 ### Directory and naming conventions
 
 `paper/` holds manuscripts and PDFs; `docs/papers/` holds generated full text
-and its catalogue. `verification/` holds formal interfaces and configuration;
+and its catalogue; their executable builders live in `scripts/papers/`.
+Production commands and support modules live in `scripts/`, with their tests
+in `scripts/tests/`. `verification/` holds formal interfaces and configuration;
 `docs/verification/` holds instructions. `research/` contains experiments and
 tools; `research_corpus/` preserves dated returns.
 
 Lean source names follow namespaces and Lake configuration. The older
-`Erdos249257` name remains in imports, citations and recorded checks; use the
-[source map](SOURCE_MAP.md) to locate results across both libraries. Renaming a
+`Erdos249257` name remains in imports, citations and recorded checks. The
+[formal-source index](../lean/README.md) explains build roles; use the
+[source map](reference/SOURCE_MAP.md) to locate results across both libraries. Renaming a
 source requires updating those consumers together.
 
 ## A complete example
 
-The [certificate definition](papers/full-text/erdos249-totient-reasoning-surface.md#the-problem-and-what-is-actually-known)
-and [certificate source map](SOURCE_MAP.md#249--certificate-reductions)
+The [certificate definition](papers/full-text/erdos249-totient-reasoning-surface.md#organisation)
+and [certificate source map](reference/SOURCE_MAP.md#complete-eight-problem-return-matrix)
 give the mathematical notation and source routes behind this example.
 
 One public claim says that Lean has checked successful finite calculations at
@@ -263,7 +236,7 @@ instructions. The proof wrapper invokes `lake build`; it is separate from
 `python3 scripts/check_release.py`, which does not run Lean.
 
 For documentation work, the focused reader checks include
-`python3 scripts/test_human_first_contact.py` and
+`python3 scripts/tests/test_human_first_contact.py` and
 `python3 scripts/check_architecture_guide.py`.
 `python3 scripts/check_cold_clone_comprehension.py --quick` checks the bounded
 navigation routes before a toolchain download. Use the relevant tool's own
@@ -289,10 +262,7 @@ it illustrates the checks recorded for that exercise.
 
 ## Where to start
 
-Read a [problem paper](../paper/README.md#problem-papers),
-[reproduce a check](REPRODUCIBILITY.md), or
-[propose a contribution](../CONTRIBUTING.md).
-
-The archived combined #249/#257 PDF is not a default reading route.
-[The documentation index](README.md) lists the current guides and specialist
-references.
+Use the [documentation index](README.md) to choose a reader journey, or
+[AGENTS.md](../AGENTS.md) to route a coding-agent task. The
+[systems paper](../paper/systems/claim-faithful-publication-systems-paper.pdf)
+examines this evidence and contribution process in more detail.

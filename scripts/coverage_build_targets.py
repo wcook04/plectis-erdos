@@ -4,7 +4,7 @@
 """Print the coverage build's Lean targets, one per line.
 
 `.github/workflows/lean-coverage-build.yml` owns the list (its
-`coverage-build` step, pinned by `scripts/test_lean_fast_build.py`). The
+`coverage-build` step, pinned by `scripts/tests/test_lean_fast_build.py`). The
 argument-graph export imports these targets with the default roots, so that
 the declarations the paper-to-Lean ledger cites from coverage-only modules
 are in its environment. With ``--imports`` the lines are Lean `import`

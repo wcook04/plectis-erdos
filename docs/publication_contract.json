@@ -39,15 +39,15 @@
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.architecture_guides",
       "entry_route_id": "understand_repository_architecture",
       "evidence_receipt_path": "docs/publication_evidence.json",
-      "evidence_receipt_digest": "sha256:4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
+      "evidence_receipt_digest": "sha256:4ae34a8682ab2997ed3ca3dea2d29b12eecae537551a25e340e984c608d89327",
       "validation": [
         "python3 scripts/check_architecture_guide.py",
-        "python3 scripts/test_paper_crosslinks.py",
+        "python3 scripts/tests/test_paper_crosslinks.py",
         "python3 scripts/check_rendered_paper_boundary.py",
         "python3 scripts/check_publication_contract.py",
         "python3 scripts/systems_paper_evidence.py",
         "python3 scripts/run_publication_mutations.py --verify-operators",
-        "python3 scripts/test_publication_mutation_harness.py",
+        "python3 scripts/tests/test_publication_mutation_harness.py",
         "python3 scripts/check_release.py"
       ],
       "evidence_boundary": {
@@ -77,11 +77,11 @@
       "entry_route_id": "agent_native_corpus_navigation",
       "validation": [
         "python3 scripts/check_agent_navigation_paper.py",
-        "python3 scripts/test_paper_crosslinks.py",
+        "python3 scripts/tests/test_paper_crosslinks.py",
         "python3 scripts/check_rendered_paper_boundary.py",
         "python3 scripts/check_publication_contract.py",
         "python3 scripts/check_cold_clone_comprehension.py --quick",
-        "python3 scripts/test_lean_dependency_index_cache.py",
+        "python3 scripts/tests/test_lean_dependency_index_cache.py",
         "python3 scripts/check_release.py"
       ],
       "storage_path": "paper/systems/cold-clone-to-proof-receipt.pdf"
@@ -99,11 +99,11 @@
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture",
       "entry_route_id": "understand_open_source_research_strategy",
       "validation": [
-        "python3 scripts/test_paper_crosslinks.py",
+        "python3 scripts/tests/test_paper_crosslinks.py",
         "python3 scripts/check_rendered_paper_boundary.py",
         "python3 scripts/check_publication_contract.py",
-        "python3 scripts/test_contribution_entry.py",
-        "python3 scripts/test_compact_agent_entry.py",
+        "python3 scripts/tests/test_contribution_entry.py",
+        "python3 scripts/tests/test_compact_agent_entry.py",
         "python3 scripts/check_release.py"
       ],
       "storage_path": "paper/systems/open-source-mathematics-strategy.pdf"
@@ -497,7 +497,7 @@
         "docs/problem_index_source.json",
         "lean/ErdosProblems.lean",
         "docs/publication_contract.json",
-        "docs/SCOPE.md"
+        "docs/METHODOLOGY.md"
       ],
       "query_steps": [
         "python3 scripts/query_corpus.py --publication-artifact <publication_artifact_id>",
@@ -675,7 +675,7 @@
     "problem_note_source_links": "python3 scripts/check_problem_note_sources.py --coverage",
     "problem_index_freshness": "python3 scripts/build_problem_index.py --check",
     "publication_contract_check": "python3 scripts/check_publication_contract.py",
-    "publication_contract_fixture_test": "python3 scripts/test_publication_artifact_contract.py",
+    "publication_contract_fixture_test": "python3 scripts/tests/test_publication_artifact_contract.py",
     "mutation_evidence_query": "python3 scripts/query_corpus.py --publication-evidence summary",
     "mutation_operator_verification": "python3 scripts/run_publication_mutations.py --verify-operators",
     "mutation_reconstruction_run": "python3 scripts/run_publication_mutations.py --all --receipt <output.json>",

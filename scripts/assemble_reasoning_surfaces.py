@@ -72,6 +72,62 @@ PAPERS = {
 }
 
 
+# Retain historical flat-source markers without storing empty slots or identical
+# terminal boilerplate as authored files. Missing substantive parts still fail.
+INLINE_PARTS = {
+    "269": {
+        "extended_record": "",
+        "family_catalogue": "",
+        "back": "\\end{document}\n",
+    },
+    "251": {
+        "extended_record": "",
+        "family_catalogue": "",
+        "back": "\\end{document}\n",
+    },
+    "243": {
+        "family_catalogue": "",
+        "back": "\\end{document}\n",
+    },
+    "68": {
+        "extended_record": "",
+        "family_catalogue": "",
+        "back": "\\end{document}\n",
+    },
+    "1049": {
+        "family_catalogue": "",
+        "back": "\\end{document}\n",
+    },
+    "1041": {
+        "extended_record": "",
+        "family_catalogue": "",
+        "back": "\\end{document}\n",
+    },
+    "249": {
+        "a249_p0": "",
+        "a249_p1a": "",
+        "a249_p1b": "",
+        "a249_newdecls": "",
+        "a249_p2": "",
+        "a249_p3": "",
+        "a249_p4": "",
+        "a249_invent": "",
+        "a249_p5": "\\end{document}\n",
+    },
+    "257": {
+        "a257_p0": "",
+        "a257_p1a": "",
+        "a257_p1b": "",
+        "a257_newdecls": "",
+        "a257_p2": "",
+        "a257_p3": "",
+        "a257_p4": "",
+        "a257_invent": "",
+        "a257_p5": "\\end{document}\n",
+    },
+}
+
+
 def split_flat(text: str, expected: tuple[str, ...]) -> tuple[str, dict[str, str]]:
     matches = list(MARKER_RE.finditer(text))
     names = tuple(match.group(1) for match in matches)
@@ -95,6 +151,10 @@ def bootstrap(key: str) -> None:
     directory.mkdir(parents=True)
     (directory / "preamble.tex").write_text(preamble, encoding="utf-8")
     for name, text in parts.items():
+        if name in INLINE_PARTS[key]:
+            if text != INLINE_PARTS[key][name]:
+                raise ValueError(f"noncanonical boilerplate in {key}:{name}")
+            continue
         (directory / f"{name}.tex").write_text(text, encoding="utf-8")
 
 
@@ -104,7 +164,8 @@ def assemble(key: str) -> str:
     chunks = [(directory / "preamble.tex").read_text(encoding="utf-8")]
     for name in row["parts"]:
         chunks.append(f"% ---- part {name} ----\n")
-        chunks.append((directory / f"{name}.tex").read_text(encoding="utf-8"))
+        chunks.append(INLINE_PARTS[key][name] if name in INLINE_PARTS[key]
+                      else (directory / f"{name}.tex").read_text(encoding="utf-8"))
     return "".join(chunks)
 
 

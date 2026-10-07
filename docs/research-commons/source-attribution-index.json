@@ -124661,28 +124661,7 @@
     "maintained_source_anchors": [
       {
         "generated_root": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos1041/back.tex",
-        "paper_id": "erdos1041-lemniscate-reasoning-surface",
-        "problem": "1041",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
         "maintained_path": "paper/reasoning-parts/erdos1041/core.tex",
-        "paper_id": "erdos1041-lemniscate-reasoning-surface",
-        "problem": "1041",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos1041/extended_record.tex",
-        "paper_id": "erdos1041-lemniscate-reasoning-surface",
-        "problem": "1041",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos1041/family_catalogue.tex",
         "paper_id": "erdos1041-lemniscate-reasoning-surface",
         "problem": "1041",
         "role": "authored_reasoning_part"
@@ -124696,21 +124675,7 @@
       },
       {
         "generated_root": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos1049/back.tex",
-        "paper_id": "erdos1049-rational-base-lambert-reasoning-surface",
-        "problem": "1049",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
         "maintained_path": "paper/reasoning-parts/erdos1049/core.tex",
-        "paper_id": "erdos1049-rational-base-lambert-reasoning-surface",
-        "problem": "1049",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos1049/family_catalogue.tex",
         "paper_id": "erdos1049-rational-base-lambert-reasoning-surface",
         "problem": "1049",
         "role": "authored_reasoning_part"
@@ -124724,21 +124689,7 @@
       },
       {
         "generated_root": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos243/back.tex",
-        "paper_id": "erdos243-reciprocal-tail-reasoning-surface",
-        "problem": "243",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
         "maintained_path": "paper/reasoning-parts/erdos243/core.tex",
-        "paper_id": "erdos243-reciprocal-tail-reasoning-surface",
-        "problem": "243",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos243/family_catalogue.tex",
         "paper_id": "erdos243-reciprocal-tail-reasoning-surface",
         "problem": "243",
         "role": "authored_reasoning_part"
@@ -124759,69 +124710,6 @@
       },
       {
         "generated_root": "paper/249/erdos249-totient-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos249/a249_invent.tex",
-        "paper_id": "erdos249-totient-reasoning-surface",
-        "problem": "249",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/249/erdos249-totient-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos249/a249_newdecls.tex",
-        "paper_id": "erdos249-totient-reasoning-surface",
-        "problem": "249",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/249/erdos249-totient-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos249/a249_p0.tex",
-        "paper_id": "erdos249-totient-reasoning-surface",
-        "problem": "249",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/249/erdos249-totient-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos249/a249_p1a.tex",
-        "paper_id": "erdos249-totient-reasoning-surface",
-        "problem": "249",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/249/erdos249-totient-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos249/a249_p1b.tex",
-        "paper_id": "erdos249-totient-reasoning-surface",
-        "problem": "249",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/249/erdos249-totient-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos249/a249_p2.tex",
-        "paper_id": "erdos249-totient-reasoning-surface",
-        "problem": "249",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/249/erdos249-totient-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos249/a249_p3.tex",
-        "paper_id": "erdos249-totient-reasoning-surface",
-        "problem": "249",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/249/erdos249-totient-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos249/a249_p4.tex",
-        "paper_id": "erdos249-totient-reasoning-surface",
-        "problem": "249",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/249/erdos249-totient-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos249/a249_p5.tex",
-        "paper_id": "erdos249-totient-reasoning-surface",
-        "problem": "249",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/249/erdos249-totient-reasoning-surface.tex",
         "maintained_path": "paper/reasoning-parts/erdos249/preamble.tex",
         "paper_id": "erdos249-totient-reasoning-surface",
         "problem": "249",
@@ -124829,28 +124717,7 @@
       },
       {
         "generated_root": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos251/back.tex",
-        "paper_id": "erdos251-prime-gap-reasoning-surface",
-        "problem": "251",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
         "maintained_path": "paper/reasoning-parts/erdos251/core.tex",
-        "paper_id": "erdos251-prime-gap-reasoning-surface",
-        "problem": "251",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos251/extended_record.tex",
-        "paper_id": "erdos251-prime-gap-reasoning-surface",
-        "problem": "251",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos251/family_catalogue.tex",
         "paper_id": "erdos251-prime-gap-reasoning-surface",
         "problem": "251",
         "role": "authored_reasoning_part"
@@ -124871,69 +124738,6 @@
       },
       {
         "generated_root": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos257/a257_invent.tex",
-        "paper_id": "erdos257-mersenne-reasoning-surface",
-        "problem": "257",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos257/a257_newdecls.tex",
-        "paper_id": "erdos257-mersenne-reasoning-surface",
-        "problem": "257",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos257/a257_p0.tex",
-        "paper_id": "erdos257-mersenne-reasoning-surface",
-        "problem": "257",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos257/a257_p1a.tex",
-        "paper_id": "erdos257-mersenne-reasoning-surface",
-        "problem": "257",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos257/a257_p1b.tex",
-        "paper_id": "erdos257-mersenne-reasoning-surface",
-        "problem": "257",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos257/a257_p2.tex",
-        "paper_id": "erdos257-mersenne-reasoning-surface",
-        "problem": "257",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos257/a257_p3.tex",
-        "paper_id": "erdos257-mersenne-reasoning-surface",
-        "problem": "257",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos257/a257_p4.tex",
-        "paper_id": "erdos257-mersenne-reasoning-surface",
-        "problem": "257",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos257/a257_p5.tex",
-        "paper_id": "erdos257-mersenne-reasoning-surface",
-        "problem": "257",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/257/erdos257-mersenne-reasoning-surface.tex",
         "maintained_path": "paper/reasoning-parts/erdos257/preamble.tex",
         "paper_id": "erdos257-mersenne-reasoning-surface",
         "problem": "257",
@@ -124941,28 +124745,7 @@
       },
       {
         "generated_root": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos269/back.tex",
-        "paper_id": "erdos269-running-lcm-reasoning-surface",
-        "problem": "269",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
         "maintained_path": "paper/reasoning-parts/erdos269/core.tex",
-        "paper_id": "erdos269-running-lcm-reasoning-surface",
-        "problem": "269",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos269/extended_record.tex",
-        "paper_id": "erdos269-running-lcm-reasoning-surface",
-        "problem": "269",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos269/family_catalogue.tex",
         "paper_id": "erdos269-running-lcm-reasoning-surface",
         "problem": "269",
         "role": "authored_reasoning_part"
@@ -124976,28 +124759,7 @@
       },
       {
         "generated_root": "paper/68/erdos68-factorial-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos68/back.tex",
-        "paper_id": "erdos68-factorial-reasoning-surface",
-        "problem": "68",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/68/erdos68-factorial-reasoning-surface.tex",
         "maintained_path": "paper/reasoning-parts/erdos68/core.tex",
-        "paper_id": "erdos68-factorial-reasoning-surface",
-        "problem": "68",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/68/erdos68-factorial-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos68/extended_record.tex",
-        "paper_id": "erdos68-factorial-reasoning-surface",
-        "problem": "68",
-        "role": "authored_reasoning_part"
-      },
-      {
-        "generated_root": "paper/68/erdos68-factorial-reasoning-surface.tex",
-        "maintained_path": "paper/reasoning-parts/erdos68/family_catalogue.tex",
         "paper_id": "erdos68-factorial-reasoning-surface",
         "problem": "68",
         "role": "authored_reasoning_part"
@@ -125013,7 +124775,7 @@
     "paper_denominator": 24,
     "reasoning_surface_contract": "Generated reasoning roots inline authored files declared by scripts/assemble_reasoning_surfaces.py::PAPERS. Both reader-facing roots and maintained anchors are inventoried and labeled by source_role; shared TeX includes resolve through the manuscript directory and then the public paper root. Counts include intentional root/part duplication.",
     "root_source_file_denominator": 24,
-    "scanned_source_file_denominator": 98,
+    "scanned_source_file_denominator": 64,
     "scanned_source_paths": [
       "docs/papers/mirror/plectis-public-system.tex",
       "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
@@ -125059,55 +124821,21 @@
       "paper/module-aliases.tex",
       "paper/paper-evidence.tex",
       "paper/problem-note-preamble.tex",
-      "paper/reasoning-parts/erdos1041/back.tex",
       "paper/reasoning-parts/erdos1041/core.tex",
-      "paper/reasoning-parts/erdos1041/extended_record.tex",
-      "paper/reasoning-parts/erdos1041/family_catalogue.tex",
       "paper/reasoning-parts/erdos1041/preamble.tex",
-      "paper/reasoning-parts/erdos1049/back.tex",
       "paper/reasoning-parts/erdos1049/core.tex",
-      "paper/reasoning-parts/erdos1049/family_catalogue.tex",
       "paper/reasoning-parts/erdos1049/preamble.tex",
-      "paper/reasoning-parts/erdos243/back.tex",
       "paper/reasoning-parts/erdos243/core.tex",
-      "paper/reasoning-parts/erdos243/family_catalogue.tex",
       "paper/reasoning-parts/erdos243/preamble.tex",
       "paper/reasoning-parts/erdos249/a249_front.tex",
-      "paper/reasoning-parts/erdos249/a249_invent.tex",
-      "paper/reasoning-parts/erdos249/a249_newdecls.tex",
-      "paper/reasoning-parts/erdos249/a249_p0.tex",
-      "paper/reasoning-parts/erdos249/a249_p1a.tex",
-      "paper/reasoning-parts/erdos249/a249_p1b.tex",
-      "paper/reasoning-parts/erdos249/a249_p2.tex",
-      "paper/reasoning-parts/erdos249/a249_p3.tex",
-      "paper/reasoning-parts/erdos249/a249_p4.tex",
-      "paper/reasoning-parts/erdos249/a249_p5.tex",
       "paper/reasoning-parts/erdos249/preamble.tex",
-      "paper/reasoning-parts/erdos251/back.tex",
       "paper/reasoning-parts/erdos251/core.tex",
-      "paper/reasoning-parts/erdos251/extended_record.tex",
-      "paper/reasoning-parts/erdos251/family_catalogue.tex",
       "paper/reasoning-parts/erdos251/preamble.tex",
       "paper/reasoning-parts/erdos257/a257_front.tex",
-      "paper/reasoning-parts/erdos257/a257_invent.tex",
-      "paper/reasoning-parts/erdos257/a257_newdecls.tex",
-      "paper/reasoning-parts/erdos257/a257_p0.tex",
-      "paper/reasoning-parts/erdos257/a257_p1a.tex",
-      "paper/reasoning-parts/erdos257/a257_p1b.tex",
-      "paper/reasoning-parts/erdos257/a257_p2.tex",
-      "paper/reasoning-parts/erdos257/a257_p3.tex",
-      "paper/reasoning-parts/erdos257/a257_p4.tex",
-      "paper/reasoning-parts/erdos257/a257_p5.tex",
       "paper/reasoning-parts/erdos257/preamble.tex",
-      "paper/reasoning-parts/erdos269/back.tex",
       "paper/reasoning-parts/erdos269/core.tex",
-      "paper/reasoning-parts/erdos269/extended_record.tex",
-      "paper/reasoning-parts/erdos269/family_catalogue.tex",
       "paper/reasoning-parts/erdos269/preamble.tex",
-      "paper/reasoning-parts/erdos68/back.tex",
       "paper/reasoning-parts/erdos68/core.tex",
-      "paper/reasoning-parts/erdos68/extended_record.tex",
-      "paper/reasoning-parts/erdos68/family_catalogue.tex",
       "paper/reasoning-parts/erdos68/preamble.tex",
       "paper/synthesis/optimal-sparse-perturbations.tex",
       "paper/systems/claim-faithful-publication-systems-paper.tex",
@@ -125180,7 +124908,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:3444a7d9a1ab07275212b4f2d6b0c6512e43530d12fcdd9124dff0d68a568ff6",
+  "source_registry_sha256": "sha256:221502d734f63904ee54cc7ac5f49bf5cadfac5e9c460dc09e3795681ceffa35",
   "sources": [
     {
       "artifact_coordinates": [
@@ -126176,11 +125904,11 @@
           "sha256": "sha256:43aca5f4da7f5f42baf826e53324c045e4fa11acd20ffd1743609e20b5084157"
         },
         {
-          "excerpt_sha256": "sha256:841f2dd16d4a52b7d08408468dd3f4f231b7d8aeb174d9ffad383abbde1acfe9",
-          "line_end": 14,
-          "line_start": 4,
+          "excerpt_sha256": "sha256:68b48b26909458d634ec4498042279edb1db1066ab031f0dd4d2e15464a7af1c",
+          "line_end": 22,
+          "line_start": 10,
           "path": "docs/EXTERNAL_VERIFICATION.md",
-          "sha256": "sha256:47184e48546e05683695d30d72cdfa02fefba99a65cc8fc83913a6cfba36d8e1"
+          "sha256": "sha256:34bc99326a70fec63827c0e786ecf05ae5427e5bc08fc0a3a4a008a2b439ff22"
         }
       ],
       "artifact_links": [
@@ -126203,9 +125931,9 @@
           "path": "verification/comparator-negative-mismatch.json"
         },
         {
-          "excerpt_sha256": "sha256:841f2dd16d4a52b7d08408468dd3f4f231b7d8aeb174d9ffad383abbde1acfe9",
-          "line_end": 14,
-          "line_start": 4,
+          "excerpt_sha256": "sha256:68b48b26909458d634ec4498042279edb1db1066ab031f0dd4d2e15464a7af1c",
+          "line_end": 22,
+          "line_start": 10,
           "path": "docs/EXTERNAL_VERIFICATION.md"
         }
       ],
@@ -126290,11 +126018,11 @@
           "sha256": "sha256:717498a2f6365833715f1e241de3bcfba3daf431dc650cd36133eb27ce1a9a3d"
         },
         {
-          "excerpt_sha256": "sha256:cb49ade0a57a20d0355d24a8ebc443b2be0b82e0f3c2bdd61f361abe2913a17b",
-          "line_end": 544,
-          "line_start": 534,
-          "path": "docs/EXTERNAL_VERIFICATION.md",
-          "sha256": "sha256:47184e48546e05683695d30d72cdfa02fefba99a65cc8fc83913a6cfba36d8e1"
+          "excerpt_sha256": "sha256:44b2d03394f71d1c7674ade0f59d393612a219ff02810ce8544e458bb95128ea",
+          "line_end": 1043,
+          "line_start": 1030,
+          "path": "docs/external_verification_packet.json",
+          "sha256": "sha256:41f110c60e03789d2eb5e2e08cf7ccfbc73abbe8f2258e5a357c8bf322256804"
         }
       ],
       "artifact_links": [
@@ -126329,10 +126057,10 @@
           "path": "formalization.yaml"
         },
         {
-          "excerpt_sha256": "sha256:cb49ade0a57a20d0355d24a8ebc443b2be0b82e0f3c2bdd61f361abe2913a17b",
-          "line_end": 544,
-          "line_start": 534,
-          "path": "docs/EXTERNAL_VERIFICATION.md"
+          "excerpt_sha256": "sha256:44b2d03394f71d1c7674ade0f59d393612a219ff02810ce8544e458bb95128ea",
+          "line_end": 1043,
+          "line_start": 1030,
+          "path": "docs/external_verification_packet.json"
         }
       ],
       "authors": [
@@ -126485,7 +126213,7 @@
           "line_end": 215,
           "line_start": 204,
           "path": "skills/public-mathematical-writing/SKILL.md",
-          "sha256": "sha256:6bf9f059fccee30b02e8852e46061a8fa184f94a221b9d235ad94cbf72c2644f"
+          "sha256": "sha256:a933e3de53782587f87d12902d2fd39ab0c571fe25be4ed80fe01c7f45d4eb6d"
         },
         {
           "excerpt_sha256": "sha256:43ae7aa3892935664831547944b3b27f554b3fd290c430f00cc870396a0f8a9e",
@@ -126493,7 +126221,7 @@
           "line_end": 15,
           "line_start": 15,
           "path": "docs/papers/SHORT_PAPER_CONTRACT.md",
-          "sha256": "sha256:c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa"
+          "sha256": "sha256:a921220b480fda04e935d6a0911291cebd0323e0c55fb3e6d4d588a0a2e30957"
         },
         {
           "excerpt_sha256": "sha256:ff5754db474f064134ae8227c14f4824529f41415521823ca5a324a5154ab45c",
@@ -126501,7 +126229,7 @@
           "line_end": 23,
           "line_start": 23,
           "path": "docs/papers/SHORT_PAPER_CONTRACT.md",
-          "sha256": "sha256:c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa"
+          "sha256": "sha256:a921220b480fda04e935d6a0911291cebd0323e0c55fb3e6d4d588a0a2e30957"
         }
       ],
       "artifact_links": [
@@ -126597,7 +126325,7 @@
           "line_end": 19,
           "line_start": 19,
           "path": "docs/papers/SHORT_PAPER_CONTRACT.md",
-          "sha256": "sha256:c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa"
+          "sha256": "sha256:a921220b480fda04e935d6a0911291cebd0323e0c55fb3e6d4d588a0a2e30957"
         }
       ],
       "artifact_links": [
@@ -128963,7 +128691,7 @@
           "line_end": 79,
           "line_start": 67,
           "path": "lakefile.toml",
-          "sha256": "sha256:e1a087453f8ac7bf939211194ae083a87212d33d82bd222d1f27ffc0bbdc5211"
+          "sha256": "sha256:0c0479b2fee17a8de5983fa7e5ceb55cc7e05e7a0644152a0aab3e2be82a9527"
         },
         {
           "excerpt_sha256": "sha256:cbe13cbf9d5041738aecdb7bbe0abff35d2f946ed3567c4098ec6ce11c206613",
@@ -129164,7 +128892,7 @@
           "line_end": 35,
           "line_start": 32,
           "path": "lakefile.toml",
-          "sha256": "sha256:e1a087453f8ac7bf939211194ae083a87212d33d82bd222d1f27ffc0bbdc5211"
+          "sha256": "sha256:0c0479b2fee17a8de5983fa7e5ceb55cc7e05e7a0644152a0aab3e2be82a9527"
         },
         {
           "excerpt_sha256": "sha256:b0f750acfc6ef6e2955d978ed32fc02884e8fa180faa9f99bc1ec15ba856defc",
