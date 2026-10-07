@@ -17,6 +17,11 @@ that manifest's digest, selects only the adapter, permits only `propext`,
 full mechanical report is required before claiming independent verification.
 Dispatching the workflow or passing its selector is insufficient.
 
+The historical official verifier is pinned at
+`f49b4f29aa458fc70c3a4c8cadca9312adbdc559`. It supports the preserved
+Lean 4.29.1 source and checks with Lean and NanoDa; it does not run con-ron.
+Its report uses the historical schema 1 rather than the modern schema 2.
+
 This is a mechanical preflight, without registry submission, registration,
 mathematical peer review or approval of the upstream pull request. It does not
 change the benchmark statement, paper result or scope of the parent question.
