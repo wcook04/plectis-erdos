@@ -182,7 +182,7 @@
       "anchor": "credit-correspondence-001",
       "artifacts": [
         {
-          "excerpt_sha256": "sha256:301b260737a1b5176e64724b27eb990eaeda45fba3a6cb92b482ca3bfe6bfd0f",
+          "excerpt_sha256": "sha256:49b7947d964fd9223998d4670a12025994b3519a03543010e9d6e011fbed9e9d",
           "line_end": 60,
           "line_start": 1,
           "path": "formalization.yaml"
@@ -294,5 +294,5 @@
   "naming_policy": "Every entry starts with the name withheld. A name appears only after that person confirms the public name they want, and an entry stays anonymous if they ask. Private messages stay outside this repository.",
   "schema": "plectis-credit-ledger/1",
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:3444a7d9a1ab07275212b4f2d6b0c6512e43530d12fcdd9124dff0d68a568ff6"
+  "source_registry_sha256": "sha256:8f2f6d664dbcb5951c90f7a20622d149c8ef997e8e50dfc99b2f925ef9a4ccef"
 }
