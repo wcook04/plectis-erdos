@@ -95,14 +95,14 @@
     {
       "action": "explained_in_short",
       "rationale": "Compare the quotient t_(n+1)/t_n with (1+1/n)(1+K/n^(1+epsilon)). The convergent error product gives t_n=O(n), and t_n*gamma_n is bounded above. The preceding product-increment criterion applies, including the exact one-sided 1/n bound. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.",
-      "review_status": "R9 Type A source-reading review of accepted exposition change against unchanged statement and prior proof; no new independent mathematical review, Lean execution or long-record correspondence.",
+      "review_status": "R15 fourth return Type A source-reading review of accepted editorial wording against the unchanged statement and existing argument; no independent mathematical review or new formal verification.",
       "short_id": "erdos-243-reciprocal-tail-rigidity#res:inclusiveone",
       "short_statement_sha256": "sha256:98a8202e9030aa79759f1826c5480e8ff9e84839de9db737dd2b8cfe10a9cb4a",
       "support": {
         "label": "res:inclusiveone",
         "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "selector": "adjacent_proof",
-        "sha256": "sha256:e86509b32b19b9d26b38f708986549d730b37d99f3cc6abf5fd65a8d450caeba"
+        "sha256": "sha256:63189dcca4e7945ee3034730cadaad19f19a566180777f0962dca993e5d755fd"
       }
     },
     {
@@ -121,14 +121,14 @@
     {
       "action": "explained_in_short",
       "rationale": "The proof displays the exact defect comparison with the product quotient. Its remainder is positive and tends to zero; a finite upper bound gives a lower bound on E, then bounded-negative-part rigidity and the recurrence corollary apply. The product criterion is not the classical LCM criterion. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.",
-      "review_status": "R5 Type A source-reading review of retained proof and evidence boundary; no new independent mathematical review.",
+      "review_status": "R15 fourth return Type A source-reading review of accepted editorial wording against the unchanged statement and existing argument; no independent mathematical review or new formal verification.",
       "short_id": "erdos-243-reciprocal-tail-rigidity#res:originalbounded",
       "short_statement_sha256": "sha256:b8b7511fc073ebeedae59f655f3f3a80a203daa71d61e5d958d4f56340f73b16",
       "support": {
         "label": "res:originalbounded",
         "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "selector": "adjacent_proof",
-        "sha256": "sha256:6fc4f399da476680b07d98e1cd7d402297284f22f0eb65ec9f3c4598e97e7a24"
+        "sha256": "sha256:08307a9bc3e42cebdb9ce82a5fba6c5a18e7f7972b0f8a514c4ac51a3c69e7fe"
       }
     },
     {
@@ -173,14 +173,14 @@
     {
       "action": "explained_in_short",
       "rationale": "For zero lower density choose cutoffs X_k with F(X_k)<=2^(-k)X_k and sum the nested indicator weights 1_[1,X_k]/X_k. The integral diverges but the weighted mass is finite. Conversely use partial summation against a positive nonincreasing divergent-integral weight to exclude an eventual positive linear lower bound for F. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.",
-      "review_status": "R14 third return Type A source-reading and frozen-statement review; proof availability only, no independent mathematical review or new long-record correspondence.",
+      "review_status": "R15 fourth return Type A source-reading review of accepted editorial wording against the unchanged statement and existing argument; no independent mathematical review or new formal verification.",
       "short_id": "erdos-243-reciprocal-tail-rigidity#res:weights",
       "short_statement_sha256": "sha256:4b1ce0041de992da6ea3a1af445782fd4899bceb9b85fa325161aa40c07a5226",
       "support": {
         "label": "res:weights",
         "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "selector": "adjacent_proof",
-        "sha256": "sha256:c339abb8184b344b4fd64a5d8c60a03984c6315ee86c1f507ef8872a6c32c23b"
+        "sha256": "sha256:a4e5621a5ae76c8a724935d67afad90d0507cb18056d28e12c152abe5de35235"
       }
     },
     {
@@ -304,14 +304,14 @@
     {
       "action": "explained_in_short",
       "rationale": "The application proof remains in sec:prime-application. It invokes the sparse construction, the finite-union exceptional-set argument and the cumulative-size estimate under the unchanged adjacent published-input remark. The convergence bound now points directly to the existing full Appendix A proof.",
-      "review_status": "R14 third return Type A source-reading and frozen-statement review; proof availability only, no independent mathematical review or new long-record correspondence.",
+      "review_status": "R15 fourth return Type A source-reading review of accepted editorial wording against the unchanged statement and existing argument; no independent mathematical review or new formal verification.",
       "short_id": "erdos-251-prime-gap-dyadic-series#res:jointcountermodel",
       "short_statement_sha256": "sha256:c30e3bd411f9d423be7347233494992984bb7ba9f8dffdae999c0fd8b34085b8",
       "support": {
         "label": "res:jointcountermodel",
         "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
         "selector": "adjacent_proof",
-        "sha256": "sha256:1dd8c655cb75bc0f4ee497f29b16e4fcce7dc0c61f7140b1ea147ed252e50c61"
+        "sha256": "sha256:8991e1d8436ff2316774938143489a381b4a5732cd97ac933be1b4d2154069c9"
       }
     },
     {
@@ -371,14 +371,14 @@
     {
       "action": "explained_in_short",
       "rationale": "Appendix C retains the direct proof: represented targets give bounded coefficient tails and a nonincrease in each stated window; outside the achievement set a positive remainder makes the scaled integer grow and eventually increase at every rank. The selector and Mobius-compatibility discussion remains intact.",
-      "review_status": "R14 third return Type A source-reading and frozen-statement review; proof availability only, no independent mathematical review or new long-record correspondence.",
+      "review_status": "R15 fourth return Type A source-reading review of accepted editorial wording against the unchanged statement and existing argument; no independent mathematical review or new formal verification.",
       "short_id": "erdos-257-mersenne-support-subseries#res:general-repair",
       "short_statement_sha256": "sha256:17e70c7e375db04ec58fa70163814efca251acb652fb73b84d84a07a3a15760d",
       "support": {
         "label": "res:general-repair",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "selector": "adjacent_proof",
-        "sha256": "sha256:6598e66ad0c50436ac2a22476342b6b8b038c098741c1d67431b12291d53a9a5"
+        "sha256": "sha256:18c4cba199faa2c464b38e306223284928a8fc2ac178df22ce0cfc546bf8a5b5"
       }
     },
     {
@@ -397,14 +397,14 @@
     {
       "action": "explained_in_short",
       "rationale": "Appendix B retains the cyclotomic maximal-under-divisibility argument, denominator noncancellation and exact multiplicative order, with elementary prime-power details in Appendix E. The F={1}, b=2 convention is preserved.",
-      "review_status": "R14 third return Type A source-reading and frozen-statement review; proof availability only, no independent mathematical review or new long-record correspondence.",
+      "review_status": "R15 fourth return Type A source-reading review of accepted editorial wording against the unchanged statement and existing argument; no independent mathematical review or new formal verification.",
       "short_id": "erdos-257-mersenne-support-subseries#res:period",
       "short_statement_sha256": "sha256:cd113fd70ca4c2abd225bd8ad990894db12f084a29b2b278d78752c1eac1461b",
       "support": {
         "end": "The case $F=\\{1\\}$ has order one directly.",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "selector": "between",
-        "sha256": "sha256:9bd7a84622334da833d9dfb9c796b996a298c3c5bdf2bf0f01d905d29718c7ed",
+        "sha256": "sha256:3f77903b76b875c060c0611fcc3c906c17d6dbd1e9ef16a3abe68e719bc8c7b1",
         "start": "Put $L=\\operatorname{lcm}(F)$."
       }
     },

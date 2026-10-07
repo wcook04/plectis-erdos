@@ -8,7 +8,7 @@
 
 </div>
 
-For $`S=\sum_{n\ge2}(n!-1)^{-1}`$, we determine the integers $`M`$ that occur in finitely supported cancellation forms $`MS+k`$. An integral basis reduces cancellation through $`D`$ and exclusion of index one to a single Diophantine equation. Its coefficient gcd is computable below $`2D^2`$, giving the least positive $`M`$ and a vector attaining it. At $`D=4`$ this minimum is $`1380`$, and the resulting form is nonintegral. Irrationality still requires, for each $`q>0`$, a nonintegral form with $`q\mid M`$.
+For $`S=\sum_{n\ge2}(n!-1)^{-1}`$, we classify the multipliers in cancellation forms $`MS+k`$ constructed from finite integer vectors supported on $`n\ge2`$. An integral basis solves cancellation through depth $`D\ge2`$; excluding index one leaves one Diophantine equation. Its coefficient gcd is determined below $`2D^2`$, giving the least positive multiplier and an attaining vector. At $`D=4`$, the minimum is $`1380`$; an attaining form is nonintegral. Irrationality still requires, for each $`q>0`$, a nonintegral form with $`q\mid M`$.
 
 <a id="sec:problem"></a>
 
@@ -28,21 +28,19 @@ irrational?
 
 The elementary proof that $`e`$ is irrational clears the partial sum by a factorial and bounds the remaining positive tail. Here the first step fails: for $`H_m=\sum_{n=2}^m(n!-1)^{-1}`$, already $`3!H_3=36/5`$. We instead construct forms $`MS+k`$, with $`M,k\in\mathbb Z`$, by cancelling initial weighted sums. If $`S=a/q`$ and $`q\mid M`$, then $`MS+k`$ is integral; proving it nonintegral excludes that denominator.
 
-Even these cancellation equations impose more than the expected common-denominator condition. Cancelling the weighted sums indexed by $`2,3,4`$ forces $`115\mid M`$, but a vector supported on indices $`n\ge2`$ requires $`1380\mid M`$. We determine the exact additional factor at every depth $`D`$, and construct a vector attaining the least positive value of $`M`$.
+At depth four, the weight congruences force $`115\mid M`$. Restricting the coefficient support to $`n\ge2`$ strengthens this to $`1380\mid M`$, and every multiple of $`1380`$ occurs. We determine the exact factor at every depth $`D\ge2`$ and construct a vector attaining the least positive multiplier.
 
-The proof has two steps. Adjacent factorial differences, corrected at proper divisors, give an integral basis that isolates each weighted sum (Theorem <a href="#res:divisor-channel-coordinates" data-reference-type="ref" data-reference="res:divisor-channel-coordinates">2</a>). Temporarily allowing index one makes this basis triangular; removing that coordinate leaves one Diophantine equation. Its gcd initially involves infinitely many coefficients. Theorem <a href="#res:finite-channel-moment-certificate" data-reference-type="ref" data-reference="res:finite-channel-moment-certificate">3</a> reduces it to a specified finite interval, not an observed stabilization.
-
-The classification is independent of rationality. The attaining example $`M=1380`$ also passes a separate nonintegrality test. For an irrationality proof, however, the divisibility $`q\mid M`$ and nonintegrality must hold for the same vector, for every $`q>0`$. The companion’s [progression construction](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-progression) provides the divisibility; its nonintegrality remains unproved.
+First allow a coefficient at index one. Theorem <a href="#res:divisor-channel-coordinates" data-reference-type="ref" data-reference="res:divisor-channel-coordinates">2</a> constructs an integral basis by correcting adjacent factorial differences at proper divisors to isolate each weighted sum. At fixed $`M`$, cancellation determines the lower basis coefficients; removing index one leaves a single equation in the higher coefficients. Theorem <a href="#res:finite-channel-moment-certificate" data-reference-type="ref" data-reference="res:finite-channel-moment-certificate">3</a> reduces its infinite gcd to a calculation below $`2D^2`$. Bézout coefficients then construct an attaining vector. No assumption on the rationality of $`S`$ enters this classification.
 
 Hančl and Tijdeman’s tail-integrality lemma treats factorial series with integer coefficients \[hancl-tijdeman, Lemma 2.1 and the following remark, p. 385\]. Their factorial-scaled partial sums are integers. Here the scaled partial sum need not be integral. Instead, the weight congruences give $`\mathcal R-MS\in\mathbb Z`$ <a href="#eq:integer-linear-form" data-reference-type="eqref" data-reference="eq:integer-linear-form">[eq:integer-linear-form]</a>; the assumption $`S=a/q`$ and $`q\mid M`$ then makes $`\mathcal R`$ integral. Koepf and Schmersau’s factorial-digit criterion \[koepf-schmersau, Example 3.2, p. 121\] is used in the [companion’s digit argument](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-digits) to give an equivalent eventual-pattern condition for $`S-e+2`$. Failure of that pattern at arbitrarily large indices also remains unproved.
 
-Sections <a href="#sec:channels" data-reference-type="ref" data-reference="sec:channels">2</a>–<a href="#sec:moments" data-reference-type="ref" data-reference="sec:moments">3</a> prove the classification; Section <a href="#sec:depth-four" data-reference-type="ref" data-reference="sec:depth-four">4</a> constructs and tests the least-$`M`$ example. Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">5</a> separates the remaining nonintegrality question from the freedoms in that construction.
+Section <a href="#sec:depth-four" data-reference-type="ref" data-reference="sec:depth-four">4</a> tests an attaining form; Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">5</a> gives the general nonintegrality test.
 
 <a id="sec:channels"></a>
 
 # An integral basis
 
-At the denominator $`d!-1`$, we replace $`n!`$ by an integer with the same residue. Dividing by $`d!`$ preserves that residue; the exponent below is chosen to make adjacent differences vanish except at multiples of $`d`$. Put
+We need integer weights congruent to $`n!`$ modulo $`d!-1`$, with $`nW_{d,n-1}=W_{d,n}`$ when $`n\ge2`$ and $`d\nmid n`$. Removing powers of $`d!`$ preserves the residue; the floor exponent gives the required jumps. Put
 ``` math
 W_{d,n}=\frac{n!}{(d!)^{\lfloor n/d\rfloor}}
  \qquad(d\ge2,\ n\ge1).
@@ -58,7 +56,7 @@ and let
 ``` math
 \mathcal R(\lambda)=\sum_{d\ge2}\frac{V_d(\lambda)}{d!-1}.
 ```
-Here $`n`$ indexes coefficients and $`d`$ indexes remainder summands. If the support lies in $`n\le N`$, $`N\ge2`$, then $`V_d=M`$ for $`d>N`$. Thus the infinite tail agrees with that of $`MS`$. The remainder converges absolutely, and each of the finitely many termwise differences is an integer:
+Here $`n`$ indexes coefficients and $`d`$ indexes remainder summands. If the support lies in $`n\le N`$, $`N\ge2`$, then $`V_d=M`$ for $`d>N`$. Thus the remainder converges absolutely, and subtracting $`MS`$ leaves only finitely many terms. The weight congruence makes each an integer:
 ``` math
 \begin{equation}
  \mathcal R(\lambda)-M(\lambda)S
@@ -129,13 +127,13 @@ For a prime $`p\ge3`$ the divisor sum is empty, and $`U_p=pe_{p-1}-e_p`$. At a c
  \label{res:translator}
 \end{equation}
 ```
-Since $`M(U_n)=0`$ and $`\mathcal R(U_n)=1`$, adding an integer multiple of $`U_n`$ changes only $`V_n`$ among the weighted sums and changes the remainder by an integer. It therefore preserves both $`M`$ and the fractional part of the remainder.
+Adding $`U_n`$ changes only $`V_n`$ among the weighted sums, preserves $`M`$, and adds one to $`\mathcal R`$. Integer multiples therefore preserve the fractional part.
 
 <a id="sec:moments"></a>
 
 # Possible values of $`M`$
 
-Fix $`D\ge2`$. We first solve $`V_2=\cdots=V_D=0`$ with index one allowed, and then impose the support restriction $`\lambda_1=0`$. The weight congruence, or the coordinates in <a href="#eq:channel-basis-expansion" data-reference-type="eqref" data-reference="eq:channel-basis-expansion">[eq:channel-basis-expansion]</a>, gives
+Fix $`D\ge2`$ and solve $`V_2=\cdots=V_D=0`$, allowing index one temporarily. The coordinates in <a href="#eq:channel-basis-expansion" data-reference-type="eqref" data-reference="eq:channel-basis-expansion">[eq:channel-basis-expansion]</a> give
 ``` math
 \begin{equation}
  V_d(\lambda)\equiv M(\lambda)\pmod{d!-1}.
@@ -146,7 +144,7 @@ It follows that $`M`$ must be divisible by
 ``` math
 L_D=\operatorname{lcm}_{2\le d\le D}(d!-1).
 ```
-This necessary condition is sufficient while index one is allowed: $`L_De_1`$ has every weighted sum equal to $`L_D`$, and subtracting $`L_D/(d!-1)`$ copies of $`U_d`$ sets the $`d`$th sum to zero. Thus put
+This necessary condition is sufficient while index one is allowed: $`L_De_1`$ has every weighted sum equal to $`L_D`$, and subtracting $`L_D/(d!-1)`$ copies of $`U_d`$ sets the $`d`$th sum to zero without changing the others. Thus put
 ``` math
 K_D=L_De_1-\sum_{d=2}^D\frac{L_D}{d!-1}U_d.
 ```
@@ -159,16 +157,14 @@ Uniqueness of the coordinates now gives the complete solution
  \label{eq:low-channel-classification}
 \end{equation}
 ```
-with $`t\in\mathbb Z`$ and finitely many nonzero integers $`z_n`$. Here $`t`$ fixes $`M`$ and the coefficients of $`U_2,\ldots,U_D`$. The remaining basis coefficients $`z_n`$ are free until we impose $`\lambda_1=0`$.
-
-It remains to remove index one. Write $`a_D`$ for its coefficient in $`K_D`$, and $`u_n`$ for its coefficient in $`U_n`$. All other coordinates already lie in the permitted range $`n\ge2`$, so the only remaining equation is
+with $`t\in\mathbb Z`$ and finitely many nonzero integers $`z_n`$. The coefficient of $`e_1`$ in <a href="#eq:channel-basis-expansion" data-reference-type="eqref" data-reference="eq:channel-basis-expansion">[eq:channel-basis-expansion]</a> is $`M`$; the original coordinate $`\lambda_1`$ also receives contributions from the $`U_n`$. Write $`a_D=(K_D)_1`$ and $`u_n=(U_n)_1`$. The support restriction is exactly
 ``` math
 \begin{equation}
  ta_D+\sum_{n>D}z_nu_n=0.
  \label{eq:support-equation}
 \end{equation}
 ```
-The higher corrections can change this coefficient by exactly the integer multiples of $`g_D=\gcd\{u_n:n>D\}`$. Thus the equation is soluble precisely when $`g_D\mid ta_D`$. For example, at depth four we shall find $`a_4=-55`$ and $`g_4=60`$. Removing index one then requires $`60\mid55t`$, or $`12\mid t`$; hence $`M=115t`$ must be a multiple of $`1380`$.
+The higher corrections leave cancellation untouched and change the first coordinate by exactly $`g_D\mathbb Z`$, where $`g_D=\gcd\{u_n:n>D\}`$. They can therefore remove $`ta_D`$ precisely when $`g_D\mid ta_D`$. For example, at depth four we shall find $`a_4=-55`$ and $`g_4=60`$. Removing index one then requires $`60\mid55t`$, or $`12\mid t`$; hence $`M=115t`$ must be a multiple of $`1380`$.
 
 In general, the possible values of $`M`$ form the ideal
 ``` math
@@ -178,7 +174,7 @@ In general, the possible values of $`M`$ form the ideal
  \label{eq:attainable-moment-ideal}
 \end{equation}
 ```
-Indeed, division by $`\gcd(g_D,a_D)`$ leaves two coprime integers, so $`g_D\mid ta_D`$ holds exactly when $`g_D/\gcd(g_D,a_D)\mid t`$. Bézout’s identity supplies the required finite combination of the $`u_n`$. The next theorem proves $`g_D>0`$ and bounds the indices needed for this combination. A vector attaining the least positive value $`\mu_D`$ is primitive, since dividing its coefficients by a common factor would give a smaller positive value of $`M`$.
+Indeed, division by $`\gcd(g_D,a_D)`$ leaves two coprime integers, so $`g_D\mid ta_D`$ holds exactly when $`g_D/\gcd(g_D,a_D)\mid t`$. Bézout’s identity supplies the required finite combination; the next theorem bounds the indices needed. Every vector attaining $`\mu_D`$ has coefficient gcd one, since division by a common factor would give a smaller positive multiplier.
 
 <a id="sec:finite-gcd"></a>
 
@@ -189,9 +185,9 @@ The recursion for the first coordinate is
 u_2=2,\qquad
  u_n=-\sum_{\substack{d\mid n\\2\le d<n}}W_{d,n}u_d\quad(n>2).
 ```
-Induction gives $`u_n=0`$ at odd indices and $`u_{2p}=-(2p)!/2^{p-1}\ne0`$ at twice a prime, including $`p=2`$. Choose a prime $`\ell`$ with $`D/2<\ell\le D`$. A finite gcd that includes $`u_{2\ell}`$ is positive and divides $`(2\ell)!`$.
+Induction gives $`u_n=0`$ at odd indices and $`u_{2p}=-(2p)!/2^{p-1}\ne0`$ at twice a prime, including $`p=2`$. Choose a prime $`\ell`$ with $`D/2<\ell\le D`$, using Bertrand’s postulate for $`D\ge3`$ and $`\ell=2`$ for $`D=2`$. A finite gcd containing $`u_{2\ell}`$ is positive and divides $`(2\ell)!`$.
 
-The issue is to prove that this gcd divides every later coefficient. In the recurrence, a proper divisor $`d>D`$ passes divisibility through $`u_d`$ by induction. For $`d\le D`$, divisibility must instead come from the weight: once $`n/d\ge2\ell`$, the block-counting formula below makes $`(2\ell)!\mid W_{d,n}`$. The cutoff ensures this for every small divisor.
+The remaining issue is whether later coefficients reduce this gcd. In each recurrence term $`W_{d,n}u_d`$, induction controls $`u_d`$ for $`d>D`$. For $`d\le D`$, unordered block counting gives $`(n/d)!\mid W_{d,n}`$. The cutoff ensures $`n/d\ge2\ell`$, so the weight supplies the factor $`(2\ell)!`$ instead.
 
 <div id="res:finite-channel-moment-certificate" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate-comparator">Comparator</a></p>
@@ -217,19 +213,19 @@ Thus $`g`$ divides the whole tail. Conversely, every common divisor of the tail 
 
 </div>
 
-Bertrand’s postulate supplies the prime $`\ell`$ when $`D\ge3`$; for $`D=2`$ take $`\ell=2`$. Merely including the nonzero coefficient at $`2\ell`$ is not enough: the cutoff must also control every later small-divisor weight. A truncation at $`2D`$ is not justified by this argument.
+The coefficient at $`2\ell\le2D`$ supplies positivity; the larger cutoff controls the small-divisor weights. The argument does not justify truncation at $`2D`$.
 
 To attain the least positive multiplier, compute integers $`b_n`$ with $`\sum_{n=D+1}^H b_nu_n=g_D`$ by the extended Euclidean algorithm, and put $`h=\gcd(g_D,a_D)`$. Taking
 ``` math
 t=g_D/h,\qquad z_n=-(a_D/h)b_n\quad(D<n\le H)
 ```
-makes $`ta_D+\sum z_nu_n=0`$. Substitution in <a href="#eq:low-channel-classification" data-reference-type="eqref" data-reference="eq:low-channel-classification">[eq:low-channel-classification]</a> therefore produces a vector with $`M=\mu_D`$. Minimising its support or its coefficient norm is a separate problem.
+makes $`ta_D+\sum z_nu_n=0`$. Substitution in <a href="#eq:low-channel-classification" data-reference-type="eqref" data-reference="eq:low-channel-classification">[eq:low-channel-classification]</a> therefore gives $`M=\mu_D`$ with support in $`2,\ldots,H`$.
 
 <a id="sec:coordinate-remainder"></a>
 
 ## The associated remainder
 
-Fix $`M\in\mu_D\mathbb Z`$ and put $`t=M/L_D`$. The choices of $`z_n`$ satisfying <a href="#eq:support-equation" data-reference-type="eqref" data-reference="eq:support-equation">[eq:support-equation]</a> change the remainder only by an integer: $`\mathcal R(e_1)=S`$ and $`\mathcal R(U_n)=1`$ give
+Fix $`M\in\mu_D\mathbb Z`$ and put $`t=M/L_D`$. For choices of $`z_n`$ satisfying <a href="#eq:support-equation" data-reference-type="eqref" data-reference="eq:support-equation">[eq:support-equation]</a>, the identities $`\mathcal R(e_1)=S`$ and $`\mathcal R(U_n)=1`$ give
 ``` math
 \begin{equation}
  \mathcal R\left(tK_D+\sum_{n>D}z_nU_n\right)
@@ -238,32 +234,32 @@ Fix $`M\in\mu_D\mathbb Z`$ and put $`t=M/L_D`$. The choices of $`z_n`$ satisfyin
  \label{eq:residual-transparency}
 \end{equation}
 ```
-Since $`M=tL_D`$ clears the denominators of $`H_D`$, the integer in $`\mathcal R=MS+k`$ is $`k=-MH_D+\sum_{n>D}z_n`$. Thus the sum of the higher basis coefficients is the offset from $`M(S-H_D)`$, not from $`MS`$.
+Since $`MH_D\in\mathbb Z`$, the offset from $`MS`$ is $`k=-MH_D+\sum_{n>D}z_n`$; $`\sum z_n`$ alone is the offset from $`M(S-H_D)`$. All choices at fixed $`M`$ therefore have the same fractional part.
 
 <a id="sec:depth-four"></a>
 
-# An example attaining the minimum
+# The least multiplier at depth four
 
 At depth four the recursion gives
 ``` math
 L_4=115,\qquad
  K_4=-55e_1+16e_2+3e_3+5e_4,\qquad a_4=-55.
 ```
-Take $`\ell=3`$ in Theorem <a href="#res:finite-channel-moment-certificate" data-reference-type="ref" data-reference="res:finite-channel-moment-certificate">3</a>, so that $`H=20`$. The coefficients in this finite interval have gcd $`60`$. There is a useful short proof: $`u_6=-180`$, $`u_8=-4200`$ and $`23u_6-u_8=60`$, while
+Take $`\ell=3`$ in Theorem <a href="#res:finite-channel-moment-certificate" data-reference-type="ref" data-reference="res:finite-channel-moment-certificate">3</a>, so that $`H=20`$. Since $`u_6=-180`$, $`u_8=-4200`$ and $`23u_6-u_8=60`$, we have $`g_4\mid60`$. For the converse,
 ``` math
 \begin{equation}
  \operatorname{lcm}(1,\ldots,n)\mid u_n
  \label{eq:channel-lcm-envelope}
 \end{equation}
 ```
-gives the reverse divisibility for every $`n>4`$. To prove <a href="#eq:channel-lcm-envelope" data-reference-type="eqref" data-reference="eq:channel-lcm-envelope">[eq:channel-lcm-envelope]</a>, put $`\Lambda_n=\operatorname{lcm}(1,\ldots,n)`$. For a prime $`r`$, write $`v_r`$ for its valuation. If $`d\mid n`$, Legendre’s formula gives
+gives $`60\mid u_n`$ for every $`n>4`$, hence $`60\mid g_4`$. To prove <a href="#eq:channel-lcm-envelope" data-reference-type="eqref" data-reference="eq:channel-lcm-envelope">[eq:channel-lcm-envelope]</a>, put $`\Lambda_n=\operatorname{lcm}(1,\ldots,n)`$. For a prime $`r`$, write $`v_r`$ for its valuation. If $`d\mid n`$, Legendre’s formula gives
 ``` math
 v_r(W_{d,n})=\sum_{j\ge1}\left(
  \left\lfloor\frac n{r^j}\right\rfloor
  -\frac nd\left\lfloor\frac d{r^j}\right\rfloor\right)
  \ge v_r(\Lambda_n)-v_r(\Lambda_d).
 ```
-Each summand is nonnegative, and each power $`d<r^j\le n`$ contributes at least one. Hence $`\Lambda_n\mid W_{d,n}\Lambda_d`$, and induction in the recurrence, starting from $`u_2=2`$, proves the assertion. Formula <a href="#eq:attainable-moment-ideal" data-reference-type="eqref" data-reference="eq:attainable-moment-ideal">[eq:attainable-moment-ideal]</a> now gives
+Each summand is nonnegative, and each power $`d<r^j\le n`$ contributes at least one. Hence $`\Lambda_n\mid W_{d,n}\Lambda_d`$, and induction in the recurrence, starting from $`u_2=2`$, proves the assertion. Thus $`g_4=60`$, and <a href="#eq:attainable-moment-ideal" data-reference-type="eqref" data-reference="eq:attainable-moment-ideal">[eq:attainable-moment-ideal]</a> gives
 ``` math
 \mu_4=115\frac{60}{\gcd(60,55)}=1380.
 ```
@@ -289,7 +285,7 @@ Table <a href="#tab:depth-four" data-reference-type="ref" data-reference="tab:d
 <div id="tab:depth-four">
 
 <table>
-<caption>The depth-four vector and its checks. To obtain the last row, multiply each of the final four columns by <span class="math inline"><em>λ</em><sub><em>n</em></sub></span> before summing.</caption>
+<caption>The depth-four checks: multiply each of the last four columns by <span class="math inline"><em>λ</em><sub><em>n</em></sub></span> and sum to obtain the last row.</caption>
 <thead>
 <tr>
 <th style="text-align: right;"><span class="math inline"><em>n</em></span></th>
@@ -376,7 +372,7 @@ Exact rational arithmetic gives
 ```
 The omitted contribution to $`\mathcal R`$ is positive and less than $`1/100`$, so $`-31<\mathcal R(\lambda)<-30`$. If $`S=a/q`$ with $`q\mid1380`$, <a href="#eq:integer-linear-form" data-reference-type="eqref" data-reference="eq:integer-linear-form">[eq:integer-linear-form]</a> would make this remainder an integer. Every divisor of $`1380`$ is therefore excluded.
 
-The companion gives an [alternative dual congruence and support and coefficient-norm refinements](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-depth-refinements). Minimising $`M`$, the number of supported indices, and the coefficient norm are distinct problems; only the first is settled by <a href="#eq:attainable-moment-ideal" data-reference-type="eqref" data-reference="eq:attainable-moment-ideal">[eq:attainable-moment-ideal]</a>.
+The [depth-six calculation](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r15-depth-six) gives $`\mu_6=24L_6`$: the extra factor need not equal $`12`$. The companion also gives a [dual congruence, support bounds and coefficient-norm refinements](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-depth-refinements). Least multiplier, least support size and least coefficient norm are distinct problems; <a href="#eq:attainable-moment-ideal" data-reference-type="eqref" data-reference="eq:attainable-moment-ideal">[eq:attainable-moment-ideal]</a> settles only the first.
 
 <a id="sec:open"></a>
 
@@ -396,13 +392,11 @@ The remainder exceeds $`A_N`$. By <a href="#eq:series-tail-bound" data-reference
  \label{eq:signed-block-gap}
 \end{equation}
 ```
-Then $`\lfloor A_N\rfloor<\mathcal R(\lambda)<\lfloor A_N\rfloor+1`$, excluding every denominator dividing $`M`$. The strict successor is essential: the gap is one at an integer, but can be arbitrarily small just below one. Failure of the comparison is inconclusive.
+Then $`\lfloor A_N\rfloor<\mathcal R(\lambda)<\lfloor A_N\rfloor+1`$, excluding every denominator dividing $`M`$. The strict successor matters: at an integral $`A_N`$ the gap is one, whereas just below an integer it can be arbitrarily small. Failure of the comparison is inconclusive.
 
-First keep the vector fixed and increase only the cutoff. The vector $`-6e_2+e_4`$ has $`M=12`$. At $`N=4`$, its finite part $`A_4=-239/115`$ lies just below $`-2`$, and its gap $`9/115`$ is smaller than the bound $`24/119`$. At $`N=5`$, the finite part $`A_5=-27061/13685`$ has crossed $`-2`$: the next integer is now $`-1`$, and the gap $`13376/13685`$ exceeds $`24/719`$. For any fixed vector with $`M>0`$, $`A_N`$ increases to $`\mathcal R`$. If $`\mathcal R`$ is nonintegral, the gap tends to a positive number and the test eventually succeeds. If $`\mathcal R`$ is integral, the eventual gap equals the omitted tail, so the strict upper-bound test fails. Thus moving the cutoff detects nonintegrality; it does not create it or change the divisors of $`M`$ that are excluded.
+At depth two, fix $`\lambda=-6e_2+e_4`$, with $`M=12`$, and vary only the cutoff. At $`N=4`$, its finite part $`A_4=-239/115`$ lies just below $`-2`$, and its gap $`9/115`$ is smaller than the bound $`24/119`$. At $`N=5`$, the finite part $`A_5=-27061/13685`$ has crossed $`-2`$: the next integer is now $`-1`$, and the gap $`13376/13685`$ exceeds $`24/719`$. For any fixed vector with $`M>0`$, $`A_N`$ increases to $`\mathcal R`$. If $`\mathcal R`$ is nonintegral, the gap tends to a positive number and the test eventually succeeds. If $`\mathcal R`$ is integral, the eventual gap equals the omitted tail, so the strict upper-bound test fails. Changing the cutoff detects nonintegrality; it neither creates it nor changes $`M`$. Coefficient changes at fixed $`M`$ preserve nonintegrality by <a href="#eq:residual-transparency" data-reference-type="eqref" data-reference="eq:residual-transparency">[eq:residual-transparency]</a>.
 
-Nor can a change of coefficients at fixed $`M`$ create nonintegrality: by <a href="#eq:integer-linear-form" data-reference-type="eqref" data-reference="eq:integer-linear-form">[eq:integer-linear-form]</a>, it changes the remainder only by an integer. The $`U_n`$ corrections simplify support and weighted sums, not the fractional part.
-
-To exclude every denominator, $`M`$ must vary. The [companion’s progression construction](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-progression) turns cancellation into polynomial root conditions. It gives primitive vectors (their coefficients have gcd one) with $`0<M<N!`$ and multipliers eventually divisible by every fixed $`q`$. At the support endpoint the tail is less than $`2/N`$, but the next-integer gap may shrink too. The missing step is therefore one comparison for the same vector: for each $`q>0`$, find $`q\mid M`$ and a cutoff satisfying <a href="#eq:signed-block-gap" data-reference-type="eqref" data-reference="eq:signed-block-gap">[eq:signed-block-gap]</a>. Neither divisibility nor a vanishing tail bound supplies that comparison. No minimal-support assertion is made for this family.
+To exclude every denominator, $`M`$ must vary. The [companion’s progression construction](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-progression) adds size control: polynomial root conditions give primitive vectors (coefficient gcd one) with $`0<M<N!`$, where $`N`$ is their largest supported index. Every fixed $`q`$ divides their multipliers for all sufficiently large $`N`$. The tail at that endpoint is below $`2/N`$, but the next-integer gap may shrink too. For each $`q>0`$, one still needs a vector with $`q\mid M`$ and a cutoff satisfying <a href="#eq:signed-block-gap" data-reference-type="eqref" data-reference="eq:signed-block-gap">[eq:signed-block-gap]</a>; the cutoff may exceed its support endpoint. No minimal-support assertion is made.
 
 The companion treats the [equivalent carry condition](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-carry) and the [complementary-denominator tail inequality](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-complement). It also records two larger finite computations: a non-unit carry at $`m=300000`$ excludes every $`q\mid299999!`$, and a continued-fraction enclosure excludes every $`q<2^{39990}`$. Both computations were performed outside Lean; their [algorithms, exact outputs and scope](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r12-finite) are given there. The factorial-divisibility exclusion does not exclude all denominators with only small prime factors, whose exponents may be larger. Neither finite restriction establishes the required condition at arbitrarily large indices.
 

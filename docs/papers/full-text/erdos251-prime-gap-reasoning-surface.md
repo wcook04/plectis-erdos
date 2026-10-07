@@ -8,7 +8,7 @@
 
 </div>
 
-A sparse perturbation theorem shows that specified coefficient congruences and block statistics are compatible with both rational and irrational dyadic sums. For any convergent series with nonnegative integer coefficients, one set of upper Banach density zero supports nonnegative corrections attaining an interval of sums. Any prescribed bound tending to infinity is eventually respected; coefficient and partial-sum residues are eventually preserved, with cutoffs independent of the target. Applied to prime gaps with correction bound $`\log(n+3)`$, the theorem preserves cumulative growth $`n\log n`$ and gives vanishing total variation error for blocks of length $`o(\log\log X)`$ sampled on $`[X,2X)`$, without ensuring primality. For the actual series, integral shifts of the complete tails characterise rationality. We give sufficient conditions, counterexamples to weaker coefficient conditions, and integer certificates excluding denominators below $`2^{40062}>10^{12059}`$. Irrationality remains unresolved.
+A sparse perturbation theorem shows that specified coefficient congruences and asymptotic block statistics are compatible with both rational and irrational dyadic sums. For any convergent series with nonnegative integer coefficients, one set of upper Banach density zero supports nonnegative corrections attaining an interval of sums. Any prescribed bound tending to infinity is eventually respected; coefficient and partial-sum residues are eventually preserved, with cutoffs independent of the target. Fixed ordinary pair totals protect the congruences; growing digit ranges keep the later weighted choices large enough to fill the interval. Applied to prime gaps with correction bound $`\log(n+3)`$, the theorem preserves cumulative growth $`n\log n`$ and gives vanishing total variation error for blocks of length $`o(\log\log X)`$ sampled on $`[X,2X)`$, without ensuring primality. For the actual series, integral shifts of the complete tails characterise rationality. We give sufficient conditions, counterexamples to weaker coefficient conditions, and integer certificates excluding denominators below $`2^{40062}>10^{12059}`$. Irrationality remains unresolved.
 
 <a id="long251:sec:problem"></a>
 
@@ -23,9 +23,9 @@ Its irrationality is Erdős Problem #251 \[erdosproblems\], recorded in \[erdos
 
 Theorem <a href="#long251:res:sparse-rationalisation" data-reference-type="ref" data-reference="long251:res:sparse-rationalisation">1</a> shows that a substantial collection of coefficient properties does not determine rationality among comparison sequences. Starting with any convergent nonnegative integer dyadic series, it attains an interval of sums using corrections on one sparse set. That set and every eventual coefficient and partial-sum congruence cutoff are fixed before the target. The family therefore contains both rational and irrational sums, not merely a separately chosen example for each preserved property. The corrections can respect any prescribed bound tending to infinity.
 
-The key distinction is between ordinary and weighted totals. Transferring a correction between adjacent indices changes its dyadic contribution but not its ordinary sum. We exploit this freedom to choose the target without disturbing the congruence calculations at later stages. With a polylogarithmic correction bound, the empirical block laws remain asymptotically equal for lengths $`o(\log\log X)`$ sampled in $`[X,2X)`$. For prime gaps, polynomial nonconcentration and cumulative growth $`n\log n`$ also survive. The missing requirement is that the cumulative positions be consecutive primes; neither residues nor these statistics supply it.
+At each stage a fixed ordinary correction total protects the congruence calculations at later stages. Redistributing that total between adjacent indices changes its dyadic contribution. Growing digit ranges compensate for the dyadic decay across the increasingly separated stages. A telescoping estimate then ensures that the remaining range spans every gap between adjacent present choices. With a polylogarithmic correction bound, the empirical block laws remain asymptotically equal for lengths $`o(\log\log X)`$ sampled in $`[X,2X)`$. For prime gaps, polynomial nonconcentration and cumulative growth $`n\log n`$ also survive. The missing requirement is that the cumulative positions be consecutive primes; neither residues nor these statistics supply it.
 
-The actual-prime arguments, beginning in Section <a href="#long251:sec:parts" data-reference-type="ref" data-reference="long251:sec:parts">4</a>, are independent of the construction. Summation by parts and a vanishing boundary condition identify the complete tails. Integral shifts then give exact rationality criteria; two small consecutive differences give a sufficient condition. Section <a href="#long251:sec:local-certificate" data-reference-type="ref" data-reference="long251:sec:local-certificate">6</a> certifies individual differences, while Section <a href="#long251:sec:denominator-floor" data-reference-type="ref" data-reference="long251:sec:denominator-floor">7</a> excludes finite ranges of rational denominators. Neither finite calculation supplies arbitrarily late witnesses. Section <a href="#long251:sec:obstructions" data-reference-type="ref" data-reference="long251:sec:obstructions">8</a> tests weaker coefficient conditions by counterexamples; the appendices retain the integer calculations, further criteria and source concordance.
+The actual-prime arguments, beginning in Section <a href="#long251:sec:parts" data-reference-type="ref" data-reference="long251:sec:parts">4</a>, are independent of the construction. Summation by parts and a vanishing boundary condition identify the complete tails. Integral shifts then give exact rationality criteria; two consecutive small differences with unequal gaps give a sufficient condition for irrationality. Section <a href="#long251:sec:local-certificate" data-reference-type="ref" data-reference="long251:sec:local-certificate">6</a> certifies individual differences, while Section <a href="#long251:sec:denominator-floor" data-reference-type="ref" data-reference="long251:sec:denominator-floor">7</a> excludes finite ranges of rational denominators. Neither finite calculation supplies arbitrarily late witnesses. Section <a href="#long251:sec:obstructions" data-reference-type="ref" data-reference="long251:sec:obstructions">8</a> tests weaker coefficient conditions by counterexamples; the appendices retain the integer calculations, further criteria and source concordance.
 
 For reference, the first primes and gaps are
 ``` math
@@ -86,11 +86,11 @@ For every $`\varepsilon>0`$, the construction can instead be chosen with $`e_n\l
 
 </div>
 
-The hypotheses allow any nonnegative integer sequence of polynomial growth, but not $`a_n=2^n`$, whose dyadic series diverges. The bound on the corrections can grow as slowly as $`\log\log(n+3)`$. A fixed bound is not possible here: eventual boundedness together with eventual divisibility by every fixed modulus would make the corrections eventually zero; their fixed total would then have to be divisible by every modulus and hence be zero. Nonnegative corrections could not change the sum. The target-dependent support may occupy only part of the common set $`S`$. Upper Banach density zero is stronger than ordinary density zero. For example, the union of the integer intervals $`[k!,k!+k)`$, $`k\ge3`$, has ordinary density zero but upper Banach density one. If $`k!\le x<(k+1)!`$, at most $`k(k+1)/2`$ indices have occurred, so their proportion is at most $`k(k+1)/(2k!)\to0`$. Nevertheless each interval is filled and their lengths are unbounded. Upper Banach density zero rules out this concentration in long intervals, however far apart those intervals lie.
+The hypotheses allow any nonnegative integer sequence of polynomial growth, but not $`a_n=2^n`$, whose dyadic series diverges. The bound on the corrections can grow as slowly as $`\log\log(n+3)`$. A fixed bound is not possible here: eventual boundedness together with eventual divisibility by every fixed modulus would make the corrections eventually zero; their fixed total would then have to be divisible by every modulus and hence be zero. Nonnegative corrections could not change the sum. The cutoff may depend on the modulus, but the common set $`S`$ and all cutoffs are fixed before the target. The support of a correction may occupy only part of $`S`$. Upper Banach density zero is stronger than ordinary density zero. For example, the union of the integer intervals $`[k!,k!+k)`$, $`k\ge3`$, has ordinary density zero but upper Banach density one. If $`k!\le x<(k+1)!`$, at most $`k(k+1)/2`$ indices have occurred, so their proportion is at most $`k(k+1)/(2k!)\to0`$. Nevertheless each interval is filled and their lengths are unbounded. Upper Banach density zero rules out this concentration in long intervals, however far apart those intervals lie.
 
 <div class="proof">
 
-*Proof.* *Fixed totals.* Each stage must do two things: cancel a cumulative residue and leave a choice of weighted contribution. We use $`n_j-1`$ for the cancellation and $`n_j,n_j+1`$ for a pair with fixed ordinary sum. Varying that pair then cannot alter the residue to be cancelled at any later stage. Choose an initial index $`n_{-1}\ge K`$ and centres with $`s_j=n_j-n_{j-1}\ge4`$, so the triples do not overlap. Let $`M_j`$ be positive integers with $`M_j\mid M_{j+1}`$, and let $`D_j`$ bound the digit at stage $`j`$. We first determine which corrections preserve the congruences; the spacing and digit ranges will then be chosen together.
+*Proof.* *Fixed totals.* Use $`n_j-1`$ to cancel a cumulative residue and $`n_j,n_j+1`$ for a pair with fixed ordinary sum. Varying the pair changes its weighted contribution without altering any later residue to be cancelled. Choose an initial index $`n_{-1}\ge K`$ and centres with $`s_j=n_j-n_{j-1}\ge4`$, so the triples do not overlap. Let $`M_j`$ be positive integers with $`M_j\mid M_{j+1}`$, and let $`D_j`$ bound the digit at stage $`j`$. The spacing, moduli and digit bounds will be chosen below.
 
 Let $`C_j`$ record the ordinary correction before the $`j`$th triple. Starting from $`C_0=0`$, prescribe
 ``` math
@@ -114,7 +114,7 @@ and put $`e_n=0`$ elsewhere. The two sums of a triple are
     &=c_j2^{-n_j}+M_jD_j2^{-n_j-2}+d_jM_j2^{-n_j-2}.
  \end{aligned}
 ```
-The ordinary total contains no $`d_j`$, so the first identity verifies the meaning of $`C_j`$ and makes every $`c_j`$ independent of the digits. The weighted total does contain $`d_j`$: transferring $`M_j`$ from $`n_j+1`$ to $`n_j`$ increases it by
+The ordinary total contains no $`d_j`$, so the recurrence fixes every $`c_j`$ in advance. In the weighted total only the last term varies: transferring $`M_j`$ from $`n_j+1`$ to $`n_j`$ adds
 ``` math
 w_j=M_j2^{-n_j-2}.
 ```
@@ -125,7 +125,7 @@ q\mid e_n,\qquad q\mid\sum_{i<n}e_i\qquad(n\ge n_J).
 ```
 The entry $`c_J`$ need not be divisible by $`q`$, which is why it is placed at $`n_J-1`$, before the cutoff. The index $`n_J`$ depends on $`q`$ and the chosen moduli, but not on the digits or the value to be attained.
 
-*Spacing and size.* The variable part at stage $`j`$ takes the values $`0,w_j,\ldots,D_jw_j`$. The covering argument will work if later stages have total range at least one present step, $`w_j`$. To retain this range as the centres spread out, we make each diameter a difference of successive dyadic scales. Choose $`D_i=2^{s_i}-1`$, for which
+*Spacing and size.* The choices at stage $`j`$ are $`0,w_j,\ldots,D_jw_j`$. The covering argument will work if the later ranges total at least $`w_j`$. Taking $`D_i=2^{s_i}-1`$ compensates for separation by making each later range a scaled dyadic difference:
 ``` math
 D_iw_i=(2^{n_i-n_{i-1}}-1)M_i2^{-n_i-2}
        =M_i\bigl(2^{-n_{i-1}-2}-2^{-n_i-2}\bigr).
@@ -142,13 +142,13 @@ Because $`M_i\ge M_j`$ for $`i>j`$, replacing every later modulus by $`M_j`$ giv
  \end{aligned}
 \end{equation}
 ```
-The digit range $`D_j=2^{s_j}-1`$ therefore gives the required overlap estimate even when the separations increase. Every entry of <a href="#long251:eq:sparse-triple" data-reference-type="eqref" data-reference="long251:eq:sparse-triple">[long251:eq:sparse-triple]</a> is at most $`M_j2^{s_j}`$, so we must keep this quantity below the prescribed bound at the three indices. We must also have $`s_j\to\infty`$ and ensure that every fixed positive integer divides all sufficiently late $`M_j`$.
+No monotonicity of the weights is needed. Each entry of <a href="#long251:eq:sparse-triple" data-reference-type="eqref" data-reference="long251:eq:sparse-triple">[long251:eq:sparse-triple]</a> is at most $`M_j2^{s_j}`$, so the size cost of separating the stages is exponential. We must fit this product below the allowance at all three indices, while $`s_j\to\infty`$ and every fixed positive integer eventually divides $`M_j`$.
 
 To allow a nonmonotone bound $`f`$, put
 ``` math
 h(n)=\inf_{m\ge n}\min(f(m),m).
 ```
-The lower envelope is nondecreasing and tends to infinity, even if $`f`$ oscillates. Thus a bound imposed at $`n_{j-1}`$ remains valid at all three later coordinates. The cap by $`m`$ additionally gives $`e_n\le n`$, ensuring summability for every digit choice. Enlarge $`n_{-1}\ge K`$ until $`h(n_{-1})\ge32`$, and set
+This nondecreasing lower envelope tends to infinity even when $`f`$ oscillates. A bound at $`n_{j-1}`$ therefore controls all three later coordinates; the cap by $`m`$ ensures $`e_n\le n`$ and hence summability for every digit choice. Enlarge $`n_{-1}\ge K`$ until $`h(n_{-1})\ge32`$, and set
 ``` math
 \begin{equation}
 \label{long251:eq:sparse-general-schedule}
@@ -158,20 +158,18 @@ The lower envelope is nondecreasing and tends to infinity, even if $`f`$ oscilla
  \end{split}
 \end{equation}
 ```
-The maximum exists: $`k=2`$ is admissible because $`2!2^4=32`$, and $`k!2^{k+2}`$ tends to infinity. Since $`h`$ is nondecreasing, so is $`k_j`$. Moreover $`n_j\to\infty`$, hence $`h(n_j)\to\infty`$ and $`k_j\to\infty`$. It follows that $`M_j\mid M_{j+1}`$, every fixed $`q`$ divides all sufficiently late $`M_j=k_j!`$, and the separations $`s_j=k_j+2`$ tend to infinity. This one choice therefore supplies nested moduli and increasing separations while also respecting the size allowance: at every coordinate $`n`$ of the $`j`$th triple,
+The maximum exists: $`k=2`$ is admissible because $`2!2^4=32`$, and $`k!2^{k+2}\to\infty`$. Since $`n_j\to\infty`$ and $`h`$ is nondecreasing and divergent, $`k_j`$ is nondecreasing and tends to infinity. Thus $`M_j\mid M_{j+1}`$, every fixed $`q`$ eventually divides $`M_j=k_j!`$, and $`s_j=k_j+2\to\infty`$. At every coordinate $`n`$ of the $`j`$th triple, this schedule also gives
 ``` math
 0\le e_n\le M_j2^{s_j}\le h(n_{j-1})\le\min(f(n),n).
 ```
-This proves the size bound and convergence for every choice of digits.
-
-Let $`S=\bigcup_{j\ge0}\{n_j-1,n_j,n_j+1\}`$. For any $`R\ge4`$, all but finitely many successive centres are at least $`R`$ apart. An interval of length $`H`$ therefore contains at most $`3(H/R+2)`$ points from these later triples. The earlier triples contribute a fixed finite number, independent of the interval’s position. Dividing by $`H`$ and taking the supremum over positions gives a limiting upper bound $`3/R`$. Letting $`R\to\infty`$ proves upper Banach density zero.
+Let $`S=\bigcup_{j\ge0}\{n_j-1,n_j,n_j+1\}`$. For $`R\ge4`$, all sufficiently late centres are at least $`R`$ apart. Every interval of length $`H`$ contains at most $`3(H/R+2)`$ points from those triples; the earlier triples add a fixed number, independent of the interval’s position. Divide by $`H`$, take the supremum over positions, then let $`H\to\infty`$. The limiting upper bound is $`3/R`$; letting $`R\to\infty`$ proves upper Banach density zero.
 
 *Attaining the interval.* The support and congruence requirements are now settled independently of the target. Only the digits remain to be chosen. Define
 ``` math
 \beta=\sum_{j\ge0}\bigl(c_j2^{-n_j}+D_jw_j\bigr),\qquad
  F_j=\sum_{i\ge j}D_iw_i.
 ```
-Here $`\beta`$ is the weighted contribution with all digits zero; $`F_j`$ is the maximum variable contribution from stage $`j`$ onwards. Both are finite by the bounds just proved, with $`\beta>0`$, $`F_0>0`$ and $`F_j\to0`$. The total correction is
+Even zero digits contribute $`\beta>0`$; $`F_j`$ is the maximum variable contribution from stage $`j`$ onwards. The size bound makes both finite, with $`F_0>0`$ and $`F_j\to0`$. The total correction is
 ``` math
 \begin{equation}
 \label{long251:eq:sparse-baseline}
@@ -185,7 +183,7 @@ Taking $`J\to\infty`$ in <a href="#long251:eq:finite-overlap" data-reference-typ
  F_{j+1}\ge M_j2^{-n_j-2}=w_j.
 \end{equation}
 ```
-Every variable sum from stage $`j`$ onwards lies in $`[0,F_j]`$; we must still show that each point is attained. Choosing digit $`d`$ leaves the next remainder in $`[0,F_{j+1}]`$ exactly when the current remainder belongs to
+These bounds do not yet prove that every point of $`[0,F_j]`$ is attained. A digit $`d`$ leaves a remainder in $`[0,F_{j+1}]`$ precisely for current remainders in
 ``` math
 [dw_j,dw_j+F_{j+1}],\qquad d=0,\ldots,D_j.
 ```
@@ -199,9 +197,9 @@ The covering just proved makes this possible at every stage. Since $`0\le\rho_j\
 ``` math
 x-\sum_{i=0}^{j}d_iw_i=\rho_{j+1}\longrightarrow0.
 ```
-Thus every $`x\in[0,F_0]`$ is attained, and we may take $`I=(A+\beta,A+\beta+F_0)`$. The target $`r\in I`$ determines only the digits, through $`x=r-A-\beta`$; it changes neither $`S`$, $`I`$ nor the cutoff $`N_q=n_J`$ chosen using $`q\mid M_J`$. This is the finite-choice covering argument of \[crmarickovac2025, Lemma 4\]: the $`j`$th choice set has largest gap $`w_j`$ and diameter $`D_jw_j`$, its maxima are summable, and the sum of subsequent diameters is at least $`w_j`$. Equality is allowed. Fridy’s generalised-base lemma \[fridy1966, p. 194\] and the reciprocal-choice argument in \[kovactao2024, Lemma 5.1\] are antecedents. Increasing the centres alone need not make $`w_j`$ decrease, since $`M_j`$ also increases. The finite-choice argument uses <a href="#long251:eq:sparse-overlap" data-reference-type="eqref" data-reference="long251:eq:sparse-overlap">[long251:eq:sparse-overlap]</a>, without a monotonicity assumption on the weights.
+Thus every $`x\in[0,F_0]`$ is attained, and we may take $`I=(A+\beta,A+\beta+F_0)`$. The target $`r\in I`$ determines only the digits, through $`x=r-A-\beta`$; it changes neither $`S`$, $`I`$ nor the cutoff $`N_q=n_J`$ chosen using $`q\mid M_J`$. This is the finite-choice covering argument of \[crmarickovac2025, Lemma 4\]: the $`j`$th choice set has largest gap $`w_j`$ and diameter $`D_jw_j`$, its maxima are summable, and the sum of subsequent diameters is at least $`w_j`$. Equality is allowed. Fridy’s generalised-base lemma \[fridy1966, p. 194\] and the reciprocal-choice argument in \[kovactao2024, Lemma 5.1\] are antecedents. The finite-choice argument uses <a href="#long251:eq:sparse-overlap" data-reference-type="eqref" data-reference="long251:eq:sparse-overlap">[long251:eq:sparse-overlap]</a>; the required comparison of moduli was checked in <a href="#long251:eq:finite-overlap" data-reference-type="eqref" data-reference="long251:eq:finite-overlap">[long251:eq:finite-overlap]</a>.
 
-*The logarithmic scale.* For $`f(n)=(\log(n+3))^\varepsilon`$, we split the available size between the modulus $`M_j`$ and the spacing cost $`2^{s_j}`$. Keep the same triples and $`D_j=2^{s_j}-1`$, and choose
+*The logarithmic scale.* For $`f(n)=(\log(n+3))^\varepsilon`$, the size cost $`2^{s_j}`$ leads to the iterated logarithm. We choose separations of order $`\log\log n_j`$ and reserve part of the allowance for growing moduli. Keep the same triples and $`D_j=2^{s_j}-1`$, and set
 ``` math
 \begin{equation}
 \label{long251:eq:sparse-polylog-schedule}
@@ -222,7 +220,7 @@ at each coordinate $`n`$ of the triple. After enlarging the initial index, this 
 |S\cap[X,2X)|=O_\varepsilon(X/\log\log X).
 ```
 
-Couple the two blocks by choosing the same uniform starting index $`n\in[X,2X)`$. They agree whenever the sampled block avoids $`S`$. A changed coordinate $`t`$ can occur only in blocks starting at $`n\in[t-m+1,t]`$, at most $`m`$ starts. Only $`t\in S\cap[X,2X+m)`$ can occur in a sampled block. The union bound consequently gives
+Choose the same uniform starting index $`n\in[X,2X)`$ for both blocks. They agree when the block avoids $`S`$. A changed coordinate $`t\in S\cap[X,2X+m)`$ affects only starts in $`[t-m+1,t]`$, at most $`m`$ choices. The union bound gives
 ``` math
 \begin{aligned}
  d_{\rm TV}(\mu_{a,X,m},\mu_{a+e,X,m})
@@ -230,7 +228,7 @@ Couple the two blocks by choosing the same uniform starting index $`n\in[X,2X)`$
  &\le\frac{m|S\cap[X,2X+m)|}{X}.
  \end{aligned}
 ```
-For $`m\le X`$, two dyadic bands cover $`[X,2X+m)`$ and give the bound $`O_\varepsilon(m/\log\log X)`$. In particular it tends to zero when $`m=o(\log\log X)`$, uniformly over the values attained, since the same set $`S`$ contains every correction support. For a test bounded in absolute value by $`B_0`$ that also depends on the starting index, the coupled values agree at unchanged blocks and differ by at most $`2B_0`$ elsewhere. Their mean difference is consequently at most $`2B_0m|S\cap[X,2X+m)|/X`$. This uses the common starting index, not merely the marginal distributions. No limiting distribution, randomness or independence of the original coefficients is assumed. ◻
+For $`m\le X`$, two dyadic bands cover $`[X,2X+m)`$, giving $`O_\varepsilon(m/\log\log X)`$. A block of length $`o(\log\log X)`$ therefore avoids $`S`$ with probability tending to one. The convergence is uniform over targets because the same $`S`$ contains every correction support. For a test bounded in absolute value by $`B_0`$ that also depends on the starting index, the coupled values agree at unchanged blocks and differ by at most $`2B_0`$ elsewhere. Their mean difference is consequently at most $`2B_0m|S\cap[X,2X+m)|/X`$. This uses the common starting index, not merely the marginal distributions. No limiting distribution, randomness or independence of the original coefficients is assumed. ◻
 
 </div>
 
@@ -450,7 +448,7 @@ At $`N=0`$ we have $`T_0=2\sum_{i\ge0}a_i2^{-i-1}-a_0`$. In particular, for the 
 
 For a complete-tail example, take $`g_n=2`$ for odd $`n\ge1`$ and $`g_n=4`$ for even $`n\ge1`$. Its complete tail at index $`0`$ is $`T_0=(2/2+4/4)/(1-1/4)=8/3`$, and the tails alternate between $`8/3`$ and $`10/3`$. Thus $`\sigma_1(N)`$ is always $`2/3`$ or $`-2/3`$, whereas $`\sigma_2(N)=0`$ for every $`N`$. Nonintegrality at one prescribed shift length does not imply irrationality, even for positive even coefficients and genuine tails.
 
-Modulo integers, the recurrence is repeated doubling: the coefficient term does not affect the fractional part. An integral shift means that the fractional part has returned to an earlier value. Iterating the recurrence $`h`$ times makes this observation explicit: it multiplies $`T_N`$ by $`2^{h}`$ and accumulates an integer. Define $`B_{0,N}=0`$ and $`B_{h+1,N}=2B_{h,N}+g_{N+h+1}`$, so that $`B_{h,N}=g_{N+1}2^{\,h-1}+\cdots+g_{N+h}`$ is the [weighted integer sum](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L647) accumulated in those $`h`$ steps.
+An integral shift returns to the same fractional part. To track the integer accumulated in $`h`$ steps, define $`B_{0,N}=0`$ and $`B_{h+1,N}=2B_{h,N}+g_{N+h+1}`$, so that $`B_{h,N}=g_{N+1}2^{\,h-1}+\cdots+g_{N+h}`$ is the [weighted integer sum](https://github.com/wcook04/plectis-erdos/blob/3d6d938d696fed0fb71dd55115a18a73738ff223/lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L647) accumulated in those $`h`$ steps.
 
 <div id="long251:res:block" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperCoreR7.lean#L76">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos251-prime-gap-reasoning-surface.md#long251-res-block-comparator">Comparator</a></p>
@@ -813,7 +811,7 @@ An independent [program](https://github.com/wcook04/plectis-erdos/blob/beaf08669
 
 The constants $`2^{39997}`$ and $`10^{12040}`$ in the statement come from a separate computation with a bracket of width $`2^{-80000}`$, which used the best-approximation property of convergents \[khinchin1964, §6, Theorems 16 and 17\]; Short gives an accessible statement and proof \[short2009, Theorem 1.1\]. Its [recorded output](https://github.com/wcook04/plectis-erdos/blob/dd6cc708f650f061de06594eba6ba43878f4de31/research/experiments/erdos251/receipts/certified-cf.json) lists the generating program and its digest and a last convergent whose denominator has bit length $`39998`$, hence is at least $`2^{39997}`$; the program also checked its arithmetic against the known expansions of $`e`$ and $`\pi`$. That bit length describes one convergent only; the bound for every rational in the enclosure comes from the certified sum $`v+v'`$ above, and $`2^{39997}>10^{12040}`$ is a separate integer comparison.
 
-A rational number can lie beyond every denominator range excluded here. An irrationality argument would need to prove that the exclusions grow without bound, not merely compute a larger finite one. Even a longer prefix need not improve the bound at each step. No estimate for an irrationality exponent is asserted.
+These computations exclude finite denominator ranges. Irrationality would require unbounded exclusions, not just a larger finite bound. Even extending the prefix need not improve the bound at every step. No irrationality-exponent estimate is asserted.
 
 <a id="long251:sec:obstructions"></a>
 
@@ -935,7 +933,7 @@ All the corollary’s properties hold for one rational-sum sequence; the positio
        +\sum_{i=0}^k|S\cap[i,N+i)|.
  \end{aligned}
 ```
-The first count is $`o(N)`$ by nonconcentration for $`a`$; the remaining finitely many counts are $`o(N)`$ because $`S`$ has density zero. Only the number of changed blocks enters, not the sizes of the corrections or of the polynomial values. This proves the assertion for the already fixed sequence $`b`$ and every fixed $`F,k`$, without a uniform estimate for growing polynomial families or block lengths. ◻
+The first count is $`o(N)`$ by nonconcentration for $`a`$; the remaining finitely many counts are $`o(N)`$ because $`S`$ has density zero. The count concerns the event $`F=0`$, not the sizes of $`F`$ or the corrections. The sequence $`b`$ is already fixed, so this holds for every fixed $`F,k`$, without a uniform estimate for growing polynomial families or block lengths. ◻
 
 </div>
 
@@ -971,7 +969,7 @@ The finite value on the right also proves convergence on the left. ◻
 
 The case $`\varepsilon>1`$ needs no new construction: use exponent $`1`$. Its corrections satisfy the larger allowance, while the stronger error $`O(n\log(n+3)/\log\log n)=o(n\log n)`$ still preserves cumulative growth. Thus every positive exponent is available. The construction supplies the support and correction estimates; Schlage-Puchta’s lemma supplies nonconcentration of the original gaps, and the prime number theorem supplies their cumulative asymptotic.
 
-The congruences imply that for every fixed integer $`y\ge2`$, all sufficiently late $`P_n`$ have no prime divisor at most $`y`$: use modulus $`y!`$ and $`p_n>y`$ to get $`\gcd(P_n,y!)=1`$. This is stronger than eventual oddness, but it does not establish primality. Excluding divisors up to $`\sqrt{P_n}`$ would require a bound growing with $`n`$, whereas the congruence cutoff depends on the fixed $`y`$. Even primality of every $`P_n`$ would not identify the sequence with the consecutive primes, since a prime-valued sequence may skip primes.
+For each fixed integer $`y\ge2`$, take modulus $`y!`$. Once the congruence holds and $`p_n>y`$, $`\gcd(P_n,y!)=1`$ excludes every prime divisor at most $`y`$. This is stronger than eventual oddness. The cutoff depends on $`y`$; primality would require this exclusion up to $`\sqrt{P_n}`$ at the same index. Even prime-valued positions could omit intervening primes.
 
 The bounded construction transfers nonconcentration by finitely many polynomial translates, not by preserving block frequencies. The sparse construction transfers block laws by leaving most blocks unchanged, with absolute error tending to zero for $`m=o(\log\log X)`$. Neither argument preserves relative rare-event frequencies or the quantitative prime-pattern hypotheses in Section <a href="#long251:sec:context" data-reference-type="ref" data-reference="long251:sec:context">3</a>.
 
@@ -1167,7 +1165,7 @@ A second scan uses the $`1\,270\,607`$ primes below $`2\times10^{7}`$ and pairs 
 
 # Remaining prime-gap estimates
 
-The recurrence identities are established; what remains is information about the actual tails. The first question below is equivalent to irrationality by Theorem <a href="#long251:res:escape-irrational" data-reference-type="ref" data-reference="long251:res:escape-irrational">9</a>. The second asks for a stronger kind of witness, where the recurrence certifies nonintegrality from two small differences and a gap mismatch. A finite certificate proves an instance, whereas both questions quantify over every positive shift and every cutoff.
+For the actual tails, Theorem <a href="#long251:res:escape-irrational" data-reference-type="ref" data-reference="long251:res:escape-irrational">9</a> makes the first question equivalent to irrationality. The second requires two small differences and a gap mismatch at the same index. A finite certificate verifies one instance; both questions require witnesses arbitrarily late for every positive shift.
 
 <div id="long251:prob:escape" class="problem">
 
@@ -1431,7 +1429,7 @@ D\notin\mathbb{Z}\quad\Longleftrightarrow\quad
 
 </div>
 
-For fixed $`h,N`$, successively refining the explicit polynomial enclosure therefore certifies every nonintegral $`\sigma_h(N)`$ eventually. This is not a decision procedure for integrality: a finite unsuccessful run proves nothing, although a proof of failure at every depth would imply integrality. There are two further tasks it does not accomplish: finding suitable indices arbitrarily late, and guaranteeing separation at a prescribed truncation length as $`N`$ varies. For a numerical example unrelated to primes, $`[1-2^{-N},1+2^{-N}]`$ contains both the noninteger $`1+2^{-2N}`$ and the integer $`1`$ for every $`N\ge1`$. Its radius tends to zero, yet it never certifies the changing value as nonintegral. This does not contradict completeness, which keeps the value fixed while refining its enclosure.
+For fixed $`h,N`$, increasing the depth eventually certifies every nonintegral $`\sigma_h(N)`$. This is not a decision procedure for integrality: finitely many failed tests prove nothing, although a proof of failure at every depth implies integrality. It gives neither a prescribed depth as $`N`$ varies nor arbitrarily late successful indices. For example, $`[1-2^{-N},1+2^{-N}]`$ contains both the noninteger $`1+2^{-2N}`$ and the integer $`1`$ for every $`N\ge1`$. The radii shrink, but the values also change; no enclosure certifies nonintegrality. Completeness keeps the value fixed while refining its enclosure.
 
 <a id="long251:sec:xr-divisorhit"></a>
 

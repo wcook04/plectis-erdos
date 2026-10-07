@@ -43,9 +43,7 @@ Here $`\mathcal H^1`$ is one-dimensional Hausdorff measure. A rectifiable path i
 
 Five components of $`\Omega_f`$ contain one zero each; the sixth contains two and is the only possible place to join a pair. On this component, $`f`$ has degree two. Cut the value disc from its critical value to the unit circle. Inside the two-root component, the *whole* slit preimage lies in a small disc about the critical point. Connectedness forces a root-joining set to approach this disc on both inverse sheets. The two radial projections then give a lower bound: the sum of the root distances from the critical point, minus twice the small disc’s radius. For the chosen pair this bound exceeds $`2`$.
 
-Section <a href="#sec:counterexample" data-reference-type="ref" data-reference="sec:counterexample">2</a> first tests this mechanism on a quadratic, where a narrow slit preimage does *not* obstruct a short path, and then gives the degree-seven construction. The roots that matter are those in the same component, not necessarily those nearest to the critical point; Section <a href="#sec:critical-proximity" data-reference-type="ref" data-reference="sec:critical-proximity">6.1</a> makes this distinction explicit. Section <a href="#sec:trinomial" data-reference-type="ref" data-reference="sec:trinomial">3</a> proves the positive trinomial result and shows why a fourth term can spoil a prescribed radial connection.
-
-The remaining results address two different ways to construct short paths: allowing a component to grow from a small critical level (Section <a href="#sec:constant-factor" data-reference-type="ref" data-reference="sec:constant-factor">4</a>), or continuing two inverse branches around an isolated critical value (Section <a href="#sec:separation" data-reference-type="ref" data-reference="sec:separation">5</a>). These analytic arguments are independent of the counterexample and the trinomial theorem, and remain unformalised. The [companion paper](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf) contains their full proofs, the rational data for the counterexample, and the arguments underlying the later estimates and questions.
+Section <a href="#sec:counterexample" data-reference-type="ref" data-reference="sec:counterexample">2</a> contrasts the quadratic with the counterexample; Section <a href="#sec:trinomial" data-reference-type="ref" data-reference="sec:trinomial">3</a> treats trinomials and the obstruction introduced by a fourth term. Section <a href="#sec:critical-proximity" data-reference-type="ref" data-reference="sec:critical-proximity">6.1</a> separates root proximity from containment. Sections <a href="#sec:constant-factor" data-reference-type="ref" data-reference="sec:constant-factor">4</a> and <a href="#sec:separation" data-reference-type="ref" data-reference="sec:separation">5</a> construct paths by component growth and continuation around an isolated critical value, respectively. These independent analytic arguments remain unformalised. The [companion paper](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf) gives their proofs, the counterexample’s rational data, and the arguments behind the later estimates and questions.
 
 <a id="sec:counterexample"></a>
 
@@ -117,7 +115,7 @@ This is the required bound. No parametrisation of $`K`$ has been used. ◻
 
 ## The polynomial
 
-We must put the roots inside the unit disc, identify the only component that can join a pair, and make its distance excess larger than the loss in Lemma <a href="#lem:two-sheet-bottleneck" data-reference-type="ref" data-reference="lem:two-sheet-bottleneck">3</a>. The construction starts from $`z^7-1`$ and separates the two relevant scales. The roots move slightly inward from the unit circle, while the multiple critical point at the origin splits at scale $`\varepsilon`$. The linear, quadratic and cubic perturbations below all have order $`\varepsilon^7`$ when $`z=\varepsilon w`$; they can therefore alter the critical geometry without comparably moving the roots. The fixed coefficients are those of `ani`’s construction. Put $`s=10^{-6}`$, $`\varepsilon=s^2=10^{-12}`$ and $`\rho=1-s^{16}`$, and let
+Starting from $`z^7-1`$, we put the roots on $`|z|=\rho<1`$ and split the multiple critical point at scale $`\varepsilon`$. The linear, quadratic and cubic perturbations below all have order $`\varepsilon^7`$ at $`z=\varepsilon w`$, so they alter the critical geometry without comparable root displacement. We must identify the only component containing a pair and make its distance surplus exceed the loss in Lemma <a href="#lem:two-sheet-bottleneck" data-reference-type="ref" data-reference="lem:two-sheet-bottleneck">3</a>. The fixed coefficients are those of `ani`’s construction. Put $`s=10^{-6}`$, $`\varepsilon=s^2=10^{-12}`$ and $`\rho=1-s^{16}`$, and let
 ``` math
 \begin{gather*}
  A=-\frac{329507}{1600},\qquad B=\frac{551827}{800},\qquad
@@ -139,7 +137,7 @@ Define
 
 #### Putting the roots on a circle.
 
-The identity $`F(z)=-z^7\overline{F(1/\bar z)}`$ reduces the Cayley substitution $`z=(1+ix)/(1-ix)`$ to a real polynomial after clearing the denominator and removing a constant phase. The substitution parametrises the unit circle except $`-1`$; seven sign changes at rational endpoint pairs locate all seven zeros and exclude a zero at the omitted point. The resulting zeros $`\zeta_j`$ are distinct and have modulus one. Thus $`b_j=\rho\zeta_j`$ lies strictly inside the disc. At the chosen parameter, $`1-\rho=\varepsilon^8`$; the finite estimates below show that this contraction does not erase the excess in the selected root distances.
+By $`F(z)=-z^7\overline{F(1/\bar z)}`$, the Cayley substitution $`z=(1+ix)/(1-ix)`$ gives a real polynomial after clearing the denominator and removing a constant phase. Symmetry alone does not locate the zeros: the decisive step is seven sign changes on disjoint rational intervals. The map parametrises the unit circle except $`-1`$, so these give seven distinct circle zeros $`\zeta_j`$, exhausting the degree. Thus $`-1`$ is not a zero and $`b_j=\rho\zeta_j`$ satisfies $`|b_j|=\rho<1`$. The distance estimate below absorbs the contraction $`1-\rho=\varepsilon^8`$.
 
 <a id="resolving-the-critical-points."></a>
 
@@ -157,10 +155,10 @@ Rouché estimates on six disjoint rational discs locate the six zeros of $`Q'`$.
 ```
 Let $`c_s=\rho\varepsilon w_s`$, $`v=f(c_s)`$, $`\delta=1-|v|`$, and write $`f(c_s+z)-v=z^2A_s(z)`$. Since $`|\zeta_j|=1`$,
 ``` math
-|b_j-c_s|^2=\rho^2\bigl(1-2\varepsilon\operatorname{Re}
- (w_s\bar\zeta_j)+\varepsilon^2|w_s|^2\bigr).
+|b_j-c_s|=\rho|\zeta_j-\varepsilon w_s|
+ \ge\rho\bigl(1-\varepsilon\operatorname{Re}(w_s\bar\zeta_j)\bigr).
 ```
-The term proportional to $`\varepsilon`$ measures the effect of moving the critical point, while $`1-\rho=\varepsilon^8`$ measures the contraction of the zeros. The following finite estimates give the sign and size of their combined effect for the chosen pair:
+The negative projection sum for $`\zeta_3,\zeta_6`$ gives a positive distance surplus of order $`\varepsilon`$; the contraction has only order $`\varepsilon^8`$. The exact bounds at the fixed parameter are:
 ``` math
 \begin{align}
  M:=|A_s(0)|&>180\rho^5\varepsilon^5,&
@@ -173,7 +171,7 @@ The term proportional to $`\varepsilon`$ measures the effect of moving the criti
        \label{eq:ani-distances}
 \end{align}
 ```
-The subscripts $`3,6`$ refer to Cayley roots in the intervals $`(43812,43813)/10^4`$ and $`(-4816,-4815)/10^4`$. These estimates have separate jobs. The Taylor bound supplies the lemma’s quadratic control; the bounds for $`M`$ and $`\delta`$ give $`\sqrt{\delta/M}<\rho\varepsilon/5000`$, controlling the loss at the slit. The last bound supplies a positive distance excess of order $`\varepsilon`$. It remains to check that the two selected roots really belong to this component.
+The subscripts $`3,6`$ refer to Cayley roots in the intervals $`(43812,43813)/10^4`$ and $`(-4816,-4815)/10^4`$. The Taylor bound gives the lemma’s quadratic control, while the bounds on $`M`$ and $`\delta`$ give $`\sqrt{\delta/M}<\rho\varepsilon/5000`$. Thus the slit loss is smaller than the displayed distance surplus. This comparison matters only if the selected roots share a component; the following paths establish that membership, not a short connection.
 
 <a id="identifying-the-two-roots-in-the-component."></a>
 
@@ -228,9 +226,9 @@ with every zero in the open unit disc. For any zero $`\zeta`$, the entire segmen
 
 *Proof.* Fix a zero $`\zeta`$. Eliminating $`a\zeta^m`$ with the root equation gives
 ``` math
-f(t\zeta)=b(1-t^m)+\zeta^n(t^n-t^m).
+f(t\zeta)=(1-t^m)b+(t^m-t^n)(-\zeta^n).
 ```
-Vieta’s formula gives $`|b|<1`$. For $`0\le t<1`$, the first weight $`1-t^m`$ is positive and the second, $`t^m-t^n`$, is nonnegative. Hence
+Vieta’s formula gives $`|b|<1`$. For $`0\le t<1`$, the two weights are nonnegative, the first is positive, and their sum is $`1-t^n`$. Hence
 ``` math
 |f(t\zeta)|\le |b|(1-t^m)+|\zeta|^n(t^m-t^n)<1-t^n\le1.
 ```
@@ -299,9 +297,13 @@ Lean checks this scaling implication under the named input `LowCriticalThirteenT
 
 ## The analytic argument
 
-Assume that no pair has a connection of length less than $`2`$ in $`\Omega_f`$. At a regular level $`t\in(\mu,1)`$, let $`C_t`$ contain a chosen first merger and let $`k\ge2`$ be its root count. Put $`a=\operatorname{Area}(C_t)/\pi`$ and $`x=\log(t/\mu)`$; Pólya’s inequality gives $`a\le1`$ \[crane, Theorems 1 and 6\]. Uniformise $`C_t`$ by the disc, with hyperbolic distance normalised by $`d(0,s)=2\operatorname{artanh}s`$ for $`0\le s<1`$. The Bergman segment estimate constructs a curve of length at most $`\sqrt{2a\log\cosh(d/2)}`$ between roots at hyperbolic distance $`d`$. Our assumption therefore forces pairwise distance at least $`D`$, where $`\cosh(D/2)=e^{2/a}`$.
-
-The length estimate uses the area identity $`\int_{\mathbb D}|\varphi'|^2\,dA=\pi a`$ for a conformal map $`\varphi:\mathbb D\to C_t`$. Cauchy–Schwarz bounds the image length of a real interval by this integral and the disc Bergman kernel. Moving the two preimages to opposite points of a diameter makes the remaining factor depend only on their hyperbolic distance.
+Assume that no pair has a connection of length less than $`2`$ in $`\Omega_f`$. At a regular level $`t\in(\mu,1)`$, let $`C_t`$ contain a chosen first merger and let $`k\ge2`$ be its root count. Put $`a=\operatorname{Area}(C_t)/\pi`$ and $`x=\log(t/\mu)`$; Pólya’s inequality gives $`a\le1`$ \[crane, Theorems 1 and 6\]. Uniformise $`C_t`$ by the disc, with $`d(0,s)=2\operatorname{artanh}s`$ for $`0\le s<1`$. For roots at hyperbolic distance $`d`$, choose $`\varphi:\mathbb D\to C_t`$ sending $`\pm s`$ to them. Then $`d=4\operatorname{artanh}s`$ and $`\int_{\mathbb D}|\varphi'|^2\,dA=\pi a`$. Cauchy–Schwarz with the Bergman kernel gives
+``` math
+\operatorname{length}(\varphi([-s,s]))^2
+ \le a\int_{-s}^{s}\int_{-s}^{s}\frac{du\,dv}{(1-uv)^2}
+ =2a\log\cosh(d/2).
+```
+Thus pairwise root distances are at least $`D`$, where $`\cosh(D/2)=e^{2/a}`$.
 
 To control the distances from the centre as well, choose a point $`h`$ on a connected set through the first pair in $`K_\mu(f)`$ whose intrinsic distance from every root is at least $`1`$. Here intrinsic distance means the infimum of Euclidean curve lengths in $`C_t`$. Such an $`h`$ exists: the intrinsic open unit balls about distinct roots are disjoint, since an intersection would give a path shorter than $`2`$, and disjoint open sets cannot cover a connected set containing two roots. Choose the uniformisation to send $`0`$ to $`h`$. If $`d_j`$ are the resulting hyperbolic root distances from $`0`$, then
 ``` math
@@ -412,7 +414,13 @@ Choose the square-root factor positive at $`0`$. The endpoints $`\xi=\pm1`$ then
 L^2\le\frac2\pi\log\frac{S^2+S+p}{S^2-S+p}\,
                     \operatorname{Area}(U).
 ```
-It remains to bound the area of $`U`$. The factor $`n-1`$ in the desired bound comes from the roots outside this degree-two component, not from Pólya’s inequality alone. The companion first treats a monic polynomial $`F`$ of degree $`n`$, a regular level $`t>0`$ of $`|F|`$, and a component $`W`$ of $`\{|F|<t\}`$ containing $`k<n`$ zeros of $`F`$, counted with multiplicity. Reflecting the $`n-k`$ exterior-root factors into the disc gives a Blaschke product $`B`$ with $`|B(0)|=\operatorname{cap}(\overline W)^n/t`$ and $`|B'|<n`$ on the boundary. The boundary-fibre identity expresses the sum of reciprocal derivatives as a Poisson kernel. This kernel is smallest at the boundary point opposite $`B(0)`$; evaluating there gives $`(n-k)/n<(1-|B(0)|)/(1+|B(0)|)`$, or equivalently $`\operatorname{cap}(\overline W)^n/t<k/(2n-k)`$.
+The factor $`n-1`$ comes from the roots outside $`U`$, not from Pólya’s inequality alone. For monic $`F`$ of degree $`n`$ and regular level $`t>0`$, let $`W`$ be a component of $`\{|F|<t\}`$ containing $`k<n`$ zeros counted with multiplicity. Reflecting the $`n-k`$ exterior-root factors into the disc gives a Blaschke product $`B`$ of degree $`n-k`$ with $`|B(0)|=\operatorname{cap}(\overline W)^n/t`$ and $`|B'|<n`$ on the boundary. The boundary-fibre identity gives
+``` math
+\frac{n-k}{n}<
+ \sum_{\substack{B(\zeta)=w\\|\zeta|=1}}\frac1{|B'(\zeta)|}
+ =\frac{1-|B(0)|^2}{|w-B(0)|^2},\qquad |w|=1.
+```
+Choosing $`w`$ opposite $`B(0)`$ gives $`(n-k)/n<(1-|B(0)|)/(1+|B(0)|)`$, hence $`\operatorname{cap}(\overline W)^n/t<k/(2n-k)`$.
 
 Apply this to $`F=P-w_0`$ on the regular inner components exhausting $`U`$. Their degree is two, so $`k=2`$ and $`k/(2n-k)=1/(n-1)`$. Here $`k`$ counts preimages of $`w_0`$ under $`P`$. These need not be the roots joined by the curve; the component degree gives both counts. Pólya’s area–capacity inequality \[polya1928, printed pp. 280–282\], \[crane, Theorem 6\], followed by exhaustion, now gives $`\operatorname{Area}(U)\le\pi(S/(n-1))^{2/n}`$. The original curve has length $`\operatorname{length}(\Gamma)=|v|^{1/n}L`$, which gives <a href="#eq:disk-family-length" data-reference-type="eqref" data-reference="eq:disk-family-length">[eq:disk-family-length]</a>. Dubinin’s relative area inequality \[dubinin, Theorem 1\] has a different full-covering hypothesis; the absolute component estimate is needed here.
 
@@ -430,7 +438,16 @@ Apply this to $`F=P-w_0`$ on the regular inner components exhausting $`U`$. Thei
 
 ## Root distances do not ensure containment
 
-<span id="sec:exact-obstructions" label="sec:exact-obstructions"></span> <span id="res:critical-proximity" label="res:critical-proximity"></span> At a non-root critical point $`c`$, the balance $`\sum_j(c-z_j)^{-1}=0`$ bounds the ratio of the two smallest root distances by $`n-1`$. Comparing their sum with the geometric mean of all $`n`$ distances gives a bound of $`2r`$, where $`r=|f(c)|^{1/n}`$ since $`r^n=\prod_j|c-z_j|`$. This is a distance estimate, with no containment conclusion.
+<span id="sec:exact-obstructions" label="sec:exact-obstructions"></span> <span id="res:critical-proximity" label="res:critical-proximity"></span> Order the root distances at a non-root critical point $`c`$ as $`0<d_1\le\cdots\le d_n`$. The balance $`\sum_j(c-z_j)^{-1}=0`$ and this ordering give
+``` math
+\frac1{d_1}\le\frac{n-1}{d_2},\qquad
+ d_1d_2^{n-1}\le|f(c)|.
+```
+The ratio bound $`1\le d_2/d_1\le n-1`$ permits the scalar comparison
+``` math
+d_1+d_2\le2(d_1d_2^{n-1})^{1/n}\le2|f(c)|^{1/n}.
+```
+Neither inequality supplies containment.
 
 <span id="res:two-nearest-roots" label="res:two-nearest-roots"></span> When all zeros lie in the open unit disc, a different estimate holds: at every non-root critical point the sum of the distances to the two nearest zeros is strictly less than $`2`$. The companion gives both [root-distance estimates](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=root-distance-proofs). The nearest pair is chosen among all roots of $`f`$. It need not be the pair in the two-root component of the degree-seven example, where containment restricts which pair can be joined.
 
@@ -445,17 +462,25 @@ all roots lie in the disc and $`0`$ is a non-root critical point, but its unique
 
 <span id="res:arity-not-capacity" label="res:arity-not-capacity"></span> A further cubic has two roots at its first merger but normalised component capacity one at level $`2\mu`$. By that level all three roots have merged, so the initial two-root count cannot be used at the later level. The component is now the whole filled lemniscate, whose capacity is given by $`\operatorname{cap}(K_t(f))=t^{1/n}`$ \[ransford1995, Theorem 5.2.5 and p. 153\].
 
-<span id="res:one-root-gamma-false" label="res:one-root-gamma-false"></span> Finally, $`z^8-(3/2)z`$ has a one-root unit-level component with perimeter larger than the proposed constant $`\Gamma(1/4)^2/(2\sqrt\pi)`$. These examples, with full calculations, appear in [the companion’s component examples](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=component-counterexamples). The last example imposes no restriction on root locations and disproves that specific perimeter constant. The existence of a uniform perimeter constant remains a separate question. Although \[revision2026, Proposition 2\] reports a Runge construction of unbounded one-root perimeters, its proof is unavailable and we do not use it.
+<span id="res:one-root-gamma-false" label="res:one-root-gamma-false"></span> Finally, $`z^8-(3/2)z`$ has least critical-value modulus $`\mu>1`$, yet a one-root unit-level component has perimeter larger than $`\Gamma(1/4)^2/(2\sqrt\pi)`$; see [the companion’s component examples](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=component-counterexamples). No root-location restriction is imposed. The open question asks for a constant $`\beta`$ bounding each component perimeter of $`K_\sigma(f)`$ by $`\beta\sigma^{1/n}`$, uniformly over squarefree monic $`f`$ of degree $`n\ge2`$ and $`0<\sigma<\mu`$. This level restriction is stronger than a one-root condition on a single component. Although \[revision2026, Proposition 2\] reports a Runge construction of unbounded one-root perimeters, its proof is unavailable and we do not use it.
 
 <a id="sec:solved-families"></a>
 
 ## Sparse families and binomial chords
 
-<span id="sec:binomial" label="sec:binomial"></span> <span id="res:cubic-fibres" label="res:cubic-fibres"></span> Suppose that all zeros lie in the open unit disc. For $`P((z-h)^q)`$, where $`q\ge2`$ and $`P`$ is a monic cubic, one suitable segment for $`P`$ produces an entire fibre of segments for the composition. If there are two distinct zeros, some pair can be joined by two such segments. The companion selects a nonzero root $`r`$ of $`P`$ for which $`[0,r]\subset\{|P|<1\}`$. Writing $`f(z)=P((z-h)^q)`$ and $`y^q=r`$, we have $`f(h+ty\zeta)=P(t^qr)`$ for $`0\le t\le1`$ and every $`q`$th root of unity $`\zeta`$. Thus one quotient segment gives $`q`$ contained segments through $`h`$. The $`q`$th roots of unity sum to zero, so averaging $`|h+y\zeta|^2`$ over the full fibre cancels the cross term and gives $`|h|^2+|y|^2<1`$. Any two distinct points in this fibre are therefore joined through $`h`$ with length $`2|y|<2`$.
+<span id="sec:binomial" label="sec:binomial"></span> <span id="res:cubic-fibres" label="res:cubic-fibres"></span> Let $`f(z)=P((z-h)^q)`$, where $`q\ge2`$ and $`P`$ is a monic cubic, and suppose all zeros of $`f`$ lie in the open unit disc. For any root $`r=y^q`$ of $`P`$, averaging $`|h+y\zeta|^2`$ over the $`q`$th roots of unity cancels the cross term and gives $`|h|^2+|y|^2<1`$. Thus the quotient roots satisfy $`|r|=|y|^q<1`$. If $`f`$ has two distinct zeros, the companion selects a nonzero root $`r`$ with $`[0,r]\subset\{|P|<1\}`$. Choose $`y^q=r`$. Then $`f(h+ty\zeta)=P(t^qr)`$ for $`0\le t\le1`$, so the whole fibre gives contained segments through $`h`$. Two distinct fibre points are joined with length $`2|y|<2`$, using the same average.
 
-<span id="res:primitive-quintic" label="res:primitive-quintic"></span> For $`z^5+az^4+bz+c`$, the remaining selection problem is to control the partial sum $`bz_j+c`$. A harmonic-moment identity supplies two root indices with $`|bz_j+c|<1`$, after which Abel summation controls the whole segments. The missing coefficients determine the first three power sums of the roots. For $`a\ne0`$, the resulting harmonic identity rules out four indices with $`|bz_j+c|\ge1`$; when $`a=0`$, the root equation gives $`|bz_j+c|=|z_j|^5<1`$ directly. The two selected indices may represent the same root value, in which case the connecting path is constant. The companion gives the [cubic-fibre proof](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=cubic-fibre-proof) and the [quintic selection argument](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=quintic-proof), including repeated root occurrences.
+<span id="res:primitive-quintic" label="res:primitive-quintic"></span> For $`f(z)=z^5+az^4+bz+c`$ with open-disc roots, Abel summation gives a contained radial segment whenever $`|bz_j+c|<1`$. For $`a\ne0`$, the missing coefficients fix the first three power sums. After rotation, the companion’s harmonic function sums to $`5-2|a|`$ over the roots. It is bounded above by $`4-2|a|`$ on the disc and by $`2/31`$ at roots with $`|bz_j+c|\ge1`$. Four such indices would therefore give
+``` math
+5-2|a|\le4-2|a|+\frac8{31}<5-2|a|,
+```
+a contradiction. Hence two indices satisfy $`|bz_j+c|<1`$. When $`a=0`$, the root equation gives $`|bz_j+c|=|z_j|^5<1`$ directly. Coincident selected root values give the constant path. The companion gives the [cubic-fibre proof](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=cubic-fibre-proof) and the [quintic selection argument](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=quintic-proof), including repeated root occurrences.
 
-<span id="res:complementary-binomial-chords" label="res:complementary-binomial-chords"></span> For $`z^n-r^n`$, $`0<r<1`$, the maximum modulus on a chord between adjacent points of radius $`s\le r`$ is $`r^n+(s\cos(\pi/n))^n`$. Thus the outer root chord works below $`r_*=(1+\cos^n(\pi/n))^{-1/n}`$. At and above this value, radial legs and a slightly contracted inner chord give open containment and length less than $`2r`$. The [chord calculation](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=binomial-chord-calculation) proves the maximum on the entire segment; it makes no assertion of geodesic optimality. For $`n=2`$, use the diameter.
+<span id="res:complementary-binomial-chords" label="res:complementary-binomial-chords"></span> For $`z^n-r^n`$, $`0<r<1`$, the maximum modulus on an adjacent chord of radius $`0<s\le r`$ is $`r^n+(s\cos(\pi/n))^n`$. The outer root chord therefore works below $`r_*=(1+\cos^n(\pi/n))^{-1/n}`$. At and above this value, take a slightly contracted inner radius $`s>0`$ making that maximum less than one. The radial legs remain contained, and for $`n\ge3`$ the total length is
+``` math
+2(r-s)+2s\sin(\pi/n)<2r<2.
+```
+The [chord calculation](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=binomial-chord-calculation) proves the maximum on the entire segment, not geodesic optimality. For $`n=2`$, use the diameter.
 
 <a id="sec:collinear"></a>
 
@@ -465,7 +490,7 @@ all roots lie in the disc and $`0`$ is a non-root critical point, but its unique
 ``` math
 |f|\le\frac{(D/2)^n}{2^{n-1}\cos^n(\pi/(2n))}.
 ```
-The constant is sharp, with equality for the appropriately scaled zeros of the Chebyshev polynomial $`T_n`$. Qualitative existence of a contained root segment was already proved in \[ehp1958, Theorem 1\]. We compare with the monic minimax polynomial (see Eremenko and Yuditskii \[eremenko-yuditskii, §1 and Theorem 1\] for the critical-sequence viewpoint). The companion contains the [alternation proof and equality case](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=collinear-proof).
+The constant is sharp, with equality for the appropriately scaled zeros of the Chebyshev polynomial $`T_n`$. Qualitative existence of a contained root segment was already proved in \[ehp1958, Theorem 1\]. For distinct roots, first reduce to the real monic case. If every gap maximum exceeded the bound, subtracting the endpoint-normalised monic Chebyshev polynomial would give a polynomial of degree at most $`n-1`$ with $`n`$ distinct zeros: two endpoints and $`n-2`$ intervening sign changes. See Eremenko and Yuditskii \[eremenko-yuditskii, §1 and Theorem 1\] for the critical-sequence viewpoint. The companion contains the [alternation proof and equality case](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=collinear-proof).
 
 <a id="sec:freepoint"></a>
 
@@ -473,12 +498,13 @@ The constant is sharp, with equality for the appropriately scaled zeros of the C
 
 <span id="res:fp-weighted-all-degree" label="res:fp-weighted-all-degree"></span> For $`c_j\in\overline{\mathbb D}`$ and positive weights of sum one, set $`G(z)=\prod_j|1-\bar c_jz|^{w_j}`$. Then $`\sum_jw_jG(c_j)^2\le1`$, with equality only when all $`c_j=0`$.
 
-The weighted Poisson kernel is $`P(\zeta)=\sum_jw_j(1-|c_j|^2)/|\zeta-c_j|^2`$ for $`|\zeta|=1`$ and interior centres. For interior points the factors are nonvanishing in the disc, so choose an analytic $`g(z)=1+\sum_{\nu\ge1}a_\nu z^\nu`$ with $`|g|=G`$. On $`\zeta=e^{i\theta}`$, with normalised arclength $`dm=d\theta/(2\pi)`$, write the weighted Poisson kernel as $`P=1-2\operatorname{Re}(\zeta g'/g)`$. Subharmonicity of $`|g|^2`$ gives the inequality below; integrating the power series gives the identity:
+For interior centres, the nonvanishing factors give an analytic $`g(z)=1+\sum_{\nu\ge1}a_\nu z^\nu`$ with $`|g|=G`$. On $`\zeta=e^{i\theta}`$ the weighted Poisson kernel is $`P=\sum_jw_j(1-|c_j|^2)/|\zeta-c_j|^2
+=1-2\operatorname{Re}(\zeta g'/g)`$. With $`dm=d\theta/(2\pi)`$, subharmonicity gives the inequality below, and orthogonality gives the identity:
 ``` math
 \sum_jw_jG(c_j)^2\le\int |g|^2P\,dm
           =1-\sum_{\nu\ge1}(2\nu-1)|a_\nu|^2.
 ```
-Orthogonality on the circle leaves $`1+\sum|a_\nu|^2`$ from $`|g|^2`$ and $`\sum\nu|a_\nu|^2`$ from $`\zeta g'\overline g`$, explaining the coefficients $`2\nu-1`$. For boundary centres, replace $`c_j`$ by $`rc_j`$ and let $`r\uparrow1`$ with a finite coefficient sum first; no boundary logarithm is needed. Equality forces every $`a_\nu`$ to vanish. Logarithmic differentiation of $`g=1`$, grouping repeated centres, then forces all the positive-weight centres to be zero.
+Indeed, $`\int|g|^2\,dm=1+\sum|a_\nu|^2`$ and $`\int\zeta g'\overline g\,dm=\sum\nu|a_\nu|^2`$. Each nonconstant coefficient therefore contributes $`1-2\nu<0`$. For boundary centres, replace $`c_j`$ by $`rc_j`$ and let $`r\uparrow1`$ with a finite coefficient sum first; no boundary logarithm is needed. Equality forces every $`a_\nu`$ to vanish. Logarithmic differentiation of $`g=1`$, grouping repeated centres, then forces all the positive-weight centres to be zero.
 
 <span id="res:fp-to-s" label="res:fp-to-s"></span> To apply this inequality to a monic polynomial $`f`$ of degree $`n\ge2`$ with zeros in the closed unit disc, take its $`m=n-1`$ critical points, counted with multiplicity, and give them equal weights $`1/m`$. Gauss–Lucas puts these points in the closed unit disc. The reflected-derivative comparison then gives the pointwise bound
 ``` math
@@ -515,11 +541,11 @@ Substituting $`q=e^{-kt}`$ gives the identity; the integrand defining $`\Phi`$ h
 
 ## Inverse rays and perturbation
 
-<span id="sec:arguments" label="sec:arguments"></span><span id="sec:reciprocal" label="sec:reciprocal"></span> <span id="res:value" label="res:value"></span> Along a Newton trajectory $`\dot z=-f(z)/f'(z)`$ on a real interval, with $`f'(z(t))\ne0`$, the chain rule gives $`(f\circ z)'=-f\circ z`$. Integrating this scalar equation yields $`f(z(t))=e^{-(t-t_0)}f(z(t_0))`$ for times in that interval. Thus the trajectory maps to a fixed value ray. This is the classical Newton-flow identity in Kozen and Stefánsson \[kozen-stefansson1997, Lemmas 2.1–2.2 and §2\], who develop the Newtonian graph of Shub, Tischler and Williams. It describes the value along an existing trajectory; it does not itself bound the trajectory’s Euclidean length. A length bound requires control of $`\int |f(z(t))/f'(z(t))|\,dt`$. The companion also records local complex-parameter identities for $`(f\circ z)'`$ and $`(e^t f(z(t)))'`$. These are pointwise derivative statements; the integration above concerns an existing real-interval trajectory. The companion retains the [value and finite-endpoint theorems](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=newton-value-proof).
+<span id="sec:arguments" label="sec:arguments"></span><span id="sec:reciprocal" label="sec:reciprocal"></span> <span id="res:value" label="res:value"></span> Along an existing real-interval trajectory $`\dot z=-f(z)/f'(z)`$ with $`f'(z(t))\ne0`$, the chain rule gives $`(f\circ z)'=-f\circ z`$, hence $`f(z(t))=e^{-(t-t_0)}f(z(t_0))`$. This classical identity fixes the ray of a nonzero value, not the Euclidean length $`\int|f(z(t))/f'(z(t))|\,dt`$; see Kozen and Stefánsson \[kozen-stefansson1997, Lemmas 2.1–2.2 and §2\] on the Newtonian graph of Shub, Tischler and Williams. The companion’s local complex-parameter identities for $`(f\circ z)'`$ and $`(e^t f(z(t)))'`$ are pointwise statements, distinct from the real-interval integration in its [value and finite-endpoint theorems](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=newton-value-proof).
 
 <span id="res:ray" label="res:ray"></span> For a finite interval $`[a,b]`$, assume the Newton equation only for $`a<t<b`$ and continuity of $`f(z(t))`$ up to both endpoints. The interior identity then extends to $`f(z(b))=e^{a-b}f(z(a))`$, without evaluating $`f/f'`$ at an endpoint. Nonzero endpoint values therefore lie on the same positive ray. Critical values with distinct arguments exclude such a connection; distinct moduli are insufficient.
 
-<span id="res:locus" label="res:locus"></span> Adding a constant leaves $`f'`$ unchanged and translates every critical value by the same amount. A generic translation separates the rays of distinct values, but equal values stay equal. The formal sources give the [one-parameter collision locus](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L107) and the [finite affine-line avoidance argument](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L162). The companion records an unformalised argument that a linear perturbation can do so generically. Neither qualitative assertion bounds a perturbation that preserves a near-extremal path inequality. The [forbidden-ray locus calculation](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=argument-perturbation-proof) identifies the translations to avoid. Separately, expand $`\log|f|`$ about a non-root point and let $`q`$ be the displacement divided by the distance to the nearest zero. For $`q<1`$, the remainder after order $`N`$ is at most $`nq^{N+1}/((N+1)(1-q))`$. This local expansion cannot be used through a zero and does not itself give a coefficient-perturbation bound.
+<span id="res:locus" label="res:locus"></span> Adding $`\beta`$ leaves $`f'`$ unchanged and sends each critical value $`v`$ to $`v+\beta`$. For distinct values $`a,b`$, a common positive ray requires $`\beta`$ to lie on the real line through $`-a`$ and $`-b`$. Avoiding these finitely many lines and the points $`-v`$ therefore makes the distinct values nonzero and ray-separated; equal values remain equal. The formal sources give the [one-parameter collision locus](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L107) and the [finite affine-line avoidance argument](https://github.com/wcook04/plectis-erdos/blob/7380b7871687b6bcc41ca0143c61f232e8af6500/lean/ErdosProblems/Erdos1041/NewtonFlowRaySeparation.lean#L162). The [companion calculation](../../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=argument-perturbation-proof) describes the forbidden translations; its unformalised linear-perturbation argument supplies distinct critical values. Neither qualitative step controls the slack in a near-extremal path inequality. Separately, expand $`\log|f|`$ about a non-root point and let $`q`$ be the displacement divided by the distance to the nearest zero. For $`q<1`$, the remainder after order $`N`$ is at most $`nq^{N+1}/((N+1)(1-q))`$. This local expansion cannot be used through a zero and does not itself give a coefficient-perturbation bound.
 
 <a id="res:component-local-covering"></a>
 
