@@ -145,6 +145,7 @@ import ErdosProblems.Erdos251.ShiftedGapCountingR9
 import ErdosProblems.Erdos251.SparseAmbientR9
 import ErdosProblems.Erdos251.SparsePaperR11
 import ErdosProblems.Erdos257.MersenneSubseriesRigidity
+import ErdosProblems.Erdos257.PaperCompleteR20.PositivePeriodicSupport
 import ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightMixedClaim
 import ErdosProblems.Erdos257.PaperCompleteR8.PositiveCoverReturn
 import ErdosProblems.Erdos257.PaperCompleteR8.WeightedHereditaryClaim
@@ -595,6 +596,7 @@ import ErdosProblems.Skip.LadderT67
 #print axioms ErdosProblems.Erdos251.realPrimeGapTail_recurrence
 #print axioms ErdosProblems.Erdos251.realPrimeGapTail_zero
 #print axioms ErdosProblems.Erdos251.tailShift_integral_totient_of_odd_den
+#print axioms ErdosProblems.Erdos257.PaperCompleteR20.irrational_erdosSupportSeries_positivePeriodic
 #print axioms ErdosProblems.Erdos257.PaperCompleteR8.arbitraryWeightMixedSupport_allBase_hereditary
 #print axioms ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim
 #print axioms ErdosProblems.Erdos257.PaperCompleteR8.finitePrimeWeighted_fixedBase_hereditary

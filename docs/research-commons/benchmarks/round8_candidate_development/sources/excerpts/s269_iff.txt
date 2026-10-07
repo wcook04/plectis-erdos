@@ -1,0 +1,30 @@
+theorem cofinalLocalWindowEscape_of_irrational
+    (h : Irrational (dyadicShellTsumTailR235 1)) :
+    ActualCofinalLocalWindowEscape :=
+  cofinalLocalWindowEscape_of_irrational_of_quadratic h
+    (fun B n => B * bridgeWidth n) (fun B => B * 90)
+    (fun B n => Nat.le_of_eq (by unfold bridgeWidth; ring))
+
+/-! ## The equivalence -/
+
+/-- **The producer is exactly the target.**  `ActualCofinalLocalWindowEscape`
+is equivalent to irrationality of `Σ_{h ≥ 2} 1/H(h)`; it is therefore not a
+weaker sufficient condition, and no attack on it can be easier than Erdős
+#269 itself. -/
+theorem actualCofinalLocalWindowEscape_iff :
+    ActualCofinalLocalWindowEscape ↔ Irrational (dyadicShellTsumTailR235 1) :=
+  ⟨irrational_of_cofinalLocalWindowEscape, cofinalLocalWindowEscape_of_irrational⟩
+
+/-- Headline form: the producer is equivalent to irrationality of the Erdős
+#269 value `Σ_{h ∈ ⟨2,3,5⟩} 1/H(h)`. -/
+theorem actualCofinalLocalWindowEscape_iff_irrational_value :
+    ActualCofinalLocalWindowEscape ↔ Irrational (dyadicShellTsumTailR235 0) := by
+  rw [actualCofinalLocalWindowEscape_iff]
+  constructor
+  · intro h
+    rw [dyadicShellTsumTailR235_zero_eq, add_comm]
+    simpa using h.add_natCast 1
+  · intro h
+    rw [dyadicShellTsumTailR235_zero_eq, add_comm] at h
+    have h' := h.sub_natCast 1
+    simpa using h'

@@ -213,7 +213,17 @@ def _module_artifacts(build: Path, modules: set[Path]) -> list[Path]:
     """Include module companions, not package-wide or unrelated cached outputs."""
     paths = []
     for prefix in (Path("lib/lean"), Path("ir")):
+        for ancestor in (build / prefix, *(build / prefix).parents):
+            if ancestor.is_symlink():
+                raise BuildShareError("module build artifact traverses a symbolic link")
+            if ancestor == build:
+                break
         for directory, _subdirs, filenames in os.walk(build / prefix):
+            for ancestor in (Path(directory), *Path(directory).parents):
+                if ancestor.is_symlink():
+                    raise BuildShareError("module build artifact traverses a symbolic link")
+                if ancestor == build:
+                    break
             parent = Path(directory).relative_to(build / prefix)
             for filename in filenames:
                 if "." not in filename or parent / filename.split(".", 1)[0] not in modules:
@@ -318,10 +328,12 @@ def publish(root: Path, state_root: Path, key: str) -> dict[str, Any]:
 
 
 def _copy_contents(source: Path, target: Path, relative_paths: list[Path]) -> None:
-    """Copy explicit module files in bounded CoW batches, preserving other files."""
+    """Stage explicit CoW artifacts, then install them with rollback."""
+    if target.is_symlink() or target.parent.is_symlink():
+        raise BuildShareError("build artifact destination traverses a symbolic link")
     target.mkdir(parents=True, exist_ok=True)
-    if sys.platform == "darwin" and Path("/bin/cp").is_file():
-        command = ["/bin/cp", "-cp"]
+    if sys.platform == "darwin":
+        command = None
     elif sys.platform.startswith("linux") and shutil.which("cp"):
         command = ["cp", "--reflink=always", "-p"]
     else:
@@ -330,29 +342,68 @@ def _copy_contents(source: Path, target: Path, relative_paths: list[Path]) -> No
     for relative in relative_paths:
         if relative.is_absolute() or ".." in relative.parts:
             raise BuildShareError("build artifact path escapes its scope")
+        source_path = source / relative
+        for path in (source_path, *source_path.parents):
+            if path.is_symlink():
+                raise BuildShareError("build artifact source traverses a symbolic link")
+            if path == source:
+                break
         destination = target / relative
         for path in (destination, *destination.parents):
             if path.is_symlink():
                 raise BuildShareError("build artifact destination traverses a symbolic link")
             if path == target:
                 break
-        groups[relative.parent].append(source / relative)
-    for parent, files in groups.items():
-        destination = target / parent
-        destination.mkdir(parents=True, exist_ok=True)
-        for offset in range(0, len(files), 64):
-            completed = subprocess.run(
-                [*command, *(str(path) for path in files[offset:offset + 64]), str(destination)],
-                capture_output=True,
-                text=True,
-                errors="replace",
-                timeout=600,
-                check=False,
-            )
-            if completed.returncode:
-                raise BuildShareError(
-                    f"copy-on-write build hydration failed: {completed.stderr.strip()[:300]}"
+        groups[relative.parent].append(source_path)
+    token = secrets.token_hex(8)
+    stage = target.parent / f".{target.name}.{token}.stage"
+    backup = target.parent / f".{target.name}.{token}.backup"
+    stage.mkdir()
+    backup.mkdir()
+    installed: list[Path] = []
+    saved: list[Path] = []
+    committed = False
+    rollback_complete = False
+    try:
+        for parent, files in groups.items():
+            destination = stage / parent
+            destination.mkdir(parents=True, exist_ok=True)
+            if command is None:
+                for path in files:
+                    package_share.clone_file_strict(path, destination / path.name)
+                continue
+            for offset in range(0, len(files), 64):
+                completed = subprocess.run(
+                    [*command, *(str(path) for path in files[offset:offset + 64]), str(destination)],
+                    capture_output=True, text=True, errors="replace", timeout=600, check=False,
                 )
+                if completed.returncode:
+                    raise BuildShareError(
+                        f"copy-on-write build hydration failed: {completed.stderr.strip()[:300]}"
+                    )
+        try:
+            for relative in relative_paths:
+                output = target / relative
+                output.parent.mkdir(parents=True, exist_ok=True)
+                if os.path.lexists(output):
+                    saved_path = backup / relative
+                    saved_path.parent.mkdir(parents=True, exist_ok=True)
+                    os.replace(output, saved_path)
+                    saved.append(relative)
+                os.replace(stage / relative, output)
+                installed.append(relative)
+            committed = True
+        except BaseException:
+            for relative in reversed(installed):
+                (target / relative).unlink()
+            for relative in reversed(saved):
+                os.replace(backup / relative, target / relative)
+            rollback_complete = True
+            raise
+    finally:
+        shutil.rmtree(stage)
+        if committed or rollback_complete or not saved:
+            shutil.rmtree(backup)
 
 
 def hydrate(root: Path, state_root: Path, key: str) -> dict[str, Any]:
@@ -362,11 +413,13 @@ def hydrate(root: Path, state_root: Path, key: str) -> dict[str, Any]:
     if source is None:
         return {"schema": SCHEMA, "status": "unavailable", "reason": "seed_missing"}
     target = root.resolve() / ".lake/build"
-    if target.is_symlink():
+    if target.is_symlink() or target.parent.is_symlink():
         raise BuildShareError("mutable Lean build output must not be a symlink")
     try:
         modules = _validated_modules(root.resolve(), state_root.resolve(), key)
-        _copy_contents(source, target, _module_artifacts(source, modules))
+        artifacts = _module_artifacts(source, modules)
+        (target / MATERIALIZATION_MARKER).unlink(missing_ok=True)
+        _copy_contents(source, target, artifacts)
         (target / MATERIALIZATION_MARKER).write_text(key + "\n", encoding="utf-8")
     except (OSError, ValueError, subprocess.TimeoutExpired, BuildShareError) as exc:
         return {

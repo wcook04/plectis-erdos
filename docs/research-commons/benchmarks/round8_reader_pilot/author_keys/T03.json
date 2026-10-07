@@ -1,0 +1,96 @@
+{
+  "schema": "plectis-round8-reader-candidate-key/1",
+  "task_id": "T03",
+  "family_id": "lemniscate_exact_formulation_status",
+  "status": "candidate_source_reading_not_independently_adjudicated",
+  "source_commit": "0268dd8bfb2a556a0c93078337d42c6d07138fa2",
+  "binding_replay_status": "UNRUN at this commit; older 0d0129c6 receipt remains historical",
+  "criteria": [
+    {
+      "id": "scope",
+      "required": true,
+      "description": "The degree-seven example has distinct roots in the open unit disc; every preconnected subset of {|f|<1} containing two distinct roots has one-dimensional Hausdorff measure >2."
+    },
+    {
+      "id": "formal_status",
+      "required": true,
+      "description": "Identifies the exact Formal Conjectures path-image negation/answer(False), and the separately proved total-variation formulation."
+    },
+    {
+      "id": "historical",
+      "required": true,
+      "description": "Independent human adjudication of correspondence with the 1958 wording is not recorded. This does not erase the exact formal refutations."
+    },
+    {
+      "id": "attribution",
+      "required": true,
+      "description": "Attributes the construction to forum contributor ani as the paper does, without assigning a newly proved Plectis construction or independent human review."
+    },
+    {
+      "id": "partial_lean",
+      "required": true,
+      "description": "The whole mu<=13/25 sufficient theorem has no covering Lean proof; the paper lists a Lean degree-two case and a closing certificate inequality, not the whole analytic argument."
+    },
+    {
+      "id": "evidence",
+      "required": true,
+      "description": "Cites appropriate current source loci and does not assert fresh compilation."
+    }
+  ],
+  "severe_error_examples": [
+    "Says the exact formal statement remains unrefuted",
+    "Claims an independent historical human review",
+    "Says the whole 13/25 theorem is Lean-checked",
+    "Generalises the counterexample theorem to every polynomial"
+  ],
+  "reference_answer": "The source records a degree-seven construction by ani with distinct roots in the open unit disc. Any preconnected subset of its strict unit lemniscate containing two distinct roots has H^1>2, giving the stated result for continuous path images and the exact Formal Conjectures negation and answer(False) forms. A separate adapter handles total variation. The paper does not record independent human adjudication of correspondence with the 1958 wording. The mu<=13/25 result is a sufficient analytic theorem: no Lean proof covers its whole argument; the listed Lean checks cover the degree-two case and the closing certificate inequality. These distinctions are records of available evidence, not a new compiler run.",
+  "source_handles": [
+    {
+      "path": "corpus/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "start_line": 36,
+      "end_line": 104,
+      "file_sha256": "53ff3bef71fb81041ea80b960e88147e6d75481d17048eca1f93fcabe7497999",
+      "excerpt_path": "grader/evidence/T03-01.txt",
+      "excerpt_sha256": "a5a5f5ce9318c9300755813baa825ba0308505bddaa878d6712e1e62a0bc809f"
+    },
+    {
+      "path": "corpus/paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "start_line": 193,
+      "end_line": 215,
+      "file_sha256": "53ff3bef71fb81041ea80b960e88147e6d75481d17048eca1f93fcabe7497999",
+      "excerpt_path": "grader/evidence/T03-02.txt",
+      "excerpt_sha256": "47fd5de56e08daeae1ff260a1213fb7beb6efbecd934caf38fe9e37357f1faee"
+    },
+    {
+      "path": "corpus/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+      "start_line": 283,
+      "end_line": 303,
+      "file_sha256": "069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4",
+      "excerpt_path": "grader/evidence/T03-03.txt",
+      "excerpt_sha256": "e62aa8476a9e87daaa1898002b44f4e5eba40aeb5dba234112532d730d00f787"
+    },
+    {
+      "path": "corpus/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+      "start_line": 390,
+      "end_line": 455,
+      "file_sha256": "069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4",
+      "excerpt_path": "grader/evidence/T03-04.txt",
+      "excerpt_sha256": "592346baeb97b5f76634e5f04a0da57edf56cbf56250451811a704e658f59c16"
+    },
+    {
+      "path": "corpus/lean/ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean",
+      "start_line": 1,
+      "end_line": 72,
+      "file_sha256": "1f807ef3e453c12f382d4ce7a4f422397e1e2dee33ba87d68323273a1860a600",
+      "excerpt_path": "grader/evidence/T03-05.txt",
+      "excerpt_sha256": "ad207d1959a39a92ace902a7166a35e6ea940870b1e8eacafe7f69ce8200e9c5"
+    }
+  ],
+  "declarations": [
+    "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff",
+    "Erdos1041.Counterexample.erdos1041_hausdorff_negation",
+    "Erdos1041.Counterexample.erdos1041_hausdorff_answer_false"
+  ],
+  "scoring_rule": "correct iff every required criterion is satisfied and no material severe error; source-faithful wording accepted; adjudicate ambiguity before a real run",
+  "abstention_rule": "Acknowledging an unproved converse, input or review is required where appropriate. Blanket abstention on the answerable source question is incorrect, not automatically severe."
+}

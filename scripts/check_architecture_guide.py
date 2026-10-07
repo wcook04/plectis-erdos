@@ -9,7 +9,13 @@ import json
 import os
 import re
 import stat
+import subprocess
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
+import build_systems_paper_counts as systems_paper_counts  # noqa: E402
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -51,7 +57,26 @@ MAX_GUIDE_BYTES = 18_000
 # Raised from 73_000 on 2026-09-14 after the related-work section absorbed
 # five prior-art citations (Prove2Me, two Feng et al. reports, Henkel, Li et
 # al.) that the paper had been missing; the text was trimmed twice first.
-SYSTEMS_PAPER_BASE_BYTES = 75_000
+# Raised from 75_000 on 2026-09-27 by the description of the residualisation
+# command, a part of the argument graph the previous base did not cover, and the
+# four prior-art citations it needed (DreamProver, CircuitProver, ProofEvolve,
+# Boehme and Nipkow); the Problem 249 paragraph was tightened first.
+# Raised from 76_500 on 2026-09-28 by the replay-of-the-record paragraph that
+# landed with PR #278 (Dream-RSI and the two Hecke-Mahler citations); the
+# paragraph was cut from about 3,700 to about 1,300 bytes first.
+# Raised from 78_700 on 2026-09-28 by the research-loop section (the loop between
+# maintainers and outside research runs, the research record with its relation
+# contracts, contrast ledger and packet compiler, and what the record measures),
+# about 4,200 bytes, and the generated record-count region of
+# scripts/build_systems_paper_counts.py, about 900 bytes, which replaced every
+# hand-typed ledger, module and claim count. The abstract, the Patel paragraph and
+# three restating passages were cut first and the priority sentence deleted, so
+# the raise is 4,100 of the 5,100 bytes the new architecture takes.
+# Lowered to 80_900 on 2026-09-28 when the budget stopped counting the bodies of
+# the generated regions (see authored_bytes): builders rewrite those at release,
+# and a longer number there had left the authored prose 110 bytes of headroom
+# that a regeneration alone could spend. The authored prose keeps about 250.
+SYSTEMS_PAPER_BASE_BYTES = 80_900
 SYSTEMS_PAPER_BYTES_PER_ARTIFACT = 1_000
 
 
@@ -197,128 +222,178 @@ BANNED_SHORTHAND = (
 )
 
 PAPER_SECTION_ORDER = (
-    r"\section{The problem: many kinds of evidence}",
-    r"\section{The whole lifecycle in one picture}",
-    r"\section{The private workbench}",
-    r"\section{The mathematical reasoning loop}",
-    r"\section{The public Lean repository}",
-    r"\section{Comparator, Palomar, and publication}",
-    r"\section{One complete boundary: finite is not unbounded}",
-    r"\section{Inspection routes}",
-    r"\section{What can be trusted}",
-    r"\section{Scaling from one clone to a search network}",
-    r"\section{Relation to other approaches}",
+    r"\section{A theorem and the explanation it needs}",
+    r"\section{A problem-sized world}",
+    r"\section{The argument graph}",
+    r"\section{From corpus to insight}",
+    r"\section{From a proof to a public claim}",
+    r"\section{The contribution cycle}",
+    r"\section{Eight problems in one repository}",
+    r"\section{Relation to Prove2Me and other systems}",
+    r"\section{Limits, and what stronger models change}",
     r"\section{Conclusion}",
-    r"\section{Reproducibility}",
+    r"\section{Inspection routes and reproducibility}",
 )
 
+# The September 2026 rewrite replaced the architecture note with a shorter
+# paper built around one unit of work, the problem-sized world. The pins below
+# hold the claims that paper rests on and every limit it states: removing one
+# should fail this check rather than quietly shrink the paper's boundary.
+# The 24 September revision opens with worked mathematics instead of an
+# account of the field, so its groups also pin each example's evidence class:
+# the A-star estimates and the synthesis theorems are ordinary arguments, the
+# reciprocal-summable case is credited to Erdos, and the totient independence
+# is credited to Martin and to Yazdani and Shallit.
 PAPER_REQUIRED_ANCHOR_GROUPS = {
     "plain_purpose": (
-        "compares it with neighbouring systems along stated dimensions and claims no priority",
-        "claim-transition architecture",
-        "six things that are commonly collapsed",
-        "after a proof is found, what exactly may move into a reviewed public claim",
-        "refutes the Formal Conjectures 1041 claim about one-dimensional Hausdorff measure of path images",
-        "its relation to the 1958 question remains unreviewed",
-        "other seven target problems remain unresolved",
-        "The other programmes are not claimed solved",
-        "Arbitrary infinite supports remain open",
+        "persistent unit of work, the problem-sized world",
+        "The public record supports continuation by human researchers and compatible agents beyond the originating chat or provider",
+        "accepted work returns to it with credit",
+        "The other seven targets remain open",
+        "Comparator, a checker the Lean FRO built",
+        "formal refutation of the Formal Conjectures statement of Problem 1041",
     ),
-    "problem_worlds_and_nonfungible_authority": (
-        "A problem is a mathematical world, not a folder",
-        "bounded neighbourhood inside a problem-sized world",
-        "The architecture treats six resources as non-fungible",
-        "More reasoning cannot buy a write lease",
-        "two coupled graphs with a guarded crossing",
-        "Neither graph may rewrite the other by implication",
+    "grounding_in_the_field": (
+        "faster than the mathematical community can read them",
+        "every AI-generated proof is born an unsolved exposition problem",
+        "Each of these concerns what a proof does not carry by itself",
     ),
-    "private_authority_and_concurrency": (
-        "Durable state lives in files",
-        "Type A and Type B",
-        "substrate access, not model quality",
-        "claims exact paths for a bounded lease",
-        "append-only ledgers and immutable receipts",
-        "fan-in barrier",
+    "worked_mathematics": (
+        "The criterion reaches past reciprocal summability",
+        "These estimates are ordinary arguments in the short paper",
+        "The infinite tail is the hard step",
+        "credits it to him",
+        "does not identify its weighted condition with that remark",
+        "irrationality for every infinite support remains open",
+        "already implies the affine independence",
+        "who credits it to Shallit",
+        "carry no Lean mark",
     ),
-    "executable_control_plane": (
-        "typed option surface",
-        "past work from present permission",
-        "SQLite store in write-ahead-log mode",
-        "daemon as not running while queued jobs remained visible",
-        "always-on architecture",
-        "currently healthy service",
+    "four_decisions": (
+        "Every result that returns to a world raises four decisions",
+        "A successful check in one row settles nothing in another",
+        "No deterministic check decides what is important",
     ),
-    "continuous_trace_boundary": (
-        "313 visible progress updates and 3,491 command events",
-        "compressed trace has an observation boundary",
-        "Completeness is therefore an explicit field",
-        "authority-bearing artefact and receipt",
+    # The corpus-to-insight transfer is the paper's complete worked case of a
+    # representation change: the rejected and accepted applications, the
+    # division between the authored bridge and Lean, the constant's origin in
+    # the source theorem's radix bound, and the prime-series boundary.
+    "corpus_to_insight": (
+        "The smallest complete case is a transfer between two problems",
+        "The change of variable is the mathematical bridge",
+        "The constant $1/31$ came from the radix bound 30",
+        "establishing the criterion for the actual prime gaps remains open",
+        "the admissible constants form the open interval",
+        "acceptance and closure are recorded separately",
+        "An enduring endpoint and a justified next step are different allocations",
     ),
-    "mathematical_reasoning_and_graphs": (
-        "Experiments are route selectors",
-        "A failed agent attempt",
-        "A Lean no-go theorem",
-        "Every no-go keeps its scope visible",
-        "Problem-sized Lean worlds and bounded theorem neighbourhoods",
-        "1,024 Lean modules and 153,396 declarations",
-        "177 exact results, seven open producers, 72 negative results",
-        "designed omission, not exhaustive loading",
-        # The comprehension packet was promoted out of this subsection into one
-        # of its own, and the federation sentence was rewritten there. The
-        # property the old anchor held is the one still pinned: the working
-        # memory federates and copies nothing into a central index. The three
-        # anchors after it pin the rest of that new section, so a later rewrite
-        # cannot delete the packet, its authority boundary, or its two refusals
-        # without this check going red.
-        "nothing is copied into a central index",
-        "Comprehension before the mathematics",
-        "The workspace plans inference and concludes nothing",
-        "reported as unanchored",
-        "semantic second pass",
-        "no projection may bulk-strengthen a family of claims",
+    "world_and_obligations": (
+        "Negative results are part of what the loop produces",
+        "A Lean no-go theorem rules out a class of strategies",
+        "the record states it in exactly that form",
     ),
-    "assurance_and_digestion": (
-        "Comparator: an exact-statement firewall",
+    # The ledger's exact_or_stronger class includes equality: its declarations
+    # state the result or one implying it by an immediate specialisation. An
+    # earlier edition printed it as "a stronger form".
+    "three_questions": (
+        "Lean verifies that a proof establishes the formal statement written in the source",
+        "requires Comparator to reject a deliberately altered statement",
+        "This control exercises that mismatch path",
         "Comparator-checked",
-        "Review selection, and what the Palomar registry is not",
-        "proof generation, verification, exposition, publication and community digestion",
-        "natural friction",
-        "Paper authoring itself participates in this loop",
-        "active digestion and interpretability pass in Tao's sense",
-        "That reflexivity is provenance, not validation",
-        "never local status fields",
+        "The third question stays with people",
+        "state it or a result that implies it by an immediate specialisation",
     ),
-    "worked_boundary_and_failure": (
-        "forall t\\le82",
-        "No matter how large a fixed checked bound is",
+    "escaped_limitation": (
+        "That requirement comes from a test in which a limitation escaped",
         "relationship had not been registered",
-        "Nine of the ten edits were rejected",
-        "original run logs were not retained",
-        "other nine edits were not rerun",
+        "does not technically force a second independent mathematician",
     ),
-    "scale_without_authority_inflation": (
-        "result mining",
-        "semantic single-flight queue",
-        "host-wide Mathlib resource",
-        "four separate scaling limits",
-        "no-go graph as a new mathematical object",
-        "graph-conditioned models",
-        "design target rather than a reported benchmark",
-    ),
-    "public_return_and_credit": (
+    "contribution_cycle": (
+        "research, checking and revision cycle",
+        "an empty search never counts as evidence of no consequence",
+        "Discovery and stewardship",
+        "Neither inherits the other's authority",
         "plain-language research-progress issue or email",
-        "No clone, proof, code, or receipt schema is required",
+        "No clone, proof, code or receipt schema is required",
         "Accepted work receives a public receipt tied to exact artifacts",
         "Acceptance does not establish theorem status, novelty, or release inclusion",
-        "Corrections append history",
-        "Infrastructure has its own",
+    ),
+    "worked_example": (
+        "Problem 1041 shows the cycle end to end",
+        "whether the formal statement matches the 1958 wording",
+    ),
+    "production_boundary": (
+        "Durable state lives in files",
+        "semantic single-flight queue",
+        "recorded separately from theorem failures",
+        "It never changes the status of a mathematical claim",
+        "becomes the exact remaining obligation",
+        "The public repository replays without the private environment",
+    ),
+    # The summary table and the cycle caption once dropped hypotheses the
+    # registry states: #243 needs a strictly increasing sequence of positive
+    # integers, #249's rank formula needs k >= 2 and e >= 1 (at e = 0 the family
+    # is phi(n) alone, of dimension one), and a refutation can settle a problem.
+    # The #257 criterion needs a finite nonempty prime set, and the synthesis
+    # class H_c is defined for c > 0.
+    "result_hypotheses": (
+        "For a strictly increasing sequence of positive integers",
+        r"For every base $k\ge2$ and level $e\ge1$",
+        "a problem closes only when a proof or a refutation settles its original statement",
+        r"fix a finite nonempty set $P$ of primes",
+        r"For $c>0$, let $\mathcal H_c$",
+        r"with $p_n,c_n\in\mathbb Z$ and $2\le p_n\le30$",
+        r"so every fixed $0<c<\tau$ works in the equivalence",
+    ),
+    "related_work": (
+        "is the closest published system",
+        "Persistence, correction, shared work and exact statement checking are therefore overlapping capabilities",
+        "LeanMarathon maintains an evolving blueprint",
+        "a direct precedent for the explanation a world keeps beside a formal proof",
+        # The 28 September revision deleted the July priority and independence
+        # sentence, which no record evidenced, and states the joint-conflict
+        # boundary the frontier query actually has.
+        "the graph keeps no complete set of minimal inconsistent sets",
+    ),
+    # The research loop: who does what, where custody comes, and the limit on
+    # what the record's counts measure.
+    "research_loop": (
+        "a loop between the repository's maintainer and outside research runs",
+        "deciding what an answer means are manual steps",
+        "no field of the record confers kernel authority",
+        "so it never counts as weakening",
+        "predicts nothing about later answers",
+        "These counts describe the process and measure no effect of the loop on the mathematics",
+    ),
+    # The 26 September revision retired the controlled-comparison plan: the
+    # record is measured by what its argument graph reads from the proof
+    # terms, and the paper says that no comparison has been run.
+    "limits_and_scaling": (
+        "The same design serves stronger models",
+        "The graph gives the record a measurement of its own",
+        "no comparison with other organisations of the same material has been run",
+        "whether the workflow made those results more likely has not been measured",
+        "no outside human contributor had opened a pull request or issue",
+    ),
+    # The argument graph's evidence boundary: what the kernel checked, what
+    # rests on the unifier, what is only a lower bound, and the review that
+    # preceded every reported number.
+    "argument_graph": (
+        "A composition, a stronger statement, a weakened theorem or a tactic proof counts only if the kernel "
+        "accepts it",
+        "the kernel checks that theorem and each implication from $H$",
+        "never read as the absence of a producer",
+        "the rest of the graph is a map, and a lower bound",
+        "A disguise class records proved equivalences only",
+        "Importance, difficulty and interest remain judgements for a mathematician",
+        "counted a theorem needing a witness of an empty type as unconditional",
     ),
     "real_public_routes": (
         "docs/ARCHITECTURE.md",
         "lean/Erdos249257.lean",
         "lean/ErdosProblems.lean",
         "docs/claims.json",
-        "docs/verification/PALOMAR_QUALIFICATION.md",
+        "verification/comparator.json",
         "scripts/check_release.py",
         ".github/workflows/lean.yml",
         "docs/research-commons/CREDIT_POLICY.md",
@@ -428,9 +503,22 @@ def validate_guide(text: str) -> None:
         require((GUIDE.parent / path).exists(), f"architecture guide has broken local link {target}")
 
 
+GENERATED_REGION = re.compile(r"(% BEGIN (generated_\w+)\n).*?(% END \2)", re.S)
+
+
+def authored_bytes(text: str) -> int:
+    """Bytes of the paper source with the body of every generated region removed.
+
+    Builders rewrite those regions at release (the semantic-coverage,
+    argument-graph, argument-frontier and record-count macros), so a longer
+    number or list there is not prose growth and must not spend the budget.
+    """
+    return len(GENERATED_REGION.sub(r"\1\3", text).encode("utf-8"))
+
+
 def validate_systems_paper(text: str) -> None:
     """Keep the PDF source architecture-first rather than experiment-first."""
-    size = len(text.encode("utf-8"))
+    size = authored_bytes(text)
     contract = json.loads(safe_architecture_text(PUBLICATION_CONTRACT))
     artifact_count = len(contract["artifacts"])
     byte_budget = (
@@ -442,15 +530,43 @@ def validate_systems_paper(text: str) -> None:
         f"(budget {byte_budget} for {artifact_count} governed artifacts)"
     ))
 
-    require(
-        "Problem-Sized Lean Worlds" in text
-        and "An authority-separated architecture from AI search to public mathematical claims"
-        in text
-    , "systems paper lost its plain architecture title")
+    artifact = next(a for a in contract['artifacts'] if a['id']=='repository_architecture_guide')
+    unified = artifact.get('systems_paper_profile') == 'unified_corpus_to_paper_v1'
+    title = ('A Repository-Based System for Research and Publication'
+             if unified else 'Problem-Sized Lean Worlds')
+    subtitle = (r'Architecture, evidence and iteration in a Lean research repository'
+                if unified else 'Persistent, checkable research records for AI-assisted mathematics')
+    require(title in text and subtitle in text,
+            'systems paper title differs from its registered architecture profile')
     require(
         r"\newcommand{\repobase}{https://github.com/wcook04/plectis-erdos}" in text,
         "systems paper repository links do not use the canonical public repository",
     )
+    # Version 2 preserves the byte budget, entry routes and pinned-link checks,
+    # replacing the old exact-prose scaffold with exhaustive explicit body bindings.
+    # The legacy route below stays available for historical manuscripts.
+    if "% SYSTEMS_PAPER_VERSION 2" in text:
+        import systems_paper_evidence
+        labels=(("sec:intro", "sec:world", "sec:example", "sec:checks", "sec:paper",
+                 "sec:contribute", "sec:evaluation", "sec:related", "sec:limits", "app:repro")
+                if unified else ("sec:intro", "sec:predigestion", "sec:checks", "sec:short", "sec:long",
+                                 "sec:instance", "sec:loop", "sec:evaluation", "sec:related", "sec:limits", "app:repro"))
+        positions=[text.find(r"\label{"+label+"}") for label in labels]
+        require(all(p>=0 for p in positions) and positions==sorted(positions),
+                "systems paper lost the version-2 pipeline section order")
+        if unified:
+            for label in ('sec:short','sec:long','sec:predigestion','sec:loop'):
+                require(r'\label{'+label+'}' in text,
+                        'systems paper lost compatibility reading anchor '+label)
+        for target in ("systems-lifecycle", "systems-research-loop", "systems-trust", "systems-scaling"):
+            require(r"\papersectiontarget{"+target+"}" in text, "systems paper lost section target "+target)
+        validate_pinned_evidence_links(text)
+        problems=systems_paper_counts.pipeline_errors(text, ROOT)
+        problems+=systems_paper_evidence.validate_bound_paper(text, ROOT)
+        require(not problems, "systems paper source contract: "+"; ".join(problems))
+        require(SYSTEMS_PDF.is_file(), "rendered systems architecture PDF is missing")
+        return
+
     require(
         text.count("% BEGIN generated_semantic_coverage_macros") == 1
         and text.count("% END generated_semantic_coverage_macros") == 1,
@@ -485,7 +601,69 @@ def validate_systems_paper(text: str) -> None:
         require((ROOT / target).is_file(), (
             f"systems paper links to missing repository file {target}"
         ))
+    validate_pinned_evidence_links(text)
+    # Every ledger, module, claim and research-record count is a generated macro;
+    # a stale value fails here rather than reaching the PDF.
+    count_errors = systems_paper_counts.errors(text)
+    require(not count_errors, "systems paper counts differ from the checkout "
+            "(python3 scripts/build_systems_paper_counts.py --write): " + "; ".join(count_errors))
     require(SYSTEMS_PDF.is_file(), "rendered systems architecture PDF is missing")
+
+
+PINNED_BLOB_LINK = re.compile(
+    r"\\href\{\\repobase/blob/([0-9a-f]{40})/([^}#\\]+)(?:\\#([^}]+))?\}"
+)
+REPOLINK_PIN = re.compile(
+    r"\\newcommand\{\\repolink\}\[2\]\{\\href\{\\repobase/blob/([0-9a-f]{40})/#1\}"
+)
+
+
+def heading_slug(heading: str) -> str:
+    """GitHub's anchor for a Markdown heading, for the headings this repository uses."""
+    text = re.sub(r"[`*_]", "", heading.strip().lower())
+    text = re.sub(r"[^\w\- ]", "", text)
+    return text.replace(" ", "-")
+
+
+def pinned_file(commit: str, path: str) -> str | None:
+    shown = subprocess.run(
+        ["git", "show", f"{commit}:{path}"],
+        cwd=ROOT, capture_output=True, check=False,
+    )
+    if shown.returncode != 0:
+        return None
+    return shown.stdout.decode("utf-8", errors="replace")
+
+
+def validate_pinned_evidence_links(text: str) -> None:
+    """A pinned link must reach the evidence in the revision it names.
+
+    A URL can resolve to a genuine historical file that predates the
+    assertion sending the reader there. Every \\repolink target must exist at
+    the macro's pinned commit, and every directly pinned \\href must exist at
+    its commit, with any #fragment naming a heading that revision contains.
+    """
+    pin = REPOLINK_PIN.search(text)
+    require(pin is not None, "systems paper lost its pinned repolink macro")
+    for target in re.findall(r"\\repolink\{([^{}]+)\}\{", text):
+        require(pinned_file(pin.group(1), target) is not None, (
+            f"repolink target {target} is absent at its pinned commit {pin.group(1)[:12]}"
+        ))
+    for commit, path, fragment in PINNED_BLOB_LINK.findall(text):
+        body = pinned_file(commit, path)
+        require(body is not None, (
+            f"pinned evidence link {path} is absent at {commit[:12]}"
+        ))
+        if fragment:
+            slugs = {
+                heading_slug(line.lstrip("#"))
+                for line in body.splitlines()
+                if line.startswith("#")
+            }
+            require(fragment in slugs, (
+                f"pinned evidence link {path}#{fragment} names a section "
+                f"absent at {commit[:12]}"
+            ))
 
 
 def validate_entry_links(

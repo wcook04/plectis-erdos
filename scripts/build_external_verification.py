@@ -464,7 +464,9 @@ CHALLENGE_FILENAME = "Challenge.lean"
 
 def _lean_sources() -> list[Path]:
     """Every committed Lean source, excluding build output."""
-    return sorted(p for p in ROOT.rglob("*.lean") if ".lake" not in p.parts)
+    return sorted(
+        p for p in ROOT.rglob("*.lean") if ".lake" not in p.relative_to(ROOT).parts
+    )
 
 
 def sorry_census() -> dict:
@@ -1334,7 +1336,7 @@ def _render_signal_spine(packet: dict, signal_authority: dict) -> list[str]:
             "### Complete inventory, kept subordinate",
             "",
             (
-                "Every contribution family and every statement-isolated interface remains "
+                "Every contribution family and the documented statement-isolated interfaces remain "
                 "queryable in the programme dossiers and the [Comparator interface appendix]"
                 "(#comparator-interface-appendix). Subordination is a presentation judgement, "
                 "not deletion or an adverse mathematical disposition."
@@ -1351,7 +1353,10 @@ def render_human(
     problem_source: dict,
     problem_projection: dict,
     signal_authority: dict,
+    comparator_source: dict | None = None,
 ) -> str:
+    if comparator_source is None:
+        comparator_source, _ = load_comparator_source(packet)
     source_by_id = {row["problem_id"]: row for row in problem_source["problems"]}
     families_by_problem = {
         int(problem["problem"]): problem["families"] for problem in packet["review_matrix"]
@@ -1513,9 +1518,12 @@ def render_human(
             # met it as undefined jargon for the whole document. Define it once,
             # here, ahead of first use. (2026-08-15)
             (
-                f"**How verification works.** The {len(packet['main_results'])} selected "
-                "propositions are declared again without proofs. Comparator checks that the proof-bearing modules "
-                "match those independent statements and a fixed axiom budget. A named "
+                f"**How verification works.** This dossier describes {len(packet['main_results'])} "
+                "selected interfaces. The executable [Comparator roster](../verification/comparator.json) "
+                f"contains {len(comparator_source['theorem_names'])} theorem declarations, including "
+                "those interfaces and companion declarations. Their statements are declared again "
+                "without proofs. Comparator checks that the selected proof declarations match "
+                "those separately declared statements and respect the configured axiom budget. A named "
                 "altered statement must fail. This checks formal propositions only. It "
                 "does not assess exposition, citations, intended meaning, novelty, or "
                 "significance. Technical detail is in the [Comparator interface appendix]"
@@ -1531,7 +1539,7 @@ def render_human(
             "## Comparator interface appendix",
             "",
             *_details_block(
-                f"Show all {len(packet['main_results'])} statement-isolated interfaces",
+                f"Show {len(packet['main_results'])} documented statement-isolated interfaces",
                 interface_body,
             ),
             "## Verification contract and replay",
@@ -1547,7 +1555,7 @@ def render_human(
                 "an unregistered declaration a principal result."
             ),
             (
-                f"The {len(packet['main_results'])} exact interfaces cover all eight programmes. "
+                f"The {len(packet['main_results'])} documented interfaces cover all eight programmes. "
                 "Local proof provenance is recorded separately from novelty, which remains "
                 "unassessed unless a source-fidelity row says otherwise. The trusted challenge "
                 "contains one proposition-package fixture and imports only "
@@ -1721,7 +1729,7 @@ def build_outputs(
             comparator_source,
         ).encode(),
         OUTPUTS["human"]: render_human(
-            packet, problem_source, problem_projection, signal_authority
+            packet, problem_source, problem_projection, signal_authority, comparator_source
         ).encode(),
         OUTPUTS["outreach"]: render_outreach(packet).encode(),
         OUTPUTS["qualification"]: render_qualification(signal_authority).encode(),
@@ -1731,6 +1739,8 @@ def build_outputs(
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true")
+    parser.add_argument("--claim-evidence", action="store_true",
+                        help="check paper-level structural evidence instead of claiming a new replay")
     parser.add_argument(
         "--only",
         choices=tuple(OUTPUTS),
@@ -1739,6 +1749,9 @@ def main() -> int:
         help="check or write only the named projection(s); repeat for a disjoint refresh",
     )
     args = parser.parse_args()
+    if args.claim_evidence:
+        from paper_claim_evidence import cli
+        return cli(["claim-check", "--root", str(ROOT)])
     _, packet, problem_source, problem_projection = load_owner()
     signal_authority = load_signal_authority()
     closure, errors = validate(packet, problem_source)

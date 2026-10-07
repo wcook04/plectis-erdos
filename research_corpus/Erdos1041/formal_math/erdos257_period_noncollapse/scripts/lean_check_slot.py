@@ -20,6 +20,10 @@ USAGE
     python3 research_corpus/Erdos1041/scripts/lean_check_slot.py \
         [--slots 2] [--wait-seconds 5400] [--project-root <lake project>] <file.lean> [lean args...]
 
+``--slots`` defaults to the host's shared semaphore width (the capacity broker's
+seat budget) clamped by the per-elaborator memory ceiling, not to 1.
+``AIW_LEAN_FLEET_SLOTS`` still overrides it exactly.
+
 Exit code is Lean's exit code; 75 if no slot became free within --wait-seconds.
 """
 from __future__ import annotations
@@ -36,6 +40,46 @@ HERE = Path(__file__).resolve()
 DEFAULT_PROJECT = HERE.parents[1]
 SLOT_ROOT = Path.home() / "Library" / "Caches" / "plectis-lean" / "fleet-slots-v1"
 DEFER = 75
+
+# An elaborator has reached roughly 5 GiB RSS on the 24 GiB development host, so
+# the slot count is memory-bounded even when the shared semaphore is wider.
+SLOT_CEILING_DEFAULT = 3
+SLOT_CEILING_ENV = "AIW_LEAN_FLEET_SLOT_CEILING"
+SLOTS_ENV = "AIW_LEAN_FLEET_SLOTS"
+
+
+def _positive_int(value, default: int) -> int:
+    try:
+        parsed = int(value)
+    except (TypeError, ValueError):
+        return default
+    return parsed if parsed > 0 else default
+
+
+def default_slots(env=None) -> int:
+    """Follow the host's shared semaphore width, not a hardcoded one.
+
+    Defaulting to one slot meant a fleet of emits queued on slot 0 while every
+    other slot idled: on 2026-09-21 four wrapper emits serialised for ninety
+    minutes behind that default.  The shared capacity broker already publishes
+    the host's seat budget; use it, clamped by the per-elaborator memory
+    ceiling, and keep the explicit environment override on top.
+    """
+    values = dict(os.environ if env is None else env)
+    explicit = values.get(SLOTS_ENV)
+    if explicit is not None and str(explicit).strip():
+        return _positive_int(explicit, 1)
+    ceiling = _positive_int(values.get(SLOT_CEILING_ENV), SLOT_CEILING_DEFAULT)
+    try:
+        from system.lib.resource_capacity_broker import default_global_seats
+
+        shared = _positive_int(default_global_seats(values), 1)
+    except Exception:
+        # The script also runs from checkouts without the ai_workflow library on
+        # the path; fall back to the same host-derived shape the broker uses.
+        cpu_count = max(1, os.cpu_count() or 1)
+        shared = max(1, cpu_count - max(1, cpu_count // 4))
+    return max(1, min(shared, ceiling))
 
 
 def toolchain_bin(project_root: Path) -> Path:
@@ -77,22 +121,27 @@ def acquire_slot(slots: int, wait_seconds: float):
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--slots", type=int, default=int(os.environ.get("AIW_LEAN_FLEET_SLOTS", "1")))
+    ap.add_argument("--slots", type=int, default=None)
     ap.add_argument("--wait-seconds", type=float, default=5400)
     ap.add_argument("--project-root", type=Path, default=DEFAULT_PROJECT)
     ap.add_argument("file", type=Path)
     ap.add_argument("lean_args", nargs="*")
     args = ap.parse_args()
+    slots = max(1, args.slots) if args.slots else default_slots()
     started = time.monotonic()
     bin_dir = toolchain_bin(args.project_root)
     real_lake = real_binary(bin_dir, "lake")
     real_lean = real_binary(bin_dir, "lean")
-    slot, handle = acquire_slot(max(1, args.slots), args.wait_seconds)
+    slot, handle = acquire_slot(slots, args.wait_seconds)
     if handle is None:
         print(f"lean_check_slot: no free slot after {args.wait_seconds:.0f}s", file=sys.stderr)
         return DEFER
     waited = time.monotonic() - started
-    print(f"lean_check_slot: slot {slot} after {waited:.0f}s wait; {args.file}", file=sys.stderr, flush=True)
+    print(
+        f"lean_check_slot: slot {slot}/{slots} after {waited:.0f}s wait; {args.file}",
+        file=sys.stderr,
+        flush=True,
+    )
     try:
         rc = subprocess.call(
             [str(real_lake), "env", str(real_lean), str(args.file), *args.lean_args],

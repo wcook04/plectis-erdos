@@ -1,0 +1,117 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-24T00:20:49Z",
+  "entry": "E257_45",
+  "github": {
+    "sha": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+    "ref": "refs/heads/palomar/comparator-cycle-20260923",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35935225572",
+    "run_attempt": "1",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E257_45.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_45",
+  "theorem_count": 19,
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAA.Psi_eq_of_residues_eq",
+    "PalomarCorpus.E257.PaperStatementsAA.card_divisors_sub_one",
+    "PalomarCorpus.E257.PaperStatementsAA.dvd_add_iLeast",
+    "PalomarCorpus.E257.PaperStatementsAA.geometric_term_eq_zero_of_lt_iLeast",
+    "PalomarCorpus.E257.PaperStatementsAA.iLeast_congr",
+    "PalomarCorpus.E257.PaperStatementsAA.iLeast_mem_Icc",
+    "PalomarCorpus.E257.PaperStatementsAA.mCount_eq_zero_of_lt_iLeast",
+    "PalomarCorpus.E257.PaperStatementsAA.not_dvd_of_lt_iLeast",
+    "PalomarCorpus.E257.PaperStatementsAA.residue_condition_iff",
+    "PalomarCorpus.E257.PaperStatementsAA.residue_cutoff_reading_fails",
+    "PalomarCorpus.E257.PaperStatementsAA.theta_eq_Psi",
+    "PalomarCorpus.E257.PaperStatementsAA.theta_eq_divisorResidueSum",
+    "PalomarCorpus.E257.PaperStatementsAA.theta_eq_geometricForm",
+    "PalomarCorpus.E257.PaperStatementsAA.theta_eq_tsum_divisorResidue",
+    "PalomarCorpus.E257.PaperStatementsAA.theta_eq_tsum_geometricForm",
+    "PalomarCorpus.E257.PaperStatementsAA.theta_one_one",
+    "PalomarCorpus.E257.PaperStatementsAA.theta_one_three",
+    "PalomarCorpus.E257.PaperStatementsBF.paper_squarefree_support_engine_ceiling",
+    "PalomarCorpus.E257.PaperStatementsL.paper_square_depth_terminal_bound"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "f69aefd480987e79edece8779033bdaaa188dcf3d858fddb7d6d8eb1a5d5d0f1",
+    "comparator.json": "e8f61290071b60143524c732662b3b645d2cb75431036164d99e52fbbbbaa96f",
+    "formalization.yaml": "d65897c9e5de4e37f3fb76913238690638e5bb37989fee285671bed4aaaa25da"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E257_45.lean": "1140e284760fd3e3c7c6209f39742d9a9b8b086cb42dbaf428a21c21788d49f0",
+      "Solutions/PalomarCorpus/E257_45/PaperStatementsAA.lean": "a56d46562b633d20f689830d6d30a0bea1ec762f460230dabb1e6da3d4daf097",
+      "Solutions/PalomarCorpus/E257_45/PaperStatementsBF.lean": "8ed9640f4408391dc92593035042e7ba4ba9d622b2111480ce88eb0dac016b5f",
+      "Solutions/PalomarCorpus/E257_45/PaperStatementsL.lean": "12bb85cad79adf05ed9c6d949dda49469ebefaae54ce0e66c85d70ac08a2f267",
+      "Solutions/PalomarCorpus/E257_45/Statement.lean": "cfdef0785937589284ad3bbb8b6bb1a6a0c4cc64a01a9ef3dc7f91f9dbbc96c6"
+    },
+    "sha256": "54aede0a3e4c73bc5ccb33122259a38bf8658d806ef3b2a1cd2856dd3f68c8d3"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 11.11
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 34.333
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 54.119,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 8.167
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

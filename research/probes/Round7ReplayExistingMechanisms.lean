@@ -1,0 +1,34 @@
+-- Plectis P5 replay request. No new mathematical theorem is declared.
+-- NOT COMPILED IN THIS RETURN. Type A must use the pinned native kernel-probe lane.
+-- Check each exact declaration and its transitive axioms; accept only the repository policy.
+import ErdosProblems.Erdos249.PaperCompleteR7.ArbitraryBaseIsolatedPulse
+import ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables
+import ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadixClassification
+import ErdosProblems.Erdos269.DistinctHeightBlockRadix
+import ErdosProblems.Erdos269.DistinctHeightIrrationality
+import ErdosProblems.ArgumentGraph.Results.Erdos249Endpoint
+import ErdosProblems.Erdos257.DyadicShellSynchronisation
+
+#check ErdosProblems.Erdos249.PaperCompleteR7.ArbitraryBasePulse.no_bounded_lattice_tail_of_pulses
+#print axioms ErdosProblems.Erdos249.PaperCompleteR7.ArbitraryBasePulse.no_bounded_lattice_tail_of_pulses
+
+#check ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.irrational_radixValue_of_pulses
+#print axioms ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.irrational_radixValue_of_pulses
+
+#check ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.radix_residue_series_irrational
+#print axioms ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.radix_residue_series_irrational
+
+#check ErdosProblems.Erdos269.DistinctHeight235.irrational_tsum_blockTerm
+#print axioms ErdosProblems.Erdos269.DistinctHeight235.irrational_tsum_blockTerm
+
+#check ErdosProblems.Erdos269.distinctHeightSum235_irrational
+#print axioms ErdosProblems.Erdos269.distinctHeightSum235_irrational
+
+#check ErdosProblems.Erdos249.PaperCompleteR21.exists_certifiedKill_of_weighted_first_harmonic_gap
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.exists_certifiedKill_of_weighted_first_harmonic_gap
+
+#check ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap
+
+#check ErdosProblems.Erdos257.DyadicShellSynchronisation.exists_common_sample_of_weighted_sum_lt_one
+#print axioms ErdosProblems.Erdos257.DyadicShellSynchronisation.exists_common_sample_of_weighted_sum_lt_one

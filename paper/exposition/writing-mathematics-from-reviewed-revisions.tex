@@ -1,0 +1,38 @@
+% SPDX-FileCopyrightText: 2026 Will Cook
+% SPDX-License-Identifier: CC-BY-4.0
+\documentclass[11pt]{article}
+\usepackage{paper-house-style}
+\usepackage{booktabs,tabularx,array,xurl}
+\usepackage[colorlinks=true,linkcolor=linkinternal,urlcolor=linkexternal,citecolor=linkinternal]{hyperref}
+\hypersetup{pdftitle={Writing Mathematics from the Literature and Reviewed Revisions},pdfauthor={Will Cook},pdflang={en-GB},bookmarksnumbered=true}
+\runninghead{Writing mathematics from reviewed revisions}
+\title{Writing Mathematics from the Literature\\and Reviewed Revisions}
+\subtitle{Worked examples in explaining proofs and reviewing revisions}
+\author{Will Cook}
+\date{7 October 2026}
+\emergencystretch=1.8em
+\newcommand{\caseid}[1]{\texttt{#1}}
+\newcommand{\corpus}{\url{https://github.com/wcook04/plectis-erdos}}
+\begin{document}
+\maketitle
+\paperprovenance
+\begin{abstract}
+A fluent sentence can leave the decisive inference unexplained. This guide
+starts with that difficulty: locate the step a reader cannot reconstruct,
+study a relevant argument in the literature, and explain the step using the
+manuscript's own proof. Worked cases show how a remainder establishes
+attainment, how a target interval determines an error threshold, and why
+convergence of each summand is not yet convergence of an infinite sum.
+Other cases expose changes of scope hidden in ordinary words and distinguish
+what a system records, checks and demonstrates. Drawn from revisions of eight
+Erd\H{o}s-problem papers and their supporting systems manuscript, the examples
+supply reasons and limits for the compact companion's instructions.
+The guide documents editorial practice, not new mathematical results or
+measured improvements in reader understanding.
+\end{abstract}
+\input{exposition/parts/reading.tex}
+\input{exposition/parts/revisions.tex}
+\input{exposition/parts/review.tex}
+\input{exposition/parts/practice.tex}
+\input{exposition/parts/references.tex}
+\end{document}

@@ -3,6 +3,7 @@
   "title": "Rank-27 auxiliary ratchet: forced seam input, phase refinement, and exact non-closure boundary",
   "problem": "257",
   "replaces_role_zone": "Z19",
+  "build_lane": "unbuilt: ErdosProblems/Lift/AngleB1.lean, the module cited in this zone, is in no CI build, so its declarations are stated in source but not kernel-checked by this repository's CI.",
   "concepts": [
     {
       "id": "z42_forced_rank_twenty_seven",

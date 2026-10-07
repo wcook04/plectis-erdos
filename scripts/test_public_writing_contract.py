@@ -2,9 +2,10 @@
 """Check the public split between human mathematical prose and agent machinery."""
 
 import json
+import re
 from pathlib import Path
 
-from check_release import has_release_status_boundary
+from check_release import contributor_gate_posture_errors, has_release_status_boundary
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -28,6 +29,23 @@ def release_status_boundary() -> str:
 
 
 def main() -> None:
+    contributing = " ".join(read("CONTRIBUTING.md").split())
+    require(not contributor_gate_posture_errors(contributing),
+            "current contributor prose must preserve the release-gate policy")
+    for old, new in (
+        ("deliberately broken statements or links are detected",
+         "deliberately broken statements or links are not tested"),
+        ("A failure blocks the release gate", "A failure does not block a release"),
+    ):
+        require(old in contributing, f"contributor-policy fixture missing: {old}")
+        require(bool(contributor_gate_posture_errors(contributing.replace(old, new, 1))),
+                f"contributor guidance understated validation without rejection: {new}")
+    legacy = ("combined baseline-plus-adversarial release-gate check. "
+              "A failure therefore blocks the release gate.")
+    require(not contributor_gate_posture_errors(legacy),
+            "the equivalent earlier gate description must remain accepted")
+    require(bool(contributor_gate_posture_errors(contributing + " diagnostic (not a gate)")),
+            "contradictory diagnostic-only wording must be rejected")
     claims = json.loads(read("docs/claims.json"))
     boundary = release_status_boundary()
     require(has_release_status_boundary(boundary.replace(". ", ".\n"), claims),
@@ -48,8 +66,8 @@ def main() -> None:
     prose = " ".join(human.split())
     boundaries = (
         release_status_boundary(),
-        "The other seven target problems are not resolved here",
-        "Independent human review of correspondence with the historical curve-length formulation has not been recorded",
+        "The other seven targets remain open",
+        "Independent human review of correspondence with the 1958 wording has not been recorded",
         "peer review",
     )
     for boundary in boundaries:
@@ -57,7 +75,13 @@ def main() -> None:
 
     # Current systems manuscripts are also public entry points. Their examples
     # may be historical, but their descriptions of the present corpus must not
-    # restore the superseded blanket status split.
+    # restore the superseded blanket status split. "Eight open Erdős problems"
+    # is the same claim in adjective form: the systems paper printed it on its
+    # first page three lines above "The other seven targets remain open".
+    eight_open = re.compile(
+        r"\beight\s+open\s+(?:Erd(?:ő|\\H\{o\}|o)s\s+)?(?:problems|programmes|targets)\b",
+        re.IGNORECASE,
+    )
     for path in (ROOT / "paper/systems").glob("*.tex"):
         manuscript = " ".join(path.read_text(encoding="utf-8").split())
         for stale in (
@@ -67,20 +91,51 @@ def main() -> None:
             "are the two principal reviewed programmes",
         ):
             require(stale not in manuscript, f"{path.name} repeats obsolete corpus status: {stale}")
+        hit = eight_open.search(manuscript)
+        require(hit is None, f"{path.name} repeats obsolete corpus status: {hit.group(0) if hit else ''}")
+    for sample in (
+        r"\textbf{Instance.} Eight open Erd\H{o}s problems in one Lean repository",
+        "maintains eight open Erdős problems this way",
+    ):
+        require(eight_open.search(sample) is not None, "eight-open status guard lost a known specimen")
+
+    # The public site refuses "one person built this" framing: the work is read
+    # as if a department produced it, and the site deploy scans every rendered
+    # paper for it. The systems paper merged two such sentences that only the
+    # deploy caught, so the manuscripts are checked here, before merge. The
+    # strategy paper's two clauses about overlapping contributor roles are the
+    # only known exceptions.
+    founder = re.compile(r"\b(?:one[- ]person|single[- ]person)\b", re.IGNORECASE)
+    role_clauses = (
+        "one person may perform several, and several people may perform one",
+        "one person may perform both roles",
+    )
+    for path in sorted((ROOT / "paper").rglob("*.tex")):
+        manuscript = " ".join(path.read_text(encoding="utf-8").split())
+        for clause in role_clauses:
+            manuscript = re.sub(re.escape(clause), "", manuscript, flags=re.IGNORECASE)
+        hit = founder.search(manuscript)
+        require(hit is None, f"{path.relative_to(ROOT)} uses one-person framing: {hit.group(0) if hit else ''}")
+    require(founder.search("One person has built the environment") is not None,
+            "one-person framing guard lost its specimen")
 
     # The same blanket split must not survive on the pages a contributor or an
     # outside model reads first. The guard above covered only the manuscripts,
     # so CONTRIBUTING.md and the related-problem map kept the obsolete sentence
     # after the #1041 status changed. The pattern is loose on purpose: it
     # matches the claim, whatever words surround "eight".
-    import re
-
     blanket = re.compile(
         r"\b(?:all|none of the)\s+eight\b[^.]{0,80}?"
         r"(?:remain(?:s)? open|(?:is|are) (?:solved|resolved|unsolved)|problems? is solved)",
         re.IGNORECASE,
     )
     first_contact = [
+        ROOT / ".github/START_HERE_ISSUE.md",
+        ROOT / "README.md",
+        ROOT / "docs/README.md",
+        ROOT / "docs/READING_GUIDE.md",
+        ROOT / "docs/SCOPE.md",
+        ROOT / "docs/RESULTS.md",
         ROOT / "CONTRIBUTING.md",
         ROOT / "AGENTS.md",
         ROOT / "docs/RELATED_PROBLEMS.md",
@@ -91,7 +146,7 @@ def main() -> None:
     ]
     for path in first_contact:
         text = " ".join(path.read_text(encoding="utf-8").split())
-        hit = blanket.search(text)
+        hit = blanket.search(text) or eight_open.search(text)
         require(hit is None, f"{path.relative_to(ROOT)} repeats obsolete corpus status: {hit.group(0) if hit else ''}")
     for sample in (
         "all eight headline Erdős problems remain open unless something happens",

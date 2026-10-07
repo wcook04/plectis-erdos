@@ -1,0 +1,36 @@
+{
+  "schema": "erdos257-public-computation/1",
+  "verification_scope": "finite_computation_only",
+  "claim_boundary": "A finite exact computation over the stated range. It proves no statement about unbounded ranges and decides no Erdős problem. No Lean kernel is run.",
+  "case": "coefficient-macro",
+  "program": "half_prefix_coefficient_macro_verify.cpp",
+  "program_sha256": "6483408053f6a83e2eb74e9563c28f1e3d1f2ef03bc21184760eb8c79069d09d",
+  "arguments": [],
+  "requires": "c++ and GMP",
+  "recorded_on": "2026-09-23",
+  "recorded_with": {
+    "python": "3.13.7",
+    "platform": "macOS-15.6.1",
+    "compiler": "Apple clang version 17.0.0 (clang-1700.0.13.5)"
+  },
+  "observed_wall_seconds": 6.9,
+  "comparison": "integers, strings and booleans exact; floats rel_tol = abs_tol = 1e-12; timing and output-path fields omitted",
+  "paper_figures_reproduced": "The forced half-prefix support reaches depth 13548057 with 6782259 selected ranks; seed and final hashes equal the original receipt.",
+  "result": {
+    "stdout_without_timings": [
+      "reconstructed_seed_depth=423377",
+      "row 1 from=423377 to=846754 defect=0 crossed=false crossing_v=none selected=424221 Vrange=[1,62]",
+      "row 2 from=846754 to=1693507 defect=1 crossed=true crossing_v=0 selected=847611 Vrange=[1,75]",
+      "row 3 from=1693507 to=3387014 defect=0 crossed=false crossing_v=none selected=1695328 Vrange=[1,86]",
+      "row 4 from=3387014 to=6774028 defect=0 crossed=false crossing_v=none selected=3392367 Vrange=[1,105]",
+      "row 5 from=6774028 to=13548057 defect=-1 crossed=false crossing_v=none selected=6782259 Vrange=[1,124]",
+      "final_depth=13548057 selected=6782259"
+    ],
+    "output_sha256": {
+      "coefficient_selected_423377.csv": "eeeed6f9821092fd20f9b4c56837bd80c4d25706f51f01f3f86492efc047fed8",
+      "coefficient_support_423377.bin": "f79d7d7c388b48949114359d15246193d660ce36817b9c22ffdf1fd4903c3a96",
+      "coefficient_selected_final.csv": "77eb2edce29790e423f493f182727387e5cdd7c0a50b2ea3bb9b8d4509fdfede",
+      "coefficient_support_final.bin": "771d1c543a05da2d2d8408a03c383962c559a127c1392adcf8309bd634b137d5"
+    }
+  }
+}

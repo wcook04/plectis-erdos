@@ -8,19 +8,20 @@ PDFs and LaTeX source. Both public repositories include the active papers.
 Older, retired papers are kept only in the repository that published them.
 Some papers may be available in the repository before they appear on the website.
 
-This checkout contains 20 active papers and 1 retired paper and 1 paper awaiting website publication.
+This checkout contains 18 active papers and 3 retired papers and 3 papers awaiting website publication.
 
-## Project papers
+## Systems paper
 
-- [Problem-Sized Lean Worlds](full-text/claim-faithful-publication-systems-paper.md)
-- [From a Cold Clone to a Proof Receipt](full-text/cold-clone-to-proof-receipt.md)
-- [From Spare Compute to Cumulative Mathematics](full-text/open-source-mathematics-strategy.md)
-- [Plectis: What a Stranger Can Check](full-text/plectis-public-system.md)
+- [A Repository-Based System for Research and Publication](full-text/claim-faithful-publication-systems-paper.md)
 
 The mathematical papers are listed below, [by Erdős problem number](#problem-portfolio).
 
 The links above open the full papers as text. The catalogue below
 also links to PDFs, LaTeX sources and individual sections.
+
+Earlier systems papers are retained below as historical background.
+Their dates, superseding paper and source records distinguish them
+from the current account and instructions.
 
 ## Mathematical signal first
 
@@ -250,7 +251,7 @@ not currently earn scarce first-contact attention.
 
 <a id="problem-portfolio"></a>
 
-## All papers (22)
+## All papers (24)
 
 The mathematical papers cover Erdős #68, Erdős #243, Erdős #249, Erdős #251, Erdős #257, Erdős #269, Erdős #1041, Erdős #1049. They state the results obtained and what remains unproved. Retired papers are marked below.
 
@@ -258,49 +259,64 @@ The [problem summaries](../RELATED_PROBLEMS.md) introduce the mathematics. `docs
 
 ### Which exact denominator exclusions are proved for Erdős #68, and what still blocks irrationality?
 
-**Two Incomparable Denominator Exclusions for \sum_{n\ge2}(n!-1)^{-1}**
+**Integer Linear Forms for a Factorial Reciprocal Series**
 
-[full text](full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](../../paper/68/erdos-68-factorial-denominator-irrationality.pdf) · [LaTeX source](../../paper/68/erdos-68-factorial-denominator-irrationality.tex) · 29 sections · `erdos-68-factorial-denominator-irrationality` · native to this repository
+[full text](full-text/erdos-68-factorial-denominator-irrationality.md) · [PDF](../../paper/68/erdos-68-factorial-denominator-irrationality.pdf) · [LaTeX source](../../paper/68/erdos-68-factorial-denominator-irrationality.tex) · 10 sections · `erdos-68-factorial-denominator-irrationality` · native to this repository
 
-Start here (selected for this guide): [The denominator exclusions](full-text/erdos-68-factorial-denominator-irrationality.md#sec:problem), [Integer vectors for cancelling weighted sums](full-text/erdos-68-factorial-denominator-irrationality.md#sec:channels), [Comparing the tail with the distance to an integer](full-text/erdos-68-factorial-denominator-irrationality.md#sec:projection), [The remaining real comparison](full-text/erdos-68-factorial-denominator-irrationality.md#sec:open).
+Archived edition: [aiXiv:2609.03280v1](https://aixiv.online/abs/2609.03280v1) ([PDF](https://aixiv.online/pdf/2609.03280v1), [source archive](https://aixiv.online/src/2609.03280v1)); published 2026-09-27 from [source `551bae6dc6e7`](https://github.com/wcook04/plectis-erdos/blob/551bae6dc6e732cf85172d66323c8d2bc77ba962/paper/68/erdos-68-factorial-denominator-irrationality.tex).
+
+The current source or PDF differs from this frozen edition; the archive record does not cover later changes.
+Archive publication does not establish independent mathematical review.
+
+Start here (selected for this guide): [Introduction](full-text/erdos-68-factorial-denominator-irrationality.md#sec:problem), [An integral basis](full-text/erdos-68-factorial-denominator-irrationality.md#sec:channels), [Possible values of M](full-text/erdos-68-factorial-denominator-irrationality.md#sec:moments), [Nonintegrality of the remainder](full-text/erdos-68-factorial-denominator-irrationality.md#sec:open).
 
 ### What growth, valuation, and finite-denominator facts are proved for ∑_{n≥2}(n!−1)^{-1}, and which tail inequalities remain?
 
-**Denominators and Rationality Criteria for \sum_{n\ge2}(n!-1)^{-1}**
+**Factorial Linear Forms and Denominators Detailed Proofs and Rationality Criteria**
 
-[full text](full-text/erdos68-factorial-reasoning-surface.md) · [PDF](../../paper/68/erdos68-factorial-reasoning-surface.pdf) · [LaTeX source](../../paper/68/erdos68-factorial-reasoning-surface.tex) · 41 sections · `erdos68-factorial-reasoning-surface` · native to this repository
+[full text](full-text/erdos68-factorial-reasoning-surface.md) · [PDF](../../paper/68/erdos68-factorial-reasoning-surface.pdf) · [LaTeX source](../../paper/68/erdos68-factorial-reasoning-surface.tex) · 46 sections · `erdos68-factorial-reasoning-surface` · native to this repository
 
-Start here (selected for this guide): [Rationality and the next integer above a scaled partial sum](full-text/erdos68-factorial-reasoning-surface.md#long68:sec:carry), [Finite denominator exclusions](full-text/erdos68-factorial-reasoning-surface.md#long68:sec:finite), [The remaining arithmetic inputs](full-text/erdos68-factorial-reasoning-surface.md#long68:sec:open), [Relations among the criteria](full-text/erdos68-factorial-reasoning-surface.md#sec:erdos-68-complete-family-map).
+Start here (selected for this guide): [Carries and factorial digits](full-text/erdos68-factorial-reasoning-surface.md#long68:sec:carry), [Finite denominator exclusions](full-text/erdos68-factorial-reasoning-surface.md#long68:sec:finite), [Further arithmetic questions](full-text/erdos68-factorial-reasoning-surface.md#long68:sec:open), [Relations among the criteria](full-text/erdos68-factorial-reasoning-surface.md#sec:erdos-68-complete-family-map).
 
 ### Under what cubic-rate hypothesis is a reciprocal sum irrational, and what separate bounded-increment criterion forces the Sylvester recurrence without settling Erdős #243?
 
-**Cubic-Rate Irrationality and Reciprocal-Tail Rigidity**
+**Reciprocal Sums and the Sylvester Recurrence**
 
-[full text](full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](../../paper/243/erdos-243-reciprocal-tail-rigidity.pdf) · [LaTeX source](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) · 20 sections · `erdos-243-reciprocal-tail-rigidity` · native to this repository
+[full text](full-text/erdos-243-reciprocal-tail-rigidity.md) · [PDF](../../paper/243/erdos-243-reciprocal-tail-rigidity.pdf) · [LaTeX source](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) · 22 sections · `erdos-243-reciprocal-tail-rigidity` · native to this repository
 
-Start here (selected for this guide): [Introduction](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:problem), [Cubic-rate irrationality and further consequences](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:secondaryrate), [Proof under a lower bound on the error](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:bounded), [The remaining arithmetic estimate](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:open).
+Archived edition: [aiXiv:2609.03279v1](https://aixiv.online/abs/2609.03279v1) ([PDF](https://aixiv.online/pdf/2609.03279v1), [source archive](https://aixiv.online/src/2609.03279v1)); published 2026-09-27 from [source `551bae6dc6e7`](https://github.com/wcook04/plectis-erdos/blob/551bae6dc6e732cf85172d66323c8d2bc77ba962/paper/243/erdos-243-reciprocal-tail-rigidity.tex).
+
+The current source or PDF differs from this frozen edition; the archive record does not cover later changes.
+Archive publication does not establish independent mathematical review.
+
+Start here (selected for this guide): [Introduction](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:problem), [Proof of cubic-rate irrationality](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:secondaryrate), [Bounded increases](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:bounded), [Further questions](full-text/erdos-243-reciprocal-tail-rigidity.md#sec:open).
 
 ### Which growth hypotheses make a reciprocal sum irrational, and which sufficient conditions force the Sylvester recurrence without settling Erdős #243?
 
-**Reciprocal-Tail Rigidity: Theorems, Proofs and Questions**
+**Reciprocal Sums and the Sylvester Recurrence: Further Results and Proofs**
 
-[full text](full-text/erdos243-reciprocal-tail-reasoning-surface.md) · [PDF](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf) · [LaTeX source](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex) · 63 sections · `erdos243-reciprocal-tail-reasoning-surface` · native to this repository
+[full text](full-text/erdos243-reciprocal-tail-reasoning-surface.md) · [PDF](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf) · [LaTeX source](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex) · 61 sections · `erdos243-reciprocal-tail-reasoning-surface` · native to this repository
 
-Start here (selected for this guide): [Irrationality at the cubic rate](full-text/erdos243-reciprocal-tail-reasoning-surface.md#long243:sec:cubicrate), [A lower bound on the error forces eventual zero](full-text/erdos243-reciprocal-tail-reasoning-surface.md#long243:sec:bounded), [Complements and further questions](full-text/erdos243-reciprocal-tail-reasoning-surface.md#long243:sec:open), [Result map and proof dependencies](full-text/erdos243-reciprocal-tail-reasoning-surface.md#sec:erdos-243-complete-family-map).
+Start here (selected for this guide): [Irrationality at the cubic rate](full-text/erdos243-reciprocal-tail-reasoning-surface.md#long243:sec:cubicrate), [Bounded negative part](full-text/erdos243-reciprocal-tail-reasoning-surface.md#long243:sec:bounded), [Further questions](full-text/erdos243-reciprocal-tail-reasoning-surface.md#long243:sec:open), [Result map and proof dependencies](full-text/erdos243-reciprocal-tail-reasoning-surface.md#sec:erdos-243-complete-family-map).
 
 ### What explicit basis and integral relations does the totient k-kernel have at every integer base, and why does that not decide Erdős #249?
 
-**Bases and Integral Relations for the k-Kernel of Euler’s Totient**
+**Integral Relations among Totient Sections**
 
-[full text](full-text/erdos-249-binary-totient-series.md) · [PDF](../../paper/249/erdos-249-binary-totient-series.pdf) · [LaTeX source](../../paper/249/erdos-249-binary-totient-series.tex) · 18 sections · `erdos-249-binary-totient-series` · native to this repository
+[full text](full-text/erdos-249-binary-totient-series.md) · [PDF](../../paper/249/erdos-249-binary-totient-series.pdf) · [LaTeX source](../../paper/249/erdos-249-binary-totient-series.tex) · 15 sections · `erdos-249-binary-totient-series` · native to this repository
 
-Start here (selected for this guide): [A basis and all its relations](full-text/erdos-249-binary-totient-series.md#sec:results), [Tail differences and finite residue tests](full-text/erdos-249-binary-totient-series.md#sec:carry-rank), [An equivalent residue condition for each hypothetical denominator](full-text/erdos-249-binary-totient-series.md#sec:frontier), [Information that does not force the gap](full-text/erdos-249-binary-totient-series.md#sec:nogo).
+Archived edition: [aiXiv:2609.03281v1](https://aixiv.online/abs/2609.03281v1) ([PDF](https://aixiv.online/pdf/2609.03281v1), [source archive](https://aixiv.online/src/2609.03281v1)); published 2026-09-27 from [source `551bae6dc6e7`](https://github.com/wcook04/plectis-erdos/blob/551bae6dc6e732cf85172d66323c8d2bc77ba962/paper/249/erdos-249-binary-totient-series.tex).
+
+The current source or PDF differs from this frozen edition; the archive record does not cover later changes.
+Archive publication does not establish independent mathematical review.
+
+Start here (selected for this guide): [Introduction](full-text/erdos-249-binary-totient-series.md#sec:results), [The binary totient series](full-text/erdos-249-binary-totient-series.md#sec:carry-rank), [Equivalent residue conditions](full-text/erdos-249-binary-totient-series.md#sec:frontier), [Comparison sequences](full-text/erdos-249-binary-totient-series.md#sec:nogo).
 
 ### What can the totient-kernel basis and residue tests say about Erdős #249, and which hypotheses still block irrationality?
 
 **The Binary Totient Series**
 
-[full text](full-text/erdos249-totient-reasoning-surface.md) · [PDF](../../paper/249/erdos249-totient-reasoning-surface.pdf) · [LaTeX source](../../paper/249/erdos249-totient-reasoning-surface.tex) · 163 sections · `erdos249-totient-reasoning-surface` · native to this repository
+[full text](full-text/erdos249-totient-reasoning-surface.md) · [PDF](../../paper/249/erdos249-totient-reasoning-surface.pdf) · [LaTeX source](../../paper/249/erdos249-totient-reasoning-surface.tex) · 168 sections · `erdos249-totient-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [Rational comparison sequences](full-text/erdos249-totient-reasoning-surface.md#sec:wall), [Conditions that would imply irrationality](full-text/erdos249-totient-reasoning-surface.md#sec:survivors), [Series identities and finite exclusions](full-text/erdos249-totient-reasoning-surface.md#sec:series), [Exact dyadic rank and the limits of a rank argument](full-text/erdos249-totient-reasoning-surface.md#sec:mahler-defect).
 
@@ -308,105 +324,114 @@ Start here (selected for this guide): [Rational comparison sequences](full-text/
 
 **Sparse Congruence-Preserving Perturbations of Dyadic Series**
 
-[full text](full-text/erdos-251-prime-gap-dyadic-series.md) · [PDF](../../paper/251/erdos-251-prime-gap-dyadic-series.pdf) · [LaTeX source](../../paper/251/erdos-251-prime-gap-dyadic-series.tex) · 13 sections · `erdos-251-prime-gap-dyadic-series` · native to this repository
+[full text](full-text/erdos-251-prime-gap-dyadic-series.md) · [PDF](../../paper/251/erdos-251-prime-gap-dyadic-series.pdf) · [LaTeX source](../../paper/251/erdos-251-prime-gap-dyadic-series.tex) · 12 sections · `erdos-251-prime-gap-dyadic-series` · native to this repository
 
-Start here (selected for this guide): [Introduction](full-text/erdos-251-prime-gap-dyadic-series.md#sec:problem), [Integral shifts: an exact algebraic classification](full-text/erdos-251-prime-gap-dyadic-series.md#sec:tail), [A local certificate and the missing prime input](full-text/erdos-251-prime-gap-dyadic-series.md#sec:local-certificate), [Consequences and limits](full-text/erdos-251-prime-gap-dyadic-series.md#sec:open).
+Archived edition: [aiXiv:2609.03282v1](https://aixiv.online/abs/2609.03282v1) ([PDF](https://aixiv.online/pdf/2609.03282v1), [source archive](https://aixiv.online/src/2609.03282v1)); published 2026-09-27 from [source `551bae6dc6e7`](https://github.com/wcook04/plectis-erdos/blob/551bae6dc6e732cf85172d66323c8d2bc77ba962/paper/251/erdos-251-prime-gap-dyadic-series.tex).
+
+The current source or PDF differs from this frozen edition; the archive record does not cover later changes.
+Archive publication does not establish independent mathematical review.
+
+Start here (selected for this guide): [Introduction](full-text/erdos-251-prime-gap-dyadic-series.md#sec:problem), [Integral shifts](full-text/erdos-251-prime-gap-dyadic-series.md#sec:tail), [Small tail differences and finite tests](full-text/erdos-251-prime-gap-dyadic-series.md#sec:local-certificate), [Further consequences and questions](full-text/erdos-251-prime-gap-dyadic-series.md#sec:open).
 
 ### What exact tail criteria, sparse countermodels, and finite denominator bounds are proved for the prime-gap dyadic series, and why is irrationality still open?
 
 **Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates**
 
-[full text](full-text/erdos251-prime-gap-reasoning-surface.md) · [PDF](../../paper/251/erdos251-prime-gap-reasoning-surface.pdf) · [LaTeX source](../../paper/251/erdos251-prime-gap-reasoning-surface.tex) · 66 sections · `erdos251-prime-gap-reasoning-surface` · native to this repository
+[full text](full-text/erdos251-prime-gap-reasoning-surface.md) · [PDF](../../paper/251/erdos251-prime-gap-reasoning-surface.pdf) · [LaTeX source](../../paper/251/erdos251-prime-gap-reasoning-surface.tex) · 50 sections · `erdos251-prime-gap-reasoning-surface` · native to this repository
 
-Start here (selected for this guide): [The tail recurrence and the exact criteria](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:tail), [What cannot supply the missing input](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:obstructions), [Remaining prime-gap estimates](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:open), [Conclusions](full-text/erdos251-prime-gap-reasoning-surface.md#sec:erdos-251-complete-family-map).
+Start here (selected for this guide): [The tail recurrence and the exact criteria](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:tail), [Coefficient conditions and counterexamples](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:obstructions), [Remaining prime-gap estimates](full-text/erdos251-prime-gap-reasoning-surface.md#long251:sec:open), [Conclusions](full-text/erdos251-prime-gap-reasoning-surface.md#sec:erdos-251-complete-family-map).
 
 ### Which weighted-support Mersenne subseries are proved irrational, and what still blocks the universal Erdős #257 question?
 
-**Weighted Support Criteria for Reciprocal Mersenne Subseries**
+**Irrationality criteria for Lambert subseries**
 
-[full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../paper/257/erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](../../paper/257/erdos-257-mersenne-support-subseries.tex) · 38 sections · `erdos-257-mersenne-support-subseries` · native to this repository
+[full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../paper/257/erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](../../paper/257/erdos-257-mersenne-support-subseries.tex) · 32 sections · `erdos-257-mersenne-support-subseries` · native to this repository
 
-Start here (selected for this guide): [Introduction and main results](full-text/erdos-257-mersenne-support-subseries.md#sec:problem), [Reciprocal-summable supports at every integer base](full-text/erdos-257-mersenne-support-subseries.md#sec:reciprocal-support), [Extensions beyond reciprocal summability](full-text/erdos-257-mersenne-support-subseries.md#sec:eight-return-extensions), [Further questions](full-text/erdos-257-mersenne-support-subseries.md#sec:open).
+Archived edition: [aiXiv:2609.02921v1](https://aixiv.online/abs/2609.02921v1) ([PDF](https://aixiv.online/pdf/2609.02921v1), [source archive](https://aixiv.online/src/2609.02921v1)); published 2026-09-25 from [source `2945372c6d30`](https://github.com/wcook04/plectis-erdos/blob/2945372c6d306dc8c5bf62c95dfd8bc2939c650d/paper/257/erdos-257-mersenne-support-subseries.tex).
+
+The current source or PDF differs from this frozen edition; the archive record does not cover later changes.
+Archive publication does not establish independent mathematical review.
+
+Start here (selected for this guide): [Introduction](full-text/erdos-257-mersenne-support-subseries.md#sec:problem), [Reciprocal-summable supports](full-text/erdos-257-mersenne-support-subseries.md#sec:reciprocal-support), [Finite averages and the weighted criterion](full-text/erdos-257-mersenne-support-subseries.md#sec:eight-return-extensions), [Integer quotients, approximation and further questions](full-text/erdos-257-mersenne-support-subseries.md#sec:open).
 
 ### What weighted and cover criteria prove hereditary Mersenne irrationality for Erdős #257, and which targets remain open?
 
 **Reciprocal Mersenne Subseries**
 
-[full text](full-text/erdos257-mersenne-reasoning-surface.md) · [PDF](../../paper/257/erdos257-mersenne-reasoning-surface.pdf) · [LaTeX source](../../paper/257/erdos257-mersenne-reasoning-surface.tex) · 166 sections · `erdos257-mersenne-reasoning-surface` · native to this repository
+[full text](full-text/erdos257-mersenne-reasoning-surface.md) · [PDF](../../paper/257/erdos257-mersenne-reasoning-surface.pdf) · [LaTeX source](../../paper/257/erdos257-mersenne-reasoning-surface.tex) · 163 sections · `erdos257-mersenne-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [Support criteria and their proofs](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-problem), [Limitations of the recorded methods](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-wall), [Unproved inputs for further arguments](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-survivors), [Reading the detailed record](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-howto).
 
 ### What infinite-rank and tail-arithmetic facts are proved for the three-prime running LCM, and which residue windows remain open?
 
-**The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic**
+**Running least common multiples: distinct values and multiplicities**
 
-[full text](full-text/erdos269-running-lcm-reasoning-surface.md) · [PDF](../../paper/269/erdos269-running-lcm-reasoning-surface.pdf) · [LaTeX source](../../paper/269/erdos269-running-lcm-reasoning-surface.tex) · 46 sections · `erdos269-running-lcm-reasoning-surface` · native to this repository
+[full text](full-text/erdos269-running-lcm-reasoning-surface.md) · [PDF](../../paper/269/erdos269-running-lcm-reasoning-surface.pdf) · [LaTeX source](../../paper/269/erdos269-running-lcm-reasoning-surface.tex) · 58 sections · `erdos269-running-lcm-reasoning-surface` · native to this repository
 
-Start here (selected for this guide): [The problem, and what is settled](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:problem), [Why the third prime prevents finite separation](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:rank), [The remaining arithmetic questions](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:open), [What the results use and what they do not prove](full-text/erdos269-running-lcm-reasoning-surface.md#sec:erdos-269-complete-family-map).
+Start here (selected for this guide): [Two sums from running least common multiples](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:problem), [Separation of the three-prime kernel](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:rank), [The remaining arithmetic questions](full-text/erdos269-running-lcm-reasoning-surface.md#long269:sec:open), [Dependencies and remaining questions](full-text/erdos269-running-lcm-reasoning-surface.md#sec:erdos-269-complete-family-map).
 
-### Why does the Erdős #269 running-LCM kernel admit no finite separable representation, and which residue inequalities remain for {2,3,5}?
+### Why are distinct-height running-LCM sums irrational for finite prime sets of size at least two, and what remains open for the repeated-value Erdős #269 sum?
 
-**No Finite Separable Representation at Three Prime Generators**
+**Distinct running least common multiples**
 
 [full text](full-text/erdos-269-three-prime-running-lcm.md) · [PDF](../../paper/269/erdos-269-three-prime-running-lcm.pdf) · [LaTeX source](../../paper/269/erdos-269-three-prime-running-lcm.tex) · 16 sections · `erdos-269-three-prime-running-lcm` · native to this repository
 
-Start here (selected for this guide): [Introduction](full-text/erdos-269-three-prime-running-lcm.md#sec:problem), [Nonsingular minors of every order](full-text/erdos-269-three-prime-running-lcm.md#sec:rank), [The recurrence for the repeated sum](full-text/erdos-269-three-prime-running-lcm.md#sec:lcm), [A window test and the remaining arithmetic](full-text/erdos-269-three-prime-running-lcm.md#sec:escape).
+Archived edition: [aiXiv:2609.03283v1](https://aixiv.online/abs/2609.03283v1) ([PDF](https://aixiv.online/pdf/2609.03283v1), [source archive](https://aixiv.online/src/2609.03283v1)); published 2026-09-27 from [source `551bae6dc6e7`](https://github.com/wcook04/plectis-erdos/blob/551bae6dc6e732cf85172d66323c8d2bc77ba962/paper/269/erdos-269-three-prime-running-lcm.tex).
+
+The current source or PDF differs from this frozen edition; the archive record does not cover later changes.
+Archive publication does not establish independent mathematical review.
+
+Start here (selected for this guide): [Two sums from running least common multiples](full-text/erdos-269-three-prime-running-lcm.md#sec:problem), [The three-prime kernel](full-text/erdos-269-three-prime-running-lcm.md#sec:rank), [The repeated three-prime sum](full-text/erdos-269-three-prime-running-lcm.md#sec:lcm), [A residue criterion](full-text/erdos-269-three-prime-running-lcm.md#sec:escape).
 
 ### Which explicit short paths and critical-value bounds are proved for Erdős #1041, and which hypotheses do they require?
 
-**Paths in Polynomial Lemniscates: Trinomials and Critical-Value Bounds**
+**Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections**
 
-[full text](full-text/erdos-1041-lemniscate-newton-flow.md) · [PDF](../../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) · [LaTeX source](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) · 39 sections · `erdos-1041-lemniscate-newton-flow` · native to this repository
+[full text](full-text/erdos-1041-lemniscate-newton-flow.md) · [PDF](../../paper/1041/erdos-1041-lemniscate-newton-flow.pdf) · [LaTeX source](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) · 29 sections · `erdos-1041-lemniscate-newton-flow` · native to this repository
 
-Start here (selected for this guide): [Monic trinomials, in every degree](full-text/erdos-1041-lemniscate-newton-flow.md#sec:trinomial), [Low critical values and a uniform path bound](full-text/erdos-1041-lemniscate-newton-flow.md#sec:constant-factor), [Why the proposed spanning-tree estimate fails](full-text/erdos-1041-lemniscate-newton-flow.md#sec:gap), [What a universal path estimate would require](full-text/erdos-1041-lemniscate-newton-flow.md#sec:open).
+Archived edition: [aiXiv:2609.03284v1](https://aixiv.online/abs/2609.03284v1) ([PDF](https://aixiv.online/pdf/2609.03284v1), [source archive](https://aixiv.online/src/2609.03284v1)); published 2026-09-27 from [source `551bae6dc6e7`](https://github.com/wcook04/plectis-erdos/blob/551bae6dc6e732cf85172d66323c8d2bc77ba962/paper/1041/erdos-1041-lemniscate-newton-flow.tex).
+
+The current source or PDF differs from this frozen edition; the archive record does not cover later changes.
+Archive publication does not establish independent mathematical review.
+
+Start here (selected for this guide): [Trinomials and radial segments](full-text/erdos-1041-lemniscate-newton-flow.md#sec:trinomial), [A small least critical value](full-text/erdos-1041-lemniscate-newton-flow.md#sec:constant-factor), [The failed tree estimate](full-text/erdos-1041-lemniscate-newton-flow.md#sec:gap), [Flow constructions and remaining questions](full-text/erdos-1041-lemniscate-newton-flow.md#sec:open).
 
 ### What path-length, critical-value, and coefficient-family results are proved for polynomial lemniscates, and what remains of the unrestricted length-2 problem?
 
-**Paths in Polynomial Lemniscates: Proofs and Examples**
+**Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections**
 
-[full text](full-text/erdos1041-lemniscate-reasoning-surface.md) · [PDF](../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf) · [LaTeX source](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex) · 69 sections · `erdos1041-lemniscate-reasoning-surface` · native to this repository
+[full text](full-text/erdos1041-lemniscate-reasoning-surface.md) · [PDF](../../paper/1041/erdos1041-lemniscate-reasoning-surface.pdf) · [LaTeX source](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex) · 74 sections · `erdos1041-lemniscate-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [A small least critical value](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:low-critical-closure), [Collinear roots and two sparse polynomial families](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:solved-polynomial-families), [Why the proposed spanning-tree estimate fails](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:gap), [Guide to the results](full-text/erdos1041-lemniscate-reasoning-surface.md#sec:erdos-1041-complete-family-map).
 
 ### For Erdős #1049, which rational bases give irrationality of F(a/b), what finite coefficient-pencil statement is Lean checked, and why does 3/2 remain open?
 
-**Zudilin’s Forms at Rational Bases and the Exact Normalised Hankel Order**
+**Hankel Determinants of Geometric Moments and Rational Lambert Values**
 
-[full text](full-text/erdos-1049-rational-base-lambert.md) · [PDF](../../paper/1049/erdos-1049-rational-base-lambert.pdf) · [LaTeX source](../../paper/1049/erdos-1049-rational-base-lambert.tex) · 31 sections · `erdos-1049-rational-base-lambert` · native to this repository
+[full text](full-text/erdos-1049-rational-base-lambert.md) · [PDF](../../paper/1049/erdos-1049-rational-base-lambert.pdf) · [LaTeX source](../../paper/1049/erdos-1049-rational-base-lambert.tex) · 16 sections · `erdos-1049-rational-base-lambert` · native to this repository
 
-Start here (selected for this guide): [Introduction](full-text/erdos-1049-rational-base-lambert.md#sec:problem), [A region of rational bases at which F is irrational](full-text/erdos-1049-rational-base-lambert.md#sec:rational-base-irrationality), [The first nonzero term of Zudilin’s Hankel determinant](full-text/erdos-1049-rational-base-lambert.md#sec:hankel-order), [Supplementary arithmetic at 3/2](full-text/erdos-1049-rational-base-lambert.md#sec:open).
+Archived edition: [aiXiv:2609.03285v1](https://aixiv.online/abs/2609.03285v1) ([PDF](https://aixiv.online/pdf/2609.03285v1), [source archive](https://aixiv.online/src/2609.03285v1)); published 2026-09-27 from [source `551bae6dc6e7`](https://github.com/wcook04/plectis-erdos/blob/551bae6dc6e732cf85172d66323c8d2bc77ba962/paper/1049/erdos-1049-rational-base-lambert.tex).
+
+The current source or PDF differs from this frozen edition; the archive record does not cover later changes.
+Archive publication does not establish independent mathematical review.
+
+Start here (selected for this guide): [Introduction](full-text/erdos-1049-rational-base-lambert.md#sec:problem), [Rational bases](full-text/erdos-1049-rational-base-lambert.md#sec:rational-base-irrationality), [The first nonzero formal term](full-text/erdos-1049-rational-base-lambert.md#sec:hankel-order), [Further questions](full-text/erdos-1049-rational-base-lambert.md#sec:open).
 
 ### Which rational-base and all-rank Hankel results are proved, what does the Lean-checked coefficient pencil establish through rank eight, and why does 3/2 remain open?
 
-**Zudilin’s Forms at Rational Bases: Proofs and Research Record**
+**Geometric Moments and Rational Lambert Values: Proofs and Further Results**
 
 [full text](full-text/erdos1049-rational-base-lambert-reasoning-surface.md) · [PDF](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) · [LaTeX source](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex) · 63 sections · `erdos1049-rational-base-lambert-reasoning-surface` · native to this repository
 
-Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:region), [The sharp q-order of the normalised Hankel determinant](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:hankel-order), [A finite spectral consequence.](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#a-finite-spectral-consequence.), [Complements and further questions](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:open), [Publication scope](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#sec:erdos-1049-complete-family-map).
+Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:region), [The sharp q-order of the normalised Hankel determinant](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:hankel-order), [A finite spectral consequence.](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#a-finite-spectral-consequence.), [Complements and further questions](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:open).
 
-### How does a research system turn agent work into inspectable mathematical claims?
+### How can AI-assisted work on an open problem persist as a record that people and models can check, understand and extend?
 
-**Problem-Sized Lean Worlds**
+**A Repository-Based System for Research and Publication**
 
-[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 49 sections · `claim-faithful-publication-systems` · native to this repository
+[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 41 sections · `claim-faithful-publication-systems` · native to this repository
 
-Start here (selected for this guide): [The whole lifecycle in one picture](full-text/claim-faithful-publication-systems-paper.md#sec:lifecycle), [The mathematical reasoning loop](full-text/claim-faithful-publication-systems-paper.md#sec:mathloop), [One complete boundary: finite is not unbounded](full-text/claim-faithful-publication-systems-paper.md#sec:example), [Inspection routes](full-text/claim-faithful-publication-systems-paper.md#sec:routes), [What can be trusted](full-text/claim-faithful-publication-systems-paper.md#sec:trust).
-
-### How can a reasoning agent comprehend a large Lean corpus before compiling, then cross into replayable proof authority and incremental validation?
-
-**From a Cold Clone to a Proof Receipt**
-
-[full text](full-text/cold-clone-to-proof-receipt.md) · [PDF](../../paper/systems/cold-clone-to-proof-receipt.pdf) · [LaTeX source](../../paper/systems/cold-clone-to-proof-receipt.tex) · 20 sections · `cold-clone-to-proof-receipt` · native to this repository
-
-Start here (selected for this guide): [The cold-clone problem](full-text/cold-clone-to-proof-receipt.md#sec:problem), [A short tour with exact follow-up queries](full-text/cold-clone-to-proof-receipt.md#sec:tour), [From navigation to proof authority](full-text/cold-clone-to-proof-receipt.md#sec:authority), [A replayed case study](full-text/cold-clone-to-proof-receipt.md#sec:dogfood), [Limits and transfer conditions](full-text/cold-clone-to-proof-receipt.md#sec:limits).
-
-### How can outsiders contribute compute, mathematical direction, architecture, or review without receiving authority to declare a proof?
-
-**From Spare Compute to Cumulative Mathematics**
-
-[full text](full-text/open-source-mathematics-strategy.md) · [PDF](../../paper/systems/open-source-mathematics-strategy.pdf) · [LaTeX source](../../paper/systems/open-source-mathematics-strategy.tex) · 32 sections · `open-source-mathematics-strategy` · native to this repository
-
-Start here (selected for this guide): [The strategy](full-text/open-source-mathematics-strategy.md#sec:strategy), [The contribution protocol](full-text/open-source-mathematics-strategy.md#sec:protocol), [From an agent claim to mathematical attention](full-text/open-source-mathematics-strategy.md#sec:attention), [The local-to-general track](full-text/open-source-mathematics-strategy.md#sec:local-to-general), [Limits and governance](full-text/open-source-mathematics-strategy.md#sec:limits).
+Start here (selected for this guide): [Introduction](full-text/claim-faithful-publication-systems-paper.md#sec:intro), [Worked case: reviewing an explanation](full-text/claim-faithful-publication-systems-paper.md#sec:example), [Publication and revision](full-text/claim-faithful-publication-systems-paper.md#sec:paper), [Proof and publication checks](full-text/claim-faithful-publication-systems-paper.md#sec:checks), [Limits](full-text/claim-faithful-publication-systems-paper.md#sec:limits).
 
 ### What may a stranger conclude from public evidence when the author chose both what to publish and what counts as a pass?
 
@@ -422,15 +447,49 @@ Start here (selected for this guide): [The problem](full-text/plectis-public-sys
 
 [full text](full-text/erdos249-257-main-paper.md) · [PDF](../../paper/archive/erdos249-257-main-paper.pdf) · [LaTeX source](../../paper/archive/erdos249-257-main-paper.tex) · 161 sections · `erdos249-257-main` · native to this repository
 
-The author recommends starting with [The two exact reductions](full-text/erdos249-257-main-paper.md#sec:spines), [One transform and the limit of finite evidence](full-text/erdos249-257-main-paper.md#sec:architecture), [The unresolved statements](full-text/erdos249-257-main-paper.md#sec:unresolved).
+Selected sections of this historical account: [The two exact reductions](full-text/erdos249-257-main-paper.md#sec:spines), [One transform and the limit of finite evidence](full-text/erdos249-257-main-paper.md#sec:architecture), [The unresolved statements](full-text/erdos249-257-main-paper.md#sec:unresolved).
 
 ### When do choices of digits and supports fill intervals or force irrationality, and what do the resulting constructions reveal about methods used across the Erdős programmes?
 
 **Reading Eight Erdős Problems Together** · **included here; not yet published on the website**
 
-[full text](full-text/optimal-sparse-perturbations.md) · [PDF](../../paper/synthesis/optimal-sparse-perturbations.pdf) · [LaTeX source](../../paper/synthesis/optimal-sparse-perturbations.tex) · 34 sections · `optimal-sparse-perturbations` · native to this repository
+[full text](full-text/optimal-sparse-perturbations.md) · [PDF](../../paper/synthesis/optimal-sparse-perturbations.pdf) · [LaTeX source](../../paper/synthesis/optimal-sparse-perturbations.tex) · 38 sections · `optimal-sparse-perturbations` · native to this repository
 
 Start here (selected for this guide): [From individual problems to reusable questions](full-text/optimal-sparse-perturbations.md#sec:map), [An exact capacity criterion](full-text/optimal-sparse-perturbations.md#capacity:sec:criterion), [Lambert subsums across bases](full-text/optimal-sparse-perturbations.md#sec:results), [Further questions](full-text/optimal-sparse-perturbations.md#sec:questions).
+
+### How can a reasoning agent comprehend a large Lean corpus before compiling, then cross into replayable proof authority and incremental validation?
+
+**From a Cold Clone to a Proof Receipt** · **retired manuscript**
+
+[full text](full-text/cold-clone-to-proof-receipt.md) · [PDF](../../paper/systems/cold-clone-to-proof-receipt.pdf) · [LaTeX source](../../paper/systems/cold-clone-to-proof-receipt.tex) · 20 sections · `cold-clone-to-proof-receipt` · native to this repository
+
+Superseded by [A Repository-Based System for Research and Publication](full-text/claim-faithful-publication-systems-paper.md). Retained for historical context; use the current paper and repository guides for present practice.
+
+Selected sections of this historical account: [The cold-clone problem](full-text/cold-clone-to-proof-receipt.md#sec:problem), [A short tour with exact follow-up queries](full-text/cold-clone-to-proof-receipt.md#sec:tour), [From navigation to proof authority](full-text/cold-clone-to-proof-receipt.md#sec:authority), [A replayed case study](full-text/cold-clone-to-proof-receipt.md#sec:dogfood), [Limits and transfer conditions](full-text/cold-clone-to-proof-receipt.md#sec:limits).
+
+### How can outsiders contribute compute, mathematical direction, architecture, or review without receiving authority to declare a proof?
+
+**From Spare Compute to Cumulative Mathematics** · **retired manuscript**
+
+[full text](full-text/open-source-mathematics-strategy.md) · [PDF](../../paper/systems/open-source-mathematics-strategy.pdf) · [LaTeX source](../../paper/systems/open-source-mathematics-strategy.tex) · 32 sections · `open-source-mathematics-strategy` · native to this repository
+
+Superseded by [A Repository-Based System for Research and Publication](full-text/claim-faithful-publication-systems-paper.md). Retained for historical context; use the current paper and repository guides for present practice.
+
+Selected sections of this historical account: [The strategy](full-text/open-source-mathematics-strategy.md#sec:strategy), [The contribution protocol](full-text/open-source-mathematics-strategy.md#sec:protocol), [From an agent claim to mathematical attention](full-text/open-source-mathematics-strategy.md#sec:attention), [The local-to-general track](full-text/open-source-mathematics-strategy.md#sec:local-to-general), [Limits and governance](full-text/open-source-mathematics-strategy.md#sec:limits).
+
+### How can reading nearby papers and reviewed revisions improve the explanation of a particular mathematical argument?
+
+**Writing Mathematics from the Literature and Reviewed Revisions** · **included here; not yet published on the website**
+
+[full text](full-text/writing-mathematics-from-reviewed-revisions.md) · [PDF](../../paper/exposition/writing-mathematics-from-reviewed-revisions.pdf) · [LaTeX source](../../paper/exposition/writing-mathematics-from-reviewed-revisions.tex) · 32 sections · `writing-mathematics-from-reviewed-revisions` · native to this repository
+
+Start here (selected for this guide): [Learning to explain a particular argument](full-text/writing-mathematics-from-reviewed-revisions.md#sec:reading), [Explain the choices in a proof](full-text/writing-mathematics-from-reviewed-revisions.md#sec:revisions), [Review changes without changing their meaning](full-text/writing-mathematics-from-reviewed-revisions.md#sec:review), [Keeping a useful practice small](full-text/writing-mathematics-from-reviewed-revisions.md#sec:practice).
+
+### How should an AI write a clear and mathematically faithful paper?
+
+**Writing a Good Mathematical Paper** · **included here; not yet published on the website**
+
+[full text](full-text/writing-a-good-mathematical-paper.md) · [PDF](../../paper/exposition/writing-a-good-mathematical-paper.pdf) · [LaTeX source](../../paper/exposition/writing-a-good-mathematical-paper.tex) · 1 sections · `writing-a-good-mathematical-paper` · native to this repository
 
 ## Evidence and limitations
 
@@ -458,10 +517,12 @@ responsibility for proof verification, status and explanation as follows:
 - `erdos-1049-rational-base-lambert` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #1049, which remains open.
 - `erdos1049-rational-base-lambert-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #1049, which remains open.
 - `optimal-sparse-perturbations` is not authority for a solution to any original Erdős target, historical novelty, independent expert review, or a full Lean proof of the analytic capacity criterion or Lambert-chain theorem.
-- `claim-faithful-publication-systems` is not authority for the mathematical content it uses as its worked example, and the correctness of the human review it preserves.
+- `claim-faithful-publication-systems` is not authority for the mathematics it uses as examples, which the problem papers own, or the novelty and significance of those results.
 - `cold-clone-to-proof-receipt` is not authority for proof validity, optimal reasoning, external mathematical novelty, or demonstrated transfer to another formalisation project.
 - `open-source-mathematics-strategy` is not authority for a solution to any Erdős problem, measured discovery-rate improvement, human peer review, novelty, significance, or community endorsement.
 - `plectis-public-system` is not authority for the private system's internal state, which is not public, and the mathematical results it cites as evidence.
+- `writing-mathematics-from-reviewed-revisions` is not authority for the example mathematics, independent mathematical review, or a measured improvement in reader understanding.
+- `writing-a-good-mathematical-paper` is not authority for a mathematical result, independent review, or a measured improvement in writing.
 
 ## For agents
 

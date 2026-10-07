@@ -1,5 +1,7 @@
 # Erdős 1041: the cone bound is a fact about one HUB, and the hub is free
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: one exact identity, an independent proof of a theorem proved four hours
 earlier by a disjoint route, one closed form, a fixed-hub obstruction with both
 of its natural repairs refuted — and, per §6, **a headline that was wrong**, since

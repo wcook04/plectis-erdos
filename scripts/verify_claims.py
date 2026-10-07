@@ -62,6 +62,8 @@ id was requested).
 from __future__ import annotations
 
 import argparse
+
+from claim_relationships import audit_claim_relationships, resolve_claim_boundary
 import json
 import os
 import re
@@ -74,46 +76,15 @@ from pathlib import Path
 from typing import Any
 
 import validation_singleflight as singleflight
-from lean_source import library_storage_path
+from lean_source import library_storage_path, qualified_declaration_lines
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 CLAIMS_PATH = REPO_ROOT / "docs" / "claims.json"
 
-# Declarations wrap in this corpus: `theorem` frequently sits on its own line
-# with the name indented beneath it. A locator is therefore accepted when the
-# name appears within a short window of the recorded line, provided a
-# declaration keyword introduces it.
+# Coordinates may point at a wrapped declaration's keyword or name line.
+# The shared source resolver owns identity; this window only classifies drift.
 LOCATOR_WINDOW_BEFORE = 2
 LOCATOR_WINDOW_AFTER = 3
-DECLARATION_KEYWORDS = frozenset(
-    {
-        "theorem",
-        "lemma",
-        "def",
-        "abbrev",
-        "instance",
-        "structure",
-        "inductive",
-        "example",
-        "class",
-    }
-)
-
-# Modifiers that may precede the declaration keyword. Missing one of these is
-# what makes a naive matcher report a live declaration as absent.
-DECLARATION_MODIFIERS = frozenset(
-    {
-        "private",
-        "protected",
-        "noncomputable",
-        "partial",
-        "unsafe",
-        "scoped",
-        "local",
-        "nonrec",
-        "@[simp]",
-    }
-)
 
 # Gates that read pinned history. Without that history these fail for a reason
 # that has nothing to do with the mathematics, so they are reported as blocked
@@ -351,56 +322,33 @@ def resolve_declaration(declaration: dict[str, Any]) -> dict[str, Any]:
         return result
     lines = content.splitlines()
 
-    # A declaration inside `namespace Foo` is registered as `Foo.bar` but written
-    # as `bar`, so the final component is an accepted spelling of the same name.
-    spellings = [name] + ([name.rsplit(".", 1)[-1]] if "." in name else [])
-    patterns = [
-        re.compile(r"(?<![A-Za-z0-9_.'])" + re.escape(spelling) + r"(?![A-Za-z0-9_.'])")
-        for spelling in spellings
-    ]
-
-    def mentions(index: int) -> bool:
-        return any(pattern.search(lines[index]) for pattern in patterns)
-
-    def introduces(index: int) -> bool:
-        """Does a declaration keyword introduce the name at or just above `index`?"""
-        start = max(0, index - LOCATOR_WINDOW_BEFORE)
-        for probe in range(index, start - 1, -1):
-            stripped = lines[probe].lstrip()
-            while stripped.startswith("@["):
-                close = stripped.find("]")
-                if close == -1:
-                    break
-                stripped = stripped[close + 1 :].lstrip()
-            tokens = stripped.split()
-            cursor = 0
-            while cursor < len(tokens) and tokens[cursor] in DECLARATION_MODIFIERS:
-                cursor += 1
-            if cursor < len(tokens) and tokens[cursor] in DECLARATION_KEYWORDS:
-                return True
-        return False
-
-    found: int | None = None
-    if isinstance(recorded, int) and 1 <= recorded <= len(lines):
-        window_end = min(len(lines), recorded + LOCATOR_WINDOW_AFTER)
-        for probe in range(recorded - 1, window_end):
-            if mentions(probe):
-                found = probe + 1
-                break
-    if found is not None:
-        result["status"] = "exact" if found == recorded else "in_window"
-        result["resolved_line"] = found
-    else:
-        # Outside the recorded window, require a declaration keyword so that a
-        # call site is never mistaken for the definition.
-        for index in range(len(lines)):
-            if mentions(index) and introduces(index):
-                result["status"] = "drifted"
-                result["resolved_line"] = index + 1
-                break
-        else:
+    # Resolve the actual namespace-qualified declaration through the existing
+    # comment/string-aware source owner before considering its recorded position.
+    declarations = qualified_declaration_lines(content)
+    hits = declarations.get(name)
+    if hits is None:
+        # Claim records may use a short name, but it must identify exactly one
+        # source declaration. An invented namespace cannot qualify a global name.
+        candidates = {qualified: positions for qualified, positions in declarations.items()
+                      if qualified.endswith(f".{name}")}
+        if len(candidates) != 1:
             result["status"] = "declaration_missing"
+            result["resolution_error"] = f"{name}: " + (", ".join(sorted(candidates)) or "no match")
             return result
+        hits = next(iter(candidates.values()))
+    if len(hits) != 1:
+        result["status"] = "declaration_missing"
+        result["resolution_error"] = f"{name}: declared on lines {', '.join(map(str, hits))}"
+        return result
+    found = hits[0]
+    result["resolved_line"] = found
+    if found == recorded:
+        result["status"] = "exact"
+    elif (isinstance(recorded, int) and 1 <= recorded <= len(lines)
+          and recorded - LOCATOR_WINDOW_BEFORE <= found <= recorded + LOCATOR_WINDOW_AFTER):
+        result["status"] = "in_window"
+    else:
+        result["status"] = "drifted"
 
     anchor = (result["resolved_line"] or 1) - 1
     signature: list[str] = []
@@ -513,7 +461,11 @@ def comparator_for(claim_id: str, claims: dict[str, Any]) -> dict[str, Any]:
         "unregistered_contract": packet.get("claim_status_contract", {}).get(
             "unregistered_interface"
         ),
+        # Retain packet context in JSON, with its corpus-wide scope explicit.
         "boundary": packet.get("boundary"),
+        "boundary_scope": packet.get("scope"),
+        "registered_contract": packet.get("claim_status_contract", {}).get("registered_claim"),
+        "novelty_contract": packet.get("claim_status_contract", {}).get("novelty"),
     }
 
 
@@ -521,16 +473,12 @@ def boundary_for(claim: dict[str, Any], claims: dict[str, Any]) -> dict[str, Any
     """Assemble the typed statement of where this claim stops."""
     taxonomy = claims.get("status_taxonomy", {})
     status = claim.get("status", "")
-    open_props = [
-        prop
-        for prop in claims.get("remaining_open_propositions", [])
-        if prop.get("open_target_claim") == claim.get("id")
-    ]
+    relationships = resolve_claim_boundary(claim, claims)
     return {
         "status": status,
         "status_means": taxonomy.get(status, "status is outside the declared taxonomy"),
         "status_in_taxonomy": status in taxonomy,
-        "remaining_open": open_props,
+        **relationships,
         "release_non_claims": claims.get("non_claims", []),
     }
 
@@ -566,7 +514,7 @@ def follow_claim(
         "exposition": exposition_for(claim, label_index),
         "release": claims.get("release", {}),
         "boundary": boundary,
-        "verified": not broken and boundary["status_in_taxonomy"],
+        "verified": not broken and boundary["status_in_taxonomy"] and not boundary["inconsistencies"],
     }
 
 
@@ -624,7 +572,12 @@ def render_claim(report: dict[str, Any]) -> str:
                 f"{comparator['bound_total']} carry a claim id"
             )
             out.extend(quoted(comparator["unregistered_contract"]))
-        out.append("  what Comparator does and does not settle:")
+        # These existing typed contracts describe this selected claim's
+        # binding and priority limits; broader context keeps its explicit label.
+        if comparator["status"] == "bound":
+            out.extend(quoted(comparator.get("registered_contract")))
+        out.extend(quoted(comparator.get("novelty_contract")))
+        out.append("  packet-wide context (may concern other claims):")
         out.extend(quoted(comparator["boundary"], "           "))
         out.append("")
 
@@ -657,11 +610,23 @@ def render_claim(report: dict[str, Any]) -> str:
         out.append(f"  !! status {boundary['status']!r} is not in the declared taxonomy")
     out.append(f"  ceiling: {boundary['status_means']}")
     if boundary["remaining_open"]:
-        out.append("  open propositions still targeting this claim:")
+        out.append("  related remaining open propositions:")
         for prop in boundary["remaining_open"]:
-            out.append(f"    - [{prop.get('status')}] {prop.get('statement')}")
-    else:
+            relation = next(row for row in boundary["remaining_open_relationships"]
+                            if row["proposition_id"] == prop["id"])
+            kinds = relation["relation_kinds"]
+            meaning = []
+            if "remaining_open_proposition_ids" in kinds:
+                meaning.append("claim bears on this unresolved proposition")
+            if "open_target_claim" in kinds:
+                meaning.append("claim represents the unresolved target")
+            out.append(f"    - {prop['id']} [{prop.get('status')}] {prop.get('statement')}")
+            out.append(f"      relationship: {'; '.join(meaning)}")
+    elif not boundary["inconsistencies"]:
         out.append("  no remaining open proposition is registered against this claim id")
+    for issue in boundary["inconsistencies"]:
+        out.append(f"  !! registry inconsistency: {issue['status']} "
+                   f"({issue['proposition_id']}, {issue['relation_kind']})")
     out.append("  this release does not claim:")
     for non in boundary["release_non_claims"]:
         out.append(f"    - {non.get('meaning')}")
@@ -702,10 +667,7 @@ def verify_all_claims(claims: dict[str, Any]) -> dict[str, Any]:
             comparator_bound += 1
 
     known = {claim.get("id") for claim in claims.get("claims", [])}
-    for prop in claims.get("remaining_open_propositions", []):
-        target = prop.get("open_target_claim")
-        if target and target not in known:
-            problems.append({"claim": target, "status": "open_proposition_targets_unknown_claim"})
+    problems.extend(audit_claim_relationships(claims))
 
     # The sibling of the check above, on the other edge into the register: a
     # Comparator interface may name a claim id, and that binding must not

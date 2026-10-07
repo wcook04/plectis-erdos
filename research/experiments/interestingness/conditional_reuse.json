@@ -1,0 +1,1298 @@
+{
+  "schema": "indexed-conditional-reuse/1",
+  "source": "https://arxiv.org/abs/2609.28603",
+  "question": "Which existing inspectable lemma proofs can be treated as available to reduce the indexed proof-source subtotal of this frozen workload?",
+  "context": {
+    "initial_available_indexed_declarations": [],
+    "external_dependencies": "mathlib and other unindexed declarations are uncosted",
+    "cost_unit": "nonempty source proof lines from the shared declaration-span parser",
+    "union": "Count each reachable indexed declaration once across all eight targets; stop traversing when an available declaration is reached.",
+    "independent": "Sum eight separately checked target closures; shared prerequisites may be charged once per target but never twice within one target.",
+    "selection": "Greedy marginal union reduction, recalculated after every cut; no optimality guarantee. Complementary cuts violate diminishing returns.",
+    "candidate_screen": "Reachable indexed theorem/lemma, not a target, not atlas-tagged generated, at least three own proof-source lines. The body-length screen is explicit and does not judge short lemmas unimportant.",
+    "boundary": "No shortest-proof, novelty, significance, learned predictor, review-time, or prospective allocation claim. Private helpers and unresolved edges are absent; source spans are heuristic. Availability is a hypothetical inspection context, not new mathematical reuse.",
+    "validation": "The Python graph calculation is replayed; no Lean kernel or Comparator replay is run by this analysis."
+  },
+  "provenance": {
+    "dependency_index_sha256": "sha256:741e4b9bda5aa8622a28f84fd096694002a5223fdf46c2571134c57f18642d23",
+    "declaration_atlas_sha256": "sha256:21ae09866bf2a494741aafb8609afc2052468f4e21be51d4370a52b0966eb148",
+    "paper_coverage_sha256": "sha256:53274345ac4086baad5cfd1b23d4bfcb04c16a4c42d1be2c321faff5adced60c",
+    "lean_sources_sha256": {
+      "lean/ErdosProblems/Erdos251/GrowingBlocksR11.lean": "sha256:7348e7a74ba45052fd6e3a117de46d86be2c9e99dbf5de1dcb73ef2c64eec663",
+      "lean/ErdosProblems/Erdos251/PaperSparseCouplingR7.lean": "sha256:9b3203aaa108b5c85ba7529a3384215be29b1e2a7b0f6225a352a20de563fd82",
+      "lean/ErdosProblems/Erdos251/ResidueFeedbackCore.lean": "sha256:d44a7e9332383de07b2ef2717637c2b95206298d279285dfca6cbdd783cc448e",
+      "lean/ErdosProblems/Erdos251/SparseAmbientR9.lean": "sha256:871af010436c3040d5405a6f06153168d94a8a9f0140b77f0b9f5e951ffd731a",
+      "lean/ErdosProblems/Erdos251/SparseIntervalR8.lean": "sha256:3b35245d7f1c49891d62d4be4c975747b1f17ad4ea1eac02c7d6b6abb2ec349d",
+      "lean/ErdosProblems/Erdos251/SparsePaperR11.lean": "sha256:3fee7328b1f841c7f41576a9db7e6f3cfb84670f2895edeb8714870e7c0d69a2",
+      "lean/ErdosProblems/Erdos251/SparsePolylogR11.lean": "sha256:15ff57dba3eb207eec3b4f6d19e39901880c52033f0f04d646a2ef40a0a3f1a8",
+      "lean/ErdosProblems/Erdos251/SparseRationalisationCore.lean": "sha256:b01730f0ebfb48e2edaa2aa6e4dabf1e77a9ed17b0e7698e416a03ec7ae791da",
+      "lean/ErdosProblems/Erdos251/SparseScheduleDensityR8.lean": "sha256:207c8b953bc4b7aa640e71316196ff236c08ae673769a3d9fedb18ff87eeb623",
+      "lean/ErdosProblems/Erdos251/SparseScheduleR8.lean": "sha256:bb569eb32228f6d575b3e0c3ca90dd1029d77c50ac55a1749441d4bf957735dd",
+      "lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean": "sha256:15b722f85d9972ab2a4564add23ff4e4478280116d1dc71a99310fab44432f04",
+      "lean/ErdosProblems/Erdos269/DyadicBlockMassIdentity.lean": "sha256:aa8a13d21f911f5ac181e6af049b83794b37b5e8633bfe387addde18a01b789d",
+      "lean/ErdosProblems/Erdos269/DyadicBlockThresholdPartition.lean": "sha256:0db1ce6438fc4eeb85854bd174849f3fa51ce33c0757a72518d28a5ccf0e9f2b",
+      "lean/ErdosProblems/Erdos269/DyadicOrderedTailRecurrence.lean": "sha256:b591d5f23c6d6bb8c486f2a3390a41ee03ff90e2d9da2cd2165e79d9755bf06a",
+      "lean/ErdosProblems/Erdos269/DyadicShellSummability.lean": "sha256:42455b1fe8f36dfc2e83d58c469b0fd8268c3d7928b71843022dd308fd6f69ad",
+      "lean/ErdosProblems/Erdos269/IntegralBranchExtinction.lean": "sha256:3c6bc417ae44e7fc80db7893ac3f33626a9ef954d60fe424ea93e102d7b57e3f",
+      "lean/ErdosProblems/Erdos269/KernelCarryRank.lean": "sha256:8b32ea2f9583cbea2d5c31c53da1f76400a4f3312a888bea0598016c16044839",
+      "lean/ErdosProblems/Erdos269/NormalizedStateWidth.lean": "sha256:b49f4fa065ffb17cea01ca92f71a4a8c1c7fa4f7067afe430f72c76512951566",
+      "lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean": "sha256:a67ae2aa8415541d0bbd8728e933f3342d6223722214d78d462d1341fabfe092",
+      "lean/ErdosProblems/Erdos269/PaperR7ActualOrbit.lean": "sha256:0d473c1cf29b5844953fa062c4fda266c579a1c8a4bcbe40f62b4b53ec1cce75",
+      "lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean": "sha256:a65d953d4bc0fba1b4d9d79cc6366fa96dae92f2943ad00e2b3f89831ff2d02f",
+      "lean/ErdosProblems/Erdos269/PaperR7RationalBridge.lean": "sha256:e4c143c5baf513ff9aa8eae1e4206f918411707126ae39e72d339119f47de377",
+      "lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean": "sha256:523ca9807390180396b07f987ec1f0f1fe4004c648974ebea83045e3b926dedd",
+      "lean/ErdosProblems/Erdos269/PaperR7WindowResults.lean": "sha256:eb8352e0234696bbd5c2e24bbce6a1874b25ccd80814e11c5a05c3afc4958bd8",
+      "lean/ErdosProblems/Erdos269/RationalLatticeReduction.lean": "sha256:e9eed3065bb7e93cf784f8c412b1c9eeb1e29383e9ceaa1665bb0ea5076aa24d",
+      "lean/ErdosProblems/Erdos269/RationalityCarryBridge.lean": "sha256:9abe5bfcb4423e19f123e002eab0ff762c63f86b9715663d5b7ff5e36c4f44a8",
+      "lean/ErdosProblems/Erdos269/ResidueEscape.lean": "sha256:826a3dd901c86f1876c7e03011447dafef8d3cb139a673227e921bef3a9dfe87",
+      "lean/ErdosProblems/Erdos269/RestrictedFloorSum.lean": "sha256:7369d105e5cb014188e31fa44fdccb03b2c40bdfe4719f6e227555c1c30b0bd3",
+      "lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean": "sha256:769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036",
+      "lean/ErdosProblems/Shared/IrrationalRotationStaircase.lean": "sha256:c3c2013d856ecedc3751e6fb0a4ac237e3ea397aa96fd475c76811137a74ba71"
+    },
+    "implementation_sha256": "sha256:2a3a2a4d6b207efd34eeeb267f4eb2781d50f7b3bed754f0d77e799a85f16e3d",
+    "shared_cost_implementation_sha256": "sha256:fb4cee3e450bac365c3a8e8b71828ac4c27c3dd665578a7d74fa7ead1746a868"
+  },
+  "targets": [
+    {
+      "paper_row": "erdos-251-prime-gap-dyadic-series#res:sparserationalisation",
+      "paper_source_ref": "paper/251/erdos-251-prime-gap-dyadic-series.tex:90",
+      "statement_sha256": "sha256:7de874b2b88e80be5e8352fbccd1f71cb165b302972bebf6be8806a2f3dacafb",
+      "paper_source_sha256": "sha256:3b9a9c7c5b29fbf6c6c8bb782c75217c51fc8104e64333d939e050b76367bc80",
+      "recorded_lean_relation": "exact_or_stronger",
+      "handle": "ErdosProblems.Erdos251.PaperR9.SparseAmbient.arbitrary_word_sparse_rationalisation_uniform",
+      "source_ref": "lean/ErdosProblems/Erdos251/SparseAmbientR9.lean:269",
+      "source_sha256": "sha256:871af010436c3040d5405a6f06153168d94a8a9f0140b77f0b9f5e951ffd731a",
+      "indexed_subtotal": 676
+    },
+    {
+      "paper_row": "erdos-251-prime-gap-dyadic-series#res:sparserationalisation",
+      "paper_source_ref": "paper/251/erdos-251-prime-gap-dyadic-series.tex:90",
+      "statement_sha256": "sha256:7de874b2b88e80be5e8352fbccd1f71cb165b302972bebf6be8806a2f3dacafb",
+      "paper_source_sha256": "sha256:3b9a9c7c5b29fbf6c6c8bb782c75217c51fc8104e64333d939e050b76367bc80",
+      "recorded_lean_relation": "exact_or_stronger",
+      "handle": "ErdosProblems.Erdos251.PaperR11.SparsePaper.polylogarithmic_word_interval_uniform",
+      "source_ref": "lean/ErdosProblems/Erdos251/SparsePaperR11.lean:137",
+      "source_sha256": "sha256:3fee7328b1f841c7f41576a9db7e6f3cfb84670f2895edeb8714870e7c0d69a2",
+      "indexed_subtotal": 1177
+    },
+    {
+      "paper_row": "erdos-269-three-prime-running-lcm#res:infinite-rank",
+      "paper_source_ref": "paper/269/erdos-269-three-prime-running-lcm.tex:75",
+      "statement_sha256": "sha256:e455e5b51ffff6f69223a25794e6e22121a5fbd938b8e5911ba869865e2219d9",
+      "paper_source_sha256": "sha256:848b631510dbda4efdfce326b348e7b3d650b6de3e3f9449c0710f2cb6e6e865",
+      "recorded_lean_relation": "exact_or_stronger",
+      "handle": "ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation",
+      "source_ref": "lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean:22",
+      "source_sha256": "sha256:a65d953d4bc0fba1b4d9d79cc6366fa96dae92f2943ad00e2b3f89831ff2d02f",
+      "indexed_subtotal": 500
+    },
+    {
+      "paper_row": "erdos-269-three-prime-running-lcm#res:denominator-reduction",
+      "paper_source_ref": "paper/269/erdos-269-three-prime-running-lcm.tex:434",
+      "statement_sha256": "sha256:1ff86c656878bf54aa6377092ff239766b55585f10684ba06fc6331f3c1adc95",
+      "paper_source_sha256": "sha256:848b631510dbda4efdfce326b348e7b3d650b6de3e3f9449c0710f2cb6e6e865",
+      "recorded_lean_relation": "exact_or_stronger",
+      "handle": "ErdosProblems.Erdos269.PaperR7.short_fixed_split_bridge",
+      "source_ref": "lean/ErdosProblems/Erdos269/PaperR7RationalBridge.lean:80",
+      "source_sha256": "sha256:e4c143c5baf513ff9aa8eae1e4206f918411707126ae39e72d339119f47de377",
+      "indexed_subtotal": 1077
+    },
+    {
+      "paper_row": "erdos-269-three-prime-running-lcm#res:exact-onset",
+      "paper_source_ref": "paper/269/erdos-269-three-prime-running-lcm.tex:469",
+      "statement_sha256": "sha256:73ce6d68f74531ce8edf71826be0b6a406f56724eeffe6f7639125aa0eaf56c5",
+      "paper_source_sha256": "sha256:848b631510dbda4efdfce326b348e7b3d650b6de3e3f9449c0710f2cb6e6e865",
+      "recorded_lean_relation": "exact",
+      "handle": "ErdosProblems.Erdos269.PaperR13.exact_denominators_and_minimal_clearing",
+      "source_ref": "lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean:334",
+      "source_sha256": "sha256:a67ae2aa8415541d0bbd8728e933f3342d6223722214d78d462d1341fabfe092",
+      "indexed_subtotal": 870
+    },
+    {
+      "paper_row": "erdos-269-three-prime-running-lcm#res:exact-onset",
+      "paper_source_ref": "paper/269/erdos-269-three-prime-running-lcm.tex:469",
+      "statement_sha256": "sha256:73ce6d68f74531ce8edf71826be0b6a406f56724eeffe6f7639125aa0eaf56c5",
+      "paper_source_sha256": "sha256:848b631510dbda4efdfce326b348e7b3d650b6de3e3f9449c0710f2cb6e6e865",
+      "recorded_lean_relation": "exact",
+      "handle": "ErdosProblems.Erdos269.PaperR13.scaled_state_is_integer_iff_firstClearingIndex_le",
+      "source_ref": "lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean:309",
+      "source_sha256": "sha256:a67ae2aa8415541d0bbd8728e933f3342d6223722214d78d462d1341fabfe092",
+      "indexed_subtotal": 284
+    },
+    {
+      "paper_row": "erdos-269-three-prime-running-lcm#res:exact-onset",
+      "paper_source_ref": "paper/269/erdos-269-three-prime-running-lcm.tex:469",
+      "statement_sha256": "sha256:73ce6d68f74531ce8edf71826be0b6a406f56724eeffe6f7639125aa0eaf56c5",
+      "paper_source_sha256": "sha256:848b631510dbda4efdfce326b348e7b3d650b6de3e3f9449c0710f2cb6e6e865",
+      "recorded_lean_relation": "exact",
+      "handle": "ErdosProblems.Erdos269.PaperR13.clearingCondition_iff_max",
+      "source_ref": "lean/ErdosProblems/Erdos269/PaperExactDenominatorR13.lean:166",
+      "source_sha256": "sha256:a67ae2aa8415541d0bbd8728e933f3342d6223722214d78d462d1341fabfe092",
+      "indexed_subtotal": 2
+    },
+    {
+      "paper_row": "erdos-269-three-prime-running-lcm#res:windowconsumer",
+      "paper_source_ref": "paper/269/erdos-269-three-prime-running-lcm.tex:534",
+      "statement_sha256": "sha256:0d9ff8e4757ce37a274a706af2598af55924c7527674b9fd545490d9e0eb6bd3",
+      "paper_source_sha256": "sha256:848b631510dbda4efdfce326b348e7b3d650b6de3e3f9449c0710f2cb6e6e865",
+      "recorded_lean_relation": "exact_or_stronger",
+      "handle": "ErdosProblems.Erdos269.PaperR7.short_window_equivalence",
+      "source_ref": "lean/ErdosProblems/Erdos269/PaperR7WindowResults.lean:51",
+      "source_sha256": "sha256:eb8352e0234696bbd5c2e24bbce6a1874b25ccd80814e11c5a05c3afc4958bd8",
+      "indexed_subtotal": 1549
+    }
+  ],
+  "summary": {
+    "target_declarations": 8,
+    "paper_rows": 5,
+    "target_modules": 6,
+    "reachable_declarations": 339,
+    "candidate_count": 220,
+    "excluded_by_first_matching_rule": {
+      "body_under_three_source_lines": 23,
+      "not_theorem_or_lemma": 88,
+      "target_itself": 8
+    },
+    "baseline_union_subtotal": 3529,
+    "baseline_independent_subtotal": 6135,
+    "omitted_internal_references_in_union": 177,
+    "greedy_final_union_subtotal": 1721
+  },
+  "top_initial_marginals": [
+    {
+      "handle": "ErdosProblems.Erdos269.actualCofinalLocalWindowEscape_iff_irrational_value",
+      "source_ref": "lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:398",
+      "source_sha256": "sha256:15b722f85d9972ab2a4564add23ff4e4478280116d1dc71a99310fab44432f04",
+      "own_source_lines": 10,
+      "indexed_subtotal": 1356,
+      "direct_users": 1,
+      "direct_use_times_subtotal": 1356,
+      "direct_use_times_subtotal_rank_in_same_pool": 19,
+      "marginal_union_reduction": 491,
+      "marginal_independent_reduction": 969,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_window_equivalence",
+          "marginal_subtotal_reduction": 969
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:398 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving."
+    },
+    {
+      "handle": "ErdosProblems.Erdos269.exists_uniform_nonsingular_threePrimeKernel_minor_of_prime",
+      "source_ref": "lean/ErdosProblems/Erdos269/KernelCarryRank.lean:376",
+      "source_sha256": "sha256:8b32ea2f9583cbea2d5c31c53da1f76400a4f3312a888bea0598016c16044839",
+      "own_source_lines": 3,
+      "indexed_subtotal": 471,
+      "direct_users": 2,
+      "direct_use_times_subtotal": 942,
+      "direct_use_times_subtotal_rank_in_same_pool": 26,
+      "marginal_union_reduction": 465,
+      "marginal_independent_reduction": 465,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation",
+          "marginal_subtotal_reduction": 465
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos269/KernelCarryRank.lean:376 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving."
+    },
+    {
+      "handle": "ErdosProblems.Erdos269.exists_uniform_nonsingular_threePrimeKernel_minor",
+      "source_ref": "lean/ErdosProblems/Erdos269/KernelCarryRank.lean:313",
+      "source_sha256": "sha256:8b32ea2f9583cbea2d5c31c53da1f76400a4f3312a888bea0598016c16044839",
+      "own_source_lines": 53,
+      "indexed_subtotal": 423,
+      "direct_users": 1,
+      "direct_use_times_subtotal": 423,
+      "direct_use_times_subtotal_rank_in_same_pool": 48,
+      "marginal_union_reduction": 417,
+      "marginal_independent_reduction": 417,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation",
+          "marginal_subtotal_reduction": 417
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos269/KernelCarryRank.lean:313 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving."
+    },
+    {
+      "handle": "ErdosProblems.Erdos251.PaperR9.SparseAmbient.generated_ambient_filling_uniform",
+      "source_ref": "lean/ErdosProblems/Erdos251/SparseAmbientR9.lean:163",
+      "source_sha256": "sha256:871af010436c3040d5405a6f06153168d94a8a9f0140b77f0b9f5e951ffd731a",
+      "own_source_lines": 28,
+      "indexed_subtotal": 536,
+      "direct_users": 3,
+      "direct_use_times_subtotal": 1608,
+      "direct_use_times_subtotal_rank_in_same_pool": 12,
+      "marginal_union_reduction": 270,
+      "marginal_independent_reduction": 559,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos251.PaperR9.SparseAmbient.arbitrary_word_sparse_rationalisation_uniform",
+          "marginal_subtotal_reduction": 289
+        },
+        {
+          "handle": "ErdosProblems.Erdos251.PaperR11.SparsePaper.polylogarithmic_word_interval_uniform",
+          "marginal_subtotal_reduction": 270
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos251/SparseAmbientR9.lean:163 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving."
+    },
+    {
+      "handle": "ErdosProblems.Erdos251.PaperR11.SparsePolylog.polylog_extended_rate",
+      "source_ref": "lean/ErdosProblems/Erdos251/SparsePolylogR11.lean:375",
+      "source_sha256": "sha256:15ff57dba3eb207eec3b4f6d19e39901880c52033f0f04d646a2ef40a0a3f1a8",
+      "own_source_lines": 3,
+      "indexed_subtotal": 418,
+      "direct_users": 4,
+      "direct_use_times_subtotal": 1672,
+      "direct_use_times_subtotal_rank_in_same_pool": 11,
+      "marginal_union_reduction": 261,
+      "marginal_independent_reduction": 261,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos251.PaperR11.SparsePaper.polylogarithmic_word_interval_uniform",
+          "marginal_subtotal_reduction": 261
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos251/SparsePolylogR11.lean:375 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving."
+    },
+    {
+      "handle": "ErdosProblems.Erdos251.PaperR11.SparsePolylog.polylog_extended_rate_uniform",
+      "source_ref": "lean/ErdosProblems/Erdos251/SparsePolylogR11.lean:363",
+      "source_sha256": "sha256:15ff57dba3eb207eec3b4f6d19e39901880c52033f0f04d646a2ef40a0a3f1a8",
+      "own_source_lines": 8,
+      "indexed_subtotal": 415,
+      "direct_users": 1,
+      "direct_use_times_subtotal": 415,
+      "direct_use_times_subtotal_rank_in_same_pool": 49,
+      "marginal_union_reduction": 258,
+      "marginal_independent_reduction": 258,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos251.PaperR11.SparsePaper.polylogarithmic_word_interval_uniform",
+          "marginal_subtotal_reduction": 258
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos251/SparsePolylogR11.lean:363 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving."
+    },
+    {
+      "handle": "ErdosProblems.Erdos251.PaperR11.SparsePolylog.polylog_extended_rate_withQ",
+      "source_ref": "lean/ErdosProblems/Erdos251/SparsePolylogR11.lean:307",
+      "source_sha256": "sha256:15ff57dba3eb207eec3b4f6d19e39901880c52033f0f04d646a2ef40a0a3f1a8",
+      "own_source_lines": 50,
+      "indexed_subtotal": 407,
+      "direct_users": 1,
+      "direct_use_times_subtotal": 407,
+      "direct_use_times_subtotal_rank_in_same_pool": 50,
+      "marginal_union_reduction": 250,
+      "marginal_independent_reduction": 250,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos251.PaperR11.SparsePaper.polylogarithmic_word_interval_uniform",
+          "marginal_subtotal_reduction": 250
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos251/SparsePolylogR11.lean:307 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving."
+    },
+    {
+      "handle": "ErdosProblems.Erdos269.irrational_of_cofinalLocalWindowEscape",
+      "source_ref": "lean/ErdosProblems/Erdos269/RationalityCarryBridge.lean:414",
+      "source_sha256": "sha256:9abe5bfcb4423e19f123e002eab0ff762c63f86b9715663d5b7ff5e36c4f44a8",
+      "own_source_lines": 12,
+      "indexed_subtotal": 1068,
+      "direct_users": 2,
+      "direct_use_times_subtotal": 2136,
+      "direct_use_times_subtotal_rank_in_same_pool": 7,
+      "marginal_union_reduction": 228,
+      "marginal_independent_reduction": 397,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_window_equivalence",
+          "marginal_subtotal_reduction": 397
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos269/RationalityCarryBridge.lean:414 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving."
+    },
+    {
+      "handle": "ErdosProblems.Shared.exists_staircase_indices",
+      "source_ref": "lean/ErdosProblems/Shared/IrrationalRotationStaircase.lean:271",
+      "source_sha256": "sha256:c3c2013d856ecedc3751e6fb0a4ac237e3ea397aa96fd475c76811137a74ba71",
+      "own_source_lines": 111,
+      "indexed_subtotal": 230,
+      "direct_users": 2,
+      "direct_use_times_subtotal": 460,
+      "direct_use_times_subtotal_rank_in_same_pool": 46,
+      "marginal_union_reduction": 228,
+      "marginal_independent_reduction": 228,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation",
+          "marginal_subtotal_reduction": 228
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Shared/IrrationalRotationStaircase.lean:271 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving."
+    },
+    {
+      "handle": "ErdosProblems.Erdos269.cofinalLocalWindowEscape_of_irrational",
+      "source_ref": "lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:379",
+      "source_sha256": "sha256:15b722f85d9972ab2a4564add23ff4e4478280116d1dc71a99310fab44432f04",
+      "own_source_lines": 4,
+      "indexed_subtotal": 892,
+      "direct_users": 1,
+      "direct_use_times_subtotal": 892,
+      "direct_use_times_subtotal_rank_in_same_pool": 28,
+      "marginal_union_reduction": 220,
+      "marginal_independent_reduction": 220,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_window_equivalence",
+          "marginal_subtotal_reduction": 220
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:379 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving."
+    }
+  ],
+  "direct_use_times_subtotal_comparator_same_pool": [
+    {
+      "handle": "ErdosProblems.Erdos269.trueNormalizedState_pos",
+      "source_ref": "lean/ErdosProblems/Erdos269/IntegralBranchExtinction.lean:89",
+      "source_sha256": "sha256:3c6bc417ae44e7fc80db7893ac3f33626a9ef954d60fe424ea93e102d7b57e3f",
+      "own_source_lines": 6,
+      "indexed_subtotal": 382,
+      "direct_users": 12,
+      "direct_use_times_subtotal": 4584,
+      "direct_use_times_subtotal_rank_in_same_pool": 1,
+      "marginal_union_reduction": 30,
+      "marginal_independent_reduction": 60,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_fixed_split_bridge",
+          "marginal_subtotal_reduction": 30
+        },
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_window_equivalence",
+          "marginal_subtotal_reduction": 30
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos269/IntegralBranchExtinction.lean:89 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving."
+    },
+    {
+      "handle": "ErdosProblems.Erdos269.dyadicNormalizedShellTsumTailR235_succ",
+      "source_ref": "lean/ErdosProblems/Erdos269/DyadicShellSummability.lean:177",
+      "source_sha256": "sha256:42455b1fe8f36dfc2e83d58c469b0fd8268c3d7928b71843022dd308fd6f69ad",
+      "own_source_lines": 3,
+      "indexed_subtotal": 449,
+      "direct_users": 8,
+      "direct_use_times_subtotal": 3592,
+      "direct_use_times_subtotal_rank_in_same_pool": 2,
+      "marginal_union_reduction": 15,
+      "marginal_independent_reduction": 30,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_fixed_split_bridge",
+          "marginal_subtotal_reduction": 15
+        },
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_window_equivalence",
+          "marginal_subtotal_reduction": 15
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos269/DyadicShellSummability.lean:177 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving."
+    },
+    {
+      "handle": "ErdosProblems.Erdos269.trueNormalizedState_le_quadratic",
+      "source_ref": "lean/ErdosProblems/Erdos269/NormalizedStateWidth.lean:140",
+      "source_sha256": "sha256:b49f4fa065ffb17cea01ca92f71a4a8c1c7fa4f7067afe430f72c76512951566",
+      "own_source_lines": 48,
+      "indexed_subtotal": 559,
+      "direct_users": 5,
+      "direct_use_times_subtotal": 2795,
+      "direct_use_times_subtotal_rank_in_same_pool": 3,
+      "marginal_union_reduction": 120,
+      "marginal_independent_reduction": 251,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_fixed_split_bridge",
+          "marginal_subtotal_reduction": 131
+        },
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_window_equivalence",
+          "marginal_subtotal_reduction": 120
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos269/NormalizedStateWidth.lean:140 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving."
+    },
+    {
+      "handle": "ErdosProblems.Erdos269.cofinalLocalWindowEscape_of_irrational_of_quadratic",
+      "source_ref": "lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:355",
+      "source_sha256": "sha256:15b722f85d9972ab2a4564add23ff4e4478280116d1dc71a99310fab44432f04",
+      "own_source_lines": 17,
+      "indexed_subtotal": 888,
+      "direct_users": 3,
+      "direct_use_times_subtotal": 2664,
+      "direct_use_times_subtotal_rank_in_same_pool": 4,
+      "marginal_union_reduction": 216,
+      "marginal_independent_reduction": 216,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_window_equivalence",
+          "marginal_subtotal_reduction": 216
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:355 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving."
+    },
+    {
+      "handle": "ErdosProblems.Erdos269.summable_dyadicShellMassR235",
+      "source_ref": "lean/ErdosProblems/Erdos269/DyadicShellSummability.lean:142",
+      "source_sha256": "sha256:42455b1fe8f36dfc2e83d58c469b0fd8268c3d7928b71843022dd308fd6f69ad",
+      "own_source_lines": 14,
+      "indexed_subtotal": 338,
+      "direct_users": 7,
+      "direct_use_times_subtotal": 2366,
+      "direct_use_times_subtotal_rank_in_same_pool": 5,
+      "marginal_union_reduction": 46,
+      "marginal_independent_reduction": 409,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_fixed_split_bridge",
+          "marginal_subtotal_reduction": 46
+        },
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR13.exact_denominators_and_minimal_clearing",
+          "marginal_subtotal_reduction": 317
+        },
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_window_equivalence",
+          "marginal_subtotal_reduction": 46
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos269/DyadicShellSummability.lean:142 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving."
+    },
+    {
+      "handle": "ErdosProblems.Erdos269.trueNormalizedState_window",
+      "source_ref": "lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:68",
+      "source_sha256": "sha256:15b722f85d9972ab2a4564add23ff4e4478280116d1dc71a99310fab44432f04",
+      "own_source_lines": 12,
+      "indexed_subtotal": 463,
+      "direct_users": 5,
+      "direct_use_times_subtotal": 2315,
+      "direct_use_times_subtotal_rank_in_same_pool": 6,
+      "marginal_union_reduction": 12,
+      "marginal_independent_reduction": 12,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_window_equivalence",
+          "marginal_subtotal_reduction": 12
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:68 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving."
+    },
+    {
+      "handle": "ErdosProblems.Erdos269.irrational_of_cofinalLocalWindowEscape",
+      "source_ref": "lean/ErdosProblems/Erdos269/RationalityCarryBridge.lean:414",
+      "source_sha256": "sha256:9abe5bfcb4423e19f123e002eab0ff762c63f86b9715663d5b7ff5e36c4f44a8",
+      "own_source_lines": 12,
+      "indexed_subtotal": 1068,
+      "direct_users": 2,
+      "direct_use_times_subtotal": 2136,
+      "direct_use_times_subtotal_rank_in_same_pool": 7,
+      "marginal_union_reduction": 228,
+      "marginal_independent_reduction": 397,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_window_equivalence",
+          "marginal_subtotal_reduction": 397
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos269/RationalityCarryBridge.lean:414 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving."
+    },
+    {
+      "handle": "ErdosProblems.Erdos269.dyadicShellTsumTailR235_eq_shell_add",
+      "source_ref": "lean/ErdosProblems/Erdos269/DyadicShellSummability.lean:164",
+      "source_sha256": "sha256:42455b1fe8f36dfc2e83d58c469b0fd8268c3d7928b71843022dd308fd6f69ad",
+      "own_source_lines": 8,
+      "indexed_subtotal": 348,
+      "direct_users": 6,
+      "direct_use_times_subtotal": 2088,
+      "direct_use_times_subtotal_rank_in_same_pool": 8,
+      "marginal_union_reduction": 8,
+      "marginal_independent_reduction": 24,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_fixed_split_bridge",
+          "marginal_subtotal_reduction": 8
+        },
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR13.exact_denominators_and_minimal_clearing",
+          "marginal_subtotal_reduction": 8
+        },
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_window_equivalence",
+          "marginal_subtotal_reduction": 8
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos269/DyadicShellSummability.lean:164 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving."
+    },
+    {
+      "handle": "ErdosProblems.Erdos269.PaperR7.paperSeries235_eq_shellTsum",
+      "source_ref": "lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean:157",
+      "source_sha256": "sha256:523ca9807390180396b07f987ec1f0f1fe4004c648974ebea83045e3b926dedd",
+      "own_source_lines": 9,
+      "indexed_subtotal": 506,
+      "direct_users": 4,
+      "direct_use_times_subtotal": 2024,
+      "direct_use_times_subtotal_rank_in_same_pool": 9,
+      "marginal_union_reduction": 151,
+      "marginal_independent_reduction": 453,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_fixed_split_bridge",
+          "marginal_subtotal_reduction": 151
+        },
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR13.exact_denominators_and_minimal_clearing",
+          "marginal_subtotal_reduction": 151
+        },
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_window_equivalence",
+          "marginal_subtotal_reduction": 151
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean:157 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving."
+    },
+    {
+      "handle": "ErdosProblems.Erdos269.PaperR7.tail_one_of_paperSeries_eq_rat",
+      "source_ref": "lean/ErdosProblems/Erdos269/PaperR7RationalBridge.lean:20",
+      "source_sha256": "sha256:e4c143c5baf513ff9aa8eae1e4206f918411707126ae39e72d339119f47de377",
+      "own_source_lines": 9,
+      "indexed_subtotal": 565,
+      "direct_users": 3,
+      "direct_use_times_subtotal": 1695,
+      "direct_use_times_subtotal_rank_in_same_pool": 10,
+      "marginal_union_reduction": 9,
+      "marginal_independent_reduction": 404,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_fixed_split_bridge",
+          "marginal_subtotal_reduction": 202
+        },
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR13.exact_denominators_and_minimal_clearing",
+          "marginal_subtotal_reduction": 202
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos269/PaperR7RationalBridge.lean:20 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving."
+    }
+  ],
+  "greedy_shortlist": [
+    {
+      "handle": "ErdosProblems.Erdos269.actualCofinalLocalWindowEscape_iff_irrational_value",
+      "source_ref": "lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:398",
+      "source_sha256": "sha256:15b722f85d9972ab2a4564add23ff4e4478280116d1dc71a99310fab44432f04",
+      "own_source_lines": 10,
+      "indexed_subtotal": 1356,
+      "direct_users": 1,
+      "direct_use_times_subtotal": 1356,
+      "direct_use_times_subtotal_rank_in_same_pool": 19,
+      "marginal_union_reduction": 491,
+      "marginal_independent_reduction": 969,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_window_equivalence",
+          "marginal_subtotal_reduction": 969
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:398 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving.",
+      "step": 1,
+      "available_before": [],
+      "baseline_single_reduction": 491,
+      "remaining_union_subtotal": 3038
+    },
+    {
+      "handle": "ErdosProblems.Erdos269.exists_uniform_nonsingular_threePrimeKernel_minor_of_prime",
+      "source_ref": "lean/ErdosProblems/Erdos269/KernelCarryRank.lean:376",
+      "source_sha256": "sha256:8b32ea2f9583cbea2d5c31c53da1f76400a4f3312a888bea0598016c16044839",
+      "own_source_lines": 3,
+      "indexed_subtotal": 471,
+      "direct_users": 2,
+      "direct_use_times_subtotal": 942,
+      "direct_use_times_subtotal_rank_in_same_pool": 26,
+      "marginal_union_reduction": 465,
+      "marginal_independent_reduction": 465,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation",
+          "marginal_subtotal_reduction": 465
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos269/KernelCarryRank.lean:376 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving.",
+      "step": 2,
+      "available_before": [
+        "ErdosProblems.Erdos269.actualCofinalLocalWindowEscape_iff_irrational_value"
+      ],
+      "baseline_single_reduction": 465,
+      "remaining_union_subtotal": 2573
+    },
+    {
+      "handle": "ErdosProblems.Erdos251.PaperR9.SparseAmbient.generated_ambient_filling_uniform",
+      "source_ref": "lean/ErdosProblems/Erdos251/SparseAmbientR9.lean:163",
+      "source_sha256": "sha256:871af010436c3040d5405a6f06153168d94a8a9f0140b77f0b9f5e951ffd731a",
+      "own_source_lines": 28,
+      "indexed_subtotal": 536,
+      "direct_users": 3,
+      "direct_use_times_subtotal": 1608,
+      "direct_use_times_subtotal_rank_in_same_pool": 12,
+      "marginal_union_reduction": 270,
+      "marginal_independent_reduction": 559,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos251.PaperR9.SparseAmbient.arbitrary_word_sparse_rationalisation_uniform",
+          "marginal_subtotal_reduction": 289
+        },
+        {
+          "handle": "ErdosProblems.Erdos251.PaperR11.SparsePaper.polylogarithmic_word_interval_uniform",
+          "marginal_subtotal_reduction": 270
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos251/SparseAmbientR9.lean:163 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving.",
+      "step": 3,
+      "available_before": [
+        "ErdosProblems.Erdos269.actualCofinalLocalWindowEscape_iff_irrational_value",
+        "ErdosProblems.Erdos269.exists_uniform_nonsingular_threePrimeKernel_minor_of_prime"
+      ],
+      "baseline_single_reduction": 270,
+      "remaining_union_subtotal": 2303
+    },
+    {
+      "handle": "ErdosProblems.Erdos251.PaperR11.SparsePolylog.polylog_extended_rate",
+      "source_ref": "lean/ErdosProblems/Erdos251/SparsePolylogR11.lean:375",
+      "source_sha256": "sha256:15ff57dba3eb207eec3b4f6d19e39901880c52033f0f04d646a2ef40a0a3f1a8",
+      "own_source_lines": 3,
+      "indexed_subtotal": 418,
+      "direct_users": 4,
+      "direct_use_times_subtotal": 1672,
+      "direct_use_times_subtotal_rank_in_same_pool": 11,
+      "marginal_union_reduction": 280,
+      "marginal_independent_reduction": 280,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos251.PaperR11.SparsePaper.polylogarithmic_word_interval_uniform",
+          "marginal_subtotal_reduction": 280
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos251/SparsePolylogR11.lean:375 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving.",
+      "step": 4,
+      "available_before": [
+        "ErdosProblems.Erdos251.PaperR9.SparseAmbient.generated_ambient_filling_uniform",
+        "ErdosProblems.Erdos269.actualCofinalLocalWindowEscape_iff_irrational_value",
+        "ErdosProblems.Erdos269.exists_uniform_nonsingular_threePrimeKernel_minor_of_prime"
+      ],
+      "baseline_single_reduction": 261,
+      "remaining_union_subtotal": 2023
+    },
+    {
+      "handle": "ErdosProblems.Erdos269.PaperR7.paperSeries235_eq_shellTsum",
+      "source_ref": "lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean:157",
+      "source_sha256": "sha256:523ca9807390180396b07f987ec1f0f1fe4004c648974ebea83045e3b926dedd",
+      "own_source_lines": 9,
+      "indexed_subtotal": 506,
+      "direct_users": 4,
+      "direct_use_times_subtotal": 2024,
+      "direct_use_times_subtotal_rank_in_same_pool": 9,
+      "marginal_union_reduction": 151,
+      "marginal_independent_reduction": 761,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_fixed_split_bridge",
+          "marginal_subtotal_reduction": 151
+        },
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR13.exact_denominators_and_minimal_clearing",
+          "marginal_subtotal_reduction": 151
+        },
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_window_equivalence",
+          "marginal_subtotal_reduction": 459
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean:157 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving.",
+      "step": 5,
+      "available_before": [
+        "ErdosProblems.Erdos251.PaperR11.SparsePolylog.polylog_extended_rate",
+        "ErdosProblems.Erdos251.PaperR9.SparseAmbient.generated_ambient_filling_uniform",
+        "ErdosProblems.Erdos269.actualCofinalLocalWindowEscape_iff_irrational_value",
+        "ErdosProblems.Erdos269.exists_uniform_nonsingular_threePrimeKernel_minor_of_prime"
+      ],
+      "baseline_single_reduction": 151,
+      "remaining_union_subtotal": 1872
+    },
+    {
+      "handle": "ErdosProblems.Erdos269.half_threePrimeHeight_mul_dyadicShellMassR235",
+      "source_ref": "lean/ErdosProblems/Erdos269/DyadicOrderedTailRecurrence.lean:94",
+      "source_sha256": "sha256:b591d5f23c6d6bb8c486f2a3390a41ee03ff90e2d9da2cd2165e79d9755bf06a",
+      "own_source_lines": 5,
+      "indexed_subtotal": 193,
+      "direct_users": 8,
+      "direct_use_times_subtotal": 1544,
+      "direct_use_times_subtotal_rank_in_same_pool": 14,
+      "marginal_union_reduction": 151,
+      "marginal_independent_reduction": 310,
+      "beneficiaries": [
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR7.short_fixed_split_bridge",
+          "marginal_subtotal_reduction": 151
+        },
+        {
+          "handle": "ErdosProblems.Erdos269.PaperR13.exact_denominators_and_minimal_clearing",
+          "marginal_subtotal_reduction": 159
+        }
+      ],
+      "next_falsifiable_review_action": "Read lean/ErdosProblems/Erdos269/DyadicOrderedTailRecurrence.lean:94 and its stated hypotheses; then inspect the listed beneficiary proof paths. Reject this review priority if the removed indexed body is routine, omitted helpers carry the argument, or the lemma cannot be explained independently. A cut alone establishes no time saving.",
+      "step": 6,
+      "available_before": [
+        "ErdosProblems.Erdos251.PaperR11.SparsePolylog.polylog_extended_rate",
+        "ErdosProblems.Erdos251.PaperR9.SparseAmbient.generated_ambient_filling_uniform",
+        "ErdosProblems.Erdos269.PaperR7.paperSeries235_eq_shellTsum",
+        "ErdosProblems.Erdos269.actualCofinalLocalWindowEscape_iff_irrational_value",
+        "ErdosProblems.Erdos269.exists_uniform_nonsingular_threePrimeKernel_minor_of_prime"
+      ],
+      "baseline_single_reduction": 151,
+      "remaining_union_subtotal": 1721
+    }
+  ],
+  "authored_review_dispatch": {
+    "status": "source bodies inspected; proposed next review actions remain unperformed",
+    "decision": "Inspect mechanisms in the three declarations below. Do not treat the largest cut as mathematical importance: the first greedy winner only transports an existing irrationality equivalence, and two other winners are three-line wrappers. Prefer the named mechanism bodies when allocating explanation effort; no observed review benefit is claimed.",
+    "selected": [
+      {
+        "handle": "ErdosProblems.Erdos269.exists_uniform_nonsingular_threePrimeKernel_minor",
+        "source_ref": "lean/ErdosProblems/Erdos269/KernelCarryRank.lean:313",
+        "source_sha256": "sha256:8b32ea2f9583cbea2d5c31c53da1f76400a4f3312a888bea0598016c16044839",
+        "own_source_lines": 53,
+        "indexed_subtotal": 423,
+        "direct_users": 1,
+        "direct_use_times_subtotal": 423,
+        "direct_use_times_subtotal_rank_in_same_pool": 48,
+        "marginal_union_reduction": 417,
+        "marginal_independent_reduction": 417,
+        "beneficiaries": [
+          {
+            "handle": "ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation",
+            "marginal_subtotal_reduction": 417
+          }
+        ],
+        "next_falsifiable_review_action": "Check that the same selected indices work for every layer k, and that the NoIntegerOrbit hypotheses are exactly what the staircase construction consumes. Reject a proposed generalisation if either uniformity or the orbit premise fails.",
+        "reason_after_source_read": "The three-line prime-specialisation wrapper scores higher, but this 53-line body exposes the staircase indices, kernel factorisation and nonzero determinant."
+      },
+      {
+        "handle": "ErdosProblems.Erdos251.PaperR9.SparseAmbient.generated_ambient_filling_uniform",
+        "source_ref": "lean/ErdosProblems/Erdos251/SparseAmbientR9.lean:163",
+        "source_sha256": "sha256:871af010436c3040d5405a6f06153168d94a8a9f0140b77f0b9f5e951ffd731a",
+        "own_source_lines": 28,
+        "indexed_subtotal": 536,
+        "direct_users": 3,
+        "direct_use_times_subtotal": 1608,
+        "direct_use_times_subtotal_rank_in_same_pool": 12,
+        "marginal_union_reduction": 270,
+        "marginal_independent_reduction": 559,
+        "beneficiaries": [
+          {
+            "handle": "ErdosProblems.Erdos251.PaperR9.SparseAmbient.arbitrary_word_sparse_rationalisation_uniform",
+            "marginal_subtotal_reduction": 289
+          },
+          {
+            "handle": "ErdosProblems.Erdos251.PaperR11.SparsePaper.polylogarithmic_word_interval_uniform",
+            "marginal_subtotal_reduction": 270
+          }
+        ],
+        "next_falsifiable_review_action": "Trace generated_interval_filling through ambient support, the capacity budget and congruenceCutoff. Check that the support and congruence cutoff are fixed before the target value; reject the explanation if it swaps these quantifiers.",
+        "reason_after_source_read": "Its 28-line body transports interval filling to an ambient correction sequence; both frozen sparse-rationalisation target declarations consume it."
+      },
+      {
+        "handle": "ErdosProblems.Erdos251.PaperR11.SparsePolylog.polylog_extended_rate_withQ",
+        "source_ref": "lean/ErdosProblems/Erdos251/SparsePolylogR11.lean:307",
+        "source_sha256": "sha256:15ff57dba3eb207eec3b4f6d19e39901880c52033f0f04d646a2ef40a0a3f1a8",
+        "own_source_lines": 50,
+        "indexed_subtotal": 407,
+        "direct_users": 1,
+        "direct_use_times_subtotal": 407,
+        "direct_use_times_subtotal_rank_in_same_pool": 50,
+        "marginal_union_reduction": 250,
+        "marginal_independent_reduction": 250,
+        "beneficiaries": [
+          {
+            "handle": "ErdosProblems.Erdos251.PaperR11.SparsePaper.polylogarithmic_word_interval_uniform",
+            "marginal_subtotal_reduction": 250
+          }
+        ],
+        "next_falsifiable_review_action": "Check the dependence of the constant on alpha and Q and the threshold on start; then verify the separation-to-cardinality bound for every permitted L <= 2 X. Reject any uniform-in-start threshold claim not supplied by the statement.",
+        "reason_after_source_read": "The short polylog_extended_rate wrapper scores higher; this 50-line body contains the support-cardinality estimate beneath the uniform-rate conclusion."
+      }
+    ],
+    "companion_comparison": "profile.json reports the unrestricted corpus users-times-subtotal ranking and generated ancestry. The comparator here uses the identical screened workload pool so that differences are attributable to the objective, not different candidates."
+  },
+  "bounded_pair_probe": {
+    "pool_rule": "Top 30 baseline union marginals, ties by handle",
+    "pool_handles": [
+      "ErdosProblems.Erdos269.actualCofinalLocalWindowEscape_iff_irrational_value",
+      "ErdosProblems.Erdos269.exists_uniform_nonsingular_threePrimeKernel_minor_of_prime",
+      "ErdosProblems.Erdos269.exists_uniform_nonsingular_threePrimeKernel_minor",
+      "ErdosProblems.Erdos251.PaperR9.SparseAmbient.generated_ambient_filling_uniform",
+      "ErdosProblems.Erdos251.PaperR11.SparsePolylog.polylog_extended_rate",
+      "ErdosProblems.Erdos251.PaperR11.SparsePolylog.polylog_extended_rate_uniform",
+      "ErdosProblems.Erdos251.PaperR11.SparsePolylog.polylog_extended_rate_withQ",
+      "ErdosProblems.Erdos269.irrational_of_cofinalLocalWindowEscape",
+      "ErdosProblems.Shared.exists_staircase_indices",
+      "ErdosProblems.Erdos269.cofinalLocalWindowEscape_of_irrational",
+      "ErdosProblems.Erdos269.cofinalLocalWindowEscape_of_irrational_of_quadratic",
+      "ErdosProblems.Erdos269.value_ne_rat_of_cofinalLocalWindowEscape",
+      "ErdosProblems.Erdos251.PaperR11.SparsePolylog.iterlog_centre_bound",
+      "ErdosProblems.Erdos251.PaperR8.SparseSchedule.generated_interval_filling",
+      "ErdosProblems.Erdos251.ResidueFeedback.exists_feedback_digits_hasSum",
+      "ErdosProblems.Erdos269.cofinalLocalWindowEscape_of_irrational_of_beaten",
+      "ErdosProblems.Erdos269.PaperR7.paperSeries235_eq_shellTsum",
+      "ErdosProblems.Erdos269.half_threePrimeHeight_mul_dyadicShellMassR235",
+      "ErdosProblems.Erdos269.half_threePrimeHeight_mul_dyadicShellMassQ235",
+      "ErdosProblems.Erdos269.exists_reducedCarry_of_value_eq_rat",
+      "ErdosProblems.Erdos269.trueNormalizedState_le_quadratic",
+      "ErdosProblems.Shared.exists_pos_nat_fract_mem_Ioo",
+      "ErdosProblems.Erdos269.dyadicOrderedBlockDigit235_le_quadratic",
+      "ErdosProblems.Erdos251.ResidueFeedback.feedbackDigit_spec",
+      "ErdosProblems.Erdos269.PaperR7.smoothReciprocal235_comp_exponent",
+      "ErdosProblems.Erdos251.PaperR11.GrowingBlocks.growing_block_TV_uniform",
+      "ErdosProblems.Erdos269.PaperR7.smoothReciprocal235_eq_height",
+      "ErdosProblems.Erdos269.dyadicSmoothShell235_card_le_square",
+      "ErdosProblems.Erdos269.near_integer_of_residue_le_general",
+      "ErdosProblems.Erdos269.PaperR13.scaled_state_den_eq_one_iff_firstClearingIndex_le"
+    ],
+    "pairs_tested": 435,
+    "positive_complementarity_pairs": 18,
+    "top_complementary_pairs": [
+      {
+        "handles": [
+          "ErdosProblems.Erdos269.cofinalLocalWindowEscape_of_irrational",
+          "ErdosProblems.Erdos269.value_ne_rat_of_cofinalLocalWindowEscape"
+        ],
+        "source_refs": [
+          "lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:379",
+          "lean/ErdosProblems/Erdos269/RationalityCarryBridge.lean:402"
+        ],
+        "source_sha256": [
+          "sha256:15b722f85d9972ab2a4564add23ff4e4478280116d1dc71a99310fab44432f04",
+          "sha256:9abe5bfcb4423e19f123e002eab0ff762c63f86b9715663d5b7ff5e36c4f44a8"
+        ],
+        "single_reductions": [
+          220,
+          216
+        ],
+        "joint_union_reduction": 467,
+        "complementarity": 31
+      },
+      {
+        "handles": [
+          "ErdosProblems.Erdos269.cofinalLocalWindowEscape_of_irrational_of_quadratic",
+          "ErdosProblems.Erdos269.value_ne_rat_of_cofinalLocalWindowEscape"
+        ],
+        "source_refs": [
+          "lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:355",
+          "lean/ErdosProblems/Erdos269/RationalityCarryBridge.lean:402"
+        ],
+        "source_sha256": [
+          "sha256:15b722f85d9972ab2a4564add23ff4e4478280116d1dc71a99310fab44432f04",
+          "sha256:9abe5bfcb4423e19f123e002eab0ff762c63f86b9715663d5b7ff5e36c4f44a8"
+        ],
+        "single_reductions": [
+          216,
+          216
+        ],
+        "joint_union_reduction": 463,
+        "complementarity": 31
+      },
+      {
+        "handles": [
+          "ErdosProblems.Erdos269.irrational_of_cofinalLocalWindowEscape",
+          "ErdosProblems.Erdos269.cofinalLocalWindowEscape_of_irrational"
+        ],
+        "source_refs": [
+          "lean/ErdosProblems/Erdos269/RationalityCarryBridge.lean:414",
+          "lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:379"
+        ],
+        "source_sha256": [
+          "sha256:9abe5bfcb4423e19f123e002eab0ff762c63f86b9715663d5b7ff5e36c4f44a8",
+          "sha256:15b722f85d9972ab2a4564add23ff4e4478280116d1dc71a99310fab44432f04"
+        ],
+        "single_reductions": [
+          228,
+          220
+        ],
+        "joint_union_reduction": 479,
+        "complementarity": 31
+      },
+      {
+        "handles": [
+          "ErdosProblems.Erdos269.irrational_of_cofinalLocalWindowEscape",
+          "ErdosProblems.Erdos269.cofinalLocalWindowEscape_of_irrational_of_beaten"
+        ],
+        "source_refs": [
+          "lean/ErdosProblems/Erdos269/RationalityCarryBridge.lean:414",
+          "lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:327"
+        ],
+        "source_sha256": [
+          "sha256:9abe5bfcb4423e19f123e002eab0ff762c63f86b9715663d5b7ff5e36c4f44a8",
+          "sha256:15b722f85d9972ab2a4564add23ff4e4478280116d1dc71a99310fab44432f04"
+        ],
+        "single_reductions": [
+          228,
+          153
+        ],
+        "joint_union_reduction": 412,
+        "complementarity": 31
+      },
+      {
+        "handles": [
+          "ErdosProblems.Erdos269.irrational_of_cofinalLocalWindowEscape",
+          "ErdosProblems.Erdos269.cofinalLocalWindowEscape_of_irrational_of_quadratic"
+        ],
+        "source_refs": [
+          "lean/ErdosProblems/Erdos269/RationalityCarryBridge.lean:414",
+          "lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean:355"
+        ],
+        "source_sha256": [
+          "sha256:9abe5bfcb4423e19f123e002eab0ff762c63f86b9715663d5b7ff5e36c4f44a8",
+          "sha256:15b722f85d9972ab2a4564add23ff4e4478280116d1dc71a99310fab44432f04"
+        ],
+        "single_reductions": [
+          228,
+          216
+        ],
+        "joint_union_reduction": 475,
+        "complementarity": 31
+      }
+    ],
+    "boundary": "A bounded interaction probe, not exhaustive pair optimisation."
+  },
+  "eight_problem_breadth_check": {
+    "selection_contract": "One explicitly selected representative declaration for each of eight problem papers, chosen before computing cuts. A single declaration may cover only one clause of its paper row. This is a breadth probe, not a complete census or a significance ranking.",
+    "targets": [
+      {
+        "problem": 68,
+        "paper_row": "erdos-68-factorial-denominator-irrationality#res:finite-channel-moment-certificate",
+        "handle": "ErdosProblems.Erdos68.PaperComplete.finite_channel_moment_certificate",
+        "selection_reason": "A finite-channel moment certificate represents the paper's arithmetic mechanism; it is not the open irrationality assertion.",
+        "paper_source_ref": "paper/68/erdos-68-factorial-denominator-irrationality.tex:341",
+        "statement_sha256": "sha256:4da12f5eb0bae8682b68a94080f10e1d93179eb5e55b3bf35a531a9996871a4d",
+        "recorded_lean_relation": "exact",
+        "source_file": "lean/ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean",
+        "source_sha256": "sha256:2fd257d1192831f5eb91bd629a786839793254c7f48b1276a6df49821368522f",
+        "graph_resolution": "resolved",
+        "source_ref": "lean/ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean:252",
+        "indexed_subtotal": 257,
+        "omitted_internal_references": 28
+      },
+      {
+        "problem": 243,
+        "paper_row": "erdos-243-reciprocal-tail-rigidity#res:cubicrate",
+        "handle": "ErdosProblems.Erdos243.PaperCompleteR21.cubic_rate_irrationality_unconditional",
+        "selection_reason": "The paper's cubic-rate irrationality theorem, with its displayed asymptotic hypothesis.",
+        "paper_source_ref": "paper/243/erdos-243-reciprocal-tail-rigidity.tex:734",
+        "statement_sha256": "sha256:93cc53e2b9d7466651985ab30ad3033c9483792f1be1760e4e28b6a33b1acb6f",
+        "recorded_lean_relation": "exact",
+        "source_file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean",
+        "source_sha256": "sha256:4c3da44d71fa6e8abf4ddf8b891ec36d6d5795be801dd4b0111577591af7187e",
+        "graph_resolution": "absent_not_substituted"
+      },
+      {
+        "problem": 249,
+        "paper_row": "erdos-249-binary-totient-series#thm:kkernelrank",
+        "handle": "ErdosProblems.Erdos249.PaperCompleteR8.displayed_all_base_kernel",
+        "selection_reason": "The exact all-base kernel-rank statement, not an equivalent reformulation of irrationality.",
+        "paper_source_ref": "paper/249/erdos-249-binary-totient-series.tex:73",
+        "statement_sha256": "sha256:4c32e3285243f70c0fb4a1763a43a27fc74727596e7a4d4251c54e59600b5828",
+        "recorded_lean_relation": "exact_or_stronger",
+        "source_file": "lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean",
+        "source_sha256": "sha256:74a30051e5486d0f06da31f44c2bde4f6e2e8da3bcee45ea8cc1a3c0890f31c4",
+        "graph_resolution": "resolved",
+        "source_ref": "lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean:35",
+        "indexed_subtotal": 872,
+        "omitted_internal_references": 72
+      },
+      {
+        "problem": 251,
+        "paper_row": "erdos-251-prime-gap-dyadic-series#res:sparserationalisation",
+        "handle": "ErdosProblems.Erdos251.PaperR9.SparseAmbient.arbitrary_word_sparse_rationalisation_uniform",
+        "selection_reason": "The arbitrary-envelope sparse correction clause, preserving the uniform cutoff quantifiers.",
+        "paper_source_ref": "paper/251/erdos-251-prime-gap-dyadic-series.tex:90",
+        "statement_sha256": "sha256:7de874b2b88e80be5e8352fbccd1f71cb165b302972bebf6be8806a2f3dacafb",
+        "recorded_lean_relation": "exact_or_stronger",
+        "source_file": "lean/ErdosProblems/Erdos251/SparseAmbientR9.lean",
+        "source_sha256": "sha256:871af010436c3040d5405a6f06153168d94a8a9f0140b77f0b9f5e951ffd731a",
+        "graph_resolution": "resolved",
+        "source_ref": "lean/ErdosProblems/Erdos251/SparseAmbientR9.lean:269",
+        "indexed_subtotal": 676,
+        "omitted_internal_references": 37
+      },
+      {
+        "problem": 257,
+        "paper_row": "erdos-257-mersenne-support-subseries#res:weighted-support",
+        "handle": "ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim",
+        "selection_reason": "The ranked finite-prime weighted-support irrationality criterion, under its summability premise.",
+        "paper_source_ref": "paper/257/erdos-257-mersenne-support-subseries.tex:54",
+        "statement_sha256": "sha256:1f90b7d9ee3b642ad36419a55812e473e4cfa491ec223d5a5d83f4517ef0ba4c",
+        "recorded_lean_relation": "exact_or_stronger",
+        "source_file": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean",
+        "source_sha256": "sha256:c00b39ee574aaec577de2cbc6971c12ca5865c8891f0c8fa88b9ba63335e92a0",
+        "graph_resolution": "resolved",
+        "source_ref": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean:120",
+        "indexed_subtotal": 1633,
+        "omitted_internal_references": 53
+      },
+      {
+        "problem": 269,
+        "paper_row": "erdos-269-three-prime-running-lcm#res:infinite-rank",
+        "handle": "ErdosProblems.Erdos269.PaperR7.paper_uniform_rank_and_nonseparation",
+        "selection_reason": "The arbitrary-order nonsingular-minor and nonseparation theorem, not the open series endpoint.",
+        "paper_source_ref": "paper/269/erdos-269-three-prime-running-lcm.tex:75",
+        "statement_sha256": "sha256:e455e5b51ffff6f69223a25794e6e22121a5fbd938b8e5911ba869865e2219d9",
+        "recorded_lean_relation": "exact_or_stronger",
+        "source_file": "lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean",
+        "source_sha256": "sha256:a65d953d4bc0fba1b4d9d79cc6366fa96dae92f2943ad00e2b3f89831ff2d02f",
+        "graph_resolution": "resolved",
+        "source_ref": "lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean:22",
+        "indexed_subtotal": 500,
+        "omitted_internal_references": 28
+      },
+      {
+        "problem": 1041,
+        "paper_row": "erdos-1041-lemniscate-newton-flow#res:ani-degree-seven-counterexample",
+        "handle": "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff",
+        "selection_reason": "Ani's degree-seven Hausdorff-length counterexample; no claim about the unreviewed 1958 wording.",
+        "paper_source_ref": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:83",
+        "statement_sha256": "sha256:f7de4e3d08507b85a52490e0340aa4dbc213f6b7b6f0cca76513cd6a02143091",
+        "recorded_lean_relation": "exact_or_stronger",
+        "source_file": "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+        "source_sha256": "sha256:069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4",
+        "graph_resolution": "resolved",
+        "source_ref": "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean:283",
+        "indexed_subtotal": 6531,
+        "omitted_internal_references": 2223
+      },
+      {
+        "problem": 1049,
+        "paper_row": "erdos-1049-rational-base-lambert#res:rational-base-threshold",
+        "handle": "ErdosProblems.Erdos1049.PaperCompleteR21.rational_base_threshold",
+        "selection_reason": "The stated rational-base contour theorem; it does not include the unresolved base 3/2.",
+        "paper_source_ref": "paper/1049/erdos-1049-rational-base-lambert.tex:151",
+        "statement_sha256": "sha256:d8a1a88caca1f4510a0ec168d71289815642e496141213653da1c4bcf72ee65e",
+        "recorded_lean_relation": "exact",
+        "source_file": "lean/ErdosProblems/Erdos1049/PaperCompleteR21/RationalBaseThreshold.lean",
+        "source_sha256": "sha256:0cfa46b6e5e566e017efc4d5cca14c256edd150e45fe3a2c554d5600c3267503",
+        "graph_resolution": "absent_not_substituted"
+      }
+    ],
+    "resolved_problems": [
+      68,
+      249,
+      251,
+      257,
+      269,
+      1041
+    ],
+    "unresolved_problems": [
+      243,
+      1049
+    ],
+    "boundary": "All subtotals below concern only resolved targets. Missing targets are neither zero-cost nor silently replaced. Omitted helpers limit even resolved targets; none of these subtotals establishes proof simplicity.",
+    "baseline_union_subtotal_resolved_only": 10469,
+    "baseline_independent_subtotal_resolved_only": 10469,
+    "candidate_count": 751,
+    "repeated_reachable_declarations_across_resolved_targets": 0,
+    "source_hashes_for_resolved_union": {
+      "lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean": "sha256:94e400fc2d849dd3f901dc571bddc9f550722c0a2848cb216fa04f29cf0e04d5",
+      "lean/Erdos249257/AllBaseTotientKernel.lean": "sha256:5862e926deceaf81e0a4aac92a7d09467323fc563cdf3c827f465cb4e9ec5dd5",
+      "lean/Erdos249257/CertificateKernel.lean": "sha256:90e9be09a22c200314c29c63afdb48969491ef30ff040b0910a2fbc0c049c38a",
+      "lean/Erdos249257/GenericTailOrbitRigidity.lean": "sha256:89b4b0ebd2799ee359193be66852c394486ef39251c2f278df10c6de88a5e291",
+      "lean/Erdos249257/RationalSupportCarrySkeleton.lean": "sha256:1738231c9d07b24c404a436b4559571a4b26c36c50c34fa3c0dc77fb7d4d47be",
+      "lean/Erdos249257/ReciprocalSupportIrrationality.lean": "sha256:c2e8b59c71ad5996caa8c42a45dad5fc76454533fe102b0fa49503c5495d77b5",
+      "lean/Erdos249257/TotientKernelConditional.lean": "sha256:6cd4b6af80cf5f476c90a45e8d9663b9de72b0ca80df8c79c329f3141dbb6f90",
+      "lean/Erdos249257/TotientMahlerDefect.lean": "sha256:3eb11c02684d26ea3dd061be940709795edaa9d323dee0b2ad29797dcdf6ad53",
+      "lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean": "sha256:c6174888a3c59acf20f827b01a42bbffce05112eb7c7a3f30350dc1af0fb8f19",
+      "lean/ErdosProblems/Erdos1041/Counterexample/BarrierAlgebra.lean": "sha256:3c051a2863e4da7c2a05e587f2b137d012ad5418ab7418c8f63969455fb0dc25",
+      "lean/ErdosProblems/Erdos1041/Counterexample/BarrierCertificates.lean": "sha256:bc0fbc8361822111f0468267b47f9a40f7ba8e8c126e41873c6a62044864721b",
+      "lean/ErdosProblems/Erdos1041/Counterexample/BarrierGraphs.lean": "sha256:8e3ee82a10ea78f41efa8839a5eb76f6a2e515e88a68adfef85bae68fbf14f91",
+      "lean/ErdosProblems/Erdos1041/Counterexample/BarrierSigns.lean": "sha256:48d3a0e9375b0f060e06c71122309c442ffa4ff1eb02b9405c0100b62581886c",
+      "lean/ErdosProblems/Erdos1041/Counterexample/Bottleneck.lean": "sha256:034cc62cb3769d7c9ff2f1aea4d1917534437f7adec3bf5537500e6b3d80976a",
+      "lean/ErdosProblems/Erdos1041/Counterexample/Components.lean": "sha256:dc8b8477222840b31b7eb8d4d4ff79e6d909b4b538646e5327bb4ca0029f8d6f",
+      "lean/ErdosProblems/Erdos1041/Counterexample/Defs.lean": "sha256:90d69df047b9252c3a19d538f6adfd6734b25d090c131421cbbbb061f8cadf22",
+      "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean": "sha256:069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4",
+      "lean/ErdosProblems/Erdos1041/Counterexample/InstanceBarriers.lean": "sha256:4f977e49ba5559eafb5248c4d1c1af0b0f2a08c7d28baf6790f50b39e9cb294d",
+      "lean/ErdosProblems/Erdos1041/Counterexample/InstanceConnectivity.lean": "sha256:fe8b1208dbce3fea8aafadc08a007f6b93e3170edf5c5ff32f3fa366bf5bfd96",
+      "lean/ErdosProblems/Erdos1041/Counterexample/InstanceCritical.lean": "sha256:af8ca59a63e9048e034fbe6b5f8ecb966bde054688d7e2e12a9e159b708c4cbd",
+      "lean/ErdosProblems/Erdos249/PaperCompleteR7/KernelIntegral.lean": "sha256:7e6260206db9907976f95ce347229965f585f7e3c517da8b13ad074e501c9268",
+      "lean/ErdosProblems/Erdos249/PaperCompleteR8/FullKernelAssemblies.lean": "sha256:74a30051e5486d0f06da31f44c2bde4f6e2e8da3bcee45ea8cc1a3c0890f31c4",
+      "lean/ErdosProblems/Erdos251/ResidueFeedbackCore.lean": "sha256:d44a7e9332383de07b2ef2717637c2b95206298d279285dfca6cbdd783cc448e",
+      "lean/ErdosProblems/Erdos251/SparseAmbientR9.lean": "sha256:871af010436c3040d5405a6f06153168d94a8a9f0140b77f0b9f5e951ffd731a",
+      "lean/ErdosProblems/Erdos251/SparseIntervalR8.lean": "sha256:3b35245d7f1c49891d62d4be4c975747b1f17ad4ea1eac02c7d6b6abb2ec349d",
+      "lean/ErdosProblems/Erdos251/SparseRationalisationCore.lean": "sha256:b01730f0ebfb48e2edaa2aa6e4dabf1e77a9ed17b0e7698e416a03ec7ae791da",
+      "lean/ErdosProblems/Erdos251/SparseScheduleDensityR8.lean": "sha256:207c8b953bc4b7aa640e71316196ff236c08ae673769a3d9fedb18ff87eeb623",
+      "lean/ErdosProblems/Erdos251/SparseScheduleR8.lean": "sha256:bb569eb32228f6d575b3e0c3ca90dd1029d77c50ac55a1749441d4bf957735dd",
+      "lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean": "sha256:d63816fe10d4edce59ba281800ebd991b467e14b40ab5439cbec7681e243e4f2",
+      "lean/ErdosProblems/Erdos257/PaperCompleteR7/CoverKernel.lean": "sha256:0b4e29479766f5a6585e6a48c230b18e8e9f020ca9eb68ccbb8f54155d002a90",
+      "lean/ErdosProblems/Erdos257/PaperCompleteR7/Displacement.lean": "sha256:7404f6af19c2a8f4c5921957fa2732c54d44e4b8393ced5f79b269e46406725d",
+      "lean/ErdosProblems/Erdos257/PaperCompleteR8/CountableMeans.lean": "sha256:c885323ba42c79b086d6eb6ec8a277d791ff2bd15da9b58e771694f778c1f7f7",
+      "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean": "sha256:cb452fe9fcace03b9152e2cf4b1f7b351b9b0313647181e95c68754b48560bbf",
+      "lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteMeans.lean": "sha256:70c6e09b7d8471640147d4e6c91306625f81c10e778a0a0fe46cf0110b58af34",
+      "lean/ErdosProblems/Erdos257/PaperCompleteR8/MixedGaugeConsumer.lean": "sha256:02016ada0d6d24d37a0474a7712f10275213636a5270d9dfdcb949ebeb5c60e5",
+      "lean/ErdosProblems/Erdos257/PaperCompleteR8/OrbitBound.lean": "sha256:2be80cbefe1ccbe95efd9377ba85d5ab29c1607c95656d78d051ac92c6fef240",
+      "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteEstimates.lean": "sha256:b8d4e29b9a5855ad7343055c13923f9c03c884c273dff7d960b402d5f68a8673",
+      "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteMean.lean": "sha256:f8979eff4ac05a395fe42042ad74711b4cd5724c1251da54d10bb92485200b04",
+      "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedInfiniteMean.lean": "sha256:58a5eed058877b00414d39e3a8585adfaf8a9e88b06a46fd387df3dd9a75d34e",
+      "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedPrimeProfile.lean": "sha256:f590d75e14ee7335e64b09890f2526334874ada199550abc63bbeaa9c77cebcc",
+      "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean": "sha256:c00b39ee574aaec577de2cbc6971c12ca5865c8891f0c8fa88b9ba63335e92a0",
+      "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedSchedule.lean": "sha256:e7452a815c43877bb411e94832122d99384e7b28ea4653b654dee9ebff4ee45e",
+      "lean/ErdosProblems/Erdos257/RadixCloseReturn.lean": "sha256:19e8a552e4438b15a4681d082ae6fb00c210565145f8f83ac9bcc1e312905ed3",
+      "lean/ErdosProblems/Erdos257/WeightedSupportAveraging.lean": "sha256:702affc5695e25d433c68d26e8e18605d3a43ebc679d01c9a19de19a2f76a213",
+      "lean/ErdosProblems/Erdos269/KernelCarryRank.lean": "sha256:8b32ea2f9583cbea2d5c31c53da1f76400a4f3312a888bea0598016c16044839",
+      "lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean": "sha256:a65d953d4bc0fba1b4d9d79cc6366fa96dae92f2943ad00e2b3f89831ff2d02f",
+      "lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean": "sha256:769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036",
+      "lean/ErdosProblems/Erdos68/DivisorChannelBasis.lean": "sha256:cd838193eabf1c6d00e6ee90b4f3a8a813a91f2a1be7a7fb5e23938b60c2a125",
+      "lean/ErdosProblems/Erdos68/FactorialCarry.lean": "sha256:45438410c87c1e0e21e1157cb75e067adf467f89ec0d836d0ab2c569b64da730",
+      "lean/ErdosProblems/Erdos68/FactorialChannelCertificate.lean": "sha256:170b6eadada6558fb37892ff30e4fbdb1e1c2474db33241da38867dcbd4213a6",
+      "lean/ErdosProblems/Erdos68/PaperCompleteMomentHorizon.lean": "sha256:2fd257d1192831f5eb91bd629a786839793254c7f48b1276a6df49821368522f",
+      "lean/ErdosProblems/Shared/IrrationalRotationStaircase.lean": "sha256:c3c2013d856ecedc3751e6fb0a4ac237e3ea397aa96fd475c76811137a74ba71"
+    },
+    "top_initial_marginals_resolved_only": [
+      {
+        "handle": "Erdos1041.Counterexample.s4_instance_critical",
+        "source_ref": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceCritical.lean:4275",
+        "source_sha256": "sha256:af8ca59a63e9048e034fbe6b5f8ecb966bde054688d7e2e12a9e159b708c4cbd",
+        "own_source_lines": 9,
+        "marginal_union_reduction": 3129,
+        "beneficiaries": [
+          {
+            "handle": "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff",
+            "marginal_subtotal_reduction": 3129
+          }
+        ]
+      },
+      {
+        "handle": "ErdosProblems.Erdos257.PaperCompleteR8.weightedDyadicMeanTarget",
+        "source_ref": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean:40",
+        "source_sha256": "sha256:c00b39ee574aaec577de2cbc6971c12ca5865c8891f0c8fa88b9ba63335e92a0",
+        "own_source_lines": 56,
+        "marginal_union_reduction": 1057,
+        "beneficiaries": [
+          {
+            "handle": "ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim",
+            "marginal_subtotal_reduction": 1057
+          }
+        ]
+      },
+      {
+        "handle": "Erdos1041.Counterexample.s5_roots_connected_to_critical",
+        "source_ref": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceConnectivity.lean:1341",
+        "source_sha256": "sha256:fe8b1208dbce3fea8aafadc08a007f6b93e3170edf5c5ff32f3fa366bf5bfd96",
+        "own_source_lines": 5,
+        "marginal_union_reduction": 1045,
+        "beneficiaries": [
+          {
+            "handle": "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff",
+            "marginal_subtotal_reduction": 1045
+          }
+        ]
+      },
+      {
+        "handle": "Erdos1041.Counterexample.s3_bottleneck_hausdorff",
+        "source_ref": "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean:187",
+        "source_sha256": "sha256:069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4",
+        "own_source_lines": 70,
+        "marginal_union_reduction": 1044,
+        "beneficiaries": [
+          {
+            "handle": "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff",
+            "marginal_subtotal_reduction": 1044
+          }
+        ]
+      },
+      {
+        "handle": "Erdos1041.Counterexample.S7Proof.s7_barriers'",
+        "source_ref": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceBarriers.lean:60",
+        "source_sha256": "sha256:4f977e49ba5559eafb5248c4d1c1af0b0f2a08c7d28baf6790f50b39e9cb294d",
+        "own_source_lines": 16,
+        "marginal_union_reduction": 872,
+        "beneficiaries": [
+          {
+            "handle": "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff",
+            "marginal_subtotal_reduction": 872
+          }
+        ]
+      },
+      {
+        "handle": "ErdosProblems.Erdos257.PaperCompleteR8.dyadicMean_support_le_profile",
+        "source_ref": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedInfiniteMean.lean:46",
+        "source_sha256": "sha256:58a5eed058877b00414d39e3a8585adfaf8a9e88b06a46fd387df3dd9a75d34e",
+        "own_source_lines": 68,
+        "marginal_union_reduction": 718,
+        "beneficiaries": [
+          {
+            "handle": "ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim",
+            "marginal_subtotal_reduction": 718
+          }
+        ]
+      },
+      {
+        "handle": "Erdos1041.Counterexample.bottleneck_slit_preimage_near",
+        "source_ref": "lean/ErdosProblems/Erdos1041/Counterexample/Bottleneck.lean:1468",
+        "source_sha256": "sha256:034cc62cb3769d7c9ff2f1aea4d1917534437f7adec3bf5537500e6b3d80976a",
+        "own_source_lines": 56,
+        "marginal_union_reduction": 679,
+        "beneficiaries": [
+          {
+            "handle": "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff",
+            "marginal_subtotal_reduction": 679
+          }
+        ]
+      },
+      {
+        "handle": "Erdos249257.linearIndependent_allBaseCanonicalFamily",
+        "source_ref": "lean/Erdos249257/AllBaseTotientKernel.lean:1114",
+        "source_sha256": "sha256:5862e926deceaf81e0a4aac92a7d09467323fc563cdf3c827f465cb4e9ec5dd5",
+        "own_source_lines": 98,
+        "marginal_union_reduction": 595,
+        "beneficiaries": [
+          {
+            "handle": "ErdosProblems.Erdos249.PaperCompleteR8.displayed_all_base_kernel",
+            "marginal_subtotal_reduction": 595
+          }
+        ]
+      },
+      {
+        "handle": "ErdosProblems.Erdos257.PaperCompleteR8.dyadicMean_finite_frame_le_profile",
+        "source_ref": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteMean.lean:141",
+        "source_sha256": "sha256:f8979eff4ac05a395fe42042ad74711b4cd5724c1251da54d10bb92485200b04",
+        "own_source_lines": 38,
+        "marginal_union_reduction": 583,
+        "beneficiaries": [
+          {
+            "handle": "ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim",
+            "marginal_subtotal_reduction": 583
+          }
+        ]
+      },
+      {
+        "handle": "Erdos1041.Counterexample.S4Proofs.crit_unique",
+        "source_ref": "lean/ErdosProblems/Erdos1041/Counterexample/InstanceCritical.lean:3694",
+        "source_sha256": "sha256:af8ca59a63e9048e034fbe6b5f8ecb966bde054688d7e2e12a9e159b708c4cbd",
+        "own_source_lines": 9,
+        "marginal_union_reduction": 501,
+        "beneficiaries": [
+          {
+            "handle": "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff",
+            "marginal_subtotal_reduction": 501
+          }
+        ]
+      }
+    ]
+  }
+}

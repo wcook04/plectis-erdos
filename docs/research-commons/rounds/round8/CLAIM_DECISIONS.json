@@ -1,0 +1,855 @@
+{
+  "schema": "plectis-round8-claim-decisions/1",
+  "round_id": "plectis_round8_20260929",
+  "source_manifest": "docs/research-commons/rounds/round8/MANIFEST.json",
+  "authority_note": "Ordinary proof, finite computation, Lean replay, independent semantic review, novelty and study outcomes remain distinct.",
+  "claims": [
+    {
+      "return_id": "p1",
+      "claim_id": "T-separated-cuts",
+      "advisory_claim_sha256": "2337b55333b84753c815d01b7d1f6717a556df196f0492b0957e45bb55985462",
+      "kind": "theorem",
+      "authority_band": "ordinary_proof_reviewed",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/synthesis/optimal-sparse-perturbations.tex"
+      ],
+      "reason": "Ordinary Type-A-reviewed argument or transfer boundary is incorporated at its exact scope; independent review, historical priority and Lean proof remain open.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p1",
+      "claim_id": "D-weighted-host",
+      "advisory_claim_sha256": "f57c8fc2c30745f860638e35c7f9ee1fa36feca3573c57ecbaa9ab0a62cad6c1",
+      "kind": "theorem",
+      "authority_band": "ordinary_proof_reviewed",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/synthesis/optimal-sparse-perturbations.tex"
+      ],
+      "reason": "Ordinary Type-A-reviewed argument or transfer boundary is incorporated at its exact scope; independent review, historical priority and Lean proof remain open.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p1",
+      "claim_id": "C-algebraic-chains",
+      "advisory_claim_sha256": "f283fadd49ad2b833430ee2a191403d2525781d030f11938c1bdd018767ddf44",
+      "kind": "theorem",
+      "authority_band": "ordinary_proof_reviewed",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/synthesis/optimal-sparse-perturbations.tex"
+      ],
+      "reason": "Ordinary Type-A-reviewed argument or transfer boundary is incorporated at its exact scope; independent review, historical priority and Lean proof remain open.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p1",
+      "claim_id": "E-nonchain-thinning",
+      "advisory_claim_sha256": "c51ff9935afb0cadfcbcea4e41be77d25aff308b5b04fdfd1656cbd792effb0a",
+      "kind": "theorem",
+      "authority_band": "ordinary_proof_reviewed",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/synthesis/optimal-sparse-perturbations.tex"
+      ],
+      "reason": "Ordinary Type-A-reviewed argument or transfer boundary is incorporated at its exact scope; independent review, historical priority and Lean proof remain open.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p1",
+      "claim_id": "F-displacement-integrality",
+      "advisory_claim_sha256": "c6f8d1eb48c68774c6b8e86a625fba3ae7c4e275681658aaded1da78232336a9",
+      "kind": "counterexample",
+      "authority_band": "ordinary_proof_and_exact_finite_check",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
+        "research/experiments/chain_transcendence/round8_finite_cut.py"
+      ],
+      "reason": "Ordinary Type-A-reviewed argument or transfer boundary is incorporated at its exact scope; independent review, historical priority and Lean proof remain open.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p1",
+      "claim_id": "I-finite-checks",
+      "advisory_claim_sha256": "183031e4c92a3417710e0f984a7244ecfda298d79c86b46b26ef01ca173b488e",
+      "kind": "implementation",
+      "authority_band": "reproduced_finite_computation",
+      "decision": "adapted",
+      "consumer_paths": [
+        "research/experiments/chain_transcendence/round8_finite_cut.py"
+      ],
+      "reason": "Exact finite cut calculations have a public experiment consumer; they do not prove the infinite theorem.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p1",
+      "claim_id": "I-lean-interface",
+      "advisory_claim_sha256": "347a8e98577923a4d85566746dcdb3b1cbb50a1b765566dca5a972d4d8aec306",
+      "kind": "implementation",
+      "authority_band": "uncompiled_formal_candidate",
+      "decision": "deferred",
+      "consumer_paths": [],
+      "reason": "A finite cut probe is staged; it is not a public checked declaration or a proof of algebraic-base transcendence.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt.",
+      "reentry": {
+        "owner": "Lean proof-port owner",
+        "trigger": "Consume an exact full-file Lean exit-0 and axiom receipt, then identify a genuine downstream import before porting."
+      }
+    },
+    {
+      "return_id": "p2",
+      "claim_id": "r8p2-late-swap-rigidity",
+      "advisory_claim_sha256": "8432c53523abb98af0bf82450577eb231db2b170784c137f687fcb11aa6f8343",
+      "kind": "theorem",
+      "authority_band": "ordinary_proof_reviewed",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/269/erdos269-running-lcm-reasoning-surface.tex"
+      ],
+      "reason": "Ordinary reviewed clock theorem or obstruction is integrated with its stated hypotheses; no original-prime-clock independence or Lean promotion is claimed.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p2",
+      "claim_id": "r8p2-clock-swap-completeness",
+      "advisory_claim_sha256": "2757d5595ab2b86ab34474ab37c57eb22df1aacd44acd7fc7d540bfd430241fa",
+      "kind": "theorem",
+      "authority_band": "ordinary_proof_reviewed",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/269/erdos269-running-lcm-reasoning-surface.tex"
+      ],
+      "reason": "Ordinary reviewed clock theorem or obstruction is integrated with its stated hypotheses; no original-prime-clock independence or Lean promotion is claimed.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p2",
+      "claim_id": "r8p2-clock-channel-classification",
+      "advisory_claim_sha256": "ca54761cc6ca18ac41d57376d3b9ad9db368d0df39c63e3694d5088ada6b77f9",
+      "kind": "theorem",
+      "authority_band": "ordinary_proof_reviewed",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/269/erdos269-running-lcm-reasoning-surface.tex"
+      ],
+      "reason": "Ordinary reviewed clock theorem or obstruction is integrated with its stated hypotheses; no original-prime-clock independence or Lean promotion is claimed.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p2",
+      "claim_id": "r8p2-explicit-four-clock-consumer",
+      "advisory_claim_sha256": "234822f28a829605fef93efb07ba0349e0a964f7dda094ea317092f244f74fbd",
+      "kind": "theorem",
+      "authority_band": "ordinary_proof_reviewed",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/269/erdos269-running-lcm-reasoning-surface.tex"
+      ],
+      "reason": "Ordinary reviewed clock theorem or obstruction is integrated with its stated hypotheses; no original-prime-clock independence or Lean promotion is claimed.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p2",
+      "claim_id": "r8p2-raw-divisor-tail-obstruction",
+      "advisory_claim_sha256": "276aeff648fb02cb7f1510f0d5048ccb9a6a6b47e1a040f386e422860bdc5c15",
+      "kind": "counterexample",
+      "authority_band": "ordinary_proof_and_exact_finite_check",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/269/erdos269-running-lcm-reasoning-surface.tex"
+      ],
+      "reason": "Ordinary reviewed clock theorem or obstruction is integrated with its stated hypotheses; no original-prime-clock independence or Lean promotion is claimed.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p2",
+      "claim_id": "r8p2-collision-and-aperiodicity-controls",
+      "advisory_claim_sha256": "b301d6e69ee5b3a72bad802abd45ca410cdbf26dc2f276b4fce56d19ff0922e2",
+      "kind": "counterexample",
+      "authority_band": "ordinary_proof_and_exact_finite_check",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/269/erdos269-running-lcm-reasoning-surface.tex"
+      ],
+      "reason": "Ordinary reviewed clock theorem or obstruction is integrated with its stated hypotheses; no original-prime-clock independence or Lean promotion is claimed.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p2",
+      "claim_id": "r8p2-exact-executable-checks",
+      "advisory_claim_sha256": "9f51dff4f6ce752ce73efded88646d682c7412e2d3ec7ba83d5dd85cf27eb874",
+      "kind": "implementation",
+      "authority_band": "reproduced_finite_computation",
+      "decision": "adapted",
+      "consumer_paths": [
+        "research/experiments/erdos269/round8_affine_collision.py"
+      ],
+      "reason": "Exact finite affine/collision check has a public experiment consumer, not an infinite clock proof.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p2",
+      "claim_id": "r8p2-proposed-native-sources",
+      "advisory_claim_sha256": "33ca1cf11d8db4c44625d47a09d32ce7f7fcac81f13597cf5d552dd9cf707585",
+      "kind": "implementation",
+      "authority_band": "uncompiled_formal_candidate",
+      "decision": "deferred",
+      "consumer_paths": [],
+      "reason": "Returned formal goals are not compiled proofs of independent-clock classification.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt.",
+      "reentry": {
+        "owner": "Lean proof-port owner",
+        "trigger": "A source-current downstream theorem needs a scoped declaration and exact Lean type/axiom receipt."
+      }
+    },
+    {
+      "return_id": "p3",
+      "claim_id": "r8p3-standard-height-baseline",
+      "advisory_claim_sha256": "3cc0817477fc0c8d0f673a33a36696e2b718afe39feade344d628282f7669a54",
+      "kind": "theorem",
+      "authority_band": "ordinary_proof_reviewed",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex"
+      ],
+      "reason": "Attributed baseline or calibrated countermodel is included as an ordinary argument; the model is not the actual Lambert moment sequence.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p3",
+      "claim_id": "r8p3-mass-exponent-separation",
+      "advisory_claim_sha256": "80dff092397787d935fb702406cb4cdee1671f66f763d2344035f995a17af216",
+      "kind": "theorem",
+      "authority_band": "ordinary_proof_reviewed",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex"
+      ],
+      "reason": "Attributed baseline or calibrated countermodel is included as an ordinary argument; the model is not the actual Lambert moment sequence.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p3",
+      "claim_id": "r8p3-calibrated-signature-countermodel",
+      "advisory_claim_sha256": "05bd13c6a091e3fc746a9daf2de3b26037377e93a7791a807449f03326c665a8",
+      "kind": "counterexample",
+      "authority_band": "ordinary_proof_reviewed",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex"
+      ],
+      "reason": "Attributed baseline or calibrated countermodel is included as an ordinary argument; the model is not the actual Lambert moment sequence.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p3",
+      "claim_id": "r8p3-exact-calibrated-denominators",
+      "advisory_claim_sha256": "e640f8871e41ddb06770179a6a908ecfd805dce22133878bd908cf73c78b7f1b",
+      "kind": "theorem",
+      "authority_band": "ordinary_proof_reviewed",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex"
+      ],
+      "reason": "Attributed baseline or calibrated countermodel is included as an ordinary argument; the model is not the actual Lambert moment sequence.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p3",
+      "claim_id": "r8p3-selected-kernel-smith-height",
+      "advisory_claim_sha256": "1f687bb5e24ed241049469e33a2890f6fc25ea23e866daca73800a5d7795ccaf",
+      "kind": "theorem",
+      "authority_band": "ordinary_proof_reviewed",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/269/erdos269-running-lcm-reasoning-surface.tex"
+      ],
+      "reason": "Selected-kernel arithmetic boundary is recorded as an ordinary argument, not a universal height impossibility theorem.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p3",
+      "claim_id": "r8p3-primitive-compatible-border",
+      "advisory_claim_sha256": "e528fd1ee45eeb708e6173641426520e492876ee2a8bd4962d67476545a48e0e",
+      "kind": "theorem",
+      "authority_band": "ordinary_proof_reviewed",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/269/erdos269-running-lcm-reasoning-surface.tex"
+      ],
+      "reason": "Selected-kernel arithmetic boundary is recorded as an ordinary argument, not a universal height impossibility theorem.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p3",
+      "claim_id": "r8p3-exact-finite-implementation",
+      "advisory_claim_sha256": "c75ac8a17a3620e0afca4f872009136d9a8917546777206df7fbc937965dd953",
+      "kind": "implementation",
+      "authority_band": "reproduced_finite_computation",
+      "decision": "adapted",
+      "consumer_paths": [
+        "research/experiments/erdos1049/round8_calibrated_denominators.py"
+      ],
+      "reason": "Finite calibrated-denominator calculation is an experiment; it does not certify the all-rank height argument.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p3",
+      "claim_id": "r8p3-native-candidate-specifications",
+      "advisory_claim_sha256": "6f8fba420d4b2321088b4e81db49d9c9266d92bacccc1685cf964ec28c2f7d5f",
+      "kind": "implementation",
+      "authority_band": "unproved_formal_specification",
+      "decision": "deferred",
+      "consumer_paths": [],
+      "reason": "Desired proposition specifications are preserved as obligations, not Lean proofs.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt.",
+      "reentry": {
+        "owner": "Lean proof-port owner",
+        "trigger": "A downstream exact theorem is selected, proved and checked by a full-file Lean receipt."
+      }
+    },
+    {
+      "return_id": "p4",
+      "claim_id": "r8-p4-signed-interpolation",
+      "advisory_claim_sha256": "cc3d6f0fae3b2b6f05548f1d7d695a8482279dff97b6220dcaa4c4ab91a393ca",
+      "kind": "theorem",
+      "authority_band": "ordinary_proof_reviewed",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/249/erdos249-totient-reasoning-surface.tex"
+      ],
+      "reason": "Type A strengthened the allowance to any positive function tending to infinity; the signed ordinary proof retains its density and positivity boundaries.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p4",
+      "claim_id": "r8-p4-entire-dirichlet-defect",
+      "advisory_claim_sha256": "caa11c2d1d371d1809eb29e37c2b044a2ef12b43a9ef8c978c2ed69e42b0027f",
+      "kind": "theorem",
+      "authority_band": "ordinary_proof_reviewed",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/249/erdos249-totient-reasoning-surface.tex"
+      ],
+      "reason": "Type A strengthened the allowance to any positive function tending to infinity; the signed ordinary proof retains its density and positivity boundaries.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p4",
+      "claim_id": "r8-p4-observation-no-go",
+      "advisory_claim_sha256": "59ef49b8e7d666b817e0469a3d5f0af395449dfd237b81fd2f1bb77a8fdb083b",
+      "kind": "counterexample",
+      "authority_band": "ordinary_proof_reviewed",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/249/erdos249-totient-reasoning-surface.tex"
+      ],
+      "reason": "Type A strengthened the allowance to any positive function tending to infinity; the signed ordinary proof retains its density and positivity boundaries.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p4",
+      "claim_id": "r8-p4-first-harmonic-countermodels",
+      "advisory_claim_sha256": "77f20e4ceaa02b781e05e5b889f6605b365d62fc67135809534732e7eeeed423",
+      "kind": "counterexample",
+      "authority_band": "ordinary_proof_reviewed",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/249/erdos249-totient-reasoning-surface.tex"
+      ],
+      "reason": "Type A strengthened the allowance to any positive function tending to infinity; the signed ordinary proof retains its density and positivity boundaries.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p4",
+      "claim_id": "r8-p4-exact-finite-checks",
+      "advisory_claim_sha256": "31d314a05b936dcbcefb1ca0dccc9f4b9f4dd07dd3baa8e703871d4ffc7325b3",
+      "kind": "implementation",
+      "authority_band": "reproduced_finite_computation",
+      "decision": "adapted",
+      "consumer_paths": [
+        "research/experiments/erdos249/round8_signed_pulse.py"
+      ],
+      "reason": "Exact finite signed-pulse checks support the packet arithmetic only.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt."
+    },
+    {
+      "return_id": "p4",
+      "claim_id": "r8-p4-finite-lean-canary",
+      "advisory_claim_sha256": "520f9b848fd7743639714454234084ec6eadbcd20ac1cd020ec14ecbf87c5956",
+      "kind": "implementation",
+      "authority_band": "uncompiled_formal_candidate",
+      "decision": "deferred",
+      "consumer_paths": [],
+      "reason": "Finite signed-packet canary is staged; it cannot certify entire Dirichlet defect or infinite interpolation.",
+      "formalization_status": "not_formalized_by_round8",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any Lean promotion needs exact source-current formal statement, full-file exit-0 type and axiom receipt, and an actual downstream consumer; the ordinary infinite proof is not such a receipt.",
+      "reentry": {
+        "owner": "Lean proof-port owner",
+        "trigger": "Consume exact full-file Lean success and axiom output, then select a genuine paper consumer before public import."
+      }
+    },
+    {
+      "return_id": "p5",
+      "claim_id": "R8P5-01",
+      "advisory_claim_sha256": "8e13264c9327671381531b3f24bff2d82272d3f61d14664bb63e2993f0f9ed0a",
+      "kind": "theorem",
+      "authority_band": "source_and_ordinary_review_not_gold",
+      "decision": "adapted",
+      "consumer_paths": [
+        "docs/research-commons/benchmarks/round8_candidate_development/candidate_bank.jsonl"
+      ],
+      "reason": "Source-bound candidate development row, one of four dependent clusters; author proposal remains non-gold without new kernel replay and independent semantic review.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Gold admission needs source-current formal replay where applicable and independent intended-meaning review; proposed rows are disclosed development material."
+    },
+    {
+      "return_id": "p5",
+      "claim_id": "R8P5-02",
+      "advisory_claim_sha256": "76c54ffb29b2c32548ab783bdefa20f487f20390edb777fdea02cf975b8dbf7e",
+      "kind": "theorem",
+      "authority_band": "source_and_ordinary_review_not_gold",
+      "decision": "adapted",
+      "consumer_paths": [
+        "docs/research-commons/benchmarks/round8_candidate_development/candidate_bank.jsonl"
+      ],
+      "reason": "Source-bound candidate development row, one of four dependent clusters; author proposal remains non-gold without new kernel replay and independent semantic review.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Gold admission needs source-current formal replay where applicable and independent intended-meaning review; proposed rows are disclosed development material."
+    },
+    {
+      "return_id": "p5",
+      "claim_id": "R8P5-03",
+      "advisory_claim_sha256": "b16e8ccbcb3ab13c565531fd5d407575760a5eda2759881cbf890adab7092e11",
+      "kind": "counterexample",
+      "authority_band": "source_and_ordinary_review_not_gold",
+      "decision": "adapted",
+      "consumer_paths": [
+        "docs/research-commons/benchmarks/round8_candidate_development/candidate_bank.jsonl"
+      ],
+      "reason": "Source-bound candidate development row, one of four dependent clusters; author proposal remains non-gold without new kernel replay and independent semantic review.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Gold admission needs source-current formal replay where applicable and independent intended-meaning review; proposed rows are disclosed development material."
+    },
+    {
+      "return_id": "p5",
+      "claim_id": "R8P5-04",
+      "advisory_claim_sha256": "ab0e3eca206121da939ca993c6dae52b74241bc16ed3229027e727ca614388bf",
+      "kind": "theorem",
+      "authority_band": "source_and_ordinary_review_not_gold",
+      "decision": "adapted",
+      "consumer_paths": [
+        "docs/research-commons/benchmarks/round8_candidate_development/candidate_bank.jsonl"
+      ],
+      "reason": "Source-bound candidate development row, one of four dependent clusters; author proposal remains non-gold without new kernel replay and independent semantic review.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Gold admission needs source-current formal replay where applicable and independent intended-meaning review; proposed rows are disclosed development material."
+    },
+    {
+      "return_id": "p5",
+      "claim_id": "R8P5-05",
+      "advisory_claim_sha256": "b65782e6a3b47ccedbcd5b174d636a7314e179590d8f33efcd9653853bc1c902",
+      "kind": "counterexample",
+      "authority_band": "source_and_ordinary_review_not_gold",
+      "decision": "adapted",
+      "consumer_paths": [
+        "docs/research-commons/benchmarks/round8_candidate_development/candidate_bank.jsonl"
+      ],
+      "reason": "Source-bound candidate development row, one of four dependent clusters; author proposal remains non-gold without new kernel replay and independent semantic review.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Gold admission needs source-current formal replay where applicable and independent intended-meaning review; proposed rows are disclosed development material."
+    },
+    {
+      "return_id": "p5",
+      "claim_id": "R8P5-06",
+      "advisory_claim_sha256": "07bf88774f7c10b165552feff87f9fc022a031f1d594175f77d585e03059eeff",
+      "kind": "counterexample",
+      "authority_band": "source_and_ordinary_review_not_gold",
+      "decision": "adapted",
+      "consumer_paths": [
+        "docs/research-commons/benchmarks/round8_candidate_development/candidate_bank.jsonl"
+      ],
+      "reason": "Source-bound candidate development row, one of four dependent clusters; author proposal remains non-gold without new kernel replay and independent semantic review.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Gold admission needs source-current formal replay where applicable and independent intended-meaning review; proposed rows are disclosed development material."
+    },
+    {
+      "return_id": "p5",
+      "claim_id": "R8P5-07",
+      "advisory_claim_sha256": "401e1e4dc48978c7c297b960e9063a2365d2cd9fda413b7f06d862d00ddac2b6",
+      "kind": "theorem",
+      "authority_band": "source_and_ordinary_review_not_gold",
+      "decision": "adapted",
+      "consumer_paths": [
+        "docs/research-commons/benchmarks/round8_candidate_development/candidate_bank.jsonl"
+      ],
+      "reason": "Source-bound candidate development row, one of four dependent clusters; author proposal remains non-gold without new kernel replay and independent semantic review.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Gold admission needs source-current formal replay where applicable and independent intended-meaning review; proposed rows are disclosed development material."
+    },
+    {
+      "return_id": "p5",
+      "claim_id": "R8P5-08",
+      "advisory_claim_sha256": "9c646496718bc2188708a9302bf5679f3552413639800847ffd74cdc9b77a11f",
+      "kind": "counterexample",
+      "authority_band": "source_and_ordinary_review_not_gold",
+      "decision": "adapted",
+      "consumer_paths": [
+        "docs/research-commons/benchmarks/round8_candidate_development/candidate_bank.jsonl"
+      ],
+      "reason": "Source-bound candidate development row, one of four dependent clusters; author proposal remains non-gold without new kernel replay and independent semantic review.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Gold admission needs source-current formal replay where applicable and independent intended-meaning review; proposed rows are disclosed development material."
+    },
+    {
+      "return_id": "p5",
+      "claim_id": "R8P5-09",
+      "advisory_claim_sha256": "4e1c0091e3308bd7a825ffb4c6f350b1740fee7107098cdf985197a196a076d7",
+      "kind": "counterexample",
+      "authority_band": "source_and_ordinary_review_not_gold",
+      "decision": "adapted",
+      "consumer_paths": [
+        "docs/research-commons/benchmarks/round8_candidate_development/candidate_bank.jsonl"
+      ],
+      "reason": "Source-bound candidate development row, one of four dependent clusters; author proposal remains non-gold without new kernel replay and independent semantic review.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Gold admission needs source-current formal replay where applicable and independent intended-meaning review; proposed rows are disclosed development material."
+    },
+    {
+      "return_id": "p5",
+      "claim_id": "R8P5-10",
+      "advisory_claim_sha256": "87935b155ea01353399d8973f75f69f0e75cae022d4c2c361a0a3ceab126e965",
+      "kind": "theorem",
+      "authority_band": "source_and_ordinary_review_not_gold",
+      "decision": "adapted",
+      "consumer_paths": [
+        "docs/research-commons/benchmarks/round8_candidate_development/candidate_bank.jsonl"
+      ],
+      "reason": "Source-bound candidate development row, one of four dependent clusters; author proposal remains non-gold without new kernel replay and independent semantic review.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Gold admission needs source-current formal replay where applicable and independent intended-meaning review; proposed rows are disclosed development material."
+    },
+    {
+      "return_id": "p5",
+      "claim_id": "R8P5-11",
+      "advisory_claim_sha256": "198ce364f0ac8f255a63fb90938f366352d173cfb071fae23d4b78228f8bd3c8",
+      "kind": "protocol",
+      "authority_band": "source_and_ordinary_review_not_gold",
+      "decision": "adapted",
+      "consumer_paths": [
+        "docs/research-commons/benchmarks/round8_candidate_development/candidate_bank.jsonl"
+      ],
+      "reason": "Source-bound candidate development row, one of four dependent clusters; author proposal remains non-gold without new kernel replay and independent semantic review.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Gold admission needs source-current formal replay where applicable and independent intended-meaning review; proposed rows are disclosed development material."
+    },
+    {
+      "return_id": "p5",
+      "claim_id": "R8P5-12",
+      "advisory_claim_sha256": "a3d5c51744200aad1c7ef34a02a687c0a8ef7b11bf63e11e199e9163750077ad",
+      "kind": "theorem",
+      "authority_band": "source_and_ordinary_review_not_gold",
+      "decision": "adapted",
+      "consumer_paths": [
+        "docs/research-commons/benchmarks/round8_candidate_development/candidate_bank.jsonl"
+      ],
+      "reason": "Source-bound candidate development row, one of four dependent clusters; author proposal remains non-gold without new kernel replay and independent semantic review.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Gold admission needs source-current formal replay where applicable and independent intended-meaning review; proposed rows are disclosed development material."
+    },
+    {
+      "return_id": "p5",
+      "claim_id": "kit-and-source-bindings",
+      "advisory_claim_sha256": "8abcf40142b0b0be8082c66e3cd032057e4b6565ece26844307505fb8ae7cdb3",
+      "kind": "implementation",
+      "authority_band": "reviewed_code_with_reproduced_gap",
+      "decision": "adapted",
+      "consumer_paths": [
+        "scripts/restatement_candidate_support.py",
+        "scripts/build_restatement_benchmark.py",
+        "docs/research-commons/benchmarks/round8_candidate_development/README.md"
+      ],
+      "reason": "Native source-byte validation and review export were repaired and tested; no operational gold admission follows.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Gold admission needs source-current formal replay where applicable and independent intended-meaning review; proposed rows are disclosed development material."
+    },
+    {
+      "return_id": "p5",
+      "claim_id": "native-calibration-and-stale-receipt",
+      "advisory_claim_sha256": "d3c2cc8a81b176fa5261b88ff827a42bfef83c5d34b5655a8e25d0bb7613e8a4",
+      "kind": "implementation",
+      "authority_band": "reviewed_source_and_finite_evidence",
+      "decision": "adapted",
+      "consumer_paths": [
+        "docs/research-commons/benchmarks/round8_candidate_development/README.md"
+      ],
+      "reason": "The older eight-row Round-7 calibration is duplicate and is not re-adopted; only the stale-receipt and historical-source boundary is disclosed for these new candidate rows.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Gold admission needs source-current formal replay where applicable and independent intended-meaning review; proposed rows are disclosed development material."
+    },
+    {
+      "return_id": "p5",
+      "claim_id": "finite-arithmetic-specimens",
+      "advisory_claim_sha256": "5f2ce6074d15507aaf21cd92449cbf9c0e240f4e04617e0c3924cf912dc06799",
+      "kind": "counterexample",
+      "authority_band": "reviewed_source_and_finite_evidence",
+      "decision": "adapted",
+      "consumer_paths": [
+        "docs/research-commons/benchmarks/round8_candidate_development/candidate_bank.jsonl",
+        "docs/research-commons/benchmarks/round8_candidate_development/README.md"
+      ],
+      "reason": "Exact finite specimens are candidate evidence, with no new Lean replay.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Gold admission needs source-current formal replay where applicable and independent intended-meaning review; proposed rows are disclosed development material."
+    },
+    {
+      "return_id": "p5",
+      "claim_id": "overlap-audit",
+      "advisory_claim_sha256": "21e3c2cb0c9b23d832b2a05e4920747511132dc54ae55941dd73a70d454ee971",
+      "kind": "implementation",
+      "authority_band": "reviewed_source_and_finite_evidence",
+      "decision": "adapted",
+      "consumer_paths": [
+        "docs/research-commons/benchmarks/round8_candidate_development/README.md"
+      ],
+      "reason": "Dependence/overlap audit informs development classification; twelve rows are not twelve independent families.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Gold admission needs source-current formal replay where applicable and independent intended-meaning review; proposed rows are disclosed development material."
+    },
+    {
+      "return_id": "p5",
+      "claim_id": "comment-only-patch",
+      "advisory_claim_sha256": "90c505fef0798fbcecd713e99957afae77825be9172513bc0a573f6545abd7ba",
+      "kind": "implementation",
+      "authority_band": "reviewed_source_and_finite_evidence",
+      "decision": "adapted",
+      "consumer_paths": [
+        "lean/ErdosProblems/Erdos68/FactorialZeroPlateauCertificates.lean",
+        "lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean"
+      ],
+      "reason": "Source comments correct smoothness and tractability wording; theorem tokens and proof authority are unchanged.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Gold admission needs source-current formal replay where applicable and independent intended-meaning review; proposed rows are disclosed development material."
+    },
+    {
+      "return_id": "p5",
+      "claim_id": "formal-replay-assets",
+      "advisory_claim_sha256": "652b1e073559ba2258f27c997ba5c28383aa8aa5296be8ec44d39339674b9ed4",
+      "kind": "protocol",
+      "authority_band": "uncompiled_formal_candidate",
+      "decision": "deferred",
+      "consumer_paths": [],
+      "reason": "Returned replay files have not supplied a source-current full-file kernel receipt; unproved obligations remain only goals.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Gold admission needs source-current formal replay where applicable and independent intended-meaning review; proposed rows are disclosed development material.",
+      "reentry": {
+        "owner": "Lean replay owner",
+        "trigger": "Rebind exact current declarations, run finite replay files with exit-0 and axiom receipts, and independently adjudicate intended meaning before gold use."
+      }
+    },
+    {
+      "return_id": "p5",
+      "claim_id": "label-free-review-protocol",
+      "advisory_claim_sha256": "b20218825aa4f8f8e370c201fd2b36dea17cdd807808cd4cbc557ba26b09d0f5",
+      "kind": "protocol",
+      "authority_band": "reviewed_code_with_reproduced_gap",
+      "decision": "adapted",
+      "consumer_paths": [
+        "docs/research-commons/benchmarks/round8_candidate_development/README.md"
+      ],
+      "reason": "Review protocol is documented for future independent adjudication; no independent adjudication has occurred.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Gold admission needs source-current formal replay where applicable and independent intended-meaning review; proposed rows are disclosed development material."
+    },
+    {
+      "return_id": "p6",
+      "claim_id": "r8p6-task-material-kit",
+      "advisory_claim_sha256": "603a115bd17fda7f57c3f47ea1d8b5080625efab74b6a62450ff68bc7b8f2f53",
+      "kind": "implementation",
+      "authority_band": "development_fixture_not_model_study",
+      "decision": "adapted",
+      "consumer_paths": [
+        "docs/research-commons/benchmarks/round8_reader_pilot/reviewed_study_candidate.json",
+        "docs/research-commons/benchmarks/round8_reader_pilot/README.md"
+      ],
+      "reason": "Four candidate tasks and material selection are preserved as development fixtures; no real study was run.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any outcome claim needs a real controlled run with bound provider/controller traces, verified isolation and independent grading; synthetic fixtures are not study data."
+    },
+    {
+      "return_id": "p6",
+      "claim_id": "r8p6-exact-inventory",
+      "advisory_claim_sha256": "af5da06ca9582e709c0eb00b42bfc4a204824503d89d85129d48bf67aea9e93c",
+      "kind": "implementation",
+      "authority_band": "reviewed_code_candidate",
+      "decision": "adapted",
+      "consumer_paths": [
+        "scripts/reader_study.py",
+        "scripts/test_round8_native_port.py"
+      ],
+      "reason": "Native material inventory and singleton-uncertainty guards were fixed and exercised synthetically.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any outcome claim needs a real controlled run with bound provider/controller traces, verified isolation and independent grading; synthetic fixtures are not study data."
+    },
+    {
+      "return_id": "p6",
+      "claim_id": "r8p6-singleton-uncertainty",
+      "advisory_claim_sha256": "f6883649acebfd04e70cd97c22c27f0272fc16e5a3d6f04b3553394497309e54",
+      "kind": "implementation",
+      "authority_band": "reviewed_code_candidate",
+      "decision": "adapted",
+      "consumer_paths": [
+        "scripts/reader_study.py",
+        "scripts/test_round8_native_port.py"
+      ],
+      "reason": "Native material inventory and singleton-uncertainty guards were fixed and exercised synthetically.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any outcome claim needs a real controlled run with bound provider/controller traces, verified isolation and independent grading; synthetic fixtures are not study data."
+    },
+    {
+      "return_id": "p6",
+      "claim_id": "r8p6-native-synthetic-pipeline",
+      "advisory_claim_sha256": "fb30cc6928b490124d04085ab46f582fbf76b13292f868185aebc7f9670fd9fd",
+      "kind": "implementation",
+      "authority_band": "development_fixture_not_model_study",
+      "decision": "adapted",
+      "consumer_paths": [
+        "scripts/reader_study.py",
+        "docs/research-commons/benchmarks/round8_reader_pilot/README.md"
+      ],
+      "reason": "Bounded provider/controller contract and synthetic checks are present; no live deployment or real capture chain is certified.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any outcome claim needs a real controlled run with bound provider/controller traces, verified isolation and independent grading; synthetic fixtures are not study data."
+    },
+    {
+      "return_id": "p6",
+      "claim_id": "r8p6-restricted-controller",
+      "advisory_claim_sha256": "1b902ff2809735c2dacffc74323fed06ab00d065659415a438622c80f1c295ac",
+      "kind": "implementation",
+      "authority_band": "development_fixture_not_model_study",
+      "decision": "adapted",
+      "consumer_paths": [
+        "scripts/reader_study.py",
+        "docs/research-commons/benchmarks/round8_reader_pilot/README.md"
+      ],
+      "reason": "Bounded provider/controller contract and synthetic checks are present; no live deployment or real capture chain is certified.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any outcome claim needs a real controlled run with bound provider/controller traces, verified isolation and independent grading; synthetic fixtures are not study data."
+    },
+    {
+      "return_id": "p6",
+      "claim_id": "r8p6-independent-review-boundary",
+      "advisory_claim_sha256": "ce786d668ca861a12ca6a5821e448193673b0e10f9fc5a36bf95a67817cb6959",
+      "kind": "protocol",
+      "authority_band": "protocol_not_executed_study",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/systems/claim-faithful-publication-systems-paper.tex",
+        "docs/research-commons/benchmarks/round8_reader_pilot/README.md"
+      ],
+      "reason": "Systems wording carries the proposed review boundary without treating the unrun pilot as outcome evidence.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any outcome claim needs a real controlled run with bound provider/controller traces, verified isolation and independent grading; synthetic fixtures are not study data."
+    },
+    {
+      "return_id": "p6",
+      "claim_id": "r8p6-systems-wording",
+      "advisory_claim_sha256": "3ec1dd51cf5ef1fcd165374bc2c1726ef028fb843acb20254afefa6734e05853",
+      "kind": "protocol",
+      "authority_band": "protocol_not_executed_study",
+      "decision": "adapted",
+      "consumer_paths": [
+        "paper/systems/claim-faithful-publication-systems-paper.tex",
+        "docs/research-commons/benchmarks/round8_reader_pilot/README.md"
+      ],
+      "reason": "Systems wording carries the proposed review boundary without treating the unrun pilot as outcome evidence.",
+      "formalization_status": "not_applicable_or_pending",
+      "publication_status": "working_tree_pending_release",
+      "defer_condition": "Any outcome claim needs a real controlled run with bound provider/controller traces, verified isolation and independent grading; synthetic fixtures are not study data."
+    }
+  ]
+}

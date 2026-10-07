@@ -1,0 +1,111 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-23T23:59:34Z",
+  "entry": "E257_06",
+  "github": {
+    "sha": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+    "ref": "refs/heads/palomar/comparator-cycle-20260923",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35935225572",
+    "run_attempt": "1",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E257_06.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_06",
+  "theorem_count": 14,
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAD.paper_consecutive_not_both_divisible",
+    "PalomarCorpus.E257.PaperStatementsAD.paper_isRowLower_unique",
+    "PalomarCorpus.E257.PaperStatementsAD.paper_isRowUpper_unique",
+    "PalomarCorpus.E257.PaperStatementsAD.paper_rowLower_existsUnique",
+    "PalomarCorpus.E257.PaperStatementsAD.paper_rowPulse_eq_indicators",
+    "PalomarCorpus.E257.PaperStatementsAD.paper_rowQuotient_eq_weightSum",
+    "PalomarCorpus.E257.PaperStatementsAD.paper_rowTarget_eq",
+    "PalomarCorpus.E257.PaperStatementsAD.paper_rowUpper_existsUnique",
+    "PalomarCorpus.E257.PaperStatementsAD.paper_rowWeight_eq_floor",
+    "PalomarCorpus.E257.PaperStructuresAZ.paper_dynamics",
+    "PalomarCorpus.E257.PaperStructuresAZ.paper_greedySupport_greedy_rule",
+    "PalomarCorpus.E257.PaperStructuresAZ.paper_greedySupport_isRowLower",
+    "PalomarCorpus.E257.PaperStructuresAZ.paper_greedySupport_mem",
+    "PalomarCorpus.E257.PaperStructuresAZ.paper_greedy_step"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "f983a597e34b1bcab0214f98c924c8a3b921417af9aec8d42d89f074764d1e9d",
+    "comparator.json": "730ad9792d9a1f3e76a7e9ed23b4d01bb6cec0bc2e3bc63edb7a85660f88cc11",
+    "formalization.yaml": "0e5c732577932a83a02aa4bcc670fd14e4b6090f5030bc7e56965e39b7f00a61"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E257_06.lean": "d82f4dad9c53a0565dbbba550cf6d10828301635d40cdb3a865cd3949d67e567",
+      "Solutions/PalomarCorpus/E257_06/PaperStatementsAD.lean": "d7a77c6bf7caf76995d43849974414db61dc1aff493ecf30cc1b2e545afaee44",
+      "Solutions/PalomarCorpus/E257_06/PaperStructuresAZ.lean": "4fad64700fbf8f03c88156babb3fd9966e35c25987cd8909f3935f91eb333f6b",
+      "Solutions/PalomarCorpus/E257_06/Statement.lean": "74e39a25e7996c615e21423f10bf2ec6eb8c342d2759d455b8df466de9ed6f48"
+    },
+    "sha256": "fca3c91f45d1240d63a9ee8f76942f0a3d36b6b5b2db0b2e238cc0fc6c0c3984"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 11.197
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 32.287
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 47.379,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 7.774
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

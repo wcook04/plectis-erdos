@@ -1,0 +1,134 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-24T00:25:59Z",
+  "entry": "E249_17",
+  "github": {
+    "sha": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+    "ref": "refs/heads/palomar/comparator-cycle-20260923",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35935225572",
+    "run_attempt": "1",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E249_17.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_17",
+  "theorem_count": 33,
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAE.abs_mobiusSquareTail_le_paper",
+    "PalomarCorpus.E249.PaperStatementsAE.abs_moebius_cast_le_one",
+    "PalomarCorpus.E249.PaperStatementsAE.complementSummand_eq_phaseTerm",
+    "PalomarCorpus.E249.PaperStatementsAE.complementSummand_low_double_echo",
+    "PalomarCorpus.E249.PaperStatementsAE.divisorIndex_endpoint_behaviour",
+    "PalomarCorpus.E249.PaperStatementsAE.doubling_tempered_sequence_eq_zero",
+    "PalomarCorpus.E249.PaperStatementsAE.mersenne_geometric_shift",
+    "PalomarCorpus.E249.PaperStatementsAE.squarefreeKernel_eq_prod_primeFactors",
+    "PalomarCorpus.E249.PaperStatementsAE.sum_divisorIndices_mobius",
+    "PalomarCorpus.E249.PaperStatementsAE.sum_divisors_moebius_div_eq_totient_div",
+    "PalomarCorpus.E249.PaperStatementsAE.totientDifference_doubling_seam",
+    "PalomarCorpus.E249.PaperStatementsAE.totientDifference_eq_divisorPart_add_complement",
+    "PalomarCorpus.E249.PaperStatementsAE.totientSeries_eq_half_add_moebius_sq",
+    "PalomarCorpus.E249.PaperStatementsAE.totientSeries_pnat_form",
+    "PalomarCorpus.E249.PaperStatementsAE.totient_eq_mobius_divisor_sum",
+    "PalomarCorpus.E249.PaperStatementsAE.totient_two_mul_even",
+    "PalomarCorpus.E249.PaperStatementsAE.totient_two_mul_odd",
+    "PalomarCorpus.E249.PaperStatementsAE.tsum_quarter_geometric",
+    "PalomarCorpus.E249.PaperStatementsAK.twoAtom_hankel_gap",
+    "PalomarCorpus.E249.PaperStatementsAK.twoAtom_strict_logConcave",
+    "PalomarCorpus.E249.PaperStatementsAO.mersenne_dvd_of_dvd",
+    "PalomarCorpus.E249.PaperStatementsAO.paperNumerator_coeff_eq_gcd_divisor_sum",
+    "PalomarCorpus.E249.PaperStatementsAO.paperNumerator_coeff_eq_zero",
+    "PalomarCorpus.E249.PaperStatementsAO.paperNumerator_coeff_pos",
+    "PalomarCorpus.E249.PaperStatementsAO.paperNumerator_eq_gcdWordForm",
+    "PalomarCorpus.E249.PaperStatementsAQ.paperNumeratorPolynomial_eq",
+    "PalomarCorpus.E249.PaperStatementsAQ.sum_divisorIndices_radical_form",
+    "PalomarCorpus.E249.PaperStatementsAX.tailDifference_eq_coefficient_mul_series",
+    "PalomarCorpus.E249.PaperStatementsAX.tailDifference_sub_rationalApproximation",
+    "PalomarCorpus.E249.PaperStatementsBG.mobiusMersenneTheta_one_and_two",
+    "PalomarCorpus.E249.PaperStatementsBG.theta_hankel_det_neg",
+    "PalomarCorpus.E249.PaperStatementsBG.theta_hankel_two_neg",
+    "PalomarCorpus.E249.PaperStatementsBG.theta_strict_logConcave"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "0127d00c60bb3181e4c1f4761fa53a8966114e22fbd902be734a699a577a988e",
+    "comparator.json": "56b46ff3731ddeef5ea67cc119f8eeb0ef3566422c16fb4f9773f21f3ce7ce06",
+    "formalization.yaml": "655a78037d1cca770057ffdf1ea8445f8e0ffd2bbf6f2fe192f6a39b58f88558"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E249_17.lean": "ae5bce3d797295d0ec8b8bf6f697bb08f3bdf2363b2e6391043b6d64b64c1797",
+      "Solutions/PalomarCorpus/E249_17/PaperStatementsAE.lean": "866e45e9cb2eea1560a34d447fb911c7f30cf19879361d360927ff811f829dfb",
+      "Solutions/PalomarCorpus/E249_17/PaperStatementsAK.lean": "fb6a433a7503a606f1739838a3f96a68d20858e8044b6a20c8d447556d930f8f",
+      "Solutions/PalomarCorpus/E249_17/PaperStatementsAO.lean": "1681e9640533cfbbb30f8c4b1014a7419ac326c7ed93b23620681e1685582f18",
+      "Solutions/PalomarCorpus/E249_17/PaperStatementsAQ.lean": "1ee49986571f5e09dd721a2a86670ac5a23b1a791b45978685bfa9d0219b45bf",
+      "Solutions/PalomarCorpus/E249_17/PaperStatementsAX.lean": "e817c31d35dc264f153607d8018c685a06f638fbe056295d9961aeb80fff261f",
+      "Solutions/PalomarCorpus/E249_17/PaperStatementsBG.lean": "b0a672a6263052a15f98101017c63de7cc29ba46473dc43ea045125a59b7610d",
+      "Solutions/PalomarCorpus/E249_17/Statement.lean": "a0a560f142b88cc6c8add43d49c37dd740902cfc1c13c9ed4550d58750bf8767"
+    },
+    "sha256": "ce210cbb2069cf1335701c48401eca99b9aa935cca483ffdbecc7282b18c718b"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 11.529
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 31.463
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 59.219,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 8.531
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

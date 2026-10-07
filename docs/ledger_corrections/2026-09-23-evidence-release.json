@@ -1,0 +1,463 @@
+{
+ "schema": "plectis-ledger-corrections/1",
+ "rule": "Corrections to the coverage ledger's evidence bindings found while writing the evidence records of the 23 September 2026 release. Each changes what a row binds or says it assumes, never a statement; the reason says why the old binding did not match the printed result.",
+ "corrections": [
+  {
+   "row": "erdos-1041-lemniscate-newton-flow#res:ani-degree-seven-counterexample",
+   "field": "lean.declarations",
+   "old": [
+    "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff",
+    "Erdos1041.Counterexample.erdos1041_hausdorff_negation",
+    "Erdos1041.Counterexample.erdos1041_hausdorff_answer_false"
+   ],
+   "new": [
+    "Erdos1041.Counterexample.erdos1041_counterexample",
+    "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff",
+    "Erdos1041.Counterexample.erdos1041_hausdorff_negation",
+    "Erdos1041.Counterexample.erdos1041_hausdorff_answer_false"
+   ],
+   "reason": "The passage also asserts that the polynomial is monic of degree seven with distinct roots in the open unit disc; none of the three bound theorems states that, and erdos1041_counterexample does.",
+   "files": {
+    "Erdos1041.Counterexample.erdos1041_counterexample": "lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean"
+   }
+  },
+  {
+   "row": "erdos68-factorial-reasoning-surface#long68:res:global-residue",
+   "field": "lean.declarations",
+   "old": [
+    "ErdosProblems.Erdos68.PaperComplete.global_complementary_criterion_prime"
+   ],
+   "new": [
+    "ErdosProblems.Erdos68.PaperComplete.global_complementary_criterion_nat"
+   ],
+   "reason": "The printed theorem assumes a natural parameter p >= 3; global_complementary_criterion_prime assumes p prime and so states a weaker result. global_complementary_criterion_nat states the printed theorem; it is the declaration the short paper's identical theorem binds, compared in the same corpus entry and replay.",
+   "files": {
+    "ErdosProblems.Erdos68.PaperComplete.global_complementary_criterion_nat": "lean/ErdosProblems/Erdos68/PaperCompleteExisting.lean"
+   }
+  },
+  {
+   "row": "erdos251-prime-gap-reasoning-surface#long251:res:nonconc-primes",
+   "field": "lean.scope",
+   "old": "the prime number theorem",
+   "new": "Schlage-Puchta's density lemma and the prime number theorem",
+   "reason": "The Lean theorem takes both named inputs (hSP and hPNT); the scope named only the prime number theorem."
+  },
+  {
+   "row": "erdos1041-lemniscate-reasoning-surface#res:ani-degree-seven-counterexample-long",
+   "field": "lean.declarations",
+   "old": [
+    "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff",
+    "Erdos1041.Counterexample.erdos1041_hausdorff_negation",
+    "Erdos1041.Counterexample.erdos1041_hausdorff_answer_false"
+   ],
+   "new": [
+    "Erdos1041.Counterexample.erdos1041_counterexample",
+    "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff",
+    "Erdos1041.Counterexample.erdos1041_hausdorff_negation",
+    "Erdos1041.Counterexample.erdos1041_hausdorff_answer_false"
+   ],
+   "reason": "The passage also asserts that the polynomial is monic of degree seven with distinct roots in the open unit disc; none of the three bound theorems states that, and erdos1041_counterexample does.",
+   "files": {
+    "Erdos1041.Counterexample.erdos1041_counterexample": "lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean"
+   }
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#prop:local-void",
+   "field": "lean.declarations",
+   "old": [
+    "Erdos249257.affineBinaryOrbit_mod_twoPow_eq",
+    "Erdos249257.balancedPulse_weighted_pair",
+    "Erdos249257.balancedPulse_endpoint_fanout",
+    "Erdos249257.balancedPulse_label_card_lower_bound",
+    "Erdos249257.balancedPulse_no_autonomous_decoder",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_centred_completion_of_fixed_precision"
+   ],
+   "new": [
+    "Erdos249257.affineBinaryOrbit_mod_twoPow_eq",
+    "Erdos249257.balancedPulse_weighted_pair",
+    "Erdos249257.balancedPulse_endpoint_fanout",
+    "Erdos249257.balancedPulse_label_card_lower_bound",
+    "Erdos249257.balancedPulse_no_autonomous_decoder",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_centred_completion_of_fixed_precision",
+    "Erdos249257.affineBinaryOrbit_sub",
+    "ErdosProblems.Erdos249.PaperCompleteR21.balancedPulse_common_history"
+   ],
+   "files": {
+    "Erdos249257.affineBinaryOrbit_sub": "lean/Erdos249257/GenericTailOrbitRigidity.lean",
+    "ErdosProblems.Erdos249.PaperCompleteR21.balancedPulse_common_history": "lean/ErdosProblems/Erdos249/PaperCompleteR21/CarryDescriptionInformationLoss.lean"
+   },
+   "reason": "Item (i) prints the exact identity u(L)-v(L)=2^L(u_0-v_0), which affineBinaryOrbit_mod_twoPow_eq states only modulo 2^L; affineBinaryOrbit_sub states it. The common binary sum h/2^m and the common scaled tails of item (ii) are stated only by balancedPulse_common_history; the listed pulse lemmas are the finite natural-number algebra."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#prop:local-void",
+   "field": "comparator",
+   "old": {
+    "status": "compared",
+    "repository": "https://github.com/wcook04/plectis-erdos-lean",
+    "entries": [
+     "PalomarCorpus/E257a",
+     "PalomarCorpus/E257aa",
+     "PalomarCorpus/E257ae"
+    ],
+    "run_ids": [
+     "35643815458",
+     "35674034595"
+    ],
+    "corpus_commits": [
+     "253a436b69603a5662696127016559ddcfd1db42",
+     "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+    ]
+   },
+   "new": {
+    "status": "pending",
+    "queued_at": "2026-09-23"
+   },
+   "reason": "The Comparator entries compared only the declarations bound before this correction; affineBinaryOrbit_sub, balancedPulse_common_history were not compared, so the whole result has not been."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#prop:local-void",
+   "field": "palomar",
+   "old": {
+    "status": "prepared"
+   },
+   "new": {
+    "status": "pending"
+   },
+   "reason": "The prepared corpus entries state only the declarations bound before this correction."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#lem:rank-step-trichotomy",
+   "field": "lean.declarations",
+   "old": [
+    "Erdos249257.isStraddlePrefix_step_trichotomy",
+    "Erdos249257.IsStraddlePrefix.half_step_forced"
+   ],
+   "new": [
+    "Erdos249257.isStraddlePrefix_step_trichotomy",
+    "Erdos249257.IsStraddlePrefix.half_step_forced",
+    "Erdos249257.mersenneTail_lt_weight",
+    "Erdos249257.positiveMersenneSupportValue_insert",
+    "Erdos249257.IsStraddlePrefix.half_strict"
+   ],
+   "files": {
+    "Erdos249257.mersenneTail_lt_weight": "lean/Erdos249257/GreedyAchievementSet.lean",
+    "Erdos249257.positiveMersenneSupportValue_insert": "lean/Erdos249257/HalfCutLocator.lean",
+    "Erdos249257.IsStraddlePrefix.half_strict": "lean/Erdos249257/HalfCutLocator.lean"
+   },
+   "reason": "isStraddlePrefix_step_trichotomy states only that one of the three alternatives holds; their disjointness for general t follows in one line from R_{d+1}<w_{d+1} (mersenneTail_lt_weight) once positiveMersenneSupportValue_insert writes the upper child's endpoint, and the strictness printed for t=1/2 is IsStraddlePrefix.half_strict."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#lem:rank-step-trichotomy",
+   "field": "comparator",
+   "old": {
+    "status": "compared",
+    "repository": "https://github.com/wcook04/plectis-erdos-lean",
+    "entries": [
+     "PalomarCorpus/E257u"
+    ],
+    "run_ids": [
+     "35715779405"
+    ],
+    "corpus_commits": [
+     "c93c2e4dd86a2e317e0cb650ea244fee1afd59c2"
+    ]
+   },
+   "new": {
+    "status": "pending",
+    "queued_at": "2026-09-23"
+   },
+   "reason": "The Comparator entries compared only the declarations bound before this correction; positiveMersenneSupportValue_insert, half_strict were not compared, so the whole result has not been."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#lem:rank-step-trichotomy",
+   "field": "palomar",
+   "old": {
+    "status": "prepared"
+   },
+   "new": {
+    "status": "pending"
+   },
+   "reason": "The prepared corpus entries state only the declarations bound before this correction."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#lem:dyadic-excess-reformulation",
+   "field": "lean.declarations",
+   "old": [
+    "Erdos249257.divInt_le_nextDyadic_iff_excess_nonpos",
+    "Erdos249257.greedyHalf_mem_nextMersenneDyadicSliver_iff_excess"
+   ],
+   "new": [
+    "Erdos249257.divInt_le_nextDyadic_iff_excess_nonpos",
+    "Erdos249257.greedyHalf_mem_nextMersenneDyadicSliver_iff_excess",
+    "Erdos249257.divInt_mem_nextMersenneDyadicSliver_iff_excess"
+   ],
+   "files": {
+    "Erdos249257.divInt_mem_nextMersenneDyadicSliver_iff_excess": "lean/Erdos249257/DyadicPrefixCompression.lean"
+   },
+   "reason": "The printed lemma is stated for arbitrary positive integers p and L; greedyHalf_mem_nextMersenneDyadicSliver_iff_excess proves the second equivalence only for the half-greedy residual, and divInt_mem_nextMersenneDyadicSliver_iff_excess proves it for every integer p and L>0."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#lem:dyadic-excess-reformulation",
+   "field": "comparator",
+   "old": {
+    "status": "compared",
+    "repository": "https://github.com/wcook04/plectis-erdos-lean",
+    "entries": [
+     "PalomarCorpus/E257af",
+     "PalomarCorpus/E257d"
+    ],
+    "run_ids": [
+     "35624228171",
+     "35674034595"
+    ],
+    "corpus_commits": [
+     "253a436b69603a5662696127016559ddcfd1db42",
+     "b6cd2121370ae1eb2024399a3947dfbb815a488a"
+    ]
+   },
+   "new": {
+    "status": "pending",
+    "queued_at": "2026-09-23"
+   },
+   "reason": "The Comparator entries compared only the declarations bound before this correction; divInt_mem_nextMersenneDyadicSliver_iff_excess was not compared, so the whole result has not been."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#lem:dyadic-excess-reformulation",
+   "field": "palomar",
+   "old": {
+    "status": "prepared"
+   },
+   "new": {
+    "status": "pending"
+   },
+   "reason": "The prepared corpus entries state only the declarations bound before this correction."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#lem:denominator-sandwich",
+   "field": "lean.declarations",
+   "old": [
+    "Erdos249257.dyadicResidual_denominator_sandwich"
+   ],
+   "new": [
+    "Erdos249257.dyadicResidual_denominator_sandwich",
+    "Erdos249257.dyadicResidualInt_denominator_sandwich",
+    "Erdos249257.dyadicResidualIntNumerator_coprime_oddDenominator"
+   ],
+   "files": {
+    "Erdos249257.dyadicResidualInt_denominator_sandwich": "lean/Erdos249257/DyadicPrefixCompression.lean",
+    "Erdos249257.dyadicResidualIntNumerator_coprime_oddDenominator": "lean/Erdos249257/DyadicPrefixCompression.lean"
+   },
+   "reason": "dyadicResidual_denominator_sandwich takes natural numbers with a nonnegative difference; the printed lemma allows integer p and r and a difference of either sign, which dyadicResidualInt_denominator_sandwich states, with the coprimality it assumes supplied by dyadicResidualIntNumerator_coprime_oddDenominator."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#lem:denominator-sandwich",
+   "field": "comparator",
+   "old": {
+    "status": "compared",
+    "repository": "https://github.com/wcook04/plectis-erdos-lean",
+    "entries": [
+     "PalomarCorpus/E257af"
+    ],
+    "run_ids": [
+     "35624228171"
+    ],
+    "corpus_commits": [
+     "b6cd2121370ae1eb2024399a3947dfbb815a488a"
+    ]
+   },
+   "new": {
+    "status": "pending",
+    "queued_at": "2026-09-23"
+   },
+   "reason": "The Comparator entries compared only the declarations bound before this correction; dyadicResidualInt_denominator_sandwich, dyadicResidualIntNumerator_coprime_oddDenominator were not compared, so the whole result has not been."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#lem:denominator-sandwich",
+   "field": "palomar",
+   "old": {
+    "status": "prepared"
+   },
+   "new": {
+    "status": "pending"
+   },
+   "reason": "The prepared corpus entries state only the declarations bound before this correction."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#thm:perturbed-family-maximality",
+   "field": "lean.declarations",
+   "old": [
+    "Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.prefixChoice_maximal",
+    "Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.nextRemainder_trichotomy"
+   ],
+   "new": [
+    "Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.prefixChoice_maximal",
+    "Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.nextRemainder_trichotomy",
+    "Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.below_newSum_le_capacity",
+    "Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.above_newSum_le_capacity_iff",
+    "Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.prefixRemainder_eq_capacity_sub_choice"
+   ],
+   "files": {
+    "Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.below_newSum_le_capacity": "lean/Erdos249257/HalfCylinderIntegerGreedy.lean",
+    "Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.above_newSum_le_capacity_iff": "lean/Erdos249257/HalfCylinderIntegerGreedy.lean",
+    "Erdos249257.HalfCylinderIntegerGreedy.PerturbedFamily.AdjacentCut.prefixRemainder_eq_capacity_sub_choice": "lean/Erdos249257/HalfCylinderIntegerGreedy.lean"
+   },
+   "reason": "prefixChoice_maximal bounds every admissible value by t(prefixChoice) but does not state that t(prefixChoice) is itself admissible (below_newSum_le_capacity, above_newSum_le_capacity_iff), and nextRemainder_trichotomy does not identify the remainder with C'-t(choice) (prefixRemainder_eq_capacity_sub_choice)."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#record:257bm-i17",
+   "field": "lean.declarations",
+   "old": [
+    "Erdos249257.HalfCylinderFiniteShadow.supportCoeff_insert_divisor",
+    "Erdos249257.HalfDivisorUnitDrop.supportCoeff_extend_true_eq_false_add_one_at_double",
+    "Erdos249257.HalfDivisorUnitDrop.supportCoeff_boundaryPair_unitDrop_at_double"
+   ],
+   "new": [
+    "Erdos249257.HalfCylinderFiniteShadow.supportCoeff_insert_divisor",
+    "Erdos249257.HalfDivisorUnitDrop.supportCoeff_extend_true_eq_false_add_one_at_double",
+    "Erdos249257.HalfDivisorUnitDrop.supportCoeff_boundaryPair_unitDrop_at_double",
+    "Erdos249257.HalfCylinderIntegerGreedy.supportCoeff_insert_eq_add_indicator"
+   ],
+   "files": {
+    "Erdos249257.HalfCylinderIntegerGreedy.supportCoeff_insert_eq_add_indicator": "lean/Erdos249257/HalfCylinderIntegerGreedy.lean"
+   },
+   "reason": "The printed difference 1_{N+1|m} at a positive argument needs the non-divisor case as well; supportCoeff_insert_divisor states only the divisor case and supportCoeff_insert_eq_add_indicator states both."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#record:257bm-i17",
+   "field": "comparator",
+   "old": {
+    "status": "compared",
+    "repository": "https://github.com/wcook04/plectis-erdos-lean",
+    "entries": [
+     "PalomarCorpus/E257al"
+    ],
+    "run_ids": [
+     "35643815458"
+    ],
+    "corpus_commits": [
+     "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+    ]
+   },
+   "new": {
+    "status": "compared",
+    "repository": "https://github.com/wcook04/plectis-erdos-lean",
+    "entries": [
+     "PalomarCorpus/E257al",
+     "PalomarCorpus/E257_20"
+    ],
+    "run_ids": [
+     "35643815458",
+     "35882032091"
+    ],
+    "corpus_commits": [
+     "56408ca8d927d34479b80bdf93a7ae8f87bff6ba",
+     "a2faa350b45ae08d0e70f5a6ec54943018f8c2b3"
+    ]
+   },
+   "reason": "supportCoeff_insert_eq_add_indicator was compared in corpus entry E257_20 at a2faa350 in replay run 35882032091."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#lem:tr-forced-greedy",
+   "field": "lean.declarations",
+   "old": [
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_unique_support_and_criterion",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_low_ranks"
+   ],
+   "new": [
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_unique_support_and_criterion",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_low_ranks",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_tail_lt_weight'"
+   ],
+   "files": {
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_forced_greedy_tail_lt_weight'": "lean/ErdosProblems/Erdos257/PaperCompleteR21/TruncatedRungGreedyDecision.lean"
+   },
+   "reason": "The printed inequality w_n^{(J)}>T_{n+1}^{(J)} for every n and J>=2 is stated by paper_forced_greedy_tail_lt_weight' and by neither listed declaration."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#lem:tr-forced-greedy",
+   "field": "comparator",
+   "old": {
+    "status": "compared",
+    "repository": "https://github.com/wcook04/plectis-erdos-lean",
+    "entries": [
+     "PalomarCorpus/E257ai",
+     "PalomarCorpus/E257j"
+    ],
+    "run_ids": [
+     "35643815458",
+     "35674034595"
+    ],
+    "corpus_commits": [
+     "253a436b69603a5662696127016559ddcfd1db42",
+     "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+    ]
+   },
+   "new": {
+    "status": "pending",
+    "queued_at": "2026-09-23"
+   },
+   "reason": "The Comparator entries compared only the declarations bound before this correction; paper_forced_greedy_tail_lt_weight' was not compared, so the whole result has not been."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#lem:tr-forced-greedy",
+   "field": "palomar",
+   "old": {
+    "status": "prepared"
+   },
+   "new": {
+    "status": "pending"
+   },
+   "reason": "The prepared corpus entries state only the declarations bound before this correction."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#thm:upper-reset-band",
+   "field": "lean.declarations",
+   "old": [
+    "Erdos249257.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape",
+    "Erdos249257.seamUpperResetDyadicBandEscape_through_thirty"
+   ],
+   "new": [
+    "Erdos249257.half_mem_mersenneAchievementSet_of_upperResetDyadicBandEscape",
+    "Erdos249257.seamUpperResetDyadicBandEscape_through_thirty",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_successor_remainders_fourteen_through_thirtyone"
+   ],
+   "files": {
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_successor_remainders_fourteen_through_thirtyone": "lean/ErdosProblems/Erdos257/PaperCompleteR21/UpperResetBandCertificate.lean"
+   },
+   "reason": "The printed theorem also states the successor remainders rem(14)=392 through rem(31)=4187487147; neither bound declaration states them, and paper_successor_remainders_fourteen_through_thirtyone does."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#record:257bm-c5",
+   "field": "comparator",
+   "old": {
+    "status": "compared",
+    "repository": "https://github.com/wcook04/plectis-erdos-lean",
+    "entries": [
+     "PalomarCorpus/E257_27"
+    ],
+    "run_ids": [
+     "35935225572"
+    ],
+    "corpus_commits": [
+     "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+    ]
+   },
+   "new": {
+    "status": "pending",
+    "queued_at": "2026-09-24"
+   },
+   "reason": "Comparator entry E257_27 compared the two theorems of this binding, exists_laterProtectedExactLocalMersenneRow and cofinalExactLocalMersenneHalfRows_of_criticalQuotientSupply; the binding also names the definition ProtectedExactLocalMersenneRow, which has no Comparator association, so the evidence records cannot yet show the whole result compared."
+  },
+  {
+   "row": "erdos257-mersenne-reasoning-surface#record:257bm-c5",
+   "field": "palomar",
+   "old": {
+    "status": "prepared"
+   },
+   "new": {
+    "status": "pending"
+   },
+   "reason": "A row pending Comparator is pending Palomar too."
+  }
+ ]
+}

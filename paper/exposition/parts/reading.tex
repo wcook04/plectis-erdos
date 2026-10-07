@@ -1,0 +1,181 @@
+% SPDX-FileCopyrightText: 2026 Will Cook
+% SPDX-License-Identifier: CC-BY-4.0
+\section{Learning to explain a particular argument}\label{sec:reading}
+\papersectiontarget{exposition-reading}
+
+Suppose a proof chooses digits one at a time to represent a target. Showing
+that another choice is always possible does not yet identify the infinite
+sum. The missing information is what remains of the target:
+\[
+ r_n=x-S_n,\qquad 0\le r_n\le\varepsilon_n,\qquad
+ \varepsilon_n\longrightarrow0
+\]
+so the partial sums $S_n$ converge to $x$. Replacing ``we repeat'' by
+``we continue inductively'' would explain no more. The remainder bound connects
+the finite choices to the infinite sum; the name of the iteration does not.
+
+To find such an explanation, locate the last fact already established and
+the first conclusion the reader is asked to accept. Ask what connects them.
+Here the connection is a remainder bound tending to zero, not merely a
+remainder that stays bounded. A source facing the same task can suggest how
+to expose this distinction. Section~\ref{sec:remainder} develops the comparison;
+the new manuscript must still justify its own covering and remainder bounds.
+
+Halmos discusses audience, organisation and examples~\cite[\S\S3--4]{halmos}.
+Knuth, Larrabee and Roberts discuss introducing symbols, connecting sentences
+and explaining why a step is taken~\cite[\S1]{knuth}. Gowers considers where
+examples should precede unfamiliar abstractions~\cite{gowers}; Tao cautions
+against sacrificing usefulness to excessive optimisation~\cite{tao}.
+This advice identifies questions. A nearby argument shows how an author
+answered them in a particular setting.
+
+The cases come from revisions of papers on Erd\H{o}s problems. Read them by
+the difficulty at hand: construction and attainment in
+Section~\ref{sec:remainder}; the accuracy needed from an estimate and the
+meaning of a failed test in Section~\ref{sec:certificate}; limits through
+infinite sums in Section~\ref{sec:worked-explanations}; changes of meaning in
+Section~\ref{sec:review}. Section~\ref{sec:practice} explains how to review a
+revision and keep its useful lesson without making every case a new rule.
+
+\subsection{Choose sources by the work the prose must do}
+
+Choose the reader before choosing the amount of explanation. An expert may
+know a lemma but not why it is used here; a neighbouring specialist may need
+its statement. Tao's advice distinguishes the author's familiarity from the
+reader's knowledge~\cite{tao-detail}. State the assumed background, then explain
+what it does not supply.
+
+Subject and genre matter too. An irrationality note may turn an assumed
+rational sum into a positive integer smaller than one. A geometric paper
+may first need to identify the component being measured and the map preserving
+its size. A survey compares viewpoints; a short theorem paper may develop
+one argument. A useful source should illuminate the particular task, not
+merely have an admired style.
+
+The introduction must answer both ``what changes with this result?'' and
+``why does the proof work?'' Compare assumptions and conclusions with the
+closest prior result: a stronger conclusion under stronger assumptions need
+not be a stronger theorem. Then identify the obstacle and the step that
+overcomes it. A list of section titles does neither. Nor does calling a hypothesis ``natural'' explain its
+force. For a conditional theorem, say which familiar cases satisfy or fail
+the hypothesis, where known, and where the proof uses it. One example shows
+applicability, not the breadth of the admissible class. Identify any unresolved
+premise so that a reduction does not read as though that premise were proved.
+
+Read a close subject paper for vocabulary and attribution, and, when useful,
+a structurally similar proof for the explanation of a construction or estimate.
+A remote paper cannot settle the target field's conventions, and frequent usage
+does not excuse a mismatched definition.
+
+Use the same comparison at the scale of the proof. A roadmap should explain
+how its stages fit, not just name them~\cite[\S4]{halmos}. In
+Section~\ref{sec:estimate}, finitely many tail values give repetition; recovery
+is needed to make repeated values force repeated blocks. ``We estimate the
+tails and finish the proof'' hides that dependency.
+
+Read the original passage in an identified version, including the statement,
+hypotheses and argument around the sentence. An abstract may establish a term,
+but seldom shows how the proof is explained. Record a section, theorem or
+equation locator and a page; numbering can change between versions. Keep
+source digests in the reading record. They identify the supplied bytes,
+whereas a public link gives the reader a route to the work.
+
+For a difficult passage, reconstruct the local argument before borrowing its
+presentation. Knuth, Larrabee and Roberts give a useful worked
+comparison~\cite[\S\S2--3, pp.~7--8]{knuth}. Their example considers vectors
+$c+kb$ whose coordinates are nonincreasing for every nonnegative integer $k$.
+Fix the vectors $c,b$ and coordinates $i<j$. Rearranging the coordinate
+inequality gives
+\[
+                 c_i-c_j\ge k(b_j-b_i)\qquad(k\ge0).
+\]
+The left side is fixed. If $b_j-b_i$ were positive, the right side would grow
+without bound; hence $b_j\le b_i$. The source compares a proof choosing a
+particular $k$ for a contradiction with a direct proof using this dependence.
+The improvement exposes what stays fixed while $k$ grows. The words ``for
+arbitrarily large $k$'' make the displayed inequality decisive; they do not
+merely describe a limiting procedure. This is a reason for this proof's order,
+not a reason to ban contradiction arguments.
+
+Now ask which fact in the target proof could make its own conclusion equally
+unavoidable. In the opening construction, that fact is a remainder bound tending
+to zero. When the target proof contains no such fact, the comparison has exposed
+a mathematical obligation; it has not supplied an explanation that can safely
+be inserted.
+
+Source availability, a recipient's reading declaration and a later reviewer's
+passage inspection are separate facts. Later inspection can verify a locator
+or expose a poor analogy; it cannot establish what the earlier recipient read.
+
+\subsection{Read sentences as mathematical relations}
+
+Read each explanatory phrase as part of the argument. A theorem must state
+the objects and assumptions needed for its conclusion; inside the proof,
+recall an assumption when it explains a step. ``By positivity'' leaves work
+for the reader unless the positive quantity and its use are clear. In the
+tail estimate of Section~\ref{sec:certificate}, positivity of the omitted
+tail gives the lower inequality, whereas its upper bound gives the other.
+Naming those two jobs is more useful than adding ``clearly'' to the conclusion.
+
+Connective words deserve the same attention. ``Since'' introduces a reason;
+``hence'' asserts that the conclusion follows; ``provided that'' makes a
+condition visible; ``it remains to prove'' identifies unfinished work. These
+words are not interchangeable devices for varying a paragraph. A revision
+that changes ``provided that'' to ``hence'' can change the logical force of
+the sentence while leaving every displayed formula intact.
+
+Parallel syntax helps compare claims; a subordinate clause keeps a condition
+beside its consequence. Sentence length alone settles neither choice: a short
+sentence may hide its antecedent, while a longer one makes the dependency clear.
+Study that relation, then write original prose for the new argument.
+
+Notation should receive this close reading as well. Ask when a symbol first
+becomes necessary, what repeated work it saves and which nearby quantities
+the reader might confuse with it. A new name for a standard object creates an
+additional translation. Removing an established term such as ``Stieltjes moment
+sequence'' can instead sever a useful connection to the literature~\cite{wangzhu}.
+Check both the name and its referent: in Section~\ref{sec:formula-choice}, the
+divisibility condition concerns a future index, not its offset from the present
+one. Familiar words can misidentify an object as easily as private terminology.
+
+Give space to the reason hardest to recover, not the longest calculation.
+State the required accuracy before the estimate and the selecting constraint
+before the parameter; routine substitutions can then be brief. A one-line
+limit may nevertheless need a paragraph when the number of factors grows
+(Section~\ref{sec:fixed-partition}). Expose the dependency, not an author's cadence.
+
+A repeated technique may serve a different purpose later in the proof. In the
+R11 revision, the \#243 paper uses finite differences for two distinct purposes. A fourth
+difference tends to zero and is integer-valued, so it eventually vanishes;
+this gives eventual polynomial behaviour. Later, a positive constant third
+difference bounds a divisibility chain of positive greatest common divisors,
+so that chain stabilises~\cite[finite-difference argument]{paper243}. Naming
+the technique twice would not distinguish these conclusions. The added
+sentence identifies the second job. This is a local instance of Knuth et
+al.'s advice to tell the reader why a step is taken~\cite[\S1, item~12]{knuth},
+not a requirement to explain every routine calculation again.
+
+
+\subsection{Use examples without delaying the result}
+
+An example earns its place when it prepares a particular inference. Choose
+its size for that job: a table in which every height occurs once would conceal
+the multiplicity issue in Section~\ref{sec:multiplicity}. In the opening
+construction, one choice can show how the remainder stays admissible, but not
+that it tends to zero. An example may reveal a classification's coordinates;
+the proof must still show that every admissible object has them. State which
+task the example performs.
+
+Placement depends on what is unfamiliar. Gowers's follow-up to ``examples
+first'' qualifies the recommendation by audience and genre, and considers
+readers who approach a text nonlinearly~\cite{gowers-followup}. A brief example
+can precede a locally unfamiliar definition while the headline theorem remains
+early and easy to find. An example of a familiar definition may instead belong
+after the statement, at the point where it explains a new use.
+
+This distinction also governs repetition. Knuth, Larrabee and Roberts recommend
+complementary descriptions of important objects~\cite[\S1, item~11]{knuth}.
+In Section~\ref{sec:certificate}, the inequalities tell the reader what to
+check; the enclosure explains why those checks suffice. Removing either
+would lose a different use. Repeating the conclusion in new adjectives would
+add neither. Judge repetition by the work the second account makes possible.

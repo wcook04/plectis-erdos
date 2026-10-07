@@ -6,7 +6,7 @@ name: Lean CI
 # proof authority) and the release-surface checks (claim registry, paper
 # links, citation metadata, scope, licences). Feature branches run through the
 # pull-request event only, avoiding a duplicate build for the same commit.
-# Main is protected with both jobs required, so every commit that reaches it has
+# Main requires admission, first-contact checks and both core jobs, so each commit has
 # already passed them on its pull request and a push-triggered rerun would only
 # repeat work. If branch protection is relaxed, restore push validation before
 # landing anything directly.
@@ -25,6 +25,7 @@ on:
           - all
           - external-verification-only
           - release-surfaces-only
+          - dependency-index-refresh
 
 concurrency:
   group: lean-ci-${{ github.event.pull_request.number || github.ref }}
@@ -76,7 +77,9 @@ jobs:
   change_scope:
     name: Classify pull-request scope
     runs-on: ubuntu-24.04
-    timeout-minutes: 5
+    # The shared admission suite includes contract tests; allow its bounded
+    # local budget plus checkout/setup overhead on a cold runner.
+    timeout-minutes: 25
     outputs:
       erdos1041_corpus_only: ${{ steps.scope.outputs.erdos1041_corpus_only }}
     steps:
@@ -108,9 +111,19 @@ jobs:
           echo "erdos1041_corpus_only=$corpus_only" >> "$GITHUB_OUTPUT"
           echo "Erdős 1041 corpus-only publication: $corpus_only"
 
+      # Every job depends on this gate. Reject stale committed evidence before
+      # restoring Lean caches or compiling; keep the full export below as an
+      # independent verification of a source-current packet.
+      - name: Check committed source evidence before expensive jobs
+        if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope != 'dependency-index-refresh' }}
+        run: python3 scripts/refresh_projections.py --preflight
+
   build:
-    needs: change_scope
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.scope == 'all' }}
+    # Diagnose the complete release surface before allocating a Lean runner.
+    # A stale paper manifest must not start hours of work on a rejected tree.
+    needs: [change_scope, release-surfaces]
+    # Recovery exports evidence for a broken branch; it is never a release pass.
+    if: ${{ !cancelled() && needs.change_scope.result == 'success' && (needs.release-surfaces.result == 'success' || (github.event_name == 'workflow_dispatch' && inputs.scope == 'dependency-index-refresh' && needs.release-surfaces.result == 'skipped')) && (github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'dependency-index-refresh') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 210
     steps:
@@ -191,11 +204,11 @@ jobs:
         run: python3 scripts/test_lean_dependency_index_cache.py
       - name: Restore project Lean cache
         if: steps.lean-inputs.outputs.changed == 'true'
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
-          # This top-level action saves after the later custom build has
-          # populated project OLeans. Keep the historical lean-action key
-          # shape so existing main-branch caches seed the optimized run.
+          # Restore only: the combined action has an implicit post-save that
+          # bypasses the explicit main-only save condition below. Keep the key
+          # shape so existing main-branch caches seed the bounded build.
           path: .lake
           key: lake-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}-${{ github.sha }}
           restore-keys: |
@@ -239,7 +252,190 @@ jobs:
         # validation key, so every supported target is named here instead.
         # ErdosProblems.Erdos251.PaperLargeAuditR7 imports the whole #251
         # large certificate (lakefile library Erdos251LargeCertificate).
-        run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems Examples FormalConjecturesAdapter FormalConjecturesVariants FC243CubicRate ResidualBench ErdosProblems.Erdos251.PaperLargeAuditR7
+        run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems Examples FormalConjecturesAdapter FormalConjecturesVariants FC1049HeightRegion FC243CubicRate ResidualBench ErdosProblems.Erdos251.PaperLargeAuditR7
+      # The bounded build reports only target exit codes. Re-elaborate this
+      # adapter to expose the exact theorem's axiom report on every run, then
+      # fail if it contains anything beyond Lean's standard logical axioms.
+      - name: Audit FC1049 adapter axioms
+        if: steps.lean-inputs.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          lake env lean research/adapters/FC1049HeightRegion.lean | tee "$RUNNER_TEMP/fc1049-axioms.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          import re
+
+          output = (Path(os.environ["RUNNER_TEMP"]) / "fc1049-axioms.log").read_text()
+          theorem = (
+              "ErdosProblems.Erdos1049.FormalConjecturesAdapter."
+              "erdos_1049_variants_rational_base_region_81_200"
+          )
+          match = re.search(
+              rf"['\"]?{re.escape(theorem)}['\"]?\s+depends on axioms:\s*\[([^\]]*)\]",
+              output,
+          )
+          if match is None:
+              raise SystemExit(f"missing axiom report for {theorem}")
+          axioms = {name.strip() for name in match.group(1).split(",") if name.strip()}
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          if unexpected := axioms - allowed:
+              raise SystemExit(f"unexpected axioms for {theorem}: {sorted(unexpected)}")
+          print(f"axiom audit passed for {theorem}: {sorted(axioms)}")
+          PY
+      - name: Audit FC1041 sharp-gap adapter axioms
+        if: steps.lean-inputs.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          lake env lean research/adapters/FC1041SharpGap.lean | tee "$RUNNER_TEMP/fc1041-axioms.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          import re
+
+          output = (Path(os.environ["RUNNER_TEMP"]) / "fc1041-axioms.log").read_text()
+          theorem = "ErdosProblems.Erdos1041.PaperCompleteR21.exists_gap_le_sharpClosedForm"
+          match = re.search(
+              rf"['\"]?{re.escape(theorem)}['\"]?\s+depends on axioms:\s*\[([^\]]*)\]",
+              output,
+          )
+          if match is None:
+              raise SystemExit(f"missing axiom report for {theorem}")
+          axioms = {name.strip() for name in match.group(1).split(",") if name.strip()}
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          if unexpected := axioms - allowed:
+              raise SystemExit(f"unexpected axioms for {theorem}: {sorted(unexpected)}")
+          print(f"axiom audit passed for {theorem}: {sorted(axioms)}")
+          PY
+      - name: Audit FC257 weighted adapter axioms
+        if: steps.lean-inputs.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          lake env lean research/adapters/FormalConjecturesVariants.lean | tee "$RUNNER_TEMP/fc257-weighted-axioms.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          import re
+
+          output = (Path(os.environ["RUNNER_TEMP"]) / "fc257-weighted-axioms.log").read_text()
+          theorem = "Erdos257.erdos_257.variants.finite_prime_weighted_support"
+          match = re.search(
+              rf"['\"]?{re.escape(theorem)}['\"]?\s+depends on axioms:\s*\[([^\]]*)\]",
+              output,
+          )
+          if match is None:
+              raise SystemExit(f"missing axiom report for {theorem}")
+          axioms = {name.strip() for name in match.group(1).split(",") if name.strip()}
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          if unexpected := axioms - allowed:
+              raise SystemExit(f"unexpected axioms for {theorem}: {sorted(unexpected)}")
+          print(f"axiom audit passed for {theorem}: {sorted(axioms)}")
+          PY
+      - name: Audit FC257 reciprocal adapter axioms
+        if: steps.lean-inputs.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          lake env lean research/adapters/FormalConjecturesVariants.lean | tee "$RUNNER_TEMP/fc257-reciprocal-axioms.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          import re
+
+          output = (Path(os.environ["RUNNER_TEMP"]) / "fc257-reciprocal-axioms.log").read_text()
+          theorem = "Erdos257.erdos_257.variants.summable_reciprocal_support"
+          match = re.search(
+              rf"['\"]?{re.escape(theorem)}['\"]?\s+depends on axioms:\s*\[([^\]]*)\]",
+              output,
+          )
+          if match is None:
+              raise SystemExit(f"missing axiom report for {theorem}")
+          axioms = {name.strip() for name in match.group(1).split(",") if name.strip()}
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          if unexpected := axioms - allowed:
+              raise SystemExit(f"unexpected axioms for {theorem}: {sorted(unexpected)}")
+          print(f"axiom audit passed for {theorem}: {sorted(axioms)}")
+          PY
+      - name: Audit the finite witness-rule realisation axioms
+        if: steps.lean-inputs.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          lake env lean lean/ErdosProblems/Erdos257/WitnessLogicIrrational.lean | tee "$RUNNER_TEMP/witness-rule-axioms.log"
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          import re
+
+          output = (Path(os.environ["RUNNER_TEMP"]) / "witness-rule-axioms.log").read_text()
+          theorem = "ErdosProblems.Erdos257.finite_monotone_witness_rule_realised"
+          match = re.search(
+              rf"['\"]?{re.escape(theorem)}['\"]?\s+depends on axioms:\s*\[([^\]]*)\]",
+              output,
+          )
+          if match is None:
+              raise SystemExit(f"missing axiom report for {theorem}")
+          axioms = {name.strip() for name in match.group(1).split(",") if name.strip()}
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          if unexpected := axioms - allowed:
+              raise SystemExit(f"unexpected axioms for {theorem}: {sorted(unexpected)}")
+          print(f"axiom audit passed for {theorem}: {sorted(axioms)}")
+          PY
+      - name: Audit the Erdős 249 Formal Conjectures variant proof
+        if: steps.lean-inputs.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          cat > "$RUNNER_TEMP/fc249-variant-axioms.lean" <<'LEAN'
+          import FormalConjecturesVariants
+          #print axioms Erdos249257.FormalConjecturesVariants.erdos_249_variants_residue_modulus_binary
+          LEAN
+          lake env lean "$RUNNER_TEMP/fc249-variant-axioms.lean" > "$RUNNER_TEMP/fc249-variant-axioms.log"
+          python3 - "$RUNNER_TEMP/fc249-variant-axioms.log" <<'PY'
+          import pathlib, re, sys
+          output = pathlib.Path(sys.argv[1]).read_text()
+          name = "Erdos249257.FormalConjecturesVariants.erdos_249_variants_residue_modulus_binary"
+          match = re.search(rf"'{re.escape(name)}' depends on axioms: \[([^]]*)\]", output)
+          axioms = {part.strip() for part in match.group(1).split(",")} if match else None
+          if axioms != {"propext", "Classical.choice", "Quot.sound"}:
+              raise SystemExit(f"unexpected axiom audit for {name}: {output}")
+          print(match.group(0))
+          PY
+      - name: Audit the Erdős 257 support-class comparison axioms
+        if: steps.lean-inputs.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          cat > "$RUNNER_TEMP/support-class-axioms.lean" <<'LEAN'
+          import ErdosProblems.Erdos257.PaperCompleteR8.AnalyticIncomparability
+          import ErdosProblems.Erdos257.PaperCompleteR8.StrengthenedCoverFiniteUnion
+          #print axioms ErdosProblems.Erdos257.PaperCompleteR8.exists_weighted_not_strengthened_host
+          #print axioms ErdosProblems.Erdos257.PaperCompleteR8.exists_strengthened_not_old_or_weighted_host
+          #print axioms ErdosProblems.Erdos257.PaperCompleteR8.old_cover_class_strictly_smaller
+          #print axioms ErdosProblems.Erdos257.PaperCompleteR8.exists_incomparable_hosts_with_mixed_heredity
+          #print axioms ErdosProblems.Erdos257.PaperCompleteR8.finitePrimeWeighted_union
+          #print axioms ErdosProblems.Erdos257.PaperCompleteR8.hasStrengthenedPositiveCover_union
+          #print axioms ErdosProblems.Erdos257.PaperCompleteR8.mixedSupportClass_union
+          LEAN
+          lake env lean "$RUNNER_TEMP/support-class-axioms.lean" | tee "$RUNNER_TEMP/support-class-axioms.log"
+          python3 - "$RUNNER_TEMP/support-class-axioms.log" <<'PY'
+          import pathlib, re, sys
+          output = pathlib.Path(sys.argv[1]).read_text()
+          allowed = {"propext", "Classical.choice", "Quot.sound"}
+          for short in (
+              "exists_weighted_not_strengthened_host",
+              "exists_strengthened_not_old_or_weighted_host",
+              "old_cover_class_strictly_smaller",
+              "exists_incomparable_hosts_with_mixed_heredity",
+              "finitePrimeWeighted_union",
+              "hasStrengthenedPositiveCover_union",
+              "mixedSupportClass_union",
+          ):
+              name = f"ErdosProblems.Erdos257.PaperCompleteR8.{short}"
+              match = re.search(rf"['\"]?{re.escape(name)}['\"]?\s+depends on axioms:\s*\[([^\]]*)\]", output)
+              if match is None:
+                  raise SystemExit(f"missing axiom report for {name}")
+              axioms = {part.strip() for part in match.group(1).split(",") if part.strip()}
+              if unexpected := axioms - allowed:
+                  raise SystemExit(f"unexpected axioms for {name}: {sorted(unexpected)}")
+              print(f"axiom audit passed for {name}: {sorted(axioms)}")
+          PY
       - name: Verify a separate Lake project can use the library
         if: steps.lean-inputs.outputs.changed == 'true'
         run: python3 scripts/check_downstream_reuse.py
@@ -248,8 +444,15 @@ jobs:
       # away the compiled oleans, so every rerun paid a cold build again.
       # Save the compiled tree as soon as the build step finishes, whatever
       # the later evidence checks decide.
+      #
+      # Pull requests never save. Each .lake entry is about 3 GB against the
+      # repository's 10 GB cache quota, and a pull-request cache is readable
+      # only by that pull request, so three open PRs evicted main's warmed
+      # cache (26 Sep 2026: every PR then cold-built for about 2h15m). Main is
+      # warmed by lean-cache-warm.yml on every push and by manual dispatch
+      # here; a PR restores it and rebuilds only the modules it changes.
       - name: Save project Lean cache after the build
-        if: always() && steps.lean-inputs.outputs.changed == 'true'
+        if: always() && steps.lean-inputs.outputs.changed == 'true' && github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: .lake
@@ -309,13 +512,16 @@ jobs:
         run: echo "No Lean source or proof-environment input changed; compilation is unchanged."
 
   external-verification:
-    needs: change_scope
-    if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' && (github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'external-verification-only') }}
+    needs: [change_scope, release-surfaces]
+    # The explicit replay-only dispatch intentionally skips release-surfaces.
+    # Status functions avoid GitHub's implicit success() rejecting that skip;
+    # every ordinary PR still needs a successful release-surface result.
+    if: ${{ !cancelled() && needs.change_scope.result == 'success' && (needs.release-surfaces.result == 'success' || (github.event_name == 'workflow_dispatch' && inputs.scope == 'external-verification-only' && needs.release-surfaces.result == 'skipped')) && needs.change_scope.outputs.erdos1041_corpus_only != 'true' && (github.event_name != 'workflow_dispatch' || inputs.scope == 'all' || inputs.scope == 'external-verification-only') }}
     runs-on: ubuntu-24.04
-    # Eight isolated checks run serially. The headline positive includes a
+    # Ten isolated checks run serially. The headline positive includes a
     # cold build of the full selected-statement closure; allow 45 minutes for
     # it and 20 for each remaining control, plus tool setup and receipt upload.
-    timeout-minutes: 210
+    timeout-minutes: 260
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
@@ -444,8 +650,27 @@ jobs:
               https://sh.rustup.rs | sh -s -- -y --default-toolchain stable --profile minimal
             . "$HOME/.cargo/env"
           fi
+          # Record the toolchain actually selected in Nanoda's build directory.
+          # --locked fixes dependency resolution, not the compiler or runner image.
+          (cd "$RUNNER_TEMP/nanoda" && {
+            printf 'nanoda_rev=%s\n' "$NANODA_REV"
+            printf 'runner_os=%s runner_arch=%s image_os=%s image_version=%s\n' \
+              "$RUNNER_OS" "$RUNNER_ARCH" "${ImageOS:-unknown}" "${ImageVersion:-unknown}"
+            command -v rustc
+            command -v cargo
+            rustc -vV
+            cargo -vV
+            if command -v rustup >/dev/null 2>&1; then
+              if ! rustup show active-toolchain; then
+                printf 'rustup_active_toolchain=unavailable\n'
+              fi
+            fi
+            sha256sum Cargo.lock
+          }) | tee artifacts-rust-toolchain.log
           (cd "$RUNNER_TEMP/nanoda" && cargo build --release --locked --bin nanoda_bin)
           test -x "$RUNNER_TEMP/nanoda/target/release/nanoda_bin"
+          sha256sum "$RUNNER_TEMP/nanoda/target/release/nanoda_bin" \
+            | tee -a artifacts-rust-toolchain.log
           echo "nanoda_rev=$NANODA_REV" >> "$GITHUB_OUTPUT"
           echo "comparator_rev=$COMPARATOR_REV" >> "$GITHUB_OUTPUT"
           echo "lean4export_rev=$LEAN4EXPORT_REV" >> "$GITHUB_OUTPUT"
@@ -513,8 +738,16 @@ jobs:
           run_comparator verification/comparator-feedback-policy-negative-mismatch.json \
             > artifacts-feedback-policy-negative.log 2>&1
           feedback_policy_negative_exit=$?
+          run_comparator verification/comparator-weighted-support.json \
+            > artifacts-weighted-support-positive.log 2>&1
+          weighted_support_positive_exit=$?
+          run_comparator verification/comparator-weighted-support-negative-mismatch.json \
+            > artifacts-weighted-support-negative.log 2>&1
+          weighted_support_negative_exit=$?
           echo "feedback_policy_positive_exit=$feedback_policy_positive_exit" >> "$GITHUB_OUTPUT"
           echo "feedback_policy_negative_exit=$feedback_policy_negative_exit" >> "$GITHUB_OUTPUT"
+          echo "weighted_support_positive_exit=$weighted_support_positive_exit" >> "$GITHUB_OUTPUT"
+          echo "weighted_support_negative_exit=$weighted_support_negative_exit" >> "$GITHUB_OUTPUT"
           echo "positive_exit=$positive_exit" >> "$GITHUB_OUTPUT"
           echo "negative_exit=$negative_exit" >> "$GITHUB_OUTPUT"
           echo "local_1049_positive_exit=$local_1049_positive_exit" >> "$GITHUB_OUTPUT"
@@ -527,6 +760,8 @@ jobs:
           cat artifacts-1049-negative.log
           cat artifacts-249-totient-kernel-positive.log
           cat artifacts-249-totient-kernel-negative.log
+          cat artifacts-weighted-support-positive.log
+          cat artifacts-weighted-support-negative.log
           exit 0
       - name: Write and enforce commit-bound verification receipt
         if: ${{ always() && !cancelled() && steps.external-inputs.outputs.changed == 'true' }}
@@ -535,10 +770,14 @@ jobs:
           negative_exit='${{ steps.comparator.outputs.negative_exit }}'
           local_1049_positive_exit='${{ steps.comparator.outputs.local_1049_positive_exit }}'
           local_1049_negative_exit='${{ steps.comparator.outputs.local_1049_negative_exit }}'
+          weighted_support_positive_exit='${{ steps.comparator.outputs.weighted_support_positive_exit }}'
+          weighted_support_negative_exit='${{ steps.comparator.outputs.weighted_support_negative_exit }}'
           [[ -n "$positive_exit" ]] || positive_exit=-999
           [[ -n "$negative_exit" ]] || negative_exit=-999
           [[ -n "$local_1049_positive_exit" ]] || local_1049_positive_exit=-999
           [[ -n "$local_1049_negative_exit" ]] || local_1049_negative_exit=-999
+          [[ -n "$weighted_support_positive_exit" ]] || weighted_support_positive_exit=-999
+          [[ -n "$weighted_support_negative_exit" ]] || weighted_support_negative_exit=-999
           python3 scripts/run_external_verification.py \
             --phase final \
             --expected-commit '${{ github.event.pull_request.head.sha || github.sha }}' \
@@ -550,6 +789,10 @@ jobs:
             --local-1049-negative-exit "$local_1049_negative_exit" \
             --local-1049-positive-log artifacts-1049-positive.log \
             --local-1049-negative-log artifacts-1049-negative.log \
+            --weighted-support-positive-exit "$weighted_support_positive_exit" \
+            --weighted-support-negative-exit "$weighted_support_negative_exit" \
+            --weighted-support-positive-log artifacts-weighted-support-positive.log \
+            --weighted-support-negative-log artifacts-weighted-support-negative.log \
             --comparator-rev '${{ steps.tools.outputs.comparator_rev }}' \
             --lean4export-rev '${{ steps.tools.outputs.lean4export_rev }}' \
             --landrun-rev '${{ steps.tools.outputs.landrun_rev }}' \
@@ -578,6 +821,27 @@ jobs:
           if not replay.replay_checks_pass(positive, negative, text, selected['expected_negative_diagnostic']):
               raise SystemExit('feedback-policy Comparator unit did not pass both controls')
           print('feedback-policy: positive accepted and exact negative statement rejected')
+          PYTHON
+      - name: Enforce the #257 weighted-support replay unit
+        if: ${{ always() && !cancelled() && steps.external-inputs.outputs.changed == 'true' }}
+        env:
+          WEIGHTED_POSITIVE_EXIT: ${{ steps.comparator.outputs.weighted_support_positive_exit }}
+          WEIGHTED_NEGATIVE_EXIT: ${{ steps.comparator.outputs.weighted_support_negative_exit }}
+        run: |
+          python3 - <<'PYTHON'
+          import os, sys
+          from pathlib import Path
+          sys.path.insert(0, 'scripts')
+          import replay_external_verification as replay
+          selected = replay.select_replay_unit(replay.load_contract(Path.cwd()), 'weighted-support')
+          replay.validate_unit_configs(Path.cwd(), selected)
+          positive = int(os.environ.get('WEIGHTED_POSITIVE_EXIT') or '-999')
+          negative = int(os.environ.get('WEIGHTED_NEGATIVE_EXIT') or '-999')
+          log = Path('artifacts-weighted-support-negative.log')
+          text = log.read_text() if log.exists() else ''
+          if not replay.replay_checks_pass(positive, negative, text, selected['expected_negative_diagnostic']):
+              raise SystemExit('weighted-support Comparator unit did not pass both controls')
+          print('weighted-support: positive accepted and exact negative statement rejected')
           PYTHON
       - name: "Enforce the #1049 programme-local packet"
         if: steps.external-inputs.outputs.changed == 'true'
@@ -613,10 +877,10 @@ jobs:
       # build emitted no axiom lines at all.  A green check meant nothing.
       #
       # `lake env lean <file>` re-elaborates the audit source every run, so the
-      # lines are always produced, and the three assertions below turn them
-      # into an actual gate.  The empty-output assertion is the load-bearing
-      # one: without it, any future change that stops producing audit lines
-      # would silently pass both grep checks.
+      # lines are always produced. The source-bound checker below requires
+      # exactly one report for every declared audit target and permits only
+      # propext, Quot.sound and Classical.choice, including axiom-free reports.
+      # Empty, missing, malformed and native-reduction reports fail closed.
       # The two Comparator packets above build ExternalVerification and
       # ExternalVerification1049 as a side effect of checking them.  Nothing
       # checks ExternalVerification1041SolvedFamilies against a challenge, so
@@ -638,23 +902,10 @@ jobs:
             lake env lean "$src" 2>&1 | tee -a axiom-audit.log
           done
 
-          audited=$(grep -c 'depends on axioms' axiom-audit.log || true)
-          if [[ "$audited" -eq 0 ]]; then
-            echo "axiom audit produced no 'depends on axioms' lines; the gate did not run" >&2
-            exit 1
-          fi
-          echo "axiom audit covered $audited declarations"
-
-          if grep -q 'sorryAx' axiom-audit.log; then
-            echo "axiom audit found sorryAx: a compared declaration is not proved" >&2
-            grep -n 'sorryAx' axiom-audit.log >&2
-            exit 1
-          fi
-          if grep -q 'ofReduceBool\|Lean.trustCompiler' axiom-audit.log; then
-            echo "axiom audit found a native-reduction axiom (native_decide)" >&2
-            grep -n 'ofReduceBool\|Lean.trustCompiler' axiom-audit.log >&2
-            exit 1
-          fi
+          python3 scripts/check_axiom_audit.py axiom-audit.log \
+            --audit-source verification/ExternalVerification/AxiomAudit.lean \
+            --audit-source verification/ExternalVerification1049/AxiomAudit.lean \
+            --audit-source verification/ExternalVerification1041SolvedFamilies/AxiomAudit.lean
       - name: Upload external-verification receipt
         if: ${{ always() && steps.external-inputs.outputs.changed == 'true' }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -662,6 +913,7 @@ jobs:
           name: external-verification-receipt-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
             artifacts/external-verification-receipt.json
+            artifacts-rust-toolchain.log
             artifacts/erdos249-totient-kernel-comparator-receipt.json
             artifacts-positive.log
             artifacts-negative.log
@@ -669,6 +921,8 @@ jobs:
             artifacts-1049-negative.log
             artifacts-249-totient-kernel-positive.log
             artifacts-249-totient-kernel-negative.log
+            artifacts-weighted-support-positive.log
+            artifacts-weighted-support-negative.log
             artifacts-feedback-policy-positive.log
             artifacts-feedback-policy-negative.log
           if-no-files-found: error
@@ -786,235 +1040,16 @@ jobs:
           python_bin_dir="$(python3 -c 'import os, sys; print(os.path.dirname(sys.executable))')"
           echo "$python_bin_dir" >> "$GITHUB_PATH"
 
-      - name: Check pinned release-validator dependency lock
-        if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/test_dependency_lock_contract.py
-
-      - name: Test Lean workflow command environment
-        if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: |
-          python3 scripts/test_lean_workflow_environment.py
-          python3 -O scripts/test_lean_workflow_environment.py
-
-      - name: Check newcomer architecture guide
-        if: ${{ needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: |
-          python3 scripts/check_architecture_guide.py
-          python3 scripts/check_agent_navigation_paper.py
-          python3 scripts/test_architecture_guide.py
-
-      # Every check below is blocking, and every check below reports.  The
-      # `!cancelled()` guard exists because release-surface failures are not
-      # ordered by severity: a first-contact wording check runs before the
-      # proof-trust guard, so a fail-fast job can report a missing README
-      # sentence while silently never reaching a `native_decide` violation in
-      # the checked source.  That is what happened between 2026-07-13 and
-      # 2026-07-16.  Surfacing all failures at once weakens nothing; the job
-      # still fails if any single check fails.
+      # The same check_release entry runs locally against an immutable commit.
+      # Its shared CI contract registry owns every supplemental release check;
+      # adding another workflow-only gate is rejected by the cold preflight.
       - name: Cross-surface release checks (proof trust, claims, projections)
         if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
         run: python3 scripts/check_release.py
-      # Most committed `check_*.py` gates are reached transitively. In
-      # particular, check_release runs the combined cold-clone
-      # baseline-plus-adversarial program once; repeating the standalone
-      # baseline here added no authority. test_check_release_ref imports the
-      # release-ref wrapper, while the distinct checks below remain explicit.
-      - name: Test the claim-following verb reports drift
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/test_verify_claims.py
-      - name: Test problem papers and source maps
-        run: python3 scripts/test_problem_library.py
-      - name: Publication contract
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/check_publication_contract.py
-      - name: Problem-specific frontier checks
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: |
-          python3 scripts/check_erdos269_dyadic_windows.py
-          python3 scripts/check_farey_denominator_scaling.py
-          python3 scripts/check_formal_conjectures_crosswalk.py
-          # The crosswalk checker decides what the crosswalk may claim, and its
-          # own unit tests are what decide that the checker still refuses an
-          # unevidenced claim.  They were never run here, so a checker that had
-          # stopped refusing anything would have gone unnoticed.
-          python3 -m unittest scripts.test_formal_conjectures_crosswalk -v
-          # The residual evaluator issues kernel-backed vetoes, so what needs
-          # guarding is the classification itself: that restatement is judged
-          # per residual in both directions, that nothing proved stays an
-          # abstention, and that each tactic gets its own declaration because
-          # `first` does not recover past a nested elaboration error.  These
-          # checks need no Lean.
-          python3 scripts/test_residual_evaluator.py
-      # GitHub renders markdown in a 1012px column and a table has no wrapping
-      # escape, so a long declaration name in a cell pushes the table past the
-      # column and the reader gets a horizontal scrollbar with every other
-      # column squashed.  `<wbr>` and `style` are both stripped by GitHub's
-      # sanitiser, so the only fix is structural and the only guard is a check.
-      # Content-addressed exact-copy corpus files remain report-only when their
-      # bytes match the manifest: changing those tables would break provenance,
-      # and the corpus-integrity step above is their authoritative gate.
-      - name: Markdown tables fit the rendered column
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: |
-          python3 scripts/check_markdown_table_render.py --fail-on overflow .
-          # The checker's unit tests import it as scripts.check_markdown_table_render.
-          python3 -m unittest scripts.test_markdown_table_render -v
-      # The freshness comparison above is only meaningful if a projection is a
-      # pure function of the committed tree. This test exports HEAD without Git
-      # metadata, injects hostile ambient Git/Python settings, and requires every
-      # builder in the bounded probe to accept committed bytes without rewriting them.
-      # A builder that relies on checkout-local refs therefore fails regardless
-      # of whether this job started from `main` or a pull-request topic branch.
-      - name: Test projections do not depend on the checkout shape
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/test_projection_checkout_independence.py
-      - name: Test immutable release source resolution
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/test_release_source_identity.py
-      - name: Test source-current expert handoffs
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: |
-          python3 scripts/test_expert_handoffs.py
-          python3 -O scripts/test_expert_handoffs.py
-      - name: Test clean committed-snapshot release wrapper
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/test_check_release_ref.py
-      - name: Test scope source-identity boundary
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/test_scope_source_identity.py
       - name: Test public-artifact boundary
-        # This is a repository-wide public membrane, so it must still run when
-        # the changed files are confined to the public #1041 corpus. The
-        # corpus integrity check above remains the corpus-specific gate; this
-        # step prevents a corpus-only PR from bypassing the release's
-        # provenance, open-problem, and portfolio-visibility contract.
+        # Preserve this independent membrane even if the full entry fails.
         if: ${{ !cancelled() }}
         run: python3 scripts/test_public_artifact_boundary.py
-      - name: Test supported root-import closure
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/test_root_import_closure.py
-      - name: Test downstream example claim boundary
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/test_downstream_example_contract.py
-      # The reader's guide carries the open-problem count and the review
-      # boundary. The test reads the count from docs/problems.json.
-      - name: Test the reader's guide keeps its claim boundaries
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/test_public_writing_contract.py
-      - name: Test adversarial methodology transitions
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/test_methodology_contract.py
-      - name: Test publication artifact mutations
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/test_publication_artifact_contract.py
-      # The artifact digests above are only worth anything while the route that
-      # refreshes them stays honest. A restamp that stamped a revised .tex onto
-      # a PDF nobody rebuilt would make the registry certify the mismatch it
-      # exists to catch, so the refusal is tested, not assumed.
-      - name: Test publication digest restamp refusals
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/test_publication_contract_restamp.py
-      # Those two digests are independent, so a rebased .tex and a PDF built
-      # before the rebase can both be restamped. paper/build-manifest.json
-      # records the inputs each committed PDF was compiled from. These fixtures
-      # keep its refusals, and the PDF sync that writes it, honest.
-      - name: Test paper build manifest refusals
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: |
-          python3 scripts/test_paper_build_manifest.py
-          python3 scripts/test_sync_publication_pdfs.py
-      - name: Test exact claim packet boundaries
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/test_claim_packet_boundaries.py
-      - name: Test publication evidence time axis
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/test_publication_evidence_time_axis.py
-      # Native paper text and corpus metadata have a clone-local refresh route;
-      # imported companion records retain their public provenance. The checker
-      # independently proves that every tracked manuscript/PDF digest and every
-      # advertised first-pass route still matches the committed corpus.
-      - name: Test clone-local paper corpus is current
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 docs/papers/check_paper_corpus.py
-      # Nothing in this corpus has been externally reviewed and nothing carries
-      # an archival identifier. A field that said otherwise would be read as a
-      # credential, so the corpus is checked for that claim directly.
-      - name: Test paper corpus claims no review or identifier it lacks
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 docs/papers/check_publication_taxonomy.py
-      - name: Test publication taxonomy is the current projection
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 docs/papers/build_publication_taxonomy.py --check
-      - name: Test ordinary-language status questions
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/test_status_question_search.py
-      - name: Validate CITATION.cff
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/check_metadata.py
-      - name: Test citation release identity
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: |
-          python3 scripts/test_citation_identity_contract.py
-          python3 scripts/test_checkout_sync.py
-      - name: REUSE licensing lint
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: reuse lint
-      - name: Test semantic licence map
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: python3 scripts/test_license_map_contract.py
-      # Each script below passed on 2026-09-15 while no other step and no
-      # check_release.py command ran it, so a regression could merge unseen.
-      # Every test runs after an earlier failure too, and the step fails if
-      # any of them failed.
-      - name: Contract tests with no other CI caller
-        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only != 'true' }}
-        run: |
-          failed=()
-          # test_validation_singleflight is left out because it needs copy-on-write file clones, which the ubuntu runner's filesystem lacks.
-          for name in \
-            test_build_benchmark_packet_environment \
-            test_check_metadata_environment \
-            test_check_rendered_paper_boundary_environment \
-            test_checked_diagonal_depth_roster \
-            test_corpus_orientation \
-            test_declaration_atlas \
-            test_expansion_semantic_zones \
-            test_full_coverage_agent_entry \
-            test_historical_bridge_environment \
-            test_layout_conservation \
-            test_lean_package_share \
-            test_lean_source_layout \
-            test_off_diagonal_certificate_roster \
-            test_palomar_qualification_order_contract \
-            test_primary_source_dispositions \
-            test_probe_certificate_supply \
-            test_probe_second_channel_separation \
-            test_problem_note_sources \
-            test_proof_state_compiler \
-            test_public_paper_links \
-            test_publication_artifact_census \
-            test_reanchor_source_attributions \
-            test_refresh_projections_coverage \
-            test_refresh_projections_environment \
-            test_release_child_status \
-            test_repository_identity \
-            test_semantic_corpus_check_receipt \
-            test_semantic_family_compiler \
-            test_semantic_review_rebind \
-            test_shard_closure_t64 \
-            test_source_bound_reproduction \
-            test_strict_prime_semantic_digest
-          do
-            echo "::group::$name"
-            if python3 "scripts/$name.py"; then
-              echo "::endgroup::"
-            else
-              echo "::endgroup::"
-              echo "::error title=$name::scripts/$name.py failed"
-              failed+=("$name")
-            fi
-          done
-          if (( ${#failed[@]} )); then
-            echo "failed: ${failed[*]}"
-            exit 1
-          fi
+      - name: Test problem papers for corpus-only changes
+        if: ${{ !cancelled() && needs.change_scope.outputs.erdos1041_corpus_only == 'true' }}
+        run: python3 scripts/test_problem_library.py

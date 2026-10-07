@@ -22,7 +22,8 @@ def test_default_packet() -> None:
     packet = MODULE.build_cockpit(ROOT)
     assert packet["schema"] == "plectis-lean-proof-cockpit/1"
     assert packet["corpus"]["problem_count"] == 8
-    assert packet["corpus"]["open_problem_count"] == 8
+    # #1041 records a refuted Formal Conjectures statement, not an open target.
+    assert packet["corpus"]["open_problem_count"] == 7
     # Against the register, not a frozen number. Both counts were pinned to a
     # snapshot (103 claims, 5 open propositions) of a corpus that keeps
     # growing, so every landed claim broke this test while the projection it

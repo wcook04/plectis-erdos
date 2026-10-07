@@ -1,17 +1,17 @@
 ---
 name: plectis-frontier
-description: Inspect an exact public Plectis research revision, choose one bounded open-mathematics continuation, and prepare a checkable, credited local return. Use for a Plectis research shift, frontier inspection, or cross-agent research handoff.
+description: Use Plectis mathematics to learn an argument, inspect a claim boundary, reuse a result, or continue research at an exact public revision. Use for Plectis questions and checkable, credited research returns.
 license: MIT-0
 compatibility: Python 3.11+ and Git on Linux or macOS. Fetching the public corpus needs approved HTTPS access to GitHub. Reading and routing need no Lean installation or Plectis account. Formal proof checking needs the corpus-pinned Lean toolchain.
 metadata:
   author: Will Cook
-  version: "0.1.1"
+  version: "0.2.0"
 ---
 
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: MIT-0 -->
 
-# Plectis research shift
+# Plectis companion
 
 Help an owner inspect and continue one piece of public research. Preserve the
 exact mathematical boundary and the human contributor's credit. The published
@@ -65,25 +65,34 @@ Python entry commands:
 
 ```sh
 python3 "$SKILL_DIR/scripts/bootstrap.py" smoke \
-  --destination "$RESEARCH_DIR" --allow-execution
+  --destination "$RESEARCH_DIR" --allow-execution --task "<actual request>"
 ```
 
 Preserve the JSON output and its exact commit. This checks entry and overview,
 not Lean, mathematical correctness, hosted-agent compatibility or novelty.
 
-## Perform one bounded continuation
+## Route the actual task
 
-Change to the verified `RESEARCH_DIR`. Use the emitted routing packet and the
-clone's `skills/mine-open-problem/SKILL.md`; read relevant failures before
-attempting work. Propose the exact remaining obligation, assumptions, first
-discriminating test and stop condition. Follow the clone's authority contract
-before changing anything. Do not select a trivial example and describe it as
-the strongest mathematical result.
+Change to the verified `RESEARCH_DIR`. Route the owner's request:
 
-Use Lean only when authorised and needed. Do not turn a finite computation,
-conditional theorem, source-navigation check or model opinion into an
-unconditional solution. Record which checks actually ran, including failures.
-Stop at the approved budget and leave an intelligible continuation.
+```sh
+python3 scripts/agent_entry.py --entry "<actual request>"
+```
+
+Open the returned skill and smallest source set. For learning, honour the
+requested depth; a hint is not permission to reveal a proof or start research.
+For inspection, state the exact claim, assumptions and remaining boundary.
+For reuse, verify that the selected result's hypotheses match the new case.
+For discovery or a stated research question, follow the returned exploration
+or open-problem lane and read relevant failed attempts. Do not force reading,
+inspection or reuse into problem mining.
+
+For a research continuation, propose the exact obligation, first discriminating
+test and stop condition. Follow checkout authority before editing. Use Lean
+only when authorised and needed. A finite computation, conditional theorem,
+source-navigation check or model opinion is not an unconditional solution.
+Record checks and failures, stop at the approved budget, and leave a resumable
+continuation. Reading and inspection need not produce a research return.
 
 ## Prepare the return without publishing
 

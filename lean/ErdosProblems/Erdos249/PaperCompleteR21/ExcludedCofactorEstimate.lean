@@ -23,12 +23,12 @@ Dictionary, with the development's own objects as in `prop_dickman`:
 * "`B(η)` has natural density `D`" is `HasNaturalDensity (excludedCofactorSet η) D`,
   that is `#(B(η) ∩ [1, x]) / x → D`.
 
-Inputs.  The prime number theorem enters as a hypothesis, through the
-repository's single PNT input
+Inputs.  The prime number theorem enters `prop_badcof` and `excluded_budget_one_thousandth`
+as a hypothesis, through the repository's single PNT input
 `ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem`
-(`p_n / (n log n) → 1` for the zero-based `n`-th prime).  The existence of
-`D(η)` (Schoenberg's theorem) enters only as the density hypothesis of
-`prop_badcof`.  Nothing else is assumed.
+(`p_n / (n log n) → 1` for the zero-based `n`-th prime).  The existence of `D(η)` (Schoenberg's
+theorem) enters only as the density hypothesis of `prop_badcof`.  The budget at `η = 1/1000`
+needs no input (`excluded_budget_one_thousandth_of_chebyshev`).  Nothing else is assumed.
 
 Proof, following the paper.
 1. PNT gives, uniformly in the start point, the dyadic count
@@ -688,7 +688,280 @@ theorem excluded_budget_one_thousandth
   eventually_excluded_budget_of_upper hPNT h s (D := 3 * (1 / 1000)) (by norm_num) (by norm_num)
     (excludedCofactorSet_upperDensityLE (by norm_num)) (by norm_num)
 
+/-! ## The budget at `η = 1/1000` without the prime number theorem
+
+The prime number theorem enters `excluded_budget_one_thousandth` only through the
+dyadic count `eventually_card_primes_dyadic_le`.  Chebyshev's bound gives that count
+with `log 4` in place of `1`: the primes `p` with `a + 1 < p ≤ 2a + 1` divide
+`C(2a + 1, a) ≤ 4 ^ a` (`prod_primes_dyadic_le_four_pow`), so
+`#{p prime : a < p ≤ 2a + 1} · log a ≤ a log 4 + log a` for every `a`
+(`card_primes_dyadic_mul_log_le`).  Steps 2 to 4 of the proof are linear in the
+constant of the dyadic count, so a constant `K` gives the excluded count
+`(K D + o(1)) X` (`eventually_card_excluded_le_of_upper_of_dyadic`) and the `X/100`
+budget whenever `K D < 1/100` (`eventually_excluded_budget_of_upper_of_dyadic`).
+At `η = 1/1000`, `log 4 · 3/1000 ≤ 9/1000 < 1/100`
+(`excluded_budget_one_thousandth_of_chebyshev`). -/
+
+namespace ExcludedCofactor
+
+/-- Chebyshev's product bound: the primes `p` with `a + 2 ≤ p ≤ 2a + 1` divide the
+binomial coefficient `C(2a + 1, a + 1) = C(2a + 1, a) ≤ 4 ^ a`, so their product is
+at most `4 ^ a` (Mathlib's `primorial_add_le` and `Nat.choose_middle_le_pow`). -/
+theorem prod_primes_dyadic_le_four_pow (a : ℕ) :
+    ∏ p ∈ (Ico (a + 2) (2 * a + 2)).filter Nat.Prime, p ≤ 4 ^ a := by
+  have hle := primorial_add_le (m := a + 1) (n := a) (by omega)
+  rw [primorial_add (a + 1) a, show a + 1 + 1 = a + 2 by omega,
+    show a + 1 + a + 1 = 2 * a + 2 by omega, Nat.choose_symm_add,
+    show a + 1 + a = 2 * a + 1 by omega] at hle
+  exact le_trans (Nat.le_of_mul_le_mul_left hle (primorial_pos _)) (Nat.choose_middle_le_pow a)
+
+/-- The dyadic prime count from Chebyshev's bound, for every `a`:
+`#{p prime : a < p ≤ 2a + 1} · log a ≤ a log 4 + log a`.  The primes above `a + 1`
+number at most `a log 4 / log (a + 2)` by `prod_primes_dyadic_le_four_pow`, and
+`a + 1` is the one other candidate. -/
+theorem card_primes_dyadic_mul_log_le (a : ℕ) :
+    ((((Ioc a (2 * a + 1)).filter Nat.Prime).card : ℕ) : ℝ) * Real.log a
+      ≤ a * Real.log 4 + Real.log a := by
+  rcases Nat.eq_zero_or_pos a with rfl | ha
+  · simp
+  have hsub : (Ioc a (2 * a + 1)).filter Nat.Prime
+      ⊆ insert (a + 1) ((Ico (a + 2) (2 * a + 2)).filter Nat.Prime) := by
+    intro p hp
+    obtain ⟨hpI, hpp⟩ := Finset.mem_filter.mp hp
+    obtain ⟨hap, hp2⟩ := Finset.mem_Ioc.mp hpI
+    by_cases hpa : p = a + 1
+    · exact Finset.mem_insert.mpr (Or.inl hpa)
+    · exact Finset.mem_insert_of_mem
+        (Finset.mem_filter.mpr ⟨Finset.mem_Ico.mpr ⟨by omega, by omega⟩, hpp⟩)
+  have hcard : ((Ioc a (2 * a + 1)).filter Nat.Prime).card
+      ≤ ((Ico (a + 2) (2 * a + 2)).filter Nat.Prime).card + 1 :=
+    le_trans (Finset.card_le_card hsub) (Finset.card_insert_le _ _)
+  have hpow : (a + 2) ^ ((Ico (a + 2) (2 * a + 2)).filter Nat.Prime).card ≤ 4 ^ a := by
+    refine le_trans (Finset.pow_card_le_prod _ (fun p => p) (a + 2) ?_)
+      (prod_primes_dyadic_le_four_pow a)
+    intro p hp
+    exact (Finset.mem_Ico.mp (Finset.mem_filter.mp hp).1).1
+  have hpowR : ((a : ℝ) + 2) ^ ((Ico (a + 2) (2 * a + 2)).filter Nat.Prime).card
+      ≤ (4 : ℝ) ^ a := by
+    exact_mod_cast hpow
+  have hlogP := Real.log_le_log (by positivity) hpowR
+  rw [Real.log_pow, Real.log_pow] at hlogP
+  have haR : (1 : ℝ) ≤ a := by exact_mod_cast ha
+  have hloga0 : 0 ≤ Real.log a := Real.log_nonneg haR
+  have hloga2 : Real.log a ≤ Real.log ((a : ℝ) + 2) :=
+    Real.log_le_log (by linarith) (by linarith)
+  have hcardR : ((((Ioc a (2 * a + 1)).filter Nat.Prime).card : ℕ) : ℝ)
+      ≤ (((Ico (a + 2) (2 * a + 2)).filter Nat.Prime).card : ℝ) + 1 := by
+    exact_mod_cast hcard
+  have h1 := mul_le_mul_of_nonneg_right hcardR hloga0
+  have h2 := mul_le_mul_of_nonneg_left hloga2
+    (Nat.cast_nonneg (α := ℝ) ((Ico (a + 2) (2 * a + 2)).filter Nat.Prime).card)
+  linarith
+
+/-- **Dyadic prime count from Chebyshev's bound.**  For every `ε > 0`, for all
+large `a`, `#{p prime : a < p ≤ 2a + 1} · log a ≤ (log 4 + ε) a`.  This is
+`eventually_card_primes_dyadic_le` with `log 4` in place of `1` and no hypothesis. -/
+theorem eventually_card_primes_dyadic_le_log_four {ε : ℝ} (hε : 0 < ε) :
+    ∀ᶠ a : ℕ in atTop,
+      ((((Ioc a (2 * a + 1)).filter Nat.Prime).card : ℕ) : ℝ) * Real.log a
+        ≤ (Real.log 4 + ε) * a := by
+  have hsm : ∀ᶠ a : ℕ in atTop, Real.log (a : ℝ) + 0 ≤ ε * (a : ℝ) :=
+    tendsto_natCast_atTop_atTop.eventually (eventually_log_add_le hε 0)
+  filter_upwards [hsm] with a ha
+  have := card_primes_dyadic_mul_log_le a
+  linarith
+
+/-- `1 ≤ log 4`, since `e < 4`. -/
+theorem one_le_log_four : 1 ≤ Real.log 4 := by
+  have h := Real.log_le_log (Real.exp_pos 1)
+    (show Real.exp 1 ≤ 4 by linarith [Real.exp_one_lt_d9])
+  rwa [Real.log_exp] at h
+
+/-- `excluded_final_arith` with a general leading constant `K > 0` in place of
+`1 + e`: with `t ≤ eX`, `8C ≤ e log X`, `S ≤ 2K(X + t)/log X · T`, `T ≥ 0` and
+`T ≤ (D + e)(log X)/2 + C`, one gets `S ≤ K (D + ε) X`. -/
+theorem excluded_final_arith_const {X t S T D C e ε Λ K : ℝ} (hX : 0 < X) (hΛ : 0 < Λ)
+    (he0 : 0 < e) (he1 : e ≤ 1) (he8 : 8 * e ≤ ε) (hD0 : 0 ≤ D) (hD1 : D ≤ 1) (hC0 : 0 ≤ C)
+    (hK : 0 < K) (hT0 : 0 ≤ T) (ht0 : 0 ≤ t) (hXt : t ≤ e * X) (hC : 8 * C ≤ e * Λ)
+    (hS : S ≤ (2 * K * (X + t) / Λ) * T)
+    (hT : T ≤ (D + e) * (Λ / 2) + C) :
+    S ≤ K * (D + ε) * X := by
+  -- `S / K ≤ 2(X + t)/Λ · T ≤ 2(1 + e)(X + t)/Λ · T`, then `excluded_final_arith`
+  have hW0 : 0 ≤ (X + t) / Λ * T := mul_nonneg (div_nonneg (by linarith) hΛ.le) hT0
+  have hSK : S / K ≤ (2 * (1 + e) * (X + t) / Λ) * T := by
+    rw [div_le_iff₀ hK]
+    have e1 : (2 * K * (X + t) / Λ) * T = 2 * ((X + t) / Λ * T) * K := by ring
+    have e2 : (2 * (1 + e) * (X + t) / Λ) * T * K
+        = 2 * ((X + t) / Λ * T) * K + 2 * e * ((X + t) / Λ * T) * K := by ring
+    have h3 : 0 ≤ 2 * e * ((X + t) / Λ * T) * K :=
+      mul_nonneg (mul_nonneg (mul_nonneg zero_le_two he0.le) hW0) hK.le
+    linarith
+  have hfin := excluded_final_arith hX hΛ he0 he1 he8 hD0 hD1 hC0 ht0 hXt hC hSK hT
+  rw [div_le_iff₀ hK] at hfin
+  calc S ≤ (D + ε) * X * K := hfin
+    _ = K * (D + ε) * X := by ring
+
+/-- **The excluded-cofactor estimate from a dyadic prime count with constant `K`.**
+If `#{p prime : a < p ≤ 2a + 1} · log a ≤ (K + ε) a` for every `ε > 0` and all
+large `a`, and `B(η)` has upper density at most `D ∈ [0, 1]`, then for every
+`ε > 0`, for all large `X`, `#{N ∈ 𝒜 : m_N ∈ B(η)} ≤ (K D + ε) X`.  The prime
+number theorem gives the dyadic count with `K = 1` (`eventually_card_primes_dyadic_le`),
+and then this is the bound of `eventually_card_excluded_le_of_upper`; Chebyshev's
+bound gives it with `K = log 4` (`eventually_card_primes_dyadic_le_log_four`). -/
+theorem eventually_card_excluded_le_of_upper_of_dyadic (h s : ℕ) {K : ℝ} (hK : 1 ≤ K)
+    (hdy : ∀ ε : ℝ, 0 < ε → ∀ᶠ a : ℕ in atTop,
+      ((((Ioc a (2 * a + 1)).filter Nat.Prime).card : ℕ) : ℝ) * Real.log a ≤ (K + ε) * a)
+    {η D : ℝ} (hD0 : 0 ≤ D) (hD1 : D ≤ 1) (hup : UpperDensityLE (excludedCofactorSet η) D)
+    {ε : ℝ} (hε : 0 < ε) :
+    ∀ᶠ X : ℕ in atTop,
+      ((((pivotSupplierBases X (minimalDepth h s X) s).filter
+          (fun N => pivotCofactor N (minimalDepth h s X) s ∈ excludedCofactorSet η)).card
+            : ℕ) : ℝ)
+        ≤ (K * D + ε) * X := by
+  have hK9 : 0 < 8 * K + 9 := by linarith
+  obtain ⟨e, he0, he1, heK⟩ : ∃ e : ℝ, 0 < e ∧ e ≤ 1 ∧ e * (8 * K + 9) ≤ ε :=
+    ⟨min 1 (ε / (8 * K + 9)), lt_min (by norm_num) (div_pos hε hK9), min_le_left _ _,
+      (le_div_iff₀ hK9).mp (min_le_right _ _)⟩
+  obtain ⟨C, hC0, hCbound⟩ := upper_density_harmonic_bound _ hD0 hup he0
+  obtain ⟨A₀, hA₀⟩ := eventually_atTop.mp (hdy e he0)
+  have hA₀' : ∀ a ≥ A₀, ((((Ioc a (2 * a + 1)).filter Nat.Prime).card : ℕ) : ℝ) * Real.log a
+      ≤ (1 + (K + e - 1)) * a := by
+    intro a ha
+    rw [show (1 + (K + e - 1) : ℝ) = K + e by ring]
+    exact hA₀ a ha
+  have hE2 : ∀ᶠ X : ℕ in atTop, A₀ ≤ Nat.sqrt X := by
+    filter_upwards [eventually_ge_atTop (A₀ * A₀)] with X hX
+    exact Nat.le_sqrt.mpr hX
+  have hE3 := eventually_minimalOffset_le h s he0
+  have hE4 : ∀ᶠ X : ℕ in atTop, 8 * C ≤ e * Real.log X := by
+    have hlog : Tendsto (fun X : ℕ => Real.log (X : ℝ)) atTop atTop :=
+      Real.tendsto_log_atTop.comp tendsto_natCast_atTop_atTop
+    filter_upwards [hlog.eventually_ge_atTop (8 * C / e)] with X hX
+    rw [div_le_iff₀ he0] at hX
+    linarith
+  filter_upwards [hE2, hE3, hE4, eventually_ge_atTop 16] with X hX2 hX3 hX4 hX16
+  have hX16R : (16 : ℝ) ≤ X := by exact_mod_cast hX16
+  have hXpos : (0 : ℝ) < X := by linarith
+  have hΛ : 0 < Real.log X := Real.log_pos (by linarith)
+  have hS := card_excluded_le_harmonic (L := minimalDepth h s X) (s := s) η
+    (show (0 : ℝ) ≤ K + e - 1 by linarith) hX16 hX2 hA₀'
+  rw [show (1 + (K + e - 1) : ℝ) = K + e by ring] at hS
+  have hT : ∑ m ∈ (Icc 1 (Nat.sqrt X / 2)).filter (· ∈ excludedCofactorSet η), (1 : ℝ) / m
+      ≤ (D + e) * (Real.log X / 2) + C := by
+    have hb := hCbound (Nat.sqrt X / 2)
+    have hl := log_sqrt_half_succ_le hX16
+    have := mul_le_mul_of_nonneg_left hl (show 0 ≤ D + e by linarith)
+    linarith
+  have hT0 : 0 ≤ ∑ m ∈ (Icc 1 (Nat.sqrt X / 2)).filter (· ∈ excludedCofactorSet η),
+      (1 : ℝ) / m := Finset.sum_nonneg fun m _ => by positivity
+  have hX3' : ((pivotOffset (minimalDepth h s X) s : ℕ) : ℝ) ≤ e * X := hX3
+  have hfin := excluded_final_arith_const (ε := 8 * e) hXpos hΛ he0 he1 le_rfl hD0 hD1 hC0
+    (show (0 : ℝ) < K + e by linarith) hT0 (Nat.cast_nonneg _) hX3' hX4 hS hT
+  -- `(K + e)(D + 8e) ≤ K D + e (8K + 9) ≤ K D + ε`
+  have p1 : e * D ≤ e * 1 := mul_le_mul_of_nonneg_left hD1 he0.le
+  have p2 : e * e ≤ e * 1 := mul_le_mul_of_nonneg_left he1 he0.le
+  have hcoef : (K + e) * (D + 8 * e) ≤ K * D + ε := by linarith
+  exact le_trans hfin (mul_le_mul_of_nonneg_right hcoef hXpos.le)
+
+/-- The budget consequence from a dyadic prime count with constant `K` and an upper
+density bound `D` with `K D < 1/100`: for all large `X` the count is `< X/100`, and
+the excluded-cofactor contribution `∑_{N ∈ 𝒜 ∖ 𝒢} E(h, N, L)` has norm at most
+`X/100`.  With `K = 1` this is the conclusion of `eventually_excluded_budget_of_upper`. -/
+theorem eventually_excluded_budget_of_upper_of_dyadic (h s : ℕ) {K : ℝ} (hK : 1 ≤ K)
+    (hdy : ∀ ε : ℝ, 0 < ε → ∀ᶠ a : ℕ in atTop,
+      ((((Ioc a (2 * a + 1)).filter Nat.Prime).card : ℕ) : ℝ) * Real.log a ≤ (K + ε) * a)
+    {η D : ℝ} (hD0 : 0 ≤ D) (hD1 : D ≤ 1) (hup : UpperDensityLE (excludedCofactorSet η) D)
+    (hKD : K * D < 1 / 100) :
+    ∀ᶠ X : ℕ in atTop,
+      ((((pivotSupplierBases X (minimalDepth h s X) s).filter
+          (fun N => pivotCofactor N (minimalDepth h s X) s ∈ excludedCofactorSet η)).card
+            : ℕ) : ℝ) < (1 / 100 : ℝ) * X ∧
+      ‖pivotBadContribution h X (minimalDepth h s X) s η‖ ≤ (1 / 100 : ℝ) * X := by
+  have hε : 0 < (1 / 100 - K * D) / 2 := by linarith
+  filter_upwards [eventually_card_excluded_le_of_upper_of_dyadic h s hK hdy hD0 hD1 hup hε,
+    eventually_gt_atTop 0] with X hX hX0
+  have hX0R : (0 : ℝ) < X := by exact_mod_cast hX0
+  have hlt : ((((pivotSupplierBases X (minimalDepth h s X) s).filter
+      (fun N => pivotCofactor N (minimalDepth h s X) s ∈ excludedCofactorSet η)).card
+        : ℕ) : ℝ) < (1 / 100 : ℝ) * X := by
+    have : (K * D + (1 / 100 - K * D) / 2) * (X : ℝ) < (1 / 100 : ℝ) * X :=
+      mul_lt_mul_of_pos_right (by linarith) hX0R
+    linarith
+  refine ⟨hlt, ?_⟩
+  have hnorm : ‖pivotBadContribution h X (minimalDepth h s X) s η‖
+      ≤ ((pivotBadBases X (minimalDepth h s X) s η).card : ℝ) := by
+    unfold pivotBadContribution
+    calc ‖∑ N ∈ pivotBadBases X (minimalDepth h s X) s η, windowFirstExp h N (minimalDepth h s X)‖
+        ≤ ∑ N ∈ pivotBadBases X (minimalDepth h s X) s η,
+            ‖windowFirstExp h N (minimalDepth h s X)‖ := norm_sum_le _ _
+      _ = ((pivotBadBases X (minimalDepth h s X) s η).card : ℝ) := by
+          simp [norm_windowFirstExp]
+  rw [← filter_excluded_eq_pivotBadBases] at hnorm
+  linarith
+
+end ExcludedCofactor
+
+/-- **The explicit choice `η = 1/1000`, with no input.**  Chebyshev's bound
+replaces the prime number theorem in `excluded_budget_one_thousandth`: it gives the
+dyadic prime count with constant `log 4` (`eventually_card_primes_dyadic_le_log_four`),
+`B(1/1000)` has upper density at most `3/1000` (`excludedCofactorSet_upperDensityLE`),
+and `log 4 · 3/1000 ≤ 9/1000 < 1/100`.  So for all large `X` the excluded-cofactor
+count is `< X/100` and the excluded-cofactor contribution meets its `X/100` budget. -/
+theorem excluded_budget_one_thousandth_of_chebyshev (h s : ℕ) :
+    ∀ᶠ X : ℕ in atTop,
+      ((((pivotSupplierBases X (minimalDepth h s X) s).filter
+          (fun N => pivotCofactor N (minimalDepth h s X) s
+            ∈ excludedCofactorSet (1 / 1000))).card : ℕ) : ℝ) < (1 / 100 : ℝ) * X ∧
+      ‖pivotBadContribution h X (minimalDepth h s X) s (1 / 1000)‖ ≤ (1 / 100 : ℝ) * X :=
+  eventually_excluded_budget_of_upper_of_dyadic h s one_le_log_four
+    (fun _ε hε => eventually_card_primes_dyadic_le_log_four hε) (D := 3 * (1 / 1000))
+    (by norm_num) (by norm_num) (excludedCofactorSet_upperDensityLE (by norm_num))
+    (by
+      have h4 : Real.log 4 ≤ 4 - 1 := Real.log_le_sub_one_of_pos (by norm_num)
+      linarith)
+
+/-- **The budget for every small `η`, with no input.**  The proof of
+`excluded_budget_one_thousandth_of_chebyshev` uses `η = 1/1000` only through the
+inequality `log 4 · 3η < 1/100`: `B(η)` has upper density at most `3η` for every
+`η > 0` (`excludedCofactorSet_upperDensityLE`), and Chebyshev's dyadic count has
+constant `log 4`.  So whenever `0 < η` and `3η log 4 < 1/100`, that is for every
+`η < 1/(300 log 4)` (about `1/416`), for all large `X` the excluded-cofactor count is
+`< X/100` and the excluded-cofactor contribution meets its `X/100` budget. -/
+theorem excluded_budget_of_chebyshev (h s : ℕ) {η : ℝ} (hη : 0 < η)
+    (hbudget : Real.log 4 * (3 * η) < 1 / 100) :
+    ∀ᶠ X : ℕ in atTop,
+      ((((pivotSupplierBases X (minimalDepth h s X) s).filter
+          (fun N => pivotCofactor N (minimalDepth h s X) s
+            ∈ excludedCofactorSet η)).card : ℕ) : ℝ) < (1 / 100 : ℝ) * X ∧
+      ‖pivotBadContribution h X (minimalDepth h s X) s η‖ ≤ (1 / 100 : ℝ) * X := by
+  have hD0 : 0 ≤ 3 * η := by positivity
+  have hD1 : 3 * η ≤ 1 := by
+    have := mul_le_mul_of_nonneg_right one_le_log_four hD0
+    linarith
+  exact eventually_excluded_budget_of_upper_of_dyadic h s one_le_log_four
+    (fun _ε hε => eventually_card_primes_dyadic_le_log_four hε) hD0 hD1
+    (excludedCofactorSet_upperDensityLE hη) hbudget
+
+/-- The budget for every `η` with `0 < η < 1/900`, a rational range inside that of
+`excluded_budget_of_chebyshev` (`log 4 ≤ 3`); `η = 1/1000` is one instance. -/
+theorem excluded_budget_of_lt_one_nine_hundredth (h s : ℕ) {η : ℝ} (hη : 0 < η)
+    (hlt : η < 1 / 900) :
+    ∀ᶠ X : ℕ in atTop,
+      ((((pivotSupplierBases X (minimalDepth h s X) s).filter
+          (fun N => pivotCofactor N (minimalDepth h s X) s
+            ∈ excludedCofactorSet η)).card : ℕ) : ℝ) < (1 / 100 : ℝ) * X ∧
+      ‖pivotBadContribution h X (minimalDepth h s X) s η‖ ≤ (1 / 100 : ℝ) * X := by
+  apply excluded_budget_of_chebyshev h s hη
+  have h4 : Real.log 4 ≤ 3 := by
+    have := Real.log_le_sub_one_of_pos (show (0 : ℝ) < 4 by norm_num)
+    linarith
+  have := mul_le_mul_of_nonneg_right h4 (show (0 : ℝ) ≤ 3 * η by positivity)
+  linarith
+
 end ErdosProblems.Erdos249.PaperCompleteR21
 
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.excluded_budget_one_thousandth
 #print axioms ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.excluded_budget_one_thousandth_of_chebyshev
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.excluded_budget_of_chebyshev
+#print axioms ErdosProblems.Erdos249.PaperCompleteR21.excluded_budget_of_lt_one_nine_hundredth

@@ -1,0 +1,110 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-24T00:12:57Z",
+  "entry": "E249_06",
+  "github": {
+    "sha": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+    "ref": "refs/heads/palomar/comparator-cycle-20260923",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35935225572",
+    "run_attempt": "1",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E249_06.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_06",
+  "theorem_count": 10,
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsAE.signed_dyadic_clearing",
+    "PalomarCorpus.E249.PaperStatementsAE.signed_dyadic_sum_ne_zero",
+    "PalomarCorpus.E249.PaperStatementsAF.scaled_dyadic_sum_odd",
+    "PalomarCorpus.E249.PaperStatementsAR.lcmHeight_scaledMobiusShadow_den_exact",
+    "PalomarCorpus.E249.PaperStatementsG.historical_table_size_and_initial_depths",
+    "PalomarCorpus.E249.PaperStatementsG.sixteen_certificate_windows",
+    "PalomarCorpus.E249.PaperStatementsG.small_certificate_windows",
+    "PalomarCorpus.E249.PaperStatementsI.historical_table_and_complete_band",
+    "PalomarCorpus.E249.PaperStatementsI.sixteen_certificates_and_exclusions",
+    "PalomarCorpus.E249.PaperStatementsI.small_certificates_and_exclusions"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "12fd6d27d94f2f398a2ee4aa036012e7bd28fa01cb3074794824ed840e3a0e07",
+    "comparator.json": "1889895e2b7ef3620853a1135a040aab7d6241a9a3ad016559fb86bdfa199172",
+    "formalization.yaml": "4195aa9e06f3ce8d9a4fddd7f8be5f5ef857bc4d3c12cb36735001ec6b34b55d"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E249_06.lean": "f15e3f98f5a2e69cef0415bfc65d37717157828243767590ec3fce6e99a602f8",
+      "Solutions/PalomarCorpus/E249_06/PaperStatementsAE.lean": "e61077f74d19bf6cafd5d2148a6f31945f9a8020416750cae953431d2f30c5a5",
+      "Solutions/PalomarCorpus/E249_06/PaperStatementsAF.lean": "94d74651a6e7927df63e8f290ac689c32c05b46ef3ce36f8199a4e2011d2f1dc",
+      "Solutions/PalomarCorpus/E249_06/PaperStatementsAR.lean": "0fdae590b3734309b1c82eddc515806e5b25f15b14d61e3121d72875b3e03c78",
+      "Solutions/PalomarCorpus/E249_06/PaperStatementsG.lean": "c2b72a15c8a0f9ab1d14447a9bb910ad5e50c84bac226593b60346c829f4d4b7",
+      "Solutions/PalomarCorpus/E249_06/PaperStatementsI.lean": "c4f61b0dd6967f376e93069c4c2ca63b9d0e09c5d9b4cd9ed567ebb753e61607",
+      "Solutions/PalomarCorpus/E249_06/Statement.lean": "36223a299a806744d8f6d72658f6ebcd1ddd9facc75bb3f3218d8ca34c8644aa"
+    },
+    "sha256": "5196a2a21222ae7114cd1ac2cebc15bc98c35f4db66113886e0d17f1feb7602e"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 8.406
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 660.924
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 456.969,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 6.538
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

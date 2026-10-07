@@ -35,6 +35,7 @@ RELEASE_VALIDATOR_REQUIREMENTS = (
     ("jsonschema", "3.2.0"),
     ("license-expression", "30.4.4"),
     ("pykwalify", "1.8.0"),
+    ("pypdf", "6.17.0"),
     ("pyrsistent", "0.20.0"),
     ("python-dateutil", "2.9.0.post0"),
     ("python-debian", "1.1.1"),
@@ -45,7 +46,7 @@ RELEASE_VALIDATOR_REQUIREMENTS = (
     ("setuptools", "84.0.0"),
     ("six", "1.17.0"),
     ("tomlkit", "0.15.1"),
-    ("urllib3", "2.7.0"),
+    ("urllib3", "2.8.0"),
 )
 RELEASE_INSTALL_COMMAND = (
     "python3 -m pip install --disable-pip-version-check --no-cache-dir "

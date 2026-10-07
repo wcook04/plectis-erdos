@@ -3,11 +3,12 @@
 # SPDX-License-Identifier: Apache-2.0
 """Keep one complete cross-problem paper in every reading edition."""
 
+import io
 import json
 from pathlib import Path
 import tempfile
 import unittest
-from contextlib import ExitStack
+from contextlib import ExitStack, redirect_stderr, redirect_stdout
 from unittest.mock import patch
 
 import build_reading_edition as edition
@@ -149,6 +150,66 @@ class ReadingLinkTests(unittest.TestCase):
             self.assertNotIn('id="sec:result"', text)
             self.assertIn('id="short257--sec:result"', text)
             self.assertIn("](#short257--sec:result)", text)
+
+
+class ReadingCheckRepairCommandTests(unittest.TestCase):
+    def check_stale_family(self, records):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            normal = root / "normal.md"
+            record = root / "record.md"
+            normal.write_text("old normal\n")
+            record.write_text("old record\n")
+            outputs = {normal: "new normal\n"}
+            record_outputs = {record: "new record\n"}
+            with patch.object(edition, "ROOT", root), \
+                    patch.object(edition, "build_weighted_task", return_value={}), \
+                    patch.object(edition, "build", return_value=outputs) as build, \
+                    patch.object(edition, "build_records", return_value=record_outputs) as build_records:
+                stderr = io.StringIO()
+                with redirect_stderr(stderr), redirect_stdout(io.StringIO()):
+                    status = edition.main(["--check", *(["--records"] if records else [])])
+                self.assertEqual(status, 1)
+                self.assertEqual(normal.read_text(), "old normal\n")
+                self.assertEqual(record.read_text(), "old record\n")
+                expected = "python3 scripts/build_reading_edition.py" + (" --records" if records else "")
+                self.assertEqual(stderr.getvalue().splitlines(), [
+                    "stale: " + ("record.md" if records else "normal.md"), "run: " + expected,
+                ])
+                command = stderr.getvalue().splitlines()[-1].removeprefix("run: ")
+                with redirect_stdout(io.StringIO()):
+                    self.assertEqual(edition.main(command.split()[2:]), 0)
+                if records:
+                    self.assertEqual(record.read_text(), "new record\n")
+                    self.assertEqual(normal.read_text(), "old normal\n")
+                    build.assert_not_called()
+                    self.assertEqual(build_records.call_count, 2)
+                else:
+                    self.assertEqual(normal.read_text(), "new normal\n")
+                    self.assertEqual(record.read_text(), "old record\n")
+                    build_records.assert_not_called()
+                    self.assertEqual(build.call_count, 2)
+
+    def test_stale_record_repair_preserves_records_mode_and_other_family(self):
+        self.check_stale_family(records=True)
+
+    def test_stale_normal_repair_keeps_default_mode_and_other_family(self):
+        self.check_stale_family(records=False)
+
+    def test_current_records_do_not_emit_a_repair_command(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            record = root / "record.md"
+            record.write_text("current record\n")
+            with patch.object(edition, "ROOT", root), \
+                    patch.object(edition, "build") as build, \
+                    patch.object(edition, "build_records", return_value={record: "current record\n"}):
+                stderr = io.StringIO()
+                with redirect_stderr(stderr), redirect_stdout(io.StringIO()):
+                    self.assertEqual(edition.main(["--records", "--check"]), 0)
+                self.assertEqual(stderr.getvalue(), "")
+                self.assertEqual(record.read_text(), "current record\n")
+                build.assert_not_called()
 
 
 if __name__ == "__main__":

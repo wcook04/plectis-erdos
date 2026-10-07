@@ -3,6 +3,7 @@
   "title": "Three-branch seam dynamics, finite-horizon shadowing, and exact defect witnesses",
   "problem": "257",
   "replaces_role_zone": "Z24",
+  "build_lane": "unbuilt: ErdosProblems/Three/T2.lean, the module cited in this zone, is in no CI build, so its declarations are stated in source but not kernel-checked by this repository's CI.",
   "concepts": [
     {
       "id": "adjacent_gap_excess",

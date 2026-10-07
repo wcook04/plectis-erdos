@@ -1,0 +1,2110 @@
+{
+  "arguments": [],
+  "claim_boundary": "Exact order and leading coefficient of V_N^* for 1 <= N <= 7 and the transformed-row leading terms for 0 <= j, l <= 6. The all-rank theorem is the paper's proof. No floating point and no Lean kernel.",
+  "paper_passage": "Subsection 'The sharp q-order of the normalised Hankel determinant', paragraph 'Formal verification and computations'",
+  "program": "hankel_qorder.py",
+  "program_sha256": "2a951601132e44683bfbfd93090af9d23875d1c7b9fd4c75e9a36a122ce46a8c",
+  "result": {
+    "all_printed_claims_verified": true,
+    "checks": {
+      "N = 2 entry orders are (0 0; 1 2)": true,
+      "leading coefficients equal (N!)^2 (N+1)!/2^N": true,
+      "leading coefficients equal the printed list": true,
+      "orders equal N(N-1)(2N-1)/6": true,
+      "orders equal the printed list 0,1,5,14,30,55,91": true,
+      "per-summand contributions match h^(t)_(j-t)": true,
+      "rank 2 starts 6q": true,
+      "reversal is the unique minimising permutation at every rank": true,
+      "row 1 has order l+1 and coefficient -6 in every column": true,
+      "row identity holds for 0 <= j, l <= 6": true,
+      "two determinant methods agree through the cutoff at every rank": true,
+      "two expansions of v_m^* agree for 0 <= m <= 12": true
+    },
+    "moment_indices": [
+      0,
+      12
+    ],
+    "moment_sha256": [
+      "edd0b9ba3f0f04dbdc477babbcfae1e392bb96f112a0aa4ba640062d38354606",
+      "973b5283d7d19b75423fc5c1b9a66cecaab293cd02b719a1082ea157564688c1",
+      "7944a3bdeacb78048aac4f7d9f74651362d107a0486ba1a36201403b9732f73c",
+      "641475c172ddfff6baec43328236629bf350168ae87b33ec35d0c08d491f82bb",
+      "1878a41f2dbb2d44417c8bc9a07f4bacd63b5cbc8cd9d4a7f13cd3b8be612a29",
+      "28eb38924b364e9f9809b6f0e5a2ff4ea8fd53b071ed86d562d455753506003d",
+      "5a8a50cd720f4bfb6c2bf3b1256ef21b2bc3cc67d8e698a4d7c2d183f89332f1",
+      "ccf45bd23a842d6c133997c6c2bbc6a941d64743450cbcf7df4e906d6d709e58",
+      "a61b2db79c166d810214b31aad031d95c1f3c56fcaee3539321c9d9abde0a238",
+      "9a9a637b0d960258243af3ad7b9debeb435c5518600bb1b1ff8415c89d494003",
+      "2be59298dd063051a117c3b95092859239a6ed9652ad99ab03c7e91df6bd4f46",
+      "cc7a901307a5f43180d75669e505309b0157c843ceb0b4fc5c5eb0dc813946a3",
+      "6a6d165465053725f2eec3019f054bdd016af4e691eae37038f508bd5003ee6a"
+    ],
+    "per_summand_contributions": [
+      {
+        "all_match": true,
+        "column": 0,
+        "contributions": [
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 0,
+            "vanishes_below": true
+          }
+        ],
+        "row": 0,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 1,
+        "contributions": [
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 0,
+            "vanishes_below": true
+          }
+        ],
+        "row": 0,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 2,
+        "contributions": [
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 0,
+            "vanishes_below": true
+          }
+        ],
+        "row": 0,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 3,
+        "contributions": [
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 0,
+            "vanishes_below": true
+          }
+        ],
+        "row": 0,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 4,
+        "contributions": [
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 0,
+            "vanishes_below": true
+          }
+        ],
+        "row": 0,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 5,
+        "contributions": [
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 0,
+            "vanishes_below": true
+          }
+        ],
+        "row": 0,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 6,
+        "contributions": [
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 0,
+            "vanishes_below": true
+          }
+        ],
+        "row": 0,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 0,
+        "contributions": [
+          {
+            "coefficient": -5,
+            "expected": -5,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 1,
+            "vanishes_below": true
+          }
+        ],
+        "row": 1,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 1,
+        "contributions": [
+          {
+            "coefficient": -5,
+            "expected": -5,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 1,
+            "vanishes_below": true
+          }
+        ],
+        "row": 1,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 2,
+        "contributions": [
+          {
+            "coefficient": -5,
+            "expected": -5,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 1,
+            "vanishes_below": true
+          }
+        ],
+        "row": 1,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 3,
+        "contributions": [
+          {
+            "coefficient": -5,
+            "expected": -5,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 1,
+            "vanishes_below": true
+          }
+        ],
+        "row": 1,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 4,
+        "contributions": [
+          {
+            "coefficient": -5,
+            "expected": -5,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 1,
+            "vanishes_below": true
+          }
+        ],
+        "row": 1,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 5,
+        "contributions": [
+          {
+            "coefficient": -5,
+            "expected": -5,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 1,
+            "vanishes_below": true
+          }
+        ],
+        "row": 1,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 6,
+        "contributions": [
+          {
+            "coefficient": -5,
+            "expected": -5,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 1,
+            "vanishes_below": true
+          }
+        ],
+        "row": 1,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 0,
+        "contributions": [
+          {
+            "coefficient": 14,
+            "expected": 14,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 2,
+            "vanishes_below": true
+          }
+        ],
+        "row": 2,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 1,
+        "contributions": [
+          {
+            "coefficient": 14,
+            "expected": 14,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 2,
+            "vanishes_below": true
+          }
+        ],
+        "row": 2,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 2,
+        "contributions": [
+          {
+            "coefficient": 14,
+            "expected": 14,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 2,
+            "vanishes_below": true
+          }
+        ],
+        "row": 2,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 3,
+        "contributions": [
+          {
+            "coefficient": 14,
+            "expected": 14,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 2,
+            "vanishes_below": true
+          }
+        ],
+        "row": 2,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 4,
+        "contributions": [
+          {
+            "coefficient": 14,
+            "expected": 14,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 2,
+            "vanishes_below": true
+          }
+        ],
+        "row": 2,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 5,
+        "contributions": [
+          {
+            "coefficient": 14,
+            "expected": 14,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 2,
+            "vanishes_below": true
+          }
+        ],
+        "row": 2,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 6,
+        "contributions": [
+          {
+            "coefficient": 14,
+            "expected": 14,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 2,
+            "vanishes_below": true
+          }
+        ],
+        "row": 2,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 0,
+        "contributions": [
+          {
+            "coefficient": -30,
+            "expected": -30,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -6,
+            "expected": -6,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -3,
+            "expected": -3,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 3,
+            "vanishes_below": true
+          }
+        ],
+        "row": 3,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 1,
+        "contributions": [
+          {
+            "coefficient": -30,
+            "expected": -30,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -6,
+            "expected": -6,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -3,
+            "expected": -3,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 3,
+            "vanishes_below": true
+          }
+        ],
+        "row": 3,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 2,
+        "contributions": [
+          {
+            "coefficient": -30,
+            "expected": -30,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -6,
+            "expected": -6,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -3,
+            "expected": -3,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 3,
+            "vanishes_below": true
+          }
+        ],
+        "row": 3,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 3,
+        "contributions": [
+          {
+            "coefficient": -30,
+            "expected": -30,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -6,
+            "expected": -6,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -3,
+            "expected": -3,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 3,
+            "vanishes_below": true
+          }
+        ],
+        "row": 3,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 4,
+        "contributions": [
+          {
+            "coefficient": -30,
+            "expected": -30,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -6,
+            "expected": -6,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -3,
+            "expected": -3,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 3,
+            "vanishes_below": true
+          }
+        ],
+        "row": 3,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 5,
+        "contributions": [
+          {
+            "coefficient": -30,
+            "expected": -30,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -6,
+            "expected": -6,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -3,
+            "expected": -3,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 3,
+            "vanishes_below": true
+          }
+        ],
+        "row": 3,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 6,
+        "contributions": [
+          {
+            "coefficient": -30,
+            "expected": -30,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -6,
+            "expected": -6,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -3,
+            "expected": -3,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 3,
+            "vanishes_below": true
+          }
+        ],
+        "row": 3,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 0,
+        "contributions": [
+          {
+            "coefficient": 55,
+            "expected": 55,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 10,
+            "expected": 10,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 6,
+            "expected": 6,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 4,
+            "vanishes_below": true
+          }
+        ],
+        "row": 4,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 1,
+        "contributions": [
+          {
+            "coefficient": 55,
+            "expected": 55,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 10,
+            "expected": 10,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 6,
+            "expected": 6,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 4,
+            "vanishes_below": true
+          }
+        ],
+        "row": 4,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 2,
+        "contributions": [
+          {
+            "coefficient": 55,
+            "expected": 55,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 10,
+            "expected": 10,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 6,
+            "expected": 6,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 4,
+            "vanishes_below": true
+          }
+        ],
+        "row": 4,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 3,
+        "contributions": [
+          {
+            "coefficient": 55,
+            "expected": 55,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 10,
+            "expected": 10,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 6,
+            "expected": 6,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 4,
+            "vanishes_below": true
+          }
+        ],
+        "row": 4,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 4,
+        "contributions": [
+          {
+            "coefficient": 55,
+            "expected": 55,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 10,
+            "expected": 10,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 6,
+            "expected": 6,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 4,
+            "vanishes_below": true
+          }
+        ],
+        "row": 4,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 5,
+        "contributions": [
+          {
+            "coefficient": 55,
+            "expected": 55,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 10,
+            "expected": 10,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 6,
+            "expected": 6,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 4,
+            "vanishes_below": true
+          }
+        ],
+        "row": 4,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 6,
+        "contributions": [
+          {
+            "coefficient": 55,
+            "expected": 55,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 10,
+            "expected": 10,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 6,
+            "expected": 6,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 4,
+            "vanishes_below": true
+          }
+        ],
+        "row": 4,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 0,
+        "contributions": [
+          {
+            "coefficient": -91,
+            "expected": -91,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -15,
+            "expected": -15,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -10,
+            "expected": -10,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -6,
+            "expected": -6,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -3,
+            "expected": -3,
+            "t": 4,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 5,
+            "vanishes_below": true
+          }
+        ],
+        "row": 5,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 1,
+        "contributions": [
+          {
+            "coefficient": -91,
+            "expected": -91,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -15,
+            "expected": -15,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -10,
+            "expected": -10,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -6,
+            "expected": -6,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -3,
+            "expected": -3,
+            "t": 4,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 5,
+            "vanishes_below": true
+          }
+        ],
+        "row": 5,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 2,
+        "contributions": [
+          {
+            "coefficient": -91,
+            "expected": -91,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -15,
+            "expected": -15,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -10,
+            "expected": -10,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -6,
+            "expected": -6,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -3,
+            "expected": -3,
+            "t": 4,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 5,
+            "vanishes_below": true
+          }
+        ],
+        "row": 5,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 3,
+        "contributions": [
+          {
+            "coefficient": -91,
+            "expected": -91,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -15,
+            "expected": -15,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -10,
+            "expected": -10,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -6,
+            "expected": -6,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -3,
+            "expected": -3,
+            "t": 4,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 5,
+            "vanishes_below": true
+          }
+        ],
+        "row": 5,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 4,
+        "contributions": [
+          {
+            "coefficient": -91,
+            "expected": -91,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -15,
+            "expected": -15,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -10,
+            "expected": -10,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -6,
+            "expected": -6,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -3,
+            "expected": -3,
+            "t": 4,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 5,
+            "vanishes_below": true
+          }
+        ],
+        "row": 5,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 5,
+        "contributions": [
+          {
+            "coefficient": -91,
+            "expected": -91,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -15,
+            "expected": -15,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -10,
+            "expected": -10,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -6,
+            "expected": -6,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -3,
+            "expected": -3,
+            "t": 4,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 5,
+            "vanishes_below": true
+          }
+        ],
+        "row": 5,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 6,
+        "contributions": [
+          {
+            "coefficient": -91,
+            "expected": -91,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -15,
+            "expected": -15,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -10,
+            "expected": -10,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -6,
+            "expected": -6,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -3,
+            "expected": -3,
+            "t": 4,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": -1,
+            "expected": -1,
+            "t": 5,
+            "vanishes_below": true
+          }
+        ],
+        "row": 5,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 0,
+        "contributions": [
+          {
+            "coefficient": 140,
+            "expected": 140,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 21,
+            "expected": 21,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 15,
+            "expected": 15,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 10,
+            "expected": 10,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 6,
+            "expected": 6,
+            "t": 4,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 5,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 6,
+            "vanishes_below": true
+          }
+        ],
+        "row": 6,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 1,
+        "contributions": [
+          {
+            "coefficient": 140,
+            "expected": 140,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 21,
+            "expected": 21,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 15,
+            "expected": 15,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 10,
+            "expected": 10,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 6,
+            "expected": 6,
+            "t": 4,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 5,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 6,
+            "vanishes_below": true
+          }
+        ],
+        "row": 6,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 2,
+        "contributions": [
+          {
+            "coefficient": 140,
+            "expected": 140,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 21,
+            "expected": 21,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 15,
+            "expected": 15,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 10,
+            "expected": 10,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 6,
+            "expected": 6,
+            "t": 4,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 5,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 6,
+            "vanishes_below": true
+          }
+        ],
+        "row": 6,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 3,
+        "contributions": [
+          {
+            "coefficient": 140,
+            "expected": 140,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 21,
+            "expected": 21,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 15,
+            "expected": 15,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 10,
+            "expected": 10,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 6,
+            "expected": 6,
+            "t": 4,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 5,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 6,
+            "vanishes_below": true
+          }
+        ],
+        "row": 6,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 4,
+        "contributions": [
+          {
+            "coefficient": 140,
+            "expected": 140,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 21,
+            "expected": 21,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 15,
+            "expected": 15,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 10,
+            "expected": 10,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 6,
+            "expected": 6,
+            "t": 4,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 5,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 6,
+            "vanishes_below": true
+          }
+        ],
+        "row": 6,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 5,
+        "contributions": [
+          {
+            "coefficient": 140,
+            "expected": 140,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 21,
+            "expected": 21,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 15,
+            "expected": 15,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 10,
+            "expected": 10,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 6,
+            "expected": 6,
+            "t": 4,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 5,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 6,
+            "vanishes_below": true
+          }
+        ],
+        "row": 6,
+        "sum_is_row_coefficient": true
+      },
+      {
+        "all_match": true,
+        "column": 6,
+        "contributions": [
+          {
+            "coefficient": 140,
+            "expected": 140,
+            "t": 0,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 21,
+            "expected": 21,
+            "t": 1,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 15,
+            "expected": 15,
+            "t": 2,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 10,
+            "expected": 10,
+            "t": 3,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 6,
+            "expected": 6,
+            "t": 4,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 3,
+            "expected": 3,
+            "t": 5,
+            "vanishes_below": true
+          },
+          {
+            "coefficient": 1,
+            "expected": 1,
+            "t": 6,
+            "vanishes_below": true
+          }
+        ],
+        "row": 6,
+        "sum_is_row_coefficient": true
+      }
+    ],
+    "q_degree_cutoff": 99,
+    "ranks": [
+      {
+        "closed_form_leading_coefficient": 1,
+        "closed_form_order": 0,
+        "coefficients_from_order": [
+          "1",
+          "2",
+          "2",
+          "3",
+          "2",
+          "4",
+          "2",
+          "4"
+        ],
+        "leading_coefficient": 1,
+        "minimum_entry_order_weight": 0,
+        "q_order": 0,
+        "rank": 1,
+        "reversal_is_unique_minimiser": true,
+        "truncated_series_sha256": "edd0b9ba3f0f04dbdc477babbcfae1e392bb96f112a0aa4ba640062d38354606",
+        "two_determinant_methods_agree": true
+      },
+      {
+        "closed_form_leading_coefficient": 6,
+        "closed_form_order": 1,
+        "coefficients_from_order": [
+          "6",
+          "-36",
+          "97",
+          "-159",
+          "192",
+          "-204",
+          "198",
+          "-193"
+        ],
+        "leading_coefficient": 6,
+        "minimum_entry_order_weight": 1,
+        "q_order": 1,
+        "rank": 2,
+        "reversal_is_unique_minimiser": true,
+        "truncated_series_sha256": "26bce742d0d90632fd02f1060ffacc90873e4cf1f660ec67ef5c892e203fbbb6",
+        "two_determinant_methods_agree": true
+      },
+      {
+        "closed_form_leading_coefficient": 108,
+        "closed_form_order": 5,
+        "coefficients_from_order": [
+          "108",
+          "-1182",
+          "5064",
+          "-8724",
+          "-5502",
+          "47778",
+          "-57483",
+          "-59577"
+        ],
+        "leading_coefficient": 108,
+        "minimum_entry_order_weight": 5,
+        "q_order": 5,
+        "rank": 3,
+        "reversal_is_unique_minimiser": true,
+        "truncated_series_sha256": "632044986ff57af56133103d8d989b1e4ae7a2e9acfe5fc06b27cb24ecd95aa1",
+        "two_determinant_methods_agree": true
+      },
+      {
+        "closed_form_leading_coefficient": 4320,
+        "closed_form_order": 14,
+        "coefficients_from_order": [
+          "4320",
+          "-64764",
+          "394218",
+          "-1121868",
+          "705330",
+          "4496076",
+          "-11011890",
+          "-623904"
+        ],
+        "leading_coefficient": 4320,
+        "minimum_entry_order_weight": 14,
+        "q_order": 14,
+        "rank": 4,
+        "reversal_is_unique_minimiser": true,
+        "truncated_series_sha256": "6580309f64854240a8aaef1b9187302eb851002328700654a8bb4e3b154cc887",
+        "two_determinant_methods_agree": true
+      },
+      {
+        "closed_form_leading_coefficient": 324000,
+        "closed_form_order": 30,
+        "coefficients_from_order": [
+          "324000",
+          "-6022080",
+          "46928376",
+          "-186115824",
+          "304579224",
+          "424818504",
+          "-2792120400",
+          "3565419030"
+        ],
+        "leading_coefficient": 324000,
+        "minimum_entry_order_weight": 30,
+        "q_order": 30,
+        "rank": 5,
+        "reversal_is_unique_minimiser": true,
+        "truncated_series_sha256": "a0a549de297c9ae44d58482e6dd9881986eaa085915560a386c3e3286c274f95",
+        "two_determinant_methods_agree": true
+      },
+      {
+        "closed_form_leading_coefficient": 40824000,
+        "closed_form_order": 55,
+        "coefficients_from_order": [
+          "40824000",
+          "-894110400",
+          "8407447920",
+          "-42371434800",
+          "107717913288",
+          "-20490881904",
+          "-708481081512",
+          "1835307684252"
+        ],
+        "leading_coefficient": 40824000,
+        "minimum_entry_order_weight": 55,
+        "q_order": 55,
+        "rank": 6,
+        "reversal_is_unique_minimiser": true,
+        "truncated_series_sha256": "1381392447c8be41495abead5a36e5343f6bf477a113756a4bbe319fa8a4ba2d",
+        "two_determinant_methods_agree": true
+      },
+      {
+        "closed_form_leading_coefficient": 8001504000,
+        "closed_form_order": 91,
+        "coefficients_from_order": [
+          "8001504000",
+          "-200225390400",
+          "2189888291520",
+          "-13288307430960",
+          "44915263885728",
+          "-54659773307664",
+          "-189182212220520",
+          "918475037755488"
+        ],
+        "leading_coefficient": 8001504000,
+        "minimum_entry_order_weight": 91,
+        "q_order": 91,
+        "rank": 7,
+        "reversal_is_unique_minimiser": true,
+        "truncated_series_sha256": "b7860b976128b62f4b76dc71899c62f98d914374cf7bc2e38b57e2829250f2a0",
+        "two_determinant_methods_agree": true
+      }
+    ],
+    "transformed_rows": [
+      {
+        "column": 0,
+        "leading_coefficient": 1,
+        "matches_row_identity": true,
+        "q_order": 0,
+        "row": 0
+      },
+      {
+        "column": 1,
+        "leading_coefficient": 1,
+        "matches_row_identity": true,
+        "q_order": 0,
+        "row": 0
+      },
+      {
+        "column": 2,
+        "leading_coefficient": 1,
+        "matches_row_identity": true,
+        "q_order": 0,
+        "row": 0
+      },
+      {
+        "column": 3,
+        "leading_coefficient": 1,
+        "matches_row_identity": true,
+        "q_order": 0,
+        "row": 0
+      },
+      {
+        "column": 4,
+        "leading_coefficient": 1,
+        "matches_row_identity": true,
+        "q_order": 0,
+        "row": 0
+      },
+      {
+        "column": 5,
+        "leading_coefficient": 1,
+        "matches_row_identity": true,
+        "q_order": 0,
+        "row": 0
+      },
+      {
+        "column": 6,
+        "leading_coefficient": 1,
+        "matches_row_identity": true,
+        "q_order": 0,
+        "row": 0
+      },
+      {
+        "column": 0,
+        "leading_coefficient": -6,
+        "matches_row_identity": true,
+        "q_order": 1,
+        "row": 1
+      },
+      {
+        "column": 1,
+        "leading_coefficient": -6,
+        "matches_row_identity": true,
+        "q_order": 2,
+        "row": 1
+      },
+      {
+        "column": 2,
+        "leading_coefficient": -6,
+        "matches_row_identity": true,
+        "q_order": 3,
+        "row": 1
+      },
+      {
+        "column": 3,
+        "leading_coefficient": -6,
+        "matches_row_identity": true,
+        "q_order": 4,
+        "row": 1
+      },
+      {
+        "column": 4,
+        "leading_coefficient": -6,
+        "matches_row_identity": true,
+        "q_order": 5,
+        "row": 1
+      },
+      {
+        "column": 5,
+        "leading_coefficient": -6,
+        "matches_row_identity": true,
+        "q_order": 6,
+        "row": 1
+      },
+      {
+        "column": 6,
+        "leading_coefficient": -6,
+        "matches_row_identity": true,
+        "q_order": 7,
+        "row": 1
+      },
+      {
+        "column": 0,
+        "leading_coefficient": 18,
+        "matches_row_identity": true,
+        "q_order": 3,
+        "row": 2
+      },
+      {
+        "column": 1,
+        "leading_coefficient": 18,
+        "matches_row_identity": true,
+        "q_order": 5,
+        "row": 2
+      },
+      {
+        "column": 2,
+        "leading_coefficient": 18,
+        "matches_row_identity": true,
+        "q_order": 7,
+        "row": 2
+      },
+      {
+        "column": 3,
+        "leading_coefficient": 18,
+        "matches_row_identity": true,
+        "q_order": 9,
+        "row": 2
+      },
+      {
+        "column": 4,
+        "leading_coefficient": 18,
+        "matches_row_identity": true,
+        "q_order": 11,
+        "row": 2
+      },
+      {
+        "column": 5,
+        "leading_coefficient": 18,
+        "matches_row_identity": true,
+        "q_order": 13,
+        "row": 2
+      },
+      {
+        "column": 6,
+        "leading_coefficient": 18,
+        "matches_row_identity": true,
+        "q_order": 15,
+        "row": 2
+      },
+      {
+        "column": 0,
+        "leading_coefficient": -40,
+        "matches_row_identity": true,
+        "q_order": 6,
+        "row": 3
+      },
+      {
+        "column": 1,
+        "leading_coefficient": -40,
+        "matches_row_identity": true,
+        "q_order": 9,
+        "row": 3
+      },
+      {
+        "column": 2,
+        "leading_coefficient": -40,
+        "matches_row_identity": true,
+        "q_order": 12,
+        "row": 3
+      },
+      {
+        "column": 3,
+        "leading_coefficient": -40,
+        "matches_row_identity": true,
+        "q_order": 15,
+        "row": 3
+      },
+      {
+        "column": 4,
+        "leading_coefficient": -40,
+        "matches_row_identity": true,
+        "q_order": 18,
+        "row": 3
+      },
+      {
+        "column": 5,
+        "leading_coefficient": -40,
+        "matches_row_identity": true,
+        "q_order": 21,
+        "row": 3
+      },
+      {
+        "column": 6,
+        "leading_coefficient": -40,
+        "matches_row_identity": true,
+        "q_order": 24,
+        "row": 3
+      },
+      {
+        "column": 0,
+        "leading_coefficient": 75,
+        "matches_row_identity": true,
+        "q_order": 10,
+        "row": 4
+      },
+      {
+        "column": 1,
+        "leading_coefficient": 75,
+        "matches_row_identity": true,
+        "q_order": 14,
+        "row": 4
+      },
+      {
+        "column": 2,
+        "leading_coefficient": 75,
+        "matches_row_identity": true,
+        "q_order": 18,
+        "row": 4
+      },
+      {
+        "column": 3,
+        "leading_coefficient": 75,
+        "matches_row_identity": true,
+        "q_order": 22,
+        "row": 4
+      },
+      {
+        "column": 4,
+        "leading_coefficient": 75,
+        "matches_row_identity": true,
+        "q_order": 26,
+        "row": 4
+      },
+      {
+        "column": 5,
+        "leading_coefficient": 75,
+        "matches_row_identity": true,
+        "q_order": 30,
+        "row": 4
+      },
+      {
+        "column": 6,
+        "leading_coefficient": 75,
+        "matches_row_identity": true,
+        "q_order": 34,
+        "row": 4
+      },
+      {
+        "column": 0,
+        "leading_coefficient": -126,
+        "matches_row_identity": true,
+        "q_order": 15,
+        "row": 5
+      },
+      {
+        "column": 1,
+        "leading_coefficient": -126,
+        "matches_row_identity": true,
+        "q_order": 20,
+        "row": 5
+      },
+      {
+        "column": 2,
+        "leading_coefficient": -126,
+        "matches_row_identity": true,
+        "q_order": 25,
+        "row": 5
+      },
+      {
+        "column": 3,
+        "leading_coefficient": -126,
+        "matches_row_identity": true,
+        "q_order": 30,
+        "row": 5
+      },
+      {
+        "column": 4,
+        "leading_coefficient": -126,
+        "matches_row_identity": true,
+        "q_order": 35,
+        "row": 5
+      },
+      {
+        "column": 5,
+        "leading_coefficient": -126,
+        "matches_row_identity": true,
+        "q_order": 40,
+        "row": 5
+      },
+      {
+        "column": 6,
+        "leading_coefficient": -126,
+        "matches_row_identity": true,
+        "q_order": 45,
+        "row": 5
+      },
+      {
+        "column": 0,
+        "leading_coefficient": 196,
+        "matches_row_identity": true,
+        "q_order": 21,
+        "row": 6
+      },
+      {
+        "column": 1,
+        "leading_coefficient": 196,
+        "matches_row_identity": true,
+        "q_order": 27,
+        "row": 6
+      },
+      {
+        "column": 2,
+        "leading_coefficient": 196,
+        "matches_row_identity": true,
+        "q_order": 33,
+        "row": 6
+      },
+      {
+        "column": 3,
+        "leading_coefficient": 196,
+        "matches_row_identity": true,
+        "q_order": 39,
+        "row": 6
+      },
+      {
+        "column": 4,
+        "leading_coefficient": 196,
+        "matches_row_identity": true,
+        "q_order": 45,
+        "row": 6
+      },
+      {
+        "column": 5,
+        "leading_coefficient": 196,
+        "matches_row_identity": true,
+        "q_order": 51,
+        "row": 6
+      },
+      {
+        "column": 6,
+        "leading_coefficient": 196,
+        "matches_row_identity": true,
+        "q_order": 57,
+        "row": 6
+      }
+    ]
+  },
+  "schema": "erdos1049-public-computation/1",
+  "verification_scope": "finite_computation_only"
+}

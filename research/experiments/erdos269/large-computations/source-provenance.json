@@ -1,0 +1,79 @@
+{
+  "schema": "erdos269-public-computation-source/1",
+  "author": "Will Cook",
+  "packaging": "Claude Code, directed by Will Cook, 23 September 2026",
+  "programs": [
+    {
+      "file": "regenerate_269.py",
+      "original_program_sha256": "4ba3ad97c3c0e47455b547946cfc1fd04141a16343b0fc5e6c2b5ea798d61681",
+      "changes": "SPDX header added as lines 2-3; otherwise byte-identical."
+    },
+    {
+      "file": "verify_recovered.py",
+      "original_program_sha256": "96aed15ad1aac623e39d51322e9ed1560d88e8a2ccb0893e5a56cc5968c40719",
+      "changes": "SPDX header added as lines 2-3; otherwise byte-identical."
+    },
+    {
+      "file": "regenerate_block_certificate.py",
+      "original_program_sha256": "f255cf6947864af27bba77c6cba63c7ddd4e8148ccae9ba06859208d7c9841c3",
+      "changes": "SPDX header added as lines 2-3; otherwise byte-identical."
+    },
+    {
+      "file": "lattice_from_packet.py",
+      "original_program_sha256": "d166a585be46e0221e3c7135ee5aca82c7ddfd37f57f4f843a350550e3fb5962",
+      "changes": "SPDX header added as lines 1-2; otherwise byte-identical."
+    },
+    {
+      "file": "add_inverse_witness.py",
+      "original_program_sha256": "0ceda08a1dfd401a6c5aae7df44cc792cce47eef13e1c84c4f7e865ee818429f",
+      "changes": "SPDX header added as lines 2-3; otherwise byte-identical."
+    },
+    {
+      "file": "erdos269_continued_fraction.py",
+      "original_program_sha256": "7b97262364541daf8dd4ba97820f29ce006a750dd635109a3b6aad7128a52000",
+      "original_receipt_sha256": "0837f09762e929fb4ad3e4eb82b1a057bee81f7cc47d2b24519b08d48e1592ae",
+      "changes": "SPDX header; the package import and its sys.path line now load the engine modules from this directory."
+    },
+    {
+      "file": "erdos269_blocks.py",
+      "original_program_sha256": "b99f003c17b251170714f9b15ae12323302189e6e1f1635984609e8bc02586ab",
+      "changes": "SPDX header; two package imports now load the engine modules from this directory."
+    },
+    {
+      "file": "erdos269_engine.py",
+      "original_program_sha256": "a4de6896e1b580af3ed8545c51344ef9912e45530328a6f10b12d55af757a2cd",
+      "changes": "SPDX header added as lines 1-2; otherwise byte-identical."
+    },
+    {
+      "file": "erdos269_fast_engine.py",
+      "original_program_sha256": "cc16036f2a83f9cb91ef25c779983d16d372c80d38a30b4d6b386c98adb44c93",
+      "changes": "SPDX header; the package import and its sys.path line now load the exact engine from this directory."
+    }
+  ],
+  "data": [
+    {
+      "file": "regenerated/block_certificate.json",
+      "original_sha256": "47b4910a67502ecb0e4caf6699319dcc934f0e72a3edeedb9e4218653f4da5c8",
+      "changes": "None."
+    },
+    {
+      "file": "regenerated/cf_common_prefix.json",
+      "original_sha256": "f7e65cfb6b0f51494c2dbde534447f4ce7bf4ce0f746c92c1d4d5872035e4a32",
+      "changes": "None."
+    },
+    {
+      "file": "regenerated/dyadic_blocks.json",
+      "original_sha256": "4b4eea80652e12ff9a2ec86dc47940af0f9efd703190497cdb6c112e8059cbc5",
+      "changes": "None."
+    },
+    {
+      "file": "regenerated/tail_certificate.json",
+      "original_sha256": "b847fd5aa2d0c9e72f9763e623d410dbcf62e9319b4fa79a2e8c7f28ef74fce0",
+      "changes": "None."
+    }
+  ],
+  "external_program": {
+    "file": "scripts/check_erdos269_dyadic_windows.py",
+    "note": "Already public at the repository root; the scan receipts bind its current bytes."
+  }
+}

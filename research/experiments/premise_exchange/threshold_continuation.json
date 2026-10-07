@@ -1,0 +1,110 @@
+{
+  "continues": "propagation.json",
+  "question": "The dyadic transfer inherited the separation constant 1/31 from the radix-30 escape theorem. Is that constant forced by the mathematics or by the source theorem's bound?",
+  "answer": "By the bound. The escape proof works for every radix bound B with threshold 1/(B+1), the threshold cannot be raised for orbits in general, and the dyadic equivalence holds with 1/3. A literature comparison then closed the sharper question: the admissible cofinal constants for irrational tails are exactly (0, tau), tau the Thue-Morse number.",
+  "evidence_class": "Lean proofs for the parameterised theorem, the extremal orbit and the 1/3 equivalence; Lean application traces for the continuation request; exact finite computation for the Thue-Morse probe.",
+  "consumers": [
+    {
+      "consumer": "lean/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean",
+      "disposition": "update_now",
+      "action": "Prove affine_nearInteger_alignment_of_le and boundedRadix_zero_or_cofinal_far_of_le for every radix bound B; keep affine_nearInteger_alignment and boundedRadix_zero_or_cofinal_far with unchanged statements as the B = 30 specialisations; add boundedRadix_threshold_attained.",
+      "completion": "completed"
+    },
+    {
+      "consumer": "lean/ErdosProblems/Erdos269/DyadicRadixTailEscape.lean and the #269 papers",
+      "disposition": "verify_unchanged",
+      "action": "The actual #269 block radices are 2, 6, 10 and 30, so their consumers need B = 30 and keep 1/31. The radix-30 statement is unchanged; printed source coordinates are pinned to an earlier revision and remain valid there.",
+      "completion": "verified_unchanged"
+    },
+    {
+      "consumer": "lean/ErdosProblems/Synthesis/DyadicShiftEscape.lean",
+      "disposition": "update_now",
+      "action": "Add cofinal_third_separated_tailShifts_of_irrational and irrational_initial_iff_cofinal_third_separated_tailShifts; keep the 1/31 theorems as the recorded outcome of the first run.",
+      "completion": "completed"
+    },
+    {
+      "consumer": "dyadic_shift_request.json, results/summary.json and results/dyadic_shift_request-result.json",
+      "disposition": "verify_unchanged",
+      "action": "Historical receipts of the first run. They are not rewritten; the continuation has its own request and result directory.",
+      "completion": "verified_unchanged"
+    },
+    {
+      "consumer": "dyadic_shift_third_request.json and results/threshold_continuation/",
+      "disposition": "update_now",
+      "action": "Replay the transfer through the parameterised theorem at B = 2, with the radix-30 transfer as a negative control against the 1/3 target. The request does not import DyadicShiftEscape.",
+      "completion": "completed"
+    },
+    {
+      "consumer": "paper/systems/claim-faithful-publication-systems-paper.tex",
+      "disposition": "update_now",
+      "action": "Show the complete transfer in the corpus-to-insight section, report the parameterised constant, and use the episode as the second column of the four-decision table with its real next allocation.",
+      "completion": "completed"
+    },
+    {
+      "consumer": "Generated module synopsis, declaration atlas and module graph",
+      "disposition": "update_now",
+      "action": "Regenerated through their owners after the Lean change.",
+      "completion": "completed"
+    },
+    {
+      "consumer": "Elaborated Lean dependency index",
+      "disposition": "update_now",
+      "action": "Export from a completely built Lean environment through scripts/build_lean_dependency_index.py and commit the index with its check receipt.",
+      "completion": "completed",
+      "evidence": "Full build of both public roots (9,384 jobs) and export through scripts/build_lean_dependency_index.py: 16,111 nodes and 71,878 edges, source fingerprint sha256:1b897074eae213c240ccca65032dcaae871c428917c60b10bbcc6d76a5043e35 matching the declaration atlas; --check passes. The CI export for the same head reported the same counts. check_release: all 15,669 checks passed."
+    },
+    {
+      "consumer": "Comparator and the paper-to-Lean ledger",
+      "disposition": "defer",
+      "owner": "Maintainer replay in plectis-erdos-lean",
+      "reentry_condition": "A problem paper asserts the 1/3 equivalence or the parameterised escape theorem as a result; no ledger row binds these declarations today."
+    },
+    {
+      "consumer": "Best cofinal separation constant for irrational dyadic tails",
+      "disposition": "closed_by_source",
+      "action": "Dubickas's theorem, as stated by Akiyama and Kaneko (arXiv:1911.06170v6, p. 3), gives limsup ||2^n xi|| >= tau for irrational xi with equality at the Thue-Morse number tau = 0.412454...; the original 2006 paper was not read. Ordinary deductions in README.md: every fixed 0 < c < tau works in the tail-difference equivalence, and the endpoint fails because ||2^n tau|| < tau for every n >= 1. The admissible cofinal constants are exactly (0, tau). The historical probe output is unchanged; dyadic_threshold_closure.py records the exact finite checks.",
+      "completion": "completed",
+      "evidence_class": "published theorem (secondary statement) plus ordinary proof plus exact finite check; no Lean",
+      "follow_on": "Formalising the sharp bound or the endpoint witness is a separate proposed return, not a prerequisite."
+    },
+    {
+      "consumer": "Public claim registry and problem statuses",
+      "disposition": "verify_unchanged",
+      "action": "No claim status changes. The equivalence is a quantitative form of an existing criterion and proves nothing about the actual prime-gap series.",
+      "completion": "verified_unchanged"
+    }
+  ],
+  "authority_boundary": "This receipt records dispositions. Lean proofs establish the stated theorems; the finite probe establishes only its finite computations; nothing here establishes novelty.",
+  "validation": {
+    "lean_toolchain": "leanprover/lean4:v4.29.1",
+    "source_sha256": {
+      "lean/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean": "741d610f12f3774500b993266f187c846be33cb8be466fa38a0b3a7b1503d8e5",
+      "lean/ErdosProblems/Synthesis/DyadicShiftEscape.lean": "c7d330c0342a52775a6c04846594e6cde26bfc79c0647594f0e963d3d9ad7435",
+      "research/experiments/premise_exchange/dyadic_shift_third_request.json": "7d10e081cd4f2b07fa7447ab054f02269bf181ac958c3c4959dd5be5bc4aee94",
+      "research/experiments/premise_exchange/dyadic_threshold_probe.py": "a910a2dd235f58319276a5546e03edf00940d7e43ce81238d118dbad9741004c",
+      "research/experiments/premise_exchange/dyadic_threshold_closure.py": "746fac2d00397652b8b2e900475408876eaf48b81a78c5f1d8a08ee28293081a",
+      "research/experiments/premise_exchange/test_dyadic_threshold_closure.py": "894360b132dbfa9a547a1329a82a6ebb31ed8df06a4b7be3e5e0183399957781"
+    },
+    "lean_builds": [
+      {
+        "command": "lake build ErdosProblems.Synthesis.DyadicShiftEscape ErdosProblems.Erdos269.DyadicRadixTailEscape",
+        "exit_code": 0,
+        "axioms": "every #print axioms in DyadicShiftEscape reports propext, Classical.choice, Quot.sound"
+      }
+    ],
+    "application_replay": {
+      "command": "python3 research/experiments/premise_exchange/run.py research/experiments/premise_exchange/dyadic_shift_third_request.json --output research/experiments/premise_exchange/results/threshold_continuation",
+      "result": "results/threshold_continuation/summary.json",
+      "outcome": "radix-30 transfer rejected against the 1/3 target; parameterised transfer accepted with one obligation, closed by the #251 classifier"
+    },
+    "finite_probe": {
+      "command": "python3 research/experiments/premise_exchange/dyadic_threshold_probe.py",
+      "result": "results/dyadic_threshold_probe.json"
+    },
+    "closure_check": {
+      "command": "python3 research/experiments/premise_exchange/dyadic_threshold_closure.py",
+      "result": "results/dyadic_threshold_closure.json",
+      "regression": "python3 [-O] research/experiments/premise_exchange/test_dyadic_threshold_closure.py"
+    }
+  }
+}

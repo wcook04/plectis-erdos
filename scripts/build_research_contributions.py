@@ -29,7 +29,7 @@ RETURNS = ROOT / "docs/research-commons/returns"
 JSON_OUTPUT = ROOT / "docs/research-commons/contributions.json"
 MARKDOWN_OUTPUT = ROOT / "docs/research-commons/CONTRIBUTIONS.md"
 SCHEMA = "accepted-research-contributions/1"
-PUBLIC_RESULT_FAMILY_ANCHOR = "current-public-consumer-fan-in"
+PUBLIC_PROBLEM_ENTRY_PATH = "docs/CONTRIBUTE_BY_PAPER.md"
 PUBLIC_SUBJECT_FRONTIER_PATH = "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"
 PUBLIC_SUBJECT_FRONTIER_ANCHOR = "subject-frontier"
 GIT_CONTEXT_KEYS = frozenset(
@@ -325,16 +325,19 @@ def public_result_family_route(problem: Any) -> dict[str, str]:
         raise ValueError(
             f"public result-family route requires one roster problem integer: {problem!r}"
         )
-    package_name = f"RETURN_PACKAGE_EXAMPLE_{problem}.md"
-    package_path = ROOT / "docs/research-commons" / package_name
-    if not package_path.is_file():
+    # This generated, tracked page is the public return entry for every
+    # problem.  The former RETURN_PACKAGE_EXAMPLE_<problem>.md target was not
+    # present in the public clone, so accepted mathematical receipts could not
+    # be projected even when their review decision was valid.
+    entry_path = ROOT / PUBLIC_PROBLEM_ENTRY_PATH
+    if not entry_path.is_file() or f"## Problem {problem}\n" not in entry_path.read_text(encoding="utf-8"):
         raise ValueError(
-            f"no public result-family package is present for Erdős #{problem}"
+            f"no public contribution entry is present for Erdős #{problem}"
         )
     return {
-        "repository_path": f"docs/research-commons/{package_name}",
-        "anchor": PUBLIC_RESULT_FAMILY_ANCHOR,
-        "relative_link": f"{package_name}#{PUBLIC_RESULT_FAMILY_ANCHOR}",
+        "repository_path": PUBLIC_PROBLEM_ENTRY_PATH,
+        "anchor": f"problem-{problem}",
+        "relative_link": f"../CONTRIBUTE_BY_PAPER.md#problem-{problem}",
     }
 
 

@@ -1,0 +1,125 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-24T00:29:46Z",
+  "entry": "E257_34",
+  "github": {
+    "sha": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+    "ref": "refs/heads/palomar/comparator-cycle-20260923",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35935225572",
+    "run_attempt": "1",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E257_34.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_34",
+  "theorem_count": 24,
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAD.localPrefixQuotient_succ",
+    "PalomarCorpus.E257.PaperStatementsAD.paper_finite_sum_inv_odd_den_odd",
+    "PalomarCorpus.E257.PaperStatementsAD.paper_finite_sum_inv_odd_ne_half",
+    "PalomarCorpus.E257.PaperStatementsAD.two_mem_of_exact_localMersenneQuotient",
+    "PalomarCorpus.E257.PaperStatementsAK.paper_floor_quotient_geometric_sum",
+    "PalomarCorpus.E257.PaperStatementsAK.paper_next_floor_quotient",
+    "PalomarCorpus.E257.PaperStatementsAK.paper_next_floor_quotient_no_fixed_point",
+    "PalomarCorpus.E257.PaperStatementsAK.paper_next_quotient_sum",
+    "PalomarCorpus.E257.PaperStatementsAK.paper_repair_integer_eq_endpoint_defect",
+    "PalomarCorpus.E257.PaperStatementsAK.paper_signed_endpoint_defect_succ",
+    "PalomarCorpus.E257.PaperStatementsAK.paper_signed_endpoint_recurrence",
+    "PalomarCorpus.E257.PaperStatementsAN.paper_endpoint_term_counts_divisors",
+    "PalomarCorpus.E257.PaperStatementsAN.paper_finiteErdosSum_den_odd",
+    "PalomarCorpus.E257.PaperStatementsAN.paper_finite_support_series_ne_half",
+    "PalomarCorpus.E257.PaperStatementsAN.paper_half_representing_support_is_infinite",
+    "PalomarCorpus.E257.PaperStatementsAR.abs_localMersennePrefixValue_sub_half_le",
+    "PalomarCorpus.E257.PaperStatementsAR.exists_exactRowStrictUpperExtension_two_mul_sub_one_of_exact_below",
+    "PalomarCorpus.E257.PaperStatementsAR.localBinarySuffix_two_mul_sub_one_lt_upperWindow_of_exact_below",
+    "PalomarCorpus.E257.PaperStatementsAR.localBinarySuffix_two_mul_sub_two_lt_criticalCapacity_iff",
+    "PalomarCorpus.E257.PaperStatementsAR.paper_capacity_band_exclusion",
+    "PalomarCorpus.E257.PaperStatementsAS.paper_sharper_additive_estimate",
+    "PalomarCorpus.E257.PaperStatementsAS.paper_unconditional_bound_one_extra_bit",
+    "PalomarCorpus.E257.PaperStructuresAY.localMersenneWeightsFrom_gapDominates",
+    "PalomarCorpus.E257.PaperStructuresAY.localMersenneWeights_gapDominates_even"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "dcc899b24905184da41e594006c9ac2dafc0361ce038e6581847929a1593720a",
+    "comparator.json": "883dc49812ff0bea6d6fe47a1b9f5d88ae1068eaeb3aaf000a4580d2463ed0d2",
+    "formalization.yaml": "59cfd3c7bd6922ac3eeae61c0b749f3925e57e8f44dd4217533a9a54ff5edfd8"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E257_34.lean": "938e92d09fed678d2e10e5174227ac6736b0308237971e939daf0a0ac0a01f3d",
+      "Solutions/PalomarCorpus/E257_34/PaperStatementsAD.lean": "388ea34034eaba4178c3652230d89db62888f8cdd1da1e961367ed03fba34470",
+      "Solutions/PalomarCorpus/E257_34/PaperStatementsAK.lean": "a9f319f0de4041c5a203d0b33924dc2a03d59a69cb5ba107bff9d3419f72ede0",
+      "Solutions/PalomarCorpus/E257_34/PaperStatementsAN.lean": "65c52c9475def32164a1bc75cbc6b1b8ca7bec51684a34d0143debbd8c6201a0",
+      "Solutions/PalomarCorpus/E257_34/PaperStatementsAR.lean": "bf4ea47031bb20b77a8378cc623767b1e137d8fc65ad7773dce2666186b7012f",
+      "Solutions/PalomarCorpus/E257_34/PaperStatementsAS.lean": "d778d469898cacadaa397a9d39ec915a79aee036c21ab09232f3b36922aebacb",
+      "Solutions/PalomarCorpus/E257_34/PaperStructuresAY.lean": "8e15613e908ba626a988ac8682043075ef2d2c4375aea70f30d7524c17a843fd",
+      "Solutions/PalomarCorpus/E257_34/Statement.lean": "14b88789ea7b99b324b220930312845b670c10f8717cbaa8cf5732ab84c4176a"
+    },
+    "sha256": "5298feafe56de1318e18dd7fce957f3ddd715351a35e29fd8e44c003ce4f634c"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 10.631
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 27.654
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 48.949,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 7.698
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

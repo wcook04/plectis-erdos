@@ -10,7 +10,8 @@ open to further insight. The website brings the collection together; you do
 not need Lean to read it.
 
 Start with the [#257 paper](../paper/257/erdos-257-mersenne-support-subseries.pdf):
-its checked weighted criterion covers named infinite supports, while arbitrary
+its checked finite-prime weighted criterion proves irrationality for some
+infinite supports with divergent reciprocal sum, while arbitrary infinite
 support remains open. Then read [#1049](../paper/1049/erdos-1049-rational-base-lambert.pdf):
 irrationality holds in the stated region, including powers of `31/4`; `3/2`
 remains open. The [#1041 paper](../paper/1041/erdos-1041-lemniscate-newton-flow.pdf)
@@ -28,25 +29,34 @@ historical correspondence.
 
 ## Two ways to begin
 
-You can continue a particular question or read the papers as one body of work:
-a method from one problem may explain an obstruction in another,
-a recorded example may suggest a general theorem, and a worthwhile new question
-is itself a contribution. The [reading edition](reading-edition/README.md)
-serves this route without a clone. It is one file to read or to give to an AI
-model, with a short research instruction and the opening of each short paper.
-[Choices, contraction and rational membership](../research/experiments/choices_contraction/README.md)
-is one investigation that began this way.
+You can follow one question or read across the corpus. The
+[reading edition](reading-edition/README.md) gives a short research instruction
+and the opening of each short paper in one file. For #257, follow the weighted
+theorem, its averaging proof, the long record and Lean source. Then try the
+[weighted-support examples](../research/experiments/weighted_support_transfer/README.md):
+change the base, or build a host with three minimal prime witnesses. A failed
+sufficient test proves nothing about rationality. The
+[dyadic shift exercise](../research/experiments/premise_exchange/shift_family_exercise.md)
+tests another change of hypothesis.
+
+## Work through an argument
+
+Try a small example before reading the proof. Note where your approach gets
+stuck, then find the step that overcomes that difficulty. Reconstruct it with
+the paper closed, or change a hypothesis and see what breaks.
+
+If you use an agent, you can ask: “Help me work through this theorem. Give me
+one hint at a time and wait for my attempt before revealing more.” Name the
+paper, statement and your background. You choose the amount of help. The
+[weighted-support exercise](research-commons/PROVE2ME_WEIGHTED_257_PACKET.md#try-changing-a-hypothesis)
+offers a place to start.
 
 ## What is here
 
-The [front page](../README.md) lists the eight problems with a short paper and
-a longer paper for each. The short paper is the main exposition: it introduces
-the question, states the strongest results and explains the ideas behind the
-arguments for a mathematical reader. The longer record keeps technical detail,
-failed routes, finite experiments, and the exact obligations that
-survive. The other seven target problems are not resolved here; those papers
-make their surviving questions explicit. The [paper catalogue](../paper/README.md)
-groups the manuscripts and their sources, including the systems papers.
+Each [problem paper](../paper/README.md) states the question, results and main
+arguments. The longer record keeps technical detail, failed routes, experiments
+and surviving obligations. The catalogue also includes system papers on proof
+boundaries, contribution and credit.
 
 The [results guide](RESULTS.md) states the strongest checked result for each
 problem next to what still blocks its endpoint. [Prior work](PRIOR_ART.md)
@@ -62,15 +72,12 @@ Each paper distinguishes ordinary mathematical arguments, formalised results
 and remaining gaps. Follow a statement's source link and verification record
 to see what has been checked; a build alone does not establish that every
 argument in a paper has been formalised.
-Independent human review of correspondence with the historical curve-length
-formulation has not been recorded.
 
 ## The eight problems in brief
 
-Choose a question below to open its short paper. The
-[problem-by-problem results guide](RESULTS.md#problem-by-problem-guide) explains
-the main arguments, their formalisation and the questions left open. Keeping
-those assessments in one place avoids conflicting summaries.
+Open a short paper below, or use the
+[results guide](RESULTS.md#problem-by-problem-guide) for its arguments,
+formalisation and remaining questions.
 
 <!-- BEGIN problem_programme_card -->
 [Problem 68](../paper/68/erdos-68-factorial-denominator-irrationality.pdf). Is the series sum_{n >= 2} 1/(n! - 1) irrational? [Work on this paper](CONTRIBUTE_BY_PAPER.md#problem-68).
@@ -100,9 +107,11 @@ and develop the mathematics they suggest. The
 
 ## How to read the evidence
 
-A Lean proof checks a formal statement; a claim record gives its public status
-and limits. A paper supplies motivation and a readable argument. A finite
-calculation covers only the range it reached.
+The verification concordance at the end of each problem paper links its
+statements to Lean proofs and recorded Comparator checks. A dagger identifies
+a proof that assumes a named input; pending and partial support are labelled
+explicitly. These links appear in one place, leaving the mathematical argument
+uninterrupted.
 
 Comparator compares selected statements with independently declared formal
 interfaces under fixed assumptions. It is not peer review and does not
@@ -110,13 +119,13 @@ establish novelty. The [Palomar guide](verification/PALOMAR_QUALIFICATION.md)
 distinguishes local packaging from recorded service submission or acceptance.
 
 This is a self-contained public record, not an entrypoint into any private
-development system. File, declaration and computation counts do not measure
-mathematical importance.
+development system. A finite computation covers its tested range; file and
+declaration counts do not measure mathematical importance.
 
 ## Reviewing one result
 
 Pick a statement in a short paper, read its assumptions and the step that does
-the work, then follow the longer record. Missing motivation, compressed hard
+the work, then follow the companion paper. Missing motivation, compressed hard
 steps and unclear attribution are useful feedback: a checked proof still needs
 an explanation others can understand and reuse.
 
@@ -126,12 +135,10 @@ AI tools did much of the research, code, and drafting under my direction. I am
 responsible for the claims, the sources, and the release. Nothing here has had
 independent mathematical review.
 
-The most useful contribution is a mathematical one: a proof correction, a
-clearer explanation of a hard step, an attribution correction, a counterexample
-to an intermediate claim, or an earlier reference. The
-[contributor guide](../CONTRIBUTING.md) explains how to send that back with its
-evidence and credit intact. If this work helps you solve one of the eight, the
-solution and the credit are yours.
+Corrections, explanations, counterexamples and earlier references are welcome.
+The [contributor guide](../CONTRIBUTING.md) explains how to return them with
+evidence and credit intact. If this work helps you solve a problem, the solution
+and credit are yours.
 
 An insight is welcome before it has a formal proof. Will can work with you to
 develop the argument and formalise it, with the originating insight credited

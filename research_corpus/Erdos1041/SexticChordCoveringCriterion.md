@@ -1,5 +1,7 @@
 # The chord-covering criterion and its complete normalized range
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: complete homogeneous tangent-model theorems with exact replay
 (`scripts/check_erdos1041_sextic_chord_covering_criterion.py`, 16/16 arms) and a
 Lean scalar landing, 2026-08-25. The nonlinear actual-polynomial transfer and

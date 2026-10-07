@@ -325,6 +325,20 @@ questions are required not to activate any authored vocabulary row. The
 reported ranked-search recall is an ablation against the four-result search
 surface; compiled recall measures the expanded witness slice.
 
+For a controlled reader comparison, the same script has an offline development
+adapter:
+
+```sh
+python3 scripts/benchmark_semantic_reasoning.py study prepare --help
+```
+
+The `prepare`, `verify-job`, `power`, `blind` and `analyze` subcommands define
+source-bound jobs and paired analysis. These commands do
+not run a model, isolate execution, grade mathematical correctness or establish
+preregistration. The deterministic held-out benchmark above is a regression
+for encoded questions, not evidence that independent readers solve more new
+mathematics with the system.
+
 The corpus audit checks every declaration source coordinate and every curated
 claim, open proposition, and reading route. It also expands every typed claim,
 open, and route packet, checks all vocabulary hints, and asks one natural

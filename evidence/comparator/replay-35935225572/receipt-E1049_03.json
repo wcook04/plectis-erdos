@@ -1,0 +1,116 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-24T01:33:15Z",
+  "entry": "E1049_03",
+  "github": {
+    "sha": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+    "ref": "refs/heads/palomar/comparator-cycle-20260923",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35935225572",
+    "run_attempt": "2",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E1049_03.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1049_03",
+  "theorem_count": 18,
+  "theorem_names": [
+    "PalomarCorpus.E1049.AdelicHeightBridge.coeff_zudilinNormalizedHankelDet_all_rat",
+    "PalomarCorpus.E1049.AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_power_certificate",
+    "PalomarCorpus.E1049.AdelicHeightBridge.exists_distinct_binary_selectors_same_fourJet_of_rank_41",
+    "PalomarCorpus.E1049.AdelicHeightBridge.exists_ne_map_eq_map_ne_of_card_mul_lt",
+    "PalomarCorpus.E1049.AdelicHeightBridge.fourJet_card_gt_two_pow_of_rank_41",
+    "PalomarCorpus.E1049.AdelicHeightBridge.threeHalves_hankelChargeThreshold_lt_eightFortyOne",
+    "PalomarCorpus.E1049.AdelicHeightBridge.threeHalves_rectangular_hp_gap_gt_threeThirteenths",
+    "PalomarCorpus.E1049.AdelicHeightBridge.threePow_fortyOne_lt_twoPow_sixtyFive",
+    "PalomarCorpus.E1049.AdelicHeightBridge.three_two_scalar_margin_lt_explicit",
+    "PalomarCorpus.E1049.AdelicHeightBridge.twoPow_sixtyFour_lt_threePow_fortyOne",
+    "PalomarCorpus.E1049.AdelicHeightBridge.zudilinScalarContent_cannot_meet_required_charge",
+    "PalomarCorpus.E1049.AdelicHeightBridge.zudilinScalarPlusBorder_cannot_meet_required_charge",
+    "PalomarCorpus.E1049.AdelicHeightBridge.zudilinSharpHankelOrderAndCoeff_algebraicAssembly",
+    "PalomarCorpus.E1049.AdelicHeightBridge.zudilinSharpHankelOrderAndCoeff_all",
+    "PalomarCorpus.E1049.AdelicHeightBridge.zudilin_firstTransformedRow_initialMonomial",
+    "PalomarCorpus.E1049.PaperStatementsK.charge_ceilings",
+    "PalomarCorpus.E1049.PaperStatementsK.power_bracket",
+    "PalomarCorpus.E1049.PaperStatementsN.height_and_hankel_deficits"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "9548eef5726af27850233153903c6c2ca78d6cd1fa3049a482d07bd1322775d0",
+    "comparator.json": "655120348d5a960084f481898936287da54b0102d5f210594c5539842c19b92c",
+    "formalization.yaml": "75a35bbbe9f6021fc32b9586b5d43da3acd0fdd00a1703b40481e3e6eacbee8f"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E1049_03.lean": "0486786bbed4cab77df03687a52aa5a4ea96a1a74291f067e5652a560f155dde",
+      "Solutions/PalomarCorpus/E1049_03/AdelicHeightBridge.lean": "c4571cef95ade8d9e6a79d170771b690af5271f54be048647d9986331dbd0bb5",
+      "Solutions/PalomarCorpus/E1049_03/PaperStatementsK.lean": "9e8522f53a964fd3cf29e9c8b622ad41c7859ca78369da8b14019dcad6b88718",
+      "Solutions/PalomarCorpus/E1049_03/PaperStatementsN.lean": "5dfe48a9f584beb369a3fae49a3f9be09bc01c2186395d2f9c0f826a4e2bab67",
+      "Solutions/PalomarCorpus/E1049_03/Statement.lean": "6bddc51c8d31af0706d1c947216836b4176751c2c1b7e500cc29dc3006207402"
+    },
+    "sha256": "abaea4f624874c8a32eec9cea4eb2a0f157c893c2d4665c276641b1392866c1b"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 11.929
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 29.354
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 66.556,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 8.26
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

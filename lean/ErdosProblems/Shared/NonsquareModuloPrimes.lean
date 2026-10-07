@@ -1,6 +1,8 @@
 import ErdosProblems.Shared.DirichletPoleComparison
 import ErdosProblems.Shared.IdealCountingEuler
 import ErdosProblems.Shared.QuadraticSplitPrimes
+import Mathlib.FieldTheory.Minpoly.Field
+import Mathlib.FieldTheory.Minpoly.IsIntegrallyClosed
 import Mathlib.RingTheory.AdjoinRoot
 
 /-!
@@ -150,5 +152,45 @@ theorem exists_prime_hom_not_isSquare_of_not_isSquare {K : Type*} [Field K] [Num
       rw [IsRoot, eval_sub, eval_pow, eval_X, eval_C, sub_eq_zero] at hy
       rw [← hy, sq]⟩
   exact exists_prime_hom_not_isSquare_of_irreducible b hb N
+
+/-- A non-square algebraic integer has genuinely non-square reductions at
+arbitrarily large degree-one primes. The zero alternative in the preceding
+theorem occurs only at primes dividing the nonzero constant coefficient of
+the minimal polynomial of `b`. -/
+theorem exists_prime_hom_nonsquare_of_not_isSquare {K : Type*} [Field K] [NumberField K]
+    (b : 𝓞 K) (hb : ¬ IsSquare (algebraMap (𝓞 K) K b)) (N : ℕ) :
+    ∃ ℓ : ℕ, ℓ.Prime ∧ N < ℓ ∧ ∃ φ : 𝓞 K →+* ZMod ℓ, ¬ IsSquare (φ b) := by
+  classical
+  have hbne : b ≠ 0 := by
+    intro h
+    apply hb
+    rw [h, map_zero]
+    exact ⟨0, by simp⟩
+  let g : Polynomial ℤ := minpoly ℤ b
+  have hbKne : algebraMap (𝓞 K) K b ≠ 0 := RingOfIntegers.coe_ne_zero_iff.mpr hbne
+  have hq0 : (minpoly ℚ (algebraMap (𝓞 K) K b)).coeff 0 ≠ 0 :=
+    minpoly.coeff_zero_ne_zero (IsIntegral.of_finite ℚ _) hbKne
+  have hrel : minpoly ℚ (algebraMap (𝓞 K) K b) = g.map (algebraMap ℤ ℚ) :=
+    minpoly.isIntegrallyClosed_eq_field_fractions ℚ K (RingOfIntegers.isIntegral b)
+  have hg0 : g.coeff 0 ≠ 0 := by
+    intro hzero
+    apply hq0
+    rw [hrel, Polynomial.coeff_map, hzero, map_zero]
+  obtain ⟨ℓ, hℓ, hbound, φ, hbad⟩ :=
+    exists_prime_hom_not_isSquare_of_not_isSquare b hb (max N (g.coeff 0).natAbs)
+  have hφb : φ b ≠ 0 := by
+    intro hzero
+    have hroot : Polynomial.aeval (φ b) g = 0 :=
+      minpoly.aeval_algHom ℤ φ.toIntAlgHom b
+    have hcoeff : ((g.coeff 0 : ℤ) : ZMod ℓ) = 0 := by
+      simpa [Polynomial.aeval_def, hzero, g] using hroot
+    rw [ZMod.intCast_zmod_eq_zero_iff_dvd] at hcoeff
+    have hle : ℓ ≤ (g.coeff 0).natAbs :=
+      Nat.le_of_dvd (Int.natAbs_pos.mpr hg0) (Int.natCast_dvd.mp hcoeff)
+    exact (not_lt_of_ge hle) (lt_of_le_of_lt (le_max_right _ _) hbound)
+  refine ⟨ℓ, hℓ, lt_of_le_of_lt (le_max_left _ _) hbound, φ, ?_⟩
+  exact fun hs => hbad ⟨hφb, hs⟩
+
+#print axioms exists_prime_hom_nonsquare_of_not_isSquare
 
 end ErdosProblems.Shared.NonsquareModuloPrimes

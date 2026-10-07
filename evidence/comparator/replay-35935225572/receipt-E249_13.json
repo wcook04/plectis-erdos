@@ -1,0 +1,99 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-23T23:54:10Z",
+  "entry": "E249_13",
+  "github": {
+    "sha": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+    "ref": "refs/heads/palomar/comparator-cycle-20260923",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35935225572",
+    "run_attempt": "1",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E249_13.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_13",
+  "theorem_count": 2,
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsE.fiveQuarter_comparison_rational_with_carryRank_floor",
+    "PalomarCorpus.E249.PaperStatementsF.rank_floor_and_false_proposed_carryRank_ceiling"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "21b3f92a27b758c8c7db51f8b169b6689f3f24beefff62bb04089328b5517d56",
+    "comparator.json": "ff844926bf21e0808c25b3a994604c6e15a0f2f57668c113bcdacc0a78e2713d",
+    "formalization.yaml": "11aff49c61c34c2312129f37ec40175b4b19dcc5d4a5fc1a21d1d1f1d3568314"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E249_13.lean": "234b2ff9e479ea68d54451731cf4cdfc93a901c4d47003b1791229a04ee49a97",
+      "Solutions/PalomarCorpus/E249_13/PaperStatementsE.lean": "a10acf01941727d25d883f71c1552db6b7f41d43dccf190dee3f6285e9f947e9",
+      "Solutions/PalomarCorpus/E249_13/PaperStatementsF.lean": "dc765cbab0d9eac7e2b26260e642f097ffdb7cf258c08f5d806cdc5ad688dfde",
+      "Solutions/PalomarCorpus/E249_13/Statement.lean": "62052da8a27a5948fcf81bb35b5feb079f08e1c74c1fdd075e208aa105d3c755"
+    },
+    "sha256": "1039f21858fcee2316c529b380fde2509eddad11633568abdc5e7da71bc10aa6"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 26.031
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 20.143
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 242.094,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 8.88
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

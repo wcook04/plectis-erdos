@@ -1,0 +1,119 @@
+{
+  "arguments": [],
+  "claim_boundary": "Rational enclosures of theta* and mu that certify the printed decimal truncations. The irrationality proofs use the exact definitions, not these digits. No floating point and no Lean kernel.",
+  "paper_passage": "Subsection 'The rational bracket around theta*', paragraph beginning 'Here is the complete error bound used in that calculation'",
+  "program": "threshold_digits.py",
+  "program_sha256": "25da05a43535c129cc1b7937a2a9152221a88bc2d3cf46b36eba3bcc73e58d5b",
+  "result": {
+    "all_printed_claims_verified": true,
+    "checks": {
+      "mu_above_printed_lower": true,
+      "mu_below_printed_upper": true,
+      "theta_star_above_printed_lower": true,
+      "theta_star_below_printed_upper": true
+    },
+    "enclosures_outward_decimal": {
+      "C0": [
+        "221.300088165005024764082122",
+        "221.300088165005025483997779"
+      ],
+      "J": [
+        "77.943184475009094738366743",
+        "77.943184475009097106794322"
+      ],
+      "mu": [
+        "2.464978683574975033445083",
+        "2.464978683574975041463955"
+      ],
+      "pi": [
+        "3.141592653589793238462643",
+        "3.141592653589793238462644"
+      ],
+      "theta_star": [
+        "0.405683021384060540355787",
+        "0.405683021384060541675523"
+      ]
+    },
+    "intervals": [
+      [
+        "1/14",
+        "1/12"
+      ],
+      [
+        "1/7",
+        "1/6"
+      ],
+      [
+        "3/14",
+        "1/4"
+      ],
+      [
+        "2/7",
+        "1/3"
+      ],
+      [
+        "5/14",
+        "2/5"
+      ],
+      [
+        "3/7",
+        "7/15"
+      ],
+      [
+        "1/2",
+        "8/15"
+      ],
+      [
+        "4/7",
+        "3/5"
+      ],
+      [
+        "9/14",
+        "2/3"
+      ],
+      [
+        "5/7",
+        "11/15"
+      ],
+      [
+        "11/14",
+        "4/5"
+      ],
+      [
+        "6/7",
+        "13/15"
+      ],
+      [
+        "13/14",
+        "14/15"
+      ]
+    ],
+    "omega_support_matches_printed_intervals": true,
+    "printed_claims": {
+      "mu_lower": "2.4649786835749750334",
+      "mu_upper": "2.4649786835749750415",
+      "theta_star_lower": "0.4056830213840605403",
+      "theta_star_upper": "0.4056830213840605417"
+    },
+    "rounded_partial_sums_in_rounding_units": [
+      "5202342579442252654183259839618084747039868743674920",
+      "1303895834455649062333273282514746348741390749629040",
+      "582703725746426513151161104296319581834708552044124",
+      "330602561549853291820428985725209641469430865389810",
+      "163412883878777909117767919284081244032117837145196",
+      "88719446125740220085365468113230878023549289150425",
+      "51123961528100518050219659253625124886557888318595",
+      "30528778394004774300691198564848781615659036004574",
+      "18514411747090279557416945818782026068943768027954",
+      "11160950290919751599870270026323409265576602227067",
+      "6489294095449022403624441851880893311722003994873",
+      "3433867740020434801409847771226303350470312016654",
+      "1390152498864126288339307411047201317458881038705"
+    ],
+    "rounding_unit": "10^-50",
+    "summands_per_interval": 65536,
+    "theta_star_enclosure_width_upper_bound": "0.0000000000000000013197354"
+  },
+  "schema": "erdos1049-public-computation/1",
+  "verification_scope": "finite_computation_only"
+}

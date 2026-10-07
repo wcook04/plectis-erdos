@@ -1,0 +1,99 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-24T01:38:11Z",
+  "entry": "E1049_06",
+  "github": {
+    "sha": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+    "ref": "refs/heads/palomar/comparator-cycle-20260923",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35935225572",
+    "run_attempt": "2",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E1049_06.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E1049_06",
+  "theorem_count": 2,
+  "theorem_names": [
+    "PalomarCorpus.E1049.PaperStatementsX.no_finite_simultaneous_two_three_system",
+    "PalomarCorpus.E1049.PaperStructuresL.no_finite_simultaneous_two_three_system_unconditional"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "802549e803662d091346d968ede6ae9b611674745e2047eb939b6f1787c8858e",
+    "comparator.json": "a84512d40695f60e53b256e183bef5bf16fc4d7795096d2177a98a20f38fecc3",
+    "formalization.yaml": "21077b4f577f286e8b2764625cba41ff9b51c8cf34ccfbb81e2547a12e51953a"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E1049_06.lean": "e1167555d1993a5409dc48aa297b118672bf9c2ab26d25eb9831c3e309af199c",
+      "Solutions/PalomarCorpus/E1049_06/PaperStatementsX.lean": "f08deb5a4f603edcf8e16ac685f415171286e0ef80d176bbca9624618e9de83d",
+      "Solutions/PalomarCorpus/E1049_06/PaperStructuresL.lean": "02625057703086620e8feea826ff38ec399c245dd1146242d906d73e7933b0b0",
+      "Solutions/PalomarCorpus/E1049_06/Statement.lean": "1c39a24126d9c2e0d6ca55812d9118ea13cc133c66b4ad3f6e6748191a3f22ef"
+    },
+    "sha256": "0f981946d225e1ac3f24cd9024c9b1055d4d027072897cc5747be7cc24e1b163"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 11.388
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 61.371
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 101.06,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 8.482
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

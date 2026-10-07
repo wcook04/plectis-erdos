@@ -1,0 +1,54 @@
+{
+  "arguments": [],
+  "claim_boundary": "Sign of the main term at 31/4 for 1 <= n <= 400 and four rounded values; no statement for larger n. No floating point and no Lean kernel.",
+  "paper_passage": "Subsection 'Finite calculations', paragraph beginning 'The main term'",
+  "program": "main_term_31_4.py",
+  "program_sha256": "11cc46c23d321006b3ef382a957c77b34856609af4efdd44643c951862d1f691",
+  "result": {
+    "T_n_over_n2_enclosures": {
+      "1": [
+        "-58.477959962",
+        "-58.477959961"
+      ],
+      "10": [
+        "-10.280093832",
+        "-10.280093831"
+      ],
+      "100": [
+        "-4.297320465",
+        "-4.297320464"
+      ],
+      "400": [
+        "-3.862852118",
+        "-3.862852117"
+      ]
+    },
+    "W_n_first_four": [
+      333,
+      1315,
+      2944,
+      5220
+    ],
+    "all_printed_claims_verified": true,
+    "checks": {
+      "T_n/n^2 at n=1 rounds to -58.478": true,
+      "T_n/n^2 at n=10 rounds to -10.280": true,
+      "T_n/n^2 at n=100 rounds to -4.297": true,
+      "T_n/n^2 at n=400 rounds to -3.863": true,
+      "W_n for n <= 4 matches the degree table": true,
+      "limit C1 log 4 - C0 log 31 = -3.718...": true,
+      "main term negative for 1 <= n <= 400": true
+    },
+    "largest_upper_bound_of_T_n_over_n2": {
+      "n": 392,
+      "value": "-3.828688390"
+    },
+    "limit_enclosure": [
+      "-3.718097120",
+      "-3.718097118"
+    ],
+    "range": "1 <= n <= 400"
+  },
+  "schema": "erdos1049-public-computation/1",
+  "verification_scope": "finite_computation_only"
+}

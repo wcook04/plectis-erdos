@@ -1,0 +1,54 @@
+theorem eventually_zero_of_summable_negativeRelativeMass
+    (C : ℕ → ℕ) (E : ℕ → ℤ)
+    (hCpos : ∀ n, 0 < C n)
+    (hstep :
+      ∀ n, (C (n + 1) : ℤ) = (C n : ℤ) - E n)
+    (hvanish :
+      ∀ K, ∃ N, ∀ n, N ≤ n →
+        K * Int.natAbs (E n) < C n)
+    (hsum : Summable (negativeRelativeMass C E)) :
+    ∃ N, ∀ n, N ≤ n → E n = 0 := by
+  apply eventually_zero_of_summable_relativeGrowth
+    C E (negativeRelativeMass C E)
+  · intro n
+    exact div_nonneg (by positivity) (by positivity)
+  · exact hsum
+  · exact tail_growth_le_one_add_negativeRelativeMass C E hCpos hstep
+  · exact hvanish
+
+/-- Paper-facing endpoint for the finite-negative-mass branch.  Along the
+exact product-cleared reciprocal-tail orbit, division-free normalized
+vanishing and summable normalized negative centered mass force the original
+denominators to satisfy the Sylvester recurrence eventually. -/
+theorem sylvesterNext_eventually_of_summable_negativeRelativeMass
+    (a D : ℕ → ℤ) (C : ℕ → ℕ)
+    (hD : ∀ n, D (n + 1) = nextDenState (a n) (D n))
+    (hC :
+      ∀ n, (C (n + 1) : ℤ) =
+        nextTailState (a n) (D n) (C n))
+    (hCpos : ∀ n, 0 < C n)
+    (hstep :
+      ∀ n, (C (n + 1) : ℤ) =
+        (C n : ℤ) - centeredState (a n) (D n) (C n))
+    (hvanish :
+      ∀ K, ∃ N, ∀ n, N ≤ n →
+        K * Int.natAbs (centeredState (a n) (D n) (C n)) < C n)
+    (hsum :
+      Summable
+        (negativeRelativeMass C
+          (fun n ↦ centeredState (a n) (D n) (C n)))) :
+    ∃ N, ∀ n, N ≤ n →
+      a (n + 1) = sylvesterNext (a n) := by
+  have hzero :
+      ∃ N, ∀ n, N ≤ n →
+        centeredState (a n) (D n) (C n) = 0 :=
+    eventually_zero_of_summable_negativeRelativeMass
+      C (fun n ↦ centeredState (a n) (D n) (C n))
+      hCpos hstep hvanish hsum
+  apply sylvesterNext_eventually_of_centered_zero
+    a D (fun n ↦ (C n : ℤ)) hD
+  · intro n
+    exact hC n
+  · exact hzero
+  · refine ⟨0, fun n _hn ↦ ?_⟩
+    exact_mod_cast (Nat.ne_of_gt (hCpos (n + 1)))

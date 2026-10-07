@@ -46,6 +46,8 @@
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{cor}[thm]{Corollary}
+\newtheorem{theorem}[thm]{Theorem}
+\newtheorem{equivform}[thm]{Equivalent formulation}
 \theoremstyle{definition}
 \newtheorem{defn}[thm]{Definition}
 \theoremstyle{remark}
@@ -107,16 +109,12 @@
 \ExplSyntaxOff
 
 % ===========================================================================
-% Statement-level proof links.  The declarations cited under the statements
-% resolve at their own immutable pin, \ledgercommit.  The note printed under
-% each statement is generated.  Do not edit a \leannote by hand.
+% Evidence marks.  paper-evidence.tex places "Lean" and "Comparator" links in
+% the margin beside each result from this record's generated file
+% paper/evidence/<record>.tex, input below.
 % ===========================================================================
-\newcommand{\ledgercommit}{a25cb360bef8dd818dde14b5fb752244304af354}
-\newcommand{\ledgerbase}{https://github.com/wcook04/plectis-erdos/blob/\ledgercommit}
-\newcommand{\lproof}[3]{\href{\ledgerbase/lean/#1\#L#2}{\texttt{#3}}}
-\newcommand{\leannote}[1]{%
-  \par\nobreak\vspace{-0.3\baselineskip}%
-  \noindent{\small #1\par}\vspace{0.15\baselineskip}}
+\input{paper-evidence}
+\input{evidence/erdos249-totient-reasoning-surface}
 
 % Declaration names are written \mathtt{...} in maths and, unavoidably, in
 % running prose too. Rather than police every occurrence, make the command
@@ -162,6 +160,10 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\ph}{\varphi}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\mword}[4]{\href{\repobase/#1\#L#2}{#4}}
+\newcommand{\lword}[4]{\href{\repobase/ErdosProblems/#1\#L#2}{#4}}
+\newcommand{\shortpaper}[2]{\href{erdos-249-binary-totient-series.pdf\##1}{#2}}
 \newcommand{\EB}{E}
 
 \allowdisplaybreaks
@@ -182,8 +184,8 @@
 
 \runninghead{Erd\H{o}s \#249: the binary totient series}
 \title{The Binary Totient Series}
-\subtitle{Results, proof dependencies and remaining arithmetic conditions\newline for Erd\H{o}s Problem~\#249}
+\subtitle{Totient sections, rational comparisons and arithmetic conditions}
 \author{Will Cook}
-\date{July 2026; revised 18 September 2026}
+\date{July 2026; revised 1 October 2026}
 
 \begin{document}

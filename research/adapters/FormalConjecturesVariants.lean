@@ -1,9 +1,13 @@
+-- SPDX-FileCopyrightText: 2026 Will Cook
+-- SPDX-License-Identifier: Apache-2.0
 /-
 Copyright (c) 2026 Will Cook. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Will Cook
 -/
 import ExternalVerification.Solution
+import Erdos249257.AllBaseReciprocalSupportIrrationality
+import ErdosProblems.Erdos249.ResidueClassTotientSeries
 
 /-!
 # Solved-variant candidates for Formal Conjectures
@@ -36,13 +40,12 @@ the generic cleared-tail recurrence stay out, as does the `#249`
 infinite-dimensionality corollary, which the claim registry already disclaims as
 implied by Coons.
 
-Each theorem below restates one Mathlib-only proposition from
-`ExternalVerification.Statements` under the name it would take upstream, and
-proves it by projection from `ExternalVerification.portfolioClaims`.  No new
-mathematics: the content is the registered corpus declaration, and the
-`Statements` vocabulary is already Mathlib-only, so contributing one upstream is
-a move of its supporting definitions into `FormalConjecturesForMathlib` rather
-than a port.
+Most theorems below restate Mathlib-only propositions from
+`ExternalVerification.Statements` under the names they would take upstream,
+then project their proofs from `ExternalVerification.portfolioClaims`. The #249
+least-residue theorem instead expands `totientResidueValue` and applies the
+public `residue_series_irrational` proof. Each declaration restates checked
+content already present in this corpus.
 
 **Novelty is a separate question from contribution.** Upstream does not require
 a variant to be new, only that its source and status are stated correctly.  The
@@ -86,9 +89,9 @@ theorem erdos_68_variants_iff_cofinal_divisibility_miss :
 
 /-! ### Erdős 249 — `∑ φ(n)/2ⁿ`
 
-Upstream's `249.lean` is thirty-eight lines and contains one declaration: the
-open question.  It says nothing about the object.  These are exact structural
-facts about the dyadic totient kernel that question is asking about. -/
+Upstream's `249.lean` contains only the open question. The first two variants
+give exact structural facts about the dyadic totient kernel; the third concerns
+the bounded least-residue projection at the same fixed binary base. -/
 
 /-- The rational span of the level-`e` dyadic totient kernel family has
 dimension exactly `2 ^ e + 1`. -/
@@ -105,6 +108,15 @@ theorem erdos_249_variants_odd_core_basis :
       (Basis TotientOddCoreIndex ℚ
         (Submodule.span ℚ (Set.range fullTotientKernelFamily))) :=
   exists_totientDyadicSectionBasis
+
+/-- Every least-residue totient series with modulus at least three is irrational.
+This is the exact expanded signature of the Formal Conjectures solved variant;
+`residue_series_irrational` proves it in the public #249 development. -/
+theorem erdos_249_variants_residue_modulus_binary :
+    ∀ m : ℕ, 3 ≤ m →
+      Irrational (∑' n : ℕ, ((Nat.totient n % m : ℕ) : ℝ) / 2 ^ n) := by
+  intro m hm
+  exact ErdosProblems.Erdos249.residue_series_irrational hm
 
 /-! ### Erdős 251 — `∑ pₙ/2ⁿ`
 
@@ -672,3 +684,61 @@ theorem erdos_257_variants_two_pow_support (b : ℕ) (hb : 2 ≤ b) :
   Erdos249257.irrational_erdosSum_two_pow_support b hb
 
 end Erdos249257.FormalConjecturesErdos257
+
+/-! ## Erdős 257 finite-prime weighted support -/
+
+namespace Erdos257
+
+def erdos_257.variants.primeSetPart (P : Finset ℕ) (a : ℕ) : ℕ :=
+  ∏ p ∈ P, p ^ a.factorization p
+
+noncomputable def erdos_257.variants.primeWeightedTerm
+    (b : ℕ) (P : Finset ℕ) (a : ℕ) : ℝ :=
+  (erdos_257.variants.primeSetPart P a : ℝ) /
+    ((a : ℝ) * ((b : ℝ) ^ erdos_257.variants.primeSetPart P a - 1))
+
+noncomputable def erdos_257.variants.finitePrimeWeighted (b : ℕ) (A : Set ℕ) : Prop :=
+  ∃ P : Finset ℕ, P.Nonempty ∧ (∀ p ∈ P, Nat.Prime p) ∧
+    Summable (Set.indicator A (erdos_257.variants.primeWeightedTerm b P))
+
+theorem erdos_257.variants.finite_prime_weighted_support :
+    (∀ (b : ℕ) (A : Set ℕ), 2 ≤ b → 0 ∉ A → A.Infinite →
+      erdos_257.variants.finitePrimeWeighted b A →
+        Irrational (∑' a : ℕ,
+          Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a)) ∧
+    (∀ H : Set ℕ, 0 ∉ H → erdos_257.variants.finitePrimeWeighted 2 H →
+      ∀ A : Set ℕ, A ⊆ H → A.Infinite →
+        ∀ b : ℕ, 2 ≤ b →
+          Irrational (∑' a : ℕ,
+            Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a)) := by
+  simpa [erdos_257.variants.finitePrimeWeighted,
+    erdos_257.variants.primeWeightedTerm,
+    erdos_257.variants.primeSetPart,
+    ErdosProblems.Erdos257.PaperCompleteR7.DivisibilityWeightedClaim,
+    ErdosProblems.Erdos257.PaperCompleteR7.FinitePrimeWeighted,
+    ErdosProblems.Erdos257.PaperCompleteR7.primeWeightedTerm,
+    ErdosProblems.Erdos257.PaperCompleteR7.primeSetPart,
+    Erdos249257.erdosSupportSeries] using
+      ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim
+
+end Erdos257
+
+#print axioms Erdos257.erdos_257.variants.finite_prime_weighted_support
+
+/-! ## Erdős 257 reciprocal-summable supports -/
+
+namespace Erdos257
+
+theorem erdos_257.variants.summable_reciprocal_support
+    (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hA : A.Infinite)
+    (hsum : Summable (Set.indicator A (fun a : ℕ => (1 : ℝ) / (a : ℝ)))) :
+    Irrational (∑' a : ℕ,
+      Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a) := by
+  have hsum' : Summable (Erdos249257.reciprocalSupportTerm A) := by
+    exact hsum
+  simpa [Erdos249257.erdosSupportSeries] using
+    Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal b A hb hA hsum'
+
+end Erdos257
+
+#print axioms Erdos257.erdos_257.variants.summable_reciprocal_support

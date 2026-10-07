@@ -1,0 +1,29 @@
+with the printed positive-part summand.  The redundant normalised limit
+is deliberately not required. -/
+theorem finite_negative_mass_paper :
+    (∀ (C : ℕ → ℕ) (E : ℕ → ℤ),
+      (∀ n, 0 < C n) →
+      (∀ n, (C (n + 1) : ℤ) = (C n : ℤ) - E n) →
+      Summable (fun n ↦ max (-(E n : ℝ)) 0 / (C n : ℝ)) →
+      ∃ N, ∀ n, N ≤ n → E n = 0) ∧
+    (∀ (a C D : ℕ → ℕ) (E : ℕ → ℤ),
+      (∀ n, 0 < C n) →
+      (∀ n, C (n + 1) + D n = a n * C n) →
+      (∀ n, D (n + 1) = a n * D n) →
+      (∀ n, E n = centeredState (a n : ℤ) (D n : ℤ) (C n : ℤ)) →
+      Summable (fun n ↦ max (-(E n : ℝ)) 0 / (C n : ℝ)) →
+      ∃ N, ∀ n, N ≤ n →
+        (a (n + 1) : ℤ) = sylvesterNext (a n : ℤ)) := by
+  have hscalar : ∀ (C : ℕ → ℕ) (E : ℕ → ℤ),
+      (∀ n, 0 < C n) →
+      (∀ n, (C (n + 1) : ℤ) = (C n : ℤ) - E n) →
+      Summable (fun n ↦ max (-(E n : ℝ)) 0 / (C n : ℝ)) →
+      ∃ N, ∀ n, N ≤ n → E n = 0 := by
+    intro C E hc hs hsum
+    apply eventually_zero_of_summable_negativeRelativeMass_scalar C E hc hs
+    simpa only [negativeRelativeMass_eq_fun] using hsum
+  refine ⟨hscalar, ?_⟩
+  intro a C D E hc hs hd he hsum
+  exact natural_sylvester_of_eventual_zero a C D E hc hs hd he
+    (hscalar C E hc (natTail_eq_sub_centeredState a C D E hs he) hsum)
+

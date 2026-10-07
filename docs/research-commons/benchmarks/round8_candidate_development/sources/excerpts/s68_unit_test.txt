@@ -1,0 +1,25 @@
+gap and its floor: at every `m ≥ 3`, a unit
+carry occurs precisely when the exact integer
+`strictFacTopRat (factorialGapPrefix m) m` is a multiple of `m`. -/
+theorem factorialGapStepCarry_eq_one_iff_dvd_strictFacTopRat
+    {m : ℕ} (hm : 3 ≤ m) :
+    factorialGapStepCarry m = 1 ↔
+      (m : ℤ) ∣ strictFacTopRat (factorialGapPrefix m) m := by
+  have hrec :=
+    strictFacTop_factorialGapPrefix_step
+      (m := m) (show 2 ≤ m by omega)
+  obtain ⟨hbLower, hbUpper⟩ :=
+    factorialGapStepCarry_bounds hm
+  rw [← strictFacTop_ratCast]
+  exact
+    (dvd_strictSuccessor_iff_roundingDigit_eq_one
+      (m := (m : ℤ))
+      (N :=
+        strictFacTop
+          ((factorialGapPrefix m : ℚ) : ℝ) m)
+      (Nprev :=
+        strictFacTop
+          ((factorialGapPrefix (m - 1) : ℚ) : ℝ) (m - 1))
+      (b := factorialGapStepCarry m)
+      (by exact_mod_cast hm)
+      hrec hbLower hbUpper).symm

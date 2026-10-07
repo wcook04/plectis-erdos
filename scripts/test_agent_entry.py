@@ -22,6 +22,141 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    'Check a documentation change without installing Lean': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Check this documentation patch before opening a pull request': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Validate a documentation change with the existing public checks': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Prove this Lean theorem before checking a documentation change': ('bounded_research', 'mine-open-problem'),
+    'Report theorem status recorded in the documentation': ('mathematical_status', 'explain-public-system'),
+    'I have cloned the repository, now install its agent skills': ('install_skills', 'install-clone-skills'),
+    'Install selected public workflows into my coding agent harness': ('install_skills', 'install-clone-skills'),
+    'Install these repository skills into a custom directory': ('install_skills', 'install-clone-skills'),
+    'Use installed agent skills to prove this Lean theorem': ('bounded_research', 'mine-open-problem'),
+    'Report theorem status using the installed skills': ('mathematical_status', 'explain-public-system'),
+    'Correct public repository security documentation and inspect GitHub community norms without changing mathematics': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Audit GitHub community health and the security policy': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Help me contribute a documentation correction': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Correct the repository documentation before preparing a pull request': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Find contribution guidelines for this release repository': ('submit_change', 'submit-pull-request'),
+    'Where is the contribution guide?': ('submit_change', 'submit-pull-request'),
+    'Prove the Lean theorem while following the contribution guide': ('bounded_research', 'mine-open-problem'),
+    'Report theorem status before reading the contribution guidelines': ('mathematical_status', 'explain-public-system'),
+    'Package a returned proof using the contribution guide': ('return_research', 'erdos-research-return'),
+    "Check the prior art for the Erdos 1041 theorem": (
+        "source_inspection", "explain-public-system",
+    ),
+    "Check the assumptions of the Erdos 1041 theorem": (
+        "source_inspection", "explain-public-system",
+    ),
+    # Read, inspect, check, repair and return are distinct requests.
+    'Give me one hint for the proof of the Erdos 249 theorem.': (
+        'read_mathematics', 'explain-public-system',
+    ),
+    'I want to prove the Erdos 249 theorem myself; please offer a hint.': (
+        'read_mathematics', 'explain-public-system',
+    ),
+    'Write a clearer explanation of the weighted-support theorem and credit the original ideas': (
+        'public_writing', 'public-mathematical-writing',
+    ),
+    'Check the prior art for a new proposed lemma about Erdos 257': (
+        'source_inspection', 'explain-public-system',
+    ),
+    'Inspect the assumptions behind the Erdos 1041 theorem': (
+        'source_inspection', 'explain-public-system',
+    ),
+    'Correct the README if it overstates a Lean-checked result': (
+        'public_writing', 'public-mathematical-writing',
+    ),
+    # Content overstatement is mathematical writing; generic README repairs
+    # retain the infrastructure lane even when both use 'correct + readme'.
+    'Correct the README wording about an overstated theorem': (
+        'public_writing', 'public-mathematical-writing',
+    ),
+    'Revise the README to remove an overstatement of the checked results': (
+        'public_writing', 'public-mathematical-writing',
+    ),
+    'Correct the README installation links': (
+        'repository_architecture', 'maintain-public-infrastructure',
+    ),
+    'Correct repository documentation before submitting a finished patch': (
+        'repository_architecture', 'maintain-public-infrastructure',
+    ),
+    'Reproduce the #257 weighted theorem using Lean': (
+        'lean_validation', 'lean-concurrent-validation',
+    ),
+    'Verify the proof of Erdos 249': (
+        'reproduce_claim', 'explain-public-system',
+    ),
+    'Verify the Erdos 249 theorem using its recorded source and Lean evidence': (
+        'reproduce_claim', 'explain-public-system',
+    ),
+    'Return a correction to the proof and attribution in the Erdos 257 research packet': (
+        'return_research', 'erdos-research-return',
+    ),
+    'Return my correction to the existing theorem proof': (
+        'return_research', 'erdos-research-return',
+    ),
+    'Repair this Lean proof': (
+        'bounded_research', 'mine-open-problem',
+    ),
+    # Learning requests must not launch autonomous proof search.
+    "Help me understand the weighted Erdős 257 theorem with hints, without giving me the proof.": (
+        "read_mathematics", "explain-public-system",
+    ),
+    "Help me work through this theorem, one hint at a time": (
+        "read_mathematics", "explain-public-system",
+    ),
+    "Explain why this hypothesis is needed in the argument": (
+        "read_mathematics", "explain-public-system",
+    ),
+    "I want to understand the proof of the weighted theorem": (
+        "read_mathematics", "explain-public-system",
+    ),
+    # Ordinary requests observed during the public README/AGENTS review.
+    "Find the Lean declaration supporting the weighted Erdős 257 theorem": (
+        "source_inspection", "explain-public-system",
+    ),
+    "Check the citations and prior art for the #1041 paper": (
+        "source_inspection", "explain-public-system",
+    ),
+    "Check which aiXiv edition corresponds to this paper": (
+        "source_inspection", "explain-public-system",
+    ),
+    "Inspect the Prove2Me proof packet for #243": (
+        "source_inspection", "explain-public-system",
+    ),
+    "Compare a Formal Conjectures challenge statement with its Lean solution": (
+        "external_records", "explain-public-system",
+    ),
+    "Prepare a Palomar submission for a checked theorem": (
+        "external_records", "explain-public-system",
+    ),
+    "Validate the Lean files I changed": (
+        "lean_validation", "lean-concurrent-validation",
+    ),
+    "Add an open problem to the corpus": (
+        "add_problem", "add-open-problem",
+    ),
+    "Update a paper after landing a Lean proof": (
+        "land_lean_proof", "land-lean-proofs",
+    ),
+    "test whether 189/388 is a reciprocal-Mersenne subsum with exact rational arithmetic": (
+        "rational_subsum_probe", "explain-public-system",
+    ),
+    "check my rational candidate for subsum membership": (
+        "rational_subsum_probe", "explain-public-system",
+    ),
+    "Prove a new theorem involving 189/388": (
+        "bounded_research", "mine-open-problem",
+    ),
+    "I want to reproduce the #257 weighted theorem with Comparator from a clean checkout": (
+        "comparator_replay", "explain-public-system",
+    ),
+    "How can I verify the #257 weighted theorem independently from the public repository?": (
+        "reproduce_claim", "explain-public-system",
+    ),
+    "Check the external verification Comparator replay receipt for one theorem": (
+        "comparator_replay", "explain-public-system",
+    ),
     # Presentation and contributor setup requests must reach infrastructure
     # even when they mention proofs.
     "Prepare Lean repository for Show HN: newcomer clone setup runnable proof demo README drift readiness": (
@@ -34,6 +169,12 @@ ROUTE_CASES = {
         "repository_architecture", "maintain-public-infrastructure",
     ),
     "Improve the contributor experience for someone using this repository for the first time": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Make public #243 and #257 native Prove2Me theorem and exact proof packet routes discoverable from repository entry pages": (
+        "repository_architecture", "maintain-public-infrastructure",
+    ),
+    "Improve public README and research commons documentation navigation for existing hosted results and reader packets": (
         "repository_architecture", "maintain-public-infrastructure",
     ),
     # Open-ended research must reach its own lane. Before that lane existed,
@@ -377,7 +518,78 @@ ROUTE_CASES = {
         "land_lean_proof",
         "land-lean-proofs",
     ),
+    # PR306 cold-reader routes reconciled with current research boundaries.
+    'repository GitHub inspection readiness README setup replay contribution licence correction working routes': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Audit the repository README and licence for contributor readiness': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Inspect the contribution guide and licence in the public Lean repository': ('repository_architecture', 'maintain-public-infrastructure'),
+    "Inspect this repository's README for missing setup commands": ('repository_architecture', 'maintain-public-infrastructure'),
+    'Prove the Lean theorem described in the README': ('bounded_research', 'mine-open-problem'),
+    'Explain the licence used by this repository': ('understand_repository', 'explain-public-system'),
+    'I want to reproduce the #257 weighted theorem with Comparator using the README': ('comparator_replay', 'explain-public-system'),
+    'Review the #257 weighted theorem with an independent Comparator replay': ('comparator_replay', 'explain-public-system'),
+    'Replay independently with Comparator the selected weighted theorem from its pinned commit': ('comparator_replay', 'explain-public-system'),
+    'Perform a Comparator replay independently for the selected weighted theorem': ('comparator_replay', 'explain-public-system'),
+    'Request an independent Comparator review of the selected #257 theorem': ('comparator_replay', 'explain-public-system'),
+    'Review the proof of the #257 weighted theorem': ('understand_repository', 'explain-public-system'),
+    'Review the Comparator architecture': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Review architecture for an independent Comparator replay': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Improve the documentation for an independent Comparator replay': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Audit the Comparator replay README for contributor readiness': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Prove the weighted theorem in Lean before an independent Comparator replay': ('bounded_research', 'mine-open-problem'),
+    'Submit my mathematical proof for review': ('return_research', 'erdos-research-return'),
+    'Review the #257 theorem in the paper without running Comparator': ('understand_repository', 'explain-public-system'),
+    # PR309 ordinary maintenance and status routes, with neighboring controls.
+    'Update the repository citation metadata and refresh its generated views': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Refresh the public repository citations and regenerate their views': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Correct the repository citation record': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Fix stale CFF author information': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Check the release before publishing this repository': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Validate the candidate release before publishing this repository': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Audit the candidate releases before publishing this repository': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Run the repository release checks': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Inspect the current claim boundary for Erdős 1041': ('mathematical_status', 'explain-public-system'),
+    'Inspect the exact current claim boundaries for Erdős 257': ('mathematical_status', 'explain-public-system'),
+    'Explain the registered claims and their remaining assumptions': ('mathematical_status', 'explain-public-system'),
+    'Query the current status of a mathematical claim': ('mathematical_status', 'explain-public-system'),
+    'Revise the mathematical paper citation metadata': ('public_writing', 'public-mathematical-writing'),
+    'Prove a theorem using the citation in this paper': ('bounded_research', 'mine-open-problem'),
+    'Prove a theorem beyond the current claim boundary': ('bounded_research', 'mine-open-problem'),
+    'Submit my proof of this claim for review and credit': ('return_research', 'erdos-research-return'),
+    'Validate Lean on the latest toolchain release': ('lean_validation', 'lean-concurrent-validation'),
+    'Check the latest Lean release notes': ('understand_repository', 'explain-public-system'),
+    'Check the release of an unrelated software package': ('understand_repository', 'explain-public-system'),
+    'Explain the repository citation metadata': ('understand_repository', 'explain-public-system'),
+    'citation': ('understand_repository', 'explain-public-system'),
+    'release': ('understand_repository', 'explain-public-system'),
+    'claim': ('understand_repository', 'explain-public-system'),
 }
+
+
+def validate_finished_patch_routes() -> None:
+    """Separate returning finished patches from authoring changes or proofs."""
+    catalog = load_catalog()
+    cases = {
+        "send my finished tooling patch to maintainers": "submit_change",
+        "submit my finished documentation patch": "submit_change",
+        "prepare my completed tooling change for review": "submit_change",
+        "send these completed documentation patches to maintainers": "submit_change",
+        "prepare these finished commits for review": "submit_change",
+        "make a documentation correction": "repository_architecture",
+        "Check this documentation patch before opening a pull request": "repository_architecture",
+        "submit my finished proof": "return_research",
+        "send this proof patch for review": "return_research",
+        "Prove the Lean theorem while following the contribution guide": "bounded_research",
+    }
+    for task, expected in cases.items():
+        packet = entry_packet(catalog, task)
+        if packet["primary_lane"]["id"] != expected:
+            raise AssertionError((task, expected, packet["primary_lane"]))
+        if packet["task"] != task:
+            raise AssertionError("finished patch route lost the original request")
+        if expected == "submit_change":
+            for handle in ("CONTRIBUTING.md", "skills/submit-pull-request/SKILL.md"):
+                if handle not in packet["primary_lane"]["read"]:
+                    raise AssertionError((task, "missing submission handle", handle))
 
 
 def run_cli(root: Path, *args: str) -> subprocess.CompletedProcess[str]:
@@ -424,6 +636,7 @@ def validate_blank_selectors() -> None:
 
 
 def main() -> int:
+    validate_finished_patch_routes()
     validate_blank_selectors()
 
     # Real temporary repositories exercise clone, fork, tag, dirty-tree and
@@ -524,6 +737,13 @@ def main() -> int:
                 "skills/public-mathematical-writing/SKILL.md",
                 "skills/propagate-research-consequences/SKILL.md",
             ], (task, "cold author must receive writing then propagation instructions")
+
+    declaration_lookup = entry_packet(
+        catalog, "Find the Lean declaration supporting the weighted Erdős 257 theorem"
+    )
+    assert declaration_lookup["primary_lane"]["commands"][0] == (
+        'python3 scripts/query_corpus.py --ask "<question>"'
+    ), "A declaration lookup must lead to its source query, not only bibliography commands"
 
     operational = entry_packet(
         catalog, "speed up the public Lean repo clone and build commands"

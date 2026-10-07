@@ -10,7 +10,7 @@ body:
       value: |
         This is the structured route for agents and contributors who already
         have a return package. To share useful work in ordinary language, use
-        the [research progress or correction form](research_progress.yml)
+        the [research progress or correction form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
         instead; the repository can produce the receipt during assimilation.
 
         Use this form for a public return from a cited repository generation.
@@ -18,32 +18,32 @@ body:
         `docs/research-commons/RETURN_PACKAGE_TEMPLATE.md`. Do not include
         private paths, credentials, caches, correspondence, or unpublished
         proof material; use the security route for sensitive reports.
-        Canonical routes: [contributor guide](../../CONTRIBUTING.md),
-        [return contract](../../docs/research-commons/RETURN_PACKAGE_TEMPLATE.md),
-        [resume and replay state](../../docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#4-evidence-and-replay),
-        [bounded frontier route](../../docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#2-bounded-route), and
-        [accepted contributions](../../docs/research-commons/CONTRIBUTIONS.md).
+        Canonical routes: [contributor guide](https://github.com/wcook04/plectis-erdos/blob/main/CONTRIBUTING.md),
+        [return contract](https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/RETURN_PACKAGE_TEMPLATE.md),
+        [resume and replay state](https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#4-evidence-and-replay),
+        [bounded frontier route](https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#2-bounded-route), and
+        [accepted contributions](https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/CONTRIBUTIONS.md).
         Choose the frontier recorded in `return.json`: one numbered problem, a
         mathematical subject spanning zero or more problems, or an architecture
         area. A subject or architecture return must not invent a problem number.
         For a numbered problem, inspect its material result families and exact
-        open boundary in the [problem index](../../docs/problems.json). For a
-        subject, use the [subject frontier](../../docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#subject-frontier).
-        For architecture, use the [architecture contribution path](../../docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md#architecture-contribution-path).
+        open boundary in the [problem index](https://github.com/wcook04/plectis-erdos/blob/main/docs/problems.json). For a
+        subject, use the [subject frontier](https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#subject-frontier).
+        For architecture, use the [architecture contribution path](https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md#architecture-contribution-path).
         These routes navigate the work; they do not turn activity into credit.
         After acceptance, inspect the [accepted-receipt recognition and impact
-        view](../../docs/research-commons/CONTRIBUTION_RECOGNITION.md) and its
-        [machine-readable projection](../../docs/research-commons/contribution-recognition.json).
+        view](https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/CONTRIBUTION_RECOGNITION.md) and its
+        [machine-readable projection](https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/contribution-recognition.json).
         They preserve separate contributor, operator, collaborator, model, and
         provider identities, exclude unaccepted work, and do not rank activity.
-        Use [`scripts/continue_research.py`](../../scripts/continue_research.py)
+        Use [`scripts/continue_research.py`](https://github.com/wcook04/plectis-erdos/blob/main/scripts/continue_research.py)
         for session and package transitions and
-        [`scripts/validate_research_return.py`](../../scripts/validate_research_return.py)
+        [`scripts/validate_research_return.py`](https://github.com/wcook04/plectis-erdos/blob/main/scripts/validate_research_return.py)
         before submitting. If the return would change a reviewed claim, consult
-        the [methodology](../../docs/methodology.json). To report a defect
-        without a return package, use the [broken source or paper link](broken_link.yml)
+        the [methodology](https://github.com/wcook04/plectis-erdos/blob/main/docs/methodology.json). To report a defect
+        without a return package, use the [broken source or paper link](https://github.com/wcook04/plectis-erdos/issues/new?template=broken_link.yml)
         form for navigation defects, or the
-        [mathematical discrepancy](math_discrepancy.yml) form for disagreements
+        [mathematical discrepancy](https://github.com/wcook04/plectis-erdos/issues/new?template=math_discrepancy.yml) form for disagreements
         about a checked proposition or authority interpretation. Submit a
         packaged correction here.
   - type: textarea

@@ -1,0 +1,88 @@
+{
+  "schema": "erdos269-public-computation/1",
+  "verification_scope": "finite_computation_only",
+  "claim_boundary": "A finite exact computation over the stated range. It proves no statement about unbounded ranges and decides no Erdős problem. No Lean kernel is run.",
+  "case": "regenerate-tail",
+  "program": "regenerate_269.py",
+  "program_sha256": "1cd4702a2dff4376afa2f117d146bdd514eda9c4c0b6e917f53a0c69d1c06bfd",
+  "arguments": [
+    "--max-a",
+    "15500",
+    "--out",
+    "{out}"
+  ],
+  "requires": "stdlib",
+  "recorded_on": "2026-09-23",
+  "recorded_with": {
+    "python": "3.13.7",
+    "platform": "macOS-15.6.1"
+  },
+  "observed_wall_seconds": 5.5,
+  "comparison": "integers, strings and booleans exact; floats rel_tol = abs_tol = 1e-12; timing and output-path fields omitted",
+  "paper_figures_reproduced": "Rebuilding shells 1..15500 reproduces the stored block data and continued-fraction prefix byte for byte; the 13109-digit cylinder has determinant 1 and excludes every denominator at most 2^22482.",
+  "result": {
+    "printed_summary": {
+      "parameters": {
+        "max_a": 15500
+      },
+      "blocks_count": 15500,
+      "W_bits": 46500,
+      "F_bits": 46500,
+      "actual_target": "X_1 = S-1 (half-normalised actual tail)",
+      "endpoint_cap_numerator": "340480534",
+      "endpoint_cap_denominator": "3",
+      "common_prefix_length": 13540,
+      "first_20": [
+        0,
+        1,
+        4,
+        4,
+        10,
+        1,
+        5,
+        1,
+        3,
+        1,
+        1,
+        1,
+        4,
+        2,
+        1,
+        3,
+        2,
+        1,
+        1,
+        2
+      ],
+      "direct_source_blocks_checked": 30,
+      "unresolved_Lean_step": "identify each regenerated block with literal actual forcing; transfer finite rational enclosure to actual tail",
+      "certificates": {
+        "13109": {
+          "determinant": 1,
+          "excludes_denominators_through_2_pow_22482": true,
+          "cf_max": 129114,
+          "cf_sum": 306923,
+          "min_den_bit_length": 22483
+        },
+        "13540": {
+          "determinant": 1,
+          "excludes_denominators_through_2_pow_22482": true,
+          "cf_max": 129114,
+          "cf_sum": 312035,
+          "min_den_bit_length": 23237
+        }
+      }
+    },
+    "regenerated_equals_published": {
+      "dyadic_blocks.json": true,
+      "cf_common_prefix.json": true,
+      "tail_certificate.json_without_timings": true
+    }
+  },
+  "data_sha256": {
+    "block_certificate.json": "47b4910a67502ecb0e4caf6699319dcc934f0e72a3edeedb9e4218653f4da5c8",
+    "cf_common_prefix.json": "f7e65cfb6b0f51494c2dbde534447f4ce7bf4ce0f746c92c1d4d5872035e4a32",
+    "dyadic_blocks.json": "4b4eea80652e12ff9a2ec86dc47940af0f9efd703190497cdb6c112e8059cbc5",
+    "tail_certificate.json": "b847fd5aa2d0c9e72f9763e623d410dbcf62e9319b4fa79a2e8c7f28ef74fce0"
+  }
+}

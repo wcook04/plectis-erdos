@@ -55,6 +55,43 @@ and unavailable network access without requiring a network in tests. Check the
 combined first-contact route budget as well as each entry file: newcomer setup
 belongs in the agent index, not in an already full technical reading bundle.
 
+## Separate contribution discovery from mathematical work
+
+For a repository governance or documentation task, verify that entry selects
+this maintenance workflow. For finding contribution guidelines or preparing a
+finished patch, entry should name `CONTRIBUTING.md` and the submission workflow.
+A nearby proof, theorem-status or returned-proof request must retain its own
+lane. Preserve these neighboring requests as fixtures alongside the observed
+failure; contribution words alone should not turn proof search into Git work.
+
+GitHub [discovers contributor guidelines](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors)
+from `CONTRIBUTING.md` in `.github/`, the root or `docs/`, in that order. Check
+the repository's actual role before copying another project's community files.
+A release-only companion can explain how to report a packaging defect locally
+and hand mathematical contributions to the primary repository's existing
+process. Preserve the commit, exact entry, evidence and requested credit across
+that handoff. A community-health score reports recognized files; it does not
+certify their content, successful cold-clone use or an accepted contribution.
+
+Replay hosted contribution links in their rendered context as well as checking
+clone-local paths. GitHub issue-form Markdown is rendered on `issues/new`, so a
+relative link that works beside the YAML source can leave the repository or
+point to an issue path. Use public repository file URLs and actual
+`issues/new?template=<filename>` form URLs. Preserve field IDs and contribution
+or credit boundaries; validate destinations in `scripts/test_contribution_entry.py`
+and inspect the rendered form without entering or submitting a report.
+
+## Preserve boundaries across every reader
+
+Claim readers and record checkers share `scripts/claim_relationships.py`.
+Resolve both forward remaining-open references and reverse target links, retain
+their different meanings, and reject dangling references. Add a registry-wide
+coverage regression when a local example exposes lost edges. Read-only adapters
+must bind caches and cursors to captured source identity, preserve full
+statements, and report unavailable history explicitly for source archives.
+`scripts/research_query.py` owns the compact contract; the rich corpus routes
+remain owned by `scripts/query_corpus.py`.
+
 ## Know the public owner graph
 
 - `skills/registry.json` owns skill families, task lanes, composition edges,
@@ -92,6 +129,29 @@ URL.  When a cited module was added after a paper's global source pin, use an
 explicit module-specific immutable pin that has been checked this way.  Do not
 move the global pin merely to repair that link unless every pin-relative link
 in the paper has been audited at the proposed revision.
+
+When a producer regenerates text cited by `source-attributions.json`, its own
+`--check` does not validate that attribution anchor. Run
+`python3 scripts/reanchor_source_attributions.py --base <previous-accepted-commit>`
+first as a dry run and review each changed excerpt against its recorded
+relation. Unchanged excerpts may move with their original digest; changed
+implementation evidence needs semantic review before the owner recomputes its
+digest. Keep the original advice, identity and credit, and preserve its historical
+edition. Do not relabel a quotation or silently extend a reviewed claim.
+`--preserve-excerpts` refuses changed content; it is not a way to approve it.
+After review, use the same explicit base with `--write`, run
+`python3 scripts/build_source_attributions.py` and its `--check`, then refresh
+the corpus through `python3 scripts/corpus_substrate.py --write`. Run
+`python3 scripts/refresh_projections.py --preflight` before exact-head release
+admission. Never hand-edit the generated attribution index or register.
+
+The systems paper also binds source bytes in the authored
+`docs/systems_paper_sentences.json` ledger. After changing one of its sources,
+run `python3 scripts/systems_paper_evidence.py`; projection preflight alone
+does not establish that these bindings are current. Review the affected
+sentences and warrants before updating only the relevant source spans and
+digests. Preserve evidence classes, reported execution limits and historical
+identity; a new digest cannot supply new semantic or empirical evidence.
 
 ## Classify before changing
 
@@ -151,6 +211,14 @@ artifacts retain the filenames belonging to their recorded revision.
 
 ## Validate behavior, not decoration
 
+For recurring CI failures, compare the failed run's tested commit and start time
+with the repair, and inspect the affected branch as well as the default branch.
+An unmerged infrastructure fix does not protect existing branches. Carry the
+guard onto an affected branch together with its repair, regenerating that branch's
+projections through their owners instead of copying evidence from another branch.
+Report branch repair, default-branch rollout and exact-head CI results separately;
+do not declare prevention deployed while its pull request is still unmerged.
+
 When integrating concurrent implementations of one owner, reconcile its API,
 environment variables and diagnostics before regenerating its consumers. Run
 the relevant tests from both parent revisions on the combined implementation;
@@ -158,10 +226,25 @@ a clean merge or a passing test from only one parent does not establish that
 the combined contract works. For corpus-wide contribution changes, exercise
 all eight programmes and each supported contribution track.
 
+When a Python entry point starts another Python script under a sanitized
+subprocess environment, use its own `sys.executable` or an explicit pinned
+interpreter. Test the child invocation itself: a reduced `PATH` can resolve an
+older Python that lacks dependencies available to the parent.
+
+For skill installation, content identity must survive an edit that preserves
+file size and timestamp. Exercise the actual preview, check, refused collision
+and explicitly forced replacement; metadata equality is not content equality.
+Keep the repair compatible with the minimum supported Python version.
+
 For publication growth, conservation means preserving each existing artifact's
 identity and download name while admitting newly registered papers. Test a
 valid addition as well as a removed or renamed publication; equality of the
 old and new inventories would prevent the corpus from growing.
+
+For a README change, the cold-clone quick check and the human-first-contact
+test enforce different limits: a 14,000-byte first-contact prefix and 2,100
+prose words. Run both before the full release gate; passing the quick check
+does not establish that the prose budget still fits.
 
 During the edit, run the narrow owner checks:
 
@@ -172,6 +255,7 @@ python3 scripts/test_clone_skills.py
 python3 scripts/test_contribution_entry.py
 python3 scripts/test_compact_agent_entry.py
 python3 scripts/check_cold_clone_comprehension.py --quick
+python3 scripts/test_human_first_contact.py
 ```
 
 Use the exact previously failing task with `agent_entry.py --entry` as a manual

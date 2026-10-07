@@ -1,0 +1,23 @@
+{
+  "schema": "round7-frozen-evidence/1",
+  "source_commit": "0d0129c69ad1d6f48b7afbb2ae34681cc210c9fe",
+  "completed_at": "2026-09-29T03:44:02.345498+00:00",
+  "files_sha256": {
+    "RelationBindings.lean": "54aac4226cc2c700f19bb5b4739e80efb5d382ef2b802e483581c5d496aa58da",
+    "Round7PacketContrastDirection.json": "fee4c7b07793d8700aaa1838661ec8586206f66daed5189eea974806fdc7be42",
+    "Round7PacketContrastDirection.log": "c7dc61ad03f57faf2d6f2d7bdf15ac733d58a20d66bf52500ba87f5002d14bf0",
+    "Round7RelationBindingCanary.json": "843859078b3cd566f728132f27345fa647b328b3cc8c738e29c876f164f702aa",
+    "Round7RelationBindingCanary.log": "b29efdcb28882350a22f7d0cacf2635a40a0e8119b071440bd4f50dc15c6a857",
+    "Round7ReplayExistingMechanisms.json": "bd8146b7be8c78d856f8fe21dd689d2920b12a9b7907f8f2a1d5fd9f524d6b23",
+    "Round7ReplayExistingMechanisms.log": "b3ec74caa5e5f7aeb49ddb343dfa2b27284c0be6ee642bed4ff4db94d2638850",
+    "Round7ReturnGateCanary.json": "a1694ecc285a0235fb22a9521e9559dbb2cae78fcbff52d1e73744db58b1f03a",
+    "Round7ReturnGateCanary.log": "24213fb5088f68d40d0ef6f2fd04c0a5f884bfe930858c313c6b5c793e40158a",
+    "kernel-summary.json": "7be34cee05ed18db04ce34c26f8253802995fcc11195c558c352d0e7f302e5fd",
+    "local-build-summary.json": "ef1526b43a109baec263692371a6fae5acfe41c3c69db4089910c2415831a2b0",
+    "relation-bindings.json": "5903f39f707484a20a99d65fe76f475b02c812616ace1ade8d4de26101bec0d8",
+    "restatement-development/control/answer_key.json": "7fb8aefb7c8676bcf546bd08a6b99d34e4b2b5636c3d142e1e272af644d8fa74",
+    "restatement-development/control/manifest.json": "e0a4947f5cc25840cb04bafa31f3aeb26beddcaf0e4587e925fbcf1d1efcb9c2",
+    "restatement-development/participant/prompts.json": "9a60102ef472d3ad428c7280598ba03ef2a46f1e0e6b09d1d93aa6b97fff59be"
+  },
+  "boundary": "Historical invoked-environment replay at the named commit; later journal and publication commits are not covered by its source snapshot. Development examples are disclosed and never confirmatory."
+}

@@ -1,5 +1,7 @@
 # Erdős 1041: the sublevel sets have capacity exactly `t^{1/n}`, and what that buys
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: four unconditional facts about `K_t = {|f| ≤ t}`, proved here, plus a
 value-plane reformulation of the path problem and one certified construction that
 is **not** a hub-and-spoke path. Current through 2026-08-27 source audit. None

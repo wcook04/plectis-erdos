@@ -58,6 +58,9 @@ import ErdosProblems.Erdos243.RecordIncrementBarrier
 import ErdosProblems.Erdos243.SaturatedSquareTransport
 import ErdosProblems.Erdos249.PaperCompleteR7.KernelIntegral
 import ErdosProblems.Erdos249.PaperCompleteR7.RationalObservableClassification
+import ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadixClassification
+import ErdosProblems.Erdos249.FiniteDilationMixedModuli
+import ErdosProblems.Erdos249.FiniteDilationLinearIndependent
 import ErdosProblems.Erdos249.PaperCompleteR8.FullKernelAssemblies
 import ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis
 import ErdosProblems.Erdos249.PaperCompleteR8.UnitPivotBasis
@@ -101,12 +104,19 @@ import ErdosProblems.Erdos251.SparsePolylogR11
 import ErdosProblems.Erdos251.SparseRationalisationCore
 import ErdosProblems.Erdos251.SparseScheduleDensityR8
 import ErdosProblems.Erdos251.SparseScheduleR8
+import ErdosProblems.Erdos257.PaperCompleteR8.AnalyticIncomparability
+import ErdosProblems.Erdos257.PaperCompleteR8.CoverGaugeComplete
+import ErdosProblems.Erdos257.PaperCompleteR8.StrengthenedCoverFiniteUnion
 import ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn
+import ErdosProblems.Erdos257.WitnessLogicHost
+import ErdosProblems.Erdos257.WitnessLogicIrrational
 import ErdosProblems.Erdos269.ActualSharpTailMajorantR10
 import ErdosProblems.Erdos269.BlockMassEngines
 import ErdosProblems.Erdos269.CertificateRangeR11
 import ErdosProblems.Erdos269.CertificateSafetyR12
 import ErdosProblems.Erdos269.CofinalWindowEscapeEquivalence
+import ErdosProblems.Erdos269.DistinctHeightAxiomAudit
+import ErdosProblems.Erdos269.DistinctHeightIrrationality
 import ErdosProblems.Erdos269.DyadicBlockMassIdentity
 import ErdosProblems.Erdos269.DyadicBlockThresholdPartition
 import ErdosProblems.Erdos269.DyadicOrderedTailRecurrence
@@ -143,6 +153,7 @@ import ErdosProblems.Erdos68.CanonicalFactorialTermination
 -- (Root.lean already imports the latter). CompanionConstantBridge is the join
 -- that fails to elaborate; keep the Core fork in the auxiliary forest.
 import ErdosProblems.Erdos68.DivisorChannelBasis
+import ErdosProblems.Erdos68.DepthFourShortSupport
 import ErdosProblems.Erdos68.FactorialAnalyticBoundary
 import ErdosProblems.Erdos68.FactorialDigitRigidity
 import ErdosProblems.Erdos68.PaperCompleteAsymptotics

@@ -18,16 +18,18 @@ contribution and do not silently transfer authorship of the surrounding corpus.
 
 ## Architecture contribution path
 
-1. Open an [architecture proposal](../../.github/ISSUE_TEMPLATE/architecture_proposal.yml)
+1. Open an [architecture proposal](https://github.com/wcook04/plectis-erdos/issues/new?template=architecture_proposal.yml)
    for an idea, or fork the repository and open a focused pull request for a
    bounded implementation. Early proposals are welcome; a polished patch is
    not an entrance requirement.
 2. Name one observable problem and one stop condition. For example: “a cold
    clone cannot discover the validation command; stop when the new route is
    discoverable and its regression test passes.”
-3. Preserve a public starting commit and provide the smallest replay another
-   contributor can run. New agent workflows must remain clone-local and must
-   not depend on private files, credentials, or an unpublished service.
+3. If you have a patch, name its public starting commit and the smallest replay
+   another contributor can run. For an idea alone, describe an example a
+   maintainer can inspect; the maintainer records the public starting point
+   when adopting it. New agent workflows must remain clone-local and must not
+   depend on private files, credentials, or an unpublished service.
 4. In the pull request, request the contribution roles and display name you
    want recorded. Name material collaborators and prior art separately.
 5. A maintainer reviews the exact change and its evidence. Acceptance records
@@ -108,6 +110,6 @@ On pull requests, the research-return intake check validates an architecture
 its route-memory sidecar. Both tracks must pass submitted-return and Git
 validation; neither check records acceptance or adds a credit receipt.
 
-If you use the [structured research return form](../../.github/ISSUE_TEMPLATE/research_return.yml),
+If you use the [structured research return form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_return.yml),
 name the architecture area in its frontier field, leave the optional
 route-memory field empty, and attach or link the complete recoverable package.

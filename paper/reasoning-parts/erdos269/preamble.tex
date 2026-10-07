@@ -5,6 +5,14 @@
 % The immutable source-link revisions below are deliberately unchanged.
 \documentclass[11pt]{article}
 \input{problem-note-preamble}
+\input{evidence/erdos269-running-lcm-reasoning-surface}
+% Number the ordinary-proof remarks so their labels identify the assertion.
+% This local presentation change leaves the shared preamble untouched.
+\theoremstyle{remark}
+\newtheorem{recordremark}[theorem]{Remark}
+\renewenvironment{remark}[1][]{\begin{recordremark}[#1]}{\end{recordremark}}
+\theoremstyle{plain}
+
 \usepackage{longtable}
 \usepackage{colortbl}
 \usepackage[htt]{hyphenat}
@@ -17,10 +25,15 @@
 % source links below remain pinned to their own immutable revisions.
 \renewcommand{\commit}{ee650b32b8b2cb98b94e5500df5370d85f7403b8}
 \renewcommand{\commitshort}{ee650b32b8b2}
+% The distinct-height programs, at the commit that added them, and the Lean
+% proof of the {2,3,5} theorem, at the commit that added it.
+\newcommand{\distinctheighturl}{https://github.com/wcook04/plectis-erdos/tree/10178c4df40cb27d83b5ebb1ec337dd588b82998/research/experiments/erdos269/distinct_height}
+\newcommand{\distinctheightlean}{https://github.com/wcook04/plectis-erdos/blob/5154f4c46fa5d5ab2cff8df857a0b10f310cbeeb/lean/ErdosProblems/Erdos269/DistinctHeightIrrationality.lean}
+\newcommand{\distinctheightblocklean}{https://github.com/wcook04/plectis-erdos/blob/5154f4c46fa5d5ab2cff8df857a0b10f310cbeeb/lean/ErdosProblems/Erdos269/DistinctHeightBlockRadix.lean}
 \hypersetup{
-  pdftitle={The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic (Erdős Problem 269)},
+  pdftitle={Running least common multiples: distinct values and multiplicities},
   pdfsubject={Erdős Problem Notes: Problem 269},
-  pdfkeywords={transcendence, Hecke-Mahler values, least common multiple, smooth numbers, lattice sums, Lean 4},
+  pdfkeywords={irrationality, transcendence, Hecke-Mahler values, least common multiple, smooth numbers, Cantor series, lattice sums, Lean 4},
 }
 
 % The three pure-power coordinates and the running height.
@@ -32,11 +45,11 @@
 \newcommand{\lpr}{\operatorname{lpr}}
 \newcommand{\Esc}{\mathsf E}
 
-\runninghead{Erd\H{o}s \#269: kernel rank and tail arithmetic}
-\title{The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic}
+\runninghead{Running least common multiples}
+\title{Running least common multiples:\\distinct values and multiplicities}
 \subtitle{Erd\H{o}s Problem~\#269}
 \author{Will Cook}
-\date{July 2026; exposition revised 18 September 2026}
+\date{July 2026; revised 5 October 2026}
 
 \setlength{\emergencystretch}{2em}
 % Permit breaks inside long declaration names in the generated catalogue.

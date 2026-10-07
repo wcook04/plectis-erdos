@@ -1,0 +1,129 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-24T00:17:22Z",
+  "entry": "E249_33",
+  "github": {
+    "sha": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+    "ref": "refs/heads/palomar/comparator-cycle-20260923",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35935225572",
+    "run_attempt": "1",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E249_33.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_33",
+  "theorem_count": 27,
+  "theorem_names": [
+    "PalomarCorpus.E249.PrefixTwoAdicExclusion.oddPart_mul_prefixTail_eq_intCast",
+    "PalomarCorpus.E249.PrefixTwoAdicExclusion.prefix_twoAdic_denominator_exclusion",
+    "PalomarCorpus.E249.PrefixTwoAdicExclusion.prefix_twoAdic_denominator_lower_bound",
+    "PalomarCorpus.E249.PrefixTwoAdicExclusion.prefix_twoAdic_odd_denominator_floor",
+    "PalomarCorpus.E249.PrefixTwoAdicExclusion.totientPrefix_eq_corpusForm",
+    "PalomarCorpus.E249.PrefixTwoAdicExclusion.totientPrefix_succ",
+    "PalomarCorpus.E249.RankOneSharpFloor.not_forall_rankOneSubrankQuotient_sub_theta_two_gt_one_div_fifteen",
+    "PalomarCorpus.E249.RankOneSharpFloor.primitive_form_abs_gt_twentyOne_div_threeTwenty",
+    "PalomarCorpus.E249.RankOneSharpFloor.rankOneSubrankQuotient_ge_one_five",
+    "PalomarCorpus.E249.RankOneSharpFloor.rankOneSubrankQuotient_sub_theta_two_gt_one_div_sixteen",
+    "PalomarCorpus.E249.RationalObservableClassification.rational_zmod_observable_iff",
+    "PalomarCorpus.E249.RationalObservableClassification.residue_series_sharp_range",
+    "PalomarCorpus.E249.RationalObservableClassification.zmod_observable_value",
+    "PalomarCorpus.E249.ResidueClassTotientSeries.fixed_resolution_observable_irrational",
+    "PalomarCorpus.E249.ResidueClassTotientSeries.irrational_dyadicValue_of_pulses",
+    "PalomarCorpus.E249.ResidueClassTotientSeries.irrational_totientObservable",
+    "PalomarCorpus.E249.ResidueClassTotientSeries.isolated_pulse_separation",
+    "PalomarCorpus.E249.ResidueClassTotientSeries.residue_series_irrational",
+    "PalomarCorpus.E249.ResidueClassTotientSeries.two_sided_prime_isolation",
+    "PalomarCorpus.E249.TermwiseDyadicVacuous.termwise_dyadic_window_vacuous",
+    "PalomarCorpus.E249.TotientAffineModeEscape.not_eventuallyAffine_pureDyadicEndpointError",
+    "PalomarCorpus.E249.TotientRigidity.even_law_and_eventual_congruence_forces_totient",
+    "PalomarCorpus.E249.TotientRigidity.one_prime_law_and_little_o_forces_totient",
+    "PalomarCorpus.E249.TotientRigidity.totient_prime_mul_of_dvd",
+    "PalomarCorpus.E249.TotientRigidity.totient_prime_mul_of_not_dvd",
+    "PalomarCorpus.E249.TotientRigidity.totient_two_mul_of_even",
+    "PalomarCorpus.E249.TotientRigidity.totient_two_mul_of_odd"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "6f6bf5a783744126ed4247b0ac5fd9ce1c6bdd549c22d6b86b57dcf4da9bcc97",
+    "comparator.json": "901c55deefb0be4b685bd4e70159914ad5c31623784eace69622b4da303d2f99",
+    "formalization.yaml": "6f2db4a2b06002f82f90cdd774c68a865ead6495c6a3248ef347f2a74b46f34a"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E249_33.lean": "0b0e88494cfbe481a371c16dd53dabc5845d199e43d5062b332f93dff3483f0a",
+      "Solutions/PalomarCorpus/E249_33/PrefixTwoAdicExclusion.lean": "141e9ac4d376c96c9938a755aa51e9e70fc5e7fdc3c6ca98539f9571fd273606",
+      "Solutions/PalomarCorpus/E249_33/RankOneSharpFloor.lean": "065073588aff630986cd2ea96ca435937bf68ab08f75cf2946f29162dab7a687",
+      "Solutions/PalomarCorpus/E249_33/RationalObservableClassification.lean": "c6dd7ab12aab496d8320f7c366f0868e74dcf968714934f9e22636d695a1abb3",
+      "Solutions/PalomarCorpus/E249_33/ResidueClassTotientSeries.lean": "23862b82619d97447c4ad30e34f756874cd61cf257519d30d5dea8b9e9c495aa",
+      "Solutions/PalomarCorpus/E249_33/Statement.lean": "ce0f94fda6e000116908b63c05f79a9b19d2bdbf77582e9d80e18152e3fc72f5",
+      "Solutions/PalomarCorpus/E249_33/TermwiseDyadicVacuous.lean": "1e32e3da11663228a4592daba528aeb410180af67089b2b094660122efe2bdab",
+      "Solutions/PalomarCorpus/E249_33/TotientAffineModeEscape.lean": "06cec7d3b9ce161b088babd8f5d17ac185dee28adc7941c2fec7ed0bb359ba3c",
+      "Solutions/PalomarCorpus/E249_33/TotientRigidity.lean": "2fb5f9485bb884512d7ec73e3d041b8eb470397b9db278fdb0a7d6310fe72277"
+    },
+    "sha256": "07cc5e70fb337e990fbb95e39b40a93741cd5beaa34474dba9e714b40d62821f"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 11.278
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 39.421
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 235.838,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 8.268
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

@@ -319,7 +319,7 @@ def test_three_prime_lcm_cells_handoff_exposes_source_mechanism_and_boundaries()
     family = handoff["family"]
     assert family["family_id"] == "three_prime_lcm_cells"
     assert family["problem"] == 269
-    assert family["authority_rank"]["programme_position"] == 6
+    assert family["authority_rank"]["programme_position"] == 7
     assert family["palomar_disposition"] == "supporting_exact_identity"
     assert family["proof_status"] == "locally proved result; novelty unassessed"
     assert family["claim_id"] == "three_prime_running_lcm"
@@ -441,7 +441,7 @@ def test_three_prime_lcm_cells_handoff_exposes_source_mechanism_and_boundaries()
     ]
 
     dyadic = supporting["dyadic_block_alphabet"]
-    assert dyadic["family"]["authority_rank"]["programme_position"] == 5
+    assert dyadic["family"]["authority_rank"]["programme_position"] == 6
     assert dyadic["family"]["palomar_tier"] == "supporting_and_long_tail"
     assert dyadic["family"]["proof_status"] == (
         "locally proved result; novelty unassessed"

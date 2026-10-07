@@ -3,6 +3,7 @@
   "title": "Erdős 257 C5 seam remainders: greedy calculus, tail domination, sharp word-only limits, and skip certificates",
   "problem": "257",
   "replaces_role_zone": "Z23",
+  "build_lane": "unbuilt: ErdosProblems/Rem/C5.lean, the module cited in this zone, is in no CI build, so its declarations are stated in source but not kernel-checked by this repository's CI.",
   "concepts": [
     {
       "id": "z88_integer_greedy_remainder",

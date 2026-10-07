@@ -1,0 +1,16 @@
+theorem not_three_consecutive_two_powers (e : ℕ) :
+    ∃ t, 2 ^ e < t ∧ t < 2 ^ (e + 2) ∧ ∃ v, t = 3 ^ v := by
+  obtain ⟨v, hlo, hhi⟩ := exists_three_power_strictly_between_two_powers e
+  exact ⟨3 ^ v, hlo, hhi, ⟨v, rfl⟩⟩
+
+/-- Geometric (unconstrained) quadratic majorant. -/
+def carryMajorantQ (n : ℕ) : ℚ :=
+  ((n : ℚ) ^ 2 + 8 * n + 18) / 9
+
+/-- Jump-constrained quadratic majorant. -/
+def carryMajorantQtilde (n : ℕ) : ℚ :=
+  (1210 * (n : ℚ) ^ 2 + 9130 * n + 18847) / 11979
+
+def jumpWeightMoment0 : ℚ := 20 / 11
+def jumpWeightMoment1 : ℚ := 170 / 121
+def jumpWeightMoment2 : ℚ := 4694 / 1331

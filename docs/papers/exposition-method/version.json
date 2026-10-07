@@ -1,0 +1,121 @@
+{
+  "schema": "exposition-method-version/1",
+  "version": "2026-10-07.1",
+  "required_roles": [
+    "guidance",
+    "skill",
+    "rules",
+    "lessons",
+    "history",
+    "returns",
+    "sources",
+    "companion_source",
+    "companion_pdf",
+    "companion_input",
+    "shared_input",
+    "compact_guide_source",
+    "compact_guide_pdf"
+  ],
+  "files": [
+    {
+      "path": "docs/papers/exposition-method/README.md",
+      "sha256": "514fb0796d5b092c64fb84de96ece77aca131309ed352c84caf414cb62256677",
+      "role": "guidance"
+    },
+    {
+      "path": "skills/public-mathematical-writing/SKILL.md",
+      "sha256": "6bf9f059fccee30b02e8852e46061a8fa184f94a221b9d235ad94cbf72c2644f",
+      "role": "skill"
+    },
+    {
+      "path": "docs/papers/exposition-method/rules.json",
+      "sha256": "bca21b9fdfe5ca5ac7ae520a762db9e8054aacd8e6d7ac5e5162b6dfaf42c4dc",
+      "role": "rules"
+    },
+    {
+      "path": "docs/papers/exposition-method/lessons.json",
+      "sha256": "d3cd2280fc80c86e4628aaba64a3536c4f9d76fd96f3e4f423e824ee8b745368",
+      "role": "lessons"
+    },
+    {
+      "path": "docs/papers/exposition-method/history.json",
+      "sha256": "8b9038ca1787d863bdd36e59dbba723e7708101c90720d6b84822c12e7630790",
+      "role": "history"
+    },
+    {
+      "path": "docs/papers/exposition-method/returns.json",
+      "sha256": "d3700daf72d546b804105aa16976b0bf0549567080512d402cfa1c517b5ea53f",
+      "role": "returns"
+    },
+    {
+      "path": "docs/papers/exposition-method/sources.json",
+      "sha256": "6514e193bbb0438392ce04db87c3bd387084e40b929dd86f04cc0d7e3440ef03",
+      "role": "sources"
+    },
+    {
+      "path": "paper/exposition/writing-mathematics-from-reviewed-revisions.tex",
+      "sha256": "96b7f3e3bad868197b0207ec66ac4496bc205193b49dc6ec8033df8de4d27d5e",
+      "role": "companion_source"
+    },
+    {
+      "path": "paper/exposition/writing-mathematics-from-reviewed-revisions.pdf",
+      "sha256": "29dbff057324a5dbb8ef3526abf82e9770917711ef7fe2e70f7a6fcdfc3d3f73",
+      "role": "companion_pdf"
+    },
+    {
+      "path": "paper/exposition/parts/reading.tex",
+      "sha256": "4e80a17ad9d57281ad2acbf11fe63bf004c81fff8900885b7b152d27cfbaf352",
+      "role": "companion_input"
+    },
+    {
+      "path": "paper/exposition/parts/revisions.tex",
+      "sha256": "258e6e2b80bb7f40d2a20e3d52babccaa18e1d464c16752b8e00d9d791de3413",
+      "role": "companion_input"
+    },
+    {
+      "path": "paper/exposition/parts/review.tex",
+      "sha256": "6dac232d3cb954231d52165102e3b80703a9b33840f2a6d6269f7815fc06a31c",
+      "role": "companion_input"
+    },
+    {
+      "path": "paper/exposition/parts/practice.tex",
+      "sha256": "dd5b09d68941b3209bf9f765964fb311ac91dc5b9d66e199a14f6ea72e4583f7",
+      "role": "companion_input"
+    },
+    {
+      "path": "paper/exposition/parts/references.tex",
+      "sha256": "d7a4c97fb1544e9504e134a70df96ed97785740fd14ca328f4646a4fba0f9356",
+      "role": "companion_input"
+    },
+    {
+      "path": "paper/paper-house-style.sty",
+      "sha256": "554ed85b5315bd936a4d09d58f8727547c5bb1b299f9684eb6ef720b329759a2",
+      "role": "shared_input"
+    },
+    {
+      "path": "paper/problem-note-preamble.tex",
+      "sha256": "088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
+      "role": "shared_input"
+    },
+    {
+      "path": "paper/module-aliases.tex",
+      "sha256": "6d6d9640a9b7f04d003ebbffb78db279f5af838a2afc99ba6b5b247cc67b6954",
+      "role": "shared_input"
+    },
+    {
+      "path": "paper/exposition/writing-a-good-mathematical-paper.tex",
+      "sha256": "e96a5d3154eabc36ecd618ca3590672486f1be6d71868377ef1fc6b4c38b7452",
+      "role": "compact_guide_source"
+    },
+    {
+      "path": "paper/exposition/writing-a-good-mathematical-paper.pdf",
+      "sha256": "45bfb075a95acc483c6544efddc8bf699b92a6619fdfe4596abcf0905767f600",
+      "role": "compact_guide_pdf"
+    },
+    {
+      "path": "docs/statement_migrations/r9_exposition_20261001.json",
+      "sha256": "93de0d677d7c820f617b79b9ebe1131c47c58d384a7d42afd1fcb57e424fa9b2",
+      "role": "history"
+    }
+  ]
+}

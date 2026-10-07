@@ -1,0 +1,19 @@
+{
+  "schema": "plectis-paper-evidence-config/1",
+  "rule": "The pins the paper evidence is resolved against. corpus_commit is the plectis-erdos-lean commit whose Challenge and Solution files the Comparator marks open; replay names the run that checked every linked entry at that commit, and receipts the directory holding that run's per-entry reports. record_commit is the default plectis-erdos commit holding the evidence records the rendered papers link to; record_commit_overrides selects a newer record commit for an individual paper.",
+  "corpus_commit": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+  "corpus_archive_tag": "paper-evidence-2026-09-24",
+  "replay": {
+    "run_id": "35935225572",
+    "workflow": "palomar-replay.yml",
+    "receipts": "evidence/comparator/replay-35935225572"
+  },
+  "record_commit": "846d57d3f9926696332d782eb232aaf3cf803a99",
+  "record_commit_overrides": {
+    "erdos-243-reciprocal-tail-rigidity": "b4d9b60327e3c4d4cc50acb37e62268788cd77e0",
+    "erdos243-reciprocal-tail-reasoning-surface": "b4d9b60327e3c4d4cc50acb37e62268788cd77e0",
+    "erdos249-totient-reasoning-surface": "b4d9b60327e3c4d4cc50acb37e62268788cd77e0",
+    "erdos257-mersenne-reasoning-surface": "b4d9b60327e3c4d4cc50acb37e62268788cd77e0",
+    "erdos269-running-lcm-reasoning-surface": "b4d9b60327e3c4d4cc50acb37e62268788cd77e0"
+  }
+}

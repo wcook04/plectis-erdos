@@ -1,0 +1,115 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-24T00:18:33Z",
+  "entry": "E257_28",
+  "github": {
+    "sha": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+    "ref": "refs/heads/palomar/comparator-cycle-20260923",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35935225572",
+    "run_attempt": "1",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E257_28.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_28",
+  "theorem_count": 15,
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAA.sub_two_le_two_pow_sub_four",
+    "PalomarCorpus.E257.PaperStatementsAD.exists_boolean_word_of_lt_two_pow",
+    "PalomarCorpus.E257.PaperStatementsAD.localMersenneQuotient_eq_two_pow_sub_of_half_lt",
+    "PalomarCorpus.E257.PaperStatementsAR.exactLocalMersenneHalfRow_two_mul_sub_two_of_skippedCoreSharpCapacity",
+    "PalomarCorpus.E257.PaperStatementsAR.exists_exactRowStrictUpperFill_of_skippedCoreSharpCapacity",
+    "PalomarCorpus.E257.PaperStatementsAR.paper_exact_row_from_skipped_prefix",
+    "PalomarCorpus.E257.PaperStatementsAR.precriticalCrossingTax_of_futureThreshold",
+    "PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_band_index_eq_top_of_le_two",
+    "PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_band_index_unique",
+    "PalomarCorpus.E257.PaperStatementsBE.paper_critical_dyadic_boundary_is_smallest",
+    "PalomarCorpus.E257.PaperStatementsBE.paper_dyadic_band_escape_iff_single_test",
+    "PalomarCorpus.E257.PaperStatementsF.halfGreedySkippedCriticalQuotientSupply_of_precriticalSuffix",
+    "PalomarCorpus.E257.PaperStatementsF.halfGreedySkippedPrecriticalSuffixSupply_iff_preTake",
+    "PalomarCorpus.E257.PaperStatementsF.halfGreedy_precriticalSuffix_lt_of_future_skip_after_takenBlock",
+    "PalomarCorpus.E257.PaperStatementsF.halfGreedy_precriticalSuffix_lt_of_next_skip"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "e60c39212d24c1617e7775c986e10728dcb4be03ba6205e00e7a817dbb0ad94d",
+    "comparator.json": "a2318fe13e09b409e1fb91ef962f07a62a67bc6e5d3277975b7b6a8ae2897873",
+    "formalization.yaml": "8fc443141f26709650c282835dd9d95188639ec268111b31973570b97f502fe7"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E257_28.lean": "dc1018c31aca8c0d87dfd4c0846df168793c9fbd2452334efa845509e9377251",
+      "Solutions/PalomarCorpus/E257_28/PaperStatementsAA.lean": "026686ecd49d44d2496ee140ab66aa404206594302b26a26d9ff07b36a6b0a29",
+      "Solutions/PalomarCorpus/E257_28/PaperStatementsAD.lean": "d3df978350ac4526f5e4bcf2ecfce168f501cdd0b751737296c80bc52b893f6c",
+      "Solutions/PalomarCorpus/E257_28/PaperStatementsAR.lean": "c7227a9da84fe3571a1602f9c96e59f14082b6bfc63292f2c9b0df3d502b3df8",
+      "Solutions/PalomarCorpus/E257_28/PaperStatementsBE.lean": "91efc33171b38dd75e35d1e3ec5e70776fc610ebd69766f402f781664613c617",
+      "Solutions/PalomarCorpus/E257_28/PaperStatementsF.lean": "4fe6868c7b5bbd054c97c826f56bdd693903906ad8c09e3b03153ec31556da9d",
+      "Solutions/PalomarCorpus/E257_28/Statement.lean": "e6915207352053352457be2ca6737d39bb86961eafd54ec20bb382fccf9a3e78"
+    },
+    "sha256": "a16b0b0662341ad4eb03d0b7df8e3994d3eebb5a202b824acfc9dd4ca878d623"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 27.87
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 70.812
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 46.678,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 8.397
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

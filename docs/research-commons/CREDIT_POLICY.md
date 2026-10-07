@@ -77,3 +77,23 @@ then use the same acceptance and recognition builders as for a GitHub return.
 The public record can cite that artifact without exposing an email address.
 An unadopted suggestion remains acknowledged as a suggestion, not an accepted
 result. A receipt never grants authorship of unspecified future consequences.
+
+## The credit ledger and naming
+
+Advice received privately that changed public files is listed in the
+[credit ledger](CREDIT_LEDGER.md). Each entry gives the date the advice arrived,
+one sentence on what the person said, one sentence on what changed, and the
+exact lines (and, where one commit made the change, the commit) where a reader
+can see the change. The ledger is generated from the `correspondence` rows of
+`source-attributions.json` by `python3 scripts/build_source_attributions.py`.
+
+Every entry starts with the name withheld and the person described only by a
+neutral role, such as "a mathematician". Only the person who gave the advice
+can change that. If they confirm the public name they want, the row records it
+with the confirmation date (`named_with_permission`). If they would rather stay
+anonymous, the row says so (`anonymous_by_request`) and the advice stays
+credited. These three states follow the pending, accepted and declined credits
+of GitHub security advisories. Either change is a one-row edit followed by the
+build command above; the message itself stays private. Acknowledgement in the
+ledger does not say that the person reviewed, checked or endorsed the
+mathematics.

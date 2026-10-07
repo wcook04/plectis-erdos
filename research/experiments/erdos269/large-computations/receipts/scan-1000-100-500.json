@@ -1,0 +1,77 @@
+{
+  "schema": "erdos269-public-computation/1",
+  "verification_scope": "finite_computation_only",
+  "claim_boundary": "A finite exact computation over the stated range. It proves no statement about unbounded ranges and decides no Erdős problem. No Lean kernel is run.",
+  "case": "scan-small",
+  "program": "scripts/check_erdos269_dyadic_windows.py",
+  "program_sha256": "0c7dba6d41fce48144489788d35deb855d9c8df85304bfabc24c6635dac98f72",
+  "arguments": [
+    "--max-denominator",
+    "1000",
+    "--start-min",
+    "100",
+    "--start-max",
+    "500",
+    "--max-length",
+    "24",
+    "--assert-packet"
+  ],
+  "requires": "stdlib",
+  "recorded_on": "2026-09-23",
+  "recorded_with": {
+    "python": "3.13.7",
+    "platform": "macOS-15.6.1"
+  },
+  "observed_wall_seconds": 5.3,
+  "comparison": "integers, strings and booleans exact; floats rel_tol = abs_tol = 1e-12; timing and output-path fields omitted",
+  "paper_figures_reproduced": "106666 pairs (B <= 1000 coprime to 30, 100 <= l <= 500), every pair escapes, maximal first length 14 first attained at B = 359, l = 291 with the tabulated window data.",
+  "result": {
+    "block_base_alphabet": [
+      2,
+      6,
+      10,
+      30
+    ],
+    "claim_ceiling": "finite_exact_consumer_experiment_not_cofinal_escape",
+    "packet_regressions_checked": true,
+    "parameters": {
+      "max_denominator": 1000,
+      "max_length": 24,
+      "start_max": 500,
+      "start_min": 100
+    },
+    "scan": {
+      "failure_count": 0,
+      "first_failures": [],
+      "first_worst_case": {
+        "base_clears_bound": true,
+        "consumer_fires": true,
+        "denominator": 359,
+        "dyadic_start": 291,
+        "ending_jump_index": 627,
+        "least_positive_residue": 213175287,
+        "length": 14,
+        "residue_escapes": true,
+        "short_bound": 15932659,
+        "window_base": 5038848000000,
+        "window_forcing": 25864575212865807
+      },
+      "largest_minimal_length": 14,
+      "minimal_length_histogram": {
+        "10": 20368,
+        "11": 3107,
+        "12": 413,
+        "13": 45,
+        "14": 6,
+        "4": 1,
+        "5": 102,
+        "6": 664,
+        "7": 4383,
+        "8": 27870,
+        "9": 49707
+      },
+      "tested_pairs": 106666
+    },
+    "schema": "erdos269-dyadic-window-exact-check/1"
+  }
+}

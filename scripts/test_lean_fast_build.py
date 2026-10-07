@@ -5,6 +5,7 @@
 
 from __future__ import annotations
 
+import json
 import os
 from pathlib import Path
 import re
@@ -27,8 +28,417 @@ LAKE = str(fast.TOOLCHAIN_BIN / "lake")
 # The module that imports the whole #251 large certificate; CI builds it.
 LARGE_CERTIFICATE_ROOT = "ErdosProblems.Erdos251.PaperLargeAuditR7"
 
+# The complete supported-root set the required build job compiles.
+SUPPORTED_ROOTS = (
+    "Erdos249257",
+    "ErdosProblems",
+    "Examples",
+    "FormalConjecturesAdapter",
+    "FormalConjecturesVariants",
+    "FC243CubicRate",
+    "ResidualBench",
+    LARGE_CERTIFICATE_ROOT,
+)
+
+# The post-merge workflow that compiles the paper-coverage modules, which no
+# supported root imports.
+COVERAGE_WORKFLOW = ".github/workflows/lean-coverage-build.yml"
+COVERAGE_BUILD_STEP = "- name: Memory-bounded coverage build"
+COVERAGE_COMMAND_PREFIX = [
+    "python3",
+    "scripts/lean_fast_build.py",
+    "--jobs",
+    "2",
+    "--lake-staleness",
+]
+# Auxiliary roots of the module graph that no CI job compiles, each group with
+# its reason. The coverage build compiles an auxiliary root when a paper, a
+# claim or the paper-to-Lean ledger cites it; every other root is named here,
+# so a new auxiliary module needs a decision (see
+# test_every_auxiliary_root_is_compiled_or_excluded).
+_EXCLUDED_FREE_POSITION = frozenset(
+    # Exploratory free-position kill certificates. No paper, claim or
+    # coverage-ledger row cites them, so the coverage build leaves them out.
+    {
+        "ErdosProblems.FreePosition.FreeKill18B",
+        "ErdosProblems.FreePosition.FreeKill21C",
+        "ErdosProblems.FreePosition.FreeKill53D",
+        "ErdosProblems.FreePosition.FreeKill59Root",
+        "ErdosProblems.FreePosition.FreeKill61E",
+        "ErdosProblems.FreePosition.FreeKill64DecH",
+        "ErdosProblems.FreePosition.FreeKill64DepthRoot",
+        "ErdosProblems.FreePosition.FreeKill64EighteenP",
+        "ErdosProblems.FreePosition.FreeKill64EightyBZ",
+        "ErdosProblems.FreePosition.FreeKill64EightyEightCH",
+        "ErdosProblems.FreePosition.FreeKill64EightyFiveCE",
+        "ErdosProblems.FreePosition.FreeKill64EightyFourCD",
+        "ErdosProblems.FreePosition.FreeKill64EightyNineCI",
+        "ErdosProblems.FreePosition.FreeKill64EightyOneCA",
+        "ErdosProblems.FreePosition.FreeKill64EightySevenCG",
+        "ErdosProblems.FreePosition.FreeKill64EightySixCF",
+        "ErdosProblems.FreePosition.FreeKill64EightyThreeCC",
+        "ErdosProblems.FreePosition.FreeKill64EightyTwoCB",
+        "ErdosProblems.FreePosition.FreeKill64ElevenI",
+        "ErdosProblems.FreePosition.FreeKill64F",
+        "ErdosProblems.FreePosition.FreeKill64FifteenM",
+        "ErdosProblems.FreePosition.FreeKill64FiftyAV",
+        "ErdosProblems.FreePosition.FreeKill64FiftyEightBD",
+        "ErdosProblems.FreePosition.FreeKill64FiftyFiveBA",
+        "ErdosProblems.FreePosition.FreeKill64FiftyFourAZ",
+        "ErdosProblems.FreePosition.FreeKill64FiftyNineBE",
+        "ErdosProblems.FreePosition.FreeKill64FiftyOneAW",
+        "ErdosProblems.FreePosition.FreeKill64FiftySevenBC",
+        "ErdosProblems.FreePosition.FreeKill64FiftySixBB",
+        "ErdosProblems.FreePosition.FreeKill64FiftyThreeAY",
+        "ErdosProblems.FreePosition.FreeKill64FiftyTwoAX",
+        "ErdosProblems.FreePosition.FreeKill64FortyAL",
+        "ErdosProblems.FreePosition.FreeKill64FortyEightAT",
+        "ErdosProblems.FreePosition.FreeKill64FortyFiveAQ",
+        "ErdosProblems.FreePosition.FreeKill64FortyFourAP",
+        "ErdosProblems.FreePosition.FreeKill64FortyNineAU",
+        "ErdosProblems.FreePosition.FreeKill64FortyOneAM",
+        "ErdosProblems.FreePosition.FreeKill64FortySevenAS",
+        "ErdosProblems.FreePosition.FreeKill64FortySixAR",
+        "ErdosProblems.FreePosition.FreeKill64FortyThreeAO",
+        "ErdosProblems.FreePosition.FreeKill64FortyTwoAN",
+        "ErdosProblems.FreePosition.FreeKill64ForwardRoot",
+        "ErdosProblems.FreePosition.FreeKill64FourteenL",
+        "ErdosProblems.FreePosition.FreeKill64HighG",
+        "ErdosProblems.FreePosition.FreeKill64NineteenQ",
+        "ErdosProblems.FreePosition.FreeKill64NinetyCJ",
+        "ErdosProblems.FreePosition.FreeKill64NinetyEightCR",
+        "ErdosProblems.FreePosition.FreeKill64NinetyFiveCO",
+        "ErdosProblems.FreePosition.FreeKill64NinetyFourCN",
+        "ErdosProblems.FreePosition.FreeKill64NinetyNineCS",
+        "ErdosProblems.FreePosition.FreeKill64NinetyOneCK",
+        "ErdosProblems.FreePosition.FreeKill64NinetySevenCQ",
+        "ErdosProblems.FreePosition.FreeKill64NinetySixCP",
+        "ErdosProblems.FreePosition.FreeKill64NinetyThreeCM",
+        "ErdosProblems.FreePosition.FreeKill64NinetyTwoCL",
+        "ErdosProblems.FreePosition.FreeKill64NonG",
+        "ErdosProblems.FreePosition.FreeKill64OctF",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredCT",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredEightDB",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredEighteenDL",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredElevenDE",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFifteenDI",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyER",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyEightEZ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyFiveEW",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyFourEV",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyNineFA",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyOneES",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftySevenEY",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftySixEX",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyThreeEU",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyTwoET",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiveCY",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyEH",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyEightEP",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyFiveEM",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyFourEL",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyNineEQ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyOneEI",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortySevenEO",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortySixEN",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyThreeEK",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyTwoEJ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFourCX",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFourteenDH",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredNineDC",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredNineteenDM",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredOneCU",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSevenDA",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSeventeenDK",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixCZ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixteenDJ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyEightFJ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyFB",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyFiveFG",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyFourFF",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyNineFK",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyOneFC",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtySevenFI",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtySixFH",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyThreeFE",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyTwoFD",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTenDD",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirteenDG",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyDX",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyEightEF",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyFiveEC",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyFourEB",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyNineEG",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyOneDY",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtySevenEE",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtySixED",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyThreeEA",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyTwoDZ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThreeCW",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwelveDF",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyDN",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyEightDV",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyFiveDS",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyFourDR",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyNineDW",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyOneDO",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentySevenDU",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentySixDT",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyThreeDQ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyTwoDP",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwoCV",
+        "ErdosProblems.FreePosition.FreeKill64QuadB",
+        "ErdosProblems.FreePosition.FreeKill64QuintC",
+        "ErdosProblems.FreePosition.FreeKill64SeptE",
+        "ErdosProblems.FreePosition.FreeKill64SeventeenO",
+        "ErdosProblems.FreePosition.FreeKill64SeventyBP",
+        "ErdosProblems.FreePosition.FreeKill64SeventyEightBX",
+        "ErdosProblems.FreePosition.FreeKill64SeventyFiveBU",
+        "ErdosProblems.FreePosition.FreeKill64SeventyFourBT",
+        "ErdosProblems.FreePosition.FreeKill64SeventyNineBY",
+        "ErdosProblems.FreePosition.FreeKill64SeventyOneBQ",
+        "ErdosProblems.FreePosition.FreeKill64SeventySevenBW",
+        "ErdosProblems.FreePosition.FreeKill64SeventySixBV",
+        "ErdosProblems.FreePosition.FreeKill64SeventyThreeBS",
+        "ErdosProblems.FreePosition.FreeKill64SeventyTwoBR",
+        "ErdosProblems.FreePosition.FreeKill64SextD",
+        "ErdosProblems.FreePosition.FreeKill64SixteenN",
+        "ErdosProblems.FreePosition.FreeKill64SixtyBF",
+        "ErdosProblems.FreePosition.FreeKill64SixtyEightBN",
+        "ErdosProblems.FreePosition.FreeKill64SixtyFiveBK",
+        "ErdosProblems.FreePosition.FreeKill64SixtyFourBJ",
+        "ErdosProblems.FreePosition.FreeKill64SixtyNineBO",
+        "ErdosProblems.FreePosition.FreeKill64SixtyOneBG",
+        "ErdosProblems.FreePosition.FreeKill64SixtySevenBM",
+        "ErdosProblems.FreePosition.FreeKill64SixtySixBL",
+        "ErdosProblems.FreePosition.FreeKill64SixtyThreeBI",
+        "ErdosProblems.FreePosition.FreeKill64SixtyTwoBH",
+        "ErdosProblems.FreePosition.FreeKill64ThirteenK",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyAB",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyEightAJ",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyFiveAG",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyFourAF",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyNineAK",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyOneAC",
+        "ErdosProblems.FreePosition.FreeKill64ThirtySevenAI",
+        "ErdosProblems.FreePosition.FreeKill64ThirtySixAH",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyThreeAE",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyTwoAD",
+        "ErdosProblems.FreePosition.FreeKill64TripleA",
+        "ErdosProblems.FreePosition.FreeKill64TwelveJ",
+        "ErdosProblems.FreePosition.FreeKill64TwentyEightZ",
+        "ErdosProblems.FreePosition.FreeKill64TwentyFiveW",
+        "ErdosProblems.FreePosition.FreeKill64TwentyFourV",
+        "ErdosProblems.FreePosition.FreeKill64TwentyNineAA",
+        "ErdosProblems.FreePosition.FreeKill64TwentyOneS",
+        "ErdosProblems.FreePosition.FreeKill64TwentyR",
+        "ErdosProblems.FreePosition.FreeKill64TwentySevenY",
+        "ErdosProblems.FreePosition.FreeKill64TwentySixX",
+        "ErdosProblems.FreePosition.FreeKill64TwentyThreeU",
+        "ErdosProblems.FreePosition.FreeKill64TwentyTwoT",
+    }
+)
+_EXCLUDED_VERIFICATION_SCRATCH = frozenset(
+    # Adversarial verification scratch files and axiom-footprint checks for the
+    # exploratory Bit, Decl, Half, Hlow, Lift, Rem, Skip and Three modules. No
+    # paper, claim or coverage-ledger row cites them.
+    {
+        "ErdosProblems.Bit.verify.B1",
+        "ErdosProblems.Bit.verify.B2",
+        "ErdosProblems.Bit.verify.B3",
+        "ErdosProblems.Bit.verify.B4",
+        "ErdosProblems.Bit.verify.B5",
+        "ErdosProblems.Decl.verify.D1",
+        "ErdosProblems.Decl.verify.D2",
+        "ErdosProblems.Decl.verify.D3",
+        "ErdosProblems.Decl.verify.D4",
+        "ErdosProblems.Half.verify.W1",
+        "ErdosProblems.Half.verify.W2",
+        "ErdosProblems.Half.verify.W3",
+        "ErdosProblems.Half.verify.W4",
+        "ErdosProblems.Half.verify.W5",
+        "ErdosProblems.Half.verify.W6",
+        "ErdosProblems.Half.verify.W7",
+        "ErdosProblems.Hlow.W1",
+        "ErdosProblems.Hlow.W3",
+        "ErdosProblems.Hlow.verify.V1",
+        "ErdosProblems.Hlow.verify.V2",
+        "ErdosProblems.Lift.verify.Check1",
+        "ErdosProblems.Lift.verify.Check10",
+        "ErdosProblems.Lift.verify.Check11",
+        "ErdosProblems.Lift.verify.Check12",
+        "ErdosProblems.Lift.verify.Check13",
+        "ErdosProblems.Lift.verify.Check14",
+        "ErdosProblems.Lift.verify.Check2",
+        "ErdosProblems.Lift.verify.Check3",
+        "ErdosProblems.Lift.verify.Check4",
+        "ErdosProblems.Lift.verify.Check5",
+        "ErdosProblems.Lift.verify.Check6",
+        "ErdosProblems.Lift.verify.Check7",
+        "ErdosProblems.Lift.verify.Check8",
+        "ErdosProblems.Lift.verify.Check9",
+        "ErdosProblems.Rem.verify.C1",
+        "ErdosProblems.Rem.verify.C2",
+        "ErdosProblems.Rem.verify.C3",
+        "ErdosProblems.Rem.verify.C4",
+        "ErdosProblems.Rem.verify.C5",
+        "ErdosProblems.Rem.verify.C6",
+        "ErdosProblems.Skip.verify.V1",
+        "ErdosProblems.Skip.verify.V10",
+        "ErdosProblems.Skip.verify.V2",
+        "ErdosProblems.Skip.verify.V3",
+        "ErdosProblems.Skip.verify.V4",
+        "ErdosProblems.Skip.verify.V5",
+        "ErdosProblems.Skip.verify.V6",
+        "ErdosProblems.Skip.verify.V7",
+        "ErdosProblems.Skip.verify.V8",
+        "ErdosProblems.Skip.verify.V9",
+        "ErdosProblems.Three.verify.T1",
+        "ErdosProblems.Three.verify.T2",
+        "ErdosProblems.Three.verify.T3",
+        "ErdosProblems.Three.verify.T4",
+    }
+)
+_EXCLUDED_SINGLE_AUDITS = frozenset(
+    {
+        # #1041 full axiom audit. Its build is recorded by the source-bound
+        # receipt verification/erdos1041-returned-r18-v5-full-audit-evidence.json;
+        # no paper, claim or coverage-ledger row cites it.
+        "ErdosProblems.Erdos1041.ReturnedR18V5FullAudit",
+        # Algebra sidecar for the #1041 degree-seven counterexample. Nothing
+        # imports it and no paper, claim or coverage-ledger row cites it.
+        "ErdosProblems.Erdos1041.Counterexample.Algebra",
+        # #1049 print-only axiom audit of the all-row chain, which
+        # scripts/build_module_graph.py keeps outside the supported root.
+        "ErdosProblems.Erdos1049.AllRow.Audit",
+    }
+)
+COVERAGE_EXCLUDED_AUXILIARY_ROOTS = {
+    # The #68 size-floor certificate: its source records that it has not been
+    # kernel checked, and scripts/build_module_graph.py keeps it and the
+    # FiniteLeadBlocks leaves it imports out of every compiled environment.
+    "ErdosProblems.Erdos68.PaperCompleteFiniteSizeCertificate",
+    *_EXCLUDED_FREE_POSITION,
+    *_EXCLUDED_VERIFICATION_SCRATCH,
+    *_EXCLUDED_SINGLE_AUDITS,
+}
+MAIN_CACHE_PREFIX = (
+    "lake-${{ runner.os }}-${{ runner.arch }}-"
+    "${{ hashFiles('lean-toolchain') }}-"
+    "${{ hashFiles('lake-manifest.json') }}"
+)
+COVERAGE_CACHE_PREFIX = (
+    "lake-coverage-${{ runner.os }}-${{ runner.arch }}-"
+    "${{ hashFiles('lean-toolchain') }}-"
+    "${{ hashFiles('lake-manifest.json') }}"
+)
+
+
+def read_workflow(relative: str) -> str:
+    return (fast.ROOT / relative).read_text(encoding="utf-8")
+
+
+def coverage_build_targets(workflow: str | None = None) -> list[str]:
+    """Return the module targets of the one coverage-build wrapper call.
+
+    The call is a folded YAML scalar, one target per line, so the command is
+    the step's continuation lines joined with spaces.
+    """
+
+    workflow = read_workflow(COVERAGE_WORKFLOW) if workflow is None else workflow
+    step = workflow.split(COVERAGE_BUILD_STEP + "\n", 1)[1]
+    run = step.split("        run: >-\n", 1)[1]
+    words: list[str] = []
+    for line in run.splitlines():
+        if not line.startswith("          ") or not line.strip():
+            break
+        words.extend(line.split())
+    if words[: len(COVERAGE_COMMAND_PREFIX)] != COVERAGE_COMMAND_PREFIX:
+        raise AssertionError(
+            f"coverage build is not the bounded wrapper call: {' '.join(words[:6])}"
+        )
+    return words[len(COVERAGE_COMMAND_PREFIX) :]
+
+
+def coverage_workflow_paths(workflow: str) -> list[str]:
+    """Return the push path filter of the coverage-build workflow."""
+
+    triggers = workflow[workflow.index("\non:\n") : workflow.index("\nconcurrency:\n")]
+    block = triggers.split("\n    paths:\n", 1)[1]
+    patterns: list[str] = []
+    for line in block.splitlines():
+        if line.lstrip().startswith("#"):
+            continue
+        if not line.startswith("      - "):
+            break
+        patterns.append(line.strip()[2:].strip().strip('"').strip("'"))
+    return patterns
+
+
+def workflow_path_matches(path: str, pattern: str) -> bool:
+    """Match the two GitHub path-filter shapes the coverage workflow uses."""
+
+    if pattern.endswith("/**"):
+        return path.startswith(pattern[:-2])
+    return path == pattern
+
+
+def cache_restore_prefixes(workflow: str) -> list[str]:
+    """Return every cache `key:` and `restore-keys:` entry of a workflow.
+
+    actions/cache prefix-matches the primary key as well as each restore key,
+    so both kinds decide which saved entries a job can restore.
+    """
+
+    prefixes: list[str] = []
+    lines = workflow.splitlines()
+    for index, line in enumerate(lines):
+        stripped = line.strip()
+        if stripped.startswith("key: "):
+            prefixes.append(stripped.removeprefix("key: "))
+        if stripped != "restore-keys: |":
+            continue
+        indent = len(line) - len(line.lstrip())
+        for entry in lines[index + 1 :]:
+            if entry.strip() and len(entry) - len(entry.lstrip()) <= indent:
+                break
+            if entry.strip():
+                prefixes.append(entry.strip())
+    return prefixes
+
 
 class LeanFastBuildTests(unittest.TestCase):
+    def test_custom_elan_proxy_runs_through_the_bounded_consumer(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            custom = root / "custom elan"
+            proxy = custom / "bin" / "lake"
+            proxy.parent.mkdir(parents=True)
+            proxy.write_text('#!/bin/sh\nprintf "custom proxy: %s\\n" "$1"\n')
+            proxy.chmod(0o755)
+            with mock.patch.dict(os.environ, {"ELAN_HOME": str(custom)}):
+                result = fast._run(
+                    fast.lake_command("--version"), cwd=root,
+                    timeout_seconds=5, capture_output=True, text=True,
+                )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout, "custom proxy: --version\n")
+
+    def test_missing_custom_elan_proxy_does_not_fall_back(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            default = root / "default-home" / ".elan" / "bin" / "lake"
+            default.parent.mkdir(parents=True)
+            default.write_text('#!/bin/sh\nexit 0\n')
+            default.chmod(0o755)
+            custom = root / "missing-custom"
+            with mock.patch.object(Path, "home", return_value=root / "default-home"), \
+                    mock.patch.dict(os.environ, {"ELAN_HOME": str(custom)}):
+                command = fast.lake_command("--version")
+                self.assertEqual(command[0], str(custom.resolve() / "bin" / "lake"))
+                with self.assertRaises(FileNotFoundError):
+                    fast._run(command, cwd=root, timeout_seconds=5)
+
     def test_discovery_uses_declared_lake_source_roots(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -208,7 +618,7 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertLess(cache_step, toolchain_step)
         self.assertLess(toolchain_step, dependencies_step)
         self.assertLess(dependencies_step, bounded_build)
-        self.assertIn("uses: actions/cache@", workflow)
+        self.assertIn("uses: actions/cache/restore@", workflow)
         # The contract is that the cache action is pinned to a commit and
         # annotated with the version that commit is, so a reader can tell what
         # a forty-character hex string is without leaving the file. It is not
@@ -217,7 +627,7 @@ class LeanFastBuildTests(unittest.TestCase):
         # four jobs with the message "Lean CI lost cache/build contract" —
         # which was not true, and pointed at the workflow rather than at the
         # assertion. Every other token in this contract describes behaviour.
-        self.assertRegex(workflow, r"uses: actions/cache@[0-9a-f]{40} # v\d")
+        self.assertRegex(workflow, r"uses: actions/cache/restore@[0-9a-f]{40} # v\d")
         self.assertIn("path: .lake", workflow)
         # Sibling sweep: the same supply-chain policy applies to every action
         # this workflow uses, and only the cache line was ever checked.
@@ -238,6 +648,29 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertIn("lake exe cache get", workflow)
         self.assertNotIn("leanprover/lean-action@", workflow)
         self.assertIn("final serialized Lake checks remain the proof-authority check", workflow)
+
+    def test_pull_requests_never_save_the_lake_cache(self) -> None:
+        """A PR cache only its own PR can read must not evict main's warm cache."""
+        workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+        start = workflow.index("- name: Save project Lean cache after the build")
+        save_step = workflow[start : workflow.index("\n      - ", start + 1)]
+        self.assertIn("uses: actions/cache/save@", save_step)
+        self.assertIn("github.event_name != 'pull_request'", save_step)
+        self.assertIn("github.ref == 'refs/heads/main'", save_step)
+        # The combined cache action also saves in its post step. Guarding
+        # only the explicit save left PRs writing multi-gigabyte caches.
+        self.assertNotRegex(workflow, r"uses: actions/cache@")
+        restore = workflow.split("- name: Restore project Lean cache", 1)[1]
+        restore = restore.split("\n      - ", 1)[0]
+        self.assertIn("uses: actions/cache/restore@", restore)
+        self.assertEqual(workflow.count("uses: actions/cache/save@"), 1)
+        warm = (fast.ROOT / ".github" / "workflows" / "lean-cache-warm.yml").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("branches:\n      - main", warm)
+        self.assertIn("actions/cache", warm)
 
     def test_ci_installs_lean_from_checksum_verified_primary_source(self) -> None:
         workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
@@ -278,6 +711,11 @@ class LeanFastBuildTests(unittest.TestCase):
             warm_workflow.index("- name: Install pinned Lean toolchain") :
             warm_workflow.index("- name: Fetch pinned dependency build artifacts")
         ]
+        coverage_workflow = read_workflow(COVERAGE_WORKFLOW)
+        coverage_setup = coverage_workflow[
+            coverage_workflow.index("- name: Install pinned Lean toolchain") :
+            coverage_workflow.index("- name: Fetch pinned dependency build artifacts")
+        ]
 
         for marker in (
             "ELAN_ARCHIVE_URL: https://github.com/leanprover/elan/releases/download/v4.2.3/",
@@ -287,6 +725,7 @@ class LeanFastBuildTests(unittest.TestCase):
         ):
             self.assertIn(marker, lean_setup)
             self.assertIn(marker, warm_setup)
+            self.assertIn(marker, coverage_setup)
 
     def test_ci_fetches_dependency_artifacts_before_the_bounded_build(self) -> None:
         # A cold Actions cache must not fall through to compiling Mathlib from
@@ -310,15 +749,7 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertNotIn("leanprover/lean-action@", workflow)
 
     def test_ci_and_cache_warm_use_one_complete_wrapper_owner(self) -> None:
-        targets = (
-            "Erdos249257",
-            "ErdosProblems",
-            "Examples",
-            "FormalConjecturesAdapter",
-            "FormalConjecturesVariants",
-            "ResidualBench",
-            LARGE_CERTIFICATE_ROOT,
-        )
+        targets = SUPPORTED_ROOTS
         for relative in (
             ".github/workflows/lean.yml",
             ".github/workflows/lean-cache-warm.yml",
@@ -393,6 +824,306 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertIn("runs-on: ubuntu-24.04", workflow)
         self.assertNotIn("runs-on: ubuntu-latest", workflow)
 
+    def test_coverage_build_checkout_does_not_persist_credentials(self) -> None:
+        workflow = read_workflow(COVERAGE_WORKFLOW)
+        checkouts = re.findall(
+            r"(?ms)^      - uses: actions/checkout@.*?(?=^      - |\Z)",
+            workflow,
+        )
+
+        self.assertEqual(len(checkouts), 1)
+        self.assertIn(
+            "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            checkouts[0],
+        )
+        self.assertIn("persist-credentials: false", checkouts[0])
+        self.assertEqual(workflow.count("runs-on: ubuntu-24.04"), 1)
+        self.assertNotIn("runs-on: ubuntu-latest", workflow)
+
+    def test_coverage_build_pins_actions_to_commits_with_versions(self) -> None:
+        workflow = read_workflow(COVERAGE_WORKFLOW)
+        action_lines = [
+            line.strip() for line in workflow.splitlines() if "uses:" in line
+        ]
+
+        self.assertEqual(len(action_lines), 5)
+        for line in action_lines:
+            self.assertRegex(
+                line,
+                r"uses: actions/[\w-]+(?:/[\w-]+)*@[0-9a-f]{40} # v[\d.]+$",
+                msg=f"coverage action is not pinned with a version comment: {line}",
+            )
+
+    def test_coverage_build_compiles_every_ledger_bound_module(self) -> None:
+        """Every module the paper coverage ledger cites must be compiled in CI.
+
+        The required build compiles only the supported roots. The coverage
+        ledger names declarations in the PaperComplete* trees that no supported
+        root imports: the dependency index lists them as
+        `not_present_in_loaded_root_environment`, and on #210 the required
+        build reported "0 stale/missing module(s)" for a pull request that
+        added one. A cited module that neither the supported roots nor the
+        coverage targets reach is a row whose Lean the public CI does not
+        compile.
+        """
+
+        modules = fast.discover(fast.ROOT)
+        targets = coverage_build_targets()
+        self.assertEqual(
+            [target for target in targets if target not in modules],
+            [],
+            "coverage build names a module that does not exist",
+        )
+        graph = fast.reachable_graph([*SUPPORTED_ROOTS, *targets], modules)
+        supported = fast.reachable(SUPPORTED_ROOTS, graph)
+        covered = fast.reachable(targets, graph)
+        by_path = {source.resolve(): name for name, source in modules.items()}
+        ledger = json.loads(
+            (fast.ROOT / "docs" / "paper_lean_coverage.json").read_text(
+                encoding="utf-8"
+            )
+        )
+
+        cited: set[str] = set()
+        uncompiled: dict[str, list[str]] = {}
+        for row in ledger["rows"]:
+            lean = row.get("lean") or {}
+            if lean.get("status", "none") == "none":
+                continue
+            for declaration in lean.get("declarations", []):
+                module = by_path.get((fast.ROOT / declaration["file"]).resolve())
+                self.assertIsNotNone(
+                    module,
+                    f"{row['id']} cites {declaration['file']}, which no Lake "
+                    "library discovers",
+                )
+                cited.add(module)
+                if module not in supported and module not in covered:
+                    uncompiled.setdefault(module, []).append(row["id"])
+
+        self.assertGreater(len(cited - supported), 0, "the ledger parse drifted")
+        self.assertEqual(
+            uncompiled,
+            {},
+            "the coverage ledger cites modules no CI job compiles; import them "
+            f"from a coverage aggregator or add a target to {COVERAGE_WORKFLOW}",
+        )
+
+    def test_coverage_build_names_every_coverage_lane_auxiliary_root(self) -> None:
+        """The module graph's coverage-lane forest roots are the target list.
+
+        `scripts/build_module_graph.py` records every module no supported root
+        reaches as an auxiliary forest. Its paper roots (the aggregators, the
+        PaperComplete* audits and the correspondence audits) are what the
+        coverage build exists to compile, including the audits that cite no
+        ledger row themselves.
+        """
+
+        claims = json.loads(
+            (fast.ROOT / "docs" / "claims.json").read_text(encoding="utf-8")
+        )
+        auxiliary = claims["machine_readable_paper"]["module_graph"][
+            "auxiliary_roots"
+        ]
+        lane = {root for root in auxiliary if "Paper" in root}
+        targets = coverage_build_targets()
+
+        self.assertLessEqual(
+            COVERAGE_EXCLUDED_AUXILIARY_ROOTS,
+            set(auxiliary),
+            "a coverage-build exclusion is no longer an auxiliary root; drop it",
+        )
+        self.assertEqual(
+            sorted(lane - COVERAGE_EXCLUDED_AUXILIARY_ROOTS - set(targets)),
+            [],
+            f"coverage-lane auxiliary roots missing from {COVERAGE_WORKFLOW}",
+        )
+        # The unchecked #68 certificates must stay out of every compiled
+        # environment, this one included.
+        modules = fast.discover(fast.ROOT)
+        covered = fast.reachable(targets, fast.reachable_graph(targets, modules))
+        self.assertEqual(
+            sorted(
+                module
+                for module in covered
+                if module in COVERAGE_EXCLUDED_AUXILIARY_ROOTS
+                or module.startswith("ErdosProblems.Erdos68.FiniteLeadBlocks.")
+                or module == "ErdosProblems.Erdos68.PaperCompleteKernelSizeSum"
+            ),
+            [],
+        )
+
+    def test_every_auxiliary_root_is_compiled_or_excluded(self) -> None:
+        """Every auxiliary root is compiled by CI or excluded with a reason.
+
+        The declaration atlas lists every module of the Lean tree, compiled or
+        not, so atlas presence never shows that CI built a module. The research
+        record and the relation registry therefore require a compiled target:
+        `research_record.compiled_modules` is what the default build roots and
+        the coverage-build targets reach. An auxiliary root outside that set
+        must be a deliberate exclusion, never a silent gap.
+        """
+
+        import research_record
+
+        compiled = research_record.compiled_modules(fast.ROOT)
+        self.assertIsNotNone(compiled, "the compiled module set could not be read")
+        claims = json.loads(
+            (fast.ROOT / "docs" / "claims.json").read_text(encoding="utf-8")
+        )
+        auxiliary = set(
+            claims["machine_readable_paper"]["module_graph"]["auxiliary_roots"]
+        )
+        self.assertEqual(
+            sorted(auxiliary - compiled - COVERAGE_EXCLUDED_AUXILIARY_ROOTS),
+            [],
+            "auxiliary roots no CI job compiles: add each to the coverage-build "
+            f"targets in {COVERAGE_WORKFLOW} when a paper, claim or the ledger "
+            "cites it, otherwise to COVERAGE_EXCLUDED_AUXILIARY_ROOTS with a reason",
+        )
+        self.assertEqual(
+            sorted(COVERAGE_EXCLUDED_AUXILIARY_ROOTS & compiled),
+            [],
+            "an excluded auxiliary root is compiled; drop its exclusion",
+        )
+        self.assertLessEqual(COVERAGE_EXCLUDED_AUXILIARY_ROOTS, auxiliary)
+
+    def test_coverage_build_is_one_owner_outside_the_supported_roots(self) -> None:
+        workflow = read_workflow(COVERAGE_WORKFLOW)
+        targets = coverage_build_targets(workflow)
+        modules = fast.discover(fast.ROOT)
+        graph = fast.reachable_graph([*SUPPORTED_ROOTS, *targets], modules)
+        supported = fast.reachable(SUPPORTED_ROOTS, graph)
+
+        self.assertEqual(workflow.count("python3 scripts/lean_fast_build.py"), 1)
+        self.assertNotRegex(workflow, r"(?m)^\s*run:\s*lake build\b")
+        self.assertEqual(len(targets), len(set(targets)), "duplicate coverage target")
+        # A target the supported roots already reach is compiled by the
+        # required build, so naming it here would make a second owner.
+        self.assertEqual(sorted(set(targets) & supported), [])
+        self.assertEqual(
+            [target for target in targets if not fast.is_registered_lake_module(target)],
+            [],
+            "coverage targets must be Lake library modules",
+        )
+
+    def test_coverage_build_restores_the_main_cache_then_fetches_and_builds(self) -> None:
+        workflow = read_workflow(COVERAGE_WORKFLOW)
+        restore = workflow.index("- name: Restore project Lean cache")
+        toolchain = workflow.index("- name: Install pinned Lean toolchain")
+        dependencies = workflow.index("- name: Fetch pinned dependency build artifacts")
+        build = workflow.index(COVERAGE_BUILD_STEP)
+        save = workflow.index("- name: Save the coverage Lean cache")
+
+        self.assertLess(restore, toolchain)
+        self.assertLess(toolchain, dependencies)
+        self.assertLess(dependencies, build)
+        self.assertLess(build, save)
+        self.assertIn("lake exe cache get", workflow[dependencies:build])
+
+        restore_step = workflow[restore:toolchain]
+        self.assertIn("uses: actions/cache/restore@", restore_step)
+        self.assertIn("path: .lake", restore_step)
+        self.assertIn(
+            f"key: {COVERAGE_CACHE_PREFIX}-${{{{ github.sha }}}}", restore_step
+        )
+        # Newest coverage entry first; otherwise the main cache the required
+        # build and the cache warm save, which holds the supported roots.
+        self.assertEqual(
+            cache_restore_prefixes(restore_step),
+            [
+                f"{COVERAGE_CACHE_PREFIX}-${{{{ github.sha }}}}",
+                COVERAGE_CACHE_PREFIX,
+                MAIN_CACHE_PREFIX,
+            ],
+        )
+
+        save_step = workflow[save:]
+        save_step = save_step[: save_step.index("\n      - ", 1)]
+        self.assertIn("uses: actions/cache/save@", save_step)
+        self.assertIn("path: .lake", save_step)
+        self.assertIn(
+            f"key: {COVERAGE_CACHE_PREFIX}-${{{{ github.sha }}}}", save_step
+        )
+        self.assertIn("if: always()", save_step)
+
+    def test_coverage_cache_is_invisible_to_the_required_build(self) -> None:
+        """lean.yml must never restore a cache the coverage build saved.
+
+        The cache warm stores the dependency-index receipt in `.lake` and
+        lean.yml reuses it; a coverage entry lacks it. If a pull request could
+        restore a coverage entry through a prefix match, its dependency-index
+        check would fall back to the full export.
+        """
+
+        coverage = read_workflow(COVERAGE_WORKFLOW)
+        save = coverage[coverage.index("- name: Save the coverage Lean cache") :]
+        saved_keys = [
+            line.strip().removeprefix("key: ")
+            for line in save.splitlines()[:8]
+            if line.strip().startswith("key: ")
+        ]
+        self.assertEqual(len(saved_keys), 1, "coverage save-key parse drifted")
+        for relative in (
+            ".github/workflows/lean.yml",
+            ".github/workflows/lean-cache-warm.yml",
+        ):
+            workflow = read_workflow(relative)
+            prefixes = cache_restore_prefixes(workflow)
+            self.assertIn(MAIN_CACHE_PREFIX, prefixes, f"{relative} cache-key parse drifted")
+            for prefix in prefixes:
+                self.assertFalse(
+                    saved_keys[0].startswith(prefix),
+                    f"{relative} would restore coverage cache entries via {prefix}",
+                )
+
+    def test_coverage_build_runs_after_merge_on_every_lean_input(self) -> None:
+        workflow = read_workflow(COVERAGE_WORKFLOW)
+        triggers = workflow[workflow.index("\non:\n") : workflow.index("\nconcurrency:\n")]
+
+        self.assertIn("\n  push:\n    branches:\n      - main\n", triggers)
+        self.assertIn("\n  workflow_dispatch:\n", triggers)
+        # Off the pull-request path, so it can never be a required check.
+        self.assertNotIn("pull_request", triggers)
+        self.assertNotIn("lean-coverage-build", read_workflow(".github/workflows/lean.yml"))
+        self.assertIn("cancel-in-progress: false", workflow)
+
+        patterns = coverage_workflow_paths(workflow)
+        for pattern in patterns:
+            self.assertNotRegex(
+                pattern.removesuffix("/**"),
+                r"[*?\[\]!]",
+                f"unsupported path-filter shape: {pattern}",
+            )
+        modules = fast.discover(fast.ROOT)
+        targets = coverage_build_targets(workflow)
+        covered = fast.reachable(targets, fast.reachable_graph(targets, modules))
+        inputs = {
+            modules[module].relative_to(fast.ROOT).as_posix() for module in covered
+        }
+        inputs.update(
+            {
+                "lakefile.toml",
+                "lake-manifest.json",
+                "lean-toolchain",
+                "scripts/lean_fast_build.py",
+                "scripts/lean_build_share.py",
+                "scripts/lean_package_share.py",
+                "scripts/validation_singleflight.py",
+                COVERAGE_WORKFLOW,
+            }
+        )
+        self.assertEqual(
+            sorted(
+                path
+                for path in inputs
+                if not any(workflow_path_matches(path, pattern) for pattern in patterns)
+            ),
+            [],
+            "a coverage-build input is outside the push path filter, so a "
+            "change to it never recompiles the coverage modules",
+        )
+
     def test_fixed_ci_jobs_use_stable_ubuntu_image_and_keep_reader_matrix(self) -> None:
         workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
             encoding="utf-8"
@@ -438,8 +1169,9 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertIn("\n  pull_request:\n", triggers)
         self.assertIn("\n  workflow_dispatch:\n", triggers)
         self.assertNotIn("\n  push:\n", triggers)
-        self.assertIn("Main is protected with both jobs", workflow)
-        self.assertIn("If branch protection is relaxed, restore push validation", workflow)
+        # Validate the release entry itself; comment wording is not a gate.
+        import check_ci_release
+        self.assertEqual(check_ci_release.workflow_errors(workflow), [])
 
     def test_paper_only_skip_cannot_stand_in_for_unverified_layout_inputs(self):
         """GitHub reports a skipped required Lean job as success.

@@ -14,7 +14,9 @@ For R_n = sum_{k>n} 1/(2**k - 1), the bounds used here follow from
 and 1/(1 - 2**(-k)) <= 2.  Hence
     2**(-n) < R_n <= 2**(-n) + 2/(3 * 4**n).
 These analytic bounds, not floating-point tail approximations, certify every
-earlier skip and the rejection.  Taking a digit preserves r <= R_n whenever
+earlier skip and the rejection.  The upper bound is strictly below the current
+weight, so each greedy take is forced for a subsum representation.  Taking a
+digit preserves r <= R_n whenever
 the preceding remainder was <= R_{n-1} = 1/(2**n - 1) + R_n.
 
 The factorial check verifies finite telescoping identities and sample greedy
@@ -43,6 +45,8 @@ def certify_late_rejection(target: Fraction) -> dict:
     require(target in (Fraction(189, 388), Fraction(577, 388)), "target domain")
     for n in range(1, 18):
         weight = Fraction(1, 2**n - 1)
+        upper_tail = Fraction(1, 2**n) + Fraction(2, 3 * 4**n)
+        require(upper_tail < weight, f"greedy choice not forced at {n}")
         if remainder >= weight:
             selected.append(n)
             remainder -= weight
@@ -51,7 +55,6 @@ def certify_late_rejection(target: Fraction) -> dict:
             require(remainder <= lower_tail, f"earlier rejection possible at {n}")
             earlier_skips.append(n)
         else:
-            upper_tail = Fraction(1, 2**n) + Fraction(2, 3 * 4**n)
             require(upper_tail < remainder < weight, "step-17 gap certificate")
 
     expected = [2, 3, 7, 9, 10, 14, 15, 16]

@@ -20,9 +20,13 @@ class Prove2MeCompatTests(unittest.TestCase):
         self.assertIn("remaining_open.universal_257_all_infinite_supports", packet["remaining_open_proposition_ids"])
         self.assertEqual(packet["native_draft"]["theorem_name"],
                          "ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim")
-        self.assertIn("WeightedReturn.lean#L120", packet["native_draft"]["source"])
-        self.assertIn("plectis-erdos/blob/", packet["native_draft"]["source"])
-        self.assertIn("erdos-257-mersenne-support-subseries.tex#L54", packet["native_draft"]["paper_source"])
+        if packet["public_source_commit"] is None:
+            self.assertIsNone(packet["native_draft"]["source"])
+            self.assertIsNone(packet["native_draft"]["paper_source"])
+        else:
+            self.assertIn("WeightedReturn.lean#L120", packet["native_draft"]["source"])
+            self.assertIn("plectis-erdos/blob/", packet["native_draft"]["source"])
+            self.assertIn("erdos-257-mersenne-support-subseries.tex#L54", packet["native_draft"]["paper_source"])
         self.assertEqual(packet["mathlib_rev"], "5e932f97dd25535344f80f9dd8da3aab83df0fe6")
 
     def test_reciprocal_257_remains_selectable_as_portability_pilot(self):
@@ -31,10 +35,14 @@ class Prove2MeCompatTests(unittest.TestCase):
         self.assertEqual(packet["paper_label"], "res:reciprocal-support")
         self.assertEqual(packet["native_draft"]["theorem_name"],
                          "Erdos249257.irrational_erdosSupportSeries_of_summable_reciprocal")
-        self.assertIn("AllBaseReciprocalSupportIrrationality.lean#L395",
-                      packet["native_draft"]["source"])
-        self.assertIn("erdos-257-mersenne-support-subseries.tex#L90",
-                      packet["native_draft"]["paper_source"])
+        if packet["public_source_commit"] is None:
+            self.assertIsNone(packet["native_draft"]["source"])
+            self.assertIsNone(packet["native_draft"]["paper_source"])
+        else:
+            self.assertIn("AllBaseReciprocalSupportIrrationality.lean#L395",
+                          packet["native_draft"]["source"])
+            self.assertIn("erdos-257-mersenne-support-subseries.tex#L90",
+                          packet["native_draft"]["paper_source"])
         self.assertIn("environment_unverified", compat.validate(packet)["blockers"])
 
     def test_249_remains_selectable_with_its_own_source_and_boundary(self):
@@ -63,11 +71,13 @@ class Prove2MeCompatTests(unittest.TestCase):
         self.assertIn("universal_257_all_infinite_supports",
                       packet["remaining_open_proposition_ids"][0])
         self.assertIn("WeightedReturn.lean:120", packet["local_attachment"]["source_declaration"])
-        self.assertIn("AnalyticTargets.lean:75", packet["local_attachment"]["claim_type_definition"])
+        interface = compat.UNITS[unit]["claim_interface_source"]
+        expected_line = compat.source_line(interface, compat.UNITS[unit]["claim_interface_needle"])
+        self.assertEqual(packet["local_attachment"]["claim_type_definition"],
+                         f"{interface}:{expected_line}")
         self.assertIn("environment_unverified", compat.validate(packet)["blockers"])
         self.assertIn("platformized_source_missing", compat.validate(packet)["blockers"])
         tampered = copy.deepcopy(packet)
-        interface = compat.UNITS[unit]["claim_interface_source"]
         tampered["sources_sha256"][interface] = "0" * 64
         self.assertIn("source_or_claim_mismatch", compat.validate(tampered)["blockers"])
 
@@ -90,7 +100,12 @@ class Prove2MeCompatTests(unittest.TestCase):
                                    "toolchain": self.packet["lean_toolchain"]}
         stage["source_sha256"] = self.packet["sources_sha256"][compat.UNITS[compat.DEFAULT_UNIT]["lean_source"]]
         stage["staged_type"] = stage["original_type"]
-        self.assertEqual(compat.validate(self.packet, env, stage)["status"], "draft_for_review")
+        ready = compat.validate(self.packet, env, stage)
+        if self.packet["public_source_commit"] is None:
+            self.assertEqual(ready["status"], "blocked")
+            self.assertIn("source_not_at_public_main", ready["blockers"])
+        else:
+            self.assertEqual(ready["status"], "draft_for_review")
         tampered = copy.deepcopy(self.packet)
         tampered["sources_sha256"][compat.UNITS[compat.DEFAULT_UNIT]["lean_source"]] = "0" * 64
         self.assertIn("source_or_claim_mismatch", compat.validate(tampered)["blockers"])

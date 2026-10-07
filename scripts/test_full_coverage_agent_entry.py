@@ -95,7 +95,7 @@ def assert_complete(packet: dict) -> None:
         "mathematical programme coverage regressed",
     )
     require(
-        coverage["claim_status_class_count"] == 7,
+        coverage["claim_status_class_count"] == 8,
         "claim status class coverage drifted",
     )
     require(

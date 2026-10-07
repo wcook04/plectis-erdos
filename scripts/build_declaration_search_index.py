@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import gzip
 import hashlib
+import io
 import json
 import sys
 from pathlib import Path
@@ -33,7 +34,12 @@ def render() -> bytes:
         sort_keys=True,
         separators=(",", ":"),
     ).encode("utf-8")
-    return gzip.compress(raw, compresslevel=6, mtime=0)
+    # Match semantic_corpus_storage: gzip.compress(mtime=0) delegates its OS
+    # header byte to zlib on Python 3.11/3.12, changing receipts across hosts.
+    output = io.BytesIO()
+    with gzip.GzipFile(fileobj=output, mode="wb", compresslevel=6, mtime=0) as stream:
+        stream.write(raw)
+    return output.getvalue()
 
 
 def sha256_bytes(content: bytes) -> str:

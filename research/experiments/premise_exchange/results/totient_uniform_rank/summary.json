@@ -1,0 +1,51 @@
+{
+  "evidence": "Lean application and remaining-goal traces",
+  "boundary": "Closure proves the displayed conditional statement; it does not establish novelty or any unstated premise.",
+  "transitions": [
+    {
+      "question": "totient_uniform_rank_barrier_from_arithmetic_separation",
+      "candidate": "three_prime_specific_bound",
+      "application_accepted": false,
+      "proof_closed": false,
+      "obligations_after_application": [],
+      "remaining_obligations": []
+    },
+    {
+      "question": "totient_uniform_rank_barrier_from_arithmetic_separation",
+      "candidate": "generic_obstruction_exposes_arithmetic_obligation",
+      "application_accepted": true,
+      "proof_closed": false,
+      "obligations_after_application": [
+        {
+          "node_id": "ps_fd806d87a52465c2",
+          "case": null,
+          "target": "\u22a2 \u2200 (i k : \u2115), i \u2260 k \u2192 \u2200 (\u03b7 : \u211d), 0 < \u03b7 \u2192 \u2203 j, 1 - \u03b7 < |totientHankel i j - totientHankel k j|",
+          "rendered": "A : \u2115 \u2192 \u2115 \u2192 \u211d\nhA : FiniteSeparatedRank A\nE : \u211d\nhE : 0 \u2264 E\nherr : \u2200 (i j : \u2115), |totientHankel i j - A i j| \u2264 E\n\u22a2 \u2200 (i k : \u2115), i \u2260 k \u2192 \u2200 (\u03b7 : \u211d), 0 < \u03b7 \u2192 \u2203 j, 1 - \u03b7 < |totientHankel i j - totientHankel k j|"
+        }
+      ],
+      "remaining_obligations": [
+        {
+          "node_id": "ps_fd806d87a52465c2",
+          "case": null,
+          "target": "\u22a2 \u2200 (i k : \u2115), i \u2260 k \u2192 \u2200 (\u03b7 : \u211d), 0 < \u03b7 \u2192 \u2203 j, 1 - \u03b7 < |totientHankel i j - totientHankel k j|",
+          "rendered": "A : \u2115 \u2192 \u2115 \u2192 \u211d\nhA : FiniteSeparatedRank A\nE : \u211d\nhE : 0 \u2264 E\nherr : \u2200 (i j : \u2115), |totientHankel i j - A i j| \u2264 E\n\u22a2 \u2200 (i k : \u2115), i \u2260 k \u2192 \u2200 (\u03b7 : \u211d), 0 < \u03b7 \u2192 \u2203 j, 1 - \u03b7 < |totientHankel i j - totientHankel k j|"
+        }
+      ]
+    },
+    {
+      "question": "totient_uniform_rank_barrier_from_arithmetic_separation",
+      "candidate": "arithmetic_separation_closes_shared_obstruction",
+      "application_accepted": true,
+      "proof_closed": true,
+      "obligations_after_application": [
+        {
+          "node_id": "ps_fd806d87a52465c2",
+          "case": null,
+          "target": "\u22a2 \u2200 (i k : \u2115), i \u2260 k \u2192 \u2200 (\u03b7 : \u211d), 0 < \u03b7 \u2192 \u2203 j, 1 - \u03b7 < |totientHankel i j - totientHankel k j|",
+          "rendered": "A : \u2115 \u2192 \u2115 \u2192 \u211d\nhA : FiniteSeparatedRank A\nE : \u211d\nhE : 0 \u2264 E\nherr : \u2200 (i j : \u2115), |totientHankel i j - A i j| \u2264 E\n\u22a2 \u2200 (i k : \u2115), i \u2260 k \u2192 \u2200 (\u03b7 : \u211d), 0 < \u03b7 \u2192 \u2203 j, 1 - \u03b7 < |totientHankel i j - totientHankel k j|"
+        }
+      ],
+      "remaining_obligations": []
+    }
+  ]
+}

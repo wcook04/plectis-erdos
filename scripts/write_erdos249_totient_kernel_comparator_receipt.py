@@ -33,7 +33,6 @@ EXPECTED_MISMATCH = (
     "'Erdos249257.ExternalVerification249TotientKernelBasis."
     "allSlopeAffineTotientFormsLinearIndependent'"
 )
-INFRASTRUCTURE_EXITS = {124, 125, 126, 127, -999}
 
 
 def digest(path: Path) -> str:
@@ -41,7 +40,7 @@ def digest(path: Path) -> str:
 
 
 def negative_is_semantic(exit_code: int, log: str) -> bool:
-    return exit_code != 0 and exit_code not in INFRASTRUCTURE_EXITS and EXPECTED_MISMATCH in log
+    return exit_code == 1 and EXPECTED_MISMATCH in log
 
 
 def main() -> int:

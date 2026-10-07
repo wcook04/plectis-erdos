@@ -23,7 +23,8 @@ PAPERS = erdos1041-lemniscate-reasoning-surface \
   erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
   erdos-269-three-prime-running-lcm erdos-1041-lemniscate-newton-flow \
   erdos-1049-rational-base-lambert \
-  optimal-sparse-perturbations
+  optimal-sparse-perturbations writing-mathematics-from-reviewed-revisions \
+  writing-a-good-mathematical-paper
 NOTES = erdos-68-factorial-denominator-irrationality \
   erdos-249-binary-totient-series erdos-257-mersenne-support-subseries \
   erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
@@ -38,7 +39,9 @@ REASONING_ASSEMBLER = ../scripts/assemble_reasoning_surfaces.py
 REASONING_COORDINATES = ../scripts/refresh_reasoning_source_coordinates.py
 REASONING_249_PARTS = $(wildcard reasoning-parts/erdos249/*.tex)
 REASONING_257_PARTS = $(wildcard reasoning-parts/erdos257/*.tex)
-VPATH = 68:243:249:251:257:269:1041:1049:synthesis:systems:archive:.
+EXPOSITION_PARTS = $(wildcard exposition/parts/*.tex)
+EVIDENCE_PAPERS = $(patsubst evidence/%.tex,%.pdf,$(wildcard evidence/*.tex))
+VPATH = 68:243:249:251:257:269:1041:1049:synthesis:systems:exposition:archive:.
 
 .PHONY: all check clean sync-root
 
@@ -53,6 +56,7 @@ check: all
 	python3 $(REASONING_ASSEMBLER) --check
 	python3 ../scripts/check_rendered_paper_boundary.py
 	python3 ../scripts/check_problem_note_sources.py
+	python3 ../scripts/check_paper_evidence_pdfs.py
 
 # The public reasoning manuscripts are flat generated projections. Their
 # authored parts remain small enough for focused mathematical review.
@@ -65,6 +69,11 @@ check: all
 # Short and long problem papers and synthesis publications track the preamble.
 $(NOTES:%=%.pdf) $(SYNTHESIS:%=%.pdf) $(filter %-reasoning-surface.pdf,$(PAPERS:%=%.pdf)): $(PREAMBLE)
 $(PAPERS:%=%.pdf): paper-house-style.sty
+writing-mathematics-from-reviewed-revisions.pdf: $(EXPOSITION_PARTS)
+# Evidence marks and their placement code are included by the TeX sources.
+# Rebuild their PDFs when the evidence owner changes an included sidecar,
+# including a record-commit pin, even if the authored manuscript is unchanged.
+$(EVIDENCE_PAPERS): %.pdf: evidence/%.tex paper-evidence.tex
 
 # Only the mathematical gateway owns Lean source-link aliases. Keeping every
 # unrelated manuscript in this prerequisite list rebuilt the complete paper
@@ -74,7 +83,7 @@ $(ALIASES): archive/erdos249-257-main-paper.tex ../scripts/build_paper_module_al
 
 %.pdf: %.tex $(ALIASES)
 	@if command -v tectonic >/dev/null 2>&1; then \
-	  tectonic -o . -Z search-path=. $< ; \
+	  tectonic -o . -Z search-path=. --keep-intermediates $< ; \
 	else \
 	  TEXINPUTS="$(CURDIR)//:$$TEXINPUTS" pdflatex -output-directory . $< && \
 	  TEXINPUTS="$(CURDIR)//:$$TEXINPUTS" pdflatex -output-directory . $< ; \

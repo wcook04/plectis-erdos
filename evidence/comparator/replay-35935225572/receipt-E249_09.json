@@ -1,0 +1,133 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-24T00:17:25Z",
+  "entry": "E249_09",
+  "github": {
+    "sha": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+    "ref": "refs/heads/palomar/comparator-cycle-20260923",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35935225572",
+    "run_attempt": "1",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E249_09.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E249_09",
+  "theorem_count": 30,
+  "theorem_names": [
+    "PalomarCorpus.E249.PaperStatementsA.eq_prime_pow_of_not_dvd_periodLcm",
+    "PalomarCorpus.E249.PaperStatementsA.irrational_totient_series_of_lcm_cone_nonintegrality_supply",
+    "PalomarCorpus.E249.PaperStatementsAJ.composite_dilation_defect_eq_zero_of_prime_support",
+    "PalomarCorpus.E249.PaperStatementsAJ.composite_dilation_defect_univ_six_one",
+    "PalomarCorpus.E249.PaperStatementsAJ.composite_dilation_defect_univ_six_one_card",
+    "PalomarCorpus.E249.PaperStatementsAJ.sum_divisors_totient_ne_totient",
+    "PalomarCorpus.E249.PaperStatementsAT.certificate_denominator_exclusion",
+    "PalomarCorpus.E249.PaperStatementsAT.clean_lcm_ray_factorisation",
+    "PalomarCorpus.E249.PaperStatementsAT.lcm_grid_flatness",
+    "PalomarCorpus.E249.PaperStatementsAT.lcm_grid_fractional_parts",
+    "PalomarCorpus.E249.PaperStatementsAT.lcm_grid_multiplier_positive",
+    "PalomarCorpus.E249.PaperStatementsAT.lcm_grid_supply_iff",
+    "PalomarCorpus.E249.PaperStatementsAT.unclean_lcm_ray_counterexample",
+    "PalomarCorpus.E249.PaperStatementsAU.irrational_of_period_multiple_certificate_supply",
+    "PalomarCorpus.E249.PaperStatementsAU.period_multiple_certificate_at_one",
+    "PalomarCorpus.E249.PaperStatementsAU.period_multiple_certificate_supply_iff",
+    "PalomarCorpus.E249.PaperStatementsAU.rational_forces_period_multiple_integrality",
+    "PalomarCorpus.E249.PaperStatementsAX.joint35ConeWindow_eq",
+    "PalomarCorpus.E249.PaperStatementsAX.joint35_nonintegral_of_separated_window",
+    "PalomarCorpus.E249.PaperStatementsAX.joint35_truncation_error",
+    "PalomarCorpus.E249.PaperStatementsAX.totientTail_enclosure",
+    "PalomarCorpus.E249.PaperStatementsBD.composite_dilation_divisor_count",
+    "PalomarCorpus.E249.PaperStatementsBD.composite_dilation_divisor_count_prime_support",
+    "PalomarCorpus.E249.PaperStatementsBD.lambert_support_series",
+    "PalomarCorpus.E249.PaperStatementsBD.lambert_support_series_restricted",
+    "PalomarCorpus.E249.PaperStatementsBE.transportResidueKernel_eq_mobiusTermKernel",
+    "PalomarCorpus.E249.PaperStatementsBN.totient_convolution_weight_mul_zeta",
+    "PalomarCorpus.E249.PaperStatementsBN.totient_convolution_weight_not_periodic",
+    "PalomarCorpus.E249.PaperStatementsBN.totient_convolution_weight_prime",
+    "PalomarCorpus.E249.PaperStatementsBN.totient_convolution_weight_unbounded"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "defea06ea683f30e543aa9edd4989202c5c2fdbf0f278dd885f8d9780e80335c",
+    "comparator.json": "07d2d07fdf192be1edc9ce5c6405514f03585a14dd79fa31a59f2aad46d0a1c4",
+    "formalization.yaml": "8e46ef3af5ce8762348b6f5bfba56e99b8d57101dfa5b4fc1f8051e41b18c99b"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E249_09.lean": "1d71cf0f4f2d6e72261e7b725592c636180f4a7ef47e18fcb0bfd8afec4869f8",
+      "Solutions/PalomarCorpus/E249_09/PaperStatementsA.lean": "4358f0183d937acacb61b3c5f4863a46082aa01e884f0b2eee861fc10bae4ef5",
+      "Solutions/PalomarCorpus/E249_09/PaperStatementsAJ.lean": "1bc2d0ec874b4810b5104f34303e3c61eff32320c2f129271cb7173993912c1a",
+      "Solutions/PalomarCorpus/E249_09/PaperStatementsAT.lean": "356c72491b92d8d3b3678545925ba0cc71144b8b03a8192f5817eeb7535e3d9c",
+      "Solutions/PalomarCorpus/E249_09/PaperStatementsAU.lean": "1b1b35250375513c71789d48014c6470158aa8e83b5e6616f0fd9a976731195d",
+      "Solutions/PalomarCorpus/E249_09/PaperStatementsAX.lean": "d5532283ec963d8c10f9533ef84b16899ee0b8da3005cd69303b493bd47f4761",
+      "Solutions/PalomarCorpus/E249_09/PaperStatementsBD.lean": "291bb3701ce69cd4e984fc6a339453e2a333bbe84785014d761899cf270b8b0a",
+      "Solutions/PalomarCorpus/E249_09/PaperStatementsBE.lean": "a4f323c3b1f7be34716022742a86a90e51dcdd60d54c7d548f41f28937a83c24",
+      "Solutions/PalomarCorpus/E249_09/PaperStatementsBN.lean": "4a35569f1d5f2ead23e1a0d7f0c1c918660cf4a4de2068da798384f1efe59d2a",
+      "Solutions/PalomarCorpus/E249_09/Statement.lean": "0680b1b1e3b3c56a3e392800405888c3cdaf0554cd29e9194d385d3f51895023"
+    },
+    "sha256": "6120cd92144f5d165346d5a619d4e2973a39fcbfe6a03ef97bb0786681fbc7fd"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 7.54
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 25.972
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 35.802,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 6.053
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

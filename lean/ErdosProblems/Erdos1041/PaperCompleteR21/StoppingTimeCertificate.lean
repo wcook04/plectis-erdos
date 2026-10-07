@@ -1,10 +1,10 @@
 import Mathlib
 
 /-!
-# Erdős 1041: the recorded stopping-time comparison, in exact arithmetic
+# Erdős 1041: the closing inequalities at the recorded stopping time
 
 The long paper's low-critical section (`paper/reasoning-parts/erdos1041/core.tex`,
-lines 660–671) records a terminal time `X = 635762889599/10^12` for the
+lines 679–685) records a terminal time `X = 635762889599/10^12` for the
 area-growth certificate and asserts, as the arithmetic that turns that
 stopping time into the two stated cutoffs,
 

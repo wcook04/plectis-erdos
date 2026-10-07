@@ -1,0 +1,36 @@
+/-- The long record's actual jump index. -/
+def paperJumpIndex (a : ℕ) : ℕ := a + Nat.log 3 (2 ^ a) + Nat.log 5 (2 ^ a)
+
+/-- The long record's exact cap. It is NOT the short note's `90` cap. -/
+noncomputable def longPaperCap (B a : ℕ) : ℕ :=
+  ⌊(B : ℚ) * carryMajorantQ (paperJumpIndex a)⌋₊
+
+/-- Only growth, not validity as a carry bound, is required for this lemma. -/
+theorem start_le_longPaperCap {B a : ℕ} (hB : 0 < B) : a ≤ longPaperCap B a := by
+  have hn : a ≤ paperJumpIndex a := by unfold paperJumpIndex; omega
+  have hnon : (0 : ℚ) ≤ carryMajorantQ (paperJumpIndex a) := by
+    unfold carryMajorantQ
+    positivity
+  have hsq : (paperJumpIndex a : ℚ) ≤ (paperJumpIndex a : ℚ) ^ 2 := by
+    cases hidx : paperJumpIndex a with
+    | zero => norm_num
+    | succ n => push_cast; nlinarith [(Nat.cast_nonneg n : (0 : ℚ) ≤ n)]
+  have hQ : (paperJumpIndex a : ℚ) ≤ carryMajorantQ (paperJumpIndex a) := by
+    unfold carryMajorantQ
+    nlinarith
+  have hBR : (1 : ℚ) ≤ B := by exact_mod_cast hB
+  apply (Nat.le_floor_iff (mul_nonneg (Nat.cast_nonneg B) hnon)).mpr
+  calc
+    (a : ℚ) ≤ (paperJumpIndex a : ℚ) := by exact_mod_cast hn
+    _ ≤ carryMajorantQ (paperJumpIndex a) := hQ
+    _ ≤ (B : ℚ) * carryMajorantQ (paperJumpIndex a) := by nlinarith
+
+/-- Crude but sufficient upper bound on a fixed-length window modulus. -/
+theorem actualWindowProduct_le_thirty_pow (lo len : ℕ) :
+    actualWindowProduct lo len ≤ 30 ^ len := by
+  induction len with
+  | zero => simp [actualWindowProduct]
+  | succ len ih =>
+    simp only [actualWindowProduct, Finset.prod_range_succ] at ih ⊢
+    rw [pow_succ]
+    exact Nat.mul_le_mul ih (dyadicBlockBase235_mem_interval (lo + len)).2

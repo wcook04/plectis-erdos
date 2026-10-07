@@ -1,0 +1,83 @@
+{
+  "schema": "erdos257-public-computation/1",
+  "verification_scope": "finite_computation_only",
+  "claim_boundary": "A finite exact computation over the stated range. It proves no statement about unbounded ranges and decides no Erdős problem. No Lean kernel is run.",
+  "case": "seam-200000",
+  "program": "seam_orbit_replay.py",
+  "program_sha256": "93ee54458c570e2a79754680b37904b29ee25fb3cabcdbea853bb80660e33768",
+  "arguments": [],
+  "requires": "stdlib",
+  "recorded_on": "2026-09-23",
+  "recorded_with": {
+    "python": "3.14.7",
+    "platform": "macOS-15.6.1",
+    "note": "Recorded from a direct run of the same program bytes with no arguments (337 s CPU, 636 s wall on a loaded machine)."
+  },
+  "observed_wall_seconds": 636.0,
+  "comparison": "integers, strings and booleans exact; floats rel_tol = abs_tol = 1e-12; timing and output-path fields omitted",
+  "paper_figures_reproduced": "Rows 6..200000: R:M:U = 100197:49899:49898; the square-root target fails at exactly one reset row r >= 6, namely r = 7; the longest right run has length 19 and follows the reset at row 158096. The row-stream and producer-stream hashes equal those of the earlier 200,000-row receipt, whose own count from row 5 is U = 49899.",
+  "result": {
+    "branch_counts_rows_5_to_limit": {
+      "M": 49899,
+      "R": 100197,
+      "U": 49899
+    },
+    "branch_counts_rows_6_to_limit": {
+      "M": 49899,
+      "R": 100197,
+      "U": 49898
+    },
+    "branch_counts_rows_6_to_window_end": {
+      "M": 605,
+      "R": 1285,
+      "U": 604,
+      "window_end": 2500
+    },
+    "direct_definition_checked_through": 100,
+    "final_state": {
+      "largest_skipped_rank": 199999,
+      "remainder": {
+        "bit_length": 200001,
+        "low64_hex": "0xd8cbeb21887922cf",
+        "sha256": "33815ff1f4240c51796b51ae980268e09970bbcb951179f7f3a6277b40f115b7"
+      },
+      "row": 200000
+    },
+    "literal_reference": {
+      "agrees": true,
+      "rows": [
+        5,
+        2000
+      ]
+    },
+    "longest_right_run": 19,
+    "max_gap_between_resets": 20,
+    "max_gap_pair": [
+      158096,
+      158116
+    ],
+    "minimum_log2_margin_row": 14,
+    "minimum_log2_margin_rows_14_up": 1.1119469418199799,
+    "probe": "erdos257_seam_orbit_replay",
+    "producer_stream_sha256": "68a4817e7a6a837372e9bd97ac59281b33d5e1d67cc7adb0ea7b7ee10e66909e",
+    "reset_row_before_first_longest_run": 158096,
+    "row_stream_sha256": "b7f2127ec0eafa3acfa0d483560b0b0791b58f1e3526aced670cdf18728756f6",
+    "rows": [
+      5,
+      200000
+    ],
+    "target_failures": [
+      {
+        "branch": "U",
+        "deviation": -30,
+        "reset_row": 5
+      },
+      {
+        "branch": "M",
+        "deviation": 9,
+        "reset_row": 7
+      }
+    ],
+    "target_inequality": "Delta_(r+1)^2 > 2^(r+5) at every U or M reset row r"
+  }
+}

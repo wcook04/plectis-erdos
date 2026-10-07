@@ -1,0 +1,261 @@
+{
+ "schema": "plectis-paper-page-baseline/1",
+ "rule": "Frozen release page limits with individually reviewed revisions recorded below. scripts/check_paper_evidence_pdfs.py enforces the current per-paper limits.",
+ "base": "147f3f1da400a84dcb3013ea6cef75dc8f382b09",
+ "pages": {
+  "erdos-68-factorial-denominator-irrationality": 19,
+  "erdos-243-reciprocal-tail-rigidity": 21,
+  "erdos-249-binary-totient-series": 17,
+  "erdos-251-prime-gap-dyadic-series": 15,
+  "erdos-257-mersenne-support-subseries": 27,
+  "erdos-269-three-prime-running-lcm": 17,
+  "erdos-1041-lemniscate-newton-flow": 32,
+  "erdos-1049-rational-base-lambert": 21,
+  "erdos68-factorial-reasoning-surface": 51,
+  "erdos243-reciprocal-tail-reasoning-surface": 61,
+  "erdos249-totient-reasoning-surface": 164,
+  "erdos251-prime-gap-reasoning-surface": 49,
+  "erdos257-mersenne-reasoning-surface": 166,
+  "erdos269-running-lcm-reasoning-surface": 74,
+  "erdos1041-lemniscate-reasoning-surface": 86,
+  "erdos1049-rational-base-lambert-reasoning-surface": 81
+ },
+ "total": 901,
+ "revisions": [
+  {
+   "date": "2026-09-26",
+   "paper": "erdos269-running-lcm-reasoning-surface",
+   "from": 53,
+   "to": 65,
+   "reason": "complete record: general all-primes distinct-height theorem with proof, the dyadic {2,3,5} proof, the decoding criterion and the three- and four-prime certificates, and the single-prime sub-sum theorem added 26 Sep 2026"
+  },
+  {
+   "date": "2026-09-29",
+   "paper": "erdos-257-mersenne-support-subseries",
+   "from": 22,
+   "to": 23,
+   "reason": "Round8 adds subsection3.7 with separated-cut algebraic-base transfer, explicit non-chain host and exact scope boundaries; same typography. Sourcecommit2a8c1667; added content visually checked onpage13."
+  },
+  {
+   "date": "2026-09-29",
+   "paper": "erdos269-running-lcm-reasoning-surface",
+   "from": 65,
+   "to": 69,
+   "reason": "Round8 adds ordinary late-swap and independent-clock proofs, explicit four-clock/collision controls and selected-staircase Smith/height analysis; same typography. Sourcecommit2a8c1667; new proof pages21–22 and finalbibliography page69 visually checked."
+  },
+  {
+   "date": "2026-09-29",
+   "paper": "erdos-269-three-prime-running-lcm",
+   "from": 16,
+   "to": 17,
+   "reason": "Round-12 register pass rewrote the short paper (4,301 to 4,109 prose words) and Type A restored the evidence remark naming the two-prime result's Lean input; same typography."
+  },
+  {
+   "date": "2026-09-29",
+   "paper": "erdos1041-lemniscate-reasoning-surface",
+   "from": 78,
+   "to": 83,
+   "reason": "Round-12 rewrite moved nine short-paper results into the record with their proofs (declared merges) and Type A restored nine evidence remarks naming Lean inputs; same typography."
+  },
+  {
+   "date": "2026-09-29",
+   "paper": "erdos1049-rational-base-lambert-reasoning-surface",
+   "from": 73,
+   "to": 75,
+   "reason": "Round-12 rewrite moved ten short-paper results into the record (declared merges); same typography."
+  },
+  {
+   "date": "2026-09-29",
+   "paper": "erdos-257-mersenne-support-subseries",
+   "from": 23,
+   "to": 24,
+   "reason": "Round-13 supplies complete/incomplete modular-period estimates, distinguishes the dyadic sample count from each length, and makes the shared witness explicit. Same typography; GPT-6.1 Sol and integrating Type A reviewed source delta and native pages 3–4."
+  },
+  {
+   "date": "2026-09-29",
+   "paper": "erdos1041-lemniscate-reasoning-surface",
+   "from": 83,
+   "to": 84,
+   "reason": "Round-13 places missing analytic-input qualifications beside the ordinary low-critical-value, isolated-value and topological assertions. Same typography; GPT-6.1 Sol and integrating Type A reviewed source delta and native page 27."
+  },
+  {
+   "date": "2026-09-29",
+   "paper": "erdos1049-rational-base-lambert-reasoning-surface",
+   "from": 75,
+   "to": 77,
+   "reason": "Round-13 separates the checked polynomial-shift proof from the retained broader ordinary ratio-limit argument and gives the finite-convolution calculation of the 8F correction. Same typography; GPT-6.1 Sol and integrating Type A reviewed source delta and native pages 34–35."
+  },
+  {
+   "date": "2026-09-30",
+   "paper": "erdos68-factorial-reasoning-surface",
+   "from": 49,
+   "to": 50,
+   "reason": "Full inline Lean/Comparator support pairs use the same targets as the margin; final reviewed R5 native layout is50pages with zero overfull boxes.",
+   "review_capture": "cap_quick_r5_full_inline_evidence_requires_reviewe_06a3f322d6d7"
+  },
+  {
+   "date": "2026-09-30",
+   "paper": "erdos-243-reciprocal-tail-rigidity",
+   "from": 19,
+   "to": 20,
+   "reason": "Full inline Lean/Comparator support pairs and complete R5 proof narration; final reviewed native layout is20pages with zero overfull boxes.",
+   "review_capture": "cap_quick_r5_full_inline_evidence_requires_reviewe_06a3f322d6d7"
+  },
+  {
+   "date": "2026-09-30",
+   "paper": "erdos243-reciprocal-tail-reasoning-surface",
+   "from": 65,
+   "to": 60,
+   "reason": "R5 prose refinement and full inline evidence reflow produce a reviewed60-page record; retain a tightened regression limit at the complete current layout.",
+   "review_capture": "cap_quick_r5_full_inline_evidence_requires_reviewe_06a3f322d6d7"
+  },
+  {
+   "date": "2026-09-30",
+   "paper": "erdos1041-lemniscate-reasoning-surface",
+   "from": 84,
+   "to": 85,
+   "reason": "Full inline Lean/Comparator support and bounded existing checked component-local prerequisites; final reviewed native layout is85pages with zero overfull boxes.",
+   "review_capture": "cap_quick_r5_full_inline_evidence_requires_reviewe_06a3f322d6d7"
+  },
+  {
+   "date": "2026-09-30",
+   "paper": "erdos-257-mersenne-support-subseries",
+   "from": 24,
+   "to": 25,
+   "reason": "Reviewed R6 exposition additions preserve mathematical statements and typography; independent initial grayscale review and final native compile pass. Flexible proof explanation is the operator requirement.",
+   "review_capture": "cap_quick_refresh_reviewed_pdf_length_baselines_af_b66f0a403d4f",
+   "source_sha256": "69d394b5af4878100d9ae1bebdebfa8059dd9ab0124100f443906ecdb47c38ae",
+   "pdf_sha256": "77f7bc84a3e1f225cdb3d4b5314bddbec62a10ac8d41ada61f7167af5ccf93c8"
+  },
+  {
+   "date": "2026-09-30",
+   "paper": "erdos269-running-lcm-reasoning-surface",
+   "from": 69,
+   "to": 71,
+   "reason": "Reviewed R6 exposition additions preserve mathematical statements and typography; independent initial grayscale review and final native compile pass. Flexible proof explanation is the operator requirement.",
+   "review_capture": "cap_quick_refresh_reviewed_pdf_length_baselines_af_b66f0a403d4f",
+   "source_sha256": "ffa13b92eb6cd062a1605044676927ad665e2c8807c4582761e4a6b8524fb633",
+   "pdf_sha256": "f4869075727d6219f5b2997e22ee91afdd82bd2abf636313cd2c0cc07166c9f6"
+  },
+  {
+   "date": "2026-09-30",
+   "paper": "erdos1049-rational-base-lambert-reasoning-surface",
+   "from": 77,
+   "to": 78,
+   "reason": "Reviewed R6 exposition additions preserve mathematical statements and typography; independent initial grayscale review and final native compile pass. Flexible proof explanation is the operator requirement.",
+   "review_capture": "cap_quick_refresh_reviewed_pdf_length_baselines_af_b66f0a403d4f",
+   "source_sha256": "335826ba9916688d6b6ad9c45dd2a9eb632960c457b187dd94206916f051483d",
+   "pdf_sha256": "660d1c56dac943b5a596f9f830443ca9af4054035452cca2c5e3eb4f4a9afa45"
+  },
+  {
+   "date": "2026-09-30",
+   "paper": "erdos68-factorial-reasoning-surface",
+   "from": 50,
+   "to": 51,
+   "reason": "Reviewed R8 proof explanations and evidence qualifications retain typography; native build has zero overfull boxes. Final bibliography pages are legible, with no stranded proof or caption.",
+   "review_capture": "cap_quick_review_r8_explanatory_pagination_updates_20f849287b56",
+   "source_sha256": "ec45815bc0e5839636eccb9eb32c374cb4c6bdd17db4ac24065cac429685e74c",
+   "pdf_sha256": "da848a6019739a77b87ed0785e4797ebcbfaf955d7b8524777a6ecb23e0f866d",
+   "visual_review": "review/native_arithmetic_a/REVIEW.json"
+  },
+  {
+   "date": "2026-09-30",
+   "paper": "erdos-257-mersenne-support-subseries",
+   "from": 25,
+   "to": 26,
+   "reason": "Reviewed R8 proof explanations and evidence qualifications retain typography; native build has zero overfull boxes. Final bibliography pages are legible, with no stranded proof or caption.",
+   "review_capture": "cap_quick_review_r8_explanatory_pagination_updates_20f849287b56",
+   "source_sha256": "49dde5b195930bca30b6de1b56dff407a0e70559b8495cd33fa46d74822279dc",
+   "pdf_sha256": "dbe8effb652cfe2a4b273856aa7d2395345bebec2b24ae90d1570b281ede1f60",
+   "visual_review": "closeout/PAGINATION_REVIEW.json"
+  },
+  {
+   "date": "2026-09-30",
+   "paper": "erdos269-running-lcm-reasoning-surface",
+   "from": 71,
+   "to": 72,
+   "reason": "Reviewed R8 proof explanations and evidence qualifications retain typography; native build has zero overfull boxes. Final bibliography pages are legible, with no stranded proof or caption.",
+   "review_capture": "cap_quick_review_r8_explanatory_pagination_updates_20f849287b56",
+   "source_sha256": "c0c2af23fb4185613fe45655b735acd75166916ba3a964730d2b01192ebd6fc9",
+   "pdf_sha256": "600d66da9763ca53c97457b108e5d58ae49babd1235cac65c6665b19f904fbd9",
+   "visual_review": "review/native_arithmetic_a/REVIEW.json"
+  },
+  {
+   "date": "2026-10-01",
+   "paper": "erdos-243-reciprocal-tail-rigidity",
+   "from": 20,
+   "to": 21,
+   "reason": "Complete compact verification concordance preserves every recorded statement, including partial support, and moves links away from theorem headings. Existing mathematical typography unchanged; independently inspected table starts and continuations are legible and complete.",
+   "review_capture": "cap_quick_review_r10_page_limits_for_complete_veri_3debb4b22a4f",
+   "source_sha256": "668fd53715f3e8ff43baef623d97f9097b1f6cff769d1883df56caf062baee24",
+   "pdf_sha256": "3ae984a206579ba703e5984eab0e4bcea7a5471148e2234948d340d9a8232273",
+   "visual_review": "review/visual/VISUAL_RECEIPT.json"
+  },
+  {
+   "date": "2026-10-01",
+   "paper": "erdos243-reciprocal-tail-reasoning-surface",
+   "from": 60,
+   "to": 61,
+   "reason": "Complete compact verification concordance preserves every recorded statement, including partial support, and moves links away from theorem headings. Existing mathematical typography unchanged; independently inspected table starts and continuations are legible and complete.",
+   "review_capture": "cap_quick_review_r10_page_limits_for_complete_veri_3debb4b22a4f",
+   "source_sha256": "dfdaab021caf097d09d4d599976937724641ac405372dea1c1f3ecb89d430f0e",
+   "pdf_sha256": "d4878aac4b54973c17b2b2abedd566f4a1700bfbbc108af981bf1561f24240e4",
+   "visual_review": "review/visual/VISUAL_RECEIPT.json"
+  },
+  {
+   "date": "2026-10-01",
+   "paper": "erdos269-running-lcm-reasoning-surface",
+   "from": 72,
+   "to": 74,
+   "reason": "Complete compact verification concordance preserves every recorded statement, including partial support, and moves links away from theorem headings. Existing mathematical typography unchanged; independently inspected table starts and continuations are legible and complete.",
+   "review_capture": "cap_quick_review_r10_page_limits_for_complete_veri_3debb4b22a4f",
+   "source_sha256": "f143752969361bfbbcf56556cbfa9d8bf0d0dee10e9a3abe522c609ee4f23a55",
+   "pdf_sha256": "88f2dec134810f2e7ea2bd60d4f5e9c12e79a1b6faedcf7a2863a4b0fa4ac9f9",
+   "visual_review": "review/visual/VISUAL_RECEIPT.json"
+  },
+  {
+   "date": "2026-10-01",
+   "paper": "erdos1041-lemniscate-reasoning-surface",
+   "from": 85,
+   "to": 86,
+   "reason": "Complete compact verification concordance preserves every recorded statement, including partial support, and moves links away from theorem headings. Existing mathematical typography unchanged; independently inspected table starts and continuations are legible and complete.",
+   "review_capture": "cap_quick_review_r10_page_limits_for_complete_veri_3debb4b22a4f",
+   "source_sha256": "72bba6bb63978a73d92b50a49cdd573f883c7c247baa3de88c70858aacefc349",
+   "pdf_sha256": "aaf5ff65632ed2f8f67d9254d5aa4ddaaab4f7ea8045457e6d953a6a8f69a977",
+   "visual_review": "review/visual/VISUAL_RECEIPT.json"
+  },
+  {
+   "date": "2026-10-01",
+   "paper": "erdos1049-rational-base-lambert-reasoning-surface",
+   "from": 78,
+   "to": 79,
+   "reason": "Complete compact verification concordance preserves every recorded statement, including partial support, and moves links away from theorem headings. Existing mathematical typography unchanged; independently inspected table starts and continuations are legible and complete.",
+   "review_capture": "cap_quick_review_r10_page_limits_for_complete_veri_3debb4b22a4f",
+   "source_sha256": "4a219e2ab8c4228bff86c15a53583ea03485e5785f37e304514b6ba785698577",
+   "pdf_sha256": "6d122006ae5d42eec63f25f23e53df32d7d82eba8f20dc93c0c2e1e2a8c3348d",
+   "visual_review": "review/visual/VISUAL_RECEIPT.json"
+  },
+  {
+   "date": "2026-10-05",
+   "paper": "erdos-257-mersenne-support-subseries",
+   "from": 26,
+   "to": 27,
+   "reason": "Retain the explicit incomplete-orbit estimate, dyadic summation and common finite-distribution argument, with a layer-by-layer nonsummable example. These explain the same hereditary criteria without changing their hypotheses. The existing verification concordance continues on the final page.",
+   "review_capture": "cap_quick_review_third_return_page_growth_in_two_m_ba4c8c9394f4",
+   "source_sha256": "c0d63a763bd2f2c944d079c4e5bdbbe356268d138fd83bdb068464eeb3f2452b",
+   "pdf_sha256": "a1fe287c3c892447bea898b7ee50b3b949445fe64179f80edff93fff1304f55b",
+   "visual_review": "docs/papers/exposition-method/reviews/third-returns-20261005.json"
+  },
+  {
+   "date": "2026-10-05",
+   "paper": "erdos1049-rational-base-lambert-reasoning-surface",
+   "from": 79,
+   "to": 81,
+   "reason": "Retain the distinction between the 2004 polynomial forms and 2016 positive moments, the fixed-rank and fixed-base limits, and the quantifier/height limitations of the arithmetic argument. These prevent borrowing a denominator bound between coefficient families. The existing verification concordance remains complete across its final two pages.",
+   "review_capture": "cap_quick_review_third_return_page_growth_in_two_m_ba4c8c9394f4",
+   "source_sha256": "b3e81fd9513b713a2be7b59524dad08e5615b9abe6854f9d895164ce85483ae9",
+   "pdf_sha256": "c7d49fea2c7eaa2d55089a66af9d52953eb7cd2e1ca89f76fdf94661e78571bd",
+   "visual_review": "docs/papers/exposition-method/reviews/third-returns-20261005.json"
+  }
+ ]
+}

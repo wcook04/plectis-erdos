@@ -1,0 +1,108 @@
+{
+  "schema": "palomar_replay_receipt_v1",
+  "generated_at": "2026-09-24T00:25:56Z",
+  "entry": "E257_46",
+  "github": {
+    "sha": "cc7e541cf2081c6fef5a5e377d52e365e33b01eb",
+    "ref": "refs/heads/palomar/comparator-cycle-20260923",
+    "repository": "wcook04/plectis-erdos-lean",
+    "run_id": "35935225572",
+    "run_attempt": "1",
+    "workflow": "Palomar Comparator replay"
+  },
+  "lean_toolchain": "leanprover/lean4:v4.30.0",
+  "comparator_lean_toolchain": "leanprover/lean4:v4.34.0-rc1",
+  "tool_revisions": {
+    "comparator": "575674928e239f5bc452aab72d1dd7b0f1326494",
+    "lean4export": "a3e35a584f59b390667db7269cd37fca8575e4bf",
+    "landrun": "811cfff51ceaf3d9843708aa6d22e9b84ccac8b4",
+    "nanoda": "68d5ca9db226849b41a6fff59d796ff19d0a8840",
+    "renderer": "32eb98553246ed62b120594297c2b31878a8e53b"
+  },
+  "challenge_module": "PalomarCorpus.E257_46.Challenge",
+  "solution_module": "Solutions.PalomarCorpus.E257_46",
+  "theorem_count": 9,
+  "theorem_names": [
+    "PalomarCorpus.E257.PaperStatementsAC.arithmetic_logarithmic_counterexample",
+    "PalomarCorpus.E257.PaperStatementsAC.logarithmic_initial_interval",
+    "PalomarCorpus.E257.PaperStatementsAC.no_absolute_dyadic_kappaOne_constant",
+    "PalomarCorpus.E257.PaperStatementsL.paper_relaxed_constant_six_every_depth",
+    "PalomarCorpus.E257.PaperStatementsN.paper_cpgs_equiv",
+    "PalomarCorpus.E257.PaperStatementsN.paper_terminal_strip_equiv",
+    "PalomarCorpus.E257.PaperStructuresBS.exists_support_paperCoverCost_ge",
+    "PalomarCorpus.E257.PaperStructuresBS.no_absolute_paperCoverCost_kappaOne_constant",
+    "PalomarCorpus.E257.PaperStructuresBS.sup_condExceedProb_le_paperCoverCost"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "entry_digests": {
+    "Challenge.lean": "2e938de21caeaee178a3aae0e996b0dcbb52d45e6f736152b89c8b7829f2c1cf",
+    "comparator.json": "ad06c5a9cdd38314f5f5bc08e26b03baa5a321afa3ec7859efea44fe55664708",
+    "formalization.yaml": "1c7e88bb445afd44611ae313af0653a7b5aa9647c1ad1db08ff43c5df5e34e71"
+  },
+  "solution": {
+    "files": {
+      "Solutions/PalomarCorpus/E257_46.lean": "c1ee3e6d432c62761210e9b779b67b75375754e4ab4d1520670ca55d89f17cfa",
+      "Solutions/PalomarCorpus/E257_46/PaperStatementsAC.lean": "1c7180a00ce709121bae4559bba6d01b7dc48d53a1f4c2b3c88d6c902faeb6b4",
+      "Solutions/PalomarCorpus/E257_46/PaperStatementsL.lean": "51cbb2b3e5157c8fdb01b8de367d67560f3f70718a224e60ff6d7a775eb591a1",
+      "Solutions/PalomarCorpus/E257_46/PaperStatementsN.lean": "cdbbbf5be94d4eadb5873761ba41184735e41b13542ff13473d68babd04c1e3c",
+      "Solutions/PalomarCorpus/E257_46/PaperStructuresBS.lean": "483149977667b593c121cf3e25dcf749bf1fd524d380bec8837509dafb4f1ee7",
+      "Solutions/PalomarCorpus/E257_46/Statement.lean": "bb3570ecd3226c894b3382bfa40b805a76711a80ea03e6bac07f8536a0e2e0b1"
+    },
+    "sha256": "fe365dd09935773089380b396004e0f647d9687f2273edcbc83d8ee83982de57"
+  },
+  "sandbox_mode": "user-manager",
+  "exit": 0,
+  "process_exit": 0,
+  "kernel_acceptance": {
+    "lean_default": true,
+    "nanoda": true
+  },
+  "render_audit_exit": 0,
+  "verification": {
+    "outcome": "passed",
+    "failure_stage": null,
+    "error": null
+  },
+  "stages": [
+    {
+      "stage": "build_challenge",
+      "returncode": 0,
+      "seconds": 11.272
+    },
+    {
+      "stage": "build_solution",
+      "returncode": 0,
+      "seconds": 117.555
+    },
+    {
+      "stage": "run_comparator",
+      "returncode": 0,
+      "seconds": 170.232,
+      "budget_seconds": 2700
+    },
+    {
+      "stage": "render_audit",
+      "returncode": 0,
+      "seconds": 8.454
+    }
+  ],
+  "axiom_audit": {
+    "permitted_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "enforced_by": "comparator",
+    "render_audit_exit": 0,
+    "independent_axiom_scan": null
+  },
+  "not_established": [
+    "Palomar mechanical verification",
+    "Palomar editorial review",
+    "Palomar registration"
+  ]
+}

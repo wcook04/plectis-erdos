@@ -3,13 +3,18 @@
 # Erdős 1041 research corpus
 
 This directory is the complete public-safe committed research corpus for
-Erdős Problem 1041 at source checkpoint `fd47c99b7f95ee10cbf22bd7e13a3bec9ea6bfac`. The exact
-universal total-variation formulation is refuted by an explicit degree-seven
-counterexample; correspondence with the historical curve-length formulation
-and Hausdorff-measure comparisons remain separate review questions; these files contain proved conditional reductions,
-Lean-checked statements, exact computations, counterexamples, no-go results,
-assimilation records, and live proof-frontier notes. No navigation label or
-experimental receipt upgrades a statement beyond its own hypotheses.
+Erdős Problem 1041 at source checkpoint `fb5c8803c1`. The exact
+Formal Conjectures statement is refuted by ani's degree-seven example. Lean
+proves the total-variation form and the Hausdorff-measure form
+(`erdos1041_counterexample_hausdorff` in
+`lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean`).
+Independent review of its correspondence with the 1958 wording is pending.
+These files contain proved conditional reductions, Lean-checked statements,
+exact computations, counterexamples, no-go results, assimilation records, and
+live proof-frontier notes. No navigation label or experimental receipt
+upgrades a statement beyond its own hypotheses. Notes written before the
+refutation that call the problem open carry a dated status note and are kept
+as history.
 
 Start with [`FRONTIER.md`](FRONTIER.md). It is the dated current state: what
 was refuted and must not be rebuilt, which carriers survive, the new proved

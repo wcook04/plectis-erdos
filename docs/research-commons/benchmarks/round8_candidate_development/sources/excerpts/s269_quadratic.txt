@@ -1,0 +1,54 @@
+
+/-- **General escape.**  Irrationality of the value implies the cofinal
+local-window escape for *any* short bound `sb` that the exponentially growing
+window base eventually beats.  Nothing about `sb` other than that is used, so
+no reshaping or sharpening of the short bound yields a genuinely weaker
+producer. -/
+theorem cofinalLocalWindowEscape_of_irrational_of_beaten
+    (h : Irrational (dyadicShellTsumTailR235 1)) (sb : ℕ → ℕ → ℕ)
+    (hbeat : ∀ B lo : ℕ, 0 < B → ∀ ε : ℝ, 0 < ε →
+        ∃ len : ℕ, 0 < len ∧
+          ((max (sb B (lo + len)) (B * bridgeWidth (lo + len)) : ℕ) : ℝ)
+            / 2 ^ len < ε) :
+    CofinalLocalWindowEscape dyadicBlockBase235 dyadicOrderedBlockDigit235 sb := by
+  intro B hBpos _hBcop lo₀
+  classical
+  set lo : ℕ := lo₀ + 1 with hlo
+  obtain ⟨δ, hδpos, hfar⟩ := exists_dist_lower_bound_of_irrational
+    ((irrational_trueNormalizedState h lo (by omega)).natCast_mul
+      (m := B) (by omega))
+  obtain ⟨len, hlenpos, hlt⟩ := hbeat B lo hBpos δ hδpos
+  refine ⟨lo, len, by omega, hlenpos, ?_, ?_⟩
+  · exact Int.natAbs_pos.mpr (windowBase235_pos lo len).ne'
+  · by_contra hcon
+    rw [not_lt] at hcon
+    obtain ⟨k, hk⟩ := near_integer_of_residue_le_general B lo len
+      (max (sb B (lo + len)) (B * bridgeWidth (lo + len))) hBpos
+      (le_max_right _ _) (le_trans hcon (le_max_left _ _))
+    exact absurd (le_trans (hfar k) hk) (not_le.mpr hlt)
+
+/-- **The whole quadratic family is equivalent to the target.**  For every
+short bound dominated by `c B · (n+1)^2` — in particular every sharpening of
+the Lean width `90 (n+1)^2`, and every rescaling of it — irrationality implies
+the escape.  The same argument works verbatim for any fixed polynomial degree;
+only `exists_pow_gt_quadratic` would change. -/
+theorem cofinalLocalWindowEscape_of_irrational_of_quadratic
+    (h : Irrational (dyadicShellTsumTailR235 1)) (sb : ℕ → ℕ → ℕ) (c : ℕ → ℕ)
+    (hsb : ∀ B n, sb B n ≤ c B * (n + 1) ^ 2) :
+    CofinalLocalWindowEscape dyadicBlockBase235 dyadicOrderedBlockDigit235 sb := by
+  refine cofinalLocalWindowEscape_of_irrational_of_beaten h sb ?_
+  intro B lo hBpos ε hε
+  obtain ⟨len, hlenpos, hlen⟩ :=
+    exists_len_quadratic_div_lt (max (c B) (B * 90)) lo hε
+  refine ⟨len, hlenpos, lt_of_le_of_lt ?_ hlen⟩
+  have hdom : max (sb B (lo + len)) (B * bridgeWidth (lo + len))
+      ≤ max (c B) (B * 90) * (lo + len + 1) ^ 2 := by
+    refine max_le ?_ ?_
+    · exact le_trans (hsb B (lo + len)) (Nat.mul_le_mul_right _ (le_max_left _ _))
+    · unfold bridgeWidth
+      calc B * (90 * (lo + len + 1) ^ 2)
+          = B * 90 * (lo + len + 1) ^ 2 := by ring
+        _ ≤ max (c B) (B * 90) * (lo + len + 1) ^ 2 :=
+            Nat.mul_le_mul_right _ (le_max_right _ _)
+  have hcast := (Nat.cast_le (α := ℝ)).2 hdom
+  gcongr

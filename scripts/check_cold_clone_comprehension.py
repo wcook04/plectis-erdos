@@ -976,7 +976,9 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
                 "Examples",
                 "FormalConjecturesAdapter",
                 "FormalConjecturesVariants",
+                "FC243CubicRate",
                 "ResidualBench",
+                "ErdosProblems.Erdos251.PaperLargeAuditR7",
             )
         ),
         "reproducibility runbook lost a supported public build target",
@@ -999,7 +1001,7 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
     # that had not changed. The policy is asserted below instead: pinned to a
     # commit, annotated with the version that commit is.
     for token in (
-        "uses: actions/cache@",
+        "uses: actions/cache/restore@",
         "path: .lake",
         "restore-keys:",
         # Two workers, not four: four exhausted the runner while compiling
@@ -1009,6 +1011,8 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         "No Lean source or proof-environment input changed; compilation is unchanged.",
     ):
         require(token in workflow, f"Lean CI lost cache/build contract: {token}")
+    require("uses: actions/cache@" not in workflow,
+            "Lean CI must not implicitly save PR caches in the combined cache action's post step")
 
     unpinned = [
         line.strip()
@@ -1044,7 +1048,9 @@ def validate_incremental_build_contract(surfaces: dict[str, str]) -> None:
         "Examples",
         "FormalConjecturesAdapter",
         "FormalConjecturesVariants",
+        "FC243CubicRate",
         "ResidualBench",
+        "ErdosProblems.Erdos251.PaperLargeAuditR7",
     ):
         require(target in build_job_body, f"Lean CI wrapper lost target {target}")
 
@@ -1204,11 +1210,10 @@ def validate_human_first_contact(
 
     require(
         re.search(
-            r"\[agent-navigation paper\]\(paper/systems/cold-clone-to-proof-receipt\.pdf\)"
-            r"|\[agent-navigation paper\]\(cold-clone-to-proof-receipt\.pdf\)",
+            r"\[[^\]]+\]\(paper/systems/claim-faithful-publication-systems-paper\.pdf\)",
             readme_prefix,
         ),
-        "README no longer exposes the cold-clone-to-proof-receipt paper",
+        "README no longer exposes the current unified systems paper",
     )
     def readme_exposes_pdf(filename: str) -> bool:
         return bool(re.search(rf"\]\([^)\n]*{re.escape(filename)}\)", readme_prefix))
@@ -2398,8 +2403,11 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
         summary["remaining_open_propositions"]
     ), "cold-clone comprehension invariant")
     require(tour["scale"]["indexed_problem_count"] == 8, "cold-clone comprehension invariant")
-    require(tour["scale"]["indexed_open_problem_count"] == 8, "cold-clone comprehension invariant")
-    require(tour["open_frontier_contract"]["indexed_open_problem_count"] == 8, "cold-clone comprehension invariant")
+    # Seven indexed problems are open. Lean refutes the exact Formal Conjectures
+    # statement of #1041, whose status is "formal statement refuted" while the
+    # review of its correspondence with the 1958 wording stays open.
+    require(tour["scale"]["indexed_open_problem_count"] == 7, "cold-clone comprehension invariant")
+    require(tour["open_frontier_contract"]["indexed_open_problem_count"] == 7, "cold-clone comprehension invariant")
     require(tour["open_frontier_contract"][
         "reviewed_remaining_open_proposition_count"
     ] == len(summary["remaining_open_propositions"]), "cold-clone comprehension invariant")
@@ -2530,7 +2538,7 @@ def validate_agent_packets(packets: dict[str, Any]) -> None:
         require(proposition["id"] == open_id, "cold-clone comprehension invariant")
         require(packet["authority_posture"] == "authored_open_boundary_navigation_not_proof_authority", "cold-clone comprehension invariant")
         require(proposition["paper_anchor"] is not None, "cold-clone comprehension invariant")
-        require(packet["open_target"]["status"] == "open", "cold-clone comprehension invariant")
+        require(packet["open_target"]["status"] in {"open", "formal statement refuted"}, "cold-clone comprehension invariant")
 
     for claim_id, packet in packets["claims"].items():
         claim = packet["claim"]

@@ -1,0 +1,9 @@
+## What this proves and what it does not
+
+It **proves** an exact equivalence of two propositions.  It does **not** prove
+either of them.  **Erdős #269 remains open.**  The mathematical content is a
+*no-go for the producer as a reduction*: `ActualCofinalLocalWindowEscape` is
+not a weaker, more tractable statement one could hope to attack by
+window/anti-concentration arguments and thereby obtain irrationality; proving
+it is literally proving Erdős #269.  Any future effort spent on the producer
+must be justified as an attack on the target itself.

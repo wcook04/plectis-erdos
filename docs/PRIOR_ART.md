@@ -16,12 +16,12 @@ numbering and status context rather than mathematical priority.
 Each current [problem paper and research record](../paper/README.md) carries
 its own bibliography and credits sources at the point of use. The
 [joint #249/#257 exposition](../paper/archive/erdos249-257-main-paper.tex) is
-archival. [CITATION.cff](../CITATION.cff) supplies the software release citation
+archival. [CITATION.cff](../CITATION.cff) supplies the current repository citation
 and selected mathematical and software references; it is not a duplicate of
 all the paper bibliographies. Its linked source records explain the local use
-and limits of the selected references. When citing work added after that
-release, also record the commit used. This map explains why the principal
-sources are credited.
+and limits of the selected references. Record the commit used; for a historical
+release, use the citation file from that tag. This map explains why the
+principal sources are credited.
 
 ## Browse all source credits
 
@@ -56,7 +56,9 @@ attribution evidence only.
 
 The finite-level result is an explicit basis, rank \(k^e+1\) for \(k\ge2,e\ge1\), and an integral basis of all relations among the totient sections. Coons’s non-regularity theorem and Martin’s affine-independence theorem are antecedents, not new claims of this release. For composite bases the retained condition is \(k\nmid r\).
 
-Yazdani’s Theorem 2 and proof (2001, pp. 652–653) use CRT–Dirichlet separation and explicitly credit Shallit; this is the method antecedent of the evaluation-matrix proof. Yazdani’s Corollary 4 (p. 654) already gives non-automaticity of totient residues modulo every m≥3 in every base. Allouche–Shallit–Yassawi’s survey (published 2022; arXiv v1 2021, Theorem 3, Example 4 and Remark 7) explains that result. The fixed-base-2 bounded-residue irrationality theorem requires a separate carrying argument; Wong’s earlier base-equals-modulus theorem remains credited.
+Yazdani’s Theorem 2 and proof (2001, pp. 652–653) use CRT–Dirichlet separation and explicitly credit Shallit; this is the method antecedent of the evaluation-matrix proof. Yazdani’s Corollary 4 (p. 654) already gives non-automaticity of totient residues modulo every m≥3 in every base. Allouche–Shallit–Yassawi’s survey (published 2022; arXiv v1 2021, Theorem 3, Example 4 and Remark 7) explains that result. Wong’s earlier base-equals-modulus theorem remains credited.
+
+**Residue series, adjudicated 28 September 2026.** The first assertion of the short paper's residue theorem (`res:residueseries`: \(\sum_{n\ge1}(\varphi(n)\bmod m)2^{-n}\notin\mathbb Q\) for every \(m\ge3\)) is implied, in every integer base \(t\ge2\), by Erdős 1957 (Indag. Math. 19, 212–219). His Lemma 1 (printed p. 213) makes \(\sum_k a_kt^{-k}\) irrational when the integers \(a_k\ge0\) have bounded averages and infinitely many, but density-zero, nonzero terms; Erdős states it as known and notes that it is the case \(b_k=0\) of his Lemma 4 (stated pp. 215–216, proved pp. 216–218). The least residue \(\varphi(n)\bmod m\) is nonzero only when \(n\) has no prime factor \(p\equiv1\pmod m\), a set of density zero since \(\sum_{p\equiv1\,(m)}1/p\) diverges, and equals \(m-2\) at every prime \(p\equiv-1\pmod m\). Lemma 4′ (p. 218, proof omitted by Erdős) and Theorem 3 of Kaneko–Suzuki–Tachiya (arXiv:2601.20743v1, PDF p. 5; they prove Lemma 4′ as their Theorem A, pp. 2 and 18) give the same. The same criteria cover the dyadic classification (the theorem's second assertion), its integer-base form (long record `prop:radixresidue`) and the finite-dilation independence (`prop:dilations`) only when the relevant values \(f(r)-f(0)\), or relation coefficients, have one sign; with both signs Lemmas 4 and 4′ and KST Theorem 3 need a spacing condition on the negative terms, which was not checked. The isolated-coefficient proof in the papers needs none. KST Theorem 3 with \(b=0\) also gives the irrational direction of the long record's slowly-growing-modulus dichotomy (`prop:slowmoduli`, ordinary proof), subject to a density bound for \(n\) with small \(v_2(\varphi(n))\) that the record does not write out. No novelty claim is made for the residue-series irrationality; the papers cite Erdős 1957 and KST at the result. Page references are to the Rényi scan of Erdős 1957 and to the KST PDF recorded in its [source closure](primary-sources/reciprocal-tail/kaneko-suzuki-tachiya-2026-source-closure.md).
 
 Bell–Smertnig (2026 preprint, Theorem 1.3) proves that a characteristic-zero Mahler series with multiplicative coefficients is regular, and explicitly excludes the totient series from every Mahler base. Bell–Bruin–Coons (2012, Theorems 1.5–1.6) supplies the earlier algebraic and D-finite classification context. These are generating-function statements, not proofs about the value at 1/2. Adamczewski–Drmota–Müllner (2022; arXiv v2 2021, Theorem 1.4 and Remark 1.5) provides the automatic-prime density context, with local conditions rather than unconditional positive density for every state.
 
@@ -89,7 +91,7 @@ boundary of that relationship.
 
   **Pairwise-coprime support theorem.** Printed p. 222 states that if `n_1 < n_2 < ...` are pairwise coprime and `Σ 1/n_i < ∞`, then `Σ_i 1/(t^(n_i)-1)` is irrational for every integer `t ≥ 2`; the proof occupies printed pp. 223–225.
 
-  **Boundary.** Printed p. 222 says the pairwise-coprimality condition can be removed only by more complicated arguments and gives no details, and that `Σ 1/n_i < ∞` could be replaced by an unstated weaker but more complicated condition; printed p. 226 suggests `Σ_{n_i<x} 1/n_i = o(log log x)` via Brun's method for pairwise coprime supports and says the all-primes case is not handled. The source therefore does not support the coprimality-free extension, universal #257, the release's Lean/Comparator claims, or any novelty or priority claim.
+  **Boundary.** Printed p. 222 says the pairwise-coprimality condition can be removed only by more complicated arguments and gives no details, and that `Σ 1/n_i < ∞` could be replaced by an unstated weaker but more complicated condition; printed p. 226 suggests `Σ_{n_i<x} 1/n_i = o(log log x)` via Brun's method for pairwise coprime supports and says the all-primes case is not handled. The source therefore states the coprimality-free reciprocal-summable extension without proof; the #257 note credits that stated extension to Erdős and gives a complete proof of it. The source does not settle universal #257 or supply the release's Lean/Comparator proofs, and the note does not identify Erdős's unstated weaker condition with its weighted criterion. No novelty or priority claim is made.
 
 - D. Duverney and Y. Tachiya, [*Refinement of the Chowla–Erdős method and linear independence of certain Lambert series* (2019)](https://doi.org/10.1515/forum-2018-0299) ([author preprint](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf); [read source closure](primary-sources/reciprocal-tail/duverney-tachiya-2019-source-closure.md))
 
@@ -117,7 +119,15 @@ boundary of that relationship.
 
   **Averaged-tail antecedent for #257.** The quantity \(R_c(q,x,z)\) of (1.7) (PDF p. 3) and Lemmas 1–2 (PDF pp. 6–8) derive irrationality from scaled tails that are small on average. The #257 note cites them beside its weighted-support theorem. There the divisor-incidence coefficients are positive on every multiple of \(\min A\), so the scaled tail is at least the series value and the note averages the displacement instead.
 
+  **Residue-series antecedent for #249.** Theorem 3 (PDF p. 5), with \(b=0\), implies the irrationality of \(\sum_{n\ge1}(\varphi(n)\bmod m)t^{-n}\) for every \(m\ge3\) and integer \(t\ge2\), because these coefficients are bounded and nonzero only on a set of density zero; Theorem A (p. 2, proof p. 18) is Erdős's 1957 Lemma 4′. The #249 papers cite this beside the residue theorem; see the adjudication under the #249 attribution update above.
+
   **Boundary.** Here \(\varphi(n)\) occurs in the exponent. It does not treat the coefficient-weighted constant \(\sum\varphi(n)/2^n\), its denominator bound, or its tail-certificate equivalence. The counting hypotheses of Theorems 1 and 3 fail for divisor-incidence coefficients, so these criteria do not apply to Mersenne–Lambert subseries.
+
+- P. Erdős, [*On the irrationality of certain series* (Indag. Math. 19 (1957), 212–219)](https://users.renyi.hu/~p_erdos/1957-07.pdf)
+
+  **Residue-series antecedent for #249.** Lemma 1 (printed p. 213), the case \(b_k=0\) of Lemma 4 (pp. 215–218), gives irrationality of \(\sum a_kt^{-k}\) for nonnegative integers with bounded averages and infinitely many but density-zero nonzero terms, and hence of \(\sum(\varphi(n)\bmod m)t^{-n}\) for every \(m\ge3\) and integer \(t\ge2\). Lemma 4′ (p. 218) is stated without proof.
+
+  **Boundary.** The paper's Theorem 1 concerns \(\sum 1/t^{\varphi(n)}\) and \(\sum1/t^{\sigma(n)}\), with the arithmetic function in the exponent; its introduction (printed p. 212) says the author cannot prove irrationality of \(\sum\varphi(n)/t^n\). It does not prove #249, the dyadic classification with mixed-sign values, the finite-dilation independence with mixed-sign relations, or any Lean or Comparator claim. No source closure file or local copy is recorded in this pass.
 
 - T. M. Apostol, [*Introduction to Analytic Number Theory* (1976)](https://doi.org/10.1007/978-1-4757-5579-4); M. Merca, [*The Lambert series factorization theorem* (2017)](https://doi.org/10.1007/s11139-016-9856-3); M. Merca and M. D. Schmidt, [*Generating Special Arithmetic Functions by Lambert Series Factorizations* (2019)](https://doi.org/10.55016/ojs/cdm.v14i1.62425) ([official journal PDF](https://cdm.ucalgary.ca/article/download/62425/53773); [read source closure](primary-sources/totient-kernel/merca-schmidt-2017-lambert-factorizations-source-closure.md))
 
@@ -169,9 +179,9 @@ boundary of that relationship.
 
 - G. Martin, [*Simultaneous inequalities among values of the Euler phi-function* (arXiv:math/0603053, 2006)](https://arxiv.org/abs/math/0603053) ([read source closure](primary-sources/totient-kernel/martin-2006-source-closure.md))
 
-  **Subsuming source for affine-totient ratio comparisons.** His Theorem 1 assumes only that the slopes \(a_i\) are positive integers and that \(a_ib_j\neq a_jb_i\), and proves that for every \(C>0\) the simultaneous ratio gaps \(\varphi(a_1n+b_1)/\varphi(a_2n+b_2)>C,\ldots\) hold on a set of positive lower density; the symmetry discussion supplies strict ordering patterns. In the local all-base argument this is the external comparison input behind the affine-totient independence statement; the finite dyadic Lean theorem remains separately formalised, not a theorem directly stated by Martin. His Corollary 4 transfers Theorem 1 and Corollaries 2–3 to \(\sigma\).
+  **Subsuming source for affine-totient ratio comparisons.** His Theorem 1 assumes only that the slopes \(a_i\) are positive integers and that \(a_ib_j\neq a_jb_i\), and proves that for every \(C>0\) the simultaneous ratio gaps \(\varphi(a_1n+b_1)/\varphi(a_2n+b_2)>C,\ldots\) hold on a set of positive lower density; the symmetry discussion supplies strict ordering patterns. For the local all-base argument it is an earlier source that already implies the affine-totient independence, which the release proves separately; the finite dyadic Lean theorem remains separately formalised, not a theorem directly stated by Martin. His Corollary 4 transfers Theorem 1 and Corollaries 2–3 to \(\sigma\).
 
-  **Boundary.** The release's dyadic Lean independence result is separately formalised from this broader comparison input by a finite CRT–Dirichlet–determinant argument; Martin does not present the release's Lean statement or proof. The all-base paper theorem applies Martin directly; Lean checks its zero-residue and composite-base arithmetic layers but does not formalise Martin's positive-density theorem or the final all-base independence step. Martin needs neither odd slopes, nor primitivity, nor a residue bound, and concludes strictly more. A \(\sigma\) analogue would likewise not be new. Exact-title, DOI and venue searches did not locate a separate journal publication, so this is cited as a public preprint.
+  **Boundary.** The release's dyadic Lean independence result is separately formalised from this broader comparison input by a finite CRT–Dirichlet–determinant argument; Martin does not present the release's Lean statement or proof. The all-base paper theorem proves its affine independence by a determinant that is diagonal modulo an auxiliary prime, built with the Chinese remainder theorem and Dirichlet's theorem, and cites Martin's Theorem 1 as an earlier source that already implies that independence. Lean proves the all-base independence, the exact rank `k^e + 1` for `k ≥ 2` and `e ≥ 1`, and the explicit basis unconditionally in [`AllBaseTotientKernel.lean`](../lean/Erdos249257/AllBaseTotientKernel.lean); it does not formalise Martin's positive-density theorem, which is not an input of that proof. Martin needs neither odd slopes, nor primitivity, nor a residue bound, and concludes strictly more. A \(\sigma\) analogue would likewise not be new. Exact-title, DOI and venue searches did not locate a separate journal publication, so this is cited as a public preprint.
 
 - F. Luca and Y. Tachiya, [*Irrationality of Lambert series associated with a periodic sequence* (2014)](https://doi.org/10.1142/S1793042113501121) ([read source closure](primary-sources/reciprocal-tail/luca-tachiya-2014-source-closure.md))
 
@@ -261,9 +271,15 @@ grouped by the problem whose note they serve.
 
 - J. Koizumi, [*Irrationality of the reciprocal sum of doubly exponential sequences* (Integers 26 (2026), A28)](https://math.colgate.edu/~integers/aa28/aa28.pdf); [arXiv:2504.05933](https://arxiv.org/abs/2504.05933) ([read source closure](primary-sources/reciprocal-tail/koizumi-2026-source-closure.md))
 
-  Supplies normalised vanishing for the canonical orbit, the sole hypothesis of the note's headline conditional theorems not proved in Lean; the published Lemma 3 and Proposition 1(2) (the preprint-v1 Lemma 13 and Proposition 19(2)) are conceded in-note as prior art for the note's absorption and descent lemmas.
+  Koizumi's canonical-tail and normalised-vanishing arguments are prior art.
+  The note credits his published Lemma 3 and Proposition 1(2) (preprint-v1
+  Lemma 13 and Proposition 19(2)) for absorption and descent.
 
-  **Boundary.** The bridge is prose; only the integer state-system theorems are kernel-checked here, and no priority or independence is adjudicated.
+  **Boundary.** Lean checks `canonical_integer_tail_normalized`,
+  `canonical_tail_ratio_quantitative` and
+  `cubic_rate_irrationality_unconditional`. The paper's one-based finite-prefix
+  bridge remains prose. Unrestricted #243 is open; no priority or independence
+  is adjudicated.
 
 ### #251
 
@@ -309,7 +325,7 @@ grouped by the problem whose note they serve.
 
   The Hecke–Mahler value theorem (Loxton–van der Poorten Theorem 8, p. 40, in the modern form of Bugeaud–Laurent Theorem 1.1) is the transcendence input for the note's two-prime theorems: both the de-duplicated and repeated running-lcm reciprocal sums are transcendental for every pair of distinct primes, by a paper argument.
 
-  **Boundary.** The two-prime theorems are deliberately not Lean declarations; nothing follows for three or more primes.
+  **Boundary.** Lean proves the two-prime transcendence transfers conditionally on the named input `BugeaudLaurentTranscendence` (`two_prime_sums_transcendental` in [`TwoPrimeSums.lean`](../lean/ErdosProblems/Erdos269/PaperCompleteR21/TwoPrimeSums.lean)); the Hecke–Mahler value theorem itself is not formalised. Nothing follows for three or more primes.
 
 - S. Fan, [comment on Erdős Problem #269](https://www.erdosproblems.com/forum/thread/269#post-7218), 26 June 2026
 
@@ -349,8 +365,12 @@ grouped by the problem whose note they serve.
   carriers, and open gaps that are not part of this historical bibliography.
   Read it before generated `STRONGEST_RESULTS.json`, which can lag the dated
   notes. The corpus is not thereby prior art or a reviewed claim: its rows make
-  no peer-review, priority, novelty, or significance assertion, and #1041
-  remains open.
+  no peer-review, priority, novelty, or significance assertion. The current
+  status of #1041 is owned by [`docs/claims.json`](claims.json): Lean refutes
+  the exact Formal Conjectures statement using the degree-seven polynomial
+  posted by `ani`, Formal Conjectures records the answer `False`, and
+  independent human review of correspondence with the 1958 wording has not
+  been recorded.
 
 ### #1049
 

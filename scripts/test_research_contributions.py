@@ -13,6 +13,7 @@ from pathlib import Path
 from unittest import mock
 
 import build_research_contributions as contributions
+import test_public_contribution_roundtrip as public_roundtrip
 import validation_singleflight as singleflight
 
 
@@ -262,6 +263,7 @@ def main() -> int:
     for marker in ("Subject", subject, "#249", "#257"):
         require(marker in subject_human, f"subject contribution view omitted {marker}")
 
+    require(public_roundtrip.main() == 0, "public correction and idea contribution rehearsal failed")
     print("build_research_contributions: unaccepted exclusion and human/operator/model/provider projection PASS")
     return 0
 

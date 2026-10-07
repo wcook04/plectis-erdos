@@ -7,9 +7,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from typing import Any
 
 import query_corpus
+
 
 
 BENCHMARK_SCHEMA = "erdos249257-semantic-reasoning-benchmark/1"
@@ -630,7 +632,16 @@ def render_card(packet: dict[str, Any]) -> str:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
+    if len(sys.argv) > 1 and sys.argv[1] == "restatement":
+        import build_restatement_benchmark
+        return build_restatement_benchmark.main(sys.argv[2:])
+    if len(sys.argv) > 1 and sys.argv[1] == "study":
+        import reader_study
+        reader_study.main(sys.argv[2:])
+        return 0
+    parser = argparse.ArgumentParser(description=__doc__, epilog=(
+        "Additional workflows: restatement --out DIR builds disclosed development "
+        "relation tasks; study --help prepares, verifies, executes via a trusted bridge, captures, and analyzes frozen reader jobs."))
     parser.add_argument(
         "--split",
         choices=("all", "development", "held_out"),
