@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `5dfe299a3e89f3a5`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `3056d86b640db7d3`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -56,6 +56,11 @@ concrete ways to continue. It is one example of the route, and other ways of
 working are as welcome.
 
 ## Sending work back
+
+For a short exercise using a theorem from another project, try
+[When does a product meet its error bound?](https://github.com/wcook04/plectis-erdos/blob/main/docs/reading-edition/enclosure-product-use.md).
+It asks whether two polynomial approximations guarantee a requested product
+error, with an exact arithmetic checker and links to the original theorem.
 
 You do not need a clone to contribute. Send a mathematical account through the
 [research-progress form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)

@@ -25,6 +25,8 @@ TIMEOUT_SECONDS = 360
 # Migrated without dropping any command from the GitHub release-surfaces job.
 # Optimized runs and module-based unittest invocations remain distinct gates.
 COMMANDS = (
+    ('computations/check_enclosure_product_use.py',),
+    ('-O', 'computations/check_enclosure_product_use.py'),
     ('scripts/test_paper_claim_evidence.py',),
     ('-O', 'scripts/test_paper_claim_evidence.py'),
     ('scripts/test_short_paper_writer.py',),
