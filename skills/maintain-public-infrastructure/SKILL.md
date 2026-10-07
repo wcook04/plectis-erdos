@@ -153,8 +153,8 @@ sentences and warrants before updating only the relevant source spans and
 digests. Preserve evidence classes, reported execution limits and historical
 identity; a new digest cannot supply new semantic or empirical evidence.
 
-Before freezing a source commit or launching a receiving repository's build,
-settle the complete disclosure and evidence closure in dependency order:
+After all source edits, before freezing a source commit or launching a receiving
+repository's build, settle the complete disclosure and evidence closure in dependency order:
 generated disclosure, attribution anchors and views, reviewed systems-paper
 bindings, then the corpus fingerprint. Refresh fingerprints after every owning
 ledger change, and repeat the affected owner checks until the outputs reach a
