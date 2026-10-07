@@ -361,6 +361,13 @@ def validate_registry(root: Path, registry: dict[str, Any], paper_by_id: dict[st
     return sources
 
 
+def maintained_reasoning_sources(problem: str, row: dict) -> list[Path]:
+    """Return actual authored files, excluding assembler-owned inline slots."""
+    return [row["directory"] / "preamble.tex",
+            *(row["directory"] / f"{name}.tex" for name in row["parts"]
+              if name not in assemble_reasoning_surfaces.INLINE_PARTS[problem])]
+
+
 def build(root: Path, registry_path: Path, paper_corpus_path: Path) -> dict[str, Any]:
     _FILE_BYTES.clear()
     registry = json.loads(file_text(registry_path))
@@ -405,7 +412,7 @@ def build(root: Path, registry_path: Path, paper_corpus_path: Path) -> dict[str,
         assembled=assembled_by_output.get(root_source.resolve())
         if assembled:
             problem,row=assembled
-            maintained=[row["directory"] / "preamble.tex", *(row["directory"] / f"{name}.tex" for name in row["parts"])]
+            maintained=maintained_reasoning_sources(problem,row)
             for maintained_path in maintained:
                 rel=maintained_path.relative_to(root).as_posix(); extra,extra_missing=paper_sources(root,rel)
                 paths.extend(extra); unresolved_includes.extend({"paper_id":paper["paper_id"],"locator":m} for m in extra_missing)

@@ -18,6 +18,7 @@ from unittest.mock import patch
 SCRIPT_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(SCRIPT_DIR))
 
+import assemble_reasoning_surfaces as assembler
 import refresh_reasoning_source_coordinates as coordinates  # noqa: E402
 import validation_singleflight as singleflight  # noqa: E402
 
@@ -63,7 +64,45 @@ def check_comment_projection() -> None:
     require("hidden again" not in projected, "comment after escaped string survived")
 
 
+def check_compact_assembly() -> None:
+    """Inline only known boilerplate; retain exact bytes and required source parts."""
+    for key, row in assembler.PAPERS.items():
+        require(assembler.assemble(key) == row["output"].read_text(),
+                f"flat manuscript bytes changed: {key}")
+        for name, value in assembler.INLINE_PARTS[key].items():
+            require(value in ("", "\\end{document}\n"), "non-boilerplate inline source")
+            require(not (row["directory"] / f"{name}.tex").exists(),
+                    "redundant boilerplate source returned")
+    with tempfile.TemporaryDirectory() as temporary:
+        directory = Path(temporary) / "parts"
+        row = dict(assembler.PAPERS["68"], directory=directory)
+        with patch.dict(assembler.PAPERS, {"68": row}):
+            directory.mkdir()
+            (directory / "preamble.tex").write_text("")
+            try:
+                assembler.assemble("68")
+            except FileNotFoundError:
+                pass
+            else:
+                raise AssertionError("missing substantive core silently accepted")
+        output = Path(temporary) / "flat.tex"
+        original = assembler.PAPERS["68"]["output"].read_text()
+        output.write_text(original.replace("% ---- part family_catalogue ----\n",
+                                          "% ---- part family_catalogue ----\nchanged\n"))
+        (directory / "preamble.tex").unlink()
+        directory.rmdir()
+        row = dict(assembler.PAPERS["68"], directory=directory, output=output)
+        with patch.dict(assembler.PAPERS, {"68": row}):
+            try:
+                assembler.bootstrap("68")
+            except ValueError as error:
+                require("noncanonical boilerplate" in str(error), str(error))
+            else:
+                raise AssertionError("substantive source discarded by bootstrap")
+
+
 def main() -> int:
+    check_compact_assembly()
     check_comment_projection()
     with tempfile.TemporaryDirectory(prefix="reasoning-coordinate-test-") as temporary:
         root = Path(temporary)

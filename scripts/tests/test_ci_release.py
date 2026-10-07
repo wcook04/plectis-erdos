@@ -5,6 +5,9 @@
 
 import _test_bootstrap  # noqa: F401
 import contextlib
+import concurrent.futures
+import subprocess
+import threading
 import io
 import tempfile
 import unittest
@@ -25,6 +28,163 @@ class ReleaseParityTests(unittest.TestCase):
         self.assertIn(('scripts/tests/test_corpus_orientation.py',), release.COMMANDS)
         self.assertIn(('-m', 'unittest', 'scripts.tests.test_formal_conjectures_crosswalk', '-v'), release.COMMANDS)
         self.assertIn(('-O', 'scripts/tests/test_expert_handoffs.py'), release.COMMANDS)
+
+    def test_exact_shared_execution_retains_success_and_failure(self):
+        for code in (0, 7):
+            with self.subTest(code=code):
+                calls = []
+                def execute(command, **kwargs):
+                    calls.append(command)
+                    return subprocess.CompletedProcess(command, code, "stdout evidence", "stderr evidence")
+                shared = release.SharedCommandRuns(execute)
+                command = ("scripts/tests/test_verify_claims.py",)
+                parent = shared.run([release.sys.executable, str(release.ROOT / command[0])],
+                                    cwd=release.ROOT, env=release.singleflight.command_environment(),
+                                    timeout=release.TIMEOUT_SECONDS, text=True, capture_output=True)
+                report = release.run_suite((command,), runner=shared.run, emit=lambda *a, **k: None)
+                self.assertEqual(len(calls), 1)
+                self.assertEqual(parent.returncode, code)
+                self.assertEqual(report["results"][0]["exit_code"], code)
+                self.assertIn("stderr evidence", report["results"][0]["output_tail"])
+                self.assertEqual(report["status"], "passed" if code == 0 else "failed")
+
+    def test_all_overlapping_leaves_keep_their_own_result(self):
+        paths = (
+            "scripts/check_architecture_guide.py", "scripts/check_agent_navigation_paper.py",
+            "scripts/tests/test_architecture_guide.py", "scripts/tests/test_verify_claims.py",
+            "scripts/check_formal_conjectures_crosswalk.py", "scripts/tests/test_release_source_identity.py",
+            "scripts/tests/test_public_artifact_boundary.py", "scripts/tests/test_downstream_example_contract.py",
+            "scripts/papers/check_paper_corpus.py", "scripts/papers/check_publication_taxonomy.py",
+            "scripts/tests/test_proof_state_compiler.py", "scripts/tests/test_semantic_corpus_check_receipt.py",
+            "scripts/tests/test_semantic_review_rebind.py",
+        )
+        calls = []
+        def execute(argv, **kwargs):
+            calls.append(argv)
+            name = Path(argv[1]).name
+            return subprocess.CompletedProcess(argv, 4 if name == "test_verify_claims.py" else 0,
+                                               name, "diagnostic " + name)
+        shared = release.SharedCommandRuns(execute)
+        with patch.object(check_release, "_SHARED_LEAF_RUNS", shared):
+            parents = {path: check_release._run_independent_check(
+                [release.sys.executable, str(release.ROOT / path)]) for path in paths}
+            report = release.run_suite(tuple((path,) for path in paths), runner=shared.run,
+                                       emit=lambda *a, **k: None)
+        self.assertEqual(len(calls), len(paths))
+        for row in report["results"]:
+            path = row["command"][0]
+            self.assertEqual(row["exit_code"], parents[path].returncode)
+            self.assertIn(Path(path).name, row["output_tail"])
+        self.assertEqual(report["failed"], 1)
+
+    def test_concurrent_consumers_wait_on_one_execution(self):
+        entered, finish = threading.Event(), threading.Event()
+        calls = []
+        def execute(command, **kwargs):
+            calls.append(command); entered.set()
+            self.assertTrue(finish.wait(5))
+            return subprocess.CompletedProcess(command, 3, "failure", "diagnostic")
+        shared = release.SharedCommandRuns(execute)
+        def consume():
+            return shared.run([release.sys.executable, "scripts/tests/test_verify_claims.py"],
+                              cwd=release.ROOT, env={}, timeout=10, text=True, capture_output=True)
+        with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+            first = pool.submit(consume)
+            self.assertTrue(entered.wait(5))
+            second = pool.submit(consume)
+            finish.set()
+            self.assertIs(first.result(), second.result())
+        self.assertEqual(len(calls), 1)
+
+    def test_flags_module_modes_and_deadlines_are_distinct(self):
+        calls = []
+        def execute(command, **kwargs):
+            calls.append(command)
+            return subprocess.CompletedProcess(command, 0, "", "")
+        shared = release.SharedCommandRuns(execute)
+        commands = (("a.py",), ("-O", "a.py"), ("-m", "unittest", "a"),
+                    ("a.py", "--check"), ("a.py", "--write"))
+        release.run_suite(commands, runner=shared.run, emit=lambda *a, **k: None)
+        release.run_suite(commands, runner=shared.run, emit=lambda *a, **k: None)
+        self.assertEqual(len(calls), len(commands))
+        release.run_suite((commands[0],), runner=shared.run, timeout=1, emit=lambda *a, **k: None)
+        self.assertEqual(len(calls), len(commands) + 1)
+
+    def test_shared_timeout_remains_failed_for_every_consumer(self):
+        calls = []
+        def execute(command, **kwargs):
+            calls.append(command)
+            raise subprocess.TimeoutExpired(command, kwargs["timeout"], output="partial evidence", stderr="tail")
+        shared = release.SharedCommandRuns(execute)
+        command = ("scripts/tests/test_verify_claims.py",)
+        with patch.object(check_release, "_SHARED_LEAF_RUNS", shared):
+            parent = check_release._run_independent_check(
+                [release.sys.executable, str(release.ROOT / command[0])])
+            report = release.run_suite((command,), runner=shared.run, emit=lambda *a, **k: None)
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(parent.returncode, 124)
+        self.assertIn("partial evidence", parent.stdout)
+        self.assertTrue(report["results"][0]["timed_out"])
+        self.assertIn("partial evidence", report["results"][0]["output_tail"])
+        self.assertEqual(report["status"], "failed")
+
+    def test_script_normalization_does_not_rewrite_data_arguments(self):
+        with tempfile.TemporaryDirectory() as raw:
+            root = Path(raw); (root / "tool.py").write_text("")
+            (root / "data.py").write_text("")
+            calls = []
+            def execute(argv, **kwargs):
+                calls.append(argv)
+                return subprocess.CompletedProcess(argv, 0, "", "")
+            shared = release.SharedCommandRuns(execute)
+            for script in ("tool.py", str(root / "tool.py")):
+                shared.run([release.sys.executable, "-O", script, "--input", "data.py"],
+                           cwd=root, env={}, timeout=10)
+            shared.run([release.sys.executable, "-O", "tool.py", "--input", str(root / "data.py")],
+                       cwd=root, env={}, timeout=10)
+            self.assertEqual(len(calls), 2)
+
+    def test_aggregate_deadline_caps_leaf_and_refuses_remaining_execution(self):
+        ticks = iter((0, 0, 4, 6, 6, 6, 6))
+        calls = []
+        def execute(argv, **kwargs):
+            calls.append((argv, kwargs["timeout"]))
+            raise subprocess.TimeoutExpired(argv, kwargs["timeout"], stderr="deadline tail")
+        with patch.object(release.time, "monotonic", side_effect=lambda: next(ticks)):
+            report = release.run_suite((("one.py",), ("two.py",)), overall_timeout=5,
+                                       runner=execute, emit=lambda *a, **k: None)
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(calls[0][1], 1)
+        self.assertEqual([row["exit_code"] for row in report["results"]], [124, 124])
+        self.assertTrue(all(row["timed_out"] for row in report["results"]))
+        self.assertIn("deadline tail", report["results"][0]["output_tail"])
+
+    def test_standalone_suite_does_not_reuse_prior_invocations(self):
+        commands = (("a.py",), ("-O", "a.py"))
+        with patch.object(release.singleflight, "run_bounded",
+                          side_effect=lambda command, **kw: subprocess.CompletedProcess(command, 0, "", "")) as run:
+            for _ in range(2):
+                release.run_suite(commands, emit=lambda *a, **k: None)
+        self.assertEqual(run.call_count, 4)
+
+    def test_parent_supplemental_route_shares_actual_leaf_failure(self):
+        command = ("scripts/tests/test_verify_claims.py",)
+        calls = []
+        def execute(argv, **kwargs):
+            calls.append(argv)
+            return subprocess.CompletedProcess(argv, 8, "failure evidence", "diagnostic tail")
+        shared = release.SharedCommandRuns(execute)
+        with patch.object(check_release, "_SHARED_LEAF_RUNS", shared), \
+             patch.object(release, "COMMANDS", (command,)), \
+             patch.object(release, "registry_errors", return_value=[]), \
+             patch.object(release, "workflow_errors", return_value=[]):
+            parent = check_release._run_independent_check([release.sys.executable, str(release.ROOT / command[0])])
+            supplemental = check_release._run_independent_check(
+                [release.sys.executable, str(release.ROOT / "scripts/check_ci_release.py")])
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(parent.returncode, 8)
+        self.assertEqual(supplemental.returncode, 1)
+        self.assertIn("diagnostic tail", supplemental.stdout)
 
     def test_github_only_check_and_missing_shared_gate_are_rejected(self):
         source = (release.ROOT / '.github/workflows/lean.yml').read_text()

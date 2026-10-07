@@ -31,6 +31,15 @@ def correspondence(row: dict, **overrides) -> dict:
 
 
 class SourceAttributionTests(unittest.TestCase):
+    def test_maintained_sources_exclude_only_declared_inline_slots(self):
+        for key, row in subject.assemble_reasoning_surfaces.PAPERS.items():
+            paths = subject.maintained_reasoning_sources(key, row)
+            names = {path.stem for path in paths}
+            self.assertEqual(names, {'preamble'} | (set(row['parts']) -
+                             set(subject.assemble_reasoning_surfaces.INLINE_PARTS[key])))
+            self.assertTrue(all(path.is_file() for path in paths))
+            self.assertTrue(any(name in names for name in ('core', 'a249_front', 'a257_front')))
+
     def fixture(self) -> tuple[Path, Path]:
         temporary = Path(tempfile.mkdtemp())
         (temporary / "docs/papers").mkdir(parents=True)

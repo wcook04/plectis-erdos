@@ -51,70 +51,18 @@ The rest of this guide covers packaging, the pinned wrapper, and the return.
 
 ## Start from a reviewed checkout
 
-The portable wrapper lives at
-[`.agents/skills/plectis-frontier`](../../.agents/skills/plectis-frontier/SKILL.md).
-Its four files travel together. Installing only `SKILL.md` is insufficient.
-The wrapper's revision and the research-source revision are separate: the
-latter is fixed in its `source.json`. Review both before execution.
+The [portable companion](PORTABLE_COMPANION.md) owns the reviewed wrapper,
+source pin, installation and client observations. Follow its
+[bootstrap recipe](PORTABLE_COMPANION.md#use-from-another-working-directory)
+to inspect the pin, obtain a new checkout and run the actual task smoke.
+Keep the wrapper version and mathematical source revision separate. Preserve
+existing work and the starting receipt; the clean-checkout smoke is not the
+validation gate for subsequent research edits.
 
-In the reviewed repository checkout:
-
-```sh
-SKILL_DIR="$PWD/.agents/skills/plectis-frontier"
-python3 "$SKILL_DIR/scripts/bootstrap.py" describe
-```
-
-Inspection makes no network request. Python 3.11+ and Git are required. Linux
-is the initial CI target; macOS is an intended, separately testable target.
-There is no Windows compatibility claim.
-
-With the owner's permission, obtain the pinned research corpus in a **new**
-directory under an existing writable parent:
-
-```sh
-RESEARCH_DIR="$HOME/plectis-research-shift"
-python3 "$SKILL_DIR/scripts/bootstrap.py" prepare \
-  --destination "$RESEARCH_DIR" --allow-network
-```
-
-That directory must not already exist. Choose a different path rather than
-removing someone else's work. The download is a full source checkout, without
-Lean or mathlib installation; it may be substantial. No private credentials or
-API keys are needed. A failed download is retained, not automatically deleted.
-
-After reviewing the fetched source and its `AGENTS.md`, authorise the
-two Python entry commands:
-
-```sh
-python3 "$SKILL_DIR/scripts/bootstrap.py" smoke \
-  --destination "$RESEARCH_DIR" --allow-execution
-```
-
-Save the JSON receipt outside the research checkout. A successful smoke check
-means the routing and overview commands ran. It is not a Lean build, proof,
-registry security verdict, or end-to-end agent compatibility result. Following
-research edits will make the initial-clean-checkout verification fail by design;
-use the established research-return workflow for subsequent validation.
-
-## Install in OpenClaw or another skill client
-
-The [portable companion](PORTABLE_COMPANION.md#install-one-skill) owns the
-package and installation recipe. Install only the reviewed `plectis-frontier`
-directory; the research checkout and installed skill remain separate. Record
-the client version and actual entry outcome. Directory discovery alone does
-not establish that a client can complete research or return work.
-
-For an owner-approved OpenClaw workspace installation:
-
-```sh
-openclaw skills install "$SKILL_DIR" --as plectis-frontier
-openclaw skills info plectis-frontier
-openclaw skills check
-```
-
-Use a named agent only when the owner selected one. Direct Git installation
-expects a root `SKILL.md`, so this repository's nested directory is not a
-working `openclaw skills install git:wcook04/plectis-erdos` shortcut.
+For OpenClaw, inspect the current client documentation before choosing its
+workspace installation route. A nested skill directory is not a root Git
+installation target. Record the client version and actual entry outcome;
+directory discovery does not establish a completed research shift.
 
 ## Pick substantive work
 

@@ -31,6 +31,7 @@ from build_module_synopsis_index import (
     SCHEMA as MODULE_SYNOPSIS_SCHEMA,
 )
 from lean_source import (
+    canonical_lean_module_path as resolve_paper_module_path,
     checkout_source_relative,
     library_identity_path,
     library_storage_path,
@@ -127,29 +128,8 @@ SEMANTIC_SLICE_SCHEMA = "erdos249257-semantic-slice/1"
 
 @lru_cache(maxsize=None)
 def canonical_lean_module_path(module: str, prefer_problems: bool = False) -> str:
-    """Resolve a paper source-link shorthand to the module path in this checkout.
-
-    A slash in the shorthand does not name the library root: both roots carry
-    nested sub-directories (``Erdos249257/DiagonalPincerPrimeCertificates/`` and
-    ``ErdosProblems/Skip/``).  Guessing the root from the shape of the shorthand
-    minted coordinates for modules that do not exist -- ``Skip/LadderT67.lean``
-    resolved to ``Erdos249257/Skip/LadderT67.lean``, which no source query can
-    open.  Resolve against the checkout, and fall back to the macro's own
-    convention only when neither root holds the file.
-    """
-    if module.startswith(tuple(f"{root}/" for root in LEAN_LIBRARY_ROOTS)):
-        nested = f"lean/{module}"
-        if (ROOT / nested).is_file():
-            return nested
-        return module
-    roots = (
-        tuple(reversed(LEAN_LIBRARY_ROOTS)) if prefer_problems else LEAN_LIBRARY_ROOTS
-    )
-    for root in roots:
-        for candidate in (f"lean/{root}/{module}", f"{root}/{module}"):
-            if (ROOT / candidate).is_file():
-                return candidate
-    return f"lean/{roots[0]}/{module}"
+    """Cached query adapter for the shared checkout-aware source resolver."""
+    return resolve_paper_module_path(module, prefer_problems, root=ROOT)
 
 
 def canonical_paper_title(title: str) -> str:

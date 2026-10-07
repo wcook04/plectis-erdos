@@ -23,11 +23,17 @@ import sys
 from typing import Any
 
 import check_lean_paper_propagation as coverage
-from assemble_reasoning_surfaces import PAPERS
+from assemble_reasoning_surfaces import INLINE_PARTS, PAPERS
 from lean_source import qualified_declaration_lines, lean_code_without_comments_and_strings
 
 ROOT = Path(__file__).resolve().parents[1]
 LINKS = 'paper/reasoning-parts/record_links.json'
+# Legacy coverage manifests may still name assembler-owned boilerplate slots.
+INLINE_SOURCE_TEXT = {
+    (row['directory'].relative_to(ROOT) / f'{name}.tex').as_posix(): text
+    for key, row in PAPERS.items()
+    for name, text in INLINE_PARTS[key].items()
+}
 REPORT = 'docs/reading-edition/record_audit.json'
 SCHEMA = 'plectis-long-record-audit/1'
 LINK_SCHEMA = 'plectis-short-long-links/1'
@@ -71,6 +77,10 @@ class Inputs:
         self.hashes: dict[str, str] = {}
 
     def read(self, relative: str) -> str:
+        if relative in INLINE_SOURCE_TEXT:
+            # Bound by the assembler source input, not a nonexistent authored file.
+            self.read("scripts/assemble_reasoning_surfaces.py")
+            return INLINE_SOURCE_TEXT[relative]
         if relative not in self.texts:
             raw = safe_path(self.root, relative).read_bytes()
             self.hashes[relative] = digest(raw)
@@ -300,7 +310,12 @@ def _report(root: Path = ROOT, problems: list[int] | None = None) -> dict:
         output = assembly['output'].relative_to(ROOT).as_posix()
         expected = inputs.read(directory + '/preamble.tex')
         for part in assembly['parts']:
-            expected += f'% ---- part {part} ----\n' + inputs.read(directory + '/' + part + '.tex')
+            # The assembler owns virtual empty/terminal slots; its source digest
+            # above binds them. Substantive authored parts still require a file.
+            content = (INLINE_PARTS[str(problem)][part]
+                       if part in INLINE_PARTS[str(problem)]
+                       else inputs.read(directory + '/' + part + '.tex'))
+            expected += f'% ---- part {part} ----\n' + content
         if expected != inputs.read(output):
             findings.append({'code': 'stale_assembly', 'severity': 'error', 'detail': output,
                              'short_claims': [r['id'] for r in short], 'long_location': locator(output, 1)})

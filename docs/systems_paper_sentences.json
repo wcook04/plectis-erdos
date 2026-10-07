@@ -43,10 +43,21 @@
       "id": "assembler",
       "path": "scripts/assemble_reasoning_surfaces.py",
       "start_line": 1,
-      "end_line": 150,
-      "sha256": "0d8f6426d736fd371921e11e7bd2e721413f2d881b10da0be88c6f19b5ffb2b2",
-      "excerpt_sha256": "96b755ed5f7490f1f00da06317879bd9efa73ae257444e6e76c0e22454ea99fe",
-      "kind": "source"
+      "end_line": 242,
+      "sha256": "8ab9daf5938b884e140ff4a3c5455a190bbf2836dfe72e66b650fe5660fbdfa1",
+      "excerpt_sha256": "8ab9daf5938b884e140ff4a3c5455a190bbf2836dfe72e66b650fe5660fbdfa1",
+      "kind": "source",
+      "rebind_review": {
+        "reason": "The assembly owner now inlines explicitly enumerated empty slots and terminal boilerplate, retaining all part markers. All eight assembled flat manuscripts match HEAD byte-for-byte; substantive authored parts remain required and bootstrap rejects noncanonical inline content. This preserves the authored-argument and freshness warrants.",
+        "previous_binding": {
+          "path": "scripts/assemble_reasoning_surfaces.py",
+          "start_line": 1,
+          "end_line": 150,
+          "sha256": "0d8f6426d736fd371921e11e7bd2e721413f2d881b10da0be88c6f19b5ffb2b2",
+          "excerpt_sha256": "96b755ed5f7490f1f00da06317879bd9efa73ae257444e6e76c0e22454ea99fe"
+        },
+        "boundary": "Source organization only; manuscript scientific units, classifications, warrants and original source commit unchanged. No mathematical, empirical or external-review outcome asserted."
+      }
     },
     {
       "id": "audit-code",
@@ -689,12 +700,12 @@
       "kind": "source",
       "path": "docs/agents/README.md",
       "start_line": 1,
-      "end_line": 151,
-      "sha256": "bea5d7df1c91f1bb5d0a7d7bfd9e33dfc01e3568554198155084bc7296fed2fb",
-      "excerpt_sha256": "bea5d7df1c91f1bb5d0a7d7bfd9e33dfc01e3568554198155084bc7296fed2fb",
+      "end_line": 54,
+      "sha256": "d1701ba39f82f80f81087469c6be71fbfe896e97f6fde8b1d3bfce4d56be55be",
+      "excerpt_sha256": "d1701ba39f82f80f81087469c6be71fbfe896e97f6fde8b1d3bfce4d56be55be",
       "custody": "Current native public file inspected as source; no fresh execution.",
       "rebind_review": {
-        "reason": "Agent guide retains ordinary-language task routing, exact-checkout provenance, source lookup and return workflow. Added changed-example entry does not alter actor/adoption responsibilities. Final quickstart adds an argument-graph source-evidence lookup row; task routing, actor responsibilities and adoption boundaries remain unchanged.",
+        "reason": "Agent guide retains ordinary-language task routing, exact-checkout provenance, source lookup and return workflow. Added changed-example entry does not alter actor/adoption responsibilities. Final quickstart adds an argument-graph source-evidence lookup row; task routing, actor responsibilities and adoption boundaries remain unchanged. The compact agent index retains file-and-terminal task routing and contribution/review responsibilities, linking clone/proof setup to REPRODUCIBILITY and detailed protocols to their maintained guides. No distinct reviewer or measured adoption is implied.",
         "previous_binding": {
           "path": "docs/agents/README.md",
           "start_line": 1,
@@ -709,13 +720,13 @@
       "id": "r8-lookup",
       "kind": "source",
       "path": "scripts/query_corpus.py",
-      "start_line": 6609,
-      "end_line": 6738,
-      "sha256": "d56a2be36b7b07467ecb7548fd609a06954ce1d497572d709d7e8d771252e1a4",
+      "start_line": 6589,
+      "end_line": 6718,
+      "sha256": "95c91fbed03524b618d5a8c387c13dc2a69c6470f4305716cbc6391ccf7e9bd8",
       "excerpt_sha256": "2f13aac684bc48891582a60d8b501c1c1d357db9bfddfbe0c49e4cbb26c8da8b",
       "custody": "Current native public file inspected as source; no fresh execution.",
       "rebind_review": {
-        "reason": "The original reviewed excerpt is retained byte-for-byte; only the enclosing file digest and shifted coordinates are rebound. Structural consolidation review: The retained reviewed excerpt remains byte-for-byte identical; changes elsewhere in the file only update its enclosing digest.",
+        "reason": "The original reviewed excerpt is retained byte-for-byte; only the enclosing file digest and shifted coordinates are rebound. Structural consolidation review: The retained reviewed excerpt remains byte-for-byte identical; changes elsewhere in the file only update its enclosing digest. The registered problem-route excerpt remains byte-for-byte unchanged at shifted coordinates. Elsewhere the cached module adapter delegates the identical checkout-aware resolution to lean_source; no formal statement is inferred from prose.",
         "previous_binding": {
           "path": "scripts/query_corpus.py",
           "start_line": 6609,
@@ -862,13 +873,13 @@
       "id": "r8-release",
       "kind": "source",
       "path": "scripts/check_release.py",
-      "start_line": 1698,
-      "end_line": 1774,
-      "sha256": "e7d31482108dbdf57cd8eb0ef497382ef8023070cf7a56722b95e48171088c15",
+      "start_line": 1785,
+      "end_line": 1861,
+      "sha256": "1b248964b7e91eb209ffe3509986c5603804c43d6b32b767584f1ee407934217",
       "excerpt_sha256": "da39690f9c38fd66ca7b1f7496108ac87673b67260a7c1c234b842008edd0adb",
       "custody": "Current native public file inspected as source; no fresh execution.",
       "rebind_review": {
-        "reason": "The original reviewed excerpt is retained byte-for-byte; only the enclosing file digest and shifted coordinates are rebound. Structural consolidation review: The retained reviewed excerpt remains byte-for-byte identical; changes elsewhere in the file only update its enclosing digest. The root-layout prevention check now rejects root test regrowth and Python tools in documentation folders. It shifts this reviewed release-coordination excerpt without changing any byte of the excerpt or its described behavior. Final publication checker dispatch points to scripts/papers rather than docs/papers; the retained release-coordination excerpt is byte-identical and no mathematical or historical assertion changes.",
+        "reason": "The original reviewed excerpt is retained byte-for-byte; only the enclosing file digest and shifted coordinates are rebound. Structural consolidation review: The retained reviewed excerpt remains byte-for-byte identical; changes elsewhere in the file only update its enclosing digest. The root-layout prevention check now rejects root test regrowth and Python tools in documentation folders. It shifts this reviewed release-coordination excerpt without changing any byte of the excerpt or its described behavior. Final publication checker dispatch points to scripts/papers rather than docs/papers; the retained release-coordination excerpt is byte-identical and no mathematical or historical assertion changes. The publication validation excerpt remains byte-for-byte unchanged at shifted coordinates. Shared leaf execution removes duplicate subprocess runs while preserving configured checks, deadlines and pass/fail requirements; it asserts no new release or Lean outcome. Final reviewed validator repair restores the supplemental aggregate deadline and restricts script normalization to the actual Python script argument. Entry-document checks follow visible maintained owners while preserving exact status/authority checks. This unchanged publication excerpt only shifts coordinates.",
         "previous_binding": {
           "path": "scripts/check_release.py",
           "start_line": 1662,

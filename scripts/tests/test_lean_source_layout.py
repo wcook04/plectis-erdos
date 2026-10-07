@@ -16,6 +16,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from lean_source import (
+    canonical_lean_module_path,
     LAYOUT_HISTORICAL_ROOT,
     LAYOUT_NESTED,
     LAYOUT_TRUNCATED_READER,
@@ -141,6 +142,25 @@ def check_root_bound_git_inventory() -> None:
 
 
 def main() -> int:
+    with tempfile.TemporaryDirectory(prefix="paper-module-resolution-") as raw:
+        root = Path(raw)
+        paths = ("lean/ErdosProblems/Skip/Ladder.lean", "Erdos249257/Nested/Legacy.lean",
+                 "lean/Erdos249257/Shared.lean", "lean/ErdosProblems/Shared.lean")
+        for relative in paths:
+            path = root / relative; path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("-- fixture\n")
+        require(canonical_lean_module_path("Skip/Ladder.lean", root=root) == paths[0],
+                "nested shorthand guessed the wrong library")
+        require(canonical_lean_module_path("Nested/Legacy.lean", root=root) == paths[1],
+                "historical root source did not resolve")
+        require(canonical_lean_module_path("Shared.lean", root=root) == paths[2],
+                "default library preference changed")
+        require(canonical_lean_module_path("Shared.lean", True, root=root) == paths[3],
+                "problem macro library preference changed")
+        require(canonical_lean_module_path("ErdosProblems/Skip/Ladder.lean", root=root) == paths[0],
+                "qualified library path lost nested storage")
+        require(canonical_lean_module_path("Absent.lean", True, root=root)
+                == "lean/ErdosProblems/Absent.lean", "absent-source macro fallback changed")
     with tempfile.TemporaryDirectory(prefix="lean-layout-missing-") as raw:
         root = Path(raw)
         (root / "lakefile.toml").write_text(LAKEFILE_NESTED, encoding="utf-8")

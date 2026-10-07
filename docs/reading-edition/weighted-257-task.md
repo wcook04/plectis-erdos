@@ -129,6 +129,10 @@ criterion, not a named theorem about this family. The unrestricted Erdős
 
 Can a different fixed finite prime witness decide the case where this test diverges? Return an argument, obstruction, or precise non-answer with its source and assumptions. Failure of this witness does not settle the universal question.
 
+## Observe an outside attempt
+
+For a willing reader, use this packet and their chosen learning depth. Record edition fingerprint, environment, selected case, requested hints, interventions, answer and source locations. Assess whether the answer respects all hypotheses, withholds an arithmetic verdict when the test fails, distinguishes the ordinary deduction from the formal criterion, and identifies the unresolved universal claim. Ask for one related question of their own; record time and obstacles when they agree. Return observations or corrections through [Contributing](https://github.com/wcook04/plectis-erdos/blob/main/CONTRIBUTING.md), preserving attribution and any limits. This is an attempt protocol; it records no participants or measured outcomes.
+
 ## Source content identities
 
 - `paper/257/erdos-257-mersenne-support-subseries.tex`: SHA-256 `d72b79f31d5438b24af1f4c73ddc357234412a30f0a8af857e7e5af85acba8b3`

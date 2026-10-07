@@ -105,6 +105,7 @@ from systems_paper_evidence import (
 )
 import validation_singleflight as singleflight
 import refresh_projections
+import check_ci_release
 
 ROOT = Path(__file__).resolve().parent.parent
 ERRORS: list[str] = []
@@ -116,6 +117,7 @@ _SUBPROCESS_RUN = subprocess.run
 PROJECTION_CHECK_WORKERS = refresh_projections.CHECK_WORKERS
 RELEASE_CHECK_WORKERS = 4
 _PROJECTION_CHECK_RESULTS: dict[str, subprocess.CompletedProcess[str]] | None = None
+_SHARED_LEAF_RUNS = check_ci_release.SharedCommandRuns()
 
 
 def clean_environment() -> dict[str, str]:
@@ -215,14 +217,43 @@ def run_independent_checks(
 
 
 def _run_independent_check(argv: list[str]) -> subprocess.CompletedProcess[str]:
+    if argv == [sys.executable, str(ROOT / "scripts/check_ci_release.py")]:
+        errors = check_ci_release.registry_errors() + check_ci_release.workflow_errors(
+            (ROOT / ".github/workflows/lean.yml").read_text()
+        )
+        if errors:
+            return subprocess.CompletedProcess(argv, 1, "", "\n".join(errors))
+        lines: list[str] = []
+        report = check_ci_release.run_suite(
+            root=ROOT, runner=_SHARED_LEAF_RUNS.run,
+            overall_timeout=SUBPROCESS_TIMEOUT_SECONDS,
+            emit=lambda line, **kwargs: lines.append(line),
+        )
+        lines.append(f"shared CI release checks: {report['completed'] - report['failed']}"
+                     f"/{report['configured']} passed")
+        return subprocess.CompletedProcess(argv, int(report["failed"] != 0),
+                                           "\n".join(lines), "")
+    relative = tuple(str(Path(arg).relative_to(ROOT))
+                     if Path(arg).is_absolute() and Path(arg).is_relative_to(ROOT)
+                     else arg for arg in argv[1:])
+    if argv[0] == sys.executable and relative in check_ci_release.COMMANDS:
+        try:
+            # The shared CI registry's stricter leaf deadline already governs
+            # acceptance of these commands in the full gate.
+            return _SHARED_LEAF_RUNS.run(
+                argv, cwd=ROOT, capture_output=True, text=True,
+                timeout=check_ci_release.TIMEOUT_SECONDS, env=clean_environment(),
+            )
+        except subprocess.TimeoutExpired as exc:
+            def text(value):
+                return value.decode(errors="replace") if isinstance(value, bytes) else (value or "")
+            return subprocess.CompletedProcess(argv, 124, text(exc.stdout),
+                                               text(exc.stderr) + f"\ntimed out after {exc.timeout}s")
+        except OSError as exc:
+            return subprocess.CompletedProcess(argv, 127, "", str(exc))
     return _SUBPROCESS_RUN(
-        argv,
-        cwd=ROOT,
-        capture_output=True,
-        text=True,
-        check=False,
-        env=clean_environment(),
-        timeout=SUBPROCESS_TIMEOUT_SECONDS,
+        argv, cwd=ROOT, capture_output=True, text=True, check=False,
+        env=clean_environment(), timeout=SUBPROCESS_TIMEOUT_SECONDS,
     )
 
 
@@ -653,6 +684,60 @@ def has_release_status_boundary(text: str, claims: dict) -> bool:
     boundary = claims.get("external_verification_packet", {}).get("boundary")
     return (isinstance(boundary, str) and bool(boundary.strip())
             and flattened(boundary) in flattened(text))
+
+
+def visible_owner_routes(start: str, documents: dict[str, str], *, depth: int = 4) -> set[str]:
+    """Follow visible local Markdown links through admitted guide snapshots.
+
+    A filename mentioned in code or prose is not a reader route. Documents are
+    supplied explicitly, so an unlinked owner cannot be silently read from disk.
+    """
+    reached = {start}
+    frontier = {start}
+    for _ in range(depth):
+        following = set()
+        for source in frontier:
+            text = documents.get(source, "")
+            text = re.sub(r"```.*?```", "", text, flags=re.DOTALL)
+            text = re.sub(r"`[^`]*`", "", text)
+            for raw in re.findall(r"\[[^]]+\]\(([^)]+)\)", text):
+                destination = raw.split("#", 1)[0].split("?", 1)[0]
+                if not destination or "://" in destination or destination.startswith("mailto:"):
+                    continue
+                target = (ROOT / Path(source).parent / destination).resolve()
+                if target.is_relative_to(ROOT):
+                    following.add(target.relative_to(ROOT).as_posix())
+        following -= reached
+        reached |= following
+        frontier = following
+    return reached
+
+
+def entry_owner_route_errors(documents: dict[str, str], claims: dict, problem_count: int) -> list[str]:
+    """Keep compact entries usable without duplicating their maintained owners."""
+    errors = []
+    reader = visible_owner_routes("README.md", documents)
+    agent = visible_owner_routes("docs/agents/AGENT_GUIDE.md", documents)
+    for target in ("docs/EXTERNAL_VERIFICATION.md", "formalization.yaml"):
+        if target not in reader:
+            errors.append(f"README reader route does not reach {target}")
+    for target in ("docs/ARCHITECTURE.md", "docs/orientation.json",
+                   "docs/reference/ORIENTATION.md", "docs/METHODOLOGY.md",
+                   "lean/Erdos249257.lean", "lean/ErdosProblems.lean", "docs/RESULTS.md"):
+        if target not in agent:
+            errors.append(f"agent guide reader route does not reach {target}")
+    dossier = documents.get("docs/EXTERNAL_VERIFICATION.md", "")
+    count_word = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
+                  6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten"}.get(problem_count, str(problem_count))
+    if not re.search(rf"across (?:{count_word}|{problem_count}) programmes", flattened(dossier)):
+        errors.append("linked verification dossier lost indexed programme coverage")
+    if not has_release_status_boundary(documents.get("docs/RESULTS.md", ""), claims):
+        errors.append("linked results owner lost exact open-problem boundary")
+    orientation = flattened(documents.get("docs/reference/ORIENTATION.md", ""))
+    if ("larger ongoing formal-mathematics workflow" not in orientation
+            or "No public claim depends on private or unreleased work" not in orientation):
+        errors.append("linked orientation owner lost public-projection provenance boundary")
+    return errors
 
 
 def contributor_gate_posture_errors(contributing: str) -> list[str]:
@@ -1665,6 +1750,8 @@ def main(argv: list[str] | None = None) -> int:
     # ``read`` is a per-run immutable snapshot, not a cross-run file cache.
     # Clearing here keeps repeated in-process invocations source-current while
     # letting the thousands of consumers below share one admitted read.
+    global _SHARED_LEAF_RUNS
+    _SHARED_LEAF_RUNS = check_ci_release.SharedCommandRuns()
     read.cache_clear()
     cache: dict[tuple[str, str | None], list[str] | None] = {}
 
@@ -2403,42 +2490,23 @@ def main(argv: list[str] | None = None) -> int:
           "README must route readers to the checked release citation owner")
     check("docs/METHODOLOGY.md" in readme and "SOURCE_MAP.md" in readme,
           "README must route readers to the methodology and source map")
-    check(
-        "formalization.yaml" in readme and "docs/EXTERNAL_VERIFICATION.md" in readme,
-        "README must route readers to the external verification packet",
-    )
-    # Derive the scope sentence from the problem registry rather than pinning
-    # one fixed English sentence. The property is "the README states that the
-    # manifest and packet cover every indexed problem programme". Matching the
-    # literal "cover all eight problem programmes" both broke on an honest
-    # rewording ("covers") and would have stayed silent if a ninth problem were
-    # indexed while the sentence still said eight. (2026-08-15)
     indexed_problem_count = int(
-        json.loads(read(ROOT / "docs" / "problems.json")).get("problem_count", 0)
+        json.loads(read(ROOT / "docs/problems.json")).get("problem_count", 0)
     )
-    count_words = {
-        1: "one", 2: "two", 3: "three", 4: "four", 5: "five",
-        6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten",
+    check(has_release_status_boundary(readme, data),
+          "README must state the open boundary in plain language")
+    entry_documents = {
+        relative: read(ROOT / relative)
+        for relative in (
+            "README.md", "AGENTS.md", "docs/README.md", "docs/RESULTS.md",
+            "docs/ARCHITECTURE.md", "docs/REPRODUCIBILITY.md", "docs/METHODOLOGY.md",
+            "docs/EXTERNAL_VERIFICATION.md", "docs/reference/SOURCE_MAP.md",
+            "docs/reference/ORIENTATION.md", "docs/agents/AGENT_GUIDE.md",
+            "docs/agents/AGENT_WORKBENCH.md",
+        )
     }
-    count_word = count_words.get(indexed_problem_count, "")
-    count_pattern = "|".join(
-        re.escape(token) for token in (count_word, str(indexed_problem_count)) if token
-    )
-    check(
-        has_release_status_boundary(readme, data),
-        "README must state the open boundary in plain language",
-    )
-    check(
-        bool(
-            re.search(
-                rf"(?:covers?\s+all\s+(?:{count_pattern})\s+problem(?:\s+programmes|s)"
-                rf"|selected\s+statements\s+across\s+all\s+(?:{count_pattern})\s+problems)",
-                flattened(readme),
-            )
-        ),
-        "README must state that the external-verification packet covers all "
-        f"{indexed_problem_count} indexed problem programmes",
-    )
+    for error in entry_owner_route_errors(entry_documents, data, indexed_problem_count):
+        check(False, error)
     leaked_identifier = re.search(r"method_axiom\.|anti_principle\.|principle\.[a-z_]|transition\.[a-z_]", readme)
     check(leaked_identifier is None,
           f"README leaks a methodology machine identifier: {leaked_identifier.group(0) if leaked_identifier else ''}")
@@ -2553,31 +2621,18 @@ def main(argv: list[str] | None = None) -> int:
     # --- 8. agent entry ------------------------------------------------------------
     agents = read(ROOT / "docs/agents/AGENT_GUIDE.md")
     for required in (
-        "docs/ARCHITECTURE.md",
-        "docs/orientation.json",
-        "docs/reference/ORIENTATION.md",
-        "docs/claims.json",
-        "docs/corpus_descriptor.json",
-        "docs/methodology.json",
-        "docs/METHODOLOGY.md",
-        "docs/METHODOLOGY.md",
-        "Erdos249257.lean",
-        "ErdosProblems.lean",
-        "scripts/check_release.py",
-        "scripts/tests/test_agent_entry.py",
-        "skills/maintain-public-infrastructure/SKILL.md",
-        "scripts/query_corpus.py",
+        "docs/claims.json", "docs/corpus_descriptor.json", "docs/methodology.json",
+        "scripts/check_release.py", "scripts/tests/test_agent_entry.py",
+        "skills/maintain-public-infrastructure/SKILL.md", "scripts/query_corpus.py",
     ):
-        check(required in agents, f"docs/agents/AGENT_GUIDE.md does not route through {required}")
-    flat_agents = flattened(agents)
-    check("remain open" in flat_agents,
-          "docs/agents/AGENT_GUIDE.md must preserve the open-problem boundary")
-    check("proof authority" in flat_agents,
+        check(required in agents, f"docs/agents/AGENT_GUIDE.md lost operational owner {required}")
+    check("proof authority" in flattened(agents),
           "docs/agents/AGENT_GUIDE.md must state the proof-authority boundary")
-    check("larger ongoing formal-mathematics workflow" in flat_agents,
-          "docs/agents/AGENT_GUIDE.md must preserve the public-projection provenance boundary")
-    check("mathematical programme" in flat_agents,
-          "docs/agents/AGENT_GUIDE.md must expose mathematical programme routes")
+    for problem in json.loads(read(ROOT / "docs/problems.json"))["problems"]:
+        number = problem["erdos_number"]
+        if number is not None:
+            check(f"--route erdos_{number}" in agents,
+                  f"agent guide lost programme route for #{number}")
 
     mid_checks = run_independent_checks(
         {

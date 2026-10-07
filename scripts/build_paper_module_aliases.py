@@ -11,7 +11,7 @@ import re
 import sys
 from pathlib import Path
 
-from query_corpus import canonical_lean_module_path
+from lean_source import canonical_lean_module_path
 
 ROOT = Path(__file__).resolve().parent.parent
 PAPER_DIR = ROOT / "paper"
@@ -54,7 +54,7 @@ def canonical_module_path(module: str) -> str:
     here a shorthand that names no module is refused outright rather than
     turned into a dangling sigil.
     """
-    resolved = canonical_lean_module_path(module)
+    resolved = canonical_lean_module_path(module, root=ROOT)
     if not (ROOT / resolved).is_file():
         raise ValueError(
             f"paper source link names no module in this checkout: {module!r} "

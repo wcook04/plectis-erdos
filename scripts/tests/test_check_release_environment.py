@@ -66,7 +66,38 @@ def check_markdown_render_gate() -> None:
                     require(not check_release.ERRORS, "readable Markdown failed the release gate")
 
 
+def check_compact_entry_routes() -> None:
+    paths = ("README.md", "AGENTS.md", "docs/README.md", "docs/RESULTS.md",
+             "docs/ARCHITECTURE.md", "docs/REPRODUCIBILITY.md", "docs/METHODOLOGY.md",
+             "docs/EXTERNAL_VERIFICATION.md", "docs/reference/SOURCE_MAP.md",
+             "docs/reference/ORIENTATION.md", "docs/agents/AGENT_GUIDE.md",
+             "docs/agents/AGENT_WORKBENCH.md")
+    documents = {path: (check_release.ROOT / path).read_text() for path in paths}
+    claims = json.loads((check_release.ROOT / "docs/claims.json").read_text())
+    count = json.loads((check_release.ROOT / "docs/problems.json").read_text())["problem_count"]
+    require(not check_release.entry_owner_route_errors(documents, claims, count),
+            "compact current entries must reach their maintained evidence owners")
+    for start in ("README.md", "docs/agents/AGENT_GUIDE.md"):
+        broken = dict(documents)
+        broken[start] = "Mention docs/RESULTS.md and docs/EXTERNAL_VERIFICATION.md without links."
+        require(bool(check_release.entry_owner_route_errors(broken, claims, count)),
+                "unlinked owner names must not pass visible navigation validation")
+    for owner in ("docs/RESULTS.md", "docs/reference/ORIENTATION.md", "docs/EXTERNAL_VERIFICATION.md"):
+        broken = dict(documents); broken[owner] = "Owner with its evidence boundary removed."
+        require(bool(check_release.entry_owner_route_errors(broken, claims, count)),
+                f"lost canonical owner boundary escaped: {owner}")
+    # Traversal consumes only supplied linked snapshots; no disk fallback.
+    chain = {"README.md": "[guide](docs/ARCHITECTURE.md)",
+             "docs/ARCHITECTURE.md": "[owner](orientation.json)"}
+    require("docs/orientation.json" in check_release.visible_owner_routes("README.md", chain),
+            "valid two-hop route must survive compact entries")
+    chain.pop("docs/ARCHITECTURE.md")
+    require("docs/orientation.json" not in check_release.visible_owner_routes("README.md", chain),
+            "disk fallback must not hide a missing linked intermediate snapshot")
+
+
 def main() -> int:
+    check_compact_entry_routes()
     check_markdown_render_gate()
     source = inspect.getsource(check_release)
     require(
@@ -336,7 +367,9 @@ def main() -> int:
         return subprocess.CompletedProcess(args, returncode=0, stdout="ok", stderr="")
 
     check_release._PROJECTION_CHECK_RESULTS = None
-    with patch.object(check_release, "_SUBPROCESS_RUN", side_effect=record_combined):
+    with patch.object(check_release, "_SUBPROCESS_RUN", side_effect=record_combined), \
+         patch.object(check_release, "_SHARED_LEAF_RUNS",
+                      check_release.check_ci_release.SharedCommandRuns(record_combined)):
         publication_results = check_release.publication_stage_check_results()
     require(
         len(combined_dispatches) == len(check_release.refresh_projections.BUILDERS) + 5,

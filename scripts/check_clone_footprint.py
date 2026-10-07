@@ -103,7 +103,6 @@ READER_SPARSE_PATTERNS = (
     "/docs/claims.json",
     "/docs/problems.json",
     "/docs/problem_library.json",
-    "/docs/reference/PROBLEM_LIBRARY.md",
     "/docs/papers/",
     "/paper/",
     "/scripts/reader-sparse-checkout",

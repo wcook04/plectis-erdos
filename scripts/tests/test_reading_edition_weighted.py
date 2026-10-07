@@ -27,6 +27,15 @@ class WeightedTaskTests(unittest.TestCase):
         self.assertIn('not a separately named Lean-checked instance', text)
         self.assertLess(len(text.encode()), 16000)
 
+    def test_packet_preserves_outside_attempt_protocol(self):
+        text = next(iter(edition.build_weighted_task().values()))
+        self.assertIn("## Observe an outside attempt", text)
+        for requirement in ("edition fingerprint", "requested hints", "interventions",
+                            "test fails", "ordinary ", "unresolved universal claim",
+                            "when they agree", "no participants or measured outcomes"):
+            self.assertIn(requirement, text)
+        self.assertIn(edition.BLOB + "CONTRIBUTING.md", text)
+
     def test_saved_packet_has_public_example_source_link(self):
         text = next(iter(edition.build_weighted_task().values()))
         self.assertIn("[paper's example](" + edition.BLOB

@@ -14,6 +14,19 @@ class Prove2MeCompatTests(unittest.TestCase):
     def setUpClass(cls):
         cls.packet = compat.prepare()
 
+    def assert_pinned_paper_coordinate(self, packet):
+        config = compat.UNITS[packet["unit"]]
+        revision = packet["public_source_commit"]
+        path = config["paper_source"]
+        # Validate the emitted coordinate against the literal label at its own
+        # source revision, rather than freezing a line in a changing manuscript.
+        text = compat.git("show", f"{revision}:{path}")
+        needle = "\\label{" + packet["paper_label"] + "}"
+        lines = [i for i, line in enumerate(text.splitlines(), 1) if needle in line]
+        self.assertEqual(len(lines), 1)
+        self.assertEqual(packet["native_draft"]["paper_source"],
+                         f"https://github.com/wcook04/plectis-erdos/blob/{revision}/{path}#L{lines[0]}")
+
     def test_prepare_defaults_to_strongest_weighted_257_theorem(self):
         packet = self.packet
         self.assertEqual(packet["unit"], compat.DEFAULT_UNIT)
@@ -28,7 +41,7 @@ class Prove2MeCompatTests(unittest.TestCase):
         else:
             self.assertIn("WeightedReturn.lean#L120", packet["native_draft"]["source"])
             self.assertIn("plectis-erdos/blob/", packet["native_draft"]["source"])
-            self.assertIn("erdos-257-mersenne-support-subseries.tex#L54", packet["native_draft"]["paper_source"])
+            self.assert_pinned_paper_coordinate(packet)
         self.assertEqual(packet["mathlib_rev"], "5e932f97dd25535344f80f9dd8da3aab83df0fe6")
 
     def test_reciprocal_257_remains_selectable_as_portability_pilot(self):
@@ -43,8 +56,7 @@ class Prove2MeCompatTests(unittest.TestCase):
         else:
             self.assertIn("AllBaseReciprocalSupportIrrationality.lean#L395",
                           packet["native_draft"]["source"])
-            self.assertIn("erdos-257-mersenne-support-subseries.tex#L90",
-                          packet["native_draft"]["paper_source"])
+            self.assert_pinned_paper_coordinate(packet)
         self.assertIn("environment_unverified", compat.validate(packet)["blockers"])
 
     def test_249_remains_selectable_with_its_own_source_and_boundary(self):

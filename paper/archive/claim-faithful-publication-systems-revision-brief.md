@@ -1,9 +1,13 @@
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 
-# Revision brief: Lean publication-systems paper
+# Historical revision brief: Lean publication-systems paper
 
-The current twelve-page paper is an architecture note with one bounded case
+This superseded editorial brief is retained as historical guidance. Its page
+count and revision descriptions belong to the manuscript reviewed at that time.
+For the current paper, use [the systems-paper index](../systems/README.md).
+
+The then-current twelve-page paper is an architecture note with one bounded case
 study. Its useful feature is its order: it gives the reader a plain mental
 model before implementation details, and one worked example (the finite
 theorem, the open requirement, and the proved equivalence between the open

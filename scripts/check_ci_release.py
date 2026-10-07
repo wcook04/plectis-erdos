@@ -16,6 +16,8 @@ import re
 import subprocess
 import sys
 import time
+import threading
+from concurrent.futures import Future
 from pathlib import Path
 
 import validation_singleflight as singleflight
@@ -224,32 +226,96 @@ def escape_annotation(value: str) -> str:
     return value.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
 
 
-def run_suite(commands=COMMANDS, *, root: Path = ROOT,
-              timeout: float = TIMEOUT_SECONDS) -> dict:
+class SharedCommandRuns:
+    """Share exact leaf executions within one immutable release invocation.
+
+    No workers or persistent cache live here. The caller's bounded pools run
+    the first request; concurrent consumers wait on that same result or error.
+    """
+
+    def __init__(self, runner=None):
+        self.runner = runner or singleflight.run_bounded
+        self.lock = threading.Lock()
+        self.futures: dict[tuple, Future] = {}
+
+    def run(self, command, *, cwd, env, timeout, **kwargs):
+        # Python's script position is separate from .py-valued data/options.
+        argv = list(command)
+        index = 1
+        while index < len(argv):
+            value = argv[index]
+            if value == "-" or value.startswith(("-m", "-c")):
+                break
+            if value in ("-X", "-W"):
+                index += 2
+                continue
+            if value == "--":
+                index += 1
+                if index >= len(argv):
+                    break
+                value = argv[index]
+            elif value.startswith("-"):
+                index += 1
+                continue
+            candidate = Path(value)
+            if not candidate.is_absolute():
+                candidate = Path(cwd) / candidate
+            if candidate.is_file():
+                argv[index] = str(candidate.resolve())
+            break
+        key = (tuple(argv), str(Path(cwd).resolve()), tuple(sorted(env.items())),
+               timeout, tuple(sorted(kwargs.items())))
+        with self.lock:
+            owner = key not in self.futures
+            if owner:
+                self.futures[key] = Future()
+            future = self.futures[key]
+        if owner:
+            try:
+                future.set_result(self.runner(command, cwd=cwd, env=env,
+                                              timeout=timeout, **kwargs))
+            except BaseException as exc:
+                future.set_exception(exc)
+        return future.result()
+
+
+def run_suite(commands=None, *, root: Path = ROOT,
+              timeout: float = TIMEOUT_SECONDS, runner=None, emit=print,
+              overall_timeout: float | None = None) -> dict:
+    commands = COMMANDS if commands is None else commands
+    runner = runner or singleflight.run_bounded
+    deadline = time.monotonic() + overall_timeout if overall_timeout is not None else None
     results = []
     for command in commands:
         label = "python3 " + " ".join(command)
         started = time.monotonic()
         if os.environ.get("GITHUB_ACTIONS") == "true":
-            print(f"::group::{label}", flush=True)
+            emit(f"::group::{label}", flush=True)
         try:
-            child = singleflight.run_bounded([sys.executable, *command], cwd=root,
+            remaining = deadline - time.monotonic() if deadline is not None else timeout
+            if remaining <= 0:
+                raise subprocess.TimeoutExpired(command, overall_timeout or 0)
+            child = runner([sys.executable, *command], cwd=root,
                                    env=singleflight.command_environment(),
-                                   text=True, capture_output=True, timeout=timeout)
+                                   text=True, capture_output=True, timeout=min(timeout, remaining))
             code, detail = child.returncode, (child.stdout + "\n" + child.stderr).strip()
             timed_out = False
-        except subprocess.TimeoutExpired:
-            code, detail, timed_out = 124, f"timed out after {timeout}s", True
+        except subprocess.TimeoutExpired as exc:
+            def text(value):
+                return value.decode(errors="replace") if isinstance(value, bytes) else (value or "")
+            detail = (text(exc.stdout) + "\n" + text(exc.stderr)
+                      + f"\ntimed out after {exc.timeout}s").strip()
+            code, timed_out = 124, True
         except OSError as exc:
             code, detail, timed_out = 127, str(exc), False
         results.append({"command": list(command), "exit_code": code,
                         "timed_out": timed_out, "seconds": round(time.monotonic() - started, 3),
                         "output_tail": detail[-12000:]})
-        print(f"{'FAIL' if code else 'PASS'} {label}" + (f"\n{detail[-12000:]}" if code else ""), flush=True)
+        emit(f"{'FAIL' if code else 'PASS'} {label}" + (f"\n{detail[-12000:]}" if code else ""), flush=True)
         if os.environ.get("GITHUB_ACTIONS") == "true":
-            print("::endgroup::", flush=True)
+            emit("::endgroup::", flush=True)
             if code:
-                print("::error::" + escape_annotation(f"{label}: exit {code}; {detail[-2000:]}"), flush=True)
+                emit("::error::" + escape_annotation(f"{label}: exit {code}; {detail[-2000:]}"), flush=True)
     failures = sum(row["exit_code"] != 0 for row in results)
     return {"schema": "shared_ci_release_checks_v1", "status": "failed" if failures else "passed",
             "configured": len(commands), "completed": len(results), "failed": failures,

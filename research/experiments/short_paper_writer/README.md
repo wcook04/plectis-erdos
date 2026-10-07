@@ -9,8 +9,8 @@ Comparator check.
 Read `docs/papers/SHORT_PAPER_CONTRACT.md` first. From the repository root:
 
 ```sh
-python3 scripts/test_short_paper_writer.py
-python3 -O scripts/test_short_paper_writer.py
+python3 scripts/tests/test_short_paper_writer.py
+python3 -O scripts/tests/test_short_paper_writer.py
 python3 scripts/short_paper_writer.py audit --output /tmp/short-paper-audit.json
 python3 scripts/short_paper_writer.py draft \
   --dossier research/experiments/short_paper_writer/dossier269.json \

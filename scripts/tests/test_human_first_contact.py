@@ -93,6 +93,8 @@ def missing_checkout_targets(
 def local_python_command_targets(source: Path, root: Path = ROOT) -> list[Path]:
     """Check concrete runnable instructions, including inline and fenced code."""
     targets = []
+    cwd = root
+    fenced = False
     for line in source.read_text(encoding="utf-8").splitlines():
         # Accepted evidence records describe execution at a pinned checkout;
         # their recorded commands are not instructions for the current clone.
@@ -100,12 +102,25 @@ def local_python_command_targets(source: Path, root: Path = ROOT) -> list[Path]:
                 and re.search(r"environment=Public checkout [0-9a-f]{40}\b", line)
                 and re.search(r"https://github\.com/[^ )]+/blob/[0-9a-f]{40}/", line)):
             continue
+        if re.match(r"^\s*(?:```|~~~)", line):
+            fenced = not fenced
+            cwd = root
+            continue
+        if fenced:
+            change = re.match(r"^\s*cd[ \t]+([A-Za-z0-9_./-]+)(?:[ \t]*$|[ \t]+&&)", line)
+            if change:
+                cwd = (cwd / change[1]).resolve()
         line = re.sub(r"https?://[^\s)]+", "", line)
         for match in re.finditer(
-            r"(?<![\w/])python3[ \t]+(?:-O[ \t]+)?"
-            r"(scripts/[A-Za-z0-9_./-]+\.py)(?![A-Za-z0-9_./-])", line
+            r"(?<![\w/])python3?[ \t]+(?:-O[ \t]+)?"
+            r"([A-Za-z0-9_./-]+\.py)(?![A-Za-z0-9_./-])", line
         ):
-            targets.append((root / match[1]).resolve())
+            path = match[1]
+            # Root-based public commands, or local filenames after an explicit
+            # cd in a shell block; generic snippets and external paths are not
+            # advertised checkout instructions.
+            if path.split("/", 1)[0] in README_ROOTS or cwd != root:
+                targets.append((cwd / path).resolve())
     return targets
 
 
@@ -185,6 +200,16 @@ HISTORICAL_SNAPSHOT_FILES = {
 }
 
 
+README_ROOTS = (
+    "research", "research_corpus", "computations", "evidence", "verification",
+    "lean", "paper", "scripts", "skills", "docs",
+)
+FROZEN_README_DIRS = (
+    "research_corpus/Erdos1041", "research/workbench/sessions",
+    "paper/archive",
+)
+
+
 def live_documentation_surfaces(root: Path = ROOT) -> list[Path]:
     """Select current Markdown guides by existing historical/output homes."""
     result = []
@@ -198,7 +223,15 @@ def live_documentation_surfaces(root: Path = ROOT) -> list[Path]:
         if re.search(r"(?:^|_)\d{4}-\d{2}-\d{2}(?:_|\.md$)", path.name):
             continue
         result.append(path)
-    return result
+    for home in README_ROOTS:
+        if home == "docs":
+            continue
+        for path in sorted((root / home).rglob("README.md")):
+            rel = path.relative_to(root).as_posix()
+            if any(rel.startswith(prefix + "/") for prefix in FROZEN_README_DIRS):
+                continue
+            result.append(path)
+    return sorted(set(result))
 
 
 def test_recursive_documentation_links() -> None:
@@ -224,6 +257,25 @@ def test_recursive_documentation_links() -> None:
             frozen.parent.mkdir(parents=True, exist_ok=True)
             frozen.write_text("[old](missing.md)\n")
             require(frozen not in live_documentation_surfaces(root), "historical document treated as current guide")
+        for home in README_ROOTS:
+            if home == "docs":
+                continue
+            current = root / home / "nested" / "README.md"
+            current.parent.mkdir(parents=True, exist_ok=True)
+            current.write_text("`python3 docs/papers/retired.py`\n")
+            require(current in live_documentation_surfaces(root), "nested repository README escaped scan")
+            require(local_python_command_targets(current, root) == [root / "docs/papers/retired.py"],
+                    "nested obsolete paper command escaped scan")
+        for home in FROZEN_README_DIRS:
+            frozen = root / home / "nested" / "README.md"
+            frozen.parent.mkdir(parents=True, exist_ok=True)
+            frozen.write_text("[old](missing.md) `python3 scripts/retired.py`\n")
+            require(frozen not in live_documentation_surfaces(root), "frozen exported/archive README became active")
+        guide.write_text("```sh\ncd docs/papers\npython3 refresh_paper_corpus.py\n```\n"
+                         "`python3 docs/papers/refresh_paper_corpus.py`\n")
+        require(local_python_command_targets(guide, root)
+                == [root / "docs/papers/refresh_paper_corpus.py"] * 2,
+                "cd-relative command or root-based inline paper command misresolved")
 
 
 def authored_prose_blocks(text: str) -> list[str]:

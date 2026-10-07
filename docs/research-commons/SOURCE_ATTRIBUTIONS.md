@@ -9009,7 +9009,7 @@ Query this record: `python3 scripts/build_source_attributions.py --query source-
 
 These gaps are shown explicitly so the catalogue cannot be mistaken for complete historical knowledge.
 
-- Registered papers scanned: `24`; TeX source files scanned after local includes: `98`.
+- Registered papers scanned: `24`; TeX source files scanned after local includes: `64`.
 - Citation keys without a local bibliography definition: `0`
 - Bibliography entries without a curated source link: `120`
 - Lean lexical candidates awaiting review: `827`

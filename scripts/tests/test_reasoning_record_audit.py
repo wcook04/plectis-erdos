@@ -166,6 +166,21 @@ class CorpusTests(unittest.TestCase):
             shutil.copyfile(audit.ROOT/rel, path)
         return root
 
+    def test_inline_slots_do_not_require_redundant_source_files(self):
+        self.assertFalse((audit.ROOT / 'paper/reasoning-parts/erdos68/extended_record.tex').exists())
+        self.assertNotEqual(self.base['status'], 'refusal')
+        self.assertFalse(any('extended_record.tex' in path
+                             for path in self.base['input_sha256']
+                             if 'erdos68/' in path))
+        self.assertIn('scripts/assemble_reasoning_surfaces.py', self.base['input_sha256'])
+
+    def test_missing_substantive_part_still_refuses(self):
+        root = self.clone_inputs()
+        (root / 'paper/reasoning-parts/erdos68/core.tex').unlink()
+        value = audit.report(root, [68])
+        self.assertEqual(value['status'], 'refusal')
+        self.assertIn('core.tex', value['reason'])
+
     def test_all_eight_pairs_are_examined(self):
         self.assertEqual({p['problem'] for p in self.base['pairs']}, {68,243,249,251,257,269,1041,1049})
         self.assertEqual(self.base['summary']['short_claims'] + self.base['summary']['long_claims'],

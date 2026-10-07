@@ -48,12 +48,13 @@ Use `--checkout --check-upstream` for an explicit live comparison with canonical
 public main. Never label a cached remote ref, a release tag, or an offline
 checkout as latest. Preserve older-clone work and its starting commit; a
 different revision is not evidence that the contributor's work is invalid.
-Keep the human clone/prompt instructions in `docs/agents/README.md`
+Keep the human task entry in `docs/agents/README.md`, linked to the canonical
+clone and proof setup in `docs/REPRODUCIBILITY.md`,
 and the behavioral provenance cases in `scripts/tests/test_agent_entry.py`, which
 the release gate already runs. Exercise forks, tags, archives, dirty worktrees,
 and unavailable network access without requiring a network in tests. Check the
-combined first-contact route budget as well as each entry file: newcomer setup
-belongs in the agent index, not in an already full technical reading bundle.
+combined first-contact route budget as well as each entry file: link newcomers
+to the setup owner without duplicating its commands in every reading bundle.
 
 ## Separate contribution discovery from mathematical work
 
@@ -211,6 +212,9 @@ Keep the root README a human introduction and AGENTS.md the agent's operational
 entry. Details belong with their existing owner: do not require the README or
 agent guide to reproduce complete paper, theorem or generated-count inventories.
 Tests must check that a reader can follow the maintained route to those facts.
+After merging a guide, validate the visible link and its captured destination's
+actual boundaries; a required phrase copied into every entrypoint defeats
+consolidation. Code examples and broken links cannot satisfy that route.
 Production Python commands live in `scripts/`, behavioral tests in
 `scripts/tests/`, and paper-corpus executables in `scripts/papers/`; `docs/papers/`
 contains the corpus data and rendered text. Preserve immutable historical paths
