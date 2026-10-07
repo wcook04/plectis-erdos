@@ -153,6 +153,22 @@ sentences and warrants before updating only the relevant source spans and
 digests. Preserve evidence classes, reported execution limits and historical
 identity; a new digest cannot supply new semantic or empirical evidence.
 
+After all source edits, before freezing a source commit or launching a receiving
+repository's build, settle the complete disclosure and evidence closure in dependency order:
+generated disclosure, attribution anchors and views, reviewed systems-paper
+bindings, then the corpus fingerprint. Refresh fingerprints after every owning
+ledger change, and repeat the affected owner checks until the outputs reach a
+fixed point. Pass exact-commit native publication admission and publish that
+unchanged source commit before using its SHA in receiving CI. Keep receiving
+edits local while the source remains provisional; a changed source SHA needs
+its own receiving build.
+
+Before dispatching an independent verifier, check its immutable pipeline's
+source-toolchain minimum, exporter compatibility, accepted report schema and
+required kernels and axioms. Passing source selection or an execution-profile
+job is not proof verification. A source dependency-pin upgrade requires an
+explicit review and binding of the resulting new proof closure.
+
 ## Classify before changing
 
 Choose the first matching class:

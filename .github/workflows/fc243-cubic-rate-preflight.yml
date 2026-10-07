@@ -1,0 +1,121 @@
+name: FC243 exact cubic-rate adapter preflight
+
+on:
+  push:
+    branches: [codex/fc243-exact-adapter-20261007]
+    paths:
+      - .github/workflows/fc243-cubic-rate-preflight.yml
+      - verification/FC243CubicRate/**
+      - verification/ExternalVerification/FC243CubicRate/**
+      - research/adapters/FC243CubicRate.lean
+      - lean/**
+      - lean-toolchain
+      - lakefile.toml
+      - lake-manifest.json
+  workflow_dispatch:
+    inputs:
+      source_commit:
+        description: Full candidate SHA; must equal the selected workflow ref
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  select:
+    runs-on: ubuntu-24.04
+    outputs:
+      source_commit: ${{ steps.validate.outputs.source_commit }}
+      request_id: ${{ steps.validate.outputs.request_id }}
+      options: ${{ steps.validate.outputs.options }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Bind exact current closure and independent adapter selection
+        id: validate
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_SHA: ${{ github.sha }}
+          SOURCE_COMMIT_INPUT: ${{ inputs.source_commit }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          python3 - <<'PYCODE'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import re
+          import subprocess
+
+          if os.environ['REPOSITORY'] != 'wcook04/plectis-erdos':
+              raise SystemExit('repository identity changed')
+          event = os.environ['EVENT_NAME']
+          if event not in ('push', 'workflow_dispatch'):
+              raise SystemExit('unsupported verification trigger')
+          source = os.environ['EVENT_SHA'] if event == 'push' else os.environ['SOURCE_COMMIT_INPUT']
+          if not re.fullmatch(r'[0-9a-f]{40}', source):
+              raise SystemExit('source commit must be a full lowercase SHA')
+          if source != os.environ['EVENT_SHA'] or source != subprocess.check_output(
+              ['git', 'rev-parse', 'HEAD'], text=True).strip():
+              raise SystemExit('verification source must equal checked-out workflow ref')
+          def checked_bytes(relpath):
+              path = Path(relpath)
+              if path.is_absolute() or any(part in ('', '.', '..') for part in path.parts):
+                  raise SystemExit('unsafe verification path')
+              for candidate in (path, *path.parents):
+                  if candidate.is_symlink():
+                      raise SystemExit('symlinked verification input')
+              if not path.is_file():
+                  raise SystemExit(f'missing verification input: {relpath}')
+              return path.read_bytes()
+          protected = {'lakefile.toml': 'e1a087453f8ac7bf939211194ae083a87212d33d82bd222d1f27ffc0bbdc5211', 'verification/ExternalVerification/FC243CubicRate/Solution.lean': '6f2df88703132935e4747f9a82fd2bcbcd6717d3e63bec4443e543a4918b0ac4', 'verification/ExternalVerification/FC243CubicRate/Challenge.lean': 'af96a65d497e1411920d7f7604089a6dd600a535ca2f07938bb8a7c113fd79e0', 'verification/FC243CubicRate/comparator.json': '7f095040c1d835981ff6c2460a7c965a31d5775078efa6b58c6e486a84508656', 'verification/FC243CubicRate/formalization.yaml': '10ae7a1789e4d1009c7fe87461ecf9a0e783d07834f36e46329e063bbeda0017', 'verification/FC243CubicRate/source-binding.json': '5a916a0b0c6e2e7a879d8f311ced3acbc07ee07d7dfa4fa355bb025ff6b542a3'}
+          for relpath, expected in protected.items():
+              if hashlib.sha256(checked_bytes(relpath)).hexdigest() != expected:
+                  raise SystemExit(f'protected verification bytes changed: {relpath}')
+          binding = json.loads(checked_bytes('verification/FC243CubicRate/source-binding.json'))
+          if binding['source_closure_base_commit'] != 'cf41120472efc0c264b5e331e9d7424de458509f' or binding['repository'] != 'wcook04/plectis-erdos':
+              raise SystemExit('current source closure identity changed')
+          for relpath, expected in binding['files'].items():
+              if 'sha256:' + hashlib.sha256(checked_bytes(relpath)).hexdigest() != expected:
+                  raise SystemExit(f'current adapter import closure changed: {relpath}')
+          config = json.loads(checked_bytes('verification/FC243CubicRate/comparator.json'))
+          expected = {
+              'challenge_module': 'ExternalVerification.FC243CubicRate.Challenge',
+              'solution_module': 'ExternalVerification.FC243CubicRate.Solution',
+              'theorem_names': ['ErdosProblems.Erdos243.FormalConjecturesAdapter.erdos_243_variants_cubic_rate'],
+              'permitted_axioms': ['propext', 'Quot.sound', 'Classical.choice'],
+              'enable_nanoda': True,
+          }
+          if config != expected:
+              raise SystemExit('exact adapter selection or axiom budget changed')
+          options = {
+              'authorization_relationship': 'I am a responsible author or maintainer',
+              'project_path': '',
+              'comparator_config_path': 'verification/FC243CubicRate/comparator.json',
+              'formalization_metadata_path': 'verification/FC243CubicRate/formalization.yaml',
+          }
+          request_id = hashlib.sha256(
+              f"fc243:{source}:{os.environ['RUN_ID']}:{os.environ['RUN_ATTEMPT']}".encode()
+          ).hexdigest()[:12]
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'source_commit={source}\n')
+              output.write(f'request_id={request_id}\n')
+              output.write(f"options={json.dumps(options, separators=(',', ':'))}\n")
+          print(f'Exact FC243 cubic-rate adapter at {source}; current proof closure bound; original adapter unchanged')
+          PYCODE
+
+  verify:
+    needs: select
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@f49b4f29aa458fc70c3a4c8cadca9312adbdc559
+    with:
+      repository: wcook04/plectis-erdos
+      commit: ${{ needs.select.outputs.source_commit }}
+      pipeline_commit: f49b4f29aa458fc70c3a4c8cadca9312adbdc559
+      request_id: ${{ needs.select.outputs.request_id }}
+      mode: full
+      execution_profile: palomar-standard-v1
+      options: ${{ needs.select.outputs.options }}
