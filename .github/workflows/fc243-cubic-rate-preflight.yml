@@ -1,0 +1,120 @@
+name: FC243 exact cubic-rate adapter preflight
+
+on:
+  push:
+    branches: [codex/fc243-exact-adapter-20261007]
+    paths:
+      - .github/workflows/fc243-cubic-rate-preflight.yml
+      - verification/FC243CubicRate/**
+      - research/adapters/FC243CubicRate.lean
+      - lean/**
+      - lean-toolchain
+      - lakefile.toml
+      - lake-manifest.json
+  workflow_dispatch:
+    inputs:
+      source_commit:
+        description: Full candidate SHA; must equal the selected workflow ref
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  select:
+    runs-on: ubuntu-24.04
+    outputs:
+      source_commit: ${{ steps.validate.outputs.source_commit }}
+      request_id: ${{ steps.validate.outputs.request_id }}
+      options: ${{ steps.validate.outputs.options }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Bind original adapter bytes and exact independent selection
+        id: validate
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_SHA: ${{ github.sha }}
+          SOURCE_COMMIT_INPUT: ${{ inputs.source_commit }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          python3 - <<'PYCODE'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import re
+          import subprocess
+
+          if os.environ['REPOSITORY'] != 'wcook04/plectis-erdos':
+              raise SystemExit('repository identity changed')
+          event = os.environ['EVENT_NAME']
+          if event not in ('push', 'workflow_dispatch'):
+              raise SystemExit('unsupported verification trigger')
+          source = os.environ['EVENT_SHA'] if event == 'push' else os.environ['SOURCE_COMMIT_INPUT']
+          if not re.fullmatch(r'[0-9a-f]{40}', source):
+              raise SystemExit('source commit must be a full lowercase SHA')
+          if source != os.environ['EVENT_SHA'] or source != subprocess.check_output(
+              ['git', 'rev-parse', 'HEAD'], text=True).strip():
+              raise SystemExit('verification source must equal checked-out workflow ref')
+          def checked_bytes(relpath):
+              path = Path(relpath)
+              if path.is_absolute() or any(part in ('', '.', '..') for part in path.parts):
+                  raise SystemExit('unsafe verification path')
+              for candidate in (path, *path.parents):
+                  if candidate.is_symlink():
+                      raise SystemExit('symlinked verification input')
+              if not path.is_file():
+                  raise SystemExit(f'missing verification input: {relpath}')
+              return path.read_bytes()
+          protected = {'lakefile.toml': '626d7e680dbab13f90b62f46bd60d58b6f0561ae247ff7ceba4351023d9341a2', 'verification/FC243CubicRate/Challenge.lean': 'af96a65d497e1411920d7f7604089a6dd600a535ca2f07938bb8a7c113fd79e0', 'verification/FC243CubicRate/comparator.json': '9284621a2d7ee42b6a24c24228f8f3f08e7ec6a19a7f0b7d3bc2d71ba1110fb7', 'verification/FC243CubicRate/formalization.yaml': '653dcc7850a0124c5552f877fb93a4fab05f9b43d0681f4a61c4d475df3b43f5', 'verification/FC243CubicRate/original-source-binding.json': '583249d340447e330d915cc1bb60675df7946ca7dbeaaf309ab1a4349d48e1a7'}
+          for relpath, expected in protected.items():
+              if hashlib.sha256(checked_bytes(relpath)).hexdigest() != expected:
+                  raise SystemExit(f'protected verification bytes changed: {relpath}')
+          binding = json.loads(checked_bytes('verification/FC243CubicRate/original-source-binding.json'))
+          if binding['original_commit'] != 'a1779f508dbede5da6d8c2d5fefe0d8f6dcef6d9' or binding['repository'] != 'wcook04/plectis-erdos':
+              raise SystemExit('original source identity changed')
+          for relpath, expected in binding['files'].items():
+              if 'sha256:' + hashlib.sha256(checked_bytes(relpath)).hexdigest() != expected:
+                  raise SystemExit(f'original adapter import closure changed: {relpath}')
+          config = json.loads(checked_bytes('verification/FC243CubicRate/comparator.json'))
+          expected = {
+              'challenge_module': 'FC243CubicRate.Challenge',
+              'solution_module': 'FC243CubicRate',
+              'theorem_names': ['ErdosProblems.Erdos243.FormalConjecturesAdapter.erdos_243_variants_cubic_rate'],
+              'permitted_axioms': ['propext', 'Quot.sound', 'Classical.choice'],
+              'enable_nanoda': True,
+          }
+          if config != expected:
+              raise SystemExit('exact adapter selection or axiom budget changed')
+          options = {
+              'authorization_relationship': 'I am a responsible author or maintainer',
+              'project_path': '',
+              'comparator_config_path': 'verification/FC243CubicRate/comparator.json',
+              'formalization_metadata_path': 'verification/FC243CubicRate/formalization.yaml',
+          }
+          request_id = hashlib.sha256(
+              f"fc243:{source}:{os.environ['RUN_ID']}:{os.environ['RUN_ATTEMPT']}".encode()
+          ).hexdigest()[:12]
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'source_commit={source}\n')
+              output.write(f'request_id={request_id}\n')
+              output.write(f"options={json.dumps(options, separators=(',', ':'))}\n")
+          print(f'Exact FC243 cubic-rate adapter at {source}; original proof closure unchanged')
+          PYCODE
+
+  verify:
+    needs: select
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@1703d7babd984ccc3831cdf89c28221abe34808f
+    with:
+      repository: wcook04/plectis-erdos
+      commit: ${{ needs.select.outputs.source_commit }}
+      pipeline_commit: 1703d7babd984ccc3831cdf89c28221abe34808f
+      request_id: ${{ needs.select.outputs.request_id }}
+      mode: full
+      execution_profile: palomar-standard-v1
+      options: ${{ needs.select.outputs.options }}

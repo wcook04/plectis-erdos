@@ -1,0 +1,63 @@
+version: v0.4
+project:
+  name: Erdős 243 exact zero-indexed cubic-rate adapter
+  description: Checks the exact published tsum adapter, including convergence from
+    the cubic rate. The proof and its project import closure retain the bytes of a1779f508dbede5da6d8c2d5fefe0d8f6dcef6d9.
+    The unrestricted problem remains open.
+  authors:
+  - Will Cook
+  license: Apache-2.0
+  responsible_maintainers:
+  - Will Cook
+repository:
+  role: substantive-development
+classification:
+  arxiv:
+  - math.NT
+  msc2020:
+  - 11J72
+sources:
+- title: Cubic-Rate Irrationality and Reciprocal-Tail Rigidity
+  authors:
+  - Will Cook
+  id: https://github.com/wcook04/plectis-erdos/blob/a1779f508dbede5da6d8c2d5fefe0d8f6dcef6d9/research/adapters/FC243CubicRate.lean
+  type: original-proof
+  relationship: other
+  license: Apache-2.0
+  author_endorsement: participated
+automation:
+  methods:
+  - method: agent
+    models:
+    - OpenAI Codex
+    - Anthropic Claude
+    framework: Lean 4 and Mathlib
+    tool_setup: Human-directed AI-assisted formalization and verification packaging
+review:
+  status: self-assessed
+  reviewers: []
+  notes: No independent human mathematical review or unrestricted Erdős 243 solution
+    is claimed.
+status:
+  scope: One exact cubic-rate adapter including its convergence bridge; unrestricted
+    Erdős 243 remains open.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: The independent Challenge alone contains one trusted statement hole;
+    the original solution adapter and its project closure contain no intentional holes.
+  axiom_audit_status: The configured budget is propext, Quot.sound and Classical.choice.
+    Run-specific closure and kernel results belong to independent report artifacts.
+  permitted_axiom_budget:
+  - propext
+  - Quot.sound
+  - Classical.choice
+  main_results:
+  - declaration: ErdosProblems.Erdos243.FormalConjecturesAdapter.erdos_243_variants_cubic_rate
+    file: research/adapters/FC243CubicRate.lean
+    sorry_count: 0
+    comparator_config: verification/FC243CubicRate/comparator.json
+  development_status: substantive
+  local_proof_provenance: Original adapter and complete transitive project import
+    closure pinned to a1779f508dbede5da6d8c2d5fefe0d8f6dcef6d9.

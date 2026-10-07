@@ -1,0 +1,13 @@
+{
+  "challenge_module": "FC243CubicRate.Challenge",
+  "solution_module": "FC243CubicRate",
+  "theorem_names": [
+    "ErdosProblems.Erdos243.FormalConjecturesAdapter.erdos_243_variants_cubic_rate"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "enable_nanoda": true
+}
