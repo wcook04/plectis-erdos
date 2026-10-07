@@ -37,7 +37,7 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **unresolved**.
 
-Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 932-938.
+Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 919-925.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -49,7 +49,7 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 369-382.
+Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 364-377.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -61,7 +61,7 @@ Long-record location: [paper/reasoning-parts/erdos257/a257_front.tex](../../../p
 
 State: **unresolved**.
 
-Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 627-635.
+Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 613-621.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `pending`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -73,7 +73,7 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 549-557.
+Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 537-545.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -86,7 +86,7 @@ Long-record location: [paper/reasoning-parts/erdos257/a257_front.tex](../../../p
 
 State: **authored_proof_text_linked**.
 
-Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 775-781.
+Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 763-769.
 
 Ledger evidence: Lean `none`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -100,15 +100,15 @@ Review status: Ordinary proof text transferred from the short paper; no independ
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 1018-1028.
+Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 995-1005.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 1030-1041.
+Retained short-paper argument: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 1007-1019.
 
 Appendix B retains the cyclotomic maximal-under-divisibility argument, denominator noncancellation and exact multiplicative order, with elementary prime-power details in Appendix E. The F={1}, b=2 convention is preserved.
 
-Review status: R14 third return Type A source-reading and frozen-statement review; proof availability only, no independent mathematical review or new long-record correspondence..
+Review status: R15 fourth return Type A source-reading review of accepted editorial wording against the unchanged statement and existing argument; no independent mathematical review or new formal verification..
 
 This hash-bound passage records proof availability; its mathematical correctness is not checked by this audit. No accepted long-record correspondence is established by this disposition.
 
@@ -120,15 +120,15 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 1174-1184.
+Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 1148-1158.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 1186-1205.
+Retained short-paper argument: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 1160-1180.
 
 Appendix C retains the direct proof: represented targets give bounded coefficient tails and a nonincrease in each stated window; outside the achievement set a positive remainder makes the scaled integer grow and eventually increase at every rank. The selector and Mobius-compatibility discussion remains intact.
 
-Review status: R14 third return Type A source-reading and frozen-statement review; proof availability only, no independent mathematical review or new long-record correspondence..
+Review status: R15 fourth return Type A source-reading review of accepted editorial wording against the unchanged statement and existing argument; no independent mathematical review or new formal verification..
 
 This hash-bound passage records proof availability; its mathematical correctness is not checked by this audit. No accepted long-record correspondence is established by this disposition.
 
@@ -140,7 +140,7 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **unresolved**.
 
-Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 1292-1312.
+Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 1266-1286.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -152,7 +152,7 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **unresolved**.
 
-Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 1371-1379.
+Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 1350-1358.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `pending`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -164,11 +164,11 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 1438-1444.
+Short statement: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 1414-1420.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 1446-1450.
+Retained short-paper argument: [paper/257/erdos-257-mersenne-support-subseries.tex](../../../paper/257/erdos-257-mersenne-support-subseries.tex) lines 1422-1426.
 
 Appendix D retains the shared-prefix family conditions and the deduction from terminal carry 1 using the preceding terminal-approximation theorem. The stronger shared-prefix hypotheses are not claimed necessary and no such unbounded family is constructed.
 

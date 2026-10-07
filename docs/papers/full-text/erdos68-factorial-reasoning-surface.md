@@ -8,7 +8,7 @@
 
 </div>
 
-We determine the possible multipliers in factorial-weighted cancellation forms $`MS+k`$, where $`S=\sum_{n\ge2}(n!-1)^{-1}`$. An integral basis and a finite gcd give the complete coefficient classification; finite-support examples distinguish the least multiplier, least support size, and least coefficient norm. We also prove a lower bound for common-denominator growth, analyse prime-power cancellation on reduction, and derive equivalent carry and factorial-digit criteria. Recorded computations exclude $`q\mid299999!`$ and $`q<2^{39990}`$ under $`S=a/q`$. These computations are outside Lean; the required nonintegrality at arbitrarily large indices remains unproved.
+We classify the multipliers in factorial-weighted cancellation forms $`MS+k`$, where $`S=\sum_{n\ge2}(n!-1)^{-1}`$, for finite integer vectors supported on $`n\ge2`$. An integral basis solves cancellation through depth $`D\ge2`$; excluding index one leaves one Diophantine equation. Its coefficient gcd is determined below $`2D^2`$. Finite-support examples distinguish the least multiplier, least support size, and least coefficient norm. We also prove a lower bound for common-denominator growth, analyse prime-power cancellation on reduction, and derive equivalent carry and factorial-digit criteria. Recorded computations exclude $`q\mid299999!`$ and $`q<2^{39990}`$ under $`S=a/q`$. These computations are outside Lean; the required nonintegrality at arbitrarily large indices remains unproved.
 
 <div id="long68:res:problem" class="problem">
 
@@ -18,7 +18,7 @@ We determine the possible multipliers in factorial-weighted cancellation forms $
 
 Erdős posed this question in 1988, together with the expectation that the corresponding series with denominators $`n!+t`$ should be transcendental for every integer $`t`$ \[erdos1988, p. 102\]. For negative $`t`$, the sum begins after all zero or negative denominators. Any further change of starting index adds a rational number. The expectation for all integer shifts remains unproved here. The problem number follows Bloom’s catalogue \[bloom\].
 
-We separate construction from nonintegrality. The first question is algebraic: which integers $`M`$ occur when a finite integer vector cancels prescribed initial weighted sums in a form $`MS+k`$? The answer is an explicitly computable ideal of $`\mathbb Z`$. Adjacent factorial differences give an integral basis after correction at proper divisors. Cancellation fixes its lower coordinates; excluding index one leaves a single Diophantine equation. A finite-gcd formula then gives the least positive multiplier and a vector attaining it. For cancellation through four, that multiplier is $`1380`$, not merely the common denominator $`115`$ forced by the congruences.
+We separate construction from nonintegrality. The first question is algebraic: which integers $`M`$ occur when a finite integer vector supported on $`n\ge2`$ cancels prescribed initial weighted sums in a form $`MS+k`$? The answer is an explicitly computable ideal of $`\mathbb Z`$. Adjacent factorial differences give an integral basis after correction at proper divisors. Cancellation fixes its lower coordinates; excluding index one leaves a single Diophantine equation. A finite-gcd formula bounds the calculation below $`2D^2`$ and gives the least positive multiplier together with an attaining vector. For cancellation through four, excluding index one strengthens the congruence condition $`115\mid M`$ to $`1380\mid M`$.
 
 The accompanying short paper proves this classification and bounds one resulting remainder between consecutive integers. Here we develop the support and coefficient-norm refinements and a primitive construction on arithmetic progressions. These solve different problems: at fixed $`M`$, changing the vector changes $`MS+k`$ only by an integer, so it cannot alter nonintegrality. The progression construction makes $`M`$ divisible by every fixed denominator eventually, but still needs a gap estimate for those same forms.
 
@@ -53,7 +53,7 @@ The proof of the classification is in §<a href="#long68:sec:basis" data-referen
 
 # Integer coefficient vectors and cancellation
 
-We need weights that preserve the fractional part of $`i!/(d!-1)`$ and whose adjacent differences have a simple form. Both requirements are met by removing one factor $`d!`$ for each complete block of $`d`$ indices. For a finitely supported integer vector $`c=(c_i)`$ on $`i\ge2`$, put
+We need weights that preserve the fractional part of $`i!/(d!-1)`$ and whose scaled adjacent differences have a simple form. Both requirements are met by removing one factor $`d!`$ for each complete block of $`d`$ indices. For a finitely supported integer vector $`c=(c_i)`$ on $`i\ge2`$, put
 ``` math
 M(c)=\sum_i c_i\,i!,\qquad
  W_{d,i}=\frac{i!}{(d!)^{\lfloor i/d\rfloor}},\qquad
@@ -294,6 +294,10 @@ Each coordinate is nonzero for integral $`t`$, so four nonzero coefficients are 
 In both rows the norm minimizer has one more nonzero coefficient than a support minimizer. Thus even with $`M`$ and the allowed indices fixed, least support and least norm need not coincide. These are finite optimization statements, not irrationality conclusions.
 
 There is a uniform restriction $`12L_D\mid M`$ on support $`n\ge2`$. For $`n=2,3`$ one has $`n!=2W_{2,n}`$. For $`n\ge4`$, both $`n!`$ and $`2W_{2,n}`$ are divisible by $`12`$: if $`n=2k`$ or $`2k+1`$, then $`W_{2,2k}=k!\prod_{j=1}^k(2j-1)`$ is divisible by $`6`$ for $`k\ge2`$. Thus $`12\mid M(c)-2V_2(c)`$. Every $`d!-1`$ is coprime to $`6`$, so $`V_2=\cdots=V_D=0`$ implies $`12L_D\mid M(c)`$. This factor is attained at $`D=2`$ and $`D=3`$ by $`-6e_2+e_4`$ and $`-6e_2-8e_3+5e_4`$, respectively. The next example shows that this need not be the whole restriction.
+
+<div id="r15-depth-six">
+
+</div>
 
 At $`D=6`$, the same recurrence gives
 ``` math

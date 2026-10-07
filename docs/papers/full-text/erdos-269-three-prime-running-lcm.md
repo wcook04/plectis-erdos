@@ -14,16 +14,18 @@ We give a five-map proof that the reciprocals of the distinct running least comm
 
 # Two sums from running least common multiples
 
-The $`5`$-smooth integers are the positive integers whose prime factors belong to $`\{2,3,5\}`$. Their running least common multiples begin $`1,2,6,12,60,60,120,360,360,\ldots`$. For a finite set of primes $`P`$, let $`\mathcal S_P`$ consist of $`1`$ and all positive integers whose prime factors belong to $`P`$, and put
+Let $`P`$ be a finite set of primes and $`\mathcal S_P`$ the positive integers with prime factors in $`P`$, including $`1`$. For $`P=\{2,3,5\}`$, the running least common multiples of these $`5`$-smooth integers begin $`1,2,6,12,60,60,120,360,360,\ldots`$. Put
 ``` math
 \operatorname{L}(x)=\operatorname{lcm}\{u\in\mathcal S_P:u\le x\},\qquad
  \operatorname{H}_P(x)=\prod_{p\in P}p^{\lfloor\log_p x\rfloor}\quad(x\ge1).
 ```
-Every integer in this finite set divides $`\operatorname{H}_P(x)`$. Conversely, the set contains the largest power of each $`p\in P`$ below or equal to $`x`$, so their product divides its least common multiple. Thus $`\operatorname{L}(x)=\operatorname{H}_P(x)`$. This value changes only at a positive prime power, where it is multiplied by that prime. Summing its distinct reciprocals gives
+Every member of the prefix divides $`\operatorname{H}_P(x)`$, while the prefix contains the largest power of each $`p\in P`$ at most $`x`$. Thus $`\operatorname{L}(x)=\operatorname{H}_P(x)`$, with a jump by $`p`$ exactly at each positive power of $`p`$. Counting distinct running LCMs or retaining multiplicities gives
 ``` math
-\mathcal D_P=1+\sum_{\substack{t=p^n\\p\in P,\ n\ge1}}\frac1{\operatorname{H}_P(t)}.
+\mathcal D_P=1+\sum_{\substack{t=p^n\\p\in P,\ n\ge1}}\frac1{\operatorname{H}_P(t)},
+ \qquad
+ \mathcal R_P=\sum_{u\in\mathcal S_P}\frac1{\operatorname{L}(u)}.
 ```
-Positive powers of distinct primes never coincide, and geometric growth of the successive running LCMs gives convergence. We use $`\mathbb{N}=\{0,1,2,\ldots\}`$.
+For $`P=\{2,3,5\}`$, $`\operatorname{L}(5)=\operatorname{L}(6)=60`$ contributes $`1/60`$ to $`\mathcal D_P`$ and $`2/60`$ to $`\mathcal R_P`$. Erdős Problem #269 asks about $`\mathcal R_P`$ \[erdosgraham1980, p. 65\] and \[erdos1988, p. 106\]. Positive powers of distinct primes never coincide; geometric growth of successive running LCMs gives convergence of $`\mathcal D_P`$. We use $`\mathbb{N}=\{0,1,2,\ldots\}`$.
 
 <div id="r4-five-map-theorem">
 
@@ -40,11 +42,7 @@ Rationality would leave only finitely many normalised tails, but finiteness alon
 
 Erdős asserted irrationality of $`\mathcal D_P`$ for every finite $`P`$ with $`|P|\ge2`$ in a letter dated 1 January 1973, without printing a proof \[erdos1974letter, p. 335\]. Thus the theorem above is a special case of that earlier assertion. We claim no priority for its conclusion. The [companion’s general argument](../../../paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-distinct-proof) uses an isolated interchange of jumps on a torus. That argument is retained there as an ordinary proof awaiting formalisation. The proof below is independent of that argument.
 
-The question in Erdős Problem #269 concerns the sum with multiplicity,
-``` math
-\mathcal R_P=\sum_{u\in\mathcal S_P}\frac1{\operatorname{L}(u)},
-```
-as recorded in \[erdosgraham1980, p. 65\] and \[erdos1988, p. 106\]. For example, $`\operatorname{L}(5)=\operatorname{L}(6)=60`$ for $`P=\{2,3,5\}`$, giving $`2/60`$ in $`\mathcal R_P`$ and $`1/60`$ in $`\mathcal D_P`$. The theorem treats the sum over distinct values; the problem asks about the sum with multiplicity. Our arguments leave the latter unresolved for finite $`P`$ with $`|P|\ge3`$. For $`P=\{p\}`$ both sums equal $`p/(p-1)`$.
+Our arguments leave the repeated sum $`\mathcal R_P`$ unresolved for finite $`P`$ with $`|P|\ge3`$. For $`P=\{p\}`$ both sums equal $`p/(p-1)`$.
 
 After the five-map proof in Section <a href="#sec:distinct-235" data-reference-type="ref" data-reference="sec:distinct-235">[sec:distinct-235]</a>, we retain the multiplicities. The bases remain the same, but the block coefficients and tails grow quadratically. Sections <a href="#sec:lcm" data-reference-type="ref" data-reference="sec:lcm">3</a> and <a href="#sec:escape" data-reference-type="ref" data-reference="sec:escape">4</a> replace finite-state repetition by a test for excluding integer tails. For two primes, Fan’s factorisation \[fan2026comment\] reduces both sums to a Hecke–Mahler value and yields transcendence (Section <a href="#sec:two-prime" data-reference-type="ref" data-reference="sec:two-prime">5</a>). The appendices supply the running LCM identities and show why exact finite separation of the three-prime kernel cannot extend that factorisation.
 
@@ -152,15 +150,15 @@ For example, $`[16,32)`$ contains the seven smooth integers $`16,18,20,24,25,27,
 ```
 The distinct sum counts each displayed running LCM once; the repeated sum assigns the coefficients $`4,1,2`$. The jumps alone therefore no longer determine the block contribution. Appendix <a href="#sec:height-identities" data-reference-type="ref" data-reference="sec:height-identities">6</a> gives the general finite grouping identity.
 
-We use the half-open blocks $`[2^a,2^{a+1})`$, so the tail starts at $`2^a`$ rather than just after it. Its finite prefix excludes the jump by $`2`$ at that endpoint. Half the running LCM therefore clears that prefix: write
+With blocks $`[2^a,2^{a+1})`$, the tail now includes $`2^a`$. The prefix excludes the jump by $`2`$ there, so half the running LCM clears it. Put
 ``` math
 s_a=\sum_{\substack{x\in\mathcal S_P\\2^a\le x<2^{a+1}}}\frac1{\operatorname{H}(x)},
  \qquad T_a=\sum_{j\ge0}s_{a+j},\qquad
  h_a=\frac{\operatorname{H}(2^a)}2,\qquad X_a=h_aT_a.
 ```
-Indeed, a running LCM strictly before $`2^a`$ has exponent of $`2`$ at most $`a-1`$ and divides $`h_a`$. Here $`h_0=1/2`$, while $`h_a`$ is an integer for $`a\ge1`$. This endpoint convention explains the factor $`1/2`$ and the difference from the tails in Section <a href="#sec:distinct-235" data-reference-type="ref" data-reference="sec:distinct-235">[sec:distinct-235]</a>.
+For $`a\ge1`$, each prefix LCM has exponent of $`2`$ at most $`a-1`$ and divides the integer $`h_a`$; at $`a=0`$, $`h_0=1/2`$. The factor $`1/2`$ reflects the endpoint change from Section <a href="#sec:distinct-235" data-reference-type="ref" data-reference="sec:distinct-235">[sec:distinct-235]</a>, not multiplicity.
 
-The change in normalisation is $`b_a=\operatorname{H}(2^{a+1})/\operatorname{H}(2^a)`$. Since $`h_0=1/2`$, its product gives $`h_{a+1}=(b_0\cdots b_a)/2`$. Thus the block numerator $`m_a=h_{a+1}s_a`$ satisfies $`m_a/(b_0\cdots b_a)=s_a/2`$; splitting off $`s_a`$ gives $`X_{a+1}=b_aX_a-m_a`$. Explicitly,
+Splitting $`T_a=s_a+T_{a+1}`$ and using $`h_{a+1}=b_ah_a`$ gives $`X_{a+1}=b_aX_a-m_a`$, where $`m_a=h_{a+1}s_a`$. Explicitly,
 ``` math
 \begin{equation}
 \label{eq:actual-digit}
@@ -169,11 +167,10 @@ The change in normalisation is $`b_a=\operatorname{H}(2^{a+1})/\operatorname{H}(
        \frac{\operatorname{H}(2^{a+1})}{2\operatorname{H}(x)}.
 \end{equation}
 ```
-For $`[2,4)`$, the running LCMs at $`2,3`$ are $`2,6`$ and $`h_2=6`$, giving $`m_1=6(1/2+1/6)=4`$ and $`b_1=6`$. For the block displayed above, $`h_5=10800`$ and
+Since $`h_0=1/2`$, we also have $`h_{a+1}=(b_0\cdots b_a)/2`$ and $`m_a/(b_0\cdots b_a)=s_a/2`$. For $`[2,4)`$, the running LCMs at $`2,3`$ are $`2,6`$ and $`h_2=6`$, giving $`m_1=6(1/2+1/6)=4`$ and $`b_1=6`$. For the block displayed above, $`h_5=10800`$ and
 ``` math
 m_4=4\cdot15+3+2\cdot1=65,\qquad b_4=30.
 ```
-Thus $`m_a`$ need not be smaller than $`b_a`$.
 
 <div id="res:dyadic-alphabet" class="lemma">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperCompleteR20/DyadicAlphabetWhole.lean#L19">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-269-three-prime-running-lcm.md#res-dyadic-alphabet-comparator">Comparator</a></p>
@@ -187,8 +184,6 @@ Thus $`m_a`$ need not be smaller than $`b_a`$.
 *Proof.* For $`x<2^{a+1}`$ we have $`2\operatorname{H}(x)\mid\operatorname{H}(2^{a+1})`$, so every summand in $`m_a`$ is integral. The interval contains $`2^a`$, giving positivity. Between successive powers of $`2`$ there is at most one power of $`3`$ and at most one power of $`5`$. Along with the final factor $`2`$, these give $`b_a\in\{2,6,10,30\}`$. ◻
 
 </div>
-
-Thus the jump word still determines $`b_a`$, but $`m_a`$ must also record multiplicities. The recurrence retains the same four bases, not the five-map table.
 
 <div id="res:actual-orbit" class="proposition">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean#L168">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-269-three-prime-running-lcm.md#res-actual-orbit-comparator">Comparator</a></p>
@@ -219,7 +214,7 @@ The loss of bounded tails is genuine. For $`a\ge1`$, every odd part $`3^j5^k<2^a
 ``` math
 m_a\ge(\lfloor a/5\rfloor+1)^2,\qquad X_a>m_a/30.
 ```
-Rationality would still put the tails in a fixed lattice, but not in a finite set. We shall use the quadratic upper bound to exclude integer tails instead.
+Rationality would still put the tails in a fixed lattice, but not in a finite set. Repetition alone also gives no recovery rule: the maps $`y\mapsto(m_a+y)/b_a`$ now depend on $`a`$ and form an infinite family. The proof in Section <a href="#sec:distinct-235" data-reference-type="ref" data-reference="sec:distinct-235">[sec:distinct-235]</a> needed both finiteness and unique recovery. We instead use the quadratic bound to limit the positive integer tails required by rationality.
 
 The Cantor-series form $`S/2=\sum_{a\ge0}m_a/(b_0\cdots b_a)`$ also explains why the criteria in \[erdosstraus1974, Theorem 2.1\] and \[hancltijdeman2004, Theorem 3.1\] do not apply: their small-numerator hypothesis $`m_a/(b_{a-1}b_a)\to0`$ fails with bounded $`b_a`$ and these unbounded $`m_a`$. The [companion’s tail estimates](../../../paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-repeated-bounds) give sharper bounds.
 
@@ -272,7 +267,7 @@ The two denominator parts have different roles: $`M`$ determines when clearing o
 
 # A residue criterion
 
-<span id="sec:open" label="sec:open"></span> A finite segment can certify that a specified $`BX_\ell`$ is not an integer. The recurrence fixes the residue class of the terminal tail, and its quadratic bound limits the positive integers in that class. If the least positive representative exceeds the bound, integrality is impossible.
+<span id="sec:open" label="sec:open"></span> A finite segment bounds the starting tail. Its integrality would constrain the endpoint tail to a residue class. The residue inequality expresses the same obstruction in either form.
 
 For two steps the recurrence reads $`X_{\ell+2}=b_{\ell+1}b_\ell X_\ell-(b_{\ell+1}m_\ell+m_{\ell+1})`$. To keep track of the multiplicative and additive terms over $`h`$ steps, write
 ``` math
@@ -294,7 +289,7 @@ Since $`b_a=h_{a+1}/h_a`$, its product telescopes to $`W_{\ell,h}=h_{\ell+h}/h_\
  \qquad
  \frac{X_{\ell+h}}{W_{\ell,h}}=h_\ell T_{\ell+h}.
 ```
-These are the finite block contribution and the remainder, both in the starting normalisation $`h_\ell`$. Their sum is $`X_\ell`$ by <a href="#eq:actual-tail" data-reference-type="eqref" data-reference="eq:actual-tail">[eq:actual-tail]</a>. Throughout this section let
+These finite and remaining contributions sum to $`X_\ell`$, both in the starting normalisation $`h_\ell`$, by <a href="#eq:actual-tail" data-reference-type="eqref" data-reference="eq:actual-tail">[eq:actual-tail]</a>. Throughout this section let
 ``` math
 \begin{equation}
 \label{eq:actual-bound}
@@ -310,7 +305,7 @@ Width below $`1`$ gives at most one integer, not necessarily none. With $`W=W_{\
 ``` math
 BF+K(B,\ell+h)<W\bigl(\lfloor BF/W\rfloor+1\bigr).
 ```
-The right side is $`W`$ times the first integer strictly above $`BF/W`$. Subtracting $`BF`$ gives the least positive residue of $`-BF`$ modulo $`W`$.
+The right side is $`W`$ times the first integer strictly above $`BF/W`$. Its excess over $`BF`$ is the least positive residue of $`-BF`$ modulo $`W`$: the residue measures the gap to that integer in units of $`1/W`$.
 
 For integers $`W\ge1,t`$, define $`\operatorname{lpr}_W(t)=1+((t-1)\bmod W)`$, with remainder in $`\{0,\ldots,W-1\}`$. Its values lie in $`\{1,\ldots,W\}`$, so the zero class is represented by $`W`$. This matches the open left endpoint: if $`W\mid BF`$, the next possible integer is one full unit above $`BF/W`$, not $`BF/W`$ itself.
 
@@ -327,11 +322,13 @@ For integers $`W\ge1,t`$, define $`\operatorname{lpr}_W(t)=1+((t-1)\bmod W)`$, w
 
 </div>
 
+In <a href="#eq:actual-tail" data-reference-type="eqref" data-reference="eq:actual-tail">[eq:actual-tail]</a>, an integral $`BX_\ell`$ makes $`BX_{\ell+h}`$ such a positive representative.
+
 For $`\ell=1,h=6`$, direct iteration gives $`W_{1,6}=648000`$ and $`F_{1,6}=524431`$. Since $`K(1,7)=5760`$, the interval is
 ``` math
 \frac{524431}{648000}<X_1\le\frac{530191}{648000}<1.
 ```
-Equivalently, $`\operatorname{lpr}_{W_{1,6}}(-F_{1,6})=123569>5760`$ certifies $`X_1\notin\mathbb Z`$. This treats only $`B=1`$ at $`\ell=1`$; it leaves other multipliers and later clearing onsets untouched. To exclude every rational denominator, we need a successful segment for every $`B`$ coprime to $`30`$ beyond every prescribed onset.
+Equivalently, $`\operatorname{lpr}_{W_{1,6}}(-F_{1,6})=123569>5760`$ certifies $`X_1\notin\mathbb Z`$, treating only $`B=1`$ at $`\ell=1`$. For denominators $`MB`$, varying $`B`$ covers the part coprime to $`30`$; arbitrarily late starts allow each supported part $`M`$ to clear.
 
 <div id="r4-repeated-criterion">
 
@@ -369,9 +366,9 @@ The positive constant $`\delta`$ multiplies an exponentially growing $`W_{\ell,h
 
 </div>
 
-The fixed-start behaviour explains the quantifiers. A nonintegral $`BX_\ell`$ gives successful segments for all sufficiently large $`h`$, even if $`S`$ is rational with a denominator not yet cleared at $`\ell`$. If $`BX_\ell`$ is integral, the same calculation with $`\delta=0`$ instead gives $`\operatorname{lpr}_{W_{\ell,h}}(-BF_{\ell,h})=BX_{\ell+h}`$ for all sufficiently large $`h`$, so the test cannot succeed. A finite failure alone distinguishes neither case.
+At a fixed start, success rules out integrality of $`BX_\ell`$. If $`BX_\ell`$ is integral, the recurrence, positivity and the bound prevent success at any length; for all sufficiently large $`h`$, $`\operatorname{lpr}_{W_{\ell,h}}(-BF_{\ell,h})=BX_{\ell+h}`$. If $`BX_\ell`$ is nonintegral, every sufficiently long segment succeeds, even when $`S`$ is rational with a denominator not yet cleared at $`\ell`$. Increasing the length does not remove the need for starts beyond every cutoff. A finite failed search distinguishes neither case.
 
-The converse assumes the positive gap $`\delta`$; it does not prove one exists for the actual tails. Establishing <a href="#eq:escape" data-reference-type="eqref" data-reference="eq:escape">[eq:escape]</a> without that assumption is the remaining task. The upper-bound property of $`K`$ is essential: a zero bound would make every residue inequality automatic. The [companion’s residue analysis](../../../paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-residue) proves the fixed-start formula and treats smaller and more general bounds. Finite searches cover only finitely many multipliers and starts.
+The converse obtains $`\delta>0`$ from irrationality. Proving <a href="#eq:escape" data-reference-type="eqref" data-reference="eq:escape">[eq:escape]</a> without that assumption is the remaining task. The upper-bound property of $`K`$ is essential: a zero bound would make every residue inequality automatic. The [companion’s residue analysis](../../../paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-residue) treats the fixed-start formula and smaller or more general bounds.
 
 <div class="minipage">
 
@@ -409,7 +406,7 @@ The equivalence follows from <a href="#eq:prefix-lattice" data-reference-type="e
 
 # Two-prime transcendence
 
-For two primes, factorisation makes the multiplicities tractable. Fan gave the factorisation of the repeated sum and its transcendence consequence in his post of 26 June 2026 \[fan2026comment\]. The point is that both factors depend on one Hecke–Mahler value. The following calculation expresses the distinct sum in that same value.
+For two primes, the distinct sum is affine in one Hecke–Mahler value; the repeated sum is quadratic in it. Fan gave the factorisation of the repeated sum and its transcendence consequence in his post of 26 June 2026 \[fan2026comment\].
 
 <div id="res:two-prime-transcendence" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-269-three-prime-running-lcm.md#res-two-prime-transcendence">Lean†</a></p>
@@ -523,7 +520,7 @@ For each prime, $`x/p<p^{\lfloor\log_p x\rfloor}\le x`$. Multiplying gives
 
 # The three-prime kernel
 
-The two-prime proof separates the summand into factors depending on individual exponents. For three primes, even a finite sum of products separating $`i`$ from $`(j,k)`$ is impossible. This concerns an exact identity for the kernel $`\operatorname{K}(i,j,k)`$, not identities available only after summation. One binary carry causes the obstruction: diagonal rescaling leaves entries $`1`$ and $`1/r`$, from which we select nonzero minors of every order.
+The two-prime proof separates the summand by exponents. For three primes, the carry in adding two fractional parts prevents any finite separation of $`i`$ from $`(j,k)`$. Diagonal rescaling leaves just two entry values, $`1`$ and $`1/r`$; choosing their threshold positions gives nonzero minors of every order. This concerns exact kernel identities, not identities after summation.
 
 <div id="res:rank" class="example">
 
@@ -531,7 +528,7 @@ The two-prime proof separates the summand into factors depending on individual e
 
 </div>
 
-This nonzero two-by-two minor rules out rank one. More generally, a sum of $`d`$ separated products would give every matrix layer rank at most $`d`$. To exclude every finite $`d`$, we therefore seek nonzero minors of arbitrarily large order. Their rows and columns may depend on the order; the same choices will work in every layer $`k`$.
+A sum of $`d`$ separated products has rank at most $`d`$ in each layer. Thus the two-by-two example excludes only rank one; excluding every finite $`d`$ requires nonzero minors of arbitrary order. Their indices may depend on the order, but not on $`k`$.
 
 <div id="res:infinite-rank" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean#L22">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-269-three-prime-running-lcm.md#res-infinite-rank-comparator">Comparator</a></p>
@@ -640,13 +637,13 @@ The exception is the pair of constant columns, $`v_0=c v_m`$. All other distinct
 
 </div>
 
-For $`c=1/r`$ over $`\mathbb Q`$, both restrictions hold. Ordering the sampled row phases puts every column in this form, so the formula gives the rank of each nonempty rectangular sample. Since $`k`$ enters only through nonzero diagonal factors, that rank is independent of $`k`$. The [companion’s kernel analysis](../../../paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-rank) gives the exact rational comparisons.
+Order the sampled row phases and take $`c=1/r`$ over $`\mathbb Q`$. The formula then gives the rank of every nonempty rectangular sample, independently of $`k`$: the layer changes only the nonzero diagonal factors. The [companion’s kernel analysis](../../../paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-rank) gives the exact rational comparisons.
 
 <a id="approximation."></a>
 
 #### Approximation.
 
-Exact nonseparation does not prevent approximation. Keeping only rows $`i<N`$ gives $`N`$ separated terms, and $`\operatorname{H}(x)>x^3/(pqr)`$ makes the error tend to zero uniformly and in $`\ell^1(\mathbb N^3)`$. By contrast, the rescaled matrix has uniform distance $`(1-1/r)/2`$ from finite-rank matrices. The rescaling preserves exact rank but removes decay; it does not preserve uniform approximation error. The [companion’s approximation theorem](../../../paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-approximation) proves both statements. Neither implies irrationality of the scalar sum.
+The diagonal rescaling preserves rank but removes the kernel’s decay. Retaining rows $`i<N`$ in the original kernel gives $`N`$ separated terms; $`\operatorname{H}(x)>x^3/(pqr)`$ makes the error tend to zero uniformly and in $`\ell^1(\mathbb N^3)`$. The rescaled matrix instead has uniform distance $`(1-1/r)/2`$ from finite-rank matrices. The [companion’s approximation theorem](../../../paper/269/erdos269-running-lcm-reasoning-surface.pdf#nameddest=r3-approximation) proves both statements. Neither implies irrationality of the scalar sum.
 
 <a id="app:sources"></a>
 

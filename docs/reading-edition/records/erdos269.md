@@ -25,7 +25,7 @@ A complete registered-evidence match locates the same full declaration set in th
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 796-809.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 780-793.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -37,7 +37,7 @@ Long-record location: [paper/reasoning-parts/erdos269/core.tex](../../../paper/r
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 81-83.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 84-86.
 
 Ledger evidence: Lean `exact`; Comparator `pending`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -49,11 +49,11 @@ Long-record location: [paper/reasoning-parts/erdos269/core.tex](../../../paper/r
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 884-891.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 868-875.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 892-896.
+Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 876-880.
 
 The retained proof specialises the preceding infinite-rank construction to the prescribed admissible indices and denominator-cleared integer minors. Its modular conclusion and hypotheses are unchanged. This argument was already present in the r5 input and has been retained. The disposition accounts for the queue; it does not assert acceptance of a new long-record binding.
 
@@ -69,7 +69,7 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 918-924.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 902-908.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -81,7 +81,7 @@ Long-record location: [paper/reasoning-parts/erdos269/core.tex](../../../paper/r
 
 State: **unresolved**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 646-659.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 632-645.
 
 Ledger evidence: Lean `modulo_named_input`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -93,7 +93,7 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 737-740.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 723-726.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -105,7 +105,7 @@ Long-record location: [paper/reasoning-parts/erdos269/core.tex](../../../paper/r
 
 State: **unresolved**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 751-756.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 737-742.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -118,7 +118,7 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 763-769.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 749-755.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -130,11 +130,11 @@ Long-record location: [paper/reasoning-parts/erdos269/core.tex](../../../paper/r
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 367-372.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 356-361.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 373-379.
+Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 362-368.
 
 The retained proof counts the possible interior prime-power jumps in one dyadic block and gives the same four possible bases. It concerns the actual repeated-series construction. This argument was already present in the r5 input and has been retained. The disposition accounts for the queue; it does not assert acceptance of a new long-record binding.
 
@@ -150,7 +150,7 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **unresolved**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 385-394.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 370-379.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -162,11 +162,11 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 436-445.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 424-433.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 446-457.
+Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 434-445.
 
 The retained proof clears the smooth part of a putative rational denominator at the stated onset and preserves the coprime reduced denominator and carry bound. This argument was already present in the r5 input and has been retained. The disposition accounts for the queue; it does not assert acceptance of a new long-record binding.
 
@@ -182,11 +182,11 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 459-468.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 447-456.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 469-474.
+Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 457-462.
 
 The retained argument proves the stated exact onset for disappearance of the smooth denominator part; no change to its minimality or endpoint convention. This argument was already present in the r5 input and has been retained. The disposition accounts for the queue; it does not assert acceptance of a new long-record binding.
 
@@ -202,11 +202,11 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 538-541.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 525-528.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 542-545.
+Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 529-532.
 
 The retained proof gives the nearest-integer alternative used in the escape criterion, with its strict inequalities and quantifiers intact. This argument was already present in the r5 input and has been retained. The disposition accounts for the queue; it does not assert acceptance of a new long-record binding.
 
@@ -222,7 +222,7 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **unresolved**.
 
-Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 559-569.
+Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 547-557.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 

@@ -6,28 +6,28 @@
     {
       "id": "257-example",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 280,
-      "end_line": 304,
+      "start_line": 276,
+      "end_line": 300,
       "kind": "source",
-      "sha256": "c0d63a763bd2f2c944d079c4e5bdbbe356268d138fd83bdb068464eeb3f2452b",
+      "sha256": "d72b79f31d5438b24af1f4c73ddc357234412a30f0a8af857e7e5af85acba8b3",
       "excerpt_sha256": "759b9b8c4afbd722b38ed84f39f5a4553e03d03f8d4c868d65b79dde659a2d3e"
     },
     {
       "id": "257-proof",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
       "start_line": 126,
-      "end_line": 271,
+      "end_line": 267,
       "kind": "source",
-      "sha256": "c0d63a763bd2f2c944d079c4e5bdbbe356268d138fd83bdb068464eeb3f2452b",
-      "excerpt_sha256": "624f6a9448051dc470f35a6cc7808dde1c97ab7b8fda8201721b4fe82608795a"
+      "sha256": "d72b79f31d5438b24af1f4c73ddc357234412a30f0a8af857e7e5af85acba8b3",
+      "excerpt_sha256": "bc31f70cb2dbd6e192db687225c80fad326d6585fe1eae0819d0073e02c6e98a"
     },
     {
       "id": "257-reciprocal",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 930,
-      "end_line": 957,
+      "start_line": 917,
+      "end_line": 944,
       "kind": "source",
-      "sha256": "c0d63a763bd2f2c944d079c4e5bdbbe356268d138fd83bdb068464eeb3f2452b",
+      "sha256": "d72b79f31d5438b24af1f4c73ddc357234412a30f0a8af857e7e5af85acba8b3",
       "excerpt_sha256": "1503e95a1512c955ea09d78b93ef7ffab89744207a420465ab2fdc00e326d6bb"
     },
     {
@@ -36,7 +36,7 @@
       "start_line": 74,
       "end_line": 90,
       "kind": "source",
-      "sha256": "c0d63a763bd2f2c944d079c4e5bdbbe356268d138fd83bdb068464eeb3f2452b",
+      "sha256": "d72b79f31d5438b24af1f4c73ddc357234412a30f0a8af857e7e5af85acba8b3",
       "excerpt_sha256": "76093fcff9c86ff532b2182837e7c4e191e9806f477c420bc2602d706c643e17"
     },
     {
@@ -62,8 +62,8 @@
       "path": "docs/papers/corpus.json",
       "start_line": 1,
       "end_line": 9326,
-      "sha256": "0be413160d5836452116615624ac2233ad7707c89787681ad34497f3c1046a6b",
-      "excerpt_sha256": "0be413160d5836452116615624ac2233ad7707c89787681ad34497f3c1046a6b",
+      "sha256": "2f854be88b57555d3c8dc7ccac44bb04033fce85eee030569b11b58f1020f648",
+      "excerpt_sha256": "2f854be88b57555d3c8dc7ccac44bb04033fce85eee030569b11b58f1020f648",
       "kind": "source"
     },
     {
@@ -71,8 +71,8 @@
       "path": "docs/systems_paper_counts.json",
       "start_line": 1,
       "end_line": 65,
-      "sha256": "23d4e8f5fb3f00ea01fba0f4ce9ea39368b44f173e707c7a283b3599888796a1",
-      "excerpt_sha256": "23d4e8f5fb3f00ea01fba0f4ce9ea39368b44f173e707c7a283b3599888796a1",
+      "sha256": "807e8a7e6dc1ccfb1ab3bf92e13340d9e1b5d35f10eb6aedca3810990601c96b",
+      "excerpt_sha256": "807e8a7e6dc1ccfb1ab3bf92e13340d9e1b5d35f10eb6aedca3810990601c96b",
       "kind": "source"
     },
     {
@@ -89,8 +89,8 @@
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
       "end_line": 29162,
-      "sha256": "058ad95477aced1865be09cb8fc5057d2e8a5b4a882333c0e6f97ce64c79919e",
-      "excerpt_sha256": "058ad95477aced1865be09cb8fc5057d2e8a5b4a882333c0e6f97ce64c79919e",
+      "sha256": "52bd53f45c233e0bcdd070ed8798d6ebdaba4f93de185283c4461ecfc0f9ae44",
+      "excerpt_sha256": "52bd53f45c233e0bcdd070ed8798d6ebdaba4f93de185283c4461ecfc0f9ae44",
       "kind": "source"
     },
     {
@@ -99,8 +99,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "058ad95477aced1865be09cb8fc5057d2e8a5b4a882333c0e6f97ce64c79919e",
-      "excerpt_sha256": "058ad95477aced1865be09cb8fc5057d2e8a5b4a882333c0e6f97ce64c79919e"
+      "sha256": "52bd53f45c233e0bcdd070ed8798d6ebdaba4f93de185283c4461ecfc0f9ae44",
+      "excerpt_sha256": "52bd53f45c233e0bcdd070ed8798d6ebdaba4f93de185283c4461ecfc0f9ae44"
     },
     {
       "id": "coverage-reciprocal",
@@ -108,8 +108,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "058ad95477aced1865be09cb8fc5057d2e8a5b4a882333c0e6f97ce64c79919e",
-      "excerpt_sha256": "058ad95477aced1865be09cb8fc5057d2e8a5b4a882333c0e6f97ce64c79919e"
+      "sha256": "52bd53f45c233e0bcdd070ed8798d6ebdaba4f93de185283c4461ecfc0f9ae44",
+      "excerpt_sha256": "52bd53f45c233e0bcdd070ed8798d6ebdaba4f93de185283c4461ecfc0f9ae44"
     },
     {
       "id": "coverage-weighted",
@@ -117,8 +117,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "058ad95477aced1865be09cb8fc5057d2e8a5b4a882333c0e6f97ce64c79919e",
-      "excerpt_sha256": "058ad95477aced1865be09cb8fc5057d2e8a5b4a882333c0e6f97ce64c79919e"
+      "sha256": "52bd53f45c233e0bcdd070ed8798d6ebdaba4f93de185283c4461ecfc0f9ae44",
+      "excerpt_sha256": "52bd53f45c233e0bcdd070ed8798d6ebdaba4f93de185283c4461ecfc0f9ae44"
     },
     {
       "id": "credit",
@@ -135,8 +135,8 @@
       "start_line": 1,
       "end_line": 36351,
       "kind": "supplied_snapshot",
-      "sha256": "994679b3b013f6dd80a19039b30040e913b3271439d9352ffb435d998c884192",
-      "excerpt_sha256": "994679b3b013f6dd80a19039b30040e913b3271439d9352ffb435d998c884192"
+      "sha256": "abd9526fdd7b2206ee6e6785121d40416068280446649cc31222733d324a5e40",
+      "excerpt_sha256": "abd9526fdd7b2206ee6e6785121d40416068280446649cc31222733d324a5e40"
     },
     {
       "id": "essay-pages",
@@ -737,10 +737,10 @@
       "id": "r8-weighted-proof",
       "kind": "source",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 171,
-      "end_line": 294,
-      "sha256": "c0d63a763bd2f2c944d079c4e5bdbbe356268d138fd83bdb068464eeb3f2452b",
-      "excerpt_sha256": "b4f796e1601b6c3973dfa64437718b3712dbf35649ec3a4b46c33bc04bf69c8f",
+      "start_line": 170,
+      "end_line": 290,
+      "sha256": "d72b79f31d5438b24af1f4c73ddc357234412a30f0a8af857e7e5af85acba8b3",
+      "excerpt_sha256": "f96d12ef53e4d5ae643c573be9a112c981c0966339d2eabea7ef0fe76c33aa85",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
     {
@@ -849,7 +849,7 @@
       "path": "docs/research-commons/source-attributions.json",
       "start_line": 16125,
       "end_line": 16173,
-      "sha256": "994679b3b013f6dd80a19039b30040e913b3271439d9352ffb435d998c884192",
+      "sha256": "abd9526fdd7b2206ee6e6785121d40416068280446649cc31222733d324a5e40",
       "excerpt_sha256": "be573b258326739443f43f30c79a51b73a63520dd6054cd5bebdc5f8eec113b6",
       "custody": "Public attribution inventory, marked bibliography_only. Used for feature attribution, not for its conflicting first-publication chronology. Direct claims are checked against the enclosed original v2 in this pass."
     },
@@ -877,17 +877,17 @@
       "start_line": 48,
       "end_line": 136,
       "kind": "source",
-      "sha256": "c0d63a763bd2f2c944d079c4e5bdbbe356268d138fd83bdb068464eeb3f2452b",
-      "excerpt_sha256": "1004da433a7053569f1a4ee7955b7e4becbbe9719c6d17f81731b3be4f9b1d87"
+      "sha256": "d72b79f31d5438b24af1f4c73ddc357234412a30f0a8af857e7e5af85acba8b3",
+      "excerpt_sha256": "f21e6e23a5bc3599c8ad05c80e9fb1beb6c57b6d7ef1370b165fc67a4f132799"
     },
     {
       "id": "r14p3-269-introduction",
       "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
       "start_line": 49,
-      "end_line": 145,
+      "end_line": 140,
       "kind": "source",
-      "sha256": "0c1f2ec03faab7787c5843c454bfff6a6ab9027051e191b44d56670e92e4bddc",
-      "excerpt_sha256": "bcbd69604cfae9945fd4f824d11407a1b6ea22252fa66a31d273ecadabfd764f"
+      "sha256": "abf6eb8736c95b8ba4c0d4ba1cb6c4bc7fd5913dd3789e620fbd9d36d7d4b4b5",
+      "excerpt_sha256": "4ac290a9d05846bfc3c473a2c22784b90369a58af0a2d76aa83f6c69a9fee9a6"
     },
     {
       "id": "r14p3-249-introduction",
@@ -895,7 +895,7 @@
       "start_line": 48,
       "end_line": 152,
       "kind": "source",
-      "sha256": "cb6ddb9287d6e5471a76a36a2b177acb9dd21f03f3a58cbeb4bef68698cd02a6",
+      "sha256": "45531de741b5525accf94e61770819fee824765544f5c1751688321ef5d9cebf",
       "excerpt_sha256": "e26a7b55bdf30c82d5a998fd4d827411e493f5a3bd8252ff4ff50008aa616f41"
     },
     {

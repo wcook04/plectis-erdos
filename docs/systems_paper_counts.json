@@ -34,7 +34,7 @@
   "inputs": [
     {
       "path": "docs/paper_lean_coverage.json",
-      "sha256": "8d422a56fdd3c1527e2bf276cf0de63bbeaefba8c7b231b96eb5e2f6e1f1c49d"
+      "sha256": "52bd53f45c233e0bcdd070ed8798d6ebdaba4f93de185283c4461ecfc0f9ae44"
     },
     {
       "path": "docs/claims.json",
@@ -46,7 +46,7 @@
     },
     {
       "path": "docs/papers/corpus.json",
-      "sha256": "3e2e70160192d93a1d15bd8a3bb14553bae1dacb15279ac015b8a6800bf341be"
+      "sha256": "2f854be88b57555d3c8dc7ccac44bb04033fce85eee030569b11b58f1020f648"
     },
     {
       "path": "docs/publication_evidence.json",

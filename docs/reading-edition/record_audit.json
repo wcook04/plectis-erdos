@@ -2,24 +2,24 @@
   "boundary": "Checks registered asserting environments and registered claim spans. Unregistered prose assertions, mathematical equivalence, correctness of ordinary proofs, Lean compilation, Comparator replay and PDF freshness are not established by this audit.",
   "global_findings": [],
   "input_sha256": {
-    "docs/paper_lean_coverage.json": "sha256:058ad95477aced1865be09cb8fc5057d2e8a5b4a882333c0e6f97ce64c79919e",
-    "docs/papers/corpus.json": "sha256:0be413160d5836452116615624ac2233ad7707c89787681ad34497f3c1046a6b",
-    "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md": "sha256:d6b117b7213e108e250181515d023ad7cd0ec8377f8b9cd52f898167e2b5ad95",
-    "docs/papers/full-text/erdos-1049-rational-base-lambert.md": "sha256:48f8b5a74d9e3be350d43a251158dfa82b6c8a82452d6c3f29a9683b1196bda2",
-    "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md": "sha256:38f8d1a58586db2d46be021536b95825b579366314f02ccac99352eea79a7044",
-    "docs/papers/full-text/erdos-249-binary-totient-series.md": "sha256:6b8ce6969e43a06ee60a30a4b43a1938469d300cb0df30a344f10de76407974d",
-    "docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md": "sha256:cd577196c142310f35d60e2b24c4474e52b7c417ee7006a0cd06d87c5c076947",
-    "docs/papers/full-text/erdos-257-mersenne-support-subseries.md": "sha256:9d220de646ab14f572fedf5e35aeede5afb8a531ce44a055dddb51e4bed33a92",
-    "docs/papers/full-text/erdos-269-three-prime-running-lcm.md": "sha256:4964befd7f9f1293d47cd5568e6802f1239025cb829129bb0acfc0e38b48e4ba",
-    "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md": "sha256:e1b31f3c8bec35ea95215fc4bd1f0612a3e6d5b79dcd01656aec2d123adc39bd",
+    "docs/paper_lean_coverage.json": "sha256:52bd53f45c233e0bcdd070ed8798d6ebdaba4f93de185283c4461ecfc0f9ae44",
+    "docs/papers/corpus.json": "sha256:2f854be88b57555d3c8dc7ccac44bb04033fce85eee030569b11b58f1020f648",
+    "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md": "sha256:0a8cc6fdb56d6892a6f5f34d423f925afd50336525c66a0efed93c2511c96964",
+    "docs/papers/full-text/erdos-1049-rational-base-lambert.md": "sha256:c10103c0f78d66e68617f4c57c08e0414291eff4ced80bc56c8e4a15c6b5ae43",
+    "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md": "sha256:39374c6f6dd3819ffb0f92277340c5c242e2ad2099e588a0aa01448550dddde7",
+    "docs/papers/full-text/erdos-249-binary-totient-series.md": "sha256:ba560a3874b5bad44df049651bf81a8262fcb9dcdfb2535216dccbcebbc1beb3",
+    "docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md": "sha256:25e3ae97d7b600a641ef05a6e51c907be2b53b7c6af24a3adf837a9857307888",
+    "docs/papers/full-text/erdos-257-mersenne-support-subseries.md": "sha256:023b532b4687ddcb579311a319fedd10ed6870192a36be46e37ce1297dfc9973",
+    "docs/papers/full-text/erdos-269-three-prime-running-lcm.md": "sha256:96c1b3ca8fa473ea65511b700b3838cec16e6b9e7a8e29a8f1c0b2b8ce3f7b8d",
+    "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md": "sha256:5c6673d1e74c80a1d40939b2ded578d73d4cac9527b6313b80f9fb4c0b818d50",
     "docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md": "sha256:485a5e5896e808d3b55909de9dea756831587cc7b14343a9e09d49334a097b5d",
     "docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md": "sha256:a47d7825084c8c1aacf9e9ebb132ab513339cb2e239237f5c8535a9cce87720a",
     "docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md": "sha256:fca20a9f823c0d3d5a430df1ad446e0185ff56064b1e9be91c392fee23b783ab",
     "docs/papers/full-text/erdos249-totient-reasoning-surface.md": "sha256:b2e81802a4ff109ff06d603b7ec0ceb7fd698ed2f3a0251414d9959775c4255a",
-    "docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md": "sha256:feb4bc333a26961d986aa36df942a29fa0dcb1eaba407ef26f59f76b02bf9009",
+    "docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md": "sha256:7f13d04205ccd8b8806ef037b185bb8ea39299d7e66507ac42aa9f560041b791",
     "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md": "sha256:ceb8cf732c7ff7bdf310bc047d0165f6b4acf85f8fada92c9718d77b390a48cb",
     "docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md": "sha256:8706d4b64902412164435234f796f59a6b79d55bf462faea86ba52b7bc4cbf77",
-    "docs/papers/full-text/erdos68-factorial-reasoning-surface.md": "sha256:5ced88da7183ca07833f4f5b6021252331e5957481d3f4976ecc1a6d64882516",
+    "docs/papers/full-text/erdos68-factorial-reasoning-surface.md": "sha256:8b75e568fee754da6ee2649e8e7d8972817ee4d79085b720ac96b974df86524a",
     "docs/papers/paper_corpus_renderer.py": "sha256:392e57c723ec3f0af5e6bcfc712aab7408cc6263f7f21784e877b93b57c8c874",
     "evidence/paper_evidence.json": "sha256:8c7de6f8f5e082fa91698d0c8314620207603080c348a526aa31fa250042b423",
     "lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean": "sha256:c6174888a3c59acf20f827b01a42bbffce05112eb7c7a3f30350dc1af0fb8f19",
@@ -46,22 +46,22 @@
     "lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean": "sha256:a65d953d4bc0fba1b4d9d79cc6366fa96dae92f2943ad00e2b3f89831ff2d02f",
     "lean/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean": "sha256:08065a305dc94b6b85f6a6cdf90c368a2761d0672629bb37f6b6b4577c04a3b6",
     "lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean": "sha256:769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036",
-    "paper/1041/erdos-1041-lemniscate-newton-flow.tex": "sha256:ec43ef8adb90a4e6212002930d785830392a8be23bf2076074c9677245219037",
+    "paper/1041/erdos-1041-lemniscate-newton-flow.tex": "sha256:32fcdf96311d4320bfff7664a4ed642ff60406e6b4a20f353639ecb58e9a750b",
     "paper/1041/erdos1041-lemniscate-reasoning-surface.tex": "sha256:72bba6bb63978a73d92b50a49cdd573f883c7c247baa3de88c70858aacefc349",
-    "paper/1049/erdos-1049-rational-base-lambert.tex": "sha256:5371d552354f3d035fe5ad41874d109bc7f84e8287601e74aaf329ed2a6fcb46",
+    "paper/1049/erdos-1049-rational-base-lambert.tex": "sha256:1e83c153261cea0f1223abad449d57feca8edb8bdb14d17800aa3eb97f9a1b49",
     "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex": "sha256:b3e81fd9513b713a2be7b59524dad08e5615b9abe6854f9d895164ce85483ae9",
-    "paper/243/erdos-243-reciprocal-tail-rigidity.tex": "sha256:529122fd3d00113504b29fc8ed4f999b68b4e2470a537c0f3d39f84958a4af90",
+    "paper/243/erdos-243-reciprocal-tail-rigidity.tex": "sha256:774cae684af8d05776bb2fa5c66ed7d3e94bca241475cee186be1079383224a8",
     "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex": "sha256:3620f60f31463a8399822e2626556524215a94f6f93e410b183b522764fc7a37",
-    "paper/249/erdos-249-binary-totient-series.tex": "sha256:cb6ddb9287d6e5471a76a36a2b177acb9dd21f03f3a58cbeb4bef68698cd02a6",
+    "paper/249/erdos-249-binary-totient-series.tex": "sha256:45531de741b5525accf94e61770819fee824765544f5c1751688321ef5d9cebf",
     "paper/249/erdos249-totient-reasoning-surface.tex": "sha256:e9e5032bdc4824ed696914d222ebf808bd7171e3209cbcbae335bae3f1ecae15",
-    "paper/251/erdos-251-prime-gap-dyadic-series.tex": "sha256:bd5caeea5b3cc3995b121feb467f53cba1e803010c675c9cabf19fce5f2c8339",
-    "paper/251/erdos251-prime-gap-reasoning-surface.tex": "sha256:be02057958b51a7008be5d6dfaf833d1bdf71f874c59a3897d365b6463c62827",
-    "paper/257/erdos-257-mersenne-support-subseries.tex": "sha256:c0d63a763bd2f2c944d079c4e5bdbbe356268d138fd83bdb068464eeb3f2452b",
+    "paper/251/erdos-251-prime-gap-dyadic-series.tex": "sha256:8d5c19e16d872f1f3d82e83965d33b8385dbcd028b0981d10a6ab2797c2e9c41",
+    "paper/251/erdos251-prime-gap-reasoning-surface.tex": "sha256:648e558fb987171119d8be1eb2f408bbf90b0f25ab08ed60b3fe37ef7bd86a36",
+    "paper/257/erdos-257-mersenne-support-subseries.tex": "sha256:d72b79f31d5438b24af1f4c73ddc357234412a30f0a8af857e7e5af85acba8b3",
     "paper/257/erdos257-mersenne-reasoning-surface.tex": "sha256:185074ce31bacd2b3ab803ae1982face22f6951d82ae97d7c951fad2083325e6",
-    "paper/269/erdos-269-three-prime-running-lcm.tex": "sha256:0c1f2ec03faab7787c5843c454bfff6a6ab9027051e191b44d56670e92e4bddc",
+    "paper/269/erdos-269-three-prime-running-lcm.tex": "sha256:abf6eb8736c95b8ba4c0d4ba1cb6c4bc7fd5913dd3789e620fbd9d36d7d4b4b5",
     "paper/269/erdos269-running-lcm-reasoning-surface.tex": "sha256:4643ae2207eb93d262efa25a1a4d0ba0e536155e44c894cbf0f4f0dd58ad6909",
-    "paper/68/erdos-68-factorial-denominator-irrationality.tex": "sha256:512245ba2b6ba9550b28e23a6a76b2542d50d1ba8cd2ddc0bb3c74e7da2a6062",
-    "paper/68/erdos68-factorial-reasoning-surface.tex": "sha256:a8f5836a5143e345b7eb81b327b9d30e18514ec11620c7319a3e7fdd4389b4f0",
+    "paper/68/erdos-68-factorial-denominator-irrationality.tex": "sha256:eedffe484fe5a8dd349b199219f49f255c8904744befd44b212c813b041a998f",
+    "paper/68/erdos68-factorial-reasoning-surface.tex": "sha256:51af1cab159c76f8e6b836a2743533816557f5729474892009847406493f2306",
     "paper/evidence/erdos-1041-lemniscate-newton-flow.tex": "sha256:c60b85cd02a4f493465fbd32c1bccecab7e8d11a0e28a5321ac62a8c2612ec6c",
     "paper/evidence/erdos-1049-rational-base-lambert.tex": "sha256:c4e6515515effaf60879a0a41f057fed821263558b84d7840fcca132c4946e83",
     "paper/evidence/erdos-243-reciprocal-tail-rigidity.tex": "sha256:0e7e160adf8e923389a043dcbe026ad47117224e41e32e439482b959f6e629c0",
@@ -104,7 +104,7 @@
     "paper/reasoning-parts/erdos249/a249_p5.tex": "sha256:7c0796754f02f5feb9aadd6a37d7145d65bd53ddb0779dba48832b3bbb06fcb2",
     "paper/reasoning-parts/erdos249/preamble.tex": "sha256:7aab194e4f90b8039c35781bfa97d3325e22f5ad259b4be3198ea3a1975388e2",
     "paper/reasoning-parts/erdos251/back.tex": "sha256:7c0796754f02f5feb9aadd6a37d7145d65bd53ddb0779dba48832b3bbb06fcb2",
-    "paper/reasoning-parts/erdos251/core.tex": "sha256:cfc6f4744f03b433503043a4d08c0d92a408f5a39db16eaac43db876afe0c94a",
+    "paper/reasoning-parts/erdos251/core.tex": "sha256:7c174897618df8d9ee79751eca5eacf132e3bab23b9766fb999f59fa610326ae",
     "paper/reasoning-parts/erdos251/extended_record.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos251/family_catalogue.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos251/preamble.tex": "sha256:5bfc3d35b9732283873164ba09752254037583c99da5db3cf4bf3dec05b5b070",
@@ -125,11 +125,11 @@
     "paper/reasoning-parts/erdos269/family_catalogue.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos269/preamble.tex": "sha256:c89017a41e5746e10a8189c6954cbb057417a21dc34e4a1137e6984d98789117",
     "paper/reasoning-parts/erdos68/back.tex": "sha256:7c0796754f02f5feb9aadd6a37d7145d65bd53ddb0779dba48832b3bbb06fcb2",
-    "paper/reasoning-parts/erdos68/core.tex": "sha256:313cb99df11584e51fcde1d70e7e7279256ae1dd002603d06bfe837bca19d8f4",
+    "paper/reasoning-parts/erdos68/core.tex": "sha256:c8dde35b30b28d779deaa4a2727bab96001e906cfe56ceb81bbd965bcd2d2d15",
     "paper/reasoning-parts/erdos68/extended_record.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos68/family_catalogue.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "paper/reasoning-parts/erdos68/preamble.tex": "sha256:f6377616e4fb9bb0ebb06cbe997cea40ee0dcf2e805b75ce367b5cdc41354ba8",
-    "paper/reasoning-parts/record_links.json": "sha256:c6430fef7ca9c108b1abf07aa23ff3c07a3c4f01432a99ae3433f1734cfb6a69",
+    "paper/reasoning-parts/erdos68/preamble.tex": "sha256:7bbd6207745d2f3e5c7db3b788c3cafcfd17504ac075cad8df1f5e5310dda21d",
+    "paper/reasoning-parts/record_links.json": "sha256:ab29baab45406756d63fcb58eea23f84a2c951624db8f5226893d87261273522",
     "scripts/assemble_reasoning_surfaces.py": "sha256:0d8f6426d736fd371921e11e7bd2e721413f2d881b10da0be88c6f19b5ffb2b2",
     "scripts/build_reading_edition.py": "sha256:adab68bf11c05d3bc4baebd588dcf508427690c50d8c07b86d0058dca93dd988",
     "scripts/check_lean_paper_propagation.py": "sha256:0f70bd947b02efe91291389e0430e1140a729de1ae3d311092e20152ea1b813c",
@@ -138,14 +138,14 @@
   },
   "navigation_sha256": {
     "docs/reading-edition/RECORDS.md": "sha256:363de36a25d5a8702d29e76906d09cfa627e0cba2e030e811bd85c2f3801caca",
-    "docs/reading-edition/records/erdos1041.md": "sha256:44e9e0d0078df4ae9f9d89c49647dd0987cadfbcb141292c1aacad0aed697233",
-    "docs/reading-edition/records/erdos1049.md": "sha256:4b76882981016e7e670b7b4eae3634ba60c0da98ca8c9b6741fac05740f601a7",
-    "docs/reading-edition/records/erdos243.md": "sha256:4005d0483cb5f484df7c900af1abc28d1212e77f290d8a52f6f448da772f8fa7",
-    "docs/reading-edition/records/erdos249.md": "sha256:ca0c197b4d71a31dc60f7e11adba302ca3ee3b86d293ee58cbc3ea78167caa3f",
-    "docs/reading-edition/records/erdos251.md": "sha256:dc9f540387d750cd29ff5a783943e1d34ea8652a349d66ddb952d09af6298b60",
-    "docs/reading-edition/records/erdos257.md": "sha256:222d15d82c28eaeb0f9cc67547a7520300706e17c04fbb5b40bb71b008aaf508",
-    "docs/reading-edition/records/erdos269.md": "sha256:b879fffe532c228d9dce85c1b3d583b1f231383ede5edbd9fa51144af413b814",
-    "docs/reading-edition/records/erdos68.md": "sha256:61e14a34367c725ac0377455fae12ecdbf8bcdabb88cac451e0d4dd54d35f004"
+    "docs/reading-edition/records/erdos1041.md": "sha256:9beb1305271fc895385a04949fb536d76a2869f1a98c2a5ecfda29e35e74996d",
+    "docs/reading-edition/records/erdos1049.md": "sha256:9ab0b25f5f57343ce162cd67bcd1b7fc4ff117bb2bb8e619e8aa4525af041259",
+    "docs/reading-edition/records/erdos243.md": "sha256:ec7fe9c5e52527307690952b3fc2dae30bc5a56ccd4770d49de147a65f9f3343",
+    "docs/reading-edition/records/erdos249.md": "sha256:32896d76c62021d54d6c60f3c9c206b6785882cc57843b3062a902c9db1c98a9",
+    "docs/reading-edition/records/erdos251.md": "sha256:586c8c5c0422ffd7ab53fa0682750342fd07506dbd503a9290d06fe24d683c39",
+    "docs/reading-edition/records/erdos257.md": "sha256:5ba461b462c40e1c8d879e8ed06861ff43e3fa928c6018b92e4bb0dd5d8c53d3",
+    "docs/reading-edition/records/erdos269.md": "sha256:55ded1da8935e26e706b117fe1b26f3e9ba2bd33156514b29e58fb341ba19daf",
+    "docs/reading-edition/records/erdos68.md": "sha256:4346c7bb48a2ad5be27c144901c7ec780ae6a63ed5fc9afdd6d5fcb4a154744d"
   },
   "pairs": [
     {
@@ -159,9 +159,9 @@
           "matches": [],
           "short_claim": "erdos-68-factorial-denominator-irrationality#res:divisor-channel-coordinates",
           "short_location": {
-            "end_line": 183,
+            "end_line": 175,
             "label": "res:divisor-channel-coordinates",
-            "line": 165,
+            "line": 157,
             "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
           },
           "state": "unresolved",
@@ -176,9 +176,9 @@
           "matches": [],
           "short_claim": "erdos-68-factorial-denominator-irrationality#res:finite-channel-moment-certificate",
           "short_location": {
-            "end_line": 314,
+            "end_line": 299,
             "label": "res:finite-channel-moment-certificate",
-            "line": 307,
+            "line": 292,
             "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
           },
           "state": "unresolved",
@@ -192,9 +192,9 @@
           "severity": "error",
           "short_claim": "erdos-68-factorial-denominator-irrationality#res:divisor-channel-coordinates",
           "short_location": {
-            "end_line": 183,
+            "end_line": 175,
             "label": "res:divisor-channel-coordinates",
-            "line": 165,
+            "line": 157,
             "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
           }
         },
@@ -206,9 +206,9 @@
           "severity": "error",
           "short_claim": "erdos-68-factorial-denominator-irrationality#res:divisor-channel-coordinates",
           "short_location": {
-            "end_line": 183,
+            "end_line": 175,
             "label": "res:divisor-channel-coordinates",
-            "line": 165,
+            "line": 157,
             "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
           }
         },
@@ -218,9 +218,9 @@
           "severity": "error",
           "short_claim": "erdos-68-factorial-denominator-irrationality#res:finite-channel-moment-certificate",
           "short_location": {
-            "end_line": 314,
+            "end_line": 299,
             "label": "res:finite-channel-moment-certificate",
-            "line": 307,
+            "line": 292,
             "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
           }
         },
@@ -232,9 +232,9 @@
           "severity": "error",
           "short_claim": "erdos-68-factorial-denominator-irrationality#res:finite-channel-moment-certificate",
           "short_location": {
-            "end_line": 314,
+            "end_line": 299,
             "label": "res:finite-channel-moment-certificate",
-            "line": 307,
+            "line": 292,
             "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex"
           }
         }
@@ -242,162 +242,162 @@
       "long_only_or_unmatched": [
         {
           "location": {
-            "end_line": 839,
+            "end_line": 843,
             "label": "long68:res:prime-pole",
-            "line": 830,
+            "line": 834,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:prime-pole"
         },
         {
           "location": {
-            "end_line": 932,
+            "end_line": 936,
             "label": "long68:res:wilson-cofinality",
-            "line": 929,
+            "line": 933,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:wilson-cofinality"
         },
         {
           "location": {
-            "end_line": 973,
+            "end_line": 977,
             "label": "long68:res:product-lcm",
-            "line": 967,
+            "line": 971,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:product-lcm"
         },
         {
           "location": {
-            "end_line": 999,
+            "end_line": 1003,
             "label": "long68:res:gap-gcd",
-            "line": 996,
+            "line": 1000,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:gap-gcd"
         },
         {
           "location": {
-            "end_line": 1016,
+            "end_line": 1020,
             "label": "long68:res:segment",
-            "line": 1008,
+            "line": 1012,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:segment"
         },
         {
           "location": {
-            "end_line": 1035,
+            "end_line": 1039,
             "label": "long68:res:lcm-growth",
-            "line": 1030,
+            "line": 1034,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:lcm-growth"
         },
         {
           "location": {
-            "end_line": 1344,
+            "end_line": 1348,
             "label": "long68:res:carry-equivalence",
-            "line": 1324,
+            "line": 1328,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:carry-equivalence"
         },
         {
           "location": {
-            "end_line": 1436,
+            "end_line": 1440,
             "label": "long68:res:companion-orbit",
-            "line": 1429,
+            "line": 1433,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:companion-orbit"
         },
         {
           "location": {
-            "end_line": 1525,
+            "end_line": 1529,
             "label": "long68:res:lower-escape",
-            "line": 1511,
+            "line": 1515,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:lower-escape"
         },
         {
           "location": {
-            "end_line": 1628,
+            "end_line": 1632,
             "label": "long68:res:shift-family",
-            "line": 1619,
+            "line": 1623,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:shift-family"
         },
         {
           "location": {
-            "end_line": 1726,
+            "end_line": 1730,
             "label": "long68:res:global-residue",
-            "line": 1719,
+            "line": 1723,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:global-residue"
         },
         {
           "location": {
-            "end_line": 134,
+            "end_line": 137,
             "label": "long68:res:normalform",
-            "line": 131,
+            "line": 134,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:normalform"
         },
         {
           "location": {
-            "end_line": 576,
+            "end_line": 580,
             "label": "long68:res:bandbreakpoint",
-            "line": 570,
+            "line": 574,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:bandbreakpoint"
         },
         {
           "location": {
-            "end_line": 289,
+            "end_line": 292,
             "label": "long68:res:moment-ideal",
-            "line": 278,
+            "line": 281,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:moment-ideal"
         },
         {
           "location": {
-            "end_line": 321,
+            "end_line": 324,
             "label": "long68:res:residual-transparency",
-            "line": 312,
+            "line": 315,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:residual-transparency"
         },
         {
           "location": {
-            "end_line": 1199,
+            "end_line": 1203,
             "label": "long68:res:channel-radius",
-            "line": 1190,
+            "line": 1194,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:channel-radius"
         },
         {
           "location": {
-            "end_line": 1245,
+            "end_line": 1249,
             "label": "long68:res:radius-constant",
-            "line": 1239,
+            "line": 1243,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:radius-constant"
         },
         {
           "location": {
-            "end_line": 597,
+            "end_line": 601,
             "label": "long68:res:translator",
-            "line": 593,
+            "line": 597,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:translator"
@@ -409,22 +409,22 @@
           "sections": [
             {
               "id": "long68:sec:carry",
-              "line": 764,
+              "line": 768,
               "title": "Carries and factorial digits"
             },
             {
               "id": "long68:sec:finite",
-              "line": 1162,
+              "line": 1166,
               "title": "Finite denominator exclusions"
             },
             {
               "id": "long68:sec:open",
-              "line": 1225,
+              "line": 1229,
               "title": "Further arithmetic questions"
             },
             {
               "id": "sec:erdos-68-complete-family-map",
-              "line": 1894,
+              "line": 1898,
               "title": "Relations among the criteria"
             }
           ],
@@ -462,253 +462,253 @@
           {
             "id": "long68:sec:support-and-remainder",
             "level": 2,
-            "line": 304,
+            "line": 308,
             "title": "Support bounds and nonintegrality"
           },
           {
             "id": "long68:sec:progression",
             "level": 2,
-            "line": 358,
+            "line": 362,
             "title": "A primitive solution on an arithmetic progression"
           },
           {
             "id": "long68:sec:cofactor-progression",
             "level": 2,
-            "line": 413,
+            "line": 417,
             "title": "Cofactors give the same primitive vector"
           },
           {
             "id": "long68:sec:prime-powers",
             "level": 1,
-            "line": 446,
+            "line": 450,
             "title": "Prime powers in reduced denominators"
           },
           {
             "id": "two-complete-cancellations.",
             "level": 4,
-            "line": 491,
+            "line": 495,
             "title": "Two complete cancellations."
           },
           {
             "id": "long68:sec:lcm",
             "level": 1,
-            "line": 538,
+            "line": 542,
             "title": "Growth of the common denominator"
           },
           {
             "id": "a-non-polynomial-comparison.",
             "level": 4,
-            "line": 654,
+            "line": 658,
             "title": "A non-polynomial comparison."
           },
           {
             "id": "long68:sec:quantitative-support",
             "level": 2,
-            "line": 681,
+            "line": 685,
             "title": "Consequences for the support parameter"
           },
           {
             "id": "long68:sec:carry",
             "level": 1,
-            "line": 764,
+            "line": 768,
             "title": "Carries and factorial digits"
           },
           {
             "id": "long68:sec:adjacent-unit-no-go",
             "level": 2,
-            "line": 835,
+            "line": 839,
             "title": "The adjacent-unit window condition"
           },
           {
             "id": "long68:sec:companion-digits",
             "level": 2,
-            "line": 859,
+            "line": 863,
             "title": "Factorial digits of S-e+2"
           },
           {
             "id": "long68:sec:floor-correction",
             "level": 4,
-            "line": 922,
+            "line": 926,
             "title": "Recovering the finite carries."
           },
           {
             "id": "escape-from-a-smaller-interval",
             "level": 2,
-            "line": 944,
+            "line": 948,
             "title": "Escape from a smaller interval"
           },
           {
             "id": "the-series-with-denominators-nt",
             "level": 2,
-            "line": 1021,
+            "line": 1025,
             "title": "The series with denominators n!+t"
           },
           {
             "id": "long68:sec:residue",
             "level": 1,
-            "line": 1048,
+            "line": 1052,
             "title": "A complementary-denominator criterion"
           },
           {
             "id": "long68:sec:finite",
             "level": 1,
-            "line": 1162,
+            "line": 1166,
             "title": "Finite denominator exclusions"
           },
           {
             "id": "carry-intervals.",
             "level": 4,
-            "line": 1179,
+            "line": 1183,
             "title": "Carry intervals."
           },
           {
             "id": "a-rational-enclosure-and-continued-fractions.",
             "level": 4,
-            "line": 1190,
+            "line": 1194,
             "title": "A rational enclosure and continued fractions."
           },
           {
             "id": "carry-computation-record.",
             "level": 4,
-            "line": 1213,
+            "line": 1217,
             "title": "Carry computation record."
           },
           {
             "id": "long68:sec:open",
             "level": 1,
-            "line": 1225,
+            "line": 1229,
             "title": "Further arithmetic questions"
           },
           {
             "id": "value-sets-do-not-determine-the-weighted-residue-sum.",
             "level": 4,
-            "line": 1231,
+            "line": 1235,
             "title": "Value sets do not determine the weighted residue sum."
           },
           {
             "id": "the-shared-denominator-and-the-gap-must-be-controlled-together.",
             "level": 4,
-            "line": 1237,
+            "line": 1241,
             "title": "The shared denominator and the gap must be controlled together."
           },
           {
             "id": "what-two-gap-product-tests-do-not-show.",
             "level": 4,
-            "line": 1276,
+            "line": 1280,
             "title": "What two gap-product tests do not show."
           },
           {
             "id": "prime-powers-already-seen-at-earlier-indices.",
             "level": 4,
-            "line": 1291,
+            "line": 1295,
             "title": "Prime powers already seen at earlier indices."
           },
           {
             "id": "the-upper-alternative-in-the-finite-test.",
             "level": 4,
-            "line": 1315,
+            "line": 1319,
             "title": "The upper alternative in the finite test."
           },
           {
             "id": "conditions-at-twice-a-prime.",
             "level": 4,
-            "line": 1321,
+            "line": 1325,
             "title": "Conditions at twice a prime."
           },
           {
             "id": "criteria-from-the-literature-that-do-not-apply.",
             "level": 4,
-            "line": 1340,
+            "line": 1344,
             "title": "Criteria from the literature that do not apply."
           },
           {
             "id": "sources-and-evidence",
             "level": 1,
-            "line": 1348,
+            "line": 1352,
             "title": "Sources and evidence"
           },
           {
             "id": "long68:app:sources",
             "level": 1,
-            "line": 1377,
+            "line": 1381,
             "title": "Guide to the formal sources"
           },
           {
             "id": "long68:sec:short-concordance",
             "level": 2,
-            "line": 1489,
+            "line": 1493,
             "title": "Source links from the short paper"
           },
           {
             "id": "long68:sec:short-criteria-sources",
             "level": 4,
-            "line": 1562,
+            "line": 1566,
             "title": "Earlier links for the consolidated criteria."
           },
           {
             "id": "long68:sec:extended-record",
             "level": 1,
-            "line": 1576,
+            "line": 1580,
             "title": "Further deductions and limitations"
           },
           {
             "id": "long68:sec:ext-digits",
             "level": 2,
-            "line": 1582,
+            "line": 1586,
             "title": "Factorial digits and their remainders"
           },
           {
             "id": "long68:sec:ext-literature",
             "level": 2,
-            "line": 1619,
+            "line": 1623,
             "title": "How the classical criteria apply here"
           },
           {
             "id": "long68:sec:ext-superseded",
             "level": 2,
-            "line": 1670,
+            "line": 1674,
             "title": "A superseded deduction"
           },
           {
             "id": "long68:sec:ext-plateau",
             "level": 2,
-            "line": 1684,
+            "line": 1688,
             "title": "Rational grid points and first crossings"
           },
           {
             "id": "long68:sec:ext-collision",
             "level": 2,
-            "line": 1737,
+            "line": 1741,
             "title": "Exact identities for shared prime powers"
           },
           {
             "id": "long68:sec:ext-certificates",
             "level": 2,
-            "line": 1819,
+            "line": 1823,
             "title": "Finite vectors and exact numerical examples"
           },
           {
             "id": "long68:sec:ext-nogo",
             "level": 2,
-            "line": 1858,
+            "line": 1862,
             "title": "Limits of the recurrences and clearing factors used here"
           },
           {
             "id": "long68:sec:ext-generic",
             "level": 2,
-            "line": 1874,
+            "line": 1878,
             "title": "An elementary criterion for any real number"
           },
           {
             "id": "sec:erdos-68-complete-family-map",
             "level": 1,
-            "line": 1894,
+            "line": 1898,
             "title": "Relations among the criteria"
           },
           {
             "id": "acknowledgements",
             "level": 1,
-            "line": 1904,
+            "line": 1908,
             "title": "Acknowledgements"
           }
         ],
@@ -726,17 +726,17 @@
             },
             {
               "id": "sec:channels",
-              "line": 41,
+              "line": 39,
               "title": "An integral basis"
             },
             {
               "id": "sec:moments",
-              "line": 134,
+              "line": 132,
               "title": "Possible values of M"
             },
             {
               "id": "sec:open",
-              "line": 381,
+              "line": 377,
               "title": "Nonintegrality of the remainder"
             }
           ],
@@ -762,49 +762,49 @@
           {
             "id": "sec:channels",
             "level": 1,
-            "line": 41,
+            "line": 39,
             "title": "An integral basis"
           },
           {
             "id": "sec:moments",
             "level": 1,
-            "line": 134,
+            "line": 132,
             "title": "Possible values of M"
           },
           {
             "id": "sec:finite-gcd",
             "level": 2,
-            "line": 183,
+            "line": 179,
             "title": "A finite gcd calculation"
           },
           {
             "id": "sec:coordinate-remainder",
             "level": 2,
-            "line": 228,
+            "line": 224,
             "title": "The associated remainder"
           },
           {
             "id": "sec:depth-four",
             "level": 1,
-            "line": 243,
-            "title": "An example attaining the minimum"
+            "line": 239,
+            "title": "The least multiplier at depth four"
           },
           {
             "id": "sec:open",
             "level": 1,
-            "line": 381,
+            "line": 377,
             "title": "Nonintegrality of the remainder"
           },
           {
             "id": "app:sources",
             "level": 1,
-            "line": 409,
+            "line": 403,
             "title": "Verification"
           },
           {
             "id": "acknowledgements",
             "level": 1,
-            "line": 417,
+            "line": 411,
             "title": "Acknowledgements"
           }
         ],
@@ -848,24 +848,24 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:originalbounded",
           "short_location": {
-            "end_line": 671,
+            "end_line": 658,
             "label": "res:originalbounded",
-            "line": 663,
+            "line": 650,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 686,
+              "end_line": 672,
               "label": null,
-              "line": 672,
+              "line": 659,
               "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
             "rationale": "The proof displays the exact defect comparison with the product quotient. Its remainder is positive and tends to zero; a finite upper bound gives a lower bound on E, then bounded-negative-part rigidity and the recurrence corollary apply. The product criterion is not the classical LCM criterion. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.",
-            "review_status": "R5 Type A source-reading review of retained proof and evidence boundary; no new independent mathematical review.",
-            "sha256": "sha256:6fc4f399da476680b07d98e1cd7d402297284f22f0eb65ec9f3c4598e97e7a24",
+            "review_status": "R15 fourth return Type A source-reading review of accepted editorial wording against the unchanged statement and existing argument; no independent mathematical review or new formal verification.",
+            "sha256": "sha256:08307a9bc3e42cebdb9ce82a5fba6c5a18e7f7972b0f8a514c4ac51a3c69e7fe",
             "validation": "text_presence_and_digest_only; proof_correctness_not_checked"
           },
           "state": "short_proof_explained_long_link_open",
@@ -936,9 +936,9 @@
           ],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:bounded",
           "short_location": {
-            "end_line": 508,
+            "end_line": 495,
             "label": "res:bounded",
-            "line": 496,
+            "line": 483,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "registered_evidence_linked",
@@ -965,18 +965,18 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:cor",
           "short_location": {
-            "end_line": 647,
+            "end_line": 634,
             "label": "res:cor",
-            "line": 644,
+            "line": 631,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 651,
+              "end_line": 638,
               "label": null,
-              "line": 648,
+              "line": 635,
               "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
@@ -1009,9 +1009,9 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:update",
           "short_location": {
-            "end_line": 525,
+            "end_line": 512,
             "label": "res:update",
-            "line": 519,
+            "line": 506,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "unresolved",
@@ -1038,9 +1038,9 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:absorb",
           "short_location": {
-            "end_line": 549,
+            "end_line": 536,
             "label": "res:absorb",
-            "line": 543,
+            "line": 530,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "unresolved",
@@ -1069,9 +1069,9 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:step",
           "short_location": {
-            "end_line": 564,
+            "end_line": 551,
             "label": "res:step",
-            "line": 558,
+            "line": 545,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "unresolved",
@@ -1098,18 +1098,18 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:crt",
           "short_location": {
-            "end_line": 602,
+            "end_line": 589,
             "label": "res:crt",
-            "line": 599,
+            "line": 586,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 606,
+              "end_line": 593,
               "label": null,
-              "line": 603,
+              "line": 590,
               "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
@@ -1142,18 +1142,18 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:barrier",
           "short_location": {
-            "end_line": 612,
+            "end_line": 599,
             "label": "res:barrier",
-            "line": 608,
+            "line": 595,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 622,
+              "end_line": 609,
               "label": null,
-              "line": 613,
+              "line": 600,
               "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
@@ -1230,9 +1230,9 @@
           ],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:reduced",
           "short_location": {
-            "end_line": 260,
+            "end_line": 257,
             "label": "res:reduced",
-            "line": 252,
+            "line": 249,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "registered_evidence_linked",
@@ -1303,9 +1303,9 @@
           ],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:gcdstab",
           "short_location": {
-            "end_line": 581,
+            "end_line": 568,
             "label": "res:gcdstab",
-            "line": 575,
+            "line": 562,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "registered_evidence_linked",
@@ -1376,9 +1376,9 @@
           ],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:massscalar",
           "short_location": {
-            "end_line": 755,
+            "end_line": 740,
             "label": "res:massscalar",
-            "line": 748,
+            "line": 733,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "registered_evidence_linked",
@@ -1449,9 +1449,9 @@
           ],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:weightedrecord",
           "short_location": {
-            "end_line": 840,
+            "end_line": 822,
             "label": "res:weightedrecord",
-            "line": 832,
+            "line": 814,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "registered_evidence_linked",
@@ -1466,18 +1466,18 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:lcmbounded",
           "short_location": {
-            "end_line": 966,
+            "end_line": 947,
             "label": "res:lcmbounded",
-            "line": 958,
+            "line": 939,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 976,
+              "end_line": 957,
               "label": null,
-              "line": 968,
+              "line": 949,
               "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
@@ -1513,24 +1513,24 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:inclusiveone",
           "short_location": {
-            "end_line": 709,
+            "end_line": 695,
             "label": "res:inclusiveone",
-            "line": 700,
+            "line": 686,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 717,
+              "end_line": 704,
               "label": null,
-              "line": 710,
+              "line": 696,
               "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
             "rationale": "Compare the quotient t_(n+1)/t_n with (1+1/n)(1+K/n^(1+epsilon)). The convergent error product gives t_n=O(n), and t_n*gamma_n is bounded above. The preceding product-increment criterion applies, including the exact one-sided 1/n bound. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.",
-            "review_status": "R9 Type A source-reading review of accepted exposition change against unchanged statement and prior proof; no new independent mathematical review, Lean execution or long-record correspondence.",
-            "sha256": "sha256:e86509b32b19b9d26b38f708986549d730b37d99f3cc6abf5fd65a8d450caeba",
+            "review_status": "R15 fourth return Type A source-reading review of accepted editorial wording against the unchanged statement and existing argument; no independent mathematical review or new formal verification.",
+            "sha256": "sha256:63189dcca4e7945ee3034730cadaad19f19a566180777f0962dca993e5d755fd",
             "validation": "text_presence_and_digest_only; proof_correctness_not_checked"
           },
           "state": "short_proof_explained_long_link_open",
@@ -1674,9 +1674,9 @@
           ],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:frontier",
           "short_location": {
-            "end_line": 1022,
+            "end_line": 1003,
             "label": "res:frontier",
-            "line": 1014,
+            "line": 995,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "registered_evidence_linked",
@@ -1691,24 +1691,24 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:weights",
           "short_location": {
-            "end_line": 1056,
+            "end_line": 1035,
             "label": "res:weights",
-            "line": 1051,
+            "line": 1030,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 1087,
+              "end_line": 1065,
               "label": null,
-              "line": 1058,
+              "line": 1037,
               "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
             "rationale": "For zero lower density choose cutoffs X_k with F(X_k)<=2^(-k)X_k and sum the nested indicator weights 1_[1,X_k]/X_k. The integral diverges but the weighted mass is finite. Conversely use partial summation against a positive nonincreasing divergent-integral weight to exclude an eventual positive linear lower bound for F. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.",
-            "review_status": "R14 third return Type A source-reading and frozen-statement review; proof availability only, no independent mathematical review or new long-record correspondence.",
-            "sha256": "sha256:c339abb8184b344b4fd64a5d8c60a03984c6315ee86c1f507ef8872a6c32c23b",
+            "review_status": "R15 fourth return Type A source-reading review of accepted editorial wording against the unchanged statement and existing argument; no independent mathematical review or new formal verification.",
+            "sha256": "sha256:a4e5621a5ae76c8a724935d67afad90d0507cb18056d28e12c152abe5de35235",
             "validation": "text_presence_and_digest_only; proof_correctness_not_checked"
           },
           "state": "short_proof_explained_long_link_open",
@@ -1737,9 +1737,9 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:residue",
           "short_location": {
-            "end_line": 1170,
+            "end_line": 1148,
             "label": "res:residue",
-            "line": 1165,
+            "line": 1143,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "unresolved",
@@ -1753,9 +1753,9 @@
           "severity": "warning",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:originalbounded",
           "short_location": {
-            "end_line": 671,
+            "end_line": 658,
             "label": "res:originalbounded",
-            "line": 663,
+            "line": 650,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -1765,9 +1765,9 @@
           "severity": "warning",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:cor",
           "short_location": {
-            "end_line": 647,
+            "end_line": 634,
             "label": "res:cor",
-            "line": 644,
+            "line": 631,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -1777,9 +1777,9 @@
           "severity": "error",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:update",
           "short_location": {
-            "end_line": 525,
+            "end_line": 512,
             "label": "res:update",
-            "line": 519,
+            "line": 506,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -1798,9 +1798,9 @@
           "severity": "error",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:update",
           "short_location": {
-            "end_line": 525,
+            "end_line": 512,
             "label": "res:update",
-            "line": 519,
+            "line": 506,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -1810,9 +1810,9 @@
           "severity": "error",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:absorb",
           "short_location": {
-            "end_line": 549,
+            "end_line": 536,
             "label": "res:absorb",
-            "line": 543,
+            "line": 530,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -1831,9 +1831,9 @@
           "severity": "error",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:absorb",
           "short_location": {
-            "end_line": 549,
+            "end_line": 536,
             "label": "res:absorb",
-            "line": 543,
+            "line": 530,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -1843,9 +1843,9 @@
           "severity": "error",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:step",
           "short_location": {
-            "end_line": 564,
+            "end_line": 551,
             "label": "res:step",
-            "line": 558,
+            "line": 545,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -1864,9 +1864,9 @@
           "severity": "error",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:step",
           "short_location": {
-            "end_line": 564,
+            "end_line": 551,
             "label": "res:step",
-            "line": 558,
+            "line": 545,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -1876,9 +1876,9 @@
           "severity": "warning",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:crt",
           "short_location": {
-            "end_line": 602,
+            "end_line": 589,
             "label": "res:crt",
-            "line": 599,
+            "line": 586,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -1888,9 +1888,9 @@
           "severity": "warning",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:barrier",
           "short_location": {
-            "end_line": 612,
+            "end_line": 599,
             "label": "res:barrier",
-            "line": 608,
+            "line": 595,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -1900,9 +1900,9 @@
           "severity": "warning",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:lcmbounded",
           "short_location": {
-            "end_line": 966,
+            "end_line": 947,
             "label": "res:lcmbounded",
-            "line": 958,
+            "line": 939,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -1912,9 +1912,9 @@
           "severity": "warning",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:inclusiveone",
           "short_location": {
-            "end_line": 709,
+            "end_line": 695,
             "label": "res:inclusiveone",
-            "line": 700,
+            "line": 686,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -1924,9 +1924,9 @@
           "severity": "warning",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:weights",
           "short_location": {
-            "end_line": 1056,
+            "end_line": 1035,
             "label": "res:weights",
-            "line": 1051,
+            "line": 1030,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -1936,9 +1936,9 @@
           "severity": "error",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:residue",
           "short_location": {
-            "end_line": 1170,
+            "end_line": 1148,
             "label": "res:residue",
-            "line": 1165,
+            "line": 1143,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -1957,9 +1957,9 @@
           "severity": "error",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:residue",
           "short_location": {
-            "end_line": 1170,
+            "end_line": 1148,
             "label": "res:residue",
-            "line": 1165,
+            "line": 1143,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         }
@@ -2793,17 +2793,17 @@
             },
             {
               "id": "sec:secondaryrate",
-              "line": 107,
+              "line": 109,
               "title": "Proof of cubic-rate irrationality"
             },
             {
               "id": "sec:bounded",
-              "line": 330,
+              "line": 329,
               "title": "Bounded increases"
             },
             {
               "id": "sec:open",
-              "line": 726,
+              "line": 729,
               "title": "Further questions"
             }
           ],
@@ -2829,121 +2829,121 @@
           {
             "id": "sec:transfer",
             "level": 1,
-            "line": 66,
+            "line": 68,
             "title": "Tail numerators"
           },
           {
             "id": "sec:secondaryrate",
             "level": 1,
-            "line": 107,
+            "line": 109,
             "title": "Proof of cubic-rate irrationality"
           },
           {
             "id": "sec:cubic-extraction",
             "level": 2,
-            "line": 120,
+            "line": 121,
             "title": "An eventual cubic polynomial"
           },
           {
             "id": "sec:cubic-normalisation",
             "level": 2,
-            "line": 153,
+            "line": 154,
             "title": "Reduction and the constant term"
           },
           {
             "id": "sec:cubic-field",
             "level": 2,
-            "line": 201,
+            "line": 202,
             "title": "A square forced by a zero numerator"
           },
           {
             "id": "sec:cubic-trace",
             "level": 2,
-            "line": 247,
+            "line": 248,
             "title": "Traces in the cubic field"
           },
           {
             "id": "sec:cubic-mod-seven",
             "level": 2,
-            "line": 304,
+            "line": 303,
             "title": "The contradiction modulo seven"
           },
           {
             "id": "sec:bounded",
             "level": 1,
-            "line": 330,
+            "line": 329,
             "title": "Bounded increases"
           },
           {
             "id": "sec:defect",
             "level": 2,
-            "line": 359,
+            "line": 358,
             "title": "Zero errors and descent"
           },
           {
             "id": "sec:barrier",
             "level": 2,
-            "line": 414,
+            "line": 413,
             "title": "A stable gcd and a forbidden block"
           },
           {
             "id": "sec:product-bound",
             "level": 2,
-            "line": 490,
+            "line": 489,
             "title": "The condition in the original sequence"
           },
           {
             "id": "sec:mass",
             "level": 1,
-            "line": 560,
+            "line": 559,
             "title": "Finite total relative increase"
           },
           {
             "id": "sec:lcmrecords",
             "level": 1,
-            "line": 592,
+            "line": 591,
             "title": "New maxima of an LCM numerator"
           },
           {
             "id": "sec:open",
             "level": 1,
-            "line": 726,
+            "line": 729,
             "title": "Further questions"
           },
           {
             "id": "sec:scalar-limit",
             "level": 2,
-            "line": 789,
+            "line": 792,
             "title": "Arithmetic compatibility"
           },
           {
             "id": "acknowledgements.",
             "level": 4,
-            "line": 813,
+            "line": 816,
             "title": "Acknowledgements."
           },
           {
             "id": "app:residue",
             "level": 1,
-            "line": 819,
+            "line": 822,
             "title": "A factorial modulus for integral recursion"
           },
           {
             "id": "app:index",
             "level": 1,
-            "line": 863,
+            "line": 866,
             "title": "Sources and related work"
           },
           {
             "id": "indexing-of-the-canonical-tails.",
             "level": 4,
-            "line": 871,
+            "line": 874,
             "title": "Indexing of the canonical tails."
           },
           {
             "id": "app:verification",
             "level": 1,
-            "line": 877,
+            "line": 880,
             "title": "Verification and reproducibility"
           }
         ],
@@ -2990,18 +2990,18 @@
           "matches": [],
           "short_claim": "erdos-249-binary-totient-series#res:basis",
           "short_location": {
-            "end_line": 493,
+            "end_line": 478,
             "label": "res:basis",
-            "line": 483,
+            "line": 468,
             "path": "paper/249/erdos-249-binary-totient-series.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 499,
+              "end_line": 484,
               "label": null,
-              "line": 494,
+              "line": 479,
               "path": "paper/249/erdos-249-binary-totient-series.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
@@ -3022,9 +3022,9 @@
           "matches": [],
           "short_claim": "erdos-249-binary-totient-series#cor:integral-normal-form",
           "short_location": {
-            "end_line": 326,
+            "end_line": 316,
             "label": "cor:integral-normal-form",
-            "line": 311,
+            "line": 301,
             "path": "paper/249/erdos-249-binary-totient-series.tex"
           },
           "state": "unresolved",
@@ -3039,18 +3039,18 @@
           "matches": [],
           "short_claim": "erdos-249-binary-totient-series#cor:periodic-freezing",
           "short_location": {
-            "end_line": 511,
+            "end_line": 496,
             "label": "cor:periodic-freezing",
-            "line": 503,
+            "line": 488,
             "path": "paper/249/erdos-249-binary-totient-series.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 520,
+              "end_line": 505,
               "label": null,
-              "line": 512,
+              "line": 497,
               "path": "paper/249/erdos-249-binary-totient-series.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
@@ -3071,9 +3071,9 @@
           "matches": [],
           "short_claim": "erdos-249-binary-totient-series#res:residueseries",
           "short_location": {
-            "end_line": 390,
+            "end_line": 375,
             "label": "res:residueseries",
-            "line": 381,
+            "line": 366,
             "path": "paper/249/erdos-249-binary-totient-series.tex"
           },
           "state": "unresolved",
@@ -3088,9 +3088,9 @@
           "matches": [],
           "short_claim": "erdos-249-binary-totient-series#lem:bounded-pulse",
           "short_location": {
-            "end_line": 406,
+            "end_line": 391,
             "label": "lem:bounded-pulse",
-            "line": 402,
+            "line": 387,
             "path": "paper/249/erdos-249-binary-totient-series.tex"
           },
           "state": "unresolved",
@@ -3161,9 +3161,9 @@
           ],
           "short_claim": "erdos-249-binary-totient-series#res:fulldepth",
           "short_location": {
-            "end_line": 634,
+            "end_line": 617,
             "label": "res:fulldepth",
-            "line": 625,
+            "line": 608,
             "path": "paper/249/erdos-249-binary-totient-series.tex"
           },
           "state": "registered_evidence_linked",
@@ -3277,9 +3277,9 @@
           ],
           "short_claim": "erdos-249-binary-totient-series#res:rankonefloor",
           "short_location": {
-            "end_line": 725,
+            "end_line": 707,
             "label": "res:rankonefloor",
-            "line": 717,
+            "line": 699,
             "path": "paper/249/erdos-249-binary-totient-series.tex"
           },
           "state": "registered_evidence_linked",
@@ -3319,9 +3319,9 @@
           "severity": "warning",
           "short_claim": "erdos-249-binary-totient-series#res:basis",
           "short_location": {
-            "end_line": 493,
+            "end_line": 478,
             "label": "res:basis",
-            "line": 483,
+            "line": 468,
             "path": "paper/249/erdos-249-binary-totient-series.tex"
           }
         },
@@ -3331,9 +3331,9 @@
           "severity": "error",
           "short_claim": "erdos-249-binary-totient-series#cor:integral-normal-form",
           "short_location": {
-            "end_line": 326,
+            "end_line": 316,
             "label": "cor:integral-normal-form",
-            "line": 311,
+            "line": 301,
             "path": "paper/249/erdos-249-binary-totient-series.tex"
           }
         },
@@ -3345,9 +3345,9 @@
           "severity": "error",
           "short_claim": "erdos-249-binary-totient-series#cor:integral-normal-form",
           "short_location": {
-            "end_line": 326,
+            "end_line": 316,
             "label": "cor:integral-normal-form",
-            "line": 311,
+            "line": 301,
             "path": "paper/249/erdos-249-binary-totient-series.tex"
           }
         },
@@ -3357,9 +3357,9 @@
           "severity": "warning",
           "short_claim": "erdos-249-binary-totient-series#cor:periodic-freezing",
           "short_location": {
-            "end_line": 511,
+            "end_line": 496,
             "label": "cor:periodic-freezing",
-            "line": 503,
+            "line": 488,
             "path": "paper/249/erdos-249-binary-totient-series.tex"
           }
         },
@@ -3369,9 +3369,9 @@
           "severity": "error",
           "short_claim": "erdos-249-binary-totient-series#res:residueseries",
           "short_location": {
-            "end_line": 390,
+            "end_line": 375,
             "label": "res:residueseries",
-            "line": 381,
+            "line": 366,
             "path": "paper/249/erdos-249-binary-totient-series.tex"
           }
         },
@@ -3383,9 +3383,9 @@
           "severity": "error",
           "short_claim": "erdos-249-binary-totient-series#res:residueseries",
           "short_location": {
-            "end_line": 390,
+            "end_line": 375,
             "label": "res:residueseries",
-            "line": 381,
+            "line": 366,
             "path": "paper/249/erdos-249-binary-totient-series.tex"
           }
         },
@@ -3395,9 +3395,9 @@
           "severity": "error",
           "short_claim": "erdos-249-binary-totient-series#lem:bounded-pulse",
           "short_location": {
-            "end_line": 406,
+            "end_line": 391,
             "label": "lem:bounded-pulse",
-            "line": 402,
+            "line": 387,
             "path": "paper/249/erdos-249-binary-totient-series.tex"
           }
         },
@@ -3409,9 +3409,9 @@
           "severity": "error",
           "short_claim": "erdos-249-binary-totient-series#lem:bounded-pulse",
           "short_location": {
-            "end_line": 406,
+            "end_line": 391,
             "label": "lem:bounded-pulse",
-            "line": 402,
+            "line": 387,
             "path": "paper/249/erdos-249-binary-totient-series.tex"
           }
         }
@@ -6393,13 +6393,13 @@
           {
             "id": "verification-and-reproducibility",
             "level": 1,
-            "line": 524,
+            "line": 530,
             "title": "Verification and reproducibility"
           },
           {
             "id": "acknowledgement.",
             "level": 4,
-            "line": 532,
+            "line": 538,
             "title": "Acknowledgement."
           }
         ],
@@ -6425,9 +6425,9 @@
             {
               "basis": "partial_declaration_overlap",
               "location": {
-                "end_line": 159,
+                "end_line": 163,
                 "label": "long251:res:sparse-rationalisation",
-                "line": 134,
+                "line": 138,
                 "path": "paper/reasoning-parts/erdos251/core.tex"
               },
               "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:sparse-rationalisation",
@@ -6457,9 +6457,9 @@
             {
               "basis": "label_alias",
               "location": {
-                "end_line": 1572,
+                "end_line": 1563,
                 "label": "long251:res:jointcountermodel",
-                "line": 1560,
+                "line": 1551,
                 "path": "paper/reasoning-parts/erdos251/core.tex"
               },
               "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:jointcountermodel",
@@ -6475,24 +6475,24 @@
           "matches": [],
           "short_claim": "erdos-251-prime-gap-dyadic-series#res:jointcountermodel",
           "short_location": {
-            "end_line": 436,
+            "end_line": 424,
             "label": "res:jointcountermodel",
-            "line": 416,
+            "line": 404,
             "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 476,
+              "end_line": 464,
               "label": null,
-              "line": 442,
+              "line": 430,
               "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
             "rationale": "The application proof remains in sec:prime-application. It invokes the sparse construction, the finite-union exceptional-set argument and the cumulative-size estimate under the unchanged adjacent published-input remark. The convergence bound now points directly to the existing full Appendix A proof.",
-            "review_status": "R14 third return Type A source-reading and frozen-statement review; proof availability only, no independent mathematical review or new long-record correspondence.",
-            "sha256": "sha256:1dd8c655cb75bc0f4ee497f29b16e4fcce7dc0c61f7140b1ea147ed252e50c61",
+            "review_status": "R15 fourth return Type A source-reading review of accepted editorial wording against the unchanged statement and existing argument; no independent mathematical review or new formal verification.",
+            "sha256": "sha256:8991e1d8436ff2316774938143489a381b4a5732cd97ac933be1b4d2154069c9",
             "validation": "text_presence_and_digest_only; proof_correctness_not_checked"
           },
           "state": "short_proof_explained_long_link_open",
@@ -6503,9 +6503,9 @@
             {
               "basis": "label_alias",
               "location": {
-                "end_line": 736,
+                "end_line": 730,
                 "label": "long251:res:infinite",
-                "line": 730,
+                "line": 724,
                 "path": "paper/reasoning-parts/erdos251/core.tex"
               },
               "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:infinite",
@@ -6521,18 +6521,18 @@
           "matches": [],
           "short_claim": "erdos-251-prime-gap-dyadic-series#res:infinite",
           "short_location": {
-            "end_line": 509,
+            "end_line": 496,
             "label": "res:infinite",
-            "line": 502,
+            "line": 489,
             "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 519,
+              "end_line": 506,
               "label": null,
-              "line": 510,
+              "line": 497,
               "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
@@ -6549,9 +6549,9 @@
             {
               "basis": "complete_declaration_set",
               "location": {
-                "end_line": 908,
+                "end_line": 900,
                 "label": "long251:res:true-tail",
-                "line": 900,
+                "line": 892,
                 "path": "paper/reasoning-parts/erdos251/core.tex"
               },
               "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:true-tail",
@@ -6565,9 +6565,9 @@
           "ledger_lean_status": "exact",
           "long_locations": [
             {
-              "end_line": 908,
+              "end_line": 900,
               "label": "long251:res:true-tail",
-              "line": 900,
+              "line": 892,
               "path": "paper/reasoning-parts/erdos251/core.tex"
             }
           ],
@@ -6609,9 +6609,9 @@
           ],
           "short_claim": "erdos-251-prime-gap-dyadic-series#res:true-tail",
           "short_location": {
-            "end_line": 540,
+            "end_line": 527,
             "label": "res:true-tail",
-            "line": 536,
+            "line": 523,
             "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
           },
           "state": "registered_evidence_linked",
@@ -6622,9 +6622,9 @@
             {
               "basis": "label_alias",
               "location": {
-                "end_line": 884,
+                "end_line": 876,
                 "label": "long251:res:escape-irrational",
-                "line": 872,
+                "line": 864,
                 "path": "paper/reasoning-parts/erdos251/core.tex"
               },
               "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:escape-irrational",
@@ -6640,18 +6640,18 @@
           "matches": [],
           "short_claim": "erdos-251-prime-gap-dyadic-series#res:escape-irrational",
           "short_location": {
-            "end_line": 572,
+            "end_line": 557,
             "label": "res:escape-irrational",
-            "line": 559,
+            "line": 544,
             "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 588,
+              "end_line": 573,
               "label": null,
-              "line": 573,
+              "line": 558,
               "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
@@ -6668,9 +6668,9 @@
             {
               "basis": "label_alias",
               "location": {
-                "end_line": 1079,
+                "end_line": 1071,
                 "label": "long251:res:signedwindow",
-                "line": 1071,
+                "line": 1063,
                 "path": "paper/reasoning-parts/erdos251/core.tex"
               },
               "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:signedwindow",
@@ -6684,18 +6684,18 @@
           "matches": [],
           "short_claim": "erdos-251-prime-gap-dyadic-series#res:signedwindow",
           "short_location": {
-            "end_line": 614,
+            "end_line": 598,
             "label": "res:signedwindow",
-            "line": 606,
+            "line": 590,
             "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 619,
+              "end_line": 603,
               "label": null,
-              "line": 615,
+              "line": 599,
               "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
@@ -6716,18 +6716,18 @@
           "matches": [],
           "short_claim": "erdos-251-prime-gap-dyadic-series#res:truncation",
           "short_location": {
-            "end_line": 679,
+            "end_line": 663,
             "label": "res:truncation",
-            "line": 673,
+            "line": 657,
             "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 686,
+              "end_line": 670,
               "label": null,
-              "line": 680,
+              "line": 664,
               "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
@@ -6744,9 +6744,9 @@
             {
               "basis": "partial_declaration_overlap",
               "location": {
-                "end_line": 736,
+                "end_line": 730,
                 "label": "long251:res:infinite",
-                "line": 730,
+                "line": 724,
                 "path": "paper/reasoning-parts/erdos251/core.tex"
               },
               "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:infinite",
@@ -6757,9 +6757,9 @@
             {
               "basis": "label_alias",
               "location": {
-                "end_line": 759,
+                "end_line": 753,
                 "label": "long251:res:irr-equivalence",
-                "line": 755,
+                "line": 749,
                 "path": "paper/reasoning-parts/erdos251/core.tex"
               },
               "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:irr-equivalence",
@@ -6775,18 +6775,18 @@
           "matches": [],
           "short_claim": "erdos-251-prime-gap-dyadic-series#res:irr-equivalence",
           "short_location": {
-            "end_line": 527,
+            "end_line": 514,
             "label": "res:irr-equivalence",
-            "line": 523,
+            "line": 510,
             "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 530,
+              "end_line": 517,
               "label": null,
-              "line": 528,
+              "line": 515,
               "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
@@ -6803,9 +6803,9 @@
             {
               "basis": "complete_declaration_set",
               "location": {
-                "end_line": 1051,
+                "end_line": 1043,
                 "label": "long251:res:gap-nonperiodic",
-                "line": 1048,
+                "line": 1040,
                 "path": "paper/reasoning-parts/erdos251/core.tex"
               },
               "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:gap-nonperiodic",
@@ -6819,9 +6819,9 @@
           "ledger_lean_status": "exact",
           "long_locations": [
             {
-              "end_line": 1051,
+              "end_line": 1043,
               "label": "long251:res:gap-nonperiodic",
-              "line": 1048,
+              "line": 1040,
               "path": "paper/reasoning-parts/erdos251/core.tex"
             }
           ],
@@ -6863,9 +6863,9 @@
           ],
           "short_claim": "erdos-251-prime-gap-dyadic-series#res:gap-nonperiodic",
           "short_location": {
-            "end_line": 759,
+            "end_line": 742,
             "label": "res:gap-nonperiodic",
-            "line": 756,
+            "line": 739,
             "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
           },
           "state": "registered_evidence_linked",
@@ -6890,9 +6890,9 @@
           "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
           "long_locations": [
             {
-              "end_line": 159,
+              "end_line": 163,
               "label": "long251:res:sparse-rationalisation",
-              "line": 134,
+              "line": 138,
               "path": "paper/reasoning-parts/erdos251/core.tex"
             }
           ],
@@ -6912,9 +6912,9 @@
           "severity": "warning",
           "short_claim": "erdos-251-prime-gap-dyadic-series#res:jointcountermodel",
           "short_location": {
-            "end_line": 436,
+            "end_line": 424,
             "label": "res:jointcountermodel",
-            "line": 416,
+            "line": 404,
             "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
           }
         },
@@ -6924,9 +6924,9 @@
           "severity": "warning",
           "short_claim": "erdos-251-prime-gap-dyadic-series#res:infinite",
           "short_location": {
-            "end_line": 509,
+            "end_line": 496,
             "label": "res:infinite",
-            "line": 502,
+            "line": 489,
             "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
           }
         },
@@ -6936,9 +6936,9 @@
           "severity": "warning",
           "short_claim": "erdos-251-prime-gap-dyadic-series#res:escape-irrational",
           "short_location": {
-            "end_line": 572,
+            "end_line": 557,
             "label": "res:escape-irrational",
-            "line": 559,
+            "line": 544,
             "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
           }
         },
@@ -6948,9 +6948,9 @@
           "severity": "warning",
           "short_claim": "erdos-251-prime-gap-dyadic-series#res:signedwindow",
           "short_location": {
-            "end_line": 614,
+            "end_line": 598,
             "label": "res:signedwindow",
-            "line": 606,
+            "line": 590,
             "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
           }
         },
@@ -6960,9 +6960,9 @@
           "severity": "warning",
           "short_claim": "erdos-251-prime-gap-dyadic-series#res:truncation",
           "short_location": {
-            "end_line": 679,
+            "end_line": 663,
             "label": "res:truncation",
-            "line": 673,
+            "line": 657,
             "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
           }
         },
@@ -6972,9 +6972,9 @@
           "severity": "warning",
           "short_claim": "erdos-251-prime-gap-dyadic-series#res:irr-equivalence",
           "short_location": {
-            "end_line": 527,
+            "end_line": 514,
             "label": "res:irr-equivalence",
-            "line": 523,
+            "line": 510,
             "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
           }
         }
@@ -6982,306 +6982,306 @@
       "long_only_or_unmatched": [
         {
           "location": {
-            "end_line": 159,
+            "end_line": 163,
             "label": "long251:res:sparse-rationalisation",
-            "line": 134,
+            "line": 138,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:sparse-rationalisation"
         },
         {
           "location": {
-            "end_line": 420,
+            "end_line": 414,
             "label": "long251:res:local-targets",
-            "line": 417,
+            "line": 411,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:local-targets"
         },
         {
           "location": {
-            "end_line": 688,
+            "end_line": 682,
             "label": "long251:res:abel",
-            "line": 681,
+            "line": 675,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:abel"
         },
         {
           "location": {
-            "end_line": 711,
+            "end_line": 705,
             "label": "long251:res:parts",
-            "line": 704,
+            "line": 698,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:parts"
         },
         {
           "location": {
-            "end_line": 736,
+            "end_line": 730,
             "label": "long251:res:infinite",
-            "line": 730,
+            "line": 724,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:infinite"
         },
         {
           "location": {
-            "end_line": 759,
+            "end_line": 753,
             "label": "long251:res:irr-equivalence",
-            "line": 755,
+            "line": 749,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:irr-equivalence"
         },
         {
           "location": {
-            "end_line": 824,
+            "end_line": 816,
             "label": "long251:res:block",
-            "line": 817,
+            "line": 809,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:block"
         },
         {
           "location": {
-            "end_line": 884,
+            "end_line": 876,
             "label": "long251:res:escape-irrational",
-            "line": 872,
+            "line": 864,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:escape-irrational"
         },
         {
           "location": {
-            "end_line": 955,
+            "end_line": 947,
             "label": "long251:res:freepair",
-            "line": 952,
+            "line": 944,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:freepair"
         },
         {
           "location": {
-            "end_line": 987,
+            "end_line": 979,
             "label": "long251:res:lcmdiagonal",
-            "line": 983,
+            "line": 975,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:lcmdiagonal"
         },
         {
           "location": {
-            "end_line": 1025,
+            "end_line": 1017,
             "label": "long251:res:smallpair",
-            "line": 1015,
+            "line": 1007,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:smallpair"
         },
         {
           "location": {
-            "end_line": 1038,
+            "end_line": 1030,
             "label": "long251:res:smallpair-real",
-            "line": 1034,
+            "line": 1026,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:smallpair-real"
         },
         {
           "location": {
-            "end_line": 1079,
+            "end_line": 1071,
             "label": "long251:res:signedwindow",
-            "line": 1071,
+            "line": 1063,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:signedwindow"
         },
         {
           "location": {
-            "end_line": 1118,
+            "end_line": 1110,
             "label": "long251:res:explicit-remainder",
-            "line": 1105,
+            "line": 1097,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:explicit-remainder"
         },
         {
           "location": {
-            "end_line": 1141,
+            "end_line": 1133,
             "label": "long251:res:finite-smallpair",
-            "line": 1137,
+            "line": 1129,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:finite-smallpair"
         },
         {
           "location": {
-            "end_line": 1175,
+            "end_line": 1167,
             "label": "long251:res:one-tail-certificate",
-            "line": 1165,
+            "line": 1157,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:one-tail-certificate"
         },
         {
           "location": {
-            "end_line": 1211,
+            "end_line": 1203,
             "label": "long251:res:denominatorfloor",
-            "line": 1208,
+            "line": 1200,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:denominatorfloor"
         },
         {
           "location": {
-            "end_line": 1259,
+            "end_line": 1251,
             "label": "long251:res:cfexclusion",
-            "line": 1256,
+            "line": 1248,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:cfexclusion"
         },
         {
           "location": {
-            "end_line": 1376,
+            "end_line": 1367,
             "label": "long251:res:boundedperturbation",
-            "line": 1371,
+            "line": 1362,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:boundedperturbation"
         },
         {
           "location": {
-            "end_line": 1440,
+            "end_line": 1431,
             "label": "long251:res:shiftedcount",
-            "line": 1430,
+            "line": 1421,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:shiftedcount"
         },
         {
           "location": {
-            "end_line": 1478,
+            "end_line": 1469,
             "label": "long251:res:nonconcentration",
-            "line": 1474,
+            "line": 1465,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:nonconcentration"
         },
         {
           "location": {
-            "end_line": 1513,
+            "end_line": 1504,
             "label": "long251:res:nonconc-primes",
-            "line": 1505,
+            "line": 1496,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:nonconc-primes"
         },
         {
           "location": {
-            "end_line": 1540,
+            "end_line": 1531,
             "label": "long251:res:sparse-nonconcentration",
-            "line": 1536,
+            "line": 1527,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:sparse-nonconcentration"
         },
         {
           "location": {
-            "end_line": 1572,
+            "end_line": 1563,
             "label": "long251:res:jointcountermodel",
-            "line": 1560,
+            "line": 1551,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:jointcountermodel"
         },
         {
           "location": {
-            "end_line": 1638,
+            "end_line": 1627,
             "label": "long251:res:sparse",
-            "line": 1633,
+            "line": 1622,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:sparse"
         },
         {
           "location": {
-            "end_line": 1718,
+            "end_line": 1707,
             "label": "long251:res:polignacfail",
-            "line": 1709,
+            "line": 1698,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:polignacfail"
         },
         {
           "location": {
-            "end_line": 1878,
+            "end_line": 1867,
             "label": "long251:res:polynomialcountermodel",
-            "line": 1871,
+            "line": 1860,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:polynomialcountermodel"
         },
         {
           "location": {
-            "end_line": 1905,
+            "end_line": 1894,
             "label": "long251:res:telescope",
-            "line": 1902,
+            "line": 1891,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:telescope"
         },
         {
           "location": {
-            "end_line": 2376,
+            "end_line": 2363,
             "label": "long251:xr:totient",
-            "line": 2372,
+            "line": 2359,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:xr:totient"
         },
         {
           "location": {
-            "end_line": 2390,
+            "end_line": 2377,
             "label": "long251:xr:propagate",
-            "line": 2385,
+            "line": 2372,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:xr:propagate"
         },
         {
           "location": {
-            "end_line": 2430,
+            "end_line": 2417,
             "label": "long251:xr:truncation",
-            "line": 2420,
+            "line": 2407,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:xr:truncation"
         },
         {
           "location": {
-            "end_line": 2474,
+            "end_line": 2461,
             "label": "long251:res:complete-truncation",
-            "line": 2467,
+            "line": 2454,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:complete-truncation"
         },
         {
           "location": {
-            "end_line": 2626,
+            "end_line": 2610,
             "label": "long251:xr:boundedpolignac",
-            "line": 2619,
+            "line": 2603,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:xr:boundedpolignac"
         },
         {
           "location": {
-            "end_line": 2788,
+            "end_line": 2772,
             "label": "long251:res:affinecollapse",
-            "line": 2753,
+            "line": 2737,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:affinecollapse"
@@ -7293,22 +7293,22 @@
           "sections": [
             {
               "id": "long251:sec:tail",
-              "line": 432,
+              "line": 430,
               "title": "The tail recurrence and the exact criteria"
             },
             {
               "id": "long251:sec:obstructions",
-              "line": 818,
+              "line": 816,
               "title": "Coefficient conditions and counterexamples"
             },
             {
               "id": "long251:sec:open",
-              "line": 1166,
+              "line": 1164,
               "title": "Remaining prime-gap estimates"
             },
             {
               "id": "sec:erdos-251-complete-family-map",
-              "line": 1683,
+              "line": 1681,
               "title": "Conclusions"
             }
           ],
@@ -7352,271 +7352,271 @@
           {
             "id": "long251:sec:context",
             "level": 1,
-            "line": 254,
+            "line": 252,
             "title": "Context and mathematical dependencies"
           },
           {
             "id": "conditional-prime-pattern-results.",
             "level": 4,
-            "line": 264,
+            "line": 262,
             "title": "Conditional prime-pattern results."
           },
           {
             "id": "related-irrationality-problems.",
             "level": 4,
-            "line": 276,
+            "line": 274,
             "title": "Related irrationality problems."
           },
           {
             "id": "interval-covering-and-divisibility.",
             "level": 4,
-            "line": 296,
+            "line": 294,
             "title": "Interval covering and divisibility."
           },
           {
             "id": "binary-subsums.",
             "level": 4,
-            "line": 306,
+            "line": 304,
             "title": "Binary subsums."
           },
           {
             "id": "uniformity-and-finite-state-comparisons.",
             "level": 4,
-            "line": 314,
+            "line": 312,
             "title": "Uniformity and finite-state comparisons."
           },
           {
             "id": "the-tail-argument.",
             "level": 4,
-            "line": 322,
+            "line": 320,
             "title": "The tail argument."
           },
           {
             "id": "long251:sec:parts",
             "level": 1,
-            "line": 330,
+            "line": 328,
             "title": "Summation by parts, with the endpoint retained"
           },
           {
             "id": "long251:sec:infinite",
             "level": 2,
-            "line": 382,
+            "line": 380,
             "title": "The infinite identity and the irrationality equivalence"
           },
           {
             "id": "long251:sec:tail",
             "level": 1,
-            "line": 432,
+            "line": 430,
             "title": "The tail recurrence and the exact criteria"
           },
           {
             "id": "the-actual-prime-gap-tails.",
             "level": 4,
-            "line": 541,
+            "line": 539,
             "title": "The actual prime-gap tails."
           },
           {
             "id": "long251:sec:freepair",
             "level": 2,
-            "line": 551,
+            "line": 549,
             "title": "Pairs of congruent indices and least-common-multiple shifts"
           },
           {
             "id": "long251:sec:local-certificate",
             "level": 1,
-            "line": 591,
+            "line": 589,
             "title": "A local certificate, and one actual pair"
           },
           {
             "id": "an-explicit-remainder-and-a-certified-actual-pair",
             "level": 2,
-            "line": 661,
+            "line": 659,
             "title": "An explicit remainder and a certified actual pair"
           },
           {
             "id": "long251:sec:denominator-floor",
             "level": 1,
-            "line": 742,
+            "line": 740,
             "title": "Two lower bounds on a possible rational denominator"
           },
           {
             "id": "long251:sec:obstructions",
             "level": 1,
-            "line": 818,
+            "line": 816,
             "title": "Coefficient conditions and counterexamples"
           },
           {
             "id": "bounded-residue-preserving-perturbations",
             "level": 2,
-            "line": 830,
+            "line": 828,
             "title": "Bounded residue-preserving perturbations"
           },
           {
             "id": "algebraic-nonconcentration-survives-the-rationalising-perturbation",
             "level": 2,
-            "line": 851,
+            "line": 849,
             "title": "Algebraic nonconcentration survives the rationalising perturbation"
           },
           {
             "id": "density-of-indices-with-two-small-tail-differences",
             "level": 2,
-            "line": 978,
+            "line": 976,
             "title": "Density of indices with two small tail differences"
           },
           {
             "id": "recurring-gap-values-differing-by-two-do-not-suffice",
             "level": 2,
-            "line": 1010,
+            "line": 1008,
             "title": "Recurring gap values differing by two do not suffice"
           },
           {
             "id": "long251:res:all-residue-log-countermodel",
             "level": 2,
-            "line": 1059,
+            "line": 1057,
             "title": "A rational series with recurring values in every residue class"
           },
           {
             "id": "polynomial-coefficients-and-telescoping-sums",
             "level": 2,
-            "line": 1111,
+            "line": 1109,
             "title": "Polynomial coefficients and telescoping sums"
           },
           {
             "id": "long251:sec:measurements",
             "level": 1,
-            "line": 1156,
+            "line": 1154,
             "title": "Finite numerical searches"
           },
           {
             "id": "long251:sec:open",
             "level": 1,
-            "line": 1166,
+            "line": 1164,
             "title": "Remaining prime-gap estimates"
           },
           {
             "id": "funding-and-competing-interests.",
             "level": 4,
-            "line": 1208,
+            "line": 1206,
             "title": "Funding and competing interests."
           },
           {
             "id": "acknowledgements.",
             "level": 4,
-            "line": 1214,
+            "line": 1212,
             "title": "Acknowledgements."
           },
           {
             "id": "long251:app:prime-bound",
             "level": 1,
-            "line": 1220,
+            "line": 1218,
             "title": "An elementary polynomial bound for the primes"
           },
           {
             "id": "long251:app:certificates",
             "level": 1,
-            "line": 1248,
+            "line": 1246,
             "title": "Integer certificates"
           },
           {
             "id": "long251:app:index",
             "level": 1,
-            "line": 1318,
+            "line": 1316,
             "title": "Verification and reproducibility"
           },
           {
             "id": "long251:sec:erdos-251-extended-record",
             "level": 1,
-            "line": 1332,
+            "line": 1330,
             "title": "Further criteria, examples and computational details"
           },
           {
             "id": "long251:sec:xr-totient",
             "level": 2,
-            "line": 1338,
+            "line": 1336,
             "title": "Totient-length shifts and persistence of integrality"
           },
           {
             "id": "long251:sec:xr-truncation",
             "level": 2,
-            "line": 1372,
+            "line": 1370,
             "title": "The finite truncation criterion"
           },
           {
             "id": "long251:sec:xr-divisorhit",
             "level": 2,
-            "line": 1436,
+            "line": 1434,
             "title": "Nonintegral differences at multiples of each shift"
           },
           {
             "id": "long251:sec:xr-compression",
             "level": 2,
-            "line": 1454,
+            "line": 1452,
             "title": "Repeated tail values and congruent indices"
           },
           {
             "id": "repeated-tail-values.",
             "level": 4,
-            "line": 1460,
+            "line": 1458,
             "title": "Repeated tail values."
           },
           {
             "id": "the-interval-condition-at-congruent-indices.",
             "level": 4,
-            "line": 1504,
+            "line": 1502,
             "title": "The interval condition at congruent indices."
           },
           {
             "id": "long251:sec:xr-boundedpolignac",
             "level": 2,
-            "line": 1510,
+            "line": 1508,
             "title": "A bounded sequence with recurring values and a rational sum"
           },
           {
             "id": "long251:sec:xr-densities",
             "level": 2,
-            "line": 1531,
+            "line": 1529,
             "title": "Numerical counts and proportions"
           },
           {
             "id": "long251:sec:xr-corrections",
             "level": 2,
-            "line": 1557,
+            "line": 1555,
             "title": "Two corrections"
           },
           {
             "id": "the-tail-bound-in-the-free-pair-program.",
             "level": 4,
-            "line": 1563,
+            "line": 1561,
             "title": "The tail bound in the free-pair program."
           },
           {
             "id": "an-insufficient-condition.",
             "level": 4,
-            "line": 1580,
+            "line": 1578,
             "title": "An insufficient condition."
           },
           {
             "id": "long251:app:affine-detail",
             "level": 1,
-            "line": 1586,
+            "line": 1584,
             "title": "Arithmetic-progression reformulations of integrality"
           },
           {
             "id": "long251:sec:signed-dirichlet-comparison",
             "level": 2,
-            "line": 1675,
+            "line": 1673,
             "title": "A signed comparison with more analytic data"
           },
           {
             "id": "sec:erdos-251-complete-family-map",
             "level": 1,
-            "line": 1683,
+            "line": 1681,
             "title": "Conclusions"
           },
           {
             "id": "long251:app:short-source-index",
             "level": 1,
-            "line": 1691,
+            "line": 1689,
             "title": "Source index for the short paper"
           }
         ],
@@ -7634,17 +7634,17 @@
             },
             {
               "id": "sec:tail",
-              "line": 319,
+              "line": 317,
               "title": "Integral shifts"
             },
             {
               "id": "sec:local-certificate",
-              "line": 351,
+              "line": 349,
               "title": "Small tail differences and finite tests"
             },
             {
               "id": "sec:open",
-              "line": 452,
+              "line": 450,
               "title": "Further consequences and questions"
             }
           ],
@@ -7676,55 +7676,55 @@
           {
             "id": "sec:prime-application",
             "level": 1,
-            "line": 210,
+            "line": 208,
             "title": "Application to prime gaps"
           },
           {
             "id": "sec:parts",
             "level": 1,
-            "line": 261,
+            "line": 259,
             "title": "The prime series and its actual tails"
           },
           {
             "id": "sec:tail",
             "level": 2,
-            "line": 319,
+            "line": 317,
             "title": "Integral shifts"
           },
           {
             "id": "sec:local-certificate",
             "level": 1,
-            "line": 351,
+            "line": 349,
             "title": "Small tail differences and finite tests"
           },
           {
             "id": "finite-separation-from-the-integers",
             "level": 2,
-            "line": 393,
+            "line": 391,
             "title": "Finite separation from the integers"
           },
           {
             "id": "sec:open",
             "level": 1,
-            "line": 452,
+            "line": 450,
             "title": "Further consequences and questions"
           },
           {
             "id": "sec:carry",
             "level": 2,
-            "line": 462,
+            "line": 460,
             "title": "Nonperiodic coefficients"
           },
           {
             "id": "sec:pinned-lean-sources",
             "level": 1,
-            "line": 492,
+            "line": 490,
             "title": "Verification and reproducibility"
           },
           {
             "id": "acknowledgements",
             "level": 2,
-            "line": 500,
+            "line": 498,
             "title": "Acknowledgements"
           }
         ],
@@ -7785,9 +7785,9 @@
           "matches": [],
           "short_claim": "erdos-257-mersenne-support-subseries#res:reciprocal-support",
           "short_location": {
-            "end_line": 938,
+            "end_line": 925,
             "label": "res:reciprocal-support",
-            "line": 932,
+            "line": 919,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           },
           "state": "unresolved",
@@ -7858,9 +7858,9 @@
           ],
           "short_claim": "erdos-257-mersenne-support-subseries#thm:variable-fractional-cover",
           "short_location": {
-            "end_line": 382,
+            "end_line": 377,
             "label": "thm:variable-fractional-cover",
-            "line": 369,
+            "line": 364,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           },
           "state": "registered_evidence_linked",
@@ -7875,9 +7875,9 @@
           "matches": [],
           "short_claim": "erdos-257-mersenne-support-subseries#res:weighted-cover-incomparability",
           "short_location": {
-            "end_line": 635,
+            "end_line": 621,
             "label": "res:weighted-cover-incomparability",
-            "line": 627,
+            "line": 613,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           },
           "state": "unresolved",
@@ -7959,9 +7959,9 @@
           ],
           "short_claim": "erdos-257-mersenne-support-subseries#res:mixed-supports",
           "short_location": {
-            "end_line": 557,
+            "end_line": 545,
             "label": "res:mixed-supports",
-            "line": 549,
+            "line": 537,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           },
           "state": "registered_evidence_linked",
@@ -8002,9 +8002,9 @@
           ],
           "short_claim": "erdos-257-mersenne-support-subseries#res:strict-mixed-supports",
           "short_location": {
-            "end_line": 781,
+            "end_line": 769,
             "label": "res:strict-mixed-supports",
-            "line": 775,
+            "line": 763,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           },
           "state": "authored_proof_text_linked",
@@ -8019,24 +8019,24 @@
           "matches": [],
           "short_claim": "erdos-257-mersenne-support-subseries#res:period",
           "short_location": {
-            "end_line": 1028,
+            "end_line": 1005,
             "label": "res:period",
-            "line": 1018,
+            "line": 995,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 1041,
+              "end_line": 1019,
               "label": null,
-              "line": 1030,
+              "line": 1007,
               "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
             "rationale": "Appendix B retains the cyclotomic maximal-under-divisibility argument, denominator noncancellation and exact multiplicative order, with elementary prime-power details in Appendix E. The F={1}, b=2 convention is preserved.",
-            "review_status": "R14 third return Type A source-reading and frozen-statement review; proof availability only, no independent mathematical review or new long-record correspondence.",
-            "sha256": "sha256:9bd7a84622334da833d9dfb9c796b996a298c3c5bdf2bf0f01d905d29718c7ed",
+            "review_status": "R15 fourth return Type A source-reading review of accepted editorial wording against the unchanged statement and existing argument; no independent mathematical review or new formal verification.",
+            "sha256": "sha256:3f77903b76b875c060c0611fcc3c906c17d6dbd1e9ef16a3abe68e719bc8c7b1",
             "validation": "text_presence_and_digest_only; proof_correctness_not_checked"
           },
           "state": "short_proof_explained_long_link_open",
@@ -8051,24 +8051,24 @@
           "matches": [],
           "short_claim": "erdos-257-mersenne-support-subseries#res:general-repair",
           "short_location": {
-            "end_line": 1184,
+            "end_line": 1158,
             "label": "res:general-repair",
-            "line": 1174,
+            "line": 1148,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 1205,
+              "end_line": 1180,
               "label": null,
-              "line": 1186,
+              "line": 1160,
               "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
             "rationale": "Appendix C retains the direct proof: represented targets give bounded coefficient tails and a nonincrease in each stated window; outside the achievement set a positive remainder makes the scaled integer grow and eventually increase at every rank. The selector and Mobius-compatibility discussion remains intact.",
-            "review_status": "R14 third return Type A source-reading and frozen-statement review; proof availability only, no independent mathematical review or new long-record correspondence.",
-            "sha256": "sha256:6598e66ad0c50436ac2a22476342b6b8b038c098741c1d67431b12291d53a9a5",
+            "review_status": "R15 fourth return Type A source-reading review of accepted editorial wording against the unchanged statement and existing argument; no independent mathematical review or new formal verification.",
+            "sha256": "sha256:18c4cba199faa2c464b38e306223284928a8fc2ac178df22ce0cfc546bf8a5b5",
             "validation": "text_presence_and_digest_only; proof_correctness_not_checked"
           },
           "state": "short_proof_explained_long_link_open",
@@ -8083,9 +8083,9 @@
           "matches": [],
           "short_claim": "erdos-257-mersenne-support-subseries#res:one-over-twenty-one-frontier",
           "short_location": {
-            "end_line": 1312,
+            "end_line": 1286,
             "label": "res:one-over-twenty-one-frontier",
-            "line": 1292,
+            "line": 1266,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           },
           "state": "unresolved",
@@ -8100,9 +8100,9 @@
           "matches": [],
           "short_claim": "erdos-257-mersenne-support-subseries#res:terminalhalf",
           "short_location": {
-            "end_line": 1379,
+            "end_line": 1358,
             "label": "res:terminalhalf",
-            "line": 1371,
+            "line": 1350,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           },
           "state": "unresolved",
@@ -8117,18 +8117,18 @@
           "matches": [],
           "short_claim": "erdos-257-mersenne-support-subseries#res:cylinderhalf",
           "short_location": {
-            "end_line": 1444,
+            "end_line": 1420,
             "label": "res:cylinderhalf",
-            "line": 1438,
+            "line": 1414,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 1450,
+              "end_line": 1426,
               "label": null,
-              "line": 1446,
+              "line": 1422,
               "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
@@ -8188,9 +8188,9 @@
           "severity": "error",
           "short_claim": "erdos-257-mersenne-support-subseries#res:reciprocal-support",
           "short_location": {
-            "end_line": 938,
+            "end_line": 925,
             "label": "res:reciprocal-support",
-            "line": 932,
+            "line": 919,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           }
         },
@@ -8202,9 +8202,9 @@
           "severity": "error",
           "short_claim": "erdos-257-mersenne-support-subseries#res:reciprocal-support",
           "short_location": {
-            "end_line": 938,
+            "end_line": 925,
             "label": "res:reciprocal-support",
-            "line": 932,
+            "line": 919,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           }
         },
@@ -8214,9 +8214,9 @@
           "severity": "error",
           "short_claim": "erdos-257-mersenne-support-subseries#res:weighted-cover-incomparability",
           "short_location": {
-            "end_line": 635,
+            "end_line": 621,
             "label": "res:weighted-cover-incomparability",
-            "line": 627,
+            "line": 613,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           }
         },
@@ -8228,9 +8228,9 @@
           "severity": "error",
           "short_claim": "erdos-257-mersenne-support-subseries#res:weighted-cover-incomparability",
           "short_location": {
-            "end_line": 635,
+            "end_line": 621,
             "label": "res:weighted-cover-incomparability",
-            "line": 627,
+            "line": 613,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           }
         },
@@ -8240,9 +8240,9 @@
           "severity": "warning",
           "short_claim": "erdos-257-mersenne-support-subseries#res:period",
           "short_location": {
-            "end_line": 1028,
+            "end_line": 1005,
             "label": "res:period",
-            "line": 1018,
+            "line": 995,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           }
         },
@@ -8252,9 +8252,9 @@
           "severity": "warning",
           "short_claim": "erdos-257-mersenne-support-subseries#res:general-repair",
           "short_location": {
-            "end_line": 1184,
+            "end_line": 1158,
             "label": "res:general-repair",
-            "line": 1174,
+            "line": 1148,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           }
         },
@@ -8264,9 +8264,9 @@
           "severity": "error",
           "short_claim": "erdos-257-mersenne-support-subseries#res:one-over-twenty-one-frontier",
           "short_location": {
-            "end_line": 1312,
+            "end_line": 1286,
             "label": "res:one-over-twenty-one-frontier",
-            "line": 1292,
+            "line": 1266,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           }
         },
@@ -8278,9 +8278,9 @@
           "severity": "error",
           "short_claim": "erdos-257-mersenne-support-subseries#res:one-over-twenty-one-frontier",
           "short_location": {
-            "end_line": 1312,
+            "end_line": 1286,
             "label": "res:one-over-twenty-one-frontier",
-            "line": 1292,
+            "line": 1266,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           }
         },
@@ -8290,9 +8290,9 @@
           "severity": "error",
           "short_claim": "erdos-257-mersenne-support-subseries#res:terminalhalf",
           "short_location": {
-            "end_line": 1379,
+            "end_line": 1358,
             "label": "res:terminalhalf",
-            "line": 1371,
+            "line": 1350,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           }
         },
@@ -8304,9 +8304,9 @@
           "severity": "error",
           "short_claim": "erdos-257-mersenne-support-subseries#res:terminalhalf",
           "short_location": {
-            "end_line": 1379,
+            "end_line": 1358,
             "label": "res:terminalhalf",
-            "line": 1371,
+            "line": 1350,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           }
         },
@@ -8316,9 +8316,9 @@
           "severity": "warning",
           "short_claim": "erdos-257-mersenne-support-subseries#res:cylinderhalf",
           "short_location": {
-            "end_line": 1444,
+            "end_line": 1420,
             "label": "res:cylinderhalf",
-            "line": 1438,
+            "line": 1414,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           }
         }
@@ -10917,7 +10917,7 @@
             },
             {
               "id": "sec:open",
-              "line": 702,
+              "line": 700,
               "title": "Integer quotients, approximation and further questions"
             }
           ],
@@ -11027,97 +11027,97 @@
           {
             "id": "sec:period",
             "level": 1,
-            "line": 564,
+            "line": 562,
             "title": "Finite-support denominator periods"
           },
           {
             "id": "sec:rational-membership",
             "level": 1,
-            "line": 592,
+            "line": 590,
             "title": "Rational membership"
           },
           {
             "id": "sec:forced",
             "level": 2,
-            "line": 598,
+            "line": 596,
             "title": "Rational values and scaled tails"
           },
           {
             "id": "sec:geometry",
             "level": 2,
-            "line": 613,
+            "line": 611,
             "title": "The achievement set"
           },
           {
             "id": "sec:actual-repairs",
             "level": 2,
-            "line": 629,
+            "line": 627,
             "title": "The greedy recurrence"
           },
           {
             "id": "sec:open",
             "level": 1,
-            "line": 702,
+            "line": 700,
             "title": "Integer quotients, approximation and further questions"
           },
           {
             "id": "integer-quotients-for-121.",
             "level": 4,
-            "line": 708,
+            "line": 706,
             "title": "Integer quotients for 1/21."
           },
           {
             "id": "approximation-to-12-by-finite-supports.",
             "level": 4,
-            "line": 776,
+            "line": 774,
             "title": "Approximation to 1/2 by finite supports."
           },
           {
             "id": "finite-families-with-a-shared-prefix.",
             "level": 4,
-            "line": 816,
+            "line": 814,
             "title": "Finite families with a shared prefix."
           },
           {
             "id": "app:elementary-details",
             "level": 1,
-            "line": 884,
+            "line": 882,
             "title": "Elementary details used in the proofs"
           },
           {
             "id": "cyclotomic-prime-power-fact.",
             "level": 4,
-            "line": 888,
+            "line": 886,
             "title": "Cyclotomic prime-power fact."
           },
           {
             "id": "exact-scalar-cover-cost.",
             "level": 4,
-            "line": 903,
+            "line": 901,
             "title": "Exact scalar cover cost."
           },
           {
             "id": "the-cost-for-a-finite-set-of-divisors",
             "level": 2,
-            "line": 916,
+            "line": 914,
             "title": "The cost for a finite set of divisors"
           },
           {
             "id": "app:sources",
             "level": 1,
-            "line": 938,
+            "line": 936,
             "title": "Sources, verification and reproducibility"
           },
           {
             "id": "reproducing-the-weighted-theorem.",
             "level": 4,
-            "line": 948,
+            "line": 946,
             "title": "Reproducing the weighted theorem."
           },
           {
             "id": "acknowledgements",
             "level": 1,
-            "line": 963,
+            "line": 961,
             "title": "Acknowledgements"
           }
         ],
@@ -11203,9 +11203,9 @@
           ],
           "short_claim": "erdos-269-three-prime-running-lcm#res:infinite-rank",
           "short_location": {
-            "end_line": 809,
+            "end_line": 793,
             "label": "res:infinite-rank",
-            "line": 796,
+            "line": 780,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           },
           "state": "registered_evidence_linked",
@@ -11267,9 +11267,9 @@
           ],
           "short_claim": "erdos-269-three-prime-running-lcm#res:distinct-height-235",
           "short_location": {
-            "end_line": 83,
+            "end_line": 86,
             "label": "res:distinct-height-235",
-            "line": 81,
+            "line": 84,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           },
           "state": "registered_evidence_linked",
@@ -11284,18 +11284,18 @@
           "matches": [],
           "short_claim": "erdos-269-three-prime-running-lcm#res:admissible-modular-minors",
           "short_location": {
-            "end_line": 891,
+            "end_line": 875,
             "label": "res:admissible-modular-minors",
-            "line": 884,
+            "line": 868,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 896,
+              "end_line": 880,
               "label": null,
-              "line": 892,
+              "line": 876,
               "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
@@ -11372,9 +11372,9 @@
           ],
           "short_claim": "erdos-269-three-prime-running-lcm#res:finite-cut-rank",
           "short_location": {
-            "end_line": 924,
+            "end_line": 908,
             "label": "res:finite-cut-rank",
-            "line": 918,
+            "line": 902,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           },
           "state": "registered_evidence_linked",
@@ -11404,9 +11404,9 @@
           "matches": [],
           "short_claim": "erdos-269-three-prime-running-lcm#res:two-prime-transcendence",
           "short_location": {
-            "end_line": 659,
+            "end_line": 645,
             "label": "res:two-prime-transcendence",
-            "line": 646,
+            "line": 632,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           },
           "state": "unresolved",
@@ -11477,9 +11477,9 @@
           ],
           "short_claim": "erdos-269-three-prime-running-lcm#res:lcm",
           "short_location": {
-            "end_line": 740,
+            "end_line": 726,
             "label": "res:lcm",
-            "line": 737,
+            "line": 723,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           },
           "state": "registered_evidence_linked",
@@ -11524,9 +11524,9 @@
           "matches": [],
           "short_claim": "erdos-269-three-prime-running-lcm#res:cell",
           "short_location": {
-            "end_line": 756,
+            "end_line": 742,
             "label": "res:cell",
-            "line": 751,
+            "line": 737,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           },
           "state": "unresolved",
@@ -11597,9 +11597,9 @@
           ],
           "short_claim": "erdos-269-three-prime-running-lcm#res:fibre-prop",
           "short_location": {
-            "end_line": 769,
+            "end_line": 755,
             "label": "res:fibre-prop",
-            "line": 763,
+            "line": 749,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           },
           "state": "registered_evidence_linked",
@@ -11626,18 +11626,18 @@
           "matches": [],
           "short_claim": "erdos-269-three-prime-running-lcm#res:dyadic-alphabet",
           "short_location": {
-            "end_line": 372,
+            "end_line": 361,
             "label": "res:dyadic-alphabet",
-            "line": 367,
+            "line": 356,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 379,
+              "end_line": 368,
               "label": null,
-              "line": 373,
+              "line": 362,
               "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
@@ -11670,9 +11670,9 @@
           "matches": [],
           "short_claim": "erdos-269-three-prime-running-lcm#res:actual-orbit",
           "short_location": {
-            "end_line": 394,
+            "end_line": 379,
             "label": "res:actual-orbit",
-            "line": 385,
+            "line": 370,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           },
           "state": "unresolved",
@@ -11687,18 +11687,18 @@
           "matches": [],
           "short_claim": "erdos-269-three-prime-running-lcm#res:denominator-reduction",
           "short_location": {
-            "end_line": 445,
+            "end_line": 433,
             "label": "res:denominator-reduction",
-            "line": 436,
+            "line": 424,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 457,
+              "end_line": 445,
               "label": null,
-              "line": 446,
+              "line": 434,
               "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
@@ -11735,18 +11735,18 @@
           "matches": [],
           "short_claim": "erdos-269-three-prime-running-lcm#res:exact-onset",
           "short_location": {
-            "end_line": 468,
+            "end_line": 456,
             "label": "res:exact-onset",
-            "line": 459,
+            "line": 447,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 474,
+              "end_line": 462,
               "label": null,
-              "line": 469,
+              "line": 457,
               "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
@@ -11779,18 +11779,18 @@
           "matches": [],
           "short_claim": "erdos-269-three-prime-running-lcm#res:consumer",
           "short_location": {
-            "end_line": 541,
+            "end_line": 528,
             "label": "res:consumer",
-            "line": 538,
+            "line": 525,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 545,
+              "end_line": 532,
               "label": null,
-              "line": 542,
+              "line": 529,
               "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
@@ -11811,9 +11811,9 @@
           "matches": [],
           "short_claim": "erdos-269-three-prime-running-lcm#res:windowconsumer",
           "short_location": {
-            "end_line": 569,
+            "end_line": 557,
             "label": "res:windowconsumer",
-            "line": 559,
+            "line": 547,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           },
           "state": "unresolved",
@@ -11827,9 +11827,9 @@
           "severity": "warning",
           "short_claim": "erdos-269-three-prime-running-lcm#res:admissible-modular-minors",
           "short_location": {
-            "end_line": 891,
+            "end_line": 875,
             "label": "res:admissible-modular-minors",
-            "line": 884,
+            "line": 868,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           }
         },
@@ -11839,9 +11839,9 @@
           "severity": "error",
           "short_claim": "erdos-269-three-prime-running-lcm#res:two-prime-transcendence",
           "short_location": {
-            "end_line": 659,
+            "end_line": 645,
             "label": "res:two-prime-transcendence",
-            "line": 646,
+            "line": 632,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           }
         },
@@ -11860,9 +11860,9 @@
           "severity": "error",
           "short_claim": "erdos-269-three-prime-running-lcm#res:two-prime-transcendence",
           "short_location": {
-            "end_line": 659,
+            "end_line": 645,
             "label": "res:two-prime-transcendence",
-            "line": 646,
+            "line": 632,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           }
         },
@@ -11872,9 +11872,9 @@
           "severity": "error",
           "short_claim": "erdos-269-three-prime-running-lcm#res:cell",
           "short_location": {
-            "end_line": 756,
+            "end_line": 742,
             "label": "res:cell",
-            "line": 751,
+            "line": 737,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           }
         },
@@ -11899,9 +11899,9 @@
           "severity": "error",
           "short_claim": "erdos-269-three-prime-running-lcm#res:cell",
           "short_location": {
-            "end_line": 756,
+            "end_line": 742,
             "label": "res:cell",
-            "line": 751,
+            "line": 737,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           }
         },
@@ -11911,9 +11911,9 @@
           "severity": "warning",
           "short_claim": "erdos-269-three-prime-running-lcm#res:dyadic-alphabet",
           "short_location": {
-            "end_line": 372,
+            "end_line": 361,
             "label": "res:dyadic-alphabet",
-            "line": 367,
+            "line": 356,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           }
         },
@@ -11923,9 +11923,9 @@
           "severity": "error",
           "short_claim": "erdos-269-three-prime-running-lcm#res:actual-orbit",
           "short_location": {
-            "end_line": 394,
+            "end_line": 379,
             "label": "res:actual-orbit",
-            "line": 385,
+            "line": 370,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           }
         },
@@ -11944,9 +11944,9 @@
           "severity": "error",
           "short_claim": "erdos-269-three-prime-running-lcm#res:actual-orbit",
           "short_location": {
-            "end_line": 394,
+            "end_line": 379,
             "label": "res:actual-orbit",
-            "line": 385,
+            "line": 370,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           }
         },
@@ -11956,9 +11956,9 @@
           "severity": "warning",
           "short_claim": "erdos-269-three-prime-running-lcm#res:denominator-reduction",
           "short_location": {
-            "end_line": 445,
+            "end_line": 433,
             "label": "res:denominator-reduction",
-            "line": 436,
+            "line": 424,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           }
         },
@@ -11968,9 +11968,9 @@
           "severity": "warning",
           "short_claim": "erdos-269-three-prime-running-lcm#res:exact-onset",
           "short_location": {
-            "end_line": 468,
+            "end_line": 456,
             "label": "res:exact-onset",
-            "line": 459,
+            "line": 447,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           }
         },
@@ -11980,9 +11980,9 @@
           "severity": "warning",
           "short_claim": "erdos-269-three-prime-running-lcm#res:consumer",
           "short_location": {
-            "end_line": 541,
+            "end_line": 528,
             "label": "res:consumer",
-            "line": 538,
+            "line": 525,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           }
         },
@@ -11992,9 +11992,9 @@
           "severity": "error",
           "short_claim": "erdos-269-three-prime-running-lcm#res:windowconsumer",
           "short_location": {
-            "end_line": 569,
+            "end_line": 557,
             "label": "res:windowconsumer",
-            "line": 559,
+            "line": 547,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           }
         },
@@ -12006,9 +12006,9 @@
           "severity": "error",
           "short_claim": "erdos-269-three-prime-running-lcm#res:windowconsumer",
           "short_location": {
-            "end_line": 569,
+            "end_line": 557,
             "label": "res:windowconsumer",
-            "line": 559,
+            "line": 547,
             "path": "paper/269/erdos-269-three-prime-running-lcm.tex"
           }
         }
@@ -12797,17 +12797,17 @@
             },
             {
               "id": "sec:rank",
-              "line": 522,
+              "line": 519,
               "title": "The three-prime kernel"
             },
             {
               "id": "sec:lcm",
-              "line": 138,
+              "line": 136,
               "title": "The repeated three-prime sum"
             },
             {
               "id": "sec:escape",
-              "line": 271,
+              "line": 266,
               "title": "A residue criterion"
             }
           ],
@@ -12833,85 +12833,85 @@
           {
             "id": "sec:distinct",
             "level": 1,
-            "line": 51,
+            "line": 49,
             "title": "Recovering the prime-power jumps"
           },
           {
             "id": "sec:lcm",
             "level": 1,
-            "line": 138,
+            "line": 136,
             "title": "The repeated three-prime sum"
           },
           {
             "id": "sec:escape",
             "level": 1,
-            "line": 271,
+            "line": 266,
             "title": "A residue criterion"
           },
           {
             "id": "sec:two-prime",
             "level": 1,
-            "line": 408,
+            "line": 405,
             "title": "Two-prime transcendence"
           },
           {
             "id": "sec:height-identities",
             "level": 1,
-            "line": 463,
+            "line": 460,
             "title": "Identities for the running LCM and multiplicities"
           },
           {
             "id": "sec:rank",
             "level": 1,
-            "line": 522,
+            "line": 519,
             "title": "The three-prime kernel"
           },
           {
             "id": "leading-minors.",
             "level": 4,
-            "line": 618,
+            "line": 615,
             "title": "Leading minors."
           },
           {
             "id": "approximation.",
             "level": 4,
-            "line": 645,
+            "line": 642,
             "title": "Approximation."
           },
           {
             "id": "app:sources",
             "level": 1,
-            "line": 651,
+            "line": 648,
             "title": "Verification, reproducibility and sources"
           },
           {
             "id": "further-comparisons",
             "level": 2,
-            "line": 665,
+            "line": 662,
             "title": "Further comparisons"
           },
           {
             "id": "statements-and-declarations",
             "level": 2,
-            "line": 673,
+            "line": 670,
             "title": "Statements and declarations"
           },
           {
             "id": "authorship-and-availability.",
             "level": 4,
-            "line": 677,
+            "line": 674,
             "title": "Authorship and availability."
           },
           {
             "id": "funding-and-competing-interests.",
             "level": 4,
-            "line": 683,
+            "line": 680,
             "title": "Funding and competing interests."
           },
           {
             "id": "acknowledgements.",
             "level": 4,
-            "line": 689,
+            "line": 686,
             "title": "Acknowledgements."
           }
         ],
@@ -12979,9 +12979,9 @@
           ],
           "short_claim": "erdos-1041-lemniscate-newton-flow#res:trinomial-all-degree",
           "short_location": {
-            "end_line": 435,
+            "end_line": 423,
             "label": "res:trinomial-all-degree",
-            "line": 425,
+            "line": 413,
             "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex"
           },
           "state": "authored_proof_text_linked",
@@ -12996,9 +12996,9 @@
           "matches": [],
           "short_claim": "erdos-1041-lemniscate-newton-flow#res:sextic-spoke",
           "short_location": {
-            "end_line": 473,
+            "end_line": 461,
             "label": "res:sextic-spoke",
-            "line": 465,
+            "line": 453,
             "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex"
           },
           "state": "unresolved",
@@ -13113,9 +13113,9 @@
           "matches": [],
           "short_claim": "erdos-1041-lemniscate-newton-flow#res:low-critical-thirteen-twentyfifths",
           "short_location": {
-            "end_line": 510,
+            "end_line": 498,
             "label": "res:low-critical-thirteen-twentyfifths",
-            "line": 506,
+            "line": 494,
             "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex"
           },
           "state": "unresolved",
@@ -13157,9 +13157,9 @@
           "matches": [],
           "short_claim": "erdos-1041-lemniscate-newton-flow#res:scaled-low-critical",
           "short_location": {
-            "end_line": 524,
+            "end_line": 512,
             "label": "res:scaled-low-critical",
-            "line": 517,
+            "line": 505,
             "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex"
           },
           "state": "unresolved",
@@ -13189,9 +13189,9 @@
           "matches": [],
           "short_claim": "erdos-1041-lemniscate-newton-flow#res:critical-value-separation",
           "short_location": {
-            "end_line": 696,
+            "end_line": 685,
             "label": "res:critical-value-separation",
-            "line": 682,
+            "line": 671,
             "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex"
           },
           "state": "unresolved",
@@ -13247,9 +13247,9 @@
           ],
           "short_claim": "erdos-1041-lemniscate-newton-flow#res:critical-value-thresholds",
           "short_location": {
-            "end_line": 719,
+            "end_line": 708,
             "label": "res:critical-value-thresholds",
-            "line": 709,
+            "line": 698,
             "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex"
           },
           "state": "authored_proof_text_linked",
@@ -13312,9 +13312,9 @@
           ],
           "short_claim": "erdos-1041-lemniscate-newton-flow#lem:two-sheet-bottleneck",
           "short_location": {
-            "end_line": 168,
+            "end_line": 160,
             "label": "lem:two-sheet-bottleneck",
-            "line": 158,
+            "line": 150,
             "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex"
           },
           "state": "registered_evidence_linked",
@@ -13335,9 +13335,9 @@
           "severity": "error",
           "short_claim": "erdos-1041-lemniscate-newton-flow#res:sextic-spoke",
           "short_location": {
-            "end_line": 473,
+            "end_line": 461,
             "label": "res:sextic-spoke",
-            "line": 465,
+            "line": 453,
             "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex"
           }
         },
@@ -13349,9 +13349,9 @@
           "severity": "error",
           "short_claim": "erdos-1041-lemniscate-newton-flow#res:sextic-spoke",
           "short_location": {
-            "end_line": 473,
+            "end_line": 461,
             "label": "res:sextic-spoke",
-            "line": 465,
+            "line": 453,
             "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex"
           }
         },
@@ -13368,9 +13368,9 @@
           "severity": "error",
           "short_claim": "erdos-1041-lemniscate-newton-flow#res:low-critical-thirteen-twentyfifths",
           "short_location": {
-            "end_line": 510,
+            "end_line": 498,
             "label": "res:low-critical-thirteen-twentyfifths",
-            "line": 506,
+            "line": 494,
             "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex"
           }
         },
@@ -13389,9 +13389,9 @@
           "severity": "error",
           "short_claim": "erdos-1041-lemniscate-newton-flow#res:low-critical-thirteen-twentyfifths",
           "short_location": {
-            "end_line": 510,
+            "end_line": 498,
             "label": "res:low-critical-thirteen-twentyfifths",
-            "line": 506,
+            "line": 494,
             "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex"
           }
         },
@@ -13408,9 +13408,9 @@
           "severity": "error",
           "short_claim": "erdos-1041-lemniscate-newton-flow#res:scaled-low-critical",
           "short_location": {
-            "end_line": 524,
+            "end_line": 512,
             "label": "res:scaled-low-critical",
-            "line": 517,
+            "line": 505,
             "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex"
           }
         },
@@ -13435,9 +13435,9 @@
           "severity": "error",
           "short_claim": "erdos-1041-lemniscate-newton-flow#res:scaled-low-critical",
           "short_location": {
-            "end_line": 524,
+            "end_line": 512,
             "label": "res:scaled-low-critical",
-            "line": 517,
+            "line": 505,
             "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex"
           }
         },
@@ -13453,9 +13453,9 @@
           "severity": "error",
           "short_claim": "erdos-1041-lemniscate-newton-flow#res:critical-value-separation",
           "short_location": {
-            "end_line": 696,
+            "end_line": 685,
             "label": "res:critical-value-separation",
-            "line": 682,
+            "line": 671,
             "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex"
           }
         },
@@ -13474,9 +13474,9 @@
           "severity": "error",
           "short_claim": "erdos-1041-lemniscate-newton-flow#res:critical-value-separation",
           "short_location": {
-            "end_line": 696,
+            "end_line": 685,
             "label": "res:critical-value-separation",
-            "line": 682,
+            "line": 671,
             "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex"
           }
         }
@@ -14266,22 +14266,22 @@
           "sections": [
             {
               "id": "sec:trinomial",
-              "line": 210,
+              "line": 208,
               "title": "Trinomials and radial segments"
             },
             {
               "id": "sec:constant-factor",
-              "line": 266,
+              "line": 264,
               "title": "A small least critical value"
             },
             {
               "id": "sec:gap",
-              "line": 530,
+              "line": 556,
               "title": "The failed tree estimate"
             },
             {
               "id": "sec:open",
-              "line": 510,
+              "line": 536,
               "title": "Flow constructions and remaining questions"
             }
           ],
@@ -14307,163 +14307,163 @@
           {
             "id": "sec:counterexample",
             "level": 1,
-            "line": 50,
+            "line": 48,
             "title": "A component with a narrow bottleneck"
           },
           {
             "id": "a-quadratic-model",
             "level": 2,
-            "line": 54,
+            "line": 52,
             "title": "A quadratic model"
           },
           {
             "id": "a-length-estimate-for-a-double-cover",
             "level": 2,
-            "line": 64,
+            "line": 62,
             "title": "A length estimate for a double cover"
           },
           {
             "id": "the-polynomial",
             "level": 2,
-            "line": 116,
+            "line": 114,
             "title": "The polynomial"
           },
           {
             "id": "putting-the-roots-on-a-circle.",
             "level": 4,
-            "line": 138,
+            "line": 136,
             "title": "Putting the roots on a circle."
           },
           {
             "id": "resolving-the-critical-points.",
             "level": 4,
-            "line": 144,
+            "line": 142,
             "title": "Resolving the critical points."
           },
           {
             "id": "identifying-the-two-roots-in-the-component.",
             "level": 4,
-            "line": 178,
+            "line": 176,
             "title": "Identifying the two roots in the component."
           },
           {
             "id": "sec:trinomial",
             "level": 1,
-            "line": 210,
+            "line": 208,
             "title": "Trinomials and radial segments"
           },
           {
             "id": "sec:constant-factor",
             "level": 1,
-            "line": 266,
+            "line": 264,
             "title": "A small least critical value"
           },
           {
             "id": "the-analytic-argument",
             "level": 2,
-            "line": 298,
+            "line": 296,
             "title": "The analytic argument"
           },
           {
             "id": "the-recorded-rational-comparison",
             "level": 2,
-            "line": 344,
+            "line": 346,
             "title": "The recorded rational comparison"
           },
           {
             "id": "sec:separation",
             "level": 1,
-            "line": 362,
+            "line": 364,
             "title": "An isolated simple critical value"
           },
           {
             "id": "square-roots-and-component-area",
             "level": 2,
-            "line": 400,
+            "line": 402,
             "title": "Square roots and component area"
           },
           {
             "id": "sec:other-results",
             "level": 1,
-            "line": 421,
+            "line": 429,
             "title": "Further estimates"
           },
           {
             "id": "sec:critical-proximity",
             "level": 2,
-            "line": 429,
+            "line": 437,
             "title": "Root distances do not ensure containment"
           },
           {
             "id": "sec:solved-families",
             "level": 2,
-            "line": 450,
+            "line": 467,
             "title": "Sparse families and binomial chords"
           },
           {
             "id": "sec:collinear",
             "level": 2,
-            "line": 460,
+            "line": 485,
             "title": "Collinear roots"
           },
           {
             "id": "sec:freepoint",
             "level": 2,
-            "line": 470,
+            "line": 495,
             "title": "Critical-value means"
           },
           {
             "id": "sec:orlicz",
             "level": 2,
-            "line": 497,
+            "line": 523,
             "title": "Successive merger scales"
           },
           {
             "id": "sec:open",
             "level": 1,
-            "line": 510,
+            "line": 536,
             "title": "Flow constructions and remaining questions"
           },
           {
             "id": "sec:newton",
             "level": 2,
-            "line": 514,
+            "line": 540,
             "title": "Inverse rays and perturbation"
           },
           {
             "id": "res:component-local-covering",
             "level": 4,
-            "line": 524,
+            "line": 550,
             "title": "Inverse-branch prerequisites."
           },
           {
             "id": "sec:gap",
             "level": 2,
-            "line": 530,
+            "line": 556,
             "title": "The failed tree estimate"
           },
           {
             "id": "restricted-extremal-problems",
             "level": 2,
-            "line": 538,
+            "line": 564,
             "title": "Restricted extremal problems"
           },
           {
             "id": "sec:1041-sources",
             "level": 1,
-            "line": 546,
+            "line": 572,
             "title": "Related results and verification"
           },
           {
             "id": "verification-and-reproducibility.",
             "level": 4,
-            "line": 554,
+            "line": 580,
             "title": "Verification and reproducibility."
           },
           {
             "id": "acknowledgements",
             "level": 1,
-            "line": 562,
+            "line": 588,
             "title": "Acknowledgements"
           }
         ],
@@ -14511,9 +14511,9 @@
           "matches": [],
           "short_claim": "erdos-1049-rational-base-lambert#res:rational-base-threshold",
           "short_location": {
-            "end_line": 690,
+            "end_line": 687,
             "label": "res:rational-base-threshold",
-            "line": 678,
+            "line": 675,
             "path": "paper/1049/erdos-1049-rational-base-lambert.tex"
           },
           "state": "unresolved",
@@ -14528,18 +14528,18 @@
           "matches": [],
           "short_claim": "erdos-1049-rational-base-lambert#res:thirtyone-four",
           "short_location": {
-            "end_line": 946,
+            "end_line": 930,
             "label": "res:thirtyone-four",
-            "line": 944,
+            "line": 928,
             "path": "paper/1049/erdos-1049-rational-base-lambert.tex"
           },
           "short_proof": {
             "availability": "located",
             "kind": "ordinary_proof_text",
             "locator": {
-              "end_line": 962,
+              "end_line": 946,
               "label": null,
-              "line": 947,
+              "line": 931,
               "path": "paper/1049/erdos-1049-rational-base-lambert.tex"
             },
             "long_correspondence": "open; this disposition does not establish a long-record link",
@@ -14643,9 +14643,9 @@
           ],
           "short_claim": "erdos-1049-rational-base-lambert#cor:rational-base-measure",
           "short_location": {
-            "end_line": 975,
+            "end_line": 959,
             "label": "cor:rational-base-measure",
-            "line": 964,
+            "line": 948,
             "path": "paper/1049/erdos-1049-rational-base-lambert.tex"
           },
           "state": "registered_evidence_linked",
@@ -14727,9 +14727,9 @@
           ],
           "short_claim": "erdos-1049-rational-base-lambert#res:zudilin-sharp-qorder",
           "short_location": {
-            "end_line": 595,
+            "end_line": 590,
             "label": "res:zudilin-sharp-qorder",
-            "line": 584,
+            "line": 579,
             "path": "paper/1049/erdos-1049-rational-base-lambert.tex"
           },
           "state": "registered_evidence_linked",
@@ -14744,9 +14744,9 @@
           "matches": [],
           "short_claim": "erdos-1049-rational-base-lambert#res:sharp-fixed-base",
           "short_location": {
-            "end_line": 73,
+            "end_line": 72,
             "label": "res:sharp-fixed-base",
-            "line": 66,
+            "line": 65,
             "path": "paper/1049/erdos-1049-rational-base-lambert.tex"
           },
           "state": "unresolved",
@@ -14890,9 +14890,9 @@
           ],
           "short_claim": "erdos-1049-rational-base-lambert#thm:geometric-moments",
           "short_location": {
-            "end_line": 193,
+            "end_line": 188,
             "label": "thm:geometric-moments",
-            "line": 178,
+            "line": 173,
             "path": "paper/1049/erdos-1049-rational-base-lambert.tex"
           },
           "state": "registered_evidence_linked",
@@ -14906,9 +14906,9 @@
           "severity": "error",
           "short_claim": "erdos-1049-rational-base-lambert#res:rational-base-threshold",
           "short_location": {
-            "end_line": 690,
+            "end_line": 687,
             "label": "res:rational-base-threshold",
-            "line": 678,
+            "line": 675,
             "path": "paper/1049/erdos-1049-rational-base-lambert.tex"
           }
         },
@@ -14927,9 +14927,9 @@
           "severity": "error",
           "short_claim": "erdos-1049-rational-base-lambert#res:rational-base-threshold",
           "short_location": {
-            "end_line": 690,
+            "end_line": 687,
             "label": "res:rational-base-threshold",
-            "line": 678,
+            "line": 675,
             "path": "paper/1049/erdos-1049-rational-base-lambert.tex"
           }
         },
@@ -14939,9 +14939,9 @@
           "severity": "warning",
           "short_claim": "erdos-1049-rational-base-lambert#res:thirtyone-four",
           "short_location": {
-            "end_line": 946,
+            "end_line": 930,
             "label": "res:thirtyone-four",
-            "line": 944,
+            "line": 928,
             "path": "paper/1049/erdos-1049-rational-base-lambert.tex"
           }
         },
@@ -14951,9 +14951,9 @@
           "severity": "error",
           "short_claim": "erdos-1049-rational-base-lambert#res:sharp-fixed-base",
           "short_location": {
-            "end_line": 73,
+            "end_line": 72,
             "label": "res:sharp-fixed-base",
-            "line": 66,
+            "line": 65,
             "path": "paper/1049/erdos-1049-rational-base-lambert.tex"
           }
         },
@@ -14965,9 +14965,9 @@
           "severity": "error",
           "short_claim": "erdos-1049-rational-base-lambert#res:sharp-fixed-base",
           "short_location": {
-            "end_line": 73,
+            "end_line": 72,
             "label": "res:sharp-fixed-base",
-            "line": 66,
+            "line": 65,
             "path": "paper/1049/erdos-1049-rational-base-lambert.tex"
           }
         }
@@ -15732,17 +15732,17 @@
             },
             {
               "id": "sec:rational-base-irrationality",
-              "line": 430,
+              "line": 431,
               "title": "Rational bases"
             },
             {
               "id": "sec:hankel-order",
-              "line": 387,
+              "line": 388,
               "title": "The first nonzero formal term"
             },
             {
               "id": "sec:open",
-              "line": 699,
+              "line": 698,
               "title": "Further questions"
             }
           ],
@@ -15774,79 +15774,79 @@
           {
             "id": "sec:weights",
             "level": 1,
-            "line": 203,
+            "line": 204,
             "title": "The weights of Zudilin’s moments"
           },
           {
             "id": "sec:weight-factorisation",
             "level": 2,
-            "line": 226,
+            "line": 227,
             "title": "Positive weights"
           },
           {
             "id": "sec:coefficient-asymptotic",
             "level": 2,
-            "line": 313,
+            "line": 314,
             "title": "The coefficient asymptotic"
           },
           {
             "id": "sec:hankel-order",
             "level": 2,
-            "line": 387,
+            "line": 388,
             "title": "The first nonzero formal term"
           },
           {
             "id": "sec:rational-base-irrationality",
             "level": 1,
-            "line": 430,
+            "line": 431,
             "title": "Rational bases"
           },
           {
             "id": "comparison-with-earlier-criteria",
             "level": 2,
-            "line": 691,
+            "line": 690,
             "title": "Comparison with earlier criteria"
           },
           {
             "id": "sec:open",
             "level": 1,
-            "line": 699,
+            "line": 698,
             "title": "Further questions"
           },
           {
             "id": "sec:round8-transfer-boundaries",
             "level": 2,
-            "line": 707,
+            "line": 706,
             "title": "Congruences and divided forms"
           },
           {
             "id": "prob:kernel",
             "level": 4,
-            "line": 728,
+            "line": 727,
             "title": "A construction problem."
           },
           {
             "id": "app:index",
             "level": 1,
-            "line": 736,
+            "line": 735,
             "title": "Verification and reproducibility"
           },
           {
             "id": "data-availability.",
             "level": 4,
-            "line": 744,
+            "line": 743,
             "title": "Data availability."
           },
           {
             "id": "funding-and-competing-interests.",
             "level": 4,
-            "line": 750,
+            "line": 749,
             "title": "Funding and competing interests."
           },
           {
             "id": "acknowledgements.",
             "level": 4,
-            "line": 756,
+            "line": 755,
             "title": "Acknowledgements."
           }
         ],

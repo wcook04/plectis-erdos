@@ -25,7 +25,7 @@ A complete registered-evidence match locates the same full declaration set in th
 
 State: **unresolved**.
 
-Short statement: [paper/68/erdos-68-factorial-denominator-irrationality.tex](../../../paper/68/erdos-68-factorial-denominator-irrationality.tex) lines 165-183.
+Short statement: [paper/68/erdos-68-factorial-denominator-irrationality.tex](../../../paper/68/erdos-68-factorial-denominator-irrationality.tex) lines 157-175.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -37,7 +37,7 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **unresolved**.
 
-Short statement: [paper/68/erdos-68-factorial-denominator-irrationality.tex](../../../paper/68/erdos-68-factorial-denominator-irrationality.tex) lines 307-314.
+Short statement: [paper/68/erdos-68-factorial-denominator-irrationality.tex](../../../paper/68/erdos-68-factorial-denominator-irrationality.tex) lines 292-299.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -49,24 +49,24 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 These registered long assertions are not used by an accepted short-paper link. They may be supporting lemmas, broader results, route-local obstructions, or unresolved matches. They are retained and are not deletion candidates.
 
-- `long68:res:prime-pole`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 830-839.
-- `long68:res:wilson-cofinality`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 929-932.
-- `long68:res:product-lcm`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 967-973.
-- `long68:res:gap-gcd`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 996-999.
-- `long68:res:segment`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1008-1016.
-- `long68:res:lcm-growth`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1030-1035.
-- `long68:res:carry-equivalence`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1324-1344.
-- `long68:res:companion-orbit`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1429-1436.
-- `long68:res:lower-escape`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1511-1525.
-- `long68:res:shift-family`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1619-1628.
-- `long68:res:global-residue`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1719-1726.
-- `long68:res:normalform`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 131-134.
-- `long68:res:bandbreakpoint`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 570-576.
-- `long68:res:moment-ideal`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 278-289.
-- `long68:res:residual-transparency`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 312-321.
-- `long68:res:channel-radius`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1190-1199.
-- `long68:res:radius-constant`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1239-1245.
-- `long68:res:translator`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 593-597.
+- `long68:res:prime-pole`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 834-843.
+- `long68:res:wilson-cofinality`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 933-936.
+- `long68:res:product-lcm`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 971-977.
+- `long68:res:gap-gcd`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1000-1003.
+- `long68:res:segment`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1012-1020.
+- `long68:res:lcm-growth`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1034-1039.
+- `long68:res:carry-equivalence`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1328-1348.
+- `long68:res:companion-orbit`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1433-1440.
+- `long68:res:lower-escape`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1515-1529.
+- `long68:res:shift-family`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1623-1632.
+- `long68:res:global-residue`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1723-1730.
+- `long68:res:normalform`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 134-137.
+- `long68:res:bandbreakpoint`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 574-580.
+- `long68:res:moment-ideal`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 281-292.
+- `long68:res:residual-transparency`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 315-324.
+- `long68:res:channel-radius`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1194-1203.
+- `long68:res:radius-constant`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 1243-1249.
+- `long68:res:translator`: [paper/reasoning-parts/erdos68/core.tex](../../../paper/reasoning-parts/erdos68/core.tex) lines 597-601.
 
 ## Passage-review queue
 

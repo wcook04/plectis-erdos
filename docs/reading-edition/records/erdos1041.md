@@ -25,7 +25,7 @@ A complete registered-evidence match locates the same full declaration set in th
 
 State: **authored_proof_text_linked**.
 
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 425-435.
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 413-423.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -39,7 +39,7 @@ Review status: R5 Type A source-reading review; no independent human mathematica
 
 State: **unresolved**.
 
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 465-473.
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 453-461.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -66,7 +66,7 @@ Long-record location: [paper/reasoning-parts/erdos1041/core.tex](../../../paper/
 
 State: **unresolved**.
 
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 506-510.
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 494-498.
 
 Ledger evidence: Lean `none`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -78,7 +78,7 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **unresolved**.
 
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 517-524.
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 505-512.
 
 Ledger evidence: Lean `modulo_named_input`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -91,7 +91,7 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **unresolved**.
 
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 682-696.
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 671-685.
 
 Ledger evidence: Lean `modulo_named_input`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -103,7 +103,7 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **authored_proof_text_linked**.
 
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 709-719.
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 698-708.
 
 Ledger evidence: Lean `modulo_named_input`; Comparator `not_applicable`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -117,7 +117,7 @@ Review status: R5 Type A source-reading review; no independent human mathematica
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 158-168.
+Short statement: [paper/1041/erdos-1041-lemniscate-newton-flow.tex](../../../paper/1041/erdos-1041-lemniscate-newton-flow.tex) lines 150-160.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `pending`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 

@@ -85,7 +85,7 @@ has unbounded coefficients. Its irrationality, asked in Erdős Problem #249 \[
 
 ## Scalar reductions
 
-The product formula proves spanning. For independence we first separate nonproportional affine arguments, then handle the two proportional arguments $`n`$ and $`kn`$ separately. The reductions depend only on which prime divisors of $`k`$ are already present. For a zero residue, $`kn`$ and $`k^jn`$ have the same prime divisors when $`n>0`$. Hence $`\varphi(k^jn)=k^{j-1}\varphi(kn)`$; both sides vanish at $`n=0`$. For an omitted positive residue $`r=k^tu`$ with $`t\ge1`$ and $`k\nmid u`$, we have $`t<j`$ because $`0<r<k^j`$. Put $`m=k^{j-t}n+u`$. A prime $`p\mid k`$ divides $`m`$ exactly when it divides $`u`$. The product formula for $`\varphi(k^tm)/\varphi(m)`$ therefore contributes $`k^t`$ and one factor $`1-1/p`$ for each prime $`p\mid k`$ absent from $`u`$. The multiplier is an integer: its denominator is a product of distinct primes dividing $`k`$, and therefore divides $`k^t`$. This gives $`C_k(t,u)`$ and proves that the stated family spans $`V_{k,e}`$.
+The product formula reduces every omitted section to an integer multiple of a retained one. For a zero residue, $`kn`$ and $`k^jn`$ have the same prime divisors when $`n>0`$. Hence $`\varphi(k^jn)=k^{j-1}\varphi(kn)`$; both sides vanish at $`n=0`$. For an omitted positive residue $`r=k^tu`$ with $`t\ge1`$ and $`k\nmid u`$, we have $`t<j`$ because $`0<r<k^j`$. Put $`m=k^{j-t}n+u`$. A prime $`p\mid k`$ divides $`m`$ exactly when it divides $`u`$. The product formula for $`\varphi(k^tm)/\varphi(m)`$ therefore contributes $`k^t`$ and one factor $`1-1/p`$ for each prime $`p\mid k`$ absent from $`u`$. The multiplier is an integer: its denominator is a product of distinct primes dividing $`k`$, and therefore divides $`k^t`$. This gives $`C_k(t,u)`$ and proves that the stated family spans $`V_{k,e}`$.
 
 <a id="affine-independence"></a>
 
@@ -93,7 +93,7 @@ The product formula proves spanning. For independence we first separate nonpropo
 
 Independence follows from Martin’s theorem. For any ordering of pairwise nonproportional affine forms and any $`C>0`$, it gives a set of positive lower density on which each successive totient ratio exceeds $`C`$. In a proposed nonzero relation, place a nonzero coefficient $`c_1`$ first and take $`C>\max(1,\sum_{i>1}|c_i|/|c_1|)`$. The first term then dominates the sum of all remaining terms in absolute value, a contradiction \[martin-phi-inequalities, Thm. 1\]. This also proves independence after any finite prefix is deleted.
 
-The direct proof separates one column at a time: all its competitors will vanish modulo a prime, while its own entry will not. Let $`L_i(n)=a_i n+b_i`$ for $`1\le i\le s`$, where $`a_i>0`$ and $`a_i b_j-a_j b_i\ne0`$ for $`i\ne j`$. A shift of $`n`$ makes all the $`b_i`$ positive and leaves these cross determinants unchanged. Write $`g_i=\gcd(a_i,b_i)`$ and $`A_i=L_i/g_i`$. We must make $`A_i`$ prime, not $`L_i`$: the fixed divisor $`g_i`$ may prevent $`L_i`$ from taking large prime values. We seek a prime $`\ell`$ and points $`n_1,\ldots,n_s`$ for which
+The direct proof isolates one column in each evaluation row. Let $`L_i(n)=a_i n+b_i`$ for $`1\le i\le s`$, where $`a_i>0`$ and $`a_i b_j-a_j b_i\ne0`$ for $`i\ne j`$. Shift $`n`$ so that all $`b_i`$ are positive; the cross determinants do not change. Write $`L_i=g_iA_i`$, where $`g_i=\gcd(a_i,b_i)`$ and $`A_i`$ is primitive. We make $`A_i`$, not $`L_i`$, prime: $`L_i`$ may have the fixed divisor $`g_i>1`$. We seek a prime $`\ell`$ and points $`n_1,\ldots,n_s`$ for which
 ``` math
 \begin{equation}
 \label{eq:diagonal-evaluation}
@@ -108,9 +108,9 @@ The direct proof separates one column at a time: all its competitors will vanish
  \qquad \ell\nmid\prod_i\varphi(g_i).
 \end{equation}
 ```
-Evaluating a rational relation at these points gives $`Ec=0`$. But $`\det E\not\equiv0\pmod\ell`$, hence $`E`$ is invertible over $`\mathbb{Q}`$ and $`c=0`$. It remains to construct its rows.
+Since $`\det E\not\equiv0\pmod\ell`$, $`E`$ is invertible over $`\mathbb{Q}`$. A rational relation gives $`Ec=0`$, hence $`c=0`$. We now construct the rows.
 
-For row $`i`$, we require $`L_j(n_i)`$ to have a prime divisor $`q_{ij}\equiv1\pmod\ell`$ whenever $`j\ne i`$. Then $`q_{ij}-1`$ divides $`\varphi(L_j(n_i))`$, giving the off-diagonal zeros in <a href="#eq:diagonal-evaluation" data-reference-type="eqref" data-reference="eq:diagonal-evaluation">[eq:diagonal-evaluation]</a>. For the diagonal entry, we require $`A_i(n_i)`$ to be a prime congruent to $`2`$ modulo $`\ell`$. Choose an odd $`\ell`$ dividing none of the slopes $`a_i`$, the products $`g_i\varphi(g_i)`$ or the nonzero cross determinants. For each fixed $`i`$, Dirichlet’s theorem supplies distinct primes $`q_{ij}\equiv1\pmod\ell`$ ($`j\ne i`$) outside the same finite exceptional set. We impose
+For $`j\ne i`$, a prime divisor $`q_{ij}\equiv1\pmod\ell`$ of $`L_j(n_i)`$ makes $`\ell\mid q_{ij}-1\mid\varphi(L_j(n_i))`$. For the diagonal entry, we instead make $`A_i(n_i)`$ prime and congruent to $`2`$ modulo $`\ell`$. Choose an odd $`\ell`$ dividing none of the slopes $`a_i`$, the products $`g_i\varphi(g_i)`$ or the nonzero cross determinants. For each fixed $`i`$, Dirichlet’s theorem supplies distinct primes $`q_{ij}\equiv1\pmod\ell`$ ($`j\ne i`$) outside the same finite exceptional set. Impose
 ``` math
 A_i(n)\equiv2\pmod\ell,\qquad
  L_j(n)\equiv0\pmod{q_{ij}}\quad(j\ne i).
@@ -136,7 +136,7 @@ while all the other entries of row $`i`$ vanish modulo $`\ell`$. We choose the r
 
 ## The two zero-residue sections
 
-The arguments $`n`$ and $`kn`$ are proportional, so they escape the preceding argument. On $`n=km+1`$ we have $`\varphi(kn)=\varphi(k)\varphi(n)`$: this merges their coefficients and lets affine independence remove all the other sections. The positive-residue sections become the forms
+The arguments $`n,kn`$ are proportional; their totient sequences are not. We first merge their coefficients on $`n=km+1`$, where $`\varphi(kn)=\varphi(k)\varphi(n)`$, then separate them using a different ratio. On this progression the positive-residue sections have arguments
 ``` math
 k^{j+1}m+k^j+r\quad(k\nmid r),
 ```
@@ -155,20 +155,20 @@ which completes the proof of Theorem <a href="#thm:kkernelrank" data-reference-
 
 </div>
 
-Once independence is known, a linear identity can be tested by substitution alone: reduce to the retained sections and compare their coefficients. Consider base six at level two, where the family has $`43`$ indices. The $`37`$ retained sections are $`F_{0,0},F_{1,0}`$, the five $`F_{1,r}`$ ($`1\le r\le5`$), and the $`30`$ sections $`F_{2,r}`$ with $`1\le r<36`$ and $`6\nmid r`$. The omitted sections satisfy
+Independence turns identities into coordinate calculations. In base six at level two, the $`43`$ indexed sections reduce to $`37`$ retained ones: $`F_{0,0},F_{1,0}`$, the five $`F_{1,r}`$ ($`1\le r\le5`$), and the $`30`$ sections $`F_{2,r}`$ with $`1\le r<36`$ and $`6\nmid r`$. The omitted sections satisfy
 ``` math
 \begin{aligned}
  F_{2,0}&=6F_{1,0}, & F_{2,6}&=2F_{1,1}, & F_{2,12}&=4F_{1,2},\\
  F_{2,18}&=3F_{1,3}, & F_{2,24}&=4F_{1,4}, & F_{2,30}&=2F_{1,5}.
 \end{aligned}
 ```
-The substitutions test an identity by leaving $`37`$ retained coefficients to compare with zero. To recover the identity itself, we must distinguish the formal symbols $`E_{j,r}`$ from the sequences $`F_{j,r}`$ they represent: the symbols are independent even when the sequences coincide. For example, the substitution $`F_{2,12}=4F_{1,2}`$ corresponds to the decomposition
+The formal symbols $`E_{j,r}`$ remain independent even when their sequences $`F_{j,r}`$ coincide. The substitution $`F_{2,12}=4F_{1,2}`$ corresponds to the decomposition
 ``` math
 x_{1,2}E_{1,2}+x_{2,12}E_{2,12}
  = (x_{1,2}+4x_{2,12})E_{1,2}
    +x_{2,12}(E_{2,12}-4E_{1,2}).
 ```
-The retained coefficient becomes $`x_{1,2}+4x_{2,12}`$, while the coefficient of the removed relation is the original $`x_{2,12}`$. Repeating at the six omitted indices both tests the identity and recovers its unique relation coefficients. In the opening binary example the relation vectors are $`E_{2,0}-2E_{1,0}`$ and $`E_{2,2}-E_{1,1}`$. The same calculation gives the general result.
+The retained coefficient becomes $`x_{1,2}+4x_{2,12}`$; the relation coefficient is the original $`x_{2,12}`$. After all six substitutions, the evaluated sequence vanishes exactly when the $`37`$ retained coefficients vanish. In that case, the relation coordinates are the six original omitted coefficients. In the opening binary example the relation vectors are $`E_{2,0}-2E_{1,0}`$ and $`E_{2,2}-E_{1,1}`$.
 
 <div id="cor:integral-normal-form" class="corollary">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR8/KernelRelationBasis.lean#L398">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-249-binary-totient-series.md#cor-integral-normal-form-comparator">Comparator</a></p>
@@ -195,9 +195,9 @@ The first sum gives the retained coordinates of the evaluated sequence; the seco
 
 </div>
 
-This is an integral basis of the *section-generated* module, not of every integer-valued sequence in its rational span. For $`k=2`$, $`e\ge2`$, the sequence $`\varphi(4n+3)/2`$ is integer-valued but has retained coordinate $`1/2`$. Thus the section module is not saturated in the ambient group of integer-valued sequences. There is no conflict with the integral relation basis: that basis concerns relations among the given generators, not divisibility of the sequences they generate.
+The *section-generated* module need not contain every integer-valued sequence in its rational span: for $`k=2`$, $`e\ge2`$, the sequence $`\varphi(4n+3)/2`$ is integer-valued but has retained coordinate $`1/2`$. This failure of saturation concerns the image of evaluation; the integral relation basis describes the kernel.
 
-An alternative is to test equality at finitely many inputs. Return to base six and level two. Order the retained columns as above, with residues increasing within each level, and evaluate at $`n=0,\ldots,36`$ to obtain a $`37\times37`$ matrix. Its determinant is $`17`$ modulo $`101`$, so it is nonsingular over $`\mathbb{Q}`$. Consequently a retained combination is zero if and only if all $`37`$ of its integer evaluations are zero. Here reduction modulo $`101`$ certifies the matrix, not the equality of a proposed combination: $`101F_{2,2}`$ would vanish modulo $`101`$ at every input, although its integer value at $`n=0`$ is $`101`$. The script `scripts/totient_kernel_normal_form.py` calculates the coordinates and the first nonzero evaluation using integer arithmetic.
+In the same base-six example, evaluation gives a second test. Order the retained columns as above, with residues increasing within each level, and evaluate at $`n=0,\ldots,36`$ to obtain a $`37\times37`$ matrix. Its determinant is $`17`$ modulo $`101`$, so it is nonsingular over $`\mathbb{Q}`$. Consequently a retained combination is zero if and only if all $`37`$ of its integer evaluations are zero. Here reduction modulo $`101`$ certifies the matrix, not the equality of a proposed combination: $`101F_{2,2}`$ would vanish modulo $`101`$ at every input, although its integer value at $`n=0`$ is $`101`$. The script `scripts/totient_kernel_normal_form.py` calculates the coordinates and the first nonzero evaluation using integer arithmetic.
 
 <a id="sec:family"></a>
 
@@ -207,7 +207,7 @@ An alternative is to test equality at finitely many inputs. Return to base six a
 
 </div>
 
-The matrix argument separates one value from finitely many others. Now we separate one coefficient from all its neighbours in a long window. Boundedness turns that local separation into an irrationality proof: the right zero block forces a rational tail to vanish exactly; the left makes the isolated nonzero term too small to be rational with the same denominator. Residues in the first sum below are least nonnegative representatives, not necessarily binary digits.
+The same separation method now isolates a coefficient between long zero blocks. For bounded integer coefficients, rationality puts scaled tails in a fixed lattice: the right block forces a tail to zero, and the left leaves a nonzero tail of magnitude below the lattice spacing. Residues below are least nonnegative representatives, not necessarily binary digits.
 
 <div id="res:residueseries" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean#L276">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-249-binary-totient-series.md#res-residueseries-comparator">Comparator</a></p>
@@ -337,7 +337,7 @@ Every residue at level $`j+1`$ has the form $`k^ji+r`$, giving the second identi
 
 </div>
 
-The proof of Theorem <a href="#res:residueseries" data-reference-type="ref" data-reference="res:residueseries">3</a> uses boundedness where a long zero block makes the tail small. For $`S`$, the estimate $`0\le\varphi(n)\le n`$ proves convergence, but forcing $`2^L\mid\varphi(N+L)`$ with $`N+L>1`$ already requires $`2^L\le N+L-1`$. The tail bound $`(N+L+2)2^{-L}`$ then exceeds $`1`$. This is a failure of the estimate, not a lower bound on the tail. The same divisibility that creates the gap can therefore move it too far out for this bound to be useful. We turn instead to a finite test for differences of scaled tails.
+The bounded-pulse argument in Theorem <a href="#res:residueseries" data-reference-type="ref" data-reference="res:residueseries">3</a> uses a tail bound independent of the pulse’s position. For $`S`$, the bound $`0\le\varphi(n)\le n`$ ensures convergence, but forcing $`2^L\mid\varphi(N+L)`$ with $`N+L>1`$ requires $`2^L\le N+L-1`$. The tail bound $`(N+L+2)2^{-L}`$ then exceeds $`1`$. This is a failure of the estimate, not a lower bound on the tail: the window lies too far out for this bound to help. Instead, we test differences of scaled tails by finite sums.
 
 Put $`R_N=\sum_{j\ge1}\varphi(N+j)2^{-j}`$ and $`\Delta_h(N)=R_{N+h}-R_N`$. Subtracting the finite-prefix identities for $`2^{N+h}S`$ and $`2^NS`$ gives
 ``` math
@@ -362,7 +362,7 @@ Since $`0\le R_M\le M+2`$, we have
  |2^L\Delta_h(N)-D_{h,N,L}|\le B.
 \end{equation}
 ```
-Nonnegativity gives the larger tail bound, not the sum. Thus $`D_{h,N,L}/2^L`$ locates $`\Delta_h(N)`$ within $`B/2^L`$. The error interval contains no integer precisely when the residue stays more than $`B`$ from both endpoints:
+Both tails lie in $`[0,B]`$, so their difference has magnitude at most $`B`$, not $`2B`$. The interval centred at $`D_{h,N,L}/2^L`$ with radius $`B/2^L`$ avoids every integer precisely when
 ``` math
 \begin{equation}
 \label{eq:r3-certificate}
@@ -376,7 +376,7 @@ This proves $`\Delta_h(N)\notin\mathbb{Z}`$ and, by <a href="#eq:tail-phase" dat
  \subset(-3,-2).
 ```
 
-The test is complete for a *fixed* difference: if $`\delta=\operatorname{dist}(\Delta_h(N),\mathbb{Z})>0`$, eventually $`2^L\delta>2B`$, since $`B=N+h+L+2`$ grows linearly. The same error estimate gives <a href="#eq:r3-certificate" data-reference-type="eqref" data-reference="eq:r3-certificate">[eq:r3-certificate]</a>. Failure at one depth proves no integrality; the interval may be too wide. Increasing $`L`$ detects an existing nonintegral difference, but does not supply one for each $`h`$ beyond every threshold.
+For fixed $`h,N`$, the test is complete: if $`\delta=\operatorname{dist}(\Delta_h(N),\mathbb{Z})>0`$, then $`2^L\delta>2B`$ for all large $`L`$, since $`B`$ grows linearly. Together with <a href="#eq:tail-error" data-reference-type="eqref" data-reference="eq:tail-error">[eq:tail-error]</a>, this gives <a href="#eq:r3-certificate" data-reference-type="eqref" data-reference="eq:r3-certificate">[eq:r3-certificate]</a>. A failed test proves no integrality; its interval may be too wide. Depth detects a given nonintegral difference, but does not supply one for each $`h`$ beyond every threshold.
 
 <a id="sec:frontier"></a>
 
@@ -396,7 +396,7 @@ Requiring this for every $`d\ge1,N\ge0`$ is equivalent to $`S\notin\mathbb{Q}`$.
 
 </div>
 
-Completeness alone lets the depth grow while the shift stays fixed. Here the two must grow together. The recurrence $`\Delta_{(t+1)d}(N)\equiv2^d\Delta_{td}(N)+\Delta_d(N)\pmod\mathbb{Z}`$ provides the extra step: two consecutive failures would make the fixed nonintegral $`\Delta_d(N)`$ arbitrarily close to an integer. The estimates are in [Appendix A of the companion paper](../../../paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-ray). A single pair $`d,N`$ need not imply irrationality; the final assertion requires every positive $`d`$ and every $`N\ge0`$.
+Completeness fixes $`h,N`$ and varies $`L`$; here $`L=h=td`$. A failed test puts $`\Delta_{td}(N)`$ within $`2(N+2td+2)2^{-td}`$ of $`\mathbb{Z}`$. This bound tends to zero. The recurrence $`\Delta_{(t+1)d}(N)\equiv2^d\Delta_{td}(N)+\Delta_d(N)\pmod\mathbb{Z}`$ would transfer two consecutive errors to the fixed nonintegral $`\Delta_d(N)`$. Its positive distance from $`\mathbb{Z}`$ therefore rules out consecutive failures for large $`t`$. The [companion proof](../../../paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-ray) gives the estimates. The final assertion still quantifies over every $`d,N`$, not one pair.
 
 For a hypothetical denominator $`2^cv`$, a second test uses the modulus $`M=(2^H-1)/v`$, where $`H`$ is a positive multiple of $`\varphi(v)`$. Write $`B_{H,c}=\sum_{j=0}^{H-1}\varphi(c+1+j)2^{H-1-j}`$.
 
@@ -412,13 +412,13 @@ For a hypothetical denominator $`2^cv`$, a second test uses the modulus $`M=(2^H
 
 </div>
 
-The identity $`B_{H,c}=M(vR_c)-\Delta_H(c)`$ explains the modulus. Under rationality, $`vR_c\in\mathbb{Z}`$, so only the small tail difference remains modulo $`M`$. Conversely, for irrational $`S`$, the distance of the fixed number $`vR_c`$ from $`\mathbb{Z}`$ is positive; multiplication by the exponentially growing $`M`$ eventually dominates the linear error. The [proof and residue recurrence](../../../paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-mersenne) make this comparison explicit. The required residues have not been shown to exist for every choice of the parameters in either test. A separate [Farey-interval calculation](../../../paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-farey) at depth $`240`$ excludes $`S=a/q`$ for $`0<q\le Q_0\approx7.96\times10^{34}`$.
+The identity $`B_{H,c}=M(vR_c)-\Delta_H(c)`$ puts $`B_{H,c}`$ within $`c+H+1`$ of $`M(vR_c)`$. If $`S=a/(2^cv)`$, then $`vR_c\in\mathbb{Z}`$, so the residue lies near an endpoint. For irrational $`S`$, the fixed number $`vR_c`$ has positive distance from $`\mathbb{Z}`$. The distance of $`M(vR_c)`$ from $`M\mathbb{Z}`$ grows exponentially, while the error bound and excluded margins grow linearly. The [proof and residue recurrence](../../../paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-mersenne) give the bounds. The required residues have not been shown to exist for every choice of the parameters in either test. A separate [Farey-interval calculation](../../../paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-farey) at depth $`240`$ excludes $`S=a/q`$ for $`0<q\le Q_0\approx7.96\times10^{34}`$.
 
 <a id="sec:nogo"></a>
 
 ## Comparison sequences
 
-<span id="sec:signed-interpolation-transfer" label="sec:signed-interpolation-transfer"></span> To turn section rank into irrationality, one would need an upper bound on carry rank under rationality. The following comparison shows why rationality and linear growth alone cannot give it. There is an integer sequence $`c`$ with $`0\le c(n)\le n`$, unchanged odd totients and $`|c(n)-\varphi(n)|\le2`$ at even indices, for which $`\sum c(n)2^{-n}=5/4`$. Its carry is the integer sequence
+<span id="sec:signed-interpolation-transfer" label="sec:signed-interpolation-transfer"></span> Rationality and linear coefficient growth still permit exponential carry rank. There is an integer sequence $`c`$ with $`0\le c(n)\le n`$, unchanged odd totients and $`|c(n)-\varphi(n)|\le2`$ at even indices, for which $`\sum c(n)2^{-n}=5/4`$. Its carry is the integer sequence
 ``` math
 u_N=4\sum_{j\ge1}c(N+j)2^{-j}
      =5\cdot2^N-4\sum_{n=1}^{N}c(n)2^{N-n}.
@@ -462,7 +462,7 @@ The [proof](../../../paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=
 
 </div>
 
-For every $`h\ge1`$ and every $`X_0`$, suppose that some integers $`X\ge\max(X_0,1)`$ and $`L\ge h`$ satisfy
+To prove irrationality, it suffices to show that for every $`h\ge1`$ and every $`X_0`$, some integers $`X\ge\max(X_0,1)`$ and $`L\ge h`$ satisfy
 ``` math
 \begin{equation}
 \label{eq:r3-harmonic}
@@ -471,9 +471,9 @@ For every $`h\ge1`$ and every $`X_0`$, suppose that some integers $`X\ge\max(X_0
        \exp(2\pi iD_{h,N,L}/2^L)\le\frac9{10}X.
 \end{equation}
 ```
-Only a saving in the real part is needed: one must show that the phases cannot all cluster near $`1`$. If every residue failed <a href="#eq:r3-certificate" data-reference-type="eqref" data-reference="eq:r3-certificate">[eq:r3-certificate]</a>, each $`D_{h,N,L}/2^L`$ would be within $`1/16`$ of an integer. Each exponential would then have real part at least $`\cos(\pi/8)>9/10`$. Some $`N`$ in the block must therefore satisfy <a href="#eq:r3-certificate" data-reference-type="eqref" data-reference="eq:r3-certificate">[eq:r3-certificate]</a>. For a hypothetical rational value, we choose its period and then a sufficiently late block, contradicting <a href="#eq:tail-phase" data-reference-type="eqref" data-reference="eq:tail-phase">[eq:tail-phase]</a>.
+The phases cannot all cluster near $`1`$. If every residue failed <a href="#eq:r3-certificate" data-reference-type="eqref" data-reference="eq:r3-certificate">[eq:r3-certificate]</a>, each $`D_{h,N,L}/2^L`$ would be within $`1/16`$ of an integer. Each exponential would then have real part at least $`\cos(\pi/8)>9/10`$. Thus some $`N`$ satisfies <a href="#eq:r3-certificate" data-reference-type="eqref" data-reference="eq:r3-certificate">[eq:r3-certificate]</a>. For a hypothetical rational value, choosing its period and a sufficiently late block contradicts <a href="#eq:tail-phase" data-reference-type="eqref" data-reference="eq:tail-phase">[eq:tail-phase]</a>.
 
-To separate the counting estimates from the cancellation estimate, we single out one totient in each window. Fix $`h,s\ge1`$, $`L\ge s+h`$, $`X\ge1`$ and $`0<\eta<1`$, and put $`t=L-s+1`$ and $`E_N=\exp(2\pi iD_{h,N,L}/2^L)`$. For $`X\le N<2X`$, let $`p_N`$ be the largest prime factor of $`N+t`$ and $`m_N=(N+t)/p_N`$. Define
+To separate counting from cancellation, single out one totient in each window. Fix $`h,s\ge1`$, $`L\ge s+h`$, $`X\ge1`$ and $`0<\eta<1`$, and put $`t=L-s+1`$ and $`E_N=\exp(2\pi iD_{h,N,L}/2^L)`$. For $`X\le N<2X`$, let $`p_N`$ be the largest prime factor of $`N+t`$ and $`m_N=(N+t)/p_N`$. Define
 ``` math
 \begin{aligned}
  \mathcal A&=\{N\in[X,2X):m_N\le\lfloor\sqrt X/2\rfloor,
@@ -486,7 +486,9 @@ All indices are integers. On $`\mathcal A`$, $`p_N>m_N`$, hence $`\varphi(N+t)=\
 z_N=\exp\!\left(\frac{2\pi i(2^h-1)\varphi(m_N)(p_N-1)}{2^t}\right),
  \qquad w_N=E_N/z_N,
 ```
-and let $`\bar z_m`$ be the average over the indices in $`\mathcal A`$ with cofactor $`m`$, taking the average to be zero for an empty set. We seek the four bounds
+and let $`\bar z_m`$ be the average over the indices in $`\mathcal A`$ with cofactor $`m`$, or zero for an empty set. For fixed $`m`$, the exponent of $`z_N`$ is affine in $`p_N`$; $`w_N`$ contains the other totients.
+
+Consider the four bounds
 ``` math
 \begin{equation}
 \label{eq:r3-four-bounds}
@@ -502,7 +504,11 @@ and let $`\bar z_m`$ be the average over the indices in $`\mathcal A`$ with cofa
 \end{aligned}
 \end{equation}
 ```
-These are an exact partition: outside $`\mathcal G`$ use the last two sums; on $`\mathcal G`$ write $`w_Nz_N=w_N(z_N-\bar z_{m_N})+w_N\bar z_{m_N}`$. The bounds add to $`(14/25+1/100+1/100+8/25)X=9X/10`$. There are two distinct issues. Small group means control the second sum by the triangle inequality because $`|w_N|=1`$. They do not control the first: subtracting $`\bar z_m`$ cancels an *unweighted* group sum, not one with varying $`w_N`$. No independence is assumed. For example, $`z=(1,-1)`$ has mean zero, but the weights $`w=(1,-1)`$ make $`\sum w_N(z_N-\bar z)=2`$. This illustrates the distinction, not the behaviour of the totient phases. The resulting real-part bound is not a $`21X/25`$ norm bound.
+These are an exact partition: outside $`\mathcal G`$ use the last two sums; on $`\mathcal G`$ write $`w_Nz_N=w_N(z_N-\bar z_{m_N})+w_N\bar z_{m_N}`$. The bounds add to $`(14/25+1/100+1/100+8/25)X=9X/10`$.
+
+The last three bounds are available at a common depth. Take the least $`L\ge s+h`$ satisfying the size inequality in <a href="#eq:r3-harmonic" data-reference-type="eqref" data-reference="eq:r3-harmonic">[eq:r3-harmonic]</a>. The [smooth-number and small-cofactor estimates](../../../paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-counts) give the last two bounds for all large $`X`$ when $`0<\eta<1/(300\log4)`$. The elementary excluded-cofactor estimate is $`(3\eta\log4+o(1))X`$; it needs no prime number theorem. With the prime number theorem as input, the [group-mean estimate](../../../paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-group-mean) gives the second bound for $`s=26`$, $`\eta=1/1000`$ at this depth and all large $`X`$. The first bound remains open.
+
+Small group means control the second sum by the triangle inequality because $`|w_N|=1`$. They do not control the first: subtracting $`\bar z_m`$ cancels an *unweighted* group sum, not one with varying $`w_N`$. No independence is assumed. For example, $`z=(1,-1)`$ has mean zero, but the weights $`w=(1,-1)`$ make $`\sum w_N(z_N-\bar z)=2`$. This illustrates the distinction, not the behaviour of the totient phases. A real-part bound does not control the imaginary part or give the $`21X/25`$ norm bound.
 
 <div id="prob:firstharmonic" class="problem">
 
@@ -515,11 +521,11 @@ for which those four bounds hold?
 
 </div>
 
-Fix $`s,\eta`$ after $`h`$ but before $`X_0`$; all four estimates must hold on the same block. Take the least $`L\ge s+h`$ satisfying <a href="#eq:r3-harmonic" data-reference-type="eqref" data-reference="eq:r3-harmonic">[eq:r3-harmonic]</a>’s size inequality. The [smooth-number and small-cofactor estimates](../../../paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-counts) give the last two bounds for all sufficiently large $`X`$ when $`0<\eta<1/(300\log4)`$. The elementary excluded-cofactor estimate is $`(3\eta\log4+o(1))X`$; it needs no prime number theorem. With the prime number theorem as input, the [group-mean estimate](../../../paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-group-mean) gives the second bound for $`s=26`$, $`\eta=1/1000`$ at this depth and all large $`X`$; the mean-subtracted bound remains open. At these fixed parameters it would suffice to prove that bound for arbitrarily large $`X`$: the other three already hold beyond fixed thresholds and hence on those same sufficiently late blocks.
+Fix $`s,\eta`$ after $`h`$ but before $`X_0`$; all four estimates must hold on the same block. At $`s=26`$, $`\eta=1/1000`$ and the least admissible $`L`$, it suffices to prove the first bound for arbitrarily large $`X`$: the other three hold eventually on those same blocks.
 
-There is also a weaker sufficient condition, without a group-mean input. Since $`|\mathcal G|>67X/100`$ for large $`X`$, the open bound $`\operatorname{Re}\sum_{N\in\mathcal G}E_N\le603X/1000`$ would put the average on $`\mathcal G`$ below $`9/10`$: $`603/1000=(9/10)(67/100)`$. Some good index would then pass the test. This uses an average on $`\mathcal G`$, not a bound on the full block, and is required for each $`h`$ on arbitrarily large blocks. The [ordinary comparison argument](../../../paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-interpolation) gives larger first harmonics at all sufficiently large admissible scales, distinguishing its rational sequences from the cancellation required of $`\varphi`$. Its proof is included with the interpolation construction.
+A weaker sufficient condition needs no group-mean input. Since $`|\mathcal G|>67X/100`$ for large $`X`$, the open bound $`\operatorname{Re}\sum_{N\in\mathcal G}E_N\le603X/1000`$ would put the average on $`\mathcal G`$ below $`9/10`$: $`603/1000=(9/10)(67/100)`$. Some good index would pass the test. This requires an average on $`\mathcal G`$ for each $`h`$ on arbitrarily large blocks, not a bound on the full block. The [ordinary comparison argument](../../../paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-interpolation) gives larger first harmonics at all sufficiently large admissible scales, distinguishing its rational sequences from the cancellation required of $`\varphi`$.
 
-Balasubramanian, Giri and Srivastav give correlation estimates applicable to $`\varphi(n)/n`$, uniformly for $`|h|\le x/2`$ \[bgs2016, Thm. 2.2\]. Their correlation is a product of two normalised totient values. Here the modulus grows with $`L`$, and $`w_N`$ is an exponential of the other, overlapping totient contributions. Uniformity in the shift of that two-point product does not supply the required weighted exponential estimate.
+Balasubramanian, Giri and Srivastav give correlation estimates applicable to $`\varphi(n)/n`$, uniformly for $`|h|\le x/2`$ \[bgs2016, Thm. 2.2\]. Their correlation is a product of two normalised totient values. Here the modulus grows with $`L`$, and $`w_N`$ is an exponential of the other, overlapping totient contributions. The cited shift uniformity does not supply this weighted exponential estimate.
 
 <a id="verification-and-reproducibility"></a>
 

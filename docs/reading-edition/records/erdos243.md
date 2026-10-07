@@ -25,15 +25,15 @@ A complete registered-evidence match locates the same full declaration set in th
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 663-671.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 650-658.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 672-686.
+Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 659-672.
 
 The proof displays the exact defect comparison with the product quotient. Its remainder is positive and tends to zero; a finite upper bound gives a lower bound on E, then bounded-negative-part rigidity and the recurrence corollary apply. The product criterion is not the classical LCM criterion. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.
 
-Review status: R5 Type A source-reading review of retained proof and evidence boundary; no new independent mathematical review..
+Review status: R15 fourth return Type A source-reading review of accepted editorial wording against the unchanged statement and existing argument; no independent mathematical review or new formal verification..
 
 This hash-bound passage records proof availability; its mathematical correctness is not checked by this audit. No accepted long-record correspondence is established by this disposition.
 
@@ -45,7 +45,7 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 496-508.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 483-495.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -57,11 +57,11 @@ Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/r
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 644-647.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 631-634.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 648-651.
+Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 635-638.
 
 The immediately preceding bounded-negative-part theorem makes E eventually zero. The two-zero identity, with positive successor numerator, then gives the eventual Sylvester recurrence. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.
 
@@ -77,7 +77,7 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **unresolved**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 519-525.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 506-512.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -89,7 +89,7 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **unresolved**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 543-549.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 530-536.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -101,7 +101,7 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **unresolved**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 558-564.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 545-551.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -113,11 +113,11 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 599-602.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 586-589.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 603-606.
+Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 590-593.
 
 Solve t=-i modulo m_i by the Chinese remainder theorem for the finitely many pairwise coprime moduli; add multiples of their product to exceed any prescribed lower bound. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.
 
@@ -133,11 +133,11 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 608-612.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 595-599.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 613-622.
+Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 600-609.
 
 Choose the forbidden consecutive block above the finitely many initial numerator values. The first later crossing lies within B of the block’s start, so one of the assigned moduli divides the numerator, contradicting the retained coprimality. Decreases are allowed. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.
 
@@ -153,7 +153,7 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 252-260.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 249-257.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -165,7 +165,7 @@ Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/r
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 575-581.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 562-568.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -177,7 +177,7 @@ Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/r
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 748-755.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 733-740.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -189,7 +189,7 @@ Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/r
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 832-840.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 814-822.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -201,11 +201,11 @@ Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/r
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 958-966.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 939-947.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 968-976.
+Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 949-957.
 
 Use L_n/A_n=q/gcd(q,A_n) in [1,q] to translate the stated upper bound to the LCM-tail expression. The defect comparison bounds the negative part of V. With a larger B the excess series is eventually zero, and the weighted-record theorem gives the conclusion. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.
 
@@ -221,15 +221,15 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 700-709.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 686-695.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 710-717.
+Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 696-704.
 
 Compare the quotient t_(n+1)/t_n with (1+1/n)(1+K/n^(1+epsilon)). The convergent error product gives t_n=O(n), and t_n*gamma_n is bounded above. The preceding product-increment criterion applies, including the exact one-sided 1/n bound. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.
 
-Review status: R9 Type A source-reading review of accepted exposition change against unchanged statement and prior proof; no new independent mathematical review, Lean execution or long-record correspondence..
+Review status: R15 fourth return Type A source-reading review of accepted editorial wording against the unchanged statement and existing argument; no independent mathematical review or new formal verification..
 
 This hash-bound passage records proof availability; its mathematical correctness is not checked by this audit. No accepted long-record correspondence is established by this disposition.
 
@@ -253,7 +253,7 @@ Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/r
 
 State: **registered_evidence_linked**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 1014-1022.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 995-1003.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
@@ -265,15 +265,15 @@ Long-record location: [paper/reasoning-parts/erdos243/core.tex](../../../paper/r
 
 State: **short_proof_explained_long_link_open**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 1051-1056.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 1030-1035.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 
-Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 1058-1087.
+Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 1037-1065.
 
 For zero lower density choose cutoffs X_k with F(X_k)<=2^(-k)X_k and sum the nested indicator weights 1_[1,X_k]/X_k. The integral diverges but the weighted mass is finite. Conversely use partial summation against a positive nonincreasing divergent-integral weight to exclude an eventual positive linear lower bound for F. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.
 
-Review status: R14 third return Type A source-reading and frozen-statement review; proof availability only, no independent mathematical review or new long-record correspondence..
+Review status: R15 fourth return Type A source-reading review of accepted editorial wording against the unchanged statement and existing argument; no independent mathematical review or new formal verification..
 
 This hash-bound passage records proof availability; its mathematical correctness is not checked by this audit. No accepted long-record correspondence is established by this disposition.
 
@@ -285,7 +285,7 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 State: **unresolved**.
 
-Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 1165-1170.
+Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 1143-1148.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
 

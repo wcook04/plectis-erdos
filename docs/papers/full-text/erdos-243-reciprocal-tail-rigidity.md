@@ -8,7 +8,7 @@
 
 </div>
 
-We prove irrationality of the reciprocal sum when strictly increasing positive integers satisfy $`a_n^2/a_{n+1}=1+3/n+o(n^{-3})`$. Rationality would give integer tail numerators whose fourth differences eventually vanish. The denominator recurrence then forces a square in a cubic field; trace identities and a four-term calculation modulo seven give a contradiction. Separately, under rationality, bounded upward increments and a weighted condition at new maxima force the eventual Sylvester recurrence. The unrestricted Erdős–Graham question remains open.
+We prove irrationality of the reciprocal sum when strictly increasing positive integers satisfy $`a_n^2/a_{n+1}=1+3/n+o(n^{-3})`$. Rationality would give integer tail numerators whose fourth differences eventually vanish. The denominator recurrence then forces a square in a cubic field; trace identities and a four-term calculation modulo seven give a contradiction. Under rationality and the quadratic growth limit, we also give separate criteria for the eventual Sylvester recurrence using bounded numerator increases and weighted first crossings. The unrestricted Erdős–Graham question remains open.
 
 <a id="sec:problem"></a>
 
@@ -45,7 +45,7 @@ has irrational reciprocal sum.*
 
 </div>
 
-The eventual Sylvester recurrence gives $`a_n^2/a_{n+1}-1=O(1/a_n)`$, far smaller than $`3/n`$. Thus Theorem <a href="#res:cubicrate" data-reference-type="ref" data-reference="res:cubicrate">2</a> rules out rationality in this subclass; none of our arguments treats the general quadratic limit alone.
+The Sylvester recurrence gives $`a_n^2/a_{n+1}-1=O(1/a_n)`$, so the cubic-rate hypothesis excludes that behaviour. It imposes much more than the quadratic limit in Problem <a href="#res:problem" data-reference-type="ref" data-reference="res:problem">1</a>.
 
 For example, set $`a_1=8`$ and
 ``` math
@@ -57,11 +57,13 @@ This gives $`8,16,103,5305,\ldots`$. From $`a_{n+1}\ge a_n^2/4`$ we obtain $`a_n
 ```
 The theorem applies to this explicitly defined sequence.
 
+Koizumi’s product criterion \[koizumi2025, Corollary 4\] requires the increments of $`P_n/a_n`$, where $`P_n=\prod_{j<n}a_j`$, to have nonpositive upper limit. Corollary <a href="#res:originalbounded" data-reference-type="ref" data-reference="res:originalbounded">12</a> below allows any finite upper limit. At the cubic rate, however, $`P_n/a_n`$ grows like $`n^3`$ and its increments like $`n^2`$; neither criterion applies. This comparison does not decide whether the LCM criteria apply: those also depend on repeated factors in $`P_n`$.
+
 Rationality supplies a positive integer tail numerator $`C_n`$, but not a bounded one: here it grows cubically. We therefore apply integrality to its finite differences. The exact comparison sequence $`F_n=n(n+1)(n+2)`$ has $`F_{n+1}/F_n=1+3/n`$. The precision in the hypothesis forces $`\Delta^4C_n\to0`$, hence eventual equality $`C_n=AF_n+B`$. This extraction uses the numerator ratio and integrality, not the exact denominator recurrence.
 
 The denominator recurrence now becomes decisive. It imposes a square condition at every root of a cubic modulo almost every prime. Chebotarev’s theorem turns these residue conditions into a square in a cubic number field, where traces restrict the numerator to two polynomials. A four-term calculation modulo seven excludes both. Section <a href="#sec:secondaryrate" data-reference-type="ref" data-reference="sec:secondaryrate">3</a> follows these two stages: first extract the polynomial, then test whether it can satisfy the exact recurrence.
 
-For the recurrence criteria we use the integer tail numerators of Koizumi \[koizumi2025, Lemma 4\]. In Section <a href="#sec:bounded" data-reference-type="ref" data-reference="sec:bounded">4</a>, a stable gcd and the Chinese remainder theorem force eventual Sylvester behaviour for a rational tail whose quotient $`a_1\cdots a_{n-1}/a_n`$ has bounded upward increments. The separate summability criterion of Section <a href="#sec:mass" data-reference-type="ref" data-reference="sec:mass">5</a> needs only integer increments and positivity. For the weighted criterion of Section <a href="#sec:lcmrecords" data-reference-type="ref" data-reference="sec:lcmrecords">6</a>, we instead clear tails by a least common multiple and use the denominator recurrence to control first crossings of new heights. Its convergence hypothesis is not supplied by the general quadratic limit. The [companion paper](../../../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf) also treats nonintegral rates and proves a stronger cubic disagreement theorem. Its detailed proof locations and the formal sources are listed in Appendix <a href="#app:index" data-reference-type="ref" data-reference="app:index">9</a>.
+Sections <a href="#sec:bounded" data-reference-type="ref" data-reference="sec:bounded">4</a> and <a href="#sec:mass" data-reference-type="ref" data-reference="sec:mass">5</a> give bounded-increment and summability criteria. Section <a href="#sec:lcmrecords" data-reference-type="ref" data-reference="sec:lcmrecords">6</a> clears tails by a least common multiple and uses congruences to control first crossings of new heights; its convergence hypothesis is not derived from the quadratic limit. The [companion paper](../../../paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf) also treats nonintegral rates and proves a stronger cubic disagreement theorem. Its proof locations and the formal sources are listed in Appendix <a href="#app:index" data-reference-type="ref" data-reference="app:index">9</a>.
 
 <a id="sec:transfer"></a>
 
@@ -115,7 +117,6 @@ Suppose, towards a contradiction, that the reciprocal sum in Theorem <a href="#
  \frac{C_{n+1}}{C_n}=1+\frac3n+o(n^{-3}).
 \end{equation}
 ```
-The ratio controls the error in a cubic approximation. The denominator recurrence will be used only after that approximation has become an exact polynomial.
 
 <a id="sec:cubic-extraction"></a>
 
@@ -126,12 +127,12 @@ We use $`F_n=n(n+1)(n+2)`$ rather than $`n^3`$: its successive ratio is *exactly
 z_n=\frac{C_n}{F_n},\qquad
  \frac{z_{n+1}}{z_n}=1+\frac{\varepsilon_n}{1+3/n}.
 ```
-The logarithmic increments are absolutely summable, with tails $`o(n^{-2})`$. Hence $`z_n`$ tends to some $`A>0`$ and $`z_n-A=o(n^{-2})`$. Multiplying back by $`F_n`$ yields
+The logarithmic increments are $`o(n^{-3})`$, so their absolute tails are $`o(n^{-2})`$. Hence $`z_n\to A>0`$ with $`z_n-A=o(n^{-2})`$. Multiplying by $`F_n`$ gives
 ``` math
 C_n=AF_n+\delta_n,\qquad \delta_n=o(n).
 ```
 
-An $`o(n)`$ error can still oscillate too much for finite differences. The recurrence, not this size bound alone, supplies the missing control: subtracting the updates for $`C_n`$ and $`AF_n`$ gives
+An $`o(n)`$ error can still oscillate too much for finite differences. To control its first difference, subtract the numerator update for $`C_n`$ and the comparison update for $`AF_n`$:
 ``` math
 \Delta\delta_n=\frac3n\delta_n+\varepsilon_n C_n=o(1),
  \qquad \Delta h_n=h_{n+1}-h_n.
@@ -154,9 +155,9 @@ The precision matters at the subtraction step. The integer sequence $`F_n+(-1)^n
 
 ## Reduction and the constant term
 
-<span id="sec:reduction" label="sec:reduction"></span> We now use the denominator recurrence. Both updates preserve common divisors, so $`G_n=\gcd(C_n,D_n)`$ forms a divisibility chain: $`G_n\mid G_{n+1}`$. For every sufficiently late $`n`$, it divides four consecutive values of $`C_n`$, hence their third difference $`6A`$. This is a fixed positive integer. The fourth difference identified the polynomial; the nonzero third difference now bounds a divisibility chain. Consequently $`G_n`$ stabilises at a positive integer $`g`$.
+<span id="sec:reduction" label="sec:reduction"></span> We now use the denominator recurrence. Both updates preserve common divisors, so $`G_n=\gcd(C_n,D_n)`$ divides $`G_{n+1}`$ and every later numerator. On the polynomial tail it therefore divides the third difference $`6A`$, a fixed positive integer. The fourth difference gave polynomiality; the nonzero third difference now bounds cancellation. Thus $`G_n`$ stabilises at a positive integer $`g`$.
 
-We can therefore reduce all sufficiently late fractions by the same factor: put $`u_n=C_n/g`$ and $`v_n=D_n/g`$. The recurrences persist after this division. The following observation describes the resulting coprimality conditions.
+Dividing by this fixed $`g`$ gives $`u_n=C_n/g`$, $`v_n=D_n/g`$ in lowest terms without changing the recurrences. Their coprimality persists as follows.
 
 <div id="res:reduced" class="proposition">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean#L16">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos-243-reciprocal-tail-rigidity.md#res-reduced-comparator">Comparator</a></p>
@@ -186,12 +187,12 @@ The third difference $`m=6A/g`$ is a positive integer. Since $`n(n+1)(n+2)/6=\bi
 ``` math
 c=u_n-m\binom{n+2}{3}\in\mathbb{Z}.
 ```
-The binomial form separates two facts: $`Q`$ is integer-valued, and its constant term $`c`$ is an integer. Adjacent coprimality now restricts $`c`$. If a prime $`\ell`$ divides $`c`$, choose an arbitrarily late $`n\equiv-1\pmod{6\ell}`$. Both three-factor products contain $`n+1`$, so division by $`6`$ leaves a factor $`\ell`$, even for $`\ell=2,3`$. Thus $`\ell`$ divides both $`Q(n)`$ and $`Q(n+1)`$, contradicting adjacent coprimality. This also excludes $`c=0`$. Thus
+Adjacent coprimality now restricts this integer $`c`$. If a prime $`\ell`$ divides $`c`$, choose an arbitrarily late $`n\equiv-1\pmod{6\ell}`$. Both three-factor products contain $`n+1`$, so division by $`6`$ leaves a factor $`\ell`$, even for $`\ell=2,3`$. Thus $`\ell`$ divides both $`Q(n)`$ and $`Q(n+1)`$, contradicting adjacent coprimality. This also excludes $`c=0`$. Thus
 ``` math
 m\in\mathbb{N}_{>0},\qquad c\in\{1,-1\}.
 ```
 
-We also need irreducibility. The multipliers $`a_n>1`$ on the reduced tail are pairwise coprime, so infinitely many distinct primes occur among them. Once a prime divides one such $`a_n`$, it divides every later $`v_t`$ and no later $`u_t`$. If the cubic $`Q`$ had a rational root, that root would reduce to a root modulo all but finitely many primes. Choose one of the persistent primes outside those exceptions; a sufficiently late index in the root’s residue class would have $`\ell\mid Q(t)=u_t`$, a contradiction. A cubic is reducible over $`\mathbb{Q}`$ only if it has a rational root. Hence $`Q`$ is irreducible.
+Irreducibility follows from persistence of denominator primes. The pairwise coprime multipliers $`a_n>1`$ supply infinitely many distinct primes; each divides every later $`v_t`$ and no later $`u_t`$. A rational root of $`Q`$ would reduce to a root modulo all but finitely many primes. Choose a persistent prime outside those exceptions. Every sufficiently late index in the root’s residue class would give $`\ell\mid Q(t)=u_t`$, contradicting reducedness. Thus $`Q`$ has no rational root and, being cubic, is irreducible.
 
 Set $`\kappa=m/6`$, $`\eta=6c/m`$, and
 ``` math
@@ -235,14 +236,14 @@ Dividing by the nonzero square $`9\kappa^2r^2`$ gives
 ```
 The condition holds for *every* root; primes with no root impose no condition. This quantifier matters in passing to a number field.
 
-Let $`\alpha`$ be a root of $`f`$ and put $`K=\mathbb{Q}(\alpha)`$, a cubic field. The residue square roots do not themselves specify an element of $`K`$. Suppose $`\alpha^2-1`$ is a nonsquare in $`K`$. We will use Chebotarev to find a prime and a root of $`f`$ for which the square condition fails. Choose $`\beta`$ with $`\beta^2=\alpha^2-1`$. The nontrivial automorphism of $`K(\beta)/K`$ fixes $`\alpha`$ and sends $`\beta`$ to $`-\beta`$. Extend it to an element $`\sigma\in\operatorname{Gal}(M/\mathbb{Q})`$, where $`M`$ is a Galois closure of $`K(\beta)/\mathbb{Q}`$.
+Let $`\alpha`$ be a root of $`f`$ and put $`K=\mathbb{Q}(\alpha)`$, a cubic field. Suppose $`\alpha^2-1`$ is a nonsquare in $`K`$, and choose $`\beta`$ with $`\beta^2=\alpha^2-1`$. To contradict the modular condition, we seek a Frobenius that fixes $`\alpha`$ but exchanges $`\beta`$ and $`-\beta`$. The nontrivial automorphism of $`K(\beta)/K`$ does exactly this. Extend it to $`\sigma\in\operatorname{Gal}(M/\mathbb{Q})`$, where $`M`$ is a Galois closure of $`K(\beta)/\mathbb{Q}`$.
 
-Chebotarev’s density theorem \[stevenhagenlenstra1996, §3, author-version p. 15\] supplies infinitely many unramified rational primes whose Frobenius is conjugate to $`\sigma`$. Choosing a prime of $`M`$ above each of them makes the Frobenius equal to $`\sigma`$ itself. Omit residue characteristic two, primes dividing $`6m`$, and the finitely many primes where $`\alpha`$ or $`\beta`$ is nonintegral or $`\beta`$ reduces to zero. At a remaining prime, Frobenius acts by the $`\ell`$-th power on the residue field, so
+Chebotarev’s density theorem \[stevenhagenlenstra1996, §3, author-version p. 15\] supplies infinitely many unramified rational primes with Frobenius conjugate to $`\sigma`$; choosing a prime of $`M`$ above each makes it equal to $`\sigma`$. Omit residue characteristic two, primes dividing $`6m`$, and the finitely many primes where $`\alpha`$ or $`\beta`$ is nonintegral or $`\beta`$ reduces to zero. Frobenius acts by the $`\ell`$-th power on the residue field, so
 ``` math
 \bar\alpha^\ell=\bar\alpha,\qquad
  \bar\beta^\ell=-\bar\beta\ne\bar\beta.
 ```
-The first equality puts $`r=\bar\alpha`$ in $`\mathbb F_\ell`$ and gives $`f(r)=0`$. The second keeps both roots $`\pm\bar\beta`$ of $`X^2-(r^2-1)`$ outside $`\mathbb F_\ell`$. This contradicts <a href="#eq:all-root-square" data-reference-type="eqref" data-reference="eq:all-root-square">[eq:all-root-square]</a>, which applies to the particular root selected by Frobenius. Removing finitely many primes has left infinitely many choices. Hence there is a $`\beta\in K`$ with $`\beta^2=\alpha^2-1`$.
+Thus $`r=\bar\alpha`$ lies in $`\mathbb F_\ell`$ and satisfies $`f(r)=0`$, but neither root $`\pm\bar\beta`$ of $`X^2-(r^2-1)`$ lies in that field. The condition for *every* root in <a href="#eq:all-root-square" data-reference-type="eqref" data-reference="eq:all-root-square">[eq:all-root-square]</a> applies to this $`r`$, giving the contradiction. Hence some $`\beta\in K`$ satisfies $`\beta^2=\alpha^2-1`$.
 
 <a id="sec:cubic-trace"></a>
 
@@ -261,15 +262,13 @@ The minimal polynomial of $`z^{-1}`$ is the monic reciprocal polynomial
 \frac{T^3p(T^{-1})}{w}
    =T^3+\frac dwT^2+\frac bwT+\frac1w.
 ```
-Newton’s identities apply to both polynomials. The first two traces will relate $`b,d,w`$; the third will recover $`\eta`$. All traces below are from $`K`$ to $`\mathbb{Q}`$.
-
-The cubic for $`\alpha`$ determines its first three traces:
+We compute the same three traces from $`f`$ and from the reciprocal pair $`z,z^{-1}`$. All traces are from $`K`$ to $`\mathbb{Q}`$. The cubic for $`\alpha`$ gives:
 ``` math
 \operatorname{Tr}(\alpha)=0,\qquad
  \operatorname{Tr}(\alpha^2)=2,\qquad
  \operatorname{Tr}(\alpha^3)=-3\eta.
 ```
-Expressing these same traces through $`z`$ and its reciprocal gives
+Newton’s identities for $`p`$ and its reciprocal give
 ``` math
 \begin{equation}
 \label{eq:cubic-traces}
@@ -323,7 +322,7 @@ d_1+2=
  2(d_0-1)^2 &(c=-1).
  \end{cases}
 ```
-Since $`2=3^2`$ in this field, $`d_1+2`$ must be a square in either case. But $`d_1\in\{3,4\}`$ would give $`d_1+2\in\{5,6\}`$, both nonsquares. Thus the denominator required by the three-term square condition cannot arise from the preceding update. Both cubics are excluded, proving Theorem <a href="#res:cubicrate" data-reference-type="ref" data-reference="res:cubicrate">2</a>.
+Since $`2=3^2`$ in this field, $`d_1+2`$ must be a square in either case. But $`d_1\in\{3,4\}`$ would give $`d_1+2\in\{5,6\}`$, both nonsquares. The middle three terms admit $`d_1=3`$ or $`4`$; neither extends backwards through the preceding exact update. Both cubics are excluded, proving Theorem <a href="#res:cubicrate" data-reference-type="ref" data-reference="res:cubicrate">2</a>.
 
 Section 2 of the companion proves positive lower density of disagreement with each rational cubic of this form. That lower bound depends on the orbit and the cubic. For Theorem <a href="#res:cubicrate" data-reference-type="ref" data-reference="res:cubicrate">2</a>, exclusion of eventual equality suffices.
 
@@ -335,7 +334,7 @@ We return to the rational tails of Section <a href="#sec:transfer" data-referen
 ``` math
 E_n=D_n-(a_n-1)C_n=C_n-C_{n+1}.
 ```
-Negative errors are upward steps of $`C_n`$; zero error says that the tail equals $`1/(a_n-1)`$. We no longer assume a polynomial expansion. Instead, upward steps are bounded while downward steps need only be small relative to $`C_n`$. The relative bound follows from quadratic growth; the absolute bound on rises is additional.
+Negative errors are rises of $`C_n`$; zero error gives the tail $`1/(a_n-1)`$. Instead of prescribing a polynomial, we now bound the rises. Quadratic growth makes all steps small relative to $`C_n`$; the additional absolute bound applies only to rises, not decreases.
 
 <div id="res:bounded" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean#L2360">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos-243-reciprocal-tail-rigidity.md#res-bounded-comparator">Comparator</a></p>
@@ -466,11 +465,11 @@ Bado proves a two-sided bounded-error criterion by this forbidden-block argument
 
 <div class="proof">
 
-*Proof of Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">4</a>.* Suppose that the conclusion fails. Absorption excludes every sufficiently late zero. Since $`|E_n|\ge1`$ there, the relative limit gives $`C_n\to\infty`$. There must also be infinitely many negative errors, for otherwise integer descent would make $`C_n`$ constant. At those late negative indices, $`1\le-E_n\le B`$, so $`B\ge1`$ and Proposition <a href="#res:gcdstab" data-reference-type="ref" data-reference="res:gcdstab">8</a> gives a stable gcd $`g`$. We divide by $`g`$ and obtain $`u_n=C_n/g\to\infty`$ with
+*Proof of Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">4</a>.* Suppose the conclusion fails. Absorption excludes late zeros; $`|E_n|\ge1`$ and the relative limit then give $`C_n\to\infty`$. Integer descent forces infinitely many late negative errors, where $`1\le-E_n\le B`$. Thus $`B\ge1`$ and Proposition <a href="#res:gcdstab" data-reference-type="ref" data-reference="res:gcdstab">8</a> gives a stable gcd $`g`$. Restrict to a tail on which the gcd is $`g`$ and $`E_n\ge-B`$, then reindex that tail. Dividing by $`g`$ gives $`u_n=C_n/g\to\infty`$ and
 ``` math
 u_{n+1}-u_n=-E_n/g\le B.
 ```
-By Proposition <a href="#res:reduced" data-reference-type="ref" data-reference="res:reduced">3</a>, the multipliers $`a_i\ge2`$ are pairwise coprime and each is coprime to every later numerator. They supply the moduli prohibited by Theorem <a href="#res:barrier" data-reference-type="ref" data-reference="res:barrier">10</a>, a contradiction. ◻
+Proposition <a href="#res:reduced" data-reference-type="ref" data-reference="res:reduced">3</a> makes the multipliers $`a_i\ge2`$ pairwise coprime and coprime to every later numerator, contradicting Theorem <a href="#res:barrier" data-reference-type="ref" data-reference="res:barrier">10</a>. ◻
 
 </div>
 
@@ -495,7 +494,7 @@ Let $`\gamma_n=a_n^2/a_{n+1}-1`$. For $`t_n=P_n/a_n`$,
 ``` math
 t_{n+1}-t_n=t_n\gamma_n.
 ```
-Thus the hypothesis bounds upward increments of $`t_n`$, not its values or decreases. Although $`C_n\sim qt_n`$, asymptotic agreement of values does not control increments. An exact identity with a positive remainder supplies the needed bound.
+We bound upward increments, not values or decreases. The relation $`C_n\sim qt_n`$ does not control increments; instead an exact identity will give $`E_n>-qt_n\gamma_n`$, turning an upper increment bound into a lower error bound.
 
 <div id="res:originalbounded" class="corollary">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/ProductDefect.lean#L211">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos-243-reciprocal-tail-rigidity.md#res-originalbounded-comparator">Comparator</a></p>
@@ -520,7 +519,7 @@ then $`a_{n+1}=a_n^2-a_n+1`$ for all sufficiently large $`n`$.*
  -(a_n-1)\sum_{k\ge n+2}\frac1{a_k}\right).
 \end{equation}
 ```
-By the tail estimate, the subtracted term is at most $`4(a_n-1)/a_{n+1}^2<1/a_{n+1}`$ eventually. The right side is positive, so an upper bound on $`(P_n/a_n)\gamma_n`$ gives a lower bound on $`E_n`$. The tail construction supplies positivity and the exact recurrences, while <a href="#eq:tail-estimate" data-reference-type="eqref" data-reference="eq:tail-estimate">[eq:tail-estimate]</a> gives $`E_n/C_n\to0`$. Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">4</a> makes the error eventually zero, and Corollary <a href="#res:cor" data-reference-type="ref" data-reference="res:cor">11</a> gives the Sylvester recurrence. ◻
+The tail estimate bounds the subtracted term by $`4(a_n-1)/a_{n+1}^2<1/a_{n+1}`$ eventually. The positive remainder gives $`E_n>-qt_n\gamma_n`$, so the assumed upper bound bounds $`E_n`$ below. Only the remainder’s sign is needed here. The canonical tails satisfy the exact recurrences and, by <a href="#eq:tail-estimate" data-reference-type="eqref" data-reference="eq:tail-estimate">[eq:tail-estimate]</a>, $`E_n/C_n\to0`$. Theorem <a href="#res:bounded" data-reference-type="ref" data-reference="res:bounded">4</a> and Corollary <a href="#res:cor" data-reference-type="ref" data-reference="res:cor">11</a> finish. ◻
 
 </div>
 
@@ -542,8 +541,8 @@ Then the sequence is eventually Sylvester. In particular, the conclusion holds u
 
 <div class="proof">
 
-*Proof.* Since $`t_{n+1}/t_n=1+\gamma_n`$, division by the comparison sequence $`n`$ gives $`(t_{n+1}/(n+1))/(t_n/n)=(1+\gamma_n)/(1+1/n)
-\le1+K/[n^\varepsilon(n+1)]`$. The upper bounds have a convergent product, so $`t_n=O(n)`$ and $`t_n\gamma_n\le t_n(\gamma_n)_+=O(1)`$. Corollary <a href="#res:originalbounded" data-reference-type="ref" data-reference="res:originalbounded">12</a> applies. ◻
+*Proof.* The exact model $`n`$ has successive ratio $`1+1/n`$. Thus $`(t_{n+1}/(n+1))/(t_n/n)=(1+\gamma_n)/(1+1/n)
+\le1+K/[n^\varepsilon(n+1)]`$. The convergent product of these upper bounds bounds $`t_n/n`$ above; no positive limit is needed. Hence $`t_n=O(n)`$ and $`t_n\gamma_n\le t_n(\gamma_n)_+=O(1)`$, so Corollary <a href="#res:originalbounded" data-reference-type="ref" data-reference="res:originalbounded">12</a> applies. ◻
 
 </div>
 
@@ -555,13 +554,13 @@ For positive limiting increments, take $`a_1=4`$ and $`a_{n+1}=\lceil n a_n^2/(n
 ```
 Consequently $`t_n\sim K n`$ and $`t_{n+1}-t_n\to K>0`$. The corollary proves irrationality because $`\gamma_n\sim1/n`$ is incompatible with the eventual Sylvester recurrence.
 
-For comparison, the ceiling example with rate $`3/n`$ in the introduction has $`t_n\sim K_3n^3`$ and $`t_{n+1}-t_n\sim3K_3n^2`$ for some $`K_3>0`$. Indeed, divide $`t_n`$ by $`n(n+1)(n+2)`$ and use the absolutely summable rounding errors, as in Section <a href="#sec:cubic-extraction" data-reference-type="ref" data-reference="sec:cubic-extraction">3.1</a>. The three examples separate constant $`t_n`$, bounded positive increments and unbounded increments. The cubic example therefore requires Theorem <a href="#res:cubicrate" data-reference-type="ref" data-reference="res:cubicrate">2</a>, not the bounded-increase criterion.
+For the introduction’s $`3/n`$ ceiling example, division by $`n(n+1)(n+2)`$ and summability of the rounding errors give $`t_n\sim K_3n^3`$ and $`t_{n+1}-t_n\sim3K_3n^2`$, with $`K_3>0`$. Its irrationality follows from Theorem <a href="#res:cubicrate" data-reference-type="ref" data-reference="res:cubicrate">2</a>, beyond the bounded-increase criterion.
 
 <a id="sec:mass"></a>
 
 # Finite total relative increase
 
-Summable relative increases bound $`C_n`$ by an infinite product; discreteness then forces stationarity. No denominator recurrence is needed. Mere convergence of the relative increases to zero would allow both $`C_n=n+1`$ and $`C_n=(n+1)^2`$.
+Summable relative increases first bound $`C_n`$ by an infinite product, then allow only finitely many rises; integer descent finishes. No denominator recurrence is needed. Relative increases tending merely to zero still allow $`C_n=n+1`$ or $`C_n=(n+1)^2`$.
 
 <div id="res:massscalar" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L84">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos-243-reciprocal-tail-rigidity.md#res-massscalar-comparator">Comparator</a></p>
@@ -593,7 +592,7 @@ On an exact reciprocal-tail orbit the conclusion gives the Sylvester recurrence.
 
 # New maxima of an LCM numerator
 
-The product denominator counts repeated prime factors with multiplicity; the least common multiple retains only the largest power of each prime. This smaller clearing denominator preserves integrality but not coprimality. We shall therefore use congruences to forbid short *crossings*, rather than to forbid numerator values as in Section <a href="#sec:barrier" data-reference-type="ref" data-reference="sec:barrier">4.2</a>. Put
+The least common multiple retains only the largest power of each prime among $`q,a_1,\ldots,a_{n-1}`$. It preserves integrality, not coprimality: a numerator may now take values forbidden in Section <a href="#sec:barrier" data-reference-type="ref" data-reference="sec:barrier">4.2</a>. The recurrence will instead forbid short positive jumps from selected multiples. Put
 ``` math
 L_n=\operatorname{lcm}(q,a_1,\ldots,a_{n-1}),\quad
  M_n=D_n/L_n,\quad U_n=L_nx_n=C_n/M_n,\quad V_n=E_n/M_n.
@@ -615,7 +614,7 @@ Since $`L_n\mid qP_n`$ and $`V_n=(L_n/(qP_n))E_n`$, multiplying <a href="#eq:can
 ```
 The lower bound transfers an upper bound on the growth defect to a lower bound on $`V_n`$. The upper bound will let us compare weighted series with a summable error.
 
-Write $`R_n=\max_{j\le n}U_j`$ and $`\mathcal R=\{n:U_{n+1}>R_n\}`$. The inequality $`|V_n|<U_n`$ gives $`U_{n+1}<U_n`$ when $`\rho_n\ge2`$, so every sufficiently late strict rise has $`\rho_n=1`$. The stronger eventual bound $`-U_n\le2V_n`$, supplied by $`V_n/U_n=E_n/C_n\to0`$, gives the quantitative estimate $`U_{n+1}\le3U_n/4`$ when $`\rho_n\ge2`$. Thus repeated factors cause contraction, while every late record uses a multiplier coprime to the current $`L_n`$. Only at such a record do we write its actual jump as $`d_n=U_{n+1}-U_n=-V_n>0`$; at a contracting step that equality need not hold.
+Write $`R_n=\max_{j\le n}U_j`$ and $`\mathcal R=\{n:U_{n+1}>R_n\}`$. Since $`V_n/U_n=E_n/C_n\to0`$, eventually $`|V_n|<U_n`$ and $`-U_n\le2V_n`$. When $`\rho_n\ge2`$, the first bound gives $`U_{n+1}<U_n`$; the second sharpens this to $`U_{n+1}\le3U_n/4`$. Thus every late rise, in particular every record, has $`\rho_n=1`$: its multiplier is coprime to $`L_n`$. At such a record write the full jump as $`d_n=U_{n+1}-U_n=-V_n>0`$; at a contracting step that equality need not hold.
 
 <div id="res:weightedrecord" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR11/CanonicalRecords.lean#L202">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos-243-reciprocal-tail-rigidity.md#res-weightedrecord-comparator">Comparator</a></p>
@@ -627,7 +626,11 @@ Write $`R_n=\max_{j\le n}U_j`$ and $`\mathcal R=\{n:U_{n+1}>R_n\}`$. The inequal
 
 </div>
 
-At a late record, the summand is $`(d_n-B)_+f(U_n)`$, where $`d_n=U_{n+1}-U_n`$. For $`B=0`$, the integral comparison
+At a late record, the summand is $`(d_n-B)_+f(U_n)`$, where $`d_n=U_{n+1}-U_n`$.
+
+The full jump matters: with previous record $`10`$, a step from $`5`$ to $`12`$ first crosses $`11`$. Its jump is $`7`$, but the record increases by only $`2`$. This illustrates the two increments, not a denominator sequence satisfying <a href="#eq:recurrences" data-reference-type="eqref" data-reference="eq:recurrences">[eq:recurrences]</a>.
+
+For $`B=0`$, the integral comparison
 ``` math
 \int_{R_n}^{R_{n+1}}f(t)\,dt
  \le (R_{n+1}-R_n)f(U_n)\le d_nf(U_n)
@@ -638,21 +641,21 @@ The weights $`1/t`$ and $`1/[t\log(et)]`$ are allowed; $`1/t^2`$ is not. One adm
 
 <div class="proof">
 
-*Proof.* Suppose the sequence is not eventually Sylvester. Absorption and integrality give
+*Proof.* Suppose the sequence is not eventually Sylvester. Absorption excludes late zeros of $`E_n`$, so $`V_n=E_n/M_n`$ is eventually a nonzero integer. Hence
 ``` math
 \frac1{U_n}\le\frac{|V_n|}{U_n}=\frac{|E_n|}{C_n}\longrightarrow0.
 ```
-Thus $`U_n\to\infty`$, so there are infinitely many record steps. At every sufficiently late one, $`\rho_n=1`$, so $`a_n`$ is coprime to $`L_n`$. The corresponding terms $`a_n`$ are pairwise coprime: an earlier term divides the later $`L_n`$, while the term at that record is coprime to $`L_n`$. For any fixed $`B\ge1`$, choose $`B`$ such multipliers $`m_0,\ldots,m_{B-1}>B`$ and take $`T`$ after their indices and after the threshold beyond which records have $`\rho_n=1`$. Their size follows from $`a_n\to\infty`$.
+Thus $`U_n\to\infty`$. Infinitely many late records supply pairwise coprime multipliers: each is coprime to its $`L_n`$, which is divisible by every earlier multiplier. Since $`a_n\to\infty`$, for any fixed $`B\ge1`$ choose $`B`$ of them, $`m_0,\ldots,m_{B-1}>B`$. Take $`T`$ beyond their indices and the threshold for $`\rho_n=1`$ at records.
 
 Put $`P=\prod_i m_i`$ and choose $`x`$ with $`m_i\mid x+i`$ by the Chinese remainder theorem. We select the heights $`\tau=x+B+kP>R_T`$, $`k\in\mathbb{Z}`$. They are spaced $`P`$ apart.
 
-At the first crossing of a selected height, $`U_n\le R_n<\tau\le U_n+d_n`$. In particular this is a record step. The full jump matters: with previous record $`10`$, a step from $`5`$ to $`12`$ first crosses $`11`$. Its jump is $`7`$, but the record increases by only $`2`$. This illustrates the two increments, not a denominator sequence satisfying <a href="#eq:recurrences" data-reference-type="eqref" data-reference="eq:recurrences">[eq:recurrences]</a>. If $`d_n\le B`$, then $`U_n\in[\tau-B,\tau)`$, so
+At the first crossing of a selected height, $`U_n\le R_n<\tau\le U_n+d_n`$. In particular this is a record step. If $`d_n\le B`$, then $`U_n\in[\tau-B,\tau)`$, so
 ``` math
 U_n=\tau-B+i=x+kP+i\qquad\text{for some }0\le i<B.
 ```
 The choice of $`x`$ gives $`m_i\mid U_n`$. This is allowed: $`U_n/L_n`$ need not be reduced. But $`m_i\mid L_n`$ too, so $`m_i\mid d_n=(a_n-1)U_n-L_n`$, contradicting $`0<d_n\le B<m_i`$. It is the short positive jump, not the numerator value, that is impossible.
 
-Each crossing has $`d_n>B`$, but this alone is not enough: one jump may cross several selected heights. We must pay for all of them from the *same* excess $`d_n-B`$, rather than count that excess repeatedly. If one step first crosses $`h\ge1`$ selected heights, their spacing gives $`(h-1)P<d_n`$. Write $`r=d_n-B\ge1`$. Since $`P\ge B+1`$, $`d_n=B+r\le Pr`$, and hence $`h\le r`$. Each of those heights exceeds $`U_n`$, so monotonicity gives
+A jump may first cross several selected heights. To charge all of them to its single excess $`d_n-B`$, let their number be $`h\ge1`$. Their spacing gives $`(h-1)P<d_n`$. Write $`r=d_n-B\ge1`$. Since $`P\ge B+1`$, $`d_n=B+r\le Pr`$, and hence $`h\le r`$. Each of those heights exceeds $`U_n`$, so monotonicity gives
 ``` math
 \sum_{\substack{\tau\text{ first crossed}\\\text{at step }n}}f(\tau)
  \le(d_n-B)f(U_n).
@@ -675,18 +678,18 @@ For example, $`f(t)=1/[t\log(et)]`$ gives the sufficient condition
 ```
 Its finite lower bound in <a href="#eq:weightedcrossing" data-reference-type="eqref" data-reference="eq:weightedcrossing">[eq:weightedcrossing]</a> is $`P^{-1}\log\bigl(\log(eR_N)/\log(e(R_T+P))\bigr)`$. Further fixed iterated logarithmic factors are allowed whenever the integral still diverges. All these weights use the same crossing theorem.
 
-To express the criterion in the original growth defect, we need more than asymptotic agreement: the change in summands must be summable. Put $`\gamma_n=a_n^2/a_{n+1}-1`$ and $`\theta_n=E_n/C_n`$. The defect identity gives
+For a series, sign control alone is not enough: we bound the total change in its summands. Put $`\gamma_n=a_n^2/a_{n+1}-1`$ and $`\theta_n=E_n/C_n`$. The defect identity gives
 ``` math
 \gamma_n+\theta_n=
  \frac{(1-\theta_n)(a_n-1+\theta_{n+1})}{a_{n+1}},
  \qquad 0<\gamma_n+\theta_n<3/a_n
 ```
-eventually. Taking positive parts cannot increase the absolute difference. Since $`V_n=U_n\theta_n`$, the two nonnegative summands $`U_nf(U_n)(\gamma_n-B/U_n)_+`$ and $`(-V_n-B)_+f(U_n)`$ differ by at most $`3U_nf(U_n)/a_n`$. Since $`a_nx_n\to1`$, we have $`C_n/a_n\sim qP_n/a_n^2`$, and
+eventually. Positive parts do not increase absolute differences. Since $`V_n=U_n\theta_n`$, the summands $`U_nf(U_n)(\gamma_n-B/U_n)_+`$ and $`(-V_n-B)_+f(U_n)`$ differ by at most $`3U_nf(U_n)/a_n\le3f(1)C_n/a_n`$. This is the error *after weighting*. Now $`C_n/a_n\sim qP_n/a_n^2`$, since $`a_nx_n\to1`$, and
 ``` math
 \frac{P_{n+1}/a_{n+1}^{2}}{P_n/a_n^{2}}
  =\frac{a_n^3}{a_{n+1}^{2}}\longrightarrow0.
 ```
-The ratio test gives $`\sum_nC_n/a_n<\infty`$; now $`U_n\le C_n`$ and $`f(U_n)\le f(1)`$ make the comparison error summable. The errors in <a href="#eq:canonical-dictionary" data-reference-type="eqref" data-reference="eq:canonical-dictionary">[eq:canonical-dictionary]</a> and <a href="#eq:general-clearance-dictionary" data-reference-type="eqref" data-reference="eq:general-clearance-dictionary">[eq:general-clearance-dictionary]</a> are also absolutely summable, since each is eventually between zero and $`qP_n/a_{n+1}=O(P_n/a_n^2)`$. Consequently Theorem <a href="#res:weightedrecord" data-reference-type="ref" data-reference="res:weightedrecord">15</a> is equivalent to finiteness of
+The ratio test therefore makes the weighted error summable, even over all indices. The remainders in <a href="#eq:canonical-dictionary" data-reference-type="eqref" data-reference="eq:canonical-dictionary">[eq:canonical-dictionary]</a> and <a href="#eq:general-clearance-dictionary" data-reference-type="eqref" data-reference="eq:general-clearance-dictionary">[eq:general-clearance-dictionary]</a> are likewise absolutely summable: each is eventually between zero and $`qP_n/a_{n+1}=O(P_n/a_n^2)`$. Thus Theorem <a href="#res:weightedrecord" data-reference-type="ref" data-reference="res:weightedrecord">15</a> is equivalent to finiteness of
 ``` math
 \begin{equation}
 \label{eq:weightedgrowth}
@@ -747,14 +750,14 @@ For $`B\ge0`$ put
 ``` math
 F_B(X)=\sum_{\substack{n\in\mathcal R\\U_n\le X}}(-V_n-B)_+.
 ```
-This groups record steps by their *starting numerator* $`U_n`$, not by time or by the running maximum. To apply the weighted criterion without guessing a weight, it would suffice to prove from growth and rationality that, for some fixed integer $`B\ge0`$,
+We count record steps by their *starting numerator* $`U_n`$, not by time or the running maximum. Every selected height at most $`X`$ is first crossed by a jump starting below $`X`$, even if it lands above $`X`$. Thus a non-Sylvester orbit satisfies $`F_B(X)\ge X/P_B-O_B(1)`$, with an orbit-dependent CRT modulus $`P_B`$; $`U_n\to\infty`$ also makes $`F_B(X)`$ finite. It would therefore suffice to prove from growth and rationality that, for some fixed integer $`B\ge0`$,
 ``` math
 \begin{equation}
 \label{eq:remaining-record-budget}
  \liminf_{X\to\infty}\frac{F_B(X)}X=0.
 \end{equation}
 ```
-If the recurrence is not eventually Sylvester, first crossings instead give $`F_B(X)\ge X/P_B-O_B(1)`$, with an orbit-dependent CRT modulus $`P_B`$. In that case $`U_n\to\infty`$, so only finitely many record steps begin below a fixed $`X`$. The next lemma explains why one may seek <a href="#eq:remaining-record-budget" data-reference-type="eqref" data-reference="eq:remaining-record-budget">[eq:remaining-record-budget]</a> instead of choosing a weight in advance: enumerate the record indices by $`j`$ and set $`u_j=U_n`$, $`w_j=(-V_n-B)_+`$. A vanishing lower ratio supplies an admissible weight with a finite series. Proving that ratio estimate would therefore contradict the crossing lower bound and exclude every non-Sylvester rational tail.
+The next lemma constructs an admissible weight from this vanishing lower ratio: enumerate records by $`j`$ and put $`u_j=U_n`$, $`w_j=(-V_n-B)_+`$. The resulting weighted series is finite, contradicting Theorem <a href="#res:weightedrecord" data-reference-type="ref" data-reference="res:weightedrecord">15</a>. The estimate remains unproved; the lemma changes what one must estimate, not the hypotheses available.
 
 <div id="res:weights" class="lemma">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR20/RealCutoffCriterion.lean#L87">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos-243-reciprocal-tail-rigidity.md#res-weights-comparator">Comparator</a></p>
@@ -765,7 +768,7 @@ If the recurrence is not eventually Sylvester, first crossings instead give $`F_
 
 <div class="proof">
 
-*Proof.* Suppose the lower limit vanishes. Each cutoff contributes roughly one to the integral but summably little to the weighted sum. Since $`F`$ is constant on $`[m,m+1)`$, choose integers $`X_1<X_2<\cdots`$ with $`X_k\ge2^k`$ and $`F(X_k)\le2^{-k}X_k`$. Set
+*Proof.* Suppose the lower limit vanishes. Since $`F`$ is constant on $`[m,m+1)`$, choose integers $`X_1<X_2<\cdots`$ with $`X_k\ge2^k`$ and $`F(X_k)\le2^{-k}X_k`$. Set
 ``` math
 f(t)=\sum_{k\ge1}\frac{\mathbf 1_{[1,X_k]}(t)}{X_k}.
 ```
@@ -776,7 +779,7 @@ This function is nonincreasing and bounded by $`\sum_k2^{-k}`$. Each cutoff cont
  \sum_jw_jf(u_j)=\sum_k\frac{F(X_k)}{X_k}\le1.
 ```
 
-Conversely, let $`f`$ be such a weight and suppose $`F(m)\ge cm`$ for some $`c>0`$ and all integers $`m\ge M`$. A nonincreasing nonnegative function with divergent integral is positive everywhere, so $`F(X)\le f(X)^{-1}\sum_jw_jf(u_j)`$ is finite. Since $`f(m)-f(m+1)\ge0`$, partial summation lets us use the lower bound on $`F`$ term by term. For $`N>M`$, it gives
+Conversely, suppose $`f`$ is such a weight and $`F(m)\ge cm`$ for some $`c>0`$ and all integers $`m\ge M`$. Monotonicity and the divergent integral force $`f(X)>0`$, so $`F(X)\le f(X)^{-1}\sum_jw_jf(u_j)<\infty`$. Thus partial summation applies; the nonnegative differences $`f(m)-f(m+1)`$ preserve the lower bound on $`F`$. For $`N>M`$,
 ``` math
 \sum_{u_j\le N}w_jf(u_j)
  =F(N)f(N)+\sum_{m=1}^{N-1}F(m)\bigl(f(m)-f(m+1)\bigr)
@@ -850,9 +853,9 @@ Direct iteration can produce very large intermediate integers. To decide whether
 
 <div class="proof">
 
-*Proof.* Each exact division consumes a congruence factor. Accordingly, define $`M(0,i)=1`$ and $`M(h+1,i)=(i+2)M(h,i+1)`$. Thus $`M(h,0)=(h+1)!`$. We prove the stronger statement that, at index $`i`$, congruent inputs modulo $`M(h,i)`$ give the same answer to whether the next $`h`$ quotients are all integral. There is nothing to prove for $`h=0`$.
+*Proof.* Division by $`i+2`$ consumes that factor of the modulus; no modular inverse is required. Define $`M(0,i)=1`$ and $`M(h+1,i)=(i+2)M(h,i+1)`$. Induct on $`h`$, allowing any starting index $`i`$: inputs congruent modulo $`M(h,i)`$ either both complete $`h`$ integral steps or neither does. The case $`h=0`$ is immediate.
 
-For the inductive step, suppose $`a\equiv b\pmod{(i+2)M(h,i+1)}`$. Since $`\operatorname{num}(i,\cdot)`$ is an integer polynomial, its values at $`a`$ and $`b`$ are congruent modulo that product. In particular, one is divisible by $`i+2`$ if and only if the other is. If neither is divisible, both recursions stop. Otherwise their quotients are congruent modulo $`M(h,i+1)`$, so the induction hypothesis applies to the remaining $`h`$ updates at index $`i+1`$. Taking $`i=0`$ proves the claim. ◻
+If $`a\equiv b\pmod{(i+2)M(h,i+1)}`$, the integer polynomial $`\operatorname{num}(i,\cdot)`$ preserves this congruence. Its values are therefore either both divisible by $`i+2`$ or neither is. In the latter case both recursions stop. In the former, exact division leaves the quotients congruent modulo $`M(h,i+1)`$, and induction supplies the remaining $`h`$ steps. Finally $`M(h,0)=(h+1)!`$. ◻
 
 </div>
 
