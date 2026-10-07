@@ -15840,7 +15840,7 @@
           "path": "formalization.yaml",
           "line_start": 1,
           "line_end": 60,
-          "excerpt_sha256": "sha256:301b260737a1b5176e64724b27eb990eaeda45fba3a6cb92b482ca3bfe6bfd0f"
+          "excerpt_sha256": "sha256:0de8810350be8d2c4b97a431d33de92c9ef2fecba8b5a5414130a75adfd61f84"
         },
         {
           "path": "verification/comparator.json",

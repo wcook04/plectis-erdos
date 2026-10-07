@@ -125180,7 +125180,7 @@
     "public_source_credit": "Names and direct citations are retained for published literature, software and public contributions. Source identity, exact local use, and mathematical correspondence are separate."
   },
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:3444a7d9a1ab07275212b4f2d6b0c6512e43530d12fcdd9124dff0d68a568ff6",
+  "source_registry_sha256": "sha256:f88df74a2fc2a442af41f6c081d9156bb481def560129ca66ad73ab80ef99eb7",
   "sources": [
     {
       "artifact_coordinates": [
@@ -126155,11 +126155,11 @@
     {
       "artifact_coordinates": [
         {
-          "excerpt_sha256": "sha256:301b260737a1b5176e64724b27eb990eaeda45fba3a6cb92b482ca3bfe6bfd0f",
+          "excerpt_sha256": "sha256:0de8810350be8d2c4b97a431d33de92c9ef2fecba8b5a5414130a75adfd61f84",
           "line_end": 60,
           "line_start": 1,
           "path": "formalization.yaml",
-          "sha256": "sha256:717498a2f6365833715f1e241de3bcfba3daf431dc650cd36133eb27ce1a9a3d"
+          "sha256": "sha256:cb3659c46f39aa1d268510a8e9e591cc64f3cc2773db93e9165f31367efd37e5"
         },
         {
           "excerpt_sha256": "sha256:8b08466c661aa5a0f1977d62d091fd0a355dd90ba5d7d74a51ca6c578639737f",
@@ -126185,7 +126185,7 @@
       ],
       "artifact_links": [
         {
-          "excerpt_sha256": "sha256:301b260737a1b5176e64724b27eb990eaeda45fba3a6cb92b482ca3bfe6bfd0f",
+          "excerpt_sha256": "sha256:0de8810350be8d2c4b97a431d33de92c9ef2fecba8b5a5414130a75adfd61f84",
           "line_end": 60,
           "line_start": 1,
           "path": "formalization.yaml"
@@ -126287,7 +126287,7 @@
           "line_end": 216,
           "line_start": 159,
           "path": "formalization.yaml",
-          "sha256": "sha256:717498a2f6365833715f1e241de3bcfba3daf431dc650cd36133eb27ce1a9a3d"
+          "sha256": "sha256:cb3659c46f39aa1d268510a8e9e591cc64f3cc2773db93e9165f31367efd37e5"
         },
         {
           "excerpt_sha256": "sha256:cb49ade0a57a20d0355d24a8ebc443b2be0b82e0f3c2bdd61f361abe2913a17b",

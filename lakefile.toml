@@ -152,12 +152,3 @@ globs = ["NegativeSolutions.+"]
 [[lean_lib]]
 name = "Erdos243V5"
 srcDir = "research"
-
-# Reviewer verification only; no default targets or proof bytes change.
-[[lean_lib]]
-name = "FC1041SharpGap"
-srcDir = "research/adapters"
-
-[[lean_lib]]
-name = "FC1041SharpGapVerification"
-srcDir = "verification"

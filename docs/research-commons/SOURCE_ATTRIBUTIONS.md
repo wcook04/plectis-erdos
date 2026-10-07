@@ -957,7 +957,7 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [formalization.yaml](../../formalization.yaml#L1-L60) — lines `1–60`; excerpt `sha256:301b260737a1b5176e64724b27eb990eaeda45fba3a6cb92b482ca3bfe6bfd0f`
+- [formalization.yaml](../../formalization.yaml#L1-L60) — lines `1–60`; excerpt `sha256:0de8810350be8d2c4b97a431d33de92c9ef2fecba8b5a5414130a75adfd61f84`
 - [verification/comparator.json](../../verification/comparator.json#L1-L40) — lines `1–40`; excerpt `sha256:8b08466c661aa5a0f1977d62d091fd0a355dd90ba5d7d74a51ca6c578639737f`
 - [verification/comparator-negative-mismatch.json](../../verification/comparator-negative-mismatch.json#L1-L13) — lines `1–13`; excerpt `sha256:43aca5f4da7f5f42baf826e53324c045e4fa11acd20ffd1743609e20b5084157`
 - [docs/EXTERNAL\_VERIFICATION.md](../../docs/EXTERNAL_VERIFICATION.md#L4-L14) — lines `4–14`; excerpt `sha256:841f2dd16d4a52b7d08408468dd3f4f231b7d8aeb174d9ffad383abbde1acfe9`

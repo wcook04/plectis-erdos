@@ -1,6 +1,6 @@
 {
-  "challenge_module": "FC1041SharpGapVerification.Challenge",
-  "solution_module": "FC1041SharpGap",
+  "challenge_module": "ExternalVerification.FC1041SharpGap.Challenge",
+  "solution_module": "ExternalVerification.FC1041SharpGap.Solution",
   "theorem_names": [
     "ErdosProblems.Erdos1041.PaperCompleteR21.exists_gap_le_sharpClosedForm"
   ],

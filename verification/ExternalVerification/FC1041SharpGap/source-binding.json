@@ -1,8 +1,8 @@
 {
-  "schema": "fc1041_exact_adapter_preflight_v1",
+  "schema": "fc1041_exact_adapter_preflight_v2",
   "proof_commit": "c45de9aab30cf25172040c94c60987dec46645d8",
   "proof_declaration": "ErdosProblems.Erdos1041.PaperCompleteR21.exists_gap_le_sharpClosedForm",
-  "proof_path": "research/adapters/FC1041SharpGap.lean",
+  "proof_path": "verification/ExternalVerification/FC1041SharpGap/Solution.lean",
   "upstream_commit": "43874b729c11b65783050871577a22f9093362a8",
   "upstream_statement": "Erdos1041.erdos_1041.variants.sharp_collinear_gap",
   "source_closure": {
@@ -12,7 +12,7 @@
     "lean/ErdosProblems/Erdos1041/PaperCurveAssembly.lean": "6b0a747147efd63870273fb25c4c364050d905900deaf704f9e082b3413bcced",
     "lean/ErdosProblems/Erdos1041/SharpCollinearAlternation.lean": "5c49a2c0859f07fa6ee5e3ade4e405bf892d70b38e90b64d9a057d7cc007f8c4",
     "lean/ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean": "7a5caeceff9b667bf70241e90d7a40483ba0c5a9bfdad2115a069937a90af2cc",
-    "research/adapters/FC1041SharpGap.lean": "48e074bd4e0654f447a9d6c3dbe5d5448532b698e2fb587ae127525aef8b2f25"
+    "verification/ExternalVerification/FC1041SharpGap/Solution.lean": "48e074bd4e0654f447a9d6c3dbe5d5448532b698e2fb587ae127525aef8b2f25"
   },
   "external_imports": [
     "Mathlib",
@@ -31,9 +31,13 @@
     "Mathlib.Topology.Order.IntermediateValue"
   ],
   "protected_inputs": {
-    "verification/FC1041SharpGapVerification/Challenge.lean": "97692faba7d6bd4f716d10dbab15610d17617aa0525754ba31b3ef46009bd035",
-    "verification/FC1041SharpGapVerification/comparator.json": "ad0cb12c85cc2549879fa13e4834829df2e40c8a252653fd594c9392cc7d131a",
-    "verification/FC1041SharpGapVerification/formalization.yaml": "7ee59d41cc7c72756c91735b382d1aacfe49b6946e71cef2550d6ec38872602e",
-    "lakefile.toml": "02ea91dc0c77fe6e5e57e15e250f62cb1cf2b40eb9123d64ef01e1e0289e326f"
+    "verification/ExternalVerification/FC1041SharpGap/Challenge.lean": "97692faba7d6bd4f716d10dbab15610d17617aa0525754ba31b3ef46009bd035",
+    "verification/ExternalVerification/FC1041SharpGap/comparator.json": "77c4b214d93e9896ab2ba51459e029ace0795667404c755262289dd4ea798a60",
+    "verification/ExternalVerification/FC1041SharpGap/formalization.yaml": "7ee59d41cc7c72756c91735b382d1aacfe49b6946e71cef2550d6ec38872602e",
+    "lakefile.toml": "e1a087453f8ac7bf939211194ae083a87212d33d82bd222d1f27ffc0bbdc5211"
+  },
+  "source_closure_base_commit": "cf41120472efc0c264b5e331e9d7424de458509f",
+  "source_path_origins": {
+    "verification/ExternalVerification/FC1041SharpGap/Solution.lean": "research/adapters/FC1041SharpGap.lean"
   }
 }
