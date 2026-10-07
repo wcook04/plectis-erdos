@@ -1,0 +1,39 @@
+{
+  "schema": "fc1041_exact_adapter_preflight_v1",
+  "proof_commit": "c45de9aab30cf25172040c94c60987dec46645d8",
+  "proof_declaration": "ErdosProblems.Erdos1041.PaperCompleteR21.exists_gap_le_sharpClosedForm",
+  "proof_path": "research/adapters/FC1041SharpGap.lean",
+  "upstream_commit": "43874b729c11b65783050871577a22f9093362a8",
+  "upstream_statement": "Erdos1041.erdos_1041.variants.sharp_collinear_gap",
+  "source_closure": {
+    "lake-manifest.json": "ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c",
+    "lean-toolchain": "88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
+    "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CollinearDiameterWhole.lean": "f4fb644187da79046882400ad0ae2d409448232afddb76ec31aa63771808409a",
+    "lean/ErdosProblems/Erdos1041/PaperCurveAssembly.lean": "6b0a747147efd63870273fb25c4c364050d905900deaf704f9e082b3413bcced",
+    "lean/ErdosProblems/Erdos1041/SharpCollinearAlternation.lean": "5c49a2c0859f07fa6ee5e3ade4e405bf892d70b38e90b64d9a057d7cc007f8c4",
+    "lean/ErdosProblems/Erdos1041/SharpCollinearChebyshev.lean": "7a5caeceff9b667bf70241e90d7a40483ba0c5a9bfdad2115a069937a90af2cc",
+    "research/adapters/FC1041SharpGap.lean": "48e074bd4e0654f447a9d6c3dbe5d5448532b698e2fb587ae127525aef8b2f25"
+  },
+  "external_imports": [
+    "Mathlib",
+    "Mathlib.Algebra.Polynomial.Degree.IsMonicOfDegree",
+    "Mathlib.Algebra.Polynomial.Roots",
+    "Mathlib.Analysis.SpecialFunctions.Trigonometric.Chebyshev.RootsExtrema",
+    "Mathlib.Data.Real.Basic",
+    "Mathlib.RingTheory.Polynomial.ScaleRoots",
+    "Mathlib.Tactic.Choose",
+    "Mathlib.Tactic.FieldSimp",
+    "Mathlib.Tactic.Linarith",
+    "Mathlib.Tactic.NormNum",
+    "Mathlib.Tactic.Positivity",
+    "Mathlib.Tactic.Ring",
+    "Mathlib.Topology.Algebra.Polynomial",
+    "Mathlib.Topology.Order.IntermediateValue"
+  ],
+  "protected_inputs": {
+    "verification/FC1041SharpGapVerification/Challenge.lean": "97692faba7d6bd4f716d10dbab15610d17617aa0525754ba31b3ef46009bd035",
+    "verification/FC1041SharpGapVerification/comparator.json": "ad0cb12c85cc2549879fa13e4834829df2e40c8a252653fd594c9392cc7d131a",
+    "verification/FC1041SharpGapVerification/formalization.yaml": "66ed84033dbace63c450998b3d826ed66a884abacfb43c895c6cc1bcc3783baf",
+    "lakefile.toml": "e7d0f12dc8da7059861a69bcca2f7ae571361b068dc8457722e552e1acb6a85d"
+  }
+}
