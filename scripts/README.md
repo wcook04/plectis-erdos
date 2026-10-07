@@ -18,8 +18,15 @@ setup step nor a proof check.
 | Refresh generated maps | [Architecture and authority](../docs/ARCHITECTURE.md#which-file-is-authoritative-for-what) | [refresh_projections.py](refresh_projections.py) |
 | Validate a proposed release | [Release checks](../docs/REPRODUCIBILITY.md#3-run-the-release-surface-checks) | [check_release.py](check_release.py) |
 
-By convention, `build_*.py` produce a named projection, `check_*.py` validate a
-contract, and `test_*.py` exercise program behaviour. Read a tool's help and its
+Production commands and support modules live here. The [tests](tests/) exercise
+their behaviour; [paper tools](papers/) render and validate the paper corpus;
+[Lean utilities](lean/) inspect elaborated declarations. Run a focused Python
+test as `python3 scripts/tests/test_<name>.py`; the release and CI owners select
+the complete suites. Tests can also run as `python3 -m unittest
+scripts.tests.test_<name>`.
+
+By convention, `build_*.py` produce a named projection and `check_*.py` validate a
+contract. Read a tool's help and its
 guide before running it: builders can write files, and some checks require Lean,
 dependencies or commit history. Query output and passing documentation checks
 are navigation evidence; they do not establish a mathematical theorem.

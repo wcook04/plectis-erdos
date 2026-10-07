@@ -687,7 +687,11 @@ def validate_entry_links(
         in normalise(readme_first_impression).casefold(),
         "README first impression lost the authority-owned status boundary",
     )
-    require("](docs/ARCHITECTURE.md)" in readme,
+    def links_to(document: str, target: str) -> bool:
+        """A same-file fragment or query selects a section, not another guide."""
+        return any(re.split(r"[?#]", link, maxsplit=1)[0] == target
+                   for link in re.findall(r"\[[^\]]+\]\(([^)]+)\)", document))
+    require(links_to(readme, "docs/ARCHITECTURE.md"),
             "README lost the architecture guide entry link")
     require(
         re.search(
@@ -711,11 +715,12 @@ def validate_entry_links(
         require(phrase not in readme_first_impression.casefold(), (
             f"README first impression exposes unexplained phrase {phrase!r}"
         ))
-    require("docs/ARCHITECTURE.md" in agents, "AGENTS lost the architecture guide route")
-    require("plain-language human guide" in agents,
-            "AGENTS lost the plain-language architecture guide route")
+    require(links_to(agents, "../../AGENTS.md"),
+            "agent mutation guide lost the shared task router")
+    require("## Authority and change order" in agents and "## Validation" in agents,
+            "agent mutation guide lost its authority or validation responsibility")
     compact_paper_readme = normalise(paper_readme)
-    require("[`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md)" in paper_readme,
+    require(links_to(paper_readme, "../docs/ARCHITECTURE.md"),
             "paper README lost the architecture guide route")
     require(
         "short first-read paper" in compact_paper_readme

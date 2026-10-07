@@ -1,0 +1,553 @@
+#!/usr/bin/env python3
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+"""Adversarial fixtures for the newcomer architecture guide."""
+
+from __future__ import annotations
+
+import _test_bootstrap  # noqa: F401
+
+import re
+import os
+import subprocess
+import tempfile
+from pathlib import Path
+from unittest.mock import patch
+
+import check_architecture_guide as checker
+import check_release
+
+
+def assert_rejected(text: str, label: str) -> None:
+    try:
+        checker.validate_guide(text)
+    except AssertionError:
+        return
+    raise AssertionError(f"architecture-guide mutation escaped: {label}")
+
+
+def assert_paper_rejected(text: str, label: str) -> None:
+    try:
+        checker.validate_systems_paper(text)
+    except AssertionError:
+        return
+    raise AssertionError(f"systems-paper mutation escaped: {label}")
+
+
+def reflow_tolerant_replace(source: str, phrase: str, replacement: str) -> str:
+    """Replace prose even when LaTeX source rewraps it across lines."""
+    pattern = r"\s+".join(re.escape(word) for word in phrase.split())
+    return re.sub(pattern, lambda _match: replacement, source, count=1)
+
+
+def check_safe_input_boundary() -> None:
+    with tempfile.TemporaryDirectory(prefix="architecture-input-") as raw_workspace:
+        workspace = Path(raw_workspace)
+        regular = workspace / "regular.txt"
+        regular.write_text("architecture input\n", encoding="utf-8")
+        assert checker.safe_architecture_text(regular, root=workspace) == (
+            "architecture input\n"
+        )
+
+        directory = workspace / "directory"
+        directory.mkdir()
+        try:
+            checker.safe_architecture_text(directory, root=workspace)
+        except checker.UnsafeArchitectureInput:
+            pass
+        else:
+            raise AssertionError("architecture directory input escaped the regular-file boundary")
+
+        symlink = workspace / "symlink.txt"
+        symlink.symlink_to(regular)
+        try:
+            checker.safe_architecture_text(symlink, root=workspace)
+        except checker.UnsafeArchitectureInput:
+            pass
+        else:
+            raise AssertionError("architecture symlink input escaped the no-follow boundary")
+
+        if hasattr(os, "mkfifo"):
+            fifo = workspace / "fifo"
+            os.mkfifo(fifo)
+            try:
+                checker.safe_architecture_text(fifo, root=workspace)
+            except checker.UnsafeArchitectureInput:
+                pass
+            else:
+                raise AssertionError("architecture FIFO input escaped the non-blocking boundary")
+
+
+def check_public_root_inventory() -> None:
+    with tempfile.TemporaryDirectory(prefix="public-root-layout-") as raw:
+        root = Path(raw)
+        def git(*args):
+            return subprocess.run(["git", "-C", str(root), *args], check=True,
+                                  capture_output=True, env=check_release.clean_environment())
+        git("init", "-q")
+        (root / ".gitignore").write_text("tmp/\nstate/\n.validation-singleflight/\n")
+        (root / "README.md").write_text("Public entry\n")
+        git("add", ".gitignore", "README.md")
+        for name in ("tmp", "state", ".validation-singleflight"):
+            (root / name).mkdir()
+            (root / name / "local.json").write_text("{}\n")
+        def errors():
+            with patch.object(check_release, "ROOT", root), patch.object(check_release, "ERRORS", []):
+                check_release.check_root_layout()
+                return list(check_release.ERRORS)
+        assert not errors(), "ignored local caches were treated as published documents"
+        (root / "DUPLICATE.md").write_text("Unclassified candidate\n")
+        assert any("DUPLICATE.md" in error for error in errors())
+        (root / "DUPLICATE.md").unlink()
+        git("add", "-f", "state/local.json")
+        assert any("state" in error for error in errors()), "ignore rule hid a staged public file"
+        git("rm", "--cached", "state/local.json")
+        (root / "ErdosProblems").mkdir()
+        (root / "ErdosProblems" / "Loose.lean").write_text("def x := 1\n")
+        assert any("loose corpus" in error for error in errors())
+
+
+
+def check_documentation_inventory() -> None:
+    with tempfile.TemporaryDirectory(prefix="public-docs-layout-") as raw:
+        root = Path(raw)
+        docs = root / "docs"
+        docs.mkdir()
+        (root / "README.md").write_text("Public entry\n")
+        (root / ".gitignore").write_text("docs/LOCAL.md\n")
+        (docs / "README.md").write_text("[Results](RESULTS.md)\n")
+        (docs / "RESULTS.md").write_text("Current results\n")
+        nested = docs / "reference"
+        nested.mkdir()
+        (nested / "README.md").write_text("[New record](NEW.md)\n")
+        (nested / "NEW.md").write_text("A specialist record\n")
+
+        def errors():
+            with patch.object(check_release, "ROOT", root), patch.object(check_release, "ERRORS", []):
+                check_release.check_root_layout()
+                return list(check_release.ERRORS)
+
+        # Source archives lack Git but retain the same public-doc placement rule.
+        assert not errors(), "indexed nested documentation rejected in source archive"
+        (docs / "LOOSE.md").write_text("Unclassified guide\n")
+        assert any("LOOSE.md" in e for e in errors())
+        (docs / "LOOSE.md").unlink()
+        (docs / "README.md").write_text("No route to results\n")
+        assert any("must link" in e and "RESULTS.md" in e for e in errors())
+        (docs / "README.md").write_text("[Results](./RESULTS.md#current)\n")
+        assert not errors(), "fragment-bearing root guide link rejected"
+
+        scripts = root / "scripts"
+        (scripts / "tests").mkdir(parents=True)
+        (scripts / "test_regrowth.py").write_text("pass\n")
+        assert any("scripts/tests/" in e for e in errors())
+        (scripts / "test_regrowth.py").rename(scripts / "tests" / "test_regrowth.py")
+        (nested / "builder.py").write_text("pass\n")
+        assert any("executable documentation tools" in e for e in errors())
+        (nested / "builder.py").rename(scripts / "builder.py")
+        assert not errors(), "organized test and tool directories rejected"
+
+        def git(*args):
+            subprocess.run(["git", "-C", str(root), *args], check=True,
+                           capture_output=True, env=check_release.clean_environment())
+
+        git("init", "-q")
+        git("add", ".gitignore", "README.md", "docs")
+        (docs / "LOCAL.md").write_text("Local ignored notes\n")
+        assert not errors(), "ignored local notes treated as published guides"
+        git("add", "-f", "docs/LOCAL.md")
+        assert any("LOCAL.md" in e for e in errors()), "staged ignored guide escaped inventory"
+
+
+def check_v2_guide_mutations(guide: str) -> None:
+    mutations = (
+        (
+            guide.replace("[Results and limits](RESULTS.md)", "[Verification](EXTERNAL_VERIFICATION.md)", 1),
+            "current mathematical status owner removed",
+        ),
+        (
+            reflow_tolerant_replace(
+                guide,
+                "Supporting declarations need not have a claim record",
+                "Every supporting declaration automatically acquires public claim authority",
+            ),
+            "supporting declaration promoted to public claim authority",
+        ),
+        (
+            reflow_tolerant_replace(
+                guide,
+                "reviewed claim registry covers #68, #243, #249, #251, #257, #269, #1041 and #1049",
+                "reviewed claim registry covers #249 and #257",
+            ),
+            "obsolete two-problem registry scope restored",
+        ),
+        (
+            guide.replace("#1049.", "#1049 and #9999.", 1),
+            "unregistered problem added to reviewed scope",
+        ),
+        (
+            guide.replace("comparator_assurance", "unrelated_route"),
+            "Comparator inspection route removed",
+        ),
+        (
+            guide.replace("palomar_qualification", "unrelated_route"),
+            "Palomar qualification route removed",
+        ),
+        (
+            guide.replace("Lean decides whether a formal proof", "Software decides"),
+            "formal-check decision blurred",
+        ),
+        (
+            guide.replace("A mathematician decides whether the public wording", ""),
+            "human semantic review removed",
+        ),
+        (
+            guide.replace("does not prove that every important sentence was selected", ""),
+            "coverage ceiling removed",
+        ),
+        (
+            reflow_tolerant_replace(
+                guide,
+                "is archived provenance only, not an active gateway.",
+                "is the default active mathematical gateway.",
+            ),
+            "retired combined manuscript restored as default gateway",
+        ),
+        (
+            guide.replace("## A complete example", "## Internal record"),
+            "worked-example section removed",
+        ),
+        (guide + "\nM8 achieved 9/10.\n", "evaluation shorthand introduced"),
+    )
+    for mutated, label in mutations:
+        if mutated == guide:
+            raise AssertionError(f"architecture-guide mutation anchor missing: {label}")
+        assert_rejected(mutated, label)
+
+
+def main() -> int:
+    check_public_root_inventory()
+    check_documentation_inventory()
+    check_safe_input_boundary()
+    guide = checker.GUIDE.read_text(encoding="utf-8")
+    readme = checker.README.read_text(encoding="utf-8")
+    agents = checker.AGENTS.read_text(encoding="utf-8")
+    paper_readme = checker.PAPER_README.read_text(encoding="utf-8")
+    systems_paper = checker.SYSTEMS_PAPER.read_text(encoding="utf-8")
+
+    checker.validate_guide(guide)
+    checker.validate_systems_paper(systems_paper)
+    checker.validate_entry_links(readme, agents, paper_readme, guide)
+    # Entry labels and valid fragments may evolve; the destination must survive.
+    for target in ("docs/ARCHITECTURE.md", "docs/ARCHITECTURE.md#directory-and-naming-conventions",
+                   "docs/ARCHITECTURE.md?plain=1#repository-map"):
+        variant = re.sub(r"\]\(docs/ARCHITECTURE\.md(?:[?#][^)]*)?\)",
+                         f"]({target})", readme)
+        assert variant != readme or target in readme
+        checker.validate_entry_links(variant, agents, paper_readme, guide)
+    # These route-deletion fixtures run for every manuscript version, including
+    # v2's separate paper-pipeline branch below.
+    entry_mutations = (
+        (re.sub(r"\]\(docs/ARCHITECTURE\.md(?:[?#][^)]*)?\)",
+                "](missing-architecture.md)", readme), agents, "root architecture route"),
+        (re.sub(r"\]\(docs/ARCHITECTURE\.md(?:[?#][^)]*)?\)",
+                "](docs/ARCHITECTURE.md-backup#repository-map)", readme), agents,
+         "same-prefix non-architecture file"),
+        (readme, agents.replace("](../../AGENTS.md)", "](missing-agent-router.md)"),
+         "shared task router"),
+    )
+    for changed_readme, changed_agents, label in entry_mutations:
+        assert (changed_readme, changed_agents) != (readme, agents), f"entry mutation became a no-op: {label}"
+        try:
+            checker.validate_entry_links(changed_readme, changed_agents, paper_readme, guide)
+        except AssertionError:
+            pass
+        else:
+            raise AssertionError(f"entry link mutation escaped: {label}")
+    checks = 3
+    if "% SYSTEMS_PAPER_VERSION 2" in systems_paper:
+        check_v2_guide_mutations(guide)
+        from test_systems_paper_pipeline import run_all
+        return run_all()
+
+    contract = checker.json.loads(
+        checker.safe_architecture_text(checker.PUBLICATION_CONTRACT)
+    )
+    systems_paper_budget = (
+        checker.SYSTEMS_PAPER_BASE_BYTES
+        + checker.SYSTEMS_PAPER_BYTES_PER_ARTIFACT * len(contract["artifacts"])
+    )
+    assert checker.authored_bytes(systems_paper) <= systems_paper_budget
+    # A regenerated region may grow without spending the budget; prose may not.
+    region_end = "% END generated_semantic_coverage_macros"
+    assert region_end in systems_paper
+    grown_region = systems_paper.replace(region_end, "%" + "0" * 5000 + "\n" + region_end, 1)
+    checker.validate_systems_paper(grown_region)
+    grown_prose = systems_paper.replace(region_end, region_end + "\n%" + "0" * 5000, 1)
+    try:
+        checker.validate_systems_paper(grown_prose)
+    except AssertionError:
+        pass
+    else:
+        raise AssertionError("systems paper budget accepted 5,000 bytes of authored growth")
+    checks += 2
+
+    mutations = (
+        (
+            reflow_tolerant_replace(
+                guide, checker.external_status_boundary(), ""
+            ),
+            "open-problem boundary removed",
+        ),
+        (
+            reflow_tolerant_replace(
+                guide,
+                "reviewed claim registry covers #68, #243, #249, #251, #257, #269, #1041 and #1049",
+                "reviewed claim registry covers #249 and #257",
+            ),
+            "obsolete two-problem registry scope restored",
+        ),
+        (
+            guide.replace("#1049.", "#1049 and #9999.", 1),
+            "unregistered problem added to reviewed scope",
+        ),
+        (
+            guide.replace("comparator_assurance", "unrelated_route"),
+            "Comparator inspection route removed",
+        ),
+        (
+            guide.replace("palomar_qualification", "unrelated_route"),
+            "Palomar qualification route removed",
+        ),
+        (
+            guide.replace("Lean decides whether a formal proof", "Software decides"),
+            "formal-check decision blurred",
+        ),
+        (
+            guide.replace("A mathematician decides whether the public wording", ""),
+            "human semantic review removed",
+        ),
+        (
+            guide.replace("does not prove that every important sentence was selected", ""),
+            "coverage ceiling removed",
+        ),
+        (
+            reflow_tolerant_replace(
+                guide,
+                "The archived combined #249/#257 PDF is not a default reading route.",
+                "The combined #249/#257 PDF is the default reading route.",
+            ),
+            "retired combined manuscript restored as default gateway",
+        ),
+        (
+            guide.replace("## A complete example", "## Internal record"),
+            "worked-example section removed",
+        ),
+        (guide + "\nM8 achieved 9/10.\n", "evaluation shorthand introduced"),
+    )
+    for mutated, label in mutations:
+        assert_rejected(mutated, label)
+        checks += 1
+
+    paper_mutations = (
+        (
+            systems_paper.replace(
+                r"\section{A problem-sized world}",
+                r"\section{Background}",
+            ),
+            "real architecture section removed",
+        ),
+        (
+            systems_paper.replace("docs/claims.json", "a claim file"),
+            "real claim owner hidden",
+        ),
+        (
+            systems_paper.replace("Comparator-checked", "Independently verified"),
+            "review-enforcement boundary inflated",
+        ),
+        (
+            systems_paper + "\nThe M8 score was 9/10 across 5,207 checks.\n",
+            "private evaluation shorthand reintroduced",
+        ),
+        (
+            reflow_tolerant_replace(
+                systems_paper,
+                "% BEGIN generated_semantic_coverage_macros",
+                "% semantic coverage macros removed",
+            ),
+            "semantic-corpus builder boundary removed",
+        ),
+        (
+            reflow_tolerant_replace(
+                systems_paper,
+                "semantic single-flight queue",
+                "ordinary build command",
+            ),
+            "Lean queue architecture removed",
+        ),
+        (
+            reflow_tolerant_replace(
+                systems_paper,
+                "Negative results are part of what the loop produces",
+                "The loop keeps only successful results",
+            ),
+            "negative-results thesis removed",
+        ),
+        (
+            reflow_tolerant_replace(
+                systems_paper,
+                "does not technically force a second independent mathematician",
+                "guarantees a second independent mathematician",
+            ),
+            "single-maintainer review ceiling inflated",
+        ),
+        (
+            systems_paper.replace(
+                "https://github.com/wcook04/plectis-erdos",
+                "https://github.com/wcook04/plectis-lean-erdos249-257",
+            ),
+            "repository links use a retired repository name",
+        ),
+        (
+            systems_paper.replace(r"level $e\ge1$", r"level $e\ge0$"),
+            "totient rank formula extended to the false e = 0 case",
+        ),
+        (
+            systems_paper.replace(
+                r"\repolink{docs/ARCHITECTURE.md}{docs/ARCHITECTURE.md}",
+                r"\repolink{ARCHITECTURE.md}{ARCHITECTURE.md}",
+            ),
+            "inspection route points to a missing repository file",
+        ),
+    )
+    # A pinned link to a revision that predates the evidence it is cited for
+    # resolves as a URL and must still be rejected.
+    closure_pin = "09db551ef4de91e6c56fd6a00add102eacd4b517"
+    if closure_pin in systems_paper:
+        paper_mutations = (*paper_mutations, (
+            systems_paper.replace(
+                closure_pin, "3aea812a5fb031b14e0911cc9110885cd8a10bfd"
+            ),
+            "closure link pinned before the closure existed",
+        ))
+    for mutated, label in paper_mutations:
+        assert mutated != systems_paper, (
+            f"systems-paper mutation fixture became a no-op: {label}"
+        )
+        assert_paper_rejected(mutated, label)
+        checks += 1
+
+    # Every pinned anchor must be armed: deleting all of its occurrences has to
+    # change the source and has to be rejected. An anchor the source no longer
+    # contains verbatim, or one the checker ignores, would otherwise guard
+    # nothing while looking like a limit.
+    # Path anchors also occur TeX-escaped in link text (check\_release.py),
+    # which the checker flattens back, so both spellings are deleted.
+    for group_id, anchors in checker.PAPER_REQUIRED_ANCHOR_GROUPS.items():
+        for anchor in anchors:
+            mutated = systems_paper
+            for spelling in {anchor, anchor.replace("_", r"\_")}:
+                pattern = r"\s+".join(re.escape(word) for word in spelling.split())
+                mutated = re.sub(pattern, "", mutated, flags=re.IGNORECASE)
+            assert mutated != systems_paper, (
+                f"systems-paper anchor is not verbatim in the source: {group_id}: {anchor!r}"
+            )
+            assert_paper_rejected(mutated, f"{group_id} anchor deleted: {anchor!r}")
+            checks += 1
+
+    overflow = systems_paper + "x" * (
+        systems_paper_budget - checker.authored_bytes(systems_paper) + 1
+    )
+    assert_paper_rejected(
+        overflow,
+        "publication-scaled architecture budget exceeded",
+    )
+    checks += 1
+
+    try:
+        checker.validate_entry_links(
+            re.sub(r"\]\(docs/ARCHITECTURE\.md(?:[?#][^)]*)?\)",
+                   "](missing-architecture.md)", readme),
+            agents,
+            paper_readme,
+            guide,
+        )
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("README architecture entry-link deletion escaped")
+
+    router_removed = agents.replace("](../../AGENTS.md)", "](missing-agent-router.md)")
+    assert router_removed != agents, "shared-agent-router mutation became a no-op"
+    try:
+        checker.validate_entry_links(readme, router_removed, paper_readme, guide)
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("shared agent task-router deletion escaped")
+
+    try:
+        checker.validate_entry_links(
+            reflow_tolerant_replace(
+                readme,
+                checker.external_status_boundary(),
+                "A conditional producer would be required",
+            ),
+            agents,
+            paper_readme,
+            guide,
+        )
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("README private first-impression phrase escaped")
+
+    try:
+        checker.validate_entry_links(
+            readme,
+            agents,
+            paper_readme.replace(
+                "repository layout, sources of truth, build path, and release\n"
+                "infrastructure",
+                "specialist systems case study",
+            ),
+            guide,
+        )
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("paper architecture-role deletion escaped")
+
+    try:
+        checker.validate_entry_links(
+            readme,
+            agents,
+            paper_readme,
+            guide.replace(
+                "claim-faithful-publication-systems-paper.pdf",
+                "systems-paper.pdf",
+            ),
+        )
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("architecture systems-paper link deletion escaped")
+
+    try:
+        checker.validate_entry_links(
+            readme,
+            agents,
+            paper_readme,
+            guide.replace("You do not need to know Lean", "Start by learning Lean"),
+        )
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("architecture no-Lean entry boundary deletion escaped")
+
+    print(f"architecture guide tests: {checks} checks passed")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

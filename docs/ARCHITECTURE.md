@@ -139,12 +139,15 @@ technical reference.
 ### Directory and naming conventions
 
 `paper/` holds manuscripts and PDFs; `docs/papers/` holds generated full text
-and its catalogue. `verification/` holds formal interfaces and configuration;
+and its catalogue; their executable builders live in `scripts/papers/`.
+Production commands and support modules live in `scripts/`, with their tests
+in `scripts/tests/`. `verification/` holds formal interfaces and configuration;
 `docs/verification/` holds instructions. `research/` contains experiments and
 tools; `research_corpus/` preserves dated returns.
 
 Lean source names follow namespaces and Lake configuration. The older
-`Erdos249257` name remains in imports, citations and recorded checks; use the
+`Erdos249257` name remains in imports, citations and recorded checks. The
+[formal-source index](../lean/README.md) explains build roles; use the
 [source map](reference/SOURCE_MAP.md) to locate results across both libraries. Renaming a
 source requires updating those consumers together.
 
@@ -233,7 +236,7 @@ instructions. The proof wrapper invokes `lake build`; it is separate from
 `python3 scripts/check_release.py`, which does not run Lean.
 
 For documentation work, the focused reader checks include
-`python3 scripts/test_human_first_contact.py` and
+`python3 scripts/tests/test_human_first_contact.py` and
 `python3 scripts/check_architecture_guide.py`.
 `python3 scripts/check_cold_clone_comprehension.py --quick` checks the bounded
 navigation routes before a toolchain download. Use the relevant tool's own

@@ -1424,8 +1424,8 @@
       ],
       "commands": [
         "python3 scripts/agent_skill_catalog.py --check",
-        "python3 scripts/test_agent_entry.py",
-        "python3 scripts/test_compact_agent_entry.py",
+        "python3 scripts/tests/test_agent_entry.py",
+        "python3 scripts/tests/test_compact_agent_entry.py",
         "python3 scripts/check_cold_clone_comprehension.py --quick"
       ],
       "boundary": "Repair the public owner surface and preserve the observed journey as a fixture; do not depend on private infrastructure or hand-edit generated projections.",

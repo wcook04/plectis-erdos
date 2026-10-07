@@ -67,10 +67,10 @@ SANITIZED_RUNTIME_ENVIRONMENT_KEYS = (
 SANITIZED_RUNTIME_ENVIRONMENT_PREFIXES = ("PYTHON",)
 RELEASE_COMMANDS = (
     ("python3", "scripts/check_release.py"),
-    ("python3", "scripts/test_root_import_closure.py"),
-    ("python3", "scripts/test_release_source_identity.py"),
-    ("python3", "scripts/test_query_route_memory.py"),
-    ("python3", "scripts/test_expert_handoffs.py"),
+    ("python3", "scripts/tests/test_root_import_closure.py"),
+    ("python3", "scripts/tests/test_release_source_identity.py"),
+    ("python3", "scripts/tests/test_query_route_memory.py"),
+    ("python3", "scripts/tests/test_expert_handoffs.py"),
 )
 
 

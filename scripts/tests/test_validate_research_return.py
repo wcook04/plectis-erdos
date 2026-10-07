@@ -1,0 +1,628 @@
+#!/usr/bin/env python3
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+"""Adversarial executable checks for the public return validator."""
+
+from __future__ import annotations
+
+import _test_bootstrap  # noqa: F401
+
+import copy
+import json
+import os
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
+from unittest import mock
+
+import validate_research_return as validator
+import route_memory_receipt
+import validation_singleflight as singleflight
+
+
+ROOT = Path(__file__).resolve().parents[2]
+SCRIPT = ROOT / "scripts" / "validate_research_return.py"
+FIXTURE = ROOT / ".github" / "fixtures" / "unaccepted-research-return.json"
+
+
+def require(condition: bool, message: str) -> None:
+    if not condition:
+        raise AssertionError(message)
+
+
+def run_cli(input_path: Path, *arguments: str) -> subprocess.CompletedProcess[str]:
+    """Run the public validator CLI without ambient checkout state."""
+    return subprocess.run(
+        [sys.executable, str(SCRIPT), str(input_path), *arguments],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+        env=singleflight.command_environment(),
+        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+    )
+
+
+def main() -> int:
+    fixture = json.loads(FIXTURE.read_text(encoding="utf-8"))
+    identity = validator.repository_identity_contract.load_identity()
+    # Lean emits JSON diagnostics inside the JSON workbench receipt.  Its
+    # escaped newline after "this:" must not become a Windows drive path.
+    lean_diagnostic = {
+        "caption": "",
+        "data": (
+            "Try this:\n  [apply] ring_nf\n  \n"
+            "  The `ring` tactic failed to close the goal. "
+            "Use `ring_nf` to obtain a normal form."
+        ),
+        "fileName": "<stdin>",
+        "kind": "[anonymous]",
+        "pos": {"column": 4, "line": 88},
+        "severity": "information",
+    }
+    rejected_probe = {
+        "kind": "probe",
+        "move_id": "m003",
+        "kernel_receipt": {
+            "verdict": "kernel_rejected",
+            "output_tail": json.dumps(lean_diagnostic),
+        },
+    }
+    for probe in (rejected_probe, json.dumps(rejected_probe)):
+        require(
+            not validator.public_safety_errors(probe),
+            "nested Lean 'Try this' diagnostic was mistaken for a private path",
+        )
+    for private_path in (
+        "/Users/alice/proof.lean",
+        "/home/alice/proof.lean",
+        "/repo/ai_workflow/proof.lean",
+        r"C:\private\proof.lean",
+        r"d:\private\proof.lean",
+    ):
+        private_probe = copy.deepcopy(rejected_probe)
+        private_probe["kernel_receipt"]["output_tail"] = json.dumps(
+            {**lean_diagnostic, "data": f"Failed to open {private_path}"}
+        )
+        for probe in (private_probe, json.dumps(private_probe)):
+            require(
+                "contains a private path or private-repository reference"
+                in validator.public_safety_errors(probe),
+                f"nested diagnostic concealed a private path: {private_path}",
+            )
+    require(
+        validator.public_safety_errors("ai_workflow/proof.lean"),
+        "private repository reference at the start of text escaped detection",
+    )
+    require(
+        validator.PROBLEMS is validator.route_memory_receipt.ROSTER,
+        "return selector roster must reuse route-memory authority",
+    )
+    consultation = route_memory_receipt.consultation_for_problem(257, ROOT)
+    no_route = dict(consultation)
+    no_route["disposition"] = "no_applicable_route"
+    no_route["routes"] = []
+    summary = validator.route_memory_binding_summary(
+        route_memory_receipt.return_receipt_template(no_route)
+    )
+    require(
+        summary["disposition"] == "no_applicable_route",
+        "route-memory summary dropped the no-applicable-route disposition",
+    )
+    require(
+        validator.GIT_COMMAND_TIMEOUT_SECONDS
+        == singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        "return validator Git timeout drifted from the canonical boundary",
+    )
+
+    errors = validator.validate_document(
+        fixture,
+        require_submitted=True,
+        repository_identity=identity,
+    )
+    require(not errors, f"committed submitted fixture should validate: {errors}")
+    require(
+        any(
+            "complete proposed-diff validation requires a proposed commit" in error
+            for error in validator.validate_document(
+                fixture, require_complete_proposed_diff=True,
+                repository_identity=identity,
+            )
+        ),
+        "complete-diff mode accepted a return without a proposed commit",
+    )
+    committed_return = copy.deepcopy(fixture)
+    committed_return["repository"]["proposed_commit"] = "a" * 40
+    listed = set(committed_return["repository"]["changed_paths"])
+    with mock.patch.object(validator, "_git_commit_exists", return_value=True), \
+         mock.patch.object(validator, "_git_is_ancestor", return_value=True), \
+         mock.patch.object(validator, "_git_path_exists", return_value=True), \
+         mock.patch.object(validator, "_git_changed_paths", return_value=listed):
+        require(
+            not validator.validate_document(
+                committed_return, require_submitted=True, check_git=True,
+                require_complete_proposed_diff=True, repository_identity=identity,
+            ),
+            "complete proposed diff was rejected",
+        )
+    with mock.patch.object(validator, "_git_commit_exists", return_value=True), \
+         mock.patch.object(validator, "_git_is_ancestor", return_value=True), \
+         mock.patch.object(validator, "_git_path_exists", return_value=True), \
+         mock.patch.object(validator, "_git_changed_paths", return_value=listed | {"docs/omitted.txt"}):
+        omissions = validator.validate_document(
+            committed_return, require_submitted=True, check_git=True,
+            require_complete_proposed_diff=True, repository_identity=identity,
+        )
+        require(
+            any("paths omitted from the complete proposed Git diff" in error for error in omissions),
+            f"validator accepted an omitted changed path: {omissions}",
+        )
+    require(
+        validator.validate_document(
+            fixture,
+            require_accepted=True,
+            repository_identity=identity,
+        ),
+        "an unaccepted fixture crossed the accepted gate",
+    )
+
+    architecture_fixture = copy.deepcopy(fixture)
+    architecture_fixture["return_id"] = "rr-architecture-validator-test"
+    architecture_fixture["frontier"] = {
+        "track": "architecture",
+        "area": "tooling",
+        "handle": "cold-clone-contribution-loop",
+        "bounded_question": "Can a cold clone validate one architecture contribution?",
+        "stop_condition": "Stop when the architecture receipt validates.",
+        "starting_paths": ["CONTRIBUTING.md"],
+    }
+    architecture_fixture["result"].update(
+        {
+            "class": "checked_positive",
+            "summary": "The bounded architecture validation path is executable.",
+            "claim_ceiling": "validated_architecture_change",
+            "surviving_boundary": "This does not establish mathematical correctness or universal workflow quality.",
+            "requested_disposition": "consider_architecture_adoption",
+        }
+    )
+    architecture_fixture["evidence"][0]["command"] = "python3 scripts/tests/test_validate_research_return.py"
+    architecture_fixture["evidence"][0]["exit_state"] = "passed"
+    architecture_fixture["evidence"][0]["exit_code"] = 0
+    architecture_fixture["evidence"][0]["replay_state"] = "reproduced"
+    architecture_fixture["attribution"]["artifact_credit"][0]["contribution_roles"] = [
+        "conceptualization",
+        "software",
+        "validation",
+    ]
+    require(
+        not validator.validate_document(
+            architecture_fixture,
+            require_submitted=True,
+            repository_identity=identity,
+        ),
+        "first-class architecture receipt did not validate",
+    )
+    architecture_with_problem = copy.deepcopy(architecture_fixture)
+    architecture_with_problem["frontier"]["problem"] = 257
+    require(
+        any("frontier.problem" in error for error in validator.validate_document(architecture_with_problem)),
+        "architecture receipt accepted a fictitious problem attribution",
+    )
+    architecture_bad_role = copy.deepcopy(architecture_fixture)
+    architecture_bad_role["attribution"]["artifact_credit"][0]["contribution_roles"] = ["idea_owner"]
+    require(
+        any("unknown roles" in error for error in validator.validate_document(architecture_bad_role)),
+        "architecture receipt accepted an unknown credit role",
+    )
+
+    # A mathematical contribution that matters across several problems, or that
+    # develops a subject no single problem owns, names its subject and the
+    # problems it relates to instead of inventing a problem number.
+    subject_fixture = copy.deepcopy(fixture)
+    subject_fixture["return_id"] = "rr-subject-validator-test"
+    subject_fixture["frontier"] = {
+        "track": "mathematics",
+        "subject": "greedy skip mechanisms shared across reciprocal-series problems",
+        "related_problems": [249, 257],
+        "handle": "subject/greedy-skip-transfer",
+        "bounded_question": "Does one recorded skip mechanism cover both problems?",
+        "stop_condition": "Stop after one bounded comparison.",
+        "starting_paths": ["docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"],
+    }
+    require(
+        not validator.validate_document(
+            subject_fixture,
+            require_submitted=True,
+            repository_identity=identity,
+        ),
+        "subject-shaped mathematics receipt did not validate",
+    )
+
+    unrelated_subject = copy.deepcopy(subject_fixture)
+    unrelated_subject["frontier"]["related_problems"] = []
+    unrelated_subject["evidence"][0]["command"] = (
+        "python3 scripts/query_corpus.py --overview --format json"
+    )
+    require(
+        not validator.validate_document(
+            unrelated_subject,
+            require_submitted=True,
+            repository_identity=identity,
+        ),
+        "subject receipt with no related problem did not validate",
+    )
+
+    subject_and_problem = copy.deepcopy(subject_fixture)
+    subject_and_problem["frontier"]["problem"] = 257
+    require(
+        any(
+            "frontier.subject" in error
+            for error in validator.validate_document(subject_and_problem)
+        ),
+        "a receipt naming both a problem and a subject was accepted",
+    )
+
+    neither_selector = copy.deepcopy(subject_fixture)
+    del neither_selector["frontier"]["subject"]
+    del neither_selector["frontier"]["related_problems"]
+    require(
+        any(
+            "frontier.problem" in error
+            for error in validator.validate_document(neither_selector)
+        ),
+        "a mathematics receipt naming neither a problem nor a subject was accepted",
+    )
+
+    implicit_subject_track = copy.deepcopy(subject_fixture)
+    del implicit_subject_track["frontier"]["track"]
+    require(
+        any(
+            "frontier.track" in error
+            for error in validator.validate_document(implicit_subject_track)
+        ),
+        "a subject receipt inferred the mathematics track without declaring it",
+    )
+
+    off_roster_related = copy.deepcopy(subject_fixture)
+    off_roster_related["frontier"]["related_problems"] = [249, 1000]
+    require(
+        any(
+            "frontier.related_problems[1]" in error
+            for error in validator.validate_document(off_roster_related)
+        ),
+        "a related problem outside the public roster was accepted",
+    )
+
+    unsorted_related = copy.deepcopy(subject_fixture)
+    unsorted_related["frontier"]["related_problems"] = [257, 249]
+    require(
+        any(
+            "must be sorted in ascending order" in error
+            for error in validator.validate_document(unsorted_related)
+        ),
+        "an unsorted related-problem list was accepted",
+    )
+
+    duplicate_related = copy.deepcopy(subject_fixture)
+    duplicate_related["frontier"]["related_problems"] = [249, 249]
+    require(
+        any(
+            "must not contain duplicates" in error
+            for error in validator.validate_document(duplicate_related)
+        ),
+        "a repeated related problem was accepted",
+    )
+
+    missing_related = copy.deepcopy(subject_fixture)
+    del missing_related["frontier"]["related_problems"]
+    require(
+        any(
+            "is required with frontier.subject" in error
+            for error in validator.validate_document(missing_related)
+        ),
+        "a subject receipt without a related-problem list was accepted",
+    )
+
+    related_with_problem = copy.deepcopy(fixture)
+    related_with_problem["frontier"]["related_problems"] = [249]
+    require(
+        any(
+            "is only valid with frontier.subject" in error
+            for error in validator.validate_document(related_with_problem)
+        ),
+        "a related-problem list accompanied a single problem number",
+    )
+
+    architecture_with_subject = copy.deepcopy(architecture_fixture)
+    architecture_with_subject["frontier"]["subject"] = "a mathematical subject"
+    require(
+        any(
+            "frontier.subject" in error
+            for error in validator.validate_document(architecture_with_subject)
+        ),
+        "an architecture receipt claimed a mathematical subject",
+    )
+
+    foreign_selector = copy.deepcopy(subject_fixture)
+    foreign_selector["evidence"][0]["command"] = (
+        "python3 scripts/query_corpus.py --problem 1041"
+    )
+    require(
+        any(
+            "must name one of frontier.related_problems" in error
+            for error in validator.validate_document(foreign_selector)
+        ),
+        "an evidence selector outside the related problems was accepted",
+    )
+
+    empty_related_selector = copy.deepcopy(subject_fixture)
+    empty_related_selector["frontier"]["related_problems"] = []
+    require(
+        any(
+            "is not admissible when frontier.related_problems is empty" in error
+            for error in validator.validate_document(empty_related_selector)
+        ),
+        "an evidence selector was admitted with no related problems",
+    )
+
+    negative_fixture = json.loads(
+        (ROOT / "docs/research-commons/returns/negative-example.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    committed_fixture_sources = validator.committed_prior_receipts(negative_fixture["return_id"])
+    require(
+        committed_fixture_sources is not None
+        and len(committed_fixture_sources) == 1
+        and committed_fixture_sources[0][0] == "docs/research-commons/returns/negative-example.json",
+        "prior lookup did not use the committed public receipt owner path",
+    )
+    require(
+        not validator.validate_document(negative_fixture, repository_identity=identity),
+        "the committed negative fixture should validate before mutation",
+    )
+    for invalid_exit_code in (False, True, 0.0):
+        mutated_exit_code = copy.deepcopy(negative_fixture)
+        mutated_exit_code["evidence"][0]["exit_code"] = invalid_exit_code
+        require(
+            any(
+                "evidence[0].exit_code: passed evidence must have exit code 0" in error
+                for error in validator.validate_document(
+                    mutated_exit_code, repository_identity=identity
+                )
+            ),
+            f"passed evidence accepted non-integer exit code {invalid_exit_code!r}",
+        )
+
+    mutated_kind = copy.deepcopy(fixture)
+    mutated_kind["record_kind"] = "accepted_receipt"
+    require(
+        any(
+            "accepted commit" in error or "proposed commit" in error
+            for error in validator.validate_document(
+                mutated_kind,
+                require_accepted=True,
+                repository_identity=identity,
+            )
+        ),
+        "accepted mutation without accepted/proposed commits was not rejected",
+    )
+    corrective = copy.deepcopy(fixture)
+    corrective["record_kind"] = "submitted_return"
+    corrective["return_id"] = "rr-correction-lineage-fixture"
+    corrective["result"].update(
+        {
+            "class": "corrective",
+            "claim_ceiling": "documentation_correction",
+            "requested_disposition": "review_correction",
+        }
+    )
+    corrective["evidence"][0].update(
+        {"exit_state": "passed", "exit_code": 0, "replay_state": "reproduced"}
+    )
+    corrective["correction_lineage"] = {
+        "prior_return_reference": "none",
+        "affected_paths": corrective["repository"]["changed_paths"],
+        "starting_commit": corrective["repository"]["starting_commit"],
+        "changed_evidence_or_wording": "Corrected a bounded explanation.",
+        "reason": "The prior wording omitted its assumption.",
+        "disposition": "request_review",
+    }
+    require(
+        not validator.validate_document(corrective, require_submitted=True),
+        "an original correction requesting review should validate with no prior receipt",
+    )
+    for reference in ("anything", "docs/research-commons/returns/a.json", "https://example.org/claim"):
+        bad_reference = copy.deepcopy(corrective)
+        bad_reference["correction_lineage"]["prior_return_reference"] = reference
+        require(
+            any("must be none or an exact rr-* return ID" in error for error in validator.validate_document(bad_reference)),
+            f"arbitrary correction reference escaped: {reference}",
+        )
+    unhashable_reference = copy.deepcopy(corrective)
+    unhashable_reference["correction_lineage"]["prior_return_reference"] = []
+    require(
+        any("prior_return_reference" in error for error in validator.validate_document(unhashable_reference)),
+        "an unhashable correction reference crashed or escaped validation",
+    )
+    missing_prior = copy.deepcopy(corrective)
+    missing_prior["correction_lineage"]["prior_return_reference"] = "rr-no-such-accepted-return"
+    missing_prior["correction_lineage"]["disposition"] = "supersede"
+    missing_prior["result"]["requested_disposition"] = "no_promotion"
+    require(
+        any("exactly one committed public accepted receipt" in error for error in validator.validate_document(missing_prior)),
+        "a syntactically valid but unaccepted reference escaped",
+    )
+    unaccepted_prior = copy.deepcopy(missing_prior)
+    unaccepted_prior["correction_lineage"]["prior_return_reference"] = negative_fixture["return_id"]
+    require(
+        any("is not an accepted receipt" in error for error in validator.validate_document(unaccepted_prior)),
+        "a committed validation fixture was treated as an accepted prior receipt",
+    )
+    from test_research_contribution_recognition import accepted_source
+
+    prior_name, accepted_prior, _prior_bytes, _head = accepted_source()
+    for review_field in ("structural_validation", "reproduction"):
+        accepted_prior["review"][review_field].update(
+            {"reviewer": "Prior Receipt Reviewer", "decided_at": "2026-08-30T00:00:00Z"}
+        )
+    accepted_correction = copy.deepcopy(missing_prior)
+    accepted_correction["correction_lineage"]["prior_return_reference"] = accepted_prior["return_id"]
+    prior_source = (f"docs/research-commons/returns/{prior_name}", accepted_prior)
+    with mock.patch.object(validator, "committed_prior_receipts", return_value=[prior_source]):
+        require(
+            not validator.validate_document(accepted_correction, require_submitted=True),
+            "a correction linked to an accepted prior receipt should validate",
+        )
+        invalid_prior = copy.deepcopy(accepted_prior)
+        invalid_prior["review"]["accepted_handoff"]["state"] = "pending"
+        with mock.patch.object(validator, "committed_prior_receipts", return_value=[(prior_source[0], invalid_prior)]):
+            require(
+                any("fails accepted receipt validation" in error for error in validator.validate_document(accepted_correction)),
+                "an invalid accepted prior receipt was trusted",
+            )
+        with mock.patch.object(validator, "committed_prior_receipts", return_value=[prior_source, prior_source]):
+            require(
+                any("exactly one committed public accepted receipt" in error for error in validator.validate_document(accepted_correction)),
+                "ambiguous duplicate accepted IDs were trusted",
+            )
+        cyclic_prior = copy.deepcopy(accepted_prior)
+        cyclic_prior["result"].update(
+            {"class": "corrective", "claim_ceiling": "documentation_correction", "requested_disposition": "no_promotion"}
+        )
+        cyclic_prior["correction_lineage"] = {
+            **accepted_correction["correction_lineage"],
+            "prior_return_reference": accepted_correction["return_id"],
+            "affected_paths": cyclic_prior["repository"]["changed_paths"],
+            "starting_commit": cyclic_prior["repository"]["starting_commit"],
+        }
+        with mock.patch.object(validator, "committed_prior_receipts", return_value=[(prior_source[0], cyclic_prior)]):
+            require(
+                any("lineage cycle" in error for error in validator.validate_document(accepted_correction)),
+                "a cycle through an accepted prior receipt was trusted",
+            )
+    nonoriginal_none = copy.deepcopy(missing_prior)
+    nonoriginal_none["correction_lineage"]["prior_return_reference"] = "none"
+    require(
+        any("none is permitted only" in error for error in validator.validate_document(nonoriginal_none)),
+        "superseding correction accepted no prior return",
+    )
+    mutated_paths = copy.deepcopy(fixture)
+    mutated_paths["repository"]["changed_paths"] = ["../outside.json"]
+    require(
+        any("repository.changed_paths" in error for error in validator.validate_document(mutated_paths)),
+        "repository escape path was not rejected",
+    )
+    for noncanonical_path in (
+        ".github/./fixtures/unaccepted-research-return.json",
+        "docs//ambiguous-artifact.json",
+    ):
+        mutated_noncanonical = copy.deepcopy(fixture)
+        mutated_noncanonical["repository"]["changed_paths"] = [noncanonical_path]
+        mutated_noncanonical["frontier"]["starting_paths"] = [noncanonical_path]
+        mutated_noncanonical["evidence"][0]["artifacts"] = [noncanonical_path]
+        mutated_noncanonical["attribution"]["artifact_credit"][0]["artifact_paths"] = [
+            noncanonical_path
+        ]
+        errors = validator.validate_document(mutated_noncanonical)
+        require(
+            any("canonical repository-relative path" in error for error in errors),
+            f"noncanonical path {noncanonical_path!r} was accepted",
+        )
+    enum_mutations = (
+        ("record_kind", lambda value: value.update(record_kind={})),
+        ("frontier.problem", lambda value: value["frontier"].update(problem={})),
+        ("result.class", lambda value: value["result"].update(**{"class": {}})),
+        ("result.claim_ceiling", lambda value: value["result"].update(claim_ceiling=[])),
+        (
+            "result.requested_disposition",
+            lambda value: value["result"].update(requested_disposition={}),
+        ),
+    )
+    for label, mutate in enum_mutations:
+        malformed_enum = copy.deepcopy(fixture)
+        mutate(malformed_enum)
+        require(
+            validator.validate_document(malformed_enum),
+            f"unhashable {label} value escaped machine-readable validation",
+        )
+
+    with tempfile.TemporaryDirectory() as directory:
+        directory_path = Path(directory)
+        input_path = directory_path / "return.json"
+        input_path.write_bytes(FIXTURE.read_bytes())
+        require(
+            validator.read_regular_bytes(input_path, label="test input")
+            == FIXTURE.read_bytes(),
+            "regular return input was not readable through the safe descriptor",
+        )
+        linked_input = directory_path / "linked-return.json"
+        linked_input.symlink_to(input_path)
+        with mock.patch.object(validator, "path_has_symlink_component", return_value=False):
+            try:
+                validator.read_regular_bytes(linked_input, label="test input")
+            except validator.UnsafeReturnPath:
+                pass
+            else:
+                raise AssertionError("final-component return symlink was followed")
+        fifo_input = directory_path / "return.fifo"
+        os.mkfifo(fifo_input)
+        with mock.patch.object(validator, "path_has_symlink_component", return_value=False):
+            try:
+                validator.read_regular_bytes(fifo_input, label="test input")
+            except validator.UnsafeReturnPath:
+                pass
+            else:
+                raise AssertionError("special-file return input crossed the boundary")
+        malformed_path = directory_path / "malformed-utf8.json"
+        malformed_path.write_bytes(b"{\xff\n")
+        malformed_cli = run_cli(malformed_path, "--require-submitted")
+        require(malformed_cli.returncode == 2, "malformed UTF-8 input was not classified as CLI input failure")
+        malformed_receipt = json.loads(malformed_cli.stdout)
+        require(
+            malformed_receipt["valid"] is False
+            and any("utf-8" in error.lower() for error in malformed_receipt["errors"]),
+            "malformed UTF-8 input did not produce a machine-readable decode diagnostic",
+        )
+        require("Traceback" not in malformed_cli.stderr, "malformed UTF-8 input emitted a traceback")
+        hostile_environment = {
+            "GIT_DIR": "/private/wrong-git-dir",
+            "GIT_NAMESPACE": "refs/namespaces/wrong-release",
+            "GIT_REPLACE_REF_BASE": "refs/replace/",
+            "PYTHONPATH": "/private/wrong-python-path",
+            "LC_ALL": "C",
+            "LANG": "C",
+        }
+        with mock.patch.dict(os.environ, hostile_environment, clear=False):
+            valid_cli = run_cli(
+                input_path, "--require-submitted", "--format", "json"
+            )
+        require(valid_cli.returncode == 0, valid_cli.stderr)
+        receipt = json.loads(valid_cli.stdout)
+        require(receipt["valid"] is True and receipt["submitted"] is True, "CLI receipt lost submitted state")
+
+        symlink = directory_path / "symlink-return.json"
+        symlink.symlink_to(input_path)
+        with mock.patch.dict(os.environ, hostile_environment, clear=False):
+            unsafe_cli = run_cli(symlink, "--require-submitted")
+        require(unsafe_cli.returncode == 2, "symlinked return input crossed the path boundary")
+        unsafe_receipt = json.loads(unsafe_cli.stdout)
+        require(
+            any("symbolic links" in error for error in unsafe_receipt["errors"]),
+            "symlink rejection omitted its path-policy reason",
+        )
+
+    with tempfile.TemporaryDirectory(dir="/tmp") as directory:
+        alias_path = Path(directory) / "return.json"
+        require(
+            not validator.path_has_symlink_component(alias_path),
+            "macOS /tmp alias was rejected for a valid return input",
+        )
+
+    print("validate_research_return: submitted gate, accepted exclusion, path and CLI safety PASS")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

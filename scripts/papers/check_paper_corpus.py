@@ -1,0 +1,274 @@
+#!/usr/bin/env python3
+"""Check that this repository's paper corpus still matches its manuscripts.
+
+Native text and its corpus metadata can be regenerated in this checkout with
+``refresh_paper_corpus.py`` and Pandoc. Companion records retain their imported
+bytes and provenance and are refreshed from their named public home repository.
+This inexpensive check does not regenerate anything. It verifies locally that
+cheaply: every manuscript and every shipped PDF recorded in ``corpus.json``
+still hashes to the value the corpus was built from, and every recommended
+starting section resolves in the exported text at its recorded line.
+
+That catches failures at this boundary: someone edits a paper
+and the generated text silently keeps describing the old one; or a generated
+catalogue drops a paper or breaks a reading route while retained files hash. It uses
+nothing but the standard library, so it can run in any CI job.
+
+Exit status is 0 when the corpus is current, 1 when a manuscript has moved on,
+and 2 when the corpus is missing or unreadable.
+
+    python3 scripts/papers/check_paper_corpus.py
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import sys
+from pathlib import Path
+
+CORPUS_REL = "docs/papers/corpus.json"
+
+
+def reading_route_errors(paper: dict, markdown: str) -> list[str]:
+    """Check the exported route, not merely its declared unresolved count.
+
+    This verifies links and coordinates. Whether the suggested sections still
+    explain the strongest result and its limits requires reading the paper.
+    The exporter uses this same check before writing any files for a repository.
+    """
+    route = paper.get("first_pass")
+    if route is None:
+        return []
+    if not isinstance(route, dict):
+        return ["first_pass is not an object"]
+    entries = route.get("sections")
+    if not isinstance(entries, list) or not entries:
+        return ["first_pass has no sections"]
+    errors = []
+    if type(route.get("unresolved_count")) is not int or route["unresolved_count"] != 0:
+        errors.append("first_pass reports unresolved sections")
+    stated = route.get("stated_by_the_paper")
+    provenance = (
+        "the paper's own stated reading route"
+        if stated is True
+        else "editorial selection for this guide"
+    )
+    if type(stated) is not bool or route.get("provenance") != provenance:
+        errors.append("reading route provenance disagrees with stated_by_the_paper")
+    if stated is False and "stated_at" in route:
+        errors.append("editorial reading route cannot claim a manuscript recommendation location")
+    index = paper.get("sections", [])
+    if not isinstance(index, list):
+        return errors + ["section index is not a list"]
+    lines = markdown.splitlines()
+    if "stated_at" in route:
+        entries = [*entries, route["stated_at"]]
+    for entry in entries:
+        if not isinstance(entry, dict) or not isinstance(entry.get("id"), str):
+            errors.append("reading route entry has no section id")
+            continue
+        label = entry["id"]
+        sections = [s for s in index if isinstance(s, dict) and s.get("id") == label]
+        if entry.get("resolved") is False or len(sections) != 1:
+            errors.append(f"reading route {label}: section is absent or ambiguous")
+            continue
+        section = sections[0]
+        line = entry.get("line")
+        if (
+            type(line) is not int or line < 1 or line > len(lines)
+            or line != section.get("line")
+        ):
+            errors.append(f"reading route {label}: invalid section line")
+            continue
+        anchor = f'<a id="{label}"></a>'
+        if lines[line - 1].strip() != anchor or sum(
+            row.strip() == anchor for row in lines
+        ) != 1:
+            errors.append(f"reading route {label}: exported anchor is absent or ambiguous")
+        if "title" in entry and entry["title"] != section.get("title"):
+            errors.append(f"reading route {label}: title differs from section index")
+    return errors
+
+
+
+def record_navigation_errors(root: Path, *, require_links: bool = False) -> list[str]:
+    """Verify navigator inputs/outputs; strict mode reruns the structural link audit."""
+    sys.path.insert(0, str(root / "scripts"))
+    try:
+        import reasoning_record_audit as records
+    finally:
+        sys.path.pop(0)
+    path = root / records.REPORT
+    if not path.is_file():
+        return ["record navigation report missing"] if require_links else []
+    try:
+        report = json.loads(path.read_text(encoding="utf-8"))
+        errors = records.freshness_errors(root, report)
+        for rel, expected in report.get("navigation_sha256", {}).items():
+            if records.digest(records.safe_path(root, rel).read_bytes()) != expected:
+                errors.append("stale record navigator: " + rel)
+        live = records.report(root)
+        if {k: report.get(k) for k in live} != live:
+            errors.append("saved record audit differs from a live recomputation")
+        if not report.get("navigation_sha256"):
+            errors.append("record audit has no navigator outputs")
+        if require_links and live["status"] != "structurally_linked":
+            errors.append("short/long audit: " + live["status"] + "; see --audit report")
+        return errors
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        return ["record navigation unreadable: " + str(exc)]
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--singleflight-worker",
+        action="store_true",
+        help=argparse.SUPPRESS,
+    )
+    parser.add_argument("--record-links", action="store_true", help="also require all registered short/long links")
+    args = parser.parse_args(argv)
+    repo_root = Path(__file__).resolve().parents[2]
+    corpus_path = repo_root / CORPUS_REL
+    try:
+        corpus = json.loads(corpus_path.read_text())
+    except (OSError, json.JSONDecodeError) as exc:
+        print(f"cannot read {CORPUS_REL}: {exc}", file=sys.stderr)
+        return 2
+
+    stale: list[str] = []
+    missing: list[str] = []
+    incomplete: list[str] = []
+    checked = 0
+
+    expected_ids = corpus.get("expected_paper_ids")
+    papers = corpus.get("papers", [])
+    if not isinstance(expected_ids, list) or not all(
+        isinstance(paper_id, str) for paper_id in expected_ids
+    ):
+        incomplete.append("missing expected_paper_ids export manifest")
+        expected_ids = []
+    if not isinstance(papers, list):
+        print(f"cannot read {CORPUS_REL}: papers is not a list", file=sys.stderr)
+        return 2
+
+    actual_ids = [
+        paper.get("paper_id")
+        for paper in papers
+        if isinstance(paper, dict) and isinstance(paper.get("paper_id"), str)
+    ]
+    if len(expected_ids) != len(set(expected_ids)):
+        incomplete.append("duplicate paper ids in expected_paper_ids export manifest")
+    if len(actual_ids) != len(set(actual_ids)):
+        incomplete.append("duplicate paper ids in papers")
+    expected_set = set(expected_ids)
+    actual_set = set(actual_ids)
+    missing_records = sorted(expected_set - actual_set)
+    unexpected_records = sorted(actual_set - expected_set)
+    if missing_records:
+        incomplete.append(
+            "missing expected paper records: " + ", ".join(missing_records)
+        )
+    if unexpected_records:
+        incomplete.append(
+            "unexpected paper records: " + ", ".join(unexpected_records)
+        )
+
+    for paper in papers:
+        if not isinstance(paper, dict):
+            incomplete.append("non-object paper record")
+            continue
+        if "first_pass" in paper:
+            full_text_rel = paper.get("local_full_text")
+            if not isinstance(full_text_rel, str) or not full_text_rel:
+                incomplete.append(f"{paper.get('paper_id')}: reading route has no local full text")
+            else:
+                try:
+                    markdown = (repo_root / full_text_rel).read_text(encoding="utf-8")
+                except (OSError, UnicodeError):
+                    missing.append(full_text_rel)
+                else:
+                    incomplete.extend(
+                        f"{paper.get('paper_id')}: {error}"
+                        for error in reading_route_errors(paper, markdown)
+                    )
+        source_rel = paper.get("local_source")
+        expected = paper.get("source_sha256")
+        if not source_rel or not expected:
+            continue
+        source_path = repo_root / source_rel
+        try:
+            actual = "sha256:" + hashlib.sha256(source_path.read_bytes()).hexdigest()
+        except OSError:
+            missing.append(source_rel)
+            continue
+        checked += 1
+        if actual != expected:
+            stale.append(
+                f"{paper.get('paper_id')}: {source_rel}\n"
+                f"    corpus was built from {expected}\n"
+                f"    the file now hashes to {actual}"
+            )
+
+        pdf_rel = paper.get("local_pdf")
+        expected_pdf = paper.get("pdf_sha256")
+        if pdf_rel and expected_pdf:
+            pdf_path = repo_root / pdf_rel
+            try:
+                actual_pdf = "sha256:" + hashlib.sha256(pdf_path.read_bytes()).hexdigest()
+            except OSError:
+                missing.append(pdf_rel)
+                continue
+            checked += 1
+            if actual_pdf != expected_pdf:
+                stale.append(
+                    f"{paper.get('paper_id')}: {pdf_rel}\n"
+                    f"    corpus was built from {expected_pdf}\n"
+                    f"    the file now hashes to {actual_pdf}"
+                )
+
+    if (repo_root / "scripts/reasoning_record_audit.py").is_file():
+        incomplete.extend(record_navigation_errors(repo_root, require_links=args.record_links))
+    elif args.record_links:
+        incomplete.append("native record audit implementation missing")
+
+    if missing:
+        for rel in missing:
+            print(f"missing or unreadable paper artefact: {rel}", file=sys.stderr)
+        return 2
+
+    if stale:
+        print("The paper corpus is out of date.\n", file=sys.stderr)
+        for row in stale:
+            print(f"  {row}", file=sys.stderr)
+        print(
+            "\nThe generated text under docs/papers/ no longer describes these "
+            "manuscripts.\nRefresh native papers with Pandoc installed:\n"
+            "    python3 scripts/papers/refresh_paper_corpus.py --write\n"
+            "Companion changes require a new export from their owning repository.",
+            file=sys.stderr,
+        )
+        return 1
+
+    if incomplete:
+        print("The paper corpus is incomplete.\n", file=sys.stderr)
+        for row in incomplete:
+            print(f"  {row}", file=sys.stderr)
+        print(
+            "\nRestore the missing paper or reading route before refreshing.\n"
+            "Native text: python3 scripts/papers/refresh_paper_corpus.py --write\n"
+            "A missing companion requires a new export from its owning repository.",
+            file=sys.stderr,
+        )
+        return 1
+
+    print(
+        f"paper corpus current: {checked} recorded artefacts "
+        "(manuscripts and shipped PDFs) match their hashes; reading routes resolve"
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

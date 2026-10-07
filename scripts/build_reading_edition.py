@@ -426,7 +426,7 @@ def complete(target: Path) -> None:
 def build_records() -> dict[Path, str]:
     """Build navigators from the live native audit; never load a stale saved report."""
     import reasoning_record_audit as records
-    sys.path.insert(0, str(ROOT / "docs/papers"))
+    sys.path.insert(0, str(ROOT / "scripts/papers"))
     try:
         import paper_corpus_renderer as renderer
     finally:

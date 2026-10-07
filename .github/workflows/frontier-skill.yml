@@ -6,7 +6,7 @@ on:
   pull_request:
     paths:
       - '.agents/skills/plectis-frontier/**'
-      - 'scripts/test_frontier_skill.py'
+      - 'scripts/tests/test_frontier_skill.py'
       - 'docs/FRONTIER_*.md'
       - '.github/workflows/frontier-skill.yml'
       - 'REUSE.toml'
@@ -15,7 +15,7 @@ on:
     branches: [main]
     paths:
       - '.agents/skills/plectis-frontier/**'
-      - 'scripts/test_frontier_skill.py'
+      - 'scripts/tests/test_frontier_skill.py'
       - '.github/workflows/frontier-skill.yml'
   workflow_dispatch:
 
@@ -42,7 +42,7 @@ jobs:
         with:
           python-version: '3.12.9'
       - name: Test standalone wrapper with offline Git fixtures
-        run: python3 -B scripts/test_frontier_skill.py
+        run: python3 -B scripts/tests/test_frontier_skill.py
 
   public-source-entry:
     runs-on: ubuntu-24.04

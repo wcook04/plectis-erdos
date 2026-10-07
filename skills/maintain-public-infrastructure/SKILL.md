@@ -49,7 +49,7 @@ public main. Never label a cached remote ref, a release tag, or an offline
 checkout as latest. Preserve older-clone work and its starting commit; a
 different revision is not evidence that the contributor's work is invalid.
 Keep the human clone/prompt instructions in `docs/agents/README.md`
-and the behavioral provenance cases in `scripts/test_agent_entry.py`, which
+and the behavioral provenance cases in `scripts/tests/test_agent_entry.py`, which
 the release gate already runs. Exercise forks, tags, archives, dirty worktrees,
 and unavailable network access without requiring a network in tests. Check the
 combined first-contact route budget as well as each entry file: newcomer setup
@@ -78,7 +78,7 @@ clone-local paths. GitHub issue-form Markdown is rendered on `issues/new`, so a
 relative link that works beside the YAML source can leave the repository or
 point to an issue path. Use public repository file URLs and actual
 `issues/new?template=<filename>` form URLs. Preserve field IDs and contribution
-or credit boundaries; validate destinations in `scripts/test_contribution_entry.py`
+or credit boundaries; validate destinations in `scripts/tests/test_contribution_entry.py`
 and inspect the rendered form without entering or submitting a report.
 
 ## Preserve boundaries across every reader
@@ -159,7 +159,7 @@ Choose the first matching class:
 
 1. **Routing drift** — the correct skill exists but the task selects another
    lane. Repair task cues or priority in the registry and add the exact task to
-   `scripts/test_agent_entry.py`.
+   `scripts/tests/test_agent_entry.py`.
 2. **Catalog drift** — a skill, family, description, or lifecycle edge exists
    in one surface but not another. Repair registry/frontmatter authority, then
    regenerate the catalog.
@@ -206,6 +206,21 @@ links before regenerating a moved projection. The root-guide inventory in
 `scripts/check_release.py::check_root_layout` and its architecture fixtures
 prevent loose guides from accumulating; extend that existing gate rather than
 adding another inventory document.
+
+Keep the root README a human introduction and AGENTS.md the agent's operational
+entry. Details belong with their existing owner: do not require the README or
+agent guide to reproduce complete paper, theorem or generated-count inventories.
+Tests must check that a reader can follow the maintained route to those facts.
+Production Python commands live in `scripts/`, behavioral tests in
+`scripts/tests/`, and paper-corpus executables in `scripts/papers/`; `docs/papers/`
+contains the corpus data and rendered text. Preserve immutable historical paths
+at their recorded revisions when migrating current commands.
+
+These boundaries follow the [AGENTS.md convention](https://agents.md/) and
+[Google's documentation guidance](https://google.github.io/styleguide/docguide/best_practices.html):
+keep reader and agent instructions distinct, remove dead documentation, and
+link to one maintained explanation. Apply [Diátaxis](https://diataxis.fr/) to
+the reader's purpose; do not create empty categories or another parallel guide.
 
 When reorganising the checkout, keep one shared root `AGENTS.md` and keep
 provider adapters limited to loading that entry. Keep the main reader guides
@@ -258,12 +273,12 @@ During the edit, run the narrow owner checks:
 
 ```sh
 python3 scripts/agent_skill_catalog.py --check
-python3 scripts/test_agent_entry.py
-python3 scripts/test_clone_skills.py
-python3 scripts/test_contribution_entry.py
-python3 scripts/test_compact_agent_entry.py
+python3 scripts/tests/test_agent_entry.py
+python3 scripts/tests/test_clone_skills.py
+python3 scripts/tests/test_contribution_entry.py
+python3 scripts/tests/test_compact_agent_entry.py
 python3 scripts/check_cold_clone_comprehension.py --quick
-python3 scripts/test_human_first_contact.py
+python3 scripts/tests/test_human_first_contact.py
 ```
 
 Use the exact previously failing task with `agent_entry.py --entry` as a manual

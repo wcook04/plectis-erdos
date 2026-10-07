@@ -26,7 +26,7 @@ status, author mathematical exposition, or promote an unproved bridge.
 
 ```sh
 python3 scripts/proof_state_compiler.py --pilot-controls
-python3 scripts/test_proof_state_compiler.py
+python3 scripts/tests/test_proof_state_compiler.py
 ```
 
 The pilot contains three causally related controls:
@@ -159,11 +159,11 @@ prospective unseen-bridge result.
 ```sh
 python3 -m py_compile \
   scripts/proof_state_compiler.py \
-  scripts/test_proof_state_compiler.py \
+  scripts/tests/test_proof_state_compiler.py \
   scripts/historical_bridge_experiment.py
-python3 scripts/test_proof_state_compiler.py
+python3 scripts/tests/test_proof_state_compiler.py
 python3 scripts/historical_bridge_experiment.py
-python3 scripts/test_query_corpus_resilience.py
+python3 scripts/tests/test_query_corpus_resilience.py
 python3 scripts/dogfood_semantic_proof.py
 ```
 

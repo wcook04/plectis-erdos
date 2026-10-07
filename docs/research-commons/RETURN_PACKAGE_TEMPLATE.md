@@ -101,75 +101,17 @@ assigned a problem number of its own.
 
 ## Formal handoff from exposition
 
-Resolve the public navigation handle before filling the bounded route. For a
-paper or reviewed packet with a canonical paper label, start at the paper
-anchor; for a registered problem-owned note, start at the problem packet:
+Follow the [proof-state public-evidence route](../agents/PROOF_STATE_COMPILER.md#return-to-public-evidence)
+for paper-anchor, problem-note, module and declaration queries. Use the
+[complete eight-problem return matrix](../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix)
+to resolve the selected programme and its exact paper/source crosswalk.
 
-```sh
-# For a reviewed paper or claim packet, use:
-python3 scripts/query_corpus.py --paper-anchor <canonical_paper_label>
-# For a registered problem-owned note, start with:
-python3 scripts/query_corpus.py --route erdos_<number>
-# Then continue with the registered note artifact:
-python3 scripts/query_corpus.py --publication-artifact erdos_<number>_note
-# To enumerate that note's exact paper anchors, use its returned artifact id:
-python3 scripts/query_corpus.py --search "erdos_<number>_note::" --limit 100
-python3 scripts/query_corpus.py --paper-anchor erdos_<number>_note::<label>
-# For source-only #68 or #1041, continue with the module returned above:
-python3 scripts/query_corpus.py --module <module-or-path returned by the problem route>
-```
-
-The namespaced `<artifact_id>::<label>` handle keeps repeated paper labels
-attached to the correct problem note; the [public-evidence return route](../agents/PROOF_STATE_COMPILER.md#return-to-public-evidence)
-documents the same bridge. A note's `source_path` or
-`paper.source_ref` remains a reading locator, not a selector input; the
-source-only #68 and #1041 routes continue through their returned Lean module.
-
-Then carry the returned claim, declaration, and source handles into the
-formal evidence section:
-
-```sh
-python3 scripts/query_corpus.py --claim <claim_id_from_packet>
-python3 scripts/query_corpus.py --module <module-or-path>
-python3 scripts/query_corpus.py --declaration <qualified_declaration>
-python3 scripts/query_corpus.py --source <module>:<positive_line>
-```
-
-Use the module query as the context-preserving step between a returned claim
-and its exact declaration: it exposes imports and the declaration inventory
-before a reviewer narrows to a source coordinate. It is a navigation witness,
-not proof authority; preserve the pinned Lean source, registered claim, and
-problem boundary in the return.
-
-For the public problem route, start with the generated
-[problem index](../problems.json), which exposes every `material_result_families`
-entry—its mechanism, exact scope, Lean route, and open boundary—before you
-follow named Lean interfaces. For the reader-facing proof/paper/source
-crosswalk and compact grouped route to its strongest distinct public results,
-use the [complete eight-problem return matrix](../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix);
-the
-legacy `strongest_result` field must not stand in for that full frontier. For
-the complete family census and a reverse route to one selected family, run
-`python3 scripts/query_corpus.py --search "all result families"`, then
-`python3 scripts/query_corpus.py --publication-family <family_id>`. The returned
-`significance_rank` is a navigation order, not a novelty or priority claim. For
-the all-eight proof-to-paper/source dispatch table, use the
-[proof-state public-evidence route](../agents/PROOF_STATE_COMPILER.md#return-to-public-evidence).
-It is a navigation aid, not proof authority.
-
-For the paper-to-formal crosswalk, use the
-[complete eight-problem return matrix](../reference/SOURCE_MAP.md#complete-eight-problem-return-matrix).
-For a registered problem note, continue through its exact note-anchor
-crosswalk in that matrix before
-following the returned declaration and source-coordinate route. The map
-connects canonical paper and source records to problem, claim, module,
-declaration, and source-coordinate routes; it is a navigation aid, not proof
-authority.
-
-The packet's `paper.source_ref` or note `source_path` is a manuscript locator,
-not proof authority and not necessarily a selector input. Record the exact
-declaration and source-coordinate results actually used; checked Lean source,
-the registered claim, and the problem boundary remain the authorities.
+Copy the claim, declaration and source-coordinate handles actually used into
+this return. A manuscript path is a reading locator, not necessarily a query
+selector. Keep the statement's hypotheses and surviving problem boundary
+beside its evidence; navigation and family ranking do not establish proof,
+novelty or priority. Record the complete selected family rather than silently
+substituting a legacy `strongest_result` field for the public frontier.
 
 ## 1. Identity and starting generation
 

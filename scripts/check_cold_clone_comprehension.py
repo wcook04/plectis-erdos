@@ -333,12 +333,22 @@ OPEN_PROPOSITION_PACKET_BYTES = 400
 # following it therefore reaches. They carry the recoverable detail the front
 # page used to hold itself.
 FIRST_CONTACT_ROUTED_SURFACES = (
+    "paper/README.md",
+    "docs/EXTERNAL_VERIFICATION.md",
+    "docs/semantic/README.md",
+    "docs/corpus_descriptor.json",
     "docs/README.md",
     "docs/RESULTS.md",
     "docs/agents/AGENT_WORKBENCH.md",
     "docs/REPRODUCIBILITY.md",
     "CONTRIBUTING.md",
 )
+FIRST_CONTACT_ROUTED_BUDGET_BYTES = {
+    "paper/README.md": 20_000,
+    "docs/EXTERNAL_VERIFICATION.md": 16_000,
+    "docs/semantic/README.md": 24_000,
+    "docs/corpus_descriptor.json": 64_000,
+}
 PACKET_BUDGET_BYTES = (
     20_480 + OPEN_PROPOSITION_PACKET_BYTES * REMAINING_OPEN_PROPOSITION_COUNT
 )
@@ -1032,17 +1042,15 @@ def first_contact_surface_text(surfaces: dict[str, str], path: str) -> str:
     docs/RESULTS.md from disk, so deleting `Plectis` on the front page left the
     token alive in RESULTS and the mutation escaped.
     """
-    text = surfaces.get(path)
-    if text is None:
-        return safe_read_text(path)
-    return text
+    require(path in surfaces, f"first-contact fixture must include its routed owner: {path}")
+    return surfaces[path]
 
 
 def validate_human_first_contact(
     summary: dict[str, Any], surfaces: dict[str, str]
 ) -> None:
     allowed = set(HUMAN_SURFACES) | set(FIRST_CONTACT_ROUTED_SURFACES)
-    require(set(HUMAN_SURFACES) <= set(surfaces) <= allowed, "cold-clone comprehension invariant")
+    require(set(surfaces) == allowed, "first-contact must validate every directly routed owner from the provided snapshot")
     for path, budget in HUMAN_SURFACE_BUDGET_BYTES.items():
         size = len(surfaces[path].encode("utf-8"))
         require(size <= budget, f"{path} is {size} bytes (budget {budget})")
@@ -1050,6 +1058,10 @@ def validate_human_first_contact(
         for phrase in SELF_APPRAISAL_PHRASES:
             require(phrase not in lowered, f"{path} uses self-appraisal phrase {phrase!r}; expose objective "
                 "mathematical and formal facts instead")
+
+    for path, budget in FIRST_CONTACT_ROUTED_BUDGET_BYTES.items():
+        require(len(surfaces[path].encode("utf-8")) <= budget,
+                f"routed first-contact owner {path} exceeds {budget} bytes")
 
     check_architecture_guide.validate_guide(surfaces["docs/ARCHITECTURE.md"])
 
@@ -1059,11 +1071,11 @@ def validate_human_first_contact(
     )
     contribution_guide = first_contact_surface_text(surfaces, "CONTRIBUTING.md")
     require(
-        "[REPRODUCIBILITY](docs/REPRODUCIBILITY.md)" in readme_prefix,
+        "](docs/REPRODUCIBILITY.md)" in readme_prefix,
         "README no longer routes detailed clone and build work to REPRODUCIBILITY",
     )
     require(
-        "[CONTRIBUTING](CONTRIBUTING.md)" in readme_prefix,
+        "](CONTRIBUTING.md)" in readme_prefix,
         "README no longer routes corrections and returned work to CONTRIBUTING",
     )
     for command in (
@@ -1088,12 +1100,22 @@ def validate_human_first_contact(
     verification_sections = [
         heading
         for heading, body in zip(sections[1::2], sections[2::2])
-        if "(formalization.yaml)" in body and "(docs/EXTERNAL_VERIFICATION.md)" in body
+        if "(docs/EXTERNAL_VERIFICATION.md)" in body
     ]
     require(
         len(verification_sections) == 1,
         "README must have one section linking selected statements and their verification dossier",
     )
+    verification = first_contact_surface_text(surfaces, "docs/EXTERNAL_VERIFICATION.md")
+    require("](../formalization.yaml)" in verification,
+            "the linked verification dossier lost its selected-statement manifest")
+    require("configured axiom budget" in normalized(verification),
+            "the linked verification dossier lost its assumption boundary")
+    papers = first_contact_surface_text(surfaces, "paper/README.md")
+    require("](paper/README.md#problem-papers)" in readme_prefix,
+            "README lost the directly linked complete paper catalogue")
+    require("## Problem papers" in papers, "paper catalogue anchor no longer resolves")
+
     section_order = (
         "## Problem papers",
         verification_sections[0],
@@ -1132,8 +1154,8 @@ def validate_human_first_contact(
         ),
         "README no longer exposes the current unified systems paper",
     )
-    def readme_exposes_pdf(filename: str) -> bool:
-        return bool(re.search(rf"\]\([^)\n]*{re.escape(filename)}\)", readme_prefix))
+    def catalogue_exposes_pdf(filename: str) -> bool:
+        return bool(re.search(rf"\]\([^)\n]*{re.escape(filename)}\)", papers))
 
     for problem, filename in (
         ("#68", "erdos-68-factorial-denominator-irrationality.pdf"),
@@ -1145,29 +1167,42 @@ def validate_human_first_contact(
         ("#1041", "erdos-1041-lemniscate-newton-flow.pdf"),
         ("#1049", "erdos-1049-rational-base-lambert.pdf"),
     ):
-        require(problem in readme_prefix and readme_exposes_pdf(filename), f"README no longer exposes the individual Erdős {problem} paper")
+        require(problem in readme_prefix and catalogue_exposes_pdf(filename), f"the directly linked catalogue no longer exposes the individual Erdős {problem} paper")
     for filename in (
         "erdos249-totient-reasoning-surface.pdf",
         "erdos257-mersenne-reasoning-surface.pdf",
     ):
-        require(readme_exposes_pdf(filename), f"README no longer exposes the full reasoning record {filename}")
+        require(catalogue_exposes_pdf(filename), f"the directly linked catalogue no longer exposes the full reasoning record {filename}")
 
     problem_portfolio = readme_prefix.find("## Problem papers")
-    raw_inventory = readme_prefix.find("## Corpus at a glance")
-    require(problem_portfolio >= 0, "README lost the all-problem discovery surface")
-    require(raw_inventory >= 0, "README lost the raw corpus-inventory boundary")
-    problem_positions = [
-        readme_prefix.find(f"#{problem}", problem_portfolio)
-        for problem in sorted(INDEXED_PROBLEM_NUMBERS)
-    ]
-    require(
-        all(position >= problem_portfolio for position in problem_positions),
-        "README no longer exposes every indexed problem before inventory",
-    )
-    require(
-        all(position < raw_inventory for position in problem_positions),
-        "README places raw scale or numeric inventory before all-problem discovery",
-    )
+    require(problem_portfolio >= 0, "README lost all-problem discovery")
+    inventory_headings = ("## Corpus at a glance", "## Corpus inventory", "## Engineering inventory")
+    for heading in inventory_headings:
+        location = readme_prefix.find(heading)
+        require(location < 0 or location > problem_portfolio,
+                "README places raw inventory before mathematical discovery")
+    require("generated_corpus_at_a_glance" not in readme_prefix,
+            "README restored its duplicate generated inventory")
+    require("docs/corpus_descriptor.json" in readme_prefix
+            and "docs/semantic/README.md#corpus-census" in readme_prefix,
+            "README lost its maintained inventory owners")
+    try:
+        descriptor = json.loads(first_contact_surface_text(surfaces, "docs/corpus_descriptor.json"))
+    except (TypeError, ValueError) as exc:
+        raise AssertionError("the directly linked corpus descriptor is malformed") from exc
+    for key in ("module_count", "declaration_count", "theorem_like_count",
+                "generated_certificate_declaration_count", "principal_claim_link_count"):
+        require(isinstance(descriptor.get("summary", {}).get(key), int)
+                and descriptor["summary"][key] > 0,
+                f"inventory owner lost its recorded {key}")
+    require(bool(descriptor.get("compact_graph", {}).get("principal_declaration_handles")),
+            "descriptor lost its exact principal source handles")
+    require("not proof authority" in descriptor.get("authority_posture", {}).get("navigation", ""),
+            "descriptor lost its navigation-only boundary")
+    semantic_reference = first_contact_surface_text(surfaces, "docs/semantic/README.md")
+    require("<!-- BEGIN semantic_public_census -->" in semantic_reference
+            and "<!-- END semantic_public_census -->" in semantic_reference,
+            "semantic reference lost its generated census owner")
 
     # The README is the human front door and is held to a word budget, so the
     # recoverable detail a cold reader needs is not all on the front page any
@@ -1552,39 +1587,26 @@ def validate_cross_agent_entry(agents: str, claude: str) -> None:
             require(phrase not in lowered, f"{path} uses self-appraisal phrase {phrase!r}; route to objective "
                 "claims, scale, and verification receipts instead")
     for token in (
-        "docs/orientation.json",
-        "docs/claims.json",
-        "Eight-problem cold-start card",
-        "must not already know a query command",
-        "erdos-68-factorial-denominator-irrationality.pdf",
-        "erdos-243-reciprocal-tail-rigidity.pdf",
-        "erdos-249-binary-totient-series.pdf",
-        "erdos-251-prime-gap-dyadic-series.pdf",
-        "erdos-257-mersenne-support-subseries.pdf",
-        "erdos-269-three-prime-running-lcm.pdf",
-        "erdos-1041-lemniscate-newton-flow.pdf",
-        "erdos-1049-rational-base-lambert.pdf",
-        "no `ai_workflow`",
+        "docs/claims.json", "docs/methodology.json",
+        "## Programme owners", "## Authority and change order", "## Validation",
         "Lean source checked by the pinned Lean kernel",
-        "not an entrypoint into any private development system",
+        "Do not infer results from private files",
+        "The update order stays fixed", "--changed-from HEAD",
+        "../RESULTS.md", "../semantic/README.md#corpus-census",
+        "This menu supplies no new claim status",
     ):
-        require(contains_any(agents, [token]), f"docs/agents/AGENT_GUIDE.md lost shared invariant {token!r}")
-    # The card is generated from the same authored questions and claim owner
-    # as the query index. Check every exact question and boundary, rather than
-    # freezing a second set of mathematical spellings in this validator.
+        require(contains_any(agents, [token]),
+                f"agent authority guide lost maintained invariant {token!r}")
     source = json.loads(read("docs/problem_index_source.json"))
     claims = {row["id"]: row for row in json.loads(read("docs/claims.json"))["claims"]}
     for row in source["problems"]:
-        require(contains_any(agents, [row["question"]]),
-                f"agent card lost question {row['problem_id']}")
-        target = claims.get(row["programme_claim_id"])
-        require(target is not None, f"agent card lacks registered target {row['problem_id']}")
-        require(contains_any(agents, [target["statement"]]),
-                f"agent card lost programme boundary {row['problem_id']}")
-    require(
-        contains_any(agents, [release_status_boundary()]),
-        "docs/agents/AGENT_GUIDE.md lost the authority-owned release status boundary",
-    )
+        number = row["erdos_number"]
+        require(row["programme_claim_id"] in claims,
+                f"programme menu lacks registered target {row['problem_id']}")
+        for target in (f"../RESULTS.md#result-{number}",
+                       f"../research-commons/CONTRIBUTE_BY_PAPER.md#problem-{number}",
+                       f"query_corpus.py --route {row['problem_id']}"):
+            require(target in agents, f"agent menu lost its exact programme owner {target}")
     require("@AGENTS.md" in claude, "Claude must import the shared compact entry")
     require("docs/agents/AGENT_GUIDE.md" in claude, "Claude lost the deep-guide route")
     require("## First read" not in claude, "Claude duplicated the shared manual")
@@ -3059,7 +3081,7 @@ def run_quick_check() -> int:
     semantic_receipt = check_semantic_corpus_freshness()
     check_route_memory_descriptor()
     summary = quick_summary()
-    human_surfaces = {path: read(path) for path in HUMAN_SURFACES}
+    human_surfaces = {path: read(path) for path in (*HUMAN_SURFACES, *FIRST_CONTACT_ROUTED_SURFACES)}
     validate_human_first_contact(summary, human_surfaces)
     validate_paper_library_first_contact(read(PAPER_LIBRARY_SURFACE))
     validate_public_semantic_census(
@@ -3151,7 +3173,7 @@ def main(argv: list[str] | None = None) -> int:
     check_route_memory_descriptor()
     packets = collect_agent_packets()
     summary = packets["summary"]
-    human_surfaces = {path: read(path) for path in HUMAN_SURFACES}
+    human_surfaces = {path: read(path) for path in (*HUMAN_SURFACES, *FIRST_CONTACT_ROUTED_SURFACES)}
     validate_human_first_contact(summary, human_surfaces)
     validate_paper_library_first_contact(read(PAPER_LIBRARY_SURFACE))
     validate_public_semantic_census(

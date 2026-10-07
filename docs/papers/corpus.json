@@ -5,7 +5,7 @@
   "why_this_exists": "Cloning either public repository gives you PDFs, and only the papers that repository owns. This corpus carries every active paper as navigable text in both repositories, plus still-shipped retired manuscripts in their home repository, so an agent with no network can read, cite, and cross-check the public evidence.",
   "generated_by": "tools/meta/dissemination/export_paper_corpus.py",
   "generated_from": "registered public manuscripts and preserved companion copies; regenerate projections rather than editing them",
-  "native_refresh_command": "python3 docs/papers/refresh_paper_corpus.py --write",
+  "native_refresh_command": "python3 scripts/papers/refresh_paper_corpus.py --write",
   "authority_order": "checked Lean source is proof authority; the claims registry owns public status and coordinates; methodology owns transition rules; the paper owns exposition",
   "reading_the_generated_markdown": "The Markdown is a projection of the .tex, not a replacement. It resolves theorem numbers, cross-references, and Lean source links that the source only implies. The .tex is the manuscript and the hash of record; where they disagree, the .tex wins.",
   "verification_boundary": {
@@ -43,7 +43,7 @@
   ],
   "paper_count": 24,
   "publication_taxonomy": {
-    "generated_by": "docs/papers/build_publication_taxonomy.py",
+    "generated_by": "scripts/papers/build_publication_taxonomy.py",
     "what_these_fields_are": "How each manuscript was published: what kind of document it is, whether anyone outside this project reviewed it, and how to cite it.",
     "what_these_fields_are_not": "They do not describe what a manuscript establishes. authority_order and verification_boundary above still own that: no Lean kernel ran during this export, and reading a paper is not checking a proof. A publication_class is a document type, never a claim of correctness, novelty, or acceptance.",
     "vocabulary": {

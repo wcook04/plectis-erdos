@@ -62,9 +62,20 @@
       "path": "docs/papers/corpus.json",
       "start_line": 1,
       "end_line": 9326,
-      "sha256": "02d1accf8907ce2677ab31b38639dc05dcc3a126c146b39bcfdce03d7e2ce2fb",
-      "excerpt_sha256": "02d1accf8907ce2677ab31b38639dc05dcc3a126c146b39bcfdce03d7e2ce2fb",
-      "kind": "source"
+      "sha256": "fd5c582864cf8e20aedbc668f4194cb88bc14bc77b4dbc37f928430a28d4e042",
+      "excerpt_sha256": "fd5c582864cf8e20aedbc668f4194cb88bc14bc77b4dbc37f928430a28d4e042",
+      "kind": "source",
+      "rebind_review": {
+        "reason": "Reviewed corpus delta changes only generated taxonomy owner path and native refresh command; every paper record remains identical. It records no new proof, review, publication or archival identity.",
+        "previous_binding": {
+          "path": "docs/papers/corpus.json",
+          "start_line": 1,
+          "end_line": 9326,
+          "sha256": "02d1accf8907ce2677ab31b38639dc05dcc3a126c146b39bcfdce03d7e2ce2fb",
+          "excerpt_sha256": "02d1accf8907ce2677ab31b38639dc05dcc3a126c146b39bcfdce03d7e2ce2fb"
+        },
+        "boundary": "Source-location and infrastructure consolidation only; manuscript units, evidence classes and historical observations remain unchanged. No asserted upgrade or new mathematical/empirical execution."
+      }
     },
     {
       "id": "counts",
@@ -163,9 +174,20 @@
       "path": "docs/publication_evidence.json",
       "start_line": 1,
       "end_line": 209,
-      "sha256": "4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
-      "excerpt_sha256": "4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
-      "kind": "source"
+      "sha256": "4ae34a8682ab2997ed3ca3dea2d29b12eecae537551a25e340e984c608d89327",
+      "excerpt_sha256": "4ae34a8682ab2997ed3ca3dea2d29b12eecae537551a25e340e984c608d89327",
+      "kind": "source",
+      "rebind_review": {
+        "reason": "Only the current reconstruction harness self-test command moves to scripts/tests. Historical evaluation outcomes, timings, provenance ceilings and post-repair results are unchanged; no original trial is rerun.",
+        "previous_binding": {
+          "path": "docs/publication_evidence.json",
+          "start_line": 1,
+          "end_line": 209,
+          "sha256": "4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3",
+          "excerpt_sha256": "4e350698eed8b4ee10fc629cfb7540ed71bc6ccf4020ee2ede8635f4aae809b3"
+        },
+        "boundary": "Source-location and infrastructure consolidation only; manuscript units, evidence classes and historical observations remain unchanged. No asserted upgrade or new mathematical/empirical execution."
+      }
     },
     {
       "id": "house-provenance",
@@ -452,17 +474,39 @@
       "path": "docs/papers/SHORT_PAPER_CONTRACT.md",
       "start_line": 1,
       "end_line": 132,
-      "sha256": "c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa",
-      "excerpt_sha256": "c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa"
+      "sha256": "a921220b480fda04e935d6a0911291cebd0323e0c55fb3e6d4d588a0a2e30957",
+      "excerpt_sha256": "a921220b480fda04e935d6a0911291cebd0323e0c55fb3e6d4d588a0a2e30957",
+      "rebind_review": {
+        "reason": "The writing contract retains proposal, source review, integration and evidence obligations; its live test command now names scripts/tests/test_paper_refinement.py.",
+        "previous_binding": {
+          "path": "docs/papers/SHORT_PAPER_CONTRACT.md",
+          "start_line": 1,
+          "end_line": 132,
+          "sha256": "c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa",
+          "excerpt_sha256": "c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa"
+        },
+        "boundary": "Source-location and infrastructure consolidation only; manuscript units, evidence classes and historical observations remain unchanged. No asserted upgrade or new mathematical/empirical execution."
+      }
     },
     {
       "id": "refinement-tests",
       "kind": "source",
-      "path": "scripts/test_paper_refinement.py",
+      "path": "scripts/tests/test_paper_refinement.py",
       "start_line": 1,
-      "end_line": 76,
-      "sha256": "f6dc140fc71949d4148416e6666979ec6ef60006556804d9b9438b17825ac88a",
-      "excerpt_sha256": "f6dc140fc71949d4148416e6666979ec6ef60006556804d9b9438b17825ac88a"
+      "end_line": 78,
+      "sha256": "f1ebe342b01e14d98a0abcb0a81d550c2f356b3918e700b0640ad2d2b07704d8",
+      "excerpt_sha256": "f1ebe342b01e14d98a0abcb0a81d550c2f356b3918e700b0640ad2d2b07704d8",
+      "rebind_review": {
+        "reason": "The same editorial exchange regression tests now reside in scripts/tests, with a shared local-import bootstrap. Existing mutation/rejection semantics remain intact; this rebinding reports no new paper or proof outcome.",
+        "previous_binding": {
+          "path": "scripts/test_paper_refinement.py",
+          "start_line": 1,
+          "end_line": 76,
+          "sha256": "f6dc140fc71949d4148416e6666979ec6ef60006556804d9b9438b17825ac88a",
+          "excerpt_sha256": "f6dc140fc71949d4148416e6666979ec6ef60006556804d9b9438b17825ac88a"
+        },
+        "boundary": "Source-location and infrastructure consolidation only; manuscript units, evidence classes and historical observations remain unchanged. No asserted upgrade or new mathematical/empirical execution."
+      }
     },
     {
       "id": "lit-agmai",
@@ -517,10 +561,21 @@
       "id": "agent-entry",
       "path": "AGENTS.md",
       "start_line": 1,
-      "end_line": 161,
+      "end_line": 77,
       "kind": "source",
-      "sha256": "fd4d5d246731891853c4bf6dfa921637a28fb0a1c808213bae88f57c36cc37cb",
-      "excerpt_sha256": "fd4d5d246731891853c4bf6dfa921637a28fb0a1c808213bae88f57c36cc37cb"
+      "sha256": "88e290d543d3d6c4ccc5eabc816ee611ca6c1449829c8ba8c6f6dbf940f642cb",
+      "excerpt_sha256": "88e290d543d3d6c4ccc5eabc816ee611ca6c1449829c8ba8c6f6dbf940f642cb",
+      "rebind_review": {
+        "reason": "Compact AGENTS retains the public checkout, exact task routing, optional agent workflows, evidence/claim responsibilities, requested learning depth, research bounds, contribution and scoped review paths. It delegates detailed commands to their existing owners.",
+        "previous_binding": {
+          "path": "AGENTS.md",
+          "start_line": 1,
+          "end_line": 161,
+          "sha256": "fd4d5d246731891853c4bf6dfa921637a28fb0a1c808213bae88f57c36cc37cb",
+          "excerpt_sha256": "fd4d5d246731891853c4bf6dfa921637a28fb0a1c808213bae88f57c36cc37cb"
+        },
+        "boundary": "Source-location and infrastructure consolidation only; manuscript units, evidence classes and historical observations remain unchanged. No asserted upgrade or new mathematical/empirical execution."
+      }
     },
     {
       "id": "workbench-guide",
@@ -603,12 +658,12 @@
       "kind": "source",
       "path": "docs/ARCHITECTURE.md",
       "start_line": 1,
-      "end_line": 265,
-      "sha256": "4341644265d108ee1729542404906e6ef153062d0e484dce11aa1caefa6df581",
-      "excerpt_sha256": "4341644265d108ee1729542404906e6ef153062d0e484dce11aa1caefa6df581",
+      "end_line": 268,
+      "sha256": "b42d3ddedd822f121428ec35c45654aa1a1c310a90cb54f199cb4b1e500fcced",
+      "excerpt_sha256": "b42d3ddedd822f121428ec35c45654aa1a1c310a90cb54f199cb4b1e500fcced",
       "custody": "Current native public file inspected as source; no fresh execution.",
       "rebind_review": {
-        "reason": "Architecture retains persistent authored records vs derived navigation, source owners and ordered builders, contribution review, proof-vs-prose responsibilities and evidence limits. Consolidation changes routes and removes parallel guide prose. Final link repair directs the certificate example to the extant Organisation paper anchor and complete eight-programme source matrix; explanatory statements remain unchanged.",
+        "reason": "Architecture retains persistent authored records vs derived navigation, source owners and ordered builders, contribution review, proof-vs-prose responsibilities and evidence limits. Consolidation changes routes and removes parallel guide prose. Final link repair directs the certificate example to the extant Organisation paper anchor and complete eight-programme source matrix; explanatory statements remain unchanged. Structural consolidation review: Architecture guide now links folder role guides and moved test commands while retaining authored-vs-generated records, source/query boundaries, maintainer review/adoption, and proof-vs-prose evidence limits.",
         "previous_binding": {
           "path": "docs/ARCHITECTURE.md",
           "start_line": 1,
@@ -656,11 +711,11 @@
       "path": "scripts/query_corpus.py",
       "start_line": 6609,
       "end_line": 6738,
-      "sha256": "5f9442ede457d2a761b8ec86cdc52b1ea2db22815a49fc90b46c5e905b1b2328",
+      "sha256": "d56a2be36b7b07467ecb7548fd609a06954ce1d497572d709d7e8d771252e1a4",
       "excerpt_sha256": "2f13aac684bc48891582a60d8b501c1c1d357db9bfddfbe0c49e4cbb26c8da8b",
       "custody": "Current native public file inspected as source; no fresh execution.",
       "rebind_review": {
-        "reason": "The original reviewed excerpt is retained byte-for-byte; only the enclosing file digest and shifted coordinates are rebound.",
+        "reason": "The original reviewed excerpt is retained byte-for-byte; only the enclosing file digest and shifted coordinates are rebound. Structural consolidation review: The retained reviewed excerpt remains byte-for-byte identical; changes elsewhere in the file only update its enclosing digest.",
         "previous_binding": {
           "path": "scripts/query_corpus.py",
           "start_line": 6609,
@@ -767,11 +822,11 @@
       "path": "scripts/refresh_projections.py",
       "start_line": 1,
       "end_line": 139,
-      "sha256": "89d26c1eeb1c74f157f2e7db303f6033a8854070683f197458131c4ba5211e31",
-      "excerpt_sha256": "0de7065d7c88e3c11577d4fe8f117e3805d1bf7d7337b9dcf5c41a3aaa1fe0cd",
+      "sha256": "de30013d4ae7e2a0d9927686310d9c676c22779df10d9dfe8bc75cd682d2c344",
+      "excerpt_sha256": "2e26bbb01ce98e297eefb7792ec83376aaec0d725f5a9987da6b9458284a8013",
       "custody": "Current native public file inspected as source; no fresh execution.",
       "rebind_review": {
-        "reason": "Ordered builder registry still runs Python-owned projections before dependent descriptors. New owner paths follow relocated docs and merged reading guide; no Lean execution or autonomous scheduling added.",
+        "reason": "Ordered builder registry still runs Python-owned projections before dependent descriptors. New owner paths follow relocated docs and merged reading guide; no Lean execution or autonomous scheduling added. Structural consolidation review: Explicit ordered builder list now uses scripts/papers for paper tools and includes the existing bounded argument-frontier historical-snapshot builder. These are projection mechanisms, not mathematical acceptance or autonomous task selection.",
         "previous_binding": {
           "path": "scripts/refresh_projections.py",
           "start_line": 1,
@@ -788,11 +843,11 @@
       "path": "scripts/refresh_projections.py",
       "start_line": 286,
       "end_line": 364,
-      "sha256": "89d26c1eeb1c74f157f2e7db303f6033a8854070683f197458131c4ba5211e31",
+      "sha256": "de30013d4ae7e2a0d9927686310d9c676c22779df10d9dfe8bc75cd682d2c344",
       "excerpt_sha256": "51e8c5123dc12eb550e761be722b2ce39773abba5c0a8bd116686fb2194bc71a",
       "custody": "Current native public file inspected as source; no fresh execution.",
       "rebind_review": {
-        "reason": "The original reviewed excerpt is retained byte-for-byte; only the enclosing file digest and shifted coordinates are rebound.",
+        "reason": "The original reviewed excerpt is retained byte-for-byte; only the enclosing file digest and shifted coordinates are rebound. Structural consolidation review: The retained reviewed excerpt remains byte-for-byte identical; changes elsewhere in the file only update its enclosing digest.",
         "previous_binding": {
           "path": "scripts/refresh_projections.py",
           "start_line": 278,
@@ -807,13 +862,13 @@
       "id": "r8-release",
       "kind": "source",
       "path": "scripts/check_release.py",
-      "start_line": 1686,
-      "end_line": 1762,
-      "sha256": "96d8762c4a25fe57d5cdc54a6d8503b46a9a2b191aa3f1b5f15ec0f68e80a29f",
+      "start_line": 1698,
+      "end_line": 1774,
+      "sha256": "e7d31482108dbdf57cd8eb0ef497382ef8023070cf7a56722b95e48171088c15",
       "excerpt_sha256": "da39690f9c38fd66ca7b1f7496108ac87673b67260a7c1c234b842008edd0adb",
       "custody": "Current native public file inspected as source; no fresh execution.",
       "rebind_review": {
-        "reason": "The original reviewed excerpt is retained byte-for-byte; only the enclosing file digest and shifted coordinates are rebound.",
+        "reason": "The original reviewed excerpt is retained byte-for-byte; only the enclosing file digest and shifted coordinates are rebound. Structural consolidation review: The retained reviewed excerpt remains byte-for-byte identical; changes elsewhere in the file only update its enclosing digest. The root-layout prevention check now rejects root test regrowth and Python tools in documentation folders. It shifts this reviewed release-coordination excerpt without changing any byte of the excerpt or its described behavior. Final publication checker dispatch points to scripts/papers rather than docs/papers; the retained release-coordination excerpt is byte-identical and no mathematical or historical assertion changes.",
         "previous_binding": {
           "path": "scripts/check_release.py",
           "start_line": 1662,

@@ -10,7 +10,7 @@ Everything below uses this public checkout and public tools.
 | What you want to do | Start here | What you need |
 |---|---|---|
 | Follow one result to its evidence | [Try one claim](#try-one-claim-without-lean) | Git and Python 3.11 or later |
-| Inspect an accepted native #243 or #257 proof | [Native theorem reader routes](research-commons/PROVE2ME_COMPAT.md) | A web browser; the public packets print the accepted Solutions without sign-in |
+| Inspect an accepted native #243 or #257 proof | [Cubic #243 packet](research-commons/PROVE2ME_CUBIC_243_PACKET.md) or [weighted #257 packet](research-commons/PROVE2ME_WEIGHTED_257_PACKET.md) | A web browser; the public packets print the accepted Solutions without sign-in |
 | Replay the #257 weighted theorem against a separate statement | [Weighted theorem replay](verification/EXTERNAL_VERIFICATION_REPLAY.md#reviewer-replay) | Linux, Git, Python 3.11+, Elan/Lake, Go, and systemd |
 | Rerun the #257 exact-rational example | [Try the late rejection](#reproduce-the-257-exact-rational-example) | Python 3.11 or later; no extra packages |
 | Rerun a #251 finite computation | [Reproduce the #251 computations](#reproduce-a-finite-computation) | Python 3.11 or later; the first run needs no extra packages |
@@ -119,7 +119,7 @@ the [experiment guide](../research/experiments/sparse_interpolation/README.md#ex
 records its other checks.
 
 If this command fails, confirm `python3 -VV`, rerun
-`python3 scripts/test_choices_contraction_probe.py`, and report the exact
+`python3 scripts/tests/test_choices_contraction_probe.py`, and report the exact
 command, error, and `git rev-parse HEAD` through [CONTRIBUTING](../CONTRIBUTING.md).
 
 To try a fraction of your own, use the single-target probe (replace `189/388`):
@@ -202,7 +202,7 @@ For a small documentation contribution, check the reader routes and their
 links before opening a pull request:
 
 ```sh
-python3 scripts/test_human_first_contact.py
+python3 scripts/tests/test_human_first_contact.py
 ```
 
 For a tooling change, also run that tool's test and include the result in the
@@ -219,7 +219,7 @@ pins the Mathlib revision and its transitive dependencies.
 
 ```sh
 lake --version
-python3 scripts/test_dependency_lock_contract.py
+python3 scripts/tests/test_dependency_lock_contract.py
 lake exe cache get
 ```
 
@@ -424,12 +424,12 @@ it and keep it out of your commit.
 These checks cover the dependency lock, generated indexes and source links:
 
 ```sh
-python3 scripts/test_dependency_lock_contract.py
+python3 scripts/tests/test_dependency_lock_contract.py
 python3 scripts/build_corpus_descriptor.py --check
 python3 scripts/build_module_graph.py --check
 python3 scripts/refresh_source_coordinates.py --check
 python3 scripts/build_lean_dependency_index.py --check
-python3 scripts/test_downstream_example_contract.py
+python3 scripts/tests/test_downstream_example_contract.py
 ```
 
 If a command reports stale generated output, regenerate from the named owning

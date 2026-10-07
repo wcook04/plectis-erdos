@@ -26,8 +26,8 @@ on:
     paths:
       - scripts/export_argument_continuations.lean
       - scripts/export_abductions.lean
-      - scripts/test_argument_continuation_export.py
-      - scripts/test_argument_interface_export.py
+      - scripts/tests/test_argument_continuation_export.py
+      - scripts/tests/test_argument_interface_export.py
       - scripts/coverage_build_targets.py
       - .github/workflows/argument-continuations.yml
 
@@ -117,10 +117,10 @@ jobs:
           lake exe cache get
 
       - name: Toy-corpus exporter test
-        run: python3 scripts/test_argument_continuation_export.py
+        run: python3 scripts/tests/test_argument_continuation_export.py
 
       - name: Toy-corpus test of the ground tier and the optional passes
-        run: python3 scripts/test_argument_interface_export.py
+        run: python3 scripts/tests/test_argument_interface_export.py
 
       - name: Memory-bounded Lean build of the corpus roots
         run: python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness Erdos249257 ErdosProblems

@@ -126294,7 +126294,7 @@
           "line_end": 1043,
           "line_start": 1030,
           "path": "docs/external_verification_packet.json",
-          "sha256": "sha256:b80302c29945f751b7ed0ed26f4a97dbe2da4dceadc2292694a1205bdbf8e657"
+          "sha256": "sha256:41f110c60e03789d2eb5e2e08cf7ccfbc73abbe8f2258e5a357c8bf322256804"
         }
       ],
       "artifact_links": [
@@ -126485,7 +126485,7 @@
           "line_end": 215,
           "line_start": 204,
           "path": "skills/public-mathematical-writing/SKILL.md",
-          "sha256": "sha256:43d8e1048b7ef8e6674f4326430d1f7f8b5ca4898bc9e4c453ca4e1f3fb9dbd2"
+          "sha256": "sha256:a933e3de53782587f87d12902d2fd39ab0c571fe25be4ed80fe01c7f45d4eb6d"
         },
         {
           "excerpt_sha256": "sha256:43ae7aa3892935664831547944b3b27f554b3fd290c430f00cc870396a0f8a9e",
@@ -126493,7 +126493,7 @@
           "line_end": 15,
           "line_start": 15,
           "path": "docs/papers/SHORT_PAPER_CONTRACT.md",
-          "sha256": "sha256:c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa"
+          "sha256": "sha256:a921220b480fda04e935d6a0911291cebd0323e0c55fb3e6d4d588a0a2e30957"
         },
         {
           "excerpt_sha256": "sha256:ff5754db474f064134ae8227c14f4824529f41415521823ca5a324a5154ab45c",
@@ -126501,7 +126501,7 @@
           "line_end": 23,
           "line_start": 23,
           "path": "docs/papers/SHORT_PAPER_CONTRACT.md",
-          "sha256": "sha256:c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa"
+          "sha256": "sha256:a921220b480fda04e935d6a0911291cebd0323e0c55fb3e6d4d588a0a2e30957"
         }
       ],
       "artifact_links": [
@@ -126597,7 +126597,7 @@
           "line_end": 19,
           "line_start": 19,
           "path": "docs/papers/SHORT_PAPER_CONTRACT.md",
-          "sha256": "sha256:c97208060d2732399f14ace4008166ea30b05f797fd0c6ac19d829b3f6ddf9aa"
+          "sha256": "sha256:a921220b480fda04e935d6a0911291cebd0323e0c55fb3e6d4d588a0a2e30957"
         }
       ],
       "artifact_links": [
@@ -128963,7 +128963,7 @@
           "line_end": 79,
           "line_start": 67,
           "path": "lakefile.toml",
-          "sha256": "sha256:e1a087453f8ac7bf939211194ae083a87212d33d82bd222d1f27ffc0bbdc5211"
+          "sha256": "sha256:0c0479b2fee17a8de5983fa7e5ceb55cc7e05e7a0644152a0aab3e2be82a9527"
         },
         {
           "excerpt_sha256": "sha256:cbe13cbf9d5041738aecdb7bbe0abff35d2f946ed3567c4098ec6ce11c206613",
@@ -129164,7 +129164,7 @@
           "line_end": 35,
           "line_start": 32,
           "path": "lakefile.toml",
-          "sha256": "sha256:e1a087453f8ac7bf939211194ae083a87212d33d82bd222d1f27ffc0bbdc5211"
+          "sha256": "sha256:0c0479b2fee17a8de5983fa7e5ceb55cc7e05e7a0644152a0aab3e2be82a9527"
         },
         {
           "excerpt_sha256": "sha256:b0f750acfc6ef6e2955d978ed32fc02884e8fa180faa9f99bc1ec15ba856defc",

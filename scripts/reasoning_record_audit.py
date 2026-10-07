@@ -233,7 +233,7 @@ def _report(root: Path = ROOT, problems: list[int] | None = None) -> dict:
         return statement_text(loc, '', counter_lines=statement_lines[loc.path])
     for rel in ('scripts/reasoning_record_audit.py', 'scripts/assemble_reasoning_surfaces.py',
                 'scripts/check_lean_paper_propagation.py', 'scripts/lean_source.py',
-                'scripts/build_reading_edition.py', 'docs/papers/paper_corpus_renderer.py'):
+                'scripts/build_reading_edition.py', 'scripts/papers/paper_corpus_renderer.py'):
         inputs.read(rel)
     try:
         ledger = inputs.json('docs/paper_lean_coverage.json')

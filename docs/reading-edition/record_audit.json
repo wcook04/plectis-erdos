@@ -3,7 +3,7 @@
   "global_findings": [],
   "input_sha256": {
     "docs/paper_lean_coverage.json": "sha256:e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
-    "docs/papers/corpus.json": "sha256:02d1accf8907ce2677ab31b38639dc05dcc3a126c146b39bcfdce03d7e2ce2fb",
+    "docs/papers/corpus.json": "sha256:fd5c582864cf8e20aedbc668f4194cb88bc14bc77b4dbc37f928430a28d4e042",
     "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md": "sha256:0a8cc6fdb56d6892a6f5f34d423f925afd50336525c66a0efed93c2511c96964",
     "docs/papers/full-text/erdos-1049-rational-base-lambert.md": "sha256:c10103c0f78d66e68617f4c57c08e0414291eff4ced80bc56c8e4a15c6b5ae43",
     "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md": "sha256:39374c6f6dd3819ffb0f92277340c5c242e2ad2099e588a0aa01448550dddde7",
@@ -20,7 +20,6 @@
     "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md": "sha256:ceb8cf732c7ff7bdf310bc047d0165f6b4acf85f8fada92c9718d77b390a48cb",
     "docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md": "sha256:8706d4b64902412164435234f796f59a6b79d55bf462faea86ba52b7bc4cbf77",
     "docs/papers/full-text/erdos68-factorial-reasoning-surface.md": "sha256:ff99ad375b9769e5c722b0bfe5d68926550944f778841b90e3a3e935bc30b6fa",
-    "docs/papers/paper_corpus_renderer.py": "sha256:9047e412c5dbf35f5bf2bfee3dd6dcf069bd4c357efbafdaec800213cd243e90",
     "evidence/paper_evidence.json": "sha256:8c7de6f8f5e082fa91698d0c8314620207603080c348a526aa31fa250042b423",
     "lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean": "sha256:c6174888a3c59acf20f827b01a42bbffce05112eb7c7a3f30350dc1af0fb8f19",
     "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean": "sha256:069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4",
@@ -131,10 +130,11 @@
     "paper/reasoning-parts/erdos68/preamble.tex": "sha256:7bbd6207745d2f3e5c7db3b788c3cafcfd17504ac075cad8df1f5e5310dda21d",
     "paper/reasoning-parts/record_links.json": "sha256:ab29baab45406756d63fcb58eea23f84a2c951624db8f5226893d87261273522",
     "scripts/assemble_reasoning_surfaces.py": "sha256:0d8f6426d736fd371921e11e7bd2e721413f2d881b10da0be88c6f19b5ffb2b2",
-    "scripts/build_reading_edition.py": "sha256:adab68bf11c05d3bc4baebd588dcf508427690c50d8c07b86d0058dca93dd988",
+    "scripts/build_reading_edition.py": "sha256:5f5d24923ae62f4b5389b5a2ddd52c937d73a9dab759d77b05497a9cbd77fe4f",
     "scripts/check_lean_paper_propagation.py": "sha256:0f70bd947b02efe91291389e0430e1140a729de1ae3d311092e20152ea1b813c",
     "scripts/lean_source.py": "sha256:9957255054732a3ee1ddcadfd4aab80ea56c927077868153f8d7bddfa09672fe",
-    "scripts/reasoning_record_audit.py": "sha256:5181f76da0658a08400a1fc35c6f72dc0370e375fd4d11caf41a4eb38ce5c62b"
+    "scripts/papers/paper_corpus_renderer.py": "sha256:3f17767bda0df721098130b5de79d4f065c0062e396d1099c923de649cf80cfa",
+    "scripts/reasoning_record_audit.py": "sha256:9b05d77240475de388b4c39e3d7c641ef5bf37c3e127d7dc30051a1fb3dbef4c"
   },
   "navigation_sha256": {
     "docs/reading-edition/RECORDS.md": "sha256:363de36a25d5a8702d29e76906d09cfa627e0cba2e030e811bd85c2f3801caca",

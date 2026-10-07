@@ -543,7 +543,7 @@ The `.tex` file is the original manuscript. If the generated text differs,
 consult that source and report the conversion error.
 
 After editing a native manuscript, install Pandoc and run
-`python3 docs/papers/refresh_paper_corpus.py --write` from the repository root.
+`python3 scripts/papers/refresh_paper_corpus.py --write` from the repository root.
 This refreshes the text, section maps and this index. Rebuild changed PDFs
 and run the repository release checks separately. Companion copies retain
 their imported source identities; local edits do not publish a new revision.

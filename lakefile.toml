@@ -80,8 +80,8 @@ name = "ExternalVerification"
 srcDir = "verification"
 
 # A programme-local packet for one exact #1049 numerical certificate. It is
-# separate from the nineteen-interface headline packet so adding a focused
-# reviewer handle does not silently change the reviewed headline count.
+# separate from the root packet so adding a focused reviewer handle does not
+# silently change its selected statements. The configurations own the roster.
 [[lean_lib]]
 name = "ExternalVerification1049"
 srcDir = "verification"
@@ -118,7 +118,7 @@ srcDir = "research/adapters"
 name = "ResidualBench"
 srcDir = "research/residualbench"
 
-# Three solved polynomial families beneath the open Erdos #1041 problem: the
+# Selected polynomial families associated with Erdos #1041: the
 # sharp collinear Chebyshev comparison kernel, the primitive quintic two-tail
 # energy selector, and the translated cubic quotient-fibre spoke.  The checked
 # kernels support, but are strictly weaker than, the ordinary analytic

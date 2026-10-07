@@ -66,8 +66,8 @@ REVIEW_ONLY_DISPOSITION = "reported_size_review_finding_not_a_release_blocker"
 CONTROL_PATHS = frozenset(
     {
         "scripts/audit_reachable_release_history.py",
-        "scripts/test_reachable_release_history.py",
-        "scripts/test_reachable_release_history_environment.py",
+        "scripts/tests/test_reachable_release_history.py",
+        "scripts/tests/test_reachable_release_history_environment.py",
         "docs/release/reachable-history-audit.json",
         "docs/release/RELEASE_HISTORY_TRUST.md",
         DISPOSITIONS_RELATIVE_PATH,
@@ -1220,8 +1220,8 @@ def _build_remediation(
             "git fsck --full --no-reflogs --connectivity-only",
             "git rev-list --objects --all",
             "python3 scripts/audit_reachable_release_history.py --write-report",
-            "python3 scripts/test_reachable_release_history.py --check",
-            "python3 scripts/test_reachable_release_history.py --release-gate",
+            "python3 scripts/tests/test_reachable_release_history.py --check",
+            "python3 scripts/tests/test_reachable_release_history.py --release-gate",
         ],
         "rollback_material": [
             "Preserve the pre-remediation ref/object mapping and all recovery refs named in this report.",

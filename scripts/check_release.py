@@ -258,47 +258,47 @@ def late_check_commands() -> dict[str, list[str]]:
         # These are the two long readers in this two-worker pool. Start both
         # immediately; queuing cold-clone checks behind short diagnostics left
         # several seconds of avoidable work on the release critical path.
-        "query": [sys.executable, str(ROOT / "scripts" / "test_query_corpus.py")],
+        "query": [sys.executable, str(ROOT / "scripts" / "tests" / "test_query_corpus.py")],
         "cold_clone_adversarial": [
             sys.executable,
-            str(ROOT / "scripts" / "test_cold_clone_comprehension.py"),
+            str(ROOT / "scripts" / "tests" / "test_cold_clone_comprehension.py"),
         ],
-        "claim_records": [sys.executable, str(ROOT / "scripts" / "test_verify_claims.py")],
-        "research_query": [sys.executable, str(ROOT / "scripts" / "test_research_query.py")],
-        "companion_package": [sys.executable, str(ROOT / "scripts" / "test_companion_package.py")],
-        "reading_edition_weighted": [sys.executable, str(ROOT / "scripts" / "test_reading_edition_weighted.py")],
+        "claim_records": [sys.executable, str(ROOT / "scripts" / "tests" / "test_verify_claims.py")],
+        "research_query": [sys.executable, str(ROOT / "scripts" / "tests" / "test_research_query.py")],
+        "companion_package": [sys.executable, str(ROOT / "scripts" / "tests" / "test_companion_package.py")],
+        "reading_edition_weighted": [sys.executable, str(ROOT / "scripts" / "tests" / "test_reading_edition_weighted.py")],
         "github_release_contracts": [sys.executable, str(ROOT / "scripts" / "check_ci_release.py")],
         "semantic_queries": [
             sys.executable,
-            str(ROOT / "scripts" / "test_query_semantic_tiers.py"),
+            str(ROOT / "scripts" / "tests" / "test_query_semantic_tiers.py"),
         ],
         "semantic_storage": [
             sys.executable,
-            str(ROOT / "scripts" / "test_semantic_corpus_storage.py"),
+            str(ROOT / "scripts" / "tests" / "test_semantic_corpus_storage.py"),
         ],
         "semantic_relation_parity": [
             sys.executable,
-            str(ROOT / "scripts" / "test_semantic_relation_parity.py"),
+            str(ROOT / "scripts" / "tests" / "test_semantic_relation_parity.py"),
         ],
         "release_environment": [
             sys.executable,
-            str(ROOT / "scripts" / "test_check_release_environment.py"),
+            str(ROOT / "scripts" / "tests" / "test_check_release_environment.py"),
         ],
         "release_preparation": [
             sys.executable,
-            str(ROOT / "scripts" / "test_run_release_check.py"),
+            str(ROOT / "scripts" / "tests" / "test_run_release_check.py"),
         ],
         "proof_workbench": [
             sys.executable,
-            str(ROOT / "scripts" / "test_proof_workbench.py"),
+            str(ROOT / "scripts" / "tests" / "test_proof_workbench.py"),
         ],
         "proof_state_compiler": [
             sys.executable,
-            str(ROOT / "scripts" / "test_proof_state_compiler.py"),
+            str(ROOT / "scripts" / "tests" / "test_proof_state_compiler.py"),
         ],
         "computation_replay": [
             sys.executable,
-            str(ROOT / "scripts" / "test_erdos251_computation_replay.py"),
+            str(ROOT / "scripts" / "tests" / "test_erdos251_computation_replay.py"),
         ],
         "replay_routes": [
             sys.executable,
@@ -306,7 +306,7 @@ def late_check_commands() -> dict[str, list[str]]:
         ],
         "totient_normal_form": [
             sys.executable,
-            str(ROOT / "scripts" / "test_totient_kernel_normal_form.py"),
+            str(ROOT / "scripts" / "tests" / "test_totient_kernel_normal_form.py"),
         ],
         "finite_dilation_normal_form": [
             sys.executable,
@@ -345,11 +345,11 @@ def late_check_commands() -> dict[str, list[str]]:
         ],
         "mutation_harness": [
             sys.executable,
-            str(ROOT / "scripts" / "test_publication_mutation_harness.py"),
+            str(ROOT / "scripts" / "tests" / "test_publication_mutation_harness.py"),
         ],
         "public_boundary": [
             sys.executable,
-            str(ROOT / "scripts" / "test_public_artifact_boundary.py"),
+            str(ROOT / "scripts" / "tests" / "test_public_artifact_boundary.py"),
         ],
         "primary_source_disposition": [
             sys.executable,
@@ -357,7 +357,7 @@ def late_check_commands() -> dict[str, list[str]]:
         ],
         "proof_cockpit": [
             sys.executable,
-            str(ROOT / "scripts" / "test_proof_cockpit.py"),
+            str(ROOT / "scripts" / "tests" / "test_proof_cockpit.py"),
         ],
         "lean_paper_propagation": [
             sys.executable,
@@ -365,7 +365,7 @@ def late_check_commands() -> dict[str, list[str]]:
         ],
         "lean_paper_propagation_fixtures": [
             sys.executable,
-            str(ROOT / "scripts" / "test_check_lean_paper_propagation.py"),
+            str(ROOT / "scripts" / "tests" / "test_check_lean_paper_propagation.py"),
         ],
         "paper_evidence": [
             sys.executable,
@@ -374,7 +374,7 @@ def late_check_commands() -> dict[str, list[str]]:
         ],
         "paper_evidence_fixtures": [
             sys.executable,
-            str(ROOT / "scripts" / "test_paper_evidence.py"),
+            str(ROOT / "scripts" / "tests" / "test_paper_evidence.py"),
         ],
         "paper_evidence_pdfs": [
             sys.executable,
@@ -382,11 +382,11 @@ def late_check_commands() -> dict[str, list[str]]:
         ],
         "paper_evidence_pdf_fixtures": [
             sys.executable,
-            str(ROOT / "scripts" / "test_check_paper_evidence_pdfs.py"),
+            str(ROOT / "scripts" / "tests" / "test_check_paper_evidence_pdfs.py"),
         ],
         "clone_footprint": [
             sys.executable,
-            str(ROOT / "scripts" / "test_clone_footprint.py"),
+            str(ROOT / "scripts" / "tests" / "test_clone_footprint.py"),
         ],
         "markdown_table_render": [
             sys.executable,
@@ -417,7 +417,7 @@ def publication_stage_check_results() -> dict[str, subprocess.CompletedProcess[s
         {
             "external_verification_release": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_external_verification_release.py"),
+                str(ROOT / "scripts" / "tests" / "test_external_verification_release.py"),
             ],
             "note_source": [
                 sys.executable,
@@ -426,15 +426,15 @@ def publication_stage_check_results() -> dict[str, subprocess.CompletedProcess[s
             ],
             "paper_corpus": [
                 sys.executable,
-                str(ROOT / "docs" / "papers" / "check_paper_corpus.py"),
+                str(ROOT / "scripts" / "papers" / "check_paper_corpus.py"),
             ],
             "publication_taxonomy": [
                 sys.executable,
-                str(ROOT / "docs" / "papers" / "check_publication_taxonomy.py"),
+                str(ROOT / "scripts" / "papers" / "check_publication_taxonomy.py"),
             ],
             "publication_archive_versions": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_publication_archive_versions.py"),
+                str(ROOT / "scripts" / "tests" / "test_publication_archive_versions.py"),
             ],
         }
     )
@@ -1375,8 +1375,10 @@ def check_root_layout() -> None:
     # A used clone also contains ignored build products and local evidence.
     # Inspect the publication candidate; a tracked file remains in scope even
     # when its pathname matches an ignore rule.
-    candidate_paths = {path.relative_to(ROOT).as_posix() for path in (ROOT / "docs").glob("*")
+    candidate_paths = {path.relative_to(ROOT).as_posix() for path in (ROOT / "docs").rglob("*")
                        if path.is_file()}
+    candidate_paths.update(path.relative_to(ROOT).as_posix()
+                           for path in (ROOT / "scripts").glob("test_*.py"))
     entries = {path.name for path in ROOT.iterdir()}
     git_root = subprocess.run(
         ["git", "-C", str(ROOT), "rev-parse", "--show-toplevel"],
@@ -1414,6 +1416,16 @@ def check_root_layout() -> None:
         + ", ".join(sorted(unexplained)),
     )
 
+
+    misplaced_tests = sorted(rel for rel in candidate_paths
+                             if Path(rel).parent == Path("scripts")
+                             and Path(rel).match("test_*.py"))
+    check(not misplaced_tests, "behavioral tests belong in scripts/tests/: "
+          + ", ".join(misplaced_tests))
+    documentation_code = sorted(rel for rel in candidate_paths
+                                if rel.startswith("docs/") and rel.endswith(".py"))
+    check(not documentation_code, "executable documentation tools belong in scripts/: "
+          + ", ".join(documentation_code))
 
     # Reader documents have one home. Nested specialist and historical records
     # remain governed by their existing directory indexes and source owners.
@@ -1776,7 +1788,7 @@ def main(argv: list[str] | None = None) -> int:
         f"{child_output(archive_version_check)}",
     )
     publication_taxonomy_current = _PROJECTION_CHECK_RESULTS[
-        "docs/papers/build_publication_taxonomy.py"
+        "scripts/papers/build_publication_taxonomy.py"
     ]
     check(
         publication_taxonomy_current.returncode == 0,
@@ -2552,7 +2564,7 @@ def main(argv: list[str] | None = None) -> int:
         "Erdos249257.lean",
         "ErdosProblems.lean",
         "scripts/check_release.py",
-        "scripts/test_agent_entry.py",
+        "scripts/tests/test_agent_entry.py",
         "skills/maintain-public-infrastructure/SKILL.md",
         "scripts/query_corpus.py",
     ):
@@ -2575,43 +2587,43 @@ def main(argv: list[str] | None = None) -> int:
             ],
             "architecture_fixtures": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_architecture_guide.py"),
+                str(ROOT / "scripts" / "tests" / "test_architecture_guide.py"),
             ],
             "agent_entry": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_agent_entry.py"),
+                str(ROOT / "scripts" / "tests" / "test_agent_entry.py"),
             ],
             "clone_skills": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_clone_skills.py"),
+                str(ROOT / "scripts" / "tests" / "test_clone_skills.py"),
             ],
             "contribution_entry": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_contribution_entry.py"),
+                str(ROOT / "scripts" / "tests" / "test_contribution_entry.py"),
             ],
             "continuation_journeys": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_continue_research.py"),
+                str(ROOT / "scripts" / "tests" / "test_continue_research.py"),
             ],
             "contribution_contract_agreement": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_contribution_contract_agreement.py"),
+                str(ROOT / "scripts" / "tests" / "test_contribution_contract_agreement.py"),
             ],
             "source_attribution_fixtures": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_source_attributions.py"),
+                str(ROOT / "scripts" / "tests" / "test_source_attributions.py"),
             ],
             "human_first_contact": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_human_first_contact.py"),
+                str(ROOT / "scripts" / "tests" / "test_human_first_contact.py"),
             ],
             "downstream_example": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_downstream_example_contract.py"),
+                str(ROOT / "scripts" / "tests" / "test_downstream_example_contract.py"),
             ],
             "downstream_reuse": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_downstream_reuse.py"),
+                str(ROOT / "scripts" / "tests" / "test_downstream_reuse.py"),
             ],
             "agent_navigation_paper": [
                 sys.executable,
@@ -2633,7 +2645,7 @@ def main(argv: list[str] | None = None) -> int:
             ],
             "semantic_receipt_fixtures": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_semantic_corpus_check_receipt.py"),
+                str(ROOT / "scripts" / "tests" / "test_semantic_corpus_check_receipt.py"),
             ],
             "semantic_review": [
                 sys.executable,
@@ -2642,19 +2654,19 @@ def main(argv: list[str] | None = None) -> int:
             ],
             "semantic_review_fixtures": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_semantic_review.py"),
+                str(ROOT / "scripts" / "tests" / "test_semantic_review.py"),
             ],
             "semantic_rebind_fixtures": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_semantic_review_rebind.py"),
+                str(ROOT / "scripts" / "tests" / "test_semantic_review_rebind.py"),
             ],
             "formal_source_identity_fixtures": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_release_source_identity.py"),
+                str(ROOT / "scripts" / "tests" / "test_release_source_identity.py"),
             ],
             "palomar_qualification_fixtures": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_palomar_qualification.py"),
+                str(ROOT / "scripts" / "tests" / "test_palomar_qualification.py"),
             ],
             "theory_lab_contract": [
                 sys.executable,
@@ -2662,24 +2674,24 @@ def main(argv: list[str] | None = None) -> int:
             ],
             "theory_lab_git_fixtures": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_check_theory_lab_environment.py"),
+                str(ROOT / "scripts" / "tests" / "test_check_theory_lab_environment.py"),
                 "--fixtures-only",
             ],
             "argument_graph_builder": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_build_argument_continuations.py"),
+                str(ROOT / "scripts" / "tests" / "test_build_argument_continuations.py"),
             ],
             "argument_frontier_generator": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_build_argument_frontier.py"),
+                str(ROOT / "scripts" / "tests" / "test_build_argument_frontier.py"),
             ],
             "argument_frontier_verdicts": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_frontier_verdicts.py"),
+                str(ROOT / "scripts" / "tests" / "test_frontier_verdicts.py"),
             ],
             "argument_export_comparison": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_compare_argument_exports.py"),
+                str(ROOT / "scripts" / "tests" / "test_compare_argument_exports.py"),
             ],
             "barrier_registry_source": [
                 sys.executable,
@@ -2687,7 +2699,7 @@ def main(argv: list[str] | None = None) -> int:
             ],
             "reasoning_coordinates": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_reasoning_source_coordinates.py"),
+                str(ROOT / "scripts" / "tests" / "test_reasoning_source_coordinates.py"),
             ],
             "reasoning_assembly": [
                 sys.executable,
@@ -2696,7 +2708,7 @@ def main(argv: list[str] | None = None) -> int:
             ],
             "paper_crosslinks": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_paper_crosslinks.py"),
+                str(ROOT / "scripts" / "tests" / "test_paper_crosslinks.py"),
             ],
             "formal_conjectures_crosswalk": [
                 sys.executable,
@@ -2709,7 +2721,7 @@ def main(argv: list[str] | None = None) -> int:
             ],
             "concyclic_paper_boundary": [
                 sys.executable,
-                str(ROOT / "scripts" / "test_concyclic_alternation_paper_boundary.py"),
+                str(ROOT / "scripts" / "tests" / "test_concyclic_alternation_paper_boundary.py"),
             ],
         }
     )

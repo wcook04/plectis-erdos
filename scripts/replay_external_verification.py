@@ -49,7 +49,7 @@ FAILURE_CONTROL_IDS = (
     "duplicate_theorem_ids",
     "missing_runtime_receipt",
 )
-FAILURE_CONTROL_SUITE = "scripts/test_external_verification_release.py"
+FAILURE_CONTROL_SUITE = "scripts/tests/test_external_verification_release.py"
 
 
 class ReplayError(RuntimeError):

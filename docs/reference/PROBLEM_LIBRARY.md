@@ -17,7 +17,7 @@ checkout (the reader-only sparse checkout intentionally omits Lean source):
 ```sh
 python3 scripts/build_problem_index.py
 python3 scripts/build_problem_index.py --check
-python3 scripts/test_problem_library.py
+python3 scripts/tests/test_problem_library.py
 ```
 
 Paper identities and short/long roles come from `docs/papers/corpus.json`.

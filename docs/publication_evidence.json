@@ -21,7 +21,7 @@
     "operator_verification": "python3 scripts/run_publication_mutations.py --verify-operators",
     "reconstruction_baseline_policy": "the unmutated selected base must pass the configured gate before any mutation outcome is counted",
     "invalid_baseline_policy": "abort the run, report invalid_baseline, retain zero mutation outcomes, and return a nonzero command status",
-    "harness_self_test": "python3 scripts/test_publication_mutation_harness.py",
+    "harness_self_test": "python3 scripts/tests/test_publication_mutation_harness.py",
     "reproduction_bundle_status": "historical_protocol_and_results_registered_with_a_separate_deterministic_operator_reconstruction_but_without_original_raw_logs",
     "claim_ceiling": "This receipt makes the reported protocol, matrix, and limitations machine-readable. It is not a fresh rerun, does not reconstruct missing raw run logs, and does not treat deterministic replacement targets as the exact original edits."
   },

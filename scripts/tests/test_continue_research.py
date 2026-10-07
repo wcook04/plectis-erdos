@@ -1,0 +1,2104 @@
+#!/usr/bin/env python3
+"""Cold-path tests for ``continue_research.py`` composition and packaging."""
+
+from __future__ import annotations
+
+import _test_bootstrap  # noqa: F401
+
+import hashlib
+import json
+import os
+import shutil
+import subprocess
+import sys
+import tempfile
+from unittest import mock
+from pathlib import Path
+
+import continue_research
+import proof_workbench
+import route_memory_receipt
+import validation_singleflight as singleflight
+
+
+ROOT = Path(__file__).resolve().parents[2]
+CLI = ROOT / "scripts/continue_research.py"
+WORKBENCH = ROOT / "scripts/proof_workbench.py"
+RETURN_FIXTURE = ROOT / "scripts/fixtures/research_returns/valid_inconclusive.json"
+
+
+def run(command: list[str], *, expected: int = 0) -> subprocess.CompletedProcess[str]:
+    completed = subprocess.run(
+        command,
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+        env=continue_research.child_environment(),
+        timeout=continue_research.COMPOSED_COMMAND_TIMEOUT_SECONDS,
+    )
+    assert completed.returncode == expected, (command, completed.stdout, completed.stderr)
+    return completed
+
+
+def require(condition: bool, message: object) -> None:
+    """Keep the sidecar boundary assertion active under ``python3 -O``."""
+    if not condition:
+        raise AssertionError(message)
+
+
+def load(path: Path) -> dict:
+    value = json.loads(path.read_text(encoding="utf-8"))
+    assert isinstance(value, dict)
+    return value
+
+
+def check_session_artifact_links_rejected() -> None:
+    with tempfile.TemporaryDirectory(prefix="continue-session-artifact-") as temporary:
+        root = Path(temporary)
+        sessions = root / "sessions"
+        session = sessions / "session"
+        outside = root / "outside"
+        session.mkdir(parents=True)
+        outside.mkdir()
+        valid_manifest = outside / "continuation.json"
+        valid_manifest.write_text(
+            json.dumps(
+                {
+                    "schema": continue_research.SESSION_SCHEMA,
+                    "session": "session",
+                }
+            ),
+            encoding="utf-8",
+        )
+        (session / "continuation.json").symlink_to(valid_manifest)
+        try:
+            continue_research.load_session(sessions, "session")
+        except SystemExit as error:
+            require(
+                "symbolic links" in str(error),
+                f"manifest symlink rejection had no bounded diagnostic: {error}",
+            )
+        else:
+            raise AssertionError("continuation loader followed a symlinked manifest")
+
+        (session / "continuation.json").unlink()
+        (session / "continuation.json").write_text(
+            valid_manifest.read_text(encoding="utf-8"), encoding="utf-8"
+        )
+        outside_ledger = outside / "ledger.jsonl"
+        outside_ledger.write_text("", encoding="utf-8")
+        (session / "ledger.jsonl").symlink_to(outside_ledger)
+        try:
+            continue_research.read_ledger(session, sessions)
+        except SystemExit as error:
+            require(
+                "symbolic links" in str(error),
+                f"ledger symlink rejection had no bounded diagnostic: {error}",
+            )
+        else:
+            raise AssertionError("continuation checker followed a symlinked ledger")
+
+
+def check_replay_execution_posture() -> None:
+    posture = continue_research.replay_execution_posture(replay=True, probe_count=2)
+    assert posture == {
+        **continue_research.CONTINUATION_REPLAY_EXECUTION_POSTURE,
+        "replay_requested": True,
+        "stored_probe_count": 2,
+        "activated": True,
+    }
+    inactive = continue_research.replay_execution_posture(replay=True, probe_count=0)
+    assert inactive["activated"] is False
+    source = CLI.read_text(encoding="utf-8")
+    assert "proof_workbench.py" in source
+    assert "lake build" not in source
+    assert "validation_singleflight.py" not in source
+    workbench_source = WORKBENCH.read_text(encoding="utf-8")
+    assert '["lake", "env", "lean", "--stdin", "--json"]' in workbench_source
+    assert "timeout=PROBE_TIMEOUT_SECONDS" in workbench_source
+    assert "lake build" not in workbench_source
+
+
+def check_attached_git_context_scrubs_ref_state() -> None:
+    hostile = {
+        "GIT_DIR": str(ROOT / ".git"),
+        "GIT_WORK_TREE": str(ROOT),
+        "GIT_NAMESPACE": "attached-namespace",
+        "GIT_REPLACE_REF_BASE": "refs/replace/attached/",
+        "GIT_INDEX_FILE": "/foreign/index",
+        "PATH": "/foreign/bin",
+        "PYTHONPATH": "/foreign/modules",
+        "LANGUAGE": "fr_FR",
+        "VALIDATION_SINGLEFLIGHT_STATE_ROOT": "/foreign/singleflight",
+        **{
+            key: f"/foreign/{key.lower()}"
+            for key in continue_research.GIT_PROCESS_CONTROL_KEYS
+        },
+    }
+    with mock.patch.dict(os.environ, hostile, clear=False):
+        environment = continue_research.child_environment()
+        expected = singleflight.command_environment()
+    assert environment == expected
+    assert "GIT_DIR" not in environment
+    assert "GIT_WORK_TREE" not in environment
+    assert "GIT_NAMESPACE" not in environment
+    assert "GIT_REPLACE_REF_BASE" not in environment
+    for key in continue_research.GIT_PROCESS_CONTROL_KEYS:
+        if key in environment:
+            raise AssertionError(f"continuation child environment retained {key}")
+
+
+def check_subprocess_timeouts() -> None:
+    require(
+        continue_research.GIT_LOOKUP_TIMEOUT_SECONDS
+        == singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        "continuation Git timeout drifted from the canonical boundary",
+    )
+    completed = subprocess.CompletedProcess(
+        ["fixture"], returncode=0, stdout="{}", stderr=""
+    )
+    with mock.patch.object(
+        continue_research.subprocess, "run", return_value=completed
+    ) as run_mock:
+        assert continue_research.git_output("rev-parse", "HEAD") == "{}"
+        assert continue_research.git_is_ancestor("a" * 40, "b" * 40)
+        assert continue_research.run_json_command([sys.executable, "fixture.py"]) == {}
+        assert run([sys.executable, "fixture.py"]).returncode == 0
+
+    assert [
+        call.kwargs["timeout"] for call in run_mock.call_args_list
+    ] == [
+        continue_research.GIT_LOOKUP_TIMEOUT_SECONDS,
+        continue_research.GIT_LOOKUP_TIMEOUT_SECONDS,
+        continue_research.COMPOSED_COMMAND_TIMEOUT_SECONDS,
+        continue_research.COMPOSED_COMMAND_TIMEOUT_SECONDS,
+    ]
+
+
+def check_package_session_path_boundary() -> None:
+    """A package must not read session material through a symbolic link."""
+    with tempfile.TemporaryDirectory(prefix="continue-session-path-") as temporary:
+        root = Path(temporary)
+        sessions = root / "sessions"
+        session = sessions / "t_public_continue"
+        probes = session / "probes"
+        probes.mkdir(parents=True)
+        outside = root / "outside-secret.lean"
+        outside.write_text("-- private source\n", encoding="utf-8")
+        linked = probes / "linked.lean"
+        linked.symlink_to(outside)
+        try:
+            continue_research.session_artifact_bytes(
+                linked, sessions, "probe linked.lean"
+            )
+        except SystemExit as error:
+            assert "must not traverse symbolic links" in str(error)
+        else:
+            raise AssertionError("package input must reject symlinked session material")
+
+        redirected = root / "redirected"
+        redirected.mkdir()
+        linked_parent = sessions / "linked-parent"
+        linked_parent.symlink_to(redirected, target_is_directory=True)
+        hidden = linked_parent / ".." / "hidden.json"
+        require(
+            continue_research.has_symlink_component(hidden, sessions),
+            "session path normalized away a symlink before resolving ..",
+        )
+        require(
+            continue_research.output_path_has_symlink_component(hidden),
+            "package output normalized away a symlink before resolving ..",
+        )
+
+
+def check_malformed_utf8_inputs_rejected() -> None:
+    """Continuation readers must report malformed text as bounded input errors."""
+    with tempfile.TemporaryDirectory(prefix="continue-malformed-utf8-") as temporary:
+        root = Path(temporary)
+        malformed = root / "malformed.json"
+        malformed.write_bytes(b"{\xff\n")
+        try:
+            continue_research.load_json(malformed)
+        except SystemExit as error:
+            require("utf-8" in str(error).lower(), f"malformed JSON lacked a decode diagnostic: {error}")
+        else:
+            raise AssertionError("continuation JSON reader accepted malformed UTF-8")
+
+        sessions = root / "sessions"
+        session = sessions / "bounded"
+        session.mkdir(parents=True)
+        ledger = session / "ledger.jsonl"
+        ledger.write_bytes(b"{\xff\n")
+        try:
+            continue_research.read_ledger(session, sessions)
+        except SystemExit as error:
+            require("utf-8" in str(error).lower(), f"malformed ledger lacked a decode diagnostic: {error}")
+        else:
+            raise AssertionError("continuation ledger reader accepted malformed UTF-8")
+
+
+def check_route_memory_corpus_contract() -> None:
+    """Canonical route memory must not silently change authority or identity shape."""
+    source_document = json.loads(
+        (ROOT / route_memory_receipt.ROUTE_MEMORY_PATH).read_text(encoding="utf-8")
+    )
+    route_251 = next(
+        row for row in source_document["records"] if row.get("problem") == 251
+    )
+    source_current = route_251["evidence"]["source_current"]
+    require(
+        route_251["route_id"] == "erdos_251_small_mismatch_criterion",
+        "#251 canonical route-memory identity drifted",
+    )
+    require(
+        route_251["evidence"]["comparator_commit"]
+        == "750e4d3218248bea5785b16e6f271bb3ab76ff7e",
+        "#251 canonical route-memory Comparator commit drifted",
+    )
+    require(
+        source_current["declarations"][2]
+        == {
+            "name": "primeGapTailShift_not_eventuallyIntegral_of_cofinal_small_mismatch",
+            "line": 1112,
+            "role": "actual_prime_gap_specialization",
+        },
+        "#251 canonical route-memory declaration socket drifted",
+    )
+    require(
+        source_current["producer_socket"]["status"] == "unproved",
+        "#251 producer socket was allowed to inflate its review status",
+    )
+    require(
+        source_current["public_consumers"]
+        and source_current["paper_consumers"],
+        "#251 canonical route-memory consumer handoff is incomplete",
+    )
+    route_243 = next(
+        row for row in source_document["records"] if row.get("problem") == 243
+    )
+    negative_mass = route_243["evidence"]["related_families"]["negative_mass_recovery"]
+    require(
+        negative_mass["route_id"] == "erdos_243_negative_mass_recovery"
+        and negative_mass["status"] == "conditional_recovery_criterion",
+        "#243 negative-mass route identity or status drifted",
+    )
+    require(
+        negative_mass["source_module"]
+        == "ErdosProblems/Erdos243/SparseResetRecovery.lean"
+        and negative_mass["source_anchor"] == 175,
+        "#243 negative-mass source anchor drifted",
+    )
+    require(
+        negative_mass["source_declaration"]
+        == "ErdosProblems.Erdos243.sylvesterNext_eventually_of_summable_negativeRelativeMass"
+        and negative_mass["comparator_declaration"]
+        == "Erdos249257.ExternalVerification.sylvesterNext_eventually_of_summable_negativeRelativeMass",
+        "#243 negative-mass source/wrapper declaration drifted",
+    )
+    require(
+        negative_mass["supporting_declarations"]
+        == [
+            "ErdosProblems.Erdos243.tail_growth_le_one_add_negativeRelativeMass",
+            "ErdosProblems.Erdos243.eventually_zero_of_summable_negativeRelativeMass",
+        ],
+        "#243 negative-mass supporting declaration handoff drifted",
+    )
+    require(
+        {consumer["path"] for consumer in negative_mass["paper_consumers"]}
+        == {
+            "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+            "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
+        },
+        "#243 negative-mass paper route drifted",
+    )
+    require(
+        {consumer["path"] for consumer in negative_mass["public_consumers"]}
+        >= {
+            "docs/claims.json",
+            "docs/external_verification_packet.json",
+            "verification/comparator.json",
+        },
+        "#243 negative-mass public consumers drifted",
+    )
+    require(
+        "summability" in negative_mass["mechanism"].lower()
+        and "centered_state_dynamics" in negative_mass["boundary"]
+        and "canonical" in negative_mass["boundary"]
+        and "orbit" in negative_mass["boundary"],
+        "#243 negative-mass summability boundary drifted",
+    )
+    require(
+        "erdos-243-reciprocal-tail-rigidity.tex" in negative_mass["next_research_route"]
+        and "Challenge.lean:111" in negative_mass["next_research_route"],
+        "#243 negative-mass paper and wrapper route drifted",
+    )
+    route_269 = next(
+        row for row in source_document["records"] if row.get("problem") == 269
+    )
+    related_269 = route_269["evidence"]["related_families"]
+    conditional = related_269["conditional_carry_escape"]
+    require(
+        conditional["source_declaration"]
+        == "ErdosProblems.Erdos269.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
+        "#269 conditional family source declaration drifted",
+    )
+    require(
+        conditional["comparator_declaration"]
+        == "Erdos249257.ExternalVerification.no_positive_reducedCarry_of_cofinalLocalWindowEscape",
+        "#269 conditional family Comparator wrapper drifted",
+    )
+    require(
+        "cofinal local-window escape" in conditional["mechanism"]
+        and "source-specific cofinal escape remains unproved" in conditional["boundary"]
+        and "actual-series reduction is given" in conditional["boundary"],
+        "#269 conditional family mechanism or boundary drifted",
+    )
+    require(
+        set(related_269)
+        >= {
+            "conditional_carry_escape",
+            "dyadic_block_alphabet",
+            "rank_two_kernel_no_go",
+            "three_prime_lcm_cells",
+        },
+        "#269 related-family fan-in drifted",
+    )
+    mutations = (
+        ("authority posture", {"authority_posture": "claim registry"}),
+        ("top-level shape", {"claim_authority": "docs/claims.json"}),
+        ("duplicate route identity", {"duplicate_route": True}),
+    )
+    for label, mutation in mutations:
+        with tempfile.TemporaryDirectory(prefix="continue-route-memory-contract-") as temporary:
+            root = Path(temporary)
+            source = root / route_memory_receipt.ROUTE_MEMORY_PATH
+            source.parent.mkdir(parents=True)
+            document = json.loads(json.dumps(source_document))
+            if label == "duplicate route identity":
+                document["records"][1]["route_id"] = document["records"][0]["route_id"]
+            else:
+                document.update(mutation)
+            payload = (json.dumps(document, ensure_ascii=False) + "\n").encode("utf-8")
+            source.write_bytes(payload)
+            committed = subprocess.CompletedProcess(
+                ["git", "show"], 0, stdout=payload, stderr=b""
+            )
+            with mock.patch.object(
+                route_memory_receipt.subprocess, "run", return_value=committed
+            ):
+                try:
+                    route_memory_receipt.canonical_corpus(root)
+                except ValueError as error:
+                    require(
+                        "authority" in str(error)
+                        or "contract" in str(error)
+                        or "identity" in str(error),
+                        f"{label} rejection lacked a bounded diagnostic: {error}",
+                    )
+                else:
+                    raise AssertionError(
+                        f"canonical route memory accepted dishonest {label} mutation"
+                    )
+    malformed_family = json.loads(json.dumps(source_document))
+    del malformed_family["records"][5]["evidence"]["related_families"][
+        "conditional_carry_escape"
+    ]["mechanism"]
+    with tempfile.TemporaryDirectory(prefix="continue-route-memory-family-") as temporary:
+        root = Path(temporary)
+        source = root / route_memory_receipt.ROUTE_MEMORY_PATH
+        source.parent.mkdir(parents=True)
+        payload = (json.dumps(malformed_family, ensure_ascii=False) + "\n").encode("utf-8")
+        source.write_bytes(payload)
+        committed = subprocess.CompletedProcess(
+            ["git", "show"], 0, stdout=payload, stderr=b""
+        )
+        with mock.patch.object(
+            route_memory_receipt.subprocess, "run", return_value=committed
+        ):
+            try:
+                route_memory_receipt.canonical_corpus(root)
+            except ValueError as error:
+                require(
+                    "related family" in str(error),
+                    f"malformed related family rejection lacked a bounded diagnostic: {error}",
+                )
+            else:
+                raise AssertionError("canonical route memory accepted a family without mechanism")
+
+
+def check_route_memory_file_boundary() -> None:
+    """Canonical route memory must reject final links and special files before Git comparison."""
+    with tempfile.TemporaryDirectory(dir="/tmp", prefix="continue-route-memory-files-") as temporary:
+        root = Path(temporary)
+        source = root / route_memory_receipt.ROUTE_MEMORY_PATH
+        source.parent.mkdir(parents=True)
+        source.write_bytes(b"{}\n")
+        require(
+            route_memory_receipt.read_regular_bytes(source, root) == b"{}\n",
+            "regular route-memory source was not readable through the safe descriptor",
+        )
+
+        linked = root / "linked-route-memory.json"
+        linked.symlink_to(source)
+        with mock.patch.object(route_memory_receipt, "path_has_symlink_component", return_value=False):
+            try:
+                route_memory_receipt.read_regular_bytes(linked, root)
+            except ValueError as error:
+                require(
+                    "safely" in str(error) or "symbolic" in str(error),
+                    f"final route-memory symlink rejection lacked a bounded diagnostic: {error}",
+                )
+            else:
+                raise AssertionError("route-memory source followed a final-component symlink")
+
+        fifo = root / "route-memory.fifo"
+        os.mkfifo(fifo)
+        with mock.patch.object(route_memory_receipt, "path_has_symlink_component", return_value=False):
+            try:
+                route_memory_receipt.read_regular_bytes(fifo, root)
+            except ValueError as error:
+                require(
+                    "regular file" in str(error),
+                    f"special route-memory file rejection lacked a bounded diagnostic: {error}",
+                )
+            else:
+                raise AssertionError("route-memory source accepted a special file")
+
+
+def check_nested_return_shape_boundary() -> None:
+    """Malformed nested return objects must remain validation errors, not crashes."""
+    manifest = {
+        "repository_origin": "https://github.com/wcook04/plectis-lean-erdos249-257",
+        "starting_commit": "0" * 40,
+        "problem": 257,
+        "frontier": {"handle": "bounded", "intent": "question", "stop_condition": "stop"},
+        "identity": {
+            "contributor": {"name": "Contributor"},
+            "operator": {"relationship": "same_as_contributor", "name": "Contributor"},
+            "model_system": {"state": "not_used"},
+            "provider": {"state": "not_used"},
+            "material_collaborators": [],
+        },
+    }
+    for malformed in (
+        {"repository": "corrupt", "frontier": "corrupt", "identity": "corrupt"},
+        {
+            "repository": {},
+            "frontier": {},
+            "identity": {
+                "contributor": "corrupt",
+                "operator": "corrupt",
+                "model_system": "corrupt",
+                "provider": "corrupt",
+                "material_collaborators": "corrupt",
+            },
+        },
+    ):
+        errors = continue_research.cross_check_return(manifest, malformed)
+        require(errors, "cross-check accepted malformed nested return objects")
+
+    route_errors = continue_research.route_memory_receipt.validate_return_receipt(
+        {},
+        {"return_id": "rr-shape-boundary", "frontier": "corrupt"},
+        None,
+        ROOT,
+    )
+    require(route_errors, "route-memory validator crashed or accepted a malformed frontier")
+
+
+def check_changed_evidence_shape_boundary() -> None:
+    """Malformed changed-evidence JSON must reject without crashing the rail."""
+    consultation = route_memory_receipt.consultation_for_problem(249, ROOT)
+    template = route_memory_receipt.return_receipt_template(consultation)
+    returned = {
+        "return_id": "rr-malformed-changed-evidence",
+        "frontier": {"problem": 249},
+        "repository": {"changed_paths": ["docs/example.txt"]},
+    }
+    for malformed in ({}, [], ["docs/example.txt", {}]):
+        value = json.loads(json.dumps(template))
+        value["return_id"] = returned["return_id"]
+        value["relationships"][0]["relationship"] = "supersedes"
+        value["relationships"][0]["changed_evidence"] = malformed
+        errors = route_memory_receipt.validate_return_receipt(
+            value, returned, consultation, ROOT
+        )
+        require(errors, "malformed changed_evidence escaped route-memory validation")
+        require(
+            any("changed_evidence" in error for error in errors),
+            "changed_evidence rejection omitted its field diagnostic",
+        )
+    for noncanonical in (
+        "docs/./ambiguous.txt",
+        "docs//ambiguous.txt",
+    ):
+        value = json.loads(json.dumps(template))
+        value["return_id"] = returned["return_id"]
+        value["relationships"][0]["relationship"] = "supersedes"
+        value["relationships"][0]["changed_evidence"] = [noncanonical]
+        noncanonical_return = dict(returned)
+        noncanonical_return["repository"] = {"changed_paths": [noncanonical]}
+        errors = route_memory_receipt.validate_return_receipt(
+            value, noncanonical_return, consultation, ROOT
+        )
+        require(
+            any("canonical repository-relative path" in error for error in errors),
+            f"noncanonical route-memory evidence path {noncanonical!r} was accepted",
+        )
+
+
+def check_repository_origin_override() -> None:
+    """--repository-origin redirects the source but never relaxes the GitHub-URL shape check.
+
+    This checkout's own ``origin`` remote is whatever it was cloned from (a
+    local path in this test's own case), so the flow must be exercisable
+    without depending on that ambient state -- but the override must still
+    be exactly as strict as the git-derived default it replaces.
+    """
+    def start_command(session: str, sessions: Path) -> list[str]:
+        return [
+            sys.executable,
+            str(CLI),
+            "--sessions-root",
+            str(sessions),
+            "start",
+            "--session",
+            session,
+            "--problem",
+            "257",
+            "--frontier",
+            "fixture/origin-override",
+            "--intent",
+            "exercise the repository-origin override validation",
+            "--stop-condition",
+            "stop immediately",
+            "--contributor",
+            "Origin Override Contributor",
+            "--model-system",
+            "not_used",
+            "--provider",
+            "not_used",
+            "--allow-dirty",
+        ]
+
+    with tempfile.TemporaryDirectory(prefix="continue-origin-override-") as temporary:
+        sessions = Path(temporary) / "sessions"
+
+        rejected = run(
+            [
+                *start_command("origin_override_rejected", sessions),
+                "--repository-origin",
+                "/not/a/github/url",
+            ],
+            expected=1,
+        )
+        require(
+            "origin must be a public GitHub SSH or HTTPS repository URL" in rejected.stderr,
+            f"--repository-origin override skipped shape validation: {rejected.stderr}",
+        )
+        require(
+            not (sessions / "origin_override_rejected").exists(),
+            "rejected --repository-origin override still wrote session artifacts",
+        )
+
+        accepted = run(
+            [
+                *start_command("origin_override_accepted", sessions),
+                "--repository-origin",
+                "git@github.com:example/mirror.git",
+            ]
+        )
+        accepted_receipt = json.loads(accepted.stdout)
+        require(
+            accepted_receipt["repository_origin"] == "https://github.com/example/mirror",
+            f"--repository-origin override did not canonicalize: {accepted_receipt}",
+        )
+        manifest = load(sessions / "origin_override_accepted" / "continuation.json")
+        require(
+            manifest["repository_origin"] == "https://github.com/example/mirror",
+            f"--repository-origin override was not recorded in the session manifest: {manifest}",
+        )
+
+
+def check_start_session_path_boundary() -> None:
+    """A start must reject a redirected sessions root before opening the workbench."""
+    with tempfile.TemporaryDirectory(prefix="continue-start-path-") as temporary:
+        root = Path(temporary)
+        real_sessions = root / "real-sessions"
+        real_sessions.mkdir()
+        linked_sessions = root / "linked-sessions"
+        linked_sessions.symlink_to(real_sessions, target_is_directory=True)
+        completed = run(
+            [
+                sys.executable,
+                str(CLI),
+                "--sessions-root",
+                str(linked_sessions),
+                "start",
+                "--session",
+                "symlinked_start",
+                "--problem",
+                "257",
+                "--frontier",
+                "fixture/bounded-return",
+                "--intent",
+                "exercise the public continuation package",
+                "--stop-condition",
+                "stop after one structurally valid inconclusive return",
+                "--contributor",
+                "Symlink Start Contributor",
+                "--model-system",
+                "not_used",
+                "--provider",
+                "not_used",
+                "--allow-dirty",
+            ],
+            expected=1,
+        )
+        require(
+            "session output must not traverse symbolic links" in completed.stderr,
+            f"start path rejection omitted its diagnostic: {completed.stderr}",
+        )
+        require(
+            not any(real_sessions.iterdir()),
+            "start invoked workbench or wrote artifacts before rejecting the path",
+        )
+
+
+def check_start_arguments_before_side_effects() -> None:
+    with tempfile.TemporaryDirectory(prefix="continue-start-arguments-") as temporary:
+        sessions = Path(temporary) / "sessions with spaces"
+        args = continue_research.build_parser().parse_args([
+            "--sessions-root", str(sessions), "start", "--session", "blank_identity",
+            "--problem", "257", "--frontier", "bounded-return", "--intent", "bounded work",
+            "--stop-condition", "stop after one check", "--contributor", "Contributor",
+            "--operator", "Operator", "--model-system", "not_used", "--provider", "not_used",
+        ])
+        for field in ("session", "frontier", "intent", "stop_condition", "contributor", "operator", "model_system", "provider"):
+            original = getattr(args, field)
+            for blank in ("", " \t"):
+                setattr(args, field, blank)
+                with mock.patch.object(continue_research, "git_output") as git, mock.patch.object(
+                    continue_research, "run_json_command"
+                ) as child:
+                    try:
+                        continue_research.cmd_start(args)
+                    except SystemExit as error:
+                        require(field.replace("_", "-") in str(error), f"{field}: missing argument diagnostic: {error}")
+                    else:
+                        raise AssertionError(f"start accepted blank {field}")
+                    git.assert_not_called()
+                    child.assert_not_called()
+                require(not sessions.exists(), f"blank {field} created session artifacts")
+            setattr(args, field, original)
+
+
+def check_partial_workbench_open_retry() -> None:
+    """A child initialization failure must leave the continuation start retryable."""
+    with tempfile.TemporaryDirectory(prefix="continue-open-retry-") as temporary:
+        sessions = Path(temporary) / "sessions with spaces"
+        session = "partial_open"
+        directory = sessions / session
+        ledger = directory / "ledger.jsonl"
+        args = continue_research.build_parser().parse_args([
+            "--sessions-root", str(sessions), "start", "--session", session,
+            "--problem", "257", "--frontier", "bounded-return", "--intent", "bounded work",
+            "--stop-condition", "stop after one check", "--contributor", "Contributor Name",
+            "--operator", "Operator Name", "--material-collaborator", "Colleague::reviewer",
+            "--repository-origin", "https://github.com/example/public", "--allow-dirty",
+        ])
+
+        def composed_command(command: list[str]) -> dict:
+            if command[1] == str(WORKBENCH):
+                child_args = proof_workbench.build_parser(ROOT).parse_args(command[2:])
+                return child_args.func(child_args, ROOT)
+            if command[1].endswith("query_corpus.py"):
+                return {"results": [{"erdos_number": 257}]}
+            if command[1].endswith("query_route_memory.py"):
+                return {"problem": {"erdos_number": 257}}
+            raise AssertionError(f"unexpected composed command: {command}")
+
+        real_open = Path.open
+
+        def fail_initial_write(path: Path, mode="r", *positional, **kwargs):
+            handle = real_open(path, mode, *positional, **kwargs)
+            if path != ledger or mode not in {"a", "x", "xb"}:
+                return handle
+
+            def partial_write(data):
+                handle.write(data[:13])
+                handle.flush()
+                raise OSError(28, "No space left on device")
+
+            wrapper = mock.MagicMock()
+            wrapper.__enter__.return_value = wrapper
+            wrapper.__exit__.side_effect = handle.__exit__
+            wrapper.fileno.return_value = handle.fileno()
+            wrapper.write.side_effect = partial_write
+            return wrapper
+
+        with mock.patch.object(continue_research, "run_json_command", side_effect=composed_command):
+            with mock.patch.object(Path, "open", fail_initial_write):
+                try:
+                    continue_research.cmd_start(args)
+                except SystemExit as error:
+                    require("No space left on device" in str(error), f"continuation lost child failure: {error}")
+                else:
+                    raise AssertionError("continuation ignored failed workbench initialization")
+            require(not directory.exists(), "partial workbench opening prevented continuation retry")
+            started = continue_research.cmd_start(args)
+
+        manifest = load(directory / "continuation.json")
+        require(started["session"] == session, "continuation retry did not complete")
+        require(manifest["identity"]["contributor"] == {"name": "Contributor Name"}, "retry changed contributor credit")
+        require(manifest["identity"]["operator"] == {"relationship": "named", "name": "Operator Name"}, "retry changed operator credit")
+        require(manifest["identity"]["material_collaborators"] == [{"name": "Colleague", "role": "reviewer"}], "retry lost collaborator credit")
+        moves = proof_workbench.Session(sessions, session).moves()
+        require([move["move_id"] for move in moves] == ["m001", "m002"], "retry retained partial ledger entries")
+
+
+def subject_start_command(
+    sessions: Path, session: str, subject: str, related: tuple[int, ...]
+) -> list[str]:
+    """Build one subject-shaped start invocation for the round-trip check."""
+    command = [
+        sys.executable,
+        str(CLI),
+        "--sessions-root",
+        str(sessions),
+        "start",
+        "--session",
+        session,
+        "--subject",
+        subject,
+    ]
+    for problem in related:
+        command.extend(["--related-problem", str(problem)])
+    command.extend(
+        [
+            "--frontier",
+            "fixture/subject-frontier",
+            "--intent",
+            "does one recorded skip mechanism cover the related problems",
+            "--stop-condition",
+            "stop after one bounded comparison",
+            "--contributor",
+            "Subject Contributor",
+            "--model-system",
+            "not_used",
+            "--provider",
+            "not_used",
+            "--allow-dirty",
+            # This checkout's ambient origin is whatever it was cloned from,
+            # so assert the public origin the return is addressed to.
+            "--repository-origin",
+            "https://github.com/wcook04/plectis-erdos",
+        ]
+    )
+    return command
+
+
+def check_subject_frontier_round_trip() -> None:
+    """A contribution across several problems returns without inventing one."""
+    subject = "greedy skip mechanisms shared across reciprocal-series problems"
+    with tempfile.TemporaryDirectory(prefix="continue-subject-frontier-") as temporary:
+        temp = Path(temporary)
+        sessions = temp / "sessions"
+        common = [sys.executable, str(CLI), "--sessions-root", str(sessions)]
+
+        conflicting = subprocess.run(
+            [
+                *subject_start_command(sessions, "subject_conflict", subject, ()),
+                "--problem",
+                "257",
+            ],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+            env=continue_research.child_environment(),
+            timeout=continue_research.COMPOSED_COMMAND_TIMEOUT_SECONDS,
+        )
+        require(
+            conflicting.returncode == 2
+            and "not allowed with argument" in conflicting.stderr,
+            f"start accepted both a problem and a subject: {conflicting.stderr}",
+        )
+
+        stray_related = run(
+            [
+                sys.executable,
+                str(CLI),
+                "--sessions-root",
+                str(sessions),
+                "start",
+                "--session",
+                "subject_stray_related",
+                "--problem",
+                "257",
+                "--related-problem",
+                "249",
+                "--frontier",
+                "fixture/subject-frontier",
+                "--intent",
+                "bounded work",
+                "--stop-condition",
+                "stop after one check",
+                "--contributor",
+                "Subject Contributor",
+                "--allow-dirty",
+            ],
+            expected=1,
+        )
+        require(
+            "--related-problem is only valid with --subject" in stray_related.stderr,
+            f"start accepted a related problem without a subject: {stray_related.stderr}",
+        )
+
+        for session, related in (
+            ("subject_two_related", (257, 249)),
+            ("subject_no_related", ()),
+        ):
+            started = run(subject_start_command(sessions, session, subject, related))
+            start_receipt = json.loads(started.stdout)
+            expected_related = sorted(related)
+            require(
+                start_receipt["problem"] is None
+                and start_receipt["subject"] == subject
+                and start_receipt["related_problems"] == expected_related,
+                f"subject start receipt lost its scope: {start_receipt}",
+            )
+            require(
+                start_receipt["route_memory"]["disposition"]
+                == ("consulted" if related else "no_applicable_route"),
+                f"subject start recorded a fabricated route disposition: {start_receipt}",
+            )
+            manifest = load(sessions / session / "continuation.json")
+            require(
+                manifest["problem"] is None
+                and manifest["related_problems"] == expected_related,
+                f"subject manifest invented a problem number: {manifest}",
+            )
+            consultation = manifest["route_memory"]
+            require(
+                consultation["schema"] == continue_research.SUBJECT_CONSULTATION_SCHEMA
+                and [item["problem"] for item in consultation["consultations"]]
+                == expected_related,
+                f"subject session did not consult one route per related problem: {consultation}",
+            )
+            require(
+                "python3 scripts/query_corpus.py --overview --format json"
+                in manifest["composed_commands"],
+                f"subject session did not consult the corpus-wide overview: {manifest}",
+            )
+            require(
+                [
+                    command
+                    for command in manifest["composed_commands"]
+                    if "query_route_memory.py" in command
+                ]
+                == [
+                    f"python3 scripts/query_route_memory.py --problem {problem}"
+                    for problem in expected_related
+                ],
+                f"subject session recorded a route query it did not run: {manifest}",
+            )
+
+            run(
+                [
+                    sys.executable,
+                    str(WORKBENCH),
+                    "--sessions-root",
+                    str(sessions),
+                    "close",
+                    "--session",
+                    session,
+                    "--outcome",
+                    "open",
+                    "--summary",
+                    "fixture stopped at its declared boundary",
+                ]
+            )
+
+            returned = load(RETURN_FIXTURE)
+            returned["record_kind"] = "submitted_return"
+            returned["return_id"] = f"rr-fixture-{session.replace('_', '-')}"
+            returned["repository"]["starting_commit"] = manifest["starting_commit"]
+            returned["repository"]["origin"] = manifest["repository_origin"]
+            returned["frontier"] = {
+                "track": "mathematics",
+                "subject": subject,
+                "related_problems": expected_related,
+                "handle": "fixture/subject-frontier",
+                "bounded_question": manifest["frontier"]["intent"],
+                "stop_condition": manifest["frontier"]["stop_condition"],
+                "starting_paths": ["docs/research-commons/RETURN_PACKAGE_TEMPLATE.md"],
+            }
+            returned["identity"]["contributor"]["name"] = "Subject Contributor"
+            returned["identity"]["operator"] = {
+                "relationship": "same_as_contributor",
+                "name": "Subject Contributor",
+            }
+            returned["identity"]["model_system"] = {"state": "not_used"}
+            returned["identity"]["provider"] = {"state": "not_used"}
+            returned["identity"]["material_collaborators"] = []
+            returned["attribution"]["artifact_credit"][0]["name"] = "Subject Contributor"
+            return_path = temp / f"{session}-return.json"
+            return_path.write_text(
+                json.dumps(returned, indent=2, ensure_ascii=False) + "\n",
+                encoding="utf-8",
+            )
+
+            sidecar = load(sessions / session / "route-memory-return-template.json")
+            require(
+                sidecar["schema"] == continue_research.SUBJECT_RETURN_SCHEMA
+                and len(sidecar["receipts"]) == len(expected_related),
+                f"subject return template did not match its consultations: {sidecar}",
+            )
+            sidecar["return_id"] = returned["return_id"]
+            for receipt in sidecar["receipts"]:
+                receipt["return_id"] = returned["return_id"]
+            sidecar_path = temp / f"{session}-route-memory.json"
+            sidecar_path.write_text(
+                json.dumps(sidecar, indent=2, ensure_ascii=False) + "\n",
+                encoding="utf-8",
+            )
+
+            checked = run(
+                [
+                    *common,
+                    "check",
+                    "--session",
+                    session,
+                    "--return-json",
+                    str(return_path),
+                    "--route-memory-receipt",
+                    str(sidecar_path),
+                ]
+            )
+            check_receipt = json.loads(checked.stdout)
+            require(check_receipt["valid"], check_receipt)
+            require(
+                check_receipt["problem"] is None
+                and check_receipt["subject"] == subject
+                and check_receipt["related_problems"] == expected_related,
+                f"subject check receipt lost its scope: {check_receipt}",
+            )
+
+            foreign_problem = json.loads(json.dumps(returned))
+            foreign_problem["frontier"]["related_problems"] = [68]
+            foreign_path = temp / f"{session}-foreign-related.json"
+            foreign_path.write_text(
+                json.dumps(foreign_problem, ensure_ascii=False), encoding="utf-8"
+            )
+            foreign_check = run(
+                [
+                    *common,
+                    "check",
+                    "--session",
+                    session,
+                    "--return-json",
+                    str(foreign_path),
+                    "--route-memory-receipt",
+                    str(sidecar_path),
+                ],
+                expected=1,
+            )
+            require(
+                "frontier.related_problems" in foreign_check.stdout,
+                f"a return changed its related problems after the session opened: {foreign_check.stdout}",
+            )
+
+            package = temp / f"{session}-package"
+            packaged = run(
+                [
+                    *common,
+                    "package",
+                    "--session",
+                    session,
+                    "--return-json",
+                    str(return_path),
+                    "--route-memory-receipt",
+                    str(sidecar_path),
+                    "--output",
+                    str(package),
+                ]
+            )
+            require(json.loads(packaged.stdout)["valid"], packaged.stdout)
+            package_manifest = load(package / "package.json")
+            require(
+                package_manifest["problem"] is None
+                and package_manifest["subject"] == subject
+                and package_manifest["related_problems"] == expected_related,
+                f"subject package manifest lost its scope: {package_manifest}",
+            )
+            require(
+                package_manifest["route_memory"]["receipts"] == sidecar["receipts"],
+                f"subject package manifest dropped its route receipts: {package_manifest}",
+            )
+            for row in package_manifest["files"]:
+                data = (package / row["path"]).read_bytes()
+                require(
+                    hashlib.sha256(data).hexdigest() == row["sha256"],
+                    f"subject package hash drifted for {row['path']}",
+                )
+
+            detached = run(
+                [
+                    sys.executable,
+                    str(ROOT / "scripts/validate_research_return.py"),
+                    str(package / "return.json"),
+                    "--require-submitted",
+                    "--check-git",
+                    "--require-route-memory-receipt",
+                    "--route-memory-receipt",
+                    str(package / "route-memory.json"),
+                ]
+            )
+            detached_receipt = json.loads(detached.stdout)
+            require(detached_receipt["valid"], detached_receipt)
+            require(
+                detached_receipt["route_memory_binding"]["subject"] == subject
+                and detached_receipt["route_memory_binding"]["problem"] is None,
+                f"detached subject validation invented a problem: {detached_receipt}",
+            )
+
+
+def check_replay_command_boundary(sessions_root: Path, session: str) -> None:
+    """Exercise the optional replay consumer without launching Lean."""
+    session_directory = sessions_root / session
+    source = "-- replay boundary fixture\n"
+    probe_path = session_directory / "probes" / "replay-boundary.lean"
+    probe_path.write_text(source, encoding="utf-8")
+    probe_record = {
+        "schema": "workbench-move/1",
+        "move_id": "m004",
+        "at": "2026-08-28T00:00:00+00:00",
+        "kind": "probe",
+        "input_path": "probes/replay-boundary.lean",
+        "input_sha256": hashlib.sha256(source.encode("utf-8")).hexdigest(),
+        "label": "bounded replay boundary fixture",
+        "kernel_receipt": {
+            "verdict": "kernel_accepted",
+            "detail": None,
+            "exit_code": 0,
+            "error_count": 0,
+            "sorry_count": 0,
+        },
+    }
+    with (session_directory / "ledger.jsonl").open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(probe_record, sort_keys=True) + "\n")
+
+    captured_commands: list[list[str]] = []
+
+    def fake_run_json_command(command: list[str]) -> dict:
+        captured_commands.append(command)
+        return {
+            "schema": "workbench-replay-receipt/1",
+            "session": session,
+            "probes_replayed": 1,
+            "all_match": True,
+            "results": [
+                {
+                    "move_id": "m004",
+                    "recorded_verdict": "kernel_accepted",
+                    "replayed_verdict": "kernel_accepted",
+                    "replay": "match",
+                }
+            ],
+        }
+
+    with mock.patch.object(
+        continue_research, "run_json_command", side_effect=fake_run_json_command
+    ):
+        receipt, returned = continue_research.check_session(
+            sessions_root,
+            session,
+            None,
+            None,
+            replay=True,
+            require_closed=False,
+        )
+
+    assert returned is None
+    assert receipt["valid"]
+    assert receipt["replay"]["state"] == "reproduced"
+    assert receipt["replay"]["probes_replayed"] == 1
+    assert receipt["execution_posture"]["activated"] is True
+    assert receipt["execution_posture"]["classification"] == "bounded_disjoint_stdin_probe"
+    assert captured_commands == [
+        [
+            sys.executable,
+            str(WORKBENCH),
+            "--sessions-root",
+            str(sessions_root),
+            "replay",
+            "--session",
+            session,
+        ]
+    ]
+
+
+def check_architecture_frontier_round_trip() -> None:
+    """A tooling idea travels start -> check -> package without fictional math."""
+    assert continue_research.allowed_close_outcomes(
+        "architecture", "checked_positive"
+    ) == {"established", "open"}
+    assert continue_research.allowed_close_outcomes(
+        "architecture", "corrective"
+    ) == {"established", "open"}
+    assert continue_research.allowed_close_outcomes(
+        "mathematics", "checked_positive"
+    ) == {"established"}
+    with tempfile.TemporaryDirectory(prefix="continue-architecture-") as temporary:
+        temp = Path(temporary)
+        sessions = temp / "sessions"
+        command = [sys.executable, str(CLI), "--sessions-root", str(sessions)]
+        started = run([*command, "start", "--session", "architecture_test", "--area", "navigation",
+                       "--starting-path", "scripts/agent_entry.py", "--validation-plan", "Replay contributor paraphrases",
+                       "--repository-origin", "https://github.com/wcook04/plectis-erdos",
+                       "--frontier", "fixture/router", "--intent", "Improve the paper contributor journey",
+                       "--stop-condition", "Stop after a bounded routing comparison", "--contributor", "Fixture Contributor",
+                       "--model-system", "not_used", "--provider", "not_used", "--allow-dirty"])
+        start = json.loads(started.stdout)
+        assert start["track"] == "architecture" and "problem" not in start
+        manifest = load(sessions / "architecture_test" / "continuation.json")
+        assert "route_memory" not in manifest
+        assert not (sessions / "architecture_test" / "route-memory-return-template.json").exists()
+        assert json.loads(run([*command, "check", "--session", "architecture_test"]).stdout)["valid"]
+        run([sys.executable, str(WORKBENCH), "--sessions-root", str(sessions), "close",
+             "--session", "architecture_test", "--outcome", "open", "--summary", "Bounded proposal ready for review"])
+        returned = load(RETURN_FIXTURE)
+        returned["record_kind"] = "submitted_return"
+        returned["repository"].update(starting_commit=manifest["starting_commit"], origin=manifest["repository_origin"])
+        returned["frontier"] = {"track": "architecture", "area": "navigation", "handle": "fixture/router",
+                                "bounded_question": manifest["frontier"]["intent"],
+                                "stop_condition": manifest["frontier"]["stop_condition"],
+                                "starting_paths": ["scripts/agent_entry.py"]}
+        returned["result"].update(claim_ceiling="architecture_proposal", surviving_boundary="Routing proposal; no mathematical claim.")
+        returned["evidence"][0]["command"] = "python3 scripts/tests/test_agent_entry.py"
+        path = temp / "return.json"
+        path.write_text(json.dumps(returned))
+        checked = json.loads(run([*command, "check", "--session", "architecture_test", "--return-json", str(path)]).stdout)
+        assert checked["valid"], checked
+        for field, value in (("track", "mathematics"), ("area", "tooling"), ("starting_paths", ["README.md"])):
+            altered = json.loads(json.dumps(returned))
+            altered["frontier"][field] = value
+            assert continue_research.cross_check_return(manifest, altered), field
+        package = temp / "package"
+        run([*command, "package", "--session", "architecture_test", "--return-json", str(path), "--output", str(package)])
+        packed = load(package / "package.json")
+        assert packed["track"] == "architecture" and "route_memory" not in packed
+        assert not (package / "route-memory.json").exists()
+        assert "--require-route-memory-receipt" not in packed["validation"]["repository_backed"]["command"]
+        run([sys.executable, str(ROOT / "scripts/validate_research_return.py"), str(package / "return.json"), "--require-submitted", "--check-git"])
+        positive = json.loads(json.dumps(returned))
+        positive["return_id"] = "rr-fixture-valid-architecture-positive"
+        positive["result"]["class"] = "checked_positive"
+        positive["result"].update(
+            claim_ceiling="validated_architecture_change",
+            summary="The bounded navigation fixture passes its local check.",
+            requested_disposition="consider_architecture_adoption",
+        )
+        positive["evidence"][0].update(
+            exit_state="passed", exit_code=0, replay_state="reproduced",
+            observed="Synthetic fixture for a passed architecture check; no Lean proof asserted.",
+        )
+        positive_path = temp / "positive-return.json"
+        positive_path.write_text(json.dumps(positive))
+        positive_package = temp / "positive-package"
+        run([
+            *command, "package", "--session", "architecture_test",
+            "--return-json", str(positive_path), "--output", str(positive_package),
+        ])
+        assert (
+            load(positive_package / "return.json")["result"]["claim_ceiling"]
+            == "validated_architecture_change"
+        )
+        consultation = sessions / "architecture_test" / "workflow-consultation.json"
+        changed = load(consultation); changed["validation_plan"] = "Changed after the return"
+        consultation.write_text(json.dumps(changed))
+        rejected = json.loads(run([*command, "check", "--session", "architecture_test"], expected=1).stdout)
+        assert any("does not match" in error for error in rejected["errors"])
+
+
+def check_source_snapshot_detached_recipient() -> None:
+    """Recover the exact proposed tree without giving the recipient its commit."""
+    with tempfile.TemporaryDirectory(prefix="continue-source-recovery-") as temporary:
+        temp = Path(temporary)
+        author = temp / "author"
+        recipient = temp / "recipient"
+        author.mkdir()
+
+        def git(repo: Path, *args: str) -> str:
+            completed = subprocess.run(
+                ["git", *args], cwd=repo, capture_output=True, text=True,
+                check=False, env=continue_research.git_environment(), timeout=30,
+            )
+            require(completed.returncode == 0, (args, completed.stderr))
+            return completed.stdout.strip()
+
+        git(author, "init", "-q")
+        git(author, "config", "user.name", "Return Fixture")
+        git(author, "config", "user.email", "return-fixture@example.invalid")
+        (author / "a.txt").write_text("before\n", encoding="utf-8")
+        (author / "b.txt").write_text("delete me\n", encoding="utf-8")
+        git(author, "add", "a.txt", "b.txt")
+        git(author, "commit", "-qm", "starting tree")
+        starting = git(author, "rev-parse", "HEAD")
+        git(temp, "clone", "-q", "--no-local", str(author), str(recipient))
+        require(git(recipient, "rev-parse", "HEAD") == starting, "recipient lost starting commit")
+
+        (author / "a.txt").write_text("after\n", encoding="utf-8")
+        (author / "b.txt").unlink()
+        (author / "c.txt").write_text("new file\n", encoding="utf-8")
+        git(author, "add", "-A")
+        git(author, "commit", "-qm", "bounded return")
+        proposed = git(author, "rev-parse", "HEAD")
+        missing = subprocess.run(
+            ["git", "cat-file", "-e", f"{proposed}^{{commit}}"], cwd=recipient,
+            capture_output=True, check=False, env=continue_research.git_environment(), timeout=30,
+        )
+        require(missing.returncode != 0, "recipient already had the proposed commit")
+
+        returned = {"repository": {
+            "starting_commit": starting, "proposed_commit": proposed,
+            "changed_paths": ["a.txt", "b.txt", "c.txt"],
+        }}
+        files, artifact = continue_research.source_artifact_files(returned, author)
+        require(artifact["coverage"] == "exact_proposed_git_diff", artifact)
+        require({entry["path"] for entry in artifact["entries"]} == set(returned["repository"]["changed_paths"]), artifact)
+        for entry in artifact["entries"]:
+            target = recipient / entry["path"]
+            if entry["state"] == "deleted":
+                target.unlink()
+            else:
+                data = files[entry["package_path"]]
+                require(hashlib.sha256(data).hexdigest() == entry["sha256"], entry)
+                target.write_bytes(data)
+                target.chmod(0o755 if entry["mode"] == "100755" else 0o644)
+        git(recipient, "add", "-A")
+        require(
+            git(recipient, "write-tree") == git(author, "rev-parse", f"{proposed}^{{tree}}"),
+            "source snapshot did not reproduce the proposed tree",
+        )
+        omitted = json.loads(json.dumps(returned))
+        omitted["repository"]["changed_paths"].remove("c.txt")
+        try:
+            continue_research.source_artifact_files(omitted, author)
+        except SystemExit as exc:
+            require("omitted=['c.txt']" in str(exc), exc)
+        else:
+            raise AssertionError("package accepted a changed file omitted from the return")
+
+        uncommitted = json.loads(json.dumps(returned))
+        uncommitted["repository"].update(
+            starting_commit=proposed, proposed_commit=None, changed_paths=["a.txt"]
+        )
+        (author / "a.txt").write_text("working tree edit\n", encoding="utf-8")
+        (author / "unlisted.txt").write_text("untracked edit\n", encoding="utf-8")
+        try:
+            continue_research.source_artifact_files(uncommitted, author)
+        except SystemExit as exc:
+            require("unlisted.txt" in str(exc), exc)
+        else:
+            raise AssertionError("clean-start package omitted an untracked changed file")
+        _, limited = continue_research.source_artifact_files(
+            uncommitted, author, dirty_at_start=True
+        )
+        require(limited["omission_check"] == "unavailable_preexisting_dirt", limited)
+
+
+def main() -> int:
+    require(
+        continue_research.PROBLEMS is continue_research.route_memory_receipt.ROSTER,
+        "continuation selector roster must reuse route-memory authority",
+    )
+    check_session_artifact_links_rejected()
+    check_attached_git_context_scrubs_ref_state()
+    check_subprocess_timeouts()
+    check_replay_execution_posture()
+    check_package_session_path_boundary()
+    check_malformed_utf8_inputs_rejected()
+    check_route_memory_corpus_contract()
+    check_route_memory_file_boundary()
+    check_nested_return_shape_boundary()
+    check_changed_evidence_shape_boundary()
+    check_start_session_path_boundary()
+    check_start_arguments_before_side_effects()
+    check_partial_workbench_open_retry()
+    check_repository_origin_override()
+    check_subject_frontier_round_trip()
+    check_architecture_frontier_round_trip()
+    check_source_snapshot_detached_recipient()
+    assert continue_research.canonical_github_origin(
+        "git@github.com:wcook04/plectis-lean-erdos249-257.git"
+    ) == "https://github.com/wcook04/plectis-lean-erdos249-257"
+    assert continue_research.canonical_github_origin(
+        "https://github.com/wcook04/plectis-lean-erdos249-257"
+    ) == "https://github.com/wcook04/plectis-lean-erdos249-257"
+    with tempfile.TemporaryDirectory() as temporary:
+        temp = Path(temporary)
+        environment_probe = temp / "environment_probe.py"
+        environment_probe.write_text(
+            "import json, os\n"
+            "print(json.dumps({key: os.environ.get(key, 'absent') for key in "
+            "('PYTHONPATH', 'PYTHONNOUSERSITE', 'PYTHONDONTWRITEBYTECODE', "
+            "'PYTHONUTF8', 'GIT_ASKPASS')}))\n",
+            encoding="utf-8",
+        )
+        original_python_environment = {
+            key: os.environ.get(key)
+            for key in (
+                "PYTHONPATH",
+                "PYTHONNOUSERSITE",
+                "PYTHONDONTWRITEBYTECODE",
+                "PYTHONUTF8",
+                "GIT_ASKPASS",
+            )
+        }
+        os.environ["PYTHONPATH"] = "/private/test-only/imports"
+        os.environ.pop("PYTHONNOUSERSITE", None)
+        os.environ.pop("PYTHONDONTWRITEBYTECODE", None)
+        os.environ["GIT_ASKPASS"] = "/private/test-only/askpass"
+        try:
+            observed_environment = continue_research.run_json_command(
+                [sys.executable, str(environment_probe)]
+            )
+        finally:
+            for key, value in original_python_environment.items():
+                if value is None:
+                    os.environ.pop(key, None)
+                else:
+                    os.environ[key] = value
+        assert observed_environment == {
+            "PYTHONPATH": "absent",
+            "PYTHONNOUSERSITE": "1",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONUTF8": "1",
+            "GIT_ASKPASS": "/bin/false",
+        }
+
+        sessions = temp / "sessions"
+        session = "t_public_continue"
+        unsafe_session = "t_private_note"
+        common = [sys.executable, str(CLI), "--sessions-root", str(sessions)]
+        started = run(
+            [
+                *common,
+                "start",
+                "--session",
+                session,
+                "--problem",
+                "257",
+                "--frontier",
+                "fixture/bounded-return",
+                "--intent",
+                "exercise the public continuation package",
+                "--stop-condition",
+                "stop after one structurally valid inconclusive return",
+                "--contributor",
+                "Fixture Contributor",
+                "--model-system",
+                "Fixture Model",
+                "--provider",
+                "Fixture Provider",
+                "--material-collaborator",
+                "Fixture Collaborator::verification",
+                "--allow-dirty",
+                # This checkout's own ``origin`` remote is whatever the caller
+                # cloned from -- a local path in a disposable test clone, a
+                # fork, or a mirror -- and this test must pass unmodified from
+                # any of those.  Assert a plausible public origin explicitly
+                # rather than depending on ambient git remote configuration.
+                "--repository-origin",
+                "https://github.com/wcook04/plectis-erdos",
+            ]
+        )
+        start_receipt = json.loads(started.stdout)
+        assert start_receipt["schema"] == "research-continuation-start/1"
+        package_next = [
+            command
+            for command in start_receipt["next"]
+            if command.startswith("python3 scripts/continue_research.py package")
+        ]
+        assert len(package_next) == 1
+        assert "--route-memory-receipt <route-memory-return.json>" in package_next[0]
+        manifest = load(sessions / session / "continuation.json")
+        assert manifest["starting_commit"] == start_receipt["starting_commit"]
+        assert manifest["repository_origin"] == start_receipt["repository_origin"]
+        assert manifest["identity"]["model_system"] == {
+            "state": "disclosed",
+            "name": "Fixture Model",
+        }
+        assert manifest["identity"]["provider"] == {
+            "state": "disclosed",
+            "name": "Fixture Provider",
+        }
+        assert manifest["identity"]["material_collaborators"] == [
+            {"name": "Fixture Collaborator", "role": "verification"}
+        ]
+        assert (sessions / session / "route.json").is_file()
+        shutil.copytree(sessions / session, sessions / unsafe_session)
+        unsafe_manifest_path = sessions / unsafe_session / "continuation.json"
+        unsafe_manifest = load(unsafe_manifest_path)
+        unsafe_manifest["session"] = unsafe_session
+        unsafe_manifest_path.write_text(
+            json.dumps(unsafe_manifest, indent=2) + "\n", encoding="utf-8"
+        )
+
+        run(
+            [
+                sys.executable,
+                str(WORKBENCH),
+                "--sessions-root",
+                str(sessions),
+                "close",
+                "--session",
+                session,
+                "--outcome",
+                "open",
+                "--summary",
+                "fixture stopped at its declared boundary",
+            ]
+        )
+
+        returned = load(RETURN_FIXTURE)
+        returned["record_kind"] = "submitted_return"
+        returned["return_id"] = "rr-fixture-cli-inconclusive"
+        returned["repository"]["starting_commit"] = manifest["starting_commit"]
+        returned["repository"]["origin"] = manifest["repository_origin"]
+        returned["frontier"]["problem"] = 257
+        returned["frontier"]["handle"] = "fixture/bounded-return"
+        returned["frontier"]["bounded_question"] = manifest["frontier"]["intent"]
+        returned["frontier"]["stop_condition"] = manifest["frontier"]["stop_condition"]
+        returned["identity"]["contributor"]["name"] = "Fixture Contributor"
+        returned["identity"]["model_system"] = {
+            "state": "disclosed",
+            "name": "Fixture Model",
+            "version": "fixture-version",
+        }
+        returned["identity"]["provider"] = {
+            "state": "disclosed",
+            "name": "Fixture Provider",
+        }
+        returned["identity"]["material_collaborators"] = [
+            {"name": "Fixture Collaborator", "role": "verification"}
+        ]
+        return_path = temp / "return.json"
+        return_path.write_text(json.dumps(returned, indent=2) + "\n", encoding="utf-8")
+        route_memory_receipt = load(
+            sessions / session / "route-memory-return-template.json"
+        )
+        route_memory_receipt["return_id"] = returned["return_id"]
+        route_memory_receipt_path = temp / "route-memory-return.json"
+        route_memory_receipt_path.write_text(
+            json.dumps(route_memory_receipt, indent=2) + "\n", encoding="utf-8"
+        )
+        linked_route_memory_receipt_path = temp / "linked-route-memory-return.json"
+        linked_route_memory_receipt_path.symlink_to(route_memory_receipt_path)
+        symlink_check = run(
+            [
+                *common,
+                "check",
+                "--session",
+                session,
+                "--return-json",
+                str(return_path),
+                "--route-memory-receipt",
+                str(linked_route_memory_receipt_path),
+            ],
+            expected=1,
+        )
+        assert "must not traverse symbolic links" in symlink_check.stdout
+
+        checked = run(
+            [
+                *common,
+                "check",
+                "--session",
+                session,
+                "--return-json",
+                str(return_path),
+                "--route-memory-receipt",
+                str(route_memory_receipt_path),
+            ]
+        )
+        check_receipt = json.loads(checked.stdout)
+        assert check_receipt["valid"]
+        assert check_receipt["problem"] == manifest["problem"]
+        assert check_receipt["route_memory"] == {
+            "path": route_memory_receipt["route_memory"]["path"],
+            "digest": route_memory_receipt["route_memory"]["sha256"],
+            "route_ids": [
+                relationship["route_id"]
+                for relationship in route_memory_receipt["relationships"]
+            ],
+            "receipt_supplied": True,
+        }
+        assert check_receipt["workbench"]["closed"]
+        assert check_receipt["replay"]["state"] == "not_applicable"
+        assert check_receipt["execution_posture"] == {
+            **continue_research.CONTINUATION_REPLAY_EXECUTION_POSTURE,
+            "replay_requested": False,
+            "stored_probe_count": 0,
+            "activated": False,
+        }
+
+        # The manifest, persisted consultation, and fillable return template
+        # are one immutable route-memory identity.  Mutating any one artifact
+        # must fail closed before a return can be accepted.
+        session_directory = sessions / session
+        continuation_path = session_directory / "continuation.json"
+        consultation_path = session_directory / "route-memory-consultation.json"
+        template_path = session_directory / "route-memory-return-template.json"
+        continuation_bytes = continuation_path.read_bytes()
+        consultation_bytes = consultation_path.read_bytes()
+        template_bytes = template_path.read_bytes()
+
+        def check_identity_mutation(
+            path: Path, payload: dict, marker: str, original: bytes
+        ) -> None:
+            path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+            try:
+                mutated = run([*common, "check", "--session", session], expected=1)
+                mutated_receipt = json.loads(mutated.stdout)
+                require(not mutated_receipt["valid"], f"mutation unexpectedly accepted: {path}")
+                require(
+                    any(marker in error for error in mutated_receipt["errors"]),
+                    f"mutation missing {marker!r}: {mutated_receipt['errors']}",
+                )
+            finally:
+                path.write_bytes(original)
+
+        manifest_mutation = load(continuation_path)
+        manifest_mutation["route_memory"] = (
+            continue_research.route_memory_receipt.consultation_for_problem(249, ROOT)
+        )
+        check_identity_mutation(
+            continuation_path,
+            manifest_mutation,
+            "persisted artifact does not match continuation manifest",
+            continuation_bytes,
+        )
+
+        consultation_mutation = load(consultation_path)
+        consultation_mutation["problem"] = 249
+        check_identity_mutation(
+            consultation_path,
+            consultation_mutation,
+            "problem does not match continuation manifest",
+            consultation_bytes,
+        )
+
+        template_mutation = load(template_path)
+        if template_mutation["relationships"]:
+            template_mutation["relationships"][0]["relationship"] = "confirms"
+        else:
+            template_mutation["disposition"] = "no_applicable_route"
+        check_identity_mutation(
+            template_path,
+            template_mutation,
+            "does not match canonical consultation",
+            template_bytes,
+        )
+
+        validation_fixture = json.loads(json.dumps(returned))
+        validation_fixture["record_kind"] = "validation_fixture"
+        validation_fixture_path = temp / "validation-fixture.json"
+        validation_fixture_path.write_text(
+            json.dumps(validation_fixture, indent=2) + "\n", encoding="utf-8"
+        )
+        fixture_check = run(
+            [
+                *common,
+                "check",
+                "--session",
+                session,
+                "--return-json",
+                str(validation_fixture_path),
+                "--route-memory-receipt",
+                str(route_memory_receipt_path),
+            ],
+            expected=1,
+        )
+        fixture_check_receipt = json.loads(fixture_check.stdout)
+        assert not fixture_check_receipt["valid"]
+        assert "record_kind: --require-submitted requires submitted_return" in (
+            fixture_check_receipt["errors"]
+        )
+        check_replay_command_boundary(sessions, session)
+
+        package = temp / "package"
+        packaged = run(
+            [
+                *common,
+                "package",
+                "--session",
+                session,
+                "--return-json",
+                str(return_path),
+                "--route-memory-receipt",
+                str(route_memory_receipt_path),
+                "--output",
+                str(package),
+            ]
+        )
+        package_result = json.loads(packaged.stdout)
+        assert package_result["valid"]
+        package_manifest = load(package / "package.json")
+        assert package_manifest["schema"] == "research-return-package/1"
+        assert package_manifest["repository_origin"] == manifest["repository_origin"]
+        assert package_manifest["problem"] == manifest["problem"]
+        assert package_manifest["route_memory"] == {
+            "source": route_memory_receipt["route_memory"],
+            "disposition": route_memory_receipt["disposition"],
+            "relationships": route_memory_receipt["relationships"],
+        }
+        return_index = package_manifest["return_index"]
+        assert return_index["source"] == "return.json"
+        assert return_index["identity"] == returned["identity"]
+        assert return_index["repository"] == {
+            "starting_commit": returned["repository"]["starting_commit"],
+            "proposed_commit": returned["repository"]["proposed_commit"],
+            "accepted_commit": returned["repository"]["accepted_commit"],
+            "changed_paths": returned["repository"]["changed_paths"],
+        }
+        source_artifact = package_manifest["source_artifact"]
+        assert source_artifact["schema"] == continue_research.SOURCE_ARTIFACT_SCHEMA
+        assert source_artifact["coverage"] == "declared_worktree_snapshot"
+        assert {row["path"] for row in source_artifact["entries"]} == set(returned["repository"]["changed_paths"])
+        for row in source_artifact["entries"]:
+            if row["state"] == "present":
+                assert (package / row["package_path"]).read_bytes() == (ROOT / row["path"]).read_bytes()
+        assert return_index["result"] == {
+            "class": returned["result"]["class"],
+            "claim_ceiling": returned["result"]["claim_ceiling"],
+            "requested_disposition": returned["result"]["requested_disposition"],
+        }
+        assert return_index["evidence"] == [
+            {
+                "exit_state": evidence["exit_state"],
+                "replay_state": evidence["replay_state"],
+            }
+            for evidence in returned["evidence"]
+        ]
+        assert return_index["review"] == {
+            name: decision["state"] for name, decision in returned["review"].items()
+        }
+        assert package_manifest["github_intake"]["issue_form"] == ".github/ISSUE_TEMPLATE/research_return.yml"
+        assert package_manifest["github_intake"]["pull_request_artifact"] == "return.json"
+        assert package_manifest["github_intake"]["pull_request_route_memory_receipt"] == "route-memory.json"
+        assert package_manifest["github_intake"]["accepted_receipt_directory"] == "docs/research-commons/returns"
+        validation = package_manifest["validation"]
+        repository_validation = validation["repository_backed"]
+        assert (
+            package_manifest["github_intake"]["local_validation"]
+            == repository_validation["command"]
+        )
+        assert '"$CHECKOUT/scripts/validate_research_return.py"' in repository_validation["command"]
+        assert '"$PACKAGE_DIR/return.json"' in repository_validation["command"]
+        assert '"$PACKAGE_DIR/route-memory.json"' in repository_validation["command"]
+        assert "source_artifact.entries" in validation["source_recovery"]
+        assert "pull_request_receipt_path" not in package_manifest["github_intake"]
+        assert package_manifest["public_guidance"] == {
+            "continuation_guide": "docs/agents/AGENT_WORKBENCH.md",
+            "return_template": "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md",
+            "resume_state_template": (
+                "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#6-resume-state-and-promotion-request"
+            ),
+            "credit_policy": "docs/research-commons/CONTRIBUTION_RECOGNITION.md",
+            "frontier_handoff_example": (
+                "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#formal-handoff-from-exposition"
+            ),
+            "correction_lineage": (
+                "docs/research-commons/RETURN_PACKAGE_TEMPLATE.md#correction-lineage"
+            ),
+        }
+        for guidance in package_manifest["public_guidance"].values():
+            guidance_path = ROOT / guidance.split("#", 1)[0]
+            require(
+                guidance_path.is_file(),
+                f"package public guidance points at missing tracked file: {guidance}",
+            )
+        for row in package_manifest["files"]:
+            data = (package / row["path"]).read_bytes()
+            assert hashlib.sha256(data).hexdigest() == row["sha256"]
+        for artifact in package.rglob("*"):
+            if artifact.is_file():
+                assert temporary not in artifact.read_text(encoding="utf-8")
+
+        detached_root = temp / "detached-recipient"
+        detached_package = detached_root / "delivery with spaces"
+        unrelated_cwd = detached_root / "unrelated"
+        shutil.copytree(package, detached_package)
+        unrelated_cwd.mkdir(parents=True)
+        detached_validation = subprocess.run(
+            ["/bin/sh", "-c", repository_validation["command"]],
+            cwd=unrelated_cwd,
+            env={
+                **continue_research.child_environment(),
+                "CHECKOUT": str(ROOT),
+                "PACKAGE_DIR": str(detached_package),
+                "PATH": f"{Path(sys.executable).parent}:{os.environ.get('PATH', '')}",
+            },
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=continue_research.COMPOSED_COMMAND_TIMEOUT_SECONDS,
+        )
+        require(
+            detached_validation.returncode == 0,
+            (
+                detached_validation.returncode,
+                detached_validation.stdout,
+                detached_validation.stderr,
+            ),
+        )
+        detached_receipt = json.loads(detached_validation.stdout)
+        assert detached_receipt["valid"]
+        assert detached_receipt["route_memory_receipt"] == "route-memory.json"
+
+        real_session_directory = sessions / "t_public_continue-real"
+        session_directory = sessions / session
+        session_directory.rename(real_session_directory)
+        session_directory.symlink_to(real_session_directory, target_is_directory=True)
+        try:
+            linked_session = run(
+                [
+                    *common,
+                    "check",
+                    "--session",
+                    session,
+                    "--return-json",
+                    str(return_path),
+                    "--route-memory-receipt",
+                    str(route_memory_receipt_path),
+                ],
+                expected=1,
+            )
+            assert "must not traverse symbolic links" in linked_session.stderr
+        finally:
+            session_directory.unlink()
+            real_session_directory.rename(session_directory)
+
+        external_return = temp / "external-return.json"
+        external_return.write_text(return_path.read_text(encoding="utf-8"), encoding="utf-8")
+        linked_return = temp / "linked-return.json"
+        linked_return.symlink_to(external_return)
+        linked_return_check = run(
+            [
+                *common,
+                "check",
+                "--session",
+                session,
+                "--return-json",
+                str(linked_return),
+                "--route-memory-receipt",
+                str(route_memory_receipt_path),
+            ],
+            expected=1,
+        )
+        linked_return_payload = json.loads(linked_return_check.stdout)
+        require(not linked_return_payload["valid"], linked_return_payload)
+        require(
+            any(
+                "return path must not traverse symbolic links" in error
+                for error in linked_return_payload["errors"]
+            ),
+            linked_return_payload,
+        )
+
+        return_directory = temp / "return-directory"
+        return_directory.mkdir()
+        directory_return = run(
+            [
+                *common,
+                "check",
+                "--session",
+                session,
+                "--return-json",
+                str(return_directory),
+                "--route-memory-receipt",
+                str(route_memory_receipt_path),
+            ],
+            expected=1,
+        )
+        directory_return_payload = json.loads(directory_return.stdout)
+        require(not directory_return_payload["valid"], directory_return_payload)
+        require(
+            any(
+                "return: cannot read JSON" in error
+                for error in directory_return_payload["errors"]
+            ),
+            directory_return_payload,
+        )
+
+        route_memory_directory = temp / "route-memory-directory"
+        route_memory_directory.mkdir()
+        directory_receipt = run(
+            [
+                *common,
+                "check",
+                "--session",
+                session,
+                "--return-json",
+                str(return_path),
+                "--route-memory-receipt",
+                str(route_memory_directory),
+            ],
+            expected=1,
+        )
+        directory_payload = json.loads(directory_receipt.stdout)
+        require(not directory_payload["valid"], directory_payload)
+        require(
+            any(
+                "route-memory receipt: cannot read JSON" in error
+                for error in directory_payload["errors"]
+            ),
+            directory_payload,
+        )
+
+        outside_package_target = temp / "outside-package-target"
+        outside_package_target.mkdir()
+        linked_package_output = temp / "linked-package-output"
+        linked_package_output.symlink_to(
+            outside_package_target / "not-created", target_is_directory=True
+        )
+        linked_package = run(
+            [
+                *common,
+                "package",
+                "--session",
+                session,
+                "--return-json",
+                str(return_path),
+                "--route-memory-receipt",
+                str(route_memory_receipt_path),
+                "--output",
+                str(linked_package_output),
+            ],
+            expected=1,
+        )
+        assert "must not traverse symbolic links" in linked_package.stderr
+        assert not (outside_package_target / "not-created").exists()
+
+        run(
+            [
+                sys.executable,
+                str(WORKBENCH),
+                "--sessions-root",
+                str(sessions),
+                "note",
+                "--session",
+                unsafe_session,
+                "--kind",
+                "observation",
+                "--text",
+                "/Users/example/private-note",
+            ]
+        )
+        run(
+            [
+                sys.executable,
+                str(WORKBENCH),
+                "--sessions-root",
+                str(sessions),
+                "close",
+                "--session",
+                unsafe_session,
+                "--outcome",
+                "open",
+                "--summary",
+                "fixture stopped at its declared boundary",
+            ]
+        )
+        unsafe = run(
+            [
+                *common,
+                "package",
+                "--session",
+                unsafe_session,
+                "--return-json",
+                str(return_path),
+                "--route-memory-receipt",
+                str(route_memory_receipt_path),
+                "--output",
+                str(temp / "unsafe-package"),
+            ],
+            expected=1,
+        )
+        assert "private path" in unsafe.stderr
+        assert not (temp / "unsafe-package").exists()
+
+        missing_check_receipt = run(
+            [*common, "check", "--session", session, "--return-json", str(return_path)],
+            expected=1,
+        )
+        assert "route-memory receipt is required" in missing_check_receipt.stdout
+
+        mismatched = dict(returned)
+        mismatched["repository"] = dict(returned["repository"])
+        mismatched["repository"]["starting_commit"] = "0" * 40
+        mismatch_path = temp / "mismatch.json"
+        mismatch_path.write_text(json.dumps(mismatched), encoding="utf-8")
+        mismatch = run(
+            [*common, "check", "--session", session, "--return-json", str(mismatch_path)],
+            expected=1,
+        )
+        assert "does not match the opened continuation session" in mismatch.stdout
+
+        wrong_origin = json.loads(json.dumps(returned))
+        wrong_origin["repository"]["origin"] = "https://github.com/example/different-repository"
+        wrong_origin_path = temp / "wrong-origin.json"
+        wrong_origin_path.write_text(json.dumps(wrong_origin), encoding="utf-8")
+        origin_mismatch = run(
+            [*common, "check", "--session", session, "--return-json", str(wrong_origin_path)],
+            expected=1,
+        )
+        assert "repository.origin" in origin_mismatch.stdout
+
+        missing_proposed = json.loads(json.dumps(returned))
+        missing_proposed["repository"]["proposed_commit"] = "f" * 40
+        missing_proposed_path = temp / "missing-proposed.json"
+        missing_proposed_path.write_text(json.dumps(missing_proposed), encoding="utf-8")
+        proposed_missing = run(
+            [
+                *common,
+                "check",
+                "--session",
+                session,
+                "--return-json",
+                str(missing_proposed_path),
+            ],
+            expected=1,
+        )
+        assert "commit is not present in this checkout" in proposed_missing.stdout
+
+        ancestor_proposed = json.loads(json.dumps(returned))
+        ancestor_proposed["repository"]["proposed_commit"] = run(
+            ["git", "rev-parse", f"{manifest['starting_commit']}^"]
+        ).stdout.strip()
+        ancestor_proposed_path = temp / "ancestor-proposed.json"
+        ancestor_proposed_path.write_text(json.dumps(ancestor_proposed), encoding="utf-8")
+        proposed_not_descendant = run(
+            [
+                *common,
+                "check",
+                "--session",
+                session,
+                "--return-json",
+                str(ancestor_proposed_path),
+            ],
+            expected=1,
+        )
+        assert "not a descendant" in proposed_not_descendant.stdout
+
+        changed_question = json.loads(json.dumps(returned))
+        changed_question["frontier"]["bounded_question"] = "silently broaden the initialized task"
+        changed_question_path = temp / "changed-question.json"
+        changed_question_path.write_text(
+            json.dumps(changed_question), encoding="utf-8"
+        )
+        question_mismatch = run(
+            [
+                *common,
+                "check",
+                "--session",
+                session,
+                "--return-json",
+                str(changed_question_path),
+            ],
+            expected=1,
+        )
+        assert "frontier.bounded_question" in question_mismatch.stdout
+
+        changed_stop = json.loads(json.dumps(returned))
+        changed_stop["frontier"]["stop_condition"] = "continue beyond the initialized boundary"
+        changed_stop_path = temp / "changed-stop-condition.json"
+        changed_stop_path.write_text(json.dumps(changed_stop), encoding="utf-8")
+        stop_mismatch = run(
+            [
+                *common,
+                "check",
+                "--session",
+                session,
+                "--return-json",
+                str(changed_stop_path),
+            ],
+            expected=1,
+        )
+        assert "frontier.stop_condition" in stop_mismatch.stdout
+
+        changed_disclosure = json.loads(json.dumps(returned))
+        changed_disclosure["identity"]["provider"]["name"] = "Different Provider"
+        changed_disclosure_path = temp / "changed-disclosure.json"
+        changed_disclosure_path.write_text(
+            json.dumps(changed_disclosure), encoding="utf-8"
+        )
+        disclosure_mismatch = run(
+            [
+                *common,
+                "check",
+                "--session",
+                session,
+                "--return-json",
+                str(changed_disclosure_path),
+            ],
+            expected=1,
+        )
+        assert "identity.provider.name" in disclosure_mismatch.stdout
+
+        missing_collaborator = json.loads(json.dumps(returned))
+        missing_collaborator["identity"]["material_collaborators"] = []
+        missing_collaborator_path = temp / "missing-collaborator.json"
+        missing_collaborator_path.write_text(
+            json.dumps(missing_collaborator), encoding="utf-8"
+        )
+        collaborator_mismatch = run(
+            [
+                *common,
+                "check",
+                "--session",
+                session,
+                "--return-json",
+                str(missing_collaborator_path),
+            ],
+            expected=1,
+        )
+        assert "opened-session collaborator" in collaborator_mismatch.stdout
+
+    print(
+        json.dumps(
+            {
+                "schema": "continue-research-test/1",
+                "passed": True,
+                "transitions": ["start", "check", "package"],
+                "adversarial_rejections": [
+                    "generation_mismatch",
+                    "bounded_question_mismatch",
+                    "stop_condition_mismatch",
+                    "repository_origin_mismatch",
+                    "proposed_commit_not_present",
+                    "proposed_commit_not_descendant",
+                    "identity_disclosure_mismatch",
+                    "missing_initial_collaborator",
+                    "private_session_material",
+                    "directory_route_memory_receipt",
+                    "route_memory_source_final_symlink_and_special_file",
+                    "symlink_return_input",
+                    "directory_return_input",
+                    "subject_with_problem_selector",
+                    "related_problem_without_subject",
+                    "subject_related_problem_mismatch",
+                ],
+            },
+            sort_keys=True,
+        )
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

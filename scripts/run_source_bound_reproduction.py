@@ -81,11 +81,11 @@ DEFAULT_PLAN = [
     # source scans twice without adding an independent authority boundary.
     command(
         "declaration_head_contract",
-        ["python3", "scripts/test_declaration_head_contract.py"],
+        ["python3", "scripts/tests/test_declaration_head_contract.py"],
     ),
     command(
         "projection_checkout_independence",
-        ["python3", "scripts/test_projection_checkout_independence.py"],
+        ["python3", "scripts/tests/test_projection_checkout_independence.py"],
     ),
     command(
         "release",

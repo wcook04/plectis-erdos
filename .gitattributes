@@ -2,3 +2,12 @@
 # Their terminal blank lines are part of the captured source.
 docs/research-commons/benchmarks/round8_candidate_development/sources/excerpts/s243_defs.txt whitespace=-blank-at-eof
 docs/research-commons/benchmarks/round8_candidate_development/sources/excerpts/s243_natural.txt whitespace=-blank-at-eof
+
+# Shipped offline indexes and text exports are rebuilt from their source owners.
+# Keep them available in the checkout while collapsing generated GitHub diffs.
+docs/declaration_atlas.json linguist-generated=true
+docs/lean_dependency_index.json linguist-generated=true
+docs/module_synopsis_index.json linguist-generated=true
+docs/declaration_search_index.json.gz linguist-generated=true
+docs/semantic_corpus.json.gz linguist-generated=true
+docs/papers/full-text/*.md linguist-generated=true

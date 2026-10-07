@@ -2240,7 +2240,7 @@ def assurance_entrypoints(claims: dict[str, Any]) -> list[dict[str, Any]]:
         ]
         palomar_query_steps = [
             "python3 scripts/check_palomar_qualification.py --json",
-            "python3 scripts/test_palomar_qualification.py",
+            "python3 scripts/tests/test_palomar_qualification.py",
         ]
         palomar_posture = (
             "repository_local_qualification_projection_not_palomar_"
@@ -2307,7 +2307,7 @@ def assurance_entrypoints(claims: dict[str, Any]) -> list[dict[str, Any]]:
             ],
             "query_steps": [
                 "python3 scripts/build_external_verification.py --check",
-                "python3 scripts/test_external_verification.py",
+                "python3 scripts/tests/test_external_verification.py",
             ],
             "authority_owners": [
                 "docs/claims.json::external_verification_packet",

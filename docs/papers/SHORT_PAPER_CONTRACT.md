@@ -85,7 +85,7 @@ keys and bibliography credit. A returned audit program is inert evidence.
 ```sh
 python3 scripts/short_paper_writer.py check-return \
   --packet /tmp/paper_revision.zip /tmp/paper_revision_return.zip
-python3 scripts/test_paper_refinement.py
+python3 scripts/tests/test_paper_refinement.py
 ```
 
 The checker never applies an edit or executes a returned program. A declared

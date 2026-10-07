@@ -124,7 +124,7 @@ execution, isolated onboarding, independent review or outside adoption.
 Focused checks:
 
 ```sh
-python3 scripts/test_frontier_skill.py
-python3 scripts/test_clone_skills.py
-python3 scripts/test_companion_package.py
+python3 scripts/tests/test_frontier_skill.py
+python3 scripts/tests/test_clone_skills.py
+python3 scripts/tests/test_companion_package.py
 ```
