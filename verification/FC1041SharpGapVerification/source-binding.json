@@ -33,7 +33,7 @@
   "protected_inputs": {
     "verification/FC1041SharpGapVerification/Challenge.lean": "97692faba7d6bd4f716d10dbab15610d17617aa0525754ba31b3ef46009bd035",
     "verification/FC1041SharpGapVerification/comparator.json": "ad0cb12c85cc2549879fa13e4834829df2e40c8a252653fd594c9392cc7d131a",
-    "verification/FC1041SharpGapVerification/formalization.yaml": "66ed84033dbace63c450998b3d826ed66a884abacfb43c895c6cc1bcc3783baf",
-    "lakefile.toml": "e7d0f12dc8da7059861a69bcca2f7ae571361b068dc8457722e552e1acb6a85d"
+    "verification/FC1041SharpGapVerification/formalization.yaml": "7ee59d41cc7c72756c91735b382d1aacfe49b6946e71cef2550d6ec38872602e",
+    "lakefile.toml": "02ea91dc0c77fe6e5e57e15e250f62cb1cf2b40eb9123d64ef01e1e0289e326f"
   }
 }

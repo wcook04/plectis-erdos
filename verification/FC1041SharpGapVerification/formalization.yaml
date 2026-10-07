@@ -25,3 +25,12 @@ sources:
     relationship: other
     license: Apache-2.0
     author_endorsement: participated
+automation:
+  methods:
+    - method: agent
+      models: [OpenAI Codex, Anthropic Claude]
+      framework: Lean 4 and Mathlib
+      tool_setup: AI-assisted proof development under Will Cook's direction; this exact verification package was prepared with OpenAI Codex.
+review:
+  status: self-assessed
+  notes: Independent caller and source-byte review is recorded separately. Kernel results are pending the complete official mechanical report; no human mathematical peer review or registry acceptance is asserted.

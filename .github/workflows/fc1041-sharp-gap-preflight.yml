@@ -53,7 +53,7 @@ jobs:
           require(os.environ['REPOSITORY'] == 'wcook04/plectis-erdos', 'repository mismatch')
           manifest_path = Path('verification/FC1041SharpGapVerification/source-binding.json')
           require(not manifest_path.is_symlink(), 'manifest symlink refused')
-          require(hashlib.sha256(manifest_path.read_bytes()).hexdigest() == 'ee06a2567afebdf683cc4497e9bc598d1aa8dce826a8ec65a9ac795af4574550', 'source binding changed')
+          require(hashlib.sha256(manifest_path.read_bytes()).hexdigest() == '8b6d80896e8f63a180099201be975056faf9769f10a5093745217a4a5b343871', 'source binding changed')
           binding = json.loads(manifest_path.read_text())
           require(binding['proof_commit'] == 'c45de9aab30cf25172040c94c60987dec46645d8', 'original proof commit changed')
           for path, expected in {**binding['source_closure'], **binding['protected_inputs']}.items():
