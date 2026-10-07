@@ -304,7 +304,7 @@ Q(n)=2n(n+1)(n+2)+1
 
 ## The contradiction modulo seven
 
-The three-term square condition has reduced the possibilities to two cubics. We now use one more term: the denominator at the middle zero must also come from the preceding exact update. In the plus case, choose a late block starting at $`n\equiv0\pmod7`$; in the minus case, start at $`n\equiv1\pmod7`$. The four successive numerators have residues
+The three-term square condition has reduced the possibilities to two cubics. We now use one more term: the denominator just before the zero must also come from the preceding exact update. In the plus case, choose a late block starting at $`n\equiv0\pmod7`$; in the minus case, start at $`n\equiv1\pmod7`$. The four successive numerators have residues
 ``` math
 (u_n,u_{n+1},u_{n+2},u_{n+3})\equiv
  \begin{cases}(1,6,0,2)&(c=1),\\(4,5,0,1)&(c=-1).

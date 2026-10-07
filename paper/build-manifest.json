@@ -65,14 +65,14 @@
     },
     "erdos_243_note": {
       "inputs": {
-        "paper/243/erdos-243-reciprocal-tail-rigidity.tex": "sha256:774cae684af8d05776bb2fa5c66ed7d3e94bca241475cee186be1079383224a8",
+        "paper/243/erdos-243-reciprocal-tail-rigidity.tex": "sha256:30ad2fa755f506d664659fae0e3362de2177556d529bbcc6a7ff2dc5f66f878a",
         "paper/evidence/erdos-243-reciprocal-tail-rigidity.tex": "sha256:0e7e160adf8e923389a043dcbe026ad47117224e41e32e439482b959f6e629c0",
         "paper/module-aliases.tex": "sha256:6d6d9640a9b7f04d003ebbffb78db279f5af838a2afc99ba6b5b247cc67b6954",
         "paper/paper-evidence.tex": "sha256:1ba1b3a112445f6fee7794f2083c29a60fb102d239d5e799808a36b9a5e562e3",
         "paper/paper-house-style.sty": "sha256:554ed85b5315bd936a4d09d58f8727547c5bb1b299f9684eb6ef720b329759a2",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:b1add0a0af44e65e0923ee1c974cb25a24ad94848bc9ad2ebf8be885baaec2fe",
+      "rendered_content_digest": "sha256:9a1f72ef529d5c7acfe4474de90c5d2bc7fdc8135186d41d503934b193d1617a",
       "source_path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
       "storage_path": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf"
     },
