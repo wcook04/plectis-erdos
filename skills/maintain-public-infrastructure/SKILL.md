@@ -163,6 +163,12 @@ unchanged source commit before using its SHA in receiving CI. Keep receiving
 edits local while the source remains provisional; a changed source SHA needs
 its own receiving build.
 
+Before dispatching an independent verifier, check its immutable pipeline's
+source-toolchain minimum, exporter compatibility, accepted report schema and
+required kernels and axioms. Passing source selection or an execution-profile
+job is not proof verification. A source dependency-pin upgrade requires an
+explicit review and binding of the resulting new proof closure.
+
 ## Classify before changing
 
 Choose the first matching class:
