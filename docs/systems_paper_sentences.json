@@ -135,8 +135,8 @@
       "start_line": 1,
       "end_line": 36351,
       "kind": "supplied_snapshot",
-      "sha256": "3444a7d9a1ab07275212b4f2d6b0c6512e43530d12fcdd9124dff0d68a568ff6",
-      "excerpt_sha256": "3444a7d9a1ab07275212b4f2d6b0c6512e43530d12fcdd9124dff0d68a568ff6"
+      "sha256": "8f2f6d664dbcb5951c90f7a20622d149c8ef997e8e50dfc99b2f925ef9a4ccef",
+      "excerpt_sha256": "8f2f6d664dbcb5951c90f7a20622d149c8ef997e8e50dfc99b2f925ef9a4ccef"
     },
     {
       "id": "essay-pages",
@@ -849,7 +849,7 @@
       "path": "docs/research-commons/source-attributions.json",
       "start_line": 16125,
       "end_line": 16173,
-      "sha256": "3444a7d9a1ab07275212b4f2d6b0c6512e43530d12fcdd9124dff0d68a568ff6",
+      "sha256": "8f2f6d664dbcb5951c90f7a20622d149c8ef997e8e50dfc99b2f925ef9a4ccef",
       "excerpt_sha256": "be573b258326739443f43f30c79a51b73a63520dd6054cd5bebdc5f8eec113b6",
       "custody": "Public attribution inventory, marked bibliography_only. Used for feature attribution, not for its conflicting first-publication chronology. Direct claims are checked against the enclosed original v2 in this pass."
     },
