@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
-      - name: Bind original adapter bytes and exact independent selection
+      - name: Bind exact current closure and independent adapter selection
         id: validate
         env:
           EVENT_NAME: ${{ github.event_name }}
@@ -71,16 +71,16 @@ jobs:
               if not path.is_file():
                   raise SystemExit(f'missing verification input: {relpath}')
               return path.read_bytes()
-          protected = {'lakefile.toml': '626d7e680dbab13f90b62f46bd60d58b6f0561ae247ff7ceba4351023d9341a2', 'verification/FC243CubicRate/Challenge.lean': 'af96a65d497e1411920d7f7604089a6dd600a535ca2f07938bb8a7c113fd79e0', 'verification/FC243CubicRate/comparator.json': '9284621a2d7ee42b6a24c24228f8f3f08e7ec6a19a7f0b7d3bc2d71ba1110fb7', 'verification/FC243CubicRate/formalization.yaml': '653dcc7850a0124c5552f877fb93a4fab05f9b43d0681f4a61c4d475df3b43f5', 'verification/FC243CubicRate/original-source-binding.json': '583249d340447e330d915cc1bb60675df7946ca7dbeaaf309ab1a4349d48e1a7'}
+          protected = {'lakefile.toml': '4064732c9203e2a2a9118c305ce314bfb56e10e28770104bc34b7368cc2e64e7', 'verification/FC243CubicRate/Challenge.lean': 'af96a65d497e1411920d7f7604089a6dd600a535ca2f07938bb8a7c113fd79e0', 'verification/FC243CubicRate/comparator.json': '9284621a2d7ee42b6a24c24228f8f3f08e7ec6a19a7f0b7d3bc2d71ba1110fb7', 'verification/FC243CubicRate/formalization.yaml': 'f368c0f02646a69739f0210bc8b9d093d7df4226695fdad945da3d4a058e06ff', 'verification/FC243CubicRate/source-binding.json': '8028f73400be5a53a60ade6914e8759ce0a21ad1bd87d57e143f0a6b383453f7'}
           for relpath, expected in protected.items():
               if hashlib.sha256(checked_bytes(relpath)).hexdigest() != expected:
                   raise SystemExit(f'protected verification bytes changed: {relpath}')
-          binding = json.loads(checked_bytes('verification/FC243CubicRate/original-source-binding.json'))
-          if binding['original_commit'] != 'a1779f508dbede5da6d8c2d5fefe0d8f6dcef6d9' or binding['repository'] != 'wcook04/plectis-erdos':
-              raise SystemExit('original source identity changed')
+          binding = json.loads(checked_bytes('verification/FC243CubicRate/source-binding.json'))
+          if binding['source_closure_base_commit'] != 'cf41120472efc0c264b5e331e9d7424de458509f' or binding['repository'] != 'wcook04/plectis-erdos':
+              raise SystemExit('current source closure identity changed')
           for relpath, expected in binding['files'].items():
               if 'sha256:' + hashlib.sha256(checked_bytes(relpath)).hexdigest() != expected:
-                  raise SystemExit(f'original adapter import closure changed: {relpath}')
+                  raise SystemExit(f'current adapter import closure changed: {relpath}')
           config = json.loads(checked_bytes('verification/FC243CubicRate/comparator.json'))
           expected = {
               'challenge_module': 'FC243CubicRate.Challenge',
@@ -104,7 +104,7 @@ jobs:
               output.write(f'source_commit={source}\n')
               output.write(f'request_id={request_id}\n')
               output.write(f"options={json.dumps(options, separators=(',', ':'))}\n")
-          print(f'Exact FC243 cubic-rate adapter at {source}; original proof closure unchanged')
+          print(f'Exact FC243 cubic-rate adapter at {source}; current proof closure bound; original adapter unchanged')
           PYCODE
 
   verify:

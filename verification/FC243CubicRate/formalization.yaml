@@ -1,9 +1,11 @@
 version: v0.4
 project:
   name: Erdős 243 exact zero-indexed cubic-rate adapter
-  description: Checks the exact published tsum adapter, including convergence from
-    the cubic rate. The proof and its project import closure retain the bytes of a1779f508dbede5da6d8c2d5fefe0d8f6dcef6d9.
-    The unrestricted problem remains open.
+  description: Checks the exact zero-indexed cubic-rate tsum adapter, including convergence.
+    Its adapter bytes match the original a1779f5 publication; its imported proofs
+    and dependency pins are checked at cf411204. This verifies the new immutable source
+    closure, not the older import closure. The unrestricted Erdős 243 problem remains
+    open.
   authors:
   - Will Cook
   license: Apache-2.0
@@ -59,5 +61,5 @@ status:
     sorry_count: 0
     comparator_config: verification/FC243CubicRate/comparator.json
   development_status: substantive
-  local_proof_provenance: Original adapter and complete transitive project import
-    closure pinned to a1779f508dbede5da6d8c2d5fefe0d8f6dcef6d9.
+  local_proof_provenance: Unchanged original adapter from a1779f508dbede5da6d8c2d5fefe0d8f6dcef6d9
+    with the complete current proof/import closure at cf41120472efc0c264b5e331e9d7424de458509f.
