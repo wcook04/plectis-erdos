@@ -194,11 +194,11 @@ def main() -> int:
         require(route["repository_path"] == "docs/research-commons/CONTRIBUTE_BY_PAPER.md"
                 and route["anchor"] == f"problem-{problem}",
                 f"problem {problem} credit lacks its actual public entry")
-    contribution_text = contributions.human_projection(public_credit).decode("utf-8")
+    contribution_text = contributions.canonical(public_credit).decode("utf-8")
     recognition_text = recognition.human_projection(public_recognition).decode("utf-8")
     for name in ("Fixture Corrector", "Fixture Idea Originator", "Fixture Implementer"):
         require(name in contribution_text and name in recognition_text,
-                f"accepted scoped credit missing from both views: {name}")
+                f"accepted scoped credit missing from JSON and recognition: {name}")
     require("Fixture AI Assistant" in contribution_text + recognition_text,
             "disclosed AI assistance was lost from accepted credit")
     require("Fixture Adoption Reviewer" in contribution_text + recognition_text,

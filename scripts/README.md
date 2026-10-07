@@ -20,10 +20,13 @@ setup step nor a proof check.
 
 Production commands and support modules live here. The [tests](tests/) exercise
 their behaviour; [paper tools](papers/) render and validate the paper corpus;
-[Lean utilities](lean/) inspect elaborated declarations. Run a focused Python
+[Lean exporters](lean/) inspect elaborated declarations, dependency edges and
+argument continuations. Experiment manifests belong with their research inputs. Run a focused Python
 test as `python3 scripts/tests/test_<name>.py`; the release and CI owners select
-the complete suites. Tests can also run as `python3 -m unittest
-scripts.tests.test_<name>`.
+the complete suites. Tests can also run as
+`python3 -m scripts.tests.test_<name>`. Execute the test module itself: several
+suites use a `main()` entry, so generic `unittest` discovery can report success
+without running their checks.
 
 By convention, `build_*.py` produce a named projection and `check_*.py` validate a
 contract. Read a tool's help and its

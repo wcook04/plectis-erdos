@@ -1259,312 +1259,6 @@ def _section_link(record: dict[str, Any], entry: dict[str, Any]) -> str:
     return f"{_relative_to_corpus(record['local_full_text'])}#{entry['id']}"
 
 
-def _signal_text(value: Any, *, field: str) -> str:
-    """Keep source-owned signal prose on one Markdown line."""
-    if not isinstance(value, str) or not value.strip():
-        raise ValueError(f"Palomar signal field {field} must be non-empty text")
-    return " ".join(value.split())
-
-
-def _signal_paper_record(
-    records: list[dict[str, Any]], problem: int
-) -> dict[str, Any]:
-    """Choose the dedicated problem note for a ranked mathematical family."""
-    subject_token = f"#{problem}"
-    matches = [
-        record
-        for record in records
-        if subject_token in str(record.get("subject") or "")
-        and record.get("publication_state") == "active"
-        and record.get("local_full_text")
-    ]
-    if not matches:
-        raise ValueError(
-            f"Palomar signal family for Erdős #{problem} lacks an active paper route"
-        )
-    # Prefer the dedicated note to a longer reasoning surface. The registry
-    # remains the authority for the full inventory; this only chooses the first
-    # useful route for a signal item.
-    matches.sort(
-        key=lambda record: (
-            0 if str(record.get("paper_id", "")).startswith(f"erdos-{problem}-") else 1,
-            str(record.get("paper_id", "")),
-        )
-    )
-    return matches[0]
-
-
-def _signal_source_link(source: str) -> str:
-    """Make a repository-root source path reachable from ``docs/papers``."""
-    # Claim records retain logical module coordinates; the public checkout
-    # stores both supported libraries under lean/. Already physical paths
-    # (including research and verification consumers) must stay unchanged.
-    if source.startswith(("Erdos249257/", "ErdosProblems/")):
-        source = f"lean/{source}"
-    return f"[Lean source](../../{source})"
-
-
-def _signal_hierarchy_lines(
-    records: list[dict[str, Any]], target_repo: str, repo_root: Path
-) -> list[str]:
-    """Project Palomar's mathematical judgement before the paper inventory.
-
-    ``docs/PALOMAR_RESULT_SHOWCASE.json`` is the source of the rank and
-    disposition judgement. ``docs/claims.json`` supplies the exact checked
-    interface, source declaration, problem, and boundary. Paper records only
-    supply navigational links. Keeping these joins here makes the generated
-    README useful without creating a second mathematical ranking authority.
-    """
-    showcase_path = repo_root / "docs" / "PALOMAR_RESULT_SHOWCASE.json"
-    if not showcase_path.is_file():
-        return []
-    claims_path = repo_root / "docs" / "claims.json"
-    if not claims_path.is_file():
-        raise FileNotFoundError(
-            f"Palomar signal projection requires {claims_path.relative_to(repo_root)}"
-        )
-    showcase = json.loads(showcase_path.read_text(encoding="utf-8"))
-    claims = json.loads(claims_path.read_text(encoding="utf-8"))
-    ranking = showcase.get("candidate_ranking")
-    screening = showcase.get("candidate_screening")
-    contract = showcase.get("selection_contract")
-    disposition_source = showcase.get("candidate_value_dispositions")
-    universe = showcase.get("candidate_universe")
-    packet = claims.get("external_verification_packet")
-    main_results = packet.get("main_results") if isinstance(packet, dict) else None
-    if not isinstance(ranking, list) or not ranking:
-        raise ValueError("Palomar showcase lacks candidate_ranking")
-    ranks = [row.get("rank") for row in ranking]
-    if sorted(ranks) != list(range(1, len(ranking) + 1)):
-        raise ValueError("Palomar candidate_ranking must use contiguous ranks")
-    if len({row.get("family_id") for row in ranking}) != len(ranking):
-        raise ValueError("Palomar candidate_ranking must use unique family ids")
-    if not isinstance(screening, list):
-        raise ValueError("Palomar showcase lacks candidate_screening")
-    if not isinstance(contract, dict) or not contract.get("ranking_axes"):
-        raise ValueError("Palomar showcase lacks selection_contract.ranking_axes")
-    if not isinstance(disposition_source, dict) or not isinstance(universe, dict):
-        raise ValueError("Palomar showcase lacks candidate-value disposition authority")
-    if not isinstance(main_results, list) or not main_results:
-        raise ValueError("claims external_verification_packet lacks main_results")
-
-    by_wrapper: dict[str, dict[str, Any]] = {}
-    for result in main_results:
-        wrapper = result.get("wrapper_declaration")
-        if not isinstance(wrapper, str) or wrapper in by_wrapper:
-            raise ValueError("main_results wrapper declarations must be unique")
-        by_wrapper[wrapper] = result
-
-    review_by_family: dict[str, dict[str, Any]] = {}
-    for problem_row in packet.get("review_matrix", []) if isinstance(packet, dict) else []:
-        if not isinstance(problem_row, dict):
-            continue
-        problem = problem_row.get("problem")
-        for family in problem_row.get("families", []):
-            if isinstance(family, dict) and isinstance(family.get("id"), str):
-                review_by_family[family["id"]] = {
-                    "problem": problem,
-                    **family,
-                }
-
-    dispositions = universe.get("source_family_dispositions")
-    if not isinstance(dispositions, dict):
-        dispositions = disposition_source.get("source_family_dispositions")
-    if not isinstance(dispositions, dict):
-        raise ValueError("Palomar showcase lacks source_family_dispositions")
-
-    def checked_result(wrapper: str) -> dict[str, Any]:
-        result = by_wrapper.get(wrapper)
-        if result is None:
-            raise ValueError(
-                "Palomar signal declaration lacks a claims main_results row: "
-                f"{wrapper}"
-            )
-        if not isinstance(result.get("problem"), int):
-            raise ValueError(f"claims result lacks integer problem for {wrapper}")
-        if result.get("review_family") is None:
-            raise ValueError(f"claims result lacks review_family for {wrapper}")
-        return result
-
-    def screening_identity(
-        declaration: str, family_id: str
-    ) -> tuple[int, dict[str, Any] | None]:
-        result = by_wrapper.get(declaration)
-        if result is not None:
-            if not isinstance(result.get("problem"), int):
-                raise ValueError(f"claims result lacks integer problem for {declaration}")
-            return int(result["problem"]), result
-        review = review_by_family.get(family_id)
-        if review is None or not isinstance(review.get("problem"), int):
-            raise ValueError(
-                "Palomar screening declaration lacks claims/review-family identity: "
-                f"{declaration}"
-            )
-        # A source-current review family can predate its ExternalVerification
-        # wrapper by one projection turn. It is still safe to display as
-        # represented natural friction, but not to invent a checked wrapper row.
-        return int(review["problem"]), None
-
-    def disposition_family(declaration: str) -> str:
-        """Resolve a disposition row without requiring claims to lead Palomar.
-
-        Ranked checked interfaces still require ``main_results``.  The lower
-        disposition roster makes no source, statement, or boundary claim, so a
-        source-current Palomar screening row is sufficient identity while the
-        slower claims projection catches up.
-        """
-        result = by_wrapper.get(declaration)
-        if result is not None:
-            family_id = result.get("review_family")
-            if not isinstance(family_id, str) or not family_id:
-                raise ValueError(
-                    f"claims result lacks review_family for {declaration}"
-                )
-            return family_id
-        families = {
-            row.get("family_id")
-            for row in screening
-            if isinstance(row, dict) and row.get("declaration") == declaration
-        }
-        if len(families) != 1 or not all(
-            isinstance(family_id, str) and family_id for family_id in families
-        ):
-            raise ValueError(
-                "Palomar disposition declaration lacks unique screening-family "
-                f"identity: {declaration}"
-            )
-        return next(iter(families))
-
-    lines = [
-        "## Mathematical signal first",
-        "",
-        "This reader order is the existing Palomar `candidate_ranking`, joined",
-        "to exact source/current claims and their paper routes. It is a value",
-        "judgement about consequence, endpoint proximity, mechanism depth,",
-        "distinctness, usefulness, digestion value, evidence certainty, natural",
-        "friction, and overclaim risk—not a proof, novelty, or closure claim.",
-        "The complete paper inventory follows only after this ranked and",
-        "disposition-aware spine.",
-        "",
-        "### Ranked frontier",
-        "",
-    ]
-    ranked_families: set[str] = set()
-    for candidate in sorted(ranking, key=lambda row: row["rank"]):
-        wrapper = candidate.get("declaration")
-        result = checked_result(wrapper)
-        family_id = candidate.get("family_id")
-        if result.get("review_family") != family_id:
-            raise ValueError(
-                "Palomar candidate family does not match claims review_family: "
-                f"{family_id}"
-            )
-        ranked_families.add(family_id)
-        paper = _signal_paper_record(records, int(result["problem"]))
-        source = result.get("original_source")
-        source_declaration = result.get("original_declaration")
-        if not isinstance(source, str) or not isinstance(source_declaration, str):
-            raise ValueError(f"claims result lacks source identity for {wrapper}")
-        route = _relative_to_corpus(str(paper["local_full_text"]))
-        lines.extend(
-            [
-                f"#### {candidate['rank']}. Erdős #{result['problem']} — `{family_id}`",
-                "",
-                f"**Paper route:** [{paper['paper_id']}]({route})",
-                f"  **Checked interface:** `{wrapper}`",
-                f"  **Source declaration:** `{source_declaration}` via {_signal_source_link(source)}",
-                f"  **Result:** {_signal_text(candidate.get('consequence_and_endpoint_proximity'), field='consequence_and_endpoint_proximity')}",
-                f"  **Hard mechanism:** {_signal_text(candidate.get('mechanism_depth_and_natural_friction'), field='mechanism_depth_and_natural_friction')}",
-                f"  **Evidence:** {_signal_text(candidate.get('evidence_certainty'), field='evidence_certainty')}",
-                f"  **Boundary:** {_signal_text(result.get('boundary'), field='boundary')}",
-                "",
-            ]
-        )
-
-    lines.extend(
-        [
-            "### Represented natural friction",
-            "",
-            "These source-current families are represented because they expose",
-            "the obstruction, missing producer, or reusable mechanism that a",
-            "reader needs to understand the frontier. They are not silently",
-            "promoted to endpoint results.",
-            "",
-        ]
-    )
-    represented: dict[str, dict[str, Any]] = {}
-    for row in screening:
-        family_id = row.get("family_id")
-        if dispositions.get(family_id) != "represented" or family_id in ranked_families:
-            continue
-        declaration = row.get("declaration")
-        if not isinstance(family_id, str) or not isinstance(declaration, str):
-            raise ValueError("Palomar candidate_screening row lacks family/declaration")
-        problem, result = screening_identity(declaration, family_id)
-        slot = represented.setdefault(
-            family_id,
-            {
-                "declarations": [],
-                "reasons": [],
-                "problem": problem,
-                "paper": _signal_paper_record(records, problem),
-            },
-        )
-        if declaration not in slot["declarations"]:
-            slot["declarations"].append(declaration)
-        reason = row.get("reason")
-        if isinstance(reason, str) and reason not in slot["reasons"]:
-            slot["reasons"].append(reason)
-    for family_id, row in represented.items():
-        declarations = ", ".join(f"`{value}`" for value in row["declarations"])
-        reasons = " ".join(_signal_text(value, field="screening.reason") for value in row["reasons"])
-        route = _relative_to_corpus(str(row["paper"]["local_full_text"]))
-        lines.append(
-            f"- `{family_id}` (Erdős #{row['problem']}; [{row['paper']['paper_id']}]({route})): "
-            f"{declarations}. {reasons}"
-        )
-    lines.append("")
-
-    lines.extend(
-        [
-            "### Explicitly subordinate, rejected, and long tail",
-            "",
-            "The remaining families stay discoverable in the exhaustive roster",
-            "with their disposition visible. Subordinate and rejected entries",
-            "are useful boundaries or reductions; long-tail entries are exact",
-            "support, identities, finite instances, or auxiliary routes that do",
-            "not currently earn scarce first-contact attention.",
-            "",
-        ]
-    )
-    eligible_groups = disposition_source.get("eligible_groups")
-    if not isinstance(eligible_groups, list):
-        raise ValueError("Palomar candidate_value_dispositions lacks eligible_groups")
-    for group in eligible_groups:
-        disposition = group.get("disposition")
-        if disposition not in {"subordinate", "rejected", "long_tail"}:
-            continue
-        declarations = group.get("declarations")
-        if not isinstance(declarations, list):
-            raise ValueError(f"Palomar disposition group lacks declarations: {disposition}")
-        lines.append(f"#### {disposition.replace('_', ' ').title()}")
-        lines.append("")
-        reason = _signal_text(group.get("reason"), field=f"{disposition}.reason")
-        by_family: dict[str, list[str]] = {}
-        for declaration in declarations:
-            if not isinstance(declaration, str) or not declaration:
-                raise ValueError(
-                    f"Palomar {disposition} group contains an invalid declaration"
-                )
-            family_id = disposition_family(declaration)
-            by_family.setdefault(family_id, []).append(declaration)
-        for family_id, family_declarations in by_family.items():
-            joined = ", ".join(f"`{value}`" for value in family_declarations)
-            lines.append(f"- `{family_id}`: {joined}. {reason}")
-        lines.append("")
-    return lines
-
-
 def _readme(
     records: list[dict[str, Any]], target_repo: str, repo_root: Path
 ) -> str:
@@ -1661,7 +1355,14 @@ def _readme(
             "from the current account and instructions.",
             "",
         ]
-    lines.extend(_signal_hierarchy_lines(records, target_repo, repo_root))
+    if target_repo == "plectis-erdos":
+        lines += [
+            "## Choose a reading route", "",
+            "Start with the [human paper catalogue](../../paper/README.md) or",
+            "[results and limits](../RESULTS.md) for the current mathematical conclusions.",
+            "This index owns searchable paper text and section links; it does not",
+            "repeat the result ranking or confer claim status.", "",
+        ]
     if active_problem_subjects:
         lines += [
             '<a id="problem-portfolio"></a>',
@@ -1681,9 +1382,8 @@ def _readme(
                     f"{portfolio_path.relative_to(repo_root)}"
                 )
             lines += [
-                "The [problem summaries](../reference/RELATED_PROBLEMS.md) introduce the "
-                "mathematics. `docs/problems.json` contains the corresponding "
-                "file paths and identifiers for programs and coding agents.",
+                "[Results and limits](../RESULTS.md) gives the current mathematical account. "
+                "`docs/problems.json` contains programme identifiers for coding agents.",
                 "",
             ]
     for record in ordered_records:
@@ -1757,10 +1457,11 @@ def _readme(
         f"> {AUTHORITY_ORDER}.",
         "",
     ]
-    for record in records:
-        lines.append(
-            f"- `{record['paper_id']}` is not authority for {record['not_authority_for']}."
-        )
+    lines += [
+        "Each paper's evidence ceiling and publication state remain in",
+        "[the corpus record](corpus.json), including `not_authority_for` and",
+        "the source identity of every imported or archived edition.",
+    ]
     lines += [
         "",
         "## For agents",

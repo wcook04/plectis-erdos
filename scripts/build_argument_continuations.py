@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build the argument-continuation projection from the kernel export.
 
-Input: the JSON Lines stream written by ``scripts/export_argument_continuations.lean``
+Input: the JSON Lines stream written by ``scripts/lean/export_argument_continuations.lean``
 (the CI artifact ``argument-continuations-<sha>``, gzip or plain). The artifact
 also carries ``argument_continuations_lean_tree.txt`` (the git tree id of
 ``lean/`` at the exported commit) and ``argument_continuations_source_revision.txt``;
@@ -760,7 +760,7 @@ class Graph:
                 self._statement(row["statement"], None, "battery")
                 add_reduction(row["statement"], f"tactic:{row.get('tactic')}", "battery", ())
             elif record == "abduction" and row.get("kernel_checked"):
-                # scripts/export_abductions.lean: a combination of corpus facts
+                # scripts/lean/export_abductions.lean: a combination of corpus facts
                 # gives the statement (a residual-free reduction), or restates it
                 # in the quantities no fact controls (a reduction to the residual).
                 producer = "abduction:" + ",".join(row.get("facts") or [])

@@ -45,6 +45,26 @@ class PaperIndexRefreshTests(unittest.TestCase):
             self.assertEqual(corpus.read_bytes(), before)
             self.assertEqual(sorted(p.name for p in papers.iterdir()), ["README.md", "corpus.json"])
 
+    def test_compact_index_retains_every_paper_and_reading_route(self):
+        root = Path(__file__).resolve().parents[2]
+        data = json.loads((root / "docs/papers/corpus.json").read_text())
+        records = [r for r in data["papers"] if r.get("title")]
+        text = owner.renderer._readme(records, data["this_repository"], root)
+        self.assertIn("../../paper/README.md", text)
+        self.assertIn("../RESULTS.md", text)
+        self.assertNotIn("### Ranked frontier", text)
+        self.assertLess(len(text.split()), 4000)
+        for record in records:
+            self.assertIn("`" + record["paper_id"] + "`", text)
+            self.assertIn(owner.renderer._relative_to_corpus(record["local_full_text"]), text)
+            self.assertIn(owner.renderer._relative_to_corpus(record["local_source"]), text)
+            if record.get("local_pdf"):
+                self.assertIn(owner.renderer._relative_to_corpus(record["local_pdf"]), text)
+            for entry in record.get("first_pass", {}).get("sections", []):
+                self.assertIn(owner.renderer._section_link(record, entry), text)
+        self.assertIn("not_authority_for", text)
+        self.assertIn(owner.renderer.AUTHORITY_ORDER, text)
+
     def test_full_refresh_still_converts_native_manuscript(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory).resolve()

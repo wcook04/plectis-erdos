@@ -91,7 +91,7 @@ def main() -> int:
         require(not loaded, "unaccepted source records entered attribution authority")
         projection = builder.build_projection(loaded)
         require(not projection["chronological"], "unaccepted source entered the JSON view")
-        human = builder.human_projection(projection).decode("utf-8")
+        human = recognition.human_projection(recognition.build_recognition(loaded)).decode("utf-8")
         require(
             "rr-fixture-valid-negative" not in human
             and "rr-fixture-github-unaccepted-return" not in human,

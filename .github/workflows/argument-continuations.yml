@@ -2,7 +2,7 @@ name: Argument continuations
 
 # Export the argument graph of the elaborated corpus: every theorem's
 # hypothesis telescope, and for every closed hypothesis the corpus theorems
-# whose conclusions unify with it (see scripts/export_argument_continuations.lean).
+# whose conclusions unify with it (see scripts/lean/export_argument_continuations.lean).
 # The stream is an artifact consumed by scripts/build_argument_continuations.py.
 #
 # This workflow is not a required check and never saves a cache: it restores
@@ -24,8 +24,8 @@ on:
       - "claude/argument-*"
       - "codex/argument-*"
     paths:
-      - scripts/export_argument_continuations.lean
-      - scripts/export_abductions.lean
+      - scripts/lean/export_argument_continuations.lean
+      - scripts/lean/export_abductions.lean
       - scripts/tests/test_argument_continuation_export.py
       - scripts/tests/test_argument_interface_export.py
       - scripts/coverage_build_targets.py
@@ -163,16 +163,16 @@ jobs:
           git rev-parse HEAD:lean > "$RUNNER_TEMP/argument_continuations_lean_tree.txt"
           wrapper="$RUNNER_TEMP/ArgumentContinuationExportWithCoverage.lean"
           {
-            head -n 2 scripts/export_argument_continuations.lean
+            head -n 2 scripts/lean/export_argument_continuations.lean
             python3 scripts/coverage_build_targets.py --imports
-            tail -n +3 scripts/export_argument_continuations.lean
+            tail -n +3 scripts/lean/export_argument_continuations.lean
           } > "$wrapper"
           start=$(date +%s)
           timeout --kill-after=60s 185m lake env lean "$wrapper"
           status=$?
           if [ "$status" -ne 0 ] && [ ! -s "$PLECTIS_CONTINUATION_EXPORT_FILE" ]; then
             echo "the coverage targets did not import (exit $status); exporting the default roots only"
-            timeout --kill-after=60s 175m lake env lean scripts/export_argument_continuations.lean
+            timeout --kill-after=60s 175m lake env lean scripts/lean/export_argument_continuations.lean
             status=$?
           fi
           end=$(date +%s)
@@ -181,7 +181,7 @@ jobs:
           exit "$status"
 
       # For every closed hypothesis, what it still needs once the corpus's
-      # comparison facts are used (scripts/export_abductions.lean): given by a
+      # comparison facts are used (scripts/lean/export_abductions.lean): given by a
       # combination of facts, or restated in the quantities no fact controls,
       # each with a kernel-checked proof. Keys match the export above; the
       # builder reads both streams. The pass stops itself at 30 min.
@@ -195,9 +195,9 @@ jobs:
           set -uo pipefail
           wrapper="$RUNNER_TEMP/AbductionExportWithCoverage.lean"
           {
-            head -n 2 scripts/export_abductions.lean
+            head -n 2 scripts/lean/export_abductions.lean
             python3 scripts/coverage_build_targets.py --imports
-            tail -n +3 scripts/export_abductions.lean
+            tail -n +3 scripts/lean/export_abductions.lean
           } > "$wrapper"
           timeout --kill-after=60s 40m lake env lean "$wrapper"
           status=$?

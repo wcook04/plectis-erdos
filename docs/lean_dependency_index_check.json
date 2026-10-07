@@ -1,6 +1,6 @@
 {
   "builder_schema": "erdos249257-lean-dependency-index/3",
-  "input_fingerprint": "sha256:4e2b15ea2128b44c7a5b7bab6665a2c86493372ad7b08e28ea5eae6333a07763",
+  "input_fingerprint": "sha256:8ea5fbd33c25e1852d6cee8cebe6a4ea9426da5785d4692b2de19058cb5e3e99",
   "output_digest": "sha256:af78a07d60eb6ce7e8a680e53d20abe1097b40cb88ee3066ce67f8c7662eb38b",
   "schema": "erdos249257-lean-dependency-index-check/1",
   "source_fingerprint": "sha256:0152e16a5172b6421df56331fbec043d8979ea884ddc9f014a02d92497bea904",

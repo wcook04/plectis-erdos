@@ -33,7 +33,7 @@ ENVIRONMENT_VALIDATION_POSTURE = (
     "both_supported_compact_roots_are_built_before_environment_"
     "export_so_source_fingerprint_and_loaded_olean_state_are_current"
 )
-EXPORTER = ROOT / "scripts" / "export_lean_dependency_edges.lean"
+EXPORTER = ROOT / "scripts" / "lean" / "export_lean_dependency_edges.lean"
 LEAN_DEPENDENCY_EXPORT_FILE_ENV = "PLECTIS_LEAN_DEPENDENCY_EXPORT_FILE"
 SCHEMA = "erdos249257-lean-dependency-index/3"
 LEAN_ROOT_TARGETS = ("Erdos249257", "ErdosProblems")
@@ -86,7 +86,7 @@ CHECK_INPUT_FILES = (
     "lake-manifest.json",
     "lakefile.toml",
     "lean-toolchain",
-    "scripts/export_lean_dependency_edges.lean",
+    "scripts/lean/export_lean_dependency_edges.lean",
 )
 QUERY_CORPUS_DEPENDENCY_HELPERS = (
     "atlas_declarations",

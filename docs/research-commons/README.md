@@ -16,7 +16,7 @@ issue or pull request is enough; structured sessions are optional.
 | Record and package resumable work | [Public return package](RETURN_PACKAGE_TEMPLATE.md#start-a-structured-continuation) |
 | Return mathematics broader than one numbered problem | [Subject frontier](RETURN_PACKAGE_TEMPLATE.md#subject-frontier) |
 | Understand attribution, older-clone integration and corrections | [Credit and stewardship policy](CREDIT_POLICY.md) |
-| Inspect accepted artifacts and their evidence | [Accepted contributions](CONTRIBUTIONS.md) · [Recognition and impact](CONTRIBUTION_RECOGNITION.md) |
+| Inspect accepted artifacts and their evidence | [Accepted contributions, recognition and impact](CONTRIBUTION_RECOGNITION.md) |
 | Trace implemented advice and scholarly sources | [Credit ledger](CREDIT_LEDGER.md) · [Source attributions](SOURCE_ATTRIBUTIONS.md) |
 | Inspect the public #257 and #243 Prove2Me statements | [Weighted #257 packet](PROVE2ME_WEIGHTED_257_PACKET.md) · [Cubic #243 packet](PROVE2ME_CUBIC_243_PACKET.md) |
 | Replay the separate source-bound offline adapter | [Prove2Me compatibility](PROVE2ME_COMPAT.md) |

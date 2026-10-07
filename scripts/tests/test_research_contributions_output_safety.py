@@ -21,10 +21,15 @@ def require(condition: bool, message: str) -> None:
 def main() -> int:
     projection = contributions.build_projection([])
     json_payload = contributions.canonical(projection)
-    markdown_payload = contributions.human_projection(projection)
+    markdown_payload = b"# Recognition output fixture\n"
     with tempfile.TemporaryDirectory(dir="/tmp") as directory:
         root = Path(directory)
         json_output = root / "contributions.json"
+        retired = root / "CONTRIBUTIONS.md"
+        contributions.write_projection_outputs(json_payload, json_output=json_output,
+                                               markdown_output=retired)
+        require(not retired.exists(), "JSON-only attribution recreated retired human inventory")
+        require(contributions.output_is_current(json_output, json_payload), "JSON-only publication lost data")
         markdown_output = root / "CONTRIBUTIONS.md"
         contributions.write_projection_outputs(
             json_payload,

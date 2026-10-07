@@ -75,9 +75,8 @@ untrusted code. A proposal is never executed merely because it was submitted.
 Changes that affect public mathematical wording or reviewed claims must also
 follow the mathematical authority and release checks in [AGENTS.md](../agents/AGENT_GUIDE.md).
 
-The generated [accepted contributions](CONTRIBUTIONS.md) and
-[contribution recognition](CONTRIBUTION_RECOGNITION.md) views remain
-non-scalar: they answer who contributed what, with which evidence and review
+The generated [accepted contribution recognition](CONTRIBUTION_RECOGNITION.md)
+remains non-scalar: it records who contributed what, with which evidence and review
 state, without turning commits, lines, receipts, or compute into a score.
 
 ## Optional resumable session

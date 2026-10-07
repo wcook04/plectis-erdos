@@ -21,7 +21,7 @@ nothing better does (see [Attribution](#attribution)).
 
 ## How it is computed
 
-**Export.** `scripts/export_argument_continuations.lean` runs in an
+**Export.** `scripts/lean/export_argument_continuations.lean` runs in an
 environment that imports the two default roots (`Erdos249257` and
 `ErdosProblems`) together with every target of the coverage build, whose list
 belongs to the [coverage workflow](../../.github/workflows/lean-coverage-build.yml)
@@ -125,7 +125,7 @@ negation of the statement. *Library producers*
 (`PLECTIS_CONTINUATION_LIBRARY_PRODUCERS=1`) make every theorem of the
 environment a producer.
 
-A second stream, from `scripts/export_abductions.lean`, restates every closed
+A second stream, from `scripts/lean/export_abductions.lean`, restates every closed
 hypothesis against the comparison facts of the whole corpus (see
 [Abduction](#abduction-what-a-hypothesis-needs-in-the-quantities-the-corpus-does-not-control)):
 an `abduction` row with `given` records a hypothesis that a combination of

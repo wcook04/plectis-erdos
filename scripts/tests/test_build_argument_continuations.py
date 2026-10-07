@@ -974,7 +974,7 @@ class Papers(unittest.TestCase):
 
 
 class AbductionRows(unittest.TestCase):
-    """Rows of scripts/export_abductions.lean: a statement the corpus facts give
+    """Rows of scripts/lean/export_abductions.lean: a statement the corpus facts give
     is supplied through an abduction reduction with no residual, a restated one
     reduces to its residual, and a row the kernel did not check registers
     nothing."""

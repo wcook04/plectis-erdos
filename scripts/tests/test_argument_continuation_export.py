@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Toy-corpus test for ``scripts/export_argument_continuations.lean``.
+"""Toy-corpus test for ``scripts/lean/export_argument_continuations.lean``.
 
 The exporter normally imports both corpus libraries. This test rewrites its
 import header to core Lean, inserts a small corpus in namespace ``ToyCorpus``
@@ -46,7 +46,7 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-EXPORTER = ROOT / "scripts" / "export_argument_continuations.lean"
+EXPORTER = ROOT / "scripts" / "lean" / "export_argument_continuations.lean"
 
 TOY = r"""
 namespace ToyCorpus

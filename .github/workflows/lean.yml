@@ -180,7 +180,7 @@ jobs:
             docs/generated_certificate_manifest.json \
             scripts/build_declaration_atlas.py \
             scripts/build_lean_dependency_index.py \
-            scripts/export_lean_dependency_edges.lean \
+            scripts/lean/export_lean_dependency_edges.lean \
             scripts/lean_fast_build.py \
             scripts/validation_singleflight.py \
             scripts/check_downstream_reuse.py \

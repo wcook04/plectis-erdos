@@ -99,7 +99,7 @@
     "scripts/build_reading_edition.py": "sha256:b68edddeb2052d288f5ce5c18b85e1636a7ee3f6a43991703e29a1d22bbcec54",
     "scripts/check_lean_paper_propagation.py": "sha256:38ac06bcff2a95890afe31085e619966fdc9700ca7bee8c44ee9bdd78c7650d8",
     "scripts/lean_source.py": "sha256:3d67cc0d150f7e41f19e120ab7f646fc158357dd34ac4a0ab95a3d842c9a5538",
-    "scripts/papers/paper_corpus_renderer.py": "sha256:3f17767bda0df721098130b5de79d4f065c0062e396d1099c923de649cf80cfa",
+    "scripts/papers/paper_corpus_renderer.py": "sha256:6ac90fc98072b79476b5abb42e247233709f8a62220c5d4c5c8df3e08c527bc8",
     "scripts/reasoning_record_audit.py": "sha256:e17c02f411d7516be5ce9225d9f3016d69cef4f4e368bd80cf4fdd0b7f2eb4e6"
   },
   "navigation_sha256": {

@@ -656,20 +656,20 @@
       "id": "contribution-guide",
       "path": "CONTRIBUTING.md",
       "start_line": 1,
-      "end_line": 255,
+      "end_line": 239,
       "kind": "source",
-      "sha256": "2bf1694fa40b4a4eb80042bc6976865411a81ec96705de4ef522c98c5d8e74d6",
-      "excerpt_sha256": "2bf1694fa40b4a4eb80042bc6976865411a81ec96705de4ef522c98c5d8e74d6",
+      "sha256": "62141804eb0120f354e5948ed57831216837453273300e643cf46cb57b8ec44f",
+      "excerpt_sha256": "62141804eb0120f354e5948ed57831216837453273300e643cf46cb57b8ec44f",
       "rebind_review": {
-        "reason": "Contribution guide retains idea/reference entry without checkout, base-revision and evidence requirements for patches, scoped review and credit responsibilities; documentation workflow now points to reproducibility.",
+        "reason": "The human contribution guide retains review, acceptance, credit, starting revision, reconciliation and evidence limits. Detailed continuation/package/acceptance commands now route visibly to the existing research-return skill. The accepted-recognition page replaces a duplicate roster; no adoption or scientific claim boundary changes.",
         "previous_binding": {
           "path": "CONTRIBUTING.md",
           "start_line": 1,
           "end_line": 255,
-          "sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f",
-          "excerpt_sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f"
+          "sha256": "2bf1694fa40b4a4eb80042bc6976865411a81ec96705de4ef522c98c5d8e74d6",
+          "excerpt_sha256": "2bf1694fa40b4a4eb80042bc6976865411a81ec96705de4ef522c98c5d8e74d6"
         },
-        "boundary": "Documentation consolidation/source-location repair only; manuscript sentences, historical pinned links and evidence classes remain unchanged. No new mathematical, empirical or external verification outcome asserted."
+        "boundary": "Repository organization and documentation consolidation only. Manuscript units, warrants, evidence classes, original source commit and historical pins remain unchanged; no new scientific or execution outcome."
       }
     },
     {
@@ -703,10 +703,21 @@
       "id": "architecture-contribution-guide",
       "path": "docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md",
       "start_line": 1,
-      "end_line": 115,
+      "end_line": 114,
       "kind": "source",
-      "sha256": "31b23d2facdea99c35009cc5af3de808d9cf08b6ce680b471d784e791813be52",
-      "excerpt_sha256": "31b23d2facdea99c35009cc5af3de808d9cf08b6ce680b471d784e791813be52"
+      "sha256": "1870c14a7b3ac42b269b2e3c403e74aa13d8a95bc974db91a64cc04bba15e7b5",
+      "excerpt_sha256": "1870c14a7b3ac42b269b2e3c403e74aa13d8a95bc974db91a64cc04bba15e7b5",
+      "rebind_review": {
+        "reason": "The same architecture acceptance and review contract now links the sole accepted-contribution recognition page. Its non-scalar credit boundary and executable-contribution limits remain unchanged.",
+        "previous_binding": {
+          "path": "docs/research-commons/ARCHITECTURE_CONTRIBUTIONS.md",
+          "start_line": 1,
+          "end_line": 115,
+          "sha256": "31b23d2facdea99c35009cc5af3de808d9cf08b6ce680b471d784e791813be52",
+          "excerpt_sha256": "31b23d2facdea99c35009cc5af3de808d9cf08b6ce680b471d784e791813be52"
+        },
+        "boundary": "Repository organization and documentation consolidation only. Manuscript units, warrants, evidence classes, original source commit and historical pins remain unchanged; no new scientific or execution outcome."
+      }
     },
     {
       "id": "r8-architecture",
@@ -917,21 +928,21 @@
       "id": "r8-release",
       "kind": "source",
       "path": "scripts/check_release.py",
-      "start_line": 1785,
-      "end_line": 1861,
-      "sha256": "1b248964b7e91eb209ffe3509986c5603804c43d6b32b767584f1ee407934217",
+      "start_line": 1791,
+      "end_line": 1867,
+      "sha256": "d750bdce7e4f6c6de55096b5aa28e8ba0490dd658f89b6ddcd097380e95fc3d2",
       "excerpt_sha256": "da39690f9c38fd66ca7b1f7496108ac87673b67260a7c1c234b842008edd0adb",
       "custody": "Current native public file inspected as source; no fresh execution.",
       "rebind_review": {
-        "reason": "The original reviewed excerpt is retained byte-for-byte; only the enclosing file digest and shifted coordinates are rebound. Structural consolidation review: The retained reviewed excerpt remains byte-for-byte identical; changes elsewhere in the file only update its enclosing digest. The root-layout prevention check now rejects root test regrowth and Python tools in documentation folders. It shifts this reviewed release-coordination excerpt without changing any byte of the excerpt or its described behavior. Final publication checker dispatch points to scripts/papers rather than docs/papers; the retained release-coordination excerpt is byte-identical and no mathematical or historical assertion changes. The publication validation excerpt remains byte-for-byte unchanged at shifted coordinates. Shared leaf execution removes duplicate subprocess runs while preserving configured checks, deadlines and pass/fail requirements; it asserts no new release or Lean outcome. Final reviewed validator repair restores the supplemental aggregate deadline and restricts script normalization to the actual Python script argument. Entry-document checks follow visible maintained owners while preserving exact status/authority checks. This unchanged publication excerpt only shifts coordinates.",
+        "reason": "The reviewed publication-validation excerpt is byte-identical. Its coordinates shift because the layout check now keeps Lean tooling under scripts/lean; no mathematical or historical assertion changes.",
         "previous_binding": {
           "path": "scripts/check_release.py",
-          "start_line": 1662,
-          "end_line": 1738,
-          "sha256": "282c8d8b9b3aee376f4d6e6e9e8c87f5a3f18995501712c93748851c4b177129",
+          "start_line": 1785,
+          "end_line": 1861,
+          "sha256": "1b248964b7e91eb209ffe3509986c5603804c43d6b32b767584f1ee407934217",
           "excerpt_sha256": "da39690f9c38fd66ca7b1f7496108ac87673b67260a7c1c234b842008edd0adb"
         },
-        "boundary": "Documentation consolidation/source-location repair only; manuscript sentences, historical pinned links and evidence classes remain unchanged. No new mathematical, empirical or external verification outcome asserted."
+        "boundary": "Repository organization and documentation consolidation only. Manuscript units, warrants, evidence classes, original source commit and historical pins remain unchanged; no new scientific or execution outcome."
       }
     },
     {
@@ -939,20 +950,20 @@
       "kind": "source",
       "path": "CONTRIBUTING.md",
       "start_line": 1,
-      "end_line": 255,
-      "sha256": "2bf1694fa40b4a4eb80042bc6976865411a81ec96705de4ef522c98c5d8e74d6",
-      "excerpt_sha256": "2bf1694fa40b4a4eb80042bc6976865411a81ec96705de4ef522c98c5d8e74d6",
+      "end_line": 239,
+      "sha256": "62141804eb0120f354e5948ed57831216837453273300e643cf46cb57b8ec44f",
+      "excerpt_sha256": "62141804eb0120f354e5948ed57831216837453273300e643cf46cb57b8ec44f",
       "custody": "Current native public file inspected as source; no fresh execution.",
       "rebind_review": {
-        "reason": "Contribution guide retains ordinary proposal and executable patch distinction, maintainer review and adoption limits; no autonomous research or independent-review outcome is added.",
+        "reason": "The contribution guide retains explicit maintainer adoption, reproducible starting context, and intake-versus-accepted-evidence boundaries. Repeated operational commands move behind its visible link to the existing research-return skill; no autonomous research or fresh-review outcome is asserted.",
         "previous_binding": {
           "path": "CONTRIBUTING.md",
           "start_line": 1,
-          "end_line": 89,
-          "sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f",
-          "excerpt_sha256": "9dddfc8f6ceefc14e83ed1967c38a10de331ac98552bfb9efa825ec06e2009c4"
+          "end_line": 255,
+          "sha256": "2bf1694fa40b4a4eb80042bc6976865411a81ec96705de4ef522c98c5d8e74d6",
+          "excerpt_sha256": "2bf1694fa40b4a4eb80042bc6976865411a81ec96705de4ef522c98c5d8e74d6"
         },
-        "boundary": "Documentation consolidation/source-location repair only; manuscript sentences, historical pinned links and evidence classes remain unchanged. No new mathematical, empirical or external verification outcome asserted."
+        "boundary": "Repository organization and documentation consolidation only. Manuscript units, warrants, evidence classes, original source commit and historical pins remain unchanged; no new scientific or execution outcome."
       }
     },
     {

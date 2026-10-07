@@ -167,9 +167,9 @@ def main() -> int:
     require(row["identity"]["model_system"]["name"] == "Test Model", "model disclosure was lost")
     require(row["identity"]["provider"]["name"] == "Test Provider", "provider disclosure was lost")
     require("current-public-consumer-fan-in" in row["public_frontier"]["relative_link"], "public frontier was not linked")
-    human = contributions.human_projection(projection).decode("utf-8")
+    human = contributions.canonical(projection).decode("utf-8")
     for marker in ("Human Projection Contributor", "Release Operator", "Test Model", "Test Provider", "inconclusive"):
-        require(marker in human, f"human attribution view omitted {marker}")
+        require(marker in human, f"accepted JSON omitted {marker}")
     require("commit_count" not in human and "diff_size" not in human, "activity leaderboard field entered attribution prose")
 
     architecture_name, architecture_receipt, _payload = accepted_source()
@@ -205,9 +205,9 @@ def main() -> int:
     require(architecture_projection["filters"]["by_problem"] == {}, "architecture receipt entered a problem filter")
     require(architecture_projection["filters"]["by_architecture_area"] == {"agent_workflow": [architecture_receipt["return_id"]]}, "architecture area filter drifted")
     require(architecture_row["public_frontier"]["repository_path"].endswith("ARCHITECTURE_CONTRIBUTIONS.md"), "architecture contribution route was not projected")
-    architecture_human = contributions.human_projection(architecture_projection).decode("utf-8")
-    for marker in ("Architecture", "agent workflow", "conceptualization", "software"):
-        require(marker in architecture_human, f"architecture contribution view omitted {marker}")
+    architecture_human = contributions.canonical(architecture_projection).decode("utf-8")
+    for marker in ("architecture", "agent_workflow", "conceptualization", "software"):
+        require(marker in architecture_human, f"architecture JSON omitted {marker}")
 
     # A mathematical contribution across several problems is projected under
     # its subject and stays reachable from every related problem.
@@ -261,12 +261,12 @@ def main() -> int:
         and subject_row["public_frontier"]["anchor"] == "subject-frontier",
         "subject contribution route was not projected",
     )
-    subject_human = contributions.human_projection(subject_projection).decode("utf-8")
-    for marker in ("Subject", subject, "#249", "#257"):
-        require(marker in subject_human, f"subject contribution view omitted {marker}")
+    subject_human = contributions.canonical(subject_projection).decode("utf-8")
+    for marker in ("subject", subject, "249", "257"):
+        require(marker in subject_human, f"subject JSON omitted {marker}")
 
     require(public_roundtrip.main() == 0, "public correction and idea contribution rehearsal failed")
-    print("build_research_contributions: unaccepted exclusion and human/operator/model/provider projection PASS")
+    print("build_research_contributions: unaccepted exclusion and contributor/operator/model/provider JSON projection PASS")
     return 0
 
 

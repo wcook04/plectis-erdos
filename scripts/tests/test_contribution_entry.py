@@ -105,6 +105,20 @@ def check_discrepancy_intake() -> None:
         require(missing == {absent}, f"source identity bypasses required {absent}")
 
 
+def maintainer_route_errors(mechanics: str) -> list[str]:
+    """Validate the supplied contributor excerpt, with no live-owner fallback."""
+    flat = " ".join(mechanics.split())
+    required = (
+        "](skills/erdos-research-return/SKILL.md)",
+        "](docs/research-commons/RETURN_PACKAGE_TEMPLATE.md)",
+        "intake artifacts, not accepted receipts or public claim authority",
+        "do not belong on the accepted main branch",
+        "Acceptance must not silently strengthen `docs/claims.json`",
+        "explicit authorisation",
+    )
+    return [token for token in required if token not in flat]
+
+
 def main() -> int:
     check_discrepancy_intake()
     # Both source-relative variants looked valid locally but GitHub rendered
@@ -164,6 +178,13 @@ def main() -> int:
     contributing = text("CONTRIBUTING.md")
     human, marker, mechanics = contributing.partition("## For agents and maintainers")
     require(bool(marker), "contributor guide does not separate human meaning from agent mechanics")
+    require(not maintainer_route_errors(mechanics), "maintainer entry lost its operational owner or intake boundary")
+    for deleted in (
+        "](skills/erdos-research-return/SKILL.md)",
+        "intake artifacts, not accepted receipts or public",
+    ):
+        require(maintainer_route_errors(mechanics.replace(deleted, "")),
+                "missing operational route or accepted-receipt ceiling escaped")
     require(len(re.findall(r"\b[\w’'-]+\b", human)) >= 500, "human contribution route is too thin")
     human_flat = " ".join(human.lower().split())
     for forbidden in ("```", "|---", "python3 ", "scripts/", "--require-", "return.json"):

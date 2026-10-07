@@ -936,7 +936,7 @@ def validator_spec(
         command.append("--singleflight-worker")
         authority_paths = [
             ROOT / "scripts/build_lean_dependency_index.py",
-            ROOT / "scripts/export_lean_dependency_edges.lean",
+            ROOT / "scripts/lean/export_lean_dependency_edges.lean",
             ROOT / "scripts/query_corpus.py",
             ROOT / "docs/declaration_atlas.json",
             ROOT / "docs/claims.json",

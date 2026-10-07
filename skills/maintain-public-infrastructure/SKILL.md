@@ -215,26 +215,39 @@ Tests must check that a reader can follow the maintained route to those facts.
 After merging a guide, validate the visible link and its captured destination's
 actual boundaries; a required phrase copied into every entrypoint defeats
 consolidation. Code examples and broken links cannot satisfy that route.
-Production Python commands live in `scripts/`, behavioral tests in
-`scripts/tests/`, and paper-corpus executables in `scripts/papers/`; `docs/papers/`
-contains the corpus data and rendered text. Preserve immutable historical paths
-at their recorded revisions when migrating current commands.
-
 These boundaries follow the [AGENTS.md convention](https://agents.md/) and
 [Google's documentation guidance](https://google.github.io/styleguide/docguide/best_practices.html):
 keep reader and agent instructions distinct, remove dead documentation, and
 link to one maintained explanation. Apply [Diátaxis](https://diataxis.fr/) to
 the reader's purpose; do not create empty categories or another parallel guide.
 
-When reorganising the checkout, keep one shared root `AGENTS.md` and keep
-provider adapters limited to loading that entry. Keep the main reader guides
-in `docs/`, operational agent guides in `docs/agents/`, specialist checking
-instructions in `docs/verification/`, and research/tool records in
-`docs/reference/`. Link each guide from its folder index. Preserve stable
-machine-readable corpus paths when reorganising reader documents. Preserve root filenames required by Lake, Comparator,
-citation and licence tools. A move must update relative links, sparse checkout
-manifests, CI, source registries and their builders together. Pinned historical
-artifacts retain the filenames belonging to their recorded revision.
+When reorganising the checkout, retain its existing functional homes:
+
+| Material | Owner location |
+|---|---|
+| Human introduction; agent entry | Root `README.md`; shared `AGENTS.md` with thin provider adapters |
+| Reader guides; agent operations; specialised checks; reference | `docs/`; `docs/agents/`; `docs/verification/`; `docs/reference/` |
+| Python tools; behavioural tests; Lean exporters; paper tools | `scripts/`; `scripts/tests/`; `scripts/lean/`; `scripts/papers/` |
+| Paper corpus data and rendered reading text | `docs/papers/` |
+| Experiment manifests and inputs | The owning experiment under `research/experiments/` |
+
+Link guides from their folder index. A catalogue should locate records; route
+interpretation to the existing results, paper or recognition owner instead of
+repeating its account. Keep complete machine records even when their rendered
+index becomes shorter. Preserve root filenames required by Lake, Comparator,
+citation and licence tools, and stable machine-readable corpus paths. A move
+must update links, imports, sparse-checkout manifests, CI, source registries
+and builders together. Check consumers outside this checkout too. Pinned
+historical artifacts retain the paths and bytes of their recorded revision.
+
+Use established repositories as evidence for a specific decision.
+[Mathlib CI](https://github.com/leanprover-community/mathlib-ci) separates Lean
+tooling, tests and workflow orchestration; the
+[Scientific Python template](https://github.com/scientific-python/cookie)
+links its checks to documented practices. Borrow applicable boundaries and
+checks through this workflow. A package template does not justify turning
+clone-local commands into a distributable Python package; a new folder or
+skill needs a distinct responsibility, not another taxonomy.
 
 ## Validate behavior, not decoration
 
@@ -284,6 +297,11 @@ python3 scripts/tests/test_compact_agent_entry.py
 python3 scripts/check_cold_clone_comprehension.py --quick
 python3 scripts/tests/test_human_first_contact.py
 ```
+
+Run standalone test modules directly, or with `python3 -m scripts.tests.test_<name>`.
+Some suites use `main()` rather than `unittest.TestCase`; generic `unittest`
+discovery can succeed after running zero tests. Verify the suite's reported
+work, not just its process exit code.
 
 Use the exact previously failing task with `agent_entry.py --entry` as a manual
 smoke. Before publication, run `python3 scripts/check_release.py` once; do not

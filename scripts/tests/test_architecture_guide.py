@@ -147,6 +147,12 @@ def check_documentation_inventory() -> None:
         (nested / "builder.py").rename(scripts / "builder.py")
         assert not errors(), "organized test and tool directories rejected"
 
+        (scripts / "Export.lean").write_text("import Lean\n")
+        assert any("scripts/lean/" in e for e in errors())
+        (scripts / "lean").mkdir()
+        (scripts / "Export.lean").rename(scripts / "lean" / "Export.lean")
+        assert not errors(), "organized Lean tooling rejected"
+
         def git(*args):
             subprocess.run(["git", "-C", str(root), *args], check=True,
                            capture_output=True, env=check_release.clean_environment())

@@ -1463,7 +1463,8 @@ def check_root_layout() -> None:
     candidate_paths = {path.relative_to(ROOT).as_posix() for path in (ROOT / "docs").rglob("*")
                        if path.is_file()}
     candidate_paths.update(path.relative_to(ROOT).as_posix()
-                           for path in (ROOT / "scripts").glob("test_*.py"))
+                           for path in (ROOT / "scripts").rglob("*")
+                           if path.is_file())
     entries = {path.name for path in ROOT.iterdir()}
     git_root = subprocess.run(
         ["git", "-C", str(ROOT), "rev-parse", "--show-toplevel"],
@@ -1507,6 +1508,11 @@ def check_root_layout() -> None:
                              and Path(rel).match("test_*.py"))
     check(not misplaced_tests, "behavioral tests belong in scripts/tests/: "
           + ", ".join(misplaced_tests))
+    misplaced_lean_tools = sorted(rel for rel in candidate_paths
+                                 if rel.startswith("scripts/") and rel.endswith(".lean")
+                                 and not rel.startswith("scripts/lean/"))
+    check(not misplaced_lean_tools, "Lean tooling belongs in scripts/lean/: "
+          + ", ".join(misplaced_lean_tools))
     documentation_code = sorted(rel for rel in candidate_paths
                                 if rel.startswith("docs/") and rel.endswith(".py"))
     check(not documentation_code, "executable documentation tools belong in scripts/: "

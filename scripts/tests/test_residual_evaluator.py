@@ -25,7 +25,7 @@ from pathlib import Path
 import residual_evaluator as ev
 
 HERE = Path(__file__).resolve().parent.parent
-MANIFEST = HERE / "residualbench_manifest.json"
+MANIFEST = HERE.parent / "research/experiments/residual-progress/manifest.json"
 
 
 def _sketch(residuals: list[str], expect: str | None = None) -> ev.Sketch:
