@@ -2,8 +2,8 @@
   "boundary": "Checks registered asserting environments and registered claim spans. Unregistered prose assertions, mathematical equivalence, correctness of ordinary proofs, Lean compilation, Comparator replay and PDF freshness are not established by this audit.",
   "global_findings": [],
   "input_sha256": {
-    "docs/paper_lean_coverage.json": "sha256:52bd53f45c233e0bcdd070ed8798d6ebdaba4f93de185283c4461ecfc0f9ae44",
-    "docs/papers/corpus.json": "sha256:2f854be88b57555d3c8dc7ccac44bb04033fce85eee030569b11b58f1020f648",
+    "docs/paper_lean_coverage.json": "sha256:e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
+    "docs/papers/corpus.json": "sha256:02d1accf8907ce2677ab31b38639dc05dcc3a126c146b39bcfdce03d7e2ce2fb",
     "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md": "sha256:0a8cc6fdb56d6892a6f5f34d423f925afd50336525c66a0efed93c2511c96964",
     "docs/papers/full-text/erdos-1049-rational-base-lambert.md": "sha256:c10103c0f78d66e68617f4c57c08e0414291eff4ced80bc56c8e4a15c6b5ae43",
     "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md": "sha256:39374c6f6dd3819ffb0f92277340c5c242e2ad2099e588a0aa01448550dddde7",
@@ -19,7 +19,7 @@
     "docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md": "sha256:7f13d04205ccd8b8806ef037b185bb8ea39299d7e66507ac42aa9f560041b791",
     "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md": "sha256:ceb8cf732c7ff7bdf310bc047d0165f6b4acf85f8fada92c9718d77b390a48cb",
     "docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md": "sha256:8706d4b64902412164435234f796f59a6b79d55bf462faea86ba52b7bc4cbf77",
-    "docs/papers/full-text/erdos68-factorial-reasoning-surface.md": "sha256:8b75e568fee754da6ee2649e8e7d8972817ee4d79085b720ac96b974df86524a",
+    "docs/papers/full-text/erdos68-factorial-reasoning-surface.md": "sha256:ff99ad375b9769e5c722b0bfe5d68926550944f778841b90e3a3e935bc30b6fa",
     "docs/papers/paper_corpus_renderer.py": "sha256:392e57c723ec3f0af5e6bcfc712aab7408cc6263f7f21784e877b93b57c8c874",
     "evidence/paper_evidence.json": "sha256:8c7de6f8f5e082fa91698d0c8314620207603080c348a526aa31fa250042b423",
     "lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean": "sha256:c6174888a3c59acf20f827b01a42bbffce05112eb7c7a3f30350dc1af0fb8f19",
@@ -61,7 +61,7 @@
     "paper/269/erdos-269-three-prime-running-lcm.tex": "sha256:abf6eb8736c95b8ba4c0d4ba1cb6c4bc7fd5913dd3789e620fbd9d36d7d4b4b5",
     "paper/269/erdos269-running-lcm-reasoning-surface.tex": "sha256:4643ae2207eb93d262efa25a1a4d0ba0e536155e44c894cbf0f4f0dd58ad6909",
     "paper/68/erdos-68-factorial-denominator-irrationality.tex": "sha256:eedffe484fe5a8dd349b199219f49f255c8904744befd44b212c813b041a998f",
-    "paper/68/erdos68-factorial-reasoning-surface.tex": "sha256:51af1cab159c76f8e6b836a2743533816557f5729474892009847406493f2306",
+    "paper/68/erdos68-factorial-reasoning-surface.tex": "sha256:3d0cf61f2dfde956a247f546a2649788b3e0f7edbb220d3d296c94ec7736f717",
     "paper/evidence/erdos-1041-lemniscate-newton-flow.tex": "sha256:c60b85cd02a4f493465fbd32c1bccecab7e8d11a0e28a5321ac62a8c2612ec6c",
     "paper/evidence/erdos-1049-rational-base-lambert.tex": "sha256:c4e6515515effaf60879a0a41f057fed821263558b84d7840fcca132c4946e83",
     "paper/evidence/erdos-243-reciprocal-tail-rigidity.tex": "sha256:0e7e160adf8e923389a043dcbe026ad47117224e41e32e439482b959f6e629c0",
@@ -125,7 +125,7 @@
     "paper/reasoning-parts/erdos269/family_catalogue.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos269/preamble.tex": "sha256:c89017a41e5746e10a8189c6954cbb057417a21dc34e4a1137e6984d98789117",
     "paper/reasoning-parts/erdos68/back.tex": "sha256:7c0796754f02f5feb9aadd6a37d7145d65bd53ddb0779dba48832b3bbb06fcb2",
-    "paper/reasoning-parts/erdos68/core.tex": "sha256:c8dde35b30b28d779deaa4a2727bab96001e906cfe56ceb81bbd965bcd2d2d15",
+    "paper/reasoning-parts/erdos68/core.tex": "sha256:2ab80700acdf739da90d470a7d3be42ed6fb843eb4e359d032ce765f7b80accb",
     "paper/reasoning-parts/erdos68/extended_record.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos68/family_catalogue.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos68/preamble.tex": "sha256:7bbd6207745d2f3e5c7db3b788c3cafcfd17504ac075cad8df1f5e5310dda21d",
@@ -145,7 +145,7 @@
     "docs/reading-edition/records/erdos251.md": "sha256:586c8c5c0422ffd7ab53fa0682750342fd07506dbd503a9290d06fe24d683c39",
     "docs/reading-edition/records/erdos257.md": "sha256:5ba461b462c40e1c8d879e8ed06861ff43e3fa928c6018b92e4bb0dd5d8c53d3",
     "docs/reading-edition/records/erdos269.md": "sha256:55ded1da8935e26e706b117fe1b26f3e9ba2bd33156514b29e58fb341ba19daf",
-    "docs/reading-edition/records/erdos68.md": "sha256:4346c7bb48a2ad5be27c144901c7ec780ae6a63ed5fc9afdd6d5fcb4a154744d"
+    "docs/reading-edition/records/erdos68.md": "sha256:a948733bf3e10bef2d6ed59d2c687d4e2b7eaf866cb91b48eef87a6864deb460"
   },
   "pairs": [
     {
@@ -242,162 +242,162 @@
       "long_only_or_unmatched": [
         {
           "location": {
-            "end_line": 843,
+            "end_line": 840,
             "label": "long68:res:prime-pole",
-            "line": 834,
+            "line": 831,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:prime-pole"
         },
         {
           "location": {
-            "end_line": 936,
+            "end_line": 933,
             "label": "long68:res:wilson-cofinality",
-            "line": 933,
+            "line": 930,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:wilson-cofinality"
         },
         {
           "location": {
-            "end_line": 977,
+            "end_line": 974,
             "label": "long68:res:product-lcm",
-            "line": 971,
+            "line": 968,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:product-lcm"
         },
         {
           "location": {
-            "end_line": 1003,
+            "end_line": 1000,
             "label": "long68:res:gap-gcd",
-            "line": 1000,
+            "line": 997,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:gap-gcd"
         },
         {
           "location": {
-            "end_line": 1020,
+            "end_line": 1017,
             "label": "long68:res:segment",
-            "line": 1012,
+            "line": 1009,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:segment"
         },
         {
           "location": {
-            "end_line": 1039,
+            "end_line": 1036,
             "label": "long68:res:lcm-growth",
-            "line": 1034,
+            "line": 1031,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:lcm-growth"
         },
         {
           "location": {
-            "end_line": 1348,
+            "end_line": 1345,
             "label": "long68:res:carry-equivalence",
-            "line": 1328,
+            "line": 1325,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:carry-equivalence"
         },
         {
           "location": {
-            "end_line": 1440,
+            "end_line": 1437,
             "label": "long68:res:companion-orbit",
-            "line": 1433,
+            "line": 1430,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:companion-orbit"
         },
         {
           "location": {
-            "end_line": 1529,
+            "end_line": 1526,
             "label": "long68:res:lower-escape",
-            "line": 1515,
+            "line": 1512,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:lower-escape"
         },
         {
           "location": {
-            "end_line": 1632,
+            "end_line": 1629,
             "label": "long68:res:shift-family",
-            "line": 1623,
+            "line": 1620,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:shift-family"
         },
         {
           "location": {
-            "end_line": 1730,
+            "end_line": 1727,
             "label": "long68:res:global-residue",
-            "line": 1723,
+            "line": 1720,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:global-residue"
         },
         {
           "location": {
-            "end_line": 137,
+            "end_line": 134,
             "label": "long68:res:normalform",
-            "line": 134,
+            "line": 131,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:normalform"
         },
         {
           "location": {
-            "end_line": 580,
+            "end_line": 577,
             "label": "long68:res:bandbreakpoint",
-            "line": 574,
+            "line": 571,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:bandbreakpoint"
         },
         {
           "location": {
-            "end_line": 292,
+            "end_line": 289,
             "label": "long68:res:moment-ideal",
-            "line": 281,
+            "line": 278,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:moment-ideal"
         },
         {
           "location": {
-            "end_line": 324,
+            "end_line": 321,
             "label": "long68:res:residual-transparency",
-            "line": 315,
+            "line": 312,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:residual-transparency"
         },
         {
           "location": {
-            "end_line": 1203,
+            "end_line": 1200,
             "label": "long68:res:channel-radius",
-            "line": 1194,
+            "line": 1191,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:channel-radius"
         },
         {
           "location": {
-            "end_line": 1249,
+            "end_line": 1246,
             "label": "long68:res:radius-constant",
-            "line": 1243,
+            "line": 1240,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:radius-constant"
         },
         {
           "location": {
-            "end_line": 601,
+            "end_line": 598,
             "label": "long68:res:translator",
-            "line": 597,
+            "line": 594,
             "path": "paper/reasoning-parts/erdos68/core.tex"
           },
           "long_claim": "erdos68-factorial-reasoning-surface#long68:res:translator"

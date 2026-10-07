@@ -208,14 +208,14 @@
     },
     "erdos_68_reasoning_record": {
       "inputs": {
-        "paper/68/erdos68-factorial-reasoning-surface.tex": "sha256:51af1cab159c76f8e6b836a2743533816557f5729474892009847406493f2306",
+        "paper/68/erdos68-factorial-reasoning-surface.tex": "sha256:3d0cf61f2dfde956a247f546a2649788b3e0f7edbb220d3d296c94ec7736f717",
         "paper/evidence/erdos68-factorial-reasoning-surface.tex": "sha256:1a4adf5d82ec871f1b62e3b9af6d6e0c6470e6de5b5650392144acd526c84c85",
         "paper/module-aliases.tex": "sha256:6d6d9640a9b7f04d003ebbffb78db279f5af838a2afc99ba6b5b247cc67b6954",
         "paper/paper-evidence.tex": "sha256:1ba1b3a112445f6fee7794f2083c29a60fb102d239d5e799808a36b9a5e562e3",
         "paper/paper-house-style.sty": "sha256:554ed85b5315bd936a4d09d58f8727547c5bb1b299f9684eb6ef720b329759a2",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:a54ab141b81181a4131bf9739878e9d146c38318241ac10c31ade9c888f36eb8",
+      "rendered_content_digest": "sha256:1b62398c30faacdb11f5272c975fad65bd8cde4742b5ff52279934fa8affe637",
       "source_path": "paper/68/erdos68-factorial-reasoning-surface.tex",
       "storage_path": "paper/68/erdos68-factorial-reasoning-surface.pdf"
     },

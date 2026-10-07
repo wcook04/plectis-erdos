@@ -34,11 +34,11 @@
   "inputs": [
     {
       "path": "docs/paper_lean_coverage.json",
-      "sha256": "52bd53f45c233e0bcdd070ed8798d6ebdaba4f93de185283c4461ecfc0f9ae44"
+      "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
     },
     {
       "path": "docs/claims.json",
-      "sha256": "8ed843c5ec178853dd59259d29dad7191ab92d290f0f2a421f66987eec705577"
+      "sha256": "b92af9f98a8743f48cf40c399d0c03eee322b7195e48c96eb14721ecb92fce9a"
     },
     {
       "path": "docs/problem_index_source.json",
@@ -46,7 +46,7 @@
     },
     {
       "path": "docs/papers/corpus.json",
-      "sha256": "2f854be88b57555d3c8dc7ccac44bb04033fce85eee030569b11b58f1020f648"
+      "sha256": "02d1accf8907ce2677ab31b38639dc05dcc3a126c146b39bcfdce03d7e2ce2fb"
     },
     {
       "path": "docs/publication_evidence.json",

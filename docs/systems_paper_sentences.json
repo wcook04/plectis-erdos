@@ -62,8 +62,8 @@
       "path": "docs/papers/corpus.json",
       "start_line": 1,
       "end_line": 9326,
-      "sha256": "2f854be88b57555d3c8dc7ccac44bb04033fce85eee030569b11b58f1020f648",
-      "excerpt_sha256": "2f854be88b57555d3c8dc7ccac44bb04033fce85eee030569b11b58f1020f648",
+      "sha256": "02d1accf8907ce2677ab31b38639dc05dcc3a126c146b39bcfdce03d7e2ce2fb",
+      "excerpt_sha256": "02d1accf8907ce2677ab31b38639dc05dcc3a126c146b39bcfdce03d7e2ce2fb",
       "kind": "source"
     },
     {
@@ -71,8 +71,8 @@
       "path": "docs/systems_paper_counts.json",
       "start_line": 1,
       "end_line": 65,
-      "sha256": "807e8a7e6dc1ccfb1ab3bf92e13340d9e1b5d35f10eb6aedca3810990601c96b",
-      "excerpt_sha256": "807e8a7e6dc1ccfb1ab3bf92e13340d9e1b5d35f10eb6aedca3810990601c96b",
+      "sha256": "b7bd28191f898f9f84e9fce8477e48ba0119583f21f0cb59acab2d74b67e6dae",
+      "excerpt_sha256": "b7bd28191f898f9f84e9fce8477e48ba0119583f21f0cb59acab2d74b67e6dae",
       "kind": "source"
     },
     {
@@ -89,8 +89,8 @@
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
       "end_line": 29162,
-      "sha256": "52bd53f45c233e0bcdd070ed8798d6ebdaba4f93de185283c4461ecfc0f9ae44",
-      "excerpt_sha256": "52bd53f45c233e0bcdd070ed8798d6ebdaba4f93de185283c4461ecfc0f9ae44",
+      "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
+      "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
       "kind": "source"
     },
     {
@@ -99,8 +99,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "52bd53f45c233e0bcdd070ed8798d6ebdaba4f93de185283c4461ecfc0f9ae44",
-      "excerpt_sha256": "52bd53f45c233e0bcdd070ed8798d6ebdaba4f93de185283c4461ecfc0f9ae44"
+      "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
+      "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
     },
     {
       "id": "coverage-reciprocal",
@@ -108,8 +108,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "52bd53f45c233e0bcdd070ed8798d6ebdaba4f93de185283c4461ecfc0f9ae44",
-      "excerpt_sha256": "52bd53f45c233e0bcdd070ed8798d6ebdaba4f93de185283c4461ecfc0f9ae44"
+      "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
+      "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
     },
     {
       "id": "coverage-weighted",
@@ -117,8 +117,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "52bd53f45c233e0bcdd070ed8798d6ebdaba4f93de185283c4461ecfc0f9ae44",
-      "excerpt_sha256": "52bd53f45c233e0bcdd070ed8798d6ebdaba4f93de185283c4461ecfc0f9ae44"
+      "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
+      "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
     },
     {
       "id": "credit",
@@ -135,8 +135,8 @@
       "start_line": 1,
       "end_line": 36351,
       "kind": "supplied_snapshot",
-      "sha256": "abd9526fdd7b2206ee6e6785121d40416068280446649cc31222733d324a5e40",
-      "excerpt_sha256": "abd9526fdd7b2206ee6e6785121d40416068280446649cc31222733d324a5e40"
+      "sha256": "3444a7d9a1ab07275212b4f2d6b0c6512e43530d12fcdd9124dff0d68a568ff6",
+      "excerpt_sha256": "3444a7d9a1ab07275212b4f2d6b0c6512e43530d12fcdd9124dff0d68a568ff6"
     },
     {
       "id": "essay-pages",
@@ -849,7 +849,7 @@
       "path": "docs/research-commons/source-attributions.json",
       "start_line": 16125,
       "end_line": 16173,
-      "sha256": "abd9526fdd7b2206ee6e6785121d40416068280446649cc31222733d324a5e40",
+      "sha256": "3444a7d9a1ab07275212b4f2d6b0c6512e43530d12fcdd9124dff0d68a568ff6",
       "excerpt_sha256": "be573b258326739443f43f30c79a51b73a63520dd6054cd5bebdc5f8eec113b6",
       "custody": "Public attribution inventory, marked bibliography_only. Used for feature attribution, not for its conflicting first-publication chronology. Direct claims are checked against the enclosed original v2 in this pass."
     },
