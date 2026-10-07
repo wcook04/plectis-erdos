@@ -1,0 +1,12 @@
+{
+  "schema": "plectis-finite-probe-receipt/1",
+  "probe": "research/probes/Round8CalibratedFinite.lean",
+  "sha256": "338b7910f5b03c4e68a8f363275a84bc978972b394f903b33a422e004e92b545",
+  "lean_toolchain": "leanprover/lean4:v4.29.1",
+  "environment_base": "f5e5c4ff131da2d1be9bbc9b59d5bf144181654a",
+  "command": "lake env lean research/probes/Round8CalibratedFinite.lean",
+  "checked_source": "Byte-identical staged source; path moved after full-file exit0.",
+  "exit_code": 0,
+  "stdout": "'ErdosProblems.Erdos1049.Round8CalibratedFinite.seed_at_parameter' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ErdosProblems.Erdos1049.Round8CalibratedFinite.mu_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'ErdosProblems.Erdos1049.Round8CalibratedFinite.finite_telescope' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n'ErdosProblems.Erdos1049.Round8CalibratedFinite.calibrated_partial_error' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\nErdosProblems.Erdos1049.Round8CalibratedFinite.seed_at_parameter (q : ℚ) : seed q q = 1\nErdosProblems.Erdos1049.Round8CalibratedFinite.finite_telescope (q : ℚ) (a : ℕ → ℚ) (n : ℕ) :\n  ∑ m ∈ range n, q ^ m * (a m - q * a (m + 1)) = a 0 - q ^ n * a n\nErdosProblems.Erdos1049.Round8CalibratedFinite.calibrated_partial_error (q : ℚ) (n : ℕ) :\n  1 - partialSum q n = q ^ n * mu q n\n",
+  "evidence_limit": "Finite rational normalization and telescope only. No positive measure, denominator, Hankel-height or infinite theorem proof. No library-root import or paper coverage upgrade."
+}

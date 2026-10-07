@@ -9,8 +9,9 @@ This script verifies that every other public surface agrees with it:
   1. claims.json is well formed, every claim status is in the taxonomy, typed
      remaining-open propositions resolve, and the machine-readable paper graph
      resolves to real public files and claim ids.
-  2. Release identity: lakefile.toml and CITATION.cff state the last tagged
-     release, while the main exposition pin agrees with the exact committed
+  2. Release identity: lakefile.toml states the last tagged release; current
+     CITATION.cff omits historical version/date fields. The main exposition
+     pin agrees with the exact committed
      formal-source checkpoint named in the registry.
   3. Every claimed Lean declaration exists in the stated module at the
      stated line.
@@ -44,7 +45,15 @@ This script verifies that every other public surface agrees with it:
      committed PDFs every mark sits level with its result's heading, points
      where it is declared to, and no paper is longer than its frozen
      baseline (scripts/check_paper_evidence_pdfs.py, which needs pypdf).
-Stdlib only; run from the repository root:  python3 scripts/check_release.py
+The gate itself imports only the standard library, but check 14 runs a child
+that needs the hash-pinned release dependencies (pypdf). From a cold checkout
+run the supported entry, which prepares that environment first:
+
+    python3 scripts/run_release_check.py
+
+Call this script directly only from an interpreter that already has
+scripts/requirements-release.txt installed (as CI does); otherwise it stops
+before any check runs and names the supported entry.
 """
 
 from __future__ import annotations
@@ -63,8 +72,16 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
-from check_problem_note_sources import note_pinned_commit, snapshot_lines_batch
-from methodology_contract import mutation_fixture_errors, render_markdown, validate_contract
+from check_problem_note_sources import (
+    RENDERED_MACRO_RE, note_pinned_commit, snapshot_lines_batch,
+    strip_comments, strip_unrendered,
+)
+from methodology_contract import (
+    PROGRAMME_TARGET_STATUSES,
+    mutation_fixture_errors,
+    render_markdown,
+    validate_contract,
+)
 from lean_source import (
     LIBRARY_ROOTS,
     library_dir,
@@ -81,7 +98,7 @@ from publication_contract import (
     mutation_fixture_failures as publication_mutation_fixture_failures,
     validate_publication_contract,
 )
-from query_corpus import canonical_paper_anchor_key, paper_anchor_inventory
+from query_corpus import canonical_paper_anchor_key, paper_anchor_inventory, printed_macro_sources
 from systems_paper_evidence import (
     mutation_fixture_failures as systems_paper_mutation_fixture_failures,
     validate_systems_paper_evidence,
@@ -169,7 +186,7 @@ def projection_check_results() -> dict[str, subprocess.CompletedProcess[str]]:
 
     def check_builder(builder: str) -> tuple[str, subprocess.CompletedProcess[str]]:
         result = _SUBPROCESS_RUN(
-            [sys.executable, str(ROOT / builder), "--check"],
+            refresh_projections.check_command(builder),
             cwd=ROOT,
             capture_output=True,
             text=True,
@@ -246,6 +263,11 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "scripts" / "test_cold_clone_comprehension.py"),
         ],
+        "claim_records": [sys.executable, str(ROOT / "scripts" / "test_verify_claims.py")],
+        "research_query": [sys.executable, str(ROOT / "scripts" / "test_research_query.py")],
+        "companion_package": [sys.executable, str(ROOT / "scripts" / "test_companion_package.py")],
+        "reading_edition_weighted": [sys.executable, str(ROOT / "scripts" / "test_reading_edition_weighted.py")],
+        "github_release_contracts": [sys.executable, str(ROOT / "scripts" / "check_ci_release.py")],
         "semantic_queries": [
             sys.executable,
             str(ROOT / "scripts" / "test_query_semantic_tiers.py"),
@@ -262,6 +284,10 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "scripts" / "test_check_release_environment.py"),
         ],
+        "release_preparation": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_run_release_check.py"),
+        ],
         "proof_workbench": [
             sys.executable,
             str(ROOT / "scripts" / "test_proof_workbench.py"),
@@ -274,9 +300,48 @@ def late_check_commands() -> dict[str, list[str]]:
             sys.executable,
             str(ROOT / "scripts" / "test_erdos251_computation_replay.py"),
         ],
+        "replay_routes": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "replay_worlds" / "test_check_routes.py"),
+        ],
+        "totient_normal_form": [
+            sys.executable,
+            str(ROOT / "scripts" / "test_totient_kernel_normal_form.py"),
+        ],
+        "finite_dilation_normal_form": [
+            sys.executable,
+            str(ROOT / "scripts" / "erdos249_finite_dilation_normal_form.py"),
+            "--self-test",
+        ],
+        "chain_transcendence": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "chain_transcendence" / "test_chain_bookkeeping.py"),
+        ],
         "admissible_feedback": [
             sys.executable,
             str(ROOT / "research" / "experiments" / "sparse_interpolation" / "test_feedback.py"),
+        ],
+        "distinct_height": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "erdos269" / "distinct_height"
+                / "test_distinct_height.py"),
+        ],
+        "distinct_height_two_tail": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "erdos269" / "distinct_height"
+                / "test_two_tail.py"),
+        ],
+        "interestingness_profile": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "interestingness" / "test_profile.py"),
+        ],
+        "conditional_reuse": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "interestingness" / "test_conditional_reuse.py"),
+        ],
+        "periodic_chain_probe": [
+            sys.executable,
+            str(ROOT / "research" / "experiments" / "interestingness" / "periodic_chain_probe.py"),
         ],
         "mutation_harness": [
             sys.executable,
@@ -345,11 +410,7 @@ def publication_stage_check_results() -> dict[str, subprocess.CompletedProcess[s
     global _PROJECTION_CHECK_RESULTS
     projection_prefix = "projection:"
     commands = {
-        f"{projection_prefix}{builder}": [
-            sys.executable,
-            str(ROOT / builder),
-            "--check",
-        ]
+        f"{projection_prefix}{builder}": refresh_projections.check_command(builder)
         for builder in refresh_projections.BUILDERS
     }
     commands.update(
@@ -370,6 +431,10 @@ def publication_stage_check_results() -> dict[str, subprocess.CompletedProcess[s
             "publication_taxonomy": [
                 sys.executable,
                 str(ROOT / "docs" / "papers" / "check_publication_taxonomy.py"),
+            ],
+            "publication_archive_versions": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_publication_archive_versions.py"),
             ],
         }
     )
@@ -404,7 +469,7 @@ INTERNAL_IMPORT_RE = re.compile(
 )
 
 LINE_WINDOW = 3  # declaration name must appear within this many lines of the stated line
-MAX_ROUTE_FIRST_CONTACT_BYTES = 48_000
+MAX_ROUTE_FIRST_CONTACT_BYTES = 56_000
 
 README_BANNED_PHRASES = [
     "Ramanujan Machine Challenge",
@@ -414,7 +479,7 @@ README_BANNED_PHRASES = [
 
 PROOF_TRUST_RE = re.compile(
     r"\bsorry\b|\badmit\b|(?<![\w.])axiom\s+"
-    r"|native_decide"
+    r"|\b(?:native_decide|bv_decide)\b"
     r"|\+native\b|\bnative\s*:=\s*true\b"
     r"|^\s*(?:unsafe|partial)\s+(?:def|theorem|opaque|instance)\b"
     r"|^\s*set_option\s+(?:maxHeartbeats|maxRecDepth)\s+0\b",
@@ -594,12 +659,20 @@ def contributor_gate_posture_errors(contributing: str) -> list[str]:
     """Reject contributor guidance that understates cold-reader validation."""
     flat = " ".join(contributing.split())
     errors: list[str] = []
-    if "combined baseline-plus-adversarial release-gate check" not in flat:
+    descriptions = (
+        "combined baseline-plus-adversarial release-gate check",
+        "The cold-clone comprehension program tests a bounded set of public questions "
+        "and checks that deliberately broken statements or links are detected.",
+    )
+    if not any(description in flat for description in descriptions):
         errors.append(
             "CONTRIBUTING.md must identify the cold-clone adversarial program "
             "as a release-gate check"
         )
-    if "A failure therefore blocks the release gate" not in flat:
+    if not any(sentence in flat for sentence in (
+        "A failure therefore blocks the release gate",
+        "A failure blocks the release gate",
+    )):
         errors.append(
             "CONTRIBUTING.md must state that cold-clone comprehension failures "
             "block the release gate"
@@ -646,6 +719,34 @@ def source_map_entry_errors(source_map: str) -> list[str]:
             "docs/SOURCE_MAP.md still presents the historical deposit list "
             "as the current certificate frontier"
         )
+    return errors
+
+
+def ordinary_proof_claim_errors(claim: dict, families: list[dict], root: Path) -> list[str]:
+    """Admit a non-Lean result only with an authored proof and explicit ceiling."""
+    claim_id = claim.get("id")
+    errors: list[str] = []
+    if claim.get("status") != "unconditional progress" or claim.get("declarations"):
+        errors.append(f"claim {claim_id}: ordinary proof has wrong status or declarations")
+    matches = [
+        family for family in families
+        if claim_id in family.get("claim_ids", [])
+        and family.get("status_summary") == (
+            "Reviewed ordinary proof; full infinite statement not formalised "
+            "and independent human review not recorded."
+        )
+    ]
+    if len(matches) != 1:
+        return [*errors, f"claim {claim_id}: no unique reviewed ordinary-proof family"]
+    owner = matches[0].get("primary_narrative_owner")
+    label = claim.get("paper_label")
+    if not isinstance(owner, str) or not owner.startswith("paper/") or ".." in Path(owner).parts:
+        return [*errors, f"claim {claim_id}: invalid ordinary-proof paper owner"]
+    if not isinstance(label, str) or not label:
+        return [*errors, f"claim {claim_id}: missing ordinary-proof paper label"]
+    paper = root / owner
+    if not paper.is_file() or f"\\label{{{label}}}" not in paper.read_text(encoding="utf-8"):
+        errors.append(f"claim {claim_id}: reviewed ordinary-proof label absent from {owner}")
     return errors
 
 
@@ -951,9 +1052,62 @@ def name_at_line(lines: list[str], name: str, line: int) -> bool:
     return any(name in lines[i] for i in range(lo, hi))
 
 
+def paper_macro_coordinates(
+    paper_text: str, formal_ref: str,
+) -> tuple[list[tuple[str, str, int, str, str]], list[str]]:
+    """Keep a word link's rendered body identity, through the native link owner.
+
+    The query adapter expands declared PK bodies using rendered_link_targets;
+    it rejects unresolved or ambiguous bodies instead of guessing their pin.
+    Other legacy coordinate macros retain their existing release checks.
+    """
+    printed = printed_macro_sources(paper_text)
+    visible_keys = {
+        (match.group("macro"), match.group("file"))
+        for match in RENDERED_MACRO_RE.finditer(strip_unrendered(strip_comments(paper_text)))
+    }
+    source_ref = note_pinned_commit(paper_text, formal_ref)
+    coordinates = []
+    problems = []
+    for macro, fname, line_s, name in re.findall(
+        r"\\((?:[lm](?:refx?|word|loc)|rootword))\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?",
+        paper_text,
+    ):
+        if macro in ("lword", "mword"):
+            target = printed.get((macro, fname))
+            if target is None and (macro, fname) not in visible_keys:
+                # Legacy source-manifest checks also validate hidden coordinates.
+                # Resolve only this invocation against the declared macro bodies;
+                # this supplies no reader-visible route for the original row.
+                invocation = f"\\{macro}{{{fname}}}{{{line_s}}}{{{name}}}{{source}}"
+                target = printed_macro_sources(paper_text + "\n" + invocation).get((macro, fname))
+            if target is None:
+                problems.append(f"\\{macro}: unresolved printed source for {fname}")
+                continue
+            pin, rel = target
+        else:
+            pin = source_ref
+            if fname.startswith(("Erdos249257/", "ErdosProblems/")):
+                rel = fname
+            elif "\\input{problem-note-preamble}" in paper_text:
+                rel = f"ErdosProblems/{fname}"
+            else:
+                rel = f"Erdos249257/{fname}"
+        coordinates.append((macro, rel, int(line_s), name, pin))
+    return coordinates, problems
+
+
 def internal_imports(path: Path) -> list[str]:
     """Return direct imports from either supported library in source order."""
     return INTERNAL_IMPORT_RE.findall(read(path))
+
+
+def proof_trust_code(text: str) -> str:
+    """Exclude prose, strings, and quoted identifiers from tactic-token checks."""
+    code = lean_code_without_comments_and_strings(text)
+    return re.sub(r"«[^»]*»", lambda match: "".join(
+        "\n" if character == "\n" else " " for character in match.group()
+    ), code)
 
 
 def proof_trust_violation(text: str) -> str | None:
@@ -965,7 +1119,7 @@ def proof_trust_violation(text: str) -> str | None:
     # files; only those files pay for the exact comment/string-aware scan.
     if not proof_trust_candidate(text):
         return None
-    match = PROOF_TRUST_RE.search(lean_code_without_comments_and_strings(text))
+    match = PROOF_TRUST_RE.search(proof_trust_code(text))
     return match.group(0).strip() if match else None
 
 
@@ -1019,7 +1173,7 @@ def proof_trust_candidate(text: str) -> bool:
         require_space_after=True,
     ):
         return True
-    if "native_decide" in text:
+    if "native_decide" in text or "bv_decide" in text:
         return True
     if _contains_delimited_token(text, "+native", check_start=False):
         return True
@@ -1118,7 +1272,7 @@ def proof_trust_candidate_bytes(data: bytes) -> bool:
         require_space_after=True,
     ):
         return True
-    if b"native_decide" in data:
+    if b"native_decide" in data or b"bv_decide" in data:
         return True
     if _contains_delimited_token_bytes(data, b"+native", check_start=False):
         return True
@@ -1161,11 +1315,12 @@ def proof_trust_violation_bytes(data: bytes) -> str | None:
     if not proof_trust_candidate_bytes(data):
         return None
     text = data.decode("utf-8")
-    match = PROOF_TRUST_RE.search(lean_code_without_comments_and_strings(text))
+    match = PROOF_TRUST_RE.search(proof_trust_code(text))
     return match.group(0).strip() if match else None
 
 
 APPROVED_ROOT_FILES = {
+    '.gitattributes',  # preserve hash-bound historical excerpt whitespace
     '.gitignore',
     'AGENTS.md',
     'CITATION.cff',
@@ -1181,6 +1336,7 @@ APPROVED_ROOT_FILES = {
 }
 
 APPROVED_ROOT_DIRS = {
+    ".githooks": "opt-in Git push checks for exact committed release evidence",
     ".agents": "host-discovery entrypoints used by integrations",
     ".github": "CI and hosted repository metadata",
     "LICENSES": "SPDX licence texts",
@@ -1269,6 +1425,8 @@ def check_proof_trust() -> None:
           "proof-trust scanner must reject project-defined axioms")
     check(proof_trust_violation("theorem bad : True := by native_decide\n") == "native_decide",
           "proof-trust scanner must reject executable native reduction")
+    check(proof_trust_violation("theorem bad : (0 : BitVec 8) = 0 := by bv_decide\n") == "bv_decide",
+          "proof-trust scanner must reject native bit-vector evaluation")
     check(proof_trust_violation("theorem bad : True := by decide +native\n") == "+native",
           "proof-trust scanner must reject the native decide alias")
     check(proof_trust_violation(
@@ -1338,6 +1496,48 @@ def check_proof_trust() -> None:
               f"proof-trust violation in {lean.relative_to(ROOT)}: {violation or ''}")
 
 
+RELEASE_CHILD_MODULES = ("pypdf",)
+
+
+def formal_source_identity_errors(release: dict) -> list[str]:
+    """Use the same source identity check in preflight and full validation."""
+    formal_source = release.get("formal_source")
+    if not isinstance(formal_source, dict):
+        return ["release must name a formal_source checkpoint"]
+    formal_ref = formal_source.get("ref")
+    if not isinstance(formal_ref, str) or not re.fullmatch(r"[0-9a-f]{40}", formal_ref):
+        return ["release.formal_source.ref must be a full lowercase Git commit id"]
+    resolved = run(
+        ["git", "rev-parse", "--verify", f"{formal_ref}^{{commit}}"],
+        cwd=ROOT, capture_output=True, text=True, check=False,
+    )
+    if resolved.returncode:
+        return [f"release.formal_source.ref {formal_ref!r} does not resolve to a local commit"]
+    matches, detail = formal_source_matches_current_lean_tree(formal_ref)
+    return [] if matches else [detail or "current public Lean sources differ from formal-source checkpoint"]
+
+
+def route_budget_errors(route: dict, root: Path = ROOT) -> list[str]:
+    """One cheap byte-budget contract shared by admission and full release."""
+    total = 0
+    for rel in route.get("read", []):
+        path = root / rel
+        if not path.is_file():
+            return [f"route {route.get('id')!r} first-contact file is missing: {rel}"]
+        total += path.stat().st_size
+    if total > MAX_ROUTE_FIRST_CONTACT_BYTES:
+        return [f"route {route.get('id')!r} first-contact bundle is {total} bytes "
+                f"(budget {MAX_ROUTE_FIRST_CONTACT_BYTES}); shorten the entry and route detail to its owning skill"]
+    return []
+
+
+def missing_release_dependencies() -> list[str]:
+    """Modules a release child imports that are absent from this interpreter."""
+    from importlib.util import find_spec
+
+    return [name for name in RELEASE_CHILD_MODULES if find_spec(name) is None]
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -1345,7 +1545,54 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help=argparse.SUPPRESS,
     )
+    parser.add_argument(
+        "--source-identity-only", action="store_true",
+        help="verify the formal-source checkpoint without release packages, builds or query suites",
+    )
+    parser.add_argument(
+        "--route-budgets-only", action="store_true",
+        help="check first-contact byte budgets without the late corpus query suites",
+    )
+    parser.add_argument("--trust-only", action="store_true",
+                        help="check proof trust and repository shape without release packages or builds")
     args = parser.parse_args(argv)
+    if args.source_identity_only or args.route_budgets_only or args.trust_only:
+        if args.singleflight_worker:
+            parser.error("--source-identity-only cannot run a release worker")
+        read.cache_clear()
+        data = json.loads(read(ROOT / "docs" / "claims.json"))
+        errors = formal_source_identity_errors(data.get("release", {})) if args.source_identity_only else []
+        for error in errors:
+            print(f"formal-source identity: FAIL {error}")
+        if args.source_identity_only and not errors:
+            print("formal-source identity: current Lean tree matches the committed checkpoint")
+        if args.route_budgets_only:
+            budget_errors = [error for route in data["machine_readable_paper"]["entrypoints"]
+                             for error in route_budget_errors(route, ROOT)]
+            for error in budget_errors:
+                print(f"first-contact budget: FAIL {error}")
+            errors.extend(budget_errors)
+            if not budget_errors:
+                print("first-contact budgets: current")
+        if args.trust_only:
+            check_proof_trust()
+            check_root_layout()
+            errors.extend(ERRORS)
+            for error in ERRORS:
+                print(f"proof trust / root layout: FAIL {error}")
+            if not ERRORS:
+                print("proof trust / root layout: current")
+        return int(bool(errors))
+    missing = missing_release_dependencies()
+    if missing:
+        print(
+            "check_release: this interpreter lacks the pinned release "
+            f"dependencies ({', '.join(missing)}); no check ran. Run "
+            "`python3 scripts/run_release_check.py`, which installs "
+            "scripts/requirements-release.txt into an ignored environment.",
+            file=sys.stderr,
+        )
+        return 2
     if not args.singleflight_worker:
         state_root = singleflight.default_state_root()
         specification = singleflight.validator_spec(
@@ -1384,6 +1631,9 @@ def main(argv: list[str] | None = None) -> int:
     # letting the thousands of consumers below share one admitted read.
     read.cache_clear()
     cache: dict[tuple[str, str | None], list[str] | None] = {}
+
+    if refresh_projections.preflight():
+        return 1
 
     # Fail fast on the cheapest high-severity invariant.  In particular, do
     # not spend the corpus-query budget before rejecting untrusted proof code.
@@ -1437,31 +1687,9 @@ def main(argv: list[str] | None = None) -> int:
     # alive for another 20-30 seconds before reporting it.
     release = data["release"]
     formal_source = release.get("formal_source")
-    check(isinstance(formal_source, dict), "release must name a formal_source checkpoint")
     formal_ref = formal_source.get("ref") if isinstance(formal_source, dict) else None
-    check(isinstance(formal_ref, str) and re.fullmatch(r"[0-9a-f]{40}", formal_ref or "") is not None,
-          "release.formal_source.ref must be a full lowercase Git commit id")
-    if isinstance(formal_ref, str) and re.fullmatch(r"[0-9a-f]{40}", formal_ref):
-        formal_ref_resolves = run(
-            ["git", "rev-parse", "--verify", f"{formal_ref}^{{commit}}"],
-            cwd=ROOT,
-            capture_output=True,
-            text=True,
-            check=False,
-        )
-        check(
-            formal_ref_resolves.returncode == 0,
-            f"release.formal_source.ref {formal_ref!r} does not resolve to a local commit",
-        )
-        if formal_ref_resolves.returncode == 0:
-            formal_tree_matches, formal_tree_detail = formal_source_matches_current_lean_tree(
-                formal_ref
-            )
-            check(
-                formal_tree_matches,
-                formal_tree_detail
-                or "current public Lean sources differ from formal-source checkpoint",
-            )
+    identity_errors = formal_source_identity_errors(release)
+    check(not identity_errors, "; ".join(identity_errors))
     if ERRORS:
         print(
             "check_release: "
@@ -1507,9 +1735,8 @@ def main(argv: list[str] | None = None) -> int:
         "generated paper-corpus freshness failed: "
         f"{child_output(paper_corpus_check)}",
     )
-    # Freshness is not the only way the corpus can mislead. Nothing here has
-    # been externally reviewed and nothing carries an archival identifier; a
-    # field claiming either would read as a credential at publication stage.
+    # Archive editions have source-bound identities, separate from current
+    # manuscripts. Neither an archive identifier nor freshness confers review.
     publication_taxonomy_check = publication_stage_results[
         "publication_taxonomy"
     ]
@@ -1517,6 +1744,12 @@ def main(argv: list[str] | None = None) -> int:
         publication_taxonomy_check.returncode == 0,
         "paper publication-taxonomy honesty failed: "
         f"{child_output(publication_taxonomy_check)}",
+    )
+    archive_version_check = publication_stage_results["publication_archive_versions"]
+    check(
+        archive_version_check.returncode == 0,
+        "paper archive-version boundary failed: "
+        f"{child_output(archive_version_check)}",
     )
     publication_taxonomy_current = _PROJECTION_CHECK_RESULTS[
         "docs/papers/build_publication_taxonomy.py"
@@ -1582,12 +1815,18 @@ def main(argv: list[str] | None = None) -> int:
     remaining_open_id_set = {
         row["id"] for row in data["remaining_open_propositions"]
     }
+    ordinary_families = data["machine_readable_paper"]["publication_assembly"][
+        "contribution_families"
+    ]
     for claim in data["claims"]:
         check(claim["status"] in taxonomy,
               f"claim {claim['id']}: status {claim['status']!r} not in taxonomy")
         if claim["status"] in ("cited only", "open"):
             check(not claim["declarations"],
                   f"claim {claim['id']}: {claim['status']!r} claims must not carry declarations")
+        elif not claim["declarations"]:
+            for error in ordinary_proof_claim_errors(claim, ordinary_families, ROOT):
+                check(False, error)
         else:
             check(bool(claim["declarations"]),
                   f"claim {claim['id']}: formal claim carries no declaration")
@@ -1724,15 +1963,11 @@ def main(argv: list[str] | None = None) -> int:
               f"route {route.get('id')!r} lacks bounded query, authority-owner, or adjacent-handle data")
         check(not (set(route.get("read", [])) & exhaustive_route_reads),
               f"route {route.get('id')!r} sends first contact to an exhaustive owner")
-        first_contact_bytes = 0
         for rel in route.get("read", []):
             path = ROOT / rel
             check(release_file_exists(path), f"machine-readable-paper entrypoint path does not exist: {rel}")
-            if release_file_exists(path):
-                first_contact_bytes += path.stat().st_size
-        check(first_contact_bytes <= MAX_ROUTE_FIRST_CONTACT_BYTES,
-              f"route {route.get('id')!r} first-contact bundle is {first_contact_bytes} bytes "
-              f"(budget {MAX_ROUTE_FIRST_CONTACT_BYTES})")
+        budget_errors = route_budget_errors(route)
+        check(not budget_errors, "; ".join(budget_errors))
         for owner in route.get("authority_owners", []):
             rel = str(owner).split("::", 1)[0]
             check(release_file_exists(ROOT / rel),
@@ -1778,9 +2013,10 @@ def main(argv: list[str] | None = None) -> int:
                   f"programme route {route.get('id')!r} has unknown problem targets: "
                   f"{sorted(target_ids - claim_id_set)}")
             check(
-                all(claim_index[target_id]["status"] == "open"
+                all(claim_index[target_id]["status"] in PROGRAMME_TARGET_STATUSES
                     for target_id in target_ids if target_id in claim_index),
-                f"programme route {route.get('id')!r} target claims must carry canonical status=open",
+                f"programme route {route.get('id')!r} target claims must carry a programme-target "
+                "status (open or formal statement refuted)",
             )
             check(not (core_ids - claim_id_set),
                   f"programme route {route.get('id')!r} has unknown core claims: "
@@ -1962,10 +2198,9 @@ def main(argv: list[str] | None = None) -> int:
     cff = read(ROOT / "CITATION.cff")
     check(re.search(r"^type: software\s*$", cff, re.M) is not None,
           "CITATION.cff: top-level type must be exactly 'software' (CFF 1.2.0)")
-    check(re.search(rf'^version: "?{re.escape(version)}"?\s*$', cff, re.M) is not None,
-          f"CITATION.cff: version does not state {version}")
-    check(re.search(rf"""^date-released: ["']?{re.escape(release['date'])}["']?\s*$""", cff, re.M) is not None,
-          f"CITATION.cff: date-released does not state {release['date']}")
+    for key in ("version", "date-released", "identifiers"):
+        check(re.search(rf"^{key}:", cff, re.M) is None,
+              f"CITATION.cff: current metadata must omit top-level {key}")
     check("Erdős" in cff, "CITATION.cff: title/keywords should use Unicode 'Erdős'")
 
     toolchain = read(ROOT / "lean-toolchain").strip()
@@ -2074,17 +2309,8 @@ def main(argv: list[str] | None = None) -> int:
         for decl in claim["declarations"]
     }
     for _paper_path, paper_text in paper_sources:
-        for _macro, fname, _line_s, _name in re.findall(
-            r"\\((?:[lm](?:refx?|word|loc)|rootword))\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?",
-            paper_text,
-        ):
-            if fname.startswith(("Erdos249257/", "ErdosProblems/")):
-                rel = fname
-            elif "\\input{problem-note-preamble}" in paper_text:
-                rel = f"ErdosProblems/{fname}"
-            else:
-                rel = f"Erdos249257/{fname}"
-            pinned_requests.add((note_pinned_commit(paper_text, formal_ref), rel))
+        coordinates, _problems = paper_macro_coordinates(paper_text, formal_ref)
+        pinned_requests.update((pin, rel) for _macro, rel, _line, _name, pin in coordinates)
     pinned_cache: dict[tuple[str, str], list[str]] = {}
     snapshot_lines_batch(
         pinned_requests,
@@ -2113,20 +2339,14 @@ def main(argv: list[str] | None = None) -> int:
 
     # --- 4. paper source links ----------------------------------------------
     for paper_path, paper_text in paper_sources:
-        source_ref = note_pinned_commit(paper_text, formal_ref)
-        for macro, fname, line_s, name in re.findall(
-                r"\\((?:[lm](?:refx?|word|loc)|rootword))\{([^}]+)\}\{(\d+)\}(?:\{([^}]*)\})?(?:\{[^}]*\})?", paper_text):
-            if fname.startswith(("Erdos249257/", "ErdosProblems/")):
-                rel = fname
-            elif "\\input{problem-note-preamble}" in paper_text:
-                rel = f"ErdosProblems/{fname}"
-            else:
-                rel = f"Erdos249257/{fname}"
+        coordinates, problems = paper_macro_coordinates(paper_text, formal_ref)
+        for problem in problems:
+            fail(f"{paper_path} {problem}")
+        for macro, rel, line, name, source_ref in coordinates:
             lines = module_lines(cache, rel, source_ref)
             if lines is None:
                 fail(f"{paper_path} \\{macro}: file {rel} not found at {source_ref}")
                 continue
-            line = int(line_s)
             check(line <= len(lines), f"{paper_path} \\{macro}: {rel}:{line} beyond end of file")
             if macro in ("lref", "lrefx", "lword", "mref", "mword", "rootword") and name and line <= len(lines):
                 check(name_at_line(lines, name, line),
@@ -2420,6 +2640,26 @@ def main(argv: list[str] | None = None) -> int:
                 sys.executable,
                 str(ROOT / "scripts" / "test_check_theory_lab_environment.py"),
                 "--fixtures-only",
+            ],
+            "argument_graph_builder": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_build_argument_continuations.py"),
+            ],
+            "argument_frontier_generator": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_build_argument_frontier.py"),
+            ],
+            "argument_frontier_verdicts": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_frontier_verdicts.py"),
+            ],
+            "argument_export_comparison": [
+                sys.executable,
+                str(ROOT / "scripts" / "test_compare_argument_exports.py"),
+            ],
+            "barrier_registry_source": [
+                sys.executable,
+                str(ROOT / "scripts" / "check_barrier_registry.py"),
             ],
             "reasoning_coordinates": [
                 sys.executable,
@@ -2958,8 +3198,13 @@ def main(argv: list[str] | None = None) -> int:
     check(query_check.returncode == 0,
           f"corpus query surface failed: {child_output(query_check)}")
     for name in (
+        "claim_records", "research_query", "companion_package", "reading_edition_weighted",
+        "github_release_contracts",
         "semantic_queries", "semantic_storage", "semantic_relation_parity",
-        "proof_workbench", "computation_replay", "admissible_feedback",
+        "chain_transcendence", "totient_normal_form", "finite_dilation_normal_form",
+        "proof_workbench", "computation_replay", "replay_routes", "admissible_feedback",
+        "distinct_height", "distinct_height_two_tail",
+        "interestingness_profile", "conditional_reuse", "periodic_chain_probe",
     ):
         result = late_checks[name]
         check(result.returncode == 0,

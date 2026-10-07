@@ -1,0 +1,418 @@
+{
+  "schema_version": "erdos249257-proof-state-compilation/1",
+  "kind": "proof_state_compilation_packet",
+  "goal_id": "dyadic_shift_third_escape_after_parameterising_radix_bound",
+  "environment_fingerprint": {
+    "repository_head": "7887311e69e41e7ff084bba70fc1bbbd4447dcee",
+    "lean_version": "Lean (version 4.29.1, x86_64-unknown-linux-gnu, commit f72c35b3f637c8c6571d353742168ab66cc22c00, Release)",
+    "lean_toolchain_digest": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
+    "lake_manifest_digest": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c",
+    "lakefile_digest": "sha256:f5aefe1cef475855224f791ffa81dea673d7e7abed02bfbb1ac8b6131dd16ef9",
+    "fingerprint": "sha256:392ee556e7f2747e934ffe9a36030ce159eaf282a983391d807708d5ec2b9a26"
+  },
+  "request_digest": "sha256:b65b129b793e379b7630af8dff3a6883a3ccf76393891eb4045173cda7ef1d81",
+  "goal_identity": {
+    "target": "\u2200 N\u2080 : \u2115, \u2203 N : \u2115, N\u2080 \u2264 N \u2227 \u2200 z : \u2124, (1 : \u211d) / 3 \u2264 |realTailShift T h N - (z : \u211d)|",
+    "context_names": [
+      "g",
+      "T",
+      "hrec",
+      "hirr",
+      "h",
+      "hh"
+    ]
+  },
+  "assumption_world": [
+    "hrec",
+    "hirr",
+    "hh"
+  ],
+  "candidate_actions": [
+    {
+      "candidate_id": "inherited_radix30_constant_does_not_reach_third",
+      "declaration": "Or.resolve_left",
+      "tactic": "apply Or.resolve_left (ErdosProblems.Erdos269.boundedRadix_zero_or_cofinal_far (fun _ => 2) (fun N => g (N + h + 1) - g (N + 1)) (fun N => realTailShift T h N) (fun _ => by norm_num) (fun _ => by norm_num) (by intro N; change T (N + 1 + h) - T (N + 1) = 2 * (T (N + h) - T N) - ((g (N + h + 1) - g (N + 1) : \u2124) : \u211d); rw [show N + 1 + h = N + h + 1 by omega, hrec (N + h), hrec N]; push_cast; ring))"
+    },
+    {
+      "candidate_id": "shift_orbit_through_parameterised_radix_two_escape",
+      "declaration": "Or.resolve_left",
+      "tactic": "apply Or.resolve_left (by have hesc := ErdosProblems.Erdos269.boundedRadix_zero_or_cofinal_far_of_le 2 (fun _ => 2) (fun N => g (N + h + 1) - g (N + 1)) (fun N => realTailShift T h N) (fun _ => le_refl 2) (fun _ => le_refl 2) (by intro N; change T (N + 1 + h) - T (N + 1) = 2 * (T (N + h) - T N) - ((g (N + h + 1) - g (N + 1) : \u2124) : \u211d); rw [show N + 1 + h = N + h + 1 by omega, hrec (N + h), hrec N]; push_cast; ring); rw [show (1 : \u211d) / (((2 : \u2115) : \u211d) + 1) = 1 / 3 by norm_num] at hesc; exact hesc)"
+    }
+  ],
+  "lean_tested_transitions": [
+    {
+      "candidate_id": "inherited_radix30_constant_does_not_reach_third",
+      "declaration": "Or.resolve_left",
+      "declaration_receipt": {
+        "declaration": "Or.resolve_left",
+        "availability": "not_source_joined_in_dependency_index"
+      },
+      "proposal_receipt": "Negative control: the original transfer through the radix-30 theorem yields separation 1/31, which does not state the 1/3 target. No expected verdict is supplied to Lean.",
+      "application": {
+        "tactic": "apply Or.resolve_left (ErdosProblems.Erdos269.boundedRadix_zero_or_cofinal_far (fun _ => 2) (fun N => g (N + h + 1) - g (N + 1)) (fun N => realTailShift T h N) (fun _ => by norm_num) (fun _ => by norm_num) (by intro N; change T (N + 1 + h) - T (N + 1) = 2 * (T (N + h) - T N) - ((g (N + h + 1) - g (N + 1) : \u2124) : \u211d); rw [show N + 1 + h = N + h + 1 by omega, hrec (N + h), hrec N]; push_cast; ring))",
+        "argument_terms": [
+          "(ErdosProblems.Erdos269.boundedRadix_zero_or_cofinal_far (fun _ => 2) (fun N => g (N + h + 1) - g (N + 1)) (fun N => realTailShift T h N) (fun _ => by norm_num) (fun _ => by norm_num) (by intro N; change T (N + 1 + h) - T (N + 1) = 2 * (T (N + h) - T N) - ((g (N + h + 1) - g (N + 1) : \u2124) : \u211d); rw [show N + 1 + h = N + h + 1 by omega, hrec (N + h), hrec N]; push_cast; ring))"
+        ],
+        "substitution_witness": "explicit_argument_terms_plus_Lean_instantiated_subgoals"
+      },
+      "application_accepted": false,
+      "proof_closed": false,
+      "status": "lean_rejected",
+      "root_nodes": [
+        {
+          "node_id": "ps_4a3bbce50fb71efe",
+          "case": null,
+          "context": [
+            "g : \u2115 \u2192 \u2124",
+            "T : \u2115 \u2192 \u211d",
+            "hrec : RealDyadicTailRecurrence g T",
+            "hirr : Irrational (T 0)",
+            "h : \u2115",
+            "hh : 0 < h"
+          ],
+          "target": "\u22a2 \u2200 (N\u2080 : \u2115), \u2203 N, N\u2080 \u2264 N \u2227 \u2200 (z : \u2124), 1 / 3 \u2264 |realTailShift T h N - \u2191z|",
+          "rendered": "g : \u2115 \u2192 \u2124\nT : \u2115 \u2192 \u211d\nhrec : RealDyadicTailRecurrence g T\nhirr : Irrational (T 0)\nh : \u2115\nhh : 0 < h\n\u22a2 \u2200 (N\u2080 : \u2115), \u2203 N, N\u2080 \u2264 N \u2227 \u2200 (z : \u2124), 1 / 3 \u2264 |realTailShift T h N - \u2191z|",
+          "assumption_world": [
+            "hrec",
+            "hirr",
+            "hh"
+          ]
+        }
+      ],
+      "child_nodes": [],
+      "hyperedge": null,
+      "discharge_receipts": [
+        {
+          "index": 0,
+          "tactic": "rintro \u27e8N, z, hz\u27e9",
+          "trace_reached": false,
+          "open_goals": [],
+          "open_goal_count": 0
+        },
+        {
+          "index": 1,
+          "tactic": "exact ((irrational_initial_iff_all_positive_tailShifts_nonintegral hrec).1 hirr h hh N) \u27e8z, hz\u27e9",
+          "trace_reached": false,
+          "open_goals": [],
+          "open_goal_count": 0
+        }
+      ],
+      "open_obligations": [],
+      "typed_failures": [
+        {
+          "kind": "[anonymous]",
+          "line": 15,
+          "data": "Tactic `apply` failed: could not unify the conclusion of `Or.resolve_left\n  (boundedRadix_zero_or_cofinal_far (fun x => 2) (fun N => g (N + h + 1) - g (N + 1)) (fun N => realTailShift T h N)\n    (fun x => ?m.56) (fun x => ?m.59) ?m.61)`\n  \u2200 (a\u2080 : \u2115), \u2203 a, a\u2080 \u2264 a \u2227 FarFromIntegers ((fun N => realTailShift T h N) a) (1 / 31)\nwith the goal\n  \u2200 (N\u2080 : \u2115), \u2203 N, N\u2080 \u2264 N \u2227 \u2200 (z : \u2124), 1 / 3 \u2264 |realTailShift T h N - \u2191z|\n\nNote: The full type of `Or.resolve_left\n  (boundedRadix_zero_or_cofinal_far (fun x => 2) (fun N => g (N + h + 1) - g (N + 1)) (fun N => realTailShift T h N)\n    (fun x => ?m.56) (fun x => ?m.59) ?m.61)` is\n  (\u00ac\u2203 a z, (fun N => realTailShift T h N) a = \u2191z) \u2192\n    \u2200 (a\u2080 : \u2115), \u2203 a, a\u2080 \u2264 a \u2227 FarFromIntegers ((fun N => realTailShift T h N) a) (1 / 31)\n\ng : \u2115 \u2192 \u2124\nT : \u2115 \u2192 \u211d\nhrec : RealDyadicTailRecurrence g T\nhirr : Irrational (T 0)\nh : \u2115\nhh : 0 < h\n\u22a2 \u2200 (N\u2080 : \u2115), \u2203 N, N\u2080 \u2264 N \u2227 \u2200 (z : \u2124), 1 / 3 \u2264 |realTailShift T h N - \u2191z|"
+        }
+      ],
+      "lean_run_receipt": {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--stdin",
+          "--json"
+        ],
+        "return_code": 1,
+        "timed_out": false,
+        "source_digest": "sha256:15221d232253c5cbdb13f6bd204625cc652f3fd2f41b90f79e3325441d214e37",
+        "message_digest": "sha256:0b3f4c4093ad9ade52f22446d5e493111cccbcb3eb102df162d1385ca8022578",
+        "message_count": 2,
+        "non_json_output": [],
+        "expected_unsolved_goal_error_ignored": false
+      },
+      "cost_vector": {
+        "lean_calls": 1,
+        "open_subgoals_after_application": 0,
+        "discharge_tactic_count": 2,
+        "closed": false
+      }
+    },
+    {
+      "candidate_id": "shift_orbit_through_parameterised_radix_two_escape",
+      "declaration": "Or.resolve_left",
+      "declaration_receipt": {
+        "declaration": "Or.resolve_left",
+        "availability": "not_source_joined_in_dependency_index"
+      },
+      "proposal_receipt": "Take the radix bound of BoundedRadixTailEscape.lean as the parameter B = 2 and compose with PrimeGapDyadicTail.lean's nonintegrality classifier as in the original transfer. The endpoint module DyadicShiftEscape is not imported.",
+      "application": {
+        "tactic": "apply Or.resolve_left (by have hesc := ErdosProblems.Erdos269.boundedRadix_zero_or_cofinal_far_of_le 2 (fun _ => 2) (fun N => g (N + h + 1) - g (N + 1)) (fun N => realTailShift T h N) (fun _ => le_refl 2) (fun _ => le_refl 2) (by intro N; change T (N + 1 + h) - T (N + 1) = 2 * (T (N + h) - T N) - ((g (N + h + 1) - g (N + 1) : \u2124) : \u211d); rw [show N + 1 + h = N + h + 1 by omega, hrec (N + h), hrec N]; push_cast; ring); rw [show (1 : \u211d) / (((2 : \u2115) : \u211d) + 1) = 1 / 3 by norm_num] at hesc; exact hesc)",
+        "argument_terms": [
+          "(by have hesc := ErdosProblems.Erdos269.boundedRadix_zero_or_cofinal_far_of_le 2 (fun _ => 2) (fun N => g (N + h + 1) - g (N + 1)) (fun N => realTailShift T h N) (fun _ => le_refl 2) (fun _ => le_refl 2) (by intro N; change T (N + 1 + h) - T (N + 1) = 2 * (T (N + h) - T N) - ((g (N + h + 1) - g (N + 1) : \u2124) : \u211d); rw [show N + 1 + h = N + h + 1 by omega, hrec (N + h), hrec N]; push_cast; ring); rw [show (1 : \u211d) / (((2 : \u2115) : \u211d) + 1) = 1 / 3 by norm_num] at hesc; exact hesc)"
+        ],
+        "substitution_witness": "explicit_argument_terms_plus_Lean_instantiated_subgoals"
+      },
+      "application_accepted": true,
+      "proof_closed": true,
+      "status": "kernel_checked_closed",
+      "root_nodes": [
+        {
+          "node_id": "ps_4a3bbce50fb71efe",
+          "case": null,
+          "context": [
+            "g : \u2115 \u2192 \u2124",
+            "T : \u2115 \u2192 \u211d",
+            "hrec : RealDyadicTailRecurrence g T",
+            "hirr : Irrational (T 0)",
+            "h : \u2115",
+            "hh : 0 < h"
+          ],
+          "target": "\u22a2 \u2200 (N\u2080 : \u2115), \u2203 N, N\u2080 \u2264 N \u2227 \u2200 (z : \u2124), 1 / 3 \u2264 |realTailShift T h N - \u2191z|",
+          "rendered": "g : \u2115 \u2192 \u2124\nT : \u2115 \u2192 \u211d\nhrec : RealDyadicTailRecurrence g T\nhirr : Irrational (T 0)\nh : \u2115\nhh : 0 < h\n\u22a2 \u2200 (N\u2080 : \u2115), \u2203 N, N\u2080 \u2264 N \u2227 \u2200 (z : \u2124), 1 / 3 \u2264 |realTailShift T h N - \u2191z|",
+          "assumption_world": [
+            "hrec",
+            "hirr",
+            "hh"
+          ]
+        }
+      ],
+      "child_nodes": [
+        {
+          "node_id": "ps_c2e42bc8a721410a",
+          "case": null,
+          "context": [
+            "g : \u2115 \u2192 \u2124",
+            "T : \u2115 \u2192 \u211d",
+            "hrec : RealDyadicTailRecurrence g T",
+            "hirr : Irrational (T 0)",
+            "h : \u2115",
+            "hh : 0 < h"
+          ],
+          "target": "\u22a2 \u00ac\u2203 a z, (fun N => realTailShift T h N) a = \u2191z",
+          "rendered": "g : \u2115 \u2192 \u2124\nT : \u2115 \u2192 \u211d\nhrec : RealDyadicTailRecurrence g T\nhirr : Irrational (T 0)\nh : \u2115\nhh : 0 < h\n\u22a2 \u00ac\u2203 a z, (fun N => realTailShift T h N) a = \u2191z",
+          "assumption_world": [
+            "hrec",
+            "hirr",
+            "hh"
+          ]
+        }
+      ],
+      "hyperedge": {
+        "edge_id": "pe_5d4ca3e67defde24",
+        "source_nodes": [
+          "ps_4a3bbce50fb71efe"
+        ],
+        "action": "apply Or.resolve_left (by have hesc := ErdosProblems.Erdos269.boundedRadix_zero_or_cofinal_far_of_le 2 (fun _ => 2) (fun N => g (N + h + 1) - g (N + 1)) (fun N => realTailShift T h N) (fun _ => le_refl 2) (fun _ => le_refl 2) (by intro N; change T (N + 1 + h) - T (N + 1) = 2 * (T (N + h) - T N) - ((g (N + h + 1) - g (N + 1) : \u2124) : \u211d); rw [show N + 1 + h = N + h + 1 by omega, hrec (N + h), hrec N]; push_cast; ring); rw [show (1 : \u211d) / (((2 : \u2115) : \u211d) + 1) = 1 / 3 by norm_num] at hesc; exact hesc)",
+        "target_nodes": [
+          "ps_c2e42bc8a721410a"
+        ],
+        "child_semantics": "AND",
+        "alternative_semantics_at_source": "OR",
+        "closed_after_discharge": true
+      },
+      "discharge_receipts": [
+        {
+          "index": 0,
+          "tactic": "rintro \u27e8N, z, hz\u27e9",
+          "trace_reached": true,
+          "open_goals": [
+            {
+              "case": null,
+              "context": [
+                "g : \u2115 \u2192 \u2124",
+                "T : \u2115 \u2192 \u211d",
+                "hrec : RealDyadicTailRecurrence g T",
+                "hirr : Irrational (T 0)",
+                "h : \u2115",
+                "hh : 0 < h",
+                "N : \u2115",
+                "z : \u2124",
+                "hz : (fun N => realTailShift T h N) N = \u2191z"
+              ],
+              "target": "\u22a2 False",
+              "rendered": "g : \u2115 \u2192 \u2124\nT : \u2115 \u2192 \u211d\nhrec : RealDyadicTailRecurrence g T\nhirr : Irrational (T 0)\nh : \u2115\nhh : 0 < h\nN : \u2115\nz : \u2124\nhz : (fun N => realTailShift T h N) N = \u2191z\n\u22a2 False"
+            }
+          ],
+          "open_goal_count": 1
+        },
+        {
+          "index": 1,
+          "tactic": "exact ((irrational_initial_iff_all_positive_tailShifts_nonintegral hrec).1 hirr h hh N) \u27e8z, hz\u27e9",
+          "trace_reached": true,
+          "open_goals": [],
+          "open_goal_count": 0
+        }
+      ],
+      "open_obligations": [
+        {
+          "node_id": "ps_c2e42bc8a721410a",
+          "case": null,
+          "target": "\u22a2 \u00ac\u2203 a z, (fun N => realTailShift T h N) a = \u2191z",
+          "rendered": "g : \u2115 \u2192 \u2124\nT : \u2115 \u2192 \u211d\nhrec : RealDyadicTailRecurrence g T\nhirr : Irrational (T 0)\nh : \u2115\nhh : 0 < h\n\u22a2 \u00ac\u2203 a z, (fun N => realTailShift T h N) a = \u2191z"
+        }
+      ],
+      "typed_failures": [],
+      "lean_run_receipt": {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--stdin",
+          "--json"
+        ],
+        "return_code": 0,
+        "timed_out": false,
+        "source_digest": "sha256:7ada74072bf4722ac070c4d4377ff5a6aa9d633187397bc4c7cbd39053200328",
+        "message_digest": "sha256:d613b6eca32ec967510102348782ceaa61926e8cf91e738204c493e25c5b9d27",
+        "message_count": 4,
+        "non_json_output": [],
+        "expected_unsolved_goal_error_ignored": false
+      },
+      "cost_vector": {
+        "lean_calls": 1,
+        "open_subgoals_after_application": 1,
+        "discharge_tactic_count": 2,
+        "closed": true
+      }
+    }
+  ],
+  "proof_state_hypergraph": {
+    "root_semantics": "OR_over_candidate_hyperedges",
+    "edge_child_semantics": "AND_all_generated_subgoals",
+    "nodes": [
+      {
+        "node_id": "ps_4a3bbce50fb71efe",
+        "case": null,
+        "context": [
+          "g : \u2115 \u2192 \u2124",
+          "T : \u2115 \u2192 \u211d",
+          "hrec : RealDyadicTailRecurrence g T",
+          "hirr : Irrational (T 0)",
+          "h : \u2115",
+          "hh : 0 < h"
+        ],
+        "target": "\u22a2 \u2200 (N\u2080 : \u2115), \u2203 N, N\u2080 \u2264 N \u2227 \u2200 (z : \u2124), 1 / 3 \u2264 |realTailShift T h N - \u2191z|",
+        "rendered": "g : \u2115 \u2192 \u2124\nT : \u2115 \u2192 \u211d\nhrec : RealDyadicTailRecurrence g T\nhirr : Irrational (T 0)\nh : \u2115\nhh : 0 < h\n\u22a2 \u2200 (N\u2080 : \u2115), \u2203 N, N\u2080 \u2264 N \u2227 \u2200 (z : \u2124), 1 / 3 \u2264 |realTailShift T h N - \u2191z|",
+        "assumption_world": [
+          "hrec",
+          "hirr",
+          "hh"
+        ]
+      },
+      {
+        "node_id": "ps_c2e42bc8a721410a",
+        "case": null,
+        "context": [
+          "g : \u2115 \u2192 \u2124",
+          "T : \u2115 \u2192 \u211d",
+          "hrec : RealDyadicTailRecurrence g T",
+          "hirr : Irrational (T 0)",
+          "h : \u2115",
+          "hh : 0 < h"
+        ],
+        "target": "\u22a2 \u00ac\u2203 a z, (fun N => realTailShift T h N) a = \u2191z",
+        "rendered": "g : \u2115 \u2192 \u2124\nT : \u2115 \u2192 \u211d\nhrec : RealDyadicTailRecurrence g T\nhirr : Irrational (T 0)\nh : \u2115\nhh : 0 < h\n\u22a2 \u00ac\u2203 a z, (fun N => realTailShift T h N) a = \u2191z",
+        "assumption_world": [
+          "hrec",
+          "hirr",
+          "hh"
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "edge_id": "pe_5d4ca3e67defde24",
+        "source_nodes": [
+          "ps_4a3bbce50fb71efe"
+        ],
+        "action": "apply Or.resolve_left (by have hesc := ErdosProblems.Erdos269.boundedRadix_zero_or_cofinal_far_of_le 2 (fun _ => 2) (fun N => g (N + h + 1) - g (N + 1)) (fun N => realTailShift T h N) (fun _ => le_refl 2) (fun _ => le_refl 2) (by intro N; change T (N + 1 + h) - T (N + 1) = 2 * (T (N + h) - T N) - ((g (N + h + 1) - g (N + 1) : \u2124) : \u211d); rw [show N + 1 + h = N + h + 1 by omega, hrec (N + h), hrec N]; push_cast; ring); rw [show (1 : \u211d) / (((2 : \u2115) : \u211d) + 1) = 1 / 3 by norm_num] at hesc; exact hesc)",
+        "target_nodes": [
+          "ps_c2e42bc8a721410a"
+        ],
+        "child_semantics": "AND",
+        "alternative_semantics_at_source": "OR",
+        "closed_after_discharge": true
+      }
+    ]
+  },
+  "pareto_frontier": [
+    {
+      "candidate_id": "shift_orbit_through_parameterised_radix_two_escape",
+      "cost_vector": {
+        "lean_calls": 1,
+        "open_subgoals_after_application": 1,
+        "discharge_tactic_count": 2,
+        "closed": true
+      }
+    }
+  ],
+  "plan_blocker_sets": [],
+  "minimal_missing_interventions": [],
+  "minimal_blocker_cuts": [],
+  "blocker_algebra_semantics": {
+    "plan_blocker_sets": "per-plan AND residuals: every listed obligation of one plan must be discharged for that plan to close",
+    "minimal_missing_interventions": "antichain over plan residuals: supplying every member of one row completes at least one Lean-reached route",
+    "minimal_blocker_cuts": "minimal transversals of the plan residuals: the smallest removals meeting every known route; a cut is not an addition plan"
+  },
+  "closed_proof_receipts": [
+    {
+      "candidate_id": "shift_orbit_through_parameterised_radix_two_escape",
+      "lean_run_receipt": {
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "--stdin",
+          "--json"
+        ],
+        "return_code": 0,
+        "timed_out": false,
+        "source_digest": "sha256:7ada74072bf4722ac070c4d4377ff5a6aa9d633187397bc4c7cbd39053200328",
+        "message_digest": "sha256:d613b6eca32ec967510102348782ceaa61926e8cf91e738204c493e25c5b9d27",
+        "message_count": 4,
+        "non_json_output": [],
+        "expected_unsolved_goal_error_ignored": false
+      },
+      "discharge_receipts": [
+        {
+          "index": 0,
+          "tactic": "rintro \u27e8N, z, hz\u27e9",
+          "trace_reached": true,
+          "open_goals": [
+            {
+              "case": null,
+              "context": [
+                "g : \u2115 \u2192 \u2124",
+                "T : \u2115 \u2192 \u211d",
+                "hrec : RealDyadicTailRecurrence g T",
+                "hirr : Irrational (T 0)",
+                "h : \u2115",
+                "hh : 0 < h",
+                "N : \u2115",
+                "z : \u2124",
+                "hz : (fun N => realTailShift T h N) N = \u2191z"
+              ],
+              "target": "\u22a2 False",
+              "rendered": "g : \u2115 \u2192 \u2124\nT : \u2115 \u2192 \u211d\nhrec : RealDyadicTailRecurrence g T\nhirr : Irrational (T 0)\nh : \u2115\nhh : 0 < h\nN : \u2115\nz : \u2124\nhz : (fun N => realTailShift T h N) N = \u2191z\n\u22a2 False"
+            }
+          ],
+          "open_goal_count": 1
+        },
+        {
+          "index": 1,
+          "tactic": "exact ((irrational_initial_iff_all_positive_tailShifts_nonintegral hrec).1 hirr h hh N) \u27e8z, hz\u27e9",
+          "trace_reached": true,
+          "open_goals": [],
+          "open_goal_count": 0
+        }
+      ]
+    }
+  ],
+  "abstention_receipt": null,
+  "authority_posture": {
+    "transition": "Lean elaboration certifies that the action produced the recorded subgoals",
+    "closed_proof": "only return_code_zero_with_no_remaining_goals is a kernel-checked local proof receipt",
+    "planning": "hypergraph ranking, blocker cuts, and counterfactual interpretation remain advisory",
+    "status_and_exposition": "claim registries and authored papers remain separate authorities"
+  },
+  "omissions_and_reentry": {
+    "candidate_limit": 8,
+    "candidate_count": 2,
+    "omitted_candidate_count": 0,
+    "recursive_search": "not_yet_enabled",
+    "bridge_synthesis": "not_claimed",
+    "expansion": "submit another explicit request at a generated child target"
+  },
+  "packet_bytes": 17162
+}

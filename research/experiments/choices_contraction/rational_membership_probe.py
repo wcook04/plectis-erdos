@@ -73,19 +73,63 @@ def host_weights(member: Callable[[int], bool], horizon: int):
     return indices, weight, tail_upper, acc, acc + beyond
 
 
-def classify(x: Fraction, indices, weight, tail_upper, depth: int):
-    """Return (outcome, index) for one fraction; index is None when not excluded."""
+def universal_tail_upper(n: int) -> Fraction:
+    """A short bound for every host: sum_{k>n} w_k <= 2^-n + (2/3)4^-n."""
+    return Fraction(1, 2**n) + Fraction(2, 3 * 4**n)
+
+
+def classify(x: Fraction, indices, weight, tail_upper, depth: int,
+             selected: list[int] | None = None):
+    """Return (outcome, index), optionally recording the greedy selector prefix."""
     r = x
     for n in indices:
         if n > depth:
             break
         if r >= weight[n]:
             r -= weight[n]
+            if selected is not None:
+                selected.append(n)
             if r == 0:
                 return "finite_representation", n
         elif r > tail_upper[n]:
             return "excluded", n
     return "not_excluded", None
+
+
+def single_target(x: Fraction, host: str, depth: int, horizon: int) -> dict:
+    """Expose one exact finite decision using the batch probe's classifier."""
+    if depth < 1 or horizon < depth + 64:
+        raise ValueError("depth must be positive and horizon at least depth + 64")
+    indices, weight, tail_upper, total_lower, _ = host_weights(HOSTS[host], horizon)
+    if not 0 < x <= total_lower:
+        raise ValueError("target must be positive and at most the computed host-sum lower bound")
+    selected: list[int] = []
+    outcome, index = classify(x, indices, weight, tail_upper, depth, selected)
+    remainder = x - sum((weight[n] for n in selected), Fraction(0))
+    row = {
+        "target": str(x),
+        "host": host,
+        "depth": depth,
+        "horizon": horizon,
+        "outcome": outcome,
+        "selected_indices": selected,
+        "remainder": str(remainder),
+        "first_rejection": index if outcome == "excluded" else None,
+        "finite_representation_end": index if outcome == "finite_representation" else None,
+    }
+    if outcome == "excluded":
+        assert index is not None and tail_upper[index] < remainder < weight[index]
+        next_host_index = next((n for n in indices if n > index), horizon + 1)
+        short_bound = universal_tail_upper(next_host_index - 1)
+        if short_bound < remainder:
+            row["tail_upper"] = str(short_bound)
+            row["tail_bound_kind"] = "universal_analytic"
+            row["tail_bound_from"] = next_host_index
+        else:
+            row["tail_upper"] = str(tail_upper[index])
+            row["tail_bound_kind"] = "computed_horizon"
+        row["weight"] = str(weight[index])
+    return row
 
 
 def run(host: str, q_max: int, depth: int, horizon: int) -> dict:
@@ -134,13 +178,45 @@ def grid(hosts, q_values, depths, horizon) -> dict:
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n\n")[0])
-    ap.add_argument("--hosts", nargs="+", default=list(HOSTS), choices=list(HOSTS))
-    ap.add_argument("--q", nargs="+", type=int, default=[12, 24, 36])
-    ap.add_argument("--depth", nargs="+", type=int, default=[10, 20, 40, 80, 160])
+    ap.add_argument("--target", help="one rational, such as 189/388, for an exact finite decision")
+    ap.add_argument("--host", choices=list(HOSTS),
+                    help="host for --target (default: all)")
+    ap.add_argument("--hosts", nargs="+", choices=list(HOSTS))
+    ap.add_argument("--q", nargs="+", type=int)
+    ap.add_argument("--depth", nargs="+", type=int)
     ap.add_argument("--horizon", type=int, default=260)
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args(argv)
-    packet = grid(args.hosts, args.q, args.depth, args.horizon)
+    if args.target is not None:
+        if args.hosts is not None or args.q is not None:
+            ap.error("--hosts and --q belong to the batch mode; use --host with --target")
+        try:
+            target = Fraction(args.target)
+            rows = [single_target(target, args.host or "all", depth, args.horizon)
+                    for depth in (args.depth or [20])]
+        except (ValueError, ZeroDivisionError) as exc:
+            ap.error(str(exc))
+        packet = {"schema": "plectis-single-target-probe/1", "rows": rows}
+        if args.json:
+            json.dump(packet, sys.stdout, indent=2, ensure_ascii=False)
+            sys.stdout.write("\n")
+        else:
+            for row in rows:
+                print(f"target={row['target']} host={row['host']} depth={row['depth']} "
+                      f"outcome={row['outcome']} selected={row['selected_indices']}")
+                if row["outcome"] == "excluded":
+                    print(f"  exact certificate at n={row['first_rejection']}: "
+                          f"{row['tail_upper']} < {row['remainder']} < {row['weight']}")
+                elif row["outcome"] == "finite_representation":
+                    print(f"  exact finite sum at n={row['finite_representation_end']}")
+                else:
+                    print("  no exclusion or finite sum through this depth; "
+                          "no infinite-membership conclusion")
+        return 0
+    if args.host is not None:
+        ap.error("--host belongs to --target; use --hosts for batch mode")
+    packet = grid(args.hosts or list(HOSTS), args.q or [12, 24, 36],
+                  args.depth or [10, 20, 40, 80, 160], args.horizon)
     if args.json:
         json.dump(packet, sys.stdout, indent=2, ensure_ascii=False)
         sys.stdout.write("\n")

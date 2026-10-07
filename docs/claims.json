@@ -940,81 +940,88 @@
       "claim_anchor_field": "paper_label",
       "companion_sources": [
         {
-          "title": "Factorial Denominator Series: a complete working record of Erdős Problem 68",
+          "title": "Integer Linear Forms for a Factorial Reciprocal Series",
           "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
           "rendered": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
-          "role": "Standalone theorem-led problem note for Erdős #68 and the factorial-channel breakpoint boundary.",
+          "role": "Standalone theorem-led problem note for Erdős #68: integral coordinates and finite gcd moment certificates for the factorial reciprocal series; the nonintegrality needed for irrationality remains open.",
           "anchor_label_allowlist": [
-            "res:bandbreakpoint"
+            "res:divisor-channel-coordinates",
+            "res:finite-channel-moment-certificate"
           ]
         },
         {
-          "title": "Running LCM Reciprocal Sums for Finite Prime Sets",
+          "title": "Distinct running least common multiples",
           "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
           "rendered": "paper/269/erdos-269-three-prime-running-lcm.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
-          "role": "Standalone theorem-led problem note for Erdős #269 and the three-prime residue-escape boundary.",
+          "role": "Standalone theorem-led problem note for Erdős #269: the distinct-height {2,3,5} theorem and a repeated-sum residue criterion; the general finite-prime argument is in the long record, and the catalogue-sum problem remains open.",
           "anchor_label_allowlist": [
+            "res:distinct-height-235",
             "res:consumer",
             "res:windowconsumer"
           ]
         },
         {
-          "title": "An Integral-Shift Criterion for Dyadic Tail Recurrences",
+          "title": "Sparse Congruence-Preserving Perturbations of Dyadic Series",
           "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
           "rendered": null,
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
-          "role": "Standalone theorem-led problem note for Erdős #251 and the prime-gap tail-shift boundary.",
+          "role": "Standalone theorem-led problem note for Erdős #251: sparse congruence-preserving rationalising perturbations and a joint prime-gap countermodel; cumulative positions are not asserted to be prime, and the prime dyadic sum remains open.",
           "anchor_label_allowlist": [
             "res:irr-equivalence",
-            "res:gap-nonperiodic"
+            "res:gap-nonperiodic",
+            "res:sparserationalisation",
+            "res:jointcountermodel"
           ]
         },
         {
-          "title": "Newton Flow and Ray Separation in Polynomial Lemniscates",
+          "title": "Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections",
           "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
           "rendered": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
           "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500",
-          "role": "Standalone theorem-led problem note for Erdős #1041 and the finite ray-separation boundary.",
+          "role": "Standalone theorem-led problem note for Erdős #1041: a degree-seven formal-statement refutation and radial trinomial connections; the low-critical-value assertion is unformalised and its scaling implication is Lean-checked only under the named input; historical correspondence awaits human review.",
           "anchor_label_allowlist": [
-            "res:ray"
+            "res:ray",
+            "res:ani-degree-seven-counterexample",
+            "res:trinomial-all-degree",
+            "res:low-critical-thirteen-twentyfifths"
           ]
         },
         {
-          "title": "Arithmetic Boundaries at Base 3/2 for Erdős Problem 1049",
+          "title": "Hankel Determinants of Geometric Moments and Rational Lambert Values",
           "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
           "rendered": "paper/1049/erdos-1049-rational-base-lambert.pdf",
           "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500",
-          "role": "Standalone theorem-led problem note for Erdős #1049 and the coordinatewise-corridor and cleared-tail boundaries.",
+          "role": "Standalone theorem-led problem note for Erdős #1049: fixed-base Hankel asymptotics and geometric moments, with a rational-base irrationality-measure region; irrationality at 3/2 remains open.",
           "anchor_label_allowlist": [
-            "res:nocorridor",
-            "res:tailrec",
-            "res:forcing"
+            "cor:rational-base-measure",
+            "res:sharp-fixed-base"
           ]
         },
         {
-          "title": "Reciprocal-Tail Rigidity for Erdős Problem 243",
+          "title": "Cubic-Rate Irrationality and Reciprocal-Tail Rigidity",
           "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
           "rendered": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
           "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500",
-          "role": "Standalone theorem-led problem note for Erdős #243 and the bounded-rise fresh-modulus barrier.",
+          "role": "Standalone theorem-led problem note for Erdős #243: a cubic-rate irrationality theorem, separate reciprocal-tail criteria under bounded negative parts or bounded increments, and the fresh-modulus barrier; the unrestricted problem remains open.",
           "anchor_label_allowlist": [
-            "res:barrier"
+            "res:barrier",
+            "res:originalbounded",
+            "res:bounded",
+            "res:cubicrate"
           ]
         },
         {
-          "title": "A Basis for the 2-Kernel of Euler's Totient",
+          "title": "Integral Relations among Totient Sections",
           "source": "paper/249/erdos-249-binary-totient-series.tex",
           "rendered": "paper/249/erdos-249-binary-totient-series.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
-          "role": "Standalone theorem-led problem note for Erdős #249 and the dyadic/all-base totient-kernel boundary.",
+          "role": "Standalone theorem-led problem note for Erdős #249: all-base totient-section independence and integral relations; the original unreduced totient-series irrationality remains open.",
           "anchor_label_allowlist": [
             "res:basis",
             "thm:kkernelrank",
-            "res:factorideal",
-            "res:actualorbit",
-            "res:actualsign"
+            "cor:integral-normal-form"
           ]
         },
         {
@@ -1022,7 +1029,13 @@
           "source": "paper/249/erdos249-totient-reasoning-surface.tex",
           "rendered": "paper/249/erdos249-totient-reasoning-surface.pdf",
           "formal_source_ref": "99f4bf47422abbd8757cbb22b50ba079d764d3a7",
-          "role": "Full problem-specific reasoning record for Erdős #249."
+          "role": "Full problem-specific reasoning record for Erdős #249.",
+          "anchor_label_allowlist": [
+            "thm:goodbasegap",
+            "res:factorideal",
+            "res:actualorbit",
+            "res:actualsign"
+          ]
         },
         {
           "title": "Reciprocal Mersenne Subseries: a complete working record of Erdős Problem 257",
@@ -1046,7 +1059,9 @@
             "res:reciprocal-support",
             "res:weighted-support",
             "thm:variable-fractional-cover",
-            "res:mixed-supports"
+            "res:mixed-supports",
+            "res:weighted-cover-incomparability",
+            "res:strict-mixed-supports"
           ]
         },
         {
@@ -1066,6 +1081,11 @@
           "source": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
           "rendered": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #1049.",
+          "anchor_label_allowlist": [
+            "long1049:res:nocorridor",
+            "long1049:res:tailrec",
+            "long1049:res:forcing"
+          ],
           "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500"
         },
         {
@@ -1080,7 +1100,11 @@
           "source": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
           "rendered": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #243.",
-          "formal_source_ref": "7380b7871687b6bcc41ca0143c61f232e8af6500"
+          "formal_source_ref": "be89e72217ec9c5f05aa5ec7b915c1ebf0816fdd",
+          "anchor_label_allowlist": [
+            "long243:res:gapconstant",
+            "long243:res:nonintegralrate"
+          ]
         },
         {
           "title": "Prime Gaps and Dyadic Tails: Complete Reasoning Record",
@@ -1094,15 +1118,23 @@
           "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
           "rendered": "paper/269/erdos269-running-lcm-reasoning-surface.pdf",
           "role": "Historical full reasoning record for Erdős #269.",
-          "formal_source_ref": "ee650b32b8b2cb98b94e5500df5370d85f7403b8"
+          "formal_source_ref": "ee650b32b8b2cb98b94e5500df5370d85f7403b8",
+          "anchor_label_allowlist": [
+            "long269:res:distinct-height-all",
+            "long269:res:single-prime-subsums"
+          ]
         },
         {
           "title": "Reading Eight Erdős Problems Together",
           "source": "paper/synthesis/optimal-sparse-perturbations.tex",
           "rendered": "paper/synthesis/optimal-sparse-perturbations.pdf",
-          "role": "Consolidated cross-problem paper: sharp rationality, dimension and interior thresholds for factorial derivative vectors; exact capacity and support-gap criteria; Lambert-chain arguments, subsum obstructions and the research record. Complete arguments are ordinary proofs. Lean checks specified finite carry and feedback ingredients, not the complete theorems. No Erdos claim status changes.",
+          "role": "Consolidated cross-problem paper: sharp rationality, dimension and interior thresholds for factorial derivative vectors; exact capacity and support-gap criteria; transcendence of Lambert sums along every divisibility chain at every rational base, subsum obstructions, restricted dyadic shifts and their polynomial and prime-argument criteria, and the research record. Complete arguments are ordinary proofs, with the sharp dyadic input and the p-adic Subspace Theorem cited. Lean checks specified ingredients, not the complete theorems. No Erdos claim status changes.",
           "anchor_label_allowlist": [
             "sec:map",
+            "sec:dyadic-shifts",
+            "thm:restricted-dyadic-shifts",
+            "sec:polynomial-shifts",
+            "cor:polynomial-shifts",
             "capacity:sec:criterion",
             "capacity:eq:capacity",
             "capacity:thm:capacity",
@@ -1126,6 +1158,7 @@
             "thm:dichotomy",
             "thm:bases",
             "thm:chains",
+            "thm:chain-transcendence",
             "thm:forced",
             "sec:dichotomy",
             "sec:bases",
@@ -1620,10 +1653,13 @@
             "all_base_totient_kernel_index_reduction",
             "all_base_totient_kernel_conditional_rank",
             "residual_gauge_obstruction",
-            "totient_carry_kernel_anti_compression"
+            "totient_carry_kernel_anti_compression",
+            "totient_residue_series_classification",
+            "totient_residue_series_integer_radix",
+            "totient_residue_series_dilations"
           ],
-          "status_summary": "Exact finite obstructions and interfaces, a constructive dyadic basis, and an all-base arithmetic/spanning layer. The reusable rank wrapper is conditional; AllBaseTotientKernel.lean separately proves its independence premise and the complete rank unconditionally.",
-          "prior_art_posture": "Classical Euler/Möbius, CRT, determinant, and Lambert tools; Coons already implies full-kernel infinite rank, and Martin supplies a broader external affine-independence antecedent. The Lean all-base proof uses CRT and Dirichlet independently. No completed irrationality endpoint or priority claim.",
+          "status_summary": "Exact finite obstructions and interfaces, a constructive dyadic basis, and an all-base arithmetic/spanning layer. The reusable rank wrapper is conditional; AllBaseTotientKernel.lean separately proves its independence premise and the complete rank unconditionally. The residue-series claims classify the rational totient residue series and prove the dilated series linearly independent.",
+          "prior_art_posture": "Classical Euler/Möbius, CRT, determinant, and Lambert tools; Coons already implies full-kernel infinite rank, and Martin supplies a broader external affine-independence antecedent. The Lean all-base proof uses CRT and Dirichlet independently. Erdős 1957 (Lemma 1) and Kaneko–Suzuki–Tachiya (Theorem 3) already give the irrationality of the totient residue series. No #249 irrationality endpoint or priority claim.",
           "primary_narrative_owner": "docs/claims.json::claims",
           "source_route": "python3 scripts/query_corpus.py --route lambert_obstruction_interfaces",
           "consumer_or_open_obligation": "No rationality-to-finite-rank bridge or #249 irrationality endpoint is proved. The all-base independence premise is discharged in AllBaseTotientKernel.lean; the reusable conditional interface remains separately recorded.",
@@ -1648,6 +1684,7 @@
           "claim_ids": [
             "first_harmonic_certificate_interface",
             "first_harmonic_pivot_decomposition",
+            "first_harmonic_good_index_reduction",
             "adjacent_phase_separation_reduction",
             "pivot_anti_reconstruction_reduction",
             "strict_prime_tail_orbit_gap",
@@ -1661,7 +1698,7 @@
           "prior_art_posture": "No matching combined theorem is identified; all novelty language remains provisional.",
           "primary_narrative_owner": "docs/claims.json::claims",
           "source_route": "python3 scripts/query_corpus.py --claim pivot_anti_reconstruction_reduction",
-          "consumer_or_open_obligation": "Supply a cofinal first-harmonic pivot budget, adjacent-pair separator, anti-reconstruction producer, or one of the two tail-orbit strict-gap antecedents (late-block nonpositive phase density, or cofinally many natural primes with tail-orbit real part below 9/10).",
+          "consumer_or_open_obligation": "Supply a cofinal first-harmonic pivot budget, a cofinal 603X/1000 first-harmonic bound on the good indices, adjacent-pair separator, anti-reconstruction producer, or one of the two tail-orbit strict-gap antecedents (late-block nonpositive phase density, or cofinally many natural primes with tail-orbit real part below 9/10).",
           "view_decision": "registry_only_after_one_sided_companion_retirement"
         },
         {
@@ -1771,13 +1808,14 @@
             "eventually_periodic_negative_no_go",
             "bounded_negative_exclusion",
             "cubic_survivor_phase_density",
-            "cubic_rate_irrationality_unconditional"
+            "cubic_rate_irrationality_unconditional",
+            "nonintegral_regular_rate_irrationality"
           ],
-          "status_summary": "An open eventual-Sylvester-recurrence endpoint plus a Lean-checked irrationality theorem for strictly increasing positive sequences with the stated cubic-rate asymptotic, unconditional bounded-rise and eventually-periodic negative-orbit obstructions, and a conditional cofinally bounded negative-magnitude exclusion.",
+          "status_summary": "An open eventual-Sylvester-recurrence endpoint plus Lean-checked irrationality theorems for the stated cubic rate and every nonintegral regular rate above one, unconditional bounded-rise and eventually-periodic negative-orbit obstructions, and a conditional cofinally bounded negative-magnitude exclusion.",
           "prior_art_posture": "These are source-specific formal results; no novelty, priority, significance, or #243 solution claim is made, and normalised vanishing, mixed-sign, and unbounded-negative boundaries remain explicit.",
           "primary_narrative_owner": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
           "source_route": "python3 scripts/query_corpus.py --claim bounded_rise_fresh_modulus_barrier",
-          "consumer_or_open_obligation": "The cubic-rate theorem applies only when its quantitative asymptotic holds. The three no-go consumers remove fresh-modulus avoidance, eventually-periodic negative tails, and the cofinally bounded negative branch under normalised vanishing; the original eventual-recurrence assertion still requires control of the mixed-sign unbounded orbit regime.",
+          "consumer_or_open_obligation": "The cubic and nonintegral-rate theorems apply only under their respective quantitative asymptotics. The three no-go consumers remove fresh-modulus avoidance, eventually-periodic negative tails, and the cofinally bounded negative branch under normalised vanishing; the original eventual-recurrence assertion still requires control of the mixed-sign unbounded orbit regime.",
           "view_decision": "problem_note_reference_detail"
         },
         {
@@ -1848,6 +1886,66 @@
           "source_route": "python3 scripts/query_corpus.py --claim ani_degree_seven_total_variation_counterexample",
           "consumer_or_open_obligation": "Independent human review of correspondence with the 1958 curve-length wording remains open; the exact Formal Conjectures Hausdorff-length statement is checked and refuted.",
           "view_decision": "problem_note_reference_detail"
+        },
+        {
+          "id": "separated_cut_algebraic_lambert_transcendence_family",
+          "claim_ids": [
+            "separated_cut_algebraic_lambert_transcendence"
+          ],
+          "status_summary": "Reviewed ordinary proof; full infinite statement not formalised and independent human review not recorded.",
+          "prior_art_posture": "Uses Evertse-Ferretti normalization of the number-field Subspace Theorem and the Corvaja-Zannier approximation method; no historical priority claim.",
+          "primary_narrative_owner": "paper/synthesis/optimal-sparse-perturbations.tex",
+          "source_route": "python3 scripts/query_corpus.py --claim separated_cut_algebraic_lambert_transcendence",
+          "consumer_or_open_obligation": "The full support at 3/2 and arbitrary infinite supports at base two remain unresolved. Finite cut arithmetic is not a proof of transcendence.",
+          "view_decision": "retain_in_companion"
+        },
+        {
+          "id": "independent_clock_channel_relations_family",
+          "claim_ids": [
+            "independent_clock_channel_relations"
+          ],
+          "status_summary": "Reviewed ordinary proof; full infinite statement not formalised and independent human review not recorded.",
+          "prior_art_posture": "The integer-radix recurrence and torus-density argument are standard ingredients; the stated clock-channel combination has no asserted historical priority. Bugeaud-Laurent is a distinct two-letter comparison.",
+          "primary_narrative_owner": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+          "source_route": "python3 scripts/query_corpus.py --claim independent_clock_channel_relations",
+          "consumer_or_open_obligation": "No rational independence of the original reciprocal prime logarithms is assumed or proved; the repeated running-LCM endpoint remains open.",
+          "view_decision": "retain_in_companion"
+        },
+        {
+          "id": "calibrated_rational_hankel_countermodel_family",
+          "claim_ids": [
+            "calibrated_rational_hankel_countermodel"
+          ],
+          "status_summary": "Reviewed ordinary proof; full infinite statement not formalised and independent human review not recorded.",
+          "prior_art_posture": "Reuses standard positive-moment/Christoffel machinery and the existing geometric-universality theorem. Exact construction and arithmetic controls carry no historical priority claim.",
+          "primary_narrative_owner": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
+          "source_route": "python3 scripts/query_corpus.py --claim calibrated_rational_hankel_countermodel",
+          "consumer_or_open_obligation": "These are not Zudilin's actual moments. They refute an inference from the shared signature alone; they do not settle F(3/2) or refute the attributed divisibility-based criterion.",
+          "view_decision": "retain_in_companion"
+        },
+        {
+          "id": "selected_staircase_integral_height_boundary_family",
+          "claim_ids": [
+            "selected_staircase_integral_height_boundary"
+          ],
+          "status_summary": "Reviewed ordinary proof; full infinite statement not formalised and independent human review not recorded.",
+          "prior_art_posture": "Smith form and the Schur-complement identity are standard; Stanley is the attributed Smith-form reference. This is subordinate arithmetic for the existing selected kernel.",
+          "primary_narrative_owner": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+          "source_route": "python3 scripts/query_corpus.py --claim selected_staircase_integral_height_boundary",
+          "consumer_or_open_obligation": "The optimality concerns diagonal clearing and one rational target. It does not rule out multi-target, nonlinear, recurrence, or new approximation methods and does not prove running-LCM irrationality.",
+          "view_decision": "retain_in_companion"
+        },
+        {
+          "id": "signed_totient_entire_defect_interpolation_family",
+          "claim_ids": [
+            "signed_totient_entire_defect_interpolation"
+          ],
+          "status_summary": "Reviewed ordinary proof; full infinite statement not formalised and independent human review not recorded.",
+          "prior_art_posture": "Finite-difference moment cancellation is standard. Comparisons cite Crmaric-Kovac, Coons with version-specific numbering, and Habiro; no historical priority is asserted. The arbitrary divergent allowance strengthens the returned polylogarithmic/power cases.",
+          "primary_narrative_owner": "paper/249/erdos249-totient-reasoning-surface.tex",
+          "source_route": "python3 scripts/query_corpus.py --claim signed_totient_entire_defect_interpolation",
+          "consumer_or_open_obligation": "The correction is signed, so it does not subsume the one-sided prime-gap theorem. It preserves singularities and prescribed finite jets, not full analytic functions or all Taylor coefficients. The unperturbed totient and prime series remain unresolved.",
+          "view_decision": "retain_in_companion"
         }
       ]
     },
@@ -1899,6 +1997,16 @@
         "lean/ErdosProblems.lean"
       ],
       "auxiliary_roots": [
+        "ErdosProblems.ArgumentGraph.Derived.Erdos1049",
+        "ErdosProblems.ArgumentGraph.Derived.Erdos249",
+        "ErdosProblems.ArgumentGraph.Derived.Erdos257",
+        "ErdosProblems.ArgumentGraph.Derived.Erdos269",
+        "ErdosProblems.ArgumentGraph.Derived.Erdos68",
+        "ErdosProblems.ArgumentGraph.Results.Erdos243",
+        "ErdosProblems.ArgumentGraph.Results.Erdos249Abduction",
+        "ErdosProblems.ArgumentGraph.Results.Erdos249Residual",
+        "ErdosProblems.ArgumentGraph.Results.Erdos251",
+        "ErdosProblems.ArgumentGraph.Results.RelationCertificates",
         "ErdosProblems.Bit.verify.B1",
         "ErdosProblems.Bit.verify.B2",
         "ErdosProblems.Bit.verify.B3",
@@ -1919,32 +2027,19 @@
         "ErdosProblems.Erdos1049.PaperR20.RecoveredProofAudit",
         "ErdosProblems.Erdos243.PaperCompleteR20.CubicArithmeticAudit",
         "ErdosProblems.Erdos243.PaperCompleteR20.CubicRecoveryAudit",
+        "ErdosProblems.Erdos243.PaperCompleteR21.NonintegralRegularRate",
         "ErdosProblems.Erdos243.PaperCorrespondenceAudit",
         "ErdosProblems.Erdos249.PaperCompleteR20.CyclotomicRecoveryAudit",
         "ErdosProblems.Erdos249.PaperCompleteR20.DenominatorRecoveryAudit",
-        "ErdosProblems.Erdos249.PaperCompleteR20.FiniteCarryCorrespondence",
         "ErdosProblems.Erdos249.PaperCompleteR20.FiniteCertificateBatch",
-        "ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodelEndpoint",
         "ErdosProblems.Erdos249.PaperCompleteR20.GridArcRealInterface",
-        "ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence",
         "ErdosProblems.Erdos249.PaperCompleteR20.MobiusSquareReduction",
-        "ErdosProblems.Erdos249.PaperCompleteR20.RadicalDecomposition",
-        "ErdosProblems.Erdos249.PaperCompleteR20.RationalSpacingCorrespondence",
-        "ErdosProblems.Erdos249.PaperCompleteR20.SignedDyadicClearing",
-        "ErdosProblems.Erdos249.PaperCompleteR20.TailDepthCorrespondence",
         "ErdosProblems.Erdos249.PaperCorrespondenceAudit",
         "ErdosProblems.Erdos249.PaperCorrespondenceAuditAdditive",
         "ErdosProblems.Erdos249.PaperCorrespondenceAuditRecovery",
-        "ErdosProblems.Erdos251.PaperCompleteR20.ExactDenominator",
-        "ErdosProblems.Erdos251.PaperCompleteR20.FiniteSeparation",
-        "ErdosProblems.Erdos251.PaperCompleteR20.LocalTargetInterval",
-        "ErdosProblems.Erdos251.PaperCompleteR20.SparseConstructionAudit",
         "ErdosProblems.Erdos251.PaperCorrespondenceAudit",
         "ErdosProblems.Erdos257.PaperCompleteR20.AchievementGeometry",
-        "ErdosProblems.Erdos257.PaperCompleteR20.CofinalCarryCollapse",
-        "ErdosProblems.Erdos257.PaperCompleteR20.GeneralRepairCorrespondence",
         "ErdosProblems.Erdos257.PaperCompleteR20.MersenneConstantDecimal",
-        "ErdosProblems.Erdos257.PaperCompleteR20.QuotientRowReal",
         "ErdosProblems.Erdos257.PaperCompleteR20.TerminalSetCorrespondence",
         "ErdosProblems.Erdos257.PaperCorrespondenceAudit",
         "ErdosProblems.Erdos257.PaperCorrespondenceAuditAdditive",
@@ -2189,6 +2284,7 @@
       "auxiliary_root_contract": {
         "posture": "exhaustive_inventory_forest_not_compact_reading_root",
         "allowed_prefixes": [
+          "ErdosProblems.ArgumentGraph.",
           "ErdosProblems.Bit.",
           "ErdosProblems.Decl.",
           "ErdosProblems.EightPaperR21Audit",
@@ -2200,6 +2296,7 @@
           "ErdosProblems.Erdos1049.PaperR20.RecoveredProofAudit",
           "ErdosProblems.Erdos243.PaperCompleteR20.CubicArithmeticAudit",
           "ErdosProblems.Erdos243.PaperCompleteR20.CubicRecoveryAudit",
+          "ErdosProblems.Erdos243.PaperCompleteR21.NonintegralRegularRate",
           "ErdosProblems.Erdos243.PaperCorrespondenceAudit",
           "ErdosProblems.Erdos249.PaperCompleteR20.CyclotomicRecoveryAudit",
           "ErdosProblems.Erdos249.PaperCompleteR20.DenominatorRecoveryAudit",
@@ -7209,6 +7306,14 @@
           ]
         },
         {
+          "id": "Erdos249257.ExactRowRigidity",
+          "path": "lean/Erdos249257/ExactRowRigidity.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.BooleanMobiusCofinalExactRows"
+          ]
+        },
+        {
           "id": "Erdos249257.ExponentOnlyTransport",
           "path": "lean/Erdos249257/ExponentOnlyTransport.lean",
           "role": "Lean proof module",
@@ -8382,6 +8487,505 @@
             "Erdos249257.BooleanMobiusExactTransition",
             "Erdos249257.HalfCutLocator",
             "Erdos249257.HalfGreedyFatalGap"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Abduce",
+          "path": "lean/ErdosProblems/ArgumentGraph/Abduce.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.AbduceCorpus",
+          "path": "lean/ErdosProblems/ArgumentGraph/AbduceCorpus.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Residualise",
+            "ErdosProblems.ArgumentGraph.Abduce"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Contracts",
+          "path": "lean/ErdosProblems/ArgumentGraph/Contracts.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Derive",
+          "path": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Derived.Erdos1041",
+          "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos1041.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Factor",
+            "ErdosProblems.Erdos1041.Counterexample.HausdorffLength",
+            "ErdosProblems.Erdos1041.CriticalTwoRootProximity",
+            "ErdosProblems.Erdos1041.CubicQuotientFiberCase",
+            "ErdosProblems.Erdos1041.NewtonFlowRaySeparation",
+            "ErdosProblems.Erdos1041.PaperCompleteR20.CriticalMeanWhole",
+            "ErdosProblems.Erdos1041.PaperCompleteR20.NewtonRealTime",
+            "ErdosProblems.Erdos1041.PaperCompleteR20.TwoNearestPolynomial",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.ArityNotCapacity",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.BinomialChords",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.CollinearDiameterWhole",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.ConstantFactorAreaCriteria",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.CriticalValueSeparationTransport",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.HyperbolicLawOfCosines",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.LowCriticalScaleTransport",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.MergerScaleOrlicz",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.PrimitiveQuinticClosedDisc",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent",
+            "ErdosProblems.Erdos1041.PaperCompleteR21.SubcriticalPerimeterPath",
+            "ErdosProblems.Erdos1041.PaperCubicCompletion",
+            "ErdosProblems.Erdos1041.PaperCubicFibres",
+            "ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10",
+            "ErdosProblems.Erdos1041.PaperTrinomial",
+            "ErdosProblems.Erdos1041.PaperTrinomialWholeR21",
+            "ErdosProblems.Erdos1041.PaperWeightedRefinementsR10",
+            "ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail",
+            "ErdosProblems.Erdos1041.SharpCollinearChebyshev"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Derived.Erdos1049",
+          "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos1049.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Factor",
+            "ErdosProblems.Erdos1049.AdelicHeightBridge",
+            "ErdosProblems.Erdos1049.PaperCompleteR21.AllRowInitialCoefficient",
+            "ErdosProblems.Erdos1049.PaperCompleteR21.GeometricUniversality",
+            "ErdosProblems.Erdos1049.PaperCompleteR21.PrintedContourConstants",
+            "ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold",
+            "ErdosProblems.Erdos1049.PaperCompleteR21.SharpFixedBase",
+            "ErdosProblems.Erdos1049.PaperCompleteR21.SharpFixedBaseShort",
+            "ErdosProblems.Erdos1049.PaperCompleteR21.TailPrefixLattice",
+            "ErdosProblems.Erdos1049.PaperFiniteAssembliesR7",
+            "ErdosProblems.Erdos1049.PaperLongCapR9",
+            "ErdosProblems.Erdos1049.PaperNoDecayR9",
+            "ErdosProblems.Erdos1049.PaperOmegaIndicatorR7",
+            "ErdosProblems.Erdos1049.PaperR17.SourceConsumers",
+            "ErdosProblems.Erdos1049.PaperR20.FinitePencilProposition",
+            "ErdosProblems.Erdos1049.PaperShortCapR9",
+            "ErdosProblems.Erdos1049.QuantitativeSelectorEscape",
+            "ErdosProblems.Erdos1049.RationalBaseLambert",
+            "ErdosProblems.Erdos1049.ZudilinConeArithmetic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Derived.Erdos243",
+          "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos243.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Factor",
+            "ErdosProblems.Erdos243.DynamicCancellation",
+            "ErdosProblems.Erdos243.FiniteHorizonResidue",
+            "ErdosProblems.Erdos243.PaperCompleteR11.ArithmeticWeightedRecord",
+            "ErdosProblems.Erdos243.PaperCompleteR11.CanonicalRecords",
+            "ErdosProblems.Erdos243.PaperCompleteR11.DensityTransport",
+            "ErdosProblems.Erdos243.PaperCompleteR11.InclusiveLimsup",
+            "ErdosProblems.Erdos243.PaperCompleteR11.PrimitiveMultiplierSupply",
+            "ErdosProblems.Erdos243.PaperCompleteR11.QuantitativeRecordDichotomy",
+            "ErdosProblems.Erdos243.PaperCompleteR20.InclusiveOne",
+            "ErdosProblems.Erdos243.PaperCompleteR20.PowerPersistence",
+            "ErdosProblems.Erdos243.PaperCompleteR20.RealCutoffCriterion",
+            "ErdosProblems.Erdos243.PaperCompleteR20.ScaleTwelve",
+            "ErdosProblems.Erdos243.PaperCompleteR20.TwoForbiddenWords",
+            "ErdosProblems.Erdos243.PaperCompleteR21.AmplifiedRecordEquivalence",
+            "ErdosProblems.Erdos243.PaperCompleteR21.ClassicalHalfspaceSigns",
+            "ErdosProblems.Erdos243.PaperCompleteR21.CubicProfileGcdShape",
+            "ErdosProblems.Erdos243.PaperCompleteR21.ExactOrbitRecordDichotomy",
+            "ErdosProblems.Erdos243.PaperCompleteR21.ForbiddenBlockCrossing",
+            "ErdosProblems.Erdos243.PaperCompleteR21.ForcedOrbitResidueHorizon",
+            "ErdosProblems.Erdos243.PaperCompleteR21.MaximalGapConstant",
+            "ErdosProblems.Erdos243.PaperCompleteR21.NegativeMagnitudeExclusions",
+            "ErdosProblems.Erdos243.PaperCompleteR21.ProductDefectThresholds",
+            "ErdosProblems.Erdos243.PaperCompleteR21.ProtectedEpochBarrierCount",
+            "ErdosProblems.Erdos243.PaperCompleteR21.RecordJumpEnergySeries",
+            "ErdosProblems.Erdos243.PaperCompleteR21.ReducedDenominatorPrimePowers",
+            "ErdosProblems.Erdos243.PaperCompleteR21.ReducedStepLocalArithmetic",
+            "ErdosProblems.Erdos243.PaperCompleteR21.RegularRateExtraction",
+            "ErdosProblems.Erdos243.PaperCompleteR21.SlowGrowthProductIncrements",
+            "ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisationDedekind",
+            "ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisationUnconditional",
+            "ErdosProblems.Erdos243.PaperCompleteR21.WindowAvoidance",
+            "ErdosProblems.Erdos243.PaperCompleteR7.Arithmetic",
+            "ErdosProblems.Erdos243.PaperCompleteR7.Frontier",
+            "ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect",
+            "ErdosProblems.Erdos243.PaperCompleteR7.Limits",
+            "ErdosProblems.Erdos243.PaperCompleteR7.ProductDefect",
+            "ErdosProblems.Erdos243.PaperCompleteR7.QuantitativeTail",
+            "ErdosProblems.Erdos243.PaperCompleteR7.Reduction",
+            "ErdosProblems.Erdos243.ReciprocalTailRigidity"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Derived.Erdos249",
+          "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos249.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Factor",
+            "Erdos249257.CarrySurvivorExtinction",
+            "Erdos249257.CertificateKernel",
+            "Erdos249257.CyclotomicProjectionOfShadow",
+            "Erdos249257.DiagonalPincerCertificatesT64",
+            "Erdos249257.GapFareyBound",
+            "Erdos249257.GcdMomentCalculus",
+            "Erdos249257.LcmConeFlatness",
+            "Erdos249257.LcmDiagonalReduction",
+            "Erdos249257.MersenneLambertLadder",
+            "Erdos249257.MersenneShadowCyclotomicNoncollapse",
+            "Erdos249257.PrimePowerJumpDynamics",
+            "Erdos249257.PrimitiveRationalGapSupply",
+            "Erdos249257.RepunitMobiusNumerator",
+            "Erdos249257.SignedQMomentObstruction",
+            "Erdos249257.TotientActualLcmOrbitSign",
+            "Erdos249257.TotientActualLcmTopEdgeStaircase",
+            "Erdos249257.TotientCarryKernelRigidity",
+            "Erdos249257.TotientTailCarryPeriod",
+            "Erdos249257.TotientTailPeriodKiller",
+            "ErdosProblems.Erdos249.PaperCompleteR20.DenominatorBounds",
+            "ErdosProblems.Erdos249.PaperCompleteR20.FiniteCarryCorrespondence",
+            "ErdosProblems.Erdos249.PaperCompleteR20.FiniteGridCorrespondence",
+            "ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodel",
+            "ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodelEndpoint",
+            "ErdosProblems.Erdos249.PaperCompleteR20.GenericTailCertificates",
+            "ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence",
+            "ErdosProblems.Erdos249.PaperCompleteR20.NumeratorEvaluation",
+            "ErdosProblems.Erdos249.PaperCompleteR20.PeriodicIntegerAffine",
+            "ErdosProblems.Erdos249.PaperCompleteR20.RadicalDecomposition",
+            "ErdosProblems.Erdos249.PaperCompleteR20.RationalSpacingCorrespondence",
+            "ErdosProblems.Erdos249.PaperCompleteR20.SignedDyadicClearing",
+            "ErdosProblems.Erdos249.PaperCompleteR20.SpecifiedTailPeriod",
+            "ErdosProblems.Erdos249.PaperCompleteR20.TailDepthCorrespondence",
+            "ErdosProblems.Erdos249.PaperCompleteR21.ActualLcmDiagonalConditions",
+            "ErdosProblems.Erdos249.PaperCompleteR21.ActualLcmSeparationAndSign",
+            "ErdosProblems.Erdos249.PaperCompleteR21.ActualLcmShortWindowArithmetic",
+            "ErdosProblems.Erdos249.PaperCompleteR21.AffineDivisorAnnihilation",
+            "ErdosProblems.Erdos249.PaperCompleteR21.BinaryDigitChangeDensity",
+            "ErdosProblems.Erdos249.PaperCompleteR21.CanonicalDyadicSectionRank",
+            "ErdosProblems.Erdos249.PaperCompleteR21.CarryDescriptionInformationLoss",
+            "ErdosProblems.Erdos249.PaperCompleteR21.CompositeDilationIdentity",
+            "ErdosProblems.Erdos249.PaperCompleteR21.CoprimeLatticeSumsAndLambert",
+            "ErdosProblems.Erdos249.PaperCompleteR21.DiagonalCertificateTableScales",
+            "ErdosProblems.Erdos249.PaperCompleteR21.DivisorChannelSplitAndSeamDoubling",
+            "ErdosProblems.Erdos249.PaperCompleteR21.DoublingOrbitTransferAndFullDepthPhase",
+            "ErdosProblems.Erdos249.PaperCompleteR21.DyadicSectionBasisAndRationalCarry",
+            "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactorEstimate",
+            "ErdosProblems.Erdos249.PaperCompleteR21.ExtremalOrderDirectedAndPulse",
+            "ErdosProblems.Erdos249.PaperCompleteR21.FareyDenominatorFloorExtension",
+            "ErdosProblems.Erdos249.PaperCompleteR21.FareyExactRangeAndDenominatorExclusion",
+            "ErdosProblems.Erdos249.PaperCompleteR21.FareyGapDenominatorExclusion",
+            "ErdosProblems.Erdos249.PaperCompleteR21.FirstHarmonicBlockCriteria",
+            "ErdosProblems.Erdos249.PaperCompleteR21.FourLinearConstructionLimits",
+            "ErdosProblems.Erdos249.PaperCompleteR21.GeneralIrrationalityCriteriaAndGapBounds",
+            "ErdosProblems.Erdos249.PaperCompleteR21.HarmonicGapAndFourTail",
+            "ErdosProblems.Erdos249.PaperCompleteR21.LacunaryFactorialBlockNorm",
+            "ErdosProblems.Erdos249.PaperCompleteR21.LambertDivisorTransform",
+            "ErdosProblems.Erdos249.PaperCompleteR21.LambertSigmaRungAndNesterenko",
+            "ErdosProblems.Erdos249.PaperCompleteR21.LcmJumpPositionsAndCentralSlack",
+            "ErdosProblems.Erdos249.PaperCompleteR21.MersennePrimeSupportAnchors",
+            "ErdosProblems.Erdos249.PaperCompleteR21.MobiusMersenneLadderLogConcavity",
+            "ErdosProblems.Erdos249.PaperCompleteR21.NearIntegerIrrationalityCriterion",
+            "ErdosProblems.Erdos249.PaperCompleteR21.NumeratorPolynomialAndMersenneRemainder",
+            "ErdosProblems.Erdos249.PaperCompleteR21.PenultimateStaircaseAndRankCurvature",
+            "ErdosProblems.Erdos249.PaperCompleteR21.PeriodMultipleAndSecondDifference",
+            "ErdosProblems.Erdos249.PaperCompleteR21.PhaseEnergyAndForeignResidueProjection",
+            "ErdosProblems.Erdos249.PaperCompleteR21.PillaiGcdExpectation",
+            "ErdosProblems.Erdos249.PaperCompleteR21.PrimeJumpWitnessAndMersenneChannels",
+            "ErdosProblems.Erdos249.PaperCompleteR21.QZetaAnchor",
+            "ErdosProblems.Erdos249.PaperCompleteR21.RationalTailPeriodWitnesses",
+            "ErdosProblems.Erdos249.PaperCompleteR21.ScalarLocalisationAndInversePhaseGauge",
+            "ErdosProblems.Erdos249.PaperCompleteR21.ShortWindowSupplyAndSixteenShifts",
+            "ErdosProblems.Erdos249.PaperCompleteR21.SimultaneousShiftCertificateDepth",
+            "ErdosProblems.Erdos249.PaperCompleteR21.SquareBlockBinaryDilationCountermodel",
+            "ErdosProblems.Erdos249.PaperCompleteR21.SquaredMersenneDivisorIdentities",
+            "ErdosProblems.Erdos249.PaperCompleteR21.SternBrocotStoppingRecursion",
+            "ErdosProblems.Erdos249.PaperCompleteR21.TailCarryPeriodAndRankFloor",
+            "ErdosProblems.Erdos249.PaperCompleteR21.TemperedOrbitAndSquaredMersenneTail",
+            "ErdosProblems.Erdos249.PaperCompleteR21.TopEdgeChainPaperBand",
+            "ErdosProblems.Erdos249.PaperCompleteR21.TopEdgeCorridorAndSeparation",
+            "ErdosProblems.Erdos249.PaperCompleteR21.TopEdgeStaircaseConditions",
+            "ErdosProblems.Erdos249.PaperCompleteR21.TwoAdicHalfPulseAndAccumulatedResidue",
+            "ErdosProblems.Erdos249.PaperCompleteR21.TwoAdicPulseBlockAndMobiusInversion",
+            "ErdosProblems.Erdos249.PaperCompleteR21.TwoAdicPulseCertificateFailure",
+            "ErdosProblems.Erdos249.PaperCompleteR7.PeriodicAndPulse",
+            "ErdosProblems.Erdos249.PaperCompleteR7.ShortNoteAssemblies",
+            "ErdosProblems.Erdos249.PaperCompleteR8.FullKernelAssemblies",
+            "ErdosProblems.Erdos249.PaperCompleteR8.KernelRelationBasis",
+            "ErdosProblems.Erdos249.RankOneSharpFloor",
+            "ErdosProblems.Erdos249.RankOneSubrankObstruction",
+            "ErdosProblems.Skip.LadderT67"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Derived.Erdos251",
+          "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos251.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Factor",
+            "ErdosProblems.Erdos251.ActualPrimePaperR11",
+            "ErdosProblems.Erdos251.NonconcentrationConsequencesR11",
+            "ErdosProblems.Erdos251.NonconcentrationCoreR11",
+            "ErdosProblems.Erdos251.OrderLatticeDiagonal",
+            "ErdosProblems.Erdos251.PaperCompleteR20.ExactDenominator",
+            "ErdosProblems.Erdos251.PaperCompleteR20.FiniteSeparation",
+            "ErdosProblems.Erdos251.PaperCompleteR20.LocalTargetInterval",
+            "ErdosProblems.Erdos251.PaperCompleteR20.RealPropagation",
+            "ErdosProblems.Erdos251.PaperCompleteR20.SignedWindow",
+            "ErdosProblems.Erdos251.PaperCompleteR20.SparseConstructionAudit",
+            "ErdosProblems.Erdos251.PaperCompleteR20.SparseNonconcentration",
+            "ErdosProblems.Erdos251.PaperCompleteR20.TrueTail",
+            "ErdosProblems.Erdos251.PaperCompleteR21.JointPrimeGapCountermodel",
+            "ErdosProblems.Erdos251.PaperCompleteR21.PerturbedPrimePositions",
+            "ErdosProblems.Erdos251.PaperCompleteR21.TwoWindowSparsity",
+            "ErdosProblems.Erdos251.PaperCoreR7",
+            "ErdosProblems.Erdos251.PaperFiniteCertificatesR7",
+            "ErdosProblems.Erdos251.PaperNonconcentrationR7",
+            "ErdosProblems.Erdos251.PaperTailBoundsR7",
+            "ErdosProblems.Erdos251.PrimeGapDyadicTail",
+            "ErdosProblems.Erdos251.ShiftedGapCountingR9",
+            "ErdosProblems.Erdos251.SparseAmbientR9",
+            "ErdosProblems.Erdos251.SparsePaperR11"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Derived.Erdos257",
+          "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos257.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Factor",
+            "Erdos249257.AdelicHeightObstruction",
+            "Erdos249257.AllBaseReciprocalSupportIrrationality",
+            "Erdos249257.BooleanMobiusCarry",
+            "Erdos249257.BooleanMobiusCofinalExactRows",
+            "Erdos249257.BooleanMobiusCriticalCapacityCofinal",
+            "Erdos249257.BooleanMobiusCriticalCapacityGeometric",
+            "Erdos249257.BooleanMobiusExactRowCrossing",
+            "Erdos249257.BooleanMobiusExactRowDoubling",
+            "Erdos249257.BooleanMobiusExactRowRankTwo",
+            "Erdos249257.BooleanMobiusExactTransition",
+            "Erdos249257.BooleanMobiusGlobalRepair",
+            "Erdos249257.BooleanMobiusGreedyReduction",
+            "Erdos249257.BooleanMobiusLocalRepair",
+            "Erdos249257.BooleanMobiusSkipRow",
+            "Erdos249257.BooleanMobiusSkipRowCofinal",
+            "Erdos249257.BooleanMobiusSkippedCoreCriticalCapacity",
+            "Erdos249257.CertificateKernel",
+            "Erdos249257.CofinalStripReturn",
+            "Erdos249257.DyadicPrefixCompression",
+            "Erdos249257.GenericTailOrbitRigidity",
+            "Erdos249257.GreedyAchievementSet",
+            "Erdos249257.HalfCarryReachability",
+            "Erdos249257.HalfCutLocator",
+            "Erdos249257.HalfCylinderFatalGapRightTail",
+            "Erdos249257.HalfCylinderFinalMiddleCellEscape",
+            "Erdos249257.HalfCylinderFiniteShadow",
+            "Erdos249257.HalfCylinderFullShellSeamBridge",
+            "Erdos249257.HalfCylinderHalfMembershipClassification",
+            "Erdos249257.HalfCylinderIntegerGreedy",
+            "Erdos249257.HalfCylinderLargestSkipInduction",
+            "Erdos249257.HalfCylinderMiddleCarryLowerBound",
+            "Erdos249257.HalfCylinderProducerLowerBound",
+            "Erdos249257.HalfCylinderSkippedEndpointClassifier",
+            "Erdos249257.HalfCylinderUpperResetBandCertificates",
+            "Erdos249257.HalfDivisorUnitDrop",
+            "Erdos249257.HalfGapMass",
+            "Erdos249257.HalfGreedyFatalGap",
+            "Erdos249257.HalfTrappingReturnCarry",
+            "Erdos249257.HalfUpperResetCriticalBand",
+            "Erdos249257.MaximalOmegaLayer",
+            "Erdos249257.MersenneShadowDenominatorGrowth",
+            "Erdos249257.RationalDenominatorSurvival",
+            "Erdos249257.RationalSupportCarrySkeleton",
+            "Erdos249257.SublogDivisorCoverage",
+            "Erdos249257.SuffixCylinderTerminalOnlyBridge",
+            "Erdos249257.TwentyOneQuotientGreedy",
+            "ErdosProblems.Erdos257.MersenneSubseriesRigidity",
+            "ErdosProblems.Erdos257.PaperCompleteR20.CarryCollapseCorrespondence",
+            "ErdosProblems.Erdos257.PaperCompleteR20.CofinalCarryCollapse",
+            "ErdosProblems.Erdos257.PaperCompleteR20.GeneralRepairCorrespondence",
+            "ErdosProblems.Erdos257.PaperCompleteR20.PositivePeriodicSupport",
+            "ErdosProblems.Erdos257.PaperCompleteR20.QuotientRowIdentity",
+            "ErdosProblems.Erdos257.PaperCompleteR20.QuotientRowReal",
+            "ErdosProblems.Erdos257.PaperCompleteR21.ArithmeticCounterexampleAssembly",
+            "ErdosProblems.Erdos257.PaperCompleteR21.ArithmeticCoverLowerBoundPaperForm",
+            "ErdosProblems.Erdos257.PaperCompleteR21.BalancedPulseFanOutCount",
+            "ErdosProblems.Erdos257.PaperCompleteR21.BranchCellHorizonExclusions",
+            "ErdosProblems.Erdos257.PaperCompleteR21.CentredCompletionAndDecisionBoundary",
+            "ErdosProblems.Erdos257.PaperCompleteR21.CompatibleFiniteRowFamily",
+            "ErdosProblems.Erdos257.PaperCompleteR21.DenominatorBudget",
+            "ErdosProblems.Erdos257.PaperCompleteR21.DyadicBandAndTwoSidedBounds",
+            "ErdosProblems.Erdos257.PaperCompleteR21.EventualNonnegativeMargin",
+            "ErdosProblems.Erdos257.PaperCompleteR21.ExactRowDichotomyCountermodels",
+            "ErdosProblems.Erdos257.PaperCompleteR21.FeedbackRowStripWitnessAllDepths",
+            "ErdosProblems.Erdos257.PaperCompleteR21.GreedyGapCriteria",
+            "ErdosProblems.Erdos257.PaperCompleteR21.GreedyOrbitNoTies",
+            "ErdosProblems.Erdos257.PaperCompleteR21.LinearChannelAndMiddleCellExclusion",
+            "ErdosProblems.Erdos257.PaperCompleteR21.LogarithmicInitialInterval",
+            "ErdosProblems.Erdos257.PaperCompleteR21.MersenneChannelSurvivalAllHeights",
+            "ErdosProblems.Erdos257.PaperCompleteR21.MersenneQuotientRowRecurrences",
+            "ErdosProblems.Erdos257.PaperCompleteR21.OddReciprocalDenominators",
+            "ErdosProblems.Erdos257.PaperCompleteR21.OneSidedCertificateHierarchy",
+            "ErdosProblems.Erdos257.PaperCompleteR21.ResetSqrtEscapeHalfMembership",
+            "ErdosProblems.Erdos257.PaperCompleteR21.ResidueClassSupport",
+            "ErdosProblems.Erdos257.PaperCompleteR21.ScalarLocalisationHeightObstruction",
+            "ErdosProblems.Erdos257.PaperCompleteR21.SeamEscapeAndTerminalStrip",
+            "ErdosProblems.Erdos257.PaperCompleteR21.SeamPrefixStabilityLimit",
+            "ErdosProblems.Erdos257.PaperCompleteR21.SeamRowGapAndCarry",
+            "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase",
+            "ErdosProblems.Erdos257.PaperCompleteR21.SkipSafetyAndDivisorZeroRuns",
+            "ErdosProblems.Erdos257.PaperCompleteR21.SquareDepthAndHalfMembershipEquivalences",
+            "ErdosProblems.Erdos257.PaperCompleteR21.TerminalStripExactRowGap",
+            "ErdosProblems.Erdos257.PaperCompleteR21.ThreeBranchRowDynamics",
+            "ErdosProblems.Erdos257.PaperCompleteR21.TruncatedRungGreedyDecision",
+            "ErdosProblems.Erdos257.PaperCompleteR21.TruncatedRungWitnessHorizon",
+            "ErdosProblems.Erdos257.PaperCompleteR21.UpperResetBandCertificate",
+            "ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightMixedClaim",
+            "ErdosProblems.Erdos257.PaperCompleteR8.WeightedHereditaryClaim",
+            "ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn",
+            "ErdosProblems.Erdos257.WitnessLogicIrrational"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Derived.Erdos269",
+          "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos269.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Factor",
+            "ErdosProblems.Erdos269.LongWindowCapR11",
+            "ErdosProblems.Erdos269.PaperCompleteR20.PhaseStripDecomposition",
+            "ErdosProblems.Erdos269.PaperCompleteR20.RealBaseShortInterval",
+            "ErdosProblems.Erdos269.PaperCompleteR20.RealBoundDenominatorReduction",
+            "ErdosProblems.Erdos269.PaperCompleteR20.RealCutoffs",
+            "ErdosProblems.Erdos269.PaperCompleteR20.RealTwoPrimeKernel",
+            "ErdosProblems.Erdos269.PaperCompleteR21.TwoPrimeSums",
+            "ErdosProblems.Erdos269.PaperExactDenominatorR13",
+            "ErdosProblems.Erdos269.PaperFixedStartResidueR14",
+            "ErdosProblems.Erdos269.PaperR7BasicAssembly",
+            "ErdosProblems.Erdos269.PaperR7FiniteCutRank",
+            "ErdosProblems.Erdos269.PaperR7RationalBridge",
+            "ErdosProblems.Erdos269.PaperR7WindowResults",
+            "ErdosProblems.Erdos269.PaperR8UniformRank",
+            "ErdosProblems.Erdos269.ResidueEscape",
+            "ErdosProblems.Erdos269.RestrictedFloorSum",
+            "ErdosProblems.Erdos269.ThreePrimeRunningLcm"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Derived.Erdos68",
+          "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos68.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Factor",
+            "ErdosProblems.Erdos68.ChannelIntegralCongruence",
+            "ErdosProblems.Erdos68.PaperCompleteExisting",
+            "ErdosProblems.Erdos68.PaperCompleteLiminf",
+            "ErdosProblems.Erdos68.PaperCompleteMomentHorizon",
+            "ErdosProblems.Erdos68.PaperCompleteMomentIdeal",
+            "ErdosProblems.Erdos68.PaperCompletePrimePole",
+            "ErdosProblems.Erdos68.PaperCompleteResidualIdentity",
+            "ErdosProblems.Erdos68.PaperCompleteSupportedBands"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Factor",
+          "path": "lean/ErdosProblems/ArgumentGraph/Factor.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Derive"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Residualise",
+          "path": "lean/ErdosProblems/ArgumentGraph/Residualise.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Results.Erdos1041",
+          "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Derived.Erdos1041"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Results.Erdos243",
+          "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Derived.Erdos243"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Results.Erdos249",
+          "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactorEstimate",
+            "ErdosProblems.Erdos249.TypeBReturnV8.PeripheralFiniteBridge"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Results.Erdos249Abduction",
+          "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249Abduction.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.AbduceCorpus",
+            "ErdosProblems.ArgumentGraph.Results.Erdos249Endpoint"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Results.Erdos249Endpoint",
+          "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Results.Erdos249"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Results.Erdos249Residual",
+          "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249Residual.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Residualise",
+            "ErdosProblems.ArgumentGraph.Results.Erdos249Route"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Results.Erdos249Route",
+          "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249Route.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Results.Erdos249",
+            "ErdosProblems.Erdos249.PaperCompleteR21.FiberMeanOfPrimeNumberTheorem"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Results.Erdos251",
+          "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Derived.Erdos251"
+          ]
+        },
+        {
+          "id": "ErdosProblems.ArgumentGraph.Results.RelationCertificates",
+          "path": "lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.ArgumentGraph.Contracts",
+            "ErdosProblems.ArgumentGraph.Results.Erdos1041",
+            "ErdosProblems.ArgumentGraph.Results.Erdos249Endpoint",
+            "ErdosProblems.DemandLedger.edges.Bridge1",
+            "ErdosProblems.Erdos251.PrimeGapDyadicTail",
+            "ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold",
+            "ErdosProblems.Erdos257.PaperCompleteR21.ResetSqrtEscapeHalfMembership"
           ]
         },
         {
@@ -12089,6 +12693,15 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos243.PaperCompleteR21.NonintegralRegularRate",
+          "path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/NonintegralRegularRate.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos243.PaperCompleteR21.RegularRateExtraction",
+            "ErdosProblems.Erdos243.PaperCompleteR7.QuantitativeTail"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos243.PaperCompleteR21.ProductDefectThresholds",
           "path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ProductDefectThresholds.lean",
           "role": "Lean proof module",
@@ -12500,6 +13113,69 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos249.FiniteDilationDyadicClassification",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationDyadicClassification.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.FiniteDilationJointValue",
+            "ErdosProblems.Erdos249.FiniteDilationRationalObservables"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationJointValue",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationJointValue.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.FiniteDilationPulseCore",
+            "ErdosProblems.Erdos249.FiniteDilationSeriesTransport",
+            "ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationLeastResidueRational",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationLeastResidueRational.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.FiniteDilationJointValue"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationLinearIndependent",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationLinearIndependent.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.FiniteDilationLeastResidueRational"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationMixedModuli",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationMixedModuli.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.FiniteDilationDyadicClassification"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationPulseCore",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationPulseCore.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationRationalObservables",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationRationalObservables.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.FiniteDilationSeriesTransport",
+          "path": "lean/ErdosProblems/Erdos249/FiniteDilationSeriesTransport.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos249.FiniteEulerSieve",
           "path": "lean/ErdosProblems/Erdos249/FiniteEulerSieve.lean",
           "role": "Lean proof module",
@@ -12871,6 +13547,15 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos249.PaperCompleteR21.FiberMeanOfPrimeNumberTheorem",
+          "path": "lean/ErdosProblems/Erdos249/PaperCompleteR21/FiberMeanOfPrimeNumberTheorem.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactorEstimate",
+            "ErdosProblems.Erdos249.TypeBReturnV8.PeripheralFiniteBridge"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos249.PaperCompleteR21.FirstHarmonicBlockCriteria",
           "path": "lean/ErdosProblems/Erdos249/PaperCompleteR21/FirstHarmonicBlockCriteria.lean",
           "role": "Lean proof module",
@@ -13218,6 +13903,12 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos249.PaperCompleteR7.ArbitraryBaseIsolatedPulse",
+          "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/ArbitraryBaseIsolatedPulse.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos249.PaperCompleteR7.ArithmeticAssemblies",
           "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/ArithmeticAssemblies.lean",
           "role": "Lean proof module",
@@ -13227,6 +13918,15 @@
             "Erdos249257.SignedQMomentObstruction",
             "Erdos249257.AllBaseTotientKernel",
             "ErdosProblems.Erdos249.CyclotomicAnchoredKill"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables",
+          "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.PaperCompleteR7.RationalObservableClassification",
+            "ErdosProblems.Erdos249.PaperCompleteR7.ArbitraryBaseIsolatedPulse"
           ]
         },
         {
@@ -13244,6 +13944,14 @@
           "imports": [
             "ErdosProblems.Erdos249.PeriodicTotientIndependence",
             "ErdosProblems.Erdos249.ResidueClassTotientSeries"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadixClassification",
+          "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables"
           ]
         },
         {
@@ -13395,11 +14103,44 @@
           "imports": []
         },
         {
+          "id": "ErdosProblems.Erdos249.TotientApproximationDichotomy",
+          "path": "lean/ErdosProblems/Erdos249/TotientApproximationDichotomy.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.TotientMeanApproximation",
+            "ErdosProblems.Erdos249.TotientUniformRankBarrier"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.TotientMeanApproximation",
+          "path": "lean/ErdosProblems/Erdos249/TotientMeanApproximation.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.MersenneLambertLadder",
+            "ErdosProblems.Erdos269.PaperR8UniformRank"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
           "path": "lean/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
           "role": "Lean proof module",
           "imports": [
             "Erdos249257.PivotAntiReconstruction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos249.TotientTranslateSeparation",
+          "path": "lean/ErdosProblems/Erdos249/TotientTranslateSeparation.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos249.TotientUniformRankBarrier",
+          "path": "lean/ErdosProblems/Erdos249/TotientUniformRankBarrier.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos249.TotientTranslateSeparation",
+            "ErdosProblems.Synthesis.UniformRankBarrier"
           ]
         },
         {
@@ -14446,7 +15187,8 @@
           "path": "lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean",
           "role": "Lean proof module",
           "imports": [
-            "ErdosProblems.Erdos257.PaperCompleteR7.Displacement"
+            "ErdosProblems.Erdos257.PaperCompleteR7.Displacement",
+            "ErdosProblems.Erdos257.PaperCompleteR7.PrimeWeightedDefinitions"
           ]
         },
         {
@@ -14465,12 +15207,38 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR7.PrimeWeightedDefinitions",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR7/PrimeWeightedDefinitions.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos257.PaperCompleteR7.TailGluing",
           "path": "lean/ErdosProblems/Erdos257/PaperCompleteR7/TailGluing.lean",
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos257.PaperCompleteR7.Displacement",
             "Erdos249257.GreedyAchievementSet"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.AnalyticIncomparability",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.AnalyticSeparationReturn",
+            "ErdosProblems.Erdos257.PaperCompleteR8.FixedExponentCover"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.AnalyticSeparationReturn",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticSeparationReturn.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.DyadicHostSeparation",
+            "ErdosProblems.Erdos257.PaperCompleteR8.CoverClassTransport",
+            "ErdosProblems.Erdos257.PaperCompleteR8.CoverScalarGauge",
+            "ErdosProblems.Erdos257.PaperCompleteR7.TailGluing"
           ]
         },
         {
@@ -14528,6 +15296,23 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.CoverClassTransport",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverClassTransport.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.OptimizedCoverBudget",
+            "ErdosProblems.Erdos257.PaperCompleteR8.CoverPotentialBounds"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.CoverGaugeComplete",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.CoverScalarGauge"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos257.PaperCompleteR8.CoverPotentialBounds",
           "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean",
           "role": "Lean proof module",
@@ -14544,12 +15329,93 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeIncidence",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.DyadicDivisorFrames"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeMoments",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeMoments.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.OptimizedCubeCost",
+            "ErdosProblems.Erdos257.PaperCompleteR8.OldCoverObstruction"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeProduct",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.FiniteAtomicMajorants",
+            "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeIncidence",
+            "ErdosProblems.Erdos257.PaperCompleteR8.DivisorFrameWeightedBudget"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorFrameHostTransport",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameHostTransport.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.DivisorFrameWeightedBudget",
+            "ErdosProblems.Erdos257.PaperCompleteR8.CountableCoverLogBudget",
+            "ErdosProblems.Erdos257.PaperCompleteR7.AnalyticTargets"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorFrameWeightedBudget",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.DyadicDivisorFrames",
+            "ErdosProblems.Erdos257.PaperCompleteR8.PrimeHarmonicBlocks"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicDivisorFrames",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicDivisorFrames.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicHostSeparation",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeIncidence",
+            "ErdosProblems.Erdos257.PaperCompleteR8.DyadicLogarithmicEvents",
+            "ErdosProblems.Erdos257.PaperCompleteR8.OptimizedCoverBudget",
+            "ErdosProblems.Erdos257.PaperCompleteR8.DivisorFrameHostTransport",
+            "ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicKernel",
           "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean",
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos257.PaperCompleteR8.OrbitBound",
             "ErdosProblems.Erdos257.DyadicShellSynchronisation"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicLogarithmicEvents",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicLogarithmicEvents.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.CoverIndependentPeriodicMean"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.FiniteAtomicMajorants",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteAtomicMajorants.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.PositiveWeightPadding",
+            "ErdosProblems.Erdos257.PaperCompleteR8.DyadicLogarithmicEvents"
           ]
         },
         {
@@ -14567,6 +15433,14 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos257.PaperCompleteR7.CoverKernel"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.FixedExponentCover",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FixedExponentCover.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.ReverseStrengthenedHost"
           ]
         },
         {
@@ -14588,11 +15462,29 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.OldCoverObstruction",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.CountableGaugeBudget",
+            "ErdosProblems.Erdos257.PaperCompleteR8.CoverClassTransport"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos257.PaperCompleteR8.OptimizedCoverBudget",
           "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCoverBudget.lean",
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos257.PaperCompleteR8.CountableCoverLogBudget"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.OptimizedCubeCost",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeProduct",
+            "ErdosProblems.Erdos257.PaperCompleteR8.CoverGaugeComplete"
           ]
         },
         {
@@ -14614,6 +15506,39 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.PositiveWeightPadding",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.CountableGaugeBudget",
+            "ErdosProblems.Erdos257.PaperCompleteR8.CoverPotentialBounds"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.PrimeHarmonicBlocks",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.ReverseStrengthenedHost",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeMoments",
+            "ErdosProblems.Erdos257.PaperCompleteR8.PrimeHarmonicBlocks",
+            "ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.StrengthenedCoverFiniteUnion",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.WeightedFiniteUnion"
+          ]
+        },
+        {
           "id": "ErdosProblems.Erdos257.PaperCompleteR8.WeightedFiniteEstimates",
           "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteEstimates.lean",
           "role": "Lean proof module",
@@ -14627,6 +15552,15 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos257.PaperCompleteR8.WeightedFiniteEstimates"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.PaperCompleteR8.WeightedFiniteUnion",
+          "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn",
+            "ErdosProblems.Erdos257.PaperCompleteR7.TailGluing"
           ]
         },
         {
@@ -14849,6 +15783,84 @@
           ]
         },
         {
+          "id": "ErdosProblems.Erdos257.WitnessBlockArithmetic",
+          "path": "lean/ErdosProblems/Erdos257/WitnessBlockArithmetic.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessBlockHarmonic",
+          "path": "lean/ErdosProblems/Erdos257/WitnessBlockHarmonic.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessBlockReciprocal",
+          "path": "lean/ErdosProblems/Erdos257/WitnessBlockReciprocal.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.WitnessBlockArithmetic",
+            "ErdosProblems.Erdos257.WitnessBlockHarmonic"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessBlockSummability",
+          "path": "lean/ErdosProblems/Erdos257/WitnessBlockSummability.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.WitnessBlockWeighted",
+            "ErdosProblems.Erdos257.WitnessBlockWeightBound",
+            "ErdosProblems.Erdos257.WitnessLogicSeries"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessBlockWeightBound",
+          "path": "lean/ErdosProblems/Erdos257/WitnessBlockWeightBound.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessBlockWeighted",
+          "path": "lean/ErdosProblems/Erdos257/WitnessBlockWeighted.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.WitnessBlockArithmetic",
+            "ErdosProblems.Erdos257.WitnessBlockReciprocal",
+            "ErdosProblems.Erdos257.PaperCompleteR7.PrimeWeightedDefinitions"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessLogic",
+          "path": "lean/ErdosProblems/Erdos257/WitnessLogic.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessLogicHost",
+          "path": "lean/ErdosProblems/Erdos257/WitnessLogicHost.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.WitnessLogic",
+            "ErdosProblems.Erdos257.WitnessBlockSummability",
+            "ErdosProblems.Erdos257.WitnessBlockReciprocal"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessLogicIrrational",
+          "path": "lean/ErdosProblems/Erdos257/WitnessLogicIrrational.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos257.WitnessLogicHost",
+            "ErdosProblems.Erdos257.PaperCompleteR8.WeightedReturn"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos257.WitnessLogicSeries",
+          "path": "lean/ErdosProblems/Erdos257/WitnessLogicSeries.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
           "id": "ErdosProblems.Erdos269.ActualSharpTailMajorantR10",
           "path": "lean/ErdosProblems/Erdos269/ActualSharpTailMajorantR10.lean",
           "role": "Lean proof module",
@@ -14899,6 +15911,29 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos269.RationalityCarryBridge"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.DistinctHeightAxiomAudit",
+          "path": "lean/ErdosProblems/Erdos269/DistinctHeightAxiomAudit.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.DistinctHeightIrrationality"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos269.DistinctHeightBlockRadix",
+          "path": "lean/ErdosProblems/Erdos269/DistinctHeightBlockRadix.lean",
+          "role": "Lean proof module",
+          "imports": []
+        },
+        {
+          "id": "ErdosProblems.Erdos269.DistinctHeightIrrationality",
+          "path": "lean/ErdosProblems/Erdos269/DistinctHeightIrrationality.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.DistinctHeightBlockRadix",
+            "ErdosProblems.Erdos269.ThreePrimeRunningLcm"
           ]
         },
         {
@@ -15478,6 +16513,14 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos68.CompanionConstantBridge"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos68.DepthFourShortSupport",
+          "path": "lean/ErdosProblems/Erdos68/DepthFourShortSupport.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos68.DivisorChannelBasis"
           ]
         },
         {
@@ -17940,7 +18983,11 @@
             "ErdosProblems.Erdos249.PeriodMultipleEscape",
             "ErdosProblems.Erdos249.PrimeRayCyclotomicCurvature",
             "ErdosProblems.Erdos249.RankOneSubrankObstruction",
+            "ErdosProblems.Erdos249.TotientApproximationDichotomy",
+            "ErdosProblems.Erdos249.TotientMeanApproximation",
             "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
+            "ErdosProblems.Erdos249.TotientTranslateSeparation",
+            "ErdosProblems.Erdos249.TotientUniformRankBarrier",
             "ErdosProblems.Erdos251.PrimeGapDyadicTail",
             "ErdosProblems.Erdos251.ShiftedGapCountingR9",
             "ErdosProblems.Erdos257.HalfCounterexampleFrontier",
@@ -18224,6 +19271,34 @@
           ]
         },
         {
+          "id": "ErdosProblems.Synthesis.RealBaseRounding",
+          "path": "lean/ErdosProblems/Synthesis/RealBaseRounding.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos251.SparseRationalisationCore",
+            "ErdosProblems.Erdos1049.PaperLinearFormsR7"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Synthesis.RoundingBarrier",
+          "path": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "Erdos249257.TotientTailPeriodKiller",
+            "ErdosProblems.Erdos251.BoundedPerturbationCountermodel",
+            "ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodelEndpoint",
+            "Erdos249257.ReciprocalSupportIrrationality"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Synthesis.UniformRankBarrier",
+          "path": "lean/ErdosProblems/Synthesis/UniformRankBarrier.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos269.PaperR8UniformRank"
+          ]
+        },
+        {
           "id": "ErdosProblems.Synthesis",
           "path": "lean/ErdosProblems/Synthesis.lean",
           "role": "Lean proof module",
@@ -18231,7 +19306,10 @@
             "ErdosProblems.Synthesis.CongruenceInterpolation",
             "ErdosProblems.Synthesis.DyadicShiftEscape",
             "ErdosProblems.Synthesis.FeedbackContinuation",
-            "ErdosProblems.Synthesis.FactorialJet"
+            "ErdosProblems.Synthesis.FactorialJet",
+            "ErdosProblems.Synthesis.RealBaseRounding",
+            "ErdosProblems.Synthesis.RoundingBarrier",
+            "ErdosProblems.Synthesis.UniformRankBarrier"
           ]
         },
         {
@@ -19188,7 +20266,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "7f79e63d0b36b5b4f0b47b6368342b4a50824f4e",
+      "ref": "2a8c1667566020d123a081b6165e3ee94550566d",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",
@@ -19214,7 +20292,8 @@
     "conditional reduction": "Exact implication whose remaining hypothesis is open",
     "verified finite instance": "Kernel-checked computation at a bounded range",
     "cited only": "External theorem used for positioning, not formalised",
-    "open": "Not proved by this release"
+    "open": "Not proved by this release",
+    "formal statement refuted": "Lean refutes the exact Formal Conjectures statement; correspondence with the original wording awaits independent review"
   },
   "external_verification_packet": {
     "schema": "erdos-external-verification-packet/1",
@@ -20261,6 +21340,15 @@
             ],
             "comparator_disposition": "not_selected_deep_certificate_vocabulary",
             "boundary": "Equivalent producer statements are as hard as the unresolved target."
+          },
+          {
+            "id": "signed_totient_entire_defect_interpolation",
+            "contribution_class": "ordinary paper argument",
+            "summary": "For any integer beta>=2 and positive allowance f(n) tending to infinity, an interval around the totient value is filled by integer sequences b=phi+e with 0<=b(n)<=n and |e(n)|<=f(n). One target-independent even support has upper Banach density zero, leaving any fixed prefix and odd coefficients unchanged. The construction preserves every fixed eventual coefficient and cumulative congruence, gives eventually constant progression moment defects outside common hulls of density zero, entire progression Dirichlet defects, and smooth root-of-unity radial germs with prescribed finite zero jets. The full proof includes the allowance-dependent block bound and first-harmonic rational countermodels. It is an ordinary proof with two AI proof reviews, not a Lean proof of the infinite theorem or independent human review.",
+            "evidence_mode": "ordinary proof; two AI reviews, no independent human review",
+            "comparator_disposition": "not_applicable_without_exact_Lean_statement",
+            "declarations": [],
+            "boundary": "The correction is signed, so it does not subsume the one-sided prime-gap theorem. It preserves singularities and prescribed finite jets, not full analytic functions or all Taylor coefficients. The unperturbed totient and prime series remain unresolved."
           }
         ]
       },
@@ -20499,6 +21587,15 @@
             "evidence_mode": "Lean kernel plus Comparator",
             "comparator_disposition": "targeted",
             "boundary": "Neither membership question is decided; the 2-adic bound is sharp locally, and the two countermodel routes require unconstructed terminal-scaled or cofinal-cylinder antecedents."
+          },
+          {
+            "id": "separated_cut_algebraic_lambert_transcendence",
+            "contribution_class": "ordinary paper argument",
+            "summary": "For an infinite positive-integer host with cuts L_j < M_j, L_j tending to infinity and M_j-L_j tending to infinity, every host exponent at most L_j dividing L_j and every later exponent divisible by M_j, every infinite thinning with bounded positive integer weights has transcendental Lambert sum at every real algebraic base t > 1. This includes all divisibility chains and an explicit host of unbounded divisibility width and divergent reciprocal sum. The full number-field Subspace Theorem argument has two AI proof reviews; it is an ordinary proof with no Lean transcendence theorem, independent human review or asserted historical priority.",
+            "evidence_mode": "ordinary proof; two AI reviews, no independent human review",
+            "comparator_disposition": "not_applicable_without_exact_Lean_statement",
+            "declarations": [],
+            "boundary": "The full support at 3/2 and arbitrary infinite supports at base two remain unresolved. Finite cut arithmetic is not a proof of transcendence."
           }
         ]
       },
@@ -20590,6 +21687,24 @@
             "evidence_mode": "external exact computation",
             "comparator_disposition": "not_applicable_not_a_lean_theorem",
             "boundary": "Finite search is not a cofinal statement."
+          },
+          {
+            "id": "independent_clock_channel_relations",
+            "contribution_class": "ordinary paper argument",
+            "summary": "For positive rationally independent clock rates with no simultaneous positive crossings, and integer radices b_i >= 2, all rational relations among 1 and the channel sums S_i are multiples of (-1,b_1-1,...,b_d-1). The proof uses genuine late swaps with a common infinite suffix in one orbit closure, a fixed rational lattice, and density of the clock section. The explicit rates 1,sqrt(2),sqrt(3),sqrt(6) and radices 2,3,5,7 give rational span dimension four. This is an ordinary proof reviewed by AI agents, without Lean or independent human verification of the infinite theorem.",
+            "evidence_mode": "ordinary proof; two AI reviews, no independent human review",
+            "comparator_disposition": "not_applicable_without_exact_Lean_statement",
+            "declarations": [],
+            "boundary": "No rational independence of the original reciprocal prime logarithms is assumed or proved; the repeated running-LCM endpoint remains open."
+          },
+          {
+            "id": "selected_staircase_integral_height_boundary",
+            "contribution_class": "ordinary paper argument",
+            "summary": "The selected staircase matrix with ones on and below the diagonal and integer r>=2 above it has Smith factors 1,r-1,...,r-1. For the selected {2,3,5} kernel, any entrywise-integral diagonal clearing has determinant magnitude at least 4^(N-1), whereas the reduced rational determinant has numerator one up to sign. A rational single-target border has primitive polynomial plus or minus (tX-s), where s/t is the reduced Schur complement. These ordinary arithmetic arguments were reviewed by AI agents; they are not the existing Lean nonvanishing theorem and have no independent human review.",
+            "evidence_mode": "ordinary proof; two AI reviews, no independent human review",
+            "comparator_disposition": "not_applicable_without_exact_Lean_statement",
+            "declarations": [],
+            "boundary": "The optimality concerns diagonal clearing and one rational target. It does not rule out multi-target, nonlinear, recurrence, or new approximation methods and does not prove running-LCM irrationality."
           }
         ]
       },
@@ -20720,6 +21835,15 @@
               "ErdosProblems.Erdos1049.rectangular_hp_threshold_eq_classical_iff"
             ],
             "boundary": "This is a sharp no-go only for the explicit rectangular two-function exponent model under the stated real hypotheses; it constructs no approximating polynomials or remainders and is not a universal Padé or Hermite-Padé no-go. It proves no irrationality at 3/2 or any general rational-base endpoint, and the analytic remainder/nonvanishing input remains untreated. No novelty, priority, significance, external-review, or endpoint claim is made; Erdős #1049 remains open."
+          },
+          {
+            "id": "calibrated_rational_hankel_countermodel",
+            "contribution_class": "ordinary paper argument",
+            "summary": "An explicit positive atomic moment family and integer formal series have all-rank Hankel order sum_{j<N} j^2 and leading coefficient (N!)^2(N+1)!/2^N, with the same fixed-base asymptotic shape including N^(-8 xi), while xi=G_{2/3}(2/3)=1. For n>=1 the exact reduced moment denominator is 3^(31n+62)(3^(n+1)-2^(n+1))^4; the determinant denominator has logarithmic size Theta(N^3), and a proposed rank-two row-product clearer leaves denominator625. These are ordinary proofs with independent exact finite checks and AI proof reviews, not a Lean proof of the infinite family or human peer review.",
+            "evidence_mode": "ordinary proof; two AI reviews, no independent human review",
+            "comparator_disposition": "not_applicable_without_exact_Lean_statement",
+            "declarations": [],
+            "boundary": "These are not Zudilin's actual moments. They refute an inference from the shared signature alone; they do not settle F(3/2) or refute the attributed divisibility-based criterion."
           }
         ]
       }
@@ -20758,8 +21882,8 @@
       "paper_anchor": {
         "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "environment": "problem",
-        "title": "Erdős #68",
-        "line": 33
+        "title": "Erdős Problem~#68",
+        "line": 52
       }
     },
     {
@@ -20771,7 +21895,7 @@
         "source": "paper/archive/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "Erd\\H{o}s \\#249",
-        "line": 4434
+        "line": 4431
       }
     },
     {
@@ -20783,7 +21907,7 @@
         "source": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 50
+        "line": 47
       }
     },
     {
@@ -20795,7 +21919,7 @@
         "source": "paper/archive/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "unbounded certificate supply",
-        "line": 4445
+        "line": 4442
       }
     },
     {
@@ -20807,7 +21931,7 @@
         "source": "paper/archive/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "the half-value counterexample route",
-        "line": 4469
+        "line": 4466
       }
     },
     {
@@ -20819,7 +21943,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "membership of 1/21 in the Mersenne achievement set",
-        "line": 1065
+        "line": 1433
       }
     },
     {
@@ -20831,7 +21955,7 @@
         "source": "paper/archive/erdos249-257-main-paper.tex",
         "environment": "problem",
         "title": "universal Erd\\H{o}s \\#257",
-        "line": 4460
+        "line": 4457
       }
     },
     {
@@ -20842,8 +21966,8 @@
       "paper_anchor": {
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "section",
-        "title": "Introduction",
-        "line": 49
+        "title": "Two sums from running least common multiples",
+        "line": 58
       }
     },
     {
@@ -20855,7 +21979,7 @@
         "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
         "environment": "problem",
         "title": "Erdős #1041",
-        "line": 66
+        "line": 75
       }
     },
     {
@@ -20867,7 +21991,7 @@
         "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "environment": "section",
         "title": "Introduction",
-        "line": 62
+        "line": 50
       }
     },
     {
@@ -20878,8 +22002,8 @@
       "paper_anchor": {
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
-        "title": "Erdős #243",
-        "line": 156
+        "title": "Erdős Problem 243",
+        "line": 59
       }
     },
     {
@@ -20891,7 +22015,7 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "no reduced tail is an integer",
-        "line": 581
+        "line": 609
       }
     },
     {
@@ -20903,19 +22027,19 @@
         "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "environment": "problem",
         "title": "residue inequalities after every starting index",
-        "line": 587
+        "line": 615
       }
     },
     {
       "id": "remaining_open.erdos_269_two_dimensional_representation",
       "status": "open",
       "open_target_claim": "erdos_269",
-      "statement": "Represent D_{2,3,5} faithfully by a specified two-dimensional Mahler-type value theorem with every hypothesis verified, give a conditional theorem under explicit logarithmic nondegeneracy, or prove no such representation exists.",
+      "statement": "Transcendence of D_{2,3,5}, which is irrational: represent it faithfully by a specified two-dimensional Mahler-type value theorem with every hypothesis verified, give a conditional theorem under explicit logarithmic nondegeneracy, or prove no such representation exists.",
       "paper_anchor": {
         "source": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
         "environment": "problem",
         "title": "an exact function representing the distinct-height sum",
-        "line": 2245
+        "line": 3580
       }
     },
     {
@@ -20927,7 +22051,7 @@
         "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
         "environment": "problem",
         "title": "growth of repeated denominator factors",
-        "line": 851
+        "line": 1087
       }
     },
     {
@@ -20939,7 +22063,7 @@
         "source": "paper/249/erdos-249-binary-totient-series.tex",
         "environment": "problem",
         "title": "Four estimates for the first-harmonic sum",
-        "line": 704
+        "line": 802
       }
     },
     {
@@ -20951,7 +22075,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "bounded returns of the scaled remainder",
-        "line": 1081
+        "line": 1449
       }
     },
     {
@@ -20963,7 +22087,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "arithmetic tests for the greedy sequence",
-        "line": 1090
+        "line": 1458
       }
     },
     {
@@ -20975,7 +22099,7 @@
         "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "environment": "problem",
         "title": "final-skip Diophantine exclusion",
-        "line": 1101
+        "line": 1469
       }
     }
   ],
@@ -20984,7 +22108,7 @@
       "id": "erdos_68",
       "label": "Erdős #68: irrationality of S = ∑_{n≥2} 1/(n! − 1)",
       "status": "open",
-      "statement": "The irrationality of the factorial-denominator series remains open in this release; the checked reductions and finite obstructions do not supply the required cofinal failure.",
+      "statement": "Lean proves that S = ∑_{n≥2} 1/(n! − 1) is irrational if and only if, for infinitely many m, m does not divide ⌊m!·S_m⌋ + 1, where S_m is the prefix sum through n = m (irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses); equivalently, the factorial-gap carry differs from 1 for infinitely many m (irrational_factorialGapSeries_iff_cofinal_nonunit_carries). Lean also proves liminf log L_N/(N^{3/2} log N) ≥ 2√2/3 for the common denominator L_N = lcm_{2≤n≤N}(n! − 1) before cancellation (common_denominator_growth_liminf). The irrationality of S remains open: the checked reductions and finite obstructions do not supply the required cofinal non-unit carries.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_68_irrationality"
       ],
@@ -20996,7 +22120,7 @@
       "id": "erdos_269",
       "label": "Erdős #269: irrationality of running-LCM reciprocal sums",
       "status": "open",
-      "statement": "The running-LCM reciprocal sum remains unresolved from three or more primes in this release. For the actual {2,3,5} series, the rationality-to-positive-reduced-carry bridge is checked; the remaining endpoint is cofinal local-window escape, equivalently exclusion of the integral branch.",
+      "statement": "For every finite set P of at least two primes, the distinct-height sum D_P (each running LCM value of the P-smooth integers counted once) is irrational (res:distinct-height-all; ordinary proof checked by a second AI agent, no human review), as Erdős asserted without an argument in 1973; for |P| = 2 it follows from Hecke-Mahler transcendence, and D_{2,3,5} is Lean-checked (res:distinct-height-235; Comparator not yet run). Each single-prime sub-sum E_p of the catalogue sum is irrational (res:single-prime-subsums; same evidence class as D_P). The catalogue sum for three or more primes is unresolved in this release: for {2,3,5} the rationality-to-positive-reduced-carry bridge is checked, and the remaining endpoint is cofinal local-window escape, equivalently exclusion of the integral branch.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_269_three_prime_irrationality",
         "remaining_open.erdos_269_reduced_tail_nonintegrality",
@@ -21011,7 +22135,7 @@
       "id": "erdos_251",
       "label": "Erdős #251: irrationality of Π = ∑_{n≥1} p_n/2ⁿ",
       "status": "open",
-      "statement": "The prime-index dyadic series remains open in this release; the exact tail-shift equivalence, prime-gap unboundedness, and nonperiodicity do not supply the required cofinal escape for the actual prime gaps.",
+      "statement": "Lean proves that Π = ∑_{n≥1} p_n/2ⁿ equals 2 plus the prime-gap dyadic series and that Π is irrational if and only if that gap series is (tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional, irrational_tsum_primeDyadicTerm_iff_primeGap), with summability from the elementary bound p_n ≤ 1250(n+1)^4; the identity is the known summation by parts. Lean also proves that the consecutive prime gaps are unbounded and not eventually periodic (exists_primeGap0_gt, primeGap0_not_eventually_periodic). The irrationality of Π remains open: these facts do not supply the required cofinal escape for the actual prime gaps.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_251_irrationality"
       ],
@@ -21080,14 +22204,35 @@
     {
       "id": "erdos_1041",
       "label": "Erdős #1041: short connections inside polynomial lemniscates",
-      "status": "open",
+      "status": "formal statement refuted",
       "statement": "Using ani's explicit monic degree-seven polynomial, Lean proves that every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than 2. This refutes the exact Formal Conjectures path-image-length statement and its total-variation counterpart. The reported family is not formalised, and independent human review of correspondence with the 1958 wording is not recorded.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1041_lemniscate_connection"
       ],
       "paper_label": null,
       "readme_headline": false,
-      "declarations": []
+      "declarations": [
+        {
+          "name": "erdos1041_counterexample_hausdorff",
+          "module": "ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+          "line": 283
+        },
+        {
+          "name": "erdos1041_hausdorff_negation",
+          "module": "ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+          "line": 407
+        },
+        {
+          "name": "erdos1041_hausdorff_answer_false",
+          "module": "ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean",
+          "line": 449
+        },
+        {
+          "name": "erdos1041_ani_degree_seven",
+          "module": "ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean",
+          "line": 25
+        }
+      ]
     },
     {
       "id": "newton_ray_separation_consumer",
@@ -21183,7 +22328,7 @@
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_68_irrationality"
       ],
-      "paper_label": "res:bandbreakpoint",
+      "paper_label": "long68:res:bandbreakpoint",
       "readme_headline": false,
       "declarations": [
         {
@@ -22825,7 +23970,7 @@
     {
       "id": "stern_brocot_run_fibonacci_stability",
       "label": "Fibonacci and continuant stability of Stern–Brocot runs",
-      "status": "formalised here",
+      "status": "unconditional progress",
       "statement": "A Stern–Brocot word with r nonempty alternating runs has height at least F_(r+3), with equality on the all-unit run spine. Writing each run length as 1+e_i gives an exact multiaffine continuant-defect expansion, the sharp global gain F_(r+1) sum e_i, and exact one-site coefficient F_(i+2)F_(r-i+1). Under the gcd-one weight 2^-(a+b), the first induced run layer has mass 1/2, while the natural denominator-bookkeeping exponent is exactly F_(r+3)-2. These are source-level combinatorial and arithmetic facts; no analytic denominator survival or irrationality conclusion is claimed.",
       "paper_label": "res:sternbrocotruns",
       "readme_headline": false,
@@ -22965,7 +24110,7 @@
     {
       "id": "totient_carry_kernel_anti_compression",
       "label": "Totient carry anti-compression",
-      "status": "formalised here",
+      "status": "unconditional progress",
       "statement": "If the binary totient coefficient series were rational, one positive-multiplier tempered integral carry would have uniformly eventually-periodic dyadic sections modulo its multiplier while retaining canonical carry-section span dimension at least 2^e − 1 for every e. No finite-rank bound for every rationality-supplied carry is proved, so this quotient-periodicity/anti-compression conjunction is a necessary consequence rather than an irrationality criterion for S.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_249_irrationality"
@@ -23013,7 +24158,8 @@
     {
       "id": "denominator_exclusion",
       "label": "Unconditional denominator exclusion for the totient constant",
-      "status": "formalised here",
+      "status": "verified finite instance",
+      "bounded_domain": "Integer p and 1 <= q <= 79 639 646 646 701 375 323 355 774 875 831 053; no larger denominator is excluded.",
       "statement": "S = ∑ φ(n)/2ⁿ is not equal to p/q for any integer p and any 1 ≤ q ≤ 79 639 646 646 701 375 323 355 774 875 831 053 (≈ 7.96 × 10³⁴). A lower bound on any rational representation, not a proof of irrationality.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_249_irrationality"
@@ -23149,7 +24295,7 @@
       "id": "diagonal_pincer_reduction",
       "label": "Exact full-target reduction on the lcm diagonal",
       "status": "conditional reduction",
-      "statement": "At each lcm-diagonal scale, integrality is equivalent to a foreign-defect term landing in an explicit full-target interval. Globally, S is irrational if and only if the full target is avoided at arbitrarily large diagonal scales; that cofinal avoidance is not proved.",
+      "statement": "At each lcm-diagonal scale, integrality holds if and only if a foreign-defect term lands in an explicit full-target interval. Globally, S is irrational if and only if the full target is avoided at arbitrarily large diagonal scales; that cofinal avoidance is not proved.",
       "remaining_open_proposition_ids": [
         "remaining_open.unbounded_certificate_supply"
       ],
@@ -23458,7 +24604,7 @@
       "id": "adelic_height_obstruction",
       "label": "Scalar-localisation height obstruction",
       "status": "proved here",
-      "statement": "If H divides the reduced denominator of a rational x and the reduced denominator of c·x divides H for an integer c, then the complementary factor x.den/H divides |c|. Scalar localisation transfers, rather than discards, that denominator information; this local obstruction is not an irrationality criterion.",
+      "statement": "For every rational x, integer c and natural number H, if H divides the reduced denominator of x and the reduced denominator of c·x divides H, then the complementary factor x.den/H divides |c|. Scalar localisation therefore moves that denominator information into the scalar; this local obstruction is not an irrationality criterion.",
       "paper_label": "res:adelic",
       "readme_headline": true,
       "declarations": [
@@ -23554,6 +24700,75 @@
           "name": "totientDyadicSectionBasis",
           "module": "Erdos249257/TotientMahlerDefect.lean",
           "line": 1392
+        }
+      ]
+    },
+    {
+      "id": "totient_residue_series_classification",
+      "label": "Irrational totient residue series and the rational dyadic residue observables",
+      "status": "unconditional progress",
+      "statement": "For every m ≥ 3 the series ∑_{n≥1} (φ(n) mod m)/2^n is irrational, and for k ≥ 1 and f: Z/2^kZ → Q the series ∑_{n≥1} f(φ(n) mod 2^k)/2^n is rational exactly when f is constant on the even residue classes, with value 3f(1)/4 + c/4 where c is that constant. The first assertion, in every integer base, already follows from Erdős's Lemma 1 (Indag. Math. 19 (1957), p. 213; the case b = 0 of his Lemma 4, pp. 215-218) because φ(n) mod m vanishes outside a set of density zero, and equally from Theorem 3 of Kaneko, Suzuki and Tachiya (arXiv:2601.20743v1, p. 5). Those criteria also give the classification when the values f(r) - f(0) on the even classes have one sign; with both signs they need a further spacing hypothesis, which the isolated-coefficient proof does not need. Wong posted the case in which the base equals the modulus in 2015. No novelty claim is made for the first assertion. The reduced series say nothing about the unreduced series ∑ φ(n)/2^n.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_249_irrationality"
+      ],
+      "paper_label": "res:residueseries",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "short_note_residue_theorem",
+          "module": "ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean",
+          "line": 276
+        }
+      ]
+    },
+    {
+      "id": "totient_residue_series_integer_radix",
+      "label": "Totient residue series in every integer base",
+      "status": "unconditional progress",
+      "statement": "For every integer t ≥ 2 and m ≥ 3 the series ∑_{n≥1} (φ(n) mod m)/t^n is irrational, and for k ≥ 1 and f: Z/2^kZ → Q the series ∑_{n≥1} f(φ(n) mod 2^k)/t^n is rational exactly when f is constant on the even residue classes, with value (t+1)f(1)/t^2 + f(0)/(t^2(t-1)). The first assertion already follows from Erdős's Lemma 1 (1957) and from Theorem 3 of Kaneko, Suzuki and Tachiya, as recorded for the binary case; no novelty claim is made for it.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_249_irrationality"
+      ],
+      "paper_label": "prop:radixresidue",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "radix_residue_series_irrational",
+          "module": "ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean",
+          "line": 128
+        },
+        {
+          "name": "rational_zmod_radix_observable_iff",
+          "module": "ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean",
+          "line": 145
+        },
+        {
+          "name": "positiveRadixValue_eq_of_even_constant",
+          "module": "ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean",
+          "line": 303
+        }
+      ]
+    },
+    {
+      "id": "totient_residue_series_dilations",
+      "label": "Linear independence of dilated totient residue series",
+      "status": "unconditional progress",
+      "statement": "For every integer t ≥ 2 and m ≥ 3, the numbers 1 and ∑_{n≥1} (φ(n) mod m)/t^{dn}, d = 1, 2, ..., are linearly independent over Q. For a finite set D of positive integers and residue functions f_d: Z/2^{k_d}Z → Q with k_d ≥ 1, any rational constant plus ∑_{d∈D} ∑_{n≥1} f_d(φ(n) mod 2^{k_d})/t^{dn} is rational exactly when every f_d is constant on the even residue classes. The proof isolates a nonzero coefficient at the least active dilation by the Chinese remainder theorem and Dirichlet's theorem. When all coefficients of a relation have one sign, Erdős's Lemma 1 (1957) already excludes it; the mixed-sign case is not covered by that criterion without a further spacing hypothesis.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_249_irrationality"
+      ],
+      "paper_label": "prop:dilations",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "linearIndependent_one_and_least_residue_values",
+          "module": "ErdosProblems/Erdos249/FiniteDilationLinearIndependent.lean",
+          "line": 42
+        },
+        {
+          "name": "rational_mixed_moduli_with_constant_iff",
+          "module": "ErdosProblems/Erdos249/FiniteDilationMixedModuli.lean",
+          "line": 95
         }
       ]
     },
@@ -23802,7 +25017,7 @@
     {
       "id": "greedy_achievement_geometry",
       "label": "Greedy geometry of the Mersenne achievement set",
-      "status": "formalised here",
+      "status": "unconditional progress",
       "statement": "The Mersenne achievement set is compact, perfect, totally disconnected, nowhere dense, and has Lebesgue measure one. Membership is equivalent to greedy survival at every level; for the target 1/2 it is exactly equivalent to the canonical greedy orbit omitting infinitely many exponents. No finite normalized support has value 1/2, so positive membership would automatically produce an infinite rational-valued support and refute universal #257. Finite exact-rational death certificates soundly prove non-membership (3/4 is excluded at level one). The strict-tail Cantor geometry is recorded by Kovač–Tao; no novelty claim is made for the formalised refinements.",
       "remaining_open_proposition_ids": [
         "remaining_open.universal_257_all_infinite_supports"
@@ -24155,6 +25370,34 @@
       ]
     },
     {
+      "id": "first_harmonic_good_index_reduction",
+      "label": "Irrationality of the totient series from one first-harmonic bound on the good indices",
+      "status": "conditional reduction",
+      "statement": "At the minimal admissible depth with s = 26 and η = 1/1000, if for every h ≥ 1 there are arbitrarily large X at which the real part of the first-harmonic sum over the good indices (the assigned indices N in [X, 2X) whose cofactor m satisfies φ(m) ≥ m/1000) is at most 603X/1000, then ∑ φ(n)/2^n is irrational. For all large X more than 67X/100 indices are good, by the unconditional unassigned count and the Chebyshev excluded-cofactor count, and 603/1000 = (9/10)(67/100); the underlying interface asks only for nonempty sets of indices beyond every threshold whose average first cosine is at most 9/10 at a depth with room. The bound is open, sufficient and not known to be necessary. It needs neither the prime number theorem nor a bound on the group means, and it supersedes the prime-number-theorem route at 11X/20. No computation in the record bears on it.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.unbounded_certificate_supply"
+      ],
+      "paper_label": "thm:goodbasegap",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "irrational_totient_series_of_support_gap",
+          "module": "ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean",
+          "line": 44
+        },
+        {
+          "name": "eventually_card_pivotGoodBases_gt",
+          "module": "ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean",
+          "line": 75
+        },
+        {
+          "name": "irrational_totient_series_of_goodBase_gap",
+          "module": "ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean",
+          "line": 100
+        }
+      ]
+    },
+    {
       "id": "adjacent_phase_separation_reduction",
       "label": "Adjacent-pair phase separation reduction",
       "status": "conditional reduction",
@@ -24488,7 +25731,7 @@
       "id": "erdos_1049",
       "label": "Erdős #1049: irrationality of F(t) at rational bases",
       "status": "open",
-      "statement": "For rational bases in the Zudilin contour region, including every positive integral power of 31/4, the public Lean development proves irrationality and the stated irrationality-exponent bound from the constructed polynomial forms and analytic estimates. The universal rational-base assertion remains open; 3/2 lies outside this region and is unresolved here.",
+      "statement": "For natural numbers 0 < b < a in the Zudilin contour region, Lean proves that F(a/b) is irrational with irrationality exponent at most rationalBaseMeasureBound a b (rational_base_region, rational_base_measure), from the constructed polynomial forms and analytic estimates; in particular F((31/4)^r) is irrational for every positive integer r (thirtyone_four_powers). The universal rational-base assertion remains open; 3/2 lies outside this region and is unresolved here.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1049_irrationality"
       ],
@@ -24504,7 +25747,7 @@
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1049_irrationality"
       ],
-      "paper_label": "res:nocorridor",
+      "paper_label": "long1049:res:nocorridor",
       "readme_headline": false,
       "declarations": [
         {
@@ -24522,7 +25765,7 @@
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1049_irrationality"
       ],
-      "paper_label": "res:tailrec",
+      "paper_label": "long1049:res:tailrec",
       "readme_headline": false,
       "declarations": [
         {
@@ -24540,7 +25783,7 @@
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1049_irrationality"
       ],
-      "paper_label": "res:forcing",
+      "paper_label": "long1049:res:forcing",
       "readme_headline": false,
       "declarations": [
         {
@@ -24582,7 +25825,7 @@
       "id": "erdos_243",
       "label": "Erdős #243: eventual Sylvester recurrence",
       "status": "open",
-      "statement": "The eventual Sylvester recurrence assertion remains open in this release; the bounded-rise barrier and conditional negative-part reductions leave the mixed-sign unbounded regime unresolved.",
+      "statement": "Lean proves that if a is a strictly increasing sequence of positive integers with n^λ(a(n)²/a(n+1) − 1 − λ/n) → 0, then the reciprocal sum ∑ 1/a(n) is irrational, for every non-integer λ > 1, where Lean also derives convergence (nonintegral_regular_rate_irrational), and for λ = 3 whenever the sum converges (cubic_rate_irrationality_unconditional). Both theorems are zero-indexed; the paper transfers them to one-based indexing by an ordinary finite-prefix argument. Without such a rate the eventual Sylvester recurrence assertion remains open: the bounded-rise barrier and the conditional negative-part reductions leave the mixed-sign unbounded regime unresolved.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_243_eventual_recurrence"
       ],
@@ -24685,7 +25928,7 @@
     {
       "id": "cubic_rate_irrationality_unconditional",
       "label": "Cubic-rate reciprocal-sum irrationality under the stated asymptotic",
-      "status": "formalised here",
+      "status": "unconditional progress",
       "statement": "For a zero-indexed strictly increasing sequence of positive natural numbers a, if n³(a(n)²/a(n+1) − (1 + 3/n)) tends to zero and the reciprocal series has sum S, then S is irrational. Lean proves the square-specialisation input through the Dedekind-zeta simple pole, so this theorem has no Chebotarev premise. The paper states the ordinary one-based bridge. The quantitative cubic-rate hypothesis is essential here; this does not settle the original eventual Sylvester recurrence assertion.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_243_eventual_recurrence"
@@ -24697,6 +25940,24 @@
           "name": "cubic_rate_irrationality_unconditional",
           "module": "ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationUnconditional.lean",
           "line": 70
+        }
+      ]
+    },
+    {
+      "id": "nonintegral_regular_rate_irrationality",
+      "label": "Nonintegral regular-rate reciprocal-sum irrationality",
+      "status": "unconditional progress",
+      "statement": "For a zero-indexed strictly increasing sequence of positive natural numbers a and a real noninteger lambda greater than one, if n^lambda (a(n)^2/a(n+1) - (1 + lambda/n)) tends to zero, then the reciprocal series converges and its sum is irrational. The Lean theorem derives summability from the rate; the one-based paper form uses an ordinary finite-prefix bridge. The little-o remainder is essential to the integer-extraction argument. This does not settle the unrestricted Erdős #243 problem.",
+      "remaining_open_proposition_ids": [
+        "remaining_open.erdos_243_eventual_recurrence"
+      ],
+      "paper_label": "long243:res:nonintegralrate",
+      "readme_headline": false,
+      "declarations": [
+        {
+          "name": "nonintegral_regular_rate_irrational",
+          "module": "ErdosProblems/Erdos243/PaperCompleteR21/NonintegralRegularRate.lean",
+          "line": 196
         }
       ]
     },
@@ -24740,7 +26001,7 @@
       "id": "erdos_249",
       "label": "Erdős #249: irrationality of S = ∑ φ(n)/2ⁿ",
       "status": "open",
-      "statement": "Not proved by this release. The reductions convert it into the unboundedness of the certificate supply, which is untouched.",
+      "statement": "Lean proves that S = ∑ φ(n)/2ⁿ is irrational if, for every h ≥ 1, there are arbitrarily large X at which the real part of the first-harmonic sum over the good indices is at most 603X/1000 (irrational_totient_series_of_goodBase_gap); the good indices are the assigned indices N in [X, 2X) at the minimal admissible depth with s = 26 whose cofactor m satisfies φ(m) ≥ m/1000. For all large X more than 67X/100 indices are good (eventually_card_pivotGoodBases_gt), and 603/1000 = (9/10)(67/100). Lean also proves that S is irrational if and only if certified non-integrality witnesses occur at unbounded parameters (irrational_totient_series_iff_certificate_supply). The 603X/1000 bound and that unbounded certificate supply are open, so S is not proved irrational.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_249_irrationality",
         "remaining_open.unbounded_certificate_supply"
@@ -24751,7 +26012,7 @@
       "id": "universal_257",
       "label": "Erdős #257, universal form",
       "status": "open",
-      "statement": "Irrationality of ∑_{n∈A} 1/(2ⁿ − 1) for every infinite A is not proved by this release; only named families are formalised.",
+      "statement": "Lean proves that for every integer base b ≥ 2 and every finite nonempty set P of primes, with h(a) the largest divisor of a supported on P, every infinite set A of positive integers with ∑_{a∈A} h(a)/(a(b^{h(a)} − 1)) finite has ∑_{n∈A} 1/(bⁿ − 1) irrational (divisibilityWeightedClaim). Lean also proves irrationality at every such base for every infinite A with ∑_{a∈A} 1/a finite (irrational_erdosSupportSeries_of_summable_reciprocal), and exhibits sets with divergent reciprocal sum all of whose infinite subsets have irrational series at every such base (finite_monotone_witness_rule_realised). Irrationality of ∑_{n∈A} 1/(2ⁿ − 1) for every infinite A remains open.",
       "remaining_open_proposition_ids": [
         "remaining_open.half_value_membership",
         "remaining_open.universal_257_all_infinite_supports"
@@ -25022,8 +26283,8 @@
     {
       "id": "zudilin_all_rank_hankel_order",
       "label": "All-rank normalized Hankel order and leading coefficient",
-      "status": "formalised here",
-      "statement": "For every natural N, including N = 0, the normalized Zudilin Hankel determinant has q-order N(N-1)(2N-1)/6. Its leading coefficient satisfies the division-free identity 2^N times the coefficient = (N!)^2 (N+1)!, with the corresponding rational quotient formula. The all-row producer is proved rather than assumed. This algebraic theorem does not by itself supply the analytic estimates or irrationality at 3/2.",
+      "status": "unconditional progress",
+      "statement": "For every natural N, including N = 0, the normalized Zudilin Hankel determinant has q-order N(N-1)(2N-1)/6. Its leading coefficient satisfies the division-free identity 2^N times the coefficient = (N!)^2 (N+1)!, with the corresponding rational quotient formula. The all-row producer is proved rather than assumed. This algebraic theorem does not by itself supply the analytic estimates or irrationality at 3/2. Zudilin (2016) proves the q-order inequality; the equality is proved here.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1049_irrationality"
       ],
@@ -25050,7 +26311,7 @@
     {
       "id": "coefficient_pencil_finite_rank",
       "label": "Coefficient-pencil positivity and root interlacing through rank eight",
-      "status": "formalised here",
+      "status": "unconditional progress",
       "statement": "For each real p > 1 and each natural rank N ≤ 8, the coefficient Hankel matrix A_N is positive definite, the polynomial det(Y A_N − B_N) splits over the reals, and every root is strictly below F(p). For adjacent ranks N and N+1 ≤ 8, the ordered root lists interlace non-strictly, with multiplicities. Lean includes N = 0; the paper states the ranks 1 through 8. No all-rank coefficient-pencil theorem, simple-root or strict-interlacing assertion, limiting result, or irrationality of F(3/2) follows from this finite proposition.",
       "remaining_open_proposition_ids": [
         "remaining_open.erdos_1049_irrationality"
@@ -25086,7 +26347,7 @@
         "remaining_open.universal_257_all_infinite_supports"
       ],
       "statement": "For every integer base b >= 2, every infinite positive support A with finite weighted mass for some finite nonempty prime set P has irrational support series. If a host H of positive integers has finite base-two weighted mass, then every infinite subset A of H has irrational support series at every integer base b >= 2. This is a sufficient support criterion, not the universal statement.",
-      "status": "formalised here"
+      "status": "unconditional progress"
     },
     {
       "declarations": [
@@ -25104,7 +26365,7 @@
         "remaining_open.universal_257_all_infinite_supports"
       ],
       "statement": "A strengthened positive divisor-cover datum with summable scaled cost makes every infinite subset of its host irrational at every integer base b >= 2. The statement retains the nonlinear cover majorant and summability hypotheses; it does not cover arbitrary supports.",
-      "status": "formalised here"
+      "status": "unconditional progress"
     },
     {
       "declarations": [
@@ -25122,7 +26383,7 @@
         "remaining_open.universal_257_all_infinite_supports"
       ],
       "statement": "Let E have finite base-two finite-prime weighted mass and let V lie in a strengthened positive-cover host. Every infinite support A contained in E union V has irrational support series at every integer base b >= 2. The theorem uses a common observation scale; it does not assume separate irrationality conclusions for the two components.",
-      "status": "formalised here"
+      "status": "unconditional progress"
     },
     {
       "declarations": [
@@ -25139,8 +26400,8 @@
       "remaining_open_proposition_ids": [
         "remaining_open.universal_257_all_infinite_supports"
       ],
-      "statement": "For every integer base b >= 2 and every infinite support A, summability of the reciprocal-support mass implies that the support series is irrational. No pairwise-coprimality hypothesis is required.",
-      "status": "formalised here"
+      "statement": "For every integer base b >= 2 and every infinite support A, summability of the reciprocal-support mass implies that the support series is irrational. No pairwise-coprimality hypothesis is required. Erdős (1968) stated this extension without proof.",
+      "status": "unconditional progress"
     },
     {
       "id": "ani_degree_seven_total_variation_counterexample",
@@ -25171,6 +26432,51 @@
           "line": 449
         }
       ]
+    },
+    {
+      "id": "separated_cut_algebraic_lambert_transcendence",
+      "label": "Algebraic-base transcendence on separated divisibility supports",
+      "statement": "For an infinite positive-integer host with cuts L_j < M_j, L_j tending to infinity and M_j-L_j tending to infinity, every host exponent at most L_j dividing L_j and every later exponent divisible by M_j, every infinite thinning with bounded positive integer weights has transcendental Lambert sum at every real algebraic base t > 1. This includes all divisibility chains and an explicit host of unbounded divisibility width and divergent reciprocal sum. The full number-field Subspace Theorem argument has two AI proof reviews; it is an ordinary proof with no Lean transcendence theorem, independent human review or asserted historical priority.",
+      "paper_label": "thm:separated-cuts",
+      "status": "unconditional progress",
+      "declarations": [],
+      "readme_headline": false
+    },
+    {
+      "id": "independent_clock_channel_relations",
+      "label": "Complete rational relations for integer-radix independent-clock sums",
+      "statement": "For positive rationally independent clock rates with no simultaneous positive crossings, and integer radices b_i >= 2, all rational relations among 1 and the channel sums S_i are multiples of (-1,b_1-1,...,b_d-1). The proof uses genuine late swaps with a common infinite suffix in one orbit closure, a fixed rational lattice, and density of the clock section. The explicit rates 1,sqrt(2),sqrt(3),sqrt(6) and radices 2,3,5,7 give rational span dimension four. This is an ordinary proof reviewed by AI agents, without Lean or independent human verification of the infinite theorem.",
+      "paper_label": "long269:thm:clock-relations",
+      "status": "unconditional progress",
+      "declarations": [],
+      "readme_headline": false
+    },
+    {
+      "id": "calibrated_rational_hankel_countermodel",
+      "label": "Rational-value countermodel to a Hankel-signature inference",
+      "statement": "An explicit positive atomic moment family and integer formal series have all-rank Hankel order sum_{j<N} j^2 and leading coefficient (N!)^2(N+1)!/2^N, with the same fixed-base asymptotic shape including N^(-8 xi), while xi=G_{2/3}(2/3)=1. For n>=1 the exact reduced moment denominator is 3^(31n+62)(3^(n+1)-2^(n+1))^4; the determinant denominator has logarithmic size Theta(N^3), and a proposed rank-two row-product clearer leaves denominator625. These are ordinary proofs with independent exact finite checks and AI proof reviews, not a Lean proof of the infinite family or human peer review.",
+      "paper_label": "long1049:thm:calibrated-model",
+      "status": "unconditional progress",
+      "declarations": [],
+      "readme_headline": false
+    },
+    {
+      "id": "selected_staircase_integral_height_boundary",
+      "label": "Smith index and primitive one-target border boundary",
+      "statement": "The selected staircase matrix with ones on and below the diagonal and integer r>=2 above it has Smith factors 1,r-1,...,r-1. For the selected {2,3,5} kernel, any entrywise-integral diagonal clearing has determinant magnitude at least 4^(N-1), whereas the reduced rational determinant has numerator one up to sign. A rational single-target border has primitive polynomial plus or minus (tX-s), where s/t is the reduced Schur complement. These ordinary arithmetic arguments were reviewed by AI agents; they are not the existing Lean nonvanishing theorem and have no independent human review.",
+      "paper_label": "long269:lem:staircase-smith",
+      "status": "unconditional progress",
+      "declarations": [],
+      "readme_headline": false
+    },
+    {
+      "id": "signed_totient_entire_defect_interpolation",
+      "label": "Arbitrarily slow signed interpolation preserving Dirichlet singularities",
+      "statement": "For any integer beta>=2 and positive allowance f(n) tending to infinity, an interval around the totient value is filled by integer sequences b=phi+e with 0<=b(n)<=n and |e(n)|<=f(n). One target-independent even support has upper Banach density zero, leaving any fixed prefix and odd coefficients unchanged. The construction preserves every fixed eventual coefficient and cumulative congruence, gives eventually constant progression moment defects outside common hulls of density zero, entire progression Dirichlet defects, and smooth root-of-unity radial germs with prescribed finite zero jets. The full proof includes the allowance-dependent block bound and first-harmonic rational countermodels. It is an ordinary proof with two AI proof reviews, not a Lean proof of the infinite theorem or independent human review.",
+      "paper_label": "long249:thm:signed-interpolation",
+      "status": "unconditional progress",
+      "declarations": [],
+      "readme_headline": false
     }
   ],
   "non_claims": [

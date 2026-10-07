@@ -387,6 +387,15 @@ def main() -> int:
     diagnostic.validate_human_first_contact(summary, human_surfaces)
     checks = 4
 
+    historical_only = human_surfaces.copy()
+    historical_only["README.md"] = historical_only["README.md"].replace(
+        "paper/systems/claim-faithful-publication-systems-paper.pdf",
+        "paper/systems/cold-clone-to-proof-receipt.pdf",
+    )
+    require(historical_only != human_surfaces, "current systems-paper route fixture lost its anchor")
+    assert_human_rejected(summary, historical_only, "historical paper substituted for current systems paper")
+    checks += 1
+
     mutated_command_block = human_surfaces.copy()
     mutated_command_block["README.md"] = mutated_command_block["README.md"].replace(
         "## Read or verify locally",
@@ -570,13 +579,24 @@ def main() -> int:
     mutated_incremental = copy.deepcopy(incremental_surfaces)
     mutated_incremental[".github/workflows/lean.yml"] = mutated_incremental[
         ".github/workflows/lean.yml"
-    ].replace("uses: actions/cache@", "uses: actions/cache-bypassed@", 1)
+    ].replace("uses: actions/cache/restore@", "uses: actions/cache-bypassed@", 1)
     try:
         diagnostic.validate_incremental_build_contract(mutated_incremental)
     except AssertionError:
         checks += 1
     else:
         raise AssertionError("project-cache workflow deletion escaped")
+
+    mutated_incremental = copy.deepcopy(incremental_surfaces)
+    mutated_incremental[".github/workflows/lean.yml"] += (
+        "\n      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0\n"
+    )
+    try:
+        diagnostic.validate_incremental_build_contract(mutated_incremental)
+    except AssertionError:
+        checks += 1
+    else:
+        raise AssertionError("implicit PR cache post-save escaped")
 
     mutated_incremental = copy.deepcopy(incremental_surfaces)
     mutated_incremental["scripts/lean_fast_build.py"] = mutated_incremental[

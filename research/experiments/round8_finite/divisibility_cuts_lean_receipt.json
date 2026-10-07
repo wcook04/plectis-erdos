@@ -1,0 +1,19 @@
+{
+  "schema": "plectis-finite-probe-receipt/1",
+  "probe": "research/probes/Round8DivisibilityCuts.lean",
+  "sha256": "6d1cd1b25e5f623741a7d7b60cb81f15b54da8ce3d7c1d292b9943cfdf467827",
+  "lean_toolchain": "leanprover/lean4:v4.29.1",
+  "environment_base": "5acddfb2d9b43ad1b876f25700c49b1c39beddde",
+  "command": "lake env lean research/probes/Round8DivisibilityCuts.lean",
+  "checked_source": "Public checkout full-file replay; exact source bytes match independently checked staged source.",
+  "public_replay_job_id": "cf_a75a4c8f7d484612b45a",
+  "public_run_id": "cmdrun_20260929T104519Z_43442_081752000_622caa4236bb",
+  "completed_at": "2026-09-29T10:45:59+00:00",
+  "exit_code": 0,
+  "stdout_sha256": "e7c065d08715daa5993b85fb91982517b5421f7478d95656bbe94689cdd35068",
+  "stdout": "'ErdosProblems.Erdos257.DivisibilityCuts.Cut.mono' does not depend on any axioms\n'ErdosProblems.Erdos257.DivisibilityCuts.HasSeparatedCuts.mono' does not depend on any axioms\n'ErdosProblems.Erdos257.DivisibilityCuts.exponent_divisibility_denominator' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\nErdosProblems.Erdos257.DivisibilityCuts.Cut.mono {A B : Set ℕ} {L M : ℕ} (h : Cut A L M) (hBA : B ⊆ A) : Cut B L M\nErdosProblems.Erdos257.DivisibilityCuts.HasSeparatedCuts.mono {A B : Set ℕ} (h : HasSeparatedCuts A) (hBA : B ⊆ A) :\n  HasSeparatedCuts B\nErdosProblems.Erdos257.DivisibilityCuts.exponent_divisibility_denominator {u v : ℤ} {n L : ℕ} (h : n ∣ L) :\n  u ^ n - v ^ n ∣ u ^ L - v ^ L\n",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "axiom_declaration_count": 3,
+  "checked_type_count": 3,
+  "evidence_limit": "Finite separated-cut heredity and exponent divisibility; no number-field theorem or transcendence. No library-root import or paper coverage upgrade."
+}

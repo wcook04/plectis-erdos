@@ -1,0 +1,74 @@
+{
+  "schema": "plectis-round8-reader-candidate-key/1",
+  "task_id": "T02",
+  "family_id": "mersenne_reset_escape_equivalence",
+  "status": "candidate_source_reading_not_independently_adjudicated",
+  "source_commit": "0268dd8bfb2a556a0c93078337d42c6d07138fa2",
+  "binding_replay_status": "UNRUN at this commit; older 0d0129c6 receipt remains historical",
+  "criteria": [
+    {
+      "id": "equivalence",
+      "required": true,
+      "description": "The two reset-escape hypotheses are equivalent on exactly the same resets: squaring a positive threshold against an absolute value preserves the inequality."
+    },
+    {
+      "id": "threshold",
+      "required": true,
+      "description": "r>=10 and the same upper/middle reset predicate are preserved; (r+5)/2 is a real exponent, not integer division."
+    },
+    {
+      "id": "membership",
+      "required": true,
+      "description": "Either escape condition is sufficient for half-membership; this equivalence neither supplies the escape condition nor establishes equivalence with half-membership."
+    },
+    {
+      "id": "finite",
+      "required": true,
+      "description": "Finite reset checks do not establish the universal escape condition; do not silently move the threshold from 10 to 31 using the r=7 exception."
+    },
+    {
+      "id": "evidence",
+      "required": true,
+      "description": "Cites the equivalence and conditional consumer or their accurate paper loci; no new contribution credit for rewriting alone."
+    }
+  ],
+  "severe_error_examples": [
+    "Credits the square rewrite as a strict weakening",
+    "Claims half-membership has been proved by the rewrite",
+    "Claims half-membership implies reset escape",
+    "Uses integer division or changes the reset domain"
+  ],
+  "reference_answer": "The conditions are equivalent, as paperResetSqrtEscape_iff_square explicitly states. Since 2^((r+5)/2)>0, |Delta|>2^((r+5)/2) iff Delta^2>2^(r+5), with the real exponent and the same r>=10 upper/middle reset quantifiers. paper_theoremA_half_membership is a sufficient implication to membership of 1/2. It does not supply either escape hypothesis or a converse from half-membership. A finite list of successful resets is evidence only for that list. The rewrite alone is not a new weaker condition or a solution.",
+  "source_handles": [
+    {
+      "path": "corpus/paper/257/erdos257-mersenne-reasoning-surface.tex",
+      "start_line": 8718,
+      "end_line": 8778,
+      "file_sha256": "781868f903af0624baed4f556a46eccb225f88c087adcd04ce488e9606204131",
+      "excerpt_path": "grader/evidence/T02-01.txt",
+      "excerpt_sha256": "24b356c2761c00717bf44c544f1bd55aec792d4abb2eac530588552ee7009943"
+    },
+    {
+      "path": "corpus/lean/ErdosProblems/Erdos257/PaperCompleteR21/ResetSqrtEscapeHalfMembership.lean",
+      "start_line": 49,
+      "end_line": 71,
+      "file_sha256": "379c13a65571232374ece7a956097b1c31adefe423cfcdc00550c88613764412",
+      "excerpt_path": "grader/evidence/T02-02.txt",
+      "excerpt_sha256": "1a86adc3662de390819e201591291982897c495c9117b206536e3ca031db64c7"
+    },
+    {
+      "path": "corpus/lean/ErdosProblems/Erdos257/PaperCompleteR21/ResetSqrtEscapeHalfMembership.lean",
+      "start_line": 525,
+      "end_line": 598,
+      "file_sha256": "379c13a65571232374ece7a956097b1c31adefe423cfcdc00550c88613764412",
+      "excerpt_path": "grader/evidence/T02-03.txt",
+      "excerpt_sha256": "6bec371b8fbf83399376dc2e0ec55f8b8751077b0b9e9783c6f5ca410ac6f39a"
+    }
+  ],
+  "declarations": [
+    "ErdosProblems.Erdos257.PaperCompleteR21.paperResetSqrtEscape_iff_square",
+    "ErdosProblems.Erdos257.PaperCompleteR21.paper_theoremA_half_membership"
+  ],
+  "scoring_rule": "correct iff every required criterion is satisfied and no material severe error; source-faithful wording accepted; adjudicate ambiguity before a real run",
+  "abstention_rule": "Acknowledging an unproved converse, input or review is required where appropriate. Blanket abstention on the answerable source question is incorrect, not automatically severe."
+}

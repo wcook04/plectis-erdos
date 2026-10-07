@@ -11,6 +11,7 @@ forbidden.
 from __future__ import annotations
 
 import argparse
+import ctypes
 import fcntl
 import hashlib
 import json
@@ -211,14 +212,91 @@ def warm_artifact_mismatch(source_packages: Path, target_packages: Path) -> str 
 
 
 def copy_on_write_command(source: Path, target: Path) -> list[str] | None:
-    if sys.platform == "darwin" and Path("/bin/cp").is_file():
-        return ["/bin/cp", "-cR", str(source), str(target)]
     if sys.platform.startswith("linux") and shutil.which("cp"):
         return ["cp", "--reflink=always", "-a", str(source), str(target)]
     return None
 
 
+def clone_file_strict(source: Path, target: Path) -> None:
+    """Clone one APFS file or symlink, never falling back to copied bytes."""
+
+    if sys.platform != "darwin":
+        raise PackageShareError("strict APFS cloning requires macOS")
+    if os.path.lexists(target):
+        raise FileExistsError(str(target))
+    mode = source.lstat().st_mode
+    if not (stat.S_ISREG(mode) or stat.S_ISLNK(mode)):
+        raise PackageShareError(f"unsupported clone source type: {source}")
+    if source.stat(follow_symlinks=False).st_dev != target.parent.stat().st_dev:
+        raise PackageShareError("strict APFS clone requires one filesystem")
+    library = ctypes.CDLL("/usr/lib/system/libcopyfile.dylib", use_errno=True)
+    operation = library.copyfile
+    operation.argtypes = [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_void_p, ctypes.c_uint32]
+    operation.restype = ctypes.c_int
+    # COPYFILE_CLONE_FORCE fails rather than using an ordinary byte copy.
+    if operation(os.fsencode(source), os.fsencode(target), None, (1 << 25) | (1 << 0)) != 0:
+        error = ctypes.get_errno()
+        raise OSError(error, os.strerror(error), str(source), str(target))
+
+
+def _clone_tree_apfs(source: Path, target: Path) -> None:
+    if os.path.lexists(target):
+        raise FileExistsError(str(target))
+    if not stat.S_ISDIR(source.lstat().st_mode):
+        raise PackageShareError(f"strict clone source is not a directory: {source}")
+    if source.stat().st_dev != target.parent.stat().st_dev:
+        raise PackageShareError("strict APFS clone requires one filesystem")
+    target.mkdir()
+    hardlinks: dict[tuple[int, int], Path] = {}
+
+    def walk(src: Path, dst: Path) -> None:
+        with os.scandir(src) as entries:
+            for entry in entries:
+                child_source = src / entry.name
+                child_target = dst / entry.name
+                info = entry.stat(follow_symlinks=False)
+                if stat.S_ISDIR(info.st_mode):
+                    child_target.mkdir()
+                    walk(child_source, child_target)
+                elif stat.S_ISREG(info.st_mode):
+                    key = (info.st_dev, info.st_ino)
+                    previous = hardlinks.get(key) if info.st_nlink > 1 else None
+                    if previous is not None:
+                        os.link(previous, child_target)
+                    else:
+                        clone_file_strict(child_source, child_target)
+                        if info.st_nlink > 1:
+                            hardlinks[key] = child_target
+                elif stat.S_ISLNK(info.st_mode):
+                    clone_file_strict(child_source, child_target)
+                else:
+                    raise PackageShareError(f"unsupported clone source type: {child_source}")
+        library = ctypes.CDLL("/usr/lib/system/libcopyfile.dylib", use_errno=True)
+        operation = library.copyfile
+        operation.argtypes = [ctypes.c_char_p, ctypes.c_char_p, ctypes.c_void_p, ctypes.c_uint32]
+        operation.restype = ctypes.c_int
+        # Directory metadata only; COPYFILE_CLONE_FORCE is per-file above.
+        flags = (1 << 0) | (1 << 1) | (1 << 2) | (1 << 18) | (1 << 19)
+        if operation(os.fsencode(src), os.fsencode(dst), None, flags) != 0:
+            error = ctypes.get_errno()
+            raise OSError(error, os.strerror(error), str(src), str(dst))
+
+    try:
+        walk(source, target)
+    except BaseException:
+        try:
+            shutil.rmtree(target)
+        except OSError:
+            # Keep the clone failure as the primary exception. The caller's
+            # staging cleanup can make a second attempt at removing the tree.
+            pass
+        raise
+
+
 def clone_tree(source: Path, target: Path) -> None:
+    if sys.platform == "darwin":
+        _clone_tree_apfs(source, target)
+        return
     command = copy_on_write_command(source, target)
     if command is None:
         raise PackageShareError("copy-on-write cloning is unavailable on this platform")

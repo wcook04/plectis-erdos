@@ -1,0 +1,29 @@
+{
+  "evidence": "Lean application and remaining-goal traces",
+  "boundary": "Closure proves the displayed conditional statement; it does not establish novelty or any unstated premise.",
+  "transitions": [
+    {
+      "question": "dyadic_shift_third_escape_after_parameterising_radix_bound",
+      "candidate": "inherited_radix30_constant_does_not_reach_third",
+      "application_accepted": false,
+      "proof_closed": false,
+      "obligations_after_application": [],
+      "remaining_obligations": []
+    },
+    {
+      "question": "dyadic_shift_third_escape_after_parameterising_radix_bound",
+      "candidate": "shift_orbit_through_parameterised_radix_two_escape",
+      "application_accepted": true,
+      "proof_closed": true,
+      "obligations_after_application": [
+        {
+          "node_id": "ps_c2e42bc8a721410a",
+          "case": null,
+          "target": "\u22a2 \u00ac\u2203 a z, (fun N => realTailShift T h N) a = \u2191z",
+          "rendered": "g : \u2115 \u2192 \u2124\nT : \u2115 \u2192 \u211d\nhrec : RealDyadicTailRecurrence g T\nhirr : Irrational (T 0)\nh : \u2115\nhh : 0 < h\n\u22a2 \u00ac\u2203 a z, (fun N => realTailShift T h N) a = \u2191z"
+        }
+      ],
+      "remaining_obligations": []
+    }
+  ]
+}

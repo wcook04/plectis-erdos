@@ -11,6 +11,10 @@ import stat
 import subprocess
 import sys
 import tempfile
+import shutil
+import signal
+import time
+import unittest
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
@@ -19,6 +23,9 @@ import check_release_ref
 
 
 TIMEOUT_SECONDS = 1
+# Git clone/checkout and external-disk startup precede the cancellation test.
+# Keep their readiness budget separate from the production gate timeout.
+FIXTURE_SETUP_TIMEOUT_SECONDS = 30
 
 
 def require(condition: bool, message: str) -> None:
@@ -378,7 +385,7 @@ def test_release_python_commands_reuse_driver_interpreter() -> None:
     completed = subprocess.CompletedProcess(
         [sys.executable], returncode=0, stdout="", stderr=""
     )
-    with patch.object(check_release_ref.subprocess, "run", return_value=completed) as runner:
+    with patch.object(check_release_ref.singleflight, "run_bounded", return_value=completed) as runner:
         check_release_ref.run(
             ["python3", "scripts/check_release.py"], cwd=Path("/fixture")
         )
@@ -435,7 +442,206 @@ def auxiliary_gate_source(*, label: str, exit_code: int) -> str:
     )
 
 
+class SnapshotLifecycleTests(unittest.TestCase):
+    def make_source(self, root, gate):
+        source = root / "source"
+        (source / "scripts").mkdir(parents=True)
+        for name in ("check_release_ref.py", "validation_singleflight.py",
+                     "lean_build_share.py", "lean_package_share.py"):
+            shutil.copyfile(Path(__file__).with_name(name), source / "scripts" / name)
+        for command in check_release_ref.RELEASE_COMMANDS:
+            (source / command[1]).write_text(gate if command[1].endswith("check_release.py") else "print('supplementary')\n")
+        git(source, "init", "-q")
+        git(source, "config", "user.email", "snapshot@example.invalid")
+        git(source, "config", "user.name", "Snapshot lifetime fixture")
+        git(source, "add", ".")
+        git(source, "commit", "-qm", "tiny owned release fixture")
+        return source, git(source, "rev-parse", "HEAD")
+
+    def wait_file(self, path, *, owner=None, deadline=None):
+        if deadline is None:
+            deadline = time.monotonic() + 8
+        while time.monotonic() < deadline:
+            if path.exists() and path.read_text().strip():
+                return path.read_text().strip()
+            if owner is not None and owner.poll() is not None:
+                out, err = owner.communicate(timeout=1)
+                self.fail(f"fixture owner exited {owner.returncode} before publishing {path}:\n"
+                          f"stdout: {out}\nstderr: {err}")
+            time.sleep(.02)
+        self.fail(f"fixture never published {path}")
+
+    def test_readiness_reports_owner_failure_without_waiting_for_setup_deadline(self):
+        owner = SimpleNamespace(poll=lambda: 7, returncode=7,
+                                communicate=lambda **_kwargs: ('clone output', 'checkout failed'))
+        with tempfile.TemporaryDirectory() as raw:
+            with self.assertRaisesRegex(AssertionError, 'owner exited 7.*publishing') as failed:
+                self.wait_file(Path(raw) / 'missing', owner=owner,
+                               deadline=time.monotonic() + FIXTURE_SETUP_TIMEOUT_SECONDS)
+        self.assertIn('clone output', str(failed.exception))
+        self.assertIn('checkout failed', str(failed.exception))
+
+    def test_probe_does_not_submit_or_collect_a_release_owner(self):
+        with tempfile.TemporaryDirectory() as raw:
+            source, commit = self.make_source(Path(raw), "print('probe must not run gate')\n")
+            with patch.object(check_release_ref, 'ROOT', source), \
+                    patch.object(check_release_ref.singleflight, 'submit') as submit:
+                receipt, code = check_release_ref.validate_ref(commit, timeout_seconds=8, probe_only=True)
+            self.assertEqual(code, 0)
+            self.assertEqual(receipt['mode'], 'probe_only')
+            self.assertEqual(receipt['gate_coverage']['started_gate_count'], 0)
+            submit.assert_not_called()
+
+    def test_public_observer_pending_does_not_prepare_or_remove_a_snapshot(self):
+        sf = check_release_ref.singleflight
+        pending = {'state': 'running', 'live': True, 'key': 'a'*64, 'collect_timeout': True}
+        with patch.object(check_release_ref, 'resolve_commit', return_value='b'*40), \
+                patch.object(check_release_ref, 'dirty_paths', return_value=['caller.txt']), \
+                patch.object(sf, 'validator_spec', return_value={'key': 'a'*64}) as spec, \
+                patch.object(sf, 'submit', return_value={'key': 'a'*64}), \
+                patch.object(sf, 'collect', return_value=(pending, 75)), \
+                patch.object(check_release_ref, 'prepare_clone') as clone:
+            result, code = check_release_ref.validate_ref('HEAD', timeout_seconds=3, probe_only=False)
+        self.assertEqual(code, 75)
+        self.assertEqual(result['status'], 'pending')
+        self.assertTrue(result['observation_only'])
+        self.assertEqual(result['caller_worktree_dirty_paths'], ['caller.txt'])
+        self.assertEqual(spec.call_args.kwargs['release_timeout_seconds'], 3)
+        clone.assert_not_called()
+
+    def test_terminal_receipt_uses_full_hash_bound_output_not_tail_or_mismatched_cache(self):
+        import hashlib
+        sf = check_release_ref.singleflight
+        with tempfile.TemporaryDirectory() as raw:
+            root=Path(raw); key='a'*64; commit='b'*40
+            path=root/'artifacts'/key/'stdout.log'; path.parent.mkdir(parents=True)
+            result={**check_release_ref.receipt_base('old',commit,[]), 'mode':'release_gate',
+                    'status':'passed','gate_exit_code':0,'gate_coverage':check_release_ref.gate_coverage([
+                        {'exit_code':0} for _ in check_release_ref.RELEASE_COMMANDS]), 'stdout_tail':'x'*18000}
+            payload=json.dumps(result).encode();path.write_bytes(payload)
+            terminal={'key':key,'state':'terminal','exit_code':0,'stdout':{'path':f'artifacts/{key}/stdout.log',
+                      'sha256':'sha256:'+hashlib.sha256(payload).hexdigest(),'tail':payload[-100:].decode()}}
+            with patch.object(check_release_ref, 'resolve_commit', return_value=commit), \
+                    patch.object(check_release_ref, 'dirty_paths', return_value=['caller.txt']), \
+                    patch.object(sf, 'default_state_root', return_value=root), \
+                    patch.object(sf, 'validator_spec', return_value={'key':key}), \
+                    patch.object(sf, 'submit', return_value={'key':key}), \
+                    patch.object(sf, 'collect', return_value=(terminal,0)):
+                actual, code=check_release_ref.validate_ref('HEAD',timeout_seconds=3,probe_only=False)
+                self.assertEqual(code,0);self.assertEqual(actual['stdout_tail'],'x'*18000)
+                self.assertEqual(actual['caller_worktree_dirty_paths'],['caller.txt'])
+                path.write_bytes(payload+b' ')
+                with self.assertRaises(check_release_ref.SnapshotError):
+                    check_release_ref.validate_ref('HEAD',timeout_seconds=3,probe_only=False)
+                path.write_bytes(payload)
+                terminal['exit_code']=1
+                with patch.object(sf,'collect',return_value=(terminal,1)), self.assertRaises(check_release_ref.SnapshotError):
+                    check_release_ref.validate_ref('HEAD',timeout_seconds=3,probe_only=False)
+
+    def test_observer_timeout_keeps_owned_snapshot_live(self):
+        import validation_singleflight as sf
+        with tempfile.TemporaryDirectory() as raw:
+            root = Path(raw)
+            ready, resume, finished = [root / x for x in ("ready", "resume", "finished")]
+            gate = ("import sys,time\nfrom pathlib import Path\n"
+                    "assert '--singleflight-worker' in sys.argv\n"
+                    f"ready=Path({str(ready)!r}); resume=Path({str(resume)!r}); done=Path({str(finished)!r})\n"
+                    "ready.write_text(str(Path.cwd()))\n"
+                    "while not resume.exists(): time.sleep(.02)\n"
+                    "assert Path('scripts/check_release.py').exists()\n"
+                    "done.write_text('snapshot still usable')\n")
+            source, commit = self.make_source(root, gate)
+            state = root / "cache"
+            with patch.object(sf, "ROOT", source), patch.object(sf, "__file__", str(source / "scripts/validation_singleflight.py")):
+                spec = sf.validator_spec("release", [], commit, state, release_timeout_seconds=8)
+                submitted = sf.submit(spec, state)
+                try:
+                    snapshot = Path(self.wait_file(ready))
+                    observed, code = sf.collect(state, submitted['key'], True, .02, receipt_only=True)
+                    self.assertEqual(code, 75)
+                    self.assertTrue(observed['collect_timeout'])
+                    self.assertTrue(snapshot.is_dir())
+                    self.assertTrue(sf.receipt_is_live(observed))
+                    resume.write_text('continue')
+                    terminal, code = sf.collect(state, submitted['key'], True, 8, receipt_only=True)
+                    self.assertEqual(code, 0, terminal)
+                    self.assertEqual(self.wait_file(finished), 'snapshot still usable')
+                    self.assertFalse(snapshot.exists())
+                    self.assertEqual(len(list((state / 'jobs').glob('*.json'))), 1)
+                finally:
+                    # Exact fixture owner only; never leave a sleeping child on failed assertions.
+                    sf.cancel(state, submitted['key'], 'fixture containment', 8)
+
+    def test_worker_runs_five_gates_without_nested_collector_and_preserves_first_failure(self):
+        with tempfile.TemporaryDirectory() as raw:
+            root = Path(raw)
+            source, commit = self.make_source(root, "import sys\nassert '--singleflight-worker' in sys.argv\nprint('first gate')\nraise SystemExit(7)\n")
+            (source / check_release_ref.RELEASE_COMMANDS[2][1]).write_text('raise SystemExit(9)\n')
+            git(source, 'add', '.')
+            git(source, 'commit', '-qm', 'later independent failure')
+            commit = git(source, 'rev-parse', 'HEAD')
+            with patch.object(check_release_ref, 'ROOT', source):
+                receipt, code = check_release_ref.validate_ref(commit, timeout_seconds=8, probe_only=False, singleflight_worker=True)
+            self.assertEqual(code, 7)
+            self.assertEqual(receipt['gate_coverage']['completed_gate_count'], 5)
+            self.assertEqual([row['exit_code'] for row in receipt['gate_results']], [7,0,9,0,0])
+            self.assertEqual(receipt['gate_results'][0]['command'], list(check_release_ref.RELEASE_COMMANDS[0]))
+
+    def test_owner_timeout_stops_new_session_descendant_before_snapshot_cleanup(self):
+        self.check_owner_cleanup(signal_owner=False)
+
+    def test_owner_signal_stops_descendant_before_snapshot_cleanup(self):
+        self.check_owner_cleanup(signal_owner=True)
+
+    def check_owner_cleanup(self, signal_owner):
+        import validation_singleflight as sf
+        with tempfile.TemporaryDirectory() as raw:
+            root = Path(raw)
+            ready, child_pid, stopped = [root / x for x in ('ready','pid','stopped')]
+            child = ("import signal,time,os\nfrom pathlib import Path\n"
+                     f"Path({str(child_pid)!r}).write_text(str(os.getpid()))\n"
+                     f"signal.signal(signal.SIGTERM, lambda *a: (Path({str(stopped)!r}).write_text(str(Path.cwd().exists())), exit(0)))\n"
+                     "time.sleep(60)\n")
+            gate = ("import subprocess,sys,time\nfrom pathlib import Path\n"
+                    f"subprocess.Popen([sys.executable,'-c',{child!r}],start_new_session=True)\n"
+                    f"Path({str(ready)!r}).write_text(str(Path.cwd()))\n"
+                    "time.sleep(60)\n")
+            source, commit = self.make_source(root, gate)
+            if signal_owner:
+                driver = ("import sys; sys.path.insert(0,'scripts'); import check_release_ref as c; "
+                          f"c.main()")
+                proc = subprocess.Popen([sys.executable, '-c', driver, '--singleflight-worker','--ref',commit,'--timeout-seconds','8'], cwd=source, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+                try:
+                    # A single setup deadline covers both the cloned gate and
+                    # its descendant; signal/cleanup waits below stay unchanged.
+                    deadline = time.monotonic() + FIXTURE_SETUP_TIMEOUT_SECONDS
+                    snapshot = Path(self.wait_file(ready, owner=proc, deadline=deadline))
+                    pid = int(self.wait_file(child_pid, owner=proc, deadline=deadline))
+                    proc.send_signal(signal.SIGTERM)
+                    out, err = proc.communicate(timeout=10)
+                    self.assertEqual(proc.returncode, 128 + signal.SIGTERM, (out,err))
+                finally:
+                    if proc.poll() is None:
+                        sf.kill_process_tree(proc.pid); proc.wait()
+            else:
+                with patch.object(check_release_ref, 'ROOT', source):
+                    receipt, code = check_release_ref.validate_ref(commit, timeout_seconds=1, probe_only=False, singleflight_worker=True)
+                snapshot = Path(self.wait_file(ready)); pid = int(self.wait_file(child_pid))
+                self.assertEqual(code, 124)
+                self.assertEqual(receipt['gate_coverage']['started_gate_count'], 1)
+                self.assertEqual(receipt['gate_coverage']['completed_gate_count'], 0)
+                self.assertEqual(len(receipt['gate_coverage']['not_run_commands']), 4)
+            self.assertEqual(self.wait_file(stopped), 'True')
+            self.assertFalse(snapshot.exists())
+            deadline = time.monotonic() + 5
+            while sf._pid_alive(pid) and time.monotonic() < deadline:
+                time.sleep(.05)
+            self.assertFalse(sf._pid_alive(pid), f'descendant {pid} survived cleanup')
+
+
 def main() -> int:
+    result = unittest.TextTestRunner().run(unittest.defaultTestLoader.loadTestsFromTestCase(SnapshotLifecycleTests))
+    require(result.wasSuccessful(), "snapshot lifecycle regression failed")
     test_snapshot_command_path_boundary()
     test_snapshot_clone_isolation_flags_are_pinned()
     test_receipt_destination_boundary()
@@ -702,6 +908,7 @@ def main() -> int:
                 passing_commit,
                 timeout_seconds=30,
                 probe_only=False,
+                singleflight_worker=True,
             )
             require(passed_exit == 0, "passing release snapshot failed")
             require(passed["status"] == "passed", "passing snapshot was not passed")
@@ -765,6 +972,7 @@ def main() -> int:
                 root_failure_commit,
                 timeout_seconds=30,
                 probe_only=False,
+                singleflight_worker=True,
             )
             require(root_failed_exit == 9, "root gate failure exit was not preserved")
             require(
@@ -830,6 +1038,7 @@ def main() -> int:
                 source_failure_commit,
                 timeout_seconds=30,
                 probe_only=False,
+                singleflight_worker=True,
             )
             require(
                 source_failed_exit == 11,
@@ -882,6 +1091,7 @@ def main() -> int:
                 route_failed_commit,
                 timeout_seconds=30,
                 probe_only=False,
+                singleflight_worker=True,
             )
             require(
                 route_failed_exit == 13,
@@ -934,6 +1144,7 @@ def main() -> int:
                 expert_failure_commit,
                 timeout_seconds=30,
                 probe_only=False,
+                singleflight_worker=True,
             )
             require(
                 expert_failed_exit == 17,
@@ -987,6 +1198,7 @@ def main() -> int:
                 passing_commit,
                 timeout_seconds=30,
                 probe_only=False,
+                singleflight_worker=True,
             )
             require(old_again_exit == 0, "previous passing commit did not replay")
             require(
@@ -1002,6 +1214,7 @@ def main() -> int:
                 failing_commit,
                 timeout_seconds=30,
                 probe_only=False,
+                singleflight_worker=True,
             )
             require(failed_exit == 7, "release gate failure exit was not preserved")
             require(
@@ -1053,6 +1266,7 @@ def main() -> int:
                 timeout_commit,
                 timeout_seconds=TIMEOUT_SECONDS,
                 probe_only=False,
+                singleflight_worker=True,
             )
             require(timeout_exit == 124, "timeout exit was not normalized to 124")
             require(

@@ -10,6 +10,8 @@ Everything below uses this public checkout and public tools.
 | What you want to do | Start here | What you need |
 |---|---|---|
 | Follow one result to its evidence | [Try one claim](#try-one-claim-without-lean) | Git and Python 3.11 or later |
+| Inspect an accepted native #243 or #257 proof | [Native theorem reader routes](research-commons/README.md#native-prove2me-theorems) | A web browser; the public packets print the accepted Solutions without sign-in |
+| Replay the #257 weighted theorem against a separate statement | [Weighted theorem replay](verification/EXTERNAL_VERIFICATION_REPLAY.md#reviewer-replay) | Linux, Git, Python 3.11+, Elan/Lake, Go, and systemd |
 | Rerun the #257 exact-rational example | [Try the late rejection](#reproduce-the-257-exact-rational-example) | Python 3.11 or later; no extra packages |
 | Rerun a #251 finite computation | [Reproduce the #251 computations](#reproduce-a-finite-computation) | Python 3.11 or later; the first run needs no extra packages |
 | Check a documentation edit | [Check a documentation change](#check-a-documentation-change) | Python; no Lean installation |
@@ -73,6 +75,20 @@ For the full claim inventory, use `python3 scripts/verify_claims.py --verify-all
 This mode also uses the current checkout. It additionally reports missing
 paper labels and references to claim IDs absent from the inventory.
 
+To inspect the weighted #257 result introduced in the README, run:
+
+```sh
+python3 scripts/verify_claims.py --claim finite_prime_weighted_support
+```
+
+This prints the weighted-summability hypothesis, the all-base conclusion for
+infinite subsets of a positive host, and the declarations
+`weightedDyadicMeanTarget` and `divisibilityWeightedClaim`. Its paper reference
+is the current #257 short paper, at `res:weighted-support`. The command checks
+the recorded links in your checkout; it does not run Lean or Comparator.
+To rerun that formal comparison, use the
+[#257 theorem replay](verification/EXTERNAL_VERIFICATION_REPLAY.md#reviewer-replay).
+
 ### Reproduce the #257 exact-rational example
 
 Run this from the repository root with Python 3.11 or later. It uses only the
@@ -105,6 +121,35 @@ records its other checks.
 If this command fails, confirm `python3 -VV`, rerun
 `python3 scripts/test_choices_contraction_probe.py`, and report the exact
 command, error, and `git rev-parse HEAD` through [CONTRIBUTING](../CONTRIBUTING.md).
+
+To try a fraction of your own, use the single-target probe (replace `189/388`):
+
+```sh
+python3 research/experiments/choices_contraction/rational_membership_probe.py \
+  --target 189/388 --depth 16 17 --horizon 160 --json
+```
+
+Here the depth-16 outcome is `not_excluded`; at depth 17 it is `excluded` with
+the exact selected prefix and strict gap certificate. Other outcomes are
+`finite_representation` (the remainder reached zero) and `not_excluded`
+(no conclusion beyond the tested depth). The
+[probe guide](../research/experiments/choices_contraction/README.md#the-probe)
+defines the host choices and input limits. This is a finite membership probe
+for the base-two subseries, not a test of the weighted irrationality theorem.
+
+The [probe guide](../research/experiments/choices_contraction/README.md#the-probe)
+also gives an inspected, commit-pinned single-file route before cloning. For
+a terminal row in this checkout, make a JSON record with `--depth 17` alone
+and check it independently:
+
+```sh
+python3 research/experiments/choices_contraction/rational_membership_probe.py \
+  --target 189/388 --depth 17 --horizon 160 --json > witness.json
+python3 research/experiments/choices_contraction/verify_terminal_witness.py witness.json
+```
+
+The receiver recomputes the prefix and tail bound; a `not_excluded` row is
+refused because finite survival is no membership certificate.
 
 ### Reproduce a finite computation
 
@@ -210,6 +255,9 @@ python3 scripts/lean_fast_build.py --jobs 2 \
 [`DivisibilityWeightedClaim`](../lean/ErdosProblems/Erdos257/PaperCompleteR7/AnalyticTargets.lean)
 states the fixed-base and hereditary clauses. The proof declaration is
 [`divisibilityWeightedClaim`](../lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120).
+The weighted term and `FinitePrimeWeighted` definitions are in
+[`PrimeWeightedDefinitions.lean`](../lean/ErdosProblems/Erdos257/PaperCompleteR7/PrimeWeightedDefinitions.lean),
+which the R7 interface imports.
 The R7 interface file's preamble describes the earlier development stage;
 its "missing" proof wording is not the current theorem status. Read the R8
 proof and the claim record above for that status. The R7 source remains at
@@ -227,12 +275,23 @@ Comparator replay record remains distinct from Palomar's
 [successful mechanical verification](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/36009433226)
 of the exact five-declaration `PalomarCorpus/E257_01` entry at source commit
 `b85ed30805188eb4390a686b111294b24363418e`; that entry includes
-`divisibilityWeightedClaim`. At the last authenticated status check
-(24 September 2026, 14:13 UTC), submission `gid0ym5uu910` was awaiting
-editorial review, with no registration recorded. This receipt applies to the
+`divisibilityWeightedClaim`. Palomar
+[registered version 1](https://palomar-registry.org/entry?id=PALOMAR-2026-09-25-000009&version=1)
+as `PALOMAR-2026-09-25-000009` on 25 September 2026. Its
+[immutable record](https://data.palomar-registry.org/entries/PALOMAR-2026-09-25-000009-v1.json)
+binds submission `gid0ym5uu910` to that exact source and selection. The
+mechanical receipt applies to the
 selected entry, not every theorem in the #257 paper. The
 [replay guide](verification/EXTERNAL_VERIFICATION_REPLAY.md) explains the
 separate source-bound Comparator receipt.
+
+The replay guide now provides a one-theorem `weighted-support` unit for
+`divisibilityWeightedClaim`. On Linux with the stated prerequisites, its
+single `run --unit weighted-support` command fetches an exact commit, compares
+the theorem with the separate challenge, and requires rejection of a
+deliberately changed statement. The configuration is runnable, but a passing
+receipt for the selected source commit has not been recorded here. The
+`189/388` Python calculation above is a different finite result.
 
 These commands build the current checkout. The claim verifier also names the
 recorded source revision; keep that identity with any report about reproducing
@@ -246,15 +305,17 @@ invocation:
 ```sh
 python3 scripts/lean_fast_build.py --jobs 2 --lake-staleness \
   Erdos249257 ErdosProblems Examples FormalConjecturesAdapter \
-  FormalConjecturesVariants ResidualBench
+  FormalConjecturesVariants FC1049HeightRegion FC243CubicRate ResidualBench \
+  ErdosProblems.Erdos251.PaperLargeAuditR7
+lake env lean research/adapters/FC1049HeightRegion.lean
 python3 scripts/build_lean_dependency_index.py --check --full-check
 ```
 
 `Erdos249257` and `ErdosProblems` are the default libraries. `Examples` builds
 consumer examples inside this package; read their imports and example
 declarations in [research/examples/Examples.lean](../research/examples/Examples.lean).
-The remaining targets check
-adapters, statement variants and residual examples; building them does not
+The remaining targets check adapters, statement variants, residual examples,
+and the separately compiled #251 paper audit; building them does not
 add reviewed claims to the mathematical record.
 
 The wrapper coordinates builds on the same machine. Equivalent requests share
@@ -282,19 +343,23 @@ check; the checker does not rebuild or download dependencies.
 ## 3. Run the release-surface checks
 
 The release checks inspect claim records, links, generated files, licences and
-other published metadata. Install their Python dependencies in a local virtual
-environment first. CI uses Python 3.12.9 with this hash-pinned requirements file.
+other published metadata. From a cold checkout, this entry selects Python
+3.12, creates an ignored environment under `.lake/`, installs the committed
+hash-pinned release dependencies if needed, and builds the Lean import used by
+the proof-state pilot before running the existing gate:
 
 ```sh
-python3 -m venv .venv
-. .venv/bin/activate
-python3 -m pip install --disable-pip-version-check --no-cache-dir --require-hashes \
-  --requirement scripts/requirements-release.txt
-python3 scripts/check_release.py
+python3 scripts/run_release_check.py
 ```
 
-The release check runs for several minutes and prints only its final
-summary; it has not stalled. The Lean build and this Python check answer separate questions. A publication
+Install Python 3.12 and Elan first; the pinned Lean version comes from
+`lean-toolchain`. CI uses Python 3.12.9 and may run
+`python3 scripts/check_release.py` directly because its dependency and Lean
+preparation steps have already run. The wrapper's `--prepare-only` option
+checks those prerequisites without starting the full gate. A missing import
+artifact or failed hash-checked installation stops during preparation; it
+cannot appear as a passing proof-state control. The release check runs for
+several minutes and prints only its final summary. The Lean build and this Python check answer separate questions. A publication
 also needs its selected external verification receipts, described in
 [the verification guide](verification/README.md). A successful static check
 alone is not the complete release decision.

@@ -5,12 +5,27 @@
 
 [Reading Eight Erdős Problems Together](optimal-sparse-perturbations.pdf)
 ([source](optimal-sparse-perturbations.tex)) is the single cross-problem paper.
-It brings together the capacity and congruence criterion, Lambert subsums,
-method obstructions, exact computations and the research record behind them.
-The principal proofs are ordinary mathematical arguments; cited formal
-ingredients retain their stated scope. This paper consolidates the former
+For `c>0` and integers `d≥1`, consider the set of vectors
+`(f(1), f′(1), …, f^(d−1)(1))` from entire functions
+`f(z) = ∑_(n≥1) e_n z^n/n!` with nonnegative integer `e_n` eventually at most
+`n^c` and, for each fixed positive integer `q`, eventually divisible by `q`.
+This set has Hausdorff dimension `min(c,d)` and contains an open set exactly when `c>d`; at
+`c=d` they are full-dimensional but null and meagre. The paper also proves
+a capacity and congruence criterion, Lambert-subsum results and method
+limits. Its principal proofs are ordinary mathematical arguments; cited
+formal ingredients retain their stated scope. This paper consolidates the former
 synthesis note, working record and capacity account. Their earlier versions
 remain in Git history.
+
+The paper also proves that a chosen family of positive dyadic shifts detects
+irrationality in every integer-digit recurrence, at any fixed threshold
+`0<c<τ`, exactly when the family contains a multiple of every positive
+integer. Factorial shifts work; power-of-two shifts fail on a rational orbit.
+This is an ordinary proof using a cited sharp bound of Dubickas; the
+[`1/3` transfer](../../lean/ErdosProblems/Synthesis/DyadicShiftEscape.lean)
+is its Lean-checked starting point. Try the
+[shift-family exercise](../../research/experiments/premise_exchange/shift_family_exercise.md)
+before reading the proof.
 
 The paper is a place for insights that arise while working with the full
 corpus: connections between problems, reusable constructions, obstructions,

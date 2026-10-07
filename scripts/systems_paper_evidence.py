@@ -49,6 +49,16 @@ def validate_systems_paper_evidence(
     """Check the paper's outcome and ceilings against the typed receipt."""
     if paper_text is None:
         paper_text = PAPER_PATH.read_text(encoding="utf-8")
+    if "% SYSTEMS_PAPER_VERSION 2" in paper_text:
+        if any(value is not None for value in (evidence, claims, erdos_problems_root)):
+            return ["v2 evidence uses the source-bound ledger, not legacy override arguments"]
+        from build_systems_paper_counts import pipeline_errors
+        problems=validate_bound_paper(paper_text, ROOT)+pipeline_errors(paper_text, ROOT)
+        historical=read_json(EVIDENCE_PATH)
+        for key,label in historical.get("source",{}).items():
+            if key.endswith("_label") and r"\label{"+label+"}" not in paper_text:
+                problems.append("historical evidence label missing: "+label)
+        return problems
     if evidence is None:
         evidence = json.loads(EVIDENCE_PATH.read_text(encoding="utf-8"))
     if claims is None:
@@ -174,6 +184,27 @@ def reflow_tolerant_replace(
 def mutation_fixture_failures() -> list[str]:
     """Ensure known paper/evidence disagreements remain rejectable."""
     source = PAPER_PATH.read_text(encoding="utf-8")
+    if "% SYSTEMS_PAPER_VERSION 2" in source:
+        unit=SENTENCE.search(source)
+        specimens={
+            "changed_sentence":source.replace(unit.group(2),unit.group(2)+" A fabricated gain.",1),
+            "historical_count_inverted":source.replace(r"\newcommand{\HistoricalRejected}{nine}",r"\newcommand{\HistoricalRejected}{ten}",1),
+            "original_logs_claimed_retained":source.replace("the original run logs were not retained","the original run logs were retained",1),
+            "independence_inflated":source.replace("the checker's author","an independent auditor",1),
+            "missing_return_boundary":reflow_tolerant_replace(
+                source,
+                "No independent writing comparison, blind grading run or cold-reader "
+                "experiment is reported, so there is no comparative reader result.",
+                "A comparative reader gain is established.",
+            ),
+            "unbound_body":source.replace(AUDIT_END,"A new unsupported assertion.\n"+AUDIT_END,1),
+            "duplicate_sentence":source.replace(unit.group(),unit.group()+"\n"+unit.group(),1),
+            "missing_historical_label":source.replace(r"\label{sec:checks}",r"\label{sec:failure}",1),
+        }
+        return [name+("_anchor_missing" if mutated==source else "_escaped")
+                for name,mutated in specimens.items()
+                if mutated==source or not validate_systems_paper_evidence(mutated)]
+
     logs_retained = reflow_tolerant_replace(
         source,
         "original run logs were not retained",
@@ -227,7 +258,7 @@ def mutation_fixture_failures() -> list[str]:
     return failures
 
 
-def main() -> int:
+def legacy_main() -> int:
     errors = validate_systems_paper_evidence()
     fixture_failures = mutation_fixture_failures() if not errors else []
     if errors or fixture_failures:
@@ -246,6 +277,212 @@ def main() -> int:
         "evidence ceilings match; seven opposing fixtures reject"
     )
     return 0
+
+
+
+
+AUDIT_BEGIN = "% BEGIN audited_body"
+AUDIT_END = "% END audited_body"
+SENTENCE = re.compile(r"^% SENTENCE ([A-Za-z0-9.-]+)\n(.*?)\n% END SENTENCE \1[ \t]*$", re.M | re.S)
+KINDS = {"implemented", "reported", "proposed", "method", "literature", "measured"}
+
+
+def sha256(data: bytes) -> str:
+    import hashlib
+    return hashlib.sha256(data).hexdigest()
+
+
+def _unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError(f"duplicate JSON key: {key}")
+        result[key] = value
+    return result
+
+
+def read_json(path: Path) -> Any:
+    return json.loads(path.read_text(encoding="utf-8"), object_pairs_hook=_unique_object)
+
+
+def safe_source(root: Path, relative: str) -> Path:
+    from pathlib import PurePosixPath
+    p = PurePosixPath(relative)
+    if not relative or p.is_absolute() or ".." in p.parts or str(p) != relative:
+        raise ValueError(f"unsafe source path: {relative}")
+    target = root / relative
+    for prefix in [target, *target.parents]:
+        if prefix == root:
+            break
+        if prefix.is_symlink():
+            raise ValueError(f"symlink source: {relative}")
+    if not target.is_file():
+        raise ValueError(f"missing source: {relative}")
+    return target
+
+
+def _balanced_argument(text: str, start: int) -> int:
+    """Return first position after a brace argument; reject malformed structure."""
+    if start >= len(text) or text[start] != "{":
+        raise ValueError("expected braced structural argument")
+    depth = 1
+    i = start+1
+    while i < len(text):
+        if text[i] == "\\":
+            i += 2
+            continue
+        if text[i] == "{": depth += 1
+        elif text[i] == "}":
+            depth -= 1
+            if depth == 0: return i+1
+        i += 1
+    raise ValueError("unclosed structural argument")
+
+
+def uncovered_text(text: str) -> str:
+    """Permit structure only outside bound prose; includes/custom macros fail.
+
+    This is a deliberately narrow authored-TeX contract, not a TeX interpreter.
+    All emitted prose (including captions, if added) belongs inside an audited
+    unit. Preamble/style and bibliography metadata are outside this inventory.
+    """
+    text = SENTENCE.sub("", text)
+    text = re.sub(r"(?m)^%[^\n]*", "", text)
+    allowed = {"section", "subsection", "paragraph", "label", "papersectiontarget", "begin", "end"}
+    remaining=[];i=0
+    while i < len(text):
+        if text[i].isspace(): i+=1;continue
+        match = re.match(r"\\([A-Za-z]+)\*?", text[i:])
+        if not match:
+            remaining.append(text[i:]);break
+        name=match.group(1);end=i+match.end()
+        if name in {"appendix", "clearpage", "small", "normalsize", "maketitle"}:
+            i=end;continue
+        if name not in allowed:
+            remaining.append(text[i:]);break
+        try: endarg=_balanced_argument(text,end)
+        except ValueError:
+            remaining.append(text[i:]);break
+        if name in {"begin","end"} and text[end+1:endarg-1] not in {"abstract"}:
+            remaining.append(text[i:]);break
+        i=endarg
+    return "".join(remaining).strip()
+
+
+def bound_units(text: str) -> tuple[list[dict[str, Any]], list[str]]:
+    errors=[]
+    if text.count(AUDIT_BEGIN)!=1 or text.count(AUDIT_END)!=1:
+        return [], ["one audited body is required"]
+    start=text.index(AUDIT_BEGIN)+len(AUDIT_BEGIN);stop=text.index(AUDIT_END)
+    if stop < start: return [], ["audited body order is invalid"]
+    body=text[start:stop]
+    units=[{"id":m.group(1),"text":m.group(2),
+            "line":text[:start+m.start()].count("\n")+2} for m in SENTENCE.finditer(body)]
+    if len(units)!=len({u["id"] for u in units}): errors.append("duplicate sentence id")
+    if len(units)!=len(re.findall(r"(?m)^% SENTENCE ",body)):
+        errors.append("malformed sentence boundary")
+    if not units:errors.append("empty sentence inventory")
+    leftover=uncovered_text(body)
+    if leftover:errors.append("unbound body text: "+leftover[:120].replace("\n"," "))
+    # Prevent hiding unaudited prose between the document start/end and our scope.
+    doc=text.find(r"\begin{document}")
+    bibliography=text.find(r"\begin{thebibliography}",stop)
+    if doc<0 or bibliography<0:errors.append("missing document or bibliography boundary")
+    else:
+        pre=text[doc+len(r"\begin{document}"):text.index(AUDIT_BEGIN)]
+        post=text[stop+len(AUDIT_END):bibliography]
+        if uncovered_text(pre):errors.append("unbound prose before audited body")
+        if uncovered_text(post):errors.append("unbound prose after audited body")
+    bib_end=text.find(r"\end{thebibliography}",bibliography)
+    doc_end=text.find(r"\end{document}",bib_end)
+    if bib_end<0 or doc_end<0:
+        errors.append("missing closing bibliography or document boundary")
+    elif uncovered_text(text[bib_end+len(r"\end{thebibliography}"):doc_end]):
+        errors.append("unbound prose after bibliography")
+    if text.count(r"\begin{document}")!=1 or text.count(r"\end{document}")!=1:
+        errors.append("document boundaries must be unique")
+    return units,errors
+
+
+def validate_bound_paper(paper_text: str, root: Path = ROOT,
+                         ledger: dict[str, Any] | None = None) -> list[str]:
+    """Check traceability and evidence freshness; semantic entailment stays reviewed.
+
+    A recorded excerpt is evidence of a supplied snapshot, not a fresh execution.
+    This checker never executes commands listed by a paper or its source ledger.
+    """
+    errors=[]
+    try:
+        if ledger is None:ledger=read_json(root/"docs/systems_paper_sentences.json")
+        if not isinstance(ledger,dict):return ["sentence ledger must be an object"]
+        if ledger.get("schema")!="systems-paper-sentences/2":return ["wrong sentence ledger schema"]
+        units,problems=bound_units(paper_text);errors.extend(problems)
+        rows=ledger.get("sentences",[])
+        if len(rows)!=len({r["id"] for r in rows}):errors.append("duplicate ledger sentence id")
+        by_id={r["id"]:r for r in rows}
+        if set(by_id)!={u["id"] for u in units}:errors.append("paper/ledger sentence inventories differ")
+        sources=ledger.get("sources",[])
+        if len(sources)!=len({r["id"] for r in sources}):errors.append("duplicate evidence source id")
+        source_map={r["id"]:r for r in sources};cache={}
+        for source in sources:
+            path=safe_source(root,source["path"])
+            if source["path"] not in cache:cache[source["path"]]=path.read_bytes()
+            data=cache[source["path"]]
+            if sha256(data)!=source["sha256"]:errors.append(f"source digest changed: {source['id']}")
+            lines=data.decode("utf-8").splitlines(keepends=True)
+            a,b=source["start_line"],source["end_line"]
+            if not isinstance(a,int) or not isinstance(b,int) or not 1<=a<=b<=len(lines):
+                errors.append(f"source range invalid: {source['id']}");continue
+            excerpt="".join(lines[a-1:b]).encode()
+            if sha256(excerpt)!=source["excerpt_sha256"]:errors.append(f"source span changed: {source['id']}")
+        for unit in units:
+            row=by_id.get(unit["id"])
+            if row is None:continue
+            if row.get("statement_sha256")!=sha256(unit["text"].encode()):
+                errors.append(f"sentence changed: {unit['id']}")
+            if row.get("class") not in KINDS:errors.append(f"unknown evidence class: {unit['id']}")
+            refs=row.get("evidence_refs",[])
+            if not refs or any(ref not in source_map for ref in refs):
+                errors.append(f"missing evidence binding: {unit['id']}")
+            if not isinstance(row.get("warrant"),str) or not row["warrant"].strip():
+                errors.append(f"missing reviewed warrant: {unit['id']}")
+            if row.get("class")=="implemented" and not any(
+                source_map.get(ref,{}).get("kind")=="source" and
+                source_map.get(ref,{}).get("path","").endswith((".py",".lean")) for ref in refs):
+                errors.append(f"implementation lacks code binding: {unit['id']}")
+            if row.get("class")=="measured" and not any(source_map.get(ref,{}).get("kind")=="run" for ref in refs):
+                errors.append(f"measurement lacks run receipt: {unit['id']}")
+        # Cheap house rules; they do not score clarity or mathematical importance.
+        body="\n".join(u["text"] for u in units)
+        if "—" in body or "---" in body:errors.append("em dash in paper body")
+        if re.search(r"\bnot\b[^.!?]{0,100}\bbut\b",body,re.I):errors.append("not-X-but-Y construction")
+    except (OSError, ValueError, KeyError, TypeError, UnicodeError, AttributeError) as exc:
+        errors.append(f"sentence evidence error: {exc}")
+    return errors
+
+
+def main() -> int:
+    import argparse
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--paper",type=Path,default=PAPER_PATH)
+    parser.add_argument("--root",type=Path,default=ROOT)
+    parser.add_argument("--ledger",type=Path)
+    args=parser.parse_args()
+    try:
+        text=args.paper.read_text(encoding="utf-8")
+        if "% SYSTEMS_PAPER_VERSION 2" not in text and args.ledger is None:
+            return legacy_main()
+        ledger=read_json(args.ledger) if args.ledger else None
+        errors=validate_bound_paper(text,args.root,ledger)
+        if errors:
+            for error in errors:print("FAIL "+error)
+            return 1
+        units,_=bound_units(text)
+        print(f"systems-paper sentence evidence: {len(units)} units bound; all source digests match")
+        print("Boundary: byte binding and authored warrants, not automatic semantic entailment or independent review")
+        return 0
+    except (OSError,ValueError,KeyError,TypeError) as exc:
+        print("FAIL "+str(exc));return 2
 
 
 if __name__ == "__main__":

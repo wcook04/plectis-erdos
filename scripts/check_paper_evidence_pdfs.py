@@ -6,11 +6,12 @@
 For each of the sixteen papers, against its generated evidence file
 paper/evidence/<paper>.tex and evidence/paper_evidence.json:
 
-  * every declared result has a "Lean" link in the right margin whose target is the
-    declared one, and a "Comparator" link just below it when one is declared;
-  * the mark sits level with the result's printed heading ("Theorem 2.1", ...) on the page
-    where its label is set, so it cannot be attached to the wrong result;
-  * no margin link is unexplained, no two marks overlap, and none runs off the page;
+  * every declared result has one inline "Lean" link with its declared target, and
+    one inline "Comparator" link when compared, or its own pending-record link;
+  * final concordance rows bind each statement name and link to its named
+    destination; legacy PDFs are checked against their theorem headings;
+  * no evidence links repeat in the margin, no margin link is unexplained, no two
+    inline marks overlap, and no evidence link runs off the page;
   * no link in the paper points at a workflow run page;
   * the paper is no longer than its frozen baseline (docs/paper_page_baseline.json).
 
@@ -31,9 +32,14 @@ ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE_MAP = ROOT / "evidence/paper_evidence.json"
 BASELINE = ROOT / "docs/paper_page_baseline.json"
 DECLARE = re.compile(r"\\DeclareResultEvidence\{([^}]*)\}\{((?:[^{}]|\{[^{}]*\})*)\}\{([^}]*)\}\{([^}]*)\}")
+RECORD = re.compile(r"\\DeclareResultEvidenceRecord\{([^}]*)\}\{([^}]*)\}\{([^}]*)\}\{([^}]*)\}")
 RUN_URL = re.compile(r"/actions/runs/\d+")
 TOLERANCE = 7.0  # points between the mark's first baseline and the heading's baseline
+# The 11pt article baseline (13.6 TeX points), with paper-house-style's 1.045
+# linespread, in PDF points. A long title can put its inline links on the next line.
+HEADING_LINE_STEP = 13.6 * 1.045 * 72.0 / 72.27
 HYPERREF_LINK_MARGIN = 1.0
+LINK_PIECE_GAP = 4.0
 
 
 def untex(url: str) -> str:
@@ -43,6 +49,11 @@ def untex(url: str) -> str:
 def declared(paper_id: str) -> dict[str, tuple[str, str, str]]:
     text = (ROOT / "paper/evidence" / f"{paper_id}.tex").read_text(encoding="utf-8")
     return {m.group(1): (m.group(2), untex(m.group(3)), untex(m.group(4))) for m in DECLARE.finditer(text)}
+
+
+def recorded(paper_id: str) -> dict[str, tuple[str, str, str]]:
+    text = (ROOT / "paper/evidence" / f"{paper_id}.tex").read_text(encoding="utf-8")
+    return {m.group(1): (untex(m.group(2)), m.group(3), m.group(4)) for m in RECORD.finditer(text)}
 
 
 def page_links(reader) -> list[tuple[int, list[float], str]]:
@@ -64,17 +75,84 @@ def heading_lines(page) -> list[tuple[float, float, str]]:
     """(x, y, text) of every text run on the page, for locating result headings."""
     runs: list[tuple[float, float, str]] = []
 
+    # pypdf may report the memo matrix of the preceding text object when
+    # whitespace separates BT/ET objects. Capture the position at the text
+    # operator instead, so the second pair of table columns is read correctly.
+    origin: list[tuple[float, float] | None] = [None]
+
+    def before(operator, _operands, cm, tm):
+        if operator in (b"Tj", b"TJ") and origin[0] is None:
+            origin[0] = (tm[4] * cm[0] + tm[5] * cm[2] + cm[4],
+                         tm[4] * cm[1] + tm[5] * cm[3] + cm[5])
+
     def visit(text, cm, tm, _font, _size):
         if text.strip():
-            x = tm[4] * cm[0] + tm[5] * cm[2] + cm[4]
-            y = tm[4] * cm[1] + tm[5] * cm[3] + cm[5]
+            x, y = origin[0] if origin[0] is not None else (
+                tm[4] * cm[0] + tm[5] * cm[2] + cm[4],
+                tm[4] * cm[1] + tm[5] * cm[3] + cm[5])
             runs.append((x, y, text))
+        origin[0] = None
 
-    page.extract_text(visitor_text=visit)
+    page.extract_text(visitor_text=visit, visitor_operand_before=before)
     return runs
 
 
-def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None) -> list[str]:
+def row_left(destination) -> float | None:
+    try:
+        return float(destination.left)
+    except (TypeError, ValueError):
+        return None
+
+
+def row_name_matches(runs: list, name: str, top: float,
+                     left: float | None, proof_left: float) -> bool:
+    """Match the complete visible name within its column, including one wrap."""
+    starts = [(x, y, text) for x, y, text in runs
+              if abs(y - top) <= TOLERANCE and x < proof_left - 2
+              and (left is None or left - 3 <= x < left + 80)]
+    want = "".join(name.split())
+    for x, y, _text in starts:
+        column_left = left if left is not None else x
+        parts = [(xx, yy, text) for xx, yy, text in runs
+                 if column_left - 3 <= xx < min(proof_left - 2, column_left + 80)
+                 and y - 22 <= yy <= y + 2]
+        actual = "".join("".join(text.split())
+                         for _xx, _yy, text in sorted(parts, key=lambda t: (-t[1], t[0])))
+        if re.match(re.escape(want) + r"(?:\D|$)", actual):
+            return True
+    return False
+
+
+def link_groups(indices: list[int], links: list, split: str = "") -> list[list[int]]:
+    """Count presentations, allowing a dagger or a wrapped pending label to split.
+
+    Hyperref can make a superscript dagger a second annotation.  A pending label
+    can break at its space.  Complete, repeated labels must remain separate groups.
+    """
+    def joins(a: list[float], b: list[float]) -> bool:
+        short_piece = min(a[2] - a[0], b[2] - b[0])
+        beside = (abs(a[1] - b[1]) <= TOLERANCE
+                  and -2 * HYPERREF_LINK_MARGIN <= b[0] - a[2] <= LINK_PIECE_GAP)
+        wrapped = (0 < a[1] - b[1] <= TOLERANCE + a[3] - a[1] and b[0] < a[0])
+        return ((split == "dagger" and short_piece <= 8.0 and beside)
+                or (split == "pending" and short_piece <= 32.0 and (beside or wrapped)))
+
+    groups: list[list[int]] = []
+    for i in indices:
+        matches = [group for group in groups
+                   if any(joins(links[j][1], links[i][1]) or joins(links[i][1], links[j][1])
+                          for j in group)]
+        if matches:
+            merged = [i] + [j for group in matches for j in group]
+            groups = [group for group in groups if group not in matches]
+            groups.append(merged)
+        else:
+            groups.append([i])
+    return groups
+
+
+def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None,
+                records: dict | None = None, names: dict | None = None) -> list[str]:
     from pypdf import PdfReader
 
     problems: list[str] = []
@@ -89,64 +167,155 @@ def check_paper(pdf: Path, paper: dict, marks: dict, baseline: int | None) -> li
         if RUN_URL.search(uri):
             problems.append(f"page {number}: links a workflow run ({uri})")
     margin = [(n, r, u) for n, r, u in links if r[0] >= text_right]
+    evidence_uris = {u for _text, lean, comparator in marks.values()
+                     for u in (lean, comparator) if u}
+    evidence_uris.update(record[0] + "-comparator" for record in (records or {}).values()
+                         if record[2] == "pending")
+    for n, _rect, uri in margin:
+        if uri in evidence_uris:
+            problems.append(f"page {n}: margin evidence presentation is forbidden ({uri})")
+        else:
+            problems.append(f"page {n}: margin link to {uri} belongs to no declared result")
     used: set[int] = set()
     results = {r["label"]: r for r in paper["results"]}
     text_cache: dict[int, list] = {}
+    # A named destination binds each concordance row to its original statement.
+    # Legacy PDFs retain the heading-placement check; new PDFs must contain
+    # every row, with the correct target and number, in the final concordance.
+    destinations = reader.named_destinations
+    concordance = any(name.startswith("verification-result.") for name in destinations)
     for label, (text, lean, comparator) in marks.items():
         result = results.get(label)
-        hits = [i for i, (n, r, u) in enumerate(margin) if u == lean and i not in used]
-        if result and result.get("page"):
-            hits = [i for i in hits if margin[i][0] == int(result["page"])]
+        if result is None:
+            problems.append(f"{label}: no result in the evidence mapping")
+        record = records.get(label) if records is not None else None
+        if records is not None and record is None:
+            problems.append(f"{label}: no generated evidence record/status mapping")
+        if record is not None and record[2] == "compared" and not comparator:
+            problems.append(f"{label}: compared status has no Comparator target")
+        hits = [i for i, (n, r, u) in enumerate(links)
+                if u == lean and r[0] < text_right and i not in used]
+        row_destination = destinations.get("verification-result." + label)
+        if concordance:
+            if row_destination is None:
+                problems.append(f"{label}: missing verification concordance row")
+                continue
+            row_page = reader.get_destination_page_number(row_destination) + 1
+            row_top = float(row_destination.top)
+            hits = [i for i in hits if links[i][0] == row_page
+                    and abs(links[i][1][1] - row_top) <= 22.0
+                    and (row_left(row_destination) is None or
+                         row_left(row_destination) <= links[i][1][0] < row_left(row_destination) + 205)]
+        elif result and result.get("page"):
+            hits = [i for i in hits if links[i][0] == int(result["page"])]
         if not hits:
-            problems.append(f"{label}: no Lean mark with its target in the margin"
+            problems.append(f"{label}: no inline Lean link with its target beside the heading"
                             + (f" of page {result['page']}" if result and result.get('page') else ""))
             continue
         chosen = None
         for i in hits:
-            n, rect, _u = margin[i]
-            if result and result.get("number"):
+            n, rect, _u = links[i]
+            if result and (result.get("number") or (concordance and names is not None)):
                 if n not in text_cache:
                     text_cache[n] = heading_lines(reader.pages[n - 1])
                 # Text extraction may drop the space inside a bold heading ("Theorem1.3").
-                want = f"{result['printed_kind']}{result['number']}"
-                level = [t for t in text_cache[n]
-                         if abs(t[1] - rect[1]) <= TOLERANCE + (rect[3] - rect[1]) and t[0] < text_right
-                         and "".join(t[2].split()).startswith(want)]
-                if not level:
+                want = ("".join(names[label].split()) if concordance and names is not None
+                        else f"Result{result['number']}" if concordance
+                        else f"{result['printed_kind']}{result['number']}")
+                if concordance:
+                    if not row_name_matches(text_cache[n], want, row_top,
+                                            row_left(row_destination), rect[0]):
+                        continue
+                elif not any(abs(t[1] - rect[1]) <= TOLERANCE + max(rect[3] - rect[1], HEADING_LINE_STEP)
+                             and t[0] < text_right
+                             and re.match(re.escape(want) + r"(?:\D|$)", "".join(t[2].split()))
+                             for t in text_cache[n]):
                     continue
             chosen = i
             break
         if chosen is None:
-            problems.append(f"{label}: its Lean mark is not level with the heading "
-                            f"{result['printed_kind']} {result['number']}")
+            problems.append(f"{label}: its inline Lean link is not level with the heading "
+                            f"{names.get(label, label) if concordance and names is not None else str(result.get('printed_kind')) + ' ' + str(result.get('number'))}")
             continue
-        used.add(chosen)
-        n, rect, _u = margin[chosen]
-        # A mark such as "Lean" with a superscript dagger can be written as two link pieces.
-        for i, (m, r, u) in enumerate(margin):
-            if i not in used and m == n and u == lean and abs(r[1] - rect[1]) < 4 and r[0] <= rect[2] + 4:
-                used.add(i)
+        n, rect, _u = links[chosen]
+        inline = [i for i, (m, r, _u) in enumerate(links)
+                  if m == n and r[0] < text_right and i not in used
+                  and abs(r[1] - rect[1]) <= TOLERANCE + (rect[3] - rect[1])
+                  and (not concordance or row_left(row_destination) is None or
+                       row_left(row_destination) <= r[0] < row_left(row_destination) + 205)]
+
+        def require_inline(name: str, uri: str, split: str = "") -> None:
+            candidates = [i for i in inline if links[i][2] == uri]
+            groups = link_groups(candidates, links, split)
+            if not groups:
+                problems.append(f"{label}: no inline {name} link with its target beside the heading on page {n}")
+            elif len(groups) != 1 or any(len(group) > 2 for group in groups):
+                problems.append(f"{label}: duplicate inline {name} presentation on page {n}")
+            used.update(candidates)
+
+        require_inline("Lean", lean, "dagger" if "dag" in text else "")
         if comparator:
-            below = [i for i, (m, r, u) in enumerate(margin)
-                     if i not in used and m == n and u == comparator and 0 < rect[1] - r[1] <= 16]
-            if not below:
-                problems.append(f"{label}: no Comparator mark just below its Lean mark on page {n}")
+            require_inline("Comparator", comparator)
+        if record is not None and record[2] == "pending":
+            require_inline("Comparator-pending", record[0] + "-comparator", "pending")
+    for n, rect, uri in links:
+        if uri in evidence_uris or rect[0] >= text_right:
+            if (rect[0] < 4 or rect[1] < 4 or rect[2] > width - 4
+                    or rect[3] > float(reader.pages[n - 1].mediabox.height) - 4):
+                problems.append(f"page {n}: evidence link to {uri} runs off the page")
+    if concordance:
+        for label, record in (records or {}).items():
+            if label in marks:
+                continue
+            destination = destinations.get("verification-result." + label)
+            result = results.get(label)
+            if destination is None or result is None:
+                problems.append(f"{label}: missing verification row for unmarked statement")
+                continue
+            n = reader.get_destination_page_number(destination) + 1
+            top = float(destination.top)
+            hits = [i for i, (page, rect, uri) in enumerate(links)
+                    if page == n and abs(rect[1] - top) <= 22.0
+                    and uri == record[0] and i not in used
+                    and (row_left(destination) is None or
+                         row_left(destination) <= rect[0] < row_left(destination) + 205)]
+            if len(hits) != 1:
+                problems.append(f"{label}: missing or duplicated partial-support record")
             else:
-                used.add(below[0])
-    for i, (n, rect, uri) in enumerate(margin):
-        if i not in used:
-            problems.append(f"page {n}: margin link to {uri} belongs to no declared result")
-        if rect[2] > width - 4 or rect[1] < 4:
-            problems.append(f"page {n}: margin link to {uri} runs off the page")
+                used.update(hits)
+            want = ("".join(names[label].split()) if names is not None
+                    else "Result" + str(result.get("number", "")))
+            proof_left = min((links[i][1][0] for i in hits), default=(row_left(destination) or 0) + 80)
+            if not row_name_matches(heading_lines(reader.pages[n - 1]), want, top,
+                                    row_left(destination), proof_left):
+                problems.append(f"{label}: wrong unmarked statement number")
+        # A second Lean/Comparator presentation elsewhere cannot hide behind
+        # the dictionary of named row destinations. Ordinary source citations
+        # are permitted; repeated evidence labels are not.
+        for i, (n, rect, uri) in enumerate(links):
+            if i in used or uri not in evidence_uris:
+                continue
+            if any(abs(y - rect[1]) <= 3.0 and abs(x - rect[0]) <= 3.0
+                   and re.match(r"^(Lean|Comparator)(?:\W|$)", t.strip())
+                   for x, y, t in heading_lines(reader.pages[n - 1])):
+                problems.append(f"page {n}: duplicate evidence presentation outside its row")
+        row_pages = [reader.get_destination_page_number(destination) + 1
+                     for name, destination in destinations.items()
+                     if name.startswith("verification-result.")]
+        if row_pages and not any("Verification concordance" in
+                                 reader.pages[n - 1].extract_text()
+                                 for n in range(1, min(row_pages) + 1)):
+            problems.append("verification rows have no concordance section")
     # hyperref pads every link rectangle by 1pt (\Hy@linkmargin); two marks collide when
     # the text inside those rectangles would touch.
     pad = HYPERREF_LINK_MARGIN
     by_page: dict[int, list[tuple[list[float], str]]] = {}
-    for n, rect, uri in margin:
+    for i in sorted(used):
+        n, rect, uri = links[i]
         inner = [rect[0] + pad, rect[1] + pad, rect[2] - pad, rect[3] - pad]
         for other, other_uri in by_page.get(n, []):
             if inner[0] < other[2] and other[0] < inner[2] and inner[1] < other[3] and other[1] < inner[3]:
-                problems.append(f"page {n}: margin marks collide ({other_uri} and {uri})")
+                problems.append(f"page {n}: inline evidence marks collide ({other_uri} and {uri})")
         by_page.setdefault(n, []).append((inner, uri))
     return problems
 
@@ -157,6 +326,15 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--paper", action="append")
     args = ap.parse_args(argv)
     evidence = json.loads(EVIDENCE_MAP.read_text(encoding="utf-8"))
+    known_papers = {paper["paper_id"] for paper in evidence["papers"]}
+    unknown = sorted(set(args.paper or []) - known_papers)
+    if unknown:
+        print(
+            "unknown evidence-mark paper ID(s): " + ", ".join(unknown)
+            + "; valid IDs: " + ", ".join(sorted(known_papers)),
+            file=sys.stderr,
+        )
+        return 2
     baseline = json.loads(BASELINE.read_text(encoding="utf-8"))["pages"] if BASELINE.is_file() else {}
     contract = json.loads((ROOT / "docs/publication_contract.json").read_text(encoding="utf-8"))
     storage = {}
@@ -174,7 +352,9 @@ def main(argv: list[str] | None = None) -> int:
             print(f"FAIL {pid}: no PDF at {pdf}")
             failures += 1
             continue
-        problems = check_paper(pdf, paper, declared(pid), baseline.get(pid))
+        from paper_evidence import concordance_name
+        names = {result['label']: concordance_name(result) for result in paper['results']}
+        problems = check_paper(pdf, paper, declared(pid), baseline.get(pid), recorded(pid), names)
         for p in problems:
             print(f"FAIL {pid}: {p}")
         failures += len(problems)

@@ -97,9 +97,19 @@ def _render_citation(node: dict[str, Any]) -> dict[str, Any]:
 class _AstWalk:
     """One pass that fixes citations, anchors headers, and indexes sections."""
 
-    def __init__(self) -> None:
+    _SHARED_STATEMENTS = {
+        "theorem", "proposition", "lemma", "corollary", "definition", "example", "problem",
+    }
+
+    def __init__(self, *, section_numbered_statements: bool = False,
+                 front_title_id: str = "") -> None:
         self.sections: list[dict[str, Any]] = []
         self.citations_rendered = 0
+        self.section_numbered_statements = section_numbered_statements
+        self.front_title_id = front_title_id
+        self.section_number = 0
+        self.statement_number = 0
+        self.statement_numbers: dict[str, str] = {}
 
     def blocks(self, blocks: list[Any]) -> list[Any]:
         out: list[Any] = []
@@ -108,6 +118,11 @@ class _AstWalk:
                 level, attr, inlines = block["c"]
                 anchor = attr[0]
                 title = _stringify(inlines).strip()
+                if (self.section_numbered_statements and level == 1
+                        and anchor != self.front_title_id
+                        and "unnumbered" not in attr[1]):
+                    self.section_number += 1
+                    self.statement_number = 0
                 if anchor:
                     # A raw HTML anchor survives into GFM, where pandoc's header
                     # attributes do not. Without it the paper's own \label ids --
@@ -115,6 +130,19 @@ class _AstWalk:
                     # exist in the generated file at all.
                     out.append({"t": "RawBlock", "c": ["html", f'<a id="{anchor}"></a>']})
                 self.sections.append({"level": level, "id": anchor, "title": title})
+            if (self.section_numbered_statements and isinstance(block, dict)
+                    and block.get("t") == "Div"):
+                attr, body = block["c"]
+                if attr[1] and attr[1][0] in self._SHARED_STATEMENTS:
+                    self.statement_number += 1
+                    number = f"{self.section_number}.{self.statement_number}"
+                    first = body[0]["c"][0]["c"]
+                    if (len(first) < 3 or first[2].get("t") != "Str"
+                            or not re.fullmatch(r"\d+", first[2].get("c", ""))):
+                        raise RuntimeError(f"cannot number statement {attr[0]}")
+                    first[2]["c"] = number
+                    if attr[0]:
+                        self.statement_numbers[attr[0]] = number
             out.append(self.node(block))
         return out
 
@@ -127,6 +155,63 @@ class _AstWalk:
             self.citations_rendered += 1
             return _render_citation(node)
         return {k: (self.node(v) if k == "c" else v) for k, v in node.items()}
+
+
+def _tagged_equation_numbers(node: Any) -> dict[str, str]:
+    """Read author-supplied display tags; do not guess TeX's equation counter."""
+    numbers: dict[str, str] = {}
+    def visit(value: Any) -> None:
+        if isinstance(value, list):
+            for item in value:
+                visit(item)
+        elif isinstance(value, dict):
+            if value.get("t") == "Math" and isinstance(value.get("c"), list):
+                body = value["c"][1]
+                if isinstance(body, str):
+                    tag = re.search(r"\\tag\{([^{}]+)\}", body)
+                    if tag:
+                        for label in re.findall(r"\\label\{([^{}]+)\}", body):
+                            numbers[label] = f"({tag.group(1)})"
+            for child in value.values():
+                visit(child)
+    visit(node)
+    return numbers
+
+
+def _declared_equation_numbers(tex: str) -> dict[str, str]:
+    """Read display numbers recorded for untagged equations in paper source.
+
+    TeX's equation counter may be affected by earlier tagged displays, which
+    Pandoc does not reproduce. These source comments are checked against the
+    compiled PDF when the paper is reviewed; the converter never invents a
+    number from an incomplete counter reconstruction.
+    """
+    numbers: dict[str, str] = {}
+    for label, number in re.findall(
+        r"(?m)^% paper-text-number: ([A-Za-z0-9:_-]+)=([A-Za-z0-9.]+)$",
+        tex,
+    ):
+        if f"\\label{{{label}}}" not in tex or label in numbers:
+            raise RuntimeError(f"stale or duplicate paper-text-number for {label}")
+        numbers[label] = f"({number})"
+    return numbers
+
+
+def _render_numbered_references(node: Any, numbers: dict[str, str]) -> None:
+    """Replace Pandoc's raw label display while retaining its stable anchor."""
+    if isinstance(node, list):
+        for item in node:
+            _render_numbered_references(item, numbers)
+    elif isinstance(node, dict):
+        if node.get("t") == "Link":
+            attr, inlines, target = node["c"]
+            metadata = dict(attr[2])
+            label = metadata.get("reference")
+            if (metadata.get("reference-type") in {"ref", "eqref"}
+                    and target[0] == f"#{label}" and label in numbers):
+                inlines[:] = [{"t": "Str", "c": numbers[label]}]
+        for child in node.values():
+            _render_numbered_references(child, numbers)
 
 
 def _pandoc(args: list[str], stdin: str | None = None, cwd: Path | None = None) -> str:
@@ -1090,8 +1175,21 @@ def _convert(tex_path: Path, stem: str) -> dict[str, Any]:
         )
     )
     front, title, subtitle = _meta_blocks(ast.get("meta") or {}, stem)
-    walk = _AstWalk()
+    # This manuscript's section counter and tagged equations have been checked
+    # against its PDF. Other paper families define counters differently and
+    # need their own source-to-renderer review before changing their text.
+    preserve_pdf_numbers = stem == "optimal-sparse-perturbations"
+    tagged_equations = ({
+        **_tagged_equation_numbers(ast["blocks"]),
+        **_declared_equation_numbers(source),
+    } if preserve_pdf_numbers else {})
+    walk = _AstWalk(
+        section_numbered_statements=preserve_pdf_numbers,
+        front_title_id=stem,
+    )
     ast["blocks"] = walk.blocks(front + ast["blocks"])
+    _render_numbered_references(ast["blocks"],
+                                {**walk.statement_numbers, **tagged_equations})
     markdown = _pandoc(["-f", "json", "-t", "gfm", "--wrap=none"], stdin=json.dumps(ast))
     markdown = _remove_immediate_duplicate_gfm_table_headers(markdown)
     markdown = _externalize_long_gfm_table_source_notes(markdown)
@@ -1516,12 +1614,14 @@ def _readme(
         "",
     ]
     system_papers = sorted(
-        (record for record in active_records if record.get("subject_kind") == "system"),
+        (record for record in active_records
+         if record.get("subject_kind") == "system"
+         and record.get("relation_to_this_repository") == "native"),
         key=lambda record: record["paper_id"],
     )
     if system_papers:
         lines += [
-            "## Project papers",
+            "## Systems paper" if len(system_papers) == 1 else "## Systems papers",
             "",
         ]
         lines += [
@@ -1538,6 +1638,17 @@ def _readme(
         lines += [
             "The links above open the full papers as text. The catalogue below",
             "also links to PDFs, LaTeX sources and individual sections.",
+            "",
+        ]
+    earlier_systems = [record for record in non_active_records
+                       if record.get("subject_kind") == "system"
+                       and record.get("publication_state") == "retired"
+                       and record.get("relation_to_this_repository") == "native"]
+    if earlier_systems:
+        lines += [
+            "Earlier systems papers are retained below as historical background.",
+            "Their dates, superseding paper and source records distinguish them",
+            "from the current account and instructions.",
             "",
         ]
     lines.extend(_signal_hierarchy_lines(records, target_repo, repo_root))
@@ -1585,11 +1696,40 @@ def _readme(
             f"`{record['paper_id']}` · {record['relation_to_this_repository']} to this repository"
         )
         lines.append("")
+        superseding = next((row for row in records
+                            if row["paper_id"] == record.get("superseded_by")), None)
+        if superseding:
+            lines += [
+                f"Superseded by [{superseding['title']}]"
+                f"({_relative_to_corpus(superseding['local_full_text'])}). "
+                "Retained for historical context; use the current paper and "
+                "repository guides for present practice.",
+                "",
+            ]
+        for archived in record.get("archived_versions", []):
+            label = f"{archived['identifier']}v{archived['version']}"
+            source_url = (f"{archived['source_repository']}/blob/"
+                          f"{archived['source_commit']}/{archived['source_path']}")
+            lines += [
+                f"Archived edition: [{label}]({archived['url']}) "
+                f"([PDF]({archived['pdf_url']}), [source archive]({archived['source_url']})); "
+                f"published {archived['published']} from "
+                f"[source `{archived['source_commit'][:12]}`]({source_url}).",
+                "",
+                ("The current source and PDF match this archived edition."
+                 if archived["relation_to_current_manuscript"] == "same_source_and_pdf"
+                 else "The current source or PDF differs from this frozen edition; the archive record does not cover later changes."),
+                "Archive publication does not establish independent mathematical review.",
+                "",
+            ]
         route = record.get("first_pass")
         if route:
             entries = route["sections"]
             named = ", ".join(f"[{e['title']}]({_section_link(record, e)})" for e in entries)
             lead = (
+                "Selected sections of this historical account:"
+                if state == "retired"
+                else
                 "The author recommends starting with"
                 if route["stated_by_the_paper"]
                 else "Start here (selected for this guide):"
@@ -1639,3 +1779,82 @@ def _readme(
         "",
     ]
     return "\n".join(lines)
+
+
+
+def render_record_navigation(pair: dict[str, Any], boundary: str) -> str:
+    """A source-bound short/long guide. No summarization or status inference."""
+    from urllib.parse import quote
+
+    def file_link(loc: dict[str, Any]) -> str:
+        path = loc['path']
+        return f"[{path}](../../../{quote(path, safe='/')}) lines {loc['line']}-{loc['end_line']}"
+
+    def paper_link(paper: dict[str, Any], anchor: str = '') -> str:
+        target = '../../../' + quote(paper['local_full_text'], safe='/')
+        if anchor:
+            target += '#' + quote(anchor, safe=':.-_')
+        return target
+
+    short, long = pair['short_paper'], pair['long_paper']
+    s = pair['summary']
+    lines = [f"# Erdős #{pair['problem']}: from the short paper to its record", '',
+             '<!-- Generated by scripts/build_reading_edition.py --records. -->', '',
+             f"Start with [{short['title']}]({paper_link(short)}). "
+             f"The longer account is [{long['title']}]({paper_link(long)}).", '',
+             f"Registered assertions: {s['short_claims']} short, {s['long_claims']} long. "
+             f"Located long-record links: {s['linked_short_claims']}. "
+             f"Proofs retained in the short paper: {s.get('explained_in_short', 0)}. "
+             f"Long correspondences still open: {s.get('long_correspondence_open', s['unresolved_short_claims'])}.", '',
+             boundary, '', '## Reading routes', '',
+             'These are the existing paper-corpus editorial routes. Their headings retain the authors’ scope; '
+             'a section about a failed route is not an impossibility result for the parent problem.', '']
+    for section in long.get('first_pass', {}).get('sections', []):
+        lines += [f"- [{section['title']}]({paper_link(long, section['id'])}) ({section['id']})."]
+    lines += ['', '## Claim to support', '',
+              'A complete registered-evidence match locates the same full declaration set in the long record. '
+              'It does not independently prove that two differently worded statements are equivalent. '
+              'An authored proof link checks the pinned passage exists unchanged, without reviewing the proof. '
+              'An explained-in-short disposition locates its accepted short-paper argument and keeps the long correspondence open.', '']
+    for claim in pair['claims']:
+        lines += [f"### {claim['label']}", '', f"State: **{claim['state']}**.", '']
+        if claim['short_location']:
+            lines += ['Short statement: ' + file_link(claim['short_location']) + '.', '']
+        lines += [f"Ledger evidence: Lean `{claim['ledger_lean_status']}`; Comparator `{claim['ledger_comparator_status']}`. "
+                  'These statuses are copied from the evidence ledger; this build reruns neither checker.', '']
+        if claim['long_locations']:
+            lines += ['Long-record location: ' + '; '.join(file_link(x) for x in claim['long_locations']) + '.', '']
+        for match in claim['matches']:
+            support = match['support']
+            if support['kind'] == 'ordinary_proof_text':
+                lines += [match['rationale'], '', 'Review status: ' + support['review_status'] + '.', '']
+            else:
+                for loc in support['locators']:
+                    lines += [f"- `{loc['declaration']}`: {file_link(loc)}."]
+                lines += ['']
+        if claim.get('short_proof'):
+            support = claim['short_proof']
+            lines += ['Retained short-paper argument: ' + file_link(support['locator']) + '.', '',
+                      support['rationale'], '', 'Review status: ' + support['review_status'] + '.', '',
+                      'This hash-bound passage records proof availability; its mathematical correctness is not checked by this audit. '
+                      'No accepted long-record correspondence is established by this disposition.', '']
+        if claim['state'] in ('unresolved', 'short_proof_explained_long_link_open'):
+            lines += ['No accepted correspondence is recorded. Check the candidates below; '
+                      'none is silently treated as a proof of this short statement.', '']
+            for candidate in claim['candidates']:
+                lines += [f"- `{candidate['basis']}`: {file_link(candidate['location'])}."]
+            if not claim['candidates']:
+                lines += ['No candidate was found by the bounded label/declaration rules. Read the long record before declaring the result absent.']
+            lines += ['']
+    lines += ['## Long-record material retained outside these links', '',
+              'These registered long assertions are not used by an accepted short-paper link. '
+              'They may be supporting lemmas, broader results, route-local obstructions, or unresolved matches. '
+              'They are retained and are not deletion candidates.', '']
+    for row in pair['long_only_or_unmatched']:
+        lines += [f"- `{row['long_claim'].split('#',1)[-1]}`: {file_link(row['location'])}."]
+    reviews = [f for f in pair['findings'] if f['severity'] == 'review']
+    lines += ['', '## Passage-review queue', '',
+              f"{len(reviews)} lexical review findings. No automated deletion or mathematical contradiction judgment.", '']
+    for finding in reviews:
+        lines += [f"- `{finding['code']}`: {finding['detail']}"]
+    return '\n'.join(lines).rstrip() + '\n'

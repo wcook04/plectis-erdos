@@ -1247,6 +1247,15 @@
           ],
           "comparator_disposition": "not_selected_deep_certificate_vocabulary",
           "boundary": "Equivalent producer statements are as hard as the unresolved target."
+        },
+        {
+          "id": "signed_totient_entire_defect_interpolation",
+          "contribution_class": "ordinary paper argument",
+          "summary": "For any integer beta>=2 and positive allowance f(n) tending to infinity, an interval around the totient value is filled by integer sequences b=phi+e with 0<=b(n)<=n and |e(n)|<=f(n). One target-independent even support has upper Banach density zero, leaving any fixed prefix and odd coefficients unchanged. The construction preserves every fixed eventual coefficient and cumulative congruence, gives eventually constant progression moment defects outside common hulls of density zero, entire progression Dirichlet defects, and smooth root-of-unity radial germs with prescribed finite zero jets. The full proof includes the allowance-dependent block bound and first-harmonic rational countermodels. It is an ordinary proof with two AI proof reviews, not a Lean proof of the infinite theorem or independent human review.",
+          "evidence_mode": "ordinary proof; two AI reviews, no independent human review",
+          "comparator_disposition": "not_applicable_without_exact_Lean_statement",
+          "declarations": [],
+          "boundary": "The correction is signed, so it does not subsume the one-sided prime-gap theorem. It preserves singularities and prescribed finite jets, not full analytic functions or all Taylor coefficients. The unperturbed totient and prime series remain unresolved."
         }
       ]
     },
@@ -1485,6 +1494,15 @@
           "evidence_mode": "Lean kernel plus Comparator",
           "comparator_disposition": "targeted",
           "boundary": "Neither membership question is decided; the 2-adic bound is sharp locally, and the two countermodel routes require unconstructed terminal-scaled or cofinal-cylinder antecedents."
+        },
+        {
+          "id": "separated_cut_algebraic_lambert_transcendence",
+          "contribution_class": "ordinary paper argument",
+          "summary": "For an infinite positive-integer host with cuts L_j < M_j, L_j tending to infinity and M_j-L_j tending to infinity, every host exponent at most L_j dividing L_j and every later exponent divisible by M_j, every infinite thinning with bounded positive integer weights has transcendental Lambert sum at every real algebraic base t > 1. This includes all divisibility chains and an explicit host of unbounded divisibility width and divergent reciprocal sum. The full number-field Subspace Theorem argument has two AI proof reviews; it is an ordinary proof with no Lean transcendence theorem, independent human review or asserted historical priority.",
+          "evidence_mode": "ordinary proof; two AI reviews, no independent human review",
+          "comparator_disposition": "not_applicable_without_exact_Lean_statement",
+          "declarations": [],
+          "boundary": "The full support at 3/2 and arbitrary infinite supports at base two remain unresolved. Finite cut arithmetic is not a proof of transcendence."
         }
       ]
     },
@@ -1576,6 +1594,24 @@
           "evidence_mode": "external exact computation",
           "comparator_disposition": "not_applicable_not_a_lean_theorem",
           "boundary": "Finite search is not a cofinal statement."
+        },
+        {
+          "id": "independent_clock_channel_relations",
+          "contribution_class": "ordinary paper argument",
+          "summary": "For positive rationally independent clock rates with no simultaneous positive crossings, and integer radices b_i >= 2, all rational relations among 1 and the channel sums S_i are multiples of (-1,b_1-1,...,b_d-1). The proof uses genuine late swaps with a common infinite suffix in one orbit closure, a fixed rational lattice, and density of the clock section. The explicit rates 1,sqrt(2),sqrt(3),sqrt(6) and radices 2,3,5,7 give rational span dimension four. This is an ordinary proof reviewed by AI agents, without Lean or independent human verification of the infinite theorem.",
+          "evidence_mode": "ordinary proof; two AI reviews, no independent human review",
+          "comparator_disposition": "not_applicable_without_exact_Lean_statement",
+          "declarations": [],
+          "boundary": "No rational independence of the original reciprocal prime logarithms is assumed or proved; the repeated running-LCM endpoint remains open."
+        },
+        {
+          "id": "selected_staircase_integral_height_boundary",
+          "contribution_class": "ordinary paper argument",
+          "summary": "The selected staircase matrix with ones on and below the diagonal and integer r>=2 above it has Smith factors 1,r-1,...,r-1. For the selected {2,3,5} kernel, any entrywise-integral diagonal clearing has determinant magnitude at least 4^(N-1), whereas the reduced rational determinant has numerator one up to sign. A rational single-target border has primitive polynomial plus or minus (tX-s), where s/t is the reduced Schur complement. These ordinary arithmetic arguments were reviewed by AI agents; they are not the existing Lean nonvanishing theorem and have no independent human review.",
+          "evidence_mode": "ordinary proof; two AI reviews, no independent human review",
+          "comparator_disposition": "not_applicable_without_exact_Lean_statement",
+          "declarations": [],
+          "boundary": "The optimality concerns diagonal clearing and one rational target. It does not rule out multi-target, nonlinear, recurrence, or new approximation methods and does not prove running-LCM irrationality."
         }
       ]
     },
@@ -1706,6 +1742,15 @@
             "ErdosProblems.Erdos1049.rectangular_hp_threshold_eq_classical_iff"
           ],
           "boundary": "This is a sharp no-go only for the explicit rectangular two-function exponent model under the stated real hypotheses; it constructs no approximating polynomials or remainders and is not a universal Padé or Hermite-Padé no-go. It proves no irrationality at 3/2 or any general rational-base endpoint, and the analytic remainder/nonvanishing input remains untreated. No novelty, priority, significance, external-review, or endpoint claim is made; Erdős #1049 remains open."
+        },
+        {
+          "id": "calibrated_rational_hankel_countermodel",
+          "contribution_class": "ordinary paper argument",
+          "summary": "An explicit positive atomic moment family and integer formal series have all-rank Hankel order sum_{j<N} j^2 and leading coefficient (N!)^2(N+1)!/2^N, with the same fixed-base asymptotic shape including N^(-8 xi), while xi=G_{2/3}(2/3)=1. For n>=1 the exact reduced moment denominator is 3^(31n+62)(3^(n+1)-2^(n+1))^4; the determinant denominator has logarithmic size Theta(N^3), and a proposed rank-two row-product clearer leaves denominator625. These are ordinary proofs with independent exact finite checks and AI proof reviews, not a Lean proof of the infinite family or human peer review.",
+          "evidence_mode": "ordinary proof; two AI reviews, no independent human review",
+          "comparator_disposition": "not_applicable_without_exact_Lean_statement",
+          "declarations": [],
+          "boundary": "These are not Zudilin's actual moments. They refute an inference from the shared signature alone; they do not settle F(3/2) or refute the attributed divisibility-based criterion."
         }
       ]
     }
@@ -1738,9 +1783,9 @@
   "source_owner": "docs/claims.json::external_verification_packet",
   "problem_index": {
     "owner": "docs/problem_index_source.json",
-    "owner_digest": "sha256:9c89c3445f431b8de3ebdd66d0a6aa63d5adf26ec35e3afc0ca72a82645bcbfd",
+    "owner_digest": "sha256:d651478e6b7908e49517009f4cf575bf0f3fd64184974c52db9ac57be1491c8a",
     "projection": "docs/problems.json",
-    "projection_digest": "sha256:f338de0d78d4b05725b8bdb4f214302fd3253c731f103def81afa3ece15fa9dc",
+    "projection_digest": "sha256:e8e1d7c043cfc172833f1cf5a60896534759346bc65a1e62f5d50bbf5dc5c175",
     "schema": "erdos249257-problem-index/1",
     "problem_count": 8,
     "authority_posture": "navigation_projection_not_Lean_proof_authority_and_not_a_reviewed_claim_registry",
@@ -1762,7 +1807,7 @@
           ],
           "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
           "programme_status": "open",
-          "programme_statement": "The irrationality of the factorial-denominator series remains open in this release; the checked reductions and finite obstructions do not supply the required cofinal failure."
+          "programme_statement": "Lean proves that S = ∑_{n≥2} 1/(n! − 1) is irrational if and only if, for infinitely many m, m does not divide ⌊m!·S_m⌋ + 1, where S_m is the prefix sum through n = m (irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses); equivalently, the factorial-gap carry differs from 1 for infinitely many m (irrational_factorialGapSeries_iff_cofinal_nonunit_carries). Lean also proves liminf log L_N/(N^{3/2} log N) ≥ 2√2/3 for the common denominator L_N = lcm_{2≤n≤N}(n! − 1) before cancellation (common_denominator_growth_liminf). The irrationality of S remains open: the checked reductions and finite obstructions do not supply the required cofinal non-unit carries."
         },
         "directory": "lean/ErdosProblems/Erdos68",
         "modules": [
@@ -1886,7 +1931,7 @@
         ],
         "note": {
           "artifact_id": "erdos_68_note",
-          "title": "Two Incomparable Denominator Exclusions\\\\for $\\sum_{n\\ge2}(n!-1)^{-1}$",
+          "title": "Integer Linear Forms for a\\\\Factorial Reciprocal Series",
           "source_path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
           "rendered_path": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
           "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
@@ -1932,7 +1977,7 @@
         "finite_search": "A retained exact GMP receipt through m = 300000 records a non-unit carry at that index, so every positive rational denominator satisfies q ∤ 299999!. A byte-identical regeneration of that receipt with the current driver is outstanding in this revision; a separate exact replay through 4000 reproduces the unit-carry prefix. The Lean consumer turns one non-unit carry at m into q >= m; it does not prove a cofinal statement. An independent continued-fraction enclosure gives q ≥ 2^39990. At the prime 12487 and gap 12, exact polynomial arithmetic exhibits two critical roots 4626 and 7848, so the small-prime pattern of at most one critical root is not uniform; those roots have factorial values 442 and 6300, not 1.",
         "paper": {
           "paper_id": "erdos-68-factorial-denominator-irrationality",
-          "title": "Two Incomparable Denominator Exclusions for \\sum_{n\\ge2}(n!-1)^{-1}",
+          "title": "Integer Linear Forms for a Factorial Reciprocal Series",
           "source": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
           "pdf": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
           "full_text": "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md",
@@ -1975,7 +2020,7 @@
           ],
           "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
           "programme_status": "open",
-          "programme_statement": "The eventual Sylvester recurrence assertion remains open in this release; the bounded-rise barrier and conditional negative-part reductions leave the mixed-sign unbounded regime unresolved."
+          "programme_statement": "Lean proves that if a is a strictly increasing sequence of positive integers with n^λ(a(n)²/a(n+1) − 1 − λ/n) → 0, then the reciprocal sum ∑ 1/a(n) is irrational, for every non-integer λ > 1, where Lean also derives convergence (nonintegral_regular_rate_irrational), and for λ = 3 whenever the sum converges (cubic_rate_irrationality_unconditional). Both theorems are zero-indexed; the paper transfers them to one-based indexing by an ordinary finite-prefix argument. Without such a rate the eventual Sylvester recurrence assertion remains open: the bounded-rise barrier and the conditional negative-part reductions leave the mixed-sign unbounded regime unresolved."
         },
         "directory": "lean/ErdosProblems/Erdos243",
         "modules": [
@@ -2063,13 +2108,14 @@
         ],
         "note": {
           "artifact_id": "erdos_243_note",
-          "title": "Cubic-Rate Irrationality and Reciprocal-Tail Rigidity",
+          "title": "Reciprocal Sums and the Sylvester Recurrence",
           "source_path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
           "rendered_path": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
           "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
         },
         "what_is_checked": [
           "Lean proves cubic_rate_irrationality_unconditional for positive StrictMono zero-indexed a_n with a_n²/a_(n+1) = 1 + 3/n + o(n^-3). The one-based paper uses a finite-prefix bridge; general #243 remains open.",
+          "Lean proves nonintegral_regular_rate_irrational for positive StrictMono zero-indexed a_n whenever the real coefficient lambda is greater than one and nonintegral, with a_n²/a_(n+1) = 1 + lambda/n + o(n^-lambda). Summability is derived. The one-based paper uses the same finite-prefix bridge; the unrestricted problem remains open.",
           "The exact product-cleared tail dynamics and the defect identity, as identities in the integer state variables.",
           "That a vanishing centred state is absorbing under strict centring, so the state is either eventually zero or nowhere zero.",
           "That eventual vanishing of the centred state, with the next tail state nonvanishing, forces the Sylvester recurrence eventually.",
@@ -2106,7 +2152,7 @@
         "finite_search": "An exact search over initial states below five thousand produced forced prefixes of length seventeen and no longer. It is superseded: the constant-negative template is now excluded outright, for every seed and at every scale.",
         "paper": {
           "paper_id": "erdos-243-reciprocal-tail-rigidity",
-          "title": "Cubic-Rate Irrationality and Reciprocal-Tail Rigidity",
+          "title": "Reciprocal Sums and the Sylvester Recurrence",
           "source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
           "pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
           "full_text": "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md",
@@ -2145,7 +2191,7 @@
           ],
           "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
           "programme_status": "open",
-          "programme_statement": "Not proved by this release. The reductions convert it into the unboundedness of the certificate supply, which is untouched."
+          "programme_statement": "Lean proves that S = ∑ φ(n)/2ⁿ is irrational if, for every h ≥ 1, there are arbitrarily large X at which the real part of the first-harmonic sum over the good indices is at most 603X/1000 (irrational_totient_series_of_goodBase_gap); the good indices are the assigned indices N in [X, 2X) at the minimal admissible depth with s = 26 whose cofactor m satisfies φ(m) ≥ m/1000. For all large X more than 67X/100 indices are good (eventually_card_pivotGoodBases_gt), and 603/1000 = (9/10)(67/100). Lean also proves that S is irrational if and only if certified non-integrality witnesses occur at unbounded parameters (irrational_totient_series_iff_certificate_supply). The 603X/1000 bound and that unbounded certificate supply are open, so S is not proved irrational."
         },
         "directory": "lean/ErdosProblems/Erdos249",
         "modules": [
@@ -2179,7 +2225,7 @@
         ],
         "note": {
           "artifact_id": "erdos_249_note",
-          "title": "Bases and Integral Relations for the $k$-Kernel of Euler's Totient",
+          "title": "Integral Relations among Totient Sections",
           "source_path": "paper/249/erdos-249-binary-totient-series.tex",
           "rendered_path": "paper/249/erdos-249-binary-totient-series.pdf",
           "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
@@ -2228,7 +2274,7 @@
         "finite_search": "The returned strict-orbit packet reports an exact finite deposit at parameters (147,23), verified through harmonic height 5022. It is research evidence, not a Lean-checked unbounded certificate.",
         "paper": {
           "paper_id": "erdos-249-binary-totient-series",
-          "title": "Bases and Integral Relations for the k-Kernel of Euler’s Totient",
+          "title": "Integral Relations among Totient Sections",
           "source": "paper/249/erdos-249-binary-totient-series.tex",
           "pdf": "paper/249/erdos-249-binary-totient-series.pdf",
           "full_text": "docs/papers/full-text/erdos-249-binary-totient-series.md",
@@ -2236,8 +2282,9 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 19,
+          "family_count": 20,
           "by_class": {
+            "not_applicable": 1,
             "not_selected": 4,
             "represented_by": 1,
             "targeted": 14
@@ -2261,7 +2308,8 @@
             "totient_carry_rank": "not_selected_deep_orbit_vocabulary",
             "totient_lambert_coefficients": "represented_by_basis_and_rank_targets",
             "eventually_periodic_lambert": "not_selected_prior_result",
-            "totient_certificate_equivalences": "not_selected_deep_certificate_vocabulary"
+            "totient_certificate_equivalences": "not_selected_deep_certificate_vocabulary",
+            "signed_totient_entire_defect_interpolation": "not_applicable_without_exact_Lean_statement"
           }
         }
       },
@@ -2283,7 +2331,7 @@
           ],
           "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
           "programme_status": "open",
-          "programme_statement": "The prime-index dyadic series remains open in this release; the exact tail-shift equivalence, prime-gap unboundedness, and nonperiodicity do not supply the required cofinal escape for the actual prime gaps."
+          "programme_statement": "Lean proves that Π = ∑_{n≥1} p_n/2ⁿ equals 2 plus the prime-gap dyadic series and that Π is irrational if and only if that gap series is (tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional, irrational_tsum_primeDyadicTerm_iff_primeGap), with summability from the elementary bound p_n ≤ 1250(n+1)^4; the identity is the known summation by parts. Lean also proves that the consecutive prime gaps are unbounded and not eventually periodic (exists_primeGap0_gt, primeGap0_not_eventually_periodic). The irrationality of Π remains open: these facts do not supply the required cofinal escape for the actual prime gaps."
         },
         "directory": "lean/ErdosProblems/Erdos251",
         "modules": [
@@ -2379,7 +2427,7 @@
           "registered_claim_ids": [],
           "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
           "programme_status": "open",
-          "programme_statement": "Irrationality of ∑_{n∈A} 1/(2ⁿ − 1) for every infinite A is not proved by this release; only named families are formalised."
+          "programme_statement": "Lean proves that for every integer base b ≥ 2 and every finite nonempty set P of primes, with h(a) the largest divisor of a supported on P, every infinite set A of positive integers with ∑_{a∈A} h(a)/(a(b^{h(a)} − 1)) finite has ∑_{n∈A} 1/(bⁿ − 1) irrational (divisibilityWeightedClaim). Lean also proves irrationality at every such base for every infinite A with ∑_{a∈A} 1/a finite (irrational_erdosSupportSeries_of_summable_reciprocal), and exhibits sets with divergent reciprocal sum all of whose infinite subsets have irrational series at every such base (finite_monotone_witness_rule_realised). Irrationality of ∑_{n∈A} 1/(2ⁿ − 1) for every infinite A remains open."
         },
         "directory": "lean/ErdosProblems/Erdos257",
         "modules": [
@@ -2395,7 +2443,7 @@
         ],
         "note": {
           "artifact_id": "erdos_257_note",
-          "title": "Weighted Support Criteria for Reciprocal Mersenne Subseries",
+          "title": "Irrationality criteria for Lambert subseries",
           "source_path": "paper/257/erdos-257-mersenne-support-subseries.tex",
           "rendered_path": "paper/257/erdos-257-mersenne-support-subseries.pdf",
           "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
@@ -2423,7 +2471,7 @@
         "finite_search": null,
         "paper": {
           "paper_id": "erdos-257-mersenne-support-subseries",
-          "title": "Weighted Support Criteria for Reciprocal Mersenne Subseries",
+          "title": "Irrationality criteria for Lambert subseries",
           "source": "paper/257/erdos-257-mersenne-support-subseries.tex",
           "pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
           "full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
@@ -2431,9 +2479,9 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 15,
+          "family_count": 16,
           "by_class": {
-            "not_applicable": 1,
+            "not_applicable": 2,
             "targeted": 14
           },
           "dispositions": {
@@ -2451,7 +2499,8 @@
             "squarefree_support": "not_applicable_to_external_irrationality_input",
             "achievement_set_geometry": "targeted_measure_theorem",
             "restricted_achievement_sets": "targeted_measure_dichotomy",
-            "half_and_twenty_one_frontiers": "targeted"
+            "half_and_twenty_one_frontiers": "targeted",
+            "separated_cut_algebraic_lambert_transcendence": "not_applicable_without_exact_Lean_statement"
           }
         }
       },
@@ -2474,7 +2523,7 @@
           ],
           "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
           "programme_status": "open",
-          "programme_statement": "The running-LCM reciprocal sum remains unresolved from three or more primes in this release. For the actual {2,3,5} series, the rationality-to-positive-reduced-carry bridge is checked; the remaining endpoint is cofinal local-window escape, equivalently exclusion of the integral branch."
+          "programme_statement": "For every finite set P of at least two primes, the distinct-height sum D_P (each running LCM value of the P-smooth integers counted once) is irrational (res:distinct-height-all; ordinary proof checked by a second AI agent, no human review), as Erdős asserted without an argument in 1973; for |P| = 2 it follows from Hecke-Mahler transcendence, and D_{2,3,5} is Lean-checked (res:distinct-height-235; Comparator not yet run). Each single-prime sub-sum E_p of the catalogue sum is irrational (res:single-prime-subsums; same evidence class as D_P). The catalogue sum for three or more primes is unresolved in this release: for {2,3,5} the rationality-to-positive-reduced-carry bridge is checked, and the remaining endpoint is cofinal local-window escape, equivalently exclusion of the integral branch."
         },
         "directory": "lean/ErdosProblems/Erdos269",
         "modules": [
@@ -2509,10 +2558,10 @@
             "module": "ErdosProblems.Erdos269.BoundedRadixTailEscape",
             "path": "lean/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean",
             "present": true,
-            "line_count": 207,
-            "declaration_count": 6,
-            "theorem_count": 4,
-            "content_digest": "sha256:a3e8b3b5e9723a8de2ea1bc3a3dd4635a1cb06c4d563e0d4d9d55aec947f2c61"
+            "line_count": 304,
+            "declaration_count": 10,
+            "theorem_count": 8,
+            "content_digest": "sha256:741d610f12f3774500b993266f187c846be33cb8be466fa38a0b3a7b1503d8e5"
           },
           {
             "module": "ErdosProblems.Erdos269.CarryLiftExtinction",
@@ -2544,7 +2593,7 @@
         ],
         "note": {
           "artifact_id": "erdos_269_note",
-          "title": "No Finite Separable Representation\\\\at Three Prime Generators",
+          "title": "Distinct running least common multiples",
           "source_path": "paper/269/erdos-269-three-prime-running-lcm.tex",
           "rendered_path": "paper/269/erdos-269-three-prime-running-lcm.pdf",
           "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
@@ -2563,10 +2612,11 @@
           "For the actual {2,3,5} series, rationality produces a positive reduced carry; cofinal local-window escape rules out such carries under the recorded bound.",
           "A bounded-radix dichotomy: under a bounded positive digit alphabet, a nonzero scaled tail must be separated from the integers cofinally.",
           "Exact three-channel block-nullity as a coboundary condition, and extinction of a bounded carry lift under two independent anchors.",
-          "The exact residue-digit plus coboundary form of an integral carry, together with a function-faithful observer criterion and a finite realised-span consequence."
+          "The exact residue-digit plus coboundary form of an integral carry, together with a function-faithful observer criterion and a finite realised-span consequence.",
+          "Irrationality of the distinct-height sum for {2,3,5}, which counts each running value once."
         ],
         "what_is_not_checked": [
-          "Irrationality or transcendence in any three-prime case.",
+          "Irrationality of the repeated sum, or transcendence, in any three-prime case.",
           "CofinalLocalWindowEscape for those actual words; it is an explicit hypothesis of the checked consumer, not a theorem.",
           "A proof that the actual three-channel word satisfies the block-null, anchor, or factorisation hypotheses of the migrated abstract consumers.",
           "The infinite limit of the jump expansion; only its finite core is checked.",
@@ -2593,7 +2643,7 @@
         "finite_search": "The integer-only dyadic-window checker reproduces three exact packet certificates and, for all 106,666 pairs with denominator B <= 1000 coprime to 30 and dyadic start 100 <= a <= 500, finds an escaping window of length at most 18; the largest first successful length is 14. This is finite proof-consumer evidence only and proves neither unbounded-denominator nor cofinal escape.",
         "paper": {
           "paper_id": "erdos-269-three-prime-running-lcm",
-          "title": "No Finite Separable Representation at Three Prime Generators",
+          "title": "Distinct running least common multiples",
           "source": "paper/269/erdos-269-three-prime-running-lcm.tex",
           "pdf": "paper/269/erdos-269-three-prime-running-lcm.pdf",
           "full_text": "docs/papers/full-text/erdos-269-three-prime-running-lcm.md",
@@ -2601,9 +2651,9 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 8,
+          "family_count": 10,
           "by_class": {
-            "not_applicable": 2,
+            "not_applicable": 4,
             "represented_by": 2,
             "targeted": 4
           },
@@ -2615,7 +2665,9 @@
             "dyadic_block_alphabet": "represented_by_three_prime_structure_target",
             "conditional_carry_escape": "targeted",
             "weighted_phase_carry_observer": "targeted",
-            "three_prime_finite_search": "not_applicable_not_a_lean_theorem"
+            "three_prime_finite_search": "not_applicable_not_a_lean_theorem",
+            "independent_clock_channel_relations": "not_applicable_without_exact_Lean_statement",
+            "selected_staircase_integral_height_boundary": "not_applicable_without_exact_Lean_statement"
           }
         }
       },
@@ -2623,7 +2675,7 @@
         "problem_id": "erdos_1041",
         "erdos_number": 1041,
         "short_title": "Short connections inside polynomial lemniscates",
-        "status": "open",
+        "status": "formal statement refuted",
         "question": "Must two roots of a monic polynomial in the open unit disc be joined by a sub-two-length curve inside its unit lemniscate? Ani’s degree-seven example refutes the exact Formal Conjectures statement; correspondence with the 1958 wording awaits human review.",
         "library_root": "ErdosProblems.lean",
         "claim_registry_status": "registered_declarations",
@@ -2633,10 +2685,11 @@
           "programme_claim_id": "erdos_1041",
           "registered_claim_ids": [
             "ani_degree_seven_total_variation_counterexample",
+            "erdos_1041",
             "newton_ray_separation_consumer"
           ],
           "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
-          "programme_status": "open",
+          "programme_status": "formal statement refuted",
           "programme_statement": "Using ani's explicit monic degree-seven polynomial, Lean proves that every preconnected subset of its strict unit lemniscate containing two distinct roots has one-dimensional Hausdorff measure greater than 2. This refutes the exact Formal Conjectures path-image-length statement and its total-variation counterpart. The reported family is not formalised, and independent human review of correspondence with the 1958 wording is not recorded."
         },
         "directory": "lean/ErdosProblems/Erdos1041",
@@ -2671,7 +2724,7 @@
         ],
         "note": {
           "artifact_id": "erdos_1041_note",
-          "title": "Paths in Polynomial Lemniscates:\\\\A Degree-Seven Counterexample\\\\and Two Short-Path Criteria",
+          "title": "Paths in Polynomial Lemniscates:\\\\A Degree-Seven Counterexample\\\\and Radial Connections",
           "source_path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
           "rendered_path": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
           "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
@@ -2722,7 +2775,7 @@
         "finite_search": "Raster tests through degree ten suggest candidate bounds only; they are separate from the exact degree-seven Lean counterexample.",
         "paper": {
           "paper_id": "erdos-1041-lemniscate-newton-flow",
-          "title": "Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Two Short-Path Criteria",
+          "title": "Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections",
           "source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
           "pdf": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
           "full_text": "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md",
@@ -2753,23 +2806,23 @@
           "files": {
             "frontier": {
               "path": "research_corpus/Erdos1041/FRONTIER.md",
-              "content_digest": "sha256:e0c5f9c6ca8add9a7e87d11511fb63aa461699f0d54c392afba8bdabebf20299"
+              "content_digest": "sha256:8aef5071a9a2a35de6b2af79bf0a486d97306aa0b6d4b997144e16ba1d112a9a"
             },
             "strongest_results": {
               "path": "research_corpus/Erdos1041/STRONGEST_RESULTS.json",
-              "content_digest": "sha256:6b11ede029441a4c50aae08895a035b236a5a3e08a39452cf78a8ab87194199f"
+              "content_digest": "sha256:a5f888560836a710024bd6079538cbd62b39c1544a19514903ac57f9789d7e24"
             },
             "manifest": {
               "path": "research_corpus/Erdos1041/CORPUS_MANIFEST.json",
-              "content_digest": "sha256:ce964d4a1e23101de34f35e3a42d4e2d6851873f9a37ddaecb6af718e9048ea6"
+              "content_digest": "sha256:6f456a92e30ed2318d6c342f2e80dbbc77be39a14e051828ef215ffb8b001bbd"
             },
             "checkpoint": {
               "path": "research_corpus/Erdos1041/PUBLIC_CORPUS_CHECKPOINT.json",
-              "content_digest": "sha256:007198e7eb8c48c7438c21d2a082342c45f44b945c49d5a3326d0a600d6b725c"
+              "content_digest": "sha256:3ec0d7b9f9ab8a3425678b52830ee3e6701382b9b7485787c3dac43f66ac7fb3"
             }
           },
           "strongest_result_summary": {
-            "source_checkpoint": "fd47c99b7f95ee10cbf22bd7e13a3bec9ea6bfac",
+            "source_checkpoint": "fb5c8803c1498cad9755d1615473cb33b11af6ee",
             "status": "open",
             "result_count": 294
           },
@@ -2800,7 +2853,7 @@
           ],
           "boundary": "Only the listed claim rows carry their recorded public status; other declarations are not promoted by module membership or a kernel build.",
           "programme_status": "open",
-          "programme_statement": "For rational bases in the Zudilin contour region, including every positive integral power of 31/4, the public Lean development proves irrationality and the stated irrationality-exponent bound from the constructed polynomial forms and analytic estimates. The universal rational-base assertion remains open; 3/2 lies outside this region and is unresolved here."
+          "programme_statement": "For natural numbers 0 < b < a in the Zudilin contour region, Lean proves that F(a/b) is irrational with irrationality exponent at most rationalBaseMeasureBound a b (rational_base_region, rational_base_measure), from the constructed polynomial forms and analytic estimates; in particular F((31/4)^r) is irrational for every positive integer r (thirtyone_four_powers). The universal rational-base assertion remains open; 3/2 lies outside this region and is unresolved here."
         },
         "directory": "lean/ErdosProblems/Erdos1049",
         "modules": [
@@ -2861,7 +2914,7 @@
         ],
         "note": {
           "artifact_id": "erdos_1049_note",
-          "title": "Zudilin's Forms at Rational Bases\\\\and the Exact Normalised Hankel Order",
+          "title": "Hankel Determinants of Geometric Moments\\\\and Rational Lambert Values",
           "source_path": "paper/1049/erdos-1049-rational-base-lambert.tex",
           "rendered_path": "paper/1049/erdos-1049-rational-base-lambert.pdf",
           "authority_posture": "authored_mathematical_exposition_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json"
@@ -2903,7 +2956,7 @@
         "finite_search": null,
         "paper": {
           "paper_id": "erdos-1049-rational-base-lambert",
-          "title": "Zudilin’s Forms at Rational Bases and the Exact Normalised Hankel Order",
+          "title": "Hankel Determinants of Geometric Moments and Rational Lambert Values",
           "source": "paper/1049/erdos-1049-rational-base-lambert.tex",
           "pdf": "paper/1049/erdos-1049-rational-base-lambert.pdf",
           "full_text": "docs/papers/full-text/erdos-1049-rational-base-lambert.md",
@@ -2911,9 +2964,9 @@
         },
         "external_check": {
           "state": "reviewed",
-          "family_count": 7,
+          "family_count": 8,
           "by_class": {
-            "not_applicable": 1,
+            "not_applicable": 2,
             "not_selected": 3,
             "targeted": 3
           },
@@ -2924,7 +2977,8 @@
             "coordinatewise_corridor_no_go": "targeted",
             "rational_base_tail_recurrence": "targeted",
             "seven_halves_irrationality": "not_applicable_to_external_irrationality_conclusion",
-            "height_and_pade_arithmetic": "targeted"
+            "height_and_pade_arithmetic": "targeted",
+            "calibrated_rational_hankel_countermodel": "not_applicable_without_exact_Lean_statement"
           }
         }
       }
@@ -2939,7 +2993,7 @@
     "proof_bearing_internal_import_count": 0
   },
   "trusted_build_inputs": {
-    "lakefile.toml": "sha256:1dfa73e634bdd635ffdd11c6f661495adc3ce2acd7553faf3c5d816b9fd23841",
+    "lakefile.toml": "sha256:e1a087453f8ac7bf939211194ae083a87212d33d82bd222d1f27ffc0bbdc5211",
     "lean-toolchain": "sha256:88a1d79c54cf3777f22b61a68377f44150124ba67f889c98587b2291885358a5",
     "lake-manifest.json": "sha256:ce8af3495139dac717402363eea258de3aa128cf01384511f97107320dc0f90c"
   },

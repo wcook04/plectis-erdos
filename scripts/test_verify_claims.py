@@ -63,6 +63,40 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
+def check_comparator_context_scope() -> None:
+    """A selected claim must identify a broader packet's unrelated context."""
+    selected = claim("Sample.alpha", ALPHA_KEYWORD_LINE)
+    selected["declarations"] = []
+    row = {
+        "id": "selected_interface",
+        "claim_id": "sample_claim",
+        "original_declaration": "Sample.alpha",
+        "wrapper_declaration": "Challenge.alpha",
+        "boundary": "This selected interface has a restricted conclusion.",
+    }
+    register = build_register([selected], main_results=[row])
+    packet_context = "A different programme supplies the packet's headline result."
+    register["external_verification_packet"]["boundary"] = packet_context
+    for rows, expected in (([row], "bound"), ([], "not_bound")):
+        register["external_verification_packet"]["main_results"] = rows
+        report = verify_claims.follow_claim("sample_claim", register, {})
+        rendered = verify_claims.render_claim(report)
+        require(report["comparator"]["status"] == expected, "interface binding changed")
+        heading = "  packet-wide context (may concern other claims):"
+        require(heading in rendered, "selected claim did not identify packet-wide context")
+        require(rendered.index(heading) < rendered.index(packet_context),
+                "packet scope label did not precede its unrelated account")
+        require("what Comparator does and does not settle:" not in rendered,
+                "packet-wide account was still presented as the selected claim's explanation")
+        if rows:
+            require(row["boundary"] in rendered, "selected interface boundary disappeared")
+            require(rendered.index(row["boundary"]) < rendered.index(heading),
+                    "selected and packet boundaries lost their separate scopes")
+    register.pop("external_verification_packet")
+    rendered = verify_claims.render_claim(verify_claims.follow_claim("sample_claim", register, {}))
+    require("packet-wide context" not in rendered, "absent packet acquired invented context")
+
+
 def check_safe_read_boundary() -> None:
     original_root = verify_claims.REPO_ROOT
     with tempfile.TemporaryDirectory(prefix="claims-input-") as raw_workspace:
@@ -242,6 +276,51 @@ def fixture_cli(root: Path, *args: str) -> tuple[int, str]:
     return code, output.getvalue()
 
 
+def check_declaration_identity() -> None:
+    """The real claim CLI must resolve a declaration, never merely mention it."""
+    cases = (
+        ("comment", "namespace Sample\n-- theorem gone : True := by trivial\nend Sample\n", 2),
+        ("string", 'namespace Sample\ndef narration : String := "theorem gone : True := by trivial"\nend Sample\n', 2),
+        ("call site", "namespace Sample\ntheorem neighbor : True := by\n  exact gone\nend Sample\n", 3),
+        ("wrong namespace", "namespace Other\ntheorem gone : True := by trivial\nend Other\n", 2),
+        ("invented namespace", "theorem gone : True := by trivial\n", 1),
+    )
+    original_root, original_claims = verify_claims.REPO_ROOT, verify_claims.CLAIMS_PATH
+    with tempfile.TemporaryDirectory(prefix="claim-declaration-identity-") as tmp:
+        root = Path(tmp)
+        for label, source, line in cases:
+            (root / "Sample.lean").write_text(source, encoding="utf-8")
+            register = build_register([claim("Sample.gone", line)])
+            run_case(root, register)
+            code, output = fixture_cli(root, "--claim", "sample_claim", "--json")
+            result = json.loads(output)
+            require(code == 1 and not result["result"]["current_records_verified"],
+                    f"{label} was accepted as a real declaration")
+            require(result["claim"]["declarations"][0]["status"] == "declaration_missing",
+                    f"{label} failure did not name the missing declaration")
+
+        # Short aliases are allowed only when the shared resolver finds one identity.
+        (root / "Sample.lean").write_text(
+            "namespace First\ntheorem gone : True := by trivial\nend First\n"
+            "namespace Second\ntheorem gone : True := by trivial\nend Second\n",
+            encoding="utf-8",
+        )
+        require(not run_case(root, build_register([claim("gone", 2)]))["verified"],
+                "ambiguous basename was accepted as one declaration")
+
+        (root / "Sample.lean").write_text(SAMPLE_MODULE, encoding="utf-8")
+        for name, line in (("Sample.alpha", ALPHA_KEYWORD_LINE), ("Sample.beta", BETA_LINE)):
+            report = run_case(root, build_register([claim(name, line)]))
+            require(report["verified"], f"real declaration rejected: {name}")
+        wrapped = verify_claims.resolve_declaration(
+            {"name": "Sample.alpha", "module": "Sample.lean", "line": ALPHA_KEYWORD_LINE}
+        )
+        require(wrapped["resolved_line"] == ALPHA_KEYWORD_LINE
+                and "Wrapped declaration" in (wrapped["docstring"] or ""),
+                "wrapped declaration did not land at its keyword and attached explanation")
+    verify_claims.REPO_ROOT, verify_claims.CLAIMS_PATH = original_root, original_claims
+
+
 def check_history_scope_contract() -> None:
     """Replay record checks and history gates in real, network-free Git fixtures."""
     def git(root: Path, *args: str) -> str:
@@ -347,7 +426,40 @@ def check_history_scope_contract() -> None:
             require(code == 1 and json.loads(output)["gates"]["failed"] == 1, f"{root.name}: genuine gate failure masked")
 
 
+def check_claim_local_comparator_boundary() -> None:
+    """A one-claim card separates typed contracts from labelled packet context."""
+    register = json.loads(verify_claims.CLAIMS_PATH.read_text(encoding="utf-8"))
+    packet = register["external_verification_packet"]
+    packet["boundary"] = "UNRELATED_PACKET_NARRATIVE about a different problem."
+    for claim_id in ("eb_full_support", "dyadic_totient_certificate_interface", "erdos_1041"):
+        report = verify_claims.follow_claim(claim_id, register, label_index=None)
+        comparator = report["comparator"]
+        rendered = "".join(verify_claims.render_claim(report).split())
+        heading = "packet-widecontext(mayconcernotherclaims):"
+        require(heading in rendered and "UNRELATED_PACKET_NARRATIVE" in rendered,
+                f"{claim_id}: accepted packet context or its scope label disappeared")
+        require(rendered.index(heading) < rendered.index("UNRELATED_PACKET_NARRATIVE"),
+                f"{claim_id}: unrelated packet narrative lost its preceding scope label")
+        require(comparator["boundary"] == packet["boundary"]
+                and comparator["boundary_scope"] == packet["scope"],
+                f"{claim_id}: JSON packet context lost its source or scope")
+        for interface in comparator["interfaces"]:
+            require("".join(interface["boundary"].split()) in rendered,
+                    f"{claim_id}: selected interface boundary was dropped")
+        contract = "registered_claim" if comparator["status"] == "bound" else "unregistered_interface"
+        require("".join(packet["claim_status_contract"][contract].split()) in rendered,
+                f"{claim_id}: claim binding contract was dropped")
+        require("".join(packet["claim_status_contract"]["novelty"].split()) in rendered,
+                f"{claim_id}: novelty limit was dropped")
+    register.pop("external_verification_packet")
+    report = verify_claims.follow_claim("eb_full_support", register, label_index=None)
+    require(report["comparator"]["status"] == "packet_absent"
+            and "SECOND FORMAL CHECK" not in verify_claims.render_claim(report),
+            "absent Comparator packet was turned into a formal-check claim")
+
+
 def main() -> int:
+    check_claim_local_comparator_boundary()
     check_gate_timeout_contract()
     check_optional_tool_discovery_contract()
     check_history_scope_contract()
@@ -503,6 +615,13 @@ def main() -> int:
         if "open_proposition_targets_unknown_claim" not in statuses(report):
             failures.append(f"orphaned open proposition not reported: {report['problems']}")
 
+        # A missing forward boundary reference fails the whole-register gate.
+        forward_claim = claim("Sample.alpha", ALPHA_KEYWORD_LINE)
+        forward_claim["remaining_open_proposition_ids"] = ["remaining_open.deleted"]
+        report = run_case(root, build_register([forward_claim]))
+        if "claim_references_unknown_open_proposition" not in statuses(report):
+            failures.append(f"dangling forward boundary not reported: {report['problems']}")
+
         # The same edge on the Comparator side: a selected interface may name a
         # claim id, and that binding must not outlive the claim either.
         report = run_case(
@@ -568,7 +687,7 @@ def main() -> int:
         return 1
     print(
         "test_verify_claims: drift, renames, undeclared statuses, orphaned open "
-        "propositions, orphaned Comparator bindings, and unresolvable paper "
+        "propositions, forward/reverse boundary links, orphaned Comparator bindings, and unresolvable paper "
         "labels are each reported; absent paper sources are not; current-record "
         "checks remain distinct from history gates in full, shallow, missing-history, "
         "and source-archive fixtures"
@@ -576,6 +695,66 @@ def main() -> int:
     return 0
 
 
+
+def check_open_boundary_relationships() -> None:
+    from claim_relationships import audit_claim_relationships, resolve_claim_boundary
+
+    progress = {"id": "progress", "status": "proved",
+                "remaining_open_proposition_ids": ["open.shared", "open.shared", "open.both"]}
+    target = {"id": "target"}
+    props = [
+        {"id": "open.reverse", "open_target_claim": "progress"},
+        {"id": "open.shared", "open_target_claim": "target"},
+        {"id": "open.both", "open_target_claim": "progress"},
+    ]
+    register = build_register([progress, target], props)
+    result = resolve_claim_boundary(progress, register)
+    assert [row["id"] for row in result["remaining_open"]] == [
+        "open.shared", "open.both", "open.reverse"
+    ]
+    assert result["remaining_open_relationships"] == [
+        {"proposition_id": "open.shared", "relation_kinds": ["remaining_open_proposition_ids"]},
+        {"proposition_id": "open.both", "relation_kinds": ["remaining_open_proposition_ids", "open_target_claim"]},
+        {"proposition_id": "open.reverse", "relation_kinds": ["open_target_claim"]},
+    ]
+    assert not result["inconsistencies"]
+    assert not audit_claim_relationships(register)
+    progress["remaining_open_proposition_ids"] += ["open.missing", "open.missing"]
+    result = resolve_claim_boundary(progress, register)
+    assert len(result["inconsistencies"]) == 1
+    assert result["inconsistencies"][0]["status"] == "claim_references_unknown_open_proposition"
+    assert len(audit_claim_relationships(register)) == 1
+    dangling_only = dict(progress, remaining_open_proposition_ids=["open.missing"])
+    dangling_register = build_register([dangling_only], [])
+    report = verify_claims.follow_claim("progress", dangling_register, {})
+    assert not report["verified"]
+    rendered = verify_claims.render_claim(report)
+    assert "registry inconsistency" in rendered
+    assert "no remaining open proposition" not in rendered
+    props[1]["open_target_claim"] = "deleted"
+    assert any(row["status"] == "open_proposition_targets_unknown_claim"
+               for row in resolve_claim_boundary(progress, register)["inconsistencies"])
+
+    # Exhaustive actual-registry regression: every forward edge is displayed
+    # or receives a specific inconsistency; it can never silently disappear.
+    actual = json.loads(verify_claims.CLAIMS_PATH.read_text())
+    assert not audit_claim_relationships(actual)
+    for row in actual["claims"]:
+        boundary = verify_claims.boundary_for(row, actual)
+        shown = {prop["id"] for prop in boundary["remaining_open"]}
+        rejected = {issue["proposition_id"] for issue in boundary["inconsistencies"]}
+        assert set(row.get("remaining_open_proposition_ids", [])) <= shown | rejected, row["id"]
+    weighted = next(row for row in actual["claims"]
+                    if row["id"] == "finite_prime_weighted_support")
+    boundary = verify_claims.boundary_for(weighted, actual)
+    assert "remaining_open.universal_257_all_infinite_supports" in {
+        row["id"] for row in boundary["remaining_open"]
+    }
+
+
 if __name__ == "__main__":
+    check_open_boundary_relationships()
+    check_comparator_context_scope()
     check_safe_read_boundary()
+    check_declaration_identity()
     raise SystemExit(main())

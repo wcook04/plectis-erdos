@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import bisect
+import copy
 import gzip
 import hashlib
 import json
@@ -36,6 +37,7 @@ from lean_source import (
     library_storage_variants,
 )
 from validation_singleflight import command_environment, GIT_COMMAND_TIMEOUT_SECONDS
+from claim_relationships import resolve_claim_boundary
 
 
 def checkout_lean_file(relative: str) -> Path:
@@ -53,10 +55,10 @@ MODULE_PACKET_LIMIT = 12
 MAX_SEMANTIC_CELLS = 4
 PROBLEM_READER_RESULT_LIMIT = 3
 # Problem routes preserve every reviewed family and its exact boundary.  Eight
-# public problems currently require just under 78 KB for the largest (#249)
+# public problems currently require about 81 KB for the largest (#249)
 # source-current route, so retain a modest fixed ceiling instead of rejecting
 # the default public command or silently truncating that family inventory.
-OUTPUT_BUDGET_BYTES = 80_000
+OUTPUT_BUDGET_BYTES = 84_000
 # The house agent-packet budget, shared with scripts/proof_state_compiler.py
 # (MAX_PACKET_BYTES) and scripts/build_corpus_descriptor.py
 # (DESCRIPTOR_MAX_BYTES).  OUTPUT_BUDGET_BYTES is the hard CLI ceiling; this is
@@ -2681,7 +2683,9 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
         path = ROOT / relative
         if not path.is_file():
             continue
-        text = path.read_text(encoding="utf-8")
+        raw_text = path.read_text(encoding="utf-8")
+        macro_destinations = printed_macro_sources(raw_text)
+        text = visible_paper_source(raw_text)
         lines = text.splitlines()
         theorem_sources = [text]
         for input_match in re.finditer(r"\\input\{([^}]+)\}", text):
@@ -2841,7 +2845,8 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
                 r"(?:\{(?P<name>[^}]*)\})?\s*"
                 r"(?:\{(?P<label>(?:[^{}]|\{[^{}]*\})*)\})?"
             )
-            has_source_links = re.search(source_link_pattern, region) is not None
+            legacy_links = visible_lean_links(region, raw_text)
+            has_source_links = re.search(source_link_pattern, region) is not None or bool(legacy_links)
             source_ref_fallback = (
                 label_allowlist is not None
                 and has_source_links
@@ -2947,6 +2952,12 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
                     ),
                 )
                 public_module = library_identity_path(module)
+                printed = macro_destinations.get((macro, file_name))
+                link_identity = dict(lean_source_identity)
+                if printed:
+                    printed_pin, printed_path = printed
+                    public_module = library_identity_path(printed_path)
+                    link_identity.update(ref=printed_pin, resolved_commit=printed_pin)
                 source_links.append(
                     {
                         "edge_kind": "authored_source_link",
@@ -2954,11 +2965,20 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
                         "module": public_module,
                         "line": int(link.group("line")),
                         "source_ref": f"{public_module}:{link.group('line')}",
-                        "source_identity": dict(lean_source_identity),
+                        "source_identity": link_identity,
+                        "printed_path": printed[1] if printed else None,
                         "declaration": link.group("name") or None,
                         "display_label": link.group("label") or None,
                     }
                 )
+            for link in legacy_links:
+                link_pin = link["source_identity"]["ref"]
+                link["source_identity"] = dict(lean_source_identity)
+                if link_pin != lean_source_identity["ref"]:
+                    link["source_identity"].update(ref=link_pin, resolved_commit=link_pin,
+                                                   ref_kind="commit", public_tag=None,
+                                                   publication_state="pinned_by_manuscript")
+            source_links.extend(legacy_links)
 
             canonical_handle = (
                 source_ref if is_structural_navigation else (label or source_ref)
@@ -3008,6 +3028,115 @@ def paper_anchor_inventory() -> list[dict[str, Any]]:
             "complete": True,
         }
     return inventory
+
+
+def visible_paper_source(text: str) -> str:
+    """Mask comments and native-owner unrendered blocks without moving line coordinates."""
+    import check_problem_note_sources as owner
+    text = re.sub(r"(?<!\\)%[^\n]*", lambda m: " " * len(m.group(0)), text)
+    position = 0
+    for opener in list(re.finditer(r"\\iffalse(?![A-Za-z@])", text)):
+        if opener.start() < position:
+            continue
+        depth = 0
+        end = len(text)
+        for token in owner.CONDITIONAL_RE.finditer(text, opener.start()):
+            depth += -1 if token.group(0) == r"\fi" else 1
+            if depth == 0:
+                end = token.end()
+                break
+        text = text[:opener.start()] + re.sub(r"[^\n]", " ", text[opener.start():end]) + text[end:]
+        position = end
+    # Literal link bodies in unused definitions are not reader destinations.
+    # Preserve coordinates; macro-aware PDF hops remain the native owner's job.
+    definition = re.compile(r"\\(?:newcommand|renewcommand|providecommand)\*?\s*\{\\[A-Za-z@]+\}(?:\[[^]]*\]){0,2}")
+    for match in reversed(list(definition.finditer(text))):
+        body = owner.tex_group(text, match.end())
+        if body:
+            text = text[:match.start()] + re.sub(r"[^\n]", " ", text[match.start():body[1]]) + text[body[1]:]
+    return text
+
+
+def visible_lean_links(region: str, manuscript: str) -> list[dict[str, Any]]:
+    """The registered long-record two-argument Lean source convention, at its own pin.
+
+    This parses source navigation only. The companion owner checks the literal
+    Git object and declaration coordinate before any new companion route counts.
+    """
+    import check_problem_note_sources as owner
+    result = []
+    if r"\newcommand{\lean}[2]{\leanlink{#2}}" not in owner.strip_comments(manuscript):
+        return result
+    default = load("docs/claims.json")["release"]["formal_source"]["ref"]
+    pin = owner.note_pinned_commit(manuscript, default)
+    pk = owner.NOTE_PK_RE.search(owner.strip_comments(manuscript))
+    for match in re.finditer(r"\\lean\{([^{}]+)\}\{([^{}]+)\}", region):
+        name, target = match.groups()
+        name = name.replace(r"\_", "_").replace(r"\allowbreak", "")
+        target = re.sub(r"\s+", "", target.replace(r"\allowbreak", ""))
+        coordinate = re.fullmatch(r"([^:]+\.lean):([0-9]+)(?:[-,].*)?", target)
+        if coordinate is None or not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_.']*", name):
+            continue
+        path, line = coordinate.group(1), int(coordinate.group(2))
+        link_pin = pin
+        if path.startswith("lean/"):
+            late = owner.LATE_COMMIT_RE.search(owner.strip_comments(manuscript))
+            if late is None:
+                continue
+            link_pin = late.group(1)
+        elif path.split("/", 1)[0] not in LEAN_LIBRARY_ROOTS:
+            if pk is None:
+                continue
+            path = pk.group(1) + "/" + path
+        module = library_identity_path(path)
+        result.append({"edge_kind": "authored_source_link", "macro": "lean", "module": module,
+                       "line": line, "source_ref": f"{module}:{line}",
+                       "printed_path": path,
+                       "source_identity": {"ref": link_pin, "repository": "https://github.com/wcook04/plectis-erdos"},
+                       "declaration": name, "display_label": None})
+    return result
+
+
+@lru_cache(maxsize=32)
+def printed_macro_sources(manuscript: str) -> dict[tuple[str, str], tuple[str, str]]:
+    """Use the native printed-link owner for actual macro paths and historical pins."""
+    import check_problem_note_sources as owner
+    default = load("docs/claims.json")["release"]["formal_source"]["ref"]
+    px = owner.PX_RE.search(owner.strip_comments(owner.safe_worktree_text(owner.PREAMBLE)))
+    targets, problems = owner.rendered_link_targets(manuscript, default, None,
+                                                    px.group(1) if px else owner.LIBRARY_PREFIX)
+    macros = list(owner.RENDERED_MACRO_RE.finditer(owner.strip_unrendered(owner.strip_comments(manuscript))))
+    if problems or len(targets) < len(macros):
+        return {}
+    pk = owner.NOTE_PK_RE.search(owner.strip_comments(manuscript))
+    explicit_pk_macros = set(re.findall(
+        r"\\(?:re)?newcommand\{\\(lref|lrefx|lloc)\}\[(?:2|3)\]"
+        r"\{\\href\{\\repobase/\\PK/#1\\#L#2\}",
+        owner.strip_comments(manuscript),
+    ))
+    mapping = {}
+    for macro, target in zip(macros, targets):
+        target_pin, target_path = target
+        if macro.group("macro") in explicit_pk_macros:
+            if pk is None:
+                return {}
+            target_pin = owner.note_pinned_commit(manuscript, default)
+            target_path = pk.group(1) + "/" + macro.group("file")
+        # The archived manuscript's word-link body explicitly uses \PK.
+        # Expand that declared literal prefix, retaining its historical pin;
+        # an unresolved TeX variable is not a repository path.
+        if target_path.startswith(r"\PK/"):
+            if pk is None:
+                return {}
+            target_path = pk.group(1) + target_path[len(r"\PK"):]
+        if "\\" in target_path:
+            return {}
+        target = (target_pin, target_path)
+        key = (macro.group("macro"), macro.group("file"))
+        if key in mapping and mapping[key] != target:
+            return {}  # an ambiguous render convention is no navigation warrant
+        mapping[key] = target
+    return mapping
 
 
 def public_paper_rows(claims: dict[str, Any]) -> list[dict[str, Any]]:
@@ -3135,28 +3264,161 @@ def public_paper_rows(claims: dict[str, Any]) -> list[dict[str, Any]]:
     return list(rows_by_source.values())
 
 
+@lru_cache(maxsize=1)
+def native_reader_evidence() -> tuple[bool, dict[str, Any]]:
+    """One offline owner verdict per read-only query invocation; no proof execution."""
+    # Archives can read recorded sources, but cannot replay pinned Git evidence.
+    # Do not let Git discover an unrelated repository above the archive root.
+    if not (ROOT / ".git").exists():
+        return False, {}
+    import check_problem_note_sources as owner
+    if not owner.native_evidence_valid():
+        return False, {}
+    return True, json.loads(owner.safe_worktree_text(owner.EVIDENCE_MAP))
+
+
+@lru_cache(maxsize=32)
+def visible_companion_support(source: str) -> dict[str, dict[str, Any]]:
+    """Direct registered visible hops, with authored pins and declared margins checked."""
+    import check_problem_note_sources as owner
+    current, evidence = native_reader_evidence()
+    if not current:
+        return {}
+    try:
+        text = owner.safe_worktree_text(ROOT / source)
+        reached = owner.reachable_companion_sources(source, text)
+        default_pin = load("docs/claims.json")["release"]["formal_source"]["ref"]
+        cache: dict[tuple[str, str], list[str]] = {}
+        support = {}
+        for destination in reached:
+            raw = owner.safe_worktree_text(ROOT / destination)
+            pin = owner.note_pinned_commit(raw, default_pin)
+            coordinates = set()
+            authored_links = owner.links(visible_paper_source(raw))
+            legacy_links = visible_lean_links(visible_paper_source(raw), raw)
+            printed = printed_macro_sources(raw)
+            candidates = [(printed_pin, printed_path, line, declaration)
+                          for file_name, line, declaration in authored_links if declaration
+                          for (_macro, file), (printed_pin, printed_path) in printed.items() if file == file_name]
+            present = owner.objects_present({(p, f) for p, f, _l, _d in candidates}
+                                            | {(x["source_identity"]["ref"], x["printed_path"]) for x in legacy_links})
+            owner.snapshot_lines_batch(
+                {(p, f) for p, f, _l, _d in candidates}
+                | {(link["source_identity"]["ref"], link["module"]) for link in legacy_links}, cache
+            )
+            for printed_pin, relative, line, declaration in candidates:
+                lines = owner.snapshot_lines(printed_pin, relative, cache)
+                if (printed_pin, relative) in present and 1 <= line <= len(lines) and owner.declares_at(lines, line - 1, declaration):
+                    coordinates.add((library_identity_path(relative), line, declaration, printed_pin))
+            for link in legacy_links:
+                link_pin = link["source_identity"]["ref"]
+                lines = owner.snapshot_lines(link_pin, link["module"], cache)
+                leaf = link["declaration"].rsplit(".", 1)[-1]
+                if (link_pin, link["printed_path"]) in present and 1 <= link["line"] <= len(lines) and owner.declares_at(lines, link["line"] - 1, leaf):
+                    coordinates.add((link["module"], link["line"], link["declaration"], link_pin))
+            keys = owner.margin_mark_declaration_keys(
+                destination, evidence, note_text=raw, native_validated=current
+            )
+            result_declarations = {}
+            for paper in evidence.get("papers", []):
+                if paper.get("paper_id") != Path(destination).stem:
+                    continue
+                for result in paper.get("results", []):
+                    declarations = [d for d in result.get("lean", {}).get("declarations", [])
+                                    if (owner.library_relative(d["path"].removeprefix("lean/")), d["name"]) in keys]
+                    if declarations:
+                        result_declarations[result["label"]] = declarations
+            support[destination] = {"pin": pin, "coordinates": coordinates, "margin_keys": keys,
+                                    "result_declarations": result_declarations,
+                                    "visible_hop": {"source": source, "destination_source": destination,
+                                                    "kind": "registered_visible_companion_pdf_link"}}
+        return support
+    except (OSError, ValueError, KeyError, owner.UnsafeSourceInput):
+        return {}
+
+
 def paper_anchor_routes_for_declarations(
     source: str | None, declarations: list[str]
 ) -> list[dict[str, Any]]:
-    """Find exact paper anchors whose authored source links name a family declaration."""
+    """Find exact authored-link or registered-claim navigation, not proof authority."""
     if not source or not declarations:
         return []
     declaration_names = {
         declaration.rsplit(".", 1)[-1] for declaration in declarations
     }
+    claim_index = {row["id"]: row for row in load("docs/claims.json")["claims"]}
+    companions = visible_companion_support(source)
+    def companion_link_matches(link: dict[str, Any], companion: dict[str, Any]) -> bool:
+        coordinate = (link["module"], link["line"], link["declaration"], link["source_identity"]["ref"])
+        if coordinate not in companion["coordinates"]:
+            return False
+        leaf = link["declaration"].rsplit(".", 1)[-1]
+        row = declaration_for_module_name(link["module"], leaf)
+        return row is not None and (
+            qualified_declaration_name(row) in declarations or leaf in declarations
+        )
     routes = []
     for anchor in paper_anchor_inventory():
-        if anchor["paper"]["source"] != source:
+        destination = anchor["paper"]["source"]
+        companion = companions.get(destination)
+        if destination != source and companion is None:
             continue
         matched = sorted(
             {
-                link["declaration"]
+                link["declaration"].rsplit(".", 1)[-1]
                 for link in anchor["source_links"]
-                if link.get("declaration") in declaration_names
+                if link.get("declaration") and link["declaration"].rsplit(".", 1)[-1] in declaration_names
+                and (companion is None or companion_link_matches(link, companion))
             }
         )
+        relation_origin = "authored_source_link"
+        matched_claims = []
+        if not matched and companion is not None:
+            matched = sorted({
+                d["name"].rsplit(".", 1)[-1]
+                for d in companion["result_declarations"].get(anchor["label"], [])
+                if d["name"] in declarations or d["name"].rsplit(".", 1)[-1] in declarations
+            })
+            if matched:
+                relation_origin = "native_declared_evidence_anchor"
         if not matched:
-            continue
+            # A source-current registered label remains a precise reader route
+            # after an editor moves its explicit Lean hyperlink to the record.
+            # Require the actual attached registry claim and its exact atlas
+            # source identity; shared basenames or mere Lean presence do not
+            # establish this navigation relation.
+            names = set()
+            for attached in anchor["attached_claims"]:
+                claim = claim_index.get(attached["id"])
+                if claim is None or claim.get("paper_label") != anchor["label"]:
+                    continue
+                claim_matches = set()
+                for declaration in claim.get("declarations", []):
+                    row = declaration_for_module_name(declaration["module"], declaration["name"])
+                    if row is None:
+                        continue
+                    qualified = qualified_declaration_name(row)
+                    if companion is not None and not (
+                        (library_identity_path(declaration["module"]), qualified) in companion["margin_keys"]
+                        or any(module == library_identity_path(declaration["module"]) and name == declaration["name"]
+                               for module, _line, name, _pin in companion["coordinates"])
+                    ):
+                        continue
+                    if qualified in declarations or (
+                        row["name"] in declarations and "." not in row["name"]
+                    ):
+                        claim_matches.add(row["name"].rsplit(".", 1)[-1])
+                if claim_matches:
+                    names.update(claim_matches)
+                    matched_claims.append(claim["id"])
+            matched = sorted(names)
+            if not matched:
+                continue
+            relation_origin = "registered_claim_anchor"
+        if companion is not None:
+            if not matched:
+                continue
+            relation_origin = "visible_companion_" + relation_origin
         routes.append(
             {
                 "canonical_handle": anchor["canonical_handle"],
@@ -3166,6 +3428,13 @@ def paper_anchor_routes_for_declarations(
                     f"{anchor['canonical_handle']}"
                 ),
                 "matched_declarations": matched,
+                "relation_origin": relation_origin,
+                "matched_claim_ids": sorted(matched_claims),
+                "destination_source": destination,
+                # Ingress is the family's paper_route.source; the destination
+                # is above. Keep the typed hop without repeating both paths
+                # for every exact anchor in the bounded CLI packet.
+                "visible_hop": companion["visible_hop"]["kind"] if companion else None,
             }
         )
     return routes
@@ -3245,6 +3514,47 @@ def paper_label_index() -> dict[str, dict[str, Any]]:
                 f"{index[label]['source_ref']} and {anchor['paper']['source_ref']}"
             )
         index[label] = anchor["paper"]
+    claims = load("docs/claims.json")
+    claim_index = {row["id"]: row for row in claims["claims"]}
+    for family in claims["machine_readable_paper"]["publication_assembly"][
+        "contribution_families"
+    ]:
+        if family.get("status_summary") != (
+            "Reviewed ordinary proof; full infinite statement not formalised "
+            "and independent human review not recorded."
+        ):
+            continue
+        owner = family.get("primary_narrative_owner")
+        if not isinstance(owner, str) or not owner.startswith("paper/") or ".." in Path(owner).parts:
+            continue
+        source = ROOT / owner
+        if not source.is_file():
+            continue
+        lines = source.read_text(encoding="utf-8").splitlines()
+        for claim_id in family.get("claim_ids", []):
+            claim = claim_index.get(claim_id, {})
+            if claim.get("declarations") or claim.get("status") != "unconditional progress":
+                continue
+            label = claim.get("paper_label")
+            if not isinstance(label, str) or label in index:
+                continue
+            line = next(
+                (number for number, text in enumerate(lines, 1)
+                 if f"\\label{{{label}}}" in text),
+                None,
+            )
+            if line is None:
+                continue
+            rendered = str(Path(owner).with_suffix(".pdf"))
+            index[label] = {
+                "label": label,
+                "source": owner,
+                "line": line,
+                "source_ref": f"{owner}:{line}",
+                "rendered": rendered if (ROOT / rendered).is_file() else None,
+                "evidence_class": "reviewed_ordinary_proof",
+                "authority_posture": "authored_ordinary_proof_not_Lean_proof_authority",
+            }
     return index
 
 
@@ -3293,7 +3603,10 @@ def claim_packet(claim_id: str) -> dict[str, Any]:
             row["remaining_open_effect"] = edge["remaining_open_effect"]
         return row
 
-    open_ids = set(claim.get("remaining_open_proposition_ids", []))
+    boundary = resolve_claim_boundary(claim, claims)
+    if boundary["inconsistencies"]:
+        raise ValueError("claim boundary source inconsistency: " + json.dumps(boundary["inconsistencies"]))
+    open_ids = {row["id"] for row in boundary["remaining_open"]}
     programme_routes = [
         row
         for row in all_entrypoints(claims)
@@ -3355,9 +3668,8 @@ def claim_packet(claim_id: str) -> dict[str, Any]:
             "exhaustive": "docs/claims.json::machine_readable_paper.argument_graph",
             "follow": "python3 scripts/query_corpus.py --claim <neighbour_id>",
         },
-        "remaining_open_propositions": [
-            open_index[open_id] for open_id in sorted(open_ids)
-        ],
+        "remaining_open_propositions": boundary["remaining_open"],
+        "remaining_open_relationships": boundary["remaining_open_relationships"],
         "programme_contexts": programme_contexts,
         "wider_programme_open_propositions": [
             open_index[open_id]
@@ -3370,6 +3682,36 @@ def claim_packet(claim_id: str) -> dict[str, Any]:
 
 @lru_cache(maxsize=2_048)
 def paper_anchor_packet(handle: str, kind: str = "paper_anchor") -> dict[str, Any]:
+    coordinate = paper_label_index().get(handle)
+    if coordinate and coordinate.get("evidence_class") == "reviewed_ordinary_proof":
+        claims = load("docs/claims.json")
+        attached = [
+            compact_claim(claim) for claim in claims["claims"]
+            if claim.get("paper_label") == handle
+        ]
+        return {
+            "kind": kind,
+            "authority_posture": "authored_ordinary_proof_not_Lean_proof_authority",
+            "canonical_handle": handle,
+            "paper": coordinate,
+            "anchor_class": "ordinary_proof_theorem_label",
+            "attached_claims": attached,
+            "attached_open_propositions": [],
+            "source_links": [],
+            "evidence_class": "reviewed_ordinary_proof",
+            "attachment_receipt": {
+                "claim_count": len(attached),
+                "open_proposition_count": 0,
+                "source_link_count": 0,
+                "complete": True,
+                "owners": [coordinate["source"], "docs/claims.json"],
+            },
+            "follow": {
+                "claim": "python3 scripts/query_corpus.py --claim <attached_claim_id>",
+                "artifact": "python3 scripts/query_corpus.py --artifact <registered_paper_path>",
+            },
+            "validation": "python3 scripts/check_release.py",
+        }
     matches = [
         row
         for row in paper_anchor_inventory()
@@ -8470,6 +8812,67 @@ def best_reading_route_result(query: str) -> dict[str, Any] | None:
     }
 
 
+def problem_query_facets(query: str, constraint: dict[str, Any]) -> list[dict[str, Any]]:
+    """Keep a named problem's requested reading task visible after routing.
+
+    These are source-bound next steps, not answers inferred from a programme's
+    highest-ranked theorem. An ambiguous assumptions request needs a declaration.
+    """
+    text = query.casefold()
+    tokens = set(re.findall(r"[\w]+", text))
+    number = constraint["erdos_number"]
+    route_id = constraint["route_id"]
+    facets: list[dict[str, Any]] = []
+    if "prior art" in text or tokens & {"citation", "citations", "attribution", "references"}:
+        facets.append({
+            "id": "source_attribution",
+            "status": "source_lookup_required",
+            "instruction": "Inspect the credited sources and their exact local uses for this problem.",
+            "commands": [
+                f"python3 scripts/build_source_attributions.py --query {number}",
+                "python3 scripts/query_corpus.py --route trace_prior_art",
+            ],
+        })
+    if tokens & {"assumption", "assumptions", "hypothesis", "hypotheses", "premise", "premises", "declaration", "declarations"}:
+        route = route_packet(route_id)["route"]
+        # Only accept a named handle from this problem's own result families.
+        names = list(dict.fromkeys(
+            name for family in route["result_families"] for name in family["declarations"]
+        ))
+        named = [
+            name for name in names
+            if re.search(r"(?<![\w.'])" + re.escape(name) + r"(?![\w.'])", query)
+        ]
+        commands = [
+            f"python3 scripts/query_corpus.py --declaration {name}" for name in named
+        ] or [
+            f"python3 scripts/query_corpus.py --route {route_id} --format json",
+            "python3 scripts/query_corpus.py --declaration <Lean_name>",
+        ]
+        facets.append({
+            "id": "formal_statement",
+            "status": "declaration_selected" if named else "needs_declaration",
+            "instruction": (
+                "Read the named declaration's complete statement and source."
+                if named else
+                "Choose the intended declaration from this problem's result families, then inspect its complete statement and source; programme summaries do not list every hypothesis."
+            ),
+            "commands": commands,
+        })
+    if tokens & {"hint", "hints"}:
+        facets.append({
+            "id": "guided_reading",
+            "status": "reader_depth_requested",
+            "instruction": "Use the named paper; give one hint and wait when requested.",
+            "read": [
+                "skills/explain-public-system/SKILL.md#help-a-reader-work-through-an-argument",
+                "docs/READING_GUIDE.md#work-through-an-argument",
+            ],
+            "commands": [f"python3 scripts/query_corpus.py --route {route_id} --format json"],
+        })
+    return facets
+
+
 def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
     """Compile a question into a bounded, witness-carrying semantic subgraph."""
     replay_packet = finite_computation_replay_packet(query)
@@ -8892,6 +9295,9 @@ def semantic_slice_packet(query: str, limit: int) -> dict[str, Any]:
         synthesis["reader_answer"] = problem_reader_answer(
             interpretation["problem_constraint"]["route_id"]
         )
+        facets = problem_query_facets(query, interpretation["problem_constraint"])
+        if facets:
+            synthesis["requested_facets"] = facets
     if goal_support["availability"] == "available":
         synthesis = {
             **synthesis,
@@ -9264,7 +9670,7 @@ def problem_reader_answer(route_id: str) -> dict[str, Any]:
         ),
         "authority_boundary": (
             "Registry evidence and source handles; this query does not run Lean. "
-            "Conditional premises remain premises, and the problem remains open."
+            "Conditional premises remain premises; consult the recorded target status."
         ),
     }
 
@@ -9943,8 +10349,13 @@ def mathematical_signal_spine(
     ranked_source_results = []
     for candidate in sorted(source_candidates, key=lambda row: row["rank"]):
         claim = claims_by_id.get(candidate["claim_id"])
-        if claim is None or claim["status"] != "formalised here":
-            raise ValueError("Palomar source result lacks a formalised registry claim")
+        if claim is None or claim["status"] not in {
+            "formalised here", "unconditional progress"
+        }:
+            raise ValueError(
+                "Palomar source result lacks a registry claim that is formalised here "
+                "or unconditional progress"
+            )
         declaration = next(
             (
                 row for row in claim["declarations"]
@@ -10264,6 +10675,26 @@ def paper_reading_guide_packet() -> dict[str, Any]:
                 "publication_state": row["publication_state"],
                 "manuscript_status": row["manuscript_status"],
                 "peer_review_state": row["peer_review_state"],
+                # Keep immutable archive receipts in their owner. Repeating every
+                # digest and attachment URL here can exhaust the bounded guide.
+                "archived_versions": [
+                    {
+                        **{
+                            key: version[key]
+                            for key in (
+                                "identifier", "version", "url", "source_commit",
+                                "relation_to_current_manuscript", "peer_review_state",
+                                "receiving_status",
+                            )
+                            if key in version
+                        },
+                        "record_ref": (
+                            "docs/papers/archive_versions.json#/papers/"
+                            f"{row['paper_id']}/{index}"
+                        ),
+                    }
+                    for index, version in enumerate(row.get("archived_versions", []))
+                ],
                 "preferred_read_path": preferred_read_path,
                 "full_text_available_in_checkout": full_text_available,
                 "pdf_available_in_checkout": pdf_available,
@@ -10355,7 +10786,12 @@ def paper_reading_guide_packet() -> dict[str, Any]:
         "papers": papers,
         "default_gateway": default_gateway,
         "historical_joint_manuscript": archival_joint,
-        "current_mathematical_entrances": current_notes,
+        # These are handles into registered_publication_artifacts above. Do not
+        # repeat each artifact's paths and availability flags a second time.
+        "current_mathematical_entrances": [
+            {"id": row["id"], "artifact_class": row["artifact_class"]}
+            for row in current_notes
+        ],
         "mathematical_default_gateway": mathematical_default_gateway,
         "recommended_routes": {
             "understand_the_mathematics": [
@@ -11004,6 +11440,9 @@ def _append_route_memory_resumes(card: str, route_memory: Any) -> str:
 
 
 def render_card(packet: dict[str, Any]) -> str:
+    if packet.get("kind") == "source_bound_frontier":
+        import corpus_substrate
+        return corpus_substrate.render_frontier(packet).rstrip("\n")
     kind = packet["kind"]
     if kind == "claim":
         claim = packet["claim"]
@@ -11275,8 +11714,14 @@ def render_card(packet: dict[str, Any]) -> str:
             for command in _route_memory_resume_commands(route_memory):
                 line += f" | resume={command}"
             rows.append(line)
+        facets = packet["operator_synthesis"].get("requested_facets", [])
+        for facet in facets:
+            rows.append(f"requested facet | {facet['id']} | {facet['status']}")
+            rows.append(facet["instruction"])
+            rows.extend(f"read | {path}" for path in facet.get("read", []))
+            rows.extend(f"next | {command}" for command in facet["commands"])
         reader_answer = packet["operator_synthesis"].get("reader_answer")
-        if reader_answer:
+        if reader_answer and not facets:
             rows.extend(render_problem_reader_answer(reader_answer))
         rows.extend(
             f"semantic_node | {row['node_id']} | authored_semantic_followup"
@@ -11622,6 +12067,8 @@ def query_args_packet(
     """
     parser = argparse.ArgumentParser(description=__doc__)
     group = parser.add_mutually_exclusive_group()
+    group.add_argument("--frontier", type=nonempty_selector, metavar="PROBLEM",
+                       help="source-bound programme statement, obligations and recorded routes")
     group.add_argument("--claim", type=nonempty_selector, metavar="ID")
     group.add_argument("--paper-label", type=nonempty_selector, metavar="LABEL")
     group.add_argument("--paper-source", type=nonempty_selector, metavar="SOURCE_PATH")
@@ -11682,6 +12129,7 @@ def query_args_packet(
             "--dependency-path"
         ),
     )
+    parser.add_argument("--frontier-cursor", help="snapshot-bound continuation from a --frontier result")
     parser.add_argument("--query", default="", help="rank a connection card toward one task")
     parser.add_argument(
         "--format",
@@ -11697,7 +12145,7 @@ def query_args_packet(
     args = parser.parse_args(argv)
     if args.format:
         output_format = args.format
-    elif args.tour or args.papers:
+    elif args.frontier or args.tour or args.papers:
         output_format = "card"
     elif args.ask and not (
         is_repository_overview_query(args.ask)
@@ -11710,7 +12158,12 @@ def query_args_packet(
         parser.error(f"--limit must be between 1 and {MAX_LIMIT}")
     if not 1 <= args.depth <= 8:
         parser.error("--depth must be between 1 and 8")
-    if args.claim:
+    if args.frontier_cursor and not args.frontier:
+        parser.error("--frontier-cursor requires --frontier")
+    if args.frontier:
+        import corpus_substrate
+        packet = corpus_substrate.frontier_packet(ROOT, args.frontier, args.limit, args.frontier_cursor)
+    elif args.claim:
         packet = claim_packet(args.claim)
     elif args.paper_label:
         packet = paper_label_packet(args.paper_label)
@@ -11792,6 +12245,63 @@ def query_args_packet(
     return packet, output_format
 
 
+def compact_problem_route_anchor_transport(packet: dict[str, Any]) -> dict[str, Any]:
+    """Losslessly intern repeated exact anchor metadata in a large JSON route.
+
+    Commands and all source/provenance fields remain explicit in the table.
+    Each family occurrence retains its matched names; this is transport only,
+    with no change to the in-process route or its Markdown rendering.
+    """
+    if packet.get("kind") != "problem_route":
+        return packet
+    compact = copy.deepcopy(packet)
+    table: list[dict[str, Any]] = []
+    indices: dict[str, int] = {}
+    for family in compact["route"].get("result_families", []):
+        anchors = family["paper_route"]["matching_anchors"]
+        for index, anchor in enumerate(anchors):
+            shared = {key: value for key, value in anchor.items()
+                      if key != "matched_declarations"}
+            identity = json.dumps(shared, sort_keys=True, ensure_ascii=False)
+            if identity not in indices:
+                indices[identity] = len(table)
+                table.append(shared)
+            anchors[index] = {"anchor_route_index": indices[identity],
+                              "matched_declarations": anchor["matched_declarations"]}
+    compact["paper_anchor_route_transport"] = {
+        "schema": "shared_exact_anchor_routes_v1",
+        "table": table,
+        "reconstruction": (
+            "For each route.result_families[].paper_route.matching_anchors[]: "
+            "copy table[anchor_route_index], then add matched_declarations. "
+            "Indices are zero-based. No exact anchors or matched names are omitted."
+        ),
+    }
+    return compact
+
+
+def expand_problem_route_anchor_transport(packet: dict[str, Any]) -> dict[str, Any]:
+    """Recover the ordinary route schema from its explicit shared-anchor table."""
+    transport = packet.get("paper_anchor_route_transport")
+    if transport is None:
+        return packet
+    if packet.get("kind") != "problem_route" or transport.get("schema") != "shared_exact_anchor_routes_v1":
+        raise ValueError("unsupported paper-anchor route transport")
+    expanded = copy.deepcopy(packet)
+    table = expanded.pop("paper_anchor_route_transport")["table"]
+    for family in expanded["route"].get("result_families", []):
+        anchors = family["paper_route"]["matching_anchors"]
+        for position, reference in enumerate(anchors):
+            index = reference["anchor_route_index"]
+            if type(index) is not int or not 0 <= index < len(table):
+                raise ValueError("invalid paper-anchor route index")
+            if set(reference) != {"anchor_route_index", "matched_declarations"}:
+                raise ValueError("invalid paper-anchor route reference")
+            anchors[position] = {**copy.deepcopy(table[index]),
+                                 "matched_declarations": reference["matched_declarations"]}
+    return expanded
+
+
 def main() -> int:
     try:
         packet, output_format = query_args_packet()
@@ -11803,6 +12313,9 @@ def main() -> int:
     else:
         encoded = json.dumps(packet, ensure_ascii=False, indent=2) + "\n"
         if len(encoded.encode("utf-8")) > OUTPUT_BUDGET_BYTES:
+            encoded = json.dumps(packet, ensure_ascii=False, separators=(",", ":")) + "\n"
+        if len(encoded.encode("utf-8")) > OUTPUT_BUDGET_BYTES and packet.get("kind") == "problem_route":
+            packet = compact_problem_route_anchor_transport(packet)
             encoded = json.dumps(packet, ensure_ascii=False, separators=(",", ":")) + "\n"
         if len(encoded.encode("utf-8")) > OUTPUT_BUDGET_BYTES:
             print(

@@ -710,6 +710,16 @@ def main() -> int:
         return 1
 
     problem_index = build(source, artifacts, claims, corpus)
+    unknown_statuses = sorted(
+        f"{row['problem_id']}: {row['status']!r}"
+        for row in problem_index["problems"]
+        if row["status"] not in source["status_vocabulary"]
+    )
+    if unknown_statuses:
+        print("build_problem_index: problem status outside status_vocabulary")
+        for entry in unknown_statuses:
+            print(f"  FAIL {entry}")
+        return 1
     payload = canonical(problem_index)
     library_payload = canonical(problem_library(source, claims, corpus))
     guide_text = AGENT_GUIDE.read_text(encoding="utf-8")

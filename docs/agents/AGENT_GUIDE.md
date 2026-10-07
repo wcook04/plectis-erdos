@@ -37,7 +37,7 @@ Using the degree-seven polynomial constructed by the erdosproblems.com contribut
 
 **#68 — Is the series sum_{n >= 2} 1/(n! - 1) irrational?**
 
-The irrationality of the factorial-denominator series remains open in this release; the checked reductions and finite obstructions do not supply the required cofinal failure.
+Lean proves that S = ∑_{n≥2} 1/(n! − 1) is irrational if and only if, for infinitely many m, m does not divide ⌊m!·S_m⌋ + 1, where S_m is the prefix sum through n = m (irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses); equivalently, the factorial-gap carry differs from 1 for infinitely many m (irrational_factorialGapSeries_iff_cofinal_nonunit_carries). Lean also proves liminf log L_N/(N^{3/2} log N) ≥ 2√2/3 for the common denominator L_N = lcm_{2≤n≤N}(n! − 1) before cancellation (common_denominator_growth_liminf). The irrationality of S remains open: the checked reductions and finite obstructions do not supply the required cofinal non-unit carries.
 
 One recorded result: The exact integral normal form: the series is irrational if and only if the strict factorial successor Z_m misses divisibility by m cofinally.
 
@@ -45,7 +45,7 @@ One recorded result: The exact integral normal form: the series is irrational if
 
 **#243 — Under a rapid-growth hypothesis on an integer sequence, does rationality of its reciprocal sum force the sequence to satisfy the Sylvester recurrence eventually?**
 
-The eventual Sylvester recurrence assertion remains open in this release; the bounded-rise barrier and conditional negative-part reductions leave the mixed-sign unbounded regime unresolved.
+Lean proves that if a is a strictly increasing sequence of positive integers with n^λ(a(n)²/a(n+1) − 1 − λ/n) → 0, then the reciprocal sum ∑ 1/a(n) is irrational, for every non-integer λ > 1, where Lean also derives convergence (nonintegral_regular_rate_irrational), and for λ = 3 whenever the sum converges (cubic_rate_irrationality_unconditional). Both theorems are zero-indexed; the paper transfers them to one-based indexing by an ordinary finite-prefix argument. Without such a rate the eventual Sylvester recurrence assertion remains open: the bounded-rise barrier and the conditional negative-part reductions leave the mixed-sign unbounded regime unresolved.
 
 One recorded result: Lean proves cubic_rate_irrationality_unconditional for positive StrictMono zero-indexed a_n with a_n²/a_(n+1) = 1 + 3/n + o(n^-3). The one-based paper uses a finite-prefix bridge; general #243 remains open.
 
@@ -53,7 +53,7 @@ One recorded result: Lean proves cubic_rate_irrationality_unconditional for posi
 
 **#249 — Is the binary Lambert series sum phi(n)/2^n irrational?**
 
-Not proved by this release. The reductions convert it into the unboundedness of the certificate supply, which is untouched.
+Lean proves that S = ∑ φ(n)/2ⁿ is irrational if, for every h ≥ 1, there are arbitrarily large X at which the real part of the first-harmonic sum over the good indices is at most 603X/1000 (irrational_totient_series_of_goodBase_gap); the good indices are the assigned indices N in [X, 2X) at the minimal admissible depth with s = 26 whose cofactor m satisfies φ(m) ≥ m/1000. For all large X more than 67X/100 indices are good (eventually_card_pivotGoodBases_gt), and 603/1000 = (9/10)(67/100). Lean also proves that S is irrational if and only if certified non-integrality witnesses occur at unbounded parameters (irrational_totient_series_iff_certificate_supply). The 603X/1000 bound and that unbounded certificate supply are open, so S is not proved irrational.
 
 One recorded result: For every e >= 1, the complete dyadic totient kernel through level e has rational span dimension 2^e+1.
 
@@ -61,7 +61,7 @@ One recorded result: For every e >= 1, the complete dyadic totient kernel throug
 
 **#251 — Is the dyadic series of consecutive primes irrational? Equivalently, is the corresponding consecutive-prime-gap dyadic series irrational?**
 
-The prime-index dyadic series remains open in this release; the exact tail-shift equivalence, prime-gap unboundedness, and nonperiodicity do not supply the required cofinal escape for the actual prime gaps.
+Lean proves that Π = ∑_{n≥1} p_n/2ⁿ equals 2 plus the prime-gap dyadic series and that Π is irrational if and only if that gap series is (tsum_primeDyadicTerm_eq_two_add_primeGap_unconditional, irrational_tsum_primeDyadicTerm_iff_primeGap), with summability from the elementary bound p_n ≤ 1250(n+1)^4; the identity is the known summation by parts. Lean also proves that the consecutive prime gaps are unbounded and not eventually periodic (exists_primeGap0_gt, primeGap0_not_eventually_periodic). The irrationality of Π remains open: these facts do not supply the required cofinal escape for the actual prime gaps.
 
 One recorded result: The finite summation-by-parts identity relating the prime dyadic partial sums to the prime-gap dyadic partial sums, with an exact endpoint term and no convergence premise.
 
@@ -69,7 +69,7 @@ One recorded result: The finite summation-by-parts identity relating the prime d
 
 **#257 — Is the sum of 1/(2^n-1) over every infinite set of positive exponents irrational?**
 
-Irrationality of ∑_{n∈A} 1/(2ⁿ − 1) for every infinite A is not proved by this release; only named families are formalised.
+Lean proves that for every integer base b ≥ 2 and every finite nonempty set P of primes, with h(a) the largest divisor of a supported on P, every infinite set A of positive integers with ∑_{a∈A} h(a)/(a(b^{h(a)} − 1)) finite has ∑_{n∈A} 1/(bⁿ − 1) irrational (divisibilityWeightedClaim). Lean also proves irrationality at every such base for every infinite A with ∑_{a∈A} 1/a finite (irrational_erdosSupportSeries_of_summable_reciprocal), and exhibits sets with divergent reciprocal sum all of whose infinite subsets have irrational series at every such base (finite_monotone_witness_rule_realised). Irrationality of ∑_{n∈A} 1/(2ⁿ − 1) for every infinite A remains open.
 
 One recorded result: Irrationality at every integer base for the classical full support, reciprocal-summable supports, and the finite-prime weighted supports in divisibilityWeightedClaim.
 
@@ -77,7 +77,7 @@ One recorded result: Irrationality at every integer base for the classical full 
 
 **#269 — For a finite set of at least two primes, is the sum of reciprocals of the running least common multiples of the smooth numbers irrational? This library treats the three-prime case.**
 
-The running-LCM reciprocal sum remains unresolved from three or more primes in this release. For the actual {2,3,5} series, the rationality-to-positive-reduced-carry bridge is checked; the remaining endpoint is cofinal local-window escape, equivalently exclusion of the integral branch.
+For every finite set P of at least two primes, the distinct-height sum D_P (each running LCM value of the P-smooth integers counted once) is irrational (res:distinct-height-all; ordinary proof checked by a second AI agent, no human review), as Erdős asserted without an argument in 1973; for |P| = 2 it follows from Hecke-Mahler transcendence, and D_{2,3,5} is Lean-checked (res:distinct-height-235; Comparator not yet run). Each single-prime sub-sum E_p of the catalogue sum is irrational (res:single-prime-subsums; same evidence class as D_P). The catalogue sum for three or more primes is unresolved in this release: for {2,3,5} the rationality-to-positive-reduced-carry bridge is checked, and the remaining endpoint is cofinal local-window escape, equivalently exclusion of the integral branch.
 
 One recorded result: That for three pairwise distinct primes the least common multiple of the smooth prefix equals the product of the three maximal pure prime powers below the cutoff.
 
@@ -93,7 +93,7 @@ One recorded result: For ani’s degree-seven polynomial, every preconnected str
 
 **#1049 — For which rational bases is the corresponding series irrational? The first resistant explicit base is three halves.**
 
-For rational bases in the Zudilin contour region, including every positive integral power of 31/4, the public Lean development proves irrationality and the stated irrationality-exponent bound from the constructed polynomial forms and analytic estimates. The universal rational-base assertion remains open; 3/2 lies outside this region and is unresolved here.
+For natural numbers 0 < b < a in the Zudilin contour region, Lean proves that F(a/b) is irrational with irrationality exponent at most rationalBaseMeasureBound a b (rational_base_region, rational_base_measure), from the constructed polynomial forms and analytic estimates; in particular F((31/4)^r) is irrational for every positive integer r (thirtyone_four_powers). The universal rational-base assertion remains open; 3/2 lies outside this region and is unresolved here.
 
 One recorded result: Lean checks irrationality and the stated irrationality-exponent bound for rational bases in the exact Zudilin contour region, including every positive integral power of 31/4. The contour excludes 3/2.
 
@@ -405,12 +405,31 @@ authored exposition, then generated projections.
 Choose one validation level. Do not run the full release gate and then rerun its
 component checks as a serial checklist.
 
+Before publication, run `python3 scripts/refresh_projections.py --preflight`.
+It checks every registered projection, tracked evidence, source identity and
+cold CI infrastructure contracts before compilation. A warm local receipt
+cannot substitute for evidence shipped in the clone. Follow the reported owner
+to repair failures; `refresh_projections.py` refreshes Python projections and
+reports any separate Lean export required. Commit both dependency-index files
+after an export and rerun the cheap check.
+
+Install `python3 scripts/check_push.py --install` once per worktree. It checks
+the exact outgoing commits and the destination's current main, preserving local
+uncommitted work. Merge or rebase an advanced base and regenerate affected
+projections before retrying. The [submission skill](../../skills/submit-pull-request/SKILL.md)
+owns the full contract-test inventory, custom-hook integration and explicit
+`dependency-index-refresh` recovery scope. Recovery produces repair evidence;
+normal PR checks still have to pass.
+
 - During an edit, run only the owning builder or focused test named by the
   routed skill. For example, agent-entry work uses
   `python3 scripts/test_agent_entry.py`; semantic projection work uses its
   `build_*.py --check` command plus the matching contract test.
-- Before publishing a non-Lean public-surface change, run
-  `python3 scripts/check_release.py` once. It already runs the registered
+- Before publishing a non-Lean public-surface change from a cold checkout,
+  run `python3 scripts/run_release_check.py` once. It prepares the locked
+  Python environment and the proof-state pilot's Lean import, then runs
+  `scripts/check_release.py`. Prepared CI can call that script directly. The
+  gate already runs the registered
   projection freshness checks, source-coordinate checks, public-boundary
   checks, query suite, cold-clone adversarial suite, and mutation fixtures.
 - After a Lean change, run the focused build wrapper below as the separate

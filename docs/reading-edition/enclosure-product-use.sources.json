@@ -1,0 +1,93 @@
+{
+  "format": "attributed-worked-example-sources-v1",
+  "checked_at": "2026-10-07",
+  "note": "enclosure-product-use.md",
+  "computation": "../../computations/check_enclosure_product_use.py",
+  "result": {
+    "declaration": "CKLaneA3X.Encl.mul",
+    "theorem_id": "546f59d6-9aac-4c5a-bc72-1efd5a77ff83",
+    "url": "https://prove2.me/theorems/546f59d6-9aac-4c5a-bc72-1efd5a77ff83",
+    "original_source_url": "https://github.com/dpwoodru/general-courtade-kumar-lean/blob/04b6fc3f75b10c3c43702a883ddf888b0608a9a0/browse/CKLaneA3X/TM.lean#L193"
+  },
+  "selected_submission": {
+    "id": "1b917aa3-8144-47d1-8999-e1feea0ee6cf",
+    "url": "https://prove2.me/submissions/1b917aa3-8144-47d1-8999-e1feea0ee6cf",
+    "export_attribution": "@marwahaha",
+    "status_in_pinned_export": "ACCEPTED",
+    "status_boundary": "Recorded in the pinned exported solution header; this is not a live platform-status check."
+  },
+  "export": {
+    "repository": "https://github.com/prove2me/formalpedia",
+    "revision": "2ce1f7ce2a5eec4c20eb25ac85f36e94db89779a",
+    "license": "Apache-2.0",
+    "environment_id": "0df444a",
+    "toolchain": "leanprover/lean4:v4.33.1",
+    "mathlib_revision": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "manifest_url": "https://github.com/prove2me/formalpedia/blob/2ce1f7ce2a5eec4c20eb25ac85f36e94db89779a/MANIFEST.json",
+    "manifest_sha256": "bab07d582b7ead3ef555662e10c7b94fb3463b05e57b5c6843f5dda6b5170e84"
+  },
+  "files": [
+    {
+      "path": "envs/0df444a/Definitions/Def_A3X_numeric_core.lean",
+      "url": "https://github.com/prove2me/formalpedia/blob/2ce1f7ce2a5eec4c20eb25ac85f36e94db89779a/envs/0df444a/Definitions/Def_A3X_numeric_core.lean",
+      "raw_url": "https://raw.githubusercontent.com/prove2me/formalpedia/2ce1f7ce2a5eec4c20eb25ac85f36e94db89779a/envs/0df444a/Definitions/Def_A3X_numeric_core.lean",
+      "sha256": "438dcfa365733f7d924a8a3697003a01babebffc2366121a8a9a8bc15b870d0d"
+    },
+    {
+      "path": "envs/0df444a/Definitions/Def_A3X_enclosure.lean",
+      "url": "https://github.com/prove2me/formalpedia/blob/2ce1f7ce2a5eec4c20eb25ac85f36e94db89779a/envs/0df444a/Definitions/Def_A3X_enclosure.lean",
+      "raw_url": "https://raw.githubusercontent.com/prove2me/formalpedia/2ce1f7ce2a5eec4c20eb25ac85f36e94db89779a/envs/0df444a/Definitions/Def_A3X_enclosure.lean",
+      "sha256": "7efff7c826cea947cb04eb21c513ba521d02a1475c60063b1fdacae495edc66c"
+    },
+    {
+      "path": "envs/0df444a/Theorems/Thm_CKLaneA3X_Encl_mul.lean",
+      "url": "https://github.com/prove2me/formalpedia/blob/2ce1f7ce2a5eec4c20eb25ac85f36e94db89779a/envs/0df444a/Theorems/Thm_CKLaneA3X_Encl_mul.lean",
+      "raw_url": "https://raw.githubusercontent.com/prove2me/formalpedia/2ce1f7ce2a5eec4c20eb25ac85f36e94db89779a/envs/0df444a/Theorems/Thm_CKLaneA3X_Encl_mul.lean",
+      "sha256": "d2c27687d919a21a260071e04d10569927fceb3e120fcc176b82f58174d32d3c"
+    },
+    {
+      "path": "envs/0df444a/Solutions/Sol_CKLaneA3X_Encl_mul.lean",
+      "url": "https://github.com/prove2me/formalpedia/blob/2ce1f7ce2a5eec4c20eb25ac85f36e94db89779a/envs/0df444a/Solutions/Sol_CKLaneA3X_Encl_mul.lean",
+      "raw_url": "https://raw.githubusercontent.com/prove2me/formalpedia/2ce1f7ce2a5eec4c20eb25ac85f36e94db89779a/envs/0df444a/Solutions/Sol_CKLaneA3X_Encl_mul.lean",
+      "sha256": "f1802bcbee066020d9711a25a6c65c661cd6c5a4555eb49e655f968254a7a83c"
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://github.com/prove2me/formalpedia/blob/2ce1f7ce2a5eec4c20eb25ac85f36e94db89779a/LICENSE",
+      "raw_url": "https://raw.githubusercontent.com/prove2me/formalpedia/2ce1f7ce2a5eec4c20eb25ac85f36e94db89779a/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    }
+  ],
+  "credit": {
+    "mathematical_source": "Courtade–Kumar Lean project at the original source URL; selected exported proof attributed to @marwahaha.",
+    "exposition": "Prepared with Codex in Will Cook’s research workflow. This is exposition and application credit, not authorship of the source theorem or proof."
+  },
+  "checks": {
+    "public_source_bytes": "Retrieved the pinned public source files and recorded their SHA-256 hashes.",
+    "mathematics": "Source inspection, an ordinary algebraic interval argument and exact rational arithmetic.",
+    "local_lean_replay": "not performed",
+    "independent_human_review": "not recorded",
+    "comparative_reader_benefit": "not established"
+  },
+  "interpretation": {
+    "domain": "0 < t <= 3/10, 0 < rho < 1; this example is independent of rho",
+    "order_premises": [
+      "v1 <= n1",
+      "n <= v1 + n2",
+      "n <= v2 + n1"
+    ],
+    "orders": {
+      "n1": 4,
+      "n2": 1,
+      "v1": 2,
+      "v2": 3,
+      "n": 3
+    },
+    "requested_remainder": "7/20",
+    "sufficient_remainder": "17563/50000",
+    "compatible_witness_excess": "63/50000",
+    "exact_polynomial_pair_remainder": "9/40",
+    "conclusion": "The input certificates do not guarantee the requested target for every compatible pair. The exact polynomial pair does satisfy it.",
+    "source_caveat": "The numeric definition gives Tq = 3/10 despite an inherited 7/50 domain comment. The theorem export has a sorry placeholder; the separate solution file contains the inspected proof."
+  }
+}

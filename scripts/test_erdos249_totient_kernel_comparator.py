@@ -19,6 +19,8 @@ def main() -> int:
     assert not receipt.negative_is_semantic(0, receipt.EXPECTED_MISMATCH)
     assert not receipt.negative_is_semantic(124, receipt.EXPECTED_MISMATCH)
     assert not receipt.negative_is_semantic(125, receipt.EXPECTED_MISMATCH)
+    for code in (2, 130, 137, 143, -9, -15):
+        assert not receipt.negative_is_semantic(code, receipt.EXPECTED_MISMATCH)
     assert not receipt.negative_is_semantic(1, "unrelated elaboration failure")
 
     workflow = (SCRIPT.parent.parent / ".github/workflows/lean.yml").read_text()

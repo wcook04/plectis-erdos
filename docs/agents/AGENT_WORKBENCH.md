@@ -6,37 +6,32 @@ and keep records another researcher can inspect and replay.
 
 Use this page for agent operations. Before proposing changes, read
 [CONTRIBUTING.md](../../CONTRIBUTING.md) and the authority and validation
-contract in [AGENTS.md](AGENT_GUIDE.md). Reader introductions belong in the README.
+contract in the [agent guide](AGENT_GUIDE.md). Reader introductions belong in the README.
 
 For clone setup and a copyable task prompt, see the
 [agent quickstart](README.md#start-with-current-public-work).
 
-## Design thesis
+## What the workbench records
 
-Every mechanized proof-search policy we examined ends the same way: an
-exact core it can fully justify (a kernel receipt, an algebra of
-supports and cuts, a leakage-controlled evaluator) wrapped around a
-policy layer it cannot (which candidate to probe next, which bridge
-shape to invent, which representation to abandon). Systems ordinarily
-fill that second slot with heuristics and then defend the heuristics.
-We leave the slot open on purpose. The policy slot is occupied by an
-agent with actual intelligence, and everything around it is built so
-that the agent's work is exact where it must be and auditable
-everywhere else.
+The researcher chooses which conjecture to test, which representation to try
+and when to change direction. The workbench records the submitted inputs,
+Lean probes and results so that someone else can check the work. A successful
+probe establishes its Lean statement; it does not show that the research
+choice was useful or that a reader understands the argument.
 
-Three consequences fall out of this inversion:
+The tools can be composed directly or through helpers such as
+[`continue_research.py`](../../scripts/continue_research.py), which combines
+corpus lookup with a recorded session. Within the proof workbench, a formal
+claim must cite a kernel-accepted probe before the notary will record it.
+The receipt preserves that connection; it does not certify every observation
+or conjecture in the session.
 
-1. **Instruments, not pipelines.** Each tool here answers one question
-   exactly and refuses to answer neighbouring questions it cannot
-   ground. Nothing chains them automatically; the agent composes them.
-2. **The unit of progress is the receipted session.** A session of
-   reasoning — observations, conjectures with declared falsifiers,
-   kernel probes, revisions, claims — is recorded as a durable artifact
-   that a third party can replay end to end. The repository accumulates
-   not just theorems but the audited cognition that produced them.
-3. **Authority is structural, not rhetorical.** An agent cannot author
-   a kernel verdict. Claims must cite kernel-accepted probe receipts,
-   and the notary refuses the record otherwise.
+Recorded sessions are optional for ordinary contributions. An issue or pull
+request can supply an ordinary proof, a correction, exposition or an exact
+finite computation, with its evidence and limits stated under the
+[methodology](../METHODOLOGY.md). The [systems paper](../../paper/systems/claim-faithful-publication-systems-paper.pdf)
+explains the current design; the [earlier technical account](../../paper/systems/cold-clone-to-proof-receipt.pdf)
+is retained as historical background.
 
 ## Eight-problem cold-start route
 
@@ -139,6 +134,43 @@ forest; exact dependency neighborhoods cover both compact roots. Entry:
 ```sh
 python3 scripts/query_semantic.py inventory
 ```
+
+## Source-bound decisions and transfer candidates
+
+Start with `query_corpus.py --ask` for the registered frontier. The argument
+graph gives a second, recorded-edge view; `next` ranks open statements and
+`transfer` screens cross-problem reductions without certifying a useful
+application:
+
+```sh
+python3 scripts/query_continuations.py next --problem 269 --limit 8
+python3 scripts/query_continuations.py transfer --limit 12 --max-work 10000 --max-checks 250
+python3 scripts/research_decision.py --problem 269 --source-commit <full-commit> --format markdown
+```
+
+The continuation commands require `docs/argument_continuations_graph.json.gz`.
+If it is absent, obtain a matching kernel export and run
+`python3 scripts/build_argument_continuations.py --export <export.jsonl.gz>`;
+the builder's `--help` describes the export and provenance sidecars. Do not
+infer a frontier from an absent projection.
+
+The decision adapter binds its read set to the named commit and reports missing
+capabilities explicitly. It reads the existing claims, relations, contrasts
+and journal; it is not a new claim registry. For a mechanism already authored
+in the theory lab, use the read-only retrieval adapter:
+
+```sh
+python3 scripts/insight_engine.py reverse "rational tail denominator"
+python3 scripts/insight_engine.py forward <mechanism_id> --exclude-origin --limit 8
+```
+
+These are lexical source candidates with pending proof obligations. The graph
+screen checks recorded relations only; exhaustion is `unknown_budget`. Neither
+route proves applicability, strictness, novelty or usefulness. For a
+prospective, source-bound experiment on a selected mechanism, follow
+[`run-coupled-research-goals`](../../skills/run-coupled-research-goals/SKILL.md)
+and its `research_episode.py plan` route. For dispatch and returned work, use
+[`erdos-research-return`](../../skills/erdos-research-return/SKILL.md).
 
 ## The move grammar
 

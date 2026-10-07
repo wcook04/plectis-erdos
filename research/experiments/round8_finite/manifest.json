@@ -1,0 +1,51 @@
+{
+  "evidence_class": "exact finite arithmetic and counterexamples only; no infinite theorem or Lean/model receipt",
+  "historical_source_commit": "0268dd8bfb2a556a0c93078337d42c6d07138fa2",
+  "returned_implementation_paths_within_packet": {
+    "p1": "proposed/research/experiments/chain_transcendence/divisibility_cuts.py",
+    "p2": "code/ordered_word_transfer.py",
+    "p3-calibrated": "code/calibrated_witness.py",
+    "p3-height": "code/height_transfer.py",
+    "p4": "scripts/moment_packets.py"
+  },
+  "returned_implementation_sha256": {
+    "p1": "4147fc2fb1ee479cdf687c8d1a9527aa7702b0108a41a31eb22faa71c151085d",
+    "p2": "b0c624e53bc478ff9209267ccbee9600fdf93cf015aeb75fad5462633a150157",
+    "p3-calibrated": "b765042a6ec9a597a099a5f295a3f93ba77f3fa1f0a40e9d0ee1bb1666b026a4",
+    "p3-height": "5c7af4b0833f937a6c52abe76d3f61eba7bfc3a00b04a7422d5f26c75977b418",
+    "p4": "5df33f31de8625974950232cebe1896e0151e6c75e64718ccfbfed1cf247125a"
+  },
+  "schema": "plectis-round8-finite-experiments/1",
+  "source_git_object_sha256": {
+    "lean/ErdosProblems/Erdos1049/PaperCompleteR21/GeometricUniversality.lean": "ba55c146385ac9855927d45015f65d50a438cd59a4e4f1d9a92ad12e265f5a02",
+    "paper/1049/erdos-1049-rational-base-lambert.tex": "8a4ef79bde4e4def74fc6ae6bfba990f43b824bd2638828814ddc53826e101a5",
+    "paper/249/erdos-249-binary-totient-series.tex": "6ad13ba77371b054966f217673351bfc4953bce0b37e6756cf4756e3438f97ac",
+    "paper/251/erdos-251-prime-gap-dyadic-series.tex": "4d63f86b6113dfad6f969385faaa97f2b48b95742379a1c7f6148d283d06add0",
+    "paper/269/erdos269-running-lcm-reasoning-surface.tex": "6abdbd61c9ddc41464617e3516956d9d3b1128a8cd8bf92ceb4793f9918bbb28",
+    "paper/synthesis/optimal-sparse-perturbations.tex": "f130deb7a9a914e6817eaf51ec065c713ba1740c8a1740410e6be0418f0f13ab"
+  },
+  "stage_base_public_commit": "f5e5c4ff131da2d1be9bbc9b59d5bf144181654a",
+  "staged_programs": {
+    "research/experiments/chain_transcendence/round8_finite_cut.py": {
+      "direct_stdout_bytes": 476,
+      "direct_stdout_sha256": "31412381c5476bf77021dfbd2ff11be4835ccb48308a3e14904fbf766cc0362d",
+      "sha256": "afc736398f949aff95e445b81e7c5d2bbdd9724e65ac76d1246cc9b664f5378e"
+    },
+    "research/experiments/erdos1049/round8_calibrated_denominators.py": {
+      "direct_stdout_bytes": 1757,
+      "direct_stdout_sha256": "f2594fcf513852a79c7e75b85707bf83489a9d923fbe0409260c66076d63bf2f",
+      "sha256": "3902290c2b5b22c430a22e8f61b08f72602d9a20749c3c6f718780a0955e1638"
+    },
+    "research/experiments/erdos249/round8_signed_pulse.py": {
+      "direct_stdout_bytes": 846,
+      "direct_stdout_sha256": "9e270c0a6e3ec56dfa90c5025783caa7026d5a49625f1a638c87d00f94e3bbf5",
+      "sha256": "3ccb0a2c5f6003df37cacd73638710614d9be119dfab5dbc9b408fc419958c6a"
+    },
+    "research/experiments/erdos269/round8_affine_collision.py": {
+      "direct_stdout_bytes": 497,
+      "direct_stdout_sha256": "fbb527dfc2b802e04e25236785a741178beae012dd8822e1dfc92ba4449598d1",
+      "sha256": "da5224e5bb321c5526d5db7fe6d109f7688b6659e3317cb8dd9b86265e971670"
+    }
+  },
+  "test": "research/experiments/round8_finite/test_round8_finite.py"
+}

@@ -1,0 +1,313 @@
+% SPDX-FileCopyrightText: 2026 Will Cook
+% SPDX-License-Identifier: CC-BY-4.0
+\section{Explain the choices in a proof}\label{sec:revisions}
+\papersectiontarget{exposition-revisions}
+
+These cases concern attainment and the accuracy an inference requires.
+They were accepted in the short-paper R6 round of 30 September 2026, not the
+earlier September series with the same round numbers. The records retain
+the passages at commit \texttt{18cedaddedd1}, its full identity and source
+digests~\cite{ledger}.
+
+\subsection{From repeated choice to an attained infinite sum}\label{sec:remainder}
+
+The \#251 paper contains a construction in which a target $x$ is represented
+by chosen digits $d_j$ and weights $w_j$. A finite remainder $\rho_j$ is kept
+between $0$ and a bound $F_j$. The old passage began:
+\begin{quote}
+Given $x\in[0,F_0]$, we choose $d_0$ so that
+$x-d_0w_0\in[0,F_1]$ and repeat this choice for each successive remainder.
+\end{quote}
+This leaves two questions: why is the next digit available, and why does
+continuing the choices represent the whole target? The reviewed addition
+answers them separately:
+\begin{quote}
+The covering just proved makes this possible at every stage. The invariant
+$0\le\rho_j\le F_j$ and $F_j\to0$ then give
+\end{quote}
+and continues with the limiting identity. The first sentence says why the
+construction can continue. The second says why its partial sums reach the
+chosen target: the part still missing is forced to zero. The record is
+\caseid{r6-251-style\_rules-04}; its full identifier includes the series date.
+
+Crmari\'c and Kova\v{c}'s proof of Lemma~4(a), in the first version of their
+paper on sums of reciprocals, provides a close model~\cite[pp.~4--5]{crmaric}.
+They keep a finite remainder in an interval and use convergence to obtain
+the represented value. What transfers is the separation of two questions:
+can the next choice be made, and does the resulting sequence attain the target?
+
+The \#251 construction must justify its covering, invariant and $F_j\to0$,
+as well as sparsity and arithmetic constraints. Neither a finite digit
+example nor the literary comparison supplies those proofs. The integration
+preserved these obligations and the unresolved status of the original
+prime-gap problem.
+
+\subsection{State how accurate the estimate must be}\label{sec:estimate}
+
+In the \#269 argument, a rationality assumption places normalized tails
+$Y_a$ in the finite set
+\[
+             (K^{-1}\mathbb Z)\cap(0,1).
+\]
+Here $K\ge1$ is the integer denominator in the rationality assumption.
+Finiteness forces two tails to agree; it does not force their successors to
+agree. The accepted revision makes the remaining task explicit: recover the
+next block and tail from the present tail. Only then does equality propagate.
+
+Han\v{c}l and Tijdeman begin their proof of Theorem~2.1 with an integral
+scaled remainder obtained from rationality~\cite[p.~373]{hancl}. The \#269
+revision likewise identifies the arithmetic object before estimating it;
+recovery is its own additional task, not supplied by the cited proof.
+
+The next difficulty is quantitative. The maps
+$G_{53}(t)=(9+t)/30$ and $G_5(t)=(3+t)/10$ encode two possible blocks of
+prime-power jumps. Their images overlap on the initial tail range $[0,1]$, so a value in the
+overlap does not identify its block. Both maps are increasing: to separate
+their images, compare the upper end of one with the lower end of the other.
+With the lower bound $3/10$ already established, the revision states the
+required accuracy first:
+\begin{quote}
+With that lower endpoint, separating these two images requires an upper
+endpoint $U$ satisfying
+\[
+ G_{53}(U)<G_5(3/10),\qquad
+ \frac{9+U}{30}<\frac{33}{100},\qquad U<\frac9{10}.
+\]
+This specifies the improvement needed from the arithmetic sequence.
+\end{quote}
+The case is \caseid{r6-269-style\_rules-03}. The threshold is sufficient for
+this argument, not necessary for every possible method. The return's Knuth
+analogy concerns presentation; the separation inequality supplies the mathematics.
+
+The source obtains the required improvement from the spacing of powers of $5$.
+At a block containing such a power the tail is at most $7/15$. Every three
+consecutive blocks contain at least one such block; moving backwards at most
+twice, each step is bounded by $t\mapsto(1+t)/2$. This gives $U=13/15<9/10$, for the actual
+prime-power sequence, not arbitrary block words. The source separates all five
+block images on this interval. The image identifies the block; its affine
+inverse determines the next tail. Equality can now propagate~\cite[proof of the distinct-height theorem]{paper269}.
+
+\subsection{An example must reveal the relevant difference}\label{sec:multiplicity}
+
+The same manuscript distinguishes summing over smooth integers from summing
+over the distinct values of their running least common multiple. Here the
+allowed prime factors are $2,3,5$; a positive integer with no other prime
+factor is called $5$-smooth. For $x\ge1$ its running least common multiple is
+\[
+ H(x)=\operatorname{lcm}\{u\le x:u\text{ is }5\text{-smooth}\}
+     =2^{\lfloor\log_2x\rfloor}
+      3^{\lfloor\log_3x\rfloor}
+      5^{\lfloor\log_5x\rfloor}.
+\]
+The formula selects the largest power of each allowed prime not exceeding
+$x$~\cite[definition of running least common multiples]{paper269}. For example,
+$H(16)=16\cdot9\cdot5=720$. These are the quantities called heights in the
+revision. The seven $5$-smooth integers in $[16,32)$ give:
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+$5$-smooth integers $u$ & $H(u)$ & Sum of $1/H(u)$\\
+\midrule
+$16,18,20,24$ & $720$ & $4/720$\\
+$25$ & $3600$ & $1/3600$\\
+$27,30$ & $10800$ & $2/10800$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The map from a smooth integer to its height is not one-to-one. Summing over
+smooth integers counts every visit to a height; summing over distinct heights
+counts it once. The multiplicities $4$ and $2$ are the sizes of the corresponding
+fibres. They explain why the sums cannot be identified merely because the
+same heights occur in both.
+The record \caseid{r6-269-style\_rules-04} also retains an endpoint warning:
+the distinct-height argument uses $(16,32]$, whereas the table uses
+$[16,32)$. Matching the endpoint conventions is a separate task from
+preserving multiplicity.
+
+The repeated heights make this table useful: they expose the counting
+convention. Halmos's concrete cases and Gowers's examples-first discussion
+suggest that choice~\cite[\S4]{halmos}\cite{gowers}; they prescribe no order
+for every reader. The infinite-series theorem still needs its proof.
+
+
+\section{From a formula to the sentence that explains it}\label{sec:worked-explanations}
+
+These cases answer a reader's question from an existing formula. They come
+from eight additional editorial returns (\#1049 is labelled R9), checked
+against current manuscript sources. They add no theorem, formal coverage
+or release status.
+
+\subsection{How does the target determine the finite test?}\label{sec:certificate}
+
+A certificate is easier to understand when the reader sees the set it must
+certify before seeing its arithmetic form. In the \#251 paper, two tail
+differences satisfy
+\[
+ D'=2D-\delta,\qquad \delta=2s,\qquad s\in\{-1,1\}.
+\]
+The already proved local criterion asks for $1/2<sD<1$; it then gives
+$-1<sD'<0$. The finite calculation supplies integers $A,Q,B$ with $Q>0$,
+$B\ge0$ and $|QD-A|\le B$~\cite[section on finite separation]{paper251}.
+It is tempting to write only that two ensuing inequalities certify the target.
+The missing explanation is the enclosure itself:
+\[
+ sD\in\left[\frac{sA-B}{Q},\frac{sA+B}{Q}\right].
+\]
+Multiplication by either sign preserves the error bound. The lower endpoint
+must exceed $1/2$, and the upper endpoint must be below $1$. Thus the entire
+closed enclosure lies in $(1/2,1)$ exactly when
+\[
+             2sA-Q>2B,\qquad Q-sA>B.
+\]
+The two inequalities express the two endpoint gaps. The factor $2$ in the
+first comes from the lower endpoint $1/2$, not an arbitrary safety margin.
+Strictness matters because the boundary values give $sD'=-1$ or $0$.
+
+Now separate a failed enclosure from a failed claim. Take $D=3/4$, $s=1$,
+$Q=4$, $A=3$ and $B=1$. The error bound is valid, but the enclosure
+$[1/2,1]$ touches both forbidden endpoints. Neither strict test passes,
+although $D$ lies in the target interval. With these same $D,Q,A$, the sharper
+bound $B=0$ would pass both tests. The failed enclosure therefore need not
+mean a failed claim. The enclosure even has width less than one and still
+contains an integer: its position, not just its width, matters.
+
+The \#68 remainder has a related, one-sided geometry. It is
+$A_N+M(S-H_N)$, where $S$ is the series sum, $H_N$ its $N$th partial sum,
+and $M>0$ scales the strictly positive omitted tail. To put this remainder
+between consecutive integers, it suffices to prove
+\[
+             0<M(S-H_N)<\lfloor A_N\rfloor+1-A_N.
+\]
+The left inequality puts the remainder above $\lfloor A_N\rfloor$; the right
+puts it below $\lfloor A_N\rfloor+1$~\cite[section on nonintegrality]{paper68}.
+A tail smaller than one could still cross the next integer; it must be
+smaller than this particular gap. At an integral $A_N$ the gap is $1$. Replacing the strict successor by
+$\lceil A_N\rceil$ would make it zero. The endpoint distinguishes two
+superficially interchangeable conventions.
+
+\subsection{Why was this base or kernel chosen?}\label{sec:formula-choice}
+
+A change of notation should reveal a constraint or save an operation. In one
+\#249 comparison construction, only the even-indexed coefficients may change.
+Writing $e_n$ for the coefficient changes, their contribution to a binary series is
+\[
+                 \sum_{m\ge1} e_{2m}\,2^{-2m}
+                 =\sum_{m\ge1}e_{2m}\,4^{-m}.
+\]
+The permitted support has selected base four. Stating this before the digit
+construction explains the choice and shows immediately why the odd coefficients
+remain untouched~\cite[comparison-sequence construction]{paper249long}.
+The identity alone says nothing about which corrections can be attained under
+additional coefficient bounds; those are separate assertions of the construction.
+
+The \#257 divisor kernel admits an equally direct introduction. Fix integers
+$N\ge0$ and $d\ge1$, and let $B>1$. If $r\ge1$ satisfies $d\mid N+r$,
+then its possible values are
+\[
+       d-(N\bmod d),\quad 2d-(N\bmod d),\quad\ldots.
+\]
+Consequently
+\[
+ \sum_{\substack{r\ge1\\d\mid N+r}}B^{-r}
+ =\frac{B^{N\bmod d}}{B^d-1}.
+\]
+This is the weight of the future positions at which $d$ divides the index.
+It explains the kernel before averaging is introduced
+\cite[finite means for shifted divisor tails]{paper257}. Divisibility applies
+to $N+r$, not to $r$ alone. When $d\mid N$, the first positive offset is $d$,
+so the same formula applies without adding an unwanted offset zero. In that paper $B=2^\alpha$, with $0<\alpha\le1$; estimates
+must retain their dependence on $B-1$ as $\alpha$ becomes small.
+
+In both examples the operation determines the notation. Even-indexed
+binary weights become base-four weights; offsets to future indices divisible
+by a fixed divisor form the progression giving the kernel. State that
+reason before naming the formula. Tao's notation advice supports making
+important dependencies visible and translating borrowed conventions~\cite{tao-notation};
+the support and divisibility conditions supply the mathematical reasons here.
+
+\subsection{What remains to justify after an index is fixed?}\label{sec:fixed-partition}
+
+Fixing a summation index need not leave a fixed finite product. In the \#1049
+moment-determinant argument, a summand is indexed by a partition
+$\mu_1\ge\cdots\ge\mu_\ell>0$, with $\mu_k=0$ for $k>\ell$.
+The base $q\in(0,1)$ and the partition are fixed while $N\to\infty$.
+The ratios of shifted weights tend to one, but the Vandermonde quotient
+still contains factors indexed by $k$ up to $N$
+\cite[proof for geometric moment determinants]{paper1049}.
+
+For $N\ge\ell$ and fixed $1\le j\le\ell$, cancel the common factors in
+the part with $k>\ell$:
+\[
+ \prod_{k=\ell+1}^{N}
+       \frac{1-q^{k-j+\mu_j}}{1-q^{k-j}}
+ =\frac{\displaystyle\prod_{r=0}^{\mu_j-1}(1-q^{N+1-j+r})}
+        {\displaystyle\prod_{r=0}^{\mu_j-1}(1-q^{\ell+1-j+r})}.
+\]
+The original product has $N-\ell$ factors, but each endpoint product has the
+fixed length $\mu_j$. Its numerator tends to $1$; its denominator is fixed
+and positive. The remaining factors have $j,k\le\ell$ and are independent
+of $N$, so the whole quotient converges for this fixed partition. The
+telescoping formula, proposed in the later return, justifies what factorwise
+convergence in a growing product would not.
+
+Passing the limit through the sum requires a second argument. Extend the
+summand by zero when $\ell>N$, fixing the index set. The source's nonnegative
+majorant is independent of $N$. Dropping the ordering of the positive parts
+gives an upper bound by separate sums for each part. The $j$th sum is at most
+a fixed constant times $q^{2j-1}$: geometric decay controls its polynomial
+weight. Multiplying gives a bound for the total majorant at length $\ell$:
+\[
+                         K^\ell q^{\ell^2},
+\]
+where $K>0$ may depend on the fixed base and the fixed weight-bound constants.
+Here $\ell^2=1+3+\cdots+(2\ell-1)$ is the minimum total displacement exponent
+for $\ell$ positive parts. Their sizes have been summed out; their number
+remains. The ratio of successive bounds is $Kq^{2\ell+1}\to0$, so the sum over
+$\ell$ converges and dominated convergence applies.
+
+The conclusions are distinct: the whole summand converges for a fixed partition;
+a summable bound controls all partitions uniformly in $N$. Neither asserts
+uniformity as $q\uparrow1$. The fixed base is part of the statement.
+
+\subsection{Does a complete test provide the required witnesses?}\label{sec:detection}
+
+In the \#249 test, fix a positive integer shift $h$ and an index $N\ge0$,
+and write $D$ for that particular real tail difference. At each positive integer
+depth $L$, the paper computes an integer $A_L$ and proves
+\[
+       |2^LD-A_L|\le B_L,\qquad B_L=N+h+L+2.
+\]
+An integer $D$ would put a multiple of $2^L$ in this closed enclosure. Hence
+one can certify nonintegrality by checking
+\[
+       B_L<(A_L\bmod 2^L)<2^L-B_L,
+\]
+where the residue is chosen in $\{0,\ldots,2^L-1\}$
+\cite[section on binary totient tails]{paper249}. The two strict margins
+keep the enclosure away from the neighbouring multiples of $2^L$.
+
+The test also detects every nonintegral fixed $D$ at some depth. Its gap
+$\|D\|_{\mathbb R/\mathbb Z}$ from the nearest integer is then a positive
+constant. The source proves that detection follows once
+\[
+                 2^L\|D\|_{\mathbb R/\mathbb Z}>2B_L.
+\]
+The factor $2$ pays for two distances: from $2^LD$ to the computed centre
+$A_L$, then from that centre to an enclosure endpoint. Each is at most $B_L$;
+the displayed gap keeps the whole enclosure away from multiples of $2^L$.
+Since $2^L$ grows exponentially and $B_L$ linearly, a suitable depth exists.
+Thus the test has a converse, not merely a sufficient condition.
+
+The converse has two limits. An integral value never triggers the test;
+failure at the depths tried does not certify integrality. Nor does detecting
+a fixed nonintegral value supply the inputs needed for irrationality: for
+every positive shift and every cutoff, some later index must have a nonintegral
+difference. Existence of such an index is a separate question; increasing depth
+only refines the test of a fixed index. Preserve the converse without mistaking
+it for the missing existence statement.
+
+Whenever a proof offers arbitrarily accurate certificates, state which object
+stays fixed as the accuracy improves. If the object changes too, its distance
+from the forbidden set may shrink, and a new comparison is needed. This is the
+same discipline that made the fixed-base limit in
+Section~\ref{sec:fixed-partition} readable.

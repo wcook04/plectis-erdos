@@ -1,0 +1,38 @@
+{
+  "schema": "round7-native-kernel-replay/1",
+  "source_commit": "0d0129c69ad1d6f48b7afbb2ae34681cc210c9fe",
+  "completed_at": "2026-09-29T03:44:02.345498+00:00",
+  "binding_count": 8,
+  "probes": [
+    {
+      "probe": "research/probes/Round7PacketContrastDirection.lean",
+      "accepted": true,
+      "missing_axiom_outputs": [],
+      "axiom_output_count": 4,
+      "source_sha256": "129d6d378749cda415e2b0f1489d26271904e66cc1625498ab3a59869be245c6"
+    },
+    {
+      "probe": "research/probes/Round7RelationBindingCanary.lean",
+      "accepted": true,
+      "missing_axiom_outputs": [],
+      "axiom_output_count": 2,
+      "source_sha256": "6e1d13589043bfa1012beff316d7f5a0284cf5792de5310ec45afcf64ed405e3"
+    },
+    {
+      "probe": "research/probes/Round7ReplayExistingMechanisms.lean",
+      "accepted": true,
+      "missing_axiom_outputs": [],
+      "axiom_output_count": 8,
+      "source_sha256": "2f80b60cef03f8b78a94c399094d8c093b8e300f1c114e6318388471413fc8b6"
+    },
+    {
+      "probe": "research/probes/Round7ReturnGateCanary.lean",
+      "accepted": true,
+      "missing_axiom_outputs": [],
+      "axiom_output_count": 4,
+      "source_sha256": "985bcf58093ec1304328d5758b6ba7019f52aece7bba441b86d5485797e83c83"
+    }
+  ],
+  "passed": true,
+  "boundary": "Exact relation obligations and diagnostic/replay probes in the built local environment; no new research theorem, clean release admission, or empirical model-performance claim."
+}

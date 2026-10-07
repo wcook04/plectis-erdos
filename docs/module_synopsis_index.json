@@ -1,9 +1,9 @@
 {
   "schema_version": "erdos249257-module-synopsis-index/1",
   "authority_posture": "generated_index_of_authored_Lean_module_headers_not_proof_or_claim_status_authority",
-  "source_fingerprint": "sha256:a79d23a8eed79908ff940bdf62675bfc745f238e7a5935f4b72143e25fbc4a15",
-  "module_count": 1823,
-  "synopsis_count": 1576,
+  "source_fingerprint": "sha256:0152e16a5172b6421df56331fbec043d8979ea884ddc9f014a02d92497bea904",
+  "module_count": 1903,
+  "synopsis_count": 1655,
   "query_contract": {
     "command": "python3 scripts/query_corpus.py --module <module_path_or_sigil>",
     "returns": "Resolves a module synopsis to its declarations, paper sigil, source identity, attached claims, and route-memory context."
@@ -2773,6 +2773,11 @@
       "synopsis": "Dyadic prefix compression This module owns the corrected transport from a reduced finite Mersenne prefix to the residual support fraction and its wrap-ratio bound. The reusable core is stated for an arbitrary finite positive fragment, not only for an initial segment. No novelty or priority claim is made for the statements in this file. Nothing here proves or refutes the universal Erdős #257 problem."
     },
     {
+      "id": "Erdos249257.ExactRowRigidity",
+      "path": "lean/Erdos249257/ExactRowRigidity.lean",
+      "synopsis": "Exact Boolean quotient rows agree below a gap threshold An exact Boolean quotient row at endpoint `n ≥ 2` is a finite set `D` of integers in `[2, n]` with `localPrefixQuotient D n = 2^(n-1) - 1` (`ExactLocalMersenneHalfRow`). Its Mersenne value `∑ d ∈ D, 1 / (2^d - 1)` lies within `(n + 1) / 2^n` of `1/2` (`abs_exactLocalMersenneRowValue_sub_half_le`). The gap at rank `j` is `mersenneWeight j - mersenneTail j`, which is `mersenneGap j`. This module proves the following. * `sum_le_mersenneTail`: a finite Mersenne subsum supported strictly above `j` is at most `mersenneTail j`. * `gap_le_sub_of_least_diff`: if two finite sets first disagree at rank `j`, the one containing `j` has Mersenne value larger by at least the gap at `j`. * `gap_le_two_mul_of_ne`: two distinct finite sets whose Mersenne values both lie within `ε` of `1/2` first disagree at a rank whose gap is at most `2 ε`. * `exactLocalMersenneRowValue_eq_sum`: `exactLocalMersenneRowValue D` is the real sum `∑ d ∈ D, mersenneWeight d`. * `exactRow_gap_le`: two distinct exact rows at the same endpoint `n` first disagree at a rank whose gap is at most `2 (n + 1) / 2^n`. * `exactRow_agree_below_of_two_le`: if the gap at every rank `i` with `2 ≤ i < J` exceeds `2 (n + 1) / 2^n`, any two exact rows at endpoint `n` contain the same ranks below `J`. Ranks `0` and `1` lie in no exact row, so the hypothesis starts at rank `2`. * `exactRow_mersenneGap_le` and `exactRow_agree_below_mersenneGap` state the last two results with the gap written as `mersenneGap`. The module does not determine the ranks at which the gap exceeds `2 (n"
+    },
+    {
       "id": "Erdos249257.ExponentOnlyTransport",
       "path": "lean/Erdos249257/ExponentOnlyTransport.lean",
       "synopsis": "Exponent-only transport for Erdős #249 This module isolates the support-stable side of an LCM prime-power jump. If `p ∣ H`, multiplying `H` by `p` cannot add a squarefree divisor channel: every squarefree divisor of `p * H` already divides `H`. Consequently the four-vertex commutator is pure transport on the active Möbius support, unlike the new-prime jump where a migrated `p`-saturated layer must be retained. The residue kernel is also decomposed into its genuine affine state. The periodic residue coordinate alone is insufficient: dilation transports both a linear slope and an intercept. The first-order formula below records both blocks and prevents the constant-block determinant from being mistaken for a global non-cancellation theorem. The final theorem is conditional on an explicitly named infinite supply. No such supply is asserted here, and this file does not claim Erdős #249."
@@ -3488,6 +3493,121 @@
       "synopsis": "Problem-centric Erdős research library This is the supported root for the problem-owned modules. The `Erdos249257` library remains available as the reviewed #249/#257 corpus."
     },
     {
+      "id": "ErdosProblems.ArgumentGraph.Abduce",
+      "path": "lean/ErdosProblems/ArgumentGraph/Abduce.lean",
+      "synopsis": "Abduction in an observable language A residual clause `C` that a search could not supply is often a linear comparison between quantities, some of which the corpus already controls: a lower bound on a cardinality, a partition identity, a budget. Keeping `C` as the residual asks for more than the corpus needs; leaving the demand itself is the degenerate answer. This module computes what `C` still needs once the controlled quantities are eliminated. Fix the facts `Γ` (linear comparisons in context), and split the atoms into *hidden* ones (those some fact mentions, other than the parameters in scope) and *observable* ones (the parameters, and the quantities no fact mentions). The weakest condition on the observables that gives `C` under `Γ` is `R*(x) = ¬ ∃ y, Γ(x, y) ∧ ¬ C(x, y)`, since any sufficient condition excludes every counterexample. Over an ordered field the counterexample region is a polyhedron and Fourier–Motzkin elimination of the hidden atoms computes its projection exactly; `R*` is the negation of that projection, a disjunction of linear comparisons in the observables. The kernel then checks `Γ → R* → C` by `linarith`, so sufficiency is proved; weakestness holds relative to the linear facts used and is computed, not proved. Over `ℕ` and `ℤ` the rational projection still gives a sufficient condition. The tactic `abduce` replaces a comparison goal by `R*` (closing it when `R*` is `True`) and logs `R*`; `abduce [o₁, …]` fixes the observable atoms; `abduce using f₁, …` restricts the facts to the given terms. `abduceClause` is the same operation for a search."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.AbduceCorpus",
+      "path": "lean/ErdosProblems/ArgumentGraph/AbduceCorpus.lean",
+      "synopsis": "Abduction against the corpus `abduceClause` eliminates the atoms that the given facts control. Here the facts come from the corpus. Every comparison reading of a corpus theorem (its statement with leading binders instantiated, a conjunct, or the unfolding of a corpus definition) is indexed under the corpus constants it mentions, and so is every eventual comparison reading `∀ᶠ X in f, F X`. A comparison `C` retrieves the readings that share its constants, instantiated by unifying their subterms with the atoms of `C`, closed, with their hypotheses discharged by the hypotheses in scope or by the closing battery. Several facts then combine linearly, which a supplier search that unifies one theorem at a time with the whole of `C` does not see. `abduceProp` applies this under `∀`, `→`, `∧`, `∃` and the filter quantifiers: * a hypothesis met on the way down is a fact, together with the comparisons it gives through conjunctions, membership in `Ico`, `Icc`, `range` and `filter` and the unfolding of corpus finsets; a clause `s.Nonempty` is read as `0 < s.card`; * a variable bound by `∀` inside the proposition may be eliminated like a hidden atom, and a binder that the restated body no longer mentions is dropped; * under `∃ᶠ X` or `∀ᶠ X` an eventual fact is used at `X` and supplied along the filter. It returns the restated proposition with a proof that it implies the original. `restateAntecedents` restates every hypothesis of a theorem this way, drops those the facts give outright, and returns the new statement with a proof built from the original theorem."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Contracts",
+      "path": "lean/ErdosProblems/ArgumentGraph/Contracts.lean",
+      "synopsis": "Relation contracts between statements in a shared context The research record compares statements: a returned hypothesis against the one it replaces, a reformulation against its target, a proposed route against an endpoint. Every such comparison happens inside a context: the parameters in scope and the hypotheses already available. This module fixes the vocabulary once, over an arbitrary context type `α` and a background predicate `Γ : α → Prop` that records the admissible context values. * `Entails Γ P Q`: at every admissible context value, `P` gives `Q`. * `Separates Γ P Q`: some admissible context value satisfies `P` and fails `Q`. * `Feasible Γ P`, `Refuted Γ P`, `Supplied Γ P`: some, no, every admissible value satisfies `P`. * `Equivalent Γ P Q`: entailment in both directions. * `StrictlyStronger Γ new old`: `new` gives `old`, and a separator shows `old` does not give `new`. Two certificate types keep apart comparisons that earlier exports conflated. * `SlotReplacement Γ H R`: a replacement `R` for a hypothesis `H` that reconstructs `H`. A slot replacement is never strictly weaker than the hypothesis it replaces (`SlotReplacement.not_separates`); a proof of the converse makes the two equivalent (`SlotReplacement.equivalent_of_converse`). * `EndpointRoute Γ R G`: a condition `R` that gives the endpoint `G` directly, without reconstructing any intermediate hypothesis. Only this kind can reach an endpoint from less than an earlier route demanded. Transport is asymmetric: supply moves forward along an entailment (`Entails.transport_supply`), refutation moves backward (`Ent"
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derive",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derive.lean",
+      "synopsis": "Theorems derived from what proofs use The argument-graph exporter (`scripts/export_argument_continuations.lean`) reads every theorem of this library and records, among other things, the hypotheses a proof never uses and the hypotheses a proof uses only through a consequence. This module turns those observations into ordinary theorems of the library, so a paper, the paper-to-Lean ledger or another proof can cite them. Every theorem it adds is checked by the kernel before it is added. * `derive_idle T` adds `T.idle`: the statement of `T` without the proposition hypotheses its proof never uses, with the same proof. * `derive_weakening T` adds, for each proposition hypothesis `h : H` of `T` that the proof uses only inside use sites, `T.weakened_i`: `T` with `H` replaced by the propositions `C₁ … Cₖ` those sites prove, and `T.use_i_j : H → Cⱼ`. A use site is the largest application around `h` (such as `L h`, `h.2` or `h 3`) that mentions no bound variable of the proof and no other hypothesis; its proposition must not mention `H`, be `H` up to unfolding, or be the conclusion. When some occurrence of `h` lies in no such site, a use site may mention local variables (`L n h` under a binder `n`): its consequence is its proposition closed over the variables it needs, `Cⱼ = ∀ n, P n`, and the site becomes the new hypothesis applied to them. * `derive_conjuncts T` adds, for each claim of `T`'s conclusion (a conjunct, or a direction of an equivalence) whose own proof leaves some hypotheses unused, `T.part_k`: that claim assuming only what its proof needs. A claim's proof is the projectio"
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos1041",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos1041.lean",
+      "synopsis": "Erdos1041: theorems derived from what the paper results' proofs use Each command below rebuilds, as a library theorem the kernel checks, a finding of the argument graph about a theorem the papers cite. See `ErdosProblems.ArgumentGraph.Derive` and `ErdosProblems.ArgumentGraph.Factor` for what each command adds."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos1049",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos1049.lean",
+      "synopsis": "Erdos1049: theorems derived from what the paper results' proofs use Each command below rebuilds, as a library theorem the kernel checks, a finding of the argument graph about a theorem the papers cite. See `ErdosProblems.ArgumentGraph.Derive` and `ErdosProblems.ArgumentGraph.Factor` for what each command adds."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos243",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos243.lean",
+      "synopsis": "Erdos243: theorems derived from what the paper results' proofs use Each command below rebuilds, as a library theorem the kernel checks, a finding of the argument graph about a theorem the papers cite. See `ErdosProblems.ArgumentGraph.Derive` and `ErdosProblems.ArgumentGraph.Factor` for what each command adds."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos249",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos249.lean",
+      "synopsis": "Erdos249: theorems derived from what the paper results' proofs use Each command below rebuilds, as a library theorem the kernel checks, a finding of the argument graph about a theorem the papers cite. See `ErdosProblems.ArgumentGraph.Derive` and `ErdosProblems.ArgumentGraph.Factor` for what each command adds."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos251",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos251.lean",
+      "synopsis": "Erdos251: theorems derived from what the paper results' proofs use Each command below rebuilds, as a library theorem the kernel checks, a finding of the argument graph about a theorem the papers cite. See `ErdosProblems.ArgumentGraph.Derive` and `ErdosProblems.ArgumentGraph.Factor` for what each command adds."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos257",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos257.lean",
+      "synopsis": "Erdos257: theorems derived from what the paper results' proofs use Each command below rebuilds, as a library theorem the kernel checks, a finding of the argument graph about a theorem the papers cite. See `ErdosProblems.ArgumentGraph.Derive` and `ErdosProblems.ArgumentGraph.Factor` for what each command adds."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos269",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos269.lean",
+      "synopsis": "Erdos269: theorems derived from what the paper results' proofs use Each command below rebuilds, as a library theorem the kernel checks, a finding of the argument graph about a theorem the papers cite. See `ErdosProblems.ArgumentGraph.Derive` and `ErdosProblems.ArgumentGraph.Factor` for what each command adds."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos68",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos68.lean",
+      "synopsis": "Erdos68: theorems derived from what the paper results' proofs use Each command below rebuilds, as a library theorem the kernel checks, a finding of the argument graph about a theorem the papers cite. See `ErdosProblems.ArgumentGraph.Derive` and `ErdosProblems.ArgumentGraph.Factor` for what each command adds."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Factor",
+      "path": "lean/ErdosProblems/ArgumentGraph/Factor.lean",
+      "synopsis": "Factoring: each hypothesis at the claims whose proofs use it A paper result often proves several claims about one construction and assumes a named input that only some of the claims need. `derive_factor T` reads the proof of `T` and adds `T.factored`: the statement of `T` with each proposition hypothesis moved to the claims of the conclusion whose proofs use it. From a proof of `H₁ → H₂ → ∃ w, A w ∧ B w ∧ C w` whose witness and whose proof of `A w` use neither hypothesis, whose proof of `B w` uses only `H₁` and whose proof of `C w` uses only `H₂`, it adds `T.factored : ∃ w, A w ∧ (H₁ → B w) ∧ (H₂ → C w)`, with the proof's own witness. The two statements differ: the factored one says the construction exists without either input, and that in this proof each input is assumed only by the claim it proves. A hypothesis that a witness needs stays above that `∃`; one no claim needs is left out. The conclusion is read through `∃`, `∧` and `∀` (implications included); anything else is one claim. The proof is read after its spine is normalised: a `have` whose value uses a hypothesis being moved is inlined; an elimination of a constructor is reduced (`obtain ⟨a, b⟩ := ⟨x, y⟩` is `x, y`); an elimination whose major premise is itself an elimination moves inside it; an elimination with one alternative whose proof ignores the fields it opens is dropped, and a constructor that alternative builds from terms free of those fields is moved out of it (so `obtain ⟨c, hc⟩ := h` followed by `⟨w, p⟩`, with `w` free of `c`, charges `h` to `p` only); a compiled `match`, `dite`, `Or.elim` and `Decidabl"
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Residualise",
+      "path": "lean/ErdosProblems/ArgumentGraph/Residualise.lean",
+      "synopsis": "Residualisation `residualise N for D using s₁ … sₙ` searches for a proof of the demand `D` from the readings of the suppliers `s₁ … sₙ` and adds `N : ∀ residual clauses, D` once the kernel checks it; the residual clauses are what the readings could not supply. A reading of a theorem is its statement with some leading binders instantiated, a conjunct, the unfolding of a corpus definition, or a conjunct of an eventual conjunction. * Witnesses and supplier parameters are metavariables of the root context applied to the local variables, so a supplier that fixes one (a depth function, an exponent) fixes it in every clause that shares it. * A goal `∃ᶠ X in atTop, Q X` (or `∀ᶠ`) is split pointwise: every clause of `Q X` that a supplier gives for all large `X` is supplied along the filter; the others stay together as one residual `∃ᶠ X, …` (or `∀ᶠ X, …`). * A clause for all large `X` may also come from an eventual reading by glue: the reading rewritten with equation lemmas, a conjunct of it, or its non-strict form, unified with the clause. No tactic ever sees a metavariable of the search. * The cost of an alternative is the number of atomic clauses (counted through `∧`, `∃`, `∀`, corpus definitions and filter bodies) it leaves open, so leaving a goal whole costs as much as the goal and only supply lowers it."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Results.Erdos1041",
+      "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos1041.lean",
+      "synopsis": "Erdős #1041: what the inner-chord factoring adds, clause by clause `binomial_inner_chord_maximal` assumes the switch condition `1 ≤ rⁿ (1 + cⁿ)`, with `c = cos (π / n)`, and concludes a midpoint equality and a maximality clause `∀ s, innerRadius n r < s → s ≤ r → 1 < ‖…‖`. Its proof passes the switch condition to `inner_chord_maximal`, and `derive_factor` finds it unused once that lemma is factored: `binomial_inner_chord_maximal.factored` states both clauses without it. The theorems below say what that adds. Off the switch condition the inner radius exceeds `r`, so no `s` meets the maximality clause's hypotheses there and that clause gains nothing. The midpoint equality is asserted at every added point, and the added region is not empty: the switch condition fails at `n = 3`, `r = 1/2`, where the factored theorem gives the equality and the Lean theorem as written does not apply."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Results.Erdos243",
+      "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos243.lean",
+      "synopsis": "Erdős #243: what the transport-square factoring adds `transport_square_unconditional` (`long243:res:transportsquare`) assumes `v n > 0` for `n ≥ T` and passes it to `primitive_zero_density_multiplier_irreducibility` only for claims it does not use, so `transport_square_unconditional.factored` leaves it out. The theorem below shows that the hypotheses the factoring keeps imply it: from a zero term on, `v` vanishes (`v (n + 1) = a n * v n`), coprimality then gives `u n = 1`, and `m * C(n + 2, 3) + c` exceeds `1` for large `n`, so the exceptional set contains a tail, which zero lower density forbids. The factored theorem is the same result, on the same premise region, with a shorter statement."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Results.Erdos249",
+      "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249.lean",
+      "synopsis": "Erdős #249: the pivot decorrelation from two of its clauses `DTWPivotResidualDecorrelation` (`FirstHarmonicPivot`, demand `G064` of the demand ledger) asks, for every `h`, for parameters at which the two depth conditions and the four clauses of `PivotBudgetAt` hold together, and it implies the irrationality of `∑ φ(n) / 2 ^ n`. The finite bridge `pivotBudgetAt_of_peripheral_estimates` reduces three of the clauses to a uniform fibre-mean bound, a count of bad bases and a count of non-supplier bases. At the minimal depth, with `s = 26` and `η = 1/1000`, two proofs that do not mention the decorrelation supply most of this. `prop_dickman` gives the two depth conditions and, for all large `X`, fewer than `8X/25` non-supplier bases, with no hypothesis. The argument graph's frontier of `prop_badcof` showed that its proof uses the prime number theorem only through a dyadic prime count, which Chebyshev's bound supplies: `excluded_budget_one_thousandth_of_chebyshev` gives fewer than `X/100` bad bases for all large `X`, with no hypothesis. The two theorems below state what remains: the fibre means and the centred correlation."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Results.Erdos249Abduction",
+      "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249Abduction.lean",
+      "synopsis": "Erdős #249: the count of good bases eliminated by abduction `Results/Erdos249Endpoint.lean` proves by hand that a support of average first cosine at most `9/10` gives the irrationality of `∑ φ(n)/2^n` (`irrational_totient_series_of_support_gap`), and that the good-base gap at `603X/1000` gives such a support (`irrational_totient_series_of_goodBase_gap`). Here the arithmetic of the second step is computed. `restate` reads the subset-barrier clause on the good bases at the minimal depth, for arbitrarily large `X`, against one supplier, the count of the good bases (`eventually_card_pivotGoodBases_gt`, which holds for all large `X`); it uses the count at each frequent scale and eliminates it, and what is left is the good-base gap at `603/1000 = 9/10 · 67/100`; `goodBaseClause_of_goodBaseGap` holds by definition only because the computed restatement is that statement. The full chain from the support interface, where the depth and the support are chosen as witnesses, is not in this module. The first section records the calibrations of the `abduce` tactic: with the scale normalised to one it recovers the thresholds `603/1000` (subset) and `57/100` (whole block) from the budgets alone, and on the #249 clause it eliminates the count and leaves the bound in terms of `X`."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Results.Erdos249Endpoint",
+      "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean",
+      "synopsis": "Erdős #249: the good-base gap gives the irrationality with no further input `Results/Erdos249Route.lean` reaches the irrationality of `∑ φ(n)/2^n` from a first-harmonic gap on the good bases by way of `DTWPivotResidualDecorrelation`. That demand bounds the fibre means, so the route needs the prime number theorem. The irrationality consumer (`irrational_totient_series_of_certificate_supply`) needs less: for every `h ≥ 1`, one certified kill beyond every threshold. `exists_certifiedKill_of_first_harmonic_gap_subset` finds one in any nonempty set of bases below `2X` whose average first cosine is at most `9/10`, at a depth with room, so that is the whole requirement (`irrational_totient_series_of_support_gap`). The good bases at the minimal depth, with `s = 26` and `η = 1/1000`, are such a set as soon as their first harmonic has real part at most `603X/1000`. The good, bad and non-supplier bases partition `[X, 2X)` (`card_pivotGoodBases_add_card_pivotBadBases`, `card_pivotSupplierBases_add_card_pivotNonSupplierBases`); for all large `X` there are fewer than `X/100` bad bases (Chebyshev's bound) and fewer than `8X/25` non-supplier bases (`prop_dickman`), so more than `67X/100` good ones (`eventually_card_pivotGoodBases_gt`), and `603/1000 = 9/10 · 67/100`. Hence `irrational_totient_series_of_goodBase_gap`: a cofinal good-base gap at `603X/1000` for every `h ≥ 1` gives the irrationality, with no hypothesis besides the gap. The route of `Results/Erdos249Route.lean` asks for the prime number theorem and the gap at `11X/20`, which is smaller than `603X/1000`. Two finite forms of the"
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Results.Erdos249Residual",
+      "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249Residual.lean",
+      "synopsis": "Erdős #249: the first-harmonic route found by residualisation `residualise` (`ErdosProblems.ArgumentGraph.Residualise`) searches for a proof of a demand from the readings of given suppliers and adds a theorem stating the demand from the clauses it could not supply, once the kernel accepts it. The demand here is `DTWPivotResidualDecorrelation` (demand `G064`), from which the irrationality of `∑ φ(n)/2^n` follows. The composition written by hand for it, `dtw_of_fiberMean_and_centered` (`Results/Erdos249.lean`), is not among the suppliers. * `dtw_residual`: from `prop_dickman`, `excluded_budget_one_thousandth_of_chebyshev` and `pivotBudgetAt_of_peripheral_estimates`, the search fixes the depth `L = minimalDepth h s X` and `η = 1/1000`, and leaves: some `s > 0` such that for every `h > 0` the centred clause and the fibre-mean clause hold together for arbitrarily large `X` (`dtw_of_joint_fiberMean_and_centered`). The two clauses the hand-written composition assumes imply this at `s = 26` (`joint_of_fiberMean_and_centered`); they ask for the fibre means at every large `X`. * `dtw_residual_gen2`: with `fiberMean_le_of_primeNumberTheorem` among the suppliers the fibre-mean clause is supplied and `s = 26` is fixed by it. What is left is the prime number theorem and, for every `h > 0`, the centred clause for arbitrarily large `X` (`irrational_totient_series_of_primeNumberTheorem_and_frequent_centered`). Both certificates are regenerated when this module is built, so a change in the search that changes either statement breaks the theorems below. They say what the decorrelation needs. "
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Results.Erdos249Route",
+      "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos249Route.lean",
+      "synopsis": "Erdős #249: the first-harmonic route, given the prime number theorem `Results/Erdos249.lean` reduces `DTWPivotResidualDecorrelation`, at the minimal depth with `s = 26` and `η = 1/1000`, to two clauses: a uniform bound on the fibre means and the centred correlation. `fiberMean_le_of_primeNumberTheorem` proves the first from the prime number theorem. The second is the first-harmonic gap on the good bases. There the first harmonic factors as the residual times the pivot phase, so its sum over the good bases is the centred correlation plus the fibre-mean contribution (`goodBase_sum_eq_centered_add_mean`). With every fibre mean at most `1/100` the two conditions differ by at most `X/100` either way: the good-base gap at `11X/20` gives the centred clause (`centered_re_le_of_goodBase_gap`), and the centred clause gives the good-base gap at `57X/100` (`goodBase_gap_of_centered_re_le`). Hence, given the prime number theorem, the irrationality of `∑ φ(n)/2^n` follows once, for every `h ≥ 1`, there are arbitrarily large `X` at which the real part of the first harmonic summed over the good bases is at most `11X/20` (`irrational_totient_series_of_primeNumberTheorem_and_goodBase_gap`). The non-supplier and bad bases, about a third of `[X, 2X)`, are handled unconditionally by `prop_dickman` and Chebyshev's bound."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Results.Erdos251",
+      "path": "lean/ErdosProblems/ArgumentGraph/Results/Erdos251.lean",
+      "synopsis": "Erdős #251: the simultaneous countermodel, each input at its clause `short_joint_prime_gap_countermodel` (`res:jointcountermodel`) and `long_joint_prime_gap_countermodel` (`long251:res:jointcountermodel`) assume Schlage-Puchta's Lemma 4 and the prime number theorem and restrict the allowance exponent to `0 < ε ≤ 1`. Their proofs use Schlage-Puchta's Lemma 4 only to prove fixed-block nonconcentration, the prime number theorem only to prove `P n ∼ n log n`, and never use `ε ≤ 1`: the construction runs at the exponent `min ε (1/2)`. So the sequence exists unconditionally for every `ε > 0`, with all its other properties, and each input is needed only for its own clause. The two theorems below state this. Their proofs are `derive_factor`'s factorings of the two countermodels (`ErdosProblems.ArgumentGraph.Derived.Erdos251`), which follow the construction through `prime_polylogarithmic_interval` and derive its factoring on the way; the kernel checks each of them."
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Results.RelationCertificates",
+      "path": "lean/ErdosProblems/ArgumentGraph/Results/RelationCertificates.lean",
+      "synopsis": "Relation certificates for recorded reformulations Each theorem here restates an existing corpus result as a relation contract from `ErdosProblems.ArgumentGraph.Contracts`, so the research record can read the kind of comparison from the head of the statement: `Equivalent`, `EndpointRoute`, `Refuted` or `Feasible`. No theorem adds mathematics; each proof is one application of the named source declaration. * `prime_gap_view`: the two #251 irrationality statements are equivalent. The equivalence supplies neither of them. * `contour_view`: the #1049 power condition and the contour region agree on `0 < b < a`; the guards are part of the context. * `square_view`: the #257 square-root escape and the square escape are equivalent. * `demand_G102_view`: the #249 demand `G102` is equivalent to the irrationality of `∑ φ(n)/2^n`, so counting `G102` as progress would count the target twice. * `support_gap_route` and `good_base_gap_route`: two conditions that give the #249 irrationality directly. They are endpoint routes; neither is known to be implied by it. * `maximality_clause_refuted_off_switch` and `off_switch_region_feasible`: the #1041 maximality clause is refuted wherever the switch fails, and the region where it fails is nonempty, so the vacuity concerns one clause of a result about a nonempty region."
+    },
+    {
       "id": "ErdosProblems.AxiomAudit",
       "path": "lean/ErdosProblems/AxiomAudit.lean",
       "synopsis": "Assumption audit for the problem-owned assimilation root This file is intentionally executable documentation. The release gate builds it and records the assumptions of the main results brought in by the first problem-centric wave."
@@ -4110,7 +4230,7 @@
     {
       "id": "ErdosProblems.Erdos1041.PaperStraightObstructions",
       "path": "lean/ErdosProblems/Erdos1041/PaperStraightObstructions.lean",
-      "synopsis": "Complete polynomial straight-path obstructions Paper target: short_note/res:straight-no-go. The quintic certificate is assembled into a polynomial, with exhaustive root classification and the actual critical-point/spoke assertions. The cubic argument quantifies over ALL its roots directly; it is not restricted to a supplied root enumeration. New proof source, not elaborated in this environment."
+      "synopsis": "Complete polynomial straight-path obstructions Paper target: short_note/res:straight-no-go. The quintic certificate is assembled into a polynomial, with exhaustive root classification and the actual critical-point/spoke assertions. The cubic argument quantifies over ALL its roots directly; it is not restricted to a supplied root enumeration. The default root `ErdosProblems` imports this module, so the supported-root build elaborates it."
     },
     {
       "id": "ErdosProblems.Erdos1041.PaperTrinomial",
@@ -5488,6 +5608,11 @@
       "synopsis": "Erdős 243: descent, and the constant and periodic negative magnitudes Paper-form restatements of three environments of the long note `paper/reasoning-parts/erdos243/core.tex`: * `long243:res:descent` (descent), stated exactly by the existing `centeredState_eventually_zero`; * `long243:res:constant` (no constant negative magnitude), both its clause at every index and its clause \"the same holds if the shape equation only begins at some index\"; * `long243:res:periodic` (no periodic negative magnitude). The two exclusion theorems are phrased in the paper as the non-existence of a pair (respectively a quadruple) of sequences. The tree states them as the falsity of the hypotheses. The restatements below are the packaged `¬ ∃` forms, so that the Lean statement is literally the paper's."
     },
     {
+      "id": "ErdosProblems.Erdos243.PaperCompleteR21.NonintegralRegularRate",
+      "path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/NonintegralRegularRate.lean",
+      "synopsis": null
+    },
+    {
       "id": "ErdosProblems.Erdos243.PaperCompleteR21.ProductDefectThresholds",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ProductDefectThresholds.lean",
       "synopsis": "Erdős 243: the product-ratio criterion and the `1/n` threshold This file supplies the strict clause of `long243:res:onethreshold` and gives a home to the two clauses of that corollary, and to the bounded clause of `long243:res:strausbounded`, that the tree already states. The paper's quantities in one-based indexing are `P_n = a_1 ⋯ a_{n-1}`, `t_n = P_n / a_n`, `γ_n = a_n²/a_{n+1} - 1` and `Q_n = t_n γ_n`. The tree's `prefixProduct a n = ∏_{j < n} a j` and `productDefect a n = (prefixProduct a n / a n) (a n ²/a (n+1) - 1)` are these in zero-based indexing. The strict clause says: if `limsup n (γ_n)_+ < 1`, the sequence is eventually Sylvester. The hypothesis is carried in the form that is equivalent to that limsup bound, namely: there is an `r < 1` with `n (γ_n)_+ ≤ r` for all large `n`. The proof is the paper's, in the sharper telescoping form: from `n (γ_n)_+ ≤ r ≤ 1` one gets `t_{n+1}/t_n = 1 + γ_n ≤ (n+1)/n`, so `N t_n ≤ t_N n`, and hence `Q_n = t_n γ_n ≤ t_N r`. The bounded-defect criterion then applies. No asymptotic estimate `t_n = O(n^r)` is needed."
@@ -5535,7 +5660,7 @@
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisationDedekind",
       "path": "lean/ErdosProblems/Erdos243/PaperCompleteR21/SquareSpecialisationDedekind.lean",
-      "synopsis": "Erdős 243: the square-specialisation lemma without the Chebotarev density theorem Paper form of `long243:res:squarespec` of `paper/reasoning-parts/erdos243/core.tex` (lemma at line 303): `f ∈ ℚ[T]` irreducible with root `α`, `H (α) ≠ 0`, and for all but finitely many primes `ℓ` every root `r` of `f` modulo `ℓ` has `H (r)` a nonzero square modulo `ℓ` (stated through integral models `G = d f`, `J = d ^ 2 H`); then `H (α)` is a square in `ℚ(α)`. The paper derives this from the Chebotarev density theorem. Here it follows from `ErdosProblems.Shared.NonsquareModuloPrimes.exists_prime_hom_not_isSquare`, whose only analytic input is the simple pole of the Dedekind zeta function at `s = 1`, already in Mathlib. The reduction. Put `K = ℚ[T] / (f)` with `α` the class of `T`, and `c` the leading coefficient of `G`. Then `a = c α` is integral, and for a polynomial `P ∈ ℤ[T]` and `e ≥ deg P` the element `∑_{j ≤ e} P_j c ^ (e - j) a ^ j` of `𝓞 K` equals `c ^ e P (α)`; under any ring homomorphism `φ : 𝓞 K → ZMod ℓ` it becomes `c ^ e P (r)` with `r = φ (a) / c`. Taking `P = G` shows that `r` is a root of `G` modulo `ℓ`, and taking `P = J`, `e = 2 deg J`, gives an element `b = (c ^ (deg J) d) ^ 2 H (α)` of `𝓞 K` with `φ (b) = (c ^ (deg J)) ^ 2 J (r)`. If `H (α)` were not a square in `K`, neither would `b` be, and some prime `ℓ` beyond every bound would make `φ (b)` zero or a non-square, contradicting the hypothesis at the root `r`. `squareSpecialisation_holds` is the statement of `ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisation` written out in full, so this file depends on Mathli"
+      "synopsis": "Erdős 243: the square-specialisation lemma without the Chebotarev density theorem Paper form of `long243:res:squarespec` of `paper/reasoning-parts/erdos243/core.tex` (lemma at line 303): `f ∈ ℚ[T]` irreducible with root `α`, `H (α) ≠ 0`, and for all but finitely many primes `ℓ` every root `r` of `f` modulo `ℓ` has `H (r)` a nonzero square modulo `ℓ` (stated through integral models `G = d f`, `J = d ^ 2 H`); then `H (α)` is a square in `ℚ(α)`. The paper derives this from the Chebotarev density theorem. Here it follows from `ErdosProblems.Shared.NonsquareModuloPrimes.exists_prime_hom_nonsquare_of_not_isSquare`, whose only analytic input is the simple pole of the Dedekind zeta function at `s = 1`, already in Mathlib. The reduction. Put `K = ℚ[T] / (f)` with `α` the class of `T`, and `c` the leading coefficient of `G`. Then `a = c α` is integral, and for a polynomial `P ∈ ℤ[T]` and `e ≥ deg P` the element `∑_{j ≤ e} P_j c ^ (e - j) a ^ j` of `𝓞 K` equals `c ^ e P (α)`; under any ring homomorphism `φ : 𝓞 K → ZMod ℓ` it becomes `c ^ e P (r)` with `r = φ (a) / c`. Taking `P = G` shows that `r` is a root of `G` modulo `ℓ`, and taking `P = J`, `e = 2 deg J`, gives an element `b = (c ^ (deg J) d) ^ 2 H (α)` of `𝓞 K` with `φ (b) = (c ^ (deg J)) ^ 2 J (r)`. If `H (α)` were not a square in `K`, neither would `b` be, and some prime `ℓ` beyond every bound would make `φ (b)` a non-square, contradicting the hypothesis at the root `r`. `squareSpecialisation_holds` is the statement of `ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisation` written out in full, so this file depends on M"
     },
     {
       "id": "ErdosProblems.Erdos243.PaperCompleteR21.SquareSpecialisationUnconditional",
@@ -5721,6 +5846,46 @@
       "id": "ErdosProblems.Erdos249.CyclotomicAnchoredKill",
       "path": "lean/ErdosProblems/Erdos249/CyclotomicAnchoredKill.lean",
       "synopsis": "Erdős #249: the exact `X - 2` cyclotomic layer and anchored period kills For the polynomial `X - 2`, the cyclic resultant at index `n` is `2^n - 1`. This file discharges the previously abstract prime-ray producer completely: every prime divisor of `2^q - 1`, for prime `q`, is `1 mod q`; consequently the prime divisors appearing in these layers are unbounded. That arithmetic support theorem does not itself prove irrationality of the binary totient series. The second half records the exact missing bridge: cofinally remote certified tail discrepancies, with the period allowed to be a multiple of the cyclotomic anchor. Two substantial finite certificates are also checked by the Lean kernel."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationDyadicClassification",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationDyadicClassification.lean",
+      "synopsis": "Finite dyadic observables across commensurate integer bases The first theorem applies the joint integer pulse result after simultaneous rational centering. Its first-active-dilation hypothesis is later discharged by separating the finitely many even-constant observables."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationJointValue",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationJointValue.lean",
+      "synopsis": "Joint irrationality for a finite family of commensurate bases This private module composes the finite-dilation CRT pulse, finite-series transport, and the public integer-radix pulse consumer. The statement is a finite-combination theorem; the countable rational-independence corollary requires only the usual reduction of a relation to finite support."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationLeastResidueRational",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationLeastResidueRational.lean",
+      "synopsis": "Rational coefficients in finite least-residue relations The joint integer-coefficient theorem already isolates a nonzero least dilation. One common denominator converts a finite rational relation to that integer theorem while preserving the actual positive-index series value."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationLinearIndependent",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationLinearIndependent.lean",
+      "synopsis": "Countable rational independence of dilated least-residue values The finite affine obstruction is the source theorem. This companion records its countable family form using Mathlib's `LinearIndependent` predicate."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationMixedModuli",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationMixedModuli.lean",
+      "synopsis": "Joint rationality with a different dyadic modulus at each dilation The common-modulus theorem is applied after lifting each finite residue table to one dyadic level. The positive-index series is retained throughout."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationPulseCore",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationPulseCore.lean",
+      "synopsis": "Arithmetic core for pulses after finitely many dilations Private finite-dilation arithmetic core, checked with Mathlib / Lean 4.29.1. This file proves centre isolation, neighbour killing, the simultaneous CRT/Dirichlet prime-witness construction, and unconditional isolated pulses for finite dilation mixing at a prime-accessible residue. The public integer-radix source supplies the signed-series consumer separately. Series transport and the joint value theorem are not proved here. None of these statements establishes irrationality of the unreduced totient series."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationRationalObservables",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationRationalObservables.lean",
+      "synopsis": "Rational observables across finitely many dilations The integer mixed-word theorem applies after subtracting each observable's value at residue zero and clearing denominators once for the entire finite family. This file isolates that simultaneous clearing step."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.FiniteDilationSeriesTransport",
+      "path": "lean/ErdosProblems/Erdos249/FiniteDilationSeriesTransport.lean",
+      "synopsis": "Reindexing one dilated series The arithmetic pulse proof uses coefficients indexed by `d * n`. This file isolates the infinite-sum change of variables needed before finite dilation mixing can be identified with one integer-radix series."
     },
     {
       "id": "ErdosProblems.Erdos249.FiniteEulerSieve",
@@ -5920,7 +6085,7 @@
     {
       "id": "ErdosProblems.Erdos249.PaperCompleteR21.ExcludedCofactorEstimate",
       "path": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean",
-      "synopsis": "`prop:badcof` of the long #249 paper (\"The excluded-cofactor estimate\", `paper/reasoning-parts/erdos249/a249_front.tex`), and the assembled proposition `prop_badcof`. The paper's statement: fix `h, s` and use the minimal admissible depth `L`, so `t = L - s + 1 = O_{h,s}(log X)`. For `η ∈ (0, 1)` let `B(η) = {m ≥ 1 : φ(m) < η m}`, with natural density `D(η)` (cited to Schoenberg). Then `#{N ∈ 𝒜 : m_N ∈ B(η)} ≤ (D(η) + o(1)) X`, so a single `η` with `D(η) < 1/200` meets the `X/100` budget for all large `X`. Dictionary, with the development's own objects as in `prop_dickman`: * `L = minimalDepth h s X`, `t = minimalOffset h s X = pivotOffset L s`; * `𝒜 = pivotSupplierBases X L s` and `m_N = pivotCofactor N L s`; * `B(η) = excludedCofactorSet η` (in `ExcludedCofactorDensity`); the set `{N ∈ 𝒜 : m_N ∈ B(η)}` equals `pivotBadBases X L s η` (`𝒜 ∖ 𝒢`), whose contribution `pivotBadContribution` carries the `X/100` budget of `PivotBudgetAt`; * \"`B(η)` has natural density `D`\" is `HasNaturalDensity (excludedCofactorSet η) D`, that is `#(B(η) ∩ [1, x]) / x → D`. Inputs. The prime number theorem enters as a hypothesis, through the repository's single PNT input `ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem` (`p_n / (n log n) → 1` for the zero-based `n`-th prime). The existence of `D(η)` (Schoenberg's theorem) enters only as the density hypothesis of `prop_badcof`. Nothing else is assumed. Proof, following the paper. 1. PNT gives, uniformly in the start point, the dyadic count `#{p prime : a < p ≤ 2a + 1} · log a ≤ (1 + ε) a` for all large `a` (`eventually_card_primes_dy"
+      "synopsis": "`prop:badcof` of the long #249 paper (\"The excluded-cofactor estimate\", `paper/reasoning-parts/erdos249/a249_front.tex`), and the assembled proposition `prop_badcof`. The paper's statement: fix `h, s` and use the minimal admissible depth `L`, so `t = L - s + 1 = O_{h,s}(log X)`. For `η ∈ (0, 1)` let `B(η) = {m ≥ 1 : φ(m) < η m}`, with natural density `D(η)` (cited to Schoenberg). Then `#{N ∈ 𝒜 : m_N ∈ B(η)} ≤ (D(η) + o(1)) X`, so a single `η` with `D(η) < 1/200` meets the `X/100` budget for all large `X`. Dictionary, with the development's own objects as in `prop_dickman`: * `L = minimalDepth h s X`, `t = minimalOffset h s X = pivotOffset L s`; * `𝒜 = pivotSupplierBases X L s` and `m_N = pivotCofactor N L s`; * `B(η) = excludedCofactorSet η` (in `ExcludedCofactorDensity`); the set `{N ∈ 𝒜 : m_N ∈ B(η)}` equals `pivotBadBases X L s η` (`𝒜 ∖ 𝒢`), whose contribution `pivotBadContribution` carries the `X/100` budget of `PivotBudgetAt`; * \"`B(η)` has natural density `D`\" is `HasNaturalDensity (excludedCofactorSet η) D`, that is `#(B(η) ∩ [1, x]) / x → D`. Inputs. The prime number theorem enters `prop_badcof` and `excluded_budget_one_thousandth` as a hypothesis, through the repository's single PNT input `ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem` (`p_n / (n log n) → 1` for the zero-based `n`-th prime). The existence of `D(η)` (Schoenberg's theorem) enters only as the density hypothesis of `prop_badcof`. The budget at `η = 1/1000` needs no input (`excluded_budget_one_thousandth_of_chebyshev`). Nothing else is assumed. Proof, following the paper. 1. PNT gives, "
     },
     {
       "id": "ErdosProblems.Erdos249.PaperCompleteR21.ExtremalOrderDirectedAndPulse",
@@ -5941,6 +6106,11 @@
       "id": "ErdosProblems.Erdos249.PaperCompleteR21.FareyGapDenominatorExclusion",
       "path": "lean/ErdosProblems/Erdos249/PaperCompleteR21/FareyGapDenominatorExclusion.lean",
       "synopsis": "Paper-form restatement of `prop:C2sup` of the long #249 manuscript: unbounded Farey-gap denominator bounds imply irrationality. The hypothesis `sup_K (b+d)(K) = ∞` says exactly that the proved exclusion bounds on the `N = 1` window family are arbitrarily large; nothing here proves or attempts that unboundedness."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.PaperCompleteR21.FiberMeanOfPrimeNumberTheorem",
+      "path": "lean/ErdosProblems/Erdos249/PaperCompleteR21/FiberMeanOfPrimeNumberTheorem.lean",
+      "synopsis": "Erdős #249: the fibre means from the prime number theorem `dtw_of_fiberMean_and_centered` (`ErdosProblems.ArgumentGraph.Results.Erdos249`) derives `DTWPivotResidualDecorrelation` from two clauses: a uniform bound on the fibre means and the centred correlation. This module proves the first clause, `hmean`, from the prime number theorem (`fiberMean_le_of_primeNumberTheorem`): at the minimal depth `L = minimalDepth h 26 X`, with `s = 26` and `η = 1/1000`, for every `h ≥ 1` and all large `X`, every good base `N` has `‖pivotFiberMean h X L 26 m_N‖ ≤ 1/100`, where `m_N = pivotCofactor N L 26`. Input. The prime number theorem enters as the hypothesis `ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem`, that is `p_n / (n log n) → 1` for the zero-based `n`-th prime `p_n = Nat.nth Nat.Prime n`. Nothing else is assumed. Proof. Fix `h ≥ 1` and a good base with cofactor `m`, so `0 < m ≤ ⌊√X⌋/2` and `φ(m) ≥ m/1000`. Put `t = L - 25`, `A = ⌈(X + t)/m⌉` and `B = ⌈(2X + t)/m⌉`. 1. The fibre of `m` is the image of the primes `p` with `X + t ≤ mp < 2X + t` (`image_pivotSupplierPrimes_eq_pivotFiber`), so the fibre mean is the mean of `pivotPrimePhase h L 26 m p` over the primes of `[A, B)` (`pivotFiberMean_eq_sum_primes`, `pivotSupplierPrimes_eq_filter_Ico`). 2. That phase is `e(θ p - θ)` with `e(x) = exp(ix)` and `θ = π (2^h - 1) φ(m) / 2^(L - 26)` (`pivotPrimeAngle_eq_affine`). 3. For large `X` the minimal depth has `32X ≤ 2^L < 96X` (`minimalDepth_geometry`), so the phase turns through between `2000` and `π 2^(h+22)` radians over `[A, B)`. 4. Cut `[A, B)` into `K = 2^(h+35)` bl"
     },
     {
       "id": "ErdosProblems.Erdos249.PaperCompleteR21.FirstHarmonicBlockCriteria",
@@ -6138,9 +6308,19 @@
       "synopsis": "The first clause of the long #249 paper's `prop:dickman` (\"A one-sided bound for the unassigned terms\"). `prop:dickman` asserts four things: (a) an unassigned `n = N + t` has `P(n) ≤ y_X` with `y_X = 4√X + 2t/√X`; (b) the resulting count is at most `Ψ(2X+t-1, y_X) - Ψ(X+t-1, y_X)`; (c) that difference is `(1 - log 2 + o(1))X`; (d) hence `< (8/25)X` eventually. Clauses (b)–(d) need the smooth-number counting function `Ψ` and Dickman's `ρ`, neither of which exists in Mathlib or in this tree, plus the paper's cited fixed-`u` asymptotic. Clause (a) is elementary and is proved here against the tree's own assignment predicate. The paper's assigned set `𝒜` is `Erdos249257.TotientTailPeriodKiller.pivotSupplierBases X L s`, its offset `t` is `pivotOffset L s = L - s + 1`, its `n = N + t` is `pivotArgument N L s`, and its `P(n)`, `m = n/P(n)` are `pivotPrime`, `pivotCofactor`."
     },
     {
+      "id": "ErdosProblems.Erdos249.PaperCompleteR7.ArbitraryBaseIsolatedPulse",
+      "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/ArbitraryBaseIsolatedPulse.lean",
+      "synopsis": "Arbitrary-base isolated-pulse lattice obstruction This is the algebraic core for the integer-radix extension of the fixed-binary-base totient-residue theorem. It accepts a bounded tail orbit and a fixed rational lattice as explicit hypotheses. The companion analytic interface constructs that orbit from a bounded series."
+    },
+    {
       "id": "ErdosProblems.Erdos249.PaperCompleteR7.ArithmeticAssemblies",
       "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/ArithmeticAssemblies.lean",
       "synopsis": "Exact arithmetic and endpoint assemblies for the two papers Targets include long-record cert:d9 / prop:D9-inv, mob:a1b, T7, prop:CP-04-kill, and the level-zero clause of short-note res:basis. The canonical Mersenne theorem is restated with the quotient and oddness as printed, instead of silently changing its quantifiers. These are proof-source candidates; compilation was NOT available in this run. The rational-gap proof reuses the existing exact separation inequality; the same adapter is present under the older public namespace in Erdos249257/PrimitiveRationalGapSupply.lean at the retained public pin."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables",
+      "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/IntegerRadixObservables.lean",
+      "synopsis": "Integer-radix totient observables This module generalizes the analytic part of the bounded-residue theorem from binary denominators to any integer radix at least two. The original binary declarations remain the public compatibility interface."
     },
     {
       "id": "ErdosProblems.Erdos249.PaperCompleteR7.KernelIntegral",
@@ -6151,6 +6331,11 @@
       "id": "ErdosProblems.Erdos249.PaperCompleteR7.PeriodicAndPulse",
       "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/PeriodicAndPulse.lean",
       "synopsis": "Paper-complete interfaces: eventual periodic coefficients and cofinal pulses Targets: short-note `cor:periodic-freezing` and `lem:bounded-pulse`. This file extends the compiled r5 periodic theorem, not the uncompiled r6 helper. Every theorem has a proof term and no extra mathematical assumption. Build status for this return: source-reviewed, NOT RUN (no Lean executable)."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadixClassification",
+      "path": "lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalIntegerRadixClassification.lean",
+      "synopsis": "Rational totient observables in an integer radix The classification shares the existing prime-isolation source with the binary theorem. The analytic pulse obstruction is the integer-radix companion."
     },
     {
       "id": "ErdosProblems.Erdos249.PaperCompleteR7.RationalObservableClassification",
@@ -6228,9 +6413,29 @@
       "synopsis": "Erdős #249: residue-class totient series and the isolated-pulse separation This file formalises the reusable core of the \"fixed resolution\" attack on `S = ∑_{n ≥ 1} φ(n) / 2 ^ n`. Nothing here proves that `S` is irrational. What is proved is the exact mechanism that makes every *fixed-resolution* projection of the totient word irrational, together with the quantitative separation it supplies. Main results * `isolated_pulse_separation` — the abstract Diophantine core. If `a : ℕ → ℤ` is bounded by `C`, and `a` has a nonzero letter `t` at position `p = N+1+L` surrounded on both sides by a block of `L` zeros, then for every `q ≥ 1` with `2 ^ L > 2 * q * C` the real number `q * ∑ a n / 2 ^ n` stays at distance at least `q * (|t| - C / 2 ^ L) / 2 ^ p` from every integer. Both the left and the right zero block are used: the right block makes the tail nonzero, the left block makes the tail small enough to be the distance to `ℤ`. * `two_sided_prime_isolation` — the arithmetic supply. For `m ≥ 2` and any `r` with `gcd (r+1, m) = 1` there are arbitrarily large primes `p` with `φ p ≡ r [MOD m]` and `m ∣ φ (p ± j)` for every `0 < j ≤ L`. Auxiliary primes `ℓ_j ≡ 1 [MOD m]` are produced by Dirichlet's theorem and glued by the Chinese remainder theorem; `ℓ_j ∣ p ± j` forces `ℓ_j - 1 ∣ φ (p ± j)`. * `irrational_totientObservable` — the general special-value theorem. If an integer letter map `f` vanishes at the zero residue and is nonzero at some residue `r < m` with `gcd (r+1, m) = 1`, then `∑ f (φ n mod m) / 2 ^ n` is irrational. `fixed_resolution_observable_irrational` is the `m = 2 ^ k` "
     },
     {
+      "id": "ErdosProblems.Erdos249.TotientApproximationDichotomy",
+      "path": "lean/ErdosProblems/Erdos249/TotientApproximationDichotomy.lean",
+      "synopsis": "Two approximation modes for the same normalized totient matrix The explicit Möbius truncation of `φ(i+j+2)/(i+j+2)` uses at most `D * (D + 1) / 2` separated factors. Its mean absolute error on every leading `N` by `N` square is at most `2 / D`, whereas its uniform error is at least `1 / 2`. The latter is the exact distance to all finite-rank matrices, attained by the constant matrix `1 / 2`. This module only combines the two approximation theorems, translating the positive indices of the mean estimate to the zero-based Hankel convention. The displayed factor count is a representation budget, not a minimal rank."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.TotientMeanApproximation",
+      "path": "lean/ErdosProblems/Erdos249/TotientMeanApproximation.lean",
+      "synopsis": "Normalized totient: finite-rank mean approximation The arithmetic matrix `φ(i+n)/(i+n)` has finite-rank approximants obtained by truncating its Möbius divisor expansion. The final finite-square estimate is uniform in the size of the square; it concerns mean error, not uniform error."
+    },
+    {
       "id": "ErdosProblems.Erdos249.TotientStrictPrimeEscape",
       "path": "lean/ErdosProblems/Erdos249/TotientStrictPrimeEscape.lean",
       "synopsis": "Erdős #249: gaps in the first harmonic of the tail orbit This module records two sufficient conditions for irrationality of the binary totient series. The first is a uniform saving for the real part of the first harmonic on arbitrarily late dyadic blocks. The second is the earlier pointwise condition along suitable prime indices. Neither condition is proved here for the actual totient orbit. In particular, the results below do not establish the required density estimate or solve Erdős Problem #249."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.TotientTranslateSeparation",
+      "path": "lean/ErdosProblems/Erdos249/TotientTranslateSeparation.lean",
+      "synopsis": "Extremal separation of normalized totient translates For distinct nonnegative shifts, the normalized totient translates have supremum distance one, even after any fixed cutoff. A prime in a reduced arithmetic progression makes one value close to one; a prescribed product of other primes makes the second close to zero. Only one translate must be prime. The product is chosen using divergence of the reciprocal-prime sum. This is the arithmetic input to a uniform finite-rank approximation barrier. It does not assert irrationality of the binary totient series."
+    },
+    {
+      "id": "ErdosProblems.Erdos249.TotientUniformRankBarrier",
+      "path": "lean/ErdosProblems/Erdos249/TotientUniformRankBarrier.lean",
+      "synopsis": "Exact uniform finite-rank distance of the normalized totient matrix The infinite matrix `φ(i+j+2)/(i+j+2)` has distance exactly `1/2` from the set of all finite-separated-rank real matrices in the uniform norm. The constant matrix `1/2` attains the distance. Factors in the finite-rank representation need not be bounded; unbounded approximation error is represented in `ENNReal`. The arithmetic separation and the generic compactness theorem live in separate modules so that this consumer can be replayed with precisely those premises. This is a uniform-norm statement, not an obstruction to mean-error approximation or a proof of irrationality of the binary totient series."
     },
     {
       "id": "ErdosProblems.Erdos249.TypeBReturnV8.Audit",
@@ -6600,7 +6805,7 @@
     {
       "id": "ErdosProblems.Erdos257.PaperCompleteR20.TerminalSetCorrespondence",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR20/TerminalSetCorrespondence.lean",
-      "synopsis": "Positive-support terminal approximation endpoint for Erdős 257 This module keeps the `0 ∉ A` clause from short `res:terminalhalf` explicit. It also records the exact index conversion between the paper's terminal carry `K_A(M)` and the affine carry used by the scaled-vanishing producer."
+      "synopsis": "Positive-support terminal approximation endpoint for Erdős 257 This module keeps the `0 ∉ A` clause from short `res:terminalhalf` explicit. It also records the exact index conversion between the paper's terminal carry `K_A(M)` and the affine carry used by the scaled-vanishing producer. The converse holds with no further hypothesis: a support with series value `1/2` omits the exponent `1`, and the terminal carry of its prefix through `M` is the scaled coefficient tail of the full support, which lies in `[0, 2√M + 4]`. `paper_terminalhalf_iff` states the paper's equivalence as one theorem."
     },
     {
       "id": "ErdosProblems.Erdos257.PaperCompleteR21.AchievementSetTopologyAndFiniteHalf",
@@ -6863,9 +7068,24 @@
       "synopsis": "Infinite displacement and the exact arithmetic consumer Unlike the finite rational tail-budget interface, this file uses the actual infinite real support series. All summability hypotheses needed to interchange infinite sums are proved from the existing library. The arithmetic endgame reuses RadixCloseReturn's general close-return consumer, translated into displacement notation. No reciprocal- summability hypothesis is added or removed from that consumer. The ordinary positive-cover and mixed-support arguments must still establish its analytic input. No admission, new axiom, or parent claim is used."
     },
     {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR7.PrimeWeightedDefinitions",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR7/PrimeWeightedDefinitions.lean",
+      "synopsis": "The finite-prime weighted support criterion These are the canonical definitions used by the analytic support theorem. Their small import boundary also permits arithmetic constructions to use the same weights without importing the displacement proof."
+    },
+    {
       "id": "ErdosProblems.Erdos257.PaperCompleteR7.TailGluing",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR7/TailGluing.lean",
       "synopsis": "Infinite tail budget and the landed r6 delayed gluing theorem Proof source. This file goes beyond the finite algebra in `DisplacementTailBudget.lean`: it proves the tail estimate for actual infinite support sums and assembles the diagonal construction. Its hypothesis is the r6 general version, namely return admissibility of *every finite union* of the given hosts. It does not assume that separately admissible hosts can be united, nor prove the missing weighted/positive-cover analytic producer. The r6 construction is in the current short note's prose rather than a numbered result environment. It is therefore recorded as supplementary coverage, not used to inflate the 261-row theorem-environment census."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.AnalyticIncomparability",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean",
+      "synopsis": "Paper-facing strict inclusion, incomparability and mixed host The strengthened-but-not-old witness `reverseHost` is the squarefree divisor-cube host of `ReverseStrengthenedHost`, not the paper's printed bounded-mass fresh-prime construction. The unused `FinitePrefixGluing` import was removed; no declaration here used it."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.AnalyticSeparationReturn",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticSeparationReturn.lean",
+      "synopsis": "Paper-facing return: weighted separation and the original cover predicate"
     },
     {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.ArbitraryWeightMixedClaim",
@@ -6898,6 +7118,16 @@
       "synopsis": "Summable families of actual modular tests This supplies the countable interchange and sampling layer after (S), with explicit summability hypotheses. The index type can be a pair of indices, so the theorem applies to both frame and conductor indices at once. It does not assume a lower bound on the fractional exponents."
     },
     {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.CoverClassTransport",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverClassTransport.lean",
+      "synopsis": "Transport the paper's fixed geometric weights to arbitrary-weight covers This transport prevents a type-level gap between the actual strengthened-cover predicate and the more general logarithmic obstruction."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.CoverGaugeComplete",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverGaugeComplete.lean",
+      "synopsis": "Complete scalar minimisation, sharp power-of-two bound and asymptotic The existing infimum and small branch are imported without modification. The large-parameter minimum follows from real Bernoulli's inequality, so there is no differentiation of an infimum or unproved minimiser premise."
+    },
+    {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.CoverPotentialBounds",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/CoverPotentialBounds.lean",
       "synopsis": "Summability and means of the ACTUAL positive-cover potentials Every summability condition here is derived from PositiveCoverData and its displayed cost, before an interchange. No extra incidence-majorisation premise or uniform positive exponent is assumed."
@@ -6908,9 +7138,54 @@
       "synopsis": "The actual scalar cover gauge and its first exact branch Proof source. The infimum is over genuine admissible exponents. This module proves nonnegativity, the e*log lower bound, and the exact branch Psi(t)=t for 1<=t<=4. The large-t exact branch is proved in analytic_proofs.md but is not asserted as a Lean theorem in this module."
     },
     {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeIncidence",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeIncidence.lean",
+      "synopsis": "Literal divisor cubes and logarithmic incidence The subsets counted below are actual prime subsets, not independent random variables supplied as an extra assumption. The multiplier q may have common prime factors with the cube: the relevant rank counts q*p dividing n."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeMoments",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeMoments.lean",
+      "synopsis": "Exact first moments and a finite variance lower bound for divisor cubes. No independence premise, limiting distribution, or coprimality with q is used."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorCubeProduct",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorCubeProduct.lean",
+      "synopsis": "Exact fractional divisor-cube identities The multiplier q need not be coprime to the squarefree prime product. No independent-Bernoulli distribution is assumed. All means are finite counts."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorFrameHostTransport",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameHostTransport.lean",
+      "synopsis": "Canonical finite-prime weights on the dyadic divisor host The valuation identity identifies the literal frame budget with the original finite-prime weighted criterion. A nonnegative finite-subcover argument then transports summability to the actual infinite union."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DivisorFrameWeightedBudget",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DivisorFrameWeightedBudget.lean",
+      "synopsis": "Divisor-product masses and the separating host's weighted frame budget The reciprocal divisor sum is computed from the actual prime product. Its exponential upper bound and the prescribed harmonic scales give a summable sequence of literal dyadic frame weights. Identifying these literal weights with the finite-prime weighted term uses the odd-cofactor valuation identity; the divergent logarithmic moment is a separate remaining step."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicDivisorFrames",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicDivisorFrames.lean",
+      "synopsis": "Disjoint dyadic divisor frames for the weighted separating host These are the actual frames F_k = {2^(k+2) d : d divides M_k}. Positive odd M_k make them pairwise disjoint and give an infinite positive union. The prime-block harmonic bounds, weighted summability and divergent logarithmic means are further obligations, not hypotheses hidden in a class-separation conclusion."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicHostSeparation",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicHostSeparation.lean",
+      "synopsis": "The actual weighted host lies outside every strengthened positive cover The logarithmic growth supplier is proved from finite prime blocks and exact integer periods. Neither unbounded moments, reciprocal divergence, no-cover status, nor irrationality is assumed by the final existence theorem."
+    },
+    {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicKernel",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicKernel.lean",
       "synopsis": "The finite estimate (S) All three regimes refer to the actual modular atom, not abstract error terms. The complete-orbit argument is in OrbitBound. The dyadic reciprocal-tail bound is reused from the compiled WeightedSupportAveraging module. This file proves no-wrap and transition bounds and then assembles the uniform finite estimate."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.DyadicLogarithmicEvents",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/DyadicLogarithmicEvents.lean",
+      "synopsis": "Exact finite-period counts for dyadic logarithmic events For the separating divisor frames, the event for a prime in row k is 2^(k+2)*p divides n but 2^(k+3)*p does not. Counting it by subtraction avoids probabilistic independence assumptions or limiting density suppliers."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.FiniteAtomicMajorants",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FiniteAtomicMajorants.lean",
+      "synopsis": "Finite positive divisor atoms, with exact costs and exact complete-period means. Repeated atom conductors are allowed."
     },
     {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.FiniteCoverLogBudget",
@@ -6923,6 +7198,11 @@
       "synopsis": "Actual finite dyadic observation means The average samples exactly the positive progression points (m+1)*L. No independently chosen existential return is substituted for an average."
     },
     {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.FixedExponentCover",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/FixedExponentCover.lean",
+      "synopsis": "Cover-independent fixed-exponent means and the reverse host The total-cost fixed-exponent class is stated literally, separately from both variable-exponent classes. No estimate for a chosen decomposition is mistaken for an obstruction to every decomposition."
+    },
+    {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.KernelRecurrence",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/KernelRecurrence.lean",
       "synopsis": "The missing incidence-to-kernel bridge, by recurrence comparison Proof module for the r8 upgrade. No additional analytic target is assumed in this module. The actual modular kernel is retained. Instead of exchanging the two infinite divisibility sums in the paper, compare the exact one-step recurrences. The fractional frame potential is a subsolution of the same expanding recurrence as its positive divisor majorant. A bounded above expanding defect is nonpositive. This proves the needed bridge directly. Pinned API: Mathlib/Analysis/SpecialFunctions/Pow/Real.lean (`mul_rpow`, `rpow_nonneg` and its real-power order lemmas); the two-term subadditivity is already used in the desk-checked PaperCompleteR7.CoverKernel."
@@ -6933,9 +7213,19 @@
       "synopsis": "Weighted mean + nonlinear cover test on ONE finite sampling scheme The previous return's JointDyadicMeanSupply is a sufficient condition, but is not the exact interface of the ordinary mixed proof: a small fractional cover test need not give a small FIRST MOMENT of the displacement. This module uses the correct nonlinear test. PositiveCoverData contributes no remaining target. The concrete weighted finite-mean producer is isolated here and proved, without additional premises, in WeightedReturn."
     },
     {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.OldCoverObstruction",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OldCoverObstruction.lean",
+      "synopsis": "The historical two-inverse-power class, not merely fixed exponents The definition below is the old displayed cost after reindexing j>=1 by j+1. The obstruction quantifies over every finite-frame cover, every enumeration, every overlap, and every sequence of admissible exponents."
+    },
+    {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.OptimizedCoverBudget",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCoverBudget.lean",
       "synopsis": "Optimizing the actual countable positive-cover cost The admissible objects contain literal frames, divisor coefficients and the paper's explicit summability hypotheses. Their costs are optimized only when at least one admissible cover exists; the separate nonexistence theorem does not assign a fictitious value to the real infimum of an empty set."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.OptimizedCubeCost",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/OptimizedCubeCost.lean",
+      "synopsis": "Optimised finite divisor-cube cost, with positive epsilon padding The upper bound e*S/q requires S >= 1. The valid general bound is exp(S)/q. The q multiplier can share primes with P. Infima need not be attained."
     },
     {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.OrbitBound",
@@ -6948,6 +7238,26 @@
       "synopsis": "End-to-end strengthened positive-cover theorem No new Prop target or unproved bridge is a hypothesis of the final theorem. Input is exactly the desk PositiveCoverData and its one-inverse- power cost. Finite prefixes, the actual host, the potential comparison, summability, one common finite observation mean, and all-base heredity are assembled here. This module does not assert the weighted or mixed producer."
     },
     {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.PositiveWeightPadding",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PositiveWeightPadding.lean",
+      "synopsis": "Genuine positive-weight padding and the finite-frame infimum limit Every natural-number index has strictly positive weight. Dummy frames are empty; their coefficients, not their weights, vanish. The infimum upper bound is a limit of admissible costs, not a claim of attainment."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.PrimeHarmonicBlocks",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/PrimeHarmonicBlocks.lean",
+      "synopsis": "Prime harmonic blocks with bounded overshoot Reciprocal-prime divergence supplies a finite block beyond any finite forbidden set. A finite threshold-crossing argument limits overshoot to one. Recursive exclusion of all earlier blocks then gives pairwise disjoint odd-prime blocks at any prescribed nonnegative harmonic scales. No weighted or logarithmic moment assertion about their divisor frames is assumed here."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.ReverseStrengthenedHost",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/ReverseStrengthenedHost.lean",
+      "synopsis": "A constructed squarefree strengthened-cover host outside every old cover This proof uses a different admissible row schedule from the historical note. It avoids deleting an infinite reserved-prime set and does not need disjoint rows. The finite harmonic supplier is used after deleting all primes <= q_j. The factor (j+1) in S_j >= (j+1)*sqrt(q_j) is essential: S~sqrt(q) alone would not make the old logarithmic-square obstruction unbounded. The witness here is a squarefree divisor-cube host with rows supplied by `exists_odd_prime_harmonic_block`; it is not the paper's printed bounded-mass fresh-prime construction, and neither result stands in for the other."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.StrengthenedCoverFiniteUnion",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/StrengthenedCoverFiniteUnion.lean",
+      "synopsis": "Literal finite-union closure of the historical strengthened-cover class Interleaving unchanged exponents need not preserve the geometric budget. We halve each exponent before interleaving. Integer incidence counts still have the same majorant, and each new cost is at most three times its old cost. This proves class closure, not merely closure of the irrationality conclusion. The factor 3 is a crude closure constant; this file does not prove the sharper 1 + sqrt 2 estimate. This file does not import PositiveWeightPadding."
+    },
+    {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.WeightedFiniteEstimates",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteEstimates.lean",
       "synopsis": "Finite weighted estimates with an explicit observation window The high-GCD remainder is charged against a dyadic harmonic bound, not against the cardinality of an unbounded conductor support. The future-conductor contribution is bounded geometrically before any infinite interchange. All constants here are deliberately non-sharp."
@@ -6956,6 +7266,11 @@
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.WeightedFiniteMean",
       "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteMean.lean",
       "synopsis": "Finite weighted mean assembly. No mean limit is assumed."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.PaperCompleteR8.WeightedFiniteUnion",
+      "path": "lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedFiniteUnion.lean",
+      "synopsis": "The weighted class is a hereditary finite-union ideal The prime sets are enlarged and the actual nonnegative summands are compared. Individual irrationality or separate return times are never used as a union supplier."
     },
     {
       "id": "ErdosProblems.Erdos257.PaperCompleteR8.WeightedHereditaryClaim",
@@ -7063,6 +7378,56 @@
       "synopsis": "Finite averaging for divisibility-weighted supports The weighted support proof needs two finite estimates before taking any limit. The orbit estimate retains the geometric GCD factor discarded by the reciprocal-mass bound. The observation-length estimate sums incomplete-period errors across dyadic scales, charging each conductor only once. These are the actual finite estimates used in the analytic proof. The prime-part decomposition and the final choice of scales are separate steps."
     },
     {
+      "id": "ErdosProblems.Erdos257.WitnessBlockArithmetic",
+      "path": "lean/ErdosProblems/Erdos257/WitnessBlockArithmetic.lean",
+      "synopsis": "Arithmetic of the clause support The support is the actual union of coprime layers used in the witness-rule construction. Prime factors outside the clause are retained in the exact restricted factorization identity."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WitnessBlockHarmonic",
+      "path": "lean/ErdosProblems/Erdos257/WitnessBlockHarmonic.lean",
+      "synopsis": "Reciprocal mass of the cofactors congruent to one Grouping each positive integer with the first member of its length-`Q` block gives an explicit finite lower bound for the progression `1 mod Q`."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WitnessBlockReciprocal",
+      "path": "lean/ErdosProblems/Erdos257/WitnessBlockReciprocal.lean",
+      "synopsis": "Reciprocal divergence of the actual clause support Each coprime layer has a uniformly positive reciprocal mass on a progression congruent to one. Unique layer indices make these contributions disjoint."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WitnessBlockSummability",
+      "path": "lean/ErdosProblems/Erdos257/WitnessBlockSummability.lean",
+      "synopsis": "Summability of an arithmetic clause met by a prime witness The finite cofactor rows are dominated by the checked scalar clause series. A chosen representation of each support element transfers that summability to the actual set without requiring disjointness of the enlarged rows."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WitnessBlockWeightBound",
+      "path": "lean/ErdosProblems/Erdos257/WitnessBlockWeightBound.lean",
+      "synopsis": "Removing a positive integer multiplier from a Lambert coefficient Bernoulli's inequality controls the denominator after multiplying the exponent. The resulting bound is uniform in the additional prime contribution."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WitnessBlockWeighted",
+      "path": "lean/ErdosProblems/Erdos257/WitnessBlockWeighted.lean",
+      "synopsis": "Canonical prime weights on the arithmetic clause layers The exact prime-part identity keeps all primes of the witness. On cofactors congruent to one modulo the union of the clause and witness primes, only the clause-intersection product remains."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WitnessLogic",
+      "path": "lean/ErdosProblems/Erdos257/WitnessLogic.lean",
+      "synopsis": "Finite unions of nonnegative weighted supports This is the finite-union part of the proposed witness-logic construction. It does not assert that any particular arithmetic block has the required summability classification."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WitnessLogicHost",
+      "path": "lean/ErdosProblems/Erdos257/WitnessLogicHost.lean",
+      "synopsis": "One host realising a finite monotone witness rule Fix a finite set `E` of primes and an upward-closed rule `U` on finite sets of primes with `U E` true and `U ∅` false. The host is the finite union of the clause supports `witnessClauseSupport (E \\ M)`, one for each forbidden `M ⊆ E`. For every base `b ≥ 2` and every finite prime set `P`, including primes outside `E`, the canonical weighted series on this one host converges exactly when `U (P ∩ E)` holds, and its ordinary reciprocal sum diverges. The irrationality consequence is in `WitnessLogicIrrational`. The block classification is the proved theorem `summable_primeWeightedTerm_witnessClauseSupport_iff`; nothing about the arithmetic blocks is assumed here."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WitnessLogicIrrational",
+      "path": "lean/ErdosProblems/Erdos257/WitnessLogicIrrational.lean",
+      "synopsis": "Irrationality on a witness-logic host The full witness `E` has finite weighted mass at base two on the host of `WitnessLogicHost`, so the checked weighted theorem makes every infinite subset irrational in every base, although the host's reciprocal sum diverges."
+    },
+    {
+      "id": "ErdosProblems.Erdos257.WitnessLogicSeries",
+      "path": "lean/ErdosProblems/Erdos257/WitnessLogicSeries.lean",
+      "synopsis": "The analytic series for a witness clause The scalar series arising in the ordinary block comparison converges exactly when the intersection product is at least two. The comparison with the actual prime-weighted arithmetic support is a separate obligation."
+    },
+    {
       "id": "ErdosProblems.Erdos269.ActualSharpTailMajorantR10",
       "path": "lean/ErdosProblems/Erdos269/ActualSharpTailMajorantR10.lean",
       "synopsis": "The jump-constrained bound for the literal tail The extra growth is proved directly for the three floor logarithms. This avoids assuming an enumeration of the jump word or an unproved majorisation supplier. At a dyadic starting point, d₂ ≤ 2d₃+1. Consequently the first k rank increases multiply the height by at least 2^(k-j)3^j, j=(k+1)/3. The residue-three sum then gives precisely the printed Q̃, with the existing actual rank-fibre bound."
@@ -7075,7 +7440,7 @@
     {
       "id": "ErdosProblems.Erdos269.BoundedRadixTailEscape",
       "path": "lean/ErdosProblems/Erdos269/BoundedRadixTailEscape.lean",
-      "synopsis": "Erdős #269: bounded-radix tail escape Consider an affine orbit `x (n + 1) = P n * x n - c n` with integral `c n` and radices `2 ≤ P n ≤ 30`. If the orbit is eventually always within `1/31` of an integer, the corresponding errors grow by at least a factor of two at every step; hence one of the states is itself integral. Otherwise the orbit is at least `1/31` from every integer at arbitrarily late indices. The integral state in the first alternative need not be zero. The theorem also makes no assertion that the separated indices are eventually all indices, have positive density, or have unbounded distance from the integers."
+      "synopsis": "Erdős #269: bounded-radix tail escape Consider an affine orbit `x (n + 1) = P n * x n - c n` with integral `c n` and radices `2 ≤ P n ≤ B`. If the orbit is eventually always within `1/(B+1)` of an integer, the corresponding errors grow by at least a factor of two at every step; hence one of the states is itself integral. Otherwise the orbit is at least `1/(B+1)` from every integer at arbitrarily late indices. The threshold is attained: at constant radix `B` and digit sequence alternating `0, B - 1`, the rational orbit alternating `1/(B+1)` and `B/(B+1)` is never integral and stays exactly `1/(B+1)` from the integers. That example is rational, so it says nothing about optimality for irrational orbits. The first public statement fixed `B = 30`, the bound needed by the dyadic height ratios of #269; `boundedRadix_zero_or_cofinal_far` keeps that interface as a specialisation of the parameterised theorem. The integral state in the first alternative need not be zero. The theorem also makes no assertion that the separated indices are eventually all indices, have positive density, or have unbounded distance from the integers."
     },
     {
       "id": "ErdosProblems.Erdos269.CarryLiftExtinction",
@@ -7095,7 +7460,22 @@
     {
       "id": "ErdosProblems.Erdos269.CofinalWindowEscapeEquivalence",
       "path": "lean/ErdosProblems/Erdos269/CofinalWindowEscapeEquivalence.lean",
-      "synopsis": "Erdős #269: the cofinal local-window escape producer is *equivalent* to the target `RationalityCarryBridge` closes the rationality-to-carry bridge and derives `ActualCofinalLocalWindowEscape → Irrational (Σ_{h ∈ ⟨2,3,5⟩} 1/H(h))`. The producer was therefore recorded as a *strictly stronger, target-deciding* open route. This module proves the **converse**, unconditionally: `Irrational (Σ_{h ∈ ⟨2,3,5⟩} 1/H(h)) → ActualCofinalLocalWindowEscape`, so the two are exactly equivalent (`actualCofinalLocalWindowEscape_iff`, `actualCofinalLocalWindowEscape_iff_irrational_value`). What this proves and what it does not It **proves** an exact equivalence of two propositions. It does **not** prove either of them. **Erdős #269 remains open.** The mathematical content is a *no-go for the producer as a reduction*: `ActualCofinalLocalWindowEscape` is not a weaker, more tractable statement one could hope to attack by window/anti-concentration arguments and thereby obtain irrationality; proving it is literally proving Erdős #269. Any future effort spent on the producer must be justified as an attack on the target itself. The mechanism Let `X_a = trueNormalizedState a` be the genuine half-height normalized tail, `b` the actual radix word and `m` the actual ordered digit, so `X_{a+1} = b_a X_a - m_a`, `0 < X_a ≤ 90 (a+1)^2`. Unrolling across a window `[lo, lo+len)` gives, over the reals, `X_{lo+len} = W X_lo - F`, `W = windowBase b lo len`, `F = windowForcing b m lo len`. If the least positive residue `r` of `-(B F)` modulo `W` satisfies `r ≤ K` with `K = B · 90 (lo+len+1)^2`, then writing `r + B"
+      "synopsis": "Erdős #269: the cofinal local-window escape producer is *equivalent* to the target `RationalityCarryBridge` closes the rationality-to-carry bridge and derives `ActualCofinalLocalWindowEscape → Irrational (Σ_{h ∈ ⟨2,3,5⟩} 1/H(h))`. The producer was therefore recorded as a *strictly stronger, target-deciding* open route. This module proves the **converse**, unconditionally: `Irrational (Σ_{h ∈ ⟨2,3,5⟩} 1/H(h)) → ActualCofinalLocalWindowEscape`, so the two are exactly equivalent (`actualCofinalLocalWindowEscape_iff`, `actualCofinalLocalWindowEscape_iff_irrational_value`). What this proves and what it does not It **proves** an exact equivalence of two propositions. It does **not** prove either of them. **Erdős #269 remains open.** The mathematical content identifies an exact reformulation: proving `ActualCofinalLocalWindowEscape` proves the target. Logical equivalence does not decide comparative tractability or exclude useful window/anti-concentration methods. Representation benefit requires separate evidence; the equivalence alone supplies neither endpoint. The mechanism Let `X_a = trueNormalizedState a` be the genuine half-height normalized tail, `b` the actual radix word and `m` the actual ordered digit, so `X_{a+1} = b_a X_a - m_a`, `0 < X_a ≤ 90 (a+1)^2`. Unrolling across a window `[lo, lo+len)` gives, over the reals, `X_{lo+len} = W X_lo - F`, `W = windowBase b lo len`, `F = windowForcing b m lo len`. If the least positive residue `r` of `-(B F)` modulo `W` satisfies `r ≤ K` with `K = B · 90 (lo+len+1)^2`, then writing `r + B F = W k'` and substituting `F = W X_lo - X_{lo"
+    },
+    {
+      "id": "ErdosProblems.Erdos269.DistinctHeightAxiomAudit",
+      "path": "lean/ErdosProblems/Erdos269/DistinctHeightAxiomAudit.lean",
+      "synopsis": "Axiom audit for the irrationality of the distinct-height sum `𝒟_{2,3,5}` Each theorem below should depend only on `propext`, `Classical.choice` and `Quot.sound`."
+    },
+    {
+      "id": "ErdosProblems.Erdos269.DistinctHeightBlockRadix",
+      "path": "lean/ErdosProblems/Erdos269/DistinctHeightBlockRadix.lean",
+      "synopsis": "Erdős #269: a block-radix irrationality criterion This module isolates the arithmetic engine behind the irrationality of the distinct-height sum `𝒟_{2,3,5}`, which is assembled in `ErdosProblems.Erdos269.DistinctHeightIrrationality`. A *block letter* is one of the five pairs `(b, μ)` (2, 1), (6, 3), (10, 3), (30, 13), (30, 9), the radix and numerator of a dyadic block of type `∅`, `3`, `5`, `35`, `53`. Given a word of block letters `(b a, μ a)`, put `P a = b 0 ⋯ b (a - 1)` and consider the series `∑ a, μ a / P (a + 1)`. Its normalised tails Y a = P a · ∑_{j ≥ a} μ j / P (j + 1) satisfy `b a · Y a = μ a + Y (a + 1)` (`base_mul_tailState`). * `tailState_ge`, `tailState_le`: if every three consecutive letters contain one with `5 ∣ b`, then `3/10 ≤ Y a ≤ 13/15`. * `blockLetter_decode`: on `[3/10, 13/15]` the five affine maps `y ↦ (μ + y) / b` have pairwise disjoint images, so `Y a` determines the letter at `a`, and then `Y (a + 1) = b a · Y a - μ a`. * `exists_int_mul_tailState`: if the sum is a rational `q`, every `q.den · Y a` is an integer; with the bounds, two tails coincide. * `irrational_tsum_blockTerm`: hence a rational sum forces the letter word to be eventually periodic, and a word whose radices are not eventually periodic gives an irrational sum."
+    },
+    {
+      "id": "ErdosProblems.Erdos269.DistinctHeightIrrationality",
+      "path": "lean/ErdosProblems/Erdos269/DistinctHeightIrrationality.lean",
+      "synopsis": "Erdős #269: the distinct-height sum `𝒟_{2,3,5}` is irrational Let `H(t) = 2^⌊log₂ t⌋ · 3^⌊log₃ t⌋ · 5^⌊log₅ t⌋` (`runningHeight235`). For `t ≥ 1` this is the running least common multiple of the `{2,3,5}`-smooth integers not exceeding `t` (`smoothPrefixLcm_eq_runningHeight235`). The #269 long record defines the distinct-height sum 𝒟_{2,3,5} = 1 + ∑_{t ∈ {2^n, 3^n, 5^n : n ≥ 1}} 1 / H(t), which counts every value of the running LCM once, at the jump where it first appears. This module proves * `distinctHeightSum235_irrational : Irrational distinctHeightSum235`, the sum over the jump points exactly as displayed above, and * `distinctHeightSum235_eq_tsum_range` together with `irrational_tsum_range_runningHeight235`: the same number is `∑' h : Set.range runningHeight235, 1 / h`, the sum of `1 / h` over the distinct values `h` of `H`, and it is irrational. Erdős asserted the irrationality of distinct-height sums for finite sets of primes in a letter of 1 January 1973 (Fibonacci Quarterly 12 (1974), p. 335) and printed no argument. Route Group the jump points into the dyadic blocks `(2^a, 2^(a+1)]`. Each block contains `2^(a+1)`, at most one power of `3` (`firstPow 3 a`, the first power of `3` above `2^a`) and at most one power of `5` (`firstPow 5 a`), so its contribution is `blockNum a / H(2^(a+1))` with `H(2^(a+1)) = blockBase a · H(2^a)` and `(blockBase a, blockNum a)` one of the five block letters of `ErdosProblems.Erdos269.DistinctHeightBlockRadix` (`sum_block_jumpTerm_eq`). Every three consecutive blocks contain a power of `5`, because `4 < 5 < 8` (`five_spacing`), and the "
     },
     {
       "id": "ErdosProblems.Erdos269.DyadicBlockMassIdentity",
@@ -7275,7 +7655,7 @@
     {
       "id": "ErdosProblems.Erdos269.PaperR7AnalyticInterfaces",
       "path": "lean/ErdosProblems/Erdos269/PaperR7AnalyticInterfaces.lean",
-      "synopsis": "Round 7: proved algebra around explicitly unresolved analytic inputs This file DOES NOT prove the two-prime transcendence theorem. Its final algebraic step is separated from THREE hypotheses still requiring analytic proofs: transcendence of the specified Hecke--Mahler value, and the two identities for the actual series. The parameters are visible, not axioms or admitted theorems. It also proves the constant rank-one upper witness for the uniform carry approximation. The lower bound over every finite separated rank remains open as a formalisation obligation in this return. Validation: authored, not compiled. No admissions."
+      "synopsis": "Round 7: proved algebra around explicitly unresolved analytic inputs This file DOES NOT prove the two-prime transcendence theorem. Its final algebraic step is separated from THREE hypotheses still requiring analytic proofs: transcendence of the specified Hecke--Mahler value, and the two identities for the actual series. The parameters are visible, not axioms or admitted theorems. It also proves the constant rank-one upper witness for the uniform carry approximation. The matching lower bound over every finite separated rank is proved in `ErdosProblems.Erdos269.PaperR8UniformRank`. No admissions."
     },
     {
       "id": "ErdosProblems.Erdos269.PaperR7BasicAssembly",
@@ -7320,7 +7700,7 @@
     {
       "id": "ErdosProblems.Erdos269.PaperR8UniformRank",
       "path": "lean/ErdosProblems/Erdos269/PaperR8UniformRank.lean",
-      "synopsis": "The infinite uniform finite-rank obstruction The finite staircase minors alone do not prove a uniform lower bound. This file uses their column separation inside a finite-dimensional bounded column space, and a finite covering of a compact ball. Row factors in an arbitrary separated representation need not be bounded; the subspace is formed by intersecting their algebraic span with the space of bounded functions. The final infimum ranges over ALL finite-separated-rank matrices. It uses an extended nonnegative supremum so that unbounded approximants have infinite uniform error, never the spurious zero returned by an unbounded real iSup. The resulting finite value is also identified after conversion to the reals. All proof text is an uncompiled candidate against the packet's pinned Mathlib."
+      "synopsis": "The infinite uniform finite-rank obstruction The finite staircase minors alone do not prove a uniform lower bound. This file uses their column separation inside a finite-dimensional bounded column space, and a finite covering of a compact ball. Row factors in an arbitrary separated representation need not be bounded; the subspace is formed by intersecting their algebraic span with the space of bounded functions. The final infimum ranges over ALL finite-separated-rank matrices. It uses an extended nonnegative supremum so that unbounded approximants have infinite uniform error, never the spurious zero returned by an unbounded real iSup. The resulting finite value is also identified after conversion to the reals."
     },
     {
       "id": "ErdosProblems.Erdos269.PaperR9SourceCounts",
@@ -7446,6 +7826,11 @@
       "id": "ErdosProblems.Erdos68.ConstantOnlyMissCertificates",
       "path": "lean/ErdosProblems/Erdos68/ConstantOnlyMissCertificates.lean",
       "synopsis": "Erdős #68: constant-only miss certificates Let `C = ∑' n, compConstTerm n`. The companion carrier has the form `F_m = m! * C - δ_m`, where `δ_m` is the positive scaled tail. Once `0 < δ_m < 1`, subtracting the tail can move the floor down by at most one. The correct alternatives are `⌊F_m⌋ = ⌊m! * C⌋` or `⌊F_m⌋ = ⌊m! * C⌋ - 1`. Consequently it is enough to exclude the two adjacent residues `-2` and `-1` for `⌊m! * C⌋` modulo `m`. This formulation deliberately uses two floors of the same fixed constant; it does not use a ceil, since `⌈J⌉ - 1 = ⌊J⌋` when `J` is nonintegral and therefore misses the possible downward crossing. The theorem below is the exact floor/congruence consumer. A companion-tail estimate may supply its `F_m = J - δ`, `0 < δ < 1` hypotheses without changing the arithmetic proof."
+    },
+    {
+      "id": "ErdosProblems.Erdos68.DepthFourShortSupport",
+      "path": "lean/ErdosProblems/Erdos68/DepthFourShortSupport.lean",
+      "synopsis": "Finite-support companion to `DepthFourShortSupport.md`. The coefficient domain is arbitrary signed integers. The short-support identity gives the exact obstruction through index seven. The unrestricted depth-four ideal then follows directly from the existing universal divisibility by `12 * channelLCM 4` and the explicit index-eight vector; it does not need the finite scalar table or the quadratic horizon theorem. No irrationality claim is made."
     },
     {
       "id": "ErdosProblems.Erdos68.DivisorChannelBasis",
@@ -9075,7 +9460,7 @@
     {
       "id": "ErdosProblems.Synthesis.DyadicShiftEscape",
       "path": "lean/ErdosProblems/Synthesis/DyadicShiftEscape.lean",
-      "synopsis": "Uniform separation of dyadic tail differences The #251 classifier identifies irrationality with nonintegrality of every positive-length tail difference. The #269 bounded-radix escape theorem turns this qualitative statement into cofinal separation by a common positive constant. The bridge is a change of representation: a fixed-length difference of a dyadic tail orbit is itself an integer-digit dyadic orbit. The constant `1 / 31` is inherited from the #269 theorem for radices at most 30; it is not asserted to be optimal for the radix-two specialization. This composition proves no irrationality assertion about the actual prime series: it gives an exact quantitative form of the existing irrationality criterion."
+      "synopsis": "Uniform separation of dyadic tail differences The #251 classifier identifies irrationality with nonintegrality of every positive-length tail difference. The #269 bounded-radix escape theorem turns this qualitative statement into cofinal separation by a common positive constant. The bridge is a change of representation: a fixed-length difference of a dyadic tail orbit is itself an integer-digit dyadic orbit. The first composition inherited the constant `1 / 31` from the #269 theorem for radices at most 30; the premise-exchange experiment records that composition and its request imports only the two source modules. Once the 269 theorem takes the radix bound `B` as a parameter, the same composition at `B = 2` gives `1 / 3`. Both forms are kept: the `1 / 31` theorems are the recorded outcome of the experiment, and the `1 / 3` theorems are its continuation. `1 / 3` is the best threshold for the general radix-two escape theorem, whose extremal orbit is rational; it is not asserted to be optimal for irrational dyadic tails. This composition proves no irrationality assertion about the actual prime series: it gives an exact quantitative form of the existing irrationality criterion."
     },
     {
       "id": "ErdosProblems.Synthesis.FactorialJet",
@@ -9086,6 +9471,21 @@
       "id": "ErdosProblems.Synthesis.FeedbackContinuation",
       "path": "lean/ErdosProblems/Synthesis/FeedbackContinuation.lean",
       "synopsis": "Eventual congruences from the existing feedback construction The #251 feedback theorem supplies bounded digits, their weighted sum, and a prescribed divisor of every cumulative prefix. Nested moduli turn these prefix divisibilities into eventual divisibility of both the individual digits and all preceding cumulative sums. This is the analytic continuation mechanism used by the factorial tail-capacity argument. It does not formalize the choice of factorial allowances, active positions, moduli, or continuation intervals in that ordinary proof. Those inputs remain explicit hypotheses here. No feedback selector is duplicated."
+    },
+    {
+      "id": "ErdosProblems.Synthesis.RealBaseRounding",
+      "path": "lean/ErdosProblems/Synthesis/RealBaseRounding.lean",
+      "synopsis": "Rounding shadows in a real base `x > 1` Fix a real base `x > 1`, a digit bound `D ≥ x - 1`, a modulus `q ≥ 1` and a cutoff `M`. Every `y` in `[0, D r^(M+1)/(1 - r)]`, with `r = 1/x`, is `∑_{n > M} δ_n r^n` for digits `0 ≤ δ_n ≤ D` (`exists_placed_digits_geom`); this is the greedy filling `ErdosProblems.Erdos251.SparseRationalisationDraft.exists_digits_hasSum_of_capacity` with the geometric capacities `D r^(k+M+1)/(1 - r)`. Adding `q δ` to a coefficient sequence `c` moves `∑ c(n)/x^n` onto any value in an interval of positive length, so onto a rational number, while keeping `c` modulo `q`, keeping `c` up to `M`, and moving each coefficient by at most `qD` (`exists_upShadow_realBase`, `up_rounding_barrier_realBase`). At the divisor count `τ(n) = #divisors(n)` this gives a barrier for Erdős #1049 at every base `x > 1`, including the open base `3/2`: agreement with `τ` modulo a fixed `q`, size within a fixed bound of `τ`, and agreement with `τ` on any finite prefix do not imply irrationality of `∑ a(n)/x^n`, whose value at `a = τ` is `∑_{n≥1} 1/(x^n - 1)` (`paperLambert_eq_tsum_divisor_count`, `paperLambert_rounding_barrier`, `paperLambert_threeHalves_rounding_barrier`). Nothing here decides the irrationality of that series at any base."
+    },
+    {
+      "id": "ErdosProblems.Synthesis.RoundingBarrier",
+      "path": "lean/ErdosProblems/Synthesis/RoundingBarrier.lean",
+      "synopsis": "Rounding shadows and a barrier for binary irrationality demands Let `c : ℕ → ℕ` be a coefficient sequence whose series `∑ c(n)/2^n` converges, and fix a modulus `q ≥ 1` and a cutoff `M`. Write `T_c(M) = ∑_{j≥1} c(M+j)/2^j` for the scaled tail (`Erdos249257.binaryCoeffTail`). Subtracting `q` times the binary digits of `fract(T_c(M)/q)`, written after position `M`, gives a sequence `a = downShadow c q M` with * `a(n) = c(n)` for `n ≤ M`; * `c(n) - q ≤ a(n) ≤ c(n)` and `a(n) ≡ c(n) (mod q)` for every `n`; * `∑ a(n)/2^n = (∑_{n≤M} c(n) 2^(M-n) + q⌊T_c(M)/q⌋) / 2^M`, a dyadic rational, whenever `c(n) ≥ q` for every `n > M` (`hasSum_downShadow_dyadic`). Adding the binary digits of `fract(-T_c(M)/q)` instead needs no lower bound on `c` and gives `c(n) ≤ a(n) ≤ c(n) + q` (`upShadow`, `hasSum_upShadow_dyadic`). The digits are `ErdosProblems.Erdos251.binaryDigit`, and the upward construction has the shape of the prime-gap perturbation `ErdosProblems.Erdos251.exists_bounded_perturbation`, here with an exact dyadic value and the indexing `∑ c(n)/2^n`. A dyadic value leaves no room for a period certificate. For a sequence with `c(n) ≤ n` the corpus certificate `GenericTailCertificates.certificate` is sound, so a value `p/2^e` excludes every certificate at every `N ≥ e`, every lag and every depth (`no_certificate_of_dyadic`, `not_cofinal_certificate_of_dyadic`), and any rational value excludes the cofinal supply `FinitePrefixCountermodel.separation` (`not_separation_of_rational`). At `c = φ` the certificate is `certifiedKill` and the supply is the hypothesis of `irrational_totient_series"
+    },
+    {
+      "id": "ErdosProblems.Synthesis.UniformRankBarrier",
+      "path": "lean/ErdosProblems/Synthesis/UniformRankBarrier.lean",
+      "synopsis": "Uniform finite-rank error from separated rows A uniformly bounded matrix with arbitrarily large finite families of rows separated by `δ` in supremum distance cannot be uniformly approximated by a finite-separated-rank matrix with error below `δ / 2`. The separation may be a supremum that no coordinate attains. Neither factor of the approximating matrix is assumed bounded. The proof reuses the finite-dimensional packing and bounded-column-space lemmas from the #269 development. The additional interface isolates the metric premise from the arithmetic construction of separated rows, so a different source of separation can use the same obstruction. It states no bound for mean error, and exact infinite rank alone is not a hypothesis that supplies uniform separation."
     },
     {
       "id": "ErdosProblems.Synthesis",

@@ -499,12 +499,24 @@ def validate_systems_evidence_source(
         "human judgement boundary": (
             r"does not technically force a second independent mathematician"
         ),
-        "coverage boundary": r"coverage boundary, not a reliability score",
+        "coverage boundary": (
+            r"study locates a coverage boundary\. its nine rejections do not "
+            r"estimate how reliable the checker is"
+        ),
         "post-repair example": (
             r"post-repair witness accepts the current readme and rejects a "
             r"test copy containing the false clause"
         ),
     }
+    if artifact.get('systems_paper_profile') == 'unified_corpus_to_paper_v1':
+        required_patterns.update({
+            'plain architecture title': r'a repository-based system for research and publication',
+            'human judgement boundary': r'does not technically force a second independent mathematician',
+            'post-repair example': (
+                r'post-repair witness accepts the current readme and rejects a '
+                r'test copy containing the false clause'
+            ),
+        })
     for label, pattern in required_patterns.items():
         if not re.search(pattern, normalized):
             errors.append(
@@ -1006,7 +1018,7 @@ def build_publication_entry_packet(reader: RepositoryReader) -> dict[str, Any]:
             "purpose": source["thesis"],
             "five_parts": [
                 "Lean source",
-                "human-reviewed public claims",
+                "self-assessed and agent-checked public claims",
                 "authored reader documents",
                 "generated navigation views",
                 "release checks and GitHub continuous integration",
@@ -1357,6 +1369,12 @@ def validate_publication_contract(
         claims = claims_override or load_json(reader, CLAIMS_PATH)
     except (FileNotFoundError, json.JSONDecodeError, UnicodeError) as error:
         return [f"{CLAIMS_PATH}: {error}"]
+
+    # The new owner contract is enforced against this exact worktree/staged/ref
+    # reader; a historical release without it retains its historical contract.
+    if "paper_claim_evidence" in claims:
+        from paper_claim_evidence import publication_errors
+        errors.extend(publication_errors(reader.read_bytes, claims))
 
     if contract.get("schema") != SCHEMA:
         errors.append(f"{CONTRACT_PATH} must use schema {SCHEMA}")
@@ -1937,18 +1955,23 @@ def mutation_fixture_failures(reader: RepositoryReader) -> list[str]:
     source_path = systems["source_path"]
     original_source = reader.read_text(source_path)
     limited_sentence = (
-        "The evidence marks a coverage boundary, not a reliability score."
+        "Its nine rejections do not estimate how reliable the checker is."
     )
     inflated_sentence = (
         "This example establishes a general reliability score for future errors."
     )
-    if limited_sentence not in original_source:
+    # Match across TeX line wrapping: a reflowed paragraph must neither hide
+    # the limited sentence from this fixture nor disarm it.
+    limited_pattern = re.compile(
+        r"\s+".join(re.escape(word) for word in limited_sentence.split())
+    )
+    if limited_pattern.search(original_source) is None:
         failures.append("post_repair_source_fixture_anchor_missing")
     else:
-        mutated_source = original_source.replace(
-            limited_sentence,
-            inflated_sentence,
-            1,
+        mutated_source = limited_pattern.sub(
+            lambda _match: inflated_sentence,
+            original_source,
+            count=1,
         )
         systems["source_content_digest"] = sha256(mutated_source.encode("utf-8"))
         overlay_reader = RepositoryReader(

@@ -1,5 +1,7 @@
 # Erdős 1041: room converts into length through the Bergman kernel, not through Koebe
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: two proved lemmas, one dropped hypothesis, two proved theorems, one
 exact asymptotic calibration on an equality family, a measured reach, and one
 new member of the instrument-defect class. Current through 2026-08-27 source

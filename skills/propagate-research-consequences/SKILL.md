@@ -156,6 +156,13 @@ moved; if its text changed, investigate the change before restamping it.
 `python3 scripts/reanchor_source_attributions.py` applies this rule to the
 source-attribution registry: a dry run prints every recomputed anchor for
 review, and `--write` saves the registry once every anchor resolves. Use
+`python3 scripts/contrast_ledger.py check --worktree` as well: the authored
+contrast ledger has its own source spans, which the attribution reanchorer
+does not update. For each moved span, locate the same evidence and preserve
+its required literals; a changed passage needs renewed review. Run this check
+before committing and the default committed-ref check before full release
+admission. A successful projection refresh alone does not validate those spans.
+Use
 `python3 docs/papers/refresh_paper_corpus.py --write --paper <paper-id>`
 after a native manuscript or PDF edit, including provenance-only changes: this
 owner refreshes the full text and source/PDF digests. Then run

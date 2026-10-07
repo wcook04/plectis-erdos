@@ -1,5 +1,7 @@
 # Erdős 1041: the merge-topology bounds are refuted, one of them by exact algebra
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 Status: three refutations, one of them a closed-form identity. 2026-08-23. Erdős
 #1041 remains open, and the weak statement `L <= 2R` is untouched by everything
 here.

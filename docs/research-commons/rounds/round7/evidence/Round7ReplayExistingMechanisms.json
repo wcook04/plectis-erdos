@@ -1,0 +1,72 @@
+{
+  "probe": "research/probes/Round7ReplayExistingMechanisms.lean",
+  "source_sha256": "2f80b60cef03f8b78a94c399094d8c093b8e300f1c114e6318388471413fc8b6",
+  "evidence_class": "compilation_probe",
+  "exact_target_checked": false,
+  "environment_replayed": false,
+  "exit_code": 0,
+  "timed_out": false,
+  "elapsed_seconds": 60.9,
+  "errors": [],
+  "warnings": [],
+  "uses_sorry": false,
+  "axioms_declared": [],
+  "axioms_printed": {
+    "ErdosProblems.Erdos249.PaperCompleteR7.ArbitraryBasePulse.no_bounded_lattice_tail_of_pulses": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.irrational_radixValue_of_pulses": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.radix_residue_series_irrational": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "ErdosProblems.Erdos269.DistinctHeight235.irrational_tsum_blockTerm": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "ErdosProblems.Erdos269.distinctHeightSum235_irrational": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "ErdosProblems.Erdos249.PaperCompleteR21.exists_certifiedKill_of_weighted_first_harmonic_gap": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "ErdosProblems.Erdos257.DyadicShellSynchronisation.exists_common_sample_of_weighted_sum_lt_one": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "missing_axiom_prints": [],
+  "nonstandard_axioms": [],
+  "compilation_accepted": true,
+  "accepted": true,
+  "output_tail": " : \u2115 \u2192 \u2124) (T : \u2115 \u2192 \u211d) (C : \u211d) (hCu : \u2200 (n : \u2115), |\u2191(u n)| \u2264 C) (hCT : \u2200 (n : \u2115), |T n| \u2264 C)\n  (hrec : \u2200 (n : \u2115), \u2191B * T n = \u2191(u (n + 1)) + T (n + 1)) (hlattice : \u2200 (n : \u2115), \u2203 z, \u2191q * T n = \u2191z)\n  (hpulse : \u2200 (L : \u2115), \u2203 p, L + 1 < p \u2227 u p \u2260 0 \u2227 \u2200 (j : \u2115), 0 < j \u2192 j \u2264 L \u2192 u (p - j) = 0 \u2227 u (p + j) = 0) : False\n'ErdosProblems.Erdos249.PaperCompleteR7.ArbitraryBasePulse.no_bounded_lattice_tail_of_pulses' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\nErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.irrational_radixValue_of_pulses (B : \u2115) (hB : 2 \u2264 B)\n  (a : \u2115 \u2192 \u2124) (C : \u211d) (hC : \u2200 (n : \u2115), |\u2191(a n)| \u2264 C)\n  (hpulse : \u2200 (L : \u2115), \u2203 p, L + 1 < p \u2227 a p \u2260 0 \u2227 \u2200 (j : \u2115), 0 < j \u2192 j \u2264 L \u2192 a (p - j) = 0 \u2227 a (p + j) = 0) :\n  Irrational (ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.radixValue B a)\n'ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.irrational_radixValue_of_pulses' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\nErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.radix_residue_series_irrational (B : \u2115) (hB : 2 \u2264 B) {m : \u2115}\n  (hm : 3 \u2264 m) :\n  Irrational (ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.radixValue B fun n => \u2191n.totient % \u2191m)\n'ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.radix_residue_series_irrational' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\nErdosProblems.Erdos269.DistinctHeight235.irrational_tsum_blockTerm {b \u03bc : \u2115 \u2192 \u2115}\n  (hL : \u2200 (a : \u2115), ErdosProblems.Erdos269.DistinctHeight235.BlockLetter (b a) (\u03bc a))\n  (hspace : \u2200 (a : \u2115), 5 \u2223 b a \u2228 5 \u2223 b (a + 1) \u2228 5 \u2223 b (a + 2))\n  (hnp : \u2200 (a d : \u2115), 0 < d \u2192 \u2203 j, b (a + d + j) \u2260 b (a + j)) :\n  Irrational (\u2211' (a : \u2115), ErdosProblems.Erdos269.DistinctHeight235.blockTerm b \u03bc a)\n'ErdosProblems.Erdos269.DistinctHeight235.irrational_tsum_blockTerm' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\nErdosProblems.Erdos269.distinctHeightSum235_irrational : Irrational ErdosProblems.Erdos269.distinctHeightSum235\n'ErdosProblems.Erdos269.distinctHeightSum235_irrational' depends on axioms: [propext, Classical.choice, Quot.sound]\nErdosProblems.Erdos249.PaperCompleteR21.exists_certifiedKill_of_weighted_first_harmonic_gap {h X L : \u2115} (T : Finset \u2115)\n  (a : \u2115 \u2192 \u211d) (ha : \u2200 N \u2208 T, 0 \u2264 a N) (hTlt : \u2200 N \u2208 T, N < 2 * X) (hroom : 16 * (2 * X + h + L + 2) \u2264 2 ^ L)\n  (hpos : 0 < \u2211 N \u2208 T, a N)\n  (hgap : \u2211 N \u2208 T, a N * Erdos249257.TotientTailPeriodKiller.windowFirstCos h N L \u2264 9 / 10 * \u2211 N \u2208 T, a N) :\n  \u2203 N \u2208 T, 0 < a N \u2227 Erdos249257.TotientTailPeriodKiller.certifiedKill h N L\n'ErdosProblems.Erdos249.PaperCompleteR21.exists_certifiedKill_of_weighted_first_harmonic_gap' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\nErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap\n  (hgap :\n    \u2200 (h : \u2115),\n      0 < h \u2192\n        \u2200 (A : \u2115),\n          \u2203 X,\n            max A 1 \u2264 X \u2227\n              (\u2211\n                    N \u2208\n                      Erdos249257.TotientTailPeriodKiller.pivotGoodBases X\n                        (ErdosProblems.Erdos249.PaperCompleteR21.minimalDepth h 26 X) 26 (1 / 1000),\n                    Erdos249257.TotientTailPeriodKiller.windowFirstExp h N\n                      (ErdosProblems.Erdos249.PaperCompleteR21.minimalDepth h 26 X)).re \u2264\n                603 / 1000 * \u2191X) :\n  Irrational (\u2211' (n : \u2115), \u2191n.totient / 2 ^ n)\n'ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\nErdosProblems.Erdos257.DyadicShellSynchronisation.exists_common_sample_of_weighted_sum_lt_one.{u_1} {\u03b9 : Type u_1}\n  (s : Finset \u03b9) (\u03bc f g : \u03b9 \u2192 \u211d) (h\u03bc : \u2200 i \u2208 s, 0 \u2264 \u03bc i) (hf : \u2200 i \u2208 s, 0 \u2264 f i) (hg : \u2200 i \u2208 s, 0 \u2264 g i)\n  (hprob : \u2211 i \u2208 s, \u03bc i = 1) (hmean : \u2211 i \u2208 s, \u03bc i * (f i + g i) < 1) : \u2203 i \u2208 s, f i < 1 \u2227 g i < 1\n'ErdosProblems.Erdos257.DyadicShellSynchronisation.exists_common_sample_of_weighted_sum_lt_one' depends on axioms: [propext,\n Classical.choice,\n Quot.sound]\n",
+  "requested_axiom_outputs": [
+    "ErdosProblems.Erdos249.PaperCompleteR7.ArbitraryBasePulse.no_bounded_lattice_tail_of_pulses",
+    "ErdosProblems.Erdos249.PaperCompleteR7.IntegerRadixObservables.irrational_radixValue_of_pulses",
+    "ErdosProblems.Erdos249.PaperCompleteR7.RationalIntegerRadix.radix_residue_series_irrational",
+    "ErdosProblems.Erdos269.DistinctHeight235.irrational_tsum_blockTerm",
+    "ErdosProblems.Erdos269.distinctHeightSum235_irrational",
+    "ErdosProblems.Erdos249.PaperCompleteR21.exists_certifiedKill_of_weighted_first_harmonic_gap",
+    "ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap",
+    "ErdosProblems.Erdos257.DyadicShellSynchronisation.exists_common_sample_of_weighted_sum_lt_one"
+  ],
+  "missing_requested_axiom_outputs": []
+}

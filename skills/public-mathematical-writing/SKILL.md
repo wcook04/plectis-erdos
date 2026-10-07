@@ -28,6 +28,70 @@ handle. Lean source checked by the pinned Lean kernel is proof authority;
 route; papers and Markdown explain. No private checkout, memory, prompt packet,
 provider trace, or private artifact is an input to public prose.
 
+## Read nearby mathematical prose before a substantial rewrite
+
+Start with [Writing a Good Mathematical Paper](../../paper/exposition/writing-a-good-mathematical-paper.pdf)
+for the compact, general instructions. Use the
+[long companion](../../paper/exposition/writing-mathematics-from-reviewed-revisions.pdf)
+and [literature and reviewed-revision guide](../../docs/papers/exposition-method/README.md)
+for worked cases, review history and a manuscript-scale or cross-paper pass. Choose a small set of human papers
+close in subfield and genre, then read the relevant original arguments, with
+exact version and passage locators. Inspect terminology, hypothesis and
+quantifier placement, the reasons expressed by sentence connections, notation
+on first use, proof pacing and local attribution. Write original prose using
+those conventions; do not copy sentences or imitate a named voice.
+
+For each proposed transfer, identify both the source's writing choice and the
+local mathematical fact that licenses the new sentence. A stylistic specimen
+does not prove the target argument. Keep established technical terms; replace
+private compounds by the actual object, bound or property when that reduces
+unnecessary decoding. Use subordinate clauses for dependencies and parallel
+syntax for parallel claims, without optimizing sentence counts or detector rates.
+
+Record the actual before/after passage, source locator, native decision and
+limit in the existing review record. The public [lesson ledger](../../docs/papers/exposition-method/lessons.json)
+preserves examples and corrections; its proposals are not universal commands.
+Keep supplied sources, donor-declared reading and your later inspection distinct.
+Adopt a new general rule only when the case warrants it; otherwise record an
+application of the existing rule. A frozen next guide packet must include the chosen version of this skill,
+both writing papers, its guidance, all earlier authoring and exposition returns,
+the newest paper sources and the new round of returns. It must ask its writer to
+research how to write these guides, using primary writing advice and nearby
+expository or systems literature, with exact passages and reading scope.
+The originals requested for a claim must actually be available; a return
+ledger or source list alone is not a reading receipt. This updates repository practice, not model weights, and claims no
+measured reader benefit.
+
+## Adapt the warrant to the genre
+
+This skill governs mathematical explanations. Its source-to-sentence method
+also helps with a systems or expository scientific paper, but the evidence
+class changes. For a systems claim, name the system, implementation state,
+test conditions, comparator, measured outcome and limitation at the point of
+use; distinguish an artifact check from evaluation of a broader performance
+or usability claim. For a scientific exposition, identify the original study
+or derivation, population or model, reported result and the writer's own
+synthesis. Do not make a cited association causal or a model output observed.
+Read primary guidance and close papers in that genre before transferring a
+mathematical proof sentence pattern. The [long guide](../../paper/exposition/writing-mathematics-from-reviewed-revisions.pdf)
+illustrates this transfer using primary systems-writing and empirical-evaluation
+guidance; their criteria are scoped to those fields.
+
+For a laboratory-facing infrastructure paper, make the design the main subject:
+its purpose, components, interfaces, persistent state, division of responsibility,
+and the path from a task to a reviewed result. Choose the section order from
+systems literature and the implemented dependencies. Use a worked research case
+to explain those choices, with specialist proofs in a separate destination when
+needed. Checking a theorem in that example does not establish that the paper
+explains the architecture. Inspect diagrams for component boundaries, control
+and artifact movement, and legibility at the printed size. Bind each claim to
+the current implementation, a recorded observation or an explicit proposal.
+
+Write the sentence so its condition, object, comparator and conclusion can be
+checked against the evidence. Standard field terms are useful when their
+definitions match. A repeated stylistic template is not a substitute for the
+argument or evaluation.
+
 ## Begin from the claim, not the draft
 
 Before changing mathematical prose, read the exact current result from its
@@ -56,6 +120,10 @@ Compare the exact mathematical domains as well: a local complex-parameter
 chain rule does not itself formalise an integrated real-time trajectory or its
 endpoint behaviour. State separately the checked lemma and any ordinary
 argument that supplies the advertised conclusion.
+
+Logical scope and evidence are separate: a conditional implication can have
+an ordinary or formally checked proof. A finite verification supports an
+infinite claim only through a proved reduction that covers every case.
 
 An ordinary proof can establish a theorem before its full formalization exists.
 Check that argument on its own terms, including limiting steps, endpoints and
@@ -133,6 +201,18 @@ keeps technical details, worthwhile failed routes and reproduction information
 in a navigable order. It is not a chronological transcript. Check the statements
 and evidence classes in both directions before refreshing their projections.
 
+Write both versions as papers for a mathematician encountering the argument
+for the first time. Identify a cited result by its author, theorem or section,
+and explain the local inference; a link labelled "long record" or a source-file
+name alone is not a mathematical reference. State a restrictive hypothesis
+where it controls a theorem and explain what familiar cases satisfy it.
+Consolidate shared limitations once, repeating only those needed to prevent a
+specific claim from appearing unconditional. Keep the proof's mathematical
+input and conclusion in the main text; gather Lean and Comparator identities,
+build commands, version pins and review history in a compact verification and
+reproducibility section or appendix. Preserve exact statement identifiers,
+dependencies and evidence classes in that section.
+
 The synthesis pair can develop an insight arising anywhere in the corpus:
 a transfer, construction, obstruction, better intermediate object or new
 question. It need not solve an original problem. Put a result that changes one
@@ -148,12 +228,21 @@ and [Gowers's examples-first principle](https://gowers.wordpress.com/2007/10/19/
   gives the reader a useful mental model. Identify where the analogy stops.
 - Supply the proof's map and explain the hard transition; choose detail and notation
   for this reader. Delete notation that does no repeated work.
+- Motivate a decisive construction by the difficulty it fixes. A tempting failed
+  approach can help, provided its failure is shown. Label a reconstructed route
+  as an explanation; do not invent the history of how the result was found.
 - Read from a cold start, resolve unexplained jumps, proofread, and compile the final
   document. Preserve an effective authorial voice instead of enforcing a formula.
 
 These are practical adaptations, not endorsements or a claim that a passing
 check establishes good mathematical writing. Credit supplied examples, directions,
 proof ideas and corrections at their actual points of use.
+
+The motivation test also draws on Grant Sanderson's
+[essay on explanations](https://terrytao.wordpress.com/2026/09/18/if-math-is-more-than-proof-we-need-to-better-celebrate-the-rest-of-it/).
+An expository contribution can clarify a known theorem. Judge it for its named
+audience; distinguish actual reader feedback from an agent's assessment of
+the prose. Fluency alone does not establish understanding.
 
 ## Prose pass
 
@@ -244,9 +333,27 @@ this skill.
 python3 scripts/proof_cockpit.py --check
 python3 scripts/test_public_writing_contract.py
 python3 scripts/check_problem_note_sources.py --coverage
-python3 scripts/check_release.py
+python3 scripts/run_release_check.py
 ```
 
 Run `python3 scripts/lean_fast_build.py --jobs 2` after Lean changes. For paper
 changes, rebuild the owning manuscript and run its registered link and corpus
-checks; do not regenerate authored prose mechanically.
+checks; do not regenerate authored prose mechanically. For a native TeX edit,
+build the changed PDF and run `scripts/sync_publication_pdfs.py` before
+`docs/papers/refresh_paper_corpus.py --write`: the corpus records the PDF
+digest as well as the manuscript text. Then restamp the source/PDF pair through
+`python3 scripts/check_publication_contract.py --restamp --apply`, reanchor any
+moved source attributions, and refresh projections. Run
+`python3 docs/papers/refresh_paper_corpus.py --check`,
+`python3 scripts/check_publication_contract.py`, and the release check. This
+native corpus refresh preserves imported companion
+provenance; a Python projection refresh alone does not rebuild registered paper
+full text. A corpus refresh done before PDF synchronization must be repeated
+afterward.
+
+Before freezing evidence records or recipient packets, run the title and
+source-coordinate owners, then `python3 scripts/paper_evidence.py check` across
+the full corpus. Commit reviewed record revisions, bind generated sidecars to
+that exact commit, and rerender and synchronize affected PDFs before packaging.
+Carry the original support qualifications and evidence classes into the frozen
+record; a corrected title or coordinate does not strengthen a claim.

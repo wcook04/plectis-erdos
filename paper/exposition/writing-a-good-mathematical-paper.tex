@@ -1,0 +1,146 @@
+% SPDX-FileCopyrightText: 2026 Will Cook
+% SPDX-License-Identifier: CC-BY-4.0
+\documentclass[10pt]{article}
+\usepackage{paper-house-style}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=linkinternal,urlcolor=linkexternal,citecolor=linkinternal]{hyperref}
+\hypersetup{pdftitle={Writing a Good Mathematical Paper},pdfauthor={Will Cook},pdflang={en-GB},bookmarksnumbered=true}
+\runninghead{Writing a good mathematical paper}
+\title{Writing a Good Mathematical Paper}
+\subtitle{A compact guide for authors and AI assistants}
+\author{Will Cook}
+\date{7 October 2026}
+\emergencystretch=1.5em
+\newcommand{\instruction}[2]{\par\medskip\noindent\textbf{#1.} #2\par}
+\begin{document}
+\maketitle
+\paperprovenance
+\papersectiontarget{compact-writing-guide}
+Test the draft for its intended reader: state the contribution, reconstruct
+the decisive inference and apply the result. Begin where one of these tasks
+fails; use the relevant instruction, not every instruction.
+
+\instruction{1. Decide what the paper contributes}{
+Choose a coherent principal result; say what it enables or clarifies.
+Compared with the nearest prior work, what changes in the assumptions or
+conclusion? State what remains open. For a conditional result, give familiar
+cases its hypothesis admits or excludes, where known, and show where the proof
+uses it. Distinguish contribution from proof mechanism; the abstract needs
+both. Neither theorem count nor generality establishes importance.}
+
+\instruction{2. Read the kind of mathematics you are writing}{
+Read nearby papers for terminology, hypotheses and attribution; read complete
+local arguments for explanation. Match the task: a parameter choice, limit or
+estimate. Check the version and passage. Identify what justifies the source's
+next step and the corresponding fact in your proof; explain it in your own words.}
+
+\instruction{3. Check the statement before polishing its prose}{
+Check domains, quantifiers, signs, endpoints, constants and both directions
+of claimed equivalences. State what is fixed and what later choices may depend
+on. Keep assumptions with the claim; compare titles, abstracts and conclusions
+with it. When properties are needed together, prove they hold at the same
+witness: the even and odd integers are both unbounded but disjoint.
+Refer a discovered proof gap for mathematical review.}
+
+\instruction{4. Organise by logical dependence}{
+Give the question, result and proof idea before technical detail accumulates.
+For each major step, say what it uses, what it proves and where that conclusion
+is needed. Introduce prerequisites when their purpose is visible; use examples
+to explain unfamiliar operations. Let headings name objects, results or
+operations; make assumptions and proofs findable from the theorem. Logical
+order need not reproduce discovery order.}
+
+\instruction{5. Explain the hard transition}{
+Work backwards from the next conclusion: what must be controlled, and how
+accurately? State the requirement before estimating or choosing a parameter.
+To certify $x\in(1/2,1)$, place an enclosure wholly inside that interval;
+$[1/2,1]$ does not suffice. For a small-integer contradiction, justify
+integrality, nonvanishing and $|N|<1$ separately. Explain which fact supplies
+each requirement; a repeated technique may have a different job.}
+
+\instruction{6. Separate construction from completion}{
+Justify each choice and preserved condition, then prove attainment.
+For example, $r_n=x-S_n$, $0\le r_n\le\varepsilon_n$ and
+$\varepsilon_n\to0$ give $S_n\to x$; repeated choice alone does not.
+A classification needs construction and exhaustiveness; an enclosure alone
+need not establish attainment. State what stays fixed; justify convergence of
+the whole summand, including growing products. To interchange limit and sum,
+check the theorem's hypotheses; dominated convergence needs a summable majorant
+independent of the limiting parameter.}
+
+% Keep the final reading paragraph with the fourteen instructions.
+\newpage\enlargethispage{3\baselineskip}
+\instruction{7. Make examples and figures do work}{
+Choose a small instance that exposes a definition, invariant, obstruction or
+necessary hypothesis; a simpler case may hide it. Show what changes and what
+is preserved. When reindexing a sum, check multiplicities, not just values.
+Include relevant endpoints and say what remains unproved. A finite check
+supports an infinite claim only through a proved reduction. Check that a
+witness belongs to the claimed object. Label a diagram's objects, maps and
+conventions; keep its explanation nearby.}
+
+\instruction{8. Use the field's words and purposeful notation}{
+Keep established terms when their definitions fit, such as ``Stieltjes moment
+sequence''. Replace private labels by the actual condition; $u_n/2^n\to0$
+is weaker than subexponential growth. Define symbols by their role before use
+and keep that role stable. Remove abbreviations whose translation costs more
+than their reuse saves. Translate borrowed indices and normalisations.
+Distinguish a sum, its partial sums and its remainders, and a value from its enclosure.}
+
+\instruction{9. Make sentences express the argument}{
+Replace ``We proceed with the estimate'' by its reason: ``The terms are
+nonnegative, so dropping the ordering restriction gives an upper bound.'' Let ``since'' supply a reason
+and ``hence'' mark a deduction. Give each ``this'' an unmistakable referent.
+After ``similarly'', check that the same hypotheses apply. Punctuate displays
+as parts of sentences. Keep parallel claims parallel and conditions beside
+their consequences. Remove filler, not mathematical qualifications.}
+
+\instruction{10. Credit the exact input at its use}{
+Distinguish applied theorems, adapted constructions, historical attribution,
+terminology and expository models. Check hypotheses, version
+and passage; identify the input used here. State what an adaptation retains and
+changes. Credit supplied ideas and corrections locally. A writing analogy
+supplies no proof. Report only reading and checks performed.}
+
+\instruction{11. State what has actually been established}{
+Separate scope from evidence: conditional implications may have ordinary or
+formal proofs. Match formal support to the exact statement, definitions and
+hypotheses. Check coverage of the steps joining lemmas. Missing formalisation
+does not invalidate an ordinary proof. Keep unproved inputs beside dependent
+results. Label computations and conjectures; give computations' finite scope
+locally and reproduction details once. For one-sided tests, failure may be inconclusive.
+Detecting each fixed input need not give a uniform stopping bound or the
+required witnesses.}
+
+\instruction{12. Preserve useful detail and informative failures}{
+Keep omitted detail recoverable by section or theorem references; check their
+destinations and reconcile statements, assumptions and evidence in both directions.
+For a failed route, retain the attempted implication, assumptions, witness and
+missing ingredient. Name the assertion a counterexample refutes; a failed method
+need not refute the theorem. Put build commands and source identifiers in the
+verification record. Do not invent discovery history.}
+
+\instruction{13. Review changes as claims, then as prose}{
+Compare meanings before fluency, including words beside unchanged formulas.
+Check earlier criticisms against the current source. Correct overclaims and
+stale underclaims without losing hypotheses or credit. Accept, repair, reject
+or defer each proposal for a stated reason; preserve useful rejected revisions.
+Test a local improvement's limits before promoting it to general advice.}
+
+\instruction{14. Read the delivered paper from a cold start}{
+Render the final sources; inspect formulas, captions, page breaks, bibliography
+and reference destinations. Read without supplying steps from memory. Can the
+reader reconstruct the hard inference, apply the result and identify an
+excluded case, where known? Where reconstruction stops, record what is
+established and what the next step needs. A successful build is not a comprehension test.
+Revise that transition; preserve what works.}
+
+\par\medskip\noindent\small
+\textit{Further reading.}
+Halmos, \href{https://doi.org/10.5169/seals-43857}{\emph{How to write mathematics}}, \S\S3--5 (1970);
+Knuth et al., \href{https://cs.stanford.edu/~knuth/klr.html}{\emph{Mathematical Writing}}, \S\S1--3 (1988);
+Gowers, \href{https://gowers.wordpress.com/2007/10/19/my-favourite-pedagogical-principle-examples-first/}{\emph{Examples first!}} (2007);
+Tao, \href{https://terrytao.wordpress.com/advice-on-writing-papers/}{\emph{On writing}}.
+The \href{https://github.com/wcook04/plectis-erdos/blob/main/paper/exposition/writing-mathematics-from-reviewed-revisions.pdf}{\emph{long companion}}
+gives worked cases (\S\S2--4), revision practice (\S5) and genre transfer (\S6).
+\end{document}

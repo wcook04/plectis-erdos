@@ -1,0 +1,71 @@
+{
+  "schema_version": "erdos249257-proof-state-request/1",
+  "goal_id": "dyadic_shift_third_escape_after_parameterising_radix_bound",
+  "imports": [
+    "ErdosProblems.Erdos251.PrimeGapDyadicTail",
+    "ErdosProblems.Erdos269.BoundedRadixTailEscape"
+  ],
+  "opens": [
+    "ErdosProblems.Erdos251",
+    "ErdosProblems.Erdos269"
+  ],
+  "context": [
+    {
+      "name": "g",
+      "binder": "(g : ℕ → ℤ)",
+      "role": "term"
+    },
+    {
+      "name": "T",
+      "binder": "(T : ℕ → ℝ)",
+      "role": "term"
+    },
+    {
+      "name": "hrec",
+      "binder": "(hrec : RealDyadicTailRecurrence g T)",
+      "role": "assumption"
+    },
+    {
+      "name": "hirr",
+      "binder": "(hirr : Irrational (T 0))",
+      "role": "assumption"
+    },
+    {
+      "name": "h",
+      "binder": "(h : ℕ)",
+      "role": "term"
+    },
+    {
+      "name": "hh",
+      "binder": "(hh : 0 < h)",
+      "role": "assumption"
+    }
+  ],
+  "target": "∀ N₀ : ℕ, ∃ N : ℕ, N₀ ≤ N ∧ ∀ z : ℤ, (1 : ℝ) / 3 ≤ |realTailShift T h N - (z : ℝ)|",
+  "candidates": [
+    {
+      "candidate_id": "inherited_radix30_constant_does_not_reach_third",
+      "declaration": "Or.resolve_left",
+      "arguments": [
+        "(ErdosProblems.Erdos269.boundedRadix_zero_or_cofinal_far (fun _ => 2) (fun N => g (N + h + 1) - g (N + 1)) (fun N => realTailShift T h N) (fun _ => by norm_num) (fun _ => by norm_num) (by intro N; change T (N + 1 + h) - T (N + 1) = 2 * (T (N + h) - T N) - ((g (N + h + 1) - g (N + 1) : ℤ) : ℝ); rw [show N + 1 + h = N + h + 1 by omega, hrec (N + h), hrec N]; push_cast; ring))"
+      ],
+      "discharge_tactics": [
+        "rintro ⟨N, z, hz⟩",
+        "exact ((irrational_initial_iff_all_positive_tailShifts_nonintegral hrec).1 hirr h hh N) ⟨z, hz⟩"
+      ],
+      "proposal_receipt": "Negative control: the original transfer through the radix-30 theorem yields separation 1/31, which does not state the 1/3 target. No expected verdict is supplied to Lean."
+    },
+    {
+      "candidate_id": "shift_orbit_through_parameterised_radix_two_escape",
+      "declaration": "Or.resolve_left",
+      "arguments": [
+        "(by have hesc := ErdosProblems.Erdos269.boundedRadix_zero_or_cofinal_far_of_le 2 (fun _ => 2) (fun N => g (N + h + 1) - g (N + 1)) (fun N => realTailShift T h N) (fun _ => le_refl 2) (fun _ => le_refl 2) (by intro N; change T (N + 1 + h) - T (N + 1) = 2 * (T (N + h) - T N) - ((g (N + h + 1) - g (N + 1) : ℤ) : ℝ); rw [show N + 1 + h = N + h + 1 by omega, hrec (N + h), hrec N]; push_cast; ring); rw [show (1 : ℝ) / (((2 : ℕ) : ℝ) + 1) = 1 / 3 by norm_num] at hesc; exact hesc)"
+      ],
+      "discharge_tactics": [
+        "rintro ⟨N, z, hz⟩",
+        "exact ((irrational_initial_iff_all_positive_tailShifts_nonintegral hrec).1 hirr h hh N) ⟨z, hz⟩"
+      ],
+      "proposal_receipt": "Take the radix bound of BoundedRadixTailEscape.lean as the parameter B = 2 and compose with PrimeGapDyadicTail.lean's nonintegrality classifier as in the original transfer. The endpoint module DyadicShiftEscape is not imported."
+    }
+  ]
+}

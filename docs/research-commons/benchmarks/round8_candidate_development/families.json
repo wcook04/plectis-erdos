@@ -1,0 +1,46 @@
+{
+  "schema": "plectis-candidate-families/1",
+  "families": [
+    {
+      "semantic_family_id": "factorial_carry_cofinality",
+      "problem": 68,
+      "description": "Finite arithmetic certificates versus a cofinal factorial-carry criterion",
+      "item_ids": [
+        "R8P5-01",
+        "R8P5-02",
+        "R8P5-03"
+      ]
+    },
+    {
+      "semantic_family_id": "integer_negative_mass_stabilisation",
+      "problem": 243,
+      "description": "Integer state stabilisation, exact-orbit scope and missing mass input",
+      "item_ids": [
+        "R8P5-04",
+        "R8P5-05",
+        "R8P5-06"
+      ]
+    },
+    {
+      "semantic_family_id": "weighted_support_scope",
+      "problem": 257,
+      "description": "A sufficient weighted ideal versus separately proved full-support irrationality",
+      "item_ids": [
+        "R8P5-07",
+        "R8P5-08",
+        "R8P5-09"
+      ]
+    },
+    {
+      "semantic_family_id": "actual_window_escape",
+      "problem": 269,
+      "description": "Actual repeated-value equivalence, cap admissibility and unbounded window lengths",
+      "item_ids": [
+        "R8P5-10",
+        "R8P5-11",
+        "R8P5-12"
+      ]
+    }
+  ],
+  "boundary": "Four authored dependence clusters, not twelve independent families; proof-term independence has not been certified."
+}

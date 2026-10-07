@@ -106,7 +106,7 @@ def check_pinned_repolinks(sources: dict[str, str], *, git_root: Path = ROOT) ->
 
 def main() -> int:
     style = source("paper-house-style.sty")
-    require("#1\\#nameddest=#2" in style, "paper link macro is not destination-based")
+    require("#1\\##2" in style, "paper link macro must emit the raw PDF destination name")
 
     target_owner: dict[tuple[str, str], str] = {}
     for pdf, (tex, expected) in CORE.items():

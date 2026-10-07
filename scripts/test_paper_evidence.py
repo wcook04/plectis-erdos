@@ -15,8 +15,11 @@ or was written against another statement.  A check that cannot fail proves nothi
 
 from __future__ import annotations
 
+import contextlib
+import io
 import hashlib
 import json
+import os
 import subprocess
 import tempfile
 from pathlib import Path
@@ -106,7 +109,7 @@ class Fixture:
             git(repo, "init", "-q")
         write(self.root, LEAN_FILE, LEAN_TEXT)
         write(self.root, "lean-toolchain", "leanprover/lean4:v4.29.1\n")
-        write(self.root, "lake-manifest.json", json.dumps({"packages": [{"name": "mathlib", "rev": "c" * 40}]}))
+        write(self.root, "lake-manifest.json", json.dumps({"packages": [{"name": "mathlib", "type": "git", "rev": "c" * 40}]}))
         self.pin = commit_all(self.root, "lean")
         write(self.corpus, "PalomarCorpus/E1/Challenge.lean", CHALLENGE)
         write(self.corpus, "PalomarCorpus/E1/comparator.json", "{}\n")
@@ -154,6 +157,7 @@ class Fixture:
         }
 
     def materialise(self) -> None:
+        self.ledger["lean_pin"] = self.pin
         write(self.root, SOURCE, self.tex)
         import check_lean_paper_propagation as chk  # noqa: PLC0415
         digests = {e["labels"][0]: e["statement_sha256"] for e in chk.inventory([(SOURCE, self.tex)], []) if e["labels"]}
@@ -300,6 +304,106 @@ def test_outputs_are_deterministic_and_checkable(f: Fixture) -> None:
     require("Comparator: passed" in record and "receipt-E1.json" in record, "the record omits the check")
 
 
+@with_fixture
+def test_partial_aux_keeps_other_papers_numbered(f: Fixture) -> None:
+    f.materialise()
+    prior = {"papers": [{"results": [
+        {"id": f"{PAPER_ID}#res:first", "number": "3.4", "page": "8",
+         "statement_sha256": f.ledger["rows"][0]["statement_sha256"],
+         "statement_markdown": "Prior reference to Equation (2)", "lean": {}},
+        {"id": f"{PAPER_ID}#res:second", "number": "3.5", "page": "9",
+         "statement_sha256": f.ledger["rows"][1]["statement_sha256"],
+         "statement_markdown": "Prior reference to Problem 1.3", "lean": {}},
+    ]}]}
+    missing_aux = f.root / "missing-aux"
+    problems = pe.Problems()
+    evidence = pe.resolve(f.root, pe.Repo(f.corpus), missing_aux, prior, problems,
+                          require_relations=False, aux_papers=set())
+    require(not problems.items, f"an unselected paper required aux: {problems.items}")
+    results = evidence["papers"][0]["results"]
+    require([(r["number"], r["page"]) for r in results] == [("3.4", "8"), ("3.5", "9")],
+            "partial aux lost the prior printed coordinates")
+    require([r["statement_markdown"] for r in results] ==
+            ["Prior reference to Equation (2)", "Prior reference to Problem 1.3"],
+            "partial aux rewrote untouched rendered references")
+    checked = pe.Problems()
+    unchanged = pe.resolve(f.root, pe.Repo(f.corpus), None, prior, checked,
+                           require_relations=False)
+    require(not checked.items and
+            [r["statement_markdown"] for r in unchanged["papers"][0]["results"]] ==
+            ["Prior reference to Equation (2)", "Prior reference to Problem 1.3"],
+            "a no-aux check rewrote previously validated references")
+    required = pe.Problems()
+    pe.resolve(f.root, pe.Repo(f.corpus), missing_aux, prior, required,
+               require_relations=False, aux_papers={PAPER_ID})
+    require(any("no " in p and ".aux" in p for p in required.items),
+            "a selected paper with missing aux was accepted")
+
+
+@with_fixture
+def test_no_aux_refreshes_changed_explanations(f: Fixture) -> None:
+    f.materialise()
+    row = f.ledger["rows"][0]
+    row["lean"]["scope"] = "Updated scope"
+    row["lean"]["reason"] = "Updated reason"
+    write(f.root, pe.LEDGER, json.dumps(f.ledger))
+    prior = {"papers": [{"results": [{
+        "id": row["id"], "label": row["label"], "number": "3.4", "page": "8",
+        "statement_sha256": row["statement_sha256"],
+        "statement_markdown": "Prior numbered statement",
+        "lean": {"scope": "Old scope", "scope_markdown": "Old scope rendered",
+                 "reason": "Old reason", "reason_markdown": "Old reason rendered"},
+    }]}]}
+    problems = pe.Problems()
+    evidence = pe.resolve(f.root, pe.Repo(f.corpus), None, prior, problems,
+                          require_relations=False)
+    require(not problems.items, f"a changed explanation failed: {problems.items}")
+    result = evidence["papers"][0]["results"][0]
+    require(result["statement_markdown"] == "Prior numbered statement",
+            "the unchanged statement lost its prior numbered rendering")
+    require(result["lean"]["scope_markdown"] == "Updated scope" and
+            result["lean"]["reason_markdown"] == "Updated reason",
+            "changed scope or reason retained stale markdown")
+
+
+@with_fixture
+def test_paper_record_pin_override(f: Fixture) -> None:
+    f.materialise()
+    problems = pe.Problems()
+    evidence = pe.resolve(f.root, pe.Repo(f.corpus), None, None, problems,
+                          require_relations=False)
+    require(not problems.items, f"the sound evidence failed: {problems.items}")
+    files = pe.outputs(f.root, evidence, "d" * 40, {PAPER_ID: "e" * 40})
+    sidecar = files[f"paper/evidence/{PAPER_ID}.tex"]
+    require(f"/blob/{'e' * 40}/evidence/{PAPER_ID}.md" in sidecar,
+            "the per-paper record pin did not reach the rendered links")
+    require(f"/blob/{'d' * 40}/evidence/{PAPER_ID}.md" not in sidecar,
+            "the default pin leaked into an overridden paper")
+
+
+@with_fixture
+def test_pending_boundary_reaches_inline_links_and_record(f: Fixture) -> None:
+    row = f.ledger["rows"][0]
+    row["comparator"] = {"status": "pending", "queued_at": "2026-09-30",
+                         "pending_reason": "The full equivalence has no recorded Challenge.",
+                         "next_action": "Compare both implications before marking the equivalence."}
+    row["palomar"] = {"status": "pending"}
+    f.materialise()
+    problems = pe.Problems()
+    evidence = pe.resolve(f.root, pe.Repo(f.corpus), None, None, problems,
+                          require_relations=False)
+    require(not problems.items, f"pending evidence failed: {problems.items}")
+    got = evidence["papers"][0]["results"][0]
+    require(got["comparator"] == row["comparator"], "pending detail was lost from the mapping")
+    files = pe.outputs(f.root, evidence, "d" * 40)
+    sidecar = files[f"paper/evidence/{PAPER_ID}.tex"]
+    require(f"\\DeclareResultEvidenceRecord{{{row['label']}}}" in sidecar and "{exact}{pending}" in sidecar,
+            "the inline pending link has no owner-generated status/record target")
+    record = files[f"evidence/{PAPER_ID}.md"]
+    require(row["comparator"]["pending_reason"] in record and row["comparator"]["next_action"] in record,
+            "the pending link would hide the precise comparison boundary")
+
+
 def test_statement_with_let_is_read_whole() -> None:
     text = ("theorem t (a : Nat) :\n    let C := a + 1\n    C = a + 1 ∧\n    letI := 0\n"
             "    True := by\n  exact ⟨rfl, trivial⟩\n")
@@ -319,8 +423,331 @@ def test_quoted_references_use_the_paper_numbers() -> None:
             f"quoted references were not renumbered from the paper: {got!r}")
 
 
+SUPPORT_PARENT = """namespace Syn
+
+def positive (n : Nat) : Prop := 0 < n
+
+structure Parent where
+  n : Nat
+  required : positive n
+end Syn
+"""
+SUPPORT_TEXT = """import Syn.Parent
+namespace Syn
+structure Support extends Parent where
+  even : n % 2 = 0
+end Syn
+"""
+
+
+def add_support(f: Fixture) -> dict:
+    """Support has its own identity, separate from the selected proposition."""
+    for root in (f.root, f.corpus):
+        write(root, "Syn/Parent.lean", SUPPORT_PARENT)
+        write(root, "Syn/Support.lean", SUPPORT_TEXT)
+        write(root, "lean-toolchain", "leanprover/lean4:v4.29.1\n")
+        write(root, "lake-manifest.json", json.dumps({"packages": [{"name": "mathlib", "type": "git", "rev": "c" * 40}]}))
+        write(root, "lakefile.toml", 'name = "synthetic"\n[[lean_lib]]\nname = "Syn"\n')
+    # The selected theorem is a conditional consumer, not an existence theorem.
+    lean = "import Syn.Support\n" + LEAN_TEXT.replace("first_result : True", "first_result (s : Support) : True")
+    challenge = "import Syn.Support\n" + CHALLENGE.replace("first_result : True", "first_result (s : Support) : True")
+    solution = "import Syn.Support\n" + SOLUTION.replace(
+        "first_result : True := _root_.Syn.first_result",
+        "first_result (s : Support) : True := _root_.Syn.first_result s")
+    write(f.root, LEAN_FILE, lean)
+    write(f.corpus, "Syn/Results.lean", lean)
+    write(f.corpus, "PalomarCorpus/E1/Challenge.lean", challenge)
+    f.receipt["entry_digests"]["Challenge.lean"] = sha(challenge)
+    write(f.corpus, "Solutions/PalomarCorpus/E1.lean", solution)
+    f.receipt["solution"]["files"]["Solutions/PalomarCorpus/E1.lean"] = sha(solution)
+    f.pin = commit_all(f.root, "support source")
+    f.corpus_commit = commit_all(f.corpus, "support environment")
+    f.receipt["github"]["sha"] = f.corpus_commit
+    f.associations["corpus_commit"] = f.corpus_commit
+    declaration = pe.lean_declaration(pe.LeanFile(SUPPORT_TEXT), "Syn/Support.lean", "Syn.Support", allow_suffix=False)
+    identity = pe.SourceSupport(pe.Repo(f.root), f.pin).identity(declaration)
+    binding = {"schema": pe.SUPPORT_SCHEMA, "role": "support_only", "identity": identity,
+               "consumer": "Syn.first_result", "entry": "E1", "challenge": "Syn.first_result"}
+    f.associations["support_declarations"] = {"Syn.Support": binding}
+    f.ledger["rows"][0]["lean"]["supporting_declarations"] = [
+        {"name": "Syn.Support", "file": "Syn/Support.lean", "consumer": "Syn.first_result"}]
+    return identity
+
+
+@with_fixture
+def test_complete_support_chain_and_unrelated_module(f: Fixture) -> None:
+    identity = add_support(f)
+    require(f.resolve() == [], f"same-source support failed: {f.resolve()}")
+    write(f.root, "Syn/Unrelated.lean", "theorem unrelated : True := trivial\n")
+    f.pin = commit_all(f.root, "unrelated new theorem")
+    require(f.resolve() == [], f"an unrelated theorem invalidated unchanged support: {f.resolve()}")
+    declaration = pe.lean_declaration(pe.LeanFile(SUPPORT_TEXT), "Syn/Support.lean", "Syn.Support", allow_suffix=False)
+    require(pe.SourceSupport(pe.Repo(f.root), f.pin).identity(declaration) == identity,
+            "support identity depends on unrelated source or repository commit")
+
+
+@with_fixture
+def test_structure_field_mutation_invalidates_support(f: Fixture) -> None:
+    add_support(f)
+    write(f.root, "Syn/Support.lean", SUPPORT_TEXT.replace("n % 2 = 0", "n % 2 = 1"))
+    f.pin = commit_all(f.root, "mutate field with unchanged header")
+    require(any("support identity" in p for p in f.resolve()), "a changed field inherited old support acceptance")
+
+
+@with_fixture
+def test_inherited_requirement_mutation_invalidates_support(f: Fixture) -> None:
+    add_support(f)
+    write(f.root, "Syn/Parent.lean", SUPPORT_PARENT.replace("required : positive n", "required : ¬ positive n"))
+    f.pin = commit_all(f.root, "mutate inherited requirement")
+    require(any("support identity" in p for p in f.resolve()), "an inherited field inherited old support acceptance")
+
+
+@with_fixture
+def test_referenced_definition_mutation_invalidates_support(f: Fixture) -> None:
+    add_support(f)
+    write(f.root, "Syn/Parent.lean", SUPPORT_PARENT.replace("0 < n", "0 ≤ n"))
+    f.pin = commit_all(f.root, "mutate referenced definition")
+    require(any("support identity" in p for p in f.resolve()), "a referenced definition inherited old support acceptance")
+
+
+@with_fixture
+def test_support_does_not_witness_existence(f: Fixture) -> None:
+    add_support(f)
+    f.associations["support_declarations"]["Syn.Support"]["role"] = "existence_witness"
+    require(any("cannot witness existence" in p for p in f.resolve()), "support metadata became an existence proof")
+    f.associations["support_declarations"]["Syn.Support"]["role"] = "support_only"
+    f.ledger["rows"][0]["lean"]["declarations"].append({"name": "Syn.Support", "file": "Syn/Support.lean"})
+    f.associations["declarations"]["Syn.Support"] = dict(f.associations["declarations"]["Syn.first_result"])
+    require(any("conditional consumer cannot witness" in p for p in f.resolve()),
+            "a selected consumer discharged a required structure/existence declaration")
+
+
+@with_fixture
+def test_support_rejects_unrelated_successful_receipt(f: Fixture) -> None:
+    add_support(f)
+    f.associations["support_declarations"]["Syn.Support"]["challenge"] = "Syn.second_result"
+    require(any("exact selected consumer" in p for p in f.resolve()),
+            "an unrelated successful proposition in the same passing receipt was accepted")
+
+
+@with_fixture
+def test_support_requires_solution_dependency(f: Fixture) -> None:
+    add_support(f)
+    write(f.corpus, "Solutions/PalomarCorpus/E1.lean", "namespace Syn\ntheorem first_result : True := trivial\nend Syn\n")
+    f.receipt["solution"]["files"]["Solutions/PalomarCorpus/E1.lean"] = sha(
+        "namespace Syn\ntheorem first_result : True := trivial\nend Syn\n")
+    f.ledger["rows"][1]["comparator"]["status"] = "pending"
+    f.corpus_commit = commit_all(f.corpus, "remove checked support import")
+    f.receipt["github"]["sha"] = f.corpus_commit
+    f.associations["corpus_commit"] = f.corpus_commit
+    require(any("outside the checked Solution import closure" in p for p in f.resolve()),
+            "an unrelated imported environment became checked support")
+
+
+@with_fixture
+def test_support_rejects_dependency_version_transport(f: Fixture) -> None:
+    add_support(f)
+    write(f.corpus, "lean-toolchain", "leanprover/lean4:v4.30.0\n")
+    f.corpus_commit = commit_all(f.corpus, "different compiler")
+    f.receipt["github"]["sha"] = f.corpus_commit
+    f.associations["corpus_commit"] = f.corpus_commit
+    require(any("checked transport required" in p for p in f.resolve()),
+            "unchanged source silently proved cross-toolchain equivalence")
+
+
+@with_fixture
+def test_legacy_support_hash_cannot_authorise_relation(f: Fixture) -> None:
+    add_support(f)
+    row = f.ledger["rows"][0]
+    row["comparator"]["status"] = "pending"
+    row["lean"].pop("supporting_declarations")
+    row["lean"]["status"] = "exact_or_stronger"
+    row["lean"]["declarations"] = [{"name": "Syn.Support", "file": "Syn/Support.lean"}]
+    note = f.relation_for("res:first")
+    note["lean_statements"]["Syn.Support"] = sha("structure Support extends Parent")
+    f.relations["rows"][row["id"]] = note
+    require(any("different statement" in p for p in f.resolve(require_relations=True)),
+            "a legacy header-only stamp silently became complete support authority")
+
+
+@with_fixture
+def test_complete_support_note_expires_on_imported_definition_change(f: Fixture) -> None:
+    add_support(f)
+    row = f.ledger["rows"][0]
+    row["comparator"]["status"] = "pending"
+    row["lean"].pop("supporting_declarations")
+    row["lean"]["status"] = "exact_or_stronger"
+    row["lean"]["declarations"] = [{"name": "Syn.Support", "file": "Syn/Support.lean"}]
+    f.relations["rows"][row["id"]] = f.relation_for("res:first")
+    f.relations["rows"][f.ledger["rows"][1]["id"]] = f.relation_for("res:second")
+    require(not f.resolve(require_relations=True), "a fresh complete support relation note failed")
+    write(f.root, "Syn/Parent.lean", SUPPORT_PARENT.replace("0 < n", "0 ≤ n"))
+    f.pin = commit_all(f.root, "change inherited definition after reviewed note")
+    require(any("different statement" in p for p in f.resolve(require_relations=True)),
+            "relation review survived changed transitive support meaning")
+
+
+@with_fixture
+def test_malformed_support_environment_fails_closed(f: Fixture) -> None:
+    add_support(f)
+    write(f.root, "lake-manifest.json", "[]")
+    f.pin = commit_all(f.root, "malformed manifest")
+    require(any("package list" in p for p in f.resolve()), "malformed manifest was accepted or crashed")
+
+
+@with_fixture
+def test_path_dependency_cannot_masquerade_as_immutable(f: Fixture) -> None:
+    add_support(f)
+    write(f.root, "lake-manifest.json", json.dumps({"packages": [
+        {"name": "mathlib", "type": "path", "dir": "../mutable", "rev": "c" * 40}]}))
+    f.pin = commit_all(f.root, "mutable package with decorative rev")
+    require(any("path packages are unsupported" in p for p in f.resolve()),
+            "a path dependency became immutable by adding a rev field")
+
+
+@with_fixture
+def test_undeclared_external_import_is_refused(f: Fixture) -> None:
+    add_support(f)
+    write(f.root, "Syn/Support.lean", "import LocalUnpinned.Definitions\n" + SUPPORT_TEXT)
+    f.pin = commit_all(f.root, "unbound external namespace")
+    require(any("unbound external support dependency" in p for p in f.resolve()),
+            "an external import without a pinned package was omitted from identity")
+
+
+def checkable_support_fixture(f: Fixture) -> None:
+    add_support(f)
+    f.relations["rows"][f.ledger["rows"][1]["id"]] = f.relation_for("res:second")
+    f.materialise()
+    require(pe.main(["build", "--root", str(f.root), "--corpus-repo", str(f.corpus)]) == 0,
+            "supported fixture did not build")
+    record_pin = commit_all(f.root, "evidence records")
+    config = pe.load_json(f.root / pe.CONFIG)
+    config["record_commit"] = record_pin
+    write(f.root, pe.CONFIG, json.dumps(config))
+    evidence = pe.load_json(f.root / pe.EVIDENCE_MAP)
+    pe.write_atomically(f.root, pe.outputs(f.root, evidence, record_pin))
+    require(pe.main(["check", "--root", str(f.root)]) == 0, "unchanged supported offline check failed")
+
+
+@with_fixture
+def test_offline_support_cannot_escape_ledger(f: Fixture) -> None:
+    checkable_support_fixture(f)
+    ledger = pe.load_json(f.root / pe.LEDGER)
+    ledger["rows"][0]["lean"].pop("supporting_declarations")
+    write(f.root, pe.LEDGER, json.dumps(ledger))
+    errors = io.StringIO()
+    with contextlib.redirect_stderr(errors):
+        status = pe.main(["check", "--root", str(f.root)])
+    require(status == 1 and "different supporting declarations" in errors.getvalue(),
+            "offline support survived removal from its owning ledger")
+
+
+@with_fixture
+def test_offline_support_rejects_changed_association(f: Fixture) -> None:
+    checkable_support_fixture(f)
+    associations = pe.load_json(f.root / pe.ASSOCIATIONS)
+    associations["support_declarations"]["Syn.Support"]["challenge"] = "Syn.second_result"
+    write(f.root, pe.ASSOCIATIONS, json.dumps(associations))
+    errors = io.StringIO()
+    with contextlib.redirect_stderr(errors):
+        status = pe.main(["check", "--root", str(f.root)])
+    require(status == 1 and "exact accepted proposition consumer" in errors.getvalue(),
+            "offline support survived an unrelated successful proposition association")
+
+
+def test_support_identity_is_not_presentation_limited() -> None:
+    text = "structure S where\n  n : Nat\n\n  tail : " + "True ∧ " * 45 + "True\n"
+    before = pe.lean_declaration(pe.LeanFile(text), "S.lean", "S", allow_suffix=False)
+    after = pe.lean_declaration(pe.LeanFile(text.replace("tail :", "changed :")), "S.lean", "S", allow_suffix=False)
+    require(before.normalised != after.normalised,
+            "a field beyond a blank line or display limit was absent from identity")
+
+
+def test_concordance_names_follow_printed_statements() -> None:
+    numbered = {"printed_kind": "Theorem", "number": "3.2", "page": "17",
+                "statement_markdown": "The claim."}
+    remark = {"printed_kind": "Remark", "number": None, "page": "17",
+              "statement_markdown": "*Remark 3.2* A useful qualification."}
+    passage = {"printed_kind": "Passage", "number": None, "page": "17",
+               "statement_markdown": None}
+    require(pe.concordance_name(numbered) == "Theorem 3.2",
+            "a numbered theorem inherited the generic Result heading")
+    require(pe.concordance_name(remark) == "Remark 3.2, p. 17",
+            "an unnumbered remark lost its visible type, local number or page")
+    require(pe.concordance_name(passage) == "Passage, p. 17",
+            "an unnumbered passage invented a result number or failed on missing markdown")
+    require(pe.concordance_name(dict(remark, page=None)) == "Remark 3.2" and
+            pe.concordance_name(dict(passage, page=None)) == "Passage",
+            "a missing page produced a fabricated page label")
+
+
+def test_sidecar_declares_typed_names_even_without_formal_marks() -> None:
+    rows = [
+        {"label": "res:theorem", "printed_kind": "Theorem", "number": "3.2", "page": "17",
+         "statement_markdown": "The claim."},
+        {"label": "res:remark", "printed_kind": "Remark", "number": None, "page": "17",
+         "statement_markdown": "*Remark 3.2* A qualification."},
+        {"label": "res:passage", "printed_kind": "Passage", "number": None, "page": "17",
+         "statement_markdown": None},
+    ]
+    for row in rows:
+        row.update(anchor=row["label"].replace(":", "-"),
+                   lean={"status": "none", "mark": None},
+                   comparator={"status": "not_applicable"})
+    sidecar = pe.render_sidecar({}, {"paper_id": PAPER_ID, "results": rows}, "d" * 40)
+    for label, name in (("res:theorem", "Theorem 3.2"),
+                        ("res:remark", "Remark 3.2, p. 17"),
+                        ("res:passage", "Passage, p. 17")):
+        require(f"\\DeclareResultEvidenceName{{{label}}}{{{name}}}" in sidecar,
+                f"{label} has no exact visible concordance name in the generated sidecar")
+
+
+
+def test_unchanged_generation_preserves_render_input_timestamp():
+    with tempfile.TemporaryDirectory() as folder:
+        root = Path(folder)
+        pe.write_atomically(root, {"paper/evidence/note.tex": "same evidence\n"})
+        source = root / "paper/evidence/note.tex"
+        os.utime(source, ns=(1_000_000_000, 1_000_000_000))
+        before = source.stat()
+        pe.write_atomically(root, {"paper/evidence/note.tex": "same evidence\n"})
+        after = source.stat()
+        assert after.st_mtime_ns == before.st_mtime_ns
+        assert after.st_ino == before.st_ino
+
+
+def test_changed_generation_replaces_the_render_input():
+    with tempfile.TemporaryDirectory() as folder:
+        root = Path(folder)
+        pe.write_atomically(root, {"paper/evidence/note.tex": "old evidence\n"})
+        source = root / "paper/evidence/note.tex"
+        os.utime(source, ns=(1_000_000_000, 1_000_000_000))
+        pe.write_atomically(root, {"paper/evidence/note.tex": "new evidence\n"})
+        assert source.read_text() == "new evidence\n"
+        assert source.stat().st_mtime_ns > 1_000_000_000
+
 def main() -> int:
     tests = [
+        test_concordance_names_follow_printed_statements,
+        test_sidecar_declares_typed_names_even_without_formal_marks,
+        test_unchanged_generation_preserves_render_input_timestamp,
+        test_changed_generation_replaces_the_render_input,
+        test_complete_support_chain_and_unrelated_module,
+        test_structure_field_mutation_invalidates_support,
+        test_inherited_requirement_mutation_invalidates_support,
+        test_referenced_definition_mutation_invalidates_support,
+        test_support_does_not_witness_existence,
+        test_support_rejects_unrelated_successful_receipt,
+        test_support_requires_solution_dependency,
+        test_support_rejects_dependency_version_transport,
+        test_legacy_support_hash_cannot_authorise_relation,
+        test_complete_support_note_expires_on_imported_definition_change,
+        test_malformed_support_environment_fails_closed,
+        test_path_dependency_cannot_masquerade_as_immutable,
+        test_undeclared_external_import_is_refused,
+        test_offline_support_cannot_escape_ledger,
+        test_offline_support_rejects_changed_association,
+        test_support_identity_is_not_presentation_limited,
         test_sound_fixture_resolves,
         test_unlabelled_result_is_refused,
         test_declaration_missing_at_the_pin_is_refused,
@@ -332,6 +759,10 @@ def main() -> int:
         test_relation_notes_are_required_and_bound,
         test_failed_build_writes_nothing,
         test_outputs_are_deterministic_and_checkable,
+        test_partial_aux_keeps_other_papers_numbered,
+        test_no_aux_refreshes_changed_explanations,
+        test_paper_record_pin_override,
+        test_pending_boundary_reaches_inline_links_and_record,
         test_statement_with_let_is_read_whole,
         test_quoted_references_use_the_paper_numbers,
     ]

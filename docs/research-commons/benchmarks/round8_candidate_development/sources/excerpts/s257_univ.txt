@@ -1,0 +1,112 @@
+theorem erdosSupportSeries_univ_eq_erdosSum_full_support (b : ℕ) (hb : 2 ≤ b) :
+    erdosSupportSeries b Set.univ
+      = ∑' k : ℕ, (1 : ℝ) / ((b : ℝ) ^ (k + 1) - 1) := by
+  unfold erdosSupportSeries
+  have hsum := summable_erdosSupport_indicator b Set.univ hb
+  rw [hsum.tsum_eq_zero_add]
+  simp
+
+/-- **The arbitrary-support Lambert transform of Erdős #257.**  For every
+base `b ≥ 2` and every support `A ⊆ ℕ`:
+`∑_{a ∈ A} 1/(b^a - 1) = ∑_{n ≥ 1} f_A(n)/b^n`, where
+`f_A = supportCoeff A` counts divisors lying in `A`.  This moves the
+arbitrary-support problem into the coefficient language where the
+weighted certificate engine operates.  Full support (`A = ℕ`, `f_A = τ`)
+recovers `erdosSum_full_support_eq_tsum_divisor_count`. -/
+theorem erdosSupportSeries_eq_tsum_supportCoeff (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b) :
+    erdosSupportSeries b A
+      = ∑' m : ℕ, ((supportCoeff A (m + 1) : ℝ)) / (b : ℝ) ^ (m + 1) := by
+  have hb2 : (2 : ℝ) ≤ (b : ℝ) := by exact_mod_cast hb
+  have hb_pos : (0 : ℝ) < (b : ℝ) := by linarith
+  have hb1 : (1 : ℝ) < (b : ℝ) := by linarith
+  have hr0 : (0 : ℝ) ≤ 1 / (b : ℝ) := by positivity
+  have hr1 : 1 / (b : ℝ) < 1 := by
+    rw [div_lt_one hb_pos]
+    linarith
+  set w : ℕ → ℝ := Set.indicator A (fun _ => (1 : ℝ)) with hwdef
+  have hw0 : ∀ e : ℕ, 0 ≤ w e := fun e =>
+    Set.indicator_nonneg (fun _ _ => by norm_num) e
+  have hw1 : ∀ e : ℕ, w e ≤ 1 := by
+    intro e
+    by_cases h : e ∈ A
+    · rw [hwdef, Set.indicator_of_mem h]
+    · rw [hwdef, Set.indicator_of_notMem h]
+      norm_num
+  -- the kernel's per-index Lambert term identity, junk-safe at 0
+  have hterm_eq : ∀ a : ℕ, 0 < a →
+      ((1 : ℝ) / b) ^ a / (1 - ((1 : ℝ) / b) ^ a) = 1 / ((b : ℝ) ^ a - 1) := by
+    intro a ha
+    have hbn : (1 : ℝ) < (b : ℝ) ^ a := one_lt_pow₀ hb1 (by omega)
+    have hbn0 : (b : ℝ) ^ a ≠ 0 := by positivity
+    have hbn1 : (b : ℝ) ^ a - 1 ≠ 0 := ne_of_gt (by linarith)
+    have h1X : (1 : ℝ) - 1 / (b : ℝ) ^ a ≠ 0 := by
+      have hEq : (1 : ℝ) - 1 / (b : ℝ) ^ a = ((b : ℝ) ^ a - 1) / (b : ℝ) ^ a := by
+        field_simp
+      rw [hEq]
+      exact div_ne_zero hbn1 hbn0
+    rw [div_pow, one_pow]
+    field_simp
+  -- pointwise: the indicator series terms ARE the weighted Lambert terms
+  have hpoint : ∀ a : ℕ,
+      Set.indicator A (fun a => (1 : ℝ) / ((b : ℝ) ^ a - 1)) a
+        = w a * (((1 : ℝ) / b) ^ a / (1 - ((1 : ℝ) / b) ^ a)) := by
+    intro a
+    by_cases hA : a ∈ A
+    · rw [Set.indicator_of_mem hA, hwdef, Set.indicator_of_mem hA, one_mul]
+      rcases Nat.eq_zero_or_pos a with h0 | hpos
+      · subst h0
+        norm_num
+      · rw [hterm_eq a hpos]
+    · rw [Set.indicator_of_notMem hA, hwdef, Set.indicator_of_notMem hA, zero_mul]
+  have hsum : Summable (fun a : ℕ =>
+      w a * (((1 : ℝ) / b) ^ a / (1 - ((1 : ℝ) / b) ^ a))) :=
+    (summable_erdosSupport_indicator b A hb).congr hpoint
+  calc erdosSupportSeries b A
+      = ∑' a : ℕ, w a * (((1 : ℝ) / b) ^ a / (1 - ((1 : ℝ) / b) ^ a)) := by
+        unfold erdosSupportSeries
+        exact tsum_congr hpoint
+    _ = w 0 * (((1 : ℝ) / b) ^ 0 / (1 - ((1 : ℝ) / b) ^ 0))
+          + ∑' m : ℕ, w (m + 1)
+            * (((1 : ℝ) / b) ^ (m + 1) / (1 - ((1 : ℝ) / b) ^ (m + 1))) :=
+        hsum.tsum_eq_zero_add
+    _ = ∑' m : ℕ, w (m + 1)
+          * (((1 : ℝ) / b) ^ (m + 1) / (1 - ((1 : ℝ) / b) ^ (m + 1))) := by
+        simp
+    _ = ∑' d : ℕ+, w (d : ℕ)
+          * (((1 : ℝ) / b) ^ (d : ℕ) / (1 - ((1 : ℝ) / b) ^ (d : ℕ))) :=
+        (tsum_pnat_eq_tsum_succ (f := fun a : ℕ =>
+          w a * (((1 : ℝ) / b) ^ a / (1 - ((1 : ℝ) / b) ^ a)))).symm
+    _ = ∑' n : ℕ+, (∑ e ∈ (n : ℕ).divisors, w e) * ((1 : ℝ) / b) ^ (n : ℕ) :=
+        weighted_lambert_series_identity w hw0 hw1 hr0 hr1
+    _ = ∑' n : ℕ+, ((supportCoeff A (n : ℕ) : ℝ)) / (b : ℝ) ^ (n : ℕ) := by
+        refine tsum_congr fun n => ?_
+        rw [← supportCoeff_cast_eq_sum_indicator, div_pow, one_pow, mul_one_div]
+    _ = ∑' m : ℕ, ((supportCoeff A (m + 1) : ℝ)) / (b : ℝ) ^ (m + 1) :=
+        tsum_pnat_eq_tsum_succ (f := fun n : ℕ =>
+          ((supportCoeff A n : ℝ)) / (b : ℝ) ^ n)
+
+/-- **Arbitrary-support irrationality from weighted coefficient
+certificates.**  If the support coefficient `f_A` admits a weighted block
+certificate for every precision, the support series
+`∑_{a ∈ A} 1/(b^a - 1)` is irrational.  This is the engine Erdős #257
+needs: the analytic content is reduced to certificate existence for
+`f_A`, which for arbitrary infinite `A` remains an OPEN obligation —
+this theorem does NOT resolve it. -/
+theorem irrational_erdosSupportSeries_of_weighted_coeff_certificates
+    (b : ℕ) (A : Set ℕ) (hb : 2 ≤ b)
+    (hcert : ∀ q : ℕ, 0 < q → ∃ N K L C : ℕ, K ≤ L ∧
+        (∀ r ∈ Finset.Icc 1 K, b ^ r ∣ supportCoeff A (N + r)) ∧
+        (∑ r ∈ Finset.Icc (K + 1) L, supportCoeff A (N + r) * b ^ (L - r) ≤ C) ∧
+        (∃ t : ℕ, 0 < supportCoeff A (N + L + 1 + t)) ∧
+        q * (C + (N + L + 2)) < b ^ L) :
+    Irrational (erdosSupportSeries b A) := by
+  rw [erdosSupportSeries_eq_tsum_supportCoeff b A hb]
+  exact irrational_coeff_series_of_weighted_coeff_block_certificates b
+    (supportCoeff A) hb (supportCoeff_le_self A) hcert
+
+/-- **Full support, in the support-series language**: the `A = Set.univ`
+member of the Erdős #257 statement family is irrational. -/
+theorem irrational_erdosSupportSeries_univ (b : ℕ) (hb : 2 ≤ b) :
+    Irrational (erdosSupportSeries b Set.univ) := by
+  rw [erdosSupportSeries_univ_eq_erdosSum_full_support b hb]
+  exact irrational_erdosSum_full_support b hb

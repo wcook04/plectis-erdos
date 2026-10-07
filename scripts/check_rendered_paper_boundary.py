@@ -78,7 +78,12 @@ FIRST_MINUTE_CONTRACT = {
     # The September 2026 rewrite: page one carries the unit of work, the
     # #1041 refutation and the other seven targets' open status; the checks,
     # the contribution cycle and the limits each keep their boundary within
-    # one page of where they render today.
+    # one page of where they render today. The 24 September revision opens
+    # with three pages of worked mathematics, so the later windows moved back.
+    # The 28 September landing train (argument graph, route replay and the
+    # merged PRs) renders the checks on page 12, the contribution boundary on
+    # page 13 and limitations on page 18. Keep the same three-page windows.
+    # Several anchors below no longer occur in the text; full mode is not gated.
     "claim-faithful-publication-systems-paper.pdf": {
         (1, 1): (
             "problem-sized lean worlds",
@@ -87,18 +92,18 @@ FIRST_MINUTE_CONTRACT = {
             "leaves novelty and significance to experts",
             "formal refutation of the formal conjectures statement of problem 1041",
         ),
-        (2, 4): (
+        (11, 13): (
             "lean verifies that a proof establishes the formal statement written in the source",
             "comparator-checked",
             "does not technically force a second independent mathematician",
             "nine of the ten edits were rejected",
-            "coverage boundary, not a reliability score",
+            "study locates a coverage boundary",
         ),
-        (4, 6): (
+        (12, 14): (
             "an empty search never counts as evidence of no consequence",
             "whether the formal statement matches the 1958 wording",
         ),
-        (8, 10): (
+        (17, 19): (
             "no outside human contributor had opened a pull request or issue",
             "ethical objections",
         ),
@@ -108,11 +113,97 @@ FIRST_MINUTE_CONTRACT = {
             "from a cold clone to a proof receipt",
             "153,253 declarations",
             "navigation does not receive proof authority",
-            "verdicts come from the pinned lean process",
+            "derives probe verdicts from the pinned lean process",
             "not an autonomous theorem prover",
         ),
     },
 }
+
+# The unified manuscript has its own reviewed reading windows. The publication
+# contract selects this profile; historical manuscript checks retain their
+# original wording and windows. In the reviewed 22-page lab edition, repository
+# roles occupy pages 2–4, checks 4–5, revision and contributions 6–8, recorded
+# observations 9, limits 10 and reproduction notes 11–12. Each anchor remains
+# on its inspected page. Keep the escaped-edit,
+# independent-review, source-versus-meaning and unmeasured-benefit limits.
+UNIFIED_SYSTEMS_FIRST_MINUTE = {
+    (1, 1): (
+        "a repository-based system for research and publication",
+        "architecture, evidence and iteration in a lean research repository",
+        "the public plectis prototype implements this workflow for eight mathematical programmes",
+        "it keeps questions, prior sources, computations, proofs and unresolved steps together",
+        "a historical author-run test rejected nine of ten false edits and accepted one false completion claim",
+        "reader benefit, discovery rate and adoption by independent laboratories remain unmeasured",
+    ),
+    (2, 2): (
+        "a repository organised around problems",
+    ),
+    (3, 3): (
+        "the checkout contains authored lean and manuscript sources",
+        "authors edit the sources; builders regenerate the derived views",
+        "agent_entry.py maps a stated task to instructions",
+        "paper_evidence.py resolves mathematical paper statements",
+        "paper_claim_evidence.py projects their evidence status",
+    ),
+    (4, 4): (
+        "a maintainer reviews the claim, attribution and remaining uncertainty before adoption",
+        "the publication check requires the registered set, even if one declaration suffices for the clause under discussion. this is an accounting requirement, not an additional hypothesis of the theorem",
+    ),
+    (5, 5): (
+        "changing the sentence and updating its record can restore byte agreement without restoring the implication claimed by the prose",
+        "lean verifies that a proof establishes the formal statement written in the source",
+        "comparator adds a separately stated challenge",
+        "does not technically force a second independent mathematician",
+        "no independent human mathematical review of the corpus is recorded",
+    ),
+    (6, 6): (
+        "we freeze the selected manuscripts",
+        "under a manifest of their exact bytes",
+        "in either case the integrating reviewer decides whether the mathematics and its description remain faithful",
+    ),
+    (7, 7): (
+        "it neither applies the proposal nor executes returned programs",
+        "the procedure supplies no measurement of reader benefit or autonomous discovery",
+        "an open route for contributions",
+    ),
+    (8, 8): (
+        "neither independent review nor acceptance by the wider mathematical community",
+        "ordinary issues and pull requests need not become journal events",
+    ),
+    (9, 9): (
+        "nine of the ten deliberately false edits were rejected and one escaped",
+        "the edits were authored by the checker’s author",
+        "the other nine edits were not rerun",
+        "supplying no post-repair",
+        "the contributor and reviewer were the same agent",
+        "no public pull request, human review or independent outside clone replay",
+        "no comparative reader result is reported",
+    ),
+    (10, 10): (
+        "transfer to unseen mathematics and understanding by",
+        "independent human readers are unresolved",
+        "it is not a general incremental scheduler",
+        "openness alone does not equalise resources",
+        "broad mathematical acceptance is exogenous to this repository and cannot be granted by its maintainer",
+    ),
+    (11, 11): (
+        "local integration commit rather than public main",
+        "no new lean or comparator run was performed for this revision",
+    ),
+    (12, 12): (
+        "source-binding validation does not replay lean, comparator or the full repository release checks",
+    ),
+}
+
+
+def unified_systems_profile(pdf: Path) -> bool:
+    if pdf.name != "claim-faithful-publication-systems-paper.pdf":
+        return False
+    contract = json.loads((ROOT / "docs/publication_contract.json").read_text())
+    return any(a.get("systems_paper_profile") == "unified_corpus_to_paper_v1"
+               and Path(a["rendered_path"]).name == pdf.name
+               for a in contract["artifacts"])
+
 
 # \rootword has the same four-argument shape as \lword and, like it, prints only
 # its fourth argument; the module path sits inside the href. Leaving it out of
@@ -417,7 +508,8 @@ def semantic_text(text: str) -> str:
 
 def first_minute_errors(pdf: Path, pdftotext: str) -> list[str]:
     errors: list[str] = []
-    contract = FIRST_MINUTE_CONTRACT.get(pdf.name, {})
+    contract = (UNIFIED_SYSTEMS_FIRST_MINUTE if unified_systems_profile(pdf)
+                else FIRST_MINUTE_CONTRACT.get(pdf.name, {}))
     for (first, last), anchors in contract.items():
         try:
             text = semantic_text(rendered_pages(pdf, pdftotext, first, last))
@@ -499,7 +591,7 @@ def architecture_rendered_errors(pdf: Path, text: str) -> list[str]:
             errors.append(
                 f"prints private or score-like shorthand {pattern.pattern!r}"
             )
-    if len(re.findall(r"\bsentence\b", compact)) > 4:
+    if not unified_systems_profile(pdf) and len(re.findall(r"\bsentence\b", compact)) > 4:
         errors.append("has regressed to a sentence-centred case study")
     return [f"{pdf.relative_to(ROOT)}: {error}" for error in errors]
 

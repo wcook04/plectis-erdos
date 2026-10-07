@@ -1,0 +1,32 @@
+{
+  "probe": "research/probes/Round7PacketContrastDirection.lean",
+  "source_sha256": "129d6d378749cda415e2b0f1489d26271904e66cc1625498ab3a59869be245c6",
+  "evidence_class": "compilation_probe",
+  "exact_target_checked": false,
+  "environment_replayed": false,
+  "exit_code": 0,
+  "timed_out": false,
+  "elapsed_seconds": 2.8,
+  "errors": [],
+  "warnings": [],
+  "uses_sorry": false,
+  "axioms_declared": [],
+  "axioms_printed": {
+    "PacketContrastDirection.forward_contract": [],
+    "PacketContrastDirection.feasible_replacement": [],
+    "PacketContrastDirection.replacement_feasible": [],
+    "PacketContrastDirection.original_wording_has_counterexample": []
+  },
+  "missing_axiom_prints": [],
+  "nonstandard_axioms": [],
+  "compilation_accepted": true,
+  "accepted": true,
+  "output_tail": "'PacketContrastDirection.forward_contract' does not depend on any axioms\n'PacketContrastDirection.feasible_replacement' does not depend on any axioms\n'PacketContrastDirection.replacement_feasible' does not depend on any axioms\n'PacketContrastDirection.original_wording_has_counterexample' does not depend on any axioms\n",
+  "requested_axiom_outputs": [
+    "forward_contract",
+    "feasible_replacement",
+    "replacement_feasible",
+    "original_wording_has_counterexample"
+  ],
+  "missing_requested_axiom_outputs": []
+}

@@ -16,6 +16,7 @@ import sys
 from pathlib import Path
 
 import validation_singleflight as singleflight
+import replay_external_verification as replay
 
 ROOT = Path(__file__).resolve().parent.parent
 EXPECTED_MISMATCH = (
@@ -27,6 +28,9 @@ EXPECTED_1049_MISMATCH = (
     "'Erdos249257.ExternalVerification1049.comparator_sevenHalves_numericalHeight'"
 )
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+# Mirrors methodology_contract.PROGRAMME_TARGET_STATUSES without importing it
+# into the Comparator runtime.
+PROGRAMME_TARGET_STATUSES = frozenset({"open", "formal statement refuted"})
 SUBPROCESS_TIMEOUT_SECONDS = singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
 
 
@@ -254,7 +258,7 @@ def write_runtime_receipt(path: Path, receipt: dict[str, Any]) -> Path:
 def is_expected_negative_rejection(
     exit_code: int, log_text: str, expected: str = EXPECTED_MISMATCH
 ) -> bool:
-    return exit_code != 0 and expected in log_text
+    return exit_code == 1 and bool(expected) and expected in log_text
 
 
 def runtime_statement_contract(owner: dict, packet: dict) -> dict:
@@ -269,6 +273,50 @@ def runtime_statement_contract(owner: dict, packet: dict) -> dict:
     }
 
 
+def weighted_support_runtime_row(
+    positive_exit: int,
+    negative_exit: int,
+    positive_log: Path | None,
+    negative_log: Path | None,
+) -> dict:
+    """Bind the one-theorem CI result to the same contract as local replay."""
+    row = {
+        "unit": "weighted-support",
+        "result": "fail",
+        "positive_comparator_exit": positive_exit,
+        "positive_log_digest": digest(positive_log),
+        "negative_mismatch_comparator_exit": negative_exit,
+        "negative_log_digest": digest(negative_log),
+    }
+    try:
+        contract = replay.load_contract(ROOT)
+        selected = replay.select_replay_unit(contract, "weighted-support")
+        replay.validate_unit_configs(ROOT, selected)
+        diagnostic = selected["expected_negative_diagnostic"]
+        observed = diagnostic in optional_runtime_text(negative_log)
+        row.update({
+            "theorem": selected["theorem"],
+            "challenge_module": selected["challenge_module"],
+            "permitted_axioms": selected["permitted_axioms"],
+            "positive_config": selected["positive_config"],
+            "positive_config_digest": digest(ROOT / selected["positive_config"]),
+            "negative_config": selected["negative_config"],
+            "negative_config_digest": digest(ROOT / selected["negative_config"]),
+            "negative_expected_diagnostic": diagnostic,
+            "negative_expected_diagnostic_observed": observed,
+        })
+        if (row["positive_log_digest"] and row["negative_log_digest"]
+                and row["positive_config_digest"] and row["negative_config_digest"]
+                and replay.replay_checks_pass(
+                    positive_exit, negative_exit,
+                    optional_runtime_text(negative_log), diagnostic,
+                )):
+            row["result"] = "pass"
+    except replay.ReplayError as exc:
+        row["contract_error"] = str(exc)
+    return row
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--phase", default="final")
@@ -281,6 +329,10 @@ def main() -> int:
     parser.add_argument("--local-1049-negative-exit", type=int, default=-999)
     parser.add_argument("--local-1049-positive-log", type=Path)
     parser.add_argument("--local-1049-negative-log", type=Path)
+    parser.add_argument("--weighted-support-positive-exit", type=int, default=-999)
+    parser.add_argument("--weighted-support-negative-exit", type=int, default=-999)
+    parser.add_argument("--weighted-support-positive-log", type=Path)
+    parser.add_argument("--weighted-support-negative-log", type=Path)
     parser.add_argument("--comparator-rev")
     parser.add_argument("--lean4export-rev")
     parser.add_argument("--landrun-rev")
@@ -331,8 +383,22 @@ def main() -> int:
         local_1049_negative_text,
         EXPECTED_1049_MISMATCH,
     )
-    all_statuses_open = all(
-        row["status"] == "open" for row in packet["problem_index"]["problems"]
+    weighted_support = weighted_support_runtime_row(
+        args.weighted_support_positive_exit,
+        args.weighted_support_negative_exit,
+        args.weighted_support_positive_log,
+        args.weighted_support_negative_log,
+    )
+    # The receipt discloses every indexed problem status. Seven problems are
+    # open; Lean refutes the exact Formal Conjectures statement of #1041, and
+    # the review of its correspondence with the 1958 wording stays open.
+    # Neither status claims that a Comparator run settles an original problem.
+    problem_statuses = {
+        str(row["erdos_number"]): row["status"]
+        for row in packet["problem_index"]["problems"]
+    }
+    statuses_disclosed = bool(problem_statuses) and all(
+        status in PROGRAMME_TARGET_STATUSES for status in problem_statuses.values()
     )
     passed = (
         projection_check == 0
@@ -340,11 +406,12 @@ def main() -> int:
         and negative_semantic_rejection
         and args.local_1049_positive_exit == 0
         and local_1049_negative_semantic_rejection
+        and weighted_support["result"] == "pass"
         and pins_match
         and all(binary_digests.values())
         and expected_commit_matches
         and args.sandbox_mode in {"user-manager", "system-manager-nonprivileged-unit", "local-fake-landrun-smoke"}
-        and all_statuses_open
+        and statuses_disclosed
     )
     receipt = {
         "schema": "erdos-external-verification-runtime-receipt/1",
@@ -379,9 +446,11 @@ def main() -> int:
             "problem_index_digest": packet["problem_index"]["projection_digest"],
             "problem_count": packet["problem_index"]["problem_count"],
             "problem_ids": owner["problem_ids"],
-            "all_statuses_open": all_statuses_open,
+            "problem_statuses": problem_statuses,
+            "statuses_within_programme_boundary": statuses_disclosed,
         },
         "statement_contract": runtime_statement_contract(owner, packet),
+        "selected_replay_units": {"weighted-support": weighted_support},
         "checks": {
             "projection_and_isolation_check_exit": projection_check,
             "positive_comparator_exit": args.positive_exit,

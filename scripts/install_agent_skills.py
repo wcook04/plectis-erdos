@@ -7,6 +7,9 @@ The repository works without installation: an agent can read
 ``AGENTS.md`` and the files under ``skills/`` directly.  Installation
 only makes the named skills available from other working directories.
 
+Destination operations default to the namespaced plectis-frontier companion.
+Clone workflows require --skill NAME or explicit --all-clone-skills opt-in.
+
 The command is deliberately preview-first.  It changes the destination only
 when ``--apply`` is present, and it never replaces a different installed skill
 unless ``--force`` is also present.
@@ -35,23 +38,43 @@ def same_tree(left: Path, right: Path) -> bool:
     if not left.is_dir() or not right.is_dir():
         return False
     comparison = filecmp.dircmp(left, right)
-    if comparison.left_only or comparison.right_only or comparison.funny_files:
+    if comparison.left_only or comparison.right_only or comparison.common_funny:
         return False
-    if comparison.diff_files:
+    # dircmp compares stat signatures by default. A copied skill can retain
+    # its timestamp and byte count after an edit, so compare instruction bytes
+    # directly; this also avoids filecmp's metadata-keyed result cache.
+    try:
+        if any(
+            (left / name).read_bytes() != (right / name).read_bytes()
+            for name in comparison.common_files
+        ):
+            return False
+    except OSError:
         return False
     return all(same_tree(left / name, right / name) for name in comparison.common_dirs)
 
 
 def target_directory(args: argparse.Namespace) -> Path:
     if args.target_dir is not None:
-        return args.target_dir.expanduser().resolve()
-    if args.target == "codex":
+        directory = args.target_dir.expanduser().resolve()
+    elif args.target == "codex":
+        directory = (Path.home() / ".agents" / "skills").resolve()
+    elif args.target == "codex-legacy":
         codex_root = Path(os.environ.get("CODEX_HOME", Path.home() / ".codex"))
-        return (codex_root / "skills").expanduser().resolve()
-    if args.target == "claude":
+        directory = (codex_root / "skills").expanduser().resolve()
+    elif args.target == "claude":
         claude_root = Path(os.environ.get("CLAUDE_CONFIG_DIR", Path.home() / ".claude"))
-        return (claude_root / "skills").expanduser().resolve()
-    raise ValueError("choose --target codex|claude or provide --target-dir")
+        directory = (claude_root / "skills").expanduser().resolve()
+    else:
+        raise ValueError("choose --target codex|claude or provide --target-dir")
+    # Preview must not call an impossible destination "missing". The nearest
+    # existing ancestor must be a directory before any skill is inspected.
+    for ancestor in (directory, *directory.parents):
+        if ancestor.exists():
+            if not ancestor.is_dir():
+                raise ValueError(f"skills destination must be a directory; {ancestor} is not a directory")
+            break
+    return directory
 
 
 def selected_skills(
@@ -101,9 +124,12 @@ def parser() -> argparse.ArgumentParser:
     result = argparse.ArgumentParser(description=__doc__)
     result.add_argument("--list", action="store_true", help="list clone-local skills")
     destination = result.add_mutually_exclusive_group()
-    destination.add_argument("--target", choices=("codex", "claude"))
+    destination.add_argument("--target", choices=("codex", "codex-legacy", "claude"))
     destination.add_argument("--target-dir", type=Path)
-    result.add_argument("--skill", action="append", help="install only this named skill")
+    selection = result.add_mutually_exclusive_group()
+    selection.add_argument("--companion", action="store_true", help="select the portable companion (the installation default)")
+    selection.add_argument("--skill", action="append", help="select this named clone workflow; repeat for multiple workflows")
+    selection.add_argument("--all-clone-skills", action="store_true", help="explicitly select the complete clone workflow catalog")
     result.add_argument("--mode", choices=("copy", "symlink"), default="copy")
     result.add_argument("--apply", action="store_true", help="perform the displayed changes")
     result.add_argument("--check", action="store_true", help="fail unless every selection is current")
@@ -116,18 +142,25 @@ def main() -> int:
     try:
         catalog = load_catalog()
         available = skill_directories(catalog)
-    except (OSError, SkillCatalogError) as exc:
+        companion = {"plectis-frontier": ROOT / ".agents/skills/plectis-frontier"}
+        # Listing remains catalog discovery. Installation never treats an
+        # omitted selector as consent to install every generic clone workflow.
+        chosen = selected_skills(args, available) if args.skill or args.all_clone_skills else companion
+    except (OSError, ValueError, SkillCatalogError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
     if args.list:
-        for row in catalog["skills"]:
+        if args.companion:
+            rows = [{"id": "plectis-frontier", "description": "Portable task-routed Plectis companion", "path": ".agents/skills/plectis-frontier/SKILL.md"}]
+        else:
+            rows = [row for row in catalog["skills"] if not args.skill or row["id"] in chosen]
+        for row in rows:
             print(f"{row['id']}\t{row['description']}\t{row['path']}")
         if args.target is None and args.target_dir is None:
             return 0
 
     try:
         target = target_directory(args)
-        chosen = selected_skills(args, available)
     except ValueError as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2

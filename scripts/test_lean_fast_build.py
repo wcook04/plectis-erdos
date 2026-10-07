@@ -35,6 +35,7 @@ SUPPORTED_ROOTS = (
     "Examples",
     "FormalConjecturesAdapter",
     "FormalConjecturesVariants",
+    "FC243CubicRate",
     "ResidualBench",
     LARGE_CERTIFICATE_ROOT,
 )
@@ -50,13 +51,276 @@ COVERAGE_COMMAND_PREFIX = [
     "2",
     "--lake-staleness",
 ]
-# Coverage-lane auxiliary roots the coverage build deliberately leaves out,
-# each with its reason.
+# Auxiliary roots of the module graph that no CI job compiles, each group with
+# its reason. The coverage build compiles an auxiliary root when a paper, a
+# claim or the paper-to-Lean ledger cites it; every other root is named here,
+# so a new auxiliary module needs a decision (see
+# test_every_auxiliary_root_is_compiled_or_excluded).
+_EXCLUDED_FREE_POSITION = frozenset(
+    # Exploratory free-position kill certificates. No paper, claim or
+    # coverage-ledger row cites them, so the coverage build leaves them out.
+    {
+        "ErdosProblems.FreePosition.FreeKill18B",
+        "ErdosProblems.FreePosition.FreeKill21C",
+        "ErdosProblems.FreePosition.FreeKill53D",
+        "ErdosProblems.FreePosition.FreeKill59Root",
+        "ErdosProblems.FreePosition.FreeKill61E",
+        "ErdosProblems.FreePosition.FreeKill64DecH",
+        "ErdosProblems.FreePosition.FreeKill64DepthRoot",
+        "ErdosProblems.FreePosition.FreeKill64EighteenP",
+        "ErdosProblems.FreePosition.FreeKill64EightyBZ",
+        "ErdosProblems.FreePosition.FreeKill64EightyEightCH",
+        "ErdosProblems.FreePosition.FreeKill64EightyFiveCE",
+        "ErdosProblems.FreePosition.FreeKill64EightyFourCD",
+        "ErdosProblems.FreePosition.FreeKill64EightyNineCI",
+        "ErdosProblems.FreePosition.FreeKill64EightyOneCA",
+        "ErdosProblems.FreePosition.FreeKill64EightySevenCG",
+        "ErdosProblems.FreePosition.FreeKill64EightySixCF",
+        "ErdosProblems.FreePosition.FreeKill64EightyThreeCC",
+        "ErdosProblems.FreePosition.FreeKill64EightyTwoCB",
+        "ErdosProblems.FreePosition.FreeKill64ElevenI",
+        "ErdosProblems.FreePosition.FreeKill64F",
+        "ErdosProblems.FreePosition.FreeKill64FifteenM",
+        "ErdosProblems.FreePosition.FreeKill64FiftyAV",
+        "ErdosProblems.FreePosition.FreeKill64FiftyEightBD",
+        "ErdosProblems.FreePosition.FreeKill64FiftyFiveBA",
+        "ErdosProblems.FreePosition.FreeKill64FiftyFourAZ",
+        "ErdosProblems.FreePosition.FreeKill64FiftyNineBE",
+        "ErdosProblems.FreePosition.FreeKill64FiftyOneAW",
+        "ErdosProblems.FreePosition.FreeKill64FiftySevenBC",
+        "ErdosProblems.FreePosition.FreeKill64FiftySixBB",
+        "ErdosProblems.FreePosition.FreeKill64FiftyThreeAY",
+        "ErdosProblems.FreePosition.FreeKill64FiftyTwoAX",
+        "ErdosProblems.FreePosition.FreeKill64FortyAL",
+        "ErdosProblems.FreePosition.FreeKill64FortyEightAT",
+        "ErdosProblems.FreePosition.FreeKill64FortyFiveAQ",
+        "ErdosProblems.FreePosition.FreeKill64FortyFourAP",
+        "ErdosProblems.FreePosition.FreeKill64FortyNineAU",
+        "ErdosProblems.FreePosition.FreeKill64FortyOneAM",
+        "ErdosProblems.FreePosition.FreeKill64FortySevenAS",
+        "ErdosProblems.FreePosition.FreeKill64FortySixAR",
+        "ErdosProblems.FreePosition.FreeKill64FortyThreeAO",
+        "ErdosProblems.FreePosition.FreeKill64FortyTwoAN",
+        "ErdosProblems.FreePosition.FreeKill64ForwardRoot",
+        "ErdosProblems.FreePosition.FreeKill64FourteenL",
+        "ErdosProblems.FreePosition.FreeKill64HighG",
+        "ErdosProblems.FreePosition.FreeKill64NineteenQ",
+        "ErdosProblems.FreePosition.FreeKill64NinetyCJ",
+        "ErdosProblems.FreePosition.FreeKill64NinetyEightCR",
+        "ErdosProblems.FreePosition.FreeKill64NinetyFiveCO",
+        "ErdosProblems.FreePosition.FreeKill64NinetyFourCN",
+        "ErdosProblems.FreePosition.FreeKill64NinetyNineCS",
+        "ErdosProblems.FreePosition.FreeKill64NinetyOneCK",
+        "ErdosProblems.FreePosition.FreeKill64NinetySevenCQ",
+        "ErdosProblems.FreePosition.FreeKill64NinetySixCP",
+        "ErdosProblems.FreePosition.FreeKill64NinetyThreeCM",
+        "ErdosProblems.FreePosition.FreeKill64NinetyTwoCL",
+        "ErdosProblems.FreePosition.FreeKill64NonG",
+        "ErdosProblems.FreePosition.FreeKill64OctF",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredCT",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredEightDB",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredEighteenDL",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredElevenDE",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFifteenDI",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyER",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyEightEZ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyFiveEW",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyFourEV",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyNineFA",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyOneES",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftySevenEY",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftySixEX",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyThreeEU",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiftyTwoET",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFiveCY",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyEH",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyEightEP",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyFiveEM",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyFourEL",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyNineEQ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyOneEI",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortySevenEO",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortySixEN",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyThreeEK",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFortyTwoEJ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFourCX",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredFourteenDH",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredNineDC",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredNineteenDM",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredOneCU",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSevenDA",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSeventeenDK",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixCZ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixteenDJ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyEightFJ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyFB",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyFiveFG",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyFourFF",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyNineFK",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyOneFC",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtySevenFI",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtySixFH",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyThreeFE",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredSixtyTwoFD",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTenDD",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirteenDG",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyDX",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyEightEF",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyFiveEC",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyFourEB",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyNineEG",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyOneDY",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtySevenEE",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtySixED",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyThreeEA",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThirtyTwoDZ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredThreeCW",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwelveDF",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyDN",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyEightDV",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyFiveDS",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyFourDR",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyNineDW",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyOneDO",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentySevenDU",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentySixDT",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyThreeDQ",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwentyTwoDP",
+        "ErdosProblems.FreePosition.FreeKill64OneHundredTwoCV",
+        "ErdosProblems.FreePosition.FreeKill64QuadB",
+        "ErdosProblems.FreePosition.FreeKill64QuintC",
+        "ErdosProblems.FreePosition.FreeKill64SeptE",
+        "ErdosProblems.FreePosition.FreeKill64SeventeenO",
+        "ErdosProblems.FreePosition.FreeKill64SeventyBP",
+        "ErdosProblems.FreePosition.FreeKill64SeventyEightBX",
+        "ErdosProblems.FreePosition.FreeKill64SeventyFiveBU",
+        "ErdosProblems.FreePosition.FreeKill64SeventyFourBT",
+        "ErdosProblems.FreePosition.FreeKill64SeventyNineBY",
+        "ErdosProblems.FreePosition.FreeKill64SeventyOneBQ",
+        "ErdosProblems.FreePosition.FreeKill64SeventySevenBW",
+        "ErdosProblems.FreePosition.FreeKill64SeventySixBV",
+        "ErdosProblems.FreePosition.FreeKill64SeventyThreeBS",
+        "ErdosProblems.FreePosition.FreeKill64SeventyTwoBR",
+        "ErdosProblems.FreePosition.FreeKill64SextD",
+        "ErdosProblems.FreePosition.FreeKill64SixteenN",
+        "ErdosProblems.FreePosition.FreeKill64SixtyBF",
+        "ErdosProblems.FreePosition.FreeKill64SixtyEightBN",
+        "ErdosProblems.FreePosition.FreeKill64SixtyFiveBK",
+        "ErdosProblems.FreePosition.FreeKill64SixtyFourBJ",
+        "ErdosProblems.FreePosition.FreeKill64SixtyNineBO",
+        "ErdosProblems.FreePosition.FreeKill64SixtyOneBG",
+        "ErdosProblems.FreePosition.FreeKill64SixtySevenBM",
+        "ErdosProblems.FreePosition.FreeKill64SixtySixBL",
+        "ErdosProblems.FreePosition.FreeKill64SixtyThreeBI",
+        "ErdosProblems.FreePosition.FreeKill64SixtyTwoBH",
+        "ErdosProblems.FreePosition.FreeKill64ThirteenK",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyAB",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyEightAJ",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyFiveAG",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyFourAF",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyNineAK",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyOneAC",
+        "ErdosProblems.FreePosition.FreeKill64ThirtySevenAI",
+        "ErdosProblems.FreePosition.FreeKill64ThirtySixAH",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyThreeAE",
+        "ErdosProblems.FreePosition.FreeKill64ThirtyTwoAD",
+        "ErdosProblems.FreePosition.FreeKill64TripleA",
+        "ErdosProblems.FreePosition.FreeKill64TwelveJ",
+        "ErdosProblems.FreePosition.FreeKill64TwentyEightZ",
+        "ErdosProblems.FreePosition.FreeKill64TwentyFiveW",
+        "ErdosProblems.FreePosition.FreeKill64TwentyFourV",
+        "ErdosProblems.FreePosition.FreeKill64TwentyNineAA",
+        "ErdosProblems.FreePosition.FreeKill64TwentyOneS",
+        "ErdosProblems.FreePosition.FreeKill64TwentyR",
+        "ErdosProblems.FreePosition.FreeKill64TwentySevenY",
+        "ErdosProblems.FreePosition.FreeKill64TwentySixX",
+        "ErdosProblems.FreePosition.FreeKill64TwentyThreeU",
+        "ErdosProblems.FreePosition.FreeKill64TwentyTwoT",
+    }
+)
+_EXCLUDED_VERIFICATION_SCRATCH = frozenset(
+    # Adversarial verification scratch files and axiom-footprint checks for the
+    # exploratory Bit, Decl, Half, Hlow, Lift, Rem, Skip and Three modules. No
+    # paper, claim or coverage-ledger row cites them.
+    {
+        "ErdosProblems.Bit.verify.B1",
+        "ErdosProblems.Bit.verify.B2",
+        "ErdosProblems.Bit.verify.B3",
+        "ErdosProblems.Bit.verify.B4",
+        "ErdosProblems.Bit.verify.B5",
+        "ErdosProblems.Decl.verify.D1",
+        "ErdosProblems.Decl.verify.D2",
+        "ErdosProblems.Decl.verify.D3",
+        "ErdosProblems.Decl.verify.D4",
+        "ErdosProblems.Half.verify.W1",
+        "ErdosProblems.Half.verify.W2",
+        "ErdosProblems.Half.verify.W3",
+        "ErdosProblems.Half.verify.W4",
+        "ErdosProblems.Half.verify.W5",
+        "ErdosProblems.Half.verify.W6",
+        "ErdosProblems.Half.verify.W7",
+        "ErdosProblems.Hlow.W1",
+        "ErdosProblems.Hlow.W3",
+        "ErdosProblems.Hlow.verify.V1",
+        "ErdosProblems.Hlow.verify.V2",
+        "ErdosProblems.Lift.verify.Check1",
+        "ErdosProblems.Lift.verify.Check10",
+        "ErdosProblems.Lift.verify.Check11",
+        "ErdosProblems.Lift.verify.Check12",
+        "ErdosProblems.Lift.verify.Check13",
+        "ErdosProblems.Lift.verify.Check14",
+        "ErdosProblems.Lift.verify.Check2",
+        "ErdosProblems.Lift.verify.Check3",
+        "ErdosProblems.Lift.verify.Check4",
+        "ErdosProblems.Lift.verify.Check5",
+        "ErdosProblems.Lift.verify.Check6",
+        "ErdosProblems.Lift.verify.Check7",
+        "ErdosProblems.Lift.verify.Check8",
+        "ErdosProblems.Lift.verify.Check9",
+        "ErdosProblems.Rem.verify.C1",
+        "ErdosProblems.Rem.verify.C2",
+        "ErdosProblems.Rem.verify.C3",
+        "ErdosProblems.Rem.verify.C4",
+        "ErdosProblems.Rem.verify.C5",
+        "ErdosProblems.Rem.verify.C6",
+        "ErdosProblems.Skip.verify.V1",
+        "ErdosProblems.Skip.verify.V10",
+        "ErdosProblems.Skip.verify.V2",
+        "ErdosProblems.Skip.verify.V3",
+        "ErdosProblems.Skip.verify.V4",
+        "ErdosProblems.Skip.verify.V5",
+        "ErdosProblems.Skip.verify.V6",
+        "ErdosProblems.Skip.verify.V7",
+        "ErdosProblems.Skip.verify.V8",
+        "ErdosProblems.Skip.verify.V9",
+        "ErdosProblems.Three.verify.T1",
+        "ErdosProblems.Three.verify.T2",
+        "ErdosProblems.Three.verify.T3",
+        "ErdosProblems.Three.verify.T4",
+    }
+)
+_EXCLUDED_SINGLE_AUDITS = frozenset(
+    {
+        # #1041 full axiom audit. Its build is recorded by the source-bound
+        # receipt verification/erdos1041-returned-r18-v5-full-audit-evidence.json;
+        # no paper, claim or coverage-ledger row cites it.
+        "ErdosProblems.Erdos1041.ReturnedR18V5FullAudit",
+        # Algebra sidecar for the #1041 degree-seven counterexample. Nothing
+        # imports it and no paper, claim or coverage-ledger row cites it.
+        "ErdosProblems.Erdos1041.Counterexample.Algebra",
+        # #1049 print-only axiom audit of the all-row chain, which
+        # scripts/build_module_graph.py keeps outside the supported root.
+        "ErdosProblems.Erdos1049.AllRow.Audit",
+    }
+)
 COVERAGE_EXCLUDED_AUXILIARY_ROOTS = {
     # The #68 size-floor certificate: its source records that it has not been
     # kernel checked, and scripts/build_module_graph.py keeps it and the
     # FiniteLeadBlocks leaves it imports out of every compiled environment.
     "ErdosProblems.Erdos68.PaperCompleteFiniteSizeCertificate",
+    *_EXCLUDED_FREE_POSITION,
+    *_EXCLUDED_VERIFICATION_SCRATCH,
+    *_EXCLUDED_SINGLE_AUDITS,
 }
 MAIN_CACHE_PREFIX = (
     "lake-${{ runner.os }}-${{ runner.arch }}-"
@@ -144,6 +408,37 @@ def cache_restore_prefixes(workflow: str) -> list[str]:
 
 
 class LeanFastBuildTests(unittest.TestCase):
+    def test_custom_elan_proxy_runs_through_the_bounded_consumer(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            custom = root / "custom elan"
+            proxy = custom / "bin" / "lake"
+            proxy.parent.mkdir(parents=True)
+            proxy.write_text('#!/bin/sh\nprintf "custom proxy: %s\\n" "$1"\n')
+            proxy.chmod(0o755)
+            with mock.patch.dict(os.environ, {"ELAN_HOME": str(custom)}):
+                result = fast._run(
+                    fast.lake_command("--version"), cwd=root,
+                    timeout_seconds=5, capture_output=True, text=True,
+                )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout, "custom proxy: --version\n")
+
+    def test_missing_custom_elan_proxy_does_not_fall_back(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            default = root / "default-home" / ".elan" / "bin" / "lake"
+            default.parent.mkdir(parents=True)
+            default.write_text('#!/bin/sh\nexit 0\n')
+            default.chmod(0o755)
+            custom = root / "missing-custom"
+            with mock.patch.object(Path, "home", return_value=root / "default-home"), \
+                    mock.patch.dict(os.environ, {"ELAN_HOME": str(custom)}):
+                command = fast.lake_command("--version")
+                self.assertEqual(command[0], str(custom.resolve() / "bin" / "lake"))
+                with self.assertRaises(FileNotFoundError):
+                    fast._run(command, cwd=root, timeout_seconds=5)
+
     def test_discovery_uses_declared_lake_source_roots(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -323,7 +618,7 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertLess(cache_step, toolchain_step)
         self.assertLess(toolchain_step, dependencies_step)
         self.assertLess(dependencies_step, bounded_build)
-        self.assertIn("uses: actions/cache@", workflow)
+        self.assertIn("uses: actions/cache/restore@", workflow)
         # The contract is that the cache action is pinned to a commit and
         # annotated with the version that commit is, so a reader can tell what
         # a forty-character hex string is without leaving the file. It is not
@@ -332,7 +627,7 @@ class LeanFastBuildTests(unittest.TestCase):
         # four jobs with the message "Lean CI lost cache/build contract" —
         # which was not true, and pointed at the workflow rather than at the
         # assertion. Every other token in this contract describes behaviour.
-        self.assertRegex(workflow, r"uses: actions/cache@[0-9a-f]{40} # v\d")
+        self.assertRegex(workflow, r"uses: actions/cache/restore@[0-9a-f]{40} # v\d")
         self.assertIn("path: .lake", workflow)
         # Sibling sweep: the same supply-chain policy applies to every action
         # this workflow uses, and only the cache line was ever checked.
@@ -353,6 +648,29 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertIn("lake exe cache get", workflow)
         self.assertNotIn("leanprover/lean-action@", workflow)
         self.assertIn("final serialized Lake checks remain the proof-authority check", workflow)
+
+    def test_pull_requests_never_save_the_lake_cache(self) -> None:
+        """A PR cache only its own PR can read must not evict main's warm cache."""
+        workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
+            encoding="utf-8"
+        )
+        start = workflow.index("- name: Save project Lean cache after the build")
+        save_step = workflow[start : workflow.index("\n      - ", start + 1)]
+        self.assertIn("uses: actions/cache/save@", save_step)
+        self.assertIn("github.event_name != 'pull_request'", save_step)
+        self.assertIn("github.ref == 'refs/heads/main'", save_step)
+        # The combined cache action also saves in its post step. Guarding
+        # only the explicit save left PRs writing multi-gigabyte caches.
+        self.assertNotRegex(workflow, r"uses: actions/cache@")
+        restore = workflow.split("- name: Restore project Lean cache", 1)[1]
+        restore = restore.split("\n      - ", 1)[0]
+        self.assertIn("uses: actions/cache/restore@", restore)
+        self.assertEqual(workflow.count("uses: actions/cache/save@"), 1)
+        warm = (fast.ROOT / ".github" / "workflows" / "lean-cache-warm.yml").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("branches:\n      - main", warm)
+        self.assertIn("actions/cache", warm)
 
     def test_ci_installs_lean_from_checksum_verified_primary_source(self) -> None:
         workflow = (fast.ROOT / ".github" / "workflows" / "lean.yml").read_text(
@@ -612,7 +930,7 @@ class LeanFastBuildTests(unittest.TestCase):
 
         self.assertLessEqual(
             COVERAGE_EXCLUDED_AUXILIARY_ROOTS,
-            lane,
+            set(auxiliary),
             "a coverage-build exclusion is no longer an auxiliary root; drop it",
         )
         self.assertEqual(
@@ -634,6 +952,41 @@ class LeanFastBuildTests(unittest.TestCase):
             ),
             [],
         )
+
+    def test_every_auxiliary_root_is_compiled_or_excluded(self) -> None:
+        """Every auxiliary root is compiled by CI or excluded with a reason.
+
+        The declaration atlas lists every module of the Lean tree, compiled or
+        not, so atlas presence never shows that CI built a module. The research
+        record and the relation registry therefore require a compiled target:
+        `research_record.compiled_modules` is what the default build roots and
+        the coverage-build targets reach. An auxiliary root outside that set
+        must be a deliberate exclusion, never a silent gap.
+        """
+
+        import research_record
+
+        compiled = research_record.compiled_modules(fast.ROOT)
+        self.assertIsNotNone(compiled, "the compiled module set could not be read")
+        claims = json.loads(
+            (fast.ROOT / "docs" / "claims.json").read_text(encoding="utf-8")
+        )
+        auxiliary = set(
+            claims["machine_readable_paper"]["module_graph"]["auxiliary_roots"]
+        )
+        self.assertEqual(
+            sorted(auxiliary - compiled - COVERAGE_EXCLUDED_AUXILIARY_ROOTS),
+            [],
+            "auxiliary roots no CI job compiles: add each to the coverage-build "
+            f"targets in {COVERAGE_WORKFLOW} when a paper, claim or the ledger "
+            "cites it, otherwise to COVERAGE_EXCLUDED_AUXILIARY_ROOTS with a reason",
+        )
+        self.assertEqual(
+            sorted(COVERAGE_EXCLUDED_AUXILIARY_ROOTS & compiled),
+            [],
+            "an excluded auxiliary root is compiled; drop its exclusion",
+        )
+        self.assertLessEqual(COVERAGE_EXCLUDED_AUXILIARY_ROOTS, auxiliary)
 
     def test_coverage_build_is_one_owner_outside_the_supported_roots(self) -> None:
         workflow = read_workflow(COVERAGE_WORKFLOW)
@@ -816,8 +1169,9 @@ class LeanFastBuildTests(unittest.TestCase):
         self.assertIn("\n  pull_request:\n", triggers)
         self.assertIn("\n  workflow_dispatch:\n", triggers)
         self.assertNotIn("\n  push:\n", triggers)
-        self.assertIn("Main is protected with both jobs", workflow)
-        self.assertIn("If branch protection is relaxed, restore push validation", workflow)
+        # Validate the release entry itself; comment wording is not a gate.
+        import check_ci_release
+        self.assertEqual(check_ci_release.workflow_errors(workflow), [])
 
     def test_paper_only_skip_cannot_stand_in_for_unverified_layout_inputs(self):
         """GitHub reports a skipped required Lean job as success.

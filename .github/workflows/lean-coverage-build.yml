@@ -154,6 +154,10 @@ jobs:
           set -euo pipefail
           lake exe cache get
 
+      # The last targets are the argument frontier: modules that
+      # scripts/build_argument_frontier.py writes (and keeps listed here) to rebuild,
+      # as kernel-checked theorems, the argument graph's findings about the
+      # theorems the papers cite. They import coverage modules.
       # One wrapper call owns the coverage build. It prebuilds stale modules
       # in batches of two, then runs the serialized Lake check on each target,
       # which remains the proof-authority check. No target is a supported root
@@ -170,12 +174,12 @@ jobs:
           ErdosProblems.Erdos1049.PaperR20.RecoveredProofAudit
           ErdosProblems.Erdos243.PaperCompleteR20.CubicArithmeticAudit
           ErdosProblems.Erdos243.PaperCompleteR20.CubicRecoveryAudit
+          ErdosProblems.Erdos243.PaperCompleteR21.NonintegralRegularRate
           ErdosProblems.Erdos243.PaperCorrespondenceAudit
           ErdosProblems.Erdos249.PaperCompleteR20.CyclotomicRecoveryAudit
           ErdosProblems.Erdos249.PaperCompleteR20.DenominatorRecoveryAudit
           ErdosProblems.Erdos249.PaperCompleteR20.FiniteCarryCorrespondence
           ErdosProblems.Erdos249.PaperCompleteR20.FiniteCertificateBatch
-          ErdosProblems.Erdos249.PaperCompleteR20.FinitePrefixCountermodelEndpoint
           ErdosProblems.Erdos249.PaperCompleteR20.GridArcRealInterface
           ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence
           ErdosProblems.Erdos249.PaperCompleteR20.MobiusSquareReduction
@@ -214,6 +218,24 @@ jobs:
           ErdosProblems.Erdos269.PaperCorrespondenceAudit
           ErdosProblems.Erdos68.PaperCorrespondenceAudit
           ErdosProblems.Erdos68.PaperCorrespondenceAuditAdditive
+          ErdosProblems.ArgumentGraph.Derived.Erdos1041
+          ErdosProblems.ArgumentGraph.Derived.Erdos1049
+          ErdosProblems.ArgumentGraph.Derived.Erdos243
+          ErdosProblems.ArgumentGraph.Derived.Erdos249
+          ErdosProblems.ArgumentGraph.Derived.Erdos251
+          ErdosProblems.ArgumentGraph.Derived.Erdos257
+          ErdosProblems.ArgumentGraph.Derived.Erdos269
+          ErdosProblems.ArgumentGraph.Derived.Erdos68
+          ErdosProblems.ArgumentGraph.Results.Erdos1041
+          ErdosProblems.ArgumentGraph.Results.Erdos243
+          ErdosProblems.ArgumentGraph.Results.Erdos249
+          ErdosProblems.ArgumentGraph.Results.Erdos249Route
+          ErdosProblems.ArgumentGraph.Results.Erdos249Endpoint
+          ErdosProblems.ArgumentGraph.Results.Erdos249Residual
+          ErdosProblems.ArgumentGraph.Results.Erdos249Abduction
+          ErdosProblems.ArgumentGraph.Results.Erdos251
+          ErdosProblems.ArgumentGraph.Contracts
+          ErdosProblems.ArgumentGraph.Results.RelationCertificates
 
       # Saved even after a failed build: Lake's content traces decide what is
       # current, so a partial tree only shortens the next run.

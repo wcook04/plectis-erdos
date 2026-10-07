@@ -1,0 +1,31 @@
+theorem sylvesterNext_eventually_of_summable_negativeRelativeMass_scalar
+    (a D : ℕ → ℤ) (C : ℕ → ℕ)
+    (hD : ∀ n, D (n + 1) = nextDenState (a n) (D n))
+    (hC :
+      ∀ n, (C (n + 1) : ℤ) =
+        nextTailState (a n) (D n) (C n))
+    (hCpos : ∀ n, 0 < C n)
+    (hstep :
+      ∀ n, (C (n + 1) : ℤ) =
+        (C n : ℤ) - centeredState (a n) (D n) (C n))
+    (hsum :
+      Summable
+        (negativeRelativeMass C
+          (fun n ↦ centeredState (a n) (D n) (C n)))) :
+    ∃ N, ∀ n, N ≤ n →
+      a (n + 1) = sylvesterNext (a n) := by
+  have hzero :
+      ∃ N, ∀ n, N ≤ n →
+        centeredState (a n) (D n) (C n) = 0 :=
+    eventually_zero_of_summable_negativeRelativeMass_scalar
+      C (fun n ↦ centeredState (a n) (D n) (C n))
+      hCpos hstep hsum
+  apply sylvesterNext_eventually_of_centered_zero
+    a D (fun n ↦ (C n : ℤ)) hD
+  · intro n
+    exact hC n
+  · exact hzero
+  · refine ⟨0, fun n _hn ↦ ?_⟩
+    exact_mod_cast (Nat.ne_of_gt (hCpos (n + 1)))
+
+end ErdosProblems.Erdos243

@@ -51,6 +51,11 @@ working are as welcome.
 
 ## Sending work back
 
+For a short exercise using a theorem from another project, try
+[When does a product meet its error bound?](https://github.com/wcook04/plectis-erdos/blob/main/docs/reading-edition/enclosure-product-use.md).
+It asks whether two polynomial approximations guarantee a requested product
+error, with an exact arithmetic checker and links to the original theorem.
+
 You do not need a clone to contribute. Send a mathematical account through the
 [research-progress form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
 or by [email](https://wcook04.github.io/plectis/#contact), and say which

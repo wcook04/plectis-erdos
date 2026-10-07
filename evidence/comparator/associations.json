@@ -1487,6 +1487,42 @@
    "solution": "Solutions.PalomarCorpus.E1041.PaperStatementsB.two_nearest_roots_of_polynomial_critical",
    "solution_path": "Solutions/PalomarCorpus/E1041_05/PaperStatementsB.lean"
   },
+  "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.circle_slice_packing": {
+   "entry": "E1041_01",
+   "challenge": "PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing",
+   "solution": "Solutions.PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing",
+   "solution_path": "Solutions/PalomarCorpus/E1041_01/PaperStatementsAC.lean"
+  },
+  "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.circle_slice_packing_abstract": {
+   "entry": "E1041_01",
+   "challenge": "PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing_abstract",
+   "solution": "Solutions.PalomarCorpus.E1041.PaperStatementsAC.circle_slice_packing_abstract",
+   "solution_path": "Solutions/PalomarCorpus/E1041_01/PaperStatementsAC.lean"
+  },
+  "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.cosh_dist_polar": {
+   "entry": "E1041_01",
+   "challenge": "PalomarCorpus.E1041.PaperStatementsC.cosh_dist_polar",
+   "solution": "Solutions.PalomarCorpus.E1041.PaperStatementsC.cosh_dist_polar",
+   "solution_path": "Solutions/PalomarCorpus/E1041_01/PaperStatementsC.lean"
+  },
+  "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.dist_polar_I": {
+   "entry": "E1041_01",
+   "challenge": "PalomarCorpus.E1041.PaperStatementsC.dist_polar_I",
+   "solution": "Solutions.PalomarCorpus.E1041.PaperStatementsC.dist_polar_I",
+   "solution_path": "Solutions/PalomarCorpus/E1041_01/PaperStatementsC.lean"
+  },
+  "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.exists_polar": {
+   "entry": "E1041_01",
+   "challenge": "PalomarCorpus.E1041.PaperStatementsC.exists_polar",
+   "solution": "Solutions.PalomarCorpus.E1041.PaperStatementsC.exists_polar",
+   "solution_path": "Solutions/PalomarCorpus/E1041_01/PaperStatementsC.lean"
+  },
+  "ErdosProblems.Erdos1041.PaperCompleteR21.Hyperbolic.polar_zero_zero": {
+   "entry": "E1041_01",
+   "challenge": "PalomarCorpus.E1041.PaperStatementsC.polar_zero_zero",
+   "solution": "Solutions.PalomarCorpus.E1041.PaperStatementsC.polar_zero_zero",
+   "solution_path": "Solutions/PalomarCorpus/E1041_01/PaperStatementsC.lean"
+  },
   "ErdosProblems.Erdos1041.PaperCompleteR21.Lobe.one_root_gamma_false_unconditional": {
    "entry": "E1041_05",
    "challenge": "PalomarCorpus.E1041.PaperStructuresAD.one_root_gamma_false_unconditional",

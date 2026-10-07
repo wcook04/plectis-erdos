@@ -1,0 +1,1953 @@
+{
+  "schema": "paper-editorial-integration/1",
+  "base": "9ceb834b267f01e23b7f7130244c557082d61037",
+  "round": 7,
+  "boundary": "Accepted equivalent exposition restatements of existing mathematics; complete label/source accounting; no new Lean build, Comparator replay or human peer review. All689 row identities/classes conserved.",
+  "reviewed": [
+    {
+      "row": "erdos-243-reciprocal-tail-rigidity#res:update",
+      "old_statement_sha256": "sha256:db7f442fa3cea3bb2a1c6efd8a1cefd3cb37f03faf3f880d7e463301afd2a5bb",
+      "new_statement_sha256": "sha256:b16eb7647cc4a7d1963ded65f3b67bd0dd547a45e5dfe1186b1502157f73751c",
+      "old_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex:500",
+      "new_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex:495",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR7.error_identities",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E243a"
+        ],
+        "run_ids": [
+          "35643815458"
+        ],
+        "corpus_commits": [
+          "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "927eaba0da831235a316f58add2e0fc1b63ea9c372e2fc993f12402c1c4adab4"
+    },
+    {
+      "row": "erdos-243-reciprocal-tail-rigidity#res:absorb",
+      "old_statement_sha256": "sha256:2d9bfe04bdba4040687b7c183032cf184b74e92ca187c701a796bbfdb420fdce",
+      "new_statement_sha256": "sha256:50fff80183a6440757800aca1fbc8fe4fea0ea266d9ae1c77fdad43013eeafa9",
+      "old_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex:524",
+      "new_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex:519",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR7.absorption_and_descent",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E243a"
+        ],
+        "run_ids": [
+          "35643815458"
+        ],
+        "corpus_commits": [
+          "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "927eaba0da831235a316f58add2e0fc1b63ea9c372e2fc993f12402c1c4adab4"
+    },
+    {
+      "row": "erdos-243-reciprocal-tail-rigidity#res:step",
+      "old_statement_sha256": "sha256:ef3731e6d3c3f722a80a2058ed247bb363fe46e8ae0074176ecb93d41b0c9b23",
+      "new_statement_sha256": "sha256:f6d9cc1baa2a93bdd5624b89cbe61b1d957e1271d56dc9b91f93b0f5e633c5f4",
+      "old_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex:537",
+      "new_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex:534",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos243.sylvesterNext_eq_of_centered_zero",
+            "file": "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR7.natural_sylvester_of_eventual_zero",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Arithmetic.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E243a"
+        ],
+        "run_ids": [
+          "35643815458"
+        ],
+        "corpus_commits": [
+          "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "927eaba0da831235a316f58add2e0fc1b63ea9c372e2fc993f12402c1c4adab4"
+    },
+    {
+      "row": "erdos-243-reciprocal-tail-rigidity#res:reduced",
+      "old_statement_sha256": "sha256:8b2895ae4f4d22398ef9b5f021bc1c2399d609895561f8bb47a0da3f62691c18",
+      "new_statement_sha256": "sha256:0e6abd41ba30eec77ea0dae9bb3fdc3af4af74df2989a80978c47289ff08e0b6",
+      "old_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex:250",
+      "new_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex:241",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR7.persistent_coprimality",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E243a"
+        ],
+        "run_ids": [
+          "35643815458"
+        ],
+        "corpus_commits": [
+          "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "927eaba0da831235a316f58add2e0fc1b63ea9c372e2fc993f12402c1c4adab4"
+    },
+    {
+      "row": "erdos-243-reciprocal-tail-rigidity#res:gcdstab",
+      "old_statement_sha256": "sha256:7d8d818643754c149784b723bbe85c039a09ebbd1859c1681487d8642bf3a20f",
+      "new_statement_sha256": "sha256:1e9598d2b4965e4b4dde04a1d197c705bf1fb28e4566015f2c06df6841279fa4",
+      "old_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex:553",
+      "new_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex:552",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR7.gcd_stabilises_and_reduces",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E243a"
+        ],
+        "run_ids": [
+          "35643815458"
+        ],
+        "corpus_commits": [
+          "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "927eaba0da831235a316f58add2e0fc1b63ea9c372e2fc993f12402c1c4adab4"
+    },
+    {
+      "row": "erdos-243-reciprocal-tail-rigidity#res:residue",
+      "old_statement_sha256": "sha256:48800f10099f61fcaf80d98437d10a9fbef5e4ce66cd707f54f0247c85ab478d",
+      "new_statement_sha256": "sha256:934f21cf14213209d4137c1ed1db4e4474b5028b06db5904b3ad770f47b718f1",
+      "old_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex:1129",
+      "new_source": "paper/243/erdos-243-reciprocal-tail-rigidity.tex:1131",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos243.forcedSurvives_iff_of_modEq_factorial",
+            "file": "lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E243k"
+        ],
+        "run_ids": [
+          "35674034595"
+        ],
+        "corpus_commits": [
+          "253a436b69603a5662696127016559ddcfd1db42"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "927eaba0da831235a316f58add2e0fc1b63ea9c372e2fc993f12402c1c4adab4"
+    },
+    {
+      "row": "erdos-269-three-prime-running-lcm#res:lcm",
+      "old_statement_sha256": "sha256:2e9bee1f5b0e79f729a9d6c6840ccff1af08db8c51183c960e2c0029d1790d4c",
+      "new_statement_sha256": "sha256:06d0d4406187f72abd6bbc927229e39ee54aaeed5ad0f3b8b3c84fee72f02293",
+      "old_source": "paper/269/erdos-269-three-prime-running-lcm.tex:683",
+      "new_source": "paper/269/erdos-269-three-prime-running-lcm.tex:687",
+      "lean": {
+        "status": "exact_or_stronger",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos269.PaperCompleteR20.running_lcm_real_cutoff_exact",
+            "file": "lean/ErdosProblems/Erdos269/PaperCompleteR20/RealCutoffs.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E269d"
+        ],
+        "run_ids": [
+          "35643815458"
+        ],
+        "corpus_commits": [
+          "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "16d869db33089f57fe15f1a36d44b21fb7b1b0ccd62a3b36560e3216f57d7c00"
+    },
+    {
+      "row": "erdos-269-three-prime-running-lcm#res:actual-orbit",
+      "old_statement_sha256": "sha256:aecf1ea4e5589051bd550b21f6674a7629fda3bb31b457358c0968a0246a2c15",
+      "new_statement_sha256": "sha256:af8dec366a410dfd846e935656f8bd1dee5efaa9c6427cf4b793bb6470efd167",
+      "old_source": "paper/269/erdos-269-three-prime-running-lcm.tex:386",
+      "new_source": "paper/269/erdos-269-three-prime-running-lcm.tex:392",
+      "lean": {
+        "status": "exact_or_stronger",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos269.PaperR7.short_actual_orbit",
+            "file": "lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E269c"
+        ],
+        "run_ids": [
+          "35643815458"
+        ],
+        "corpus_commits": [
+          "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "16d869db33089f57fe15f1a36d44b21fb7b1b0ccd62a3b36560e3216f57d7c00"
+    },
+    {
+      "row": "erdos-1041-lemniscate-newton-flow#res:sextic-spoke",
+      "old_statement_sha256": "sha256:5b6aa4a5512456b166634d27e59d2e867ee0a6601e1c005b5ee8961e4158f7b1",
+      "new_statement_sha256": "sha256:46817882179c89a3abd81ce96e30fff87c525b617e5ddb020a41cbb5a01b392f",
+      "old_source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:449",
+      "new_source": "paper/1041/erdos-1041-lemniscate-newton-flow.tex:454",
+      "lean": {
+        "status": "exact_or_stronger",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR20.sextic_spoke_counterexample_whole",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR20/SexticSpokeWhole.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E1041r"
+        ],
+        "run_ids": [
+          "35643815458"
+        ],
+        "corpus_commits": [
+          "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "4038e059452db6c79c08d32814f59e153db7c9cdebb50c12f0a699da564d57ab"
+    },
+    {
+      "row": "erdos68-factorial-reasoning-surface#long68:res:moment-ideal",
+      "old_statement_sha256": "sha256:9dc836a97850124c7548fdce04e05578376be9e1ce743434eaf19259c9ee658c",
+      "new_statement_sha256": "sha256:e8bc2826d4870a8b0cb2c928d8a1b25d0b2d0e6fceff7043591679cbb82dc3f3",
+      "old_source": "paper/reasoning-parts/erdos68/core.tex:289",
+      "new_source": "paper/reasoning-parts/erdos68/core.tex:290",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos68.PaperComplete.exact_moment_ideal_with_primitive_attainment",
+            "file": "lean/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos68.PaperComplete.minimumMoment_independent_prime",
+            "file": "lean/ErdosProblems/Erdos68/PaperCompleteMomentIdeal.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E68"
+        ],
+        "run_ids": [
+          "35544127144"
+        ],
+        "corpus_commits": [
+          "03a9e42b132a7d1e31344ece6f817e6ecaf0a549"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "7bc7bd327cdcf915506754ae9b2cad82514445d7650e7d421da279d0aa083431"
+    },
+    {
+      "row": "erdos68-factorial-reasoning-surface#long68:res:residual-transparency",
+      "old_statement_sha256": "sha256:787f10ab0534d5003e04ce4749e762755c5431585099f7748d4f7d3762824c61",
+      "new_statement_sha256": "sha256:e241f88673321c0932945a0fe28eadeab1ae86cfdf783836d270e0a4405ce03e",
+      "old_source": "paper/reasoning-parts/erdos68/core.tex:484",
+      "new_source": "paper/reasoning-parts/erdos68/core.tex:485",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos68.PaperComplete.residual_transparency",
+            "file": "lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos68.PaperComplete.summable_fullResidual",
+            "file": "lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos68.PaperComplete.zero_moment_residual_integral",
+            "file": "lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos68.PaperComplete.equal_moment_residual_integer_difference",
+            "file": "lean/ErdosProblems/Erdos68/PaperCompleteResidualIdentity.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E68"
+        ],
+        "run_ids": [
+          "35544127144"
+        ],
+        "corpus_commits": [
+          "03a9e42b132a7d1e31344ece6f817e6ecaf0a549"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "7bc7bd327cdcf915506754ae9b2cad82514445d7650e7d421da279d0aa083431"
+    },
+    {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:modseven",
+      "old_statement_sha256": "sha256:dc9efed5e426a662a033d068f53f726b4e6d0a32e929fa6b7a412cef8c643253",
+      "new_statement_sha256": "sha256:9a4774f4d146e49b151737da6ff722198334a273ac1917d00d4a73841f645b4f",
+      "old_source": "paper/reasoning-parts/erdos243/core.tex:514",
+      "new_source": "paper/reasoning-parts/erdos243/core.tex:515",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR20.plus_one_forbidden_word",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR20/TwoForbiddenWords.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR20.minus_one_forbidden_word",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR20/TwoForbiddenWords.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E243_01"
+        ],
+        "run_ids": [
+          "35871539470"
+        ],
+        "corpus_commits": [
+          "cd67489324819651fb9c77403091d8615f47efd9"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "927eaba0da831235a316f58add2e0fc1b63ea9c372e2fc993f12402c1c4adab4"
+    },
+    {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:update",
+      "old_statement_sha256": "sha256:e3e8eccbf357a4cb3743f691ed49d9872c4f184b9bf44d5f4da9f5f434a80abf",
+      "new_statement_sha256": "sha256:34a7d2fbd2b74f7b43f3f5864d22d43af80377056e521e687e0bda9cdd1066bc",
+      "old_source": "paper/reasoning-parts/erdos243/core.tex:1037",
+      "new_source": "paper/reasoning-parts/erdos243/core.tex:1041",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos243.nextTailState_eq_sub_centered",
+            "file": "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E243a"
+        ],
+        "run_ids": [
+          "35643815458"
+        ],
+        "corpus_commits": [
+          "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "927eaba0da831235a316f58add2e0fc1b63ea9c372e2fc993f12402c1c4adab4"
+    },
+    {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:absorb",
+      "old_statement_sha256": "sha256:30163dc3626e6af1c2f33f6f86c077df61e7f156f3a5939c1ab857cac40f731f",
+      "new_statement_sha256": "sha256:850a6dc49045fa660439cfee54838e47ff6e7a12ee09c34c90fbfe18a846efae",
+      "old_source": "paper/reasoning-parts/erdos243/core.tex:1369",
+      "new_source": "paper/reasoning-parts/erdos243/core.tex:1373",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos243.centeredState_zero_absorbing",
+            "file": "lean/ErdosProblems/Erdos243/ReciprocalTailRigidity.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E243a"
+        ],
+        "run_ids": [
+          "35643815458"
+        ],
+        "corpus_commits": [
+          "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "927eaba0da831235a316f58add2e0fc1b63ea9c372e2fc993f12402c1c4adab4"
+    },
+    {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:unitrecord",
+      "old_statement_sha256": "sha256:0ad7f7ceddeddff08e9bca139dc0d11a35cc80afdc8b2df213f0d222699e1d03",
+      "new_statement_sha256": "sha256:b167c2dab3bfbbd91fa9ee56251faf016bb8361027c60b1fb459ec2a69d1e271",
+      "old_source": "paper/reasoning-parts/erdos243/core.tex:2088",
+      "new_source": "paper/reasoning-parts/erdos243/core.tex:2088",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.unitRecordIncrement_sylvesterNext",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.StandingOrbit.unitRecordIncrement_criterion",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ReducedDenominatorPrimePowers.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E243u",
+          "PalomarCorpus/E243w"
+        ],
+        "run_ids": [
+          "35674034595",
+          "35682858662"
+        ],
+        "corpus_commits": [
+          "253a436b69603a5662696127016559ddcfd1db42",
+          "923460880a52704e64faea51eae656e2acbaff95"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "927eaba0da831235a316f58add2e0fc1b63ea9c372e2fc993f12402c1c4adab4"
+    },
+    {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:slownegative",
+      "old_statement_sha256": "sha256:4b0afc5efb3f10d17eea9ff81cc290b8c186eb2f1b3d1b47b74192300a91a78d",
+      "new_statement_sha256": "sha256:e20a24a9bba5c6a66eb5f98d929f81763d66208beb4624c25fe3789cd73bc547",
+      "old_source": "paper/reasoning-parts/erdos243/core.tex:2228",
+      "new_source": "paper/reasoning-parts/erdos243/core.tex:2228",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.slowNegative_eventually_zero_and_sylvesterNext_unconditional",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.exactOrbit_recordTheta_gt_one",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.exactOrbit_one_le_recordTheta",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.exactOrbit_unbounded_of_error_not_eventually_zero",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.tail_multiplier_quadratic_lower",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.tail_binaryTower_lower",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.exists_multiplier_ge_four",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ExactOrbitRecordDichotomy.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E243_06",
+          "PalomarCorpus/E243aa",
+          "PalomarCorpus/E243ab"
+        ],
+        "run_ids": [
+          "35682858662",
+          "35840809568"
+        ],
+        "corpus_commits": [
+          "923460880a52704e64faea51eae656e2acbaff95",
+          "e1d2e25af661687c49d83ec2531ae368b662ac3a"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "927eaba0da831235a316f58add2e0fc1b63ea9c372e2fc993f12402c1c4adab4"
+    },
+    {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:classicalhalfspace",
+      "old_statement_sha256": "sha256:5aef5a3b567c7102d25c768088b42f11a54a2789a84981c7d8f6b01a04f10204",
+      "new_statement_sha256": "sha256:3aa3ea0b08d4dd2c787afd4d62f328ff3dd91657eee205fd0d9f011714528bcd",
+      "old_source": "paper/reasoning-parts/erdos243/core.tex:2446",
+      "new_source": "paper/reasoning-parts/erdos243/core.tex:2446",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.overlapDebt_dvd_gcd",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.canonicalError_div_overlapDebt",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.growthDefect_eq_neg_relativeError_add_shiftedCorrection",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.canonical_growthDefect_identity",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.canonicalCorrection_pos_and_lt_three_div",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.shiftedCorrectionTerm_pos_and_lt_three_div",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.erdosStraus_lcm_includes_digit_not_denominator",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.erdosStrausQuantity_ne_productDefect_ne_lcmShift",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.erdosStrausQuantity_sign",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.sylvesterTail_shiftedCorrection",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.overlapDebt_mul_lcmClearedNumerator",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.digitProductScale_eq_canonicalDenominator",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ClassicalHalfspaceSigns.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E243e",
+          "PalomarCorpus/E243l",
+          "PalomarCorpus/E243q"
+        ],
+        "run_ids": [
+          "35643815458",
+          "35674034595"
+        ],
+        "corpus_commits": [
+          "253a436b69603a5662696127016559ddcfd1db42",
+          "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "927eaba0da831235a316f58add2e0fc1b63ea9c372e2fc993f12402c1c4adab4"
+    },
+    {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:constant",
+      "old_statement_sha256": "sha256:e3a14e23ef38cc2b7cdba019e4dc94f70bfa936b347b52256a9601ca689f0cf6",
+      "new_statement_sha256": "sha256:40fd80be06ffd653f086d586a5680c10cd1e0328135198a612a30acc6e7c3c4a",
+      "old_source": "paper/reasoning-parts/erdos243/core.tex:2652",
+      "new_source": "paper/reasoning-parts/erdos243/core.tex:2652",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.no_constantNegative_shapeEquation",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/NegativeMagnitudeExclusions.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.no_eventuallyConstantNegative_shapeEquation",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/NegativeMagnitudeExclusions.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E243a"
+        ],
+        "run_ids": [
+          "35643815458"
+        ],
+        "corpus_commits": [
+          "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "927eaba0da831235a316f58add2e0fc1b63ea9c372e2fc993f12402c1c4adab4"
+    },
+    {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:reduced",
+      "old_statement_sha256": "sha256:2fc6bec93cab19409edf6df00fec508886a4728aa2a88ca246951ed14d2b779a",
+      "new_statement_sha256": "sha256:152d15c590a706a844087dd1e6d234e54b163a1355396a601338695258c9d858",
+      "old_source": "paper/reasoning-parts/erdos243/core.tex:2930",
+      "new_source": "paper/reasoning-parts/erdos243/core.tex:2923",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR7.persistent_coprimality",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E243a"
+        ],
+        "run_ids": [
+          "35643815458"
+        ],
+        "corpus_commits": [
+          "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "927eaba0da831235a316f58add2e0fc1b63ea9c372e2fc993f12402c1c4adab4"
+    },
+    {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:gcdstab",
+      "old_statement_sha256": "sha256:0984c2754e667a41ac935c2b0745b90d9f3696a5fcc5e23f58ba75dd0596c4cd",
+      "new_statement_sha256": "sha256:0a751c11ab9cba01f7351518f4a266b3d178ceebc5a41a31ab23aa506bea945d",
+      "old_source": "paper/reasoning-parts/erdos243/core.tex:2976",
+      "new_source": "paper/reasoning-parts/erdos243/core.tex:2972",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR7.gcd_stabilises_and_reduces",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR7/Reduction.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E243a"
+        ],
+        "run_ids": [
+          "35643815458"
+        ],
+        "corpus_commits": [
+          "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "927eaba0da831235a316f58add2e0fc1b63ea9c372e2fc993f12402c1c4adab4"
+    },
+    {
+      "row": "erdos243-reciprocal-tail-reasoning-surface#long243:res:residue",
+      "old_statement_sha256": "sha256:64aad411421b1bd3f7ad791d5a6bd7a30363d1a7494f71815d444509843b0947",
+      "new_statement_sha256": "sha256:99a3446e26d55074f4eea45d8a98d7b11e43f72446d3a238e67c026a80ee41ef",
+      "old_source": "paper/reasoning-parts/erdos243/core.tex:3904",
+      "new_source": "paper/reasoning-parts/erdos243/core.tex:3900",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos243.PaperCompleteR21.forcedOrbit_survives_iff_of_factorial_modEq",
+            "file": "lean/ErdosProblems/Erdos243/PaperCompleteR21/ForcedOrbitResidueHorizon.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos243.forcedSurvives_iff_of_modEq_factorial",
+            "file": "lean/ErdosProblems/Erdos243/FiniteHorizonResidue.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E243k"
+        ],
+        "run_ids": [
+          "35674034595"
+        ],
+        "corpus_commits": [
+          "253a436b69603a5662696127016559ddcfd1db42"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "927eaba0da831235a316f58add2e0fc1b63ea9c372e2fc993f12402c1c4adab4"
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#prop:period-not-rank",
+      "old_statement_sha256": "sha256:24548ac2e3e20f2d30f1a78b2b9b210599ea1f5ea1796bfa4170d834b28470b6",
+      "new_statement_sha256": "sha256:1f83f52913d46d3ff09cc43d32edd0ddcdcef6b702df0acbc7dff5a9c0e23343",
+      "old_source": "paper/reasoning-parts/erdos249/a249_front.tex:282",
+      "new_source": "paper/reasoning-parts/erdos249/a249_front.tex:282",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "Erdos249257.not_irrational_totientSeries_implies_mod_period_and_unbounded_rank",
+            "file": "lean/Erdos249257/TotientTailCarryPeriod.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E249"
+        ],
+        "run_ids": [
+          "35544127144"
+        ],
+        "corpus_commits": [
+          "03a9e42b132a7d1e31344ece6f817e6ecaf0a549"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "520a7ddd77b76bc6d69f2a0d6f1bd27be261f01a8e5de11e5bea7e9b946fc927"
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#prop:parity",
+      "old_statement_sha256": "sha256:940424860de9575dafbeb955a0e8488a5acca2f15659e342eb9c1ee758c53b68",
+      "new_statement_sha256": "sha256:79d6812ba92cc031e759ada64c6cd497831d245f45a30673995f77ac1c0c1872",
+      "old_source": "paper/reasoning-parts/erdos249/a249_front.tex:320",
+      "new_source": "paper/reasoning-parts/erdos249/a249_front.tex:320",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "Erdos249257.TotientParityCoboundaryCountermodel.exists_totientParity_arbitrarilyManySeparatedCarry_rational_countermodel",
+            "file": "lean/Erdos249257/TotientParityCoboundaryCountermodel.lean"
+          },
+          {
+            "name": "Erdos249257.TotientParityCoboundaryCountermodel.tsum_parityCoboundaryWeight_eq_three_halves",
+            "file": "lean/Erdos249257/TotientParityCoboundaryCountermodel.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E249ag"
+        ],
+        "run_ids": [
+          "35624228171"
+        ],
+        "corpus_commits": [
+          "b6cd2121370ae1eb2024399a3947dfbb815a488a"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "520a7ddd77b76bc6d69f2a0d6f1bd27be261f01a8e5de11e5bea7e9b946fc927"
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#prop:b4",
+      "old_statement_sha256": "sha256:71230c52a1dfd138b77031ecf3d0bcc411b9a1574f807f9439e1b2f55fb0f660",
+      "new_statement_sha256": "sha256:4fec33d1316afde603c31f947a6466b982db748639d51be9e5e8a52a68609716",
+      "old_source": "paper/reasoning-parts/erdos249/a249_front.tex:712",
+      "new_source": "paper/reasoning-parts/erdos249/a249_front.tex:713",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.twoAdic_pulse_construction_never_certifies",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TwoAdicPulseCertificateFailure.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.twoAdic_pulse_defining_congruence",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TwoAdicPulseCertificateFailure.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.twoAdic_pulse_error_bound",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TwoAdicPulseCertificateFailure.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E249ak",
+          "PalomarCorpus/E249au"
+        ],
+        "run_ids": [
+          "35643815458",
+          "35674034595"
+        ],
+        "corpus_commits": [
+          "253a436b69603a5662696127016559ddcfd1db42",
+          "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "520a7ddd77b76bc6d69f2a0d6f1bd27be261f01a8e5de11e5bea7e9b946fc927"
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#catalogue:cert:d5",
+      "old_statement_sha256": "sha256:b7ce5d4851e84f93467995a00187394099333091519511aaeeb6ad4fada80a80",
+      "new_statement_sha256": "sha256:6b899786e16776ba7690d7498205f96503c34f88cfd8881136b3c7a7a268ecb9",
+      "old_source": "paper/reasoning-parts/erdos249/a249_front.tex:1810",
+      "new_source": "paper/reasoning-parts/erdos249/a249_front.tex:1811",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "Erdos249257.not_irrational_totientSeries_implies_unbounded_carryRank_unconditional",
+            "file": "lean/Erdos249257/TotientCarryKernelRigidity.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E249"
+        ],
+        "run_ids": [
+          "35544127144"
+        ],
+        "corpus_commits": [
+          "03a9e42b132a7d1e31344ece6f817e6ecaf0a549"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "520a7ddd77b76bc6d69f2a0d6f1bd27be261f01a8e5de11e5bea7e9b946fc927"
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#prop:TE-05",
+      "old_statement_sha256": "sha256:7539c44d123b29902a4ab924d3061ad208c6ae2d41e6189be073fb1c213d5082",
+      "new_statement_sha256": "sha256:7ecd15bd5b034b81917327cdf14e7f15b4c282e7a57f4e974382bb9e2771b9ec",
+      "old_source": "paper/reasoning-parts/erdos249/a249_front.tex:3009",
+      "new_source": "paper/reasoning-parts/erdos249/a249_front.tex:3010",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.te_chain_relations",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeStaircaseConditions.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E249ax"
+        ],
+        "run_ids": [
+          "35674034595"
+        ],
+        "corpus_commits": [
+          "253a436b69603a5662696127016559ddcfd1db42"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "520a7ddd77b76bc6d69f2a0d6f1bd27be261f01a8e5de11e5bea7e9b946fc927"
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#prop:D5cons",
+      "old_statement_sha256": "sha256:de9d972434b431893186e45084f8a71e48bb6ff4e321531b4d75b3b162edb85c",
+      "new_statement_sha256": "sha256:2a7dd6d8e2f74d944e312076bb5b04834dbbaaaba6e0b4094d701eb311278671",
+      "old_source": "paper/reasoning-parts/erdos249/a249_front.tex:3207",
+      "new_source": "paper/reasoning-parts/erdos249/a249_front.tex:3208",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.rank_floor_and_false_proposed_carryRank_ceiling",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/GenericCarryRankCeilingCounterexample.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.fiveQuarter_comparison_rational_with_carryRank_floor",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/GenericCarryRankCeilingCounterexample.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.no_generic_rationality_carryRank_ceiling",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/GenericCarryRankCeilingCounterexample.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E249bh",
+          "PalomarCorpus/E249e",
+          "PalomarCorpus/E249f"
+        ],
+        "run_ids": [
+          "35624228171",
+          "35674034595"
+        ],
+        "corpus_commits": [
+          "253a436b69603a5662696127016559ddcfd1db42",
+          "b6cd2121370ae1eb2024399a3947dfbb815a488a"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "520a7ddd77b76bc6d69f2a0d6f1bd27be261f01a8e5de11e5bea7e9b946fc927"
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#prop:CP-01-inv",
+      "old_statement_sha256": "sha256:2d51bb866a57e3ae43137b30018948116c669ea50c5bacf750ea807fe836bacc",
+      "new_statement_sha256": "sha256:eb599489b087916daa6fc8653ccfe08980637112120143c98208b3219982871b",
+      "old_source": "paper/reasoning-parts/erdos249/a249_front.tex:3442",
+      "new_source": "paper/reasoning-parts/erdos249/a249_front.tex:3443",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.carryShift_dvd_iff_tailDiff_integral",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TailCarryPeriodAndRankFloor.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.temperedCarry_eq_scaledTail_and_shift",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TailCarryPeriodAndRankFloor.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E249bc"
+        ],
+        "run_ids": [
+          "35624228171"
+        ],
+        "corpus_commits": [
+          "b6cd2121370ae1eb2024399a3947dfbb815a488a"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "520a7ddd77b76bc6d69f2a0d6f1bd27be261f01a8e5de11e5bea7e9b946fc927"
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#prop:CP-02",
+      "old_statement_sha256": "sha256:5d8d000c13ae14dc99854aa7618a4aa264175c6fe302ad47e90ea179049b24b9",
+      "new_statement_sha256": "sha256:3abfa66999264024ee9050b7919301906a0c4072e118f87dfe6761867bc269f4",
+      "old_source": "paper/reasoning-parts/erdos249/a249_front.tex:3454",
+      "new_source": "paper/reasoning-parts/erdos249/a249_front.tex:3457",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.rationality_forces_mod_period_and_unbounded_rank",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TailCarryPeriodAndRankFloor.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E249bh"
+        ],
+        "run_ids": [
+          "35624228171"
+        ],
+        "corpus_commits": [
+          "b6cd2121370ae1eb2024399a3947dfbb815a488a"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "520a7ddd77b76bc6d69f2a0d6f1bd27be261f01a8e5de11e5bea7e9b946fc927"
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#thm:hgap-real",
+      "old_statement_sha256": "sha256:175bce373e451faf696042c412298c3d678870e253756649ca09740ebe9fd61c",
+      "new_statement_sha256": "sha256:d97dbe2590e7e69a3b4f0cd73a3df37c4c1e0cda4dbd7bd4f197602d7b063318",
+      "old_source": "paper/reasoning-parts/erdos249/a249_front.tex:5518",
+      "new_source": "paper/reasoning-parts/erdos249/a249_front.tex:5522",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.windowFirstCos_unfolded",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/FirstHarmonicBlockCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.exists_certifiedKill_of_block_real_part_bound",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/FirstHarmonicBlockCriteria.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E249at",
+          "PalomarCorpus/E249au"
+        ],
+        "run_ids": [
+          "35674034595"
+        ],
+        "corpus_commits": [
+          "253a436b69603a5662696127016559ddcfd1db42"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "520a7ddd77b76bc6d69f2a0d6f1bd27be261f01a8e5de11e5bea7e9b946fc927"
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#thm:hgap-subset",
+      "old_statement_sha256": "sha256:99f824c2b15f801693e6196eadf691767ac48655f620a1781d0ec9f9389a500a",
+      "new_statement_sha256": "sha256:b92ee8ba14a97bf96bdd239bfc91ce41dfa7d13416fdbed5f84dac14677edbfc",
+      "old_source": "paper/reasoning-parts/erdos249/a249_front.tex:5527",
+      "new_source": "paper/reasoning-parts/erdos249/a249_front.tex:5531",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.exists_certifiedKill_of_subset_real_part_bound",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/FirstHarmonicBlockCriteria.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.block_real_part_bound_of_subset_form",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/FirstHarmonicBlockCriteria.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E249at"
+        ],
+        "run_ids": [
+          "35674034595"
+        ],
+        "corpus_commits": [
+          "253a436b69603a5662696127016559ddcfd1db42"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "520a7ddd77b76bc6d69f2a0d6f1bd27be261f01a8e5de11e5bea7e9b946fc927"
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#thm:proved-implications",
+      "old_statement_sha256": "sha256:3fc697f9e56cbb7fe46979076831d65e5af5ec1d9e5b51df737422673e336882",
+      "new_statement_sha256": "sha256:f6bf9ae3ac765a04878971b3e85d0dfbce909e35bf64805b515c66bb3d6deb58",
+      "old_source": "paper/reasoning-parts/erdos249/a249_front.tex:5645",
+      "new_source": "paper/reasoning-parts/erdos249/a249_front.tex:5649",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.topEdgeResidueGap_unfolded",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeCorridorAndSeparation.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.topEdgeResidueGap_forces_nonintegral",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeCorridorAndSeparation.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.topEdgeResidueGap_orbit_nonintegral",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeCorridorAndSeparation.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_topEdgeResidueGapSupply",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeCorridorAndSeparation.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E249au"
+        ],
+        "run_ids": [
+          "35674034595"
+        ],
+        "corpus_commits": [
+          "253a436b69603a5662696127016559ddcfd1db42"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "520a7ddd77b76bc6d69f2a0d6f1bd27be261f01a8e5de11e5bea7e9b946fc927"
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#prop:te-chain",
+      "old_statement_sha256": "sha256:c88c2aaa4dc5c3acbe58e7114980d1e79f70a2a588fe17ac7afe9aa242f21263",
+      "new_statement_sha256": "sha256:72e9c256a0a14f68997d592ed1bf8363b41ea5f13dae68caed682a7337f6aaec",
+      "old_source": "paper/reasoning-parts/erdos249/a249_front.tex:5667",
+      "new_source": "paper/reasoning-parts/erdos249/a249_front.tex:5671",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.paperTeChain_item_one_unfolded",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeChainPaperBand.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.teChain_item_two_unfolded",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeCorridorAndSeparation.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.teChain_item_three_unfolded",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeCorridorAndSeparation.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.teChain_item_four_unfolded",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeCorridorAndSeparation.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.teChain_item_five_unfolded",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeCorridorAndSeparation.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.paperTeChain_five_sufficient_for_irrationality",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeChainPaperBand.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.paperTeChain_first_four_imply_topEdgeSupply",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeChainPaperBand.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.paperTeChain_fifth_gives_nonintegrality",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeChainPaperBand.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.paperTeChain_relations",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeChainPaperBand.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.topEdgeResidueGap_or_of_paperAdjacentSuffixMidband",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeChainPaperBand.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.powerTwoActualLcmTopEdgeResidueGapSupply_of_paperAdjacentSuffixMidband",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeChainPaperBand.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.irrational_of_paperAdjacentSuffixMidbandSupply",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeChainPaperBand.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.paperAdjacentSuffixMidbandSupply_of_oddGuardTopEdgeHalfWordBand",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeChainPaperBand.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.paperAdjacentSuffixMidbandSupply_of_flexibleActualTopEdgeMagnitude",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeChainPaperBand.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.paperAdjacentSuffixMidbandSupply_of_adjacentSuffixMidband",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/TopEdgeChainPaperBand.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E249ax"
+        ],
+        "run_ids": [
+          "35674034595"
+        ],
+        "corpus_commits": [
+          "253a436b69603a5662696127016559ddcfd1db42"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "520a7ddd77b76bc6d69f2a0d6f1bd27be261f01a8e5de11e5bea7e9b946fc927"
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#prop:additional-hypothesis-totient-specific-rank",
+      "old_statement_sha256": "sha256:e9b8489af09a8a3870a3ccec6724b9735964801be3f4ac63521aa56cb1bdcd58",
+      "new_statement_sha256": "sha256:83ba97bf6900c8a3567e390c9cf5640228d9a1ea99afde5a6d1e449258c1ebb6",
+      "old_source": "paper/reasoning-parts/erdos249/a249_front.tex:6260",
+      "new_source": "paper/reasoning-parts/erdos249/a249_front.tex:6264",
+      "lean": {
+        "status": "exact_or_stronger",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.rationalControl_periodic_with_unbounded_carry_rank",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/DyadicSectionBasisAndRationalCarry.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.rationality_gives_mod_period_and_unbounded_rank",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/DyadicSectionBasisAndRationalCarry.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E249bh"
+        ],
+        "run_ids": [
+          "35624228171"
+        ],
+        "corpus_commits": [
+          "b6cd2121370ae1eb2024399a3947dfbb815a488a"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "520a7ddd77b76bc6d69f2a0d6f1bd27be261f01a8e5de11e5bea7e9b946fc927"
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#prop:rational-series-preserving-totient-parity",
+      "old_statement_sha256": "sha256:21902706928d5e705cfd896dd5c79639a5e6795698d5e1aabad22bb5bfa58054",
+      "new_statement_sha256": "sha256:a09330ffb8875658542b3b45a02949bf1c43e69c6311a5b756788bbc16ca3302",
+      "old_source": "paper/reasoning-parts/erdos249/a249_front.tex:6370",
+      "new_source": "paper/reasoning-parts/erdos249/a249_front.tex:6375",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "Erdos249257.TotientParityCoboundaryCountermodel.parityCoboundaryWeight_le_six",
+            "file": "lean/Erdos249257/TotientParityCoboundaryCountermodel.lean"
+          },
+          {
+            "name": "Erdos249257.TotientParityCoboundaryCountermodel.parityCoboundaryWeight_le_self",
+            "file": "lean/Erdos249257/TotientParityCoboundaryCountermodel.lean"
+          },
+          {
+            "name": "Erdos249257.TotientParityCoboundaryCountermodel.parityCoboundaryWeight_mod_two_eq_totient",
+            "file": "lean/Erdos249257/TotientParityCoboundaryCountermodel.lean"
+          },
+          {
+            "name": "Erdos249257.TotientParityCoboundaryCountermodel.exists_later_arbitrarily_many_separated_parityCoboundaryWeight_carry_pairs",
+            "file": "lean/Erdos249257/TotientParityCoboundaryCountermodel.lean"
+          },
+          {
+            "name": "Erdos249257.TotientParityCoboundaryCountermodel.tsum_parityCoboundaryWeight_eq_three_halves",
+            "file": "lean/Erdos249257/TotientParityCoboundaryCountermodel.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E249ag"
+        ],
+        "run_ids": [
+          "35624228171"
+        ],
+        "corpus_commits": [
+          "b6cd2121370ae1eb2024399a3947dfbb815a488a"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "520a7ddd77b76bc6d69f2a0d6f1bd27be261f01a8e5de11e5bea7e9b946fc927"
+    },
+    {
+      "row": "erdos249-totient-reasoning-surface#prop:badcof",
+      "old_statement_sha256": "sha256:a53494d8d4aafb40f3ed8074300fe97473debd49e2d4633d17612e633fbf041b",
+      "new_statement_sha256": "sha256:c34f3e11f092b21c4a36f66439bf3e8dc4b32331c4a71e59dcd73787c6c0486e",
+      "old_source": "paper/reasoning-parts/erdos249/a249_front.tex:7914",
+      "new_source": "paper/reasoning-parts/erdos249/a249_front.tex:7920",
+      "lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos249.PaperCompleteR21.prop_badcof",
+            "file": "lean/ErdosProblems/Erdos249/PaperCompleteR21/ExcludedCofactorEstimate.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos251.PaperR11.PrimeSource.PrimeNumberTheorem"
+        ],
+        "scope": "the prime number theorem"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "520a7ddd77b76bc6d69f2a0d6f1bd27be261f01a8e5de11e5bea7e9b946fc927"
+    },
+    {
+      "row": "erdos251-prime-gap-reasoning-surface#long251:res:one-tail-certificate",
+      "old_statement_sha256": "sha256:697ef2ab539787db257859c42f746ffb9669af5e5a3d0cac941ca8913a4e4669",
+      "new_statement_sha256": "sha256:01b42789d4feb58d2351cea8c940dc15c4c58d7ee490abc3d51f6fc1239f578a",
+      "old_source": "paper/reasoning-parts/erdos251/core.tex:1151",
+      "new_source": "paper/reasoning-parts/erdos251/core.tex:1151",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos251.PaperCompleteR20.one_tail_signed_certificate",
+            "file": "lean/ErdosProblems/Erdos251/PaperCompleteR20/FiniteSeparation.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E251b"
+        ],
+        "run_ids": [
+          "35605146048"
+        ],
+        "corpus_commits": [
+          "94f3747194777267461e689327dd20017e7ed744"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "b43d6f3ba18a56f180723ae8e5ad486eda4094698d0cfe38ef1cf229d08fc9dd"
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:fibre",
+      "old_statement_sha256": "sha256:eb88ccb350c9fec0e948b34df577c76eb4ff655f9b9df6610faed7ee4f1ab252",
+      "new_statement_sha256": "sha256:ba5924fe61033f492869534e98b260fa95ff5b3b06ec05fc95b5234c1ce3fe65",
+      "old_source": "paper/reasoning-parts/erdos269/core.tex:402",
+      "new_source": "paper/reasoning-parts/erdos269/core.tex:407",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos269.finiteSmoothKernelSum_groupedByHeight",
+            "file": "lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E269"
+        ],
+        "run_ids": [
+          "35544127144"
+        ],
+        "corpus_commits": [
+          "03a9e42b132a7d1e31344ece6f817e6ecaf0a549"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "16d869db33089f57fe15f1a36d44b21fb7b1b0ccd62a3b36560e3216f57d7c00"
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:actual-orbit",
+      "old_statement_sha256": "sha256:a265ddfb0ed4a80d51a44272644470725906ed3acc49d9a971c76684706048a7",
+      "new_statement_sha256": "sha256:4b74e6a8cb68ab4bf2cb19cf3dbf7b4f686badbb08e9e7debf517719b80ee3c8",
+      "old_source": "paper/reasoning-parts/erdos269/core.tex:2019",
+      "new_source": "paper/reasoning-parts/erdos269/core.tex:2024",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos269.PaperR7.long_actual_orbit",
+            "file": "lean/ErdosProblems/Erdos269/PaperR7SeriesIdentification.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E269c"
+        ],
+        "run_ids": [
+          "35643815458"
+        ],
+        "corpus_commits": [
+          "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "16d869db33089f57fe15f1a36d44b21fb7b1b0ccd62a3b36560e3216f57d7c00"
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:literal-triangle",
+      "old_statement_sha256": "sha256:d7d665ad928e8f07ff5ced35524c6357b39fa749fcc86c5b435c54041245ac69",
+      "new_statement_sha256": "sha256:e7538b28dab9634a325e50c59fe5bd5ea825069436b271f07abca857e2337559",
+      "old_source": "paper/reasoning-parts/erdos269/core.tex:2065",
+      "new_source": "paper/reasoning-parts/erdos269/core.tex:2070",
+      "lean": {
+        "status": "exact_or_stronger",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos269.PaperCompleteR20.literal_triangle_whole",
+            "file": "lean/ErdosProblems/Erdos269/PaperCompleteR20/LiteralTriangleReal.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E269a"
+        ],
+        "run_ids": [
+          "35643815458"
+        ],
+        "corpus_commits": [
+          "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "16d869db33089f57fe15f1a36d44b21fb7b1b0ccd62a3b36560e3216f57d7c00"
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:all-scale-lattice",
+      "old_statement_sha256": "sha256:22a75f92650487115dbfeeda90e9f2bbc6ef433347207815ca5f0041fb365e9e",
+      "new_statement_sha256": "sha256:ba0b2f8cbda89ba3ffcce9badedd0121ebd79471cab38b8cea80b45e759dbbb9",
+      "old_source": "paper/reasoning-parts/erdos269/core.tex:2255",
+      "new_source": "paper/reasoning-parts/erdos269/core.tex:2260",
+      "lean": {
+        "status": "exact_or_stronger",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos269.PaperCompleteR20.long_all_scale_lattice_exact",
+            "file": "lean/ErdosProblems/Erdos269/PaperCompleteR20/BoundedLatticeCollision.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E269c"
+        ],
+        "run_ids": [
+          "35643815458"
+        ],
+        "corpus_commits": [
+          "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "16d869db33089f57fe15f1a36d44b21fb7b1b0ccd62a3b36560e3216f57d7c00"
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:res:no-bounded-length",
+      "old_statement_sha256": "sha256:145b6701f167bc40c8699b8845c0d60b49a632b9be0537338be8ff3d10bc66b1",
+      "new_statement_sha256": "sha256:0193e544d917ed5f11a004cb74f49b44d075b9230b94471820ee48e97b80e45b",
+      "old_source": "paper/reasoning-parts/erdos269/core.tex:2822",
+      "new_source": "paper/reasoning-parts/erdos269/core.tex:2825",
+      "lean": {
+        "status": "exact_or_stronger",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos269.PaperR7.long_no_bounded_length",
+            "file": "lean/ErdosProblems/Erdos269/PaperR7WindowResults.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E269g"
+        ],
+        "run_ids": [
+          "35674034595"
+        ],
+        "corpus_commits": [
+          "253a436b69603a5662696127016559ddcfd1db42"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "16d869db33089f57fe15f1a36d44b21fb7b1b0ccd62a3b36560e3216f57d7c00"
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:long:denominator-reduction",
+      "old_statement_sha256": "sha256:2afd80abd16d91cfc69a75bdff6e264e3f65ac3ca00358f51c6e67c8e033ba07",
+      "new_statement_sha256": "sha256:d134f581cf5a9b58d4bc90cbcd37d9870218b2e178bc6af9ecdd2bba529cc54d",
+      "old_source": "paper/reasoning-parts/erdos269/core.tex:3846",
+      "new_source": "paper/reasoning-parts/erdos269/core.tex:3847",
+      "lean": {
+        "status": "exact_or_stronger",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos269.PaperCompleteR20.conditional_denominator_reduction_real_bound",
+            "file": "lean/ErdosProblems/Erdos269/PaperCompleteR20/RealBoundDenominatorReduction.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E269g"
+        ],
+        "run_ids": [
+          "35674034595"
+        ],
+        "corpus_commits": [
+          "253a436b69603a5662696127016559ddcfd1db42"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "16d869db33089f57fe15f1a36d44b21fb7b1b0ccd62a3b36560e3216f57d7c00"
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:lem:clock-swaps",
+      "old_statement_sha256": "sha256:6b6edbfd1a0f217a498e2bf52a63a8ac551e14448f9ada31f129a752fc26f3e1",
+      "new_statement_sha256": "sha256:8bbdafacb5f844524d7e897d2e26bf72d7f0ce56baa14b26a418ae1091ceedf1",
+      "old_source": "paper/reasoning-parts/erdos269/core.tex:1442",
+      "new_source": "paper/reasoning-parts/erdos269/core.tex:1447",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "16d869db33089f57fe15f1a36d44b21fb7b1b0ccd62a3b36560e3216f57d7c00"
+    },
+    {
+      "row": "erdos269-running-lcm-reasoning-surface#long269:thm:clock-relations",
+      "old_statement_sha256": "sha256:a7b5b29536a018a7f32a8cb1f1561cac9228160593b949b9ca2d3006c54166f1",
+      "new_statement_sha256": "sha256:d026b054900e62c40829429635c7c429022a387ef58a0e994f15d6fffe6def27",
+      "old_source": "paper/reasoning-parts/erdos269/core.tex:1485",
+      "new_source": "paper/reasoning-parts/erdos269/core.tex:1490",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "16d869db33089f57fe15f1a36d44b21fb7b1b0ccd62a3b36560e3216f57d7c00"
+    },
+    {
+      "row": "erdos1041-lemniscate-reasoning-surface#thm:translated-cubic-quotient-fibres",
+      "old_statement_sha256": "sha256:9c61a238f7f5d0f18f33ed93e07f34beef1f1737756ba20c555ba55944c068b4",
+      "new_statement_sha256": "sha256:b8a598a9276837e8f2284b69b4af95fa774c6628595ba377b22d325da7f7c257",
+      "old_source": "paper/reasoning-parts/erdos1041/core.tex:2467",
+      "new_source": "paper/reasoning-parts/erdos1041/core.tex:2476",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCubicFibres.complete_translated_cubic_quotient_fibres",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCubicFibres.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E1041"
+        ],
+        "run_ids": [
+          "35544127144"
+        ],
+        "corpus_commits": [
+          "03a9e42b132a7d1e31344ece6f817e6ecaf0a549"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "4038e059452db6c79c08d32814f59e153db7c9cdebb50c12f0a699da564d57ab"
+    },
+    {
+      "row": "erdos1041-lemniscate-reasoning-surface#res:straight-no-go",
+      "old_statement_sha256": "sha256:c130c906313c528387ed0f3046ed29bf237480d4d6978f02a3b177f0df78b8c1",
+      "new_statement_sha256": "sha256:516c06647ddc36d49f948e1420ae7e33909e3ff35ba589447d721390db872ea4",
+      "old_source": "paper/reasoning-parts/erdos1041/core.tex:3633",
+      "new_source": "paper/reasoning-parts/erdos1041/core.tex:3642",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperStraightObstructions.complete_straight_path_obstructions",
+            "file": "lean/ErdosProblems/Erdos1041/PaperStraightObstructions.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E1041g"
+        ],
+        "run_ids": [
+          "35643815458"
+        ],
+        "corpus_commits": [
+          "56408ca8d927d34479b80bdf93a7ae8f87bff6ba"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "4038e059452db6c79c08d32814f59e153db7c9cdebb50c12f0a699da564d57ab"
+    },
+    {
+      "row": "erdos1041-lemniscate-reasoning-surface#res:critical-value-separation",
+      "old_statement_sha256": "sha256:bce36fa7061715a85f1cd1fb526c3c9f5d300634bca8ac61fd02d7f4b0eef6be",
+      "new_statement_sha256": "sha256:87a9983cb560a88d9b865a7bbccf92876761a2b2a6c768427add1043d9ca5817",
+      "old_source": "paper/reasoning-parts/erdos1041/core.tex:1748",
+      "new_source": "paper/reasoning-parts/erdos1041/core.tex:1757",
+      "lean": {
+        "status": "modulo_named_input",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_separation_long",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_squared_length_le",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_length_lt_two",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_bergman_factor",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_target_starShaped",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          },
+          {
+            "name": "ErdosProblems.Erdos1041.PaperCompleteR21.discSep_mobius_norm_lt",
+            "file": "lean/ErdosProblems/Erdos1041/PaperCompleteR21/CriticalValueSeparationTransport.lean"
+          }
+        ],
+        "named_inputs": [
+          "ErdosProblems.Erdos1041.PaperCompleteR21.DiscSepBergmanArea"
+        ],
+        "scope": "the connector and area construction that this proof produces"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "4038e059452db6c79c08d32814f59e153db7c9cdebb50c12f0a699da564d57ab"
+    },
+    {
+      "row": "erdos1049-rational-base-lambert-reasoning-surface#long1049:res:rankfortyone",
+      "old_statement_sha256": "sha256:cfeee7441a2e71c6642611ef345c92d8e0f4088fdb53cc1c9ece771ebb376a44",
+      "new_statement_sha256": "sha256:9316157c5c0b42265987ca81ea0b4a761467304058d050c6723c6427228ddcf7",
+      "old_source": "paper/reasoning-parts/erdos1049/core.tex:3421",
+      "new_source": "paper/reasoning-parts/erdos1049/core.tex:3416",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1049.PaperR7.rank_fortyone",
+            "file": "lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E1049m"
+        ],
+        "run_ids": [
+          "35674034595"
+        ],
+        "corpus_commits": [
+          "253a436b69603a5662696127016559ddcfd1db42"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "b414d74ce457ec8857adf762ad6e8f268efc747f24396c095607eb6768e82575"
+    },
+    {
+      "row": "erdos1049-rational-base-lambert-reasoning-surface#long1049:res:plucker-collapse",
+      "old_statement_sha256": "sha256:2f025b044e8a1d039df75b980d1930f824c7c3c3250a778e199d8f80b8751453",
+      "new_statement_sha256": "sha256:389c614d0e4adda9b27f12150a6ddfc60a3b31f0bebc9b57f150a4a7db479122",
+      "old_source": "paper/reasoning-parts/erdos1049/core.tex:3546",
+      "new_source": "paper/reasoning-parts/erdos1049/core.tex:3541",
+      "lean": {
+        "status": "exact",
+        "declarations": [
+          {
+            "name": "ErdosProblems.Erdos1049.PaperR7.plucker_paper_statement",
+            "file": "lean/ErdosProblems/Erdos1049/PaperFiniteAssembliesR7.lean"
+          }
+        ]
+      },
+      "comparator": {
+        "status": "compared",
+        "repository": "https://github.com/wcook04/plectis-erdos-lean",
+        "entries": [
+          "PalomarCorpus/E1049_05"
+        ],
+        "run_ids": [
+          "35935225572"
+        ],
+        "corpus_commits": [
+          "cc7e541cf2081c6fef5a5e377d52e365e33b01eb"
+        ]
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "b414d74ce457ec8857adf762ad6e8f268efc747f24396c095607eb6768e82575"
+    },
+    {
+      "row": "erdos1049-rational-base-lambert-reasoning-surface#long1049:thm:calibrated-model",
+      "old_statement_sha256": "sha256:98f4ad2d04b376aed474c0b17cff8714652bd12c53969186ad89c207c675b413",
+      "new_statement_sha256": "sha256:94fa96c628cd6f292fbc852099adc61977deb9a6e7e9e2d63e30d22aa36289ed",
+      "old_source": "paper/reasoning-parts/erdos1049/core.tex:2426",
+      "new_source": "paper/reasoning-parts/erdos1049/core.tex:2419",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "b414d74ce457ec8857adf762ad6e8f268efc747f24396c095607eb6768e82575"
+    },
+    {
+      "row": "erdos1049-rational-base-lambert-reasoning-surface#long1049:prop:calibrated-height",
+      "old_statement_sha256": "sha256:12112672b2cd7423b8e0c86281f97b35aa7f7c0168b4edbdf4ac3f90995b65ea",
+      "new_statement_sha256": "sha256:eb496a5093b009ccd28de7f14287bd6930e17e009b13e3c35b01615b00d97e6e",
+      "old_source": "paper/reasoning-parts/erdos1049/core.tex:2588",
+      "new_source": "paper/reasoning-parts/erdos1049/core.tex:2583",
+      "lean": {
+        "status": "none",
+        "counted": true,
+        "declarations": [],
+        "reason": "no proof of the full statement is recorded; the paper gives an ordinary proof reviewed by AI agents. Finite auxiliary checks have narrower scope, and independent human review is not recorded"
+      },
+      "comparator": {
+        "status": "not_applicable"
+      },
+      "relation": "equivalent",
+      "review": "Integrating Type A independently reviewed complete statements, retained hypotheses and conclusions and checked existing source/declaration support. No new proof or formal execution.",
+      "accounting_sha256": "b414d74ce457ec8857adf762ad6e8f268efc747f24396c095607eb6768e82575"
+    }
+  ],
+  "selected_source_hashes": [
+    {
+      "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
+      "baseline_sha256": "cb16fdeab369504b235370e5572393f42307358a4e17993be91a182650227289",
+      "selected_sha256": "6b319833bb74f63cd341042ae2db3eb6f575900639d452c320735921a72e6e7d"
+    },
+    {
+      "path": "paper/68/erdos68-factorial-reasoning-surface.tex",
+      "baseline_sha256": "7753df4ef82197c6aa50140f5aee418de2b422a73e7a6ae3e42274a5f129fa7c",
+      "selected_sha256": "200ce0dc6ce7507208d7f0838c3d6ca4bcf0195d7f7d8b1025130d621a5d632d"
+    },
+    {
+      "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
+      "baseline_sha256": "c497aca2739da70f89d3804e83455c9f87c80a4763596cbb8c16927c0820dd28",
+      "selected_sha256": "2f8c36740c13339eed377d256938fa57547fce39642ddb3f6f6b55ebe01d1d5c"
+    },
+    {
+      "path": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
+      "baseline_sha256": "788725e42fce533a945f6b15cb56008f20a74f186e4e71ef77daabfad1c28758",
+      "selected_sha256": "0426fcdee0bc9052e356cf1720ca6854188e3fc5dd0799a4555a57f23aa1bf9b"
+    },
+    {
+      "path": "paper/249/erdos-249-binary-totient-series.tex",
+      "baseline_sha256": "34be06a91e5b90777e656fe179a307973c556ab161dbc83c3d42ac8bd09371db",
+      "selected_sha256": "4c3b43c002b6af0c60ee182d0d9c8aec0c1e4d90c61b7b9f1a7b8f9a0220f4c6"
+    },
+    {
+      "path": "paper/249/erdos249-totient-reasoning-surface.tex",
+      "baseline_sha256": "947e2a28a4e166c56a7ff9e10f23aa50ba4ee29d7c86d8def0d62ec8163d6605",
+      "selected_sha256": "f1bc52ee537b67b4bf9bbd455ae44e92cb53612e618926b8d9e35a6b04707eb0"
+    },
+    {
+      "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
+      "baseline_sha256": "2d5f8e7a4afcd1d91f0211c7652a8016a1999d6fdda87d61fd0633b3570a9f96",
+      "selected_sha256": "7f5d8427e4fe9f3ed3b10479e5bc2f0ca9181552ae4fd3f9d43c25ae018ff42d"
+    },
+    {
+      "path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
+      "baseline_sha256": "001380c18f6042394b42f30a1780277962491b10080ddf145d290c28a743329d",
+      "selected_sha256": "520f6d87dd59cb5351372af87bbaf1510d75d323dce82e156dc7ccc414ab14e5"
+    },
+    {
+      "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
+      "baseline_sha256": "69d394b5af4878100d9ae1bebdebfa8059dd9ab0124100f443906ecdb47c38ae",
+      "selected_sha256": "63111bbbaf6469fe8c9d142a671eb4b5ed74644144947c3d2d81f899ad2af65b"
+    },
+    {
+      "path": "paper/257/erdos257-mersenne-reasoning-surface.tex",
+      "baseline_sha256": "ca3ea3d483eab6af45a4437f26e6ce1b6817167c90d937ff587008d584e00424",
+      "selected_sha256": "3d5fbf11597844cf7a9aff1036f4631001edce38a01c22077030ad62f4912c75"
+    },
+    {
+      "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
+      "baseline_sha256": "ddf72e363837fd10bd48ac188f33014d78141751be524350edffa70a10b879a5",
+      "selected_sha256": "7ab64fa265d9b91bf7a455770801bee9dfe7dc9f1a27691743cf4977c222e116"
+    },
+    {
+      "path": "paper/269/erdos269-running-lcm-reasoning-surface.tex",
+      "baseline_sha256": "ffa13b92eb6cd062a1605044676927ad665e2c8807c4582761e4a6b8524fb633",
+      "selected_sha256": "3f3a5eb19070e185aab78bae1879be1d7a3e29b9f92dce159b6875728a1d490e"
+    },
+    {
+      "path": "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
+      "baseline_sha256": "e6088e8f7295118720e0773004b58bba0824828a19071251b452ec0515b45d4a",
+      "selected_sha256": "96b2528c4cf644f0f1a6a0e24517c60995b1aa89a853890b674533ea33bcb59a"
+    },
+    {
+      "path": "paper/1041/erdos1041-lemniscate-reasoning-surface.tex",
+      "baseline_sha256": "88473bd3df2d694722d0dfcc357ff5bb32ab3305dccb22439e38cf2764f4f934",
+      "selected_sha256": "4e8b7e5744f71d9182742ea3639cea28ca137c29eaad6c879bfcc8188d873dd0"
+    },
+    {
+      "path": "paper/1049/erdos-1049-rational-base-lambert.tex",
+      "baseline_sha256": "fa0c04dd265502c3eef0bab3908904e863eb2f0f731875e2c8007900da04028b",
+      "selected_sha256": "220df3331ba97d5d2d068d4cdbb3ae43a19198251c569f2057a0cefc97e71c7c"
+    },
+    {
+      "path": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex",
+      "baseline_sha256": "335826ba9916688d6b6ad9c45dd2a9eb632960c457b187dd94206916f051483d",
+      "selected_sha256": "5df34dd348156e25b3979f9f5457c870f28834190decbbbedba65cbd5b8d1ac2"
+    }
+  ]
+}

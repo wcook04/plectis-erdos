@@ -25,6 +25,9 @@ CEILING = (
     "boundaries; not Lean proof authority, novelty review, or human review."
 )
 ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v1"
+# Semantic queries read and fingerprint the full corpus, unlike Git metadata.
+# Keep a finite workload budget with room for simultaneous release checks.
+SEMANTIC_QUERY_TIMEOUT_SECONDS = 120
 
 
 def require(condition: bool, message: str) -> None:
@@ -100,7 +103,7 @@ def run_query(*args: str) -> subprocess.CompletedProcess[str]:
         text=True,
         check=False,
         env=singleflight.command_environment(),
-        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        timeout=SEMANTIC_QUERY_TIMEOUT_SECONDS,
     )
 
 
@@ -140,9 +143,23 @@ def check_query_environment() -> None:
     require(sanitized["LANG"] == "C.UTF-8", "canonical LANG missing")
     require(sanitized["PATH"] == os.defpath, "ambient PATH leaked into semantic query")
     require(
-        kwargs["timeout"] == singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        kwargs["timeout"] == SEMANTIC_QUERY_TIMEOUT_SECONDS,
         "semantic query timeout drifted",
     )
+    require(
+        singleflight.GIT_COMMAND_TIMEOUT_SECONDS < SEMANTIC_QUERY_TIMEOUT_SECONDS
+        < singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS,
+        "corpus query needs its own finite budget within the release worker deadline",
+    )
+    with patch.object(subprocess, "run", side_effect=subprocess.TimeoutExpired(
+        "query_semantic.py", SEMANTIC_QUERY_TIMEOUT_SECONDS
+    )):
+        try:
+            run_query("semantic-reviews", "Z00::sample")
+        except subprocess.TimeoutExpired:
+            pass
+        else:
+            raise AssertionError("semantic query timeout must fail the test")
     require(
         ENVIRONMENT_CONTRACT
         == "clean_committed_snapshot_subprocess_environment_v1",
@@ -202,12 +219,19 @@ def main() -> int:
     )
     assert query.returncode == 0, query.stderr
     packet = json.loads(query.stdout)
+    assert not packet.get("truncated"), "review inventory hit the packet budget"
     assert packet["coverage"]["reviewed_statement_nodes"] > 0
     assert packet["coverage"]["reviewed_relations"] > 0
     assert {row["subject_kind"] for row in packet["results"]} == {
         "statement_node",
         "relation",
     }
+    for row in packet["results"]:
+        review = row["review"]
+        if review.get("review_scope_complete") is False:
+            assert "review_scope" not in review
+            assert review["review_scope_sha256"].startswith("sha256:")
+            assert review["review_scope_bytes"] > 4096
 
     print(
         "semantic review test: baseline attached and queryable; all "

@@ -3,6 +3,7 @@
   "title": "Erdős 249 window geometry: 2-adic locality, certificate descent, and ray limits",
   "problem": "249",
   "replaces_role_zone": "Z19",
+  "build_lane": "unbuilt: ErdosProblems/Lift/AngleA2.lean, the module cited in this zone, is in no CI build, so its declarations are stated in source but not kernel-checked by this repository's CI.",
   "concepts": [
     {
       "id": "z90_window_top_locality",

@@ -9,6 +9,8 @@ import json
 import hashlib
 import os
 import re
+import shlex
+import sys
 import subprocess
 import tempfile
 import unittest
@@ -17,6 +19,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import build_external_verification as builder
+import check_axiom_audit as axiom_audit
 from build_external_verification import (
     checkout_source_path,
     imports_in_text,
@@ -46,6 +49,46 @@ def run_builder_check() -> subprocess.CompletedProcess[str]:
 
 
 class ExternalVerificationContractTest(unittest.TestCase):
+    def test_sorry_census_is_independent_of_checkout_parent_names(self) -> None:
+        with tempfile.TemporaryDirectory(prefix="verification-census-") as temporary:
+            for location in ("ordinary", ".lake/snapshot"):
+                with self.subTest(location=location):
+                    root = Path(temporary) / location
+                    challenge = root / "verification/Challenge.lean"
+                    proof = root / "lean/ErdosProblems/Fixture.lean"
+                    cached = root / ".lake/packages/dependency/Fixture.lean"
+                    for path in (challenge, proof, cached):
+                        path.parent.mkdir(parents=True, exist_ok=True)
+                    (root / "lean/Erdos249257.lean").write_text("-- corpus root\n")
+                    (root / "lakefile.toml").write_text(
+                        '[[lean_lib]]\nname = "ErdosProblems"\nsrcDir = "lean"\n'
+                        '[[lean_lib]]\nname = "Erdos249257"\nsrcDir = "lean"\n'
+                    )
+                    challenge.write_text("theorem challenge : True := by sorry\n")
+                    proof.write_text("theorem proof : True := True.intro\n")
+                    cached.write_text("theorem cached : False := by sorry\n")
+                    # A caller may keep TMPDIR inside another Git checkout.
+                    # Give the fixture its own index so the corpus inventory
+                    # does not treat every fixture file as a parent's dirt.
+                    for command in (
+                        ["git", "init", "--quiet"],
+                        ["git", "add", "--", "lakefile.toml", "lean", "verification"],
+                    ):
+                        subprocess.run(command, cwd=root, check=True,
+                                       capture_output=True,
+                                       env=singleflight.command_environment())
+                    with patch.object(builder, "ROOT", root):
+                        self.assertEqual(builder.sorry_census(), {
+                            "challenge": {"verification/Challenge.lean": 1},
+                            "total": 1,
+                            "corpus_total": 0,
+                        })
+                        proof.write_text("theorem proof : False := by sorry\n")
+                        with self.assertRaisesRegex(
+                            SystemExit, "sorry outside.*lean/ErdosProblems/Fixture.lean"
+                        ):
+                            builder.sorry_census()
+
     def test_ranked_reader_tier_is_explicit_and_prose_independent(self) -> None:
         candidate = {
             "family_id": "known_irrational_supports",
@@ -125,7 +168,9 @@ class ExternalVerificationContractTest(unittest.TestCase):
             [row["erdos_number"] for row in index["problems"]],
             [68, 243, 249, 251, 257, 269, 1041, 1049],
         )
-        self.assertEqual({row["status"] for row in index["problems"]}, {"open"})
+        statuses = {row["erdos_number"]: row["status"] for row in index["problems"]}
+        self.assertEqual(statuses.pop(1041), "formal statement refuted")
+        self.assertEqual(set(statuses.values()), {"open"})
         owner_boundary = json.loads(
             (ROOT / "docs/claims.json").read_text(encoding="utf-8")
         )["external_verification_packet"]["boundary"]
@@ -238,7 +283,7 @@ class ExternalVerificationContractTest(unittest.TestCase):
         )
         self.assertIn("## Comparator interface appendix", human)
         self.assertIn(
-            f"<summary>Show all {len(packet['main_results'])} statement-isolated interfaces</summary>",
+            f"<summary>Show {len(packet['main_results'])} documented statement-isolated interfaces</summary>",
             human,
         )
         # Identifiers are emitted verbatim: <wbr> is stripped by GitHub's HTML
@@ -340,6 +385,30 @@ class ExternalVerificationContractTest(unittest.TestCase):
             formalization.index("review:\n"),
         )
 
+    def test_human_counts_distinguish_packet_rows_from_executable_roster(self) -> None:
+        _, packet, source, projection = load_owner()
+        comparator, _ = builder.load_comparator_source(packet)
+        selected_count = len(packet["main_results"])
+        original_count = len(comparator["theorem_names"])
+        self.assertGreater(original_count, selected_count)
+        extended = deepcopy(comparator)
+        extended["theorem_names"].append("Fixture.additionalCompanion")
+        for roster in (comparator, extended):
+            with self.subTest(roster_count=len(roster["theorem_names"])):
+                human = builder.render_human(
+                    packet, source, projection, builder.load_signal_authority(), roster
+                )
+                self.assertIn(f"This dossier describes {selected_count} selected interfaces.", human)
+                self.assertIn(
+                    f"contains {len(roster['theorem_names'])} theorem declarations", human
+                )
+                self.assertIn("those interfaces and companion declarations", human)
+                self.assertIn(f"Show {selected_count} documented statement-isolated interfaces", human)
+                self.assertNotIn(f"The {selected_count} selected propositions", human)
+                self.assertNotIn("Show all", human)
+        self.assertEqual(len(packet["main_results"]), selected_count)
+        self.assertEqual(len(comparator["theorem_names"]), original_count)
+
     def test_signal_spine_uses_explicit_rank_not_array_or_roster_order(self) -> None:
         _, packet, source, projection = load_owner()
         signal_authority = deepcopy(builder.load_signal_authority())
@@ -430,6 +499,7 @@ class ExternalVerificationContractTest(unittest.TestCase):
                 "rational_base_tail_recurrence",
                 "height_and_pade_arithmetic",
                 "coordinatewise_corridor_no_go",
+                "calibrated_rational_hankel_countermodel",
             ],
         )
         self.assertTrue(rows_by_problem[249][1]["relations"])
@@ -576,6 +646,9 @@ class ExternalVerificationContractTest(unittest.TestCase):
         )
         self.assertFalse(is_expected_negative_rejection(125, "systemd unavailable"))
         self.assertFalse(is_expected_negative_rejection(127, "landrun: command not found"))
+        for code in (0, 2, 130, 137, 143, -9, -15):
+            self.assertFalse(is_expected_negative_rejection(code, EXPECTED_MISMATCH))
+        self.assertFalse(is_expected_negative_rejection(1, '', ''))
 
     def test_ci_separates_core_builds_from_external_and_paper_only_changes(self) -> None:
         workflow = (ROOT / ".github/workflows/lean.yml").read_text()
@@ -621,8 +694,44 @@ class ExternalVerificationContractTest(unittest.TestCase):
         # at all.  Pin the three properties that make it real.
         audit_step = workflow[audit:].split("- name:", 2)[1]
         self.assertIn("lake env lean", audit_step)
-        self.assertIn("sorryAx", audit_step)
-        self.assertIn("depends on axioms", audit_step)
+        self.assertIn("python3 scripts/check_axiom_audit.py axiom-audit.log", audit_step)
+        for owner in ("ExternalVerification", "ExternalVerification1049",
+                      "ExternalVerification1041SolvedFamilies"):
+            self.assertIn(f"--audit-source verification/{owner}/AxiomAudit.lean", audit_step)
+
+    def test_workflow_axiom_checker_enforces_all_three_source_rosters(self) -> None:
+        workflow = (ROOT / ".github/workflows/lean.yml").read_text()
+        step = workflow.split("- name: Post-verification axiom audit (gated)", 1)[1]
+        step = step.split("- name:", 1)[0]
+        command = re.search(
+            r"(?m)^          python3 scripts/check_axiom_audit\.py axiom-audit\.log"
+            r"(?: \\\n            --audit-source \S+)+", step,
+        )
+        self.assertIsNotNone(command, "workflow must invoke the source-bound checker")
+        argv = shlex.split(command.group(0).replace("\\\n", " "))
+        sources = [ROOT / argv[i + 1] for i, item in enumerate(argv)
+                   if item == "--audit-source"]
+        self.assertEqual(len(sources), 3)
+        names = sorted(axiom_audit.expected_declarations(sources))
+        self.assertEqual(len(names), 23)
+        valid = "".join(f"'{name}' depends on axioms: [propext]\n" for name in names)
+        cases = {
+            "complete": (valid, 0),
+            "missing_owner_report": (valid.split("\n", 1)[1], 1),
+            "native_429_axiom": (valid.replace("[propext]", "[Fixture._native.native_decide.ax_1]", 1), 1),
+            "no_reports": ("", 1),
+        }
+        with tempfile.TemporaryDirectory(prefix="workflow-axiom-fixture-") as raw:
+            log = Path(raw) / "audit.log"
+            for case, (text, expected) in cases.items():
+                with self.subTest(case=case):
+                    log.write_text(text)
+                    result = subprocess.run(
+                        [sys.executable, argv[1], str(log), *argv[3:]],
+                        cwd=ROOT, capture_output=True, text=True, timeout=10,
+                        env=singleflight.command_environment(),
+                    )
+                    self.assertEqual(result.returncode, expected, result.stdout + result.stderr)
 
     def test_human_markdown_links_use_current_storage_paths(self) -> None:
         human = (ROOT / "docs/EXTERNAL_VERIFICATION.md").read_text(encoding="utf-8")

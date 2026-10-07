@@ -8,8 +8,8 @@
     "comparator_sha256": "c4f34656bac6072dccb7ff4b68604bd786808412decc06473652442f5a0fcaeb",
     "comparator_theorem_count": 53,
     "source_review_matrix": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "8289cfa0d78e88530cb0e293dd1b1f0ab41f88d784c98e27cd1127049fdaffcd",
-    "source_review_family_count": 71,
+    "source_review_matrix_sha256": "72846b2b730c847722ce1f8909c1af3c3f27c2a608e3f8c54ac98c62f4afb15c",
+    "source_review_family_count": 76,
     "source_review_family_count_at_dispatch": 60,
     "comparator_roster": [
       "Erdos249257.ExternalVerification.irrational_factorialGapSeries_iff_cofinal_strictFacTopRat_misses",
@@ -66,7 +66,8 @@
       "Erdos249257.ExternalVerification.rationalBaseClearedTailQ_succ",
       "Erdos249257.ExternalVerification.rectangular_hp_threshold_eq_classical_iff"
     ],
-    "all_eight_programmes_remain_open": true,
+    "seven_problems_remain_open": true,
+    "erdos_1041_formal_statement_refuted": true,
     "review_matrix_binding_review": {
       "reviewed_at": "2026-09-19",
       "previous_sha256": "1177b9c23c905304187d99ee4a34641dacd8c406566799f8758555bf8baeba44",
@@ -277,6 +278,16 @@
         "relative_judgement": "This is a direct irrationality theorem for an exact structured coefficient class, but the totient-derived coefficients are not eventually periodic, so it is reusable background rather than a #249 frontier."
       },
       {
+        "family_id": "signed_totient_entire_defect_interpolation",
+        "tier_id": "deep_mechanism_and_classification",
+        "relative_judgement": "The ordinary proof constructs a sparse signed perturbation with strong defect control for every divergent allowance, but it does not settle the unperturbed totient series or the one-sided prime-gap route; no infinite Lean or Comparator theorem is claimed."
+      },
+      {
+        "family_id": "separated_cut_algebraic_lambert_transcendence",
+        "tier_id": "deep_mechanism_and_classification",
+        "relative_judgement": "The ordinary proof transfers algebraic-base transcendence through a separated-cut host and an explicit non-chain example, while full support at 3/2 and unrestricted base-two supports remain open; finite Lean cut lemmas are not its infinite proof."
+      },
+      {
         "family_id": "totient_certificate_equivalences",
         "tier_id": "deep_mechanism_and_classification",
         "relative_judgement": "Below the actual-LCM, first-harmonic, and strict-prime producer routes but above medium totient kernel machinery: three exact equivalences expose the endpoint and certificate sockets, while the equivalent lcm-diagonal, period-multiple-kill, and separated-window producers all remain unresolved.",
@@ -303,6 +314,11 @@
         "family_id": "height_fibre_and_shell",
         "tier_id": "deep_mechanism_and_classification",
         "relative_judgement": "The finite height-fibre normal form and smooth-shell bound are substantive three-prime structure, but they do not produce the source-specific cofinal escape. The actual-series reduction is given separately."
+      },
+      {
+        "family_id": "independent_clock_channel_relations",
+        "tier_id": "deep_mechanism_and_classification",
+        "relative_judgement": "The ordinary proof classifies rational relations for independent clock channels by a swap-and-lattice mechanism, but it does not establish the needed independence for the original running-LCM rates or its endpoint."
       },
       {
         "family_id": "dyadic_block_alphabet",
@@ -332,6 +348,11 @@
         ],
         "hard_mechanism": "The Newton-value endpoint relation is multiplication by the strictly positive scalar exp(-time), so every finite connection remains on one positive value ray; distinct rays therefore give an exact obstruction.",
         "open_boundary": "The theorem does not choose globally compatible critical-value rays, construct or glue the required flow geometry, or prove the Erdős #1041 lemniscate endpoint."
+      },
+      {
+        "family_id": "calibrated_rational_hankel_countermodel",
+        "tier_id": "natural_friction_and_no_go",
+        "relative_judgement": "The ordinary positive-moment countermodel blocks inference from an all-rank Hankel signature alone; these are not Zudilin's moments, and neither F(3/2) nor the actual arithmetic input is settled."
       }
     ],
     "programme_family_order": [
@@ -366,6 +387,7 @@
           "totient_kernel_basis",
           "stern_brocot_run_fibonacci_stability",
           "eventually_periodic_lambert",
+          "signed_totient_entire_defect_interpolation",
           "fixed_precision_transport_no_go",
           "lcm_factor_ideal_shift_algebra_no_go",
           "actual_foreign_residue_projection",
@@ -397,6 +419,7 @@
           "boolean_mobius_exact_row_dynamics",
           "half_membership_seam_classification",
           "shifted_odd_tail_state",
+          "separated_cut_algebraic_lambert_transcendence",
           "boolean_mobius_carry",
           "achievement_set_geometry",
           "restricted_achievement_sets",
@@ -412,6 +435,7 @@
           "weighted_phase_carry_observer",
           "rank_two_kernel_no_go",
           "height_fibre_and_shell",
+          "independent_clock_channel_relations",
           "dyadic_block_alphabet",
           "three_prime_lcm_cells"
         ]
@@ -430,7 +454,8 @@
         "family_ids": [
           "rational_base_tail_recurrence",
           "height_and_pade_arithmetic",
-          "coordinatewise_corridor_no_go"
+          "coordinatewise_corridor_no_go",
+          "calibrated_rational_hankel_countermodel"
         ]
       }
     ],
@@ -560,8 +585,8 @@
   "candidate_universe": {
     "authority": "HEAD:docs/claims.json::external_verification_packet.review_matrix",
     "source_review_matrix_path": "docs/claims.json::external_verification_packet.review_matrix",
-    "source_review_matrix_sha256": "8289cfa0d78e88530cb0e293dd1b1f0ab41f88d784c98e27cd1127049fdaffcd",
-    "source_review_family_count": 71,
+    "source_review_matrix_sha256": "72846b2b730c847722ce1f8909c1af3c3f27c2a608e3f8c54ac98c62f4afb15c",
+    "source_review_family_count": 76,
     "source_review_family_count_at_dispatch": 60,
     "selection_scope": "all_current_source_review_families_plus_targeted_theorem_forest_discoveries",
     "source_review_family_ids": [
@@ -635,7 +660,12 @@
       "coordinatewise_corridor_no_go",
       "rational_base_tail_recurrence",
       "seven_halves_irrationality",
-      "height_and_pade_arithmetic"
+      "height_and_pade_arithmetic",
+      "signed_totient_entire_defect_interpolation",
+      "separated_cut_algebraic_lambert_transcendence",
+      "independent_clock_channel_relations",
+      "selected_staircase_integral_height_boundary",
+      "calibrated_rational_hankel_countermodel"
     ],
     "source_family_disposition_contract": {
       "authority_binding": "Resolve each source_review_row against HEAD:docs/claims.json::external_verification_packet.review_matrix.",
@@ -733,7 +763,12 @@
       "rational_base_tail_recurrence": "represented",
       "seven_halves_irrationality": "long_tail",
       "height_and_pade_arithmetic": "represented",
-      "finite_prime_weighted_support": "represented"
+      "finite_prime_weighted_support": "represented",
+      "signed_totient_entire_defect_interpolation": "represented",
+      "separated_cut_algebraic_lambert_transcendence": "represented",
+      "independent_clock_channel_relations": "represented",
+      "selected_staircase_integral_height_boundary": "subordinate",
+      "calibrated_rational_hankel_countermodel": "represented"
     },
     "targeted_theorem_forest_discoveries": [
       {
@@ -2670,7 +2705,7 @@
     "why": "The committed public checkout satisfies the repository-local Palomar structural contract for its current Comparator roster. This local result does not claim that any external review, submission, registration, or publication has occurred.",
     "not_claimed": [
       "universal Erdős #257 solved",
-      "any of the eight open problems solved",
+      "any of the eight original problems solved",
       "novelty or human peer review",
       "registration or publication"
     ]

@@ -13,6 +13,7 @@ caller's checkout are never copied into the validation snapshot.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
@@ -25,6 +26,8 @@ from collections.abc import Mapping
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+import validation_singleflight as singleflight
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -140,7 +143,7 @@ def run(
         # Reusing the validated driver prevents that safety boundary from
         # silently selecting an older system Python inside the clone.
         execution_argv[0] = sys.executable
-    return subprocess.run(
+    return singleflight.run_bounded(
         execution_argv,
         cwd=cwd,
         capture_output=True,
@@ -335,7 +338,12 @@ def validate_ref(
     *,
     timeout_seconds: int,
     probe_only: bool,
+    singleflight_worker: bool = False,
 ) -> tuple[dict[str, Any], int]:
+    if not probe_only and not singleflight_worker:
+        return observe_release(ref, timeout_seconds=timeout_seconds)
+    if singleflight_worker:
+        singleflight.install_child_termination_forwarding()
     commit = resolve_commit(ref)
     caller_dirty_paths = dirty_paths()
     started_at = datetime.now(timezone.utc).isoformat()
@@ -371,8 +379,12 @@ def validate_ref(
                 remaining = deadline - time.monotonic()
                 if remaining <= 0:
                     raise subprocess.TimeoutExpired(command, timeout_seconds)
+                execution_command = list(command)
+                if singleflight_worker and command == RELEASE_COMMANDS[0]:
+                    # Only the admitted snapshot owner consumes this internal boundary.
+                    execution_command.append("--singleflight-worker")
                 completed = run(
-                    list(command),
+                    execution_command,
                     cwd=clone,
                     timeout=remaining,
                 )
@@ -460,6 +472,56 @@ def validate_ref(
                 },
                 124,
             )
+
+
+def observe_release(ref: str, *, timeout_seconds: int) -> tuple[dict[str, Any], int]:
+    """Observe the admitted release owner; an observer never owns its snapshot."""
+    commit = resolve_commit(ref)
+    caller_dirty = dirty_paths()
+    state_root = singleflight.default_state_root()
+    specification = singleflight.validator_spec(
+        "release", [], commit, state_root, release_timeout_seconds=timeout_seconds,
+    )
+    submitted = singleflight.submit(specification, state_root)
+    terminal, code = singleflight.collect(
+        state_root, submitted["key"], True, timeout_seconds, receipt_only=True,
+    )
+    if terminal.get("state") != "terminal":
+        return {
+            **receipt_base(ref, commit, caller_dirty),
+            "mode": "release_gate", "status": "pending",
+            "gate_exit_code": None,
+            "validation_owner": singleflight.status_card(terminal),
+            "gate_coverage": gate_coverage([]),
+            "observation_only": True,
+        }, code
+    # The full JSON can exceed the native log tail. Read only the hash-bound
+    # terminal artifact; a tail fragment cannot become a release receipt.
+    output = terminal.get("stdout", {})
+    relative = output.get("path")
+    expected = f"artifacts/{submitted['key']}/stdout.log"
+    if relative != expected or terminal.get("output_storage", {}).get("stdout", {}).get("truncated"):
+        raise SnapshotError("release owner did not retain a complete result artifact")
+    path = state_root / expected
+    if not is_safe_snapshot_file(state_root, path):
+        raise SnapshotError("release owner result is unavailable or symlinked")
+    payload = path.read_bytes()
+    if len(payload) > singleflight.MAX_STORED_LOG_BYTES or "sha256:" + hashlib.sha256(payload).hexdigest() != output.get("sha256"):
+        raise SnapshotError("release owner result digest does not match its terminal receipt")
+    try:
+        result = json.loads(payload)
+    except (ValueError, UnicodeError) as error:
+        raise SnapshotError("release owner did not return a complete JSON receipt") from error
+    if (result.get("schema") != SCHEMA or result.get("resolved_commit") != commit
+            or result.get("mode") != "release_gate"
+            or result.get("status") not in {"passed", "failed", "timeout"}):
+        raise SnapshotError("release owner result does not match the requested snapshot")
+    expected_code = 124 if result["status"] == "timeout" else result.get("gate_exit_code")
+    if expected_code != code or (result["status"] == "passed") != (code == 0):
+        raise SnapshotError("release owner result disagrees with its terminal exit")
+    result.update(receipt_base(ref, commit, caller_dirty))
+    result["validation_owner"] = singleflight.status_card(terminal)
+    return result, code
 
 
 def write_receipt(path: Path, receipt: dict[str, Any]) -> None:
@@ -611,8 +673,9 @@ def main() -> int:
             args.ref,
             timeout_seconds=args.timeout_seconds,
             probe_only=args.probe_only,
+            singleflight_worker=args.singleflight_worker,
         )
-    except (SnapshotError, OSError, subprocess.SubprocessError) as error:
+    except (SnapshotError, singleflight.ValidationError, OSError, subprocess.SubprocessError) as error:
         print(f"check_release_ref: {error}")
         return 2
     if args.receipt is not None:

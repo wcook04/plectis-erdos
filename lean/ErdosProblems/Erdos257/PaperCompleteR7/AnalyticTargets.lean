@@ -1,5 +1,5 @@
 import ErdosProblems.Erdos257.PaperCompleteR7.Displacement
-import Mathlib.Data.Nat.Factorization.Basic
+import ErdosProblems.Erdos257.PaperCompleteR7.PrimeWeightedDefinitions
 
 /-!
 # Exact remaining analytic goals, not admitted theorems
@@ -18,20 +18,6 @@ The structures and goals themselves have not been elaborated in this run.
 noncomputable section
 namespace ErdosProblems.Erdos257.PaperCompleteR7
 open Erdos249257
-
-/-- The full prime-power part determined by a finite set of primes. -/
-def primeSetPart (P : Finset ℕ) (a : ℕ) : ℕ :=
-  ∏ p ∈ P, p ^ a.factorization p
-
-/-- The literal weighted term at an integer base. -/
-def primeWeightedTerm (b : ℕ) (P : Finset ℕ) (a : ℕ) : ℝ :=
-  (primeSetPart P a : ℝ) /
-    ((a : ℝ) * ((b : ℝ) ^ primeSetPart P a - 1))
-
-/-- The weighted hypothesis, not its irrationality conclusion. -/
-def FinitePrimeWeighted (b : ℕ) (A : Set ℕ) : Prop :=
-  ∃ P : Finset ℕ, P.Nonempty ∧ (∀ p ∈ P, Nat.Prime p) ∧
-    Summable (Set.indicator A (primeWeightedTerm b P))
 
 /-- Input data for the actual positive divisor-cover method. -/
 structure PositiveCoverData where

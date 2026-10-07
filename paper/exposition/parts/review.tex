@@ -1,0 +1,196 @@
+% SPDX-FileCopyrightText: 2026 Will Cook
+% SPDX-License-Identifier: CC-BY-4.0
+\section{Review changes without changing their meaning}\label{sec:review}
+\papersectiontarget{exposition-review}
+
+A smoother sentence can make a different claim. Compare the proposal with
+the current statement and proof before judging its style: what may vary,
+which objects must be shared, and which direction of implication is justified?
+The following cases show how a changed noun, verb or omitted condition can
+alter those answers.
+
+Record whether the proposal was accepted, revised, rejected or left pending
+a named check, retaining the exact passages and the decision's source. A
+text match locates a change; it does not establish equivalence. A missing
+argument requires mathematical review, and acceptance of a local revision
+does not adopt a universal writing rule.
+
+\subsection{Replace a local term without losing its definition}
+
+In the R7 \#249 revision, a private growth adjective was replaced by its
+defining condition:
+\begin{quote}
+\emph{Before:} tempered integer carry orbit.\par
+\emph{Selected revision:} integer carry sequence $u$ with
+$u(N)/2^N\to0$.
+\end{quote}
+The gain is specific. A reader no longer has to recover a private definition
+to know the required rate. It would be incorrect to replace this condition by
+the more familiar phrase ``subexponential growth'', which says something
+stronger. Other revisions retained standard terms such as upper Banach
+density because those terms denote the properties the paper actually uses.
+The test is definitional: substitute the proposed term's meaning back into
+the claim, then check that the same sequences qualify.
+
+Removing a shorthand can also remove the visible source of its assumptions.
+In \#243, ``positive exact state'' bundled recurrence and positivity
+conditions. A proposed replacement referred to the same assumptions after
+that definition had disappeared. The integrating reviewer instead stated the
+recurrences for the first implication, then explicitly added natural-number
+domains and $a_n>1$, $C_n>0$ for the eventual consequence. In a second passage,
+the reviewer removed ``earlier'' from ``earlier decreases'': the original
+qualification did not restrict the time at which decreases could occur.
+
+These R7 selections are not the original proposals or later formal-correspondence
+and rendering checks. The replacement must carry the same assumptions and
+quantifiers, not merely read more easily.
+
+\subsection{Check the ordinary words that carry scope}
+
+An unchanged formula can acquire a stronger claim from its surrounding prose.
+The R11 \#251 revision replaces ``uses all late indices'' by
+``permits changes at every index after the prefix'' in a comparison
+construction~\cite[comparison construction]{paper251long}. The second describes allowed positions, not a promise that
+every one is changed. In the sparse construction, the containing set $S$ and
+target interval are fixed before the target is chosen; the correction depends
+on that target, and its support may occupy only part of $S$
+\cite[sparse-perturbation proposition]{paper251}.
+
+The same revision replaces the claim that corrections can ``grow arbitrarily
+slowly'' by an eventual upper bound chosen in advance. Given any prescribed
+function tending to infinity, the corrections can eventually be bounded by
+it. This does not say that the corrections themselves tend to infinity.
+Read the choice order as an instruction: prescribe the bound first, then
+construct corrections subject to it. This exposes what the short phrases
+obscured. Expand the expression whose ordinary reading changes that order
+or turns permission into a requirement.
+
+\subsection{Rejecting an attractive universal rule}
+
+Earlier reviews of the \#243 manuscript illustrate why historical advice
+needs its original setting. One round asked for a cubic irrationality example
+near the beginning. A subsequent round explicitly retained the live
+bounded-negative result as the paper's lead and rejected an invariant rule
+that an irrationality result must always come first. Later editorial routes
+treated page targets as subordinate to the proof's dependencies.
+
+The retained lesson is to choose a coherent principal contribution and explain
+its relation to the named problem. It does not prescribe a theorem category
+or a fixed page on which every proof must finish. A conditional reduction
+can be the useful result; an unconditional statement can be too weak to carry
+the paper. The choice requires comparing what the results actually say. The
+history record preserves the successive recommendations instead of combining
+them into contradictory commands.
+
+This distinction also protects the longer research record. Shortening a
+paper can be appropriate when the subordinate details have a complete,
+checked destination. Regenerating the long record from the shortened version
+would lose the very argument that made the shorter presentation possible.
+The two documents must be compared in both directions: a stronger hypothesis,
+a repaired endpoint or a newly explained limiting step may appear first in
+either one.
+
+\subsection{Distinguish clarification from a proof repair}
+
+An earlier \#251 review found more than an unclear sentence. A condensed
+sparse-construction proof used a buffer quantity without assigning it a
+sequence coordinate or including it in the value, size and capacity accounting.
+The original returned memorandum did include those coordinates and their
+contribution to the weighted sum. The accepted ordinary repair restored the
+assignments and the accounting across all indices.
+
+The distinction matters for both mathematics and attribution. The condensed
+proof needed repair; the recoverable original showed that the loss had occurred
+during shortening or integration, not in that construction. This repair was
+undertaken in its own mathematical review. An exposition-only pass should
+identify such a defect and refer it, not silently supply the missing proof.
+A later sharp companion construction was still unreviewed at its recorded
+disposition. Sharing a bundle with the repaired proof did not give it the
+same status.
+
+Other cases expose similar changes of meaning in small amounts of prose.
+In \#1049, language suggesting that a degree bound was inevitable was repaired
+to state a sufficient inequality and preserve the qualification contributed
+by a remaining factor. In \#1041, the revision retained the fixed-polynomial
+scope instead of turning it into a freely varying family. For mixed
+irrationality criteria in \#257, two unbounded sets of candidate indices
+may be disjoint: the even and odd integers provide an elementary example.
+The proof needs one index satisfying both conditions. The source adds the
+two nonnegative, normalised errors on the same finite distribution. Their
+sum has mean below one, so it is below one at some sampled index.
+Nonnegativity puts both errors below one there; no independence is needed~\cite[common-index argument]{paper257}.
+These are mathematical checks even when the edit is presented as compression or style.
+
+Compare the Lean proposition with the prose, including definitions,
+hypotheses and quantifiers. A checked ingredient need not cover the assembled
+argument. An ordinary proof may lack complete formalisation. Keep named inputs
+and pending comparisons visible. The systems paper's records preserve these
+distinctions~\cite{systems}; describing them does not confer proof status.
+
+A late-September prose pass removed remarks naming mathematical inputs beside
+the dependent results; the integrating agent restored them. Details of running
+a check could recede, but the dependencies could not. Calling both kinds of
+sentence workflow commentary had erased a mathematical qualification.
+
+\subsection{Read explanatory words as mathematical claims}\label{sec:words-as-claims}
+
+Test a mathematical adjective by substituting its definition. A ``convex
+combination'' requires nonnegative weights whose sum is one. Checking only
+their signs leaves half the condition untested. In \#1041, Abel summation
+expresses $f(t\zeta)$ as
+\[
+ f(t\zeta)=\sum_{j=0}^{n-1}(t^j-t^{j+1})S_j,
+ \qquad S_j=\sum_{k=0}^{j}a_k\zeta^k,
+\]
+where $n\ge1$, $f(z)=\sum_{k=0}^n a_kz^k$ and $f(\zeta)=0$.
+For $0\le t<1$, the nonnegative coefficients sum to $1-t^n$.
+Thus it is $f(t\zeta)/(1-t^n)$ that the calculation directly presents as a
+convex combination of the $S_j$~\cite[section on trinomials]{paper1041}.
+At $t=1$ this quotient is undefined, and the proof instead uses $f(\zeta)=0$.
+Naming the normalised quantity checks the definition and the endpoint in the
+same sentence. A root-distance calculation or a statement about segments to
+zeros must likewise retain the particular geometric object it controls.
+
+A shorter proof can also be clearer when its reason is already available.
+The \#243 arithmetic normal form is
+\[
+                 Q(n)=m\binom{n+2}{3}+c,
+                 \qquad m\in\mathbb Z_{>0},
+\]
+and $Q(n)$ is known to be integral at every sufficiently large integer $n$.
+At any such nonnegative $n$, the binomial coefficient is integral, so
+$c=Q(n)-m\binom{n+2}{3}$ is integral
+\cite[reduction and the constant term]{paper243}.
+The proposed explanation uses exactly those established facts. Replacing them
+by ``$Q$ is an integer polynomial'' would be unsafe: an integer-valued polynomial
+can have nonintegral coefficients, as $n(n-1)/2$ shows. The useful simplification
+names the available arithmetic structure.
+
+In the \#257 finite average, $L,d,T$ are positive integers. The residues of
+$L,2L,3L,\ldots$ modulo $d$ repeat with period $d/\gcd(L,d)$; the sample
+uses only the first $T$ terms. The inequality $d\le LT$ does not assert
+that one whole period occurs. For $L=3,d=5,T=2$, it holds while the period
+has length five. Split the sample into complete periods, possibly none,
+and one remainder. The kernel weights of Section~\ref{sec:formula-choice}
+are nonnegative, so that remainder contributes no more than a whole period.
+Allowing one extra period supplies the error term after division by $T$
+\cite[finite means for shifted divisor tails]{paper257}.
+The example refutes the claim of a complete sampled period, not the estimate.
+
+\subsection{Correct the source without rewriting its history}
+
+The R6 \#1049 return attached a reader-motivation specimen from Knuth's notes
+to \S1, item~18. Inspection of the original places the passage in item~12,
+on printed page~3 (PDF page~5). Item~18 concerns a different matter. The
+public lesson record retains both the reported locator and the correction.
+
+A search hit may be a table of contents, another occurrence or an adjacent
+column. Inspect the original passage, then correct the locator without crediting
+the earlier return with that correction. Useful prose can survive a citation
+repair; its usefulness does not excuse the error.
+
+The same care applies to the role of the source. A paper may supply a theorem,
+historical attribution, established terminology or an example of composition.
+Those uses call for different claims. A paragraph about proof pacing does not
+validate the proof being paced. A literature specimen establishes that an
+author made a particular choice, not that this choice is universally preferable.

@@ -27,21 +27,34 @@ and the research process, go to the [project papers](#project-papers).
 
 | Problem | Short paper | Complete reasoning record |
 |---|---|---|
-| #68 | [Two Incomparable Denominator Exclusions for ∑ₙ≥₂ 1/(n!−1)](68/erdos-68-factorial-denominator-irrationality.pdf) ([source](68/erdos-68-factorial-denominator-irrationality.tex)) | [Denominators and Rationality Criteria for ∑ₙ≥₂ 1/(n!−1)](68/erdos68-factorial-reasoning-surface.pdf) ([source](68/erdos68-factorial-reasoning-surface.tex)) |
+| #68 | [Integer Linear Forms for a Factorial Reciprocal Series](68/erdos-68-factorial-denominator-irrationality.pdf) ([source](68/erdos-68-factorial-denominator-irrationality.tex)) | [Factorial Linear Forms and Denominators: Detailed Proofs and Rationality Criteria](68/erdos68-factorial-reasoning-surface.pdf) ([source](68/erdos68-factorial-reasoning-surface.tex)) |
 | #243 | [Cubic-Rate Irrationality and Reciprocal-Tail Rigidity](243/erdos-243-reciprocal-tail-rigidity.pdf) ([source](243/erdos-243-reciprocal-tail-rigidity.tex)) | [Reciprocal-Tail Rigidity: Theorems, Proofs and Questions](243/erdos243-reciprocal-tail-reasoning-surface.pdf) ([source](243/erdos243-reciprocal-tail-reasoning-surface.tex)) |
-| #249 | [Bases and Integral Relations for the k-Kernel of Euler's Totient](249/erdos-249-binary-totient-series.pdf) ([source](249/erdos-249-binary-totient-series.tex)) | [The Binary Totient Series](249/erdos249-totient-reasoning-surface.pdf) ([source](249/erdos249-totient-reasoning-surface.tex)) |
+| #249 | [Integral Relations among Totient Sections](249/erdos-249-binary-totient-series.pdf) ([source](249/erdos-249-binary-totient-series.tex)) | [The Binary Totient Series](249/erdos249-totient-reasoning-surface.pdf) ([source](249/erdos249-totient-reasoning-surface.tex)) |
 | #251 | [Sparse Congruence-Preserving Perturbations of Dyadic Series](251/erdos-251-prime-gap-dyadic-series.pdf) ([source](251/erdos-251-prime-gap-dyadic-series.tex)) | [Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates](251/erdos251-prime-gap-reasoning-surface.pdf) ([source](251/erdos251-prime-gap-reasoning-surface.tex)) |
-| #257 | [Weighted Support Criteria for Reciprocal Mersenne Subseries](257/erdos-257-mersenne-support-subseries.pdf) ([source](257/erdos-257-mersenne-support-subseries.tex)) | [Reciprocal Mersenne Subseries](257/erdos257-mersenne-reasoning-surface.pdf) ([source](257/erdos257-mersenne-reasoning-surface.tex)) |
-| #269 | [No Finite Separable Representation at Three Prime Generators](269/erdos-269-three-prime-running-lcm.pdf) ([source](269/erdos-269-three-prime-running-lcm.tex)) | [The Three-Prime Running LCM: Kernel Rank and Tail Arithmetic](269/erdos269-running-lcm-reasoning-surface.pdf) ([source](269/erdos269-running-lcm-reasoning-surface.tex)) |
-| #1041 | [Paths in Polynomial Lemniscates: Trinomials and Critical-Value Bounds](1041/erdos-1041-lemniscate-newton-flow.pdf) ([source](1041/erdos-1041-lemniscate-newton-flow.tex)) | [Paths in Polynomial Lemniscates: Proofs and Examples](1041/erdos1041-lemniscate-reasoning-surface.pdf) ([source](1041/erdos1041-lemniscate-reasoning-surface.tex)) |
-| #1049 | [Zudilin's Forms at Rational Bases and the Exact Normalised Hankel Order](1049/erdos-1049-rational-base-lambert.pdf) ([source](1049/erdos-1049-rational-base-lambert.tex)) | [Zudilin's Forms at Rational Bases: Proofs and Research Record](1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) ([source](1049/erdos1049-rational-base-lambert-reasoning-surface.tex)) |
+| #257 | [Weighted and Covered Supports for Mersenne Subseries](257/erdos-257-mersenne-support-subseries.pdf) ([source](257/erdos-257-mersenne-support-subseries.tex)) | [Reciprocal Mersenne Subseries](257/erdos257-mersenne-reasoning-surface.pdf) ([source](257/erdos257-mersenne-reasoning-surface.tex)) |
+| #269 | [Distinct running least common multiples](269/erdos-269-three-prime-running-lcm.pdf) ([source](269/erdos-269-three-prime-running-lcm.tex)) | [Running least common multiples: distinct heights and repeated sums](269/erdos269-running-lcm-reasoning-surface.pdf) ([source](269/erdos269-running-lcm-reasoning-surface.tex)) |
+| #1041 | [Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections](1041/erdos-1041-lemniscate-newton-flow.pdf) ([source](1041/erdos-1041-lemniscate-newton-flow.tex)) | [Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections](1041/erdos1041-lemniscate-reasoning-surface.pdf) ([source](1041/erdos1041-lemniscate-reasoning-surface.tex)) |
+| #1049 | [Hankel Determinants of Geometric Moments and Rational Lambert Values](1049/erdos-1049-rational-base-lambert.pdf) ([source](1049/erdos-1049-rational-base-lambert.tex)) | [Geometric Moments and Rational Lambert Values: Proofs and Further Results](1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) ([source](1049/erdos1049-rational-base-lambert-reasoning-surface.tex)) |
+
+The #243 short paper leads with irrationality under the cubic rate
+`a_n²/a_(n+1) = 1 + 3/n + o(n⁻³)` for strictly increasing positive integer
+sequences. Its bounded-increment criterion for an eventual Sylvester tail is
+a second result; the unrestricted problem remains open. The #1049 short
+paper proves a rational-base sufficient region using Zudilin's forms after
+cyclotomic cancellation and denominator accounting. Its region contains
+`31/4`, which is outside the earlier Bundschuh–Väänänen sufficient region;
+`3/2` remains open.
 
 ## Reading the eight together
 
 One cross-problem paper develops the mathematics that arises from reading the
-programmes together. It contains the capacity and congruence criterion,
-Lambert-subsum results, full proofs, exact computations, method limits and
-unsuccessful approaches.
+programmes together. For `c>0` and integers `d≥1`, it considers entire functions
+`f(z) = ∑_(n≥1) e_n z^n/n!` with nonnegative integer `e_n` eventually bounded
+by `n^c` and, for each fixed positive integer `q`, eventually divisible by `q`.
+The set of derivative-value vectors at `1` has Hausdorff dimension `min(c,d)` and
+contains an open set exactly when `c>d`. This result has an ordinary proof with the formal ingredients
+identified separately. The paper also contains the capacity and congruence
+criterion, Lambert-subsum results, exact computations and method limits.
 
 [Reading Eight Erdős Problems Together](synthesis/optimal-sparse-perturbations.pdf)
 ([source](synthesis/optimal-sparse-perturbations.tex)).
@@ -69,15 +82,22 @@ it is not the entry point for either problem.
 
 ## Project papers
 
-These papers explain how the work is organised, how an agent uses the public
-checkout, and how another researcher can take part. Start with the question
-that interests you.
+Start with [A Repository-Based System for Research and Publication](systems/claim-faithful-publication-systems-paper.pdf)
+([source](systems/claim-faithful-publication-systems-paper.tex)). This is the main
+systems paper: it follows a result from its mathematical argument through
+formal support, written explanation, review and contribution.
 
-| Question | Paper |
+Two earlier papers are retained as historical background. Their account is
+superseded by the main paper; their observations and cross-references belong
+to the revisions they describe.
+
+| Earlier paper | Detail retained |
 |---|---|
-| How do formal proofs, public claims and release checks fit together? | [Problem-Sized Lean Worlds](systems/claim-faithful-publication-systems-paper.pdf) ([source](systems/claim-faithful-publication-systems-paper.tex)) |
-| How does an agent find a task, use the tools and record what was checked? | [From a Cold Clone to a Proof Receipt](systems/cold-clone-to-proof-receipt.pdf) ([source](systems/cold-clone-to-proof-receipt.tex)) |
-| How can people contribute research or compute while keeping evidence and credit? | [From Spare Compute to Cumulative Mathematics](systems/open-source-mathematics-strategy.pdf) ([source](systems/open-source-mathematics-strategy.tex)) |
+| [From a Cold Clone to a Proof Receipt](systems/cold-clone-to-proof-receipt.pdf) ([source](systems/cold-clone-to-proof-receipt.tex)) | Navigation, recorded proof checks and incremental validation. |
+| [From Spare Compute to Cumulative Mathematics](systems/open-source-mathematics-strategy.pdf) ([source](systems/open-source-mathematics-strategy.tex)) | Contribution protocol, compute, credit and governance. |
+
+For current use, follow [the reading guide](../docs/READING_GUIDE.md),
+[agent instructions](../AGENTS.md) or [Contributing](../CONTRIBUTING.md).
 
 For the repository layout, sources of truth, build path, and release
 infrastructure, see [`docs/ARCHITECTURE.md`](../docs/ARCHITECTURE.md).
@@ -154,6 +174,22 @@ with the digest of the PDF and of every TeX input it was compiled from, and a
 build output older than one of its inputs is refused. The release checks fail
 when a committed PDF is not the recorded build of its committed inputs.
 
+The problem PDFs also depend on their generated evidence links. Tectonic keeps
+the `.aux` files so that, after a layout change, the evidence builder can read
+the current result numbers and pages:
+
+```sh
+python3 scripts/paper_evidence.py build --corpus-repo /path/to/plectis-erdos-lean \
+  --aux-dir paper --aux-paper <paper-id>
+```
+
+Review and commit changed evidence records before pointing that paper's
+`record_commit_overrides` entry in `evidence/config.json` at the new commit.
+Run the evidence builder again, rebuild the affected PDF and synchronize it.
+`python3 scripts/check_paper_evidence_pdfs.py` checks each margin link against
+the heading and page in the resulting PDF; `make -C paper check` includes
+this check. It needs the dependencies in `scripts/requirements-release.txt`.
+
 After editing a manuscript, rebuild its PDF before updating its recorded
 digests. The following command previews digest changes; add `--apply` only
 after reviewing the source and rebuilt PDF:
@@ -179,9 +215,8 @@ output in your pull request. If the remaining failure is a generated copy
 made stale by your manuscript edit, say so in the pull request; do not
 hand-edit the copy to make the check pass.
 
-Maintainers refresh the generated full text and paper-corpus records through
-their export step, then run `python3 scripts/refresh_projections.py` and
-`python3 docs/papers/check_paper_corpus.py` before merging. The full-text
-exporter is not included in this checkout. You do not need access to a private
-repository to propose a manuscript change; include the check output so the
-maintainer can complete that part of the update.
+Refresh generated full text and paper-corpus records with
+`python3 docs/papers/refresh_paper_corpus.py --write`, then run
+`python3 scripts/refresh_projections.py` and
+`python3 docs/papers/check_paper_corpus.py` before merging. These owners are
+included in the public checkout; do not edit their generated output by hand.

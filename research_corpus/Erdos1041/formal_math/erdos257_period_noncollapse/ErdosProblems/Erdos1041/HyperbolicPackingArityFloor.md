@@ -1,5 +1,7 @@
 # Erdős 1041: the arity floor is a hyperbolic packing problem, and the corpus relaxation is not feasible
 
+> Status note (2026-09-28): the exact Formal Conjectures statement of Erdős #1041 is refuted by ani's degree-seven example (Lean `erdos1041_counterexample_hausdorff`, `lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean` in the public repository); correspondence with the 1958 wording awaits independent review. Earlier statements in this note that the problem is open are dated history.
+
 ## Status
 
 Ordinary complete proof of an unconditional all-degree parent regime, with an
