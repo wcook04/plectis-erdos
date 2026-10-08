@@ -551,8 +551,8 @@
       "path": "docs/ARCHITECTURE.md",
       "start_line": 1,
       "end_line": 319,
-      "sha256": "414ec1c7b11cec34fee0684c7b70918977591fb70c5079d86c0c9ff487c1f0f8",
-      "excerpt_sha256": "414ec1c7b11cec34fee0684c7b70918977591fb70c5079d86c0c9ff487c1f0f8",
+      "sha256": "9164721822c08a35491fc3c318d98e8a7e5d9ad74554b817c1a6a70c91a18025",
+      "excerpt_sha256": "9164721822c08a35491fc3c318d98e8a7e5d9ad74554b817c1a6a70c91a18025",
       "custody": "Current public guide inspected after reader-entry reorganization on 8 October 2026. Routing, authority, evidence responsibilities and validation boundaries retained; references bind the full guide. No new mathematical or performance claim."
     },
     {

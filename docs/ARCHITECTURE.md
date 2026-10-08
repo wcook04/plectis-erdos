@@ -206,7 +206,7 @@ source requires updating those consumers together.
 
 ## A complete example
 
-The [certificate definition](papers/full-text/erdos249-totient-reasoning-surface.md#the-problem-and-what-is-actually-known)
+The [certificate definition](papers/full-text/erdos249-totient-reasoning-surface.md#definition-of-the-finite-residue-test)
 and [certificate source map](SOURCE_MAP.md#249--certificate-reductions)
 give the mathematical notation and source routes behind this example.
 
