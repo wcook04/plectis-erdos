@@ -96,6 +96,85 @@ class FormalConjecturesCrosswalkTest(unittest.TestCase):
         self.assertTrue(any("exact Hausdorff refutation" in error for error in errors))
         self.assertTrue(any("answer_false_theorem drifted" in error for error in errors))
 
+    def test_activity_is_independent_of_the_adapter_ladder(self) -> None:
+        row = next(r for r in self.manifest["problems"] if r["problem"] == 1041)
+        self.assertEqual(row["comparison"]["machine_checked_equivalence"], "none")
+        correction = next(r for r in self.manifest["contribution_activity"]["requests"] if r["number"] == 6505)
+        self.assertEqual(correction["state"], "MERGED")
+        self.assertEqual(self.errors(), [])
+        self.assertNotIn("nothing has been offered upstream", self.projection)
+        self.assertIn("Pinned statement comparison", self.projection)
+
+    def test_approval_does_not_promote_an_open_request(self) -> None:
+        activity = copy.deepcopy(self.manifest["contribution_activity"])
+        row = next(r for r in activity["requests"] if r["state"] == "OPEN")
+        row["review_decision"] = "APPROVED"
+        self.assertEqual(crosswalk.contribution_activity_errors(activity), [])
+        self.assertEqual(crosswalk.contribution_counts(activity), crosswalk.contribution_counts(self.manifest["contribution_activity"]))
+        self.assertIn("aggregate review decision: **approved**", "\n".join(crosswalk.render_contribution_activity(activity)))
+
+    def test_authorship_is_excluded_from_mathematical_totals(self) -> None:
+        activity = copy.deepcopy(self.manifest["contribution_activity"])
+        before = crosswalk.contribution_counts(activity)
+        activity["requests"] = [r for r in activity["requests"] if r["kind"] != "authorship"]
+        after = crosswalk.contribution_counts(activity)
+        self.assertEqual(before["merged_mathematical"], after["merged_mathematical"])
+        self.assertEqual(after["merged_authorship"], 0)
+
+    def test_activity_rejects_unbound_or_inconsistent_observations(self) -> None:
+        cases = [
+            (lambda a: a["requests"][0].update(url="https://example.com/pull/1"), "URL must match"),
+            (lambda a: a["requests"].append(copy.deepcopy(a["requests"][0])), "duplicate request"),
+            (lambda a: a["requests"][0].update(merged_at=None), "MERGED requires"),
+            (lambda a: a["requests"][0].update(head="main"), "immutable commit"),
+            (lambda a: a.update(observed_at="yesterday"), "ISO timestamp"),
+            (lambda a: a.update(boundary=True), "observation boundary"),
+            (lambda a: a.update(boundary="  "), "observation boundary"),
+            (lambda a: next(r for r in a["requests"] if r["kind"] == "authorship").update(kind="proof_link"), "classified as authorship"),
+            (lambda a: a["requests"][0].update(reviews=[{}]), "review must name"),
+        ]
+        for mutate, fragment in cases:
+            with self.subTest(fragment=fragment):
+                activity = copy.deepcopy(self.manifest["contribution_activity"])
+                mutate(activity)
+                self.assertTrue(any(fragment in e for e in crosswalk.contribution_activity_errors(activity)))
+
+    def test_activity_cannot_drop_its_observation_boundary(self) -> None:
+        mutated = copy.deepcopy(self.manifest)
+        del mutated["contribution_activity"]
+        self.assertTrue(any("contribution_activity" in e for e in self.errors(mutated)))
+
+    def test_review_stays_bound_to_its_request_and_revision(self) -> None:
+        activity = copy.deepcopy(self.manifest["contribution_activity"])
+        row = next(r for r in activity["requests"] if r["state"] == "OPEN" and r["reviews"])
+        row["reviews"][0]["url"] = "https://github.com/google-deepmind/formal-conjectures/pull/999#pullrequestreview-1"
+        self.assertTrue(any("review URL" in e for e in crosswalk.contribution_activity_errors(activity)))
+        row["reviews"][0]["url"] = f"{crosswalk.UPSTREAM_PR_PREFIX}{row['number']}#pullrequestreview-1"
+        row["reviews"][0]["commit"] = "0" * 40
+        row["reviews"] = row["reviews"][:1]
+        self.assertIn("on an earlier head", "\n".join(crosswalk.render_contribution_activity(activity)))
+
+    def test_latest_review_uses_chronological_order_across_timezones(self) -> None:
+        activity = copy.deepcopy(self.manifest["contribution_activity"])
+        row = next(r for r in activity["requests"] if r["state"] == "OPEN" and r["reviews"])
+        activity["requests"] = [row]
+        first = copy.deepcopy(row["reviews"][0])
+        first.update(state="APPROVED", submitted_at="2026-10-06T23:00:00+02:00")
+        later = copy.deepcopy(first)
+        later.update(state="CHANGES_REQUESTED", submitted_at="2026-10-06T22:00:00Z")
+        row["reviews"] = [later, first]
+        self.assertEqual(crosswalk.contribution_activity_errors(activity), [])
+        rendered = "\n".join(crosswalk.render_contribution_activity(activity))
+        self.assertIn("Latest individual review: [changes requested]", rendered)
+        self.assertNotIn("Latest individual review: [approved]", rendered)
+
+    def test_unreported_aggregate_decision_is_renderable(self) -> None:
+        activity = copy.deepcopy(self.manifest["contribution_activity"])
+        row = next(r for r in activity["requests"] if r["state"] == "OPEN")
+        del row["review_decision"]
+        self.assertEqual(crosswalk.contribution_activity_errors(activity), [])
+        self.assertIn("aggregate review decision: **not reported**", "\n".join(crosswalk.render_contribution_activity(activity)))
+
     def test_commit_pin_mutation_is_rejected(self) -> None:
         mutated = copy.deepcopy(self.manifest)
         mutated["upstream"]["commit"] = "0" * 40

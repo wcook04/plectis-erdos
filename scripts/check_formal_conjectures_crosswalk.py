@@ -23,6 +23,7 @@ import re
 import stat
 import subprocess
 import sys
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -451,6 +452,144 @@ def local_1041_refutation_errors(row: dict[str, Any], root: Path) -> list[str]:
     return errors
 
 
+def contribution_activity_errors(activity: Any) -> list[str]:
+    """Validate dated external observations independently of local proof gates."""
+    if not isinstance(activity, dict):
+        return ["contribution_activity must be an object"]
+    errors: list[str] = []
+
+    def timestamp(value: Any, label: str) -> datetime | None:
+        try:
+            parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+            if parsed.tzinfo is not None:
+                return parsed
+        except (AttributeError, TypeError, ValueError):
+            pass
+        errors.append(f"{label}: expected an ISO timestamp with timezone")
+        return None
+
+    observed = timestamp(activity.get("observed_at"), "contribution_activity.observed_at")
+    if activity.get("repository") != UPSTREAM_REPOSITORY:
+        errors.append("contribution_activity repository must be Formal Conjectures")
+    if not isinstance(activity.get("boundary"), str) or not activity["boundary"].strip():
+        errors.append("contribution_activity must state its observation boundary")
+    requests = activity.get("requests")
+    if not isinstance(requests, list) or not requests:
+        return errors + ["contribution_activity requests must be a nonempty list"]
+    seen: set[int] = set()
+    kinds = ("proof_link", "status_correction", "solved_variant", "research_statement", "authorship")
+    for row in requests:
+        if not isinstance(row, dict):
+            errors.append("contribution_activity request must be an object")
+            continue
+        number = row.get("number")
+        label = f"contribution PR {number}"
+        if type(number) is not int or number < 1:
+            errors.append(f"{label}: number must be a positive integer")
+        elif number in seen:
+            errors.append(f"{label}: duplicate request")
+        else:
+            seen.add(number)
+        if row.get("url") != f"{UPSTREAM_PR_PREFIX}{number}":
+            errors.append(f"{label}: URL must match the upstream PR number")
+        if row.get("kind") not in kinds:
+            errors.append(f"{label}: unknown contribution kind")
+        for field in ("title", "scope"):
+            if not isinstance(row.get(field), str) or not row[field].strip():
+                errors.append(f"{label}: {field} must be nonempty text")
+        targets = row.get("targets")
+        if not isinstance(targets, list) or not targets or not all(
+            isinstance(target, str) and target.strip() for target in targets
+        ):
+            errors.append(f"{label}: targets must be nonempty strings")
+        if (row.get("kind") == "authorship") != (targets == ["AUTHORS"]):
+            errors.append(f"{label}: AUTHORS must be classified as authorship")
+        if not re.fullmatch(r"[0-9a-f]{40}", str(row.get("head", ""))):
+            errors.append(f"{label}: head must be an immutable commit")
+        if row.get("state") not in ("OPEN", "CLOSED", "MERGED"):
+            errors.append(f"{label}: state must be OPEN, CLOSED or MERGED")
+        merged_at = row.get("merged_at")
+        if (row.get("state") == "MERGED") != (merged_at is not None):
+            errors.append(f"{label}: MERGED requires a merge date; other states must not have one")
+        if merged_at is not None:
+            merged = timestamp(merged_at, f"{label} merged_at")
+            if merged and observed and merged > observed:
+                errors.append(f"{label}: merge postdates the observation")
+        if row.get("review_decision") not in (None, "REVIEW_REQUIRED", "APPROVED", "CHANGES_REQUESTED"):
+            errors.append(f"{label}: unknown aggregate review decision")
+        reviews = row.get("reviews")
+        if not isinstance(reviews, list):
+            errors.append(f"{label}: reviews must be a list")
+            continue
+        for review in reviews:
+            if not isinstance(review, dict):
+                errors.append(f"{label}: review must be an object")
+                continue
+            if review.get("state") not in ("APPROVED", "COMMENTED", "CHANGES_REQUESTED", "DISMISSED"):
+                errors.append(f"{label}: unknown individual review state")
+            if not re.fullmatch(r"[0-9a-f]{40}", str(review.get("commit", ""))):
+                errors.append(f"{label}: review must name its exact commit")
+            if not re.fullmatch(re.escape(f"{UPSTREAM_PR_PREFIX}{number}") + r"#pullrequestreview-[0-9]+", str(review.get("url", ""))):
+                errors.append(f"{label}: review URL must belong to this request")
+            submitted = timestamp(review.get("submitted_at"), f"{label} review")
+            if submitted and observed and submitted > observed:
+                errors.append(f"{label}: review postdates the observation")
+    return errors
+
+
+def contribution_counts(activity: dict[str, Any]) -> dict[str, int]:
+    rows = activity["requests"]
+    return {
+        "merged_mathematical": sum(r["state"] == "MERGED" and r["kind"] != "authorship" for r in rows),
+        "merged_authorship": sum(r["state"] == "MERGED" and r["kind"] == "authorship" for r in rows),
+        "open": sum(r["state"] == "OPEN" for r in rows),
+    }
+
+
+def render_contribution_activity(activity: dict[str, Any]) -> list[str]:
+    counts = contribution_counts(activity)
+    lines = [
+        "## Contribution activity", "",
+        f"Observed **{activity['observed_at']}** from the linked public pull requests.", "",
+        f"**{counts['merged_mathematical']} merged mathematical contributions · "
+        f"{counts['open']} open requests · {counts['merged_authorship']} merged AUTHORS update.**", "",
+        activity["boundary"], "",
+    ]
+    groups = [
+        ("Merged mathematical contributions", lambda r: r["state"] == "MERGED" and r["kind"] != "authorship"),
+        ("Open requests", lambda r: r["state"] == "OPEN"),
+        ("Authorship and closed requests", lambda r: r["kind"] == "authorship" and r["state"] != "OPEN" or r["state"] == "CLOSED"),
+    ]
+    for heading, select in groups:
+        rows = [row for row in activity["requests"] if select(row)]
+        if not rows:
+            continue
+        lines.extend([f"### {heading}", ""])
+        for row in rows:
+            lines.extend([f"**[#{row['number']} · {row['title']}]({row['url']})**", "", row["scope"], ""])
+            if row["state"] == "MERGED":
+                lines.extend([f"Merged {row['merged_at'][:10]}.", ""])
+            else:
+                decision = (row.get("review_decision") or "not reported").lower().replace("_", " ")
+                lines.extend([f"{row['state'].capitalize()}; aggregate review decision: **{decision}**.", ""])
+            if row["reviews"]:
+                review = max(
+                    row["reviews"],
+                    key=lambda r: datetime.fromisoformat(r["submitted_at"].replace("Z", "+00:00")),
+                )
+                relation = "current head" if review["commit"] == row["head"] else "an earlier head"
+                lines.extend([
+                    f"Latest individual review: [{review['state'].lower().replace('_', ' ')}]({review['url']}) "
+                    f"on {relation}, {review['submitted_at'][:10]}.", "",
+                ])
+    lines.extend([
+        "Exact target names, reviewed commits and observation fields are recorded in "
+        "[the crosswalk source](../formal_conjectures_crosswalk.json). "
+        "Open the linked request for subsequent activity.", "",
+    ])
+    return lines
+
+
 def crosswalk_errors(
     manifest: dict[str, Any],
     problem_index: dict[str, Any],
@@ -461,6 +600,7 @@ def crosswalk_errors(
     errors: list[str] = []
     if manifest.get("schema") != SCHEMA:
         errors.append(f"schema must be {SCHEMA}")
+    errors.extend(contribution_activity_errors(manifest.get("contribution_activity")))
 
     upstream = manifest.get("upstream", {})
     if upstream.get("repository") != UPSTREAM_REPOSITORY:
@@ -564,7 +704,7 @@ def crosswalk_errors(
         expected_verdict = (
             "candidate_adapter_alignment_requires_human_review"
             if problem in ADAPTER_CANDIDATES and checked == "none"
-            else "adapter_checked_upstream_process_pending"
+            else "adapter_checked_against_pinned_statement"
             if problem in ADAPTER_CANDIDATES
             else "statement_level_alignment_only"
         )
@@ -706,10 +846,13 @@ def render_markdown(
         "",
         manifest["purpose"],
         "",
+        *render_contribution_activity(manifest["contribution_activity"]),
+        "## Pinned statement comparison",
+        "",
         f"**Upstream:** [{repository}]({repository}) at exact commit "
         f"[`{commit}`]({repository}/commit/{commit}). Source hashes are SHA-256 over exact file bytes.",
         "",
-        "**Boundary:** this records statement identity, local proof evidence and adapter status; it does not establish novelty, historical correspondence or upstream acceptance. The exact Formal Conjectures #1041 Hausdorff path-image statement is refuted by ani's one-polynomial example, while correspondence with the 1958 wording still needs independent review. The other seven original targets remain open. Submission status belongs to each row below.",
+        "**Boundary:** this section records statement identity and local adapter evidence at the pinned snapshot. It does not establish novelty or historical correspondence. The exact Formal Conjectures #1041 Hausdorff path-image statement is refuted by ani's one-polynomial example, while correspondence with the 1958 wording still needs independent review. The other seven original targets remain open. Historical adapter-admission fields below are not current upstream lifecycle; use the dated contribution activity above.",
         "",
         "| Problem | Upstream primary declaration | Adapter |",
         "|---:|---|---|",
@@ -779,7 +922,7 @@ def render_markdown(
                 f"`{refutation['source_commit']}`; {refutation['credit']}. "
                 f"{refutation['boundary']}"
             )
-        lines.extend([f"- Submission status: `{row['submission_status']}`.", ""])
+        lines.extend([f"- Historical adapter-admission record: `{row['submission_status']}`. See [contribution activity](#contribution-activity) for upstream lifecycle.", ""])
 
     lines.extend(["## Adapter candidates", ""])
     for row in manifest["problems"]:
@@ -791,12 +934,12 @@ def render_markdown(
                 f"### Erdős #{row['problem']}: `{adapter['target_declaration']}`",
                 "",
                 (
-                    "Candidate only; human semantic review is required and this is "
-                    "not ready to submit."
+                    "At this pinned adapter snapshot, this is a candidate requiring "
+                    "human semantic review."
                     if row["submission_status"] == NOT_READY
                     else "The upstream proposition is stated verbatim in the adapter "
-                    "and derived from this library. Human semantic review is still "
-                    "required, and nothing has been offered upstream."
+                    "and derived from this library. This local check is separate "
+                    "from the dated contribution and review record above."
                 ),
                 "",
                 "Local evidence:",
@@ -836,7 +979,7 @@ def render_markdown(
                 f"- Recorded here because: {row['why_recorded_here']}",
                 f"- Machine-checked equivalence: "
                 f"{render_checked(row['machine_checked_equivalence'])}",
-                f"- Submission status: `{row['submission_status']}`.",
+                f"- Historical adapter-admission record: `{row['submission_status']}`; upstream lifecycle is recorded above.",
                 "",
             ]
         )
@@ -915,14 +1058,16 @@ def main(argv: list[str] | None = None) -> int:
         if row.get("comparison", row).get("machine_checked_equivalence") != "none"
     )
     cross_rows = len(manifest["cross_index_matches"])
-    submitted = sum(1 for row in all_rows if row.get("submission_status") == SUBMITTED)
+    activity = manifest["contribution_activity"]
+    counts = contribution_counts(activity)
     print(
         # Counted from the manifest rather than asserted, so the summary cannot
         # keep reporting a state the crosswalk has moved on from.
-        "Formal Conjectures crosswalk is current: 8/8 problems, exact commit pin, "
+        "Formal Conjectures crosswalk is valid: 8/8 problems, exact commit pin, "
         f"{checked_rows} row(s) with a verified checked equivalence, "
         f"{cross_rows} cross-index match(es), "
-        f"{submitted} row(s) submitted upstream{suffix}"
+        f"{counts['merged_mathematical']} merged mathematical contributions and "
+        f"{counts['open']} open requests observed {activity['observed_at']}{suffix}"
     )
     return 0
 

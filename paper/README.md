@@ -42,16 +42,71 @@ and the research process, go to the [project papers](#project-papers).
 
 ## Problem papers
 
-| Problem | Short paper | Complete reasoning record |
-|---|---|---|
-| #68 | [Integer Linear Forms for a Factorial Reciprocal Series](68/erdos-68-factorial-denominator-irrationality.pdf) ([source](68/erdos-68-factorial-denominator-irrationality.tex)) | [Factorial Linear Forms and Denominators: Detailed Proofs and Rationality Criteria](68/erdos68-factorial-reasoning-surface.pdf) ([source](68/erdos68-factorial-reasoning-surface.tex)) |
-| #243 | [Reciprocal Sums and the Sylvester Recurrence](243/erdos-243-reciprocal-tail-rigidity.pdf) ([source](243/erdos-243-reciprocal-tail-rigidity.tex)) | [Reciprocal Sums and the Sylvester Recurrence: Further Results and Proofs](243/erdos243-reciprocal-tail-reasoning-surface.pdf) ([source](243/erdos243-reciprocal-tail-reasoning-surface.tex)) |
-| #249 | [Integral Relations among Totient Sections](249/erdos-249-binary-totient-series.pdf) ([source](249/erdos-249-binary-totient-series.tex)) | [The Binary Totient Series](249/erdos249-totient-reasoning-surface.pdf) ([source](249/erdos249-totient-reasoning-surface.tex)) |
-| #251 | [Sparse Congruence-Preserving Perturbations of Dyadic Series](251/erdos-251-prime-gap-dyadic-series.pdf) ([source](251/erdos-251-prime-gap-dyadic-series.tex)) | [Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates](251/erdos251-prime-gap-reasoning-surface.pdf) ([source](251/erdos251-prime-gap-reasoning-surface.tex)) |
-| #257 | [Irrationality criteria for Lambert subseries](257/erdos-257-mersenne-support-subseries.pdf) ([source](257/erdos-257-mersenne-support-subseries.tex)) | [Reciprocal Mersenne Subseries](257/erdos257-mersenne-reasoning-surface.pdf) ([source](257/erdos257-mersenne-reasoning-surface.tex)) |
-| #269 | [Distinct running least common multiples](269/erdos-269-three-prime-running-lcm.pdf) ([source](269/erdos-269-three-prime-running-lcm.tex)) | [Running least common multiples: distinct values and multiplicities](269/erdos269-running-lcm-reasoning-surface.pdf) ([source](269/erdos269-running-lcm-reasoning-surface.tex)) |
-| #1041 | [Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections](1041/erdos-1041-lemniscate-newton-flow.pdf) ([source](1041/erdos-1041-lemniscate-newton-flow.tex)) | [Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections](1041/erdos1041-lemniscate-reasoning-surface.pdf) ([source](1041/erdos1041-lemniscate-reasoning-surface.tex)) |
-| #1049 | [Hankel Determinants of Geometric Moments and Rational Lambert Values](1049/erdos-1049-rational-base-lambert.pdf) ([source](1049/erdos-1049-rational-base-lambert.tex)) | [Geometric Moments and Rational Lambert Values: Proofs and Further Results](1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) ([source](1049/erdos1049-rational-base-lambert-reasoning-surface.tex)) |
+[#68](#erdős-68) · [#243](#erdős-243) · [#249](#erdős-249) · [#251](#erdős-251) · [#257](#erdős-257) · [#269](#erdős-269) · [#1041](#erdős-1041) · [#1049](#erdős-1049)
+
+### Erdős #68
+
+**Short paper**<br>
+[Integer Linear Forms for a Factorial Reciprocal Series](68/erdos-68-factorial-denominator-irrationality.pdf) ([source](68/erdos-68-factorial-denominator-irrationality.tex))
+
+**Complete reasoning record**<br>
+[Factorial Linear Forms and Denominators: Detailed Proofs and Rationality Criteria](68/erdos68-factorial-reasoning-surface.pdf) ([source](68/erdos68-factorial-reasoning-surface.tex))
+
+### Erdős #243
+
+**Short paper**<br>
+[Reciprocal Sums and the Sylvester Recurrence](243/erdos-243-reciprocal-tail-rigidity.pdf) ([source](243/erdos-243-reciprocal-tail-rigidity.tex))
+
+**Complete reasoning record**<br>
+[Reciprocal Sums and the Sylvester Recurrence: Further Results and Proofs](243/erdos243-reciprocal-tail-reasoning-surface.pdf) ([source](243/erdos243-reciprocal-tail-reasoning-surface.tex))
+
+### Erdős #249
+
+**Short paper**<br>
+[Integral Relations among Totient Sections](249/erdos-249-binary-totient-series.pdf) ([source](249/erdos-249-binary-totient-series.tex))
+
+**Complete reasoning record**<br>
+[The Binary Totient Series](249/erdos249-totient-reasoning-surface.pdf) ([source](249/erdos249-totient-reasoning-surface.tex))
+
+### Erdős #251
+
+**Short paper**<br>
+[Sparse Congruence-Preserving Perturbations of Dyadic Series](251/erdos-251-prime-gap-dyadic-series.pdf) ([source](251/erdos-251-prime-gap-dyadic-series.tex))
+
+**Complete reasoning record**<br>
+[Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates](251/erdos251-prime-gap-reasoning-surface.pdf) ([source](251/erdos251-prime-gap-reasoning-surface.tex))
+
+### Erdős #257
+
+**Short paper**<br>
+[Irrationality criteria for Lambert subseries](257/erdos-257-mersenne-support-subseries.pdf) ([source](257/erdos-257-mersenne-support-subseries.tex))
+
+**Complete reasoning record**<br>
+[Reciprocal Mersenne Subseries](257/erdos257-mersenne-reasoning-surface.pdf) ([source](257/erdos257-mersenne-reasoning-surface.tex))
+
+### Erdős #269
+
+**Short paper**<br>
+[Distinct running least common multiples](269/erdos-269-three-prime-running-lcm.pdf) ([source](269/erdos-269-three-prime-running-lcm.tex))
+
+**Complete reasoning record**<br>
+[Running least common multiples: distinct values and multiplicities](269/erdos269-running-lcm-reasoning-surface.pdf) ([source](269/erdos269-running-lcm-reasoning-surface.tex))
+
+### Erdős #1041
+
+**Short paper**<br>
+[Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections](1041/erdos-1041-lemniscate-newton-flow.pdf) ([source](1041/erdos-1041-lemniscate-newton-flow.tex))
+
+**Complete reasoning record**<br>
+[Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections](1041/erdos1041-lemniscate-reasoning-surface.pdf) ([source](1041/erdos1041-lemniscate-reasoning-surface.tex))
+
+### Erdős #1049
+
+**Short paper**<br>
+[Hankel Determinants of Geometric Moments and Rational Lambert Values](1049/erdos-1049-rational-base-lambert.pdf) ([source](1049/erdos-1049-rational-base-lambert.tex))
+
+**Complete reasoning record**<br>
+[Geometric Moments and Rational Lambert Values: Proofs and Further Results](1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) ([source](1049/erdos1049-rational-base-lambert-reasoning-surface.tex))
 
 The #243 short paper leads with irrationality under the cubic rate
 `a_n²/a_(n+1) = 1 + 3/n + o(n⁻³)` for strictly increasing positive integer
@@ -214,8 +269,8 @@ python3 scripts/paper_evidence.py build --corpus-repo /path/to/plectis-erdos-lea
 Review and commit changed evidence records before pointing that paper's
 `record_commit_overrides` entry in `evidence/config.json` at the new commit.
 Run the evidence builder again, rebuild the affected PDF and synchronize it.
-`python3 scripts/check_paper_evidence_pdfs.py` checks each margin link against
-the heading and page in the resulting PDF; `make -C paper check` includes
+`python3 scripts/check_paper_evidence_pdfs.py` checks the final verification concordance
+and its links against the result headings and pages in the resulting PDF; `make -C paper check` includes
 this check. It needs the dependencies in `scripts/requirements-release.txt`.
 
 After editing a manuscript, rebuild its PDF before updating its recorded

@@ -1,37 +1,39 @@
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 
-# Plectis: open mathematical research
+# Plectis
 
-**Papers to read. Proofs to check. Research to continue.**
+### Open mathematical research
 
-Plectis brings together research on eight Erdős problems: mathematical
-arguments, Lean proofs, experiments and the approaches that did not work.
-It is an independent, AI-assisted prototype built and maintained by Will Cook.
+Eight Erdős problems, with papers to read, proofs to inspect and research to continue.
 
 **[Explore the website](https://wcook04.github.io/plectis/maths/)** ·
 **[Open the maths map](https://wcook04.github.io/plectis/maths/universe.html)** ·
-[Read the papers](paper/README.md)
+**[Read the papers](paper/README.md)**
 
 [![Eight Erdős problem programmes: the interactive maths map connects papers, results and their formal evidence](.github/maths-map.png)](https://wcook04.github.io/plectis/maths/universe.html)
 
-*The website map on 8 October 2026. Click the image to explore the current edition.*
+<sub>The maths map on 8 October 2026. Open the image to explore the current edition.</sub>
 
-The website is the visual reading companion to this repository. Its
-[maths map](https://wcook04.github.io/plectis/maths/universe.html) lets you follow
-a problem into a paper, a result and its recorded formal evidence. The
-[glossary](https://wcook04.github.io/plectis/docs/glossary.html) explains mathematical
-terms as you read. The repository holds the sources and the tools for checking
-and extending the work. You can read everything without installing Lean.
+Plectis is an independent, AI-assisted prototype built and maintained by Will Cook.
+The website is its visual reading companion; this repository holds the arguments,
+Lean proofs, experiments and approaches that did not work. You can read everything
+without installing Lean. [A reader's way in](docs/READING_GUIDE.md) introduces the
+project; the [glossary](https://wcook04.github.io/plectis/docs/glossary.html) explains
+mathematical terms along the way.
+
+---
 
 ## For a first look: #257
 
-[Problem 257](https://www.erdosproblems.com/257) asks whether adding
-`1/(2^a − 1)` over **any infinite set of positive integers** always gives an
-irrational number. The universal question remains open.
+[Problem 257](https://www.erdosproblems.com/257) asks whether the series
 
-The [short paper](paper/257/erdos-257-mersenne-support-subseries.pdf)
-proves sufficient conditions for particular infinite sets, including a
+$$\sum_{a\in A} \frac{1}{2^a-1}$$
+
+is irrational for **every infinite set $A$ of positive integers**. The universal
+question remains open.
+
+The [short paper](paper/257/erdos-257-mersenne-support-subseries.pdf) proves sufficient conditions for particular infinite sets, including a
 Lean-checked prime-weighted criterion that works at every integer base at
 least two. Cancellation removes a finite batch of terms; averaging controls
 what the remaining terms leave behind.
@@ -41,8 +43,6 @@ what the remaining terms leave behind.
 [follow the Lean declaration](lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120).
 The [longer record](paper/257/erdos257-mersenne-reasoning-surface.pdf) preserves
 other approaches and where they stop.
-
-
 
 ## Results and their limits
 
@@ -111,15 +111,20 @@ beside their qualifications and sources.
 | [#1049](https://www.erdosproblems.com/1049) | [Rational-base Lambert series](https://wcook04.github.io/plectis/maths/problems/erdos_1049.html) | [short paper](paper/1049/erdos-1049-rational-base-lambert.pdf) · [longer paper](paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf) |
 
 
-The [cross-problem paper, Reading Eight Erdős Problems Together](paper/synthesis/optimal-sparse-perturbations.pdf)
-develops connections through factorial series, Lambert subsums and the limits
-of shared methods. Its main theorems are ordinary proofs; Lean checks specified
-ingredients. The [synthesis guide](paper/synthesis/README.md) identifies ways to
-continue that work. The [system paper, A Repository-Based System for Research and Publication](paper/systems/claim-faithful-publication-systems-paper.pdf)
-explains how the research, evidence and publication process fit together.
-The [paper catalogue on the website](https://wcook04.github.io/plectis/docs/papers.html)
-provides browser reading and downloads; [the repository paper index](paper/README.md)
-keeps manuscript sources and earlier editions beside them.
+### Reading across the problems
+
+**[Reading Eight Erdős Problems Together](paper/synthesis/optimal-sparse-perturbations.pdf)**<br>
+The cross-problem paper develops connections through factorial series, Lambert
+subsums and the limits of shared methods. Its main theorems are ordinary proofs;
+Lean checks specified ingredients. The [synthesis guide](paper/synthesis/README.md)
+identifies ways to continue the work.
+
+**[A Repository-Based System for Research and Publication](paper/systems/claim-faithful-publication-systems-paper.pdf)**<br>
+The system paper explains how research, evidence and publication fit together.
+
+[Browse the website catalogue](https://wcook04.github.io/plectis/docs/papers.html)
+for browser reading and downloads, or [open the repository paper index](paper/README.md)
+for manuscript sources and earlier editions.
 
 <a id="what-the-checks-establish"></a>
 
@@ -167,7 +172,15 @@ or an intermediate result helped, please cite the relevant work and say how.
 
 ## Read or verify locally
 
+[REPRODUCIBILITY](docs/REPRODUCIBILITY.md) owns installation, commands and build
+requirements. Start by [following one claim without Lean](docs/REPRODUCIBILITY.md#try-one-claim-without-lean).
+Agents enter through [AGENTS.md](AGENTS.md) and the
+[agent workbench](docs/agents/AGENT_WORKBENCH.md).
+
 ### Repository map
+
+<details>
+<summary>Where the papers, proofs, experiments and tools live</summary>
 
 | Location | Contents |
 |---|---|
@@ -182,12 +195,11 @@ or an intermediate result helped, please cite the relevant work and say how.
 | [scripts/](scripts/README.md) | Query tools, projection builders and validation programs. |
 | [skills/](skills/README.md) | Workflows for coding agents using this checkout. |
 
-[REPRODUCIBILITY](docs/REPRODUCIBILITY.md) owns installation, commands and build
-requirements. The checkout is hundreds of megabytes; Lean builds download
-additional toolchains and dependencies. The [security policy](.github/SECURITY.md)
-explains the execution boundary. Agents enter through [AGENTS.md](AGENTS.md)
-and the [agent workbench](docs/agents/AGENT_WORKBENCH.md). The
-[architecture guide](docs/ARCHITECTURE.md) explains the folder names.
+</details>
+
+The [architecture guide](docs/ARCHITECTURE.md) explains how the folders fit together.
+The checkout is hundreds of megabytes; Lean builds download additional toolchains
+and dependencies. The [security policy](.github/SECURITY.md) explains the execution boundary.
 
 <!-- BEGIN generated_corpus_at_a_glance -->
 <!-- Generated by scripts/build_corpus_descriptor.py; do not edit this region. -->
@@ -228,11 +240,18 @@ order without asking you to decode Lean declaration names first.
 
 ## Formal Conjectures contributions
 
-Four merged changes: [#257](https://github.com/google-deepmind/formal-conjectures/pull/6506),
-[#258](https://github.com/google-deepmind/formal-conjectures/pull/5034), and
-[#1049](https://github.com/google-deepmind/formal-conjectures/pull/6507) proof links
-for solved variants of Erdős's 1948 theorem; a [#1041 correction](https://github.com/google-deepmind/formal-conjectures/pull/6505)
-using ani's counterexample. [Trace the #1041 Lean proof](docs/case-studies/formal-conjectures-1041.md).
+As of **8 October 2026**, four mathematical contributions have merged:
+proof links for solved variants of Erdős's 1948 theorem in
+[#257](https://github.com/google-deepmind/formal-conjectures/pull/6506),
+[#258](https://github.com/google-deepmind/formal-conjectures/pull/5034) and
+[#1049](https://github.com/google-deepmind/formal-conjectures/pull/6507), plus the
+[#1041 correction](https://github.com/google-deepmind/formal-conjectures/pull/6505)
+based on ani's counterexample.
+
+**Nine further requests remain open.** The
+[contribution record](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#contribution-activity)
+separates merged changes, open requests and the AUTHORS update, with each
+request's scope and dated review state. [Trace the #1041 Lean proof](docs/case-studies/formal-conjectures-1041.md).
 
 The [Prove2Me #243/#257 proof packets](docs/research-commons/README.md#native-prove2me-theorems)
 and [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean) provide

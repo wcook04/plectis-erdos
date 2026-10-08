@@ -551,10 +551,10 @@
       "kind": "source",
       "path": "docs/ARCHITECTURE.md",
       "start_line": 1,
-      "end_line": 319,
-      "sha256": "9164721822c08a35491fc3c318d98e8a7e5d9ad74554b817c1a6a70c91a18025",
-      "excerpt_sha256": "9164721822c08a35491fc3c318d98e8a7e5d9ad74554b817c1a6a70c91a18025",
-      "custody": "Current public guide inspected after reader-entry reorganization on 8 October 2026. Routing, authority, evidence responsibilities and validation boundaries retained; references bind the full guide. No new mathematical or performance claim."
+      "end_line": 314,
+      "sha256": "e79a63ea29765fcba7455a5486d444436eced30378e797132a31e949a1d14f81",
+      "excerpt_sha256": "e79a63ea29765fcba7455a5486d444436eced30378e797132a31e949a1d14f81",
+      "custody": "Current public architecture guide inspected after reader-entry reorganization and addition of the Formal Conjectures source owner on 8 October 2026. Routing, authority, evidence responsibilities and validation boundaries retained; this binding covers the full guide. No new mathematical or performance claim."
     },
     {
       "id": "r8-entry",
@@ -572,9 +572,9 @@
       "path": "docs/agents/README.md",
       "start_line": 1,
       "end_line": 150,
-      "sha256": "3394f956d083f9532742c65b45222727ec21891beaa6a530e12ce0ff4ab3773b",
-      "excerpt_sha256": "3394f956d083f9532742c65b45222727ec21891beaa6a530e12ce0ff4ab3773b",
-      "custody": "Current native public file inspected as source; no fresh execution."
+      "sha256": "b1b07a6a4572056f7c7c0892e59a0d0899a9fa92fcd05a72d0b429fc46aa9f60",
+      "excerpt_sha256": "b1b07a6a4572056f7c7c0892e59a0d0899a9fa92fcd05a72d0b429fc46aa9f60",
+      "custody": "Current public quickstart inspected after moving general setup before the worked example on 8 October 2026. Clone, task selection, evidence routes and observation boundaries retained; this binding covers the complete guide. No new mathematical or performance claim."
     },
     {
       "id": "r8-lookup",

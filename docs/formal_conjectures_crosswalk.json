@@ -2,7 +2,7 @@
   "schema": "formal-conjectures-crosswalk/1",
   "artifact_role": "authored_statement_identity_and_adapter_review_crosswalk",
   "authority_posture": "Source-identity and comparison metadata only. This artifact is not Lean proof authority, does not establish semantic equivalence, and is not a contribution or submission-readiness decision.",
-  "purpose": "Bind the eight public Erdős programmes to the exact Formal Conjectures source snapshot and record the indexing, ambient-type, cast, and proof-status differences a human reviewer must inspect.",
+  "purpose": "Follow the public Formal Conjectures contributions, then inspect the pinned statement comparison for the eight Erdős programmes. Contribution lifecycle and mathematical source identity have separate evidence.",
   "upstream": {
     "repository": "https://github.com/google-deepmind/formal-conjectures",
     "commit": "f2de2ed5841e2105009be778ada0c40c08980125",
@@ -26,7 +26,7 @@
       "adapter_checked_pending_external_process",
       "submitted_upstream"
     ],
-    "ladder_boundary": "adapter_checked_pending_external_process means the upstream proposition is stated verbatim here and derived from this library. It does not mean the contribution has been offered, reviewed, or accepted upstream, and it makes no novelty claim."
+    "ladder_boundary": "Legacy local adapter-admission vocabulary, retained with its evidence checks. These fields are not current upstream lifecycle. contribution_activity records dated public requests independently, including status corrections and research statements that do not use these adapters."
   },
   "problems": [
     {
@@ -215,7 +215,7 @@
         "indexing": "The upstream support may contain exponent zero. Its n = 0 summand is 1 / 0 = 0 under Lean's division convention, so zero is analytically invisible; a formal adapter must still normalize Set Nat and subtype indexing explicitly.",
         "casts_and_ambient_types": "The denominator power is inferred in Real from the explicit numerator cast. The solved variant instead sums Nat divisor counts coerced to Real.",
         "answer_and_proof_status": "The universal theorem and solved-variant irrationality theorem are sorry; the Lambert identity tsum_top_eq is proved upstream.",
-        "conservative_verdict": "adapter_checked_upstream_process_pending",
+        "conservative_verdict": "adapter_checked_against_pinned_statement",
         "machine_checked_equivalence": {
           "upstream_declaration": "Erdos257.erdos_257.variants.tsum_top",
           "adapter_module": "adapters/FormalConjecturesAdapter.lean",
@@ -254,13 +254,11 @@
       "human_semantic_review_required": true,
       "submission_status": "submitted_upstream",
       "submission": {
-        "pull_request": 5033,
-        "url": "https://github.com/google-deepmind/formal-conjectures/pull/5033",
-        "branch": "formal-proof-erdos-257-tsum-top",
-        "head": "9ccc2d7ef85080ffb3b3e17304f6b2e7fb5202df",
+        "pull_request": 6506,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/6506",
         "offers": "a formal_proof attribute pointing at this repository; the upstream sorry is retained, per upstream policy for proofs longer than 25-50 lines",
-        "state_when_recorded": "open",
-        "boundary": "Offered upstream. Not reviewed, not accepted, and not a novelty claim. Live state is whatever the pull request says now, not this field."
+        "boundary": "This reference identifies the scoped upstream contribution. Current observed status belongs to contribution_activity, not the adapter-admission field; a contribution is not a novelty claim or a solution of the original open problem.",
+        "supersedes_pull_request": 5033
       }
     },
     {
@@ -342,7 +340,7 @@
         "statement_scope": "The local Hausdorff theorem refutes the exact Formal Conjectures path-image-length proposition for ani's degree-seven polynomial. The 1958 curve-length wording remains a separate historical correspondence audit.",
         "indexing": "There is no series indexing issue. The upstream theorem quantifies polynomial degree n >= 2 and selects roots through multiset containment, including multiplicity.",
         "casts_and_ambient_types": "Both formal statements use a Complex path whose image lies in the strict unit lemniscate; length is one-dimensional Hausdorff measure of Set.range γ in ENNReal. The older local total-variation theorem is separate.",
-        "answer_and_proof_status": "The pinned upstream declaration still has answer(sorry) and a sorry proof. Local Lean proves the standalone negation of its exact Hausdorff formulation and the answer(False) form; no upstream change or human historical adjudication is recorded here.",
+        "answer_and_proof_status": "At the pinned snapshot, the upstream declaration has answer(sorry) and a sorry proof. Local Lean proves the exact Hausdorff negation and answer(False) form. The later answer correction merged as PR #6505; independent historical adjudication remains unrecorded.",
         "conservative_verdict": "statement_level_alignment_only",
         "machine_checked_equivalence": "none",
         "local_formal_refutation": {
@@ -357,7 +355,7 @@
       },
       "adapter": {
         "status": "not_a_candidate",
-        "reason": "The pinned upstream theorem still uses answer(sorry). This local result proves the standalone answer(False) restatement, but no upstream adapter or answer change has been submitted; human review of the 1958 wording remains required."
+        "reason": "At the pinned snapshot the upstream theorem uses answer(sorry), while the local result proves its answer(False) restatement. The later answer correction merged as PR #6505; current contribution status is recorded separately. Independent review of the 1958 wording remains required."
       },
       "human_semantic_review_required": true,
       "submission_status": "not_ready_to_submit"
@@ -400,7 +398,7 @@
         "indexing": "The upstream sums use positive naturals. The local full-support theorem uses k : Nat with exponent k + 1; an explicit equivalence between those index types is required.",
         "casts_and_ambient_types": "The upstream open base is Rational and the solved variant is Integer, both cast into Real powers. The local theorem takes b : Nat and casts it to Real, so Integer-to-Nat and cast/power normalization must be checked.",
         "answer_and_proof_status": "The rational-base conjecture and integer-base variant have sorry proofs. The upstream Lambert identity is proved, including branches outside the t > 1 problem regime that rely on Lean's nonsummable-tsum convention.",
-        "conservative_verdict": "adapter_checked_upstream_process_pending",
+        "conservative_verdict": "adapter_checked_against_pinned_statement",
         "machine_checked_equivalence": {
           "upstream_declaration": "Erdos1049.erdos_1049.variants.geq_2_integer",
           "adapter_module": "adapters/FormalConjecturesAdapter.lean",
@@ -435,13 +433,11 @@
       "human_semantic_review_required": true,
       "submission_status": "submitted_upstream",
       "submission": {
-        "pull_request": 5032,
-        "url": "https://github.com/google-deepmind/formal-conjectures/pull/5032",
-        "branch": "formal-proof-erdos-1049-integer-base",
-        "head": "5f8b8a785c00c2ea1295d523146da27242f1f7b2",
+        "pull_request": 6507,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/6507",
         "offers": "a formal_proof attribute pointing at this repository; the upstream sorry is retained, per upstream policy for proofs longer than 25-50 lines",
-        "state_when_recorded": "open",
-        "boundary": "Offered upstream. Not reviewed, not accepted, and not a novelty claim. Live state is whatever the pull request says now, not this field."
+        "boundary": "This reference identifies the scoped upstream contribution. Current observed status belongs to contribution_activity, not the adapter-admission field; a contribution is not a novelty claim or a solution of the original open problem.",
+        "supersedes_pull_request": 5032
       }
     }
   ],
@@ -470,12 +466,319 @@
       "submission": {
         "pull_request": 5034,
         "url": "https://github.com/google-deepmind/formal-conjectures/pull/5034",
-        "branch": "formal-proof-erdos-258-constant-base",
-        "head": "531905f271fef660309c1432110416c58b9f1985",
         "offers": "a formal_proof attribute pointing at this repository; the upstream sorry is retained, per upstream policy for proofs longer than 25-50 lines",
-        "state_when_recorded": "open",
-        "boundary": "Offered upstream. Not reviewed, not accepted, and not a novelty claim. Live state is whatever the pull request says now, not this field."
+        "boundary": "This reference identifies the scoped upstream contribution. Current observed status belongs to contribution_activity, not the adapter-admission field; a contribution is not a novelty claim or a solution of the original open problem."
       }
     }
-  ]
+  ],
+  "contribution_activity": {
+    "observed_at": "2026-10-08T16:06:30Z",
+    "repository": "https://github.com/google-deepmind/formal-conjectures",
+    "boundary": "A dated observation of public pull requests. Individual review, aggregate approval requirements and merge state are separate. A merge accepts the scoped upstream change, not every mathematical claim in this repository. The pinned statement comparison below retains its original source identity.",
+    "requests": [
+      {
+        "number": 5034,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/5034",
+        "title": "Add formal proof for Erdős Problem 258 constant-base variant",
+        "kind": "proof_link",
+        "targets": [
+          "Erdos258.erdos_258.variants.constant"
+        ],
+        "scope": "Proof link for the constant-base variant of Erdős's 1948 theorem.",
+        "state": "MERGED",
+        "head": "88600293ce8e5940b181d9b221410fcfe681747d",
+        "merged_at": "2026-09-18T14:04:34Z",
+        "review_decision": "APPROVED",
+        "reviews": [
+          {
+            "state": "APPROVED",
+            "commit": "531905f271fef660309c1432110416c58b9f1985",
+            "submitted_at": "2026-09-18T12:34:29Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/5034#pullrequestreview-5247811041"
+          }
+        ]
+      },
+      {
+        "number": 6505,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/6505",
+        "title": "Erdős 1041: mark solved with answer(False) and link a formal proof",
+        "kind": "status_correction",
+        "targets": [
+          "Erdos1041.erdos_1041"
+        ],
+        "scope": "Negative answer to the exact formal path-image statement, credited to ani; independent correspondence review of the 1958 wording remains separate.",
+        "state": "MERGED",
+        "head": "5dd3328591f6ba8fd671d8caa4e5c5d29e0f570d",
+        "merged_at": "2026-09-23T07:38:32Z",
+        "review_decision": "APPROVED",
+        "reviews": [
+          {
+            "state": "APPROVED",
+            "commit": "5dd3328591f6ba8fd671d8caa4e5c5d29e0f570d",
+            "submitted_at": "2026-09-23T07:04:46Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6505#pullrequestreview-5287880895"
+          }
+        ]
+      },
+      {
+        "number": 6506,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/6506",
+        "title": "Erdős 257: link a formal proof of variants.tsum_top",
+        "kind": "proof_link",
+        "targets": [
+          "Erdos257.erdos_257.variants.tsum_top"
+        ],
+        "scope": "Proof link for the full-support variant of Erdős's 1948 theorem; arbitrary infinite supports remain open.",
+        "state": "MERGED",
+        "head": "81f111e430aa45926c66b1c4774122a6e8ef8aad",
+        "merged_at": "2026-09-23T07:17:41Z",
+        "review_decision": "APPROVED",
+        "reviews": [
+          {
+            "state": "APPROVED",
+            "commit": "81f111e430aa45926c66b1c4774122a6e8ef8aad",
+            "submitted_at": "2026-09-23T06:55:15Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6506#pullrequestreview-5287812291"
+          }
+        ]
+      },
+      {
+        "number": 6507,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/6507",
+        "title": "Erdős 1049: link a formal proof of variants.geq_2_integer",
+        "kind": "proof_link",
+        "targets": [
+          "Erdos1049.erdos_1049.variants.geq_2_integer"
+        ],
+        "scope": "Proof link for integer bases at least two, following Erdős's 1948 theorem; general rational bases remain open.",
+        "state": "MERGED",
+        "head": "220f6e9789b5c4a1575aa573178820776c276a66",
+        "merged_at": "2026-09-23T07:17:06Z",
+        "review_decision": "APPROVED",
+        "reviews": [
+          {
+            "state": "APPROVED",
+            "commit": "220f6e9789b5c4a1575aa573178820776c276a66",
+            "submitted_at": "2026-09-23T06:54:48Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6507#pullrequestreview-5287809168"
+          }
+        ]
+      },
+      {
+        "number": 6522,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/6522",
+        "title": "Set Erdős 269 rationality variant to false",
+        "kind": "status_correction",
+        "targets": [
+          "Erdos269.erdos_269.variants.rational"
+        ],
+        "scope": "Literature-backed negative answer to universal rationality using Steve Fan's two-prime argument. No formal transcendence proof claimed; universal irrationality remains open.",
+        "state": "OPEN",
+        "head": "3a252c2529b223ff875924384cfc7f678a667195",
+        "merged_at": null,
+        "review_decision": "REVIEW_REQUIRED",
+        "reviews": [
+          {
+            "state": "APPROVED",
+            "commit": "3a252c2529b223ff875924384cfc7f678a667195",
+            "submitted_at": "2026-10-06T21:50:06Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6522#pullrequestreview-5434952248"
+          }
+        ]
+      },
+      {
+        "number": 6523,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/6523",
+        "title": "Erdős 243: add cubic-rate irrationality and slow-growth rigidity",
+        "kind": "solved_variant",
+        "targets": [
+          "Erdos243.erdos_243.variants.cubic_rate",
+          "Erdos243.erdos_243.variants.slow_growth_product_defect"
+        ],
+        "scope": "Cubic-rate irrationality and slow-growth rigidity under additional growth and increment hypotheses; the original question remains open.",
+        "state": "OPEN",
+        "head": "5e660c3933e4b34a58ed4d01dd32299c5585d86a",
+        "merged_at": null,
+        "review_decision": "REVIEW_REQUIRED",
+        "reviews": [
+          {
+            "state": "COMMENTED",
+            "commit": "f4db4374ba08c195485ee1fea11e837f5759d3e2",
+            "submitted_at": "2026-10-06T22:06:31Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6523#pullrequestreview-5435079771"
+          }
+        ]
+      },
+      {
+        "number": 6527,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/6527",
+        "title": "Erdős 1049: add rational-base contour and irrationality exponent bound",
+        "kind": "solved_variant",
+        "targets": [
+          "Erdos1049.erdos_1049.variants.rational_base_contour_measure"
+        ],
+        "scope": "A strict logarithmic contour, all positive powers and an irrationality-exponent bound; the general rational-base question, including 3/2, remains open.",
+        "state": "OPEN",
+        "head": "4139651cf87e3ec7893d6038e5d12173f075be66",
+        "merged_at": null,
+        "review_decision": "REVIEW_REQUIRED",
+        "reviews": [
+          {
+            "state": "APPROVED",
+            "commit": "4139651cf87e3ec7893d6038e5d12173f075be66",
+            "submitted_at": "2026-10-06T21:51:00Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6527#pullrequestreview-5434959641"
+          }
+        ]
+      },
+      {
+        "number": 6528,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/6528",
+        "title": "Erdős 257: add weighted and mixed-support irrationality variants",
+        "kind": "solved_variant",
+        "targets": [
+          "Erdos257.erdos_257.variants.finite_prime_weighted_support",
+          "Erdos257.erdos_257.variants.arbitrary_weight_mixed_support"
+        ],
+        "scope": "Irrationality under sufficient weighted support and covering hypotheses, not for arbitrary infinite supports.",
+        "state": "OPEN",
+        "head": "e5a763c1fe7276eb20df464637dd23eab5e3392b",
+        "merged_at": null,
+        "review_decision": "REVIEW_REQUIRED",
+        "reviews": [
+          {
+            "state": "COMMENTED",
+            "commit": "5d1be45bbe85f5d60a61812eb495602b45609616",
+            "submitted_at": "2026-10-06T21:49:55Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6528#pullrequestreview-5434950823"
+          }
+        ]
+      },
+      {
+        "number": 6529,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/6529",
+        "title": "Erdős 257: add the reciprocal-summable support variant",
+        "kind": "solved_variant",
+        "targets": [
+          "Erdos257.erdos_257.variants.summable_reciprocal_support"
+        ],
+        "scope": "Reciprocal-summable support variant with classical attribution retained; the unrestricted question remains open.",
+        "state": "OPEN",
+        "head": "95d0fbc92a40e7f49d309f563c8e701e12cd6581",
+        "merged_at": null,
+        "review_decision": "REVIEW_REQUIRED",
+        "reviews": [
+          {
+            "state": "APPROVED",
+            "commit": "95d0fbc92a40e7f49d309f563c8e701e12cd6581",
+            "submitted_at": "2026-10-06T22:07:59Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6529#pullrequestreview-5435090546"
+          }
+        ]
+      },
+      {
+        "number": 6576,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/6576",
+        "title": "Erdős 1041: add sharp normalized collinear gap variant",
+        "kind": "solved_variant",
+        "targets": [
+          "Erdos1041.erdos_1041.variants.sharp_collinear_gap"
+        ],
+        "scope": "Sharp product-height bound for normalized real roots and a whole adjacent interval; separate from the merged negative answer for general paths.",
+        "state": "OPEN",
+        "head": "b131540591657337d46ded01e83b1d6bd6c58ed1",
+        "merged_at": null,
+        "review_decision": "REVIEW_REQUIRED",
+        "reviews": [
+          {
+            "state": "COMMENTED",
+            "commit": "43874b729c11b65783050871577a22f9093362a8",
+            "submitted_at": "2026-10-06T22:37:31Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6576#pullrequestreview-5435304111"
+          }
+        ]
+      },
+      {
+        "number": 6577,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/6577",
+        "title": "Erdős 249: add countable least-residue dilation independence",
+        "kind": "solved_variant",
+        "targets": [
+          "Erdos249.erdos_249.variants.least_residue_dilation_independence"
+        ],
+        "scope": "Rational linear independence of 1 and the countable dilation family for fixed modulus at least three and integer base at least two; the unreduced totient question remains open.",
+        "state": "OPEN",
+        "head": "38f435dab7ca2da901588a5e91e93452eaba8910",
+        "merged_at": null,
+        "review_decision": "REVIEW_REQUIRED",
+        "reviews": [
+          {
+            "state": "APPROVED",
+            "commit": "38f435dab7ca2da901588a5e91e93452eaba8910",
+            "submitted_at": "2026-10-06T22:33:11Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6577#pullrequestreview-5435273753"
+          }
+        ]
+      },
+      {
+        "number": 6578,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/6578",
+        "title": "Add Will Cook to AUTHORS",
+        "kind": "authorship",
+        "targets": [
+          "AUTHORS"
+        ],
+        "scope": "Administrative attribution: adds Will Cook to AUTHORS; excluded from the mathematical contribution count.",
+        "state": "MERGED",
+        "head": "99d1320e77b5732ab9200604bd85f3c7f4578653",
+        "merged_at": "2026-09-24T19:55:20Z",
+        "review_decision": null,
+        "reviews": []
+      },
+      {
+        "number": 6579,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/6579",
+        "title": "Erdős 249: classify rational dyadic totient observables",
+        "kind": "solved_variant",
+        "targets": [
+          "Erdos249.erdos_249.variants.rational_dyadic_observable"
+        ],
+        "scope": "For rational-valued observables modulo 2^k, the binary series is rational exactly when the observable is constant on even residue classes.",
+        "state": "OPEN",
+        "head": "cefe2f5b7d735c99dc8d121ba32d2e835d5e5766",
+        "merged_at": null,
+        "review_decision": "REVIEW_REQUIRED",
+        "reviews": [
+          {
+            "state": "APPROVED",
+            "commit": "cefe2f5b7d735c99dc8d121ba32d2e835d5e5766",
+            "submitted_at": "2026-10-06T22:25:49Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6579#pullrequestreview-5435222238"
+          }
+        ]
+      },
+      {
+        "number": 6780,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/6780",
+        "title": "Add fixed-base geometric-moment Hankel asymptotic",
+        "kind": "research_statement",
+        "targets": [
+          "GeometricMomentHankel.fixed_base_asymptotic"
+        ],
+        "scope": "Asymptotic for each fixed 0 < q < 1; no uniformity as q approaches one and no solution of #1049.",
+        "state": "OPEN",
+        "head": "009f3ca88924051271af89fc988e0d12e1fad23f",
+        "merged_at": null,
+        "review_decision": "REVIEW_REQUIRED",
+        "reviews": [
+          {
+            "state": "COMMENTED",
+            "commit": "009f3ca88924051271af89fc988e0d12e1fad23f",
+            "submitted_at": "2026-10-07T18:18:31Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6780#pullrequestreview-5446498053"
+          }
+        ]
+      }
+    ]
+  }
 }

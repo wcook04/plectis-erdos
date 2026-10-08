@@ -67,6 +67,9 @@ explain those checks and their limits.
 
 ## Contribute
 
+[Work on a paper](CONTRIBUTE_BY_PAPER.md) brings its question, sources and
+contribution instructions together, one programme at a time.
+
 A contribution can be a correction, clearer explanation, earlier reference,
 counterexample, or useful failed approach. [Contributing](../CONTRIBUTING.md)
 explains what to send back. The [research commons](research-commons/README.md)
@@ -133,5 +136,3 @@ matter, and check examples from the repository root. Keep mathematical
 hypotheses, evidence and open boundaries exact when changing the prose.
 For a generated page, change its source and run its owning builder;
 [Contributing](../CONTRIBUTING.md) explains how to return the improvement.
-
-[Work on a paper](CONTRIBUTE_BY_PAPER.md) joins the existing question, paper, source and return routes for every programme.

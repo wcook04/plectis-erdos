@@ -55,6 +55,26 @@ and unavailable network access without requiring a network in tests. Check the
 combined first-contact route budget as well as each entry file: newcomer setup
 belongs in the agent index, not in an already full technical reading bundle.
 
+## Design the human reading surfaces
+
+For a README or folder index, inspect the rendered page before editing. Keep
+one clear opening, a useful first argument and a consistent heading hierarchy.
+Use real project imagery with descriptive alt text; retain dates on captured
+views. Stack long publication titles on narrow screens and place general setup
+before specialized examples. GitHub owns fonts, colours and interaction: use
+native Markdown instead of adding a frontend framework to a README.
+
+Keep the claim boundary visible. Collapse supporting inventories, not limitations
+needed to understand a result. Preserve existing anchors, manuscript paths and
+citation identities; check light and dark modes and phone-width wrapping.
+These principles adapt the [pinned Taste Skill redesign guidance](https://github.com/leonxlnx/taste-skill/blob/b482f7a970abb98c4108d4a9f761e458c64cefc8/skills/taste-skill/SKILL.md)
+to the public clone; no external skill installation is needed.
+
+When documenting external review, separate the observed request lifecycle from
+local proof or adapter evidence. Record the observation date and public source;
+keep individual reviews, aggregate approval requirements and merge state distinct.
+The Formal Conjectures crosswalk owns this distinction and its generated guide.
+
 ## Separate contribution discovery from mathematical work
 
 For a repository governance or documentation task, verify that entry selects

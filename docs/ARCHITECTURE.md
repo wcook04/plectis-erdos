@@ -3,10 +3,8 @@
 
 # How this repository works
 
-This guide connects eight mathematical problem programmes to their proofs,
-papers, computations and records. Start with a
-[problem paper](../paper/README.md#problem-papers) for the mathematics.
-
+Eight mathematical problem programmes connect papers, proofs, computations and
+research records. Start with a [problem paper](../paper/README.md#problem-papers).
 You do not need to know Lean or the project history.
 
 ## What this repository is
@@ -106,9 +104,8 @@ Lean and the release checks test different parts of that route:
   relationships: declarations resolve, source locations agree, paper identities
   match, and required limitations remain present.
 
-Those are responsibilities, not a claim that independent mathematical review
-has occurred. The [reading guide](READING_GUIDE.md#contributing) states the
-project's authorship and current review position.
+The [reading guide](READING_GUIDE.md#contributing) records authorship and review.
+These responsibilities do not imply that independent review has occurred.
 
 ## Which file is authoritative for what
 
@@ -121,6 +118,7 @@ project's authorship and current review position.
 | Where is the evidence for one result? | [docs/SOURCE_MAP.md](SOURCE_MAP.md) | Routes between problems, claims, paper passages and Lean source. |
 | Which statement does Comparator compare? | [verification/comparator.json](../verification/comparator.json) and [external verification](EXTERNAL_VERIFICATION.md) | The selected challenge, solution, permitted axioms and replay boundary. |
 | What is ready for Palomar? | [docs/verification/PALOMAR_QUALIFICATION.md](verification/PALOMAR_QUALIFICATION.md) and [docs/PALOMAR_POLICY_RECONCILIATION.json](PALOMAR_POLICY_RECONCILIATION.json) | Repository qualification, with external actions and outcomes recorded separately. |
+| Formal Conjectures progress? | [Crosswalk source](formal_conjectures_crosswalk.json) and [guide](verification/FORMAL_CONJECTURES_CROSSWALK.md) | Dated reviews and merges; separate pinned statement comparisons. |
 | What did a research round return, and what does it still owe? | [The research record](reference/RESEARCH_RECORD.md) | Custody of each return, its dispositions, computed milestones, relation rows and contrasts. |
 | Which checks govern a release? | [scripts/check_release.py](../scripts/check_release.py) and [the GitHub workflow](../.github/workflows/lean.yml) | The local checks and the checks run on pushes and pull requests. |
 
@@ -141,8 +139,7 @@ is archived provenance only, not an active gateway.
 
 ## Repository map
 
-This tree groups repeated problem and certificate directories. The folder
-indexes give the full contents.
+This tree groups repeated directories; folder indexes give the full contents.
 
 ```text
 plectis-erdos/
@@ -278,10 +275,9 @@ a Lean input, and on manual dispatch. The release-surface job checks the claim
 records, source links, generated files, papers, licences and query routes,
 including tests with deliberately invalid inputs.
 
-[Reproducibility](REPRODUCIBILITY.md) is the command guide. It starts with a
-claim you can inspect without Lean, then gives installation and proof-build
-instructions. The proof wrapper invokes `lake build`; it is separate from
-`python3 scripts/check_release.py`, which does not run Lean.
+[Reproducibility](REPRODUCIBILITY.md) gives inspection, installation and build
+commands. The proof wrapper invokes `lake build`;
+`python3 scripts/check_release.py` does not run Lean.
 
 For documentation work, the focused reader checks include
 `python3 scripts/test_human_first_contact.py` and
@@ -302,7 +298,7 @@ also does not prove that every important sentence was selected for checking.
 [external verification](verification/README.md) explains additional statement
 comparisons and their limits.
 
-The printable
+The
 [systems paper](../paper/systems/claim-faithful-publication-systems-paper.pdf)
 explains the publication architecture in more depth. Its historical checker
 example is documented in [docs/publication_evidence.json](publication_evidence.json);
@@ -315,5 +311,4 @@ Read a [problem paper](../paper/README.md#problem-papers),
 [propose a contribution](../CONTRIBUTING.md).
 
 The archived combined #249/#257 PDF is not a default reading route.
-[The documentation index](README.md) lists the current guides and specialist
-references.
+[The documentation index](README.md) lists current guides and specialist references.
