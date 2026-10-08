@@ -17,8 +17,10 @@ import hashlib
 import importlib.util
 import json
 import subprocess
+import tempfile
 from pathlib import Path
 
+import validation_singleflight as singleflight
 
 ROOT = Path(__file__).resolve().parent.parent
 ATLAS = ROOT / "docs" / "declaration_atlas.json"
@@ -45,14 +47,19 @@ def committed_source_fingerprint(builder) -> str:
     """Hash ``HEAD`` Lean blobs in exactly the builder's source-path order."""
     paths = [path.relative_to(ROOT).as_posix() for path in builder.source_paths()]
     request = "".join(f"HEAD:{relative}\n" for relative in paths).encode("utf-8")
-    completed = subprocess.run(
-        ["git", "cat-file", "--batch"],
-        cwd=ROOT,
-        input=request,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        check=False,
-    )
+    with tempfile.TemporaryFile() as requests:
+        requests.write(request)
+        requests.seek(0)
+        completed = subprocess.run(
+            ["git", "cat-file", "--batch"],
+            cwd=ROOT,
+            stdin=requests,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+            env=singleflight.command_environment(),
+            timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        )
     require(
         completed.returncode == 0,
         "git cat-file could not read committed Lean source: "
