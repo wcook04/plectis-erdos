@@ -2,72 +2,92 @@
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
 <!-- Editable source for system-map.png. House colours: paper/paper-house-style.sty.
-     Render at 2x with an SVG renderer; preserve the 1600 x 760 viewBox.
-     Adapted using diagram-design's architecture grammar (MIT):
+     Render the 1200 x 1340 viewBox at 2x. No external fonts or resources.
+     Annotated-record composition informed by diagram-design (MIT):
      https://github.com/cathrynlavery/diagram-design -->
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760" role="img" aria-labelledby="title description">
-  <title id="title">Eight Erdős programmes: read, check, continue</title>
-  <desc id="description">Start with a paper and inspect the research record: attempted routes, computations, failed approaches and checked Lean statements with their hypotheses. Use both the results and the limits to identify what remains open and prepare a contribution for review. Seven targets remain open. For Problem 1041, the exact formal statement is refuted; correspondence with the historical wording awaits independent human review. Arrows indicate a reading route, not proof implications or automatic approval.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1340" viewBox="0 0 1200 1340" role="img" aria-labelledby="system-map-title system-map-desc">
+  <title id="system-map-title">A paper is one view of a larger research record</title>
+  <desc id="system-map-desc">Read the question and argument in a paper, then trace a selected statement to the public claim record: its status, linked evidence, and what remains open. Inspect ordinary arguments and cited sources, selected Lean statements with explicit assumptions, and computations within their tested range. Preserved attempts and open questions can inform a contribution. Review may request revision, decline a proposal, or accept changes to the relevant source records. Navigation links are not proof implications; formal and computational support do not cover every sentence. The README states the current problem statuses separately.</desc>
   <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#7D8991" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="system-map-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 1 1 L 8 5 L 1 9" fill="none" stroke="#275D8C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="system-map-review-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 1 1 L 8 5 L 1 9" fill="none" stroke="#6E2B2B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
     <style>
       text { font-family: Helvetica, Arial, sans-serif; fill: #25323C; }
       .serif { font-family: Palatino, 'Palatino Linotype', Georgia, serif; }
-      .eyebrow { font-size: 17px; letter-spacing: 2.4px; font-weight: 600; fill: #275D8C; }
-      .heading { font-size: 29px; font-weight: 600; }
-      .body { font-size: 22px; fill: #475965; }
-      .small { font-size: 19px; fill: #475965; }
-      .edge { fill: none; stroke: #7D8991; stroke-width: 2; marker-end: url(#arrow); }
+      .eyebrow { font-size: 23px; letter-spacing: 1.8px; font-weight: 600; fill: #275D8C; }
+      .heading { font-size: 36px; font-weight: 600; }
+      .body { font-size: 29px; fill: #475965; }
+      .path { font-size: 23px; fill: #53616B; }
+      .nav { fill: none; stroke: #275D8C; stroke-width: 2.5; marker-end: url(#system-map-arrow); }
+      .review { fill: none; stroke: #6E2B2B; stroke-width: 2.5; marker-end: url(#system-map-review-arrow); }
+      .rule { stroke: #CAD3D9; stroke-width: 1.5; }
     </style>
   </defs>
-  <rect width="1600" height="760" fill="#FCFCFA"/>
-  <text x="56" y="56" class="eyebrow">PLECTIS · RESEARCH RECORD</text>
-  <text x="56" y="117" class="serif" font-size="48">Eight Erdős programmes. Work you can continue.</text>
-  <text x="56" y="158" class="body">Papers, formal proofs, computations and failed approaches, kept with their sources and limits.</text>
+  <rect width="1200" height="1340" fill="#FCFCFA"/>
+  <text x="50" y="52" class="eyebrow">PLECTIS · EIGHT ERDŐS PROGRAMMES</text>
+  <text x="50" y="112" class="serif" font-size="49">A paper is one view of a</text>
+  <text x="50" y="165" class="serif" font-size="49">larger research record.</text>
 
-  <rect x="418" y="201" width="480" height="329" rx="8" fill="#F2F5F7" stroke="#CAD3D9"/>
-  <text x="442" y="230" class="eyebrow" font-size="15">INSPECT THE RECORD</text>
+  <!-- A paper is a reading surface. The selected claim is the focal record. -->
+  <path d="M 50 244 H 332 L 374 286 V 562 H 50 Z" fill="#EAF0F5" stroke="#99ADBD" stroke-width="1.5"/>
+  <path d="M 332 244 V 286 H 374" fill="none" stroke="#99ADBD" stroke-width="1.5"/>
+  <text x="77" y="286" class="eyebrow">READ</text>
+  <text x="77" y="340" class="heading serif">The paper</text>
+  <text x="77" y="389" class="body">Question</text>
+  <text x="77" y="429" class="body">Argument</text>
+  <text x="77" y="469" class="body">Earlier work</text>
+  <line x1="77" y1="501" x2="342" y2="501" class="rule"/>
+  <text x="77" y="539" class="path">paper/</text>
+  <path d="M 374 380 H 450" class="nav"/>
+  <text x="408" y="413" text-anchor="middle" class="path">trace</text>
 
-  <!-- Connectors precede the nodes; all forks have distinct perpendicular ports. -->
-  <path class="edge" d="M 356 331 H 392 Q 404 331 404 319 V 298 Q 404 286 416 286 H 442"/>
-  <path class="edge" d="M 356 371 H 392 Q 404 371 404 383 V 441 Q 404 453 416 453 H 442"/>
-  <path class="edge" d="M 874 286 H 926 Q 938 286 938 298 V 324 Q 938 336 950 336 H 980"/>
-  <path class="edge" d="M 874 453 H 926 Q 938 453 938 441 V 386 Q 938 374 950 374 H 980"/>
-  <path class="edge" d="M 1224 355 H 1272"/>
+  <rect x="466" y="217" width="684" height="408" rx="4" fill="#FFFFFF" stroke="#275D8C" stroke-width="2"/>
+  <rect x="466" y="217" width="7" height="408" fill="#275D8C"/>
+  <text x="496" y="259" class="eyebrow">INSPECT A SELECTED CLAIM</text>
+  <text x="496" y="310" class="heading serif">What is actually claimed?</text>
+  <line x1="496" y1="334" x2="1120" y2="334" class="rule"/>
+  <text x="496" y="375" font-size="27" font-weight="600">Statement</text>
+  <text x="719" y="375" class="body">Status and precise scope</text>
+  <text x="496" y="426" font-size="27" font-weight="600">Evidence</text>
+  <text x="719" y="426" class="body">Links to supporting work</text>
+  <text x="496" y="477" font-size="27" font-weight="600" fill="#6E2B2B">Still open</text>
+  <text x="719" y="477" class="body">The remaining question</text>
+  <line x1="496" y1="508" x2="1120" y2="508" class="rule"/>
+  <text x="496" y="550" class="path">docs/claims.json · public status + limits</text>
+  <text x="496" y="586" class="path">docs/SOURCE_MAP.md · reader map</text>
 
-  <rect x="56" y="272" width="300" height="162" rx="6" fill="#EAF0F5" stroke="#275D8C" stroke-width="1.5"/>
-  <text x="80" y="309" class="eyebrow">READ</text>
-  <text x="80" y="350" class="heading serif">Start with a paper</text>
-  <text x="80" y="385" class="body">The question, argument</text>
-  <text x="80" y="414" class="body">and earlier work</text>
+  <!-- These are different forms of support, not interchangeable proof stamps. -->
+  <path d="M 810 625 V 675" class="nav"/>
+  <text x="50" y="687" class="eyebrow">FOLLOW THE SOURCES</text>
+  <text x="50" y="731" class="body">Support has a scope. Keep its limits with it.</text>
+  <line x1="50" y1="758" x2="1150" y2="758" class="rule"/>
+  <text x="50" y="804" class="heading serif">Argument</text>
+  <text x="335" y="804" class="body">Read the reasoning and cited sources.</text>
+  <text x="335" y="840" class="path">paper/ · docs/PRIOR_ART.md</text>
+  <line x1="50" y1="863" x2="1150" y2="863" class="rule"/>
+  <text x="50" y="909" class="heading serif">Formal proof</text>
+  <text x="335" y="909" class="body">Selected Lean statements; explicit assumptions.</text>
+  <text x="335" y="945" class="path">lean/ · verification/</text>
+  <line x1="50" y1="968" x2="1150" y2="968" class="rule"/>
+  <text x="50" y="1014" class="heading serif">Computation</text>
+  <text x="335" y="1014" class="body">Finite evidence within the tested range.</text>
+  <text x="335" y="1050" class="path">research/ · computations/</text>
 
-  <rect x="442" y="250" width="432" height="113" rx="5" fill="#FCFCFA" stroke="#AAB9C3"/>
-  <text x="466" y="286" class="heading serif">What was tried</text>
-  <text x="466" y="318" class="body">Routes, computations and failures;</text>
-  <text x="466" y="346" class="body">why an approach stopped</text>
-
-  <rect x="442" y="389" width="432" height="113" rx="5" fill="#FCFCFA" stroke="#AAB9C3"/>
-  <text x="466" y="425" class="heading serif">What Lean checked</text>
-  <text x="466" y="457" class="body">Selected formal statements</text>
-  <text x="466" y="485" class="body">with their explicit hypotheses</text>
-
-  <rect x="980" y="272" width="244" height="162" rx="6" fill="#FCFCFA" stroke="#7D8991"/>
-  <text x="1002" y="310" class="heading serif">What remains</text>
-  <text x="1002" y="344" class="heading serif">open</text>
-  <text x="1002" y="386" class="body">The exact question</text>
-  <text x="1002" y="414" class="body">still unanswered</text>
-
-  <rect x="1272" y="272" width="272" height="162" rx="6" fill="#F6ECEB" stroke="#6E2B2B" stroke-width="1.5"/>
-  <text x="1294" y="309" class="eyebrow" style="fill:#6E2B2B">CONTINUE</text>
-  <text x="1294" y="350" class="heading serif">Your contribution</text>
-  <text x="1294" y="385" class="body">Investigate, correct</text>
-  <text x="1294" y="414" class="body">or extend the work</text>
-  <text x="1282" y="473" class="small">Submit evidence for review.</text>
-
-  <text x="56" y="565" class="small">Arrows show a reading route; they do not establish a proof or approve a contribution.</text>
-  <line x1="56" y1="595" x2="1544" y2="595" stroke="#CAD3D9"/>
-  <rect x="56" y="622" width="4" height="84" fill="#6E2B2B"/>
-  <text x="78" y="647" class="heading serif" style="fill:#6E2B2B">Seven targets remain open.</text>
-  <text x="78" y="682" class="body">#1041: the exact formal statement is refuted. Correspondence with the historical wording</text>
-  <text x="78" y="711" class="body">awaits independent human review.</text>
+  <!-- The contribution route crosses a review boundary, not an automatic loop. -->
+  <rect x="50" y="1081" width="1100" height="205" rx="4" fill="#F6ECEB"/>
+  <text x="73" y="1115" class="eyebrow" style="fill:#6E2B2B">CONTINUE THE WORK</text>
+  <text x="73" y="1160" class="serif" font-size="31" font-weight="600">Attempts + open questions</text>
+  <text x="73" y="1197" class="path">research_corpus/ · claim records</text>
+  <path d="M 442 1168 H 489" class="review"/>
+  <text x="510" y="1156" class="serif" font-size="31" font-weight="600">Your contribution</text>
+  <text x="510" y="1197" class="path">Idea, correction or result</text>
+  <path d="M 780 1168 H 856" class="review"/>
+  <line x1="823" y1="1136" x2="823" y2="1213" stroke="#6E2B2B" stroke-width="3"/>
+  <text x="823" y="1117" text-anchor="middle" class="path" style="fill:#6E2B2B">review</text>
+  <text x="877" y="1156" class="serif" font-size="31" font-weight="600">If accepted</text>
+  <text x="877" y="1194" class="path">Update the relevant</text>
+  <text x="877" y="1225" class="path">source records.</text>
+  <text x="73" y="1254" class="path">Preserve useful failures.</text>
+  <text x="510" y="1254" class="path">Review can also request revision or decline.</text>
+  <text x="50" y="1320" class="path">Links guide inspection; they do not establish proof or acceptance.</text>
 </svg>

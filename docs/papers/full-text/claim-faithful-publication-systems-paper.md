@@ -22,7 +22,7 @@ Research continues across sessions, contributors and drafts. The next researcher
 
 Plectis supports this work in a public repository. Questions, prior sources, computations, proofs and unresolved steps remain available alongside proposed contributions and their review. The prototype is a local research environment: a researcher or agent chooses what to investigate and which tools to invoke. Broader autonomous discovery and services for other scientific fields remain proposals (Section <a href="#sec:limits" data-reference-type="ref" data-reference="sec:limits">9</a>).
 
-The architecture separates authored records from derived views and separates a tool’s output from a decision to adopt it. A successful proof probe can remain a session result; a revised explanation can remain a proposal. Acceptance updates the relevant source records, after which builders regenerate their indexes and summaries. Figure <a href="#fig:lifecycle" data-reference-type="ref" data-reference="fig:lifecycle">1</a> places these operations within the continuing research cycle.
+The architecture separates authored records, derived views and adoption decisions (Figure <a href="#fig:lifecycle" data-reference-type="ref" data-reference="fig:lifecycle">1</a>). A successful proof probe can remain a session result; a revised explanation can remain a proposal. Acceptance updates the source records, after which builders regenerate their indexes and summaries.
 
 Erdős Problems supplies the questions and their public discussion, while Lean and mathlib supply the formal language and library \[erdosproblems; lean4; mathlib\]. Formalisation blueprints link a written argument to named Lean declarations \[leanblueprint; leanarchitect\], and the Equational Theories Project maintains shared problem records \[etp\]. Prove2Me combines human-audited missions, source-linked milestones and separately submitted proofs, with intermediate results available for other agents to reuse \[prove2me, Sections 3–4\].
 
@@ -32,7 +32,7 @@ Section <a href="#sec:world" data-reference-type="ref" data-reference="sec:worl
 
 <figure id="fig:lifecycle" data-latex-placement="H">
 
-<figcaption>Research and publication cycle. Arrows name operations, not logical implications or automatic approval. Reviewed source changes precede rebuilding and inspection. The journal retains entered returns and decisions. Source checks do not judge whether an explanation preserves the mathematics.</figcaption>
+<figcaption>Authored records and derived views. Accepted edits change the relevant sources; builders regenerate views. Tool success alone does not adopt a claim.</figcaption>
 </figure>
 
 <a id="sec:world"></a>
@@ -137,56 +137,24 @@ The worked case comes from Erdős Problem 257, which asks whether every infinit
 
 Consider a contributor revising that explanation. The coverage row `res:weighted-support` in [`paper_lean_coverage.json`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/paper_lean_coverage.json) fixes the printed statement and lists two Lean supports. The explanation here has a separate [`passage record`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/systems_paper_sentences.json), citing the ordinary proof and a formal declaration. The claim-evidence builder derives status or gap reports; the passage checker tests text and source bindings.
 
-Dropping the weighted hypothesis need not change either Lean proof. Editing the prose alone makes its passage binding stale; updating the binding as well can remove that warning without repairing the claim. The reviewer must therefore compare the proposed wording with the cited statements. Only after acceptance are the explanation and its record integrated and the publication views regenerated. This proposed edit illustrates the division of work; it is not a new test run.
+Neither Lean proof need change when the explanation loses its weighted hypothesis. The prose edit makes its passage binding stale; rebinding can remove that warning without repairing the claim. Review must compare the wording with the cited statements. Accepted edits update the explanation and its record before publication views are regenerated. Figure <a href="#fig:hypothesis" data-reference-type="ref" data-reference="fig:hypothesis">3</a> compares the three versions. This is an illustration, not a new test run.
+
+<figure id="fig:hypothesis" data-latex-placement="htbp">
+
+<figcaption>Hypothesis loss with unchanged formal supports. Rebinding can restore byte consistency while leaving the overclaim intact. This is an illustration, not a new test or historical edit 8.</figcaption>
+</figure>
 
 <a id="sec:checks"></a>
 
 # Proof and publication checks
 
-<span id="sec:graph" label="sec:graph"></span> <span id="systems-trust"></span> The two formal supports in the example overlap (Figure <a href="#fig:theorem" data-reference-type="ref" data-reference="fig:theorem">6</a>). One gives fixed-base irrationality and the all-base conclusion for every infinite subset; the other states the fixed-base hereditary conclusion explicitly. The *registered support set* is the list attached to this paper occurrence, not the dependency closure of those proofs. The publication audit checks the full registered list even when one declaration suffices for a particular clause. That checks the record; it adds no mathematical hypothesis. The resolver follows registered named inputs and checks source revisions. A named input is an additional assumed result and must remain visible. By contrast, the weighted condition in the example is a hypothesis inside the proved statement. Revising either the statement or its source requires checking the corresponding records again; evidence for one revision cannot silently support another.
+<span id="sec:graph" label="sec:graph"></span> <span id="systems-trust"></span> The two formal supports in the example overlap (Figure <a href="#fig:theorem" data-reference-type="ref" data-reference="fig:theorem">7</a>). One gives fixed-base irrationality and the all-base conclusion for every infinite subset; the other states the fixed-base hereditary conclusion explicitly. The *registered support set* is the list attached to this paper occurrence, not the dependency closure of those proofs. The publication audit checks the full registered list even when one declaration suffices for a particular clause. That checks the record; it adds no mathematical hypothesis. The resolver follows registered named inputs and checks source revisions. A named input is an additional assumed result and must remain visible. By contrast, the weighted condition in the example is a hypothesis inside the proved statement. Revising either the statement or its source requires checking the corresponding records again; evidence for one revision cannot silently support another.
 
-Figure <a href="#fig:checks" data-reference-type="ref" data-reference="fig:checks">3</a> separates the objects checked mechanically from the questions that remain for review.
+Figure <a href="#fig:checks" data-reference-type="ref" data-reference="fig:checks">4</a> separates the objects checked mechanically from the questions that remain for review.
 
 <figure id="fig:checks" data-latex-placement="htbp">
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Relation being assessed</th>
-<th style="text-align: left;">Check or judgement required</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Formal statement and proof</td>
-<td style="text-align: left;">Lean kernel checking.</td>
-</tr>
-<tr>
-<td style="text-align: left;">Challenge and formal statement</td>
-<td style="text-align: left;">Comparator checking against the selected challenge.</td>
-</tr>
-<tr>
-<td style="text-align: left;">Paper occurrence and registered support set</td>
-<td style="text-align: left;">Coverage audit: all registered declarations and their recorded revisions.</td>
-</tr>
-<tr>
-<td style="text-align: left;">Passage and declared source bytes</td>
-<td style="text-align: left;">Passage audit: text and source digests, with a recorded rationale.</td>
-</tr>
-<tr>
-<td style="text-align: left;">Passage and mathematical meaning</td>
-<td style="text-align: left;">Author and reviewer judgement about what the sources establish.</td>
-</tr>
-<tr>
-<td style="text-align: left;">Result and motivating question</td>
-<td style="text-align: left;">Author and reviewer judgement about the scope of the result.</td>
-</tr>
-<tr>
-<td style="text-align: left;">Novelty, significance and acceptance</td>
-<td style="text-align: left;">Assessment by reviewers and the mathematical community.</td>
-</tr>
-</tbody>
-</table>
-<figcaption>Four checks with different objects, followed by three questions of judgement. The upper rows identify checking mechanisms, not new executions reported here. The lower rows identify review responsibilities, not evidence of independent review. A recorded rationale still requires assessment of its meaning.</figcaption>
+
+<figcaption>Two correspondence records. Lines are recorded links, not implications. Binding and formal checks do not establish the paper’s intended meaning. Review responsibilities do not imply independent review.</figcaption>
 </figure>
 
 Lean verifies that a proof establishes the formal statement written in the source; it does not verify whether that statement captures the intended mathematics or whether the paper describes it well. Comparator adds a separately stated challenge and a check of its selected Lean implementation under the permitted axioms \[leanfrocomparator; nanodalib\].
@@ -231,7 +199,7 @@ An advisory model may work from that packet; a tool-enabled agent may prepare a 
 
 <figure id="fig:refinement" data-latex-placement="H">
 
-<figcaption>Exposition workflow in numbered order, with exchanged objects labelled. Step 3 may request revision or decline a proposal; only accepted changes reach integration. These are responsibilities, which one agent may perform. Rendering and inspection remain separate from source checks.</figcaption>
+<figcaption>Only accepted edits enter live sources. The return audit neither applies edits nor executes returned programs. Review may request revision or decline; one agent may perform several responsibilities.</figcaption>
 </figure>
 
 The return checker verifies packet identity and permitted paths, accounts for statement changes, and checks retained labels, citation keys and bibliography entries. It audits the proposed manuscript in a temporary copy of the frozen sources, leaving the live repository unchanged.
@@ -248,17 +216,17 @@ After acceptance, the integrating reviewer edits the owning sources and updates 
 
 A reusable writing lesson is a separate proposal, with an example and limits. Adopting it requires a reviewed change to the writing contract.
 
-The packet and audit stages in Figure <a href="#fig:refinement" data-reference-type="ref" data-reference="fig:refinement">4</a> are implemented by [`short_paper_writer.py`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/short_paper_writer.py) and [`paper_refinement.py`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/paper_refinement.py). A return can change the paper without changing the rules for later writers. Accepted lessons revise documents and instructions, not model weights; the procedure itself measures neither reader benefit nor autonomous discovery.
+The packet and audit stages in Figure <a href="#fig:refinement" data-reference-type="ref" data-reference="fig:refinement">5</a> are implemented by [`short_paper_writer.py`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/short_paper_writer.py) and [`paper_refinement.py`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/paper_refinement.py). A return can change the paper without changing the rules for later writers. Accepted lessons revise documents and instructions, not model weights; the procedure itself measures neither reader benefit nor autonomous discovery.
 
 <a id="sec:contribute"></a>
 
 # An open route for contributions
 
-<span id="sec:loop" label="sec:loop"></span><span id="sec:cycle" label="sec:cycle"></span> <span id="systems-public"></span> <span id="systems-job-lifecycle"></span> The same review boundary applies to contributions beyond exposition. An idea or reference needs no clone; a patch identifies the public commit on which it was prepared. An executable return includes changed files, commands and results, resource use, surviving limitations, and credit for the people and tools involved. Figure <a href="#fig:contribute" data-reference-type="ref" data-reference="fig:contribute">5</a> follows both entry routes through triage and adoption. The protocol asks reviewers to reproduce executable evidence at the submitted base before reconciling it with current main, and to credit a substantive integration repair separately.
+<span id="sec:loop" label="sec:loop"></span><span id="sec:cycle" label="sec:cycle"></span> <span id="systems-public"></span> <span id="systems-job-lifecycle"></span> The same review boundary applies to contributions beyond exposition. An idea or reference needs no clone; a patch identifies the public commit on which it was prepared. An executable return includes changed files, commands and results, resource use, surviving limitations, and credit for the people and tools involved. Figure <a href="#fig:contribute" data-reference-type="ref" data-reference="fig:contribute">6</a> follows both entry routes through triage and adoption. The protocol asks reviewers to reproduce executable evidence at the submitted base before reconciling it with current main, and to credit a substantive integration repair separately.
 
 <figure id="fig:contribute" data-latex-placement="H">
 
-<figcaption>Two entry routes and three possible review outcomes. Repository adoption applies to mathematical and methodological contributions; it establishes neither independent review nor acceptance by the wider mathematical community.</figcaption>
+<figcaption>Two entry routes and three dispositions. Adopted work includes mathematics and methods. Only explicitly entered returns become journal events; adoption establishes neither independent review nor wider acceptance.</figcaption>
 </figure>
 
 <div id="systems-research-loop">
@@ -405,7 +373,7 @@ A writing packet contains manuscripts, selected records and inspection tools, bu
 
 ## Locate the formal supports of the worked example
 
-For the weighted criterion in Appendix <a href="#app:worked-proof" data-reference-type="ref" data-reference="app:worked-proof">11</a>, the [paper-to-Lean coverage record](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/paper_lean_coverage.json) identifies two formal supports: a weighted criterion and a version whose conclusion explicitly covers every infinite subset. Figure <a href="#fig:theorem" data-reference-type="ref" data-reference="fig:theorem">6</a> shows the recorded links. The exact declaration names are provided for readers locating them in Lean.[^1] These entries support the stated conclusion; they do not assert line-by-line agreement between the ordinary proof and the Lean proofs.
+For the weighted criterion in Appendix <a href="#app:worked-proof" data-reference-type="ref" data-reference="app:worked-proof">11</a>, the [paper-to-Lean coverage record](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/paper_lean_coverage.json) identifies two formal supports: a weighted criterion and a version whose conclusion explicitly covers every infinite subset. Figure <a href="#fig:theorem" data-reference-type="ref" data-reference="fig:theorem">7</a> shows the recorded links. The exact declaration names are provided for readers locating them in Lean.[^1] These entries support the stated conclusion; they do not assert line-by-line agreement between the ordinary proof and the Lean proofs.
 
 The recorded Comparator runs are the [first comparison run](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144) and the [second comparison run](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35624228171). Comparator checks a formal result against a separately stated challenge. These records concern the specified formal statements, not the historical attribution or the correctness of this paper’s explanation.
 
@@ -415,7 +383,7 @@ Both runs are recorded as compared. Palomar entries are prepared, not submitted;
 
 <figure id="fig:theorem" data-latex-placement="htbp">
 
-<figcaption>The arrows show recorded support links, not proof dependencies. The audit checks both listed supports even where their mathematical roles overlap. The support hypothesis still needs explanation. The false paraphrase is illustrative, distinct from historical edit 8 in Table <a href="#tab:mutations" data-reference-type="ref" data-reference="tab:mutations">1</a>.</figcaption>
+<figcaption>Registered supports have overlapping roles; lines are not proof dependencies. Auditing the full list adds no hypothesis to the weighted statement. Recorded comparison does not establish registry acceptance.</figcaption>
 </figure>
 
 <a id="interpret-the-recorded-inventory"></a>
@@ -647,7 +615,7 @@ A revised statement must retain its scope, attribution and registered supports. 
 
 # A reading map for the wider literature
 
-Section <a href="#sec:related" data-reference-type="ref" data-reference="sec:related">8</a> compares the closest systems; Appendices <a href="#app:worked-proof" data-reference-type="ref" data-reference="app:worked-proof">11</a> and <a href="#app:attribution" data-reference-type="ref" data-reference="app:attribution">12</a> explain the mathematical antecedents used in the examples. Figure <a href="#fig:credit" data-reference-type="ref" data-reference="fig:credit">7</a> is a guide to the remaining references and to sources cited by the two historical design accounts in Appendix <a href="#app:repro" data-reference-type="ref" data-reference="app:repro">10</a>. Its groups indicate why a source is cited, not that every listed method is implemented here or that every work has been evaluated against this system.
+Section <a href="#sec:related" data-reference-type="ref" data-reference="sec:related">8</a> compares the closest systems; Appendices <a href="#app:worked-proof" data-reference-type="ref" data-reference="app:worked-proof">11</a> and <a href="#app:attribution" data-reference-type="ref" data-reference="app:attribution">12</a> explain the mathematical antecedents used in the examples. Figure <a href="#fig:credit" data-reference-type="ref" data-reference="fig:credit">8</a> is a guide to the remaining references and to sources cited by the two historical design accounts in Appendix <a href="#app:repro" data-reference-type="ref" data-reference="app:repro">10</a>. Its groups indicate why a source is cited, not that every listed method is implemented here or that every work has been evaluated against this system.
 
 <figure id="fig:credit" data-latex-placement="H">
 <table>

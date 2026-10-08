@@ -143,8 +143,9 @@ UNIFIED_SYSTEMS_SECTION_LIMITS = (
         "the maintainer reviews scope, attribution and unresolved obligations before adoption",
     )),
     ("3 worked case: reviewing an explanation", "4 proof and publication checks", 2, (
-        "updating the binding as well can remove that warning without repairing the claim",
-        "the reviewer must therefore compare the proposed wording with the cited statements",
+        "rebinding can remove that warning without repairing the claim",
+        "review must compare the wording with the cited statements",
+        "the claim remains unproved",
     )),
     ("4 proof and publication checks", "5 publication and revision", 3, (
         "the publication audit checks the full registered list even when one declaration suffices for a particular clause",
@@ -161,7 +162,7 @@ UNIFIED_SYSTEMS_SECTION_LIMITS = (
         "the procedure itself measures neither reader benefit nor autonomous discovery",
     )),
     ("6 an open route for contributions", "7 recorded observations", 3, (
-        "it establishes neither independent review nor acceptance by the wider mathematical community",
+        "adoption establishes neither independent review nor wider acceptance",
         "ordinary issues and pull requests need not become journal events",
     )),
     ("7 recorded observations", "8 related work", 3, (

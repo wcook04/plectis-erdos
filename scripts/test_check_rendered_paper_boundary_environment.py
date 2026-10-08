@@ -80,8 +80,9 @@ paper_evidence.py locates each registered support.
 paper_claim_evidence.py derives status and gap reports.
 The maintainer reviews scope, attribution and unresolved obligations before adoption.""",
         """3 Worked case: reviewing an explanation
-Updating the binding as well can remove that warning without repairing the claim.
-The reviewer must therefore compare the proposed wording with the cited statements.""",
+Rebinding can remove that warning without repairing the claim.
+Review must compare the wording with the cited statements.
+The claim remains unproved.""",
         """4 Proof and publication checks
 The publication audit checks the full registered list even when one declaration suffices for a particular clause.
 That checks the record; it adds no mathematical hypothesis.
@@ -95,7 +96,7 @@ Both routes return proposed changes for the same review of mathematical scope, w
 It neither applies changes nor executes returned programs.
 The procedure itself measures neither reader benefit nor autonomous discovery.""",
         """6 An open route for contributions
-It establishes neither independent review nor acceptance by the wider mathematical community.
+Adoption establishes neither independent review nor wider acceptance.
 Ordinary issues and pull requests need not become journal events.""",
         """7 Recorded observations
 Nine of the ten deliberately false edits were rejected and one escaped.
@@ -131,6 +132,8 @@ It supports document checks, not a full Lean, Comparator or release rerun.""",
             "detected every false completion claim")), "abstract promotion escaped")
     mutations = (
         (1, "without repairing the claim", "while repairing the claim"),
+        (1, "The claim remains unproved", "The claim is disproved"),
+        (4, "neither independent review nor wider acceptance", "independent review and wider acceptance"),
         (2, "the full registered list", "any one declaration"),
         (2, "adds no mathematical hypothesis", "adds a mathematical hypothesis"),
         (2, "does not technically force", "requires"),
