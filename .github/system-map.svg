@@ -1,53 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
-<!-- Editable source for system-map.png. Render at 2x; viewBox 600 x 820.
-     Publication palette follows paper/paper-house-style.sty.
-     Design grammar: cathrynlavery/diagram-design (MIT), pinned f4547ee9.
-     Arrows describe navigation. The enclosing region identifies repository
-     contents; neither proximity nor an arrow confers proof or acceptance. -->
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="820" viewBox="0 0 600 820" role="img" aria-labelledby="system-map-title system-map-desc">
-  <title id="system-map-title">From the maths map to the research record</title>
-  <desc id="system-map-desc">Explore a question through the website and maths map, read short papers, longer records, cross-problem or system papers in the repository, then follow their sources to exact statements, limits, selected Lean proofs, finite experiments and preserved attempts.</desc>
+<!-- Editable source for system-map.png. House colours: paper/paper-house-style.sty.
+     Render the 1200 x 1340 viewBox at 2x. No external fonts or resources.
+     Annotated-record composition informed by diagram-design (MIT):
+     https://github.com/cathrynlavery/diagram-design -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1340" viewBox="0 0 1200 1340" role="img" aria-labelledby="system-map-title system-map-desc">
+  <title id="system-map-title">A paper is one view of a larger research record</title>
+  <desc id="system-map-desc">Read the question and argument in a paper, then trace a selected statement to the public claim record: its status, linked evidence, and what remains open. Inspect ordinary arguments and cited sources, selected Lean statements with explicit assumptions, and computations within their tested range. Preserved attempts and open questions can inform a contribution. Review may request revision, decline a proposal, or accept changes to the relevant source records. Navigation links are not proof implications; formal and computational support do not cover every sentence. The README states the current problem statuses separately.</desc>
   <defs>
-    <marker id="system-map-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 2 1 L 8 5 L 2 9" fill="none" stroke="#275D8C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="system-map-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 1 1 L 8 5 L 1 9" fill="none" stroke="#275D8C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="system-map-review-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 1 1 L 8 5 L 1 9" fill="none" stroke="#6E2B2B" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></marker>
     <style>
       text { font-family: Helvetica, Arial, sans-serif; fill: #25323C; }
       .serif { font-family: Palatino, 'Palatino Linotype', Georgia, serif; }
-      .label { font-size: 17px; font-weight: 600; letter-spacing: 1.5px; fill: #275D8C; }
-      .heading { font-size: 31px; }
-      .body { font-size: 23px; fill: #475965; }
-      .route { fill: none; stroke: #275D8C; stroke-width: 1.7; marker-end: url(#system-map-arrow); }
-      .rule { stroke: #D2DADF; stroke-width: 1; }
+      .eyebrow { font-size: 23px; letter-spacing: 1.8px; font-weight: 600; fill: #275D8C; }
+      .heading { font-size: 36px; font-weight: 600; }
+      .body { font-size: 29px; fill: #475965; }
+      .path { font-size: 23px; fill: #53616B; }
+      .nav { fill: none; stroke: #275D8C; stroke-width: 2.5; marker-end: url(#system-map-arrow); }
+      .review { fill: none; stroke: #6E2B2B; stroke-width: 2.5; marker-end: url(#system-map-review-arrow); }
+      .rule { stroke: #CAD3D9; stroke-width: 1.5; }
     </style>
   </defs>
-  <rect width="600" height="820" rx="8" fill="#FCFCFA"/>
-  <text x="28" y="37" class="label">PLECTIS · A READER’S MAP</text>
-  <text x="28" y="87" class="serif" font-size="37">Find a question. Follow the work.</text>
+  <rect width="1200" height="1340" fill="#FCFCFA"/>
+  <text x="50" y="52" class="eyebrow">PLECTIS · EIGHT ERDŐS PROGRAMMES</text>
+  <text x="50" y="112" class="serif" font-size="49">A paper is one view of a</text>
+  <text x="50" y="165" class="serif" font-size="49">larger research record.</text>
 
-  <!-- The website is a reading companion. It points into the repository. -->
-  <rect x="28" y="120" width="544" height="112" rx="6" fill="#EAF0F5" stroke="#A6B8C6"/>
-  <text x="52" y="163" class="serif heading">Website &amp; maths map</text>
-  <text x="52" y="202" class="body">Eight problems and their connections.</text>
-  <text x="82" y="272" class="body" style="fill:#275D8C">choose a problem</text>
+  <!-- A paper is a reading surface. The selected claim is the focal record. -->
+  <path d="M 50 244 H 332 L 374 286 V 562 H 50 Z" fill="#EAF0F5" stroke="#99ADBD" stroke-width="1.5"/>
+  <path d="M 332 244 V 286 H 374" fill="none" stroke="#99ADBD" stroke-width="1.5"/>
+  <text x="77" y="286" class="eyebrow">READ</text>
+  <text x="77" y="340" class="heading serif">The paper</text>
+  <text x="77" y="389" class="body">Question</text>
+  <text x="77" y="429" class="body">Argument</text>
+  <text x="77" y="469" class="body">Earlier work</text>
+  <line x1="77" y1="501" x2="342" y2="501" class="rule"/>
+  <text x="77" y="539" class="path">paper/</text>
+  <path d="M 374 380 H 450" class="nav"/>
+  <text x="408" y="413" text-anchor="middle" class="path">trace</text>
 
-  <!-- One boundary, two reading depths: papers and their underlying sources. -->
-  <rect x="28" y="300" width="544" height="464" rx="6" fill="#FFFFFF" stroke="#A6B8C6"/>
-  <rect x="360" y="289" width="192" height="24" fill="#FCFCFA"/>
-  <text x="372" y="307" class="label" font-size="15">THE REPOSITORY</text>
-  <path d="M 60 232 V 321" class="route"/>
-  <text x="52" y="357" class="serif heading">Papers</text>
-  <text x="52" y="399" class="body"><tspan font-weight="600" fill="#25323C">Short papers</tspan><tspan dx="5">· selected arguments</tspan></text>
-  <text x="52" y="435" class="body"><tspan font-weight="600" fill="#25323C">Longer records</tspan><tspan dx="5">· detailed investigations</tspan></text>
-  <text x="52" y="471" class="body"><tspan font-weight="600" fill="#25323C">Cross-problem</tspan><tspan dx="5">· connections &amp; methods</tspan></text>
-  <text x="52" y="507" class="body"><tspan font-weight="600" fill="#25323C">System paper</tspan><tspan dx="5">· how the project works</tspan></text>
+  <rect x="466" y="217" width="684" height="408" rx="4" fill="#FFFFFF" stroke="#275D8C" stroke-width="2"/>
+  <rect x="466" y="217" width="7" height="408" fill="#275D8C"/>
+  <text x="496" y="259" class="eyebrow">INSPECT A SELECTED CLAIM</text>
+  <text x="496" y="310" class="heading serif">What is actually claimed?</text>
+  <line x1="496" y1="334" x2="1120" y2="334" class="rule"/>
+  <text x="496" y="375" font-size="27" font-weight="600">Statement</text>
+  <text x="719" y="375" class="body">Status and precise scope</text>
+  <text x="496" y="426" font-size="27" font-weight="600">Evidence</text>
+  <text x="719" y="426" class="body">Links to supporting work</text>
+  <text x="496" y="477" font-size="27" font-weight="600" fill="#6E2B2B">Still open</text>
+  <text x="719" y="477" class="body">The remaining question</text>
+  <line x1="496" y1="508" x2="1120" y2="508" class="rule"/>
+  <text x="496" y="550" class="path">docs/claims.json · public status + limits</text>
+  <text x="496" y="586" class="path">docs/SOURCE_MAP.md · reader map</text>
 
-  <path d="M 60 531 V 590" class="route"/>
-  <text x="82" y="563" class="body" style="fill:#275D8C">follow the sources</text>
-  <text x="52" y="626" class="serif heading">Research record</text>
-  <text x="52" y="666" class="body">Statements, assumptions and limits</text>
-  <text x="52" y="702" class="body">Selected Lean proofs · finite experiments</text>
-  <text x="52" y="738" class="body">Attempts, failures and open questions</text>
+  <!-- These are different forms of support, not interchangeable proof stamps. -->
+  <path d="M 810 625 V 675" class="nav"/>
+  <text x="50" y="687" class="eyebrow">FOLLOW THE SOURCES</text>
+  <text x="50" y="731" class="body">Support has a scope. Keep its limits with it.</text>
+  <line x1="50" y1="758" x2="1150" y2="758" class="rule"/>
+  <text x="50" y="804" class="heading serif">Argument</text>
+  <text x="335" y="804" class="body">Read the reasoning and cited sources.</text>
+  <text x="335" y="840" class="path">paper/ · docs/PRIOR_ART.md</text>
+  <line x1="50" y1="863" x2="1150" y2="863" class="rule"/>
+  <text x="50" y="909" class="heading serif">Formal proof</text>
+  <text x="335" y="909" class="body">Selected Lean statements; explicit assumptions.</text>
+  <text x="335" y="945" class="path">lean/ · verification/</text>
+  <line x1="50" y1="968" x2="1150" y2="968" class="rule"/>
+  <text x="50" y="1014" class="heading serif">Computation</text>
+  <text x="335" y="1014" class="body">Finite evidence within the tested range.</text>
+  <text x="335" y="1050" class="path">research/ · computations/</text>
 
-  <text x="28" y="802" class="body" style="fill:#6E2B2B">Continue from a question that remains open.</text>
+  <!-- The contribution route crosses a review boundary, not an automatic loop. -->
+  <rect x="50" y="1081" width="1100" height="205" rx="4" fill="#F6ECEB"/>
+  <text x="73" y="1115" class="eyebrow" style="fill:#6E2B2B">CONTINUE THE WORK</text>
+  <text x="73" y="1160" class="serif" font-size="31" font-weight="600">Attempts + open questions</text>
+  <text x="73" y="1197" class="path">research_corpus/ · claim records</text>
+  <path d="M 442 1168 H 489" class="review"/>
+  <text x="510" y="1156" class="serif" font-size="31" font-weight="600">Your contribution</text>
+  <text x="510" y="1197" class="path">Idea, correction or result</text>
+  <path d="M 780 1168 H 856" class="review"/>
+  <line x1="823" y1="1136" x2="823" y2="1213" stroke="#6E2B2B" stroke-width="3"/>
+  <text x="823" y="1117" text-anchor="middle" class="path" style="fill:#6E2B2B">review</text>
+  <text x="877" y="1156" class="serif" font-size="31" font-weight="600">If accepted</text>
+  <text x="877" y="1194" class="path">Update the relevant</text>
+  <text x="877" y="1225" class="path">source records.</text>
+  <text x="73" y="1254" class="path">Preserve useful failures.</text>
+  <text x="510" y="1254" class="path">Review can also request revision or decline.</text>
+  <text x="50" y="1320" class="path">Links guide inspection; they do not establish proof or acceptance.</text>
 </svg>

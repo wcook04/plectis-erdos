@@ -74,11 +74,12 @@ citation identities; check light and dark modes and phone-width wrapping.
 These principles adapt the [pinned Taste Skill redesign guidance](https://github.com/leonxlnx/taste-skill/blob/b482f7a970abb98c4108d4a9f761e458c64cefc8/skills/taste-skill/SKILL.md)
 to the public clone; no external skill installation is needed.
 
-For README diagrams, use the existing editable SVG and rendered PNG together.
-Give arrows a stated meaning and keep essential labels readable at the actual
-phone display width. Inspect the exported image as well as its source: font
-substitution and SVG text spacing can change the result. Keep qualifications
-such as selected formal coverage and finite computation in the alt text too.
+Keep the website's maths map prominent in the README opening and link it to the
+live map. An explanatory diagram belongs later, as a compact reading aid; do not
+replace the requested project visual or hide it in a disclosure. Prefer native
+Markdown for a short linked reading sequence. If a rendered diagram is needed,
+give arrows a stated meaning, preserve its editable source and inspect the
+export at phone width. Keep evidence qualifications beside the relevant labels.
 
 When documenting external review, separate the observed request lifecycle from
 local proof or adapter evidence. Record the observation date and public source;

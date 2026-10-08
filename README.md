@@ -11,26 +11,16 @@ Eight Erdős problems, with papers to read, proofs to inspect and research to co
 **[Open the maths map](https://wcook04.github.io/plectis/maths/universe.html)** ·
 **[Read the papers](paper/README.md)**
 
-Plectis is an independent, AI-assisted prototype built and maintained by Will Cook.
-The website is its visual reading companion. You can read everything without
-installing Lean: start with [A reader's way in](docs/READING_GUIDE.md), with the
-[glossary](https://wcook04.github.io/plectis/docs/glossary.html) for mathematical terms.
-
-<p align="center">
-  <img src=".github/system-map.png" width="520" alt="Choose a problem on the website, read its papers, then inspect statements, limits, selected Lean proofs, finite experiments and preserved attempts.">
-</p>
-
-Reading routes, with assumptions and limits attached.
-[Paper catalogue](paper/README.md) · [Source map](docs/SOURCE_MAP.md) · [Open questions](docs/RESULTS.md)
-
-<details>
-<summary>Explore the interactive maths map</summary>
-
 [![Eight Erdős problem programmes: the interactive maths map connects papers, results and their formal evidence](.github/maths-map.png)](https://wcook04.github.io/plectis/maths/universe.html)
 
 <sub>The maths map on 8 October 2026. Open the image to explore the current edition.</sub>
 
-</details>
+Plectis is an independent, AI-assisted prototype built and maintained by Will Cook.
+The website is its visual reading companion; this repository holds the arguments,
+Lean proofs, experiments and approaches that did not work. You can read everything
+without installing Lean. [A reader's way in](docs/READING_GUIDE.md) introduces the
+project; the [glossary](https://wcook04.github.io/plectis/docs/glossary.html) explains
+mathematical terms along the way.
 
 ---
 
@@ -72,6 +62,9 @@ is credited in the [#1041 case study](docs/case-studies/formal-conjectures-1041.
 its assumptions, earlier work and remaining questions.
 
 ## Read, inspect or continue
+
+> **[Choose a question](https://wcook04.github.io/plectis/maths/universe.html)** → **[Read a paper](paper/README.md)** → **[Follow its evidence](docs/SOURCE_MAP.md)**<br>
+> Papers lead to exact statements, selected Lean proofs, experiments and [open questions](docs/RESULTS.md).
 
 - **Read and understand.** [A reader's way in](docs/READING_GUIDE.md) introduces
   the questions. The [reading edition](docs/reading-edition/README.md) gathers
