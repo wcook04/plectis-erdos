@@ -48,6 +48,10 @@ Use `--checkout --check-upstream` for an explicit live comparison with canonical
 public main. Never label a cached remote ref, a release tag, or an offline
 checkout as latest. Preserve older-clone work and its starting commit; a
 different revision is not evidence that the contributor's work is invalid.
+When reconciling authored evidence ledgers, compare rows by stable ID against
+the common base. Keep independent edits from both branches; regenerate derived
+records separately. Replacing a whole ledger to settle one digest conflict can
+silently discard valid source bindings.
 Keep the human clone/prompt instructions in `docs/agents/README.md`
 and the behavioral provenance cases in `scripts/test_agent_entry.py`, which
 the release gate already runs. Exercise forks, tags, archives, dirty worktrees,

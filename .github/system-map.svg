@@ -33,8 +33,8 @@
 
   <!-- One boundary, two reading depths: papers and their underlying sources. -->
   <rect x="28" y="300" width="544" height="464" rx="6" fill="#FFFFFF" stroke="#A6B8C6"/>
-  <rect x="382" y="289" width="170" height="24" fill="#FCFCFA"/>
-  <text x="392" y="307" class="label" font-size="15">THE REPOSITORY</text>
+  <rect x="360" y="289" width="192" height="24" fill="#FCFCFA"/>
+  <text x="372" y="307" class="label" font-size="15">THE REPOSITORY</text>
   <path d="M 60 232 V 321" class="route"/>
   <text x="52" y="357" class="serif heading">Papers</text>
   <text x="52" y="399" class="body"><tspan font-weight="600" fill="#25323C">Short papers</tspan><tspan dx="5">· selected arguments</tspan></text>
