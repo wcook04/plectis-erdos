@@ -249,6 +249,13 @@ the repository does not need the external skill installed to use this workflow.
 
 ## Validate behavior, not decoration
 
+For bulk Git reads, keep request storage separate from response drainage. A
+file-backed request stream prevents a large response and queued requests from
+blocking each other's pipes. Preserve the clean environment, timeout, exact
+snapshot identity and missing-object behavior. Exercise large blobs, many
+requests and timeout cleanup; a small successful batch does not rule out the
+write contention seen during a full release.
+
 For recurring CI failures, compare the failed run's tested commit and start time
 with the repair, and inspect the affected branch as well as the default branch.
 An unmerged infrastructure fix does not protect existing branches. Carry the
