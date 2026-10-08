@@ -60,105 +60,117 @@ def check_rendered_file_boundary() -> None:
 
 
 def check_unified_systems_limits() -> None:
-    """Scope/benefit promotions and displaced limits must fail the current profile.
+    """Reject semantic promotions and misplaced limits; allow repagination.
 
-    These excerpts come from the accepted native systems PDF. Poppler is mocked
-    here so the negative fixtures also run in the stdlib-only release gate.
-    The full rendered check separately verifies the actual PDF and page bands.
+    Fixed excerpts from the October 2026 manuscript are independent of the
+    production contract. Mock extraction keeps these negative tests stdlib-only.
     """
-    # Fixed excerpts from the accepted 22-page PDF. Keep page placement separate
-    # from the production anchor table so mutations also test the band boundary.
-    pages = {
-        1: """A repository-based system for research and publication
-Architecture, evidence and iteration in a Lean research repository.
-The public Plectis prototype implements this workflow for eight mathematical programmes.
-It keeps questions, prior sources, computations, proofs and unresolved steps together.
+    abstract = """A Repository-Based System for Research and Publication
+Architecture, evidence and iteration in a Lean research repository
+The public prototype brings questions, sources, proofs, computations and failed approaches together in eight problem collections.
+Researchers and agents choose the work.
 A historical author-run test rejected nine of ten false edits and accepted one false completion claim.
-Reader benefit, discovery rate and adoption by independent laboratories remain unmeasured.""",
-        2: """A repository organised around problems.""",
-        3: """The checkout contains authored Lean and manuscript sources.
-Authors edit the sources; builders regenerate the derived views.
+Reader benefit, discovery rate and adoption by independent laboratories remain unmeasured."""
+    sections = [
+        """2 A repository organised around problems
+Files store the research state.
+Freshness checks detect disagreement; builders regenerate views. Neither adopts a claim.
 agent_entry.py maps a stated task to instructions.
-paper_evidence.py resolves mathematical paper statements.
-paper_claim_evidence.py projects their evidence status.""",
-        4: """A maintainer reviews the claim, attribution and remaining uncertainty before adoption.
-The publication check requires the registered set, even if one declaration suffices for the clause under discussion.
-This is an accounting requirement, not an additional hypothesis of the theorem.""",
-        5: """Changing the sentence and updating its record can restore byte agreement without restoring the implication claimed by the prose.
+paper_evidence.py locates each registered support.
+paper_claim_evidence.py derives status and gap reports.
+The maintainer reviews scope, attribution and unresolved obligations before adoption.""",
+        """3 Worked case: reviewing an explanation
+Updating the binding as well can remove that warning without repairing the claim.
+The reviewer must therefore compare the proposed wording with the cited statements.""",
+        """4 Proof and publication checks
+The publication audit checks the full registered list even when one declaration suffices for a particular clause.
+That checks the record; it adds no mathematical hypothesis.
 Lean verifies that a proof establishes the formal statement written in the source.
 Comparator adds a separately stated challenge.
-The workflow does not technically force a second independent mathematician.
+The protocol does not technically force a second independent mathematician.
 No independent human mathematical review of the corpus is recorded.""",
-        6: """We freeze the selected manuscripts under a manifest of their exact bytes.
-In either case the integrating reviewer decides whether the mathematics and its description remain faithful.""",
-        7: """It neither applies the proposal nor executes returned programs.
-The procedure supplies no measurement of reader benefit or autonomous discovery.
-An open route for contributions.""",
-        8: """Repository adoption establishes neither independent review nor acceptance by the wider mathematical community.
+        """5 Publication and revision
+The exchange freezes selected manuscripts, required inputs, coverage records and audit rules under a manifest of their file digests.
+Both routes return proposed changes for the same review of mathematical scope, wording and credit.
+It neither applies changes nor executes returned programs.
+The procedure itself measures neither reader benefit nor autonomous discovery.""",
+        """6 An open route for contributions
+It establishes neither independent review nor acceptance by the wider mathematical community.
 Ordinary issues and pull requests need not become journal events.""",
-        9: """Nine of the ten deliberately false edits were rejected and one escaped.
+        """7 Recorded observations
+Nine of the ten deliberately false edits were rejected and one escaped.
 The edits were authored by the checker’s author.
-The other nine edits were not rerun, supplying no post-repair result.
+The other nine edits were not rerun.
+It supplies no post-repair ten-of-ten result.
 The contributor and reviewer were the same agent.
-No public pull request, human review or independent outside clone replay.
-No comparative reader result is reported.""",
-        10: """Transfer to unseen mathematics and understanding by independent human readers are unresolved.
-It is not a general incremental scheduler.
+The receipt records no public pull request, human review or independent outside clone replay.
+There is no comparative reader result.""",
+        """8 Related work
+This is not a general incremental scheduler.""",
+        """9 Limits
+Transfer to unseen mathematics and understanding by independent readers require direct evaluation.
 Openness alone does not equalise resources.
-Broad mathematical acceptance is exogenous to this repository and cannot be granted by its maintainer.""",
-        11: """The initial unified manuscript was prepared from a local integration commit rather than public main.
-No new Lean or Comparator run was performed for this revision.""",
-        12: """Source-binding validation does not replay Lean, Comparator or the full repository release checks.""",
-    }
+Repository adoption cannot confer acceptance by the wider mathematical community.""",
+        """A Reading the materials and reproducing checks
+A local integration commit rather than public main.
+No new Lean or Comparator run was performed for this revision.
+It supports document checks, not a full Lean, Comparator or release rerun.""",
+        """B The mathematical example: a criterion for irrationality""",
+    ]
     pdf = boundary.ROOT / "paper/systems/claim-faithful-publication-systems-paper.pdf"
 
-    def check(candidate: dict[int, str]) -> list[str]:
-        def render(_pdf, _tool, first, last):
-            return " ".join(candidate.get(page, "") for page in range(first, last + 1))
+    def check(candidate: list[str], front: str = abstract) -> list[str]:
+        text = "\f".join([front, *candidate])
         with patch.object(boundary, "unified_systems_profile", return_value=True):
-            with patch.object(boundary, "rendered_pages", side_effect=render):
-                return boundary.first_minute_errors(pdf, "fixture-pdftotext")
+            with patch.object(boundary, "rendered_pages", return_value=front):
+                with patch.object(boundary, "rendered_text", return_value=text):
+                    return boundary.first_minute_errors(pdf, "fixture-pdftotext")
 
-    require(check(pages) == [], "accepted systems excerpts fail the reader contract")
+    require(check(sections) == [], "accepted excerpts fail the reader contract")
+    require(check(sections, abstract.replace("accepted one false completion claim",
+            "detected every false completion claim")), "abstract promotion escaped")
     mutations = (
-        (1, "accepted one false completion claim", "detected every false completion claim", "accepted one false completion claim"),
-        (9, "Nine of the ten deliberately false edits were rejected and one escaped", "All ten deliberately false edits were rejected", "nine of the ten deliberately false edits"),
-        (6, "the integrating reviewer decides", "the automated checker decides", "integrating reviewer decides"),
-        (7, "no measurement of reader benefit", "a measurement of reader benefit", "no measurement of reader benefit"),
-        (7, "neither applies the proposal nor executes", "applies the proposal and executes", "neither applies the proposal nor executes"),
-        (10, "understanding by", "speed of", "transfer to unseen mathematics and understanding by"),
-        (10, "independent human readers are unresolved", "independent human readers are fully understood", "independent human readers are unresolved"),
-        (10, "exogenous to this repository and cannot be", "supplied by this repository and can be", "acceptance is exogenous"),
-        (9, "No comparative reader result is reported", "A comparative reader result is established", "no comparative reader result"),
-        (5, "does not technically force a second independent mathematician", "requires a second independent mathematician", "does not technically force a second independent mathematician"),
-        (9, "The contributor and reviewer were the same agent", "The contributor and reviewer were independent people", "contributor and reviewer were the same agent"),
-        (5, "without restoring the implication claimed by the prose", "while restoring the implication claimed by the prose", "restore byte agreement without restoring"),
-        (11, "local integration commit rather than public main", "public main", "local integration commit rather than public main"),
-        (11, "No new Lean or Comparator run was performed for this revision", "A new Lean and Comparator run was performed for this revision", "no new lean or comparator run was performed for this revision"),
-        (4, "requires the registered set", "requires any one declaration", "the publication check requires the registered set"),
-        (4, "not an additional hypothesis of the theorem", "an additional hypothesis of the theorem", "this is an accounting requirement, not an additional hypothesis"),
+        (1, "without repairing the claim", "while repairing the claim"),
+        (2, "the full registered list", "any one declaration"),
+        (2, "adds no mathematical hypothesis", "adds a mathematical hypothesis"),
+        (2, "does not technically force", "requires"),
+        (2, "No independent human mathematical review", "Independent human mathematical review"),
+        (3, "the same review of mathematical scope, wording and credit", "automatic acceptance"),
+        (3, "neither applies changes nor executes", "applies changes and executes"),
+        (3, "measures neither reader benefit nor autonomous discovery", "measures reader benefit and autonomous discovery"),
+        (5, "Nine of the ten deliberately false edits were rejected and one escaped", "All ten deliberately false edits were rejected"),
+        (5, "no post-repair ten-of-ten result", "a post-repair ten-of-ten result"),
+        (5, "were the same agent", "were independent people"),
+        (5, "no comparative reader result", "a comparative reader result"),
+        (7, "require direct evaluation", "have been demonstrated"),
+        (7, "cannot confer acceptance", "confers acceptance"),
+        (8, "local integration commit rather than public main", "public main"),
+        (8, "No new Lean or Comparator run", "A new Lean and Comparator run"),
+        (8, "not a full Lean, Comparator or release rerun", "a full Lean, Comparator and release rerun"),
     )
-    for page, old, new, missing in mutations:
-        require(old in pages[page], f"negative fixture target missing: {old}")
-        changed = dict(pages)
-        changed[page] = changed[page].replace(old, new, 1)
-        errors = check(changed)
-        require(any(missing in error for error in errors), f"claim promotion escaped: {new}")
-    moved = dict(pages)
-    moved[13] = moved.pop(9)
-    require(
-        any("pages 9-9" in error and "nine of the ten" in error for error in check(moved)),
-        "historical limit outside its reviewed page band was accepted",
-    )
-    no_new_run = "No new Lean or Comparator run was performed for this revision."
-    wrong_page = dict(pages)
-    wrong_page[11] = wrong_page[11].replace(no_new_run, "", 1)
-    wrong_page[10] += "\n" + no_new_run
-    require(
-        any("pages 11-11" in error and "no new lean or comparator run" in error
-            for error in check(wrong_page)),
-        "the no-new-run limit on page 10 satisfied its required page-11 band",
-    )
+    for index, old, new in mutations:
+        require(old in sections[index], f"negative fixture target missing: {old}")
+        changed = list(sections)
+        changed[index] = changed[index].replace(old, new, 1)
+        require(check(changed), f"claim promotion escaped: {new}")
+
+    # Figures can move complete sections without changing their obligations.
+    repaginated = ["", *sections]
+    require(check(repaginated) == [], "benign figure repagination was rejected")
+    moved = list(sections)
+    limit = "No new Lean or Comparator run was performed for this revision."
+    moved[8] = moved[8].replace(limit, "")
+    moved[7] += "\n" + limit
+    require(any("no new lean or comparator run" in error for error in check(moved)),
+            "a limit in the wrong section satisfied the reproduction boundary")
+    oversized = list(sections)
+    oversized[5] += "\f" * 4
+    require(any("exceeds 3 pages" in error for error in check(oversized)),
+            "an unbounded observations section was accepted")
+    duplicate = list(sections)
+    duplicate[5] += "\n7 Recorded observations"
+    require(any("ambiguous" in error for error in check(duplicate)),
+            "ambiguous section delimiter was accepted")
 
 
 def main() -> int:

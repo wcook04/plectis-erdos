@@ -119,81 +119,74 @@ FIRST_MINUTE_CONTRACT = {
     },
 }
 
-# The unified manuscript has its own reviewed reading windows. The publication
-# contract selects this profile; historical manuscript checks retain their
-# original wording and windows. In the reviewed 22-page lab edition, repository
-# roles occupy pages 2–4, checks 4–5, revision and contributions 6–8, recorded
-# observations 9, limits 10 and reproduction notes 11–12. Each anchor remains
-# on its inspected page. Keep the escaped-edit,
-# independent-review, source-versus-meaning and unmeasured-benefit limits.
+# The abstract's boundaries must remain on page one. Later safeguards belong
+# to named sections, not historical page numbers: figure layout may paginate
+# those sections differently. Each section is still bounded to at most four
+# pages, and text moved elsewhere cannot satisfy its local obligation.
 UNIFIED_SYSTEMS_FIRST_MINUTE = {
     (1, 1): (
         "a repository-based system for research and publication",
         "architecture, evidence and iteration in a lean research repository",
-        "the public plectis prototype implements this workflow for eight mathematical programmes",
-        "it keeps questions, prior sources, computations, proofs and unresolved steps together",
+        "the public prototype brings questions, sources, proofs, computations and failed approaches together in eight problem collections",
+        "researchers and agents choose the work",
         "a historical author-run test rejected nine of ten false edits and accepted one false completion claim",
         "reader benefit, discovery rate and adoption by independent laboratories remain unmeasured",
     ),
-    (2, 2): (
-        "a repository organised around problems",
-    ),
-    (3, 3): (
-        "the checkout contains authored lean and manuscript sources",
-        "authors edit the sources; builders regenerate the derived views",
+}
+UNIFIED_SYSTEMS_SECTION_LIMITS = (
+    ("2 a repository organised around problems", "3 worked case: reviewing an explanation", 4, (
+        "files store the research state",
+        "freshness checks detect disagreement; builders regenerate views. neither adopts a claim",
         "agent_entry.py maps a stated task to instructions",
-        "paper_evidence.py resolves mathematical paper statements",
-        "paper_claim_evidence.py projects their evidence status",
-    ),
-    (4, 4): (
-        "a maintainer reviews the claim, attribution and remaining uncertainty before adoption",
-        "the publication check requires the registered set, even if one declaration suffices for the clause under discussion. this is an accounting requirement, not an additional hypothesis of the theorem",
-    ),
-    (5, 5): (
-        "changing the sentence and updating its record can restore byte agreement without restoring the implication claimed by the prose",
+        "paper_evidence.py locates each registered support",
+        "paper_claim_evidence.py derives status and gap reports",
+        "the maintainer reviews scope, attribution and unresolved obligations before adoption",
+    )),
+    ("3 worked case: reviewing an explanation", "4 proof and publication checks", 2, (
+        "updating the binding as well can remove that warning without repairing the claim",
+        "the reviewer must therefore compare the proposed wording with the cited statements",
+    )),
+    ("4 proof and publication checks", "5 publication and revision", 3, (
+        "the publication audit checks the full registered list even when one declaration suffices for a particular clause",
+        "that checks the record; it adds no mathematical hypothesis",
         "lean verifies that a proof establishes the formal statement written in the source",
         "comparator adds a separately stated challenge",
         "does not technically force a second independent mathematician",
         "no independent human mathematical review of the corpus is recorded",
-    ),
-    (6, 6): (
-        "we freeze the selected manuscripts",
-        "under a manifest of their exact bytes",
-        "in either case the integrating reviewer decides whether the mathematics and its description remain faithful",
-    ),
-    (7, 7): (
-        "it neither applies the proposal nor executes returned programs",
-        "the procedure supplies no measurement of reader benefit or autonomous discovery",
-        "an open route for contributions",
-    ),
-    (8, 8): (
-        "neither independent review nor acceptance by the wider mathematical community",
+    )),
+    ("5 publication and revision", "6 an open route for contributions", 4, (
+        "the exchange freezes selected manuscripts, required inputs, coverage records and audit rules under a manifest of their file digests",
+        "both routes return proposed changes for the same review of mathematical scope, wording and credit",
+        "it neither applies changes nor executes returned programs",
+        "the procedure itself measures neither reader benefit nor autonomous discovery",
+    )),
+    ("6 an open route for contributions", "7 recorded observations", 3, (
+        "it establishes neither independent review nor acceptance by the wider mathematical community",
         "ordinary issues and pull requests need not become journal events",
-    ),
-    (9, 9): (
+    )),
+    ("7 recorded observations", "8 related work", 3, (
         "nine of the ten deliberately false edits were rejected and one escaped",
         "the edits were authored by the checker’s author",
         "the other nine edits were not rerun",
-        "supplying no post-repair",
+        "it supplies no post-repair ten-of-ten result",
         "the contributor and reviewer were the same agent",
-        "no public pull request, human review or independent outside clone replay",
-        "no comparative reader result is reported",
-    ),
-    (10, 10): (
-        "transfer to unseen mathematics and understanding by",
-        "independent human readers are unresolved",
-        "it is not a general incremental scheduler",
+        "the receipt records no public pull request, human review or independent outside clone replay",
+        "there is no comparative reader result",
+    )),
+    ("8 related work", "9 limits", 3, (
+        "this is not a general incremental scheduler",
+    )),
+    ("9 limits", "a reading the materials and reproducing checks", 3, (
+        "transfer to unseen mathematics and understanding by independent readers require direct evaluation",
         "openness alone does not equalise resources",
-        "broad mathematical acceptance is exogenous to this repository and cannot be granted by its maintainer",
-    ),
-    (11, 11): (
+        "repository adoption cannot confer acceptance by the wider mathematical community",
+    )),
+    ("a reading the materials and reproducing checks", "b the mathematical example: a criterion for irrationality", 4, (
         "local integration commit rather than public main",
         "no new lean or comparator run was performed for this revision",
-    ),
-    (12, 12): (
-        "source-binding validation does not replay lean, comparator or the full repository release checks",
-    ),
-}
+        "it supports document checks, not a full lean, comparator or release rerun",
+    )),
+)
 
 
 def unified_systems_profile(pdf: Path) -> bool:
@@ -506,6 +499,31 @@ def semantic_text(text: str) -> str:
     return re.sub(r"\s+", " ", text).lower()
 
 
+def unified_section_errors(text: str) -> list[str]:
+    # Preserve page boundaries while normalising extraction whitespace and
+    # ligatures. Section delimiters include their printed number and title.
+    pages = [semantic_text(page) for page in text.split("\f")]
+    joined = "\f".join(pages)
+    errors: list[str] = []
+    for start, stop, max_pages, anchors in UNIFIED_SYSTEMS_SECTION_LIMITS:
+        if joined.count(start) != 1 or joined.count(stop) != 1:
+            errors.append(f"systems reading section missing or ambiguous: {start!r} / {stop!r}")
+            continue
+        first = joined.index(start)
+        last = joined.index(stop)
+        if last <= first:
+            errors.append(f"systems reading section out of order: {start!r}")
+            continue
+        section = joined[first:last]
+        if section.count("\f") + 1 > max_pages:
+            errors.append(f"systems reading section {start!r} exceeds {max_pages} pages")
+        content = semantic_text(section)
+        for anchor in anchors:
+            if semantic_text(anchor) not in content:
+                errors.append(f"systems reading section {start!r}: missing boundary anchor {anchor!r}")
+    return errors
+
+
 def first_minute_errors(pdf: Path, pdftotext: str) -> list[str]:
     errors: list[str] = []
     contract = (UNIFIED_SYSTEMS_FIRST_MINUTE if unified_systems_profile(pdf)
@@ -522,6 +540,11 @@ def first_minute_errors(pdf: Path, pdftotext: str) -> list[str]:
                     f"{pdf.relative_to(ROOT)} pages {first}-{last}: "
                     f"missing first-minute anchor {anchor!r}"
                 )
+    if unified_systems_profile(pdf):
+        try:
+            errors.extend(unified_section_errors(rendered_text(pdf, pdftotext)))
+        except RuntimeError as error:
+            errors.append(str(error))
     return errors
 
 

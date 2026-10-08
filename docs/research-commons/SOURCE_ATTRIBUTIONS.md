@@ -600,11 +600,11 @@ Implemented advice from private correspondence. The [credit ledger](CREDIT_LEDGE
 
 Public implementation or evidence coordinates:
 
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1104-L1110) — lines `1104–1110`; excerpt `sha256:0a56177bf9ee04c7eb8c56e6cdf4582861b8073e14f40dffc4804702603020b0`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1124-L1130) — lines `1124–1130`; excerpt `sha256:0a56177bf9ee04c7eb8c56e6cdf4582861b8073e14f40dffc4804702603020b0`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:653](../../paper/systems/claim-faithful-publication-systems-paper.tex#L653-L653), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:660](../../paper/systems/claim-faithful-publication-systems-paper.tex#L660-L660)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:672](../../paper/systems/claim-faithful-publication-systems-paper.tex#L672-L672), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:679](../../paper/systems/claim-faithful-publication-systems-paper.tex#L679-L679)
 
 <a id="source-ai-essay-antieau-20260915-fast-math-slow-math"></a>
 
@@ -620,11 +620,11 @@ Paper citation usages:
 
 Public implementation or evidence coordinates:
 
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1350-L1351) — lines `1350–1351`; excerpt `sha256:e6c89924a4cd473044338ab4fc20aab3daf6d1b197c0f08b9472a7eb66e2f7cd`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1370-L1371) — lines `1370–1371`; excerpt `sha256:e6c89924a4cd473044338ab4fc20aab3daf6d1b197c0f08b9472a7eb66e2f7cd`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1055](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1055-L1055)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1075](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1075-L1075)
 
 <a id="source-ai-essay-chu-20260809-ai-dissenter-viewpoint"></a>
 
@@ -640,11 +640,11 @@ Paper citation usages:
 
 Public implementation or evidence coordinates:
 
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1332-L1336) — lines `1332–1336`; excerpt `sha256:5136e66cbb7aa726a4eba02e1ee74ebc36796ad2770d611cf4e96b785da6ef25`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1352-L1356) — lines `1352–1356`; excerpt `sha256:5136e66cbb7aa726a4eba02e1ee74ebc36796ad2770d611cf4e96b785da6ef25`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1055](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1055-L1055)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1075](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1075-L1075)
 
 <a id="source-ai-essay-cohn-20260915-technical-debt"></a>
 
@@ -660,11 +660,11 @@ Paper citation usages:
 
 Public implementation or evidence coordinates:
 
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1088-L1092) — lines `1088–1092`; excerpt `sha256:1f3c81b19f794be86d53650e08f9626446c906889d77d4da17985117e7947f30`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1108-L1112) — lines `1108–1112`; excerpt `sha256:1f3c81b19f794be86d53650e08f9626446c906889d77d4da17985117e7947f30`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1054](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1054-L1054)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1074](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1074-L1074)
 
 <a id="source-ai-essay-fields-medallists-20260911-severe-misalignment"></a>
 
@@ -680,11 +680,11 @@ Paper citation usages:
 
 Public implementation or evidence coordinates:
 
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1095-L1100) — lines `1095–1100`; excerpt `sha256:553ba84c17dccb37ab70dd4506f101c56d8b207258ef5f556721aa2d84a92767`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1115-L1120) — lines `1115–1120`; excerpt `sha256:553ba84c17dccb37ab70dd4506f101c56d8b207258ef5f556721aa2d84a92767`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1055](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1055-L1055)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1075](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1075-L1075)
 
 <a id="source-ai-essay-gowers-20260917-why-i-didnt-sign"></a>
 
@@ -700,11 +700,11 @@ Paper citation usages:
 
 Public implementation or evidence coordinates:
 
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1342-L1346) — lines `1342–1346`; excerpt `sha256:30a6ad65c6c978c4097cc16f982b354864ca71e82129c8fa9065966a7a99cbc7`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1362-L1366) — lines `1362–1366`; excerpt `sha256:30a6ad65c6c978c4097cc16f982b354864ca71e82129c8fa9065966a7a99cbc7`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1055](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1055-L1055)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1075](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1075-L1075)
 
 <a id="source-ai-essay-koukoulopoulos-20260917-cern-for-ai-science"></a>
 
@@ -720,11 +720,11 @@ Paper citation usages:
 
 Public implementation or evidence coordinates:
 
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1346-L1350) — lines `1346–1350`; excerpt `sha256:b315d91d429f123ac74c77414dc4454141f8d52412fece95c0b8c814e70403ab`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1366-L1370) — lines `1366–1370`; excerpt `sha256:b315d91d429f123ac74c77414dc4454141f8d52412fece95c0b8c814e70403ab`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1055](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1055-L1055)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1075](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1075-L1075)
 
 <a id="source-ai-essay-kra-20260913-deep-theorems"></a>
 
@@ -740,11 +740,11 @@ Paper citation usages:
 
 Public implementation or evidence coordinates:
 
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1083-L1088) — lines `1083–1088`; excerpt `sha256:e61243701770aa4a88c533a5d157859a8aa852eed7eaa9c15ea1f717f235830c`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1103-L1108) — lines `1103–1108`; excerpt `sha256:e61243701770aa4a88c533a5d157859a8aa852eed7eaa9c15ea1f717f235830c`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1054](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1054-L1054)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1074](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1074-L1074)
 
 <a id="source-ai-essay-litt-20260913-a-beginning-for-mathematics"></a>
 
@@ -760,11 +760,11 @@ Paper citation usages:
 
 Public implementation or evidence coordinates:
 
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1329-L1332) — lines `1329–1332`; excerpt `sha256:ee9093a8c86cbeb2eb9fab28c7202c32fd65ef7cfab1714fde3545451c0fb674`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1349-L1352) — lines `1349–1352`; excerpt `sha256:ee9093a8c86cbeb2eb9fab28c7202c32fd65ef7cfab1714fde3545451c0fb674`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1054](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1054-L1054)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1074](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1074-L1074)
 
 <a id="source-ai-essay-ringer-20260917-becoming-a-benchmark"></a>
 
@@ -780,11 +780,11 @@ Paper citation usages:
 
 Public implementation or evidence coordinates:
 
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1201-L1205) — lines `1201–1205`; excerpt `sha256:92b92f334ac258aae259af8de72a10cc1aa303685716b7dbf5e840cead2d885c`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1221-L1225) — lines `1221–1225`; excerpt `sha256:92b92f334ac258aae259af8de72a10cc1aa303685716b7dbf5e840cead2d885c`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1055](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1055-L1055)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1075](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1075-L1075)
 
 <a id="source-ai-essay-sanderson-20260918-more-than-proof"></a>
 
@@ -800,11 +800,11 @@ Paper citation usages:
 
 Public implementation or evidence coordinates:
 
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1100-L1104) — lines `1100–1104`; excerpt `sha256:a1bece4a654c92fc6c6c1c2396621144c9c8eb394e2c5b5ec7d7bfc65fb34896`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1120-L1124) — lines `1120–1124`; excerpt `sha256:a1bece4a654c92fc6c6c1c2396621144c9c8eb394e2c5b5ec7d7bfc65fb34896`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1054](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1054-L1054)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1074](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1074-L1074)
 
 <a id="source-ai-essay-tao-20260908-mining-open-problems"></a>
 
@@ -820,11 +820,11 @@ Paper citation usages:
 
 Public implementation or evidence coordinates:
 
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1092-L1095) — lines `1092–1095`; excerpt `sha256:96881ad1e94a3efbaf8da36596bf04f78b3013bdcaa5fe8fb4f4e218e14bf4c0`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1112-L1115) — lines `1112–1115`; excerpt `sha256:96881ad1e94a3efbaf8da36596bf04f78b3013bdcaa5fe8fb4f4e218e14bf4c0`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1054](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1054-L1054)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1074](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1074-L1074)
 
 <a id="source-arxiv-2309-05942"></a>
 
@@ -844,7 +844,7 @@ Exact source locations:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1050](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1050-L1050)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1070](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1070-L1070)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:1253](../../paper/systems/open-source-mathematics-strategy.tex#L1253-L1253)
 
 <a id="source-arxiv-2412-03815"></a>
@@ -875,7 +875,7 @@ Exact source locations:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1045](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1045-L1045)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1065](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1065-L1065)
 - `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:507](../../paper/systems/cold-clone-to-proof-receipt.tex#L507-L507)
 
 <a id="source-arxiv-2509-13978"></a>
@@ -906,7 +906,7 @@ Exact source locations:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1053](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1053-L1053)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1073](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1073-L1073)
 - `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:393](../../paper/systems/cold-clone-to-proof-receipt.tex#L393-L393)
 
 <a id="source-bishop-eremenko-lazebnik-2025-shapes-of-rational-lemniscates"></a>
@@ -1081,11 +1081,11 @@ Public implementation or evidence coordinates:
 
 - [lean/ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean](../../lean/ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean#L3-L13) — lines `3–13`; excerpt `sha256:0dc7be32db4ccb96eb5a7cc2b22e956f6422aea7ec5706b6217b0a15925b86eb`
 - [lean/ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean](../../lean/ErdosProblems/Erdos1041/Counterexample/CatalogueAdapter.lean#L23-L40) — lines `23–40`; excerpt `sha256:de7c9f67adba5db7a57c763684b751678c107891d725c6a4a3296b34acb2b7c2`
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1157-L1159) — lines `1157–1159`; excerpt `sha256:4e4234729ca246120c50642f617d7062a456fa5a1f0900f82ed49b3a7e16a132`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1177-L1179) — lines `1177–1179`; excerpt `sha256:4e4234729ca246120c50642f617d7062a456fa5a1f0900f82ed49b3a7e16a132`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1000](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1000-L1000), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1057](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1057-L1057)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1020](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1020-L1020), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1077](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1077-L1077)
 
 <a id="source-erdos1041-morluto-independent-check"></a>
 
@@ -1451,12 +1451,12 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos68/core.tex](../../paper/reasoning-parts/erdos68/core.tex#L29-L29) — lines `29–29`; excerpt `sha256:170789f848d7f281c8706ecc14826b85c56cbb95549d73fab6df1df6b540b6d0`
 - [paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5318-L5322) — lines `5318–5322`; excerpt `sha256:c3bb3c4929a9278950209981b07b4c49dc93d8a276eb91c9c4a3e33a7142151e`
 - [paper/reasoning-parts/erdos1049/core.tex](../../paper/reasoning-parts/erdos1049/core.tex#L5287-L5291) — lines `5287–5291`; excerpt `sha256:c3bb3c4929a9278950209981b07b4c49dc93d8a276eb91c9c4a3e33a7142151e`
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1149-L1153) — lines `1149–1153`; excerpt `sha256:33dec8bc1acd3ac4b9b6a3607c65aa0df85e610d6c5b426244f817177fde3b78`
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1068-L1071) — lines `1068–1071`; excerpt `sha256:78a4c894e36fc15f59c4cdc58d03271ad69a3f67a8366ca747b59cae0138bb2e`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1169-L1173) — lines `1169–1173`; excerpt `sha256:33dec8bc1acd3ac4b9b6a3607c65aa0df85e610d6c5b426244f817177fde3b78`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1088-L1091) — lines `1088–1091`; excerpt `sha256:78a4c894e36fc15f59c4cdc58d03271ad69a3f67a8366ca747b59cae0138bb2e`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:108](../../paper/systems/claim-faithful-publication-systems-paper.tex#L108-L108), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:813](../../paper/systems/claim-faithful-publication-systems-paper.tex#L813-L813), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1000](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1000-L1000), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1052](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1052-L1052), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1057](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1057-L1057)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:114](../../paper/systems/claim-faithful-publication-systems-paper.tex#L114-L114), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:833](../../paper/systems/claim-faithful-publication-systems-paper.tex#L833-L833), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1020](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1020-L1020), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1072](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1072-L1072), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1077](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1077-L1077)
 - `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:73](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L73-L73)
 - `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1213](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1213-L1213)
 - `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:71](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L71-L71)
@@ -1741,11 +1741,11 @@ Public implementation or evidence coordinates:
 
 Public implementation or evidence coordinates:
 
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1336-L1342) — lines `1336–1342`; excerpt `sha256:ddd868bf0de48975e181eeb67636c48b7e6b2302a12ac524c3140adace3bd8e3`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1356-L1362) — lines `1356–1362`; excerpt `sha256:ddd868bf0de48975e181eeb67636c48b7e6b2302a12ac524c3140adace3bd8e3`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1055](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1055-L1055)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1075](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1075-L1075)
 
 <a id="source-proposed-direct-0ef4f73f93ceed"></a>
 
@@ -2003,11 +2003,11 @@ Exact source locations:
 
 Public implementation or evidence coordinates:
 
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1143-L1146) — lines `1143–1146`; excerpt `sha256:a0dabd3a68ddafea15a4462241af10cb793e90e59c6324a84b883eac434e638d`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1163-L1166) — lines `1163–1166`; excerpt `sha256:a0dabd3a68ddafea15a4462241af10cb793e90e59c6324a84b883eac434e638d`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:293](../../paper/systems/claim-faithful-publication-systems-paper.tex#L293-L293), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1041](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1041-L1041)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:303](../../paper/systems/claim-faithful-publication-systems-paper.tex#L303-L303), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1061](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1061-L1061)
 
 <a id="source-software-nanoda-lib-independent-lean-checker"></a>
 
@@ -2023,11 +2023,11 @@ Paper citation usages:
 
 Public implementation or evidence coordinates:
 
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1146-L1149) — lines `1146–1149`; excerpt `sha256:decf3e535ef53dc9a412ddb4ade7e5eae7af85a715a810421802b58ffa0eec49`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1166-L1169) — lines `1166–1169`; excerpt `sha256:decf3e535ef53dc9a412ddb4ade7e5eae7af85a715a810421802b58ffa0eec49`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:293](../../paper/systems/claim-faithful-publication-systems-paper.tex#L293-L293), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1041](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1041-L1041)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:303](../../paper/systems/claim-faithful-publication-systems-paper.tex#L303-L303), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1061](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1061-L1061)
 
 <a id="source-source-011f43e5a781d7"></a>
 
@@ -2163,7 +2163,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1040](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1040-L1040)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1060](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1060-L1060)
 - `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:517](../../paper/systems/cold-clone-to-proof-receipt.tex#L517-L517)
 
 <a id="source-source-0a6b8c93371570"></a>
@@ -2241,7 +2241,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1050](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1050-L1050)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1070](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1070-L1070)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:779](../../paper/systems/open-source-mathematics-strategy.tex#L779-L779), [cite at paper/systems/open-source-mathematics-strategy.tex:1018](../../paper/systems/open-source-mathematics-strategy.tex#L1018-L1018)
 
 <a id="source-source-0dd4239a1d50da"></a>
@@ -2525,11 +2525,11 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L60-L60) — lines `60–60`; excerpt `sha256:89b37a0d3340796c5590d761a39d83444f6987ea56bf2f2eaf180f3f1f9e9178`
 - [paper/249/erdos249-totient-reasoning-surface.tex](../../paper/249/erdos249-totient-reasoning-surface.tex#L10290-L10294) — lines `10290–10294`; excerpt `sha256:727de5144fdf771c479a2e03e7b875cffecf9400543450974b25f25aced90f03`
 - [paper/reasoning-parts/erdos249/a249\_front.tex](../../paper/reasoning-parts/erdos249/a249_front.tex#L10098-L10102) — lines `10098–10102`; excerpt `sha256:727de5144fdf771c479a2e03e7b875cffecf9400543450974b25f25aced90f03`
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1115-L1119) — lines `1115–1119`; excerpt `sha256:cf7b027cd3e9245f607b100b8d844bf31558425e35d45828ba319ee30f657f6b`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1135-L1139) — lines `1135–1139`; excerpt `sha256:cf7b027cd3e9245f607b100b8d844bf31558425e35d45828ba319ee30f657f6b`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1057](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1057-L1057)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1077](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1077-L1077)
 - `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:69](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L69-L69)
 - `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:144](../../paper/249/erdos-249-binary-totient-series.tex#L144-L144)
 - `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:53](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L53-L53)
@@ -2593,7 +2593,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:990](../../paper/systems/claim-faithful-publication-systems-paper.tex#L990-L990), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1056](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1056-L1056)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1010](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1010-L1010), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1076](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1076-L1076)
 - `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:124](../../paper/249/erdos-249-binary-totient-series.tex#L124-L124), [cite at paper/249/erdos-249-binary-totient-series.tex:176](../../paper/249/erdos-249-binary-totient-series.tex#L176-L176), [cite at paper/249/erdos-249-binary-totient-series.tex:509](../../paper/249/erdos-249-binary-totient-series.tex#L509-L509)
 - `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:291](../../paper/249/erdos249-totient-reasoning-surface.tex#L291-L291), [cite at paper/249/erdos249-totient-reasoning-surface.tex:7006](../../paper/249/erdos249-totient-reasoning-surface.tex#L7006-L7006), [cite at paper/249/erdos249-totient-reasoning-surface.tex:7111](../../paper/249/erdos249-totient-reasoning-surface.tex#L7111-L7111), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:99](../../paper/reasoning-parts/erdos249/a249_front.tex#L99-L99), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:6814](../../paper/reasoning-parts/erdos249/a249_front.tex#L6814-L6814), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:6919](../../paper/reasoning-parts/erdos249/a249_front.tex#L6919-L6919)
 
@@ -2894,11 +2894,11 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L79-L79) — lines `79–79`; excerpt `sha256:af947109aab559bea882df279e8e9f19ecaf9561d6fded648d1ef904f80ea733`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L79-L79) — lines `79–79`; excerpt `sha256:af947109aab559bea882df279e8e9f19ecaf9561d6fded648d1ef904f80ea733`
 - [paper/reasoning-parts/erdos269/core.tex](../../paper/reasoning-parts/erdos269/core.tex#L79-L79) — lines `79–79`; excerpt `sha256:af947109aab559bea882df279e8e9f19ecaf9561d6fded648d1ef904f80ea733`
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1181-L1185) — lines `1181–1185`; excerpt `sha256:b41b2811598b55fde36f7dc6b7e396d5cd3f5f9fea25411ab4689bfbf0303bb0`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1201-L1205) — lines `1201–1205`; excerpt `sha256:b41b2811598b55fde36f7dc6b7e396d5cd3f5f9fea25411ab4689bfbf0303bb0`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:984](../../paper/systems/claim-faithful-publication-systems-paper.tex#L984-L984), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1057](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1057-L1057)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1004](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1004-L1004), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1077](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1077-L1077)
 - `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:111](../../paper/269/erdos-269-three-prime-running-lcm.tex#L111-L111), [cite at paper/269/erdos-269-three-prime-running-lcm.tex:630](../../paper/269/erdos-269-three-prime-running-lcm.tex#L630-L630)
 - `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:137](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L137-L137), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:1850](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L1850-L1850), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3813](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3813-L3813), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3862](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3862-L3862), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3943](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3943-L3943), [cite at paper/reasoning-parts/erdos269/core.tex:79](../../paper/reasoning-parts/erdos269/core.tex#L79-L79), [cite at paper/reasoning-parts/erdos269/core.tex:1792](../../paper/reasoning-parts/erdos269/core.tex#L1792-L1792), [cite at paper/reasoning-parts/erdos269/core.tex:3755](../../paper/reasoning-parts/erdos269/core.tex#L3755-L3755), [cite at paper/reasoning-parts/erdos269/core.tex:3804](../../paper/reasoning-parts/erdos269/core.tex#L3804-L3804), [cite at paper/reasoning-parts/erdos269/core.tex:3885](../../paper/reasoning-parts/erdos269/core.tex#L3885-L3885)
 - `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1855](../../paper/synthesis/optimal-sparse-perturbations.tex#L1855-L1855)
@@ -3457,7 +3457,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:821](../../paper/systems/claim-faithful-publication-systems-paper.tex#L821-L821), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1056](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1056-L1056)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:841](../../paper/systems/claim-faithful-publication-systems-paper.tex#L841-L841), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1076](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1076-L1076)
 - `erdos-1049-rational-base-lambert`: [cite at paper/1049/erdos-1049-rational-base-lambert.tex:1141](../../paper/1049/erdos-1049-rational-base-lambert.tex#L1141-L1141)
 - `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:269](../../paper/257/erdos-257-mersenne-support-subseries.tex#L269-L269), [cite at paper/257/erdos-257-mersenne-support-subseries.tex:852](../../paper/257/erdos-257-mersenne-support-subseries.tex#L852-L852), [cite at paper/257/erdos-257-mersenne-support-subseries.tex:987](../../paper/257/erdos-257-mersenne-support-subseries.tex#L987-L987)
 - `erdos1049-rational-base-lambert-reasoning-surface`: [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5009](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5009-L5009), [cite at paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex:5010](../../paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex#L5010-L5010), [cite at paper/reasoning-parts/erdos1049/core.tex:4978](../../paper/reasoning-parts/erdos1049/core.tex#L4978-L4978), [cite at paper/reasoning-parts/erdos1049/core.tex:4979](../../paper/reasoning-parts/erdos1049/core.tex#L4979-L4979)
@@ -3635,11 +3635,11 @@ Paper citation usages:
 Public implementation or evidence coordinates:
 
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1707-L1712) — lines `1707–1712`; excerpt `sha256:c89d595871311eec76167add03b720a82202963564fd46493036b4e96b08de98`
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1189-L1193) — lines `1189–1193`; excerpt `sha256:f1a3aeaeeeae0343e3ac3f2056c0987792e2a1fcc155d61514b74881c3a74206`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1209-L1213) — lines `1209–1213`; excerpt `sha256:f1a3aeaeeeae0343e3ac3f2056c0987792e2a1fcc155d61514b74881c3a74206`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:111](../../paper/systems/claim-faithful-publication-systems-paper.tex#L111-L111), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:597](../../paper/systems/claim-faithful-publication-systems-paper.tex#L597-L597), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:597](../../paper/systems/claim-faithful-publication-systems-paper.tex#L597-L597), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:601](../../paper/systems/claim-faithful-publication-systems-paper.tex#L601-L601), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1049](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1049-L1049)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:117](../../paper/systems/claim-faithful-publication-systems-paper.tex#L117-L117), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:616](../../paper/systems/claim-faithful-publication-systems-paper.tex#L616-L616), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:616](../../paper/systems/claim-faithful-publication-systems-paper.tex#L616-L616), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:620](../../paper/systems/claim-faithful-publication-systems-paper.tex#L620-L620), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1069](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1069-L1069)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:898](../../paper/systems/open-source-mathematics-strategy.tex#L898-L898), [cite at paper/systems/open-source-mathematics-strategy.tex:940](../../paper/systems/open-source-mathematics-strategy.tex#L940-L940), [cite at paper/systems/open-source-mathematics-strategy.tex:1028](../../paper/systems/open-source-mathematics-strategy.tex#L1028-L1028)
 
 <a id="source-source-39690ee8e07b0c"></a>
@@ -3953,7 +3953,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1043](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1043-L1043)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1063](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1063-L1063)
 - `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:496](../../paper/systems/cold-clone-to-proof-receipt.tex#L496-L496)
 
 <a id="source-source-463b7e9f7264b1"></a>
@@ -4547,11 +4547,11 @@ Paper citation usages:
 Public implementation or evidence coordinates:
 
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1681-L1686) — lines `1681–1686`; excerpt `sha256:573f52e0c7b894eeeb44cdeb82b9844001ad1c0155ff50cf96d645b233996e9d`
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1373-L1374) — lines `1373–1374`; excerpt `sha256:ed477db421c75bd2bf0fc9a8324059f75c74acbb2096b75ffc57c88c0fabd274`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1393-L1394) — lines `1393–1394`; excerpt `sha256:ed477db421c75bd2bf0fc9a8324059f75c74acbb2096b75ffc57c88c0fabd274`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1000](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1000-L1000), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1052](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1052-L1052)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1020](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1020-L1020), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1072](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1072-L1072)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:574](../../paper/systems/open-source-mathematics-strategy.tex#L574-L574), [cite at paper/systems/open-source-mathematics-strategy.tex:1002](../../paper/systems/open-source-mathematics-strategy.tex#L1002-L1002)
 
 <a id="source-source-5ee5f85bd606ee"></a>
@@ -4636,7 +4636,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1043](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1043-L1043)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1063](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1063-L1063)
 - `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:499](../../paper/systems/cold-clone-to-proof-receipt.tex#L499-L499)
 
 <a id="source-source-619de19af78c4c"></a>
@@ -4708,11 +4708,11 @@ Public implementation or evidence coordinates:
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L33-L33) — lines `33–33`; excerpt `sha256:eb2e17e35b577140954a7591acc551095ed9c734b8b3766759d96d44591ed27d`
 - [paper/reasoning-parts/erdos1041/core.tex](../../paper/reasoning-parts/erdos1041/core.tex#L33-L33) — lines `33–33`; excerpt `sha256:eb2e17e35b577140954a7591acc551095ed9c734b8b3766759d96d44591ed27d`
 - [lean/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean](../../lean/ErdosProblems/Erdos1041/CriticalTwoRootProximity.lean#L47-L52) — lines `47–52`; excerpt `sha256:33cfc2f7e37e3a2c10db006bdf734166bb372b874a1933fa3324a066b6552b44`
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1153-L1157) — lines `1153–1157`; excerpt `sha256:30a59f5e096ba7505dd35cd675d019c9ca2baccd756374cea58317676ce9b011`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1173-L1177) — lines `1173–1177`; excerpt `sha256:30a59f5e096ba7505dd35cd675d019c9ca2baccd756374cea58317676ce9b011`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1000](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1000-L1000), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1057](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1057-L1057)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1020](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1020-L1020), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1077](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1077-L1077)
 - `erdos-1041-lemniscate-newton-flow`: [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:70](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L70-L70), [cite at paper/1041/erdos-1041-lemniscate-newton-flow.tex:913](../../paper/1041/erdos-1041-lemniscate-newton-flow.tex#L913-L913)
 - `erdos1041-lemniscate-reasoning-surface`: [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:83](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L83-L83), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:1717](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1717-L1717), [cite at paper/1041/erdos1041-lemniscate-reasoning-surface.tex:2329](../../paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L2329-L2329), [cite at paper/reasoning-parts/erdos1041/core.tex:33](../../paper/reasoning-parts/erdos1041/core.tex#L33-L33), [cite at paper/reasoning-parts/erdos1041/core.tex:1667](../../paper/reasoning-parts/erdos1041/core.tex#L1667-L1667), [cite at paper/reasoning-parts/erdos1041/core.tex:2279](../../paper/reasoning-parts/erdos1041/core.tex#L2279-L2279)
 
@@ -5054,11 +5054,11 @@ Paper citation usages:
 
 Public implementation or evidence coordinates:
 
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1230-L1234) — lines `1230–1234`; excerpt `sha256:efda1bcea3bdd260e4c65a32ee535929550041f56b1b8d4bea22ef144c19c9b4`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1250-L1254) — lines `1250–1254`; excerpt `sha256:efda1bcea3bdd260e4c65a32ee535929550041f56b1b8d4bea22ef144c19c9b4`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1051](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1051-L1051)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1071](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1071-L1071)
 
 <a id="source-source-6b460d123159d9"></a>
 
@@ -5325,7 +5325,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:990](../../paper/systems/claim-faithful-publication-systems-paper.tex#L990-L990), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1056](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1056-L1056)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1010](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1010-L1010), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1076](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1076-L1076)
 - `erdos-249-binary-totient-series`: [cite at paper/249/erdos-249-binary-totient-series.tex:79](../../paper/249/erdos-249-binary-totient-series.tex#L79-L79), [cite at paper/249/erdos-249-binary-totient-series.tex:512](../../paper/249/erdos-249-binary-totient-series.tex#L512-L512)
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:3176](../../paper/archive/erdos249-257-main-paper.tex#L3176-L3176)
 - `erdos249-totient-reasoning-surface`: [cite at paper/249/erdos249-totient-reasoning-surface.tex:287](../../paper/249/erdos249-totient-reasoning-surface.tex#L287-L287), [cite at paper/249/erdos249-totient-reasoning-surface.tex:7005](../../paper/249/erdos249-totient-reasoning-surface.tex#L7005-L7005), [cite at paper/249/erdos249-totient-reasoning-surface.tex:8742](../../paper/249/erdos249-totient-reasoning-surface.tex#L8742-L8742), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:95](../../paper/reasoning-parts/erdos249/a249_front.tex#L95-L95), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:6813](../../paper/reasoning-parts/erdos249/a249_front.tex#L6813-L6813), [cite at paper/reasoning-parts/erdos249/a249\_front.tex:8550](../../paper/reasoning-parts/erdos249/a249_front.tex#L8550-L8550)
@@ -5348,7 +5348,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1054](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1054-L1054)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1074](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1074-L1074)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:434](../../paper/systems/open-source-mathematics-strategy.tex#L434-L434), [cite at paper/systems/open-source-mathematics-strategy.tex:1107](../../paper/systems/open-source-mathematics-strategy.tex#L1107-L1107)
 
 <a id="source-source-77333436a9e579"></a>
@@ -5519,12 +5519,12 @@ Exact source locations:
 Public implementation or evidence coordinates:
 
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1712-L1717) — lines `1712–1717`; excerpt `sha256:35c50b80ea4e9bece2ad431b8db8fe260367c76ed945564205813263b357e81f`
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1139-L1143) — lines `1139–1143`; excerpt `sha256:10b6425a7219ff0ff262d8974728a77849f4d7543b958b9923084c67335ca1f3`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1159-L1163) — lines `1159–1163`; excerpt `sha256:10b6425a7219ff0ff262d8974728a77849f4d7543b958b9923084c67335ca1f3`
 - [docs/research-commons/rounds/round7/README.md](../../docs/research-commons/rounds/round7/README.md#L56-L60) — lines `56–60`; excerpt `sha256:1d66252ee7cb6baaf5065f96ec3ab4dad3e7296eca6d2c98ed0d5c7e41e08a97`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1051](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1051-L1051)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1071](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1071-L1071)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:742](../../paper/systems/open-source-mathematics-strategy.tex#L742-L742), [cite at paper/systems/open-source-mathematics-strategy.tex:822](../../paper/systems/open-source-mathematics-strategy.tex#L822-L822), [cite at paper/systems/open-source-mathematics-strategy.tex:854](../../paper/systems/open-source-mathematics-strategy.tex#L854-L854), [cite at paper/systems/open-source-mathematics-strategy.tex:1064](../../paper/systems/open-source-mathematics-strategy.tex#L1064-L1064)
 
 <a id="source-source-7a9657920d576b"></a>
@@ -5734,7 +5734,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:817](../../paper/systems/claim-faithful-publication-systems-paper.tex#L817-L817), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1056](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1056-L1056)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:837](../../paper/systems/claim-faithful-publication-systems-paper.tex#L837-L837), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1076](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1076-L1076)
 - `erdos-243-reciprocal-tail-rigidity`: [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:1196](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L1196-L1196), [cite at paper/243/erdos-243-reciprocal-tail-rigidity.tex:1250](../../paper/243/erdos-243-reciprocal-tail-rigidity.tex#L1250-L1250)
 - `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:56](../../paper/257/erdos-257-mersenne-support-subseries.tex#L56-L56), [cite at paper/257/erdos-257-mersenne-support-subseries.tex:136](../../paper/257/erdos-257-mersenne-support-subseries.tex#L136-L136), [cite at paper/257/erdos-257-mersenne-support-subseries.tex:914](../../paper/257/erdos-257-mersenne-support-subseries.tex#L914-L914), [cite at paper/257/erdos-257-mersenne-support-subseries.tex:927](../../paper/257/erdos-257-mersenne-support-subseries.tex#L927-L927), [cite at paper/257/erdos-257-mersenne-support-subseries.tex:1566](../../paper/257/erdos-257-mersenne-support-subseries.tex#L1566-L1566)
 - `erdos-269-three-prime-running-lcm`: [cite at paper/269/erdos-269-three-prime-running-lcm.tex:418](../../paper/269/erdos-269-three-prime-running-lcm.tex#L418-L418), [cite at paper/269/erdos-269-three-prime-running-lcm.tex:970](../../paper/269/erdos-269-three-prime-running-lcm.tex#L970-L970)
@@ -5796,12 +5796,12 @@ Exact source locations:
 Public implementation or evidence coordinates:
 
 - [paper/systems/cold-clone-to-proof-receipt.tex](../../paper/systems/cold-clone-to-proof-receipt.tex#L692-L697) — lines `692–697`; excerpt `sha256:1f3f3c8f59b09e017af2d71374c7c46368d97929557de076c9b6d0b5f80c83bf`
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1363-L1365) — lines `1363–1365`; excerpt `sha256:2791c8042dc468854cefb24a74e27b8ce018aa3c98bb4987cd94e39599e9c97d`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1383-L1385) — lines `1383–1385`; excerpt `sha256:2791c8042dc468854cefb24a74e27b8ce018aa3c98bb4987cd94e39599e9c97d`
 - [docs/research-commons/rounds/round7/README.md](../../docs/research-commons/rounds/round7/README.md#L61-L64) — lines `61–64`; excerpt `sha256:874b2be52514deae844bef1f44fcbc81dfb88cf010c98a26bf6bc0cfa4dae767`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:111](../../paper/systems/claim-faithful-publication-systems-paper.tex#L111-L111), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1042](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1042-L1042)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:117](../../paper/systems/claim-faithful-publication-systems-paper.tex#L117-L117), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1062](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1062-L1062)
 - `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:477](../../paper/systems/cold-clone-to-proof-receipt.tex#L477-L477)
 
 <a id="source-source-811205223e0788"></a>
@@ -5903,7 +5903,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1043](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1043-L1043)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1063](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1063-L1063)
 - `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:499](../../paper/systems/cold-clone-to-proof-receipt.tex#L499-L499)
 
 <a id="source-source-86d1745e2d139b"></a>
@@ -6233,11 +6233,11 @@ Paper citation usages:
 Public implementation or evidence coordinates:
 
 - [paper/systems/cold-clone-to-proof-receipt.tex](../../paper/systems/cold-clone-to-proof-receipt.tex#L688-L692) — lines `688–692`; excerpt `sha256:bb8a82a2eaf9299171683c436633a3cdfe8688aba06e1bc995a951bd364c907e`
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1205-L1207) — lines `1205–1207`; excerpt `sha256:9f7cd13126bc86bb2e14538da4a22cac99dbf4eaaabadfd3aba8c94ea897364f`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1225-L1227) — lines `1225–1227`; excerpt `sha256:9f7cd13126bc86bb2e14538da4a22cac99dbf4eaaabadfd3aba8c94ea897364f`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:111](../../paper/systems/claim-faithful-publication-systems-paper.tex#L111-L111), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:593](../../paper/systems/claim-faithful-publication-systems-paper.tex#L593-L593), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1042](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1042-L1042)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:117](../../paper/systems/claim-faithful-publication-systems-paper.tex#L117-L117), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:612](../../paper/systems/claim-faithful-publication-systems-paper.tex#L612-L612), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1062](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1062-L1062)
 - `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:474](../../paper/systems/cold-clone-to-proof-receipt.tex#L474-L474)
 
 <a id="source-source-951f70d8dfc418"></a>
@@ -6292,7 +6292,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:609](../../paper/systems/claim-faithful-publication-systems-paper.tex#L609-L609), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1052](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1052-L1052)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:628](../../paper/systems/claim-faithful-publication-systems-paper.tex#L628-L628), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1072](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1072-L1072)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:585](../../paper/systems/open-source-mathematics-strategy.tex#L585-L585), [cite at paper/systems/open-source-mathematics-strategy.tex:926](../../paper/systems/open-source-mathematics-strategy.tex#L926-L926), [cite at paper/systems/open-source-mathematics-strategy.tex:984](../../paper/systems/open-source-mathematics-strategy.tex#L984-L984)
 
 <a id="source-source-96aef073e2ea33"></a>
@@ -6365,7 +6365,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1052](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1052-L1052)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1072](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1072-L1072)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:579](../../paper/systems/open-source-mathematics-strategy.tex#L579-L579), [cite at paper/systems/open-source-mathematics-strategy.tex:785](../../paper/systems/open-source-mathematics-strategy.tex#L785-L785)
 
 <a id="source-source-97b4e6a82335a7"></a>
@@ -6417,7 +6417,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:609](../../paper/systems/claim-faithful-publication-systems-paper.tex#L609-L609), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1052](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1052-L1052)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:628](../../paper/systems/claim-faithful-publication-systems-paper.tex#L628-L628), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1072](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1072-L1072)
 - `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:482](../../paper/systems/cold-clone-to-proof-receipt.tex#L482-L482)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:999](../../paper/systems/open-source-mathematics-strategy.tex#L999-L999)
 
@@ -6496,7 +6496,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1043](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1043-L1043)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1063](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1063-L1063)
 - `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:405](../../paper/systems/cold-clone-to-proof-receipt.tex#L405-L405), [cite at paper/systems/cold-clone-to-proof-receipt.tex:488](../../paper/systems/cold-clone-to-proof-receipt.tex#L488-L488)
 
 <a id="source-source-9a38b2d8b0dada"></a>
@@ -6678,7 +6678,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:642](../../paper/systems/claim-faithful-publication-systems-paper.tex#L642-L642), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1052](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1052-L1052)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:661](../../paper/systems/claim-faithful-publication-systems-paper.tex#L661-L661), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1072](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1072-L1072)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:946](../../paper/systems/open-source-mathematics-strategy.tex#L946-L946)
 
 <a id="source-source-a028dc6bb31c0c"></a>
@@ -6696,11 +6696,11 @@ Paper citation usages:
 Public implementation or evidence coordinates:
 
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1717-L1722) — lines `1717–1722`; excerpt `sha256:17dfc81b2347996ae518d9ae35b9f4cbbe428802c4df971c821bb500a90d87de`
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1193-L1197) — lines `1193–1197`; excerpt `sha256:2595846643eaeb52b16f7156659896435256034246319719e7ecd470260c4445`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1213-L1217) — lines `1213–1217`; excerpt `sha256:2595846643eaeb52b16f7156659896435256034246319719e7ecd470260c4445`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1051](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1051-L1051)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1071](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1071-L1071)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:683](../../paper/systems/open-source-mathematics-strategy.tex#L683-L683), [cite at paper/systems/open-source-mathematics-strategy.tex:753](../../paper/systems/open-source-mathematics-strategy.tex#L753-L753), [cite at paper/systems/open-source-mathematics-strategy.tex:832](../../paper/systems/open-source-mathematics-strategy.tex#L832-L832), [cite at paper/systems/open-source-mathematics-strategy.tex:961](../../paper/systems/open-source-mathematics-strategy.tex#L961-L961), [cite at paper/systems/open-source-mathematics-strategy.tex:1076](../../paper/systems/open-source-mathematics-strategy.tex#L1076-L1076)
 
 <a id="source-source-a0d109b4492fba"></a>
@@ -6748,7 +6748,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1050](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1050-L1050)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1070](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1070-L1070)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:779](../../paper/systems/open-source-mathematics-strategy.tex#L779-L779), [cite at paper/systems/open-source-mathematics-strategy.tex:1020](../../paper/systems/open-source-mathematics-strategy.tex#L1020-L1020)
 
 <a id="source-source-a67b8dc01791ec"></a>
@@ -6917,7 +6917,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1043](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1043-L1043)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1063](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1063-L1063)
 - `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:522](../../paper/systems/cold-clone-to-proof-receipt.tex#L522-L522)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:1009](../../paper/systems/open-source-mathematics-strategy.tex#L1009-L1009)
 
@@ -7005,7 +7005,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:609](../../paper/systems/claim-faithful-publication-systems-paper.tex#L609-L609), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1052](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1052-L1052)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:628](../../paper/systems/claim-faithful-publication-systems-paper.tex#L628-L628), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1072](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1072-L1072)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:583](../../paper/systems/open-source-mathematics-strategy.tex#L583-L583), [cite at paper/systems/open-source-mathematics-strategy.tex:992](../../paper/systems/open-source-mathematics-strategy.tex#L992-L992)
 
 <a id="source-source-b0b779fff5defe"></a>
@@ -7349,11 +7349,11 @@ Public implementation or evidence coordinates:
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1676-L1681) — lines `1676–1681`; excerpt `sha256:10b82bb930fe79ac10a4ea88fdca0fe6cef302ef6284568b8ea7a1bd56f969d0`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L2997-L2999) — lines `2997–2999`; excerpt `sha256:ad96b93897cb722f9a63aa344b11a333231b11971c032d6bf1a0781e0d6ded9f`
 - [paper/reasoning-parts/erdos251/core.tex](../../paper/reasoning-parts/erdos251/core.tex#L104-L104) — lines `104–104`; excerpt `sha256:8e56484cbb8a2a51938d6d95f9eb16930424134d3eb232b2a1c1323f9489b0f2`
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1110-L1115) — lines `1110–1115`; excerpt `sha256:c5fd8bab00b679d203057c594bf20120be28a4b4637d2f3f497872234e129474`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1130-L1135) — lines `1130–1135`; excerpt `sha256:c5fd8bab00b679d203057c594bf20120be28a4b4637d2f3f497872234e129474`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:108](../../paper/systems/claim-faithful-publication-systems-paper.tex#L108-L108), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:593](../../paper/systems/claim-faithful-publication-systems-paper.tex#L593-L593), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1040](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1040-L1040)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:114](../../paper/systems/claim-faithful-publication-systems-paper.tex#L114-L114), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:612](../../paper/systems/claim-faithful-publication-systems-paper.tex#L612-L612), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1060](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1060-L1060)
 - `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:764](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L764-L764)
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:3770](../../paper/archive/erdos249-257-main-paper.tex#L3770-L3770)
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2244](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2244-L2244), [cite at paper/reasoning-parts/erdos251/core.tex:2202](../../paper/reasoning-parts/erdos251/core.tex#L2202-L2202)
@@ -7601,7 +7601,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:483](../../paper/systems/claim-faithful-publication-systems-paper.tex#L483-L483), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1040](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1040-L1040)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:502](../../paper/systems/claim-faithful-publication-systems-paper.tex#L502-L502), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1060](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1060-L1060)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:999](../../paper/systems/open-source-mathematics-strategy.tex#L999-L999), [cite at paper/systems/open-source-mathematics-strategy.tex:1421](../../paper/systems/open-source-mathematics-strategy.tex#L1421-L1421)
 
 <a id="source-source-c32d672658410d"></a>
@@ -7870,7 +7870,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:609](../../paper/systems/claim-faithful-publication-systems-paper.tex#L609-L609), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1052](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1052-L1052)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:628](../../paper/systems/claim-faithful-publication-systems-paper.tex#L628-L628), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1072](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1072-L1072)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:585](../../paper/systems/open-source-mathematics-strategy.tex#L585-L585), [cite at paper/systems/open-source-mathematics-strategy.tex:929](../../paper/systems/open-source-mathematics-strategy.tex#L929-L929), [cite at paper/systems/open-source-mathematics-strategy.tex:984](../../paper/systems/open-source-mathematics-strategy.tex#L984-L984)
 
 <a id="source-source-cc823e517ced81"></a>
@@ -8125,11 +8125,11 @@ Paper citation usages:
 
 Public implementation or evidence coordinates:
 
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1387-L1389) — lines `1387–1389`; excerpt `sha256:c66e4c643708ca23615d9d6c9473c802267b432d3f477cb5deb758c7fb5f7d69`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1407-L1409) — lines `1407–1409`; excerpt `sha256:c66e4c643708ca23615d9d6c9473c802267b432d3f477cb5deb758c7fb5f7d69`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1049](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1049-L1049)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1069](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1069-L1069)
 
 <a id="source-source-d3995db1508bc9"></a>
 
@@ -8214,7 +8214,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:489](../../paper/systems/claim-faithful-publication-systems-paper.tex#L489-L489), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1052](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1052-L1052)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:508](../../paper/systems/claim-faithful-publication-systems-paper.tex#L508-L508), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1072](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1072-L1072)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:845](../../paper/systems/open-source-mathematics-strategy.tex#L845-L845)
 
 <a id="source-source-d7a43109c64c0c"></a>
@@ -8272,7 +8272,7 @@ Public implementation or evidence coordinates:
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:108](../../paper/systems/claim-faithful-publication-systems-paper.tex#L108-L108), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:593](../../paper/systems/claim-faithful-publication-systems-paper.tex#L593-L593), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1040](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1040-L1040)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:114](../../paper/systems/claim-faithful-publication-systems-paper.tex#L114-L114), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:612](../../paper/systems/claim-faithful-publication-systems-paper.tex#L612-L612), [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1060](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1060-L1060)
 - `erdos-251-prime-gap-dyadic-series`: [cite at paper/251/erdos-251-prime-gap-dyadic-series.tex:765](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L765-L765)
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:3772](../../paper/archive/erdos249-257-main-paper.tex#L3772-L3772)
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2244](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2244-L2244), [cite at paper/reasoning-parts/erdos251/core.tex:2202](../../paper/reasoning-parts/erdos251/core.tex#L2202-L2202)
@@ -8368,11 +8368,11 @@ Paper citation usages:
 Public implementation or evidence coordinates:
 
 - [paper/systems/cold-clone-to-proof-receipt.tex](../../paper/systems/cold-clone-to-proof-receipt.tex#L700-L705) — lines `700–705`; excerpt `sha256:e1fb69819625ee4c623683e8876546bfaeba103a154bb24b05f891cf455291a5`
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1226-L1228) — lines `1226–1228`; excerpt `sha256:5c3c73cac106465de37f6b0d206a52293b5061ddb965921d239f718eb722db0e`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1246-L1248) — lines `1246–1248`; excerpt `sha256:5c3c73cac106465de37f6b0d206a52293b5061ddb965921d239f718eb722db0e`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1043](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1043-L1043)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1063](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1063-L1063)
 - `cold-clone-to-proof-receipt`: [cite at paper/systems/cold-clone-to-proof-receipt.tex:403](../../paper/systems/cold-clone-to-proof-receipt.tex#L403-L403), [cite at paper/systems/cold-clone-to-proof-receipt.tex:488](../../paper/systems/cold-clone-to-proof-receipt.tex#L488-L488)
 
 <a id="source-source-e33bdf934f939f"></a>
@@ -8616,11 +8616,11 @@ Paper citation usages:
 Public implementation or evidence coordinates:
 
 - [paper/systems/open-source-mathematics-strategy.tex](../../paper/systems/open-source-mathematics-strategy.tex#L1732-L1737) — lines `1732–1737`; excerpt `sha256:4fa78969a75193c23aeb06cdd0323df94e0a5887673d1bf5c44d740748d12774`
-- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1197-L1201) — lines `1197–1201`; excerpt `sha256:fea9fc446cc883ee74a3abe2b9d747aa1da68232d0315a8d8bef6e40e8b574ed`
+- [paper/systems/claim-faithful-publication-systems-paper.tex](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1217-L1221) — lines `1217–1221`; excerpt `sha256:fea9fc446cc883ee74a3abe2b9d747aa1da68232d0315a8d8bef6e40e8b574ed`
 
 Paper citation usages:
 
-- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1051](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1051-L1051)
+- `claim-faithful-publication-systems`: [cite at paper/systems/claim-faithful-publication-systems-paper.tex:1071](../../paper/systems/claim-faithful-publication-systems-paper.tex#L1071-L1071)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:1097](../../paper/systems/open-source-mathematics-strategy.tex#L1097-L1097)
 
 <a id="source-source-eaeb7980382323"></a>

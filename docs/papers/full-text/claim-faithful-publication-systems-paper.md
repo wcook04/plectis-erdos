@@ -32,7 +32,7 @@ Section <a href="#sec:world" data-reference-type="ref" data-reference="sec:worl
 
 <figure id="fig:lifecycle" data-latex-placement="H">
 
-<figcaption>The research and publication cycle. Arrows label work performed on artifacts, not logical implications or automatic approval. A reviewed source revision precedes rebuilding and inspection. The journal retains explicitly entered returns and decisions; source checks do not decide whether an explanation preserves the mathematics.</figcaption>
+<figcaption>Research and publication cycle. Arrows name operations, not logical implications or automatic approval. Reviewed source changes precede rebuilding and inspection. The journal retains entered returns and decisions. Source checks do not judge whether an explanation preserves the mathematics.</figcaption>
 </figure>
 
 <a id="sec:world"></a>
@@ -231,7 +231,7 @@ An advisory model may work from that packet; a tool-enabled agent may prepare a 
 
 <figure id="fig:refinement" data-latex-placement="H">
 
-<figcaption>The exposition workflow, read in numerical order, with the exchanged objects labelled. A proposal may be revised or declined at step 3; only accepted changes proceed to integration. The steps name responsibilities, which may be performed by the same agent. Rendering and inspection remain separate from source checks.</figcaption>
+<figcaption>Exposition workflow in numbered order, with exchanged objects labelled. Step 3 may request revision or decline a proposal; only accepted changes reach integration. These are responsibilities, which one agent may perform. Rendering and inspection remain separate from source checks.</figcaption>
 </figure>
 
 The return checker verifies packet identity and permitted paths, accounts for statement changes, and checks retained labels, citation keys and bibliography entries. It audits the proposed manuscript in a temporary copy of the frozen sources, leaving the live repository unchanged.
