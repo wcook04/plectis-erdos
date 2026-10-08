@@ -199,6 +199,21 @@ the other a route pointer or a generated projection. Do not copy a private
 system's full doctrine into this repository; port only the public capability
 and the check that proves it works here.
 
+For a public front-door review, examine the complete tracked directory inventory
+before proposing moves. Classify exact duplicates by their consumers: archived
+returns, generated projections, licence texts and test fixtures often need to
+remain separate. Improve missing folder indexes before renaming established
+proof or publication paths. Keep a real website/map preview linked to its live
+route, identify it as a dated capture, and update reader sparse-checkout paths
+and image licensing with the asset. Human introductions explain the work;
+agent entry gives commands, authority and validation. Verify both journeys at
+GitHub reading width and on a narrow screen.
+
+Keep the AI-use disclosure consistent with the papers' production note. A
+clearer presentation must not imply independent review, human authorship or
+demonstrated understanding that the evidence does not record. Give readers a
+bounded argument to explore and a specific correction route.
+
 When reorganising the checkout, keep one shared root `AGENTS.md` and keep
 provider adapters limited to loading that entry. Keep the main reader guides
 in `docs/`, operational agent guides in `docs/agents/`, specialist checking

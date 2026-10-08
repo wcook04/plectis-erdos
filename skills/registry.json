@@ -1414,6 +1414,23 @@
             "citations",
             "cff"
           ]
+        },
+        {
+          "actions": [
+            "organize",
+            "organise",
+            "reorganize",
+            "reorganise",
+            "consolidate"
+          ],
+          "objects": [
+            "readme",
+            "agents",
+            "tree",
+            "folder",
+            "folders",
+            "documentation"
+          ]
         }
       ],
       "skills": [

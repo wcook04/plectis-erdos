@@ -8,11 +8,13 @@ PDFs and LaTeX source. Both public repositories include the active papers.
 Older, retired papers are kept only in the repository that published them.
 Some papers may be available in the repository before they appear on the website.
 
-This checkout contains 18 active papers and 3 retired papers and 3 papers awaiting website publication.
+This checkout contains 21 active papers and 3 retired papers.
 
-## Systems paper
+## System and exposition papers
 
-- [A Repository-Based System for Research and Publication](full-text/claim-faithful-publication-systems-paper.md)
+- [A Repository-Based System for Research and Publication](full-text/claim-faithful-publication-systems-paper.md) — Research architecture
+- [Writing a Good Mathematical Paper](full-text/writing-a-good-mathematical-paper.md) — Compact writing guide
+- [Writing Mathematics from the Literature and Reviewed Revisions](full-text/writing-mathematics-from-reviewed-revisions.md) — Editorial method companion
 
 The mathematical papers are listed below, [by Erdős problem number](#problem-portfolio).
 
@@ -425,6 +427,14 @@ Start here (selected for this guide): [Introduction](full-text/erdos-1049-ration
 
 Start here (selected for this guide): [The region b^{\mu}<a and the base 31/4](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:region), [The sharp q-order of the normalised Hankel determinant](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:hankel-order), [A finite spectral consequence.](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#a-finite-spectral-consequence.), [Complements and further questions](full-text/erdos1049-rational-base-lambert-reasoning-surface.md#long1049:sec:open).
 
+### When do sparse integer digits fill intervals of values, when do they force irrationality or transcendence, and what does that show about the methods used across the Erdős problems?
+
+**Reading Eight Erdős Problems Together**
+
+[full text](full-text/optimal-sparse-perturbations.md) · [PDF](../../paper/synthesis/optimal-sparse-perturbations.pdf) · [LaTeX source](../../paper/synthesis/optimal-sparse-perturbations.tex) · 38 sections · `optimal-sparse-perturbations` · native to this repository
+
+Start here (selected for this guide): [From individual problems to reusable questions](full-text/optimal-sparse-perturbations.md#sec:map), [An exact capacity criterion](full-text/optimal-sparse-perturbations.md#capacity:sec:criterion), [Lambert subsums across bases](full-text/optimal-sparse-perturbations.md#sec:results), [Further questions](full-text/optimal-sparse-perturbations.md#sec:questions).
+
 ### How can AI-assisted work on an open problem persist as a record that people and models can check, understand and extend?
 
 **A Repository-Based System for Research and Publication**
@@ -441,6 +451,20 @@ Start here (selected for this guide): [Introduction](full-text/claim-faithful-pu
 
 Start here (selected for this guide): [The problem](full-text/plectis-public-system.md#sec:problem), [One public test before the general design](full-text/plectis-public-system.md#sec:early-example), [Five distinctions](full-text/plectis-public-system.md#sec:distinctions), [What stronger evidence would look like](full-text/plectis-public-system.md#sec:stronger).
 
+### How can reading nearby papers and reviewed revisions improve the explanation of a particular mathematical argument?
+
+**Writing Mathematics from the Literature and Reviewed Revisions**
+
+[full text](full-text/writing-mathematics-from-reviewed-revisions.md) · [PDF](../../paper/exposition/writing-mathematics-from-reviewed-revisions.pdf) · [LaTeX source](../../paper/exposition/writing-mathematics-from-reviewed-revisions.tex) · 32 sections · `writing-mathematics-from-reviewed-revisions` · native to this repository
+
+Start here (selected for this guide): [Learning to explain a particular argument](full-text/writing-mathematics-from-reviewed-revisions.md#sec:reading), [Explain the choices in a proof](full-text/writing-mathematics-from-reviewed-revisions.md#sec:revisions), [Review changes without changing their meaning](full-text/writing-mathematics-from-reviewed-revisions.md#sec:review), [Keeping a useful practice small](full-text/writing-mathematics-from-reviewed-revisions.md#sec:practice).
+
+### How should an AI write a clear and mathematically faithful paper?
+
+**Writing a Good Mathematical Paper**
+
+[full text](full-text/writing-a-good-mathematical-paper.md) · [PDF](../../paper/exposition/writing-a-good-mathematical-paper.pdf) · [LaTeX source](../../paper/exposition/writing-a-good-mathematical-paper.tex) · 1 sections · `writing-a-good-mathematical-paper` · native to this repository
+
 ### What is mathematically proved about Erdős #249 and #257, and what exactly remains open?
 
 **Tail Certificates and Achievement-Set Geometry for Erdős Problems 249 and 257** · **retired manuscript**
@@ -448,14 +472,6 @@ Start here (selected for this guide): [The problem](full-text/plectis-public-sys
 [full text](full-text/erdos249-257-main-paper.md) · [PDF](../../paper/archive/erdos249-257-main-paper.pdf) · [LaTeX source](../../paper/archive/erdos249-257-main-paper.tex) · 161 sections · `erdos249-257-main` · native to this repository
 
 Selected sections of this historical account: [The two exact reductions](full-text/erdos249-257-main-paper.md#sec:spines), [One transform and the limit of finite evidence](full-text/erdos249-257-main-paper.md#sec:architecture), [The unresolved statements](full-text/erdos249-257-main-paper.md#sec:unresolved).
-
-### When do choices of digits and supports fill intervals or force irrationality, and what do the resulting constructions reveal about methods used across the Erdős programmes?
-
-**Reading Eight Erdős Problems Together** · **included here; not yet published on the website**
-
-[full text](full-text/optimal-sparse-perturbations.md) · [PDF](../../paper/synthesis/optimal-sparse-perturbations.pdf) · [LaTeX source](../../paper/synthesis/optimal-sparse-perturbations.tex) · 38 sections · `optimal-sparse-perturbations` · native to this repository
-
-Start here (selected for this guide): [From individual problems to reusable questions](full-text/optimal-sparse-perturbations.md#sec:map), [An exact capacity criterion](full-text/optimal-sparse-perturbations.md#capacity:sec:criterion), [Lambert subsums across bases](full-text/optimal-sparse-perturbations.md#sec:results), [Further questions](full-text/optimal-sparse-perturbations.md#sec:questions).
 
 ### How can a reasoning agent comprehend a large Lean corpus before compiling, then cross into replayable proof authority and incremental validation?
 
@@ -476,20 +492,6 @@ Selected sections of this historical account: [The cold-clone problem](full-text
 Superseded by [A Repository-Based System for Research and Publication](full-text/claim-faithful-publication-systems-paper.md). Retained for historical context; use the current paper and repository guides for present practice.
 
 Selected sections of this historical account: [The strategy](full-text/open-source-mathematics-strategy.md#sec:strategy), [The contribution protocol](full-text/open-source-mathematics-strategy.md#sec:protocol), [From an agent claim to mathematical attention](full-text/open-source-mathematics-strategy.md#sec:attention), [The local-to-general track](full-text/open-source-mathematics-strategy.md#sec:local-to-general), [Limits and governance](full-text/open-source-mathematics-strategy.md#sec:limits).
-
-### How can reading nearby papers and reviewed revisions improve the explanation of a particular mathematical argument?
-
-**Writing Mathematics from the Literature and Reviewed Revisions** · **included here; not yet published on the website**
-
-[full text](full-text/writing-mathematics-from-reviewed-revisions.md) · [PDF](../../paper/exposition/writing-mathematics-from-reviewed-revisions.pdf) · [LaTeX source](../../paper/exposition/writing-mathematics-from-reviewed-revisions.tex) · 32 sections · `writing-mathematics-from-reviewed-revisions` · native to this repository
-
-Start here (selected for this guide): [Learning to explain a particular argument](full-text/writing-mathematics-from-reviewed-revisions.md#sec:reading), [Explain the choices in a proof](full-text/writing-mathematics-from-reviewed-revisions.md#sec:revisions), [Review changes without changing their meaning](full-text/writing-mathematics-from-reviewed-revisions.md#sec:review), [Keeping a useful practice small](full-text/writing-mathematics-from-reviewed-revisions.md#sec:practice).
-
-### How should an AI write a clear and mathematically faithful paper?
-
-**Writing a Good Mathematical Paper** · **included here; not yet published on the website**
-
-[full text](full-text/writing-a-good-mathematical-paper.md) · [PDF](../../paper/exposition/writing-a-good-mathematical-paper.pdf) · [LaTeX source](../../paper/exposition/writing-a-good-mathematical-paper.tex) · 1 sections · `writing-a-good-mathematical-paper` · native to this repository
 
 ## Evidence and limitations
 

@@ -7620,13 +7620,13 @@
       "paper_id": "optimal-sparse-perturbations",
       "title": "Reading Eight Erd\u0151s Problems Together",
       "title_source": "manuscript",
-      "question_this_paper_answers": "When do choices of digits and supports fill intervals or force irrationality, and what do the resulting constructions reveal about methods used across the Erd\u0151s programmes?",
+      "question_this_paper_answers": "When do sparse integer digits fill intervals of values, when do they force irrationality or transcendence, and what does that show about the methods used across the Erd\u0151s problems?",
       "subject": "Eight Erd\u0151s problems read together",
       "subject_kind": "synthesis",
       "form": "Cross-problem paper",
       "owns": "the synthesis exposition and ordinary proofs across the covered problems: capacity and congruence constructions, Lambert subsums, rational-point counts, method limits and their research record",
       "not_authority_for": "a solution to any original Erd\u0151s target, historical novelty, independent expert review, or a full Lean proof of the analytic capacity criterion or Lambert-chain theorem",
-      "publication_state": "pending_source_publication",
+      "publication_state": "active",
       "publication_class": "synthesis_paper",
       "publication_class_basis": "owns names 'synthesis exposition'",
       "manuscript_status": "technical_report",
@@ -7638,11 +7638,11 @@
         "year": "2026",
         "title": "Reading Eight Erd\u0151s Problems Together",
         "repository": "plectis-erdos",
-        "canonical_source_commit": null,
-        "canonical_source_url": null,
+        "canonical_source_commit": "cf41120472efc0c264b5e331e9d7424de458509f",
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/cf41120472efc0c264b5e331e9d7424de458509f/paper/synthesis/optimal-sparse-perturbations.tex",
         "licence": "CC-BY-4.0",
-        "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). Reading Eight Erd\u0151s Problems Together. plectis-erdos. CC-BY-4.0.",
+        "identifier_kind": "commit_pinned_source",
+        "text": "Will Cook (2026). Reading Eight Erd\u0151s Problems Together. plectis-erdos, commit cf41120472efc0c264b5e331e9d7424de458509f. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/cf41120472efc0c264b5e331e9d7424de458509f/paper/synthesis/optimal-sparse-perturbations.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -7654,10 +7654,10 @@
       "local_full_text": "docs/papers/full-text/optimal-sparse-perturbations.md",
       "local_source": "paper/synthesis/optimal-sparse-perturbations.tex",
       "source_sha256": "sha256:83e0788b73c2144a6a86fbd5b0e09b3d4e6a2ce999ade2ba3fb5d36437be9eaf",
-      "canonical_source_commit": null,
-      "canonical_source_pin_status": "local_unpublished",
-      "canonical_source_url": null,
-      "canonical_source_raw_url": null,
+      "canonical_source_commit": "cf41120472efc0c264b5e331e9d7424de458509f",
+      "canonical_source_pin_status": "immutable_commit",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/cf41120472efc0c264b5e331e9d7424de458509f/paper/synthesis/optimal-sparse-perturbations.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/cf41120472efc0c264b5e331e9d7424de458509f/paper/synthesis/optimal-sparse-perturbations.tex",
       "section_count": 38,
       "sections": [
         {
@@ -7890,10 +7890,6 @@
         }
       ],
       "citations_rendered": 73,
-      "fallback_title_drift": {
-        "registry_fallback": "An Exact Capacity Criterion for Series with Eventual Congruences",
-        "manuscript_title": "Reading Eight Erd\u0151s Problems Together"
-      },
       "local_pdf": "paper/synthesis/optimal-sparse-perturbations.pdf",
       "pdf_sha256": "sha256:e3b4a5f605ecdb80298a2d88aa6980102ffb7b1a3c3433b85e4d5c7c2279c336",
       "pdf_byte_count": 261345,
@@ -9007,7 +9003,7 @@
       "form": "Editorial method companion",
       "owns": "the exposition methodology: reading primary mathematical prose, reviewing specific revisions, and retaining bounded editorial lessons",
       "not_authority_for": "the example mathematics, independent mathematical review, or a measured improvement in reader understanding",
-      "publication_state": "pending_source_publication",
+      "publication_state": "active",
       "publication_class": "methods_paper",
       "publication_class_basis": "owns names 'methodology'",
       "manuscript_status": "technical_report",
@@ -9019,11 +9015,11 @@
         "year": "2026",
         "title": "Writing Mathematics from the Literature and Reviewed Revisions",
         "repository": "plectis-erdos",
-        "canonical_source_commit": null,
-        "canonical_source_url": null,
+        "canonical_source_commit": "cf41120472efc0c264b5e331e9d7424de458509f",
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/cf41120472efc0c264b5e331e9d7424de458509f/paper/exposition/writing-mathematics-from-reviewed-revisions.tex",
         "licence": "CC-BY-4.0",
-        "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). Writing Mathematics from the Literature and Reviewed Revisions. plectis-erdos. CC-BY-4.0.",
+        "identifier_kind": "commit_pinned_source",
+        "text": "Will Cook (2026). Writing Mathematics from the Literature and Reviewed Revisions. plectis-erdos, commit cf41120472efc0c264b5e331e9d7424de458509f. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/cf41120472efc0c264b5e331e9d7424de458509f/paper/exposition/writing-mathematics-from-reviewed-revisions.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -9035,10 +9031,10 @@
       "local_full_text": "docs/papers/full-text/writing-mathematics-from-reviewed-revisions.md",
       "local_source": "paper/exposition/writing-mathematics-from-reviewed-revisions.tex",
       "source_sha256": "sha256:96b7f3e3bad868197b0207ec66ac4496bc205193b49dc6ec8033df8de4d27d5e",
-      "canonical_source_commit": null,
-      "canonical_source_pin_status": "local_unpublished",
-      "canonical_source_url": null,
-      "canonical_source_raw_url": null,
+      "canonical_source_commit": "cf41120472efc0c264b5e331e9d7424de458509f",
+      "canonical_source_pin_status": "immutable_commit",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/cf41120472efc0c264b5e331e9d7424de458509f/paper/exposition/writing-mathematics-from-reviewed-revisions.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/cf41120472efc0c264b5e331e9d7424de458509f/paper/exposition/writing-mathematics-from-reviewed-revisions.tex",
       "section_count": 32,
       "sections": [
         {
@@ -9276,7 +9272,7 @@
       "form": "Compact writing guide",
       "owns": "the exposition methodology: a compact general guide for writing a mathematically faithful paper",
       "not_authority_for": "a mathematical result, independent review, or a measured improvement in writing",
-      "publication_state": "pending_source_publication",
+      "publication_state": "active",
       "publication_class": "methods_paper",
       "publication_class_basis": "owns names 'methodology'",
       "manuscript_status": "technical_report",
@@ -9288,11 +9284,11 @@
         "year": "2026",
         "title": "Writing a Good Mathematical Paper",
         "repository": "plectis-erdos",
-        "canonical_source_commit": null,
-        "canonical_source_url": null,
+        "canonical_source_commit": "cf41120472efc0c264b5e331e9d7424de458509f",
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/cf41120472efc0c264b5e331e9d7424de458509f/paper/exposition/writing-a-good-mathematical-paper.tex",
         "licence": "CC-BY-4.0",
-        "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). Writing a Good Mathematical Paper. plectis-erdos. CC-BY-4.0.",
+        "identifier_kind": "commit_pinned_source",
+        "text": "Will Cook (2026). Writing a Good Mathematical Paper. plectis-erdos, commit cf41120472efc0c264b5e331e9d7424de458509f. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/cf41120472efc0c264b5e331e9d7424de458509f/paper/exposition/writing-a-good-mathematical-paper.tex",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -9304,10 +9300,10 @@
       "local_full_text": "docs/papers/full-text/writing-a-good-mathematical-paper.md",
       "local_source": "paper/exposition/writing-a-good-mathematical-paper.tex",
       "source_sha256": "sha256:e96a5d3154eabc36ecd618ca3590672486f1be6d71868377ef1fc6b4c38b7452",
-      "canonical_source_commit": null,
-      "canonical_source_pin_status": "local_unpublished",
-      "canonical_source_url": null,
-      "canonical_source_raw_url": null,
+      "canonical_source_commit": "cf41120472efc0c264b5e331e9d7424de458509f",
+      "canonical_source_pin_status": "immutable_commit",
+      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/cf41120472efc0c264b5e331e9d7424de458509f/paper/exposition/writing-a-good-mathematical-paper.tex",
+      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/cf41120472efc0c264b5e331e9d7424de458509f/paper/exposition/writing-a-good-mathematical-paper.tex",
       "section_count": 1,
       "sections": [
         {

@@ -1621,11 +1621,12 @@ def _readme(
     )
     if system_papers:
         lines += [
-            "## Systems paper" if len(system_papers) == 1 else "## Systems papers",
+            "## System and exposition papers",
             "",
         ]
         lines += [
             f"- [{record['title']}]({_relative_to_corpus(record['local_full_text'])})"
+            + (f" — {record['form']}" if record.get("form") else "")
             for record in system_papers
         ]
         lines.append("")

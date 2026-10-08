@@ -28,3 +28,18 @@ For runnable experiments and small examples, use [research/](../research/README.
 Preserve each returned packet's recorded source version when proposing a
 correction. Update generated manifests and frontier summaries through their
 owning tools rather than editing them by hand.
+
+## Reading historical source links
+
+The #1041 packet preserves the directory structure and wording of returned
+sources. Some relative links name a source at its original location; some
+refer to material not included in the public packet. An unresolved link is
+not evidence that the named argument was checked or incorporated.
+
+Use the [file manifest](Erdos1041/CORPUS_MANIFEST.json) to locate a preserved
+source. For example, the nested chord-conditioned Bergman note refers to
+[BergmanGeodesicInvariance.md](Erdos1041/BergmanGeodesicInvariance.md) at the
+collection root. If the manifest has no corresponding file, treat the source
+as unavailable in this release. Use the current paper and claim record for
+accepted results. Corrections to these archived returns must preserve source
+identity and refresh the publisher's manifest and checkpoint together.

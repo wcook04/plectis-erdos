@@ -273,7 +273,7 @@ def main() -> None:
         "README asks a cold reader to choose a checkout before showing the papers")
     require(
         "![Eight Erdős problem programmes:" in first_screen
-        and "](.github/system-map.png)" in first_screen,
+        and "](.github/maths-map.png)" in first_screen,
         "README opening lost the mathematical research-record banner",
     )
     for token in (

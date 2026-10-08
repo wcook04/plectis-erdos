@@ -22,6 +22,8 @@ from agent_skill_catalog import ROOT, load_catalog
 
 
 ROUTE_CASES = {
+    'Organize the README, AGENTS instructions and repository tree for public readers': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Consolidate redundant folders and organise the documentation': ('repository_architecture', 'maintain-public-infrastructure'),
     'Check a documentation change without installing Lean': ('repository_architecture', 'maintain-public-infrastructure'),
     'Check this documentation patch before opening a pull request': ('repository_architecture', 'maintain-public-infrastructure'),
     'Validate a documentation change with the existing public checks': ('repository_architecture', 'maintain-public-infrastructure'),

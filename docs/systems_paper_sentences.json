@@ -61,10 +61,11 @@
       "id": "corpus",
       "path": "docs/papers/corpus.json",
       "start_line": 1,
-      "end_line": 9326,
-      "sha256": "02d1accf8907ce2677ab31b38639dc05dcc3a126c146b39bcfdce03d7e2ce2fb",
-      "excerpt_sha256": "02d1accf8907ce2677ab31b38639dc05dcc3a126c146b39bcfdce03d7e2ce2fb",
-      "kind": "source"
+      "end_line": 9322,
+      "sha256": "e3aabcbaedfdf863851ef21be5be3c962e05355ad6c03c1d0ef7be96f4e330a9",
+      "excerpt_sha256": "e3aabcbaedfdf863851ef21be5be3c962e05355ad6c03c1d0ef7be96f4e330a9",
+      "kind": "source",
+      "custody_note": "Publication metadata for three existing papers refreshed against public main on 8 October 2026. Manuscripts and PDFs are unchanged; versioned-source and citation warrants were inspected. No new mathematical or review claim."
     },
     {
       "id": "counts",
@@ -484,10 +485,11 @@
       "id": "agent-entry",
       "path": "AGENTS.md",
       "start_line": 1,
-      "end_line": 161,
+      "end_line": 180,
       "kind": "source",
-      "sha256": "fd4d5d246731891853c4bf6dfa921637a28fb0a1c808213bae88f57c36cc37cb",
-      "excerpt_sha256": "fd4d5d246731891853c4bf6dfa921637a28fb0a1c808213bae88f57c36cc37cb"
+      "sha256": "4183ea0ac82bc253351b15c674ac22ccafeeb48ba565e7fb566fc8353888b710",
+      "excerpt_sha256": "4183ea0ac82bc253351b15c674ac22ccafeeb48ba565e7fb566fc8353888b710",
+      "custody": "Current public guide inspected after reader-entry reorganization on 8 October 2026. Routing, authority, evidence responsibilities and validation boundaries retained; references bind the full guide. No new mathematical or performance claim."
     },
     {
       "id": "workbench-guide",
@@ -548,10 +550,10 @@
       "kind": "source",
       "path": "docs/ARCHITECTURE.md",
       "start_line": 1,
-      "end_line": 150,
-      "sha256": "9cfff690ac9439ffb1a6e75c48892e835b426d325ae9d69e9b715f58963f4a9c",
-      "excerpt_sha256": "9133d275f6467b414f3dfb9c5be6ef343b21087433390a238624d8da538b50ef",
-      "custody": "Current native public file inspected as source; no fresh execution."
+      "end_line": 319,
+      "sha256": "414ec1c7b11cec34fee0684c7b70918977591fb70c5079d86c0c9ff487c1f0f8",
+      "excerpt_sha256": "414ec1c7b11cec34fee0684c7b70918977591fb70c5079d86c0c9ff487c1f0f8",
+      "custody": "Current public guide inspected after reader-entry reorganization on 8 October 2026. Routing, authority, evidence responsibilities and validation boundaries retained; references bind the full guide. No new mathematical or performance claim."
     },
     {
       "id": "r8-entry",

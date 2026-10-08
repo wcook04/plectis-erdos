@@ -1,47 +1,48 @@
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 
-# Plectis: open mathematical research with Lean
+# Plectis: open mathematical research
 
-Plectis brings together research on eight Erdős problems: papers you can read,
-formal proofs you can check, and experiments and failed approaches you can
-continue. It is an independent, AI-assisted prototype by Will Cook. Lean checks formal
-statements; papers explain the arguments and what remains open.
+**Papers to read. Proofs to check. Research to continue.**
 
-**[Read the mathematics](https://wcook04.github.io/plectis/maths/)** ·
-[All papers](paper/README.md) ·
-[Clone and reproduce](docs/REPRODUCIBILITY.md) ·
-[Contribute or correct](CONTRIBUTING.md)
+Plectis brings together research on eight Erdős problems: mathematical
+arguments, Lean proofs, experiments and the approaches that did not work.
+It is an independent, AI-assisted prototype built and maintained by Will Cook.
+
+**[Explore the website](https://wcook04.github.io/plectis/maths/)** ·
+**[Open the maths map](https://wcook04.github.io/plectis/maths/universe.html)** ·
+[Read the papers](paper/README.md)
+
+[![Eight Erdős problem programmes: the interactive maths map connects papers, results and their formal evidence](.github/maths-map.png)](https://wcook04.github.io/plectis/maths/universe.html)
+
+*The website map on 8 October 2026. Click the image to explore the current edition.*
+
+The website is the visual reading companion to this repository. Its
+[maths map](https://wcook04.github.io/plectis/maths/universe.html) lets you follow
+a problem into a paper, a result and its recorded formal evidence. The
+[glossary](https://wcook04.github.io/plectis/docs/glossary.html) explains mathematical
+terms as you read. The repository holds the sources and the tools for checking
+and extending the work. You can read everything without installing Lean.
 
 ## For a first look: #257
 
-**[Try three changed hypotheses](docs/reading-edition/weighted-257-task.md):**
-one result, optional hints, a worked answer, and where the test stops. Read
-offline or [use an agent](docs/agents/README.md#apply-a-result-to-a-changed-example).
-
 [Problem 257](https://www.erdosproblems.com/257) asks whether adding
 `1/(2^a − 1)` over **any infinite set of positive integers** always gives an
-irrational number. Our [short paper](paper/257/erdos-257-mersenne-support-subseries.pdf)
-proves a sufficient condition that Lean checks: if a set of positive integer exponents
-has finite base-two prime-weighted mass, every infinite subset gives an
-irrational sum at **every integer base at least two**.
+irrational number. The universal question remains open.
 
-Choose a finite nonempty set of primes `P`, and let `h_P(a)` be the
-largest divisor of `a` whose prime factors lie in `P`. For example,
-`P = {2}` gives `h_P(12) = 4`. The required bound is
-`∑_{a∈H} h_P(a)/(a(2^{h_P(a)}−1)) < ∞` for a set `H` of positive integers.
-For every infinite `A ⊆ H` and every integer `b ≥ 2`, the sum
-`∑_{a∈A} 1/(b^a−1)` is irrational. The paper constructs sets satisfying this
-condition even though `∑_{a∈H} 1/a` diverges; those example calculations are
-ordinary proofs. The question for every infinite support remains open.
+The [short paper](paper/257/erdos-257-mersenne-support-subseries.pdf)
+proves sufficient conditions for particular infinite sets, including a
+Lean-checked prime-weighted criterion that works at every integer base at
+least two. Cancellation removes a finite batch of terms; averaging controls
+what the remaining terms leave behind.
 
-A second average over dyadic window lengths controls unfinished periods.
-Follow the [short proof](paper/257/erdos-257-mersenne-support-subseries.pdf),
-[longer proof record](paper/257/erdos257-mersenne-reasoning-surface.pdf),
-[Lean declaration](lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120),
-or [selected theorem replay](docs/verification/EXTERNAL_VERIFICATION_REPLAY.md#reviewer-replay).
+[Read the argument](paper/257/erdos-257-mersenne-support-subseries.pdf),
+[try three changed hypotheses](docs/reading-edition/weighted-257-task.md), or
+[follow the Lean declaration](lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean#L120).
+The [longer record](paper/257/erdos257-mersenne-reasoning-surface.pdf) preserves
+other approaches and where they stop.
 
-![Eight Erdős problem programmes: papers, checked results, failed routes, and questions another researcher can continue](.github/system-map.png)
+
 
 ## Results and their limits
 
@@ -57,47 +58,41 @@ historical correspondence.
 
 [ani's original counterexample](https://www.erdosproblems.com/forum/thread/1041#post-8861)
 is credited in the [#1041 case study](docs/case-studies/formal-conjectures-1041.md).
-[Results and limits](docs/RESULTS.md) gives each programme's strongest results,
-prior work and exact remaining questions. It distinguishes ordinary proofs,
-Lean-checked statements, conditional results and finite computations.
+[Results and limits](docs/RESULTS.md) keeps each programme's statements beside
+its assumptions, earlier work and remaining questions.
 
-## Where to start
+## Read, inspect or continue
 
 - **Read and understand.** [A reader's way in](docs/READING_GUIDE.md) introduces
-  the questions. The [reading edition](docs/reading-edition/README.md) collects
-  the opening of each paper in one file, also suitable for sharing with an AI.
-  [Work through one argument](docs/READING_GUIDE.md#work-through-an-argument)
-  on your own or ask an agent for hints. No clone, Lean or model account is
-  needed to read the papers.
+  the questions. The [reading edition](docs/reading-edition/README.md) gathers
+  the paper openings in one file, suitable for reading or sharing with an AI.
 - **Inspect or reproduce.** [Follow one claim](docs/REPRODUCIBILITY.md#try-one-claim-without-lean)
-  with Git and Python, or [rerun an exact-rational experiment](docs/REPRODUCIBILITY.md#reproduce-the-257-exact-rational-example)
-  using Python alone after cloning. The guide separates these checks from
-  compiling a proof. The experiment is a finite exclusion test; it does not
-  reproduce the weighted theorem above.
+  with Git and Python, or [rerun an exact-rational experiment](docs/REPRODUCIBILITY.md#reproduce-the-257-exact-rational-example).
+  That finite experiment does not reproduce the weighted theorem above.
 - **Work with an agent.** The [agent quickstart](docs/agents/README.md#start-with-current-public-work)
-  gives clone commands and a copyable prompt. Ask it to explain a result,
-  investigate a question, or improve a tool; the public checkout contains the
-  required instructions. [How the repository works](docs/ARCHITECTURE.md)
-  explains the software behind those routes.
+  gives clone commands and a copyable prompt. Ask it to explain an argument,
+  explore an open question or improve a tool. Its instructions and evidence
+  routes are included in the public checkout.
 
 <a id="about-the-project"></a>
 
 ## Why keep the whole research record?
 
-I want other people to be able to work on these questions with me.
-A checked proof still needs an explanation of why the argument works and how
-someone might arrive at it. The longer records preserve calculations and
-routes that stopped at a precise obstruction, so another reader can question
-the approach, repair it or try the idea elsewhere.
+I want other people to be able to work on these questions with me. Short
+papers explain selected arguments; longer records preserve calculations and
+routes that stopped at a precise obstruction. Another reader can question an
+approach, repair it or use the idea elsewhere without reconstructing the
+investigation from scratch.
 
-I am responsible for the claims, sources and release. AI assists research,
-formalisation and exposition; formal checking, readable prose and human
-understanding remain separate responsibilities. Novelty and significance need
-human judgement. The [system paper](paper/systems/claim-faithful-publication-systems-paper.pdf)
+AI agents did most of the research and drafting. I built and directed the
+infrastructure and reviewed claims when I could; I have not independently
+verified every claim. I maintain the sources and take responsibility for
+correcting the public record. Formal checking, readable explanation and human
+understanding each require work. Novelty and significance need human judgement;
+independent mathematical review of the corpus has not been recorded.
+The [system paper](paper/systems/claim-faithful-publication-systems-paper.pdf)
 explains how results, corrections and credited contributions move through the
-repository. The [design discussion](docs/ARCHITECTURE.md#why-preserve-explanations-and-failed-approaches)
-sets out the reasoning and its limits.
-Independent mathematical review of the corpus has not been recorded.
+repository.
 
 ## Problem papers
 
@@ -120,8 +115,11 @@ The [cross-problem paper, Reading Eight Erdős Problems Together](paper/synthesi
 develops connections through factorial series, Lambert subsums and the limits
 of shared methods. Its main theorems are ordinary proofs; Lean checks specified
 ingredients. The [synthesis guide](paper/synthesis/README.md) identifies ways to
-continue that work. The [paper index](paper/README.md) also identifies the main
-systems paper and the earlier accounts retained for historical context.
+continue that work. The [system paper, A Repository-Based System for Research and Publication](paper/systems/claim-faithful-publication-systems-paper.pdf)
+explains how the research, evidence and publication process fit together.
+The [paper catalogue on the website](https://wcook04.github.io/plectis/docs/papers.html)
+provides browser reading and downloads; [the repository paper index](paper/README.md)
+keeps manuscript sources and earlier editions beside them.
 
 <a id="what-the-checks-establish"></a>
 
@@ -147,7 +145,8 @@ build or platform submission does not establish those judgements.
 ## Contribute
 
 An idea, correction, earlier reference, counterexample, useful failed approach
-or clearer explanation can help. You need not solve an Erdős problem or write
+or clearer explanation can help. One specific observation is enough to start;
+you need not review the whole repository, solve an Erdős problem or write
 Lean. I can help formalise an argument while preserving its attribution.
 
 - **Mathematics or exposition:** [work on a paper](docs/CONTRIBUTE_BY_PAPER.md)
@@ -173,7 +172,7 @@ or an intermediate result helped, please cite the relevant work and say how.
 | Location | Contents |
 |---|---|
 | [paper/](paper/README.md) | PDFs and manuscript sources by problem. |
-| [lean/](docs/SOURCE_MAP.md) | Formal proofs in the `Erdos249257` and `ErdosProblems` libraries. |
+| [lean/](lean/README.md) | Formal proofs in the `Erdos249257` and `ErdosProblems` libraries. |
 | [docs/](docs/README.md) | Guides, claim records and source maps. |
 | [research/](research/README.md) | Experiments, examples and investigations. |
 | [research_corpus/](research_corpus/README.md) | Dated research returns and unresolved obligations. |
@@ -188,7 +187,7 @@ requirements. The checkout is hundreds of megabytes; Lean builds download
 additional toolchains and dependencies. The [security policy](.github/SECURITY.md)
 explains the execution boundary. Agents enter through [AGENTS.md](AGENTS.md)
 and the [agent workbench](docs/agents/AGENT_WORKBENCH.md). The
-[architecture guide](docs/ARCHITECTURE.md#repository-map) explains the folder names.
+[architecture guide](docs/ARCHITECTURE.md) explains the folder names.
 
 <!-- BEGIN generated_corpus_at_a_glance -->
 <!-- Generated by scripts/build_corpus_descriptor.py; do not edit this region. -->
