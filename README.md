@@ -11,16 +11,26 @@ Eight Erdős problems, with papers to read, proofs to inspect and research to co
 **[Open the maths map](https://wcook04.github.io/plectis/maths/universe.html)** ·
 **[Read the papers](paper/README.md)**
 
+Plectis is an independent, AI-assisted prototype built and maintained by Will Cook.
+The website is its visual reading companion. You can read everything without
+installing Lean: start with [A reader's way in](docs/READING_GUIDE.md), with the
+[glossary](https://wcook04.github.io/plectis/docs/glossary.html) for mathematical terms.
+
+<p align="center">
+  <img src=".github/system-map.png" width="520" alt="Choose a problem on the website, read its papers, then inspect statements, limits, selected Lean proofs, finite experiments and preserved attempts.">
+</p>
+
+Reading routes, with assumptions and limits attached.
+[Paper catalogue](paper/README.md) · [Source map](docs/SOURCE_MAP.md) · [Open questions](docs/RESULTS.md)
+
+<details>
+<summary>Explore the interactive maths map</summary>
+
 [![Eight Erdős problem programmes: the interactive maths map connects papers, results and their formal evidence](.github/maths-map.png)](https://wcook04.github.io/plectis/maths/universe.html)
 
 <sub>The maths map on 8 October 2026. Open the image to explore the current edition.</sub>
 
-Plectis is an independent, AI-assisted prototype built and maintained by Will Cook.
-The website is its visual reading companion; this repository holds the arguments,
-Lean proofs, experiments and approaches that did not work. You can read everything
-without installing Lean. [A reader's way in](docs/READING_GUIDE.md) introduces the
-project; the [glossary](https://wcook04.github.io/plectis/docs/glossary.html) explains
-mathematical terms along the way.
+</details>
 
 ---
 
@@ -78,11 +88,9 @@ its assumptions, earlier work and remaining questions.
 
 ## Why keep the whole research record?
 
-I want other people to be able to work on these questions with me. Short
-papers explain selected arguments; longer records preserve calculations and
-routes that stopped at a precise obstruction. Another reader can question an
-approach, repair it or use the idea elsewhere without reconstructing the
-investigation from scratch.
+I want other people to be able to work on these questions with me. Longer
+records preserve calculations and routes that stopped at a precise obstruction. Readers can question an approach, repair it or use the idea elsewhere
+without reconstructing the investigation.
 
 AI agents did most of the research and drafting. I built and directed the
 infrastructure and reviewed claims when I could; I have not independently
@@ -123,8 +131,8 @@ identifies ways to continue the work.
 The system paper explains how research, evidence and publication fit together.
 
 [Browse the website catalogue](https://wcook04.github.io/plectis/docs/papers.html)
-for browser reading and downloads, or [open the repository paper index](paper/README.md)
-for manuscript sources and earlier editions.
+for browser reading, or the [repository paper index](paper/README.md) for sources
+and earlier editions.
 
 <a id="what-the-checks-establish"></a>
 

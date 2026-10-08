@@ -7958,7 +7958,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:dbed62caf7ff08bfd671ab90c39b231db3230804d4962634e29a1de1582922cf",
+      "source_sha256": "sha256:d268dd185b92190b2c0c4556608387070cfc58660bff0f5c468e9f2bf10bafbc",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8017,205 +8017,205 @@
           "level": 1,
           "id": "sec:checks",
           "title": "Proof and publication checks",
-          "line": 142
+          "line": 147
         },
         {
           "level": 1,
           "id": "sec:paper",
           "title": "Publication and revision",
-          "line": 202
+          "line": 170
         },
         {
           "level": 2,
           "id": "permissions-and-tasks",
           "title": "Permissions and tasks",
-          "line": 208
+          "line": 176
         },
         {
           "level": 2,
           "id": "from-frozen-inputs-to-an-accepted-revision",
           "title": "From frozen inputs to an accepted revision",
-          "line": 220
+          "line": 188
         },
         {
           "level": 2,
           "id": "retaining-improvements",
           "title": "Retaining improvements",
-          "line": 245
+          "line": 213
         },
         {
           "level": 1,
           "id": "sec:contribute",
           "title": "An open route for contributions",
-          "line": 253
+          "line": 221
         },
         {
           "level": 1,
           "id": "sec:instance",
           "title": "Recorded observations",
-          "line": 280
+          "line": 248
         },
         {
           "level": 2,
           "id": "inventory-and-formal-support-status",
           "title": "Inventory and formal-support status",
-          "line": 286
+          "line": 254
         },
         {
           "level": 2,
           "id": "historical-false-edit-trial",
           "title": "Historical false-edit trial",
-          "line": 292
+          "line": 260
         },
         {
           "level": 2,
           "id": "local-integration-and-unperformed-reader-evaluation",
           "title": "Local integration and unperformed reader evaluation",
-          "line": 333
+          "line": 301
         },
         {
           "level": 1,
           "id": "sec:related",
           "title": "Related work",
-          "line": 341
+          "line": 309
         },
         {
           "level": 4,
           "id": "prove2me.",
           "title": "Prove2Me.",
-          "line": 347
+          "line": 315
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Limits",
-          "line": 361
+          "line": 329
         },
         {
           "level": 1,
           "id": "app:repro",
           "title": "Reading the materials and reproducing checks",
-          "line": 375
+          "line": 343
         },
         {
           "level": 2,
           "id": "read-a-result-and-follow-its-sources",
           "title": "Read a result and follow its sources",
-          "line": 381
+          "line": 349
         },
         {
           "level": 2,
           "id": "inspect-the-records-and-rerun-document-checks",
           "title": "Inspect the records and rerun document checks",
-          "line": 387
+          "line": 355
         },
         {
           "level": 2,
           "id": "locate-the-formal-supports-of-the-worked-example",
           "title": "Locate the formal supports of the worked example",
-          "line": 404
+          "line": 372
         },
         {
           "level": 2,
           "id": "interpret-the-recorded-inventory",
           "title": "Interpret the recorded inventory",
-          "line": 421
+          "line": 389
         },
         {
           "level": 2,
           "id": "identify-the-version-and-the-earlier-design-accounts",
           "title": "Identify the version and the earlier design accounts",
-          "line": 431
+          "line": 399
         },
         {
           "level": 1,
           "id": "app:worked-proof",
           "title": "The mathematical example: a criterion for irrationality",
-          "line": 445
+          "line": 413
         },
         {
           "level": 2,
           "id": "the-question-and-its-antecedents",
           "title": "The question and its antecedents",
-          "line": 451
+          "line": 419
         },
         {
           "level": 2,
           "id": "a-weighted-condition-on-the-retained-exponents",
           "title": "A weighted condition on the retained exponents",
-          "line": 472
+          "line": 440
         },
         {
           "level": 2,
           "id": "why-the-weighted-condition-reaches-further",
           "title": "Why the weighted condition reaches further",
-          "line": 489
+          "line": 457
         },
         {
           "level": 2,
           "id": "the-proof-by-two-averages",
           "title": "The proof by two averages",
-          "line": 509
+          "line": 477
         },
         {
           "level": 4,
           "id": "the-lower-bound-under-rationality.",
           "title": "The lower bound under rationality.",
-          "line": 515
+          "line": 483
         },
         {
           "level": 4,
           "id": "averaging-over-a-residue-period.",
           "title": "Averaging over a residue period.",
-          "line": 535
+          "line": 503
         },
         {
           "level": 4,
           "id": "averaging-over-dyadic-lengths.",
           "title": "Averaging over dyadic lengths.",
-          "line": 555
+          "line": 523
         },
         {
           "level": 4,
           "id": "choosing-the-modulus-and-the-averaging-lengths.",
           "title": "Choosing the modulus and the averaging lengths.",
-          "line": 569
+          "line": 537
         },
         {
           "level": 1,
           "id": "app:attribution",
           "title": "Attribution and scope in three further examples",
-          "line": 606
+          "line": 574
         },
         {
           "level": 2,
           "id": "counting-repeated-terms-changes-the-question",
           "title": "Counting repeated terms changes the question",
-          "line": 612
+          "line": 580
         },
         {
           "level": 2,
           "id": "an-explicit-description-and-a-stronger-antecedent",
           "title": "An explicit description and a stronger antecedent",
-          "line": 622
+          "line": 590
         },
         {
           "level": 2,
           "id": "a-construction-its-formalisation-and-the-historical-question",
           "title": "A construction, its formalisation and the historical question",
-          "line": 630
+          "line": 598
         },
         {
           "level": 1,
           "id": "app:source-map",
           "title": "A reading map for the wider literature",
-          "line": 646
+          "line": 614
         }
       ],
       "citations_rendered": 52,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:337454430ec7ae19caf7288fce197c3bbfed46a574be239718317971fa331885",
-      "pdf_byte_count": 177046,
+      "pdf_sha256": "sha256:4d0de95387eb33c6507ef557b0c52fa86a3753dee236feb82e39347053f4d325",
+      "pdf_byte_count": 180168,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8233,17 +8233,17 @@
           {
             "id": "sec:paper",
             "title": "Publication and revision",
-            "line": 202
+            "line": 170
           },
           {
             "id": "sec:checks",
             "title": "Proof and publication checks",
-            "line": 142
+            "line": 147
           },
           {
             "id": "sec:limits",
             "title": "Limits",
-            "line": 361
+            "line": 329
           }
         ],
         "unresolved_count": 0

@@ -1,73 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: CC-BY-4.0 -->
-<!-- Editable source for system-map.png. House colours: paper/paper-house-style.sty.
-     Render at 2x with an SVG renderer; preserve the 1600 x 760 viewBox.
-     Adapted using diagram-design's architecture grammar (MIT):
-     https://github.com/cathrynlavery/diagram-design -->
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760" role="img" aria-labelledby="title description">
-  <title id="title">Eight Erdős programmes: read, check, continue</title>
-  <desc id="description">Start with a paper and inspect the research record: attempted routes, computations, failed approaches and checked Lean statements with their hypotheses. Use both the results and the limits to identify what remains open and prepare a contribution for review. Seven targets remain open. For Problem 1041, the exact formal statement is refuted; correspondence with the historical wording awaits independent human review. Arrows indicate a reading route, not proof implications or automatic approval.</desc>
+<!-- Editable source for system-map.png. Render at 2x; viewBox 600 x 820.
+     Publication palette follows paper/paper-house-style.sty.
+     Design grammar: cathrynlavery/diagram-design (MIT), pinned f4547ee9.
+     Arrows describe navigation. The enclosing region identifies repository
+     contents; neither proximity nor an arrow confers proof or acceptance. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="820" viewBox="0 0 600 820" role="img" aria-labelledby="system-map-title system-map-desc">
+  <title id="system-map-title">From the maths map to the research record</title>
+  <desc id="system-map-desc">Explore a question through the website and maths map, read short papers, longer records, cross-problem or system papers in the repository, then follow their sources to exact statements, limits, selected Lean proofs, finite experiments and preserved attempts.</desc>
   <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#7D8991" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <marker id="system-map-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 2 1 L 8 5 L 2 9" fill="none" stroke="#275D8C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
     <style>
       text { font-family: Helvetica, Arial, sans-serif; fill: #25323C; }
       .serif { font-family: Palatino, 'Palatino Linotype', Georgia, serif; }
-      .eyebrow { font-size: 17px; letter-spacing: 2.4px; font-weight: 600; fill: #275D8C; }
-      .heading { font-size: 29px; font-weight: 600; }
-      .body { font-size: 22px; fill: #475965; }
-      .small { font-size: 19px; fill: #475965; }
-      .edge { fill: none; stroke: #7D8991; stroke-width: 2; marker-end: url(#arrow); }
+      .label { font-size: 17px; font-weight: 600; letter-spacing: 1.5px; fill: #275D8C; }
+      .heading { font-size: 31px; }
+      .body { font-size: 23px; fill: #475965; }
+      .route { fill: none; stroke: #275D8C; stroke-width: 1.7; marker-end: url(#system-map-arrow); }
+      .rule { stroke: #D2DADF; stroke-width: 1; }
     </style>
   </defs>
-  <rect width="1600" height="760" fill="#FCFCFA"/>
-  <text x="56" y="56" class="eyebrow">PLECTIS · RESEARCH RECORD</text>
-  <text x="56" y="117" class="serif" font-size="48">Eight Erdős programmes. Work you can continue.</text>
-  <text x="56" y="158" class="body">Papers, formal proofs, computations and failed approaches, kept with their sources and limits.</text>
+  <rect width="600" height="820" rx="8" fill="#FCFCFA"/>
+  <text x="28" y="37" class="label">PLECTIS · A READER’S MAP</text>
+  <text x="28" y="87" class="serif" font-size="37">Find a question. Follow the work.</text>
 
-  <rect x="418" y="201" width="480" height="329" rx="8" fill="#F2F5F7" stroke="#CAD3D9"/>
-  <text x="442" y="230" class="eyebrow" font-size="15">INSPECT THE RECORD</text>
+  <!-- The website is a reading companion. It points into the repository. -->
+  <rect x="28" y="120" width="544" height="112" rx="6" fill="#EAF0F5" stroke="#A6B8C6"/>
+  <text x="52" y="163" class="serif heading">Website &amp; maths map</text>
+  <text x="52" y="202" class="body">Eight problems and their connections.</text>
+  <text x="82" y="272" class="body" style="fill:#275D8C">choose a problem</text>
 
-  <!-- Connectors precede the nodes; all forks have distinct perpendicular ports. -->
-  <path class="edge" d="M 356 331 H 392 Q 404 331 404 319 V 298 Q 404 286 416 286 H 442"/>
-  <path class="edge" d="M 356 371 H 392 Q 404 371 404 383 V 441 Q 404 453 416 453 H 442"/>
-  <path class="edge" d="M 874 286 H 926 Q 938 286 938 298 V 324 Q 938 336 950 336 H 980"/>
-  <path class="edge" d="M 874 453 H 926 Q 938 453 938 441 V 386 Q 938 374 950 374 H 980"/>
-  <path class="edge" d="M 1224 355 H 1272"/>
+  <!-- One boundary, two reading depths: papers and their underlying sources. -->
+  <rect x="28" y="300" width="544" height="464" rx="6" fill="#FFFFFF" stroke="#A6B8C6"/>
+  <rect x="382" y="289" width="170" height="24" fill="#FCFCFA"/>
+  <text x="392" y="307" class="label" font-size="15">THE REPOSITORY</text>
+  <path d="M 60 232 V 321" class="route"/>
+  <text x="52" y="357" class="serif heading">Papers</text>
+  <text x="52" y="399" class="body"><tspan font-weight="600" fill="#25323C">Short papers</tspan><tspan dx="5">· selected arguments</tspan></text>
+  <text x="52" y="435" class="body"><tspan font-weight="600" fill="#25323C">Longer records</tspan><tspan dx="5">· detailed investigations</tspan></text>
+  <text x="52" y="471" class="body"><tspan font-weight="600" fill="#25323C">Cross-problem</tspan><tspan dx="5">· connections &amp; methods</tspan></text>
+  <text x="52" y="507" class="body"><tspan font-weight="600" fill="#25323C">System paper</tspan><tspan dx="5">· how the project works</tspan></text>
 
-  <rect x="56" y="272" width="300" height="162" rx="6" fill="#EAF0F5" stroke="#275D8C" stroke-width="1.5"/>
-  <text x="80" y="309" class="eyebrow">READ</text>
-  <text x="80" y="350" class="heading serif">Start with a paper</text>
-  <text x="80" y="385" class="body">The question, argument</text>
-  <text x="80" y="414" class="body">and earlier work</text>
+  <path d="M 60 531 V 590" class="route"/>
+  <text x="82" y="563" class="body" style="fill:#275D8C">follow the sources</text>
+  <text x="52" y="626" class="serif heading">Research record</text>
+  <text x="52" y="666" class="body">Statements, assumptions and limits</text>
+  <text x="52" y="702" class="body">Selected Lean proofs · finite experiments</text>
+  <text x="52" y="738" class="body">Attempts, failures and open questions</text>
 
-  <rect x="442" y="250" width="432" height="113" rx="5" fill="#FCFCFA" stroke="#AAB9C3"/>
-  <text x="466" y="286" class="heading serif">What was tried</text>
-  <text x="466" y="318" class="body">Routes, computations and failures;</text>
-  <text x="466" y="346" class="body">why an approach stopped</text>
-
-  <rect x="442" y="389" width="432" height="113" rx="5" fill="#FCFCFA" stroke="#AAB9C3"/>
-  <text x="466" y="425" class="heading serif">What Lean checked</text>
-  <text x="466" y="457" class="body">Selected formal statements</text>
-  <text x="466" y="485" class="body">with their explicit hypotheses</text>
-
-  <rect x="980" y="272" width="244" height="162" rx="6" fill="#FCFCFA" stroke="#7D8991"/>
-  <text x="1002" y="310" class="heading serif">What remains</text>
-  <text x="1002" y="344" class="heading serif">open</text>
-  <text x="1002" y="386" class="body">The exact question</text>
-  <text x="1002" y="414" class="body">still unanswered</text>
-
-  <rect x="1272" y="272" width="272" height="162" rx="6" fill="#F6ECEB" stroke="#6E2B2B" stroke-width="1.5"/>
-  <text x="1294" y="309" class="eyebrow" style="fill:#6E2B2B">CONTINUE</text>
-  <text x="1294" y="350" class="heading serif">Your contribution</text>
-  <text x="1294" y="385" class="body">Investigate, correct</text>
-  <text x="1294" y="414" class="body">or extend the work</text>
-  <text x="1282" y="473" class="small">Submit evidence for review.</text>
-
-  <text x="56" y="565" class="small">Arrows show a reading route; they do not establish a proof or approve a contribution.</text>
-  <line x1="56" y1="595" x2="1544" y2="595" stroke="#CAD3D9"/>
-  <rect x="56" y="622" width="4" height="84" fill="#6E2B2B"/>
-  <text x="78" y="647" class="heading serif" style="fill:#6E2B2B">Seven targets remain open.</text>
-  <text x="78" y="682" class="body">#1041: the exact formal statement is refuted. Correspondence with the historical wording</text>
-  <text x="78" y="711" class="body">awaits independent human review.</text>
+  <text x="28" y="802" class="body" style="fill:#6E2B2B">Continue from a question that remains open.</text>
 </svg>
