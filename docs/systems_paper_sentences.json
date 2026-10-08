@@ -495,10 +495,11 @@
       "id": "workbench-guide",
       "path": "docs/agents/AGENT_WORKBENCH.md",
       "start_line": 1,
-      "end_line": 477,
+      "end_line": 480,
       "kind": "source",
-      "sha256": "b2c276c755b8ba301fbd43323ddcd379a5f29523ae07cf9eab438d0bccbf0544",
-      "excerpt_sha256": "b2c276c755b8ba301fbd43323ddcd379a5f29523ae07cf9eab438d0bccbf0544"
+      "sha256": "029f2b6a3d2361333cc9fac64230152e7b5e0ed7c8000f22c3c7f6424cff0817",
+      "excerpt_sha256": "029f2b6a3d2361333cc9fac64230152e7b5e0ed7c8000f22c3c7f6424cff0817",
+      "custody": "Current source reviewed on 8 October 2026 after consolidating cold-release guidance. Optional proof-session behavior and the R9 excerpt are unchanged. No new mathematical, execution or performance claim."
     },
     {
       "id": "contribution-guide",
@@ -831,9 +832,9 @@
       "path": "docs/agents/AGENT_WORKBENCH.md",
       "start_line": 175,
       "end_line": 202,
-      "sha256": "b2c276c755b8ba301fbd43323ddcd379a5f29523ae07cf9eab438d0bccbf0544",
+      "sha256": "029f2b6a3d2361333cc9fac64230152e7b5e0ed7c8000f22c3c7f6424cff0817",
       "excerpt_sha256": "81134a83c49fab0e628fcb25d139a389b829e01c716dac0375b8e22342574d91",
-      "custody": "Type A current implementation inspection for R9 systems integration; no new probe run."
+      "custody": "Current source reviewed on 8 October 2026 after consolidating cold-release guidance. Optional proof-session behavior and the R9 excerpt are unchanged. No new mathematical, execution or performance claim."
     },
     {
       "id": "r11-prove2me-edition",

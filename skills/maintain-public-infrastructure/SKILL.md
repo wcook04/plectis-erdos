@@ -200,7 +200,10 @@ system's full doctrine into this repository; port only the public capability
 and the check that proves it works here.
 
 For a public front-door review, examine the complete tracked directory inventory
-before proposing moves. Classify exact duplicates by their consumers: archived
+before proposing moves. Name each area's purpose and owner, and distinguish
+authored sources, generated outputs, external inputs and historical evidence.
+Review actual responsibilities and dependencies before imposing a conventional
+folder name. Classify exact duplicates by their consumers: archived
 returns, generated projections, licence texts and test fixtures often need to
 remain separate. Improve missing folder indexes before renaming established
 proof or publication paths. Keep a real website/map preview linked to its live
@@ -223,6 +226,26 @@ machine-readable corpus paths when reorganising reader documents. Preserve root 
 citation and licence tools. A move must update relative links, sparse checkout
 manifests, CI, source registries and their builders together. Pinned historical
 artifacts retain the filenames belonging to their recorded revision.
+
+Record each proposed consolidation as `keep`, `consolidate` or `archive`, with
+its consumers and reason. For a move, write an old-to-new path map and check
+imports, links, published URLs, paper IDs and builder inputs before changing
+files. Move the content and its live references together, then run the owning
+validators. Similar names, age and byte equality alone do not establish that
+one copy is disposable.
+
+Apply the same ownership review to commands. Keep cold-checkout release setup
+in `docs/REPRODUCIBILITY.md#3-run-the-release-surface-checks`, validation choices
+in `docs/agents/AGENT_GUIDE.md#validation`, and committed-branch submission in
+`skills/submit-pull-request/SKILL.md`. Other guides should give the appropriate
+entry command and link to its owner. Preserve the distinction between the
+preparing wrapper, the underlying gate and immutable-snapshot admission; do not
+copy their orchestration into another guide or rerun leaves after a full pass.
+
+This ownership review draws on
+[Architecture Guardian](https://github.com/PolakiniO/AI-Engineering-Playbook/blob/492387a8572f564f95c2dbe5e67f4b721595518c/skills/architecture-guardian/SKILL.md)
+(MIT). The corpus classifications and migration checks above are local rules;
+the repository does not need the external skill installed to use this workflow.
 
 ## Validate behavior, not decoration
 
@@ -256,7 +279,9 @@ identity and download name while admitting newly registered papers. Test a
 valid addition as well as a removed or renamed publication; equality of the
 old and new inventories would prevent the corpus from growing.
 
-For a README change, the cold-clone quick check and the human-first-contact
+For a README change, follow the
+[documentation-check recipe](../../docs/REPRODUCIBILITY.md#check-a-documentation-change).
+The cold-clone quick check and the human-first-contact
 test enforce different limits: a 14,000-byte first-contact prefix and 2,100
 prose words. Run both before the full release gate; passing the quick check
 does not establish that the prose budget still fits.
@@ -274,8 +299,11 @@ python3 scripts/test_human_first_contact.py
 ```
 
 Use the exact previously failing task with `agent_entry.py --entry` as a manual
-smoke. Before publication, run `python3 scripts/check_release.py` once; do not
-serially rerun every component after that full gate passes.
+smoke. Before publication, follow the prerequisites in the
+[release instructions](../../docs/REPRODUCIBILITY.md#3-run-the-release-surface-checks)
+and run `python3 scripts/run_release_check.py` once; do not serially rerun every
+component after that full gate passes. Committed-branch submission still uses
+the separate admission procedure in `skills/submit-pull-request/SKILL.md`.
 
 A long command is a concurrency window. While it runs, continue only work that
 cannot change its inputs or outputs: audit another route, inspect a disjoint

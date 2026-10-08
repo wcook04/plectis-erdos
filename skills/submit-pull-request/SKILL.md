@@ -74,7 +74,7 @@ branch without a separate explicit instruction naming the exact target.
 
 ## Validate the proposed branch
 
-The full release entry, `scripts/check_release.py`, consumes the supplemental
+The underlying release gate, `scripts/check_release.py`, consumes the supplemental
 GitHub release checks from `scripts/check_ci_release.py`. Add release checks to
 that registry so local committed-snapshot validation and GitHub run the same
 commands; do not add workflow-only leaf checks. The cold preflight rejects
