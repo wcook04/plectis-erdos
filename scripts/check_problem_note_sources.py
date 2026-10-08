@@ -512,12 +512,13 @@ def rendered_link_targets(
     return targets, problems
 
 
-def git_batch(mode: str, queries: Iterable[tuple[str, str]]) -> subprocess.CompletedProcess[bytes]:
-    """Read Git batches without coupling request writes to response drainage.
+def run_cat_file_batch(mode: str, queries: list[tuple[str, str]]) -> subprocess.CompletedProcess:
+    """Drain Git output while requests come from a regular file, never a pipe.
 
-    Large blob responses can fill Git's stdout while the caller is writing
-    requests to stdin. A regular input file removes that bidirectional pipe
-    pressure; communicate only has to drain outputs within the existing timeout.
+    Large bidirectional pipe exchanges can stall inside a blocking write on
+    macOS before subprocess's timeout loop regains control. Staging only the
+    request stream removes that cycle; Git output and the timeout stay owned
+    by subprocess.run. TemporaryFile closes and unlinks even on timeout.
     """
     with tempfile.TemporaryFile() as requests:
         requests.write("".join(f"{commit}:{path}\n" for commit, path in queries).encode())
@@ -539,7 +540,7 @@ def objects_present(keys: Iterable[tuple[str, str]]) -> set[tuple[str, str]]:
     ordered = sorted(set(keys))
     if not ordered:
         return set()
-    completed = git_batch("--batch-check", ordered)
+    completed = run_cat_file_batch("--batch-check", ordered)
     answers = completed.stdout.decode("utf-8", "replace").splitlines()
     if completed.returncode != 0 or len(answers) != len(ordered):
         raise SystemExit(
@@ -736,7 +737,7 @@ def snapshot_lines_batch(
             if git_key not in seen:
                 seen.add(git_key)
                 queries.append(git_key)
-    completed = git_batch("--batch", queries)
+    completed = run_cat_file_batch("--batch", queries)
     if completed.returncode != 0:
         for key in missing:
             cache[key] = []

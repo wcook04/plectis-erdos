@@ -253,13 +253,13 @@ def test_git_snapshot_batch_uses_one_clean_bounded_process() -> None:
     second = ("b" * 40, "ErdosProblems/Missing.lean")
     first_blob = b"theorem first : True\n"
 
-    def fake_run(args, input=None, stdin=None, **kwargs):
-        require(args[:2] == ["git", "cat-file"], f"unexpected git argv {args!r}")
-        require(input is None, "batch still writes requests through a live input pipe")
+    def fake_run(args, stdin=None, **kwargs):
         require(stdin is not None and stat.S_ISREG(os.fstat(stdin.fileno()).st_mode),
-                "batch requests need a regular input file")
+                "batch requests must use a regular file, not a blocking pipe")
+        input = stdin.read()
+        require(args[:2] == ["git", "cat-file"], f"unexpected git argv {args!r}")
         body = b""
-        for raw in stdin.read().split(b"\n"):
+        for raw in (input or b"").split(b"\n"):
             if not raw:
                 continue
             spec = raw.decode()
@@ -288,7 +288,44 @@ def test_git_snapshot_batch_uses_one_clean_bounded_process() -> None:
         kwargs["timeout"] == scanner.singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
         "batch Git timeout drifted",
     )
-    require(kwargs["stdin"].closed, "batch request file leaked after completion")
+
+
+def test_large_git_batches_drain_without_request_pipe() -> None:
+    """Exercise real Git with request and response streams above pipe capacity."""
+    with tempfile.TemporaryDirectory(prefix="problem-note-large-batch-") as raw:
+        root = Path(raw)
+        def git(*args):
+            return scanner.subprocess.run(
+                ["git", *args], cwd=root, capture_output=True, check=True,
+                env=scanner.singleflight.command_environment(), timeout=30,
+            ).stdout.decode().strip()
+        git("init", "--quiet")
+        (root / "known.lean").write_text("theorem known : True := by trivial\n")
+        git("add", "known.lean")
+        tree = git("write-tree")
+        known = (tree, "known.lean")
+        missing = [(tree, f"missing/{index:05d}/" + "x" * 160 + ".lean")
+                   for index in range(2048)]
+        queries = [known, *missing]
+        require(sum(len(commit) + len(path) + 2 for commit, path in queries) > 256_000,
+                "fixture no longer exceeds pipe capacity")
+        real_run = scanner.subprocess.run
+        def check_stdin(args, **kwargs):
+            if args[:2] == ["git", "cat-file"]:
+                require("input" not in kwargs, "bulk request pipe reintroduced")
+                require(stat.S_ISREG(os.fstat(kwargs["stdin"].fileno()).st_mode),
+                        "bulk requests are not file-backed")
+            return real_run(args, **kwargs)
+        with patch.object(scanner, "ROOT", root), patch.object(scanner.subprocess, "run", side_effect=check_stdin):
+            require(scanner.objects_present(queries) == {known},
+                    "large object batch lost exact present/missing classification")
+            cache = {}
+            scanner.snapshot_lines_batch(queries, cache)
+            require(cache[known] == ["theorem known : True := by trivial"],
+                    "large source batch lost the immutable source")
+            require(all(cache[key] == [] for key in missing),
+                    "missing source acquired content in the large batch")
+            require(len(cache) == len(queries), "large source batch lost query cardinality")
 
 
 def test_git_batch_large_responses_and_many_requests() -> None:
@@ -339,7 +376,7 @@ def test_git_batch_timeout_closes_request_file() -> None:
 
     with patch.object(scanner.subprocess, "run", side_effect=timeout):
         try:
-            scanner.git_batch("--batch", [("a" * 40, "Missing.lean")])
+            scanner.run_cat_file_batch("--batch", [("a" * 40, "Missing.lean")])
         except scanner.subprocess.TimeoutExpired:
             pass
         else:
@@ -745,6 +782,7 @@ def main() -> int:
     test_commit_override_without_matching_short_is_rejected()
     test_git_snapshot_reads_use_clean_bounded_environment()
     test_git_snapshot_batch_uses_one_clean_bounded_process()
+    test_large_git_batches_drain_without_request_pipe()
     test_git_batch_large_responses_and_many_requests()
     test_git_batch_timeout_closes_request_file()
     test_nested_layout_snapshot_falls_back_from_identity_path()
