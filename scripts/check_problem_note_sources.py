@@ -38,6 +38,7 @@ import re
 import stat
 import subprocess
 import sys
+import tempfile
 from functools import lru_cache
 from pathlib import Path
 from typing import Any, Iterable
@@ -511,21 +512,35 @@ def rendered_link_targets(
     return targets, problems
 
 
+def run_cat_file_batch(mode: str, queries: list[tuple[str, str]]) -> subprocess.CompletedProcess:
+    """Drain Git output while requests come from a regular file, never a pipe.
+
+    Large bidirectional pipe exchanges can stall inside a blocking write on
+    macOS before subprocess's timeout loop regains control. Staging only the
+    request stream removes that cycle; Git output and the timeout stay owned
+    by subprocess.run. TemporaryFile closes and unlinks even on timeout.
+    """
+    with tempfile.TemporaryFile() as requests:
+        requests.write("".join(f"{commit}:{path}\n" for commit, path in queries).encode())
+        requests.seek(0)
+        return subprocess.run(
+            ["git", "cat-file", mode],
+            cwd=ROOT,
+            stdin=requests,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+            env=singleflight.command_environment(),
+            timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        )
+
+
 def objects_present(keys: Iterable[tuple[str, str]]) -> set[tuple[str, str]]:
     """The (commit, path) pairs that name an object, read in one Git process."""
     ordered = sorted(set(keys))
     if not ordered:
         return set()
-    completed = subprocess.run(
-        ["git", "cat-file", "--batch-check"],
-        cwd=ROOT,
-        input="".join(f"{commit}:{path}\n" for commit, path in ordered).encode(),
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        check=False,
-        env=singleflight.command_environment(),
-        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
-    )
+    completed = run_cat_file_batch("--batch-check", ordered)
     answers = completed.stdout.decode("utf-8", "replace").splitlines()
     if completed.returncode != 0 or len(answers) != len(ordered):
         raise SystemExit(
@@ -722,16 +737,7 @@ def snapshot_lines_batch(
             if git_key not in seen:
                 seen.add(git_key)
                 queries.append(git_key)
-    completed = subprocess.run(
-        ["git", "cat-file", "--batch"],
-        cwd=ROOT,
-        input="".join(f"{commit}:{path}\n" for commit, path in queries).encode(),
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        check=False,
-        env=singleflight.command_environment(),
-        timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
-    )
+    completed = run_cat_file_batch("--batch", queries)
     if completed.returncode != 0:
         for key in missing:
             cache[key] = []

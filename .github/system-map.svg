@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-FileCopyrightText: 2026 Will Cook -->
+<!-- SPDX-License-Identifier: CC-BY-4.0 -->
+<!-- Editable source for system-map.png. House colours: paper/paper-house-style.sty.
+     Render at 2x with an SVG renderer; preserve the 1600 x 760 viewBox.
+     Adapted using diagram-design's architecture grammar (MIT):
+     https://github.com/cathrynlavery/diagram-design -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="760" viewBox="0 0 1600 760" role="img" aria-labelledby="title description">
+  <title id="title">Eight Erdős programmes: read, check, continue</title>
+  <desc id="description">Start with a paper and inspect the research record: attempted routes, computations, failed approaches and checked Lean statements with their hypotheses. Use both the results and the limits to identify what remains open and prepare a contribution for review. Seven targets remain open. For Problem 1041, the exact formal statement is refuted; correspondence with the historical wording awaits independent human review. Arrows indicate a reading route, not proof implications or automatic approval.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#7D8991" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+    <style>
+      text { font-family: Helvetica, Arial, sans-serif; fill: #25323C; }
+      .serif { font-family: Palatino, 'Palatino Linotype', Georgia, serif; }
+      .eyebrow { font-size: 17px; letter-spacing: 2.4px; font-weight: 600; fill: #275D8C; }
+      .heading { font-size: 29px; font-weight: 600; }
+      .body { font-size: 22px; fill: #475965; }
+      .small { font-size: 19px; fill: #475965; }
+      .edge { fill: none; stroke: #7D8991; stroke-width: 2; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1600" height="760" fill="#FCFCFA"/>
+  <text x="56" y="56" class="eyebrow">PLECTIS · RESEARCH RECORD</text>
+  <text x="56" y="117" class="serif" font-size="48">Eight Erdős programmes. Work you can continue.</text>
+  <text x="56" y="158" class="body">Papers, formal proofs, computations and failed approaches, kept with their sources and limits.</text>
+
+  <rect x="418" y="201" width="480" height="329" rx="8" fill="#F2F5F7" stroke="#CAD3D9"/>
+  <text x="442" y="230" class="eyebrow" font-size="15">INSPECT THE RECORD</text>
+
+  <!-- Connectors precede the nodes; all forks have distinct perpendicular ports. -->
+  <path class="edge" d="M 356 331 H 392 Q 404 331 404 319 V 298 Q 404 286 416 286 H 442"/>
+  <path class="edge" d="M 356 371 H 392 Q 404 371 404 383 V 441 Q 404 453 416 453 H 442"/>
+  <path class="edge" d="M 874 286 H 926 Q 938 286 938 298 V 324 Q 938 336 950 336 H 980"/>
+  <path class="edge" d="M 874 453 H 926 Q 938 453 938 441 V 386 Q 938 374 950 374 H 980"/>
+  <path class="edge" d="M 1224 355 H 1272"/>
+
+  <rect x="56" y="272" width="300" height="162" rx="6" fill="#EAF0F5" stroke="#275D8C" stroke-width="1.5"/>
+  <text x="80" y="309" class="eyebrow">READ</text>
+  <text x="80" y="350" class="heading serif">Start with a paper</text>
+  <text x="80" y="385" class="body">The question, argument</text>
+  <text x="80" y="414" class="body">and earlier work</text>
+
+  <rect x="442" y="250" width="432" height="113" rx="5" fill="#FCFCFA" stroke="#AAB9C3"/>
+  <text x="466" y="286" class="heading serif">What was tried</text>
+  <text x="466" y="318" class="body">Routes, computations and failures;</text>
+  <text x="466" y="346" class="body">why an approach stopped</text>
+
+  <rect x="442" y="389" width="432" height="113" rx="5" fill="#FCFCFA" stroke="#AAB9C3"/>
+  <text x="466" y="425" class="heading serif">What Lean checked</text>
+  <text x="466" y="457" class="body">Selected formal statements</text>
+  <text x="466" y="485" class="body">with their explicit hypotheses</text>
+
+  <rect x="980" y="272" width="244" height="162" rx="6" fill="#FCFCFA" stroke="#7D8991"/>
+  <text x="1002" y="310" class="heading serif">What remains</text>
+  <text x="1002" y="344" class="heading serif">open</text>
+  <text x="1002" y="386" class="body">The exact question</text>
+  <text x="1002" y="414" class="body">still unanswered</text>
+
+  <rect x="1272" y="272" width="272" height="162" rx="6" fill="#F6ECEB" stroke="#6E2B2B" stroke-width="1.5"/>
+  <text x="1294" y="309" class="eyebrow" style="fill:#6E2B2B">CONTINUE</text>
+  <text x="1294" y="350" class="heading serif">Your contribution</text>
+  <text x="1294" y="385" class="body">Investigate, correct</text>
+  <text x="1294" y="414" class="body">or extend the work</text>
+  <text x="1282" y="473" class="small">Submit evidence for review.</text>
+
+  <text x="56" y="565" class="small">Arrows show a reading route; they do not establish a proof or approve a contribution.</text>
+  <line x1="56" y1="595" x2="1544" y2="595" stroke="#CAD3D9"/>
+  <rect x="56" y="622" width="4" height="84" fill="#6E2B2B"/>
+  <text x="78" y="647" class="heading serif" style="fill:#6E2B2B">Seven targets remain open.</text>
+  <text x="78" y="682" class="body">#1041: the exact formal statement is refuted. Correspondence with the historical wording</text>
+  <text x="78" y="711" class="body">awaits independent human review.</text>
+</svg>
