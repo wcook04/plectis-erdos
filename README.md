@@ -16,7 +16,7 @@ Eight Erdős problems, with papers to read, proofs to inspect and research to co
 <sub>The maths map on 8 October 2026. Open the image to explore the current edition.</sub>
 
 Plectis is an independent, AI-assisted prototype built and maintained by Will Cook.
-The website is its visual reading companion; this repository holds the arguments,
+The website lets you explore the research. This repository contains the arguments,
 Lean proofs, experiments and approaches that did not work. You can read everything
 without installing Lean. [A reader's way in](docs/READING_GUIDE.md) introduces the
 project; the [glossary](https://wcook04.github.io/plectis/docs/glossary.html) explains
@@ -74,31 +74,30 @@ its assumptions, earlier work and remaining questions.
   That finite experiment does not reproduce the weighted theorem above.
 - **Work with an agent.** The [agent quickstart](docs/agents/README.md#start-with-current-public-work)
   gives clone commands and a copyable prompt. Ask it to explain an argument,
-  explore an open question or improve a tool. Its instructions and evidence
-  routes are included in the public checkout.
+  explore an open question or improve a tool. The repository includes its
+  instructions and links to the evidence.
 
 <a id="about-the-project"></a>
 
 ## Why keep the whole research record?
 
-I want other people to be able to work on these questions with me. Longer
-records preserve calculations and routes that stopped at a precise obstruction. Readers can question an approach, repair it or use the idea elsewhere
-without reconstructing the investigation.
+I want other people to work on these questions with me. The longer records
+include calculations and routes that stopped at a precise obstruction. You can
+question an approach, repair it or use the idea elsewhere without repeating
+the investigation.
 
 AI agents did most of the research and drafting. I built and directed the
 infrastructure and reviewed claims when I could; I have not independently
 verified every claim. I maintain the sources and take responsibility for
-correcting the public record. Formal checking, readable explanation and human
-understanding each require work. Novelty and significance need human judgement;
+correcting the public record. Novelty and significance need human judgement;
 independent mathematical review of the corpus has not been recorded.
 The [system paper](paper/systems/claim-faithful-publication-systems-paper.pdf)
-explains how results, corrections and credited contributions move through the
-repository.
+explains how the repository records results and corrections and credits contributors.
 
 ## Problem papers
 
-The [results guide](docs/RESULTS.md#problem-by-problem-guide) keeps the statements
-beside their qualifications and sources.
+The [results guide](docs/RESULTS.md#problem-by-problem-guide) lists each result
+with its assumptions, limits and sources.
 
 | Problem | Topic | Papers |
 |---|---|---|
@@ -133,7 +132,7 @@ and earlier editions.
 
 Lean checks whether a proof establishes the exact formal statement written in
 its source. The [source map](docs/SOURCE_MAP.md) connects paper passages to
-those declarations. [Claim records](docs/claims.json) state their public status
+those declarations. [Claim records](docs/claims.json) list their public status
 and limits; [prior art](docs/PRIOR_ART.md) identifies earlier results and their
 relationship to this work.
 
@@ -173,9 +172,9 @@ or an intermediate result helped, please cite the relevant work and say how.
 
 ## Read or verify locally
 
-[REPRODUCIBILITY](docs/REPRODUCIBILITY.md) owns installation, commands and build
-requirements. Start by [following one claim without Lean](docs/REPRODUCIBILITY.md#try-one-claim-without-lean).
-Agents enter through [AGENTS.md](AGENTS.md) and the
+[REPRODUCIBILITY](docs/REPRODUCIBILITY.md) gives installation instructions,
+commands and build requirements. Start by [following one claim without Lean](docs/REPRODUCIBILITY.md#try-one-claim-without-lean).
+Instructions for coding agents are in [AGENTS.md](AGENTS.md) and the
 [agent workbench](docs/agents/AGENT_WORKBENCH.md).
 
 ### Repository map
@@ -189,7 +188,7 @@ Agents enter through [AGENTS.md](AGENTS.md) and the
 | [lean/](lean/README.md) | Formal proofs in the `Erdos249257` and `ErdosProblems` libraries. |
 | [docs/](docs/README.md) | Guides, claim records and source maps. |
 | [research/](research/README.md) | Experiments, examples and investigations. |
-| [research_corpus/](research_corpus/README.md) | Dated research returns and unresolved obligations. |
+| [research_corpus/](research_corpus/README.md) | Dated research contributions and unresolved obligations. |
 | [computations/](computations/README.md) | Exact arithmetic certificates and scripts. |
 | [verification/](verification/README.md) | Selected formal interfaces, solutions and replay configuration. |
 | [evidence/](evidence/README.md) | Paper-to-proof records and stored Comparator reports. |
@@ -200,7 +199,7 @@ Agents enter through [AGENTS.md](AGENTS.md) and the
 
 The [architecture guide](docs/ARCHITECTURE.md) explains how the folders fit together.
 The checkout is hundreds of megabytes; Lean builds download additional toolchains
-and dependencies. The [security policy](.github/SECURITY.md) explains the execution boundary.
+and dependencies. The [security policy](.github/SECURITY.md) covers code execution.
 
 <!-- BEGIN generated_corpus_at_a_glance -->
 <!-- Generated by scripts/build_corpus_descriptor.py; do not edit this region. -->
@@ -257,6 +256,13 @@ request's scope and dated review state. [Trace the #1041 Lean proof](docs/case-s
 The [Prove2Me #243/#257 proof packets](docs/research-commons/README.md#native-prove2me-theorems)
 and [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean) provide
 additional selected statement checks and their recorded outcomes.
+
+[Palomar](https://palomar-registry.org/) checks Lean proofs and publishes
+registered results with their review comments. Our [submission record](https://github.com/wcook04/plectis-erdos-lean#palomar-publication-surface)
+distinguishes verification, editorial review and registration. The
+[Palomar guide](docs/verification/PALOMAR_QUALIFICATION.md) explains the local
+preparation checks; passing those checks alone does not establish acceptance.
+
 The [paper catalogue](docs/papers/README.md) links versioned aiXiv editions;
 the [verification guides](docs/verification/README.md) explain submission and
 registry records. An archived edition may differ from the current paper.
