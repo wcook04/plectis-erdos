@@ -42,3 +42,151 @@ The [13 September campaign record](../reference/PALOMAR_QUALIFICATION_2026-09-13
 preserves the earlier selection analysis and submission history. Current
 external status belongs to the separately identified repository units and
 service receipts. No command above submits or registers a result.
+
+## Dated Palomar registry observations
+
+Observed at 2026-10-09T15:50:27.855436+00:00. [The public status record](palomar_registry_status.json) owns these dated observations.
+
+Dated observations of separately identified historical submission editions. One edition is registered. Three existing reviews have registration consent, and all three have failed publication renders under the newer Lean minimum. These are not three published records. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers the registered edition and the three requests of 9 October, not every historical submission.
+
+Registration requests are pending and are not published registry editions. Each observation binds the named repository, exact source commit, configuration and selected declarations. It does not transfer to current main, update this repository's selected candidate or claim status, or count new mathematics.
+
+### PalomarCorpus_E257_01: Weighted support criteria for reciprocal Mersenne subseries
+
+Status: **registered**, [PALOMAR-2026-09-25-000009 v1](https://palomar-registry.org/entry.html?id=PALOMAR-2026-09-25-000009&version=1).
+Observed at 2026-10-09T14:42:56Z; public registry record and authenticated service status.
+
+- Repository: `wcook04/plectis-erdos-lean`; commit: `b85ed30805188eb4390a686b111294b24363418e`.
+- Problem identities: `erdos_257`.
+- [Comparator configuration](https://github.com/wcook04/plectis-erdos-lean/blob/b85ed30805188eb4390a686b111294b24363418e/PalomarCorpus/E257_01/comparator.json): `PalomarCorpus/E257_01/comparator.json`.
+- [Formalization metadata](https://github.com/wcook04/plectis-erdos-lean/blob/b85ed30805188eb4390a686b111294b24363418e/PalomarCorpus/E257_01/formalization.yaml): `PalomarCorpus/E257_01/formalization.yaml`.
+- [Recorded verification run](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/36009433226).
+
+<details>
+<summary>Exact selected declarations</summary>
+
+- `PalomarCorpus.E257.DivisibilityWeightedSupport.divisibilityWeightedClaim`
+- `PalomarCorpus.E257.MixedWeightedCover.mixedSupportClaim`
+- `PalomarCorpus.E257.PaperStructuresBO.arbitraryWeightMixedSupport_allBase_hereditary`
+- `PalomarCorpus.E257.VariableExponentCover.strengthenedPositiveCoverClaim`
+- `PalomarCorpus.E257.WeightedCloseReturn.weighted_displacement_cofinal_close_return`
+
+</details>
+
+### ExternalVerification269ThreePrimeStructure: Erdős #269 — three-prime structure
+
+Status: **registration requested; pending**.
+
+Publication blocker: **unsupported Lean version**. The publication renderer rejected the reviewed Lean 4.29.0 source because its current minimum is Lean 4.35.0-rc2. Palomar must repair rendering and retry this registration; sending consent again does not resume it.
+[Official renderer evidence](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37948913697); observed at 2026-10-09T15:33:02Z.
+Observed at 2026-10-09T15:33:02Z; maintainer's authenticated service status.
+
+- Repository: `wcook04/plectis-erdos-lean`; commit: `c39cea6a976747d132a848d26f110b9c608d5a45`.
+- Problem identities: `erdos_269`.
+- [Comparator configuration](https://github.com/wcook04/plectis-erdos-lean/blob/c39cea6a976747d132a848d26f110b9c608d5a45/ExternalVerification269ThreePrimeStructure/comparator.json): `ExternalVerification269ThreePrimeStructure/comparator.json`.
+- [Formalization metadata](https://github.com/wcook04/plectis-erdos-lean/blob/c39cea6a976747d132a848d26f110b9c608d5a45/ExternalVerification269ThreePrimeStructure/formalization.yaml): `ExternalVerification269ThreePrimeStructure/formalization.yaml`.
+- [Recorded verification run](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/35190946875).
+
+<details>
+<summary>Exact selected declarations</summary>
+
+- `Erdos249257.ExternalVerification269ThreePrimeStructure.smoothPrefixLcm_eq_threePrimeHeight`
+- `Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimeKernelQ_eq_of_sameLogCell`
+- `Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimePositiveJumpSet_card`
+- `Erdos249257.ExternalVerification269ThreePrimeStructure.finiteSmoothKernelSum_groupedByHeight`
+- `Erdos249257.ExternalVerification269ThreePrimeStructure.smoothExponentShell_card_quadratic`
+- `Erdos249257.ExternalVerification269ThreePrimeStructure.kernel_235_minor_eq_neg_one_fifteen`
+- `Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimeKernel_infiniteRank_and_noFiniteSeparation`
+
+</details>
+
+### PalomarCorpus_E257: Erdős #257 — September corpus edition
+
+Status: **registration requested; pending**.
+
+Publication blocker: **unsupported Lean version**. The publication renderer rejected the reviewed Lean 4.30.0 source because its current minimum is Lean 4.35.0-rc2. Palomar must repair rendering and retry this registration; sending consent again does not resume it.
+[Official renderer evidence](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37953891799); observed at 2026-10-09T15:50:27.855436+00:00.
+Observed at 2026-10-09T15:50:27.855436+00:00; maintainer's authenticated service status.
+
+- Repository: `wcook04/plectis-erdos-lean`; commit: `52f29ad173b04e3bac941b3663f2b9aebe5de0bb`.
+- Problem identities: `erdos_257`.
+- [Comparator configuration](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/PalomarCorpus/E257/comparator.json): `PalomarCorpus/E257/comparator.json`.
+- [Formalization metadata](https://github.com/wcook04/plectis-erdos-lean/blob/52f29ad173b04e3bac941b3663f2b9aebe5de0bb/PalomarCorpus/E257/formalization.yaml): `PalomarCorpus/E257/formalization.yaml`.
+- [Recorded verification run](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/35186739364).
+
+<details>
+<summary>Exact selected declarations</summary>
+
+- `PalomarCorpus.E257.AchievementSetGeometry.supportedMersenneAchievementSet_geometry_and_volume`
+- `PalomarCorpus.E257.AchievementSetGeometry.volume_supportedMersenneAchievementSet_eq_zero_of_rat_value`
+- `PalomarCorpus.E257.ActualUpperSuccessor.actualUpperRightPacketLinearEscape_iff_successorLinearEscape`
+- `PalomarCorpus.E257.ActualUpperSuccessor.actualUpperSuccessorLinearEscape_completeCounterexample`
+- `PalomarCorpus.E257.BooleanMobiusCarry.BooleanMobiusCarryCertificate.reconstructsSupport`
+- `PalomarCorpus.E257.BooleanMobiusCarry.exists_booleanMobiusCarry_of_support_fraction`
+- `PalomarCorpus.E257.BooleanMobiusCarry.exists_normalized_support_fraction_iff_exists_booleanMobiusCarry`
+- `PalomarCorpus.E257.BooleanMobiusCarry.support_fraction_of_booleanMobiusCarry`
+- `PalomarCorpus.E257.DivisibilityWeightedSupport.divisibilityWeightedClaim`
+- `PalomarCorpus.E257.DyadicObservationSummability.dyadic_supportObservationMass_sum_le`
+- `PalomarCorpus.E257.DyadicObservationSummability.summable_dyadic_supportObservationMass`
+- `PalomarCorpus.E257.DyadicObservationSummability.tendsto_dyadic_supportObservationMass_mean`
+- `PalomarCorpus.E257.FairCoding.fairCoding_pushforward_eq_volume_restrict`
+- `PalomarCorpus.E257.FairCoding.fairCoding_rational_values_null`
+- `PalomarCorpus.E257.FairCoding.measurePreserving_fairCoding`
+- `PalomarCorpus.E257.FinitePeriodNoncollapse.finite_period_noncollapse_rat_den`
+- `PalomarCorpus.E257.FinitePeriodNoncollapse.lcm_lt_den_finiteErdosSum`
+- `PalomarCorpus.E257.FourNinthsRepairWindows.exists_repair_in_sqrt_window`
+- `PalomarCorpus.E257.FourNinthsRepairWindows.four_ninths_mem_iff_repairCofinal`
+- `PalomarCorpus.E257.FourNinthsRepairWindows.four_ninths_mem_iff_repair_sqrt_windows`
+- `PalomarCorpus.E257.FourNinthsRepairWindows.four_ninths_not_mem_of_strict_sqrt_window`
+- `PalomarCorpus.E257.GeneralRepairCriterion.mem_iff_greedyBinaryDefect_cofinal_repairs`
+- `PalomarCorpus.E257.GeneralRepairCriterion.mem_iff_greedyBinaryDefect_sqrt_windows`
+- `PalomarCorpus.E257.LiteralWeightedCover.exists_weighted_not_strengthened_host`
+- `PalomarCorpus.E257.LiteralWeightedCover.exists_weighted_obstruction_with_mixed_heredity`
+- `PalomarCorpus.E257.MixedWeightedCover.mixedSupportClaim`
+- `PalomarCorpus.E257.PositiveSkipEquivalence.cofinalPositiveHalfGreedySkips_iff_half_mem`
+- `PalomarCorpus.E257.PositiveSkipEquivalence.greedyMersenneRemainderRat_half_pos`
+- `PalomarCorpus.E257.RationalMembership.greedyMersenneSkippedSupport_infinite_iff_cofinal_skips`
+- `PalomarCorpus.E257.RationalMembership.infinite_greedyMersenneSkippedSupport_of_rat_mem`
+- `PalomarCorpus.E257.RationalMembership.rat_mem_mersenneAchievementSet_iff_cofinal_greedy_skips`
+- `PalomarCorpus.E257.RationalMembership.rat_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite`
+- `PalomarCorpus.E257.RationalTailRigidity.dyadic_support_fraction_reciprocalMass_diverges_or_gt_one`
+- `PalomarCorpus.E257.RationalTailRigidity.exists_unbounded_shifted_odd_tail_nat_state_of_support_fraction`
+- `PalomarCorpus.E257.RationalTailRigidity.one_div_oddOrder_le_reciprocalMass_of_support_fraction`
+- `PalomarCorpus.E257.RationalTailRigidity.supportCoeffZeroWindow_length_le_eps_logb_add`
+- `PalomarCorpus.E257.ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal`
+- `PalomarCorpus.E257.ScaledGreedyTrap.mem_mersenneAchievementSet_iff_scaledRemainder_cofinallyBounded`
+- `PalomarCorpus.E257.ScaledGreedyTrap.mersenneAchievementSet_eq_scaledGreedyTrap`
+- `PalomarCorpus.E257.ScaledGreedyTrap.one_div_twentyOne_mem_iff_scaledLowerBranchCofinally`
+- `PalomarCorpus.E257.ScaledGreedyTrap.one_div_twentyOne_mem_iff_scaledRemainder_cofinallyBounded`
+- `PalomarCorpus.E257.ScaledGreedyTrap.rat_mem_mersenneAchievementSet_iff_scaledLowerBranchCofinally`
+- `PalomarCorpus.E257.ScaledGreedyTrap.scaledGreedyRemainder_tendsto_atTop_of_not_mem`
+- `PalomarCorpus.E257.TerminalScaledVanishing.terminalScaledVanishing_completeCounterexample`
+- `PalomarCorpus.E257.TwentyOneFatalBranch.one_div_twenty_one_mem_iff_not_fatalAlignedBranch`
+- `PalomarCorpus.E257.TwentyOneFatalBranch.one_div_twenty_one_mem_mersenneAchievementSet_of_closedLowerStates`
+- `PalomarCorpus.E257.TwentyOneFatalBranch.twentyOneClosedRow_forces_quotientGreedy`
+- `PalomarCorpus.E257.TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_affine_supercapacity`
+- `PalomarCorpus.E257.TwentyOneFatalBranch.twentyOneFatalAlignedBranch_eventually_strict_supercapacity`
+- `PalomarCorpus.E257.VariableExponentCover.strengthenedPositiveCoverClaim`
+
+</details>
+
+### ExternalVerification257ReciprocalSupport: Erdős #257 — reciprocal support
+
+Status: **registration requested; pending**.
+
+Publication blocker: **unsupported Lean version**. The publication renderer rejected the reviewed Lean 4.29.0 source because its current minimum is Lean 4.35.0-rc2. Palomar must repair rendering and retry this registration; sending consent again does not resume it.
+[Official renderer evidence](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37949424576); observed at 2026-10-09T15:33:04Z.
+Observed at 2026-10-09T15:33:04Z; maintainer's authenticated service status.
+
+- Repository: `wcook04/plectis-erdos-lean`; commit: `c39cea6a976747d132a848d26f110b9c608d5a45`.
+- Problem identities: `erdos_257`.
+- [Comparator configuration](https://github.com/wcook04/plectis-erdos-lean/blob/c39cea6a976747d132a848d26f110b9c608d5a45/ExternalVerification257ReciprocalSupport/comparator.json): `ExternalVerification257ReciprocalSupport/comparator.json`.
+- [Formalization metadata](https://github.com/wcook04/plectis-erdos-lean/blob/c39cea6a976747d132a848d26f110b9c608d5a45/ExternalVerification257ReciprocalSupport/formalization.yaml): `ExternalVerification257ReciprocalSupport/formalization.yaml`.
+- [Recorded verification run](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/35192583926).
+
+<details>
+<summary>Exact selected declarations</summary>
+
+- `Erdos249257.ExternalVerification257ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal`
+
+</details>

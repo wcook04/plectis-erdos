@@ -48,6 +48,170 @@ def run_builder_check() -> subprocess.CompletedProcess[str]:
     )
 
 
+class PalomarRegistryStatusTest(unittest.TestCase):
+    def status_fixture(self) -> dict:
+        registered = {
+            "entry": "E257_01",
+            "title": "Weighted support",
+            "problem_ids": ["erdos_257"],
+            "repository": "wcook04/plectis-erdos-lean",
+            "commit": "a" * 40,
+            "comparator_config_path": "PalomarCorpus/E257_01/comparator.json",
+            "formalization_metadata_path": "PalomarCorpus/E257_01/formalization.yaml",
+            "theorem_names": ["PalomarCorpus.E257.support"],
+            "status": "registered",
+            "observed_at": "2026-10-09T14:00:00Z",
+            "registered_url": "https://palomar-registry.org/entry.html?id=PALOMAR-2026-09-25-000009&version=1",
+            "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/123",
+            "observation_basis": "public_registry_and_authenticated_status",
+        }
+        pending = deepcopy(registered)
+        pending.update(
+            entry="E257_pending", commit="b" * 40,
+            status="registration_requested", registered_url=None,
+            observation_basis="maintainer_authenticated_status",
+        )
+        return {
+            "schema": "plectis_palomar_registry_status_v1",
+            "observed_at": "2026-10-09T15:00:00Z",
+            "boundary": "These dated observations bind historical editions only.",
+            "entries": [registered, pending],
+        }
+
+    def test_registry_status_rejects_unknown_status(self) -> None:
+        status = self.status_fixture()
+        status["entries"][1]["status"] = "published"
+        with self.assertRaisesRegex(ValueError, "invalid status"):
+            builder.validate_registry_status(status)
+
+    def test_registered_status_requires_exact_registry_edition_url(self) -> None:
+        for url in (None, "", "https://palomar-registry.org/entry?id=PALOMAR-2026-09-25-000009", "https://example.org/entry?id=PALOMAR-2026-09-25-000009&version=1"):
+            with self.subTest(url=url):
+                status = self.status_fixture()
+                status["entries"][0]["registered_url"] = url
+                with self.assertRaises(ValueError):
+                    builder.validate_registry_status(status)
+
+    def test_pending_registration_cannot_masquerade_as_published(self) -> None:
+        status = self.status_fixture()
+        status["entries"][1]["registered_url"] = status["entries"][0]["registered_url"]
+        with self.assertRaisesRegex(ValueError, "Pending registration"):
+            builder.validate_registry_status(status)
+        rendered = builder.render_registry_status(self.status_fixture())
+        self.assertIn("registration requested; pending", rendered)
+        self.assertIn("not published registry editions", rendered)
+        self.assertEqual(rendered.count("PALOMAR-2026-09-25-000009 v1"), 1)
+
+    def test_registry_status_retains_exact_revision_and_selection_identity(self) -> None:
+        status = self.status_fixture()
+        rendered = builder.render_registry_status(status)
+        for row in status["entries"]:
+            self.assertIn(f"`{row['commit']}`", rendered)
+            self.assertIn(f"/blob/{row['commit']}/{row['comparator_config_path']}", rendered)
+            self.assertIn(f"/blob/{row['commit']}/{row['formalization_metadata_path']}", rendered)
+            for name in row["theorem_names"]:
+                self.assertIn(f"`{name}`", rendered)
+        self.assertNotIn("/blob/main/", rendered)
+        self.assertIn("does not transfer to current main", rendered)
+        self.assertIn("or count new mathematics", rendered)
+        for key, value in (("commit", "main"), ("comparator_config_path", "../comparator.json"), ("theorem_names", []), ("verification_run_url", "https://example.org/run/1")):
+            with self.subTest(key=key):
+                broken = deepcopy(status)
+                broken["entries"][0][key] = value
+                with self.assertRaises(ValueError):
+                    builder.validate_registry_status(broken)
+        status["entries"][1] = deepcopy(status["entries"][0])
+        with self.assertRaisesRegex(ValueError, "duplicates an exact revision"):
+            builder.validate_registry_status(status)
+
+    def test_registry_status_requires_dated_observations(self) -> None:
+        for date in ("today", "2026-10-09T14:00:00", "2026-10-10T14:00:00Z"):
+            with self.subTest(date=date):
+                status = self.status_fixture()
+                status["entries"][0]["observed_at"] = date
+                with self.assertRaises(ValueError):
+                    builder.validate_registry_status(status)
+
+    def test_qualification_projects_status_from_safe_owner_input(self) -> None:
+        authority = builder.load_signal_authority()
+        selected = deepcopy(authority["candidate_selection"])
+        status = self.status_fixture()
+        with patch.object(builder, "safe_text", return_value=json.dumps(status)) as reader:
+            rendered = builder.render_qualification(authority)
+        reader.assert_called_once_with(builder.PALOMAR_REGISTRY_STATUS_PATH)
+        self.assertIn("[The public status record](palomar_registry_status.json)", rendered)
+        self.assertIn(status["observed_at"], rendered)
+        self.assertIn("PALOMAR-2026-09-25-000009 v1", rendered)
+        self.assertIn(selected["statement"], rendered)
+        self.assertEqual(authority["candidate_selection"], selected)
+        status["entries"][0]["title"] = "Changed dated title"
+        with patch.object(builder, "safe_text", return_value=json.dumps(status)):
+            updated = builder.render_qualification(authority)
+        self.assertIn("Changed dated title", updated)
+        self.assertNotEqual(rendered, updated)
+        with patch.object(builder, "safe_text", side_effect=ValueError("missing owner")):
+            with self.assertRaisesRegex(ValueError, "missing owner"):
+                builder.render_qualification(authority)
+
+    def test_registry_status_malformed_owner_fails_closed(self) -> None:
+        for content in ("{", "null", json.dumps({"schema": "unknown"})):
+            with self.subTest(content=content):
+                with patch.object(builder, "safe_text", return_value=content):
+                    with self.assertRaises(ValueError):
+                        builder.load_registry_status()
+
+    def test_publication_blocker_preserves_pending_registration_fact(self) -> None:
+        status = self.status_fixture()
+        pending = status["entries"][1]
+        pending["publication_blocker"] = {
+            "reason": "unsupported_lean_version",
+            "summary": "The current renderer refuses the historical Lean 4.29 source.",
+            "evidence_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37949424576",
+            "observed_at": "2026-10-09T14:30:00Z",
+        }
+        rendered = builder.render_registry_status(status)
+        self.assertIn("registration requested; pending", rendered)
+        self.assertIn("Publication blocker: **unsupported Lean version**", rendered)
+        self.assertIn(pending["publication_blocker"]["summary"], rendered)
+        self.assertIn(pending["publication_blocker"]["evidence_url"], rendered)
+        self.assertIn(pending["publication_blocker"]["observed_at"], rendered)
+        self.assertIsNone(pending["registered_url"])
+        self.assertEqual(pending["status"], "registration_requested")
+        self.assertEqual(rendered.count("Status: **registered**"), 1)
+
+    def test_publication_blocker_validation_fails_closed(self) -> None:
+        blocker = {
+            "reason": "unsupported_lean_version",
+            "summary": "The renderer refuses the source toolchain.",
+            "evidence_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37949424576",
+            "observed_at": "2026-10-09T14:30:00Z",
+        }
+        for key, value in (
+            ("reason", "registered"),
+            ("summary", ""),
+            ("evidence_url", "https://example.org/run/1"),
+            ("evidence_url", "https://github.com/wcook04/plectis-erdos-lean/actions/runs/1"),
+            ("observed_at", "today"),
+            ("observed_at", "2026-10-10T14:30:00Z"),
+        ):
+            with self.subTest(key=key, value=value):
+                status = self.status_fixture()
+                changed = dict(blocker, **{key: value})
+                status["entries"][1]["publication_blocker"] = changed
+                with self.assertRaises(ValueError):
+                    builder.validate_registry_status(status)
+        for invalid in (None, {}, dict(blocker, unexpected="unbound")):
+            with self.subTest(blocker=invalid):
+                status = self.status_fixture()
+                status["entries"][1]["publication_blocker"] = invalid
+                with self.assertRaisesRegex(ValueError, "invalid shape"):
+                    builder.validate_registry_status(status)
+        status = self.status_fixture()
+        status["entries"][0]["publication_blocker"] = blocker
+        with self.assertRaisesRegex(ValueError, "Registered editions"):
+            builder.validate_registry_status(status)
+
+
 class ExternalVerificationContractTest(unittest.TestCase):
     def test_sorry_census_is_independent_of_checkout_parent_names(self) -> None:
         with tempfile.TemporaryDirectory(prefix="verification-census-") as temporary:
