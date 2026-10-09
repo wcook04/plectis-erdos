@@ -84,7 +84,6 @@ Lean-checked statements, conditional results and finite computations.
 
 ## Why keep the whole research record?
 
-I want other people to be able to work on these questions with me.
 A checked proof still needs an explanation of why the argument works and how
 someone might arrive at it. The longer records preserve calculations and
 routes that stopped at a precise obstruction, so another reader can question
