@@ -1,6 +1,6 @@
 # Complete registered-claim view
 
-Snapshot: `sha256:550962f3c9322d5ad4acdc7524850f528831d07809b46fe6f57a1099df3c706a`
+Snapshot: `sha256:ea77c20245fe1712c435144a260048fcd366eb328a6d3bdaa15efc6f2d0b897c`
 
 Generated navigation over pinned owner bytes, not a new mathematical authority. Status strings are owner-reported, compilation is not replayed here, dependencies are not implications, and unbound relation text is excluded from inference.
 
