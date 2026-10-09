@@ -1,69 +1,8 @@
 {
   "boundary": "Checks registered asserting environments and registered claim spans. Unregistered prose assertions, mathematical equivalence, correctness of ordinary proofs, Lean compilation, Comparator replay and PDF freshness are not established by this audit.",
-  "global_findings": [
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/243/erdos-243-reciprocal-tail-rigidity.tex:1143 -> 1138",
-      "severity": "error",
-      "short_claim": "erdos-243-reciprocal-tail-rigidity#res:residue"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos243/core.tex:3943 -> 3941",
-      "severity": "error",
-      "short_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:residue"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos251/core.tex:2359 -> 2355",
-      "severity": "error",
-      "short_claim": "erdos251-prime-gap-reasoning-surface#long251:xr:totient"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos251/core.tex:2372 -> 2368",
-      "severity": "error",
-      "short_claim": "erdos251-prime-gap-reasoning-surface#long251:xr:propagate"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos251/core.tex:2407 -> 2403",
-      "severity": "error",
-      "short_claim": "erdos251-prime-gap-reasoning-surface#long251:xr:truncation"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos251/core.tex:2454 -> 2450",
-      "severity": "error",
-      "short_claim": "erdos251-prime-gap-reasoning-surface#long251:res:complete-truncation"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos251/core.tex:2603 -> 2599",
-      "severity": "error",
-      "short_claim": "erdos251-prime-gap-reasoning-surface#long251:xr:boundedpolignac"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos251/core.tex:2737 -> 2733",
-      "severity": "error",
-      "short_claim": "erdos251-prime-gap-reasoning-surface#long251:res:affinecollapse"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos269/core.tex:3920 -> 3915",
-      "severity": "error",
-      "short_claim": "erdos269-running-lcm-reasoning-surface#long269:long:denominator-reduction"
-    },
-    {
-      "code": "stale_statement_coordinate",
-      "detail": "paper/reasoning-parts/erdos269/core.tex:3985 -> 3980",
-      "severity": "error",
-      "short_claim": "erdos269-running-lcm-reasoning-surface#long269:long:windowconsumer"
-    }
-  ],
+  "global_findings": [],
   "input_sha256": {
-    "docs/paper_lean_coverage.json": "sha256:e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
+    "docs/paper_lean_coverage.json": "sha256:633921ae2018e3e674609382150b4733ae6f071793a1589a1ab7f0b4985878a9",
     "docs/papers/corpus.json": "sha256:b6d4a6fd436510bddc381dbc9b8465264a2f66d3116505d69545be207e84bd93",
     "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md": "sha256:7dc4375c831e4685ba89f813497fc0f4857b505cc64586494d8146f62fe75b40",
     "docs/papers/full-text/erdos-1049-rational-base-lambert.md": "sha256:e6294a6452eaf9466a68fa3b4fae19d3f38a671a22d83f0652d8118c2b515e33",
@@ -15894,7 +15833,7 @@
     "explained_in_short": 24,
     "explicit_links": 8,
     "explicit_short_proof_dispositions": 45,
-    "global_findings": 10,
+    "global_findings": 0,
     "linked_short_claims": 27,
     "long_claims": 612,
     "long_correspondence_open": 50,
