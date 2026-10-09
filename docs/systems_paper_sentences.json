@@ -571,10 +571,10 @@
       "kind": "source",
       "path": "docs/agents/README.md",
       "start_line": 1,
-      "end_line": 150,
-      "sha256": "b1b07a6a4572056f7c7c0892e59a0d0899a9fa92fcd05a72d0b429fc46aa9f60",
-      "excerpt_sha256": "b1b07a6a4572056f7c7c0892e59a0d0899a9fa92fcd05a72d0b429fc46aa9f60",
-      "custody": "Current public quickstart inspected after moving general setup before the worked example on 8 October 2026. Clone, task selection, evidence routes and observation boundaries retained; this binding covers the complete guide. No new mathematical or performance claim."
+      "end_line": 156,
+      "sha256": "fc60f3ed1458572630d9384a66475d862398dc1207d939436dc48faf620bcec7",
+      "excerpt_sha256": "fc60f3ed1458572630d9384a66475d862398dc1207d939436dc48faf620bcec7",
+      "custody": "Complete public agent guide inspected on 9 October 2026 after adding the portable continuation prompts link. Existing clone, task selection, evidence routes and observation boundaries are unchanged. No new mathematical or performance claim."
     },
     {
       "id": "r8-lookup",
