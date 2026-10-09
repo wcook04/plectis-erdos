@@ -1737,6 +1737,25 @@ def validate_registry_status(status: dict) -> dict:
             raise ValueError("Palomar registry status has an invalid status")
         if "registered_url" not in row:
             raise ValueError("Palomar registry status requires registered_url")
+        if "publication_blocker" in row:
+            blocker = row["publication_blocker"]
+            if disposition != "registration_requested":
+                raise ValueError("Registered editions cannot carry a publication blocker")
+            if not isinstance(blocker, dict) or set(blocker) != {
+                "reason", "summary", "evidence_url", "observed_at"
+            }:
+                raise ValueError("Palomar publication blocker has an invalid shape")
+            if blocker["reason"] != "unsupported_lean_version":
+                raise ValueError("Palomar publication blocker has an unknown reason")
+            text_field(blocker, "summary")
+            if observed(blocker) > latest:
+                raise ValueError("Palomar publication blocker exceeds record date")
+            evidence = text_field(blocker, "evidence_url")
+            if not re.fullmatch(
+                r"https://github\.com/PalomarRegistry/PalomarSubmission/actions/runs/[0-9]+",
+                evidence,
+            ):
+                raise ValueError("Palomar publication blocker requires an official run URL")
         if disposition == "registration_requested":
             if row["registered_url"] is not None:
                 raise ValueError("Pending registration must not carry a registered URL")
@@ -1800,6 +1819,13 @@ def render_registry_status(status: dict) -> str:
             lines.append(f"Status: **registered**, [{label}]({row['registered_url']}).")
         else:
             lines.append("Status: **registration requested; pending**.")
+        blocker = row.get("publication_blocker")
+        if blocker is not None:
+            lines.extend([
+                "",
+                f"Publication blocker: **unsupported Lean version**. {prose(blocker['summary'])}",
+                f"[Official renderer evidence]({blocker['evidence_url']}); observed at {blocker['observed_at']}.",
+            ])
         basis = {
             "public_registry_and_authenticated_status": "public registry record and authenticated service status",
             "maintainer_authenticated_status": "maintainer's authenticated service status",

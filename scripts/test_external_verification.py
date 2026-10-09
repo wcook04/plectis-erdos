@@ -160,6 +160,57 @@ class PalomarRegistryStatusTest(unittest.TestCase):
                     with self.assertRaises(ValueError):
                         builder.load_registry_status()
 
+    def test_publication_blocker_preserves_pending_registration_fact(self) -> None:
+        status = self.status_fixture()
+        pending = status["entries"][1]
+        pending["publication_blocker"] = {
+            "reason": "unsupported_lean_version",
+            "summary": "The current renderer refuses the historical Lean 4.29 source.",
+            "evidence_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37949424576",
+            "observed_at": "2026-10-09T14:30:00Z",
+        }
+        rendered = builder.render_registry_status(status)
+        self.assertIn("registration requested; pending", rendered)
+        self.assertIn("Publication blocker: **unsupported Lean version**", rendered)
+        self.assertIn(pending["publication_blocker"]["summary"], rendered)
+        self.assertIn(pending["publication_blocker"]["evidence_url"], rendered)
+        self.assertIn(pending["publication_blocker"]["observed_at"], rendered)
+        self.assertIsNone(pending["registered_url"])
+        self.assertEqual(pending["status"], "registration_requested")
+        self.assertEqual(rendered.count("Status: **registered**"), 1)
+
+    def test_publication_blocker_validation_fails_closed(self) -> None:
+        blocker = {
+            "reason": "unsupported_lean_version",
+            "summary": "The renderer refuses the source toolchain.",
+            "evidence_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37949424576",
+            "observed_at": "2026-10-09T14:30:00Z",
+        }
+        for key, value in (
+            ("reason", "registered"),
+            ("summary", ""),
+            ("evidence_url", "https://example.org/run/1"),
+            ("evidence_url", "https://github.com/wcook04/plectis-erdos-lean/actions/runs/1"),
+            ("observed_at", "today"),
+            ("observed_at", "2026-10-10T14:30:00Z"),
+        ):
+            with self.subTest(key=key, value=value):
+                status = self.status_fixture()
+                changed = dict(blocker, **{key: value})
+                status["entries"][1]["publication_blocker"] = changed
+                with self.assertRaises(ValueError):
+                    builder.validate_registry_status(status)
+        for invalid in (None, {}, dict(blocker, unexpected="unbound")):
+            with self.subTest(blocker=invalid):
+                status = self.status_fixture()
+                status["entries"][1]["publication_blocker"] = invalid
+                with self.assertRaisesRegex(ValueError, "invalid shape"):
+                    builder.validate_registry_status(status)
+        status = self.status_fixture()
+        status["entries"][0]["publication_blocker"] = blocker
+        with self.assertRaisesRegex(ValueError, "Registered editions"):
+            builder.validate_registry_status(status)
+
 
 class ExternalVerificationContractTest(unittest.TestCase):
     def test_sorry_census_is_independent_of_checkout_parent_names(self) -> None:
