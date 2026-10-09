@@ -535,12 +535,6 @@ The verification concordance lists the formal proofs by statement. *Lean* links 
 
 The [declaration guide](../../../paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-declarations) links the formal sources for this paper. Complete proofs of three cited results appear in Appendix A of the companion paper. The displayed arguments, including signed interpolation, require ordinary mathematical review; the recorded Lean and Comparator checks cover their specified declarations and source versions. No new formal run or independent review was performed for this revision.
 
-<a id="acknowledgement."></a>
-
-#### Acknowledgement.
-
-I thank Wouter van Doorn for advice on writing for a first-time reader and on explaining the strength of a hypothesis. His advice concerned a different note; it was not a mathematical review or endorsement of the results presented here.
-
 <div class="thebibliography">
 
 99

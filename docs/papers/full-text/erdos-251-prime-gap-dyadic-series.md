@@ -499,7 +499,7 @@ The linked Lean declarations use Lean 4 \[lean4\] and mathlib \[mathlib\]. The 
 
 ## Acknowledgements
 
-I thank Wouter van Doorn for advice on explaining unfamiliar hypotheses, removing unnecessary terminology, and using notation only when it helps the reader. His comments concerned an earlier note on Problem #243; this acknowledgement does not imply that he reviewed or endorsed the mathematics of the present paper. The author received no external funding and declares no competing interests. The numbering follows Bloom’s catalogue \[erdosproblems\].
+The author received no external funding and declares no competing interests. The numbering follows Bloom’s catalogue \[erdosproblems\].
 
 <div class="thebibliography">
 

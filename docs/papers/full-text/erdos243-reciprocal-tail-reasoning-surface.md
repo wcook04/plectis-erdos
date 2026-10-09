@@ -2291,7 +2291,7 @@ This work received no external funding. The author declares no competing interes
 
 #### Acknowledgements.
 
-I thank Wouter van Doorn for advice on exposition, including the explanation of restrictive hypotheses and the removal of unnecessary terminology. The problem numbering follows Bloom’s Erdős Problems catalogue \[erdosproblems\].
+The problem numbering follows Bloom’s Erdős Problems catalogue \[erdosproblems\].
 
 <a id="long243:app:index"></a>
 

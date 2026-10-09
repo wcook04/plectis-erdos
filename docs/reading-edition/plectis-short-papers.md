@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `fcc67c3812fd6a35`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `3868d23767893767`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -1787,7 +1787,7 @@ The integral-basis theorem and finite gcd formula have recorded exact Lean bindi
 
 ### Acknowledgements
 
-The author thanks Wouter van Doorn for advice on exposition: explaining notation when it first appears, avoiding private terminology, and saying how restrictive a conditional hypothesis is. His advice concerned the writing of another note; he has not reviewed the mathematics of this paper. An AI research pass supplied by Will Cook derived the depth-four dual congruence and shorter vectors from the weighted linear forms and the classification of their possible coefficients $`M`$ developed earlier here. OpenAI Codex checked and integrated them; a separate AI pass reviewed the proof.
+An AI research pass supplied by Will Cook derived the depth-four dual congruence and shorter vectors from the weighted linear forms and the classification of their possible coefficients $`M`$ developed earlier here. OpenAI Codex checked and integrated them; a separate AI pass reviewed the proof.
 
 <div class="thebibliography">
 
@@ -2622,12 +2622,6 @@ at infinitely many indices?
 
 Section <a href="#erdos-243-reciprocal-tail-rigidity--sec:transfer" data-reference-type="ref" data-reference="erdos-243-reciprocal-tail-rigidity--sec:transfer">2</a> gives $`C_{n+1}/C_n\to1`$; averaging logarithms therefore gives $`\log C_n=o(n)`$. Since $`1\le M_n\le C_n`$, every such orbit already satisfies $`\log M_n/n\to0`$. A positive answer therefore holds exactly when no such orbit exists: proving it from failure of Sylvester behaviour would exclude every counterexample.
 
-<a id="erdos-243-reciprocal-tail-rigidity--acknowledgements."></a>
-
-###### Acknowledgements.
-
-I thank Wouter van Doorn for advice on the exposition, in particular for asking what the additional bound excludes and for pointing out unnecessary terminology and notation.
-
 <a id="erdos-243-reciprocal-tail-rigidity--app:residue"></a>
 
 ### A factorial modulus for integral recursion
@@ -3245,12 +3239,6 @@ The verification concordance lists the formal proofs by statement. *Lean* links 
 
 The [declaration guide](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos249-totient-reasoning-surface.pdf#nameddest=long249-r3-declarations) links the formal sources for this paper. Complete proofs of three cited results appear in Appendix A of the companion paper. The displayed arguments, including signed interpolation, require ordinary mathematical review; the recorded Lean and Comparator checks cover their specified declarations and source versions. No new formal run or independent review was performed for this revision.
 
-<a id="erdos-249-binary-totient-series--acknowledgement."></a>
-
-###### Acknowledgement.
-
-I thank Wouter van Doorn for advice on writing for a first-time reader and on explaining the strength of a hypothesis. His advice concerned a different note; it was not a mathematical review or endorsement of the results presented here.
-
 <div class="thebibliography">
 
 99
@@ -3764,7 +3752,7 @@ The linked Lean declarations use Lean 4 \[lean4\] and mathlib \[mathlib\]. The 
 
 #### Acknowledgements
 
-I thank Wouter van Doorn for advice on explaining unfamiliar hypotheses, removing unnecessary terminology, and using notation only when it helps the reader. His comments concerned an earlier note on Problem #243; this acknowledgement does not imply that he reviewed or endorsed the mathematics of the present paper. The author received no external funding and declares no competing interests. The numbering follows Bloom’s catalogue \[erdosproblems\].
+The author received no external funding and declares no competing interests. The numbering follows Bloom’s catalogue \[erdosproblems\].
 
 <div class="thebibliography">
 
@@ -4738,12 +4726,6 @@ The cache download is optional. The modules contain `divisibilityWeightedClaim` 
 
 The supplementary declarations are collected in [the companion paper’s final source section](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos257-mersenne-reasoning-surface.pdf#nameddest=record257:supplementary-sources), grouped by support criteria, finite denominators, integer recurrences and achievement sets.
 
-<a id="erdos-257-mersenne-support-subseries--acknowledgements"></a>
-
-### Acknowledgements
-
-I thank Wouter van Doorn for advice on mathematical exposition, in particular on explaining restrictive hypotheses, avoiding unnecessary notation, and writing for a first-time reader. His comments concerned a note on Problem 243; this acknowledgement does not imply that he reviewed the mathematics of the present paper.
-
 <div class="thebibliography">
 
 99 D. Duverney and Y. Tachiya, [*Refinement of the Chowla–Erdős method and linear independence of certain Lambert series*](https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf), Forum Math. 31 (2019), no. 6, 1557–1566, [DOI](https://doi.org/10.1515/forum-2018-0299). Page numbers refer to the linked author preprint. H. Kaneko, Y. Suzuki, and Y. Tachiya, [*Refinements of Erdős’s irrationality criterion for certain sparse infinite series*](https://arxiv.org/abs/2601.20743v1), arXiv:2601.20743v1 (2026). T. Tao and J. Teräväinen, [*Quantitative correlations and some problems on prime factors of consecutive integers*](https://arxiv.org/abs/2512.01739v2), arXiv:2512.01739v2 (submitted December 2025, revised April 2026). V. Kovač and T. Tao, *On several irrationality problems for Ahmes series*, Acta Math. Hungar. 175 (2025), no. 2, 572–608, [DOI](https://doi.org/10.1007/s10474-025-01528-0). Page numbers refer to arXiv:2406.17593v4. P. Erdős, *On arithmetical properties of Lambert series*, J. Indian Math. Soc. 12 (1948), 63–66. The Formal Conjectures Authors, [*FormalConjectures.ErdosProblems.`257`*](https://github.com/google-deepmind/formal-conjectures/blob/f776d2f2039351b00737ffcafb9d7d7666e1d9af/FormalConjectures/ErdosProblems/257.lean), Lean source at commit `f776d2f`, 2025, accessed 13 September 2026.
@@ -5453,7 +5435,7 @@ This work received no external funding. The author declares no competing interes
 
 ###### Acknowledgements.
 
-The problem number and its status as of 28 July 2026 are taken from Thomas Bloom’s Erdős Problems catalogue \[erdosproblems\]. We thank Wouter van Doorn for advice on exposition, particularly on unexplained terminology, unnecessary notation and restrictive hypotheses. His advice concerned a note on Problem #243; he has not reviewed this paper’s mathematics.
+The problem number and its status as of 28 July 2026 are taken from Thomas Bloom’s Erdős Problems catalogue \[erdosproblems\].
 
 <div class="thebibliography">
 
@@ -6051,12 +6033,6 @@ The hypotheses and endpoints also matter. Dubinin’s four-point distortion theo
 The supplied Lean sources prove the fixed counterexample for preconnected sets, the negation and `answer(False)` forms of the Formal Conjectures statement, and the total-variation formulation. They also prove the trinomial theorem and the other formally supported estimates identified in the companion’s [verification notes](https://github.com/wcook04/plectis-erdos/blob/main/paper/1041/erdos1041-lemniscate-reasoning-surface.pdf#nameddest=verification-notes). No fresh Lean build or independent human review is reported here, including review of the correspondence with the 1958 wording. The recorded full rational replay on 29 September 2026 reproduced the stopping time and $`126`$ dual certificates; those are the computational results cited here. The analytic assertions in Remarks <a href="#erdos-1041-lemniscate-newton-flow--res:low-critical-thirteen-twentyfifths" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--res:low-critical-thirteen-twentyfifths">[res:low-critical-thirteen-twentyfifths]</a>–<a href="#erdos-1041-lemniscate-newton-flow--res:critical-value-thresholds" data-reference-type="ref" data-reference="erdos-1041-lemniscate-newton-flow--res:critical-value-thresholds">[res:critical-value-thresholds]</a>, the fourth-power mean and the later topological and compactness arguments remain outside the formal conclusions. The evidence record retains the statement identifiers and their conditional dependencies.
 
 The verification concordance lists the formal proofs by statement. *Lean* links to the supporting declarations; a dagger identifies a proof that assumes a named input. *Comparator* links to a recorded kernel check against a separately written statement; *pending* means that this comparison has not been recorded. The [verification record](https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-1041-lemniscate-newton-flow.md) gives the precise correspondence, dependencies and reproducible checks. A row with only a record link has no complete formal proof recorded.
-
-<a id="erdos-1041-lemniscate-newton-flow--acknowledgements"></a>
-
-### Acknowledgements
-
-I thank Wouter van Doorn for advice on explaining restrictive hypotheses, avoiding private terminology and introducing notation only when useful.
 
 <div class="thebibliography">
 
@@ -6826,7 +6802,7 @@ This work received no external funding. The author declares no competing interes
 
 ###### Acknowledgements.
 
-The problem numbering follows the catalogue maintained by Thomas Bloom \[erdosproblems\]. I thank Wouter van Doorn for advice on writing for a first-time reader and explaining the force of a hypothesis.
+The problem numbering follows the catalogue maintained by Thomas Bloom \[erdosproblems\].
 
 <div class="thebibliography">
 

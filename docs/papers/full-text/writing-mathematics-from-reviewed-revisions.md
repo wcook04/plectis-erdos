@@ -462,12 +462,6 @@ In a scientific exposition, identify the study or derivation, the population or 
 
 Keep the condition and comparator beside each empirical claim. The two reports above concern different trials; a distant limitation cannot undo a sentence that combines them. Use parallel clauses to make their different scopes visible.
 
-<a id="acknowledgement"></a>
-
-# Acknowledgement
-
-Wouter van Doorn’s feedback on first-reader legibility, recorded in the project’s writing guidance, helped sharpen the attention to private terminology, unnecessary notation and restrictive hypotheses. This acknowledges advice on exposition; it does not attribute mathematical verification or endorsement to him.
-
 <a id="availability-and-authorship"></a>
 
 # Availability and authorship

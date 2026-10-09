@@ -2921,12 +2921,6 @@ The unrestricted assertion in Erdős #1041 is false by Theorem <a href="#res:a
 
 Crane \[crane2007smale, Lemma 2.1, Theorem 2.2 and §§3–4\] uses inverse-branch hyperbolic geometry, Dubinin’s radial-slit input and capacity for a derivative-normalised Smale ratio. Dubinin’s four-point result \[dubinin2013fourpoint, Theorem 1 and Corollary 4\] assumes bounded critical values and estimates distortion. These are relevant methods, not direct sources of the present positive moment or connector constant, and their normalisations are not interchangeable with a root-disc hypothesis.
 
-<a id="acknowledgements"></a>
-
-# Acknowledgements
-
-I thank Wouter van Doorn for advice on mathematical exposition, in particular on explaining restrictive hypotheses, avoiding private terminology and introducing notation only when it helps the reader. His remarks concerned another note; this acknowledgement does not imply that he reviewed or endorsed the mathematics of the present paper.
-
 <a id="sec:record-circle-slice"></a>
 
 # Numerical estimates for the packing inequality

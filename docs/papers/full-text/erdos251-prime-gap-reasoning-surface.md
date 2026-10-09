@@ -1213,7 +1213,7 @@ This work received no external funding. The author declares no competing interes
 
 #### Acknowledgements.
 
-I thank Wouter van Doorn for advice on explaining unfamiliar hypotheses, removing unnecessary terminology, and using notation only when it helps the reader. His comments concerned an earlier note on Problem #243; this acknowledgement does not imply that he reviewed or endorsed the mathematics of the present paper. The problem numbering follows the Erdős Problems catalogue maintained by Thomas Bloom \[erdosproblems\]. The logarithmic-scale construction and the transfer of nonconcentration come from earlier working materials of this project, which were not an independent mathematical review.
+The problem numbering follows the Erdős Problems catalogue maintained by Thomas Bloom \[erdosproblems\]. The logarithmic-scale construction and the transfer of nonconcentration come from earlier working materials of this project, which were not an independent mathematical review.
 
 <a id="long251:app:prime-bound"></a>
 
