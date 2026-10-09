@@ -75,9 +75,13 @@ These principles adapt the [pinned Taste Skill redesign guidance](https://github
 to the public clone; no external skill installation is needed.
 
 Keep the website's maths map prominent in the README opening and link it to the
-live map. An explanatory diagram belongs later, as a compact reading aid; do not
-replace the requested project visual or hide it in a disclosure. Prefer native
-Markdown for a short linked reading sequence. If a rendered diagram is needed,
+live map. Keep the explanatory diagram visible near the bottom, before credit
+and citation, with its editable source linked. Preserve both visuals when the
+reader asks for both; the compact linked reading sequence can remain alongside
+them. Recover an earlier refinement from history before redrawing it. Do not
+hide either requested visual in a disclosure. Use the requested dark theme for
+both the live website capture and the diagram, maintaining readable contrast.
+For a rendered diagram,
 give arrows a stated meaning, preserve its editable source and inspect the
 export at phone width. Keep evidence qualifications beside the relevant labels.
 

@@ -13,7 +13,7 @@ Eight Erdős problems, with papers to read, proofs to inspect and research to co
 
 [![Eight Erdős problem programmes: the interactive maths map connects papers, results and their formal evidence](.github/maths-map.png)](https://wcook04.github.io/plectis/maths/universe.html)
 
-<sub>The maths map on 8 October 2026. Open the image to explore the current edition.</sub>
+<sub>The maths map on 9 October 2026. Open the image to explore the current edition.</sub>
 
 Plectis is an independent, AI-assisted prototype built and maintained by Will Cook.
 The website lets you explore the research. This repository contains the arguments,
@@ -268,6 +268,10 @@ the [verification guides](docs/verification/README.md) explain submission and
 registry records. An archived edition may differ from the current paper.
 This main checkout contains the mathematics and tools needed to work with the corpus.
 Do not infer results from private or unreleased work.
+
+## Reading routes
+
+[![Website → papers → research records and open questions](.github/system-map.png)](.github/system-map.svg)
 
 ## Credit
 

@@ -281,6 +281,13 @@ def main() -> None:
         and "](.github/maths-map.png)" in first_screen,
         "README opening lost the mathematical research-record banner",
     )
+    diagram_position = readme.find("](.github/system-map.png)")
+    require(
+        readme.find("## Formal Conjectures contributions") < diagram_position
+        < readme.find("## Credit")
+        and "](.github/system-map.svg)" in readme,
+        "README must retain the explanatory diagram near the bottom and link its editable source",
+    )
     for token in (
         "routes that stopped",
         "human judgement",
