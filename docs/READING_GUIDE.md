@@ -132,8 +132,11 @@ an explanation others can understand and reuse.
 ## Contributing
 
 AI tools did much of the research, code, and drafting under my direction. I am
-responsible for the claims, the sources, and the release. Nothing here has had
-independent mathematical review.
+responsible for the claims, the sources, and the release. Selected statements
+and linked proofs have received independent review through
+[Formal Conjectures](verification/FORMAL_CONJECTURES_CROSSWALK.md#contribution-activity).
+That review does not cover the corpus as a whole or establish the novelty of
+its results.
 
 Corrections, explanations, counterexamples and earlier references are welcome.
 The [contributor guide](../CONTRIBUTING.md) explains how to return them with

@@ -472,9 +472,9 @@
     }
   ],
   "contribution_activity": {
-    "observed_at": "2026-10-08T16:06:30Z",
+    "observed_at": "2026-10-09T22:36:29Z",
     "repository": "https://github.com/google-deepmind/formal-conjectures",
-    "boundary": "A dated observation of public pull requests. Individual review, aggregate approval requirements and merge state are separate. A merge accepts the scoped upstream change, not every mathematical claim in this repository. The pinned statement comparison below retains its original source identity.",
+    "boundary": "A dated observation of public pull requests. Individual review, aggregate approval requirements and merge state are separate. A merge accepts the scoped upstream change, not every mathematical claim in this repository. Maintenance of existing proof links is listed separately and excluded from the merged mathematical contribution count. The pinned statement comparison below retains its original source identity.",
     "requests": [
       {
         "number": 5034,
@@ -597,7 +597,7 @@
         ],
         "scope": "Cubic-rate irrationality and slow-growth rigidity under additional growth and increment hypotheses; the original question remains open.",
         "state": "OPEN",
-        "head": "5e660c3933e4b34a58ed4d01dd32299c5585d86a",
+        "head": "56710453a2af5ac017df557431aa238346e3a35b",
         "merged_at": null,
         "review_decision": "REVIEW_REQUIRED",
         "reviews": [
@@ -642,7 +642,7 @@
         ],
         "scope": "Irrationality under sufficient weighted support and covering hypotheses, not for arbitrary infinite supports.",
         "state": "OPEN",
-        "head": "e5a763c1fe7276eb20df464637dd23eab5e3392b",
+        "head": "40f7826a7ba761dd39b4542094d6149c60ce6c47",
         "merged_at": null,
         "review_decision": "REVIEW_REQUIRED",
         "reviews": [
@@ -662,17 +662,23 @@
         "targets": [
           "Erdos257.erdos_257.variants.summable_reciprocal_support"
         ],
-        "scope": "Reciprocal-summable support variant with classical attribution retained; the unrestricted question remains open.",
-        "state": "OPEN",
-        "head": "95d0fbc92a40e7f49d309f563c8e701e12cd6581",
-        "merged_at": null,
-        "review_decision": "REVIEW_REQUIRED",
+        "scope": "Erdős’s classical coprimality-free result: an infinite support with summable reciprocals gives an irrational series at every integer base at least two. The merged subtype formulation links its verified adapter; the unrestricted question remains open.",
+        "state": "MERGED",
+        "head": "f5d7b003955c1418d5e962c781aa55ff322a2c16",
+        "merged_at": "2026-10-09T21:55:08Z",
+        "review_decision": "APPROVED",
         "reviews": [
           {
             "state": "APPROVED",
             "commit": "95d0fbc92a40e7f49d309f563c8e701e12cd6581",
             "submitted_at": "2026-10-06T22:07:59Z",
             "url": "https://github.com/google-deepmind/formal-conjectures/pull/6529#pullrequestreview-5435090546"
+          },
+          {
+            "state": "APPROVED",
+            "commit": "aa20b47742381d888c233ef4b4c913efe9448c41",
+            "submitted_at": "2026-10-08T20:36:49Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6529#pullrequestreview-5462549186"
           }
         ]
       },
@@ -686,7 +692,7 @@
         ],
         "scope": "Sharp product-height bound for normalized real roots and a whole adjacent interval; separate from the merged negative answer for general paths.",
         "state": "OPEN",
-        "head": "b131540591657337d46ded01e83b1d6bd6c58ed1",
+        "head": "ba0edafdf1bc3b0ad3a563295503ef68751dc514",
         "merged_at": null,
         "review_decision": "REVIEW_REQUIRED",
         "reviews": [
@@ -732,8 +738,15 @@
         "state": "MERGED",
         "head": "99d1320e77b5732ab9200604bd85f3c7f4578653",
         "merged_at": "2026-09-24T19:55:20Z",
-        "review_decision": null,
-        "reviews": []
+        "review_decision": "APPROVED",
+        "reviews": [
+          {
+            "state": "APPROVED",
+            "commit": "99d1320e77b5732ab9200604bd85f3c7f4578653",
+            "submitted_at": "2026-09-24T19:35:05Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6578#pullrequestreview-5309248110"
+          }
+        ]
       },
       {
         "number": 6579,
@@ -745,7 +758,7 @@
         ],
         "scope": "For rational-valued observables modulo 2^k, the binary series is rational exactly when the observable is constant on even residue classes.",
         "state": "OPEN",
-        "head": "cefe2f5b7d735c99dc8d121ba32d2e835d5e5766",
+        "head": "e6bf75a53ef0655241873e5f12427fb6b4695de5",
         "merged_at": null,
         "review_decision": "REVIEW_REQUIRED",
         "reviews": [
@@ -778,6 +791,24 @@
             "url": "https://github.com/google-deepmind/formal-conjectures/pull/6780#pullrequestreview-5446498053"
           }
         ]
+      },
+      {
+        "number": 6971,
+        "kind": "proof_link_maintenance",
+        "targets": [
+          "Erdos258.erdos_258.variants.constant",
+          "Erdos1041.erdos_1041",
+          "Erdos257.erdos_257.variants.tsum_top",
+          "Erdos1049.erdos_1049.variants.geq_2_integer"
+        ],
+        "scope": "Updates four already accepted proof links to independently verified source declarations. This maintains their evidence links; it adds no new mathematical result and is not another merged mathematical contribution.",
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/6971",
+        "title": "Update four proof links to independently verified sources",
+        "state": "OPEN",
+        "head": "b47d6ce7ebabf79193826fad5b14b13e44f9c786",
+        "merged_at": null,
+        "review_decision": "REVIEW_REQUIRED",
+        "reviews": []
       }
     ]
   }
