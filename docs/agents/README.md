@@ -75,6 +75,12 @@ workflow and its stronger validation. [CONTRIBUTING](../../CONTRIBUTING.md)
 explains how to return work and receive credit. An agent's successful run does
 not itself establish a new mathematical result.
 
+## Continue or hand over a conversation
+
+The [portable prompts](prompts/README.md) cover incorporating new material,
+continuing from an existing conversation, and compacting context for a restart.
+They are the short versions used alongside the Agent Trace demonstration.
+
 ## Apply a result to a changed example
 
 Start with the [small weighted #257 task packet](../reading-edition/weighted-257-task.md).
