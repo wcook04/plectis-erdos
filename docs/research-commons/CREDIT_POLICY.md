@@ -97,3 +97,49 @@ of GitHub security advisories. Either change is a one-row edit followed by the
 build command above; the message itself stays private. Acknowledgement in the
 ledger does not say that the person reviewed, checked or endorsed the
 mathematics.
+
+## Advice adopted in communication
+
+Feedback about how the work is explained can change the research process
+without supplying a proof. The rules below record adopted advice, now also
+published here. Their entries in the credit ledger acknowledge only those
+changes, not mathematical review or endorsement. The original messages and
+identities remain private while naming permission is pending.
+
+<a id="communication-clear-purpose"></a>
+### State the purpose and the request
+
+Explain one concrete object, what it does, and why someone might inspect it.
+Say what is being asked and how much reading or time it requires. Use ordinary
+wording rather than asking the recipient to reconstruct the system's purpose
+from a broad description. This records the advice credited in
+[the clear-purpose entry](CREDIT_LEDGER.md#credit-correspondence-006).
+
+<a id="communication-evidenced-comparison"></a>
+### Make comparisons inspectable
+
+When inviting someone to use the system, identify the existing approach being
+compared and the evidence for any claimed advantage. A description of two
+systems is not a demonstration that one performs better. A willingness to look
+at a comparison is not a completed review. This records the advice credited in
+[the comparison entry](CREDIT_LEDGER.md#credit-correspondence-007).
+
+<a id="communication-supported-specialist-connection"></a>
+### Retire unsupported specialist connections
+
+If a specialist reports no visible connection between their expertise and the
+proposed question, remove that connection from future correspondence unless
+new evidence supports it. Do not turn a correction of scope into a claim that
+the specialist supplied a proof or reviewed the wider project. This records
+the advice credited in
+[the scope-correction entry](CREDIT_LEDGER.md#credit-correspondence-008).
+
+<a id="communication-records-and-model-capability"></a>
+### Explain the role of persistent records
+
+Explain how records preserve sources, failed approaches and results for later
+inspection. Keep that purpose distinct from improving a model's ability to
+solve a problem, and do not claim that an external record replaces advances
+in models. A criticism of the framing is not evidence that the critic reviewed
+the records or the mathematics. This records the advice credited in
+[the research-records entry](CREDIT_LEDGER.md#credit-correspondence-009).

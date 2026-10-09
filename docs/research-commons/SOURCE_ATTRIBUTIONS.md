@@ -11,9 +11,9 @@ Private correspondence appears only under a neutral anonymous identity until pub
 
 ## Coverage and anonymous implementation credits
 
-The registry contains `312` curated sources across `24` registered papers and `1903` Lean library files.
+The registry contains `316` curated sources across `24` registered papers and `1903` Lean library files.
 
-Source review states: `bibliography_only`: `97`; `existing_source_closure`: `31`; `external_claim_unverified`: `1`; `implemented_advice`: `5`; `source_verified`: `178`.
+Source review states: `bibliography_only`: `97`; `existing_source_closure`: `31`; `external_claim_unverified`: `1`; `implemented_advice`: `9`; `source_verified`: `178`.
 
 Bibliography coverage records attribution already present in the corpus. A `bibliography_only` record still needs direct source-passage verification; a completed lexical review does not certify a source-to-theorem correspondence.
 
@@ -24,6 +24,10 @@ Implemented advice from private correspondence. The [credit ledger](CREDIT_LEDGE
 - [Earlier work on the #1049 Lambert value](#source-correspondence-003) — Implemented a received pointer by comparing the cited q-Apéry construction with the #1049 rational-base programme. The public source closure verifies that the paper targets the same Lambert value, identifies the q-WZ operator and the integer-base denominator-clearing boundary, and credits both published authors in the ordinary literature row. The local Lean module separately proves that Van Assche’s different moving diagonal has a nonzero n=0 residual for the cited operator. This correspondence row credits only the private prior-art pointer; it does not claim the correspondent checked the comparison, calculations, Lean, or #1049 mathematics.
 - [Writing for a first-time reader](#source-correspondence-004) — Implemented advice on exposition received about the #243 note: replace private names for ordinary objects with the mathematics they denote, inline notation that is used once, and say how restrictive a conditional hypothesis is. The eight short and eight long problem papers were rewritten under these rules and merged on 18 September 2026. The #243 note now names the Chinese remainder theorem where that is the tool and gives examples of what its bounded-increment hypothesis covers, and the public writing skill and short-paper contract now require plain names, notation only where it helps, and an explanation of restrictive hypotheses. No mathematical review, verification or endorsement of any paper is attributed to the correspondent.
 - [Showing where methods and ideas come from](#source-correspondence-005) — Implemented advice received in reply to a letter about one of the eight problems: the main objection to AI-assisted mathematics is how rarely it shows where its methods and ideas come from. A prior-art literature review was then run for each of the eight problems, and pull requests #180 and #181 added point-of-use attribution and corrected locators to all eight short papers and long records. No mathematical review, verification or endorsement of any paper is attributed to the correspondent.
+- [Explaining the purpose of the work](#source-correspondence-006) — Advice adopted in the maintainer’s communication process and recorded publicly in the linked credit-policy passage. This credits the change in explanation or scope only. It does not credit a theorem, a completed comparison experiment, a mathematical review or endorsement. Private messages and identity records remain outside the public repository.
+- [Showing an inspectable comparison](#source-correspondence-007) — Advice adopted in the maintainer’s communication process and recorded publicly in the linked credit-policy passage. This credits the change in explanation or scope only. It does not credit a theorem, a completed comparison experiment, a mathematical review or endorsement. Private messages and identity records remain outside the public repository.
+- [Removing an unsupported specialist connection](#source-correspondence-008) — Advice adopted in the maintainer’s communication process and recorded publicly in the linked credit-policy passage. This credits the change in explanation or scope only. It does not credit a theorem, a completed comparison experiment, a mathematical review or endorsement. Private messages and identity records remain outside the public repository.
+- [Clarifying the role of persistent research records](#source-correspondence-009) — Advice adopted in the maintainer’s communication process and recorded publicly in the linked credit-policy passage. This credits the change in explanation or scope only. It does not credit a theorem, a completed comparison experiment, a mathematical review or endorsement. Private messages and identity records remain outside the public repository.
 
 - Unmatched citation keys: `0`
 - Bibliography entries awaiting curated links: `120`
@@ -44,7 +48,9 @@ Implemented advice from private correspondence. The [credit ledger](CREDIT_LEDGE
 <summary>Browse alphabetically by author or public identity</summary>
 
 
-- **A mathematician (name withheld pending confirmation)**: [Listing each checked result, with a cheap way to check it](#source-correspondence-001), [Leading the #249 paper with its exact theorem](#source-correspondence-002), [Earlier work on the #1049 Lambert value](#source-correspondence-003), [Writing for a first-time reader](#source-correspondence-004), [Showing where methods and ideas come from](#source-correspondence-005)
+- **A mathematician (name withheld pending confirmation)**: [Listing each checked result, with a cheap way to check it](#source-correspondence-001), [Leading the #249 paper with its exact theorem](#source-correspondence-002), [Earlier work on the #1049 Lambert value](#source-correspondence-003), [Writing for a first-time reader](#source-correspondence-004), [Showing where methods and ideas come from](#source-correspondence-005), [Removing an unsupported specialist connection](#source-correspondence-008)
+- **A reader (name withheld pending confirmation)**: [Explaining the purpose of the work](#source-correspondence-006)
+- **A researcher (name withheld pending confirmation)**: [Showing an inspectable comparison](#source-correspondence-007), [Clarifying the role of persistent research records](#source-correspondence-009)
 - **A. Anandkumar**: [LeanDojo: Theorem Proving with Retrieval-Augmented Language Models](#source-source-e2bdd690015cad)
 - **A. Baanen**: [Growing Mathlib: Maintenance of a Large Scale Mathematical Library](#source-source-07d2ca69e611b7)
 - **A. Eldar**: [Comment and formula added to OEIS A256936 (revisions 28 and 31)](#source-source-71037224a1dd7c)
@@ -1058,6 +1064,90 @@ Public implementation or evidence coordinates:
 
 - [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../paper/251/erdos-251-prime-gap-dyadic-series.tex#L68-L73) — lines `68–73`; excerpt `sha256:1ab1c0d45ed163c3d6109bb69e7ef350daad697816ad030e33bac851a4b79ca4`
 - [docs/papers/SHORT\_PAPER\_CONTRACT.md](../../docs/papers/SHORT_PAPER_CONTRACT.md#L19-L19) — lines `19–19`; excerpt `sha256:25842c87b62e2854557a2e4add69568a3d3398b523afd982a2f0348cca448abf`
+
+<a id="source-correspondence-006"></a>
+
+### Explaining the purpose of the work
+
+- Source id: `correspondence-006`
+- Author or public identity: A reader (name withheld pending confirmation)
+- Kind: `correspondence`
+- Received: `2026-06-30`; naming: Name withheld until they confirm. [Credit ledger entry](CREDIT_LEDGER.md#credit-correspondence-006)
+- Problems: none recorded
+- Relationship and boundary: Advice adopted in the maintainer’s communication process and recorded publicly in the linked credit-policy passage. This credits the change in explanation or scope only. It does not credit a theorem, a completed comparison experiment, a mathematical review or endorsement. Private messages and identity records remain outside the public repository.
+- Source verification: `implemented\_advice` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Exact source locations:
+
+- Private correspondence retained by maintainer; identity withheld pending confirmation.
+
+Public implementation or evidence coordinates:
+
+- [docs/research-commons/CREDIT\_POLICY.md](../../docs/research-commons/CREDIT_POLICY.md#L109-L116) — lines `109–116`; excerpt `sha256:191bdaa5c6a034f8f74163c139dd6774fc83d1c917ad107d0014d342c594d0f9`
+
+<a id="source-correspondence-007"></a>
+
+### Showing an inspectable comparison
+
+- Source id: `correspondence-007`
+- Author or public identity: A researcher (name withheld pending confirmation)
+- Kind: `correspondence`
+- Received: `2026-09-22`; naming: Name withheld until they confirm. [Credit ledger entry](CREDIT_LEDGER.md#credit-correspondence-007)
+- Problems: none recorded
+- Relationship and boundary: Advice adopted in the maintainer’s communication process and recorded publicly in the linked credit-policy passage. This credits the change in explanation or scope only. It does not credit a theorem, a completed comparison experiment, a mathematical review or endorsement. Private messages and identity records remain outside the public repository.
+- Source verification: `implemented\_advice` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Exact source locations:
+
+- Private correspondence retained by maintainer; identity withheld pending confirmation.
+
+Public implementation or evidence coordinates:
+
+- [docs/research-commons/CREDIT\_POLICY.md](../../docs/research-commons/CREDIT_POLICY.md#L118-L125) — lines `118–125`; excerpt `sha256:1c5d760a7eca0b5806db621f0b57d6478ac17d58c96c2c740ba6c56b548c15cb`
+
+<a id="source-correspondence-008"></a>
+
+### Removing an unsupported specialist connection
+
+- Source id: `correspondence-008`
+- Author or public identity: A mathematician (name withheld pending confirmation)
+- Kind: `correspondence`
+- Received: `2026-08-05`; naming: Name withheld until they confirm. [Credit ledger entry](CREDIT_LEDGER.md#credit-correspondence-008)
+- Problems: none recorded
+- Relationship and boundary: Advice adopted in the maintainer’s communication process and recorded publicly in the linked credit-policy passage. This credits the change in explanation or scope only. It does not credit a theorem, a completed comparison experiment, a mathematical review or endorsement. Private messages and identity records remain outside the public repository.
+- Source verification: `implemented\_advice` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Exact source locations:
+
+- Private correspondence retained by maintainer; identity withheld pending confirmation.
+
+Public implementation or evidence coordinates:
+
+- [docs/research-commons/CREDIT\_POLICY.md](../../docs/research-commons/CREDIT_POLICY.md#L127-L135) — lines `127–135`; excerpt `sha256:4b4e287db8c278bf0c90fdffa8c029c4615fa4ef95e800efb5115c3530a1d2dd`
+
+<a id="source-correspondence-009"></a>
+
+### Clarifying the role of persistent research records
+
+- Source id: `correspondence-009`
+- Author or public identity: A researcher (name withheld pending confirmation)
+- Kind: `correspondence`
+- Received: `2026-09-17`; naming: Name withheld until they confirm. [Credit ledger entry](CREDIT_LEDGER.md#credit-correspondence-009)
+- Problems: none recorded
+- Relationship and boundary: Advice adopted in the maintainer’s communication process and recorded publicly in the linked credit-policy passage. This credits the change in explanation or scope only. It does not credit a theorem, a completed comparison experiment, a mathematical review or endorsement. Private messages and identity records remain outside the public repository.
+- Source verification: `implemented\_advice` — scope not separately recorded
+- Local mapping: `not recorded`
+
+Exact source locations:
+
+- Private correspondence retained by maintainer; identity withheld pending confirmation.
+
+Public implementation or evidence coordinates:
+
+- [docs/research-commons/CREDIT\_POLICY.md](../../docs/research-commons/CREDIT_POLICY.md#L137-L145) — lines `137–145`; excerpt `sha256:88d97e510c6630f615abb927f41afe9c1dbd259f9d637d7df1df9824a246e2af`
 
 <a id="source-erdos1041-ani-degree-seven-candidate-counterexample"></a>
 
