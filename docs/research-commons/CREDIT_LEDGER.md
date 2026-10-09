@@ -7,9 +7,31 @@ _Generated from the authored source registry by `scripts/build_source_attributio
 
 People have told us things about this work that changed it. Each entry says what they told us, what changed because of it, and where to see the change. A name appears only after that person confirms they want to be named; until then the entry says the name is withheld. Thanking someone here does not mean they reviewed, checked or endorsed the mathematics.
 
-Entries: `5`. Names withheld until confirmed: `5`. Named with permission: `0`. Anonymous at their request: `0`.
+Entries: `9`. Names withheld until confirmed: `9`. Named with permission: `0`. Anonymous at their request: `0`.
 
 Published papers, forum posts and software are credited in [source attributions](SOURCE_ATTRIBUTIONS.md), and the [credit policy](CREDIT_POLICY.md) explains how credit works here. If an entry is about your advice and you would like to be named, to stay anonymous, or to correct the entry, [get in touch](https://wcook04.github.io/plectis/docs/contact.html#get-in-touch).
+
+<a id="credit-correspondence-007"></a>
+
+## 22 September 2026: Showing an inspectable comparison
+
+- **What they told us:** A researcher advised showing a clear advantage over existing systems when asking people to use the work.
+- **What changed:** The communication rules now require an inspectable comparison and evidence for a claimed advantage, while keeping an invitation to look distinct from a completed review.
+- **Where to see it:** [docs/research-commons/CREDIT\_POLICY.md, lines 118–125](../../docs/research-commons/CREDIT_POLICY.md?plain=1#L118-L125)
+- **Problems:** the whole corpus
+- **Name:** withheld until they confirm (credited as a researcher).
+- **Full record:** [source attributions](SOURCE_ATTRIBUTIONS.md#source-correspondence-007)
+
+<a id="credit-correspondence-009"></a>
+
+## 17 September 2026: Clarifying the role of persistent research records
+
+- **What they told us:** A researcher challenged the framing of the system as an external improvement to rapidly advancing models.
+- **What changed:** The explanation now distinguishes persistent records for inspection and continuation from a model’s problem-solving capability; the distinction is also published in the credit policy.
+- **Where to see it:** [docs/research-commons/CREDIT\_POLICY.md, lines 137–145](../../docs/research-commons/CREDIT_POLICY.md?plain=1#L137-L145)
+- **Problems:** the whole corpus
+- **Name:** withheld until they confirm (credited as a researcher).
+- **Full record:** [source attributions](SOURCE_ATTRIBUTIONS.md#source-correspondence-009)
 
 <a id="credit-correspondence-004"></a>
 
@@ -57,6 +79,17 @@ Published papers, forum posts and software are credited in [source attributions]
 - **Name:** withheld until they confirm (credited as a mathematician).
 - **Full record:** [source attributions](SOURCE_ATTRIBUTIONS.md#source-correspondence-001)
 
+<a id="credit-correspondence-008"></a>
+
+## 5 August 2026: Removing an unsupported specialist connection
+
+- **What they told us:** A mathematician saw no connection between their specialist methods and the question presented to them.
+- **What changed:** That connection was removed from future correspondence unless new evidence supports it; the published credit policy records the same rule for correcting scope.
+- **Where to see it:** [docs/research-commons/CREDIT\_POLICY.md, lines 127–135](../../docs/research-commons/CREDIT_POLICY.md?plain=1#L127-L135)
+- **Problems:** the whole corpus
+- **Name:** withheld until they confirm (credited as a mathematician).
+- **Full record:** [source attributions](SOURCE_ATTRIBUTIONS.md#source-correspondence-008)
+
 <a id="credit-correspondence-003"></a>
 
 ## 5 August 2026: Earlier work on the #1049 Lambert value
@@ -68,5 +101,16 @@ Published papers, forum posts and software are credited in [source attributions]
 - **Problems:** #1049
 - **Name:** withheld until they confirm (credited as a mathematician).
 - **Full record:** [source attributions](SOURCE_ATTRIBUTIONS.md#source-correspondence-003)
+
+<a id="credit-correspondence-006"></a>
+
+## 30 June 2026: Explaining the purpose of the work
+
+- **What they told us:** A reader could not identify the system’s goal, the object being shown, or why its interface was useful.
+- **What changed:** The correspondence rules now require one concrete object, its purpose, a narrow request and a clear reading or time cost; those rules are also published in the credit policy.
+- **Where to see it:** [docs/research-commons/CREDIT\_POLICY.md, lines 109–116](../../docs/research-commons/CREDIT_POLICY.md?plain=1#L109-L116)
+- **Problems:** the whole corpus
+- **Name:** withheld until they confirm (credited as a reader).
+- **Full record:** [source attributions](SOURCE_ATTRIBUTIONS.md#source-correspondence-006)
 
 Machine-readable version: [credit-ledger.json](credit-ledger.json).

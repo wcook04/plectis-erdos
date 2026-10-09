@@ -24223,6 +24223,142 @@
         }
       ],
       "paper_reported_locators": []
+    },
+    {
+      "id": "correspondence-006",
+      "kind": "correspondence",
+      "title": "Explaining the purpose of the work",
+      "authors": [
+        "A reader (name withheld pending confirmation)"
+      ],
+      "identity_disclosure": "withheld_pending_confirmation",
+      "confirmation_status": "not_confirmed",
+      "received_on": "2026-06-30",
+      "urls": [],
+      "source_locators": [
+        {
+          "locator": "Private correspondence retained by maintainer; identity withheld pending confirmation."
+        }
+      ],
+      "verification_state": "implemented_advice",
+      "bibliography_keys": [],
+      "problems": [],
+      "ledger": {
+        "told": "A reader could not identify the system’s goal, the object being shown, or why its interface was useful.",
+        "changed": "The correspondence rules now require one concrete object, its purpose, a narrow request and a clear reading or time cost; those rules are also published in the credit policy."
+      },
+      "artifact_links": [
+        {
+          "path": "docs/research-commons/CREDIT_POLICY.md",
+          "line_start": 109,
+          "line_end": 116,
+          "excerpt_sha256": "sha256:191bdaa5c6a034f8f74163c139dd6774fc83d1c917ad107d0014d342c594d0f9"
+        }
+      ],
+      "relation": "Advice adopted in the maintainer’s communication process and recorded publicly in the linked credit-policy passage. This credits the change in explanation or scope only. It does not credit a theorem, a completed comparison experiment, a mathematical review or endorsement. Private messages and identity records remain outside the public repository.",
+      "paper_reported_locators": []
+    },
+    {
+      "id": "correspondence-007",
+      "kind": "correspondence",
+      "title": "Showing an inspectable comparison",
+      "authors": [
+        "A researcher (name withheld pending confirmation)"
+      ],
+      "identity_disclosure": "withheld_pending_confirmation",
+      "confirmation_status": "not_confirmed",
+      "received_on": "2026-09-22",
+      "urls": [],
+      "source_locators": [
+        {
+          "locator": "Private correspondence retained by maintainer; identity withheld pending confirmation."
+        }
+      ],
+      "verification_state": "implemented_advice",
+      "bibliography_keys": [],
+      "problems": [],
+      "ledger": {
+        "told": "A researcher advised showing a clear advantage over existing systems when asking people to use the work.",
+        "changed": "The communication rules now require an inspectable comparison and evidence for a claimed advantage, while keeping an invitation to look distinct from a completed review."
+      },
+      "artifact_links": [
+        {
+          "path": "docs/research-commons/CREDIT_POLICY.md",
+          "line_start": 118,
+          "line_end": 125,
+          "excerpt_sha256": "sha256:1c5d760a7eca0b5806db621f0b57d6478ac17d58c96c2c740ba6c56b548c15cb"
+        }
+      ],
+      "relation": "Advice adopted in the maintainer’s communication process and recorded publicly in the linked credit-policy passage. This credits the change in explanation or scope only. It does not credit a theorem, a completed comparison experiment, a mathematical review or endorsement. Private messages and identity records remain outside the public repository.",
+      "paper_reported_locators": []
+    },
+    {
+      "id": "correspondence-008",
+      "kind": "correspondence",
+      "title": "Removing an unsupported specialist connection",
+      "authors": [
+        "A mathematician (name withheld pending confirmation)"
+      ],
+      "identity_disclosure": "withheld_pending_confirmation",
+      "confirmation_status": "not_confirmed",
+      "received_on": "2026-08-05",
+      "urls": [],
+      "source_locators": [
+        {
+          "locator": "Private correspondence retained by maintainer; identity withheld pending confirmation."
+        }
+      ],
+      "verification_state": "implemented_advice",
+      "bibliography_keys": [],
+      "problems": [],
+      "ledger": {
+        "told": "A mathematician saw no connection between their specialist methods and the question presented to them.",
+        "changed": "That connection was removed from future correspondence unless new evidence supports it; the published credit policy records the same rule for correcting scope."
+      },
+      "artifact_links": [
+        {
+          "path": "docs/research-commons/CREDIT_POLICY.md",
+          "line_start": 127,
+          "line_end": 135,
+          "excerpt_sha256": "sha256:4b4e287db8c278bf0c90fdffa8c029c4615fa4ef95e800efb5115c3530a1d2dd"
+        }
+      ],
+      "relation": "Advice adopted in the maintainer’s communication process and recorded publicly in the linked credit-policy passage. This credits the change in explanation or scope only. It does not credit a theorem, a completed comparison experiment, a mathematical review or endorsement. Private messages and identity records remain outside the public repository.",
+      "paper_reported_locators": []
+    },
+    {
+      "id": "correspondence-009",
+      "kind": "correspondence",
+      "title": "Clarifying the role of persistent research records",
+      "authors": [
+        "A researcher (name withheld pending confirmation)"
+      ],
+      "identity_disclosure": "withheld_pending_confirmation",
+      "confirmation_status": "not_confirmed",
+      "received_on": "2026-09-17",
+      "urls": [],
+      "source_locators": [
+        {
+          "locator": "Private correspondence retained by maintainer; identity withheld pending confirmation."
+        }
+      ],
+      "verification_state": "implemented_advice",
+      "bibliography_keys": [],
+      "problems": [],
+      "ledger": {
+        "told": "A researcher challenged the framing of the system as an external improvement to rapidly advancing models.",
+        "changed": "The explanation now distinguishes persistent records for inspection and continuation from a model’s problem-solving capability; the distinction is also published in the credit policy."
+      },
+      "artifact_links": [
+        {
+          "path": "docs/research-commons/CREDIT_POLICY.md",
+          "line_start": 137,
+          "line_end": 145,
+          "excerpt_sha256": "sha256:88d97e510c6630f615abb927f41afe9c1dbd259f9d637d7df1df9824a246e2af"
+        }
+      ],
+      "relation": "Advice adopted in the maintainer’s communication process and recorded publicly in the linked credit-policy passage. This credits the change in explanation or scope only. It does not credit a theorem, a completed comparison experiment, a mathematical review or endorsement. Private messages and identity records remain outside the public repository.",
+      "paper_reported_locators": []
     }
   ],
   "lean_reviews": [
