@@ -90,9 +90,10 @@
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
       "end_line": 29162,
-      "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
-      "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
-      "kind": "source"
+      "sha256": "633921ae2018e3e674609382150b4733ae6f071793a1589a1ab7f0b4985878a9",
+      "excerpt_sha256": "633921ae2018e3e674609382150b4733ae6f071793a1589a1ab7f0b4985878a9",
+      "kind": "source",
+      "custody_note": "Reviewed 10 October 2026 after acknowledgement withdrawal: exactly ten source coordinates and the coverage content digest changed; statement hashes, supports, all evidence statuses and counts are unchanged."
     },
     {
       "id": "coverage-1041",
@@ -100,8 +101,9 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
-      "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
+      "sha256": "633921ae2018e3e674609382150b4733ae6f071793a1589a1ab7f0b4985878a9",
+      "excerpt_sha256": "633921ae2018e3e674609382150b4733ae6f071793a1589a1ab7f0b4985878a9",
+      "custody_note": "Reviewed 10 October 2026 after acknowledgement withdrawal: exactly ten source coordinates and the coverage content digest changed; statement hashes, supports, all evidence statuses and counts are unchanged."
     },
     {
       "id": "coverage-reciprocal",
@@ -109,8 +111,9 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
-      "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
+      "sha256": "633921ae2018e3e674609382150b4733ae6f071793a1589a1ab7f0b4985878a9",
+      "excerpt_sha256": "633921ae2018e3e674609382150b4733ae6f071793a1589a1ab7f0b4985878a9",
+      "custody_note": "Reviewed 10 October 2026 after acknowledgement withdrawal: exactly ten source coordinates and the coverage content digest changed; statement hashes, supports, all evidence statuses and counts are unchanged."
     },
     {
       "id": "coverage-weighted",
@@ -118,8 +121,9 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
-      "excerpt_sha256": "e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d"
+      "sha256": "633921ae2018e3e674609382150b4733ae6f071793a1589a1ab7f0b4985878a9",
+      "excerpt_sha256": "633921ae2018e3e674609382150b4733ae6f071793a1589a1ab7f0b4985878a9",
+      "custody_note": "Reviewed 10 October 2026 after acknowledgement withdrawal: exactly ten source coordinates and the coverage content digest changed; statement hashes, supports, all evidence statuses and counts are unchanged."
     },
     {
       "id": "credit",
