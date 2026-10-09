@@ -1,7 +1,7 @@
 {
   "schema": "plectis_palomar_registry_status_v1",
-  "observed_at": "2026-10-09T15:33:04Z",
-  "boundary": "Dated observations of separately identified historical submission editions. One edition is registered. Three existing reviews have registration consent; two have failed publication renders under the newer Lean minimum, and the older corpus request has no observed registration-start event. These are not three published records. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers the registered edition and the three requests of 9 October, not every historical submission.",
+  "observed_at": "2026-10-09T15:50:27.855436+00:00",
+  "boundary": "Dated observations of separately identified historical submission editions. One edition is registered. Three existing reviews have registration consent, and all three have failed publication renders under the newer Lean minimum. These are not three published records. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers the registered edition and the three requests of 9 October, not every historical submission.",
   "entries": [
     {
       "entry": "PalomarCorpus_E257_01",
@@ -28,7 +28,7 @@
     },
     {
       "entry": "ExternalVerification269ThreePrimeStructure",
-      "title": "Erdős #269 — three-prime structure",
+      "title": "Erd\u0151s #269 \u2014 three-prime structure",
       "problem_ids": [
         "erdos_269"
       ],
@@ -59,7 +59,7 @@
     },
     {
       "entry": "PalomarCorpus_E257",
-      "title": "Erdős #257 — September corpus edition",
+      "title": "Erd\u0151s #257 \u2014 September corpus edition",
       "problem_ids": [
         "erdos_257"
       ],
@@ -120,14 +120,20 @@
         "PalomarCorpus.E257.VariableExponentCover.strengthenedPositiveCoverClaim"
       ],
       "status": "registration_requested",
-      "observed_at": "2026-10-09T15:33:03Z",
+      "observed_at": "2026-10-09T15:50:27.855436+00:00",
       "registered_url": null,
       "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/35186739364",
-      "observation_basis": "maintainer_authenticated_status"
+      "observation_basis": "maintainer_authenticated_status",
+      "publication_blocker": {
+        "reason": "unsupported_lean_version",
+        "summary": "The publication renderer rejected the reviewed Lean 4.30.0 source because its current minimum is Lean 4.35.0-rc2. Palomar must repair rendering and retry this registration; sending consent again does not resume it.",
+        "evidence_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37953891799",
+        "observed_at": "2026-10-09T15:50:27.855436+00:00"
+      }
     },
     {
       "entry": "ExternalVerification257ReciprocalSupport",
-      "title": "Erdős #257 — reciprocal support",
+      "title": "Erd\u0151s #257 \u2014 reciprocal support",
       "problem_ids": [
         "erdos_257"
       ],

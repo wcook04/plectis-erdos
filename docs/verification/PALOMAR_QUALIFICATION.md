@@ -45,9 +45,9 @@ service receipts. No command above submits or registers a result.
 
 ## Dated Palomar registry observations
 
-Observed at 2026-10-09T15:33:04Z. [The public status record](palomar_registry_status.json) owns these dated observations.
+Observed at 2026-10-09T15:50:27.855436+00:00. [The public status record](palomar_registry_status.json) owns these dated observations.
 
-Dated observations of separately identified historical submission editions. One edition is registered. Three existing reviews have registration consent; two have failed publication renders under the newer Lean minimum, and the older corpus request has no observed registration-start event. These are not three published records. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers the registered edition and the three requests of 9 October, not every historical submission.
+Dated observations of separately identified historical submission editions. One edition is registered. Three existing reviews have registration consent, and all three have failed publication renders under the newer Lean minimum. These are not three published records. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers the registered edition and the three requests of 9 October, not every historical submission.
 
 Registration requests are pending and are not published registry editions. Each observation binds the named repository, exact source commit, configuration and selected declarations. It does not transfer to current main, update this repository's selected candidate or claim status, or count new mathematics.
 
@@ -103,7 +103,10 @@ Observed at 2026-10-09T15:33:02Z; maintainer's authenticated service status.
 ### PalomarCorpus_E257: Erdős #257 — September corpus edition
 
 Status: **registration requested; pending**.
-Observed at 2026-10-09T15:33:03Z; maintainer's authenticated service status.
+
+Publication blocker: **unsupported Lean version**. The publication renderer rejected the reviewed Lean 4.30.0 source because its current minimum is Lean 4.35.0-rc2. Palomar must repair rendering and retry this registration; sending consent again does not resume it.
+[Official renderer evidence](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37953891799); observed at 2026-10-09T15:50:27.855436+00:00.
+Observed at 2026-10-09T15:50:27.855436+00:00; maintainer's authenticated service status.
 
 - Repository: `wcook04/plectis-erdos-lean`; commit: `52f29ad173b04e3bac941b3663f2b9aebe5de0bb`.
 - Problem identities: `erdos_257`.
