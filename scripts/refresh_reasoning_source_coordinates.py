@@ -23,6 +23,7 @@ import argparse
 import re
 import subprocess
 import sys
+import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -253,16 +254,21 @@ class Resolver:
             )
         if not rows:
             return
-        result = subprocess.run(
-            ["git", "cat-file", "--batch"],
-            cwd=ROOT,
-            check=False,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            input=("\n".join(spec for _, _, spec in rows) + "\n").encode("utf-8"),
-            env=singleflight.command_environment(),
-            timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
-        )
+        # A file-backed request stream avoids simultaneous pipe pressure from
+        # many requests and large blobs, which can block writes past the timeout.
+        with tempfile.TemporaryFile() as requests:
+            requests.write(("\n".join(spec for _, _, spec in rows) + "\n").encode("utf-8"))
+            requests.seek(0)
+            result = subprocess.run(
+                ["git", "cat-file", "--batch"],
+                cwd=ROOT,
+                check=False,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                stdin=requests,
+                env=singleflight.command_environment(),
+                timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+            )
         if result.returncode:
             detail = result.stderr.decode("utf-8", errors="replace").strip()
             raise CoordinateError(detail or "git cat-file --batch failed")

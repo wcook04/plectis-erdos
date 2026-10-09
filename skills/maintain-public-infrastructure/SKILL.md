@@ -48,12 +48,47 @@ Use `--checkout --check-upstream` for an explicit live comparison with canonical
 public main. Never label a cached remote ref, a release tag, or an offline
 checkout as latest. Preserve older-clone work and its starting commit; a
 different revision is not evidence that the contributor's work is invalid.
+When reconciling authored evidence ledgers, compare rows by stable ID against
+the common base. Keep independent edits from both branches; regenerate derived
+records separately. Replacing a whole ledger to settle one digest conflict can
+silently discard valid source bindings.
 Keep the human clone/prompt instructions in `docs/agents/README.md`
 and the behavioral provenance cases in `scripts/test_agent_entry.py`, which
 the release gate already runs. Exercise forks, tags, archives, dirty worktrees,
 and unavailable network access without requiring a network in tests. Check the
 combined first-contact route budget as well as each entry file: newcomer setup
 belongs in the agent index, not in an already full technical reading bundle.
+
+## Design the human reading surfaces
+
+For a README or folder index, inspect the rendered page before editing. Keep
+one clear opening, a useful first argument and a consistent heading hierarchy.
+Use real project imagery with descriptive alt text; retain dates on captured
+views. Stack long publication titles on narrow screens and place general setup
+before specialized examples. GitHub owns fonts, colours and interaction: use
+native Markdown instead of adding a frontend framework to a README.
+
+Keep the claim boundary visible. Collapse supporting inventories, not limitations
+needed to understand a result. Preserve existing anchors, manuscript paths and
+citation identities; check light and dark modes and phone-width wrapping.
+These principles adapt the [pinned Taste Skill redesign guidance](https://github.com/leonxlnx/taste-skill/blob/b482f7a970abb98c4108d4a9f761e458c64cefc8/skills/taste-skill/SKILL.md)
+to the public clone; no external skill installation is needed.
+
+Keep the website's maths map prominent in the README opening and link it to the
+live map. Keep the explanatory diagram visible near the bottom, before credit
+and citation, with its editable source linked. Preserve both visuals when the
+reader asks for both; the compact linked reading sequence can remain alongside
+them. Recover an earlier refinement from history before redrawing it. Do not
+hide either requested visual in a disclosure. Use the requested dark theme for
+both the live website capture and the diagram, maintaining readable contrast.
+For a rendered diagram,
+give arrows a stated meaning, preserve its editable source and inspect the
+export at phone width. Keep evidence qualifications beside the relevant labels.
+
+When documenting external review, separate the observed request lifecycle from
+local proof or adapter evidence. Record the observation date and public source;
+keep individual reviews, aggregate approval requirements and merge state distinct.
+The Formal Conjectures crosswalk owns this distinction and its generated guide.
 
 ## Separate contribution discovery from mathematical work
 
@@ -199,6 +234,25 @@ the other a route pointer or a generated projection. Do not copy a private
 system's full doctrine into this repository; port only the public capability
 and the check that proves it works here.
 
+For a public front-door review, examine the complete tracked directory inventory
+before proposing moves. Name each area's purpose and owner, and distinguish
+authored sources, generated outputs, external inputs and historical evidence.
+Review actual responsibilities and dependencies before imposing a conventional
+folder name. Classify exact duplicates by their consumers: archived
+returns, generated projections, licence texts and test fixtures often need to
+remain separate. Improve missing folder indexes before renaming established
+proof or publication paths. Keep a real website/map preview linked to its live
+route, identify it as a dated capture, and update reader sparse-checkout paths
+and image licensing with the asset, including any linked editable source.
+Human introductions explain the work;
+agent entry gives commands, authority and validation. Verify both journeys at
+GitHub reading width and on a narrow screen.
+
+Keep the AI-use disclosure consistent with the papers' production note. A
+clearer presentation must not imply independent review, human authorship or
+demonstrated understanding that the evidence does not record. Give readers a
+bounded argument to explore and a specific correction route.
+
 When reorganising the checkout, keep one shared root `AGENTS.md` and keep
 provider adapters limited to loading that entry. Keep the main reader guides
 in `docs/`, operational agent guides in `docs/agents/`, specialist checking
@@ -209,7 +263,34 @@ citation and licence tools. A move must update relative links, sparse checkout
 manifests, CI, source registries and their builders together. Pinned historical
 artifacts retain the filenames belonging to their recorded revision.
 
+Record each proposed consolidation as `keep`, `consolidate` or `archive`, with
+its consumers and reason. For a move, write an old-to-new path map and check
+imports, links, published URLs, paper IDs and builder inputs before changing
+files. Move the content and its live references together, then run the owning
+validators. Similar names, age and byte equality alone do not establish that
+one copy is disposable.
+
+Apply the same ownership review to commands. Keep cold-checkout release setup
+in `docs/REPRODUCIBILITY.md#3-run-the-release-surface-checks`, validation choices
+in `docs/agents/AGENT_GUIDE.md#validation`, and committed-branch submission in
+`skills/submit-pull-request/SKILL.md`. Other guides should give the appropriate
+entry command and link to its owner. Preserve the distinction between the
+preparing wrapper, the underlying gate and immutable-snapshot admission; do not
+copy their orchestration into another guide or rerun leaves after a full pass.
+
+This ownership review draws on
+[Architecture Guardian](https://github.com/PolakiniO/AI-Engineering-Playbook/blob/492387a8572f564f95c2dbe5e67f4b721595518c/skills/architecture-guardian/SKILL.md)
+(MIT). The corpus classifications and migration checks above are local rules;
+the repository does not need the external skill installed to use this workflow.
+
 ## Validate behavior, not decoration
+
+For bulk Git reads, keep request storage separate from response drainage. A
+file-backed request stream prevents a large response and queued requests from
+blocking each other's pipes. Preserve the clean environment, timeout, exact
+snapshot identity and missing-object behavior. Exercise large blobs, many
+requests and timeout cleanup; a small successful batch does not rule out the
+write contention seen during a full release.
 
 For recurring CI failures, compare the failed run's tested commit and start time
 with the repair, and inspect the affected branch as well as the default branch.
@@ -241,7 +322,9 @@ identity and download name while admitting newly registered papers. Test a
 valid addition as well as a removed or renamed publication; equality of the
 old and new inventories would prevent the corpus from growing.
 
-For a README change, the cold-clone quick check and the human-first-contact
+For a README change, follow the
+[documentation-check recipe](../../docs/REPRODUCIBILITY.md#check-a-documentation-change).
+The cold-clone quick check and the human-first-contact
 test enforce different limits: a 14,000-byte first-contact prefix and 2,100
 prose words. Run both before the full release gate; passing the quick check
 does not establish that the prose budget still fits.
@@ -259,8 +342,11 @@ python3 scripts/test_human_first_contact.py
 ```
 
 Use the exact previously failing task with `agent_entry.py --entry` as a manual
-smoke. Before publication, run `python3 scripts/check_release.py` once; do not
-serially rerun every component after that full gate passes.
+smoke. Before publication, follow the prerequisites in the
+[release instructions](../../docs/REPRODUCIBILITY.md#3-run-the-release-surface-checks)
+and run `python3 scripts/run_release_check.py` once; do not serially rerun every
+component after that full gate passes. Committed-branch submission still uses
+the separate admission procedure in `skills/submit-pull-request/SKILL.md`.
 
 A long command is a concurrency window. While it runs, continue only work that
 cannot change its inputs or outputs: audit another route, inspect a disjoint

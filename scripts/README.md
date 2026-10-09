@@ -16,7 +16,7 @@ setup step nor a proof check.
 | Build selected Lean modules | [Lean setup and builds](../docs/REPRODUCIBILITY.md#2-reproduce-the-pinned-lean-environment) | [lean_fast_build.py](lean_fast_build.py) |
 | Check a documentation edit | [Documentation checks](../docs/REPRODUCIBILITY.md#check-a-documentation-change) | [check_cold_clone_comprehension.py](check_cold_clone_comprehension.py) |
 | Refresh generated maps | [Architecture and authority](../docs/ARCHITECTURE.md#which-file-is-authoritative-for-what) | [refresh_projections.py](refresh_projections.py) |
-| Validate a proposed release | [Release checks](../docs/REPRODUCIBILITY.md#3-run-the-release-surface-checks) | [check_release.py](check_release.py) |
+| Validate a proposed release | [Release checks](../docs/REPRODUCIBILITY.md#3-run-the-release-surface-checks) | [run_release_check.py](run_release_check.py) |
 
 By convention, `build_*.py` produce a named projection, `check_*.py` validate a
 contract, and `test_*.py` exercise program behaviour. Read a tool's help and its

@@ -3,159 +3,178 @@
 
 # Agent instructions
 
-Base repository status and instructions on this public checkout. Check primary
-sources for mathematical and prior-art claims; do not depend on private files.
-The [repository map](README.md#repository-map) explains the folders.
+Start here when acting on this checkout. [README.md](README.md) introduces the
+research to human readers. The [agent guide](docs/agents/AGENT_GUIDE.md) owns
+authority, change order and validation; open only the section your task needs.
 
-## Start with the task
+This is a self-contained public Lean repository. Use tracked public files;
+do not depend on sibling repositories, private caches or unpublished state.
 
-Run commands from the repository root. Route the actual request:
+## Route the task
+
+From the repository root:
 
 ```sh
 python3 scripts/agent_entry.py --entry "<task in ordinary language>"
 ```
 
-Open the returned `skills/<id>/SKILL.md` and smallest source set; follow local instructions.
-`python3 scripts/agent_entry.py --skills` lists `skills/registry.json`.
-Routes locate evidence; they do not prove it.
+The router returns a task lane, its smallest read set and the relevant
+`skills/<id>/SKILL.md`. `python3 scripts/agent_entry.py --skills` lists all
+workflows. Follow the selected workflow before making changes. Routing
+metadata helps navigation; it is not mathematical authority.
 
-Entry reports revision and edits. For latest-work tasks, run
-`python3 scripts/agent_entry.py --checkout --check-upstream`. Record the starting
-commit and preserve older work. [Setup and prompts](docs/agents/README.md#start-with-current-public-work).
+For latest-work tasks, run
+`python3 scripts/agent_entry.py --checkout --check-upstream`. Record the
+revision and preserve older work. The [agent quickstart](docs/agents/README.md#start-with-current-public-work)
+explains setup, provenance and prompts.
 
-## Read, investigate or choose a question
+## Find the mathematical evidence
 
-For mathematics and status:
+For mathematics, theorem status, progress or paper synthesis, query before
+reading broad papers or Lean files:
 
 ```sh
 python3 scripts/query_corpus.py --ask "<question>"
+python3 scripts/query_corpus.py --overview --format card
 ```
 
-For corpus-wide questions, use
-`python3 scripts/query_corpus.py --overview --format card` and follow its
-`answer_contract`. Cover the requested programmes and exact open boundaries;
-a flagship or theorem count does not stand for the corpus. If free text misses
-the question, use `python3 scripts/query_corpus.py --routes` to find a stable route.
+Use the overview for whole-corpus coverage. Follow its `answer_contract` and
+returned claim, remaining-open, declaration, module and paper handles. Keep
+hypotheses and exact open boundaries attached to each result. Never infer
+progress from theorem counts or one flagship example.
 
-Follow returned claim, paper and source handles. For learning, respect the
-requested depth: a hint request is not permission to reveal the proof or start
-proof search. [Reading guidance](skills/explain-public-system/SKILL.md#help-a-reader-work-through-an-argument).
+For a corpus-wide progress review, include these stable routes:
 
-For research:
+```sh
+python3 scripts/query_corpus.py --route instant_orientation
+python3 scripts/query_corpus.py --route erdos249_certificate_story
+python3 scripts/query_corpus.py --route erdos257_half_story
+python3 scripts/query_corpus.py --route browse_claim_status
+```
 
-- **Find what is worth developing:** [explore the corpus](skills/explore-the-corpus/SKILL.md).
-  Compare several papers and explain the selected direction.
-- **Attack a stated question:** [mine an open problem](skills/mine-open-problem/SKILL.md).
-  State hypotheses, obstruction and a decisive first test.
-- **Continue sustained research:** [coupled research goals](skills/run-coupled-research-goals/SKILL.md)
-  connects discovery with review and propagation.
-- **Add a sourced problem:** [add an open problem](skills/add-open-problem/SKILL.md).
-  Record its source and incubation status.
+If free text returns no semantic cells, use `python3 scripts/query_corpus.py --routes`
+and the applicable stable route. Select open work with
+`python3 scripts/query_corpus.py --open`. Lean refutes the exact Formal
+Conjectures #1041 path-image claim; correspondence with the 1958 wording remains
+unreviewed.
 
-`python3 scripts/query_corpus.py --open` lists recorded questions; research
-may also produce a new one.
+For learning, respect the requested depth: a hint request does not authorise
+revealing the proof or starting proof search. Follow the
+[reading guidance](skills/explain-public-system/SKILL.md#help-a-reader-work-through-an-argument).
+For prior work, read [PRIOR_ART.md](docs/PRIOR_ART.md), the paper's references
+and primary sources. Distinguish discovery, formalisation and reuse; model
+agreement does not establish novelty. Keep finite experiments attached to
+their inputs, bounds and recheck commands.
 
-For prior work, inspect [PRIOR_ART](docs/PRIOR_ART.md) and the selected paper's
-references, then primary papers and original discussions. Cite the exact source,
-edition and statement. Distinguish earlier work, formalisation, deduction and
-conjecture. State search limits; agent agreement does not establish novelty.
+### Proof work
 
-[Experiments](research/README.md) and [exact computations](computations/README.md)
-provide runnable examples. Preserve inputs, bounds, outputs and a recheck command.
-A finite search establishes only its finite conclusion. [Returned research](research_corpus/README.md)
-preserves dated investigations; check current status before relying on an old return.
-
-If delegating, give subagents bounded questions and disjoint write scopes. The integrating
-agent verifies their evidence and makes the final decisions.
-
-## Work with Lean or reproduce a check
-
-Start from the exact mathematical statement:
+Start from a typed mathematical handle, then cross into source:
 
 ```sh
 python3 scripts/query_corpus.py --goal-support "<Lean or mathematical goal>"
 python3 scripts/query_corpus.py --proof-plan "<Lean or mathematical goal>" --depth 4
 ```
 
-Verify applicability with Lean. Use the [proof-state guide](docs/agents/PROOF_STATE_COMPILER.md)
-for an actual goal and [land Lean proofs](skills/land-lean-proofs/SKILL.md)
-for its consumers. Before source edits, read the guide's
-[change order](docs/agents/AGENT_GUIDE.md#authority-and-change-order) and
-[validation](docs/agents/AGENT_GUIDE.md#validation).
+Verify returned declarations and hypotheses with Lean. Before editing, read
+`Authority and change order` and `Validation` in the
+[agent guide](docs/agents/AGENT_GUIDE.md). Read
+[METHODOLOGY.md](docs/METHODOLOGY.md) if public claim wording or status could
+change. [The Lean guide](lean/README.md) explains the two source libraries.
 
-[Reproducibility](docs/REPRODUCIBILITY.md) distinguishes checking a recorded
-claim trail, rerunning a computation and compiling Lean. [Verification files](verification/README.md)
-and [replay instructions](docs/verification/README.md) cover selected external
-statements; [evidence](evidence/README.md) holds recorded outcomes.
+### Papers and publication
 
-## Write papers, check attribution or prepare publication
+For paper choice, role, availability or reading order:
 
-For paper roles and reading order, run `python3 scripts/query_corpus.py --papers`.
-[Writing](skills/public-mathematical-writing/SKILL.md) governs exposition;
-[propagation](skills/propagate-research-consequences/SKILL.md) updates affected
-consumers. Preserve original-source and contributor credit. [CITATION.cff](CITATION.cff)
-covers the repository; [paper records](docs/papers/README.md) identify editions.
+```sh
+python3 scripts/query_corpus.py --papers
+```
 
-For external assurance and release qualification:
+[The paper index](docs/papers/README.md) is a navigation projection;
+`docs/papers/corpus.json` owns its machine inventory. After choosing a paper,
+follow its typed claim and source handles. The human reading catalogue is
+[paper/README.md](paper/README.md).
+
+For publication mutation, open `docs/publication_entry_packet.json` and its
+emitted contract. Run [public mathematical writing](skills/public-mathematical-writing/SKILL.md),
+then [consequence propagation](skills/propagate-research-consequences/SKILL.md)
+to reconcile companions, consumers and public guidance.
+
+For selected external checks:
 
 ```sh
 python3 scripts/query_corpus.py --route comparator_assurance
 python3 scripts/query_corpus.py --route palomar_qualification
 ```
 
-`comparator_assurance` reports selected statements, axioms and receipts; it
+Comparator reports configured statement, axiom and kernel checks; it
 does not establish novelty, significance, priority, or peer review.
-`palomar_qualification` reports local readiness and remaining decisions; it
-does not confer acceptance, registration, publication or endorsement.
-For publication changes, open `docs/publication_entry_packet.json`, then its
-emitted contract. This organises evidence; it does not prove a theorem.
+Qualification reports repository-local policy readiness and operator-only
+decisions; it does not confer acceptance, registration, publication or endorsement.
 
-## Improve tools, documentation or agent routes
+## Maintain the repository
 
-Use [infrastructure maintenance](skills/maintain-public-infrastructure/SKILL.md)
-and the [plain-language human guide](docs/ARCHITECTURE.md). [Repository tools](scripts/README.md)
-map tasks to commands. Reproduce a bad route before changing its owner;
-update affected links and checks. The [workbench](docs/agents/AGENT_WORKBENCH.md) holds details.
-Use `python3 scripts/proof_cockpit.py --format card` for a compact evidence view.
+For architecture, README, folder organization or agent routing, follow
+[maintain-public-infrastructure](skills/maintain-public-infrastructure/SKILL.md).
+[ARCHITECTURE.md](docs/ARCHITECTURE.md) explains folder ownership;
+[orientation](docs/ORIENTATION.md) provides generated navigation.
 
-## Authority and safe changes
+Use the bounded checks selected for the change:
 
-1. Lean source checked by the pinned Lean kernel establishes the exact formal
-   statement, under its assumptions.
-2. `docs/claims.json` owns public claim identity, status and remaining-open
-   propositions; it does not prove them.
+```sh
+python3 scripts/proof_cockpit.py --format card
+python3 scripts/test_compact_agent_entry.py
+python3 scripts/check_cold_clone_comprehension.py --quick
+python3 scripts/check_architecture_guide.py
+```
+
+Builders own generated files and marked regions. Change the source authority
+first and use the named builder/checker. Keep preserved research returns and
+immutable source citations attached to their recorded revisions.
+
+## Authority and mutation
+
+1. Lean source checked by the pinned Lean kernel is proof authority.
+2. `docs/claims.json` owns public claim identity, status, declarations and exact
+   remaining-open propositions.
 3. `docs/methodology.json` owns evidence responsibilities and claim-change rules.
-4. Generated maps and publication packets provide navigation.
-5. Papers explain the arguments within their stated evidence boundaries.
-6. Model output, plans and memory are working aids.
+4. Generated orientation, declaration, module and publication packets provide
+   navigation, not new mathematical evidence.
+5. Papers and human summaries explain work within the registered claim ceiling.
+6. Model output, plans, memory and drafts are working aids only.
 
-Use [METHODOLOGY](docs/METHODOLOGY.md) before changing public status.
-A new file or a passing navigation check creates no theorem.
+A paper edit cannot change a claim; a registry edit cannot prove a theorem;
+a passing navigation check cannot establish mathematics.
 
 - Preserve unrelated staged and unstaged work. Do not reset, restore, clean or
   broad-stage a shared checkout.
-- Edit source authorities before generated projections; run their owner builder.
 - Never add `sorry`, `admit`, project-defined `axiom`, `native_decide`,
   unsafe/partial declarations or unbounded kernel limits.
-- For Lean edits, use `python3 scripts/lean_fast_build.py --jobs 2 --changed-from HEAD`;
-  coordinate builds through [Lean validation](skills/lean-concurrent-validation/SKILL.md).
+- For Lean edits, use `python3 scripts/lean_fast_build.py --jobs 2 --changed-from HEAD`.
   Never overlap builds. Full Lean roots are release-only.
 
 ## Validate and return the work
 
-Run the focused checks for the change. Agent-entry work uses
-`python3 scripts/test_compact_agent_entry.py`; documentation uses
-`python3 scripts/check_cold_clone_comprehension.py --quick`.
-The [validation guide](docs/agents/AGENT_GUIDE.md#validation) owns the full gate
-and prerequisites. Do not rerun components after a full pass.
+Use the changed owner's focused checks while editing. README changes need both
+`python3 scripts/test_human_first_contact.py` and the cold-clone quick check:
+they enforce different reading budgets. Before publication, follow the
+[agent guide's validation contract](docs/agents/AGENT_GUIDE.md#validation),
+including source freshness and the prepared release gate.
 
-[CONTRIBUTING](CONTRIBUTING.md) accepts an ordinary issue or pull request.
-Use [research returns](skills/erdos-research-return/SKILL.md) for resumable work.
-Preserve the starting commit, delta, attribution, commands, outcomes and limits.
-Credit material integration changes separately. Report unresolved work.
+For a committed snapshot in a dirty shared checkout:
 
-[Submission](skills/submit-pull-request/SKILL.md) owns scoped commits, release
-admission and PR preparation. Local preparation is allowed; pushing, opening a
-PR or making an external submission requires explicit authorisation.
+```sh
+python3 scripts/check_release_ref.py --ref HEAD --receipt "$(pwd -P)/release-head.json"
+```
+
+Before packaging a stable change, give each plausible downstream consumer an
+explicit disposition through the consequence-propagation skill. For contributed
+or resumable research, read [erdos-research-return](skills/erdos-research-return/SKILL.md).
+Preserve the starting commit, original delta, evidence and credit. Reconcile
+older-clone work with current main; a material conflict resolution is a
+separately credited change. Keep the human account in the issue or pull request.
+
+Submission may commit locally. Pushing or opening a pull request requires
+explicit authorisation. Never require a private repository to produce or
+review a contribution.
 
 Do not absorb the complete deep contract merely to find the first action.

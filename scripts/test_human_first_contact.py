@@ -244,9 +244,14 @@ def main() -> None:
         "docs/claims.json" in readme,
         "README must route claim status to its canonical owner",
     )
+    # Keep Palomar service status tied to its record and distinguish local
+    # preparation checks from acceptance.
     require(
-        "Palomar" not in readme and "PALOMAR_RESULT_SHOWCASE.json" not in readme,
-        "README must not advertise Palomar as part of this public edition",
+        "](https://palomar-registry.org/)" in readme
+        and "](https://github.com/wcook04/plectis-erdos-lean#palomar-publication-surface)" in readme
+        and "](docs/verification/PALOMAR_QUALIFICATION.md)" in readme
+        and "passing those checks alone does not establish acceptance" in " ".join(readme.split()),
+        "README Palomar mention must link the service and evidence with its acceptance boundary",
     )
     require(
         "later models" not in readme,
@@ -273,8 +278,15 @@ def main() -> None:
         "README asks a cold reader to choose a checkout before showing the papers")
     require(
         "![Eight Erdős problem programmes:" in first_screen
-        and "](.github/system-map.png)" in first_screen,
+        and "](.github/maths-map.png)" in first_screen,
         "README opening lost the mathematical research-record banner",
+    )
+    diagram_position = readme.find("](.github/system-map.png)")
+    require(
+        readme.find("## Formal Conjectures contributions") < diagram_position
+        < readme.find("## Credit")
+        and "](.github/system-map.svg)" in readme,
+        "README must retain the explanatory diagram near the bottom and link its editable source",
     )
     for token in (
         "routes that stopped",

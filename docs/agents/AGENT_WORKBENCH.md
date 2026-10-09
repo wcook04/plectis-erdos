@@ -367,8 +367,9 @@ programmes among the neighbouring numbered problems, each external status as
 listed on its erdosproblems.com page.
 
 `python3 scripts/check_cold_clone_comprehension.py --quick` checks the
-reading surfaces without Lean; `python3 scripts/check_release.py` runs the
-full public-surface and query sweep.
+reading surfaces without Lean. For the full public-surface and query sweep,
+`python3 scripts/run_release_check.py` prepares the required environment;
+follow the [release instructions](../REPRODUCIBILITY.md#3-run-the-release-surface-checks).
 
 ## Recovered from the front page: how the repository fits together
 
@@ -441,13 +442,15 @@ build so a local proof iteration does not pay for unrelated generated modules.
 The dependency-index validator stores an exact `.lake` receipt: unchanged
 inputs make `--check` constant-time; `--check --full-check` forces an audit.
 
-The public release surfaces are checked separately:
+For the public release surfaces, follow the
+[release instructions](../REPRODUCIBILITY.md#3-run-the-release-surface-checks):
 
 ```sh
-python3 scripts/check_cold_clone_comprehension.py --quick
-python3 scripts/check_release.py
-python3 scripts/test_methodology_contract.py
+python3 scripts/run_release_check.py
 ```
+
+That entry runs the shared release gate, including the methodology checks.
+After it passes, there is no need to rerun its component tests.
 
 The pinned public Lean proof corpus contains no `sorry`, `admit`, project-defined
 `axiom`, or `native_decide`; finite computations use kernel-checked `decide`.

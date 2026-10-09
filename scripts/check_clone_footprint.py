@@ -94,6 +94,8 @@ READER_SPARSE_MANIFEST_PATH = ROOT / "scripts/reader-sparse-checkout"
 READER_SPARSE_PATTERNS = (
     "/.github/banner.png",
     "/.github/system-map.png",
+    "/.github/system-map.svg",
+    "/.github/maths-map.png",
     "/docs/agents/AGENT_WORKBENCH.md",
     "/docs/ARCHITECTURE.md",
     "/docs/ORIENTATION.md",

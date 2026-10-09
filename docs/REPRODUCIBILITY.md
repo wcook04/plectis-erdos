@@ -203,6 +203,7 @@ links before opening a pull request:
 
 ```sh
 python3 scripts/test_human_first_contact.py
+python3 scripts/check_cold_clone_comprehension.py --quick
 ```
 
 For a tooling change, also run that tool's test and include the result in the

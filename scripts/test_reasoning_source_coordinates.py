@@ -61,6 +61,38 @@ def check_comment_projection() -> None:
     require("hidden again" not in projected, "comment after escaped string survived")
 
 
+def check_batch_pressure(root: Path) -> None:
+    """Bound a real batch with requests and responses larger than pipe capacity."""
+    for index in range(512):
+        source = root / "Erdos249257" / f"Batch{index:04d}_{'long_name_' * 6}.lean"
+        source.write_text("/- " + "x" * 4096 + " -/\ntheorem pressure : True := by trivial\n")
+    run_git(root, "add", "Erdos249257")
+    run_git(root, "commit", "--quiet", "-m", "batch pressure fixture")
+    pin = run_git(root, "rev-parse", "HEAD")
+    completed = subprocess.run(
+        [sys.executable, str(Path(__file__).resolve()), "--batch-pressure-worker", str(root), pin],
+        capture_output=True,
+        text=True,
+        env=singleflight.command_environment(),
+        timeout=30,
+    )
+    require(completed.returncode == 0, f"large coordinate batch failed: {completed.stderr}")
+    require(completed.stdout.strip() == "512", "large coordinate batch lost sources")
+
+
+def batch_pressure_worker(root: Path, pin: str) -> int:
+    coordinates.ROOT = root
+    files = sorted(path.name for path in (root / "Erdos249257").glob("Batch*.lean"))
+    resolver = coordinates.Resolver(pin)
+    resolver.preload(files + ["Missing.lean"])
+    require(len(resolver.cache) == 512, "batch source inventory changed")
+    require("Missing.lean" in resolver.errors, "missing batch source was accepted")
+    for name in files:
+        require(resolver.declaration_line(name, "pressure") == 2, "batch coordinate drifted")
+    print(len(resolver.cache))
+    return 0
+
+
 def main() -> int:
     check_comment_projection()
     with tempfile.TemporaryDirectory(prefix="reasoning-coordinate-test-") as temporary:
@@ -220,6 +252,8 @@ def main() -> int:
             coordinates.ROOT = original_root
             coordinates.PARTS_DIRS = original_parts_dirs
 
+        check_batch_pressure(root)
+
     print(
         "test_reasoning_source_coordinates: stale declarations refresh to the pinned "
         "line, authored locations survive, missing declarations fail, and lean/ "
@@ -229,4 +263,6 @@ def main() -> int:
 
 
 if __name__ == "__main__":
+    if len(sys.argv) == 4 and sys.argv[1] == "--batch-pressure-worker":
+        raise SystemExit(batch_pressure_worker(Path(sys.argv[2]), sys.argv[3]))
     raise SystemExit(main())

@@ -17,7 +17,7 @@ and the [papers](../paper/README.md).
 | [Changing a premise](experiments/premise_exchange/README.md) | Experiments with transferring a proof to a related statement. |
 | [Prime-gap computations](experiments/erdos251/README.md) | The #251 computations, saved outputs and reproduction commands. |
 | [Sparse interpolation](experiments/sparse_interpolation/README.md) | Exact checks and counterexamples used in the cross-problem investigation. |
-| [All experiment folders](experiments/) | Further investigations grouped by problem or method. |
+| [Complete experiment index](experiments/README.md) | Further investigations grouped by problem or method. |
 
 A finite experiment establishes only its stated finite result. In particular,
 survival through a finite subsum search does not prove membership in the

@@ -40,10 +40,10 @@ ledger, or in `docs/paper_lean_docstring_exemptions.json` with a reason.
    count; that run keeps `queued_at` and replaces a hand-written row with the
    counted one.
 
-3. **Link the declaration where the statement is printed.** Nothing is written
-   under the statement. Each result's evidence is two margin links, "Lean" and
-   "Comparator", generated from the ledger into `paper/evidence/<paper>.tex`
-   and placed beside the result from its `\label`; the paper's evidence record
+3. **Link the declaration through the final verification concordance.** The
+   paper ends with generated "Lean" and "Comparator" links, keyed to each
+   result's `\label` and printed number. The ledger owns the entries in
+   `paper/evidence/<paper>.tex`; the paper's evidence record
    `evidence/<paper>.md` lists every declaration and check. Rebuild the paper
    with intermediates kept (`tectonic --keep-intermediates --outdir <dir> ...`)
    so the record can take the printed numbers from the `.aux`, then run
@@ -57,9 +57,10 @@ ledger, or in `docs/paper_lean_docstring_exemptions.json` with a reason.
    `evidence/relations.json`. Commit the records, set `record_commit` in
    `evidence/config.json` to that commit for a corpus-wide refresh, or set
    `record_commit_overrides[paper-id]` for one changed paper. Run the build
-   again so its margin links point at that commit, then rebuild its PDF.
-   The propagation check refuses a `\leannote` or a concordance block: that
-   apparatus was retired. When the Lean proof assumes an input the printed
+   again so its concordance links point at that commit, then rebuild its PDF.
+   The propagation check refuses legacy `\leannote` commands and manually
+   authored `% BEGIN GENERATED CONCORDANCE` blocks. The builder-owned final
+   concordance is the current evidence apparatus; do not recreate margin links. When the Lean proof assumes an input the printed
    statement does not, or covers only part of it, say so in plain words with
    `\evidenceremark{...}` directly after the environment's `\end{...}`.
 

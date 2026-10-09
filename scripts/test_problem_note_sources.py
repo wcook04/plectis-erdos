@@ -328,6 +328,63 @@ def test_large_git_batches_drain_without_request_pipe() -> None:
             require(len(cache) == len(queries), "large source batch lost query cardinality")
 
 
+def test_git_batch_large_responses_and_many_requests() -> None:
+    """Preserve complete blobs when requests and responses exceed pipe buffers."""
+    with tempfile.TemporaryDirectory(prefix="problem-note-git-batch-") as raw:
+        root = Path(raw)
+        folder = root / "lean" / "ErdosProblems"
+        folder.mkdir(parents=True)
+        expected: dict[str, str] = {}
+        for index in range(128):
+            name = f"{index:03d}_" + "x" * 180 + ".lean"
+            body = f"theorem fixture_{index} : True := by trivial\n"
+            if index == 0:
+                body = "-- large source line\n" * 100_000 + body
+            (folder / name).write_text(body, encoding="utf-8")
+            expected[f"ErdosProblems/{name}"] = body
+        with patch.object(scanner, "ROOT", root):
+            for args in [
+                ("init", "-q"),
+                ("add", "lean"),
+                ("-c", "user.name=Fixture", "-c", "user.email=fixture@example.invalid",
+                 "commit", "-q", "--no-gpg-sign", "-m", "batch fixture"),
+            ]:
+                result = scanner.git_run(*args)
+                require(result.returncode == 0, result.stderr)
+            commit = scanner.git_run("rev-parse", "HEAD").stdout.strip()
+            keys = [(commit, path) for path in expected]
+            missing = (commit, "ErdosProblems/Missing.lean")
+            cache: dict[tuple[str, str], list[str]] = {}
+            scanner.snapshot_lines_batch(keys + [missing, keys[0]], cache)
+            for key in keys:
+                require(cache[key] == expected[key[1]].splitlines(),
+                        f"batch lost or reordered blob bytes: {key[1]}")
+            require(cache[missing] == [], "missing snapshot blob became evidence")
+            disk_keys = [(commit, "lean/" + path) for path in expected]
+            require(scanner.objects_present(disk_keys + [missing]) == set(disk_keys),
+                    "batch-check lost present objects or admitted a missing one")
+
+
+def test_git_batch_timeout_closes_request_file() -> None:
+    handles = []
+
+    def timeout(args, **kwargs):
+        handles.append(kwargs["stdin"])
+        require(kwargs["timeout"] == scanner.singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+                "batch timeout was dropped")
+        raise scanner.subprocess.TimeoutExpired(args, kwargs["timeout"])
+
+    with patch.object(scanner.subprocess, "run", side_effect=timeout):
+        try:
+            scanner.run_cat_file_batch("--batch", [("a" * 40, "Missing.lean")])
+        except scanner.subprocess.TimeoutExpired:
+            pass
+        else:
+            raise AssertionError("batch timeout was hidden")
+    require(len(handles) == 1 and handles[0].closed,
+            "timed-out batch retained its temporary request file")
+
+
 def test_nested_layout_snapshot_falls_back_from_identity_path() -> None:
     nested_blob = "theorem nested : True\n"
     calls: list[str] = []
@@ -726,6 +783,8 @@ def main() -> int:
     test_git_snapshot_reads_use_clean_bounded_environment()
     test_git_snapshot_batch_uses_one_clean_bounded_process()
     test_large_git_batches_drain_without_request_pipe()
+    test_git_batch_large_responses_and_many_requests()
+    test_git_batch_timeout_closes_request_file()
     test_nested_layout_snapshot_falls_back_from_identity_path()
     test_margin_marks_reach_their_declarations_only_for_marked_results()
     test_visible_registered_companion_reachability()

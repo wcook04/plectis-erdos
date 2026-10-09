@@ -113,7 +113,7 @@ result and the next question it opens.
 
 ## Reading the eight together: Reading Eight Erdős Problems Together
 
-*When do choices of digits and supports fill intervals or force irrationality, and what do the resulting constructions reveal about methods used across the Erdős programmes?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/optimal-sparse-perturbations.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/synthesis/optimal-sparse-perturbations.pdf)
+*When do sparse integer digits fill intervals of values, when do they force irrationality or transcendence, and what does that show about the methods used across the Erdős problems?* [Full text](https://github.com/wcook04/plectis-erdos/blob/main/docs/papers/full-text/optimal-sparse-perturbations.md) · [PDF](https://github.com/wcook04/plectis-erdos/blob/main/paper/synthesis/optimal-sparse-perturbations.pdf)
 
 <a id="optimal-sparse-perturbations--optimal-sparse-perturbations"></a>
 

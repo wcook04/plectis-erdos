@@ -61,10 +61,11 @@
       "id": "corpus",
       "path": "docs/papers/corpus.json",
       "start_line": 1,
-      "end_line": 9326,
-      "sha256": "cdc77b3ad47c0b13a50158412194ff1cd993dbf7b6097f77f8da7317ec27bb6a",
-      "excerpt_sha256": "cdc77b3ad47c0b13a50158412194ff1cd993dbf7b6097f77f8da7317ec27bb6a",
-      "kind": "source"
+      "end_line": 9322,
+      "sha256": "2fed8ffecf54f93b5928f199291a7ad294a18a3e5046191d635081a4531d9cbf",
+      "excerpt_sha256": "2fed8ffecf54f93b5928f199291a7ad294a18a3e5046191d635081a4531d9cbf",
+      "kind": "source",
+      "custody_note": "Reviewed combined publication inventory on 8 October 2026: accepted system-paper diagrams from PRs #367 and #368, with the three existing paper metadata refreshes from PR #366. Citation, versioned-source and claim ceilings remain unchanged."
     },
     {
       "id": "counts",
@@ -484,19 +485,21 @@
       "id": "agent-entry",
       "path": "AGENTS.md",
       "start_line": 1,
-      "end_line": 161,
+      "end_line": 180,
       "kind": "source",
-      "sha256": "fd4d5d246731891853c4bf6dfa921637a28fb0a1c808213bae88f57c36cc37cb",
-      "excerpt_sha256": "fd4d5d246731891853c4bf6dfa921637a28fb0a1c808213bae88f57c36cc37cb"
+      "sha256": "4183ea0ac82bc253351b15c674ac22ccafeeb48ba565e7fb566fc8353888b710",
+      "excerpt_sha256": "4183ea0ac82bc253351b15c674ac22ccafeeb48ba565e7fb566fc8353888b710",
+      "custody": "Current public guide inspected after reader-entry reorganization on 8 October 2026. Routing, authority, evidence responsibilities and validation boundaries retained; references bind the full guide. No new mathematical or performance claim."
     },
     {
       "id": "workbench-guide",
       "path": "docs/agents/AGENT_WORKBENCH.md",
       "start_line": 1,
-      "end_line": 477,
+      "end_line": 480,
       "kind": "source",
-      "sha256": "b2c276c755b8ba301fbd43323ddcd379a5f29523ae07cf9eab438d0bccbf0544",
-      "excerpt_sha256": "b2c276c755b8ba301fbd43323ddcd379a5f29523ae07cf9eab438d0bccbf0544"
+      "sha256": "029f2b6a3d2361333cc9fac64230152e7b5e0ed7c8000f22c3c7f6424cff0817",
+      "excerpt_sha256": "029f2b6a3d2361333cc9fac64230152e7b5e0ed7c8000f22c3c7f6424cff0817",
+      "custody": "Current source reviewed on 8 October 2026 after consolidating cold-release guidance. Optional proof-session behavior and the R9 excerpt are unchanged. No new mathematical, execution or performance claim."
     },
     {
       "id": "contribution-guide",
@@ -548,10 +551,10 @@
       "kind": "source",
       "path": "docs/ARCHITECTURE.md",
       "start_line": 1,
-      "end_line": 150,
-      "sha256": "9cfff690ac9439ffb1a6e75c48892e835b426d325ae9d69e9b715f58963f4a9c",
-      "excerpt_sha256": "9133d275f6467b414f3dfb9c5be6ef343b21087433390a238624d8da538b50ef",
-      "custody": "Current native public file inspected as source; no fresh execution."
+      "end_line": 314,
+      "sha256": "e79a63ea29765fcba7455a5486d444436eced30378e797132a31e949a1d14f81",
+      "excerpt_sha256": "e79a63ea29765fcba7455a5486d444436eced30378e797132a31e949a1d14f81",
+      "custody": "Current public architecture guide inspected after reader-entry reorganization and addition of the Formal Conjectures source owner on 8 October 2026. Routing, authority, evidence responsibilities and validation boundaries retained; this binding covers the full guide. No new mathematical or performance claim."
     },
     {
       "id": "r8-entry",
@@ -569,9 +572,9 @@
       "path": "docs/agents/README.md",
       "start_line": 1,
       "end_line": 150,
-      "sha256": "3394f956d083f9532742c65b45222727ec21891beaa6a530e12ce0ff4ab3773b",
-      "excerpt_sha256": "3394f956d083f9532742c65b45222727ec21891beaa6a530e12ce0ff4ab3773b",
-      "custody": "Current native public file inspected as source; no fresh execution."
+      "sha256": "b1b07a6a4572056f7c7c0892e59a0d0899a9fa92fcd05a72d0b429fc46aa9f60",
+      "excerpt_sha256": "b1b07a6a4572056f7c7c0892e59a0d0899a9fa92fcd05a72d0b429fc46aa9f60",
+      "custody": "Current public quickstart inspected after moving general setup before the worked example on 8 October 2026. Clone, task selection, evidence routes and observation boundaries retained; this binding covers the complete guide. No new mathematical or performance claim."
     },
     {
       "id": "r8-lookup",
@@ -829,9 +832,9 @@
       "path": "docs/agents/AGENT_WORKBENCH.md",
       "start_line": 175,
       "end_line": 202,
-      "sha256": "b2c276c755b8ba301fbd43323ddcd379a5f29523ae07cf9eab438d0bccbf0544",
+      "sha256": "029f2b6a3d2361333cc9fac64230152e7b5e0ed7c8000f22c3c7f6424cff0817",
       "excerpt_sha256": "81134a83c49fab0e628fcb25d139a389b829e01c716dac0375b8e22342574d91",
-      "custody": "Type A current implementation inspection for R9 systems integration; no new probe run."
+      "custody": "Current source reviewed on 8 October 2026 after consolidating cold-release guidance. Optional proof-session behavior and the R9 excerpt are unchanged. No new mathematical, execution or performance claim."
     },
     {
       "id": "r11-prove2me-edition",

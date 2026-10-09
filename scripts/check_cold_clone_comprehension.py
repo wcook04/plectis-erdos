@@ -1197,7 +1197,7 @@ def validate_human_first_contact(
     require(last_problem >= positions[0], "README no longer exposes all eight papers under its paper index")
     require(
         "![Eight Erdős problem programmes:" in readme_prefix[:positions[0]]
-        and "](.github/system-map.png)" in readme_prefix[:positions[0]],
+        and "](.github/maths-map.png)" in readme_prefix[:positions[0]],
         "README opening lost the mathematical research-record banner",
     )
     require(
