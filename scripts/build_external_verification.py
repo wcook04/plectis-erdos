@@ -18,7 +18,9 @@ import os
 import re
 import stat
 import sys
+from datetime import datetime
 from pathlib import Path
+from urllib.parse import parse_qs, urlsplit
 
 from lean_source import (
     checkout_source_relative,
@@ -31,6 +33,7 @@ CLAIMS_PATH = ROOT / "docs/claims.json"
 PROBLEM_SOURCE_PATH = ROOT / "docs/problem_index_source.json"
 PROBLEM_PROJECTION_PATH = ROOT / "docs/problems.json"
 PALOMAR_SHOWCASE_PATH = ROOT / "docs/PALOMAR_RESULT_SHOWCASE.json"
+PALOMAR_REGISTRY_STATUS_PATH = ROOT / "docs/verification/palomar_registry_status.json"
 OUTPUTS = {
     "config": ROOT / "verification/comparator.json",
     "negative_config": ROOT / "verification/comparator-negative-mismatch.json",
@@ -1655,9 +1658,177 @@ def render_packet(
     return json.dumps(result, indent=2, ensure_ascii=False) + "\n"
 
 
-def render_qualification(signal_authority: dict) -> str:
+def validate_registry_status(status: dict) -> dict:
+    """Validate dated, exact external editions independently of local claims."""
+    if not isinstance(status, dict) or status.get("schema") != "plectis_palomar_registry_status_v1":
+        raise ValueError("Palomar registry status has an unsupported schema")
+
+    def text_field(row: dict, key: str) -> str:
+        value = row.get(key)
+        if not isinstance(value, str) or not value.strip() or value != value.strip():
+            raise ValueError(f"Palomar registry status requires {key}")
+        if any(c in value for c in "\r\n\x00"):
+            raise ValueError(f"Palomar registry status has invalid {key}")
+        return value
+
+    def observed(row: dict) -> datetime:
+        value = text_field(row, "observed_at")
+        try:
+            date = datetime.fromisoformat(value.replace("Z", "+00:00"))
+        except ValueError as exc:
+            raise ValueError("Palomar registry status requires a dated observation") from exc
+        if date.tzinfo is None:
+            raise ValueError("Palomar registry status observation requires a timezone")
+        return date
+
+    latest = observed(status)
+    text_field(status, "boundary")
+    entries = status.get("entries")
+    if not isinstance(entries, list) or not entries:
+        raise ValueError("Palomar registry status requires entries")
+    identities: set[tuple[str, str, str]] = set()
+    editions: set[str] = set()
+    for row in entries:
+        if not isinstance(row, dict):
+            raise ValueError("Palomar registry status entry must be an object")
+        for key in ("entry", "title", "observation_basis"):
+            text_field(row, key)
+        if observed(row) > latest:
+            raise ValueError("Palomar registry entry observation exceeds record date")
+        repository = text_field(row, "repository")
+        if repository != "wcook04/plectis-erdos-lean":
+            raise ValueError("Palomar registry status has an unexpected repository")
+        commit = text_field(row, "commit")
+        if not re.fullmatch(r"[0-9a-f]{40}", commit):
+            raise ValueError("Palomar registry status requires an immutable full commit")
+        for key in ("comparator_config_path", "formalization_metadata_path"):
+            path = text_field(row, key)
+            if not re.fullmatch(r"[A-Za-z0-9_./-]+", path) or any(
+                part in ("", ".", "..") for part in path.split("/")
+            ):
+                raise ValueError(f"Palomar registry status has invalid {key}")
+        if not row["comparator_config_path"].endswith(".json") or not row[
+            "formalization_metadata_path"
+        ].endswith((".yaml", ".yml")):
+            raise ValueError("Palomar registry status has invalid configuration paths")
+        identity = (repository, commit, row["comparator_config_path"])
+        if identity in identities:
+            raise ValueError("Palomar registry status duplicates an exact revision identity")
+        identities.add(identity)
+        problems = row.get("problem_ids")
+        if not isinstance(problems, list) or not problems or any(
+            not isinstance(p, str) or not re.fullmatch(r"erdos_[0-9]+", p) for p in problems
+        ) or len(set(problems)) != len(problems):
+            raise ValueError("Palomar registry status requires unique problem_ids")
+        names = row.get("theorem_names")
+        if not isinstance(names, list) or not names or any(
+            not isinstance(name, str) or not re.fullmatch(r"[A-Za-z_][A-Za-z0-9_'.]*", name)
+            for name in names
+        ) or len(set(names)) != len(names):
+            raise ValueError("Palomar registry status requires unique theorem_names")
+        run = text_field(row, "verification_run_url")
+        if not re.fullmatch(
+            r"https://github\.com/(?:wcook04/plectis-erdos-lean|"
+            r"PalomarRegistry/PalomarSubmission)/actions/runs/[0-9]+", run
+        ):
+            raise ValueError("Palomar registry status requires a verification run URL")
+        disposition = row.get("status")
+        if disposition not in ("registered", "registration_requested"):
+            raise ValueError("Palomar registry status has an invalid status")
+        if "registered_url" not in row:
+            raise ValueError("Palomar registry status requires registered_url")
+        if disposition == "registration_requested":
+            if row["registered_url"] is not None:
+                raise ValueError("Pending registration must not carry a registered URL")
+        else:
+            url = text_field(row, "registered_url")
+            parts = urlsplit(url)
+            query = parse_qs(parts.query)
+            if (
+                parts.scheme != "https"
+                or parts.netloc != "palomar-registry.org"
+                or parts.path not in ("/entry", "/entry.html")
+                or parts.fragment
+                or set(query) != {"id", "version"}
+                or len(query["id"]) != 1
+                or len(query["version"]) != 1
+                or not re.fullmatch(
+                    r"PALOMAR-[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]{6}", query["id"][0]
+                )
+                or not re.fullmatch(r"[1-9][0-9]*", query["version"][0])
+            ):
+                raise ValueError("Registered Palomar status requires an exact registry edition URL")
+            edition = query["id"][0] + "/v" + query["version"][0]
+            if edition in editions:
+                raise ValueError("Palomar registry status duplicates a registry edition")
+            editions.add(edition)
+    return status
+
+
+def load_registry_status() -> dict:
+    return validate_registry_status(json.loads(safe_text(PALOMAR_REGISTRY_STATUS_PATH)))
+
+
+def render_registry_status(status: dict) -> str:
+    status = validate_registry_status(status)
+
+    def prose(value: str) -> str:
+        return value.replace("&", "&amp;").replace("<", "&lt;").replace(
+            ">", "&gt;"
+        ).replace("|", "&#124;").replace("`", "&#96;").replace(
+            "[", "&#91;"
+        ).replace("]", "&#93;")
+
+    lines = [
+        "## Dated Palomar registry observations",
+        "",
+        f"Observed at {status['observed_at']}. [The public status record](palomar_registry_status.json) owns these dated observations.",
+        "",
+        prose(status["boundary"]),
+        "",
+        "Registration requests are pending and are not published registry editions. "
+        "Each observation binds the named repository, exact source commit, configuration "
+        "and selected declarations. It does not transfer to current main, update this "
+        "repository's selected candidate or claim status, or count new mathematics.",
+    ]
+    for row in status["entries"]:
+        base = f"https://github.com/{row['repository']}/blob/{row['commit']}/"
+        lines.extend(["", f"### {prose(row['entry'])}: {prose(row['title'])}", ""])
+        if row["status"] == "registered":
+            query = parse_qs(urlsplit(row["registered_url"]).query)
+            label = f"{query['id'][0]} v{query['version'][0]}"
+            lines.append(f"Status: **registered**, [{label}]({row['registered_url']}).")
+        else:
+            lines.append("Status: **registration requested; pending**.")
+        basis = {
+            "public_registry_and_authenticated_status": "public registry record and authenticated service status",
+            "maintainer_authenticated_status": "maintainer's authenticated service status",
+        }.get(row["observation_basis"], prose(row["observation_basis"]))
+        lines.extend([
+            f"Observed at {row['observed_at']}; {basis}.",
+            "",
+            f"- Repository: `{row['repository']}`; commit: `{row['commit']}`.",
+            f"- Problem identities: {', '.join('`' + p + '`' for p in row['problem_ids'])}.",
+            f"- [Comparator configuration]({base}{row['comparator_config_path']}): `{row['comparator_config_path']}`.",
+            f"- [Formalization metadata]({base}{row['formalization_metadata_path']}): `{row['formalization_metadata_path']}`.",
+            f"- [Recorded verification run]({row['verification_run_url']}).",
+            "",
+            "<details>",
+            "<summary>Exact selected declarations</summary>",
+            "",
+            *("- `" + name + "`" for name in row["theorem_names"]),
+            "",
+            "</details>",
+        ])
+    return "\n".join(lines) + "\n"
+
+
+def render_qualification(signal_authority: dict, registry_status: dict | None = None) -> str:
     """Project the selected interface; never infer a current service outcome."""
     selected = signal_authority["candidate_selection"]
+    external_status = render_registry_status(
+        load_registry_status() if registry_status is None else registry_status
+    )
     return f'''<!-- SPDX-FileCopyrightText: 2026 Will Cook -->
 <!-- SPDX-License-Identifier: Apache-2.0 -->
 <!-- Generated by scripts/build_external_verification.py; edit its owners. -->
@@ -1702,7 +1873,8 @@ The [13 September campaign record](../reference/PALOMAR_QUALIFICATION_2026-09-13
 preserves the earlier selection analysis and submission history. Current
 external status belongs to the separately identified repository units and
 service receipts. No command above submits or registers a result.
-'''
+
+{external_status}'''
 
 
 def build_outputs(
