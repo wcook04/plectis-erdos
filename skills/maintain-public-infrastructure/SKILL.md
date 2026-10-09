@@ -243,7 +243,8 @@ returns, generated projections, licence texts and test fixtures often need to
 remain separate. Improve missing folder indexes before renaming established
 proof or publication paths. Keep a real website/map preview linked to its live
 route, identify it as a dated capture, and update reader sparse-checkout paths
-and image licensing with the asset. Human introductions explain the work;
+and image licensing with the asset, including any linked editable source.
+Human introductions explain the work;
 agent entry gives commands, authority and validation. Verify both journeys at
 GitHub reading width and on a narrow screen.
 
