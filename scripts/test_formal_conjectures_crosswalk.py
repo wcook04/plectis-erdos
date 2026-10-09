@@ -121,6 +121,32 @@ class FormalConjecturesCrosswalkTest(unittest.TestCase):
         self.assertEqual(before["merged_mathematical"], after["merged_mathematical"])
         self.assertEqual(after["merged_authorship"], 0)
 
+    def test_maintenance_merge_does_not_count_the_same_results_again(self) -> None:
+        activity = copy.deepcopy(self.manifest["contribution_activity"])
+        row = next(r for r in activity["requests"] if r["kind"] == "proof_link_maintenance")
+        before = crosswalk.contribution_counts(activity)
+        row.update(state="MERGED", merged_at=activity["observed_at"])
+        self.assertEqual(crosswalk.contribution_activity_errors(activity), [])
+        after = crosswalk.contribution_counts(activity)
+        self.assertEqual(after["merged_mathematical"], before["merged_mathematical"])
+        self.assertEqual(after["open"], before["open"] - 1)
+        rendered = "\n".join(crosswalk.render_contribution_activity(activity))
+        link = f"**[#{row['number']} ·"
+        self.assertEqual(rendered.count(link), 1)
+        self.assertIn(link, rendered.split("### Proof-link maintenance")[1])
+
+    def test_reader_title_preserves_the_observed_external_title(self) -> None:
+        activity = copy.deepcopy(self.manifest["contribution_activity"])
+        row = next(r for r in activity["requests"] if r["kind"] == "proof_link_maintenance")
+        observed_title = row["title"]
+        rendered = "\n".join(crosswalk.render_contribution_activity(activity))
+        self.assertIn(row["display_title"], rendered)
+        self.assertNotIn(observed_title, rendered)
+        self.assertEqual(row["title"], observed_title)
+        row["display_title"] = ""
+        self.assertIn(f"contribution PR {row['number']}: display_title must be nonempty text",
+                      crosswalk.contribution_activity_errors(activity))
+
     def test_activity_rejects_unbound_or_inconsistent_observations(self) -> None:
         cases = [
             (lambda a: a["requests"][0].update(url="https://example.com/pull/1"), "URL must match"),

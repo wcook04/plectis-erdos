@@ -5,11 +5,11 @@ Follow the public Formal Conjectures contributions, then inspect the pinned stat
 
 ## Contribution activity
 
-Observed **2026-10-08T16:06:30Z** from the linked public pull requests.
+Observed **2026-10-09T22:36:29Z** from the linked public pull requests.
 
-**4 merged mathematical contributions · 9 open requests · 1 merged AUTHORS update.**
+**5 merged mathematical contributions · 9 open requests · 1 merged AUTHORS update.**
 
-A dated observation of public pull requests. Individual review, aggregate approval requirements and merge state are separate. A merge accepts the scoped upstream change, not every mathematical claim in this repository. The pinned statement comparison below retains its original source identity.
+A dated observation of public pull requests. Individual review, aggregate approval requirements and merge state are separate. A merge accepts the scoped upstream change, not every mathematical claim in this repository. Maintenance of existing proof links is listed separately and excluded from the merged mathematical contribution count. The pinned statement comparison below retains its original source identity.
 
 ### Merged mathematical contributions
 
@@ -45,6 +45,14 @@ Merged 2026-09-23.
 
 Latest individual review: [approved](https://github.com/google-deepmind/formal-conjectures/pull/6507#pullrequestreview-5287809168) on current head, 2026-09-23.
 
+**[#6529 · Erdős 257: add the reciprocal-summable support variant](https://github.com/google-deepmind/formal-conjectures/pull/6529)**
+
+Erdős’s classical coprimality-free result: an infinite support with summable reciprocals gives an irrational series at every integer base at least two. The merged subtype formulation links its verified adapter; the unrestricted question remains open.
+
+Merged 2026-10-09.
+
+Latest individual review: [approved](https://github.com/google-deepmind/formal-conjectures/pull/6529#pullrequestreview-5462549186) on an earlier head, 2026-10-08.
+
 ### Open requests
 
 **[#6522 · Set Erdős 269 rationality variant to false](https://github.com/google-deepmind/formal-conjectures/pull/6522)**
@@ -79,14 +87,6 @@ Open; aggregate review decision: **review required**.
 
 Latest individual review: [commented](https://github.com/google-deepmind/formal-conjectures/pull/6528#pullrequestreview-5434950823) on an earlier head, 2026-10-06.
 
-**[#6529 · Erdős 257: add the reciprocal-summable support variant](https://github.com/google-deepmind/formal-conjectures/pull/6529)**
-
-Reciprocal-summable support variant with classical attribution retained; the unrestricted question remains open.
-
-Open; aggregate review decision: **review required**.
-
-Latest individual review: [approved](https://github.com/google-deepmind/formal-conjectures/pull/6529#pullrequestreview-5435090546) on current head, 2026-10-06.
-
 **[#6576 · Erdős 1041: add sharp normalized collinear gap variant](https://github.com/google-deepmind/formal-conjectures/pull/6576)**
 
 Sharp product-height bound for normalized real roots and a whole adjacent interval; separate from the merged negative answer for general paths.
@@ -109,7 +109,7 @@ For rational-valued observables modulo 2^k, the binary series is rational exactl
 
 Open; aggregate review decision: **review required**.
 
-Latest individual review: [approved](https://github.com/google-deepmind/formal-conjectures/pull/6579#pullrequestreview-5435222238) on current head, 2026-10-06.
+Latest individual review: [approved](https://github.com/google-deepmind/formal-conjectures/pull/6579#pullrequestreview-5435222238) on an earlier head, 2026-10-06.
 
 **[#6780 · Add fixed-base geometric-moment Hankel asymptotic](https://github.com/google-deepmind/formal-conjectures/pull/6780)**
 
@@ -119,6 +119,14 @@ Open; aggregate review decision: **review required**.
 
 Latest individual review: [commented](https://github.com/google-deepmind/formal-conjectures/pull/6780#pullrequestreview-5446498053) on current head, 2026-10-07.
 
+### Proof-link maintenance
+
+**[#6971 · Update four proof links to kernel-checked sources](https://github.com/google-deepmind/formal-conjectures/pull/6971)**
+
+Updates four already accepted proof links to immutable sources checked by Lean and NanoDa in the cited Palomar runs. This maintains their evidence links; it adds no new mathematical result.
+
+Open; aggregate review decision: **review required**.
+
 ### Authorship and closed requests
 
 **[#6578 · Add Will Cook to AUTHORS](https://github.com/google-deepmind/formal-conjectures/pull/6578)**
@@ -126,6 +134,8 @@ Latest individual review: [commented](https://github.com/google-deepmind/formal-
 Administrative attribution: adds Will Cook to AUTHORS; excluded from the mathematical contribution count.
 
 Merged 2026-09-24.
+
+Latest individual review: [approved](https://github.com/google-deepmind/formal-conjectures/pull/6578#pullrequestreview-5309248110) on current head, 2026-09-24.
 
 Exact target names, reviewed commits and observation fields are recorded in [the crosswalk source](../formal_conjectures_crosswalk.json). Open the linked request for subsequent activity.
 

@@ -477,7 +477,7 @@ def contribution_activity_errors(activity: Any) -> list[str]:
     if not isinstance(requests, list) or not requests:
         return errors + ["contribution_activity requests must be a nonempty list"]
     seen: set[int] = set()
-    kinds = ("proof_link", "status_correction", "solved_variant", "research_statement", "authorship")
+    kinds = ("proof_link", "proof_link_maintenance", "status_correction", "solved_variant", "research_statement", "authorship")
     for row in requests:
         if not isinstance(row, dict):
             errors.append("contribution_activity request must be an object")
@@ -497,6 +497,10 @@ def contribution_activity_errors(activity: Any) -> list[str]:
         for field in ("title", "scope"):
             if not isinstance(row.get(field), str) or not row[field].strip():
                 errors.append(f"{label}: {field} must be nonempty text")
+        if "display_title" in row and (
+            not isinstance(row["display_title"], str) or not row["display_title"].strip()
+        ):
+            errors.append(f"{label}: display_title must be nonempty text")
         targets = row.get("targets")
         if not isinstance(targets, list) or not targets or not all(
             isinstance(target, str) and target.strip() for target in targets
@@ -540,7 +544,7 @@ def contribution_activity_errors(activity: Any) -> list[str]:
 def contribution_counts(activity: dict[str, Any]) -> dict[str, int]:
     rows = activity["requests"]
     return {
-        "merged_mathematical": sum(r["state"] == "MERGED" and r["kind"] != "authorship" for r in rows),
+        "merged_mathematical": sum(r["state"] == "MERGED" and r["kind"] not in ("authorship", "proof_link_maintenance") for r in rows),
         "merged_authorship": sum(r["state"] == "MERGED" and r["kind"] == "authorship" for r in rows),
         "open": sum(r["state"] == "OPEN" for r in rows),
     }
@@ -556,9 +560,10 @@ def render_contribution_activity(activity: dict[str, Any]) -> list[str]:
         activity["boundary"], "",
     ]
     groups = [
-        ("Merged mathematical contributions", lambda r: r["state"] == "MERGED" and r["kind"] != "authorship"),
-        ("Open requests", lambda r: r["state"] == "OPEN"),
-        ("Authorship and closed requests", lambda r: r["kind"] == "authorship" and r["state"] != "OPEN" or r["state"] == "CLOSED"),
+        ("Merged mathematical contributions", lambda r: r["state"] == "MERGED" and r["kind"] not in ("authorship", "proof_link_maintenance")),
+        ("Open requests", lambda r: r["state"] == "OPEN" and r["kind"] != "proof_link_maintenance"),
+        ("Proof-link maintenance", lambda r: r["kind"] == "proof_link_maintenance"),
+        ("Authorship and closed requests", lambda r: r["kind"] != "proof_link_maintenance" and (r["kind"] == "authorship" and r["state"] != "OPEN" or r["state"] == "CLOSED")),
     ]
     for heading, select in groups:
         rows = [row for row in activity["requests"] if select(row)]
@@ -566,7 +571,8 @@ def render_contribution_activity(activity: dict[str, Any]) -> list[str]:
             continue
         lines.extend([f"### {heading}", ""])
         for row in rows:
-            lines.extend([f"**[#{row['number']} · {row['title']}]({row['url']})**", "", row["scope"], ""])
+            title = row.get("display_title", row["title"])
+            lines.extend([f"**[#{row['number']} · {title}]({row['url']})**", "", row["scope"], ""])
             if row["state"] == "MERGED":
                 lines.extend([f"Merged {row['merged_at'][:10]}.", ""])
             else:
