@@ -96,9 +96,8 @@ AI agents did most of the research and drafting. I built and directed the
 infrastructure and reviewed claims when I could; I have not independently
 verified every claim. I maintain the sources and take responsibility for
 correcting the public record. Novelty and significance need human judgement.
-Selected contributions have received independent review through
-[Formal Conjectures](#formal-conjectures-contributions); the corpus as a whole
-has not received independent mathematical review.
+Selected contributions have [independent reviews](#formal-conjectures-contributions);
+review does not cover the whole corpus.
 The [system paper](paper/systems/claim-faithful-publication-systems-paper.pdf)
 explains how the repository records results and corrections and credits contributors.
 
@@ -247,28 +246,17 @@ order without asking you to decode Lean declaration names first.
 
 ## Formal Conjectures contributions
 
-As of **9 October 2026**, five mathematical contributions have merged:
-proof links for solved variants of Erdős's 1948 theorem in
-[#257](https://github.com/google-deepmind/formal-conjectures/pull/6506),
-[#258](https://github.com/google-deepmind/formal-conjectures/pull/5034) and
-[#1049](https://github.com/google-deepmind/formal-conjectures/pull/6507), plus the
-[#1041 correction](https://github.com/google-deepmind/formal-conjectures/pull/6505)
-based on ani's counterexample, and the
-[#257 reciprocal-summable support variant](https://github.com/google-deepmind/formal-conjectures/pull/6529).
-The last is Erdős's classical coprimality-free result for every integer base
-at least two; it does not settle the question for arbitrary infinite supports.
+As of **9 October 2026**, [five mathematical contributions](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#merged-mathematical-contributions)
+have merged into Formal Conjectures. The latest,
+[#6529](https://github.com/google-deepmind/formal-conjectures/pull/6529), adds
+Erdős's reciprocal-summable support variant for every integer base at least two;
+arbitrary infinite supports remain open.
 
-For #6529, [Bo Cowgill's review](https://github.com/google-deepmind/formal-conjectures/pull/6529#pullrequestreview-5435090546)
-checked the statement against Erdős's source and independently replayed the
-original linked Lean proof. The merged formulation uses the subtype notation
-requested by Moritz Firsching and links its separately verified adapter.
-This review and acceptance concern that precise contribution.
-
-The
-[contribution record](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#contribution-activity)
-separates merged mathematical changes, open requests, maintenance of existing
-proof links and the AUTHORS update, with each request's scope and dated review
-state. An open request has not been accepted. [Trace the #1041 Lean proof](docs/case-studies/formal-conjectures-1041.md).
+[Bo Cowgill's review](https://github.com/google-deepmind/formal-conjectures/pull/6529#pullrequestreview-5435090546)
+checked source correspondence and independently replayed the original proof.
+The [contribution record](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#contribution-activity)
+separates accepted changes, pending requests, proof-link maintenance and authorship.
+[Trace the #1041 Lean proof](docs/case-studies/formal-conjectures-1041.md).
 
 The [Prove2Me #243/#257 proof packets](docs/research-commons/README.md#native-prove2me-theorems)
 and [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean) provide

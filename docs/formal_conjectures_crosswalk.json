@@ -801,14 +801,15 @@
           "Erdos257.erdos_257.variants.tsum_top",
           "Erdos1049.erdos_1049.variants.geq_2_integer"
         ],
-        "scope": "Updates four already accepted proof links to independently verified source declarations. This maintains their evidence links; it adds no new mathematical result and is not another merged mathematical contribution.",
+        "scope": "Updates four already accepted proof links to immutable sources checked by Lean and NanoDa in the cited Palomar runs. This maintains their evidence links; it adds no new mathematical result.",
         "url": "https://github.com/google-deepmind/formal-conjectures/pull/6971",
         "title": "Update four proof links to independently verified sources",
         "state": "OPEN",
         "head": "b47d6ce7ebabf79193826fad5b14b13e44f9c786",
         "merged_at": null,
         "review_decision": "REVIEW_REQUIRED",
-        "reviews": []
+        "reviews": [],
+        "display_title": "Update four proof links to kernel-checked sources"
       }
     ]
   }

@@ -121,9 +121,9 @@ Latest individual review: [commented](https://github.com/google-deepmind/formal-
 
 ### Proof-link maintenance
 
-**[#6971 · Update four proof links to independently verified sources](https://github.com/google-deepmind/formal-conjectures/pull/6971)**
+**[#6971 · Update four proof links to kernel-checked sources](https://github.com/google-deepmind/formal-conjectures/pull/6971)**
 
-Updates four already accepted proof links to independently verified source declarations. This maintains their evidence links; it adds no new mathematical result and is not another merged mathematical contribution.
+Updates four already accepted proof links to immutable sources checked by Lean and NanoDa in the cited Palomar runs. This maintains their evidence links; it adds no new mathematical result.
 
 Open; aggregate review decision: **review required**.
 
