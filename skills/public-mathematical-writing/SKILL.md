@@ -238,6 +238,12 @@ These are practical adaptations, not endorsements or a claim that a passing
 check establishes good mathematical writing. Credit supplied examples, directions,
 proof ideas and corrections at their actual points of use.
 
+Name a private correspondent in public acknowledgements only after recorded
+consent to that exact credit. Until then, withhold the acknowledgement or use
+the approved anonymous contribution record. A private exchange or useful advice
+does not itself grant naming permission. Preserve citations and authorship of
+published research; those are separate from personal acknowledgements.
+
 The motivation test also draws on Grant Sanderson's
 [essay on explanations](https://terrytao.wordpress.com/2026/09/18/if-math-is-more-than-proof-we-need-to-better-celebrate-the-rest-of-it/).
 An expository contribution can clarify a known theorem. Judge it for its named

@@ -2274,7 +2274,7 @@ Will Cook directed the work. AI agents did most of the research and drafting. Co
 
 #### Acknowledgements.
 
-We thank Wouter van Doorn for advice on exposition: reducing private terminology, removing unnecessary notation, and explaining the strength of conditional hypotheses. His comments concerned a different manuscript, on Erdős #243; this acknowledgement does not attribute mathematical review or endorsement of the present work to him. Steve Fan’s forum post of 26 June 2026 supplied the two-prime factorisation and its Hecke–Mahler reduction before this manuscript; it also records the elementary running-LCM identity for finite prime sets \[fan2026comment\]. The transcendence input is due to Yann Bugeaud and Michel Laurent and to the earlier work of Loxton and van der Poorten cited by them. The problem numbering and its status as of 28 July 2026 are taken from the Erdős Problems catalogue maintained by Thomas Bloom \[erdosproblems\].
+Steve Fan’s forum post of 26 June 2026 supplied the two-prime factorisation and its Hecke–Mahler reduction before this manuscript; it also records the elementary running-LCM identity for finite prime sets \[fan2026comment\]. The transcendence input is due to Yann Bugeaud and Michel Laurent and to the earlier work of Loxton and van der Poorten cited by them. The problem numbering and its status as of 28 July 2026 are taken from the Erdős Problems catalogue maintained by Thomas Bloom \[erdosproblems\].
 
 <a id="long269:long:extended"></a>
 

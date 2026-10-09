@@ -756,7 +756,7 @@ This work received no external funding. The author declares no competing interes
 
 #### Acknowledgements.
 
-The problem numbering follows the catalogue maintained by Thomas Bloom \[erdosproblems\]. I thank Wouter van Doorn for advice on writing for a first-time reader and explaining the force of a hypothesis.
+The problem numbering follows the catalogue maintained by Thomas Bloom \[erdosproblems\].
 
 <div class="thebibliography">
 

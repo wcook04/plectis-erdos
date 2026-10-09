@@ -3015,7 +3015,7 @@ This work received no external funding. The author declares no competing interes
 
 #### Acknowledgements.
 
-The problem numbering and status follow the Erdős Problems catalogue maintained by Thomas Bloom \[erdosproblems\]. I thank Wouter van Doorn for advice on writing for a first-time reader, using fewer names and symbols, and explaining the force of a theorem’s hypotheses.
+The problem numbering and status follow the Erdős Problems catalogue maintained by Thomas Bloom \[erdosproblems\].
 
 <a id="long1049:app:index"></a>
 

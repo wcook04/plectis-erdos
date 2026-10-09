@@ -7056,12 +7056,6 @@ The [evidence record](https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3
 
 Kernel checking validates a formal proof of its stated proposition relative to the declared axioms. It does not check that every prose summary has the same hypotheses or verify the literature comparisons. In particular, a checked implication with an unproved hypothesis is not a proof that Problem 249 is solved.
 
-<a id="acknowledgements."></a>
-
-#### Acknowledgements.
-
-I thank Wouter van Doorn for advice on writing for a first-time reader and on explaining the strength of a hypothesis. His advice concerned a different note; it was not a mathematical review or endorsement of the results presented here.
-
 <a id="funding-and-competing-interests."></a>
 
 #### Funding and competing interests.

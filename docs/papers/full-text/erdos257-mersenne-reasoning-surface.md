@@ -5854,12 +5854,6 @@ The verification concordance lists the formal proofs by statement. *Lean* links 
 
 Links marked <span class="smallcaps">Lean source</span> identify the declaration associated with a statement or proof step. The integer-quotient proof for $`1/21`$ and other arguments without a formal link remain ordinary proofs; no new formal or independent human verification is claimed here. The linked records identify the propositions and source revisions checked.
 
-<a id="acknowledgements"></a>
-
-### Acknowledgements
-
-I thank Wouter van Doorn for advice on mathematical exposition, especially on making restrictive hypotheses intelligible, avoiding unnecessary notation, and writing for a first-time reader. His comments concerned a note on Problem 243; this acknowledgement does not imply review of the mathematics of the present paper.
-
 <a id="statements-and-declarations"></a>
 
 ### Statements and declarations

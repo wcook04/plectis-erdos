@@ -2,24 +2,24 @@
   "boundary": "Checks registered asserting environments and registered claim spans. Unregistered prose assertions, mathematical equivalence, correctness of ordinary proofs, Lean compilation, Comparator replay and PDF freshness are not established by this audit.",
   "global_findings": [],
   "input_sha256": {
-    "docs/paper_lean_coverage.json": "sha256:e46f063f93e1377776d485c9d9e5992ddcc97b1cabcf88e88e7a2df7b55db35d",
-    "docs/papers/corpus.json": "sha256:2fed8ffecf54f93b5928f199291a7ad294a18a3e5046191d635081a4531d9cbf",
-    "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md": "sha256:0a8cc6fdb56d6892a6f5f34d423f925afd50336525c66a0efed93c2511c96964",
-    "docs/papers/full-text/erdos-1049-rational-base-lambert.md": "sha256:c10103c0f78d66e68617f4c57c08e0414291eff4ced80bc56c8e4a15c6b5ae43",
-    "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md": "sha256:39374c6f6dd3819ffb0f92277340c5c242e2ad2099e588a0aa01448550dddde7",
-    "docs/papers/full-text/erdos-249-binary-totient-series.md": "sha256:ba560a3874b5bad44df049651bf81a8262fcb9dcdfb2535216dccbcebbc1beb3",
-    "docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md": "sha256:25e3ae97d7b600a641ef05a6e51c907be2b53b7c6af24a3adf837a9857307888",
-    "docs/papers/full-text/erdos-257-mersenne-support-subseries.md": "sha256:023b532b4687ddcb579311a319fedd10ed6870192a36be46e37ce1297dfc9973",
-    "docs/papers/full-text/erdos-269-three-prime-running-lcm.md": "sha256:96c1b3ca8fa473ea65511b700b3838cec16e6b9e7a8e29a8f1c0b2b8ce3f7b8d",
-    "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md": "sha256:5c6673d1e74c80a1d40939b2ded578d73d4cac9527b6313b80f9fb4c0b818d50",
-    "docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md": "sha256:485a5e5896e808d3b55909de9dea756831587cc7b14343a9e09d49334a097b5d",
-    "docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md": "sha256:a47d7825084c8c1aacf9e9ebb132ab513339cb2e239237f5c8535a9cce87720a",
-    "docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md": "sha256:fca20a9f823c0d3d5a430df1ad446e0185ff56064b1e9be91c392fee23b783ab",
-    "docs/papers/full-text/erdos249-totient-reasoning-surface.md": "sha256:b2e81802a4ff109ff06d603b7ec0ceb7fd698ed2f3a0251414d9959775c4255a",
-    "docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md": "sha256:7f13d04205ccd8b8806ef037b185bb8ea39299d7e66507ac42aa9f560041b791",
-    "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md": "sha256:ceb8cf732c7ff7bdf310bc047d0165f6b4acf85f8fada92c9718d77b390a48cb",
-    "docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md": "sha256:8706d4b64902412164435234f796f59a6b79d55bf462faea86ba52b7bc4cbf77",
-    "docs/papers/full-text/erdos68-factorial-reasoning-surface.md": "sha256:ff99ad375b9769e5c722b0bfe5d68926550944f778841b90e3a3e935bc30b6fa",
+    "docs/paper_lean_coverage.json": "sha256:633921ae2018e3e674609382150b4733ae6f071793a1589a1ab7f0b4985878a9",
+    "docs/papers/corpus.json": "sha256:b6d4a6fd436510bddc381dbc9b8465264a2f66d3116505d69545be207e84bd93",
+    "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md": "sha256:7dc4375c831e4685ba89f813497fc0f4857b505cc64586494d8146f62fe75b40",
+    "docs/papers/full-text/erdos-1049-rational-base-lambert.md": "sha256:e6294a6452eaf9466a68fa3b4fae19d3f38a671a22d83f0652d8118c2b515e33",
+    "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md": "sha256:ab781d8d68696226c4756ae32026da1c74141032b99578f5ec1306ed826f441c",
+    "docs/papers/full-text/erdos-249-binary-totient-series.md": "sha256:1591708033b30c67dd1d2986b48cf092d0886ecdba44556e7a5b7456786fe365",
+    "docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md": "sha256:129550fe3a05d5b2d6167b83320d237fee5c766719c8519db7e66e50ff1e1482",
+    "docs/papers/full-text/erdos-257-mersenne-support-subseries.md": "sha256:4dea66454c5e2f2821c75f66f6ba0b92d929a63960bb87185f424485667f9699",
+    "docs/papers/full-text/erdos-269-three-prime-running-lcm.md": "sha256:b6da5eb4b8e7a1b59f8adb86c2094f97bed31792fb6fa55e0993c88651f620b7",
+    "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md": "sha256:676a803dd74ed09a0601b852cf7252c2984a871d2a3c9f90c8fbe25e54d3919b",
+    "docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md": "sha256:2b1cb8e3245b076ec7bd450ad62779798cd53af61fad8b77551faa4fd1e2f3ba",
+    "docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md": "sha256:128b9e7de3a0c831e80ce289a59ce819de2e7bc33e49f20159adfc41cd92c7f7",
+    "docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md": "sha256:435be332cfca0d4b20d80b7ccacc6290a4e35b0c8146f305f964eda762a1ffe6",
+    "docs/papers/full-text/erdos249-totient-reasoning-surface.md": "sha256:f55d25c25caf6bfb807366d660948d5dd2e8524728a7f0e844a15e92c57f77a0",
+    "docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md": "sha256:b6a1a5178cb886563adadac503c1b766f685d8378640e169fa392105d45094ee",
+    "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md": "sha256:f995c1e3fed236da546f06fc7b5374ecd71bcaea32ac7a6561a9bbc7a419324a",
+    "docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md": "sha256:5aee6ff96472fa74981a0f440c87cfc7dd4ca732cfea4014280e2c67c6dcfab4",
+    "docs/papers/full-text/erdos68-factorial-reasoning-surface.md": "sha256:87687c6fec335a3620fe6b020fc1cd7fa75b8b73c524973bb096c847156268cc",
     "docs/papers/paper_corpus_renderer.py": "sha256:0b3086a102dbc91a018ebe732e8c93456f81e1fccd467ce37adccc1f3edd8134",
     "evidence/paper_evidence.json": "sha256:8c7de6f8f5e082fa91698d0c8314620207603080c348a526aa31fa250042b423",
     "lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean": "sha256:c6174888a3c59acf20f827b01a42bbffce05112eb7c7a3f30350dc1af0fb8f19",
@@ -46,22 +46,22 @@
     "lean/ErdosProblems/Erdos269/PaperR7BasicAssembly.lean": "sha256:a65d953d4bc0fba1b4d9d79cc6366fa96dae92f2943ad00e2b3f89831ff2d02f",
     "lean/ErdosProblems/Erdos269/PaperR7FiniteCutRank.lean": "sha256:08065a305dc94b6b85f6a6cdf90c368a2761d0672629bb37f6b6b4577c04a3b6",
     "lean/ErdosProblems/Erdos269/ThreePrimeRunningLcm.lean": "sha256:769d80481465f4fd8655d5d62c5eb3e372c80c39b0722e80659bf4e150c6c036",
-    "paper/1041/erdos-1041-lemniscate-newton-flow.tex": "sha256:32fcdf96311d4320bfff7664a4ed642ff60406e6b4a20f353639ecb58e9a750b",
-    "paper/1041/erdos1041-lemniscate-reasoning-surface.tex": "sha256:72bba6bb63978a73d92b50a49cdd573f883c7c247baa3de88c70858aacefc349",
-    "paper/1049/erdos-1049-rational-base-lambert.tex": "sha256:1e83c153261cea0f1223abad449d57feca8edb8bdb14d17800aa3eb97f9a1b49",
-    "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex": "sha256:b3e81fd9513b713a2be7b59524dad08e5615b9abe6854f9d895164ce85483ae9",
-    "paper/243/erdos-243-reciprocal-tail-rigidity.tex": "sha256:774cae684af8d05776bb2fa5c66ed7d3e94bca241475cee186be1079383224a8",
-    "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex": "sha256:3620f60f31463a8399822e2626556524215a94f6f93e410b183b522764fc7a37",
-    "paper/249/erdos-249-binary-totient-series.tex": "sha256:45531de741b5525accf94e61770819fee824765544f5c1751688321ef5d9cebf",
-    "paper/249/erdos249-totient-reasoning-surface.tex": "sha256:e9e5032bdc4824ed696914d222ebf808bd7171e3209cbcbae335bae3f1ecae15",
-    "paper/251/erdos-251-prime-gap-dyadic-series.tex": "sha256:8d5c19e16d872f1f3d82e83965d33b8385dbcd028b0981d10a6ab2797c2e9c41",
-    "paper/251/erdos251-prime-gap-reasoning-surface.tex": "sha256:648e558fb987171119d8be1eb2f408bbf90b0f25ab08ed60b3fe37ef7bd86a36",
-    "paper/257/erdos-257-mersenne-support-subseries.tex": "sha256:d72b79f31d5438b24af1f4c73ddc357234412a30f0a8af857e7e5af85acba8b3",
-    "paper/257/erdos257-mersenne-reasoning-surface.tex": "sha256:185074ce31bacd2b3ab803ae1982face22f6951d82ae97d7c951fad2083325e6",
-    "paper/269/erdos-269-three-prime-running-lcm.tex": "sha256:abf6eb8736c95b8ba4c0d4ba1cb6c4bc7fd5913dd3789e620fbd9d36d7d4b4b5",
-    "paper/269/erdos269-running-lcm-reasoning-surface.tex": "sha256:4643ae2207eb93d262efa25a1a4d0ba0e536155e44c894cbf0f4f0dd58ad6909",
-    "paper/68/erdos-68-factorial-denominator-irrationality.tex": "sha256:eedffe484fe5a8dd349b199219f49f255c8904744befd44b212c813b041a998f",
-    "paper/68/erdos68-factorial-reasoning-surface.tex": "sha256:3d0cf61f2dfde956a247f546a2649788b3e0f7edbb220d3d296c94ec7736f717",
+    "paper/1041/erdos-1041-lemniscate-newton-flow.tex": "sha256:f96e8e7b67243a5bf67e1d0d4a80c8e36422cdda12a12f67d49e3f0181389d2f",
+    "paper/1041/erdos1041-lemniscate-reasoning-surface.tex": "sha256:4bee9a881dbbe9404db6c711ef9ecb60f7ce5b9493b754c4057a8324cc9d95d5",
+    "paper/1049/erdos-1049-rational-base-lambert.tex": "sha256:7d9bf99ea6b7e699659aa4cf7cf6f2bd9edcfcc08b518346472d1df9f7fb22e7",
+    "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.tex": "sha256:1f04580702ed8f8cb553b617b264f9654eb525828225c9ea81204f1db65b18bc",
+    "paper/243/erdos-243-reciprocal-tail-rigidity.tex": "sha256:b393a9190d51137fb1ba6d3ba15bb1915219b468de6fe7279cbfaec46abd9b9c",
+    "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex": "sha256:92512a9aa35a79c5e4d2fb5690c56912a7a7dff9a4a244e356b1c2e886b37bac",
+    "paper/249/erdos-249-binary-totient-series.tex": "sha256:df848f1a20fab00a6a062234582b65feddc3dfddc3964a7d74c1eaab73a64fc0",
+    "paper/249/erdos249-totient-reasoning-surface.tex": "sha256:2be13b340f9dafc4e3a3dcb34742a66225b3216015b6efa7ae3222c3e3d4a0ed",
+    "paper/251/erdos-251-prime-gap-dyadic-series.tex": "sha256:fa4220506e9c2822a70b5d554d7626dcc026497d3bb571ae9f07cc273a3d3957",
+    "paper/251/erdos251-prime-gap-reasoning-surface.tex": "sha256:db2a5b20038e07a9770ef3d11493bbe706ee883da69d3add57267bc2534c84bd",
+    "paper/257/erdos-257-mersenne-support-subseries.tex": "sha256:2676b3e9f6a5ba6f3ea8fceeed9684ff6ced0fa3bef9c3c0b6a3a878288af5d3",
+    "paper/257/erdos257-mersenne-reasoning-surface.tex": "sha256:47cf6a152738f17c6879bd5070adb73c34a1254775afd44dbf7b6ccd346aa100",
+    "paper/269/erdos-269-three-prime-running-lcm.tex": "sha256:ac61a4c170358ab7006ac37c42a8201bd1c4dc8502d010204fcff66995fc1e2f",
+    "paper/269/erdos269-running-lcm-reasoning-surface.tex": "sha256:27b68b4b0cf24ce2b4ca045ed96a303fc713164e33a2e646792c62fcddfa4f4c",
+    "paper/68/erdos-68-factorial-denominator-irrationality.tex": "sha256:b4eba8fb48d81d851b0679a5d77bdc3b20e60913d48f403184365009d4f30edd",
+    "paper/68/erdos68-factorial-reasoning-surface.tex": "sha256:0af0d85ec1beab46b63ef9a54e0326abb872d3c38403af575b2ca63ae9dea60d",
     "paper/evidence/erdos-1041-lemniscate-newton-flow.tex": "sha256:c60b85cd02a4f493465fbd32c1bccecab7e8d11a0e28a5321ac62a8c2612ec6c",
     "paper/evidence/erdos-1049-rational-base-lambert.tex": "sha256:c4e6515515effaf60879a0a41f057fed821263558b84d7840fcca132c4946e83",
     "paper/evidence/erdos-243-reciprocal-tail-rigidity.tex": "sha256:0e7e160adf8e923389a043dcbe026ad47117224e41e32e439482b959f6e629c0",
@@ -80,19 +80,19 @@
     "paper/evidence/erdos68-factorial-reasoning-surface.tex": "sha256:1a4adf5d82ec871f1b62e3b9af6d6e0c6470e6de5b5650392144acd526c84c85",
     "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
     "paper/reasoning-parts/erdos1041/back.tex": "sha256:7c0796754f02f5feb9aadd6a37d7145d65bd53ddb0779dba48832b3bbb06fcb2",
-    "paper/reasoning-parts/erdos1041/core.tex": "sha256:b85ab39c945d3fdabe9aec8499c91827f444072c8f1b16417a32bb321828d337",
+    "paper/reasoning-parts/erdos1041/core.tex": "sha256:8c49b1116f4837d29ba8e922525f4ff0c5ffa08ba987c11f3c3a83dfc6046ecd",
     "paper/reasoning-parts/erdos1041/extended_record.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos1041/family_catalogue.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos1041/preamble.tex": "sha256:6f5872b5210ac75591744db540a140612677084ece0555d278b225f317b7b362",
     "paper/reasoning-parts/erdos1049/back.tex": "sha256:7c0796754f02f5feb9aadd6a37d7145d65bd53ddb0779dba48832b3bbb06fcb2",
-    "paper/reasoning-parts/erdos1049/core.tex": "sha256:4863eff4a1a052c1902f0f074ba5b484f64c56f39b8528241ea9ca87931334b4",
+    "paper/reasoning-parts/erdos1049/core.tex": "sha256:bef9d51cb52e994a0426e2d2271d3c5937b1b90e9ea19ea6f8dcae70c7f80143",
     "paper/reasoning-parts/erdos1049/family_catalogue.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos1049/preamble.tex": "sha256:4da4b63241f64128f0ee5a28b182f69087349a2aec43c14df38605a5704fdfc6",
     "paper/reasoning-parts/erdos243/back.tex": "sha256:7c0796754f02f5feb9aadd6a37d7145d65bd53ddb0779dba48832b3bbb06fcb2",
-    "paper/reasoning-parts/erdos243/core.tex": "sha256:9524e353d794e4a638b9866f9ea34810cd45c14dd303557bdc39f80693296443",
+    "paper/reasoning-parts/erdos243/core.tex": "sha256:8f5d14756568fef3fd3cfe3b61d77c4662ec3a682cab118fb99b8c56768373f0",
     "paper/reasoning-parts/erdos243/family_catalogue.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos243/preamble.tex": "sha256:939f1c88ad43c549a165d08207795486b0f736c1c4057ebd3c0afc8be3bcde95",
-    "paper/reasoning-parts/erdos249/a249_front.tex": "sha256:9bb2aaf97b83b72da4153320618d12ca1465cabae77e6ab344a99ba0531311ad",
+    "paper/reasoning-parts/erdos249/a249_front.tex": "sha256:70ea3d8fa337084d26e7296d5e8ff2a051660c0817de8c8d19cf250bac670b63",
     "paper/reasoning-parts/erdos249/a249_invent.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos249/a249_newdecls.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos249/a249_p0.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -104,11 +104,11 @@
     "paper/reasoning-parts/erdos249/a249_p5.tex": "sha256:7c0796754f02f5feb9aadd6a37d7145d65bd53ddb0779dba48832b3bbb06fcb2",
     "paper/reasoning-parts/erdos249/preamble.tex": "sha256:7aab194e4f90b8039c35781bfa97d3325e22f5ad259b4be3198ea3a1975388e2",
     "paper/reasoning-parts/erdos251/back.tex": "sha256:7c0796754f02f5feb9aadd6a37d7145d65bd53ddb0779dba48832b3bbb06fcb2",
-    "paper/reasoning-parts/erdos251/core.tex": "sha256:7c174897618df8d9ee79751eca5eacf132e3bab23b9766fb999f59fa610326ae",
+    "paper/reasoning-parts/erdos251/core.tex": "sha256:463340dab64a058561336b82db1248baee0cbab238ac89b0b0abce66b95d5ca8",
     "paper/reasoning-parts/erdos251/extended_record.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos251/family_catalogue.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos251/preamble.tex": "sha256:5bfc3d35b9732283873164ba09752254037583c99da5db3cf4bf3dec05b5b070",
-    "paper/reasoning-parts/erdos257/a257_front.tex": "sha256:228225cad1f5f6025fccc7e596c34d94dc0cb7deeb2ba57b63530e900a0c7392",
+    "paper/reasoning-parts/erdos257/a257_front.tex": "sha256:0cdba643ee24636de846a43fb4e846bd2978680698fefbf49a74787fb3c6b8a2",
     "paper/reasoning-parts/erdos257/a257_invent.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos257/a257_newdecls.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos257/a257_p0.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -120,12 +120,12 @@
     "paper/reasoning-parts/erdos257/a257_p5.tex": "sha256:7c0796754f02f5feb9aadd6a37d7145d65bd53ddb0779dba48832b3bbb06fcb2",
     "paper/reasoning-parts/erdos257/preamble.tex": "sha256:1deb043326661007c7d751e5b3dc946431a7ae2f829c9ae993160bc082a52958",
     "paper/reasoning-parts/erdos269/back.tex": "sha256:7c0796754f02f5feb9aadd6a37d7145d65bd53ddb0779dba48832b3bbb06fcb2",
-    "paper/reasoning-parts/erdos269/core.tex": "sha256:180c29ef034a4f4801f02709a78cd55fe862ea2cd69191ecbbbe4b3690238d1e",
+    "paper/reasoning-parts/erdos269/core.tex": "sha256:4f99225a08be9a239f94f4e603d59109cb8ec4098f3d34c73d645109d875399b",
     "paper/reasoning-parts/erdos269/extended_record.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos269/family_catalogue.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos269/preamble.tex": "sha256:c89017a41e5746e10a8189c6954cbb057417a21dc34e4a1137e6984d98789117",
     "paper/reasoning-parts/erdos68/back.tex": "sha256:7c0796754f02f5feb9aadd6a37d7145d65bd53ddb0779dba48832b3bbb06fcb2",
-    "paper/reasoning-parts/erdos68/core.tex": "sha256:2ab80700acdf739da90d470a7d3be42ed6fb843eb4e359d032ce765f7b80accb",
+    "paper/reasoning-parts/erdos68/core.tex": "sha256:50ea5d3112132cbc3e696eaa8c96acae622183e32dc0ee5bf8e5e3876e97f95d",
     "paper/reasoning-parts/erdos68/extended_record.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos68/family_catalogue.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos68/preamble.tex": "sha256:7bbd6207745d2f3e5c7db3b788c3cafcfd17504ac075cad8df1f5e5310dda21d",
@@ -140,11 +140,11 @@
     "docs/reading-edition/RECORDS.md": "sha256:363de36a25d5a8702d29e76906d09cfa627e0cba2e030e811bd85c2f3801caca",
     "docs/reading-edition/records/erdos1041.md": "sha256:9beb1305271fc895385a04949fb536d76a2869f1a98c2a5ecfda29e35e74996d",
     "docs/reading-edition/records/erdos1049.md": "sha256:9ab0b25f5f57343ce162cd67bcd1b7fc4ff117bb2bb8e619e8aa4525af041259",
-    "docs/reading-edition/records/erdos243.md": "sha256:ec7fe9c5e52527307690952b3fc2dae30bc5a56ccd4770d49de147a65f9f3343",
+    "docs/reading-edition/records/erdos243.md": "sha256:f0d8aec1a1942c9e2376a16b5b98fe76da9f4f9fa298b21fd7c04d0de6245759",
     "docs/reading-edition/records/erdos249.md": "sha256:32896d76c62021d54d6c60f3c9c206b6785882cc57843b3062a902c9db1c98a9",
-    "docs/reading-edition/records/erdos251.md": "sha256:586c8c5c0422ffd7ab53fa0682750342fd07506dbd503a9290d06fe24d683c39",
+    "docs/reading-edition/records/erdos251.md": "sha256:cc26922f0191d3ab9865cca6c89e73322b3dff6db6e70e3d43c2bef947f90f13",
     "docs/reading-edition/records/erdos257.md": "sha256:5ba461b462c40e1c8d879e8ed06861ff43e3fa928c6018b92e4bb0dd5d8c53d3",
-    "docs/reading-edition/records/erdos269.md": "sha256:55ded1da8935e26e706b117fe1b26f3e9ba2bd33156514b29e58fb341ba19daf",
+    "docs/reading-edition/records/erdos269.md": "sha256:62a79bc55d8c97fc075f02babfb19f553b163eb38c5d3f363846c3e085eee102",
     "docs/reading-edition/records/erdos68.md": "sha256:a948733bf3e10bef2d6ed59d2c687d4e2b7eaf866cb91b48eef87a6864deb460"
   },
   "pairs": [
@@ -1719,9 +1719,9 @@
             {
               "basis": "label_alias",
               "location": {
-                "end_line": 3948,
+                "end_line": 3946,
                 "label": "long243:res:residue",
-                "line": 3943,
+                "line": 3941,
                 "path": "paper/reasoning-parts/erdos243/core.tex"
               },
               "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:residue",
@@ -1737,9 +1737,9 @@
           "matches": [],
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:residue",
           "short_location": {
-            "end_line": 1148,
+            "end_line": 1143,
             "label": "res:residue",
-            "line": 1143,
+            "line": 1138,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
           "state": "unresolved",
@@ -1936,9 +1936,9 @@
           "severity": "error",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:residue",
           "short_location": {
-            "end_line": 1148,
+            "end_line": 1143,
             "label": "res:residue",
-            "line": 1143,
+            "line": 1138,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         },
@@ -1947,9 +1947,9 @@
           "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
           "long_locations": [
             {
-              "end_line": 3948,
+              "end_line": 3946,
               "label": "long243:res:residue",
-              "line": 3943,
+              "line": 3941,
               "path": "paper/reasoning-parts/erdos243/core.tex"
             }
           ],
@@ -1957,9 +1957,9 @@
           "severity": "error",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:residue",
           "short_location": {
-            "end_line": 1148,
+            "end_line": 1143,
             "label": "res:residue",
-            "line": 1143,
+            "line": 1138,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           }
         }
@@ -2372,9 +2372,9 @@
         },
         {
           "location": {
-            "end_line": 3948,
+            "end_line": 3946,
             "label": "long243:res:residue",
-            "line": 3943,
+            "line": 3941,
             "path": "paper/reasoning-parts/erdos243/core.tex"
           },
           "long_claim": "erdos243-reciprocal-tail-reasoning-surface#long243:res:residue"
@@ -2917,33 +2917,27 @@
             "title": "Arithmetic compatibility"
           },
           {
-            "id": "acknowledgements.",
-            "level": 4,
-            "line": 816,
-            "title": "Acknowledgements."
-          },
-          {
             "id": "app:residue",
             "level": 1,
-            "line": 822,
+            "line": 816,
             "title": "A factorial modulus for integral recursion"
           },
           {
             "id": "app:index",
             "level": 1,
-            "line": 866,
+            "line": 860,
             "title": "Sources and related work"
           },
           {
             "id": "indexing-of-the-canonical-tails.",
             "level": 4,
-            "line": 874,
+            "line": 868,
             "title": "Indexing of the canonical tails."
           },
           {
             "id": "app:verification",
             "level": 1,
-            "line": 880,
+            "line": 874,
             "title": "Verification and reproducibility"
           }
         ],
@@ -6265,15 +6259,9 @@
             "title": "Verification scope."
           },
           {
-            "id": "acknowledgements.",
-            "level": 4,
-            "line": 7059,
-            "title": "Acknowledgements."
-          },
-          {
             "id": "funding-and-competing-interests.",
             "level": 4,
-            "line": 7065,
+            "line": 7059,
             "title": "Funding and competing interests."
           }
         ],
@@ -6395,12 +6383,6 @@
             "level": 1,
             "line": 530,
             "title": "Verification and reproducibility"
-          },
-          {
-            "id": "acknowledgement.",
-            "level": 4,
-            "line": 538,
-            "title": "Acknowledgement."
           }
         ],
         "title": "Integral Relations among Totient Sections"
@@ -7234,54 +7216,54 @@
         },
         {
           "location": {
-            "end_line": 2363,
+            "end_line": 2359,
             "label": "long251:xr:totient",
-            "line": 2359,
+            "line": 2355,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:xr:totient"
         },
         {
           "location": {
-            "end_line": 2377,
+            "end_line": 2373,
             "label": "long251:xr:propagate",
-            "line": 2372,
+            "line": 2368,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:xr:propagate"
         },
         {
           "location": {
-            "end_line": 2417,
+            "end_line": 2413,
             "label": "long251:xr:truncation",
-            "line": 2407,
+            "line": 2403,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:xr:truncation"
         },
         {
           "location": {
-            "end_line": 2461,
+            "end_line": 2457,
             "label": "long251:res:complete-truncation",
-            "line": 2454,
+            "line": 2450,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:complete-truncation"
         },
         {
           "location": {
-            "end_line": 2610,
+            "end_line": 2606,
             "label": "long251:xr:boundedpolignac",
-            "line": 2603,
+            "line": 2599,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:xr:boundedpolignac"
         },
         {
           "location": {
-            "end_line": 2772,
+            "end_line": 2768,
             "label": "long251:res:affinecollapse",
-            "line": 2737,
+            "line": 2733,
             "path": "paper/reasoning-parts/erdos251/core.tex"
           },
           "long_claim": "erdos251-prime-gap-reasoning-surface#long251:res:affinecollapse"
@@ -10863,33 +10845,27 @@
             "title": "Verification and reproducibility"
           },
           {
-            "id": "acknowledgements",
-            "level": 3,
-            "line": 5857,
-            "title": "Acknowledgements"
-          },
-          {
             "id": "statements-and-declarations",
             "level": 3,
-            "line": 5863,
+            "line": 5857,
             "title": "Statements and declarations"
           },
           {
             "id": "artefact-and-data-availability.",
             "level": 6,
-            "line": 5867,
+            "line": 5861,
             "title": "Artefact and data availability."
           },
           {
             "id": "scope-of-the-formal-checks.",
             "level": 6,
-            "line": 5873,
+            "line": 5867,
             "title": "Scope of the formal checks."
           },
           {
             "id": "funding-and-competing-interests.",
             "level": 6,
-            "line": 5879,
+            "line": 5873,
             "title": "Funding and competing interests."
           }
         ],
@@ -11113,12 +11089,6 @@
             "level": 4,
             "line": 946,
             "title": "Reproducing the weighted theorem."
-          },
-          {
-            "id": "acknowledgements",
-            "level": 1,
-            "line": 961,
-            "title": "Acknowledgements"
           }
         ],
         "title": "Irrationality criteria for Lambert subseries"
@@ -12259,18 +12229,18 @@
         },
         {
           "location": {
-            "end_line": 3928,
+            "end_line": 3923,
             "label": "long269:long:denominator-reduction",
-            "line": 3920,
+            "line": 3915,
             "path": "paper/reasoning-parts/erdos269/core.tex"
           },
           "long_claim": "erdos269-running-lcm-reasoning-surface#long269:long:denominator-reduction"
         },
         {
           "location": {
-            "end_line": 3994,
+            "end_line": 3989,
             "label": "long269:long:windowconsumer",
-            "line": 3985,
+            "line": 3980,
             "path": "paper/reasoning-parts/erdos269/core.tex"
           },
           "long_claim": "erdos269-running-lcm-reasoning-surface#long269:long:windowconsumer"
@@ -13801,7 +13771,7 @@
             },
             {
               "id": "sec:erdos-1041-complete-family-map",
-              "line": 2982,
+              "line": 2976,
               "title": "Guide to the results"
             }
           ],
@@ -14233,27 +14203,21 @@
             "title": "Adjacent inverse-map methods."
           },
           {
-            "id": "acknowledgements",
-            "level": 1,
-            "line": 2924,
-            "title": "Acknowledgements"
-          },
-          {
             "id": "sec:record-circle-slice",
             "level": 1,
-            "line": 2930,
+            "line": 2924,
             "title": "Numerical estimates for the packing inequality"
           },
           {
             "id": "sec:erdos-1041-complete-family-map",
             "level": 1,
-            "line": 2982,
+            "line": 2976,
             "title": "Guide to the results"
           },
           {
             "id": "sec:verification-notes",
             "level": 1,
-            "line": 3004,
+            "line": 2998,
             "title": "Formal statements and computational checks"
           }
         ],
@@ -14459,12 +14423,6 @@
             "level": 4,
             "line": 580,
             "title": "Verification and reproducibility."
-          },
-          {
-            "id": "acknowledgements",
-            "level": 1,
-            "line": 588,
-            "title": "Acknowledgements"
           }
         ],
         "title": "Paths in Polynomial Lemniscates: A Degree-Seven Counterexample and Radial Connections"
