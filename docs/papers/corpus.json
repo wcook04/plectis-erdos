@@ -3829,7 +3829,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md",
       "local_source": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-      "source_sha256": "sha256:db2a5b20038e07a9770ef3d11493bbe706ee883da69d3add57267bc2534c84bd",
+      "source_sha256": "sha256:b43889b618767dd82e1caa1afcf076756b147208d3ec17682346b85dba756343",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -4139,8 +4139,8 @@
       ],
       "citations_rendered": 67,
       "local_pdf": "paper/251/erdos251-prime-gap-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:109a9a5dbc507c23b6547df907a716da5d25936846818e74360e8c57503767a6",
-      "pdf_byte_count": 300443,
+      "pdf_sha256": "sha256:bb32c62a4bc6edfaa9e722fd796e58990683db3e468d4c7aff6dc60dc8f827f6",
+      "pdf_byte_count": 300440,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -4230,7 +4230,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:2676b3e9f6a5ba6f3ea8fceeed9684ff6ced0fa3bef9c3c0b6a3a878288af5d3",
+      "source_sha256": "sha256:2a7272ed32e00b7b428d69f34a2e53e0d79851521b00cbb1488139816ac3ad4f",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -4426,8 +4426,8 @@
       ],
       "citations_rendered": 24,
       "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:56d5ab6d4115c2275bbdee90b95310f5a985dbc059ff06f93e63bc2f5ffe30f0",
-      "pdf_byte_count": 192134,
+      "pdf_sha256": "sha256:dd302903d456a68c974d84e311325ea74ae536281189d9a8fa1a31f83363142b",
+      "pdf_byte_count": 192168,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7868,11 +7868,11 @@
         "year": "2026",
         "title": "Reading Eight Erd\u0151s Problems Together",
         "repository": "plectis-erdos",
-        "canonical_source_commit": "cf41120472efc0c264b5e331e9d7424de458509f",
-        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/cf41120472efc0c264b5e331e9d7424de458509f/paper/synthesis/optimal-sparse-perturbations.tex",
+        "canonical_source_commit": null,
+        "canonical_source_url": null,
         "licence": "CC-BY-4.0",
-        "identifier_kind": "commit_pinned_source",
-        "text": "Will Cook (2026). Reading Eight Erd\u0151s Problems Together. plectis-erdos, commit cf41120472efc0c264b5e331e9d7424de458509f. CC-BY-4.0. https://github.com/wcook04/plectis-erdos/blob/cf41120472efc0c264b5e331e9d7424de458509f/paper/synthesis/optimal-sparse-perturbations.tex",
+        "identifier_kind": "unversioned_source",
+        "text": "Will Cook (2026). Reading Eight Erd\u0151s Problems Together. plectis-erdos. CC-BY-4.0.",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -7883,11 +7883,11 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/optimal-sparse-perturbations.md",
       "local_source": "paper/synthesis/optimal-sparse-perturbations.tex",
-      "source_sha256": "sha256:83e0788b73c2144a6a86fbd5b0e09b3d4e6a2ce999ade2ba3fb5d36437be9eaf",
-      "canonical_source_commit": "cf41120472efc0c264b5e331e9d7424de458509f",
-      "canonical_source_pin_status": "immutable_commit",
-      "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/cf41120472efc0c264b5e331e9d7424de458509f/paper/synthesis/optimal-sparse-perturbations.tex",
-      "canonical_source_raw_url": "https://raw.githubusercontent.com/wcook04/plectis-erdos/cf41120472efc0c264b5e331e9d7424de458509f/paper/synthesis/optimal-sparse-perturbations.tex",
+      "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "local_unpublished",
+      "canonical_source_url": null,
+      "canonical_source_raw_url": null,
       "section_count": 38,
       "sections": [
         {
@@ -8121,8 +8121,8 @@
       ],
       "citations_rendered": 73,
       "local_pdf": "paper/synthesis/optimal-sparse-perturbations.pdf",
-      "pdf_sha256": "sha256:e3b4a5f605ecdb80298a2d88aa6980102ffb7b1a3c3433b85e4d5c7c2279c336",
-      "pdf_byte_count": 261345,
+      "pdf_sha256": "sha256:20aef758ee41c751bf8b2e94bf5aab9b4c1d0c829af17c9a5f187e8e3c70195c",
+      "pdf_byte_count": 261344,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8149,6 +8149,11 @@
           }
         ],
         "unresolved_count": 0
+      },
+      "previous_published_source": {
+        "canonical_source_commit": "cf41120472efc0c264b5e331e9d7424de458509f",
+        "canonical_source_url": "https://github.com/wcook04/plectis-erdos/blob/cf41120472efc0c264b5e331e9d7424de458509f/paper/synthesis/optimal-sparse-perturbations.tex",
+        "source_sha256": "sha256:83e0788b73c2144a6a86fbd5b0e09b3d4e6a2ce999ade2ba3fb5d36437be9eaf"
       }
     },
     {
