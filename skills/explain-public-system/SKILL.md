@@ -106,20 +106,21 @@ every paper. Stop when the requested claim trail and its limitations are clear.
 
    ```sh
    python3 scripts/query_corpus.py --overview --format card
-   python3 scripts/query_corpus.py --papers
+   python3 scripts/query_corpus.py --papers --format card
    ```
 
 3. Read `docs/RESULTS.md` and the problem or paper handles relevant to the
    reader's question. Use `python3 scripts/query_corpus.py --ask "..."` for a
-   narrower route. For a whole-system explanation, read the three companion
-   papers below; for a bounded question, read only the papers and exact
-   sections named by the corpus route.
+   narrower route. For a bounded question, read only the papers and exact
+   sections named by the relevant corpus handles.
 4. Read `docs/METHODOLOGY.md` before explaining proof status, and
    `CONTRIBUTING.md` before explaining participation or credit.
-5. Use the companion papers when the reader wants depth:
-   - `claim-faithful-publication-systems-paper.pdf` for claims and publication;
-   - `cold-clone-to-proof-receipt.pdf` for navigation and verification;
-   - `open-source-mathematics-strategy.pdf` for the open-source strategy.
+5. For a whole-system explanation, follow the card's current handles for the
+   system paper, writing and revision guides, and cross-problem paper at the
+   depth the reader needs. Use `--papers --format json` only when the question
+   needs the complete inventory or detailed source metadata. Papers marked
+   `retired` are historical background; read them only for an explicit
+   historical request, keeping their recorded revision attached.
 
 The agent performs this reading on the reader's behalf. Do not make prior
 knowledge of the repository, Lean, Git, or the paper set a condition of entry.

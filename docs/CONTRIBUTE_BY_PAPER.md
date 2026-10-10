@@ -124,7 +124,6 @@ Existing questions:
 
 - For every fixed h >= 1 and every N0, find N >= N0 for which sum_{j>=1} (g_{N+h+j}-g_{N+j})/2^j is not an integer.
 - For every fixed h >= 1 and every N0, find N >= N0 such that both adjacent full tail shifts have absolute value less than 1 and g_{N+h+1} != g_{N+1}. The checked local consumer then excludes eventual integrality of the h-shift.
-- Formalise summability of the actual prime and prime-gap dyadic series and identify the concrete infinite prime-gap tail with the checked real/rational dyadic recurrence, so the local consumer reaches the target series without a paper-only analytic bridge.
 
 [Return work on #251](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml&title=%5Bresearch+progress%5D+Erd%C5%91s+%23251&question=Erd%C5%91s+%23251%3A+Is+the+dyadic+series+of+consecutive+primes+irrational%3F+Equivalently%2C+is+the+corresponding+consecutive-prime-gap+dyadic+series+irrational%3F) · [Email and credit preferences](../CONTRIBUTING.md#return-what-you-learned)
 
@@ -180,7 +179,6 @@ For every finite set P of at least two primes, the distinct-height sum D_P (each
 Existing questions:
 
 - For every positive B coprime to 30 and every starting index, produce a later actual {2,3,5} window whose least positive forcing residue exceeds the exact denominator-dependent carry bound.
-- Identify the formal radix word with the checked four-symbol dyadic block base, formalize the exact block digit and its link to the original summand multiplicities, and derive the positive reduced carry recurrence and its bound from a hypothetical rational value.
 - Prove a genuinely higher-dimensional analytic theorem for the phase cocycle or the associated contraction.
 - Replace one finite denominator exclusion by a family whose exclusion bound tends to infinity.
 
