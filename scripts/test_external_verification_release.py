@@ -702,6 +702,28 @@ def test_tracked_artifact_path_prefers_nested_storage() -> None:
             resolved == nested,
             "Makefile paper/*.pdf copy hid the nested publication PDF",
         )
+        comparator = root / "verification/ToyComparator.lean"
+        comparator.parent.mkdir()
+        comparator.write_bytes(b"nested comparator")
+        direct = root / "README.md"
+        direct.write_bytes(b"direct source")
+        source_commit = "a" * 40
+        repository = "https://example.invalid/repository"
+        rows = release.artifact_rows(root, {
+            "repository": repository,
+            "tracked_artifacts": [nested.name, "ToyComparator.lean", "README.md"],
+        }, source_commit)
+        expected = [nested, comparator, direct]
+        require(len(rows) == len(expected), "artifact mapping lost a selected source")
+        for row, path in zip(rows, expected):
+            source_relative = path.relative_to(root).as_posix()
+            require(row["path"] == source_relative,
+                    "manifest advertised a historical basename instead of its source path")
+            require(row["sha256"] == digest(path), "manifest digest differs from source")
+            require(row["immutable_url"] == f"{repository}/blob/{source_commit}/{source_relative}",
+                    "manifest URL does not identify the file whose bytes were hashed")
+            require((root / row["path"]).read_bytes() == path.read_bytes(),
+                    "manifest source path does not resolve to the selected artifact")
 
 
 def test_effective_verifier_identity() -> None:
@@ -1158,6 +1180,36 @@ def test_release_manifest() -> None:
         encoded = json.dumps(manifest)
         require("/blob/main/" not in encoded, "release manifest contains a floating main URL")
         require("/blob/HEAD/" not in encoded, "release manifest contains a floating HEAD URL")
+
+        unrelated_receipt_asset = copy.deepcopy(manifest)
+        unrelated_receipt_asset["runtime_receipt"]["asset_name"] = (
+            "external-verification-receipt-unrelated.json"
+        )
+        require(
+            not (parent / unrelated_receipt_asset["runtime_receipt"]["asset_name"]).exists(),
+            "unrelated receipt asset fixture unexpectedly exists",
+        )
+        expect_error(
+            lambda: release.validate_manifest(
+                unrelated_receipt_asset, root=root, runtime_receipt_path=receipt_path
+            ),
+            "runtime-receipt asset name is not canonical",
+        )
+
+        unrelated_contract_locator = copy.deepcopy(manifest)
+        unrelated_contract_locator["contract"]["immutable_url"] = (
+            f"{contract['repository']}/blob/{commit}/README.md"
+        )
+        require(
+            digest(root / "README.md") != manifest["contract"]["sha256"],
+            "unrelated contract locator fixture has the declared contract digest",
+        )
+        expect_error(
+            lambda: release.validate_manifest(
+                unrelated_contract_locator, root=root, runtime_receipt_path=receipt_path
+            ),
+            "contract URL does not identify the source-bound contract",
+        )
 
         wrong_tree = copy.deepcopy(manifest)
         wrong_tree["source"]["tree"] = "f" * 40
