@@ -58,7 +58,7 @@ The totient constant also has the elementary form
 ``` math
 S=\frac12+\Pr(\gcd(X,Y)=1),
 ```
-where $`X,Y\in\mathbb{N}_{>0}`$ are independent and $`\Pr(X=n)=\Pr(Y=n)=2^{-n}`$. Both series are values of one Lambert transform, but this common description transfers no theorem from one problem to the other; Section <a href="#sec:architecture" data-reference-type="ref" data-reference="sec:architecture">6</a> gives the exact map.
+where $`X,Y\in\mathbb{N}_{>0}`$ are independent and $`\Pr(X=n)=\Pr(Y=n)=2^{-n}`$. Both series are values of one Lambert transform, but this common description transfers no theorem from one problem to the other; Section [6](#sec%3Aarchitecture) gives the exact map.
 
 | Question or result | Mathematical status | Treatment in this paper |
 |:---|:---|:---|
@@ -77,7 +77,7 @@ where $`X,Y\in\mathbb{N}_{>0}`$ are independent and $`\Pr(X=n)=\Pr(Y=n)=2^{-n}`$
 
 #### Reading map.
 
-For a first pass, read the list of theorems above, then Sections <a href="#sec:eb" data-reference-type="ref" data-reference="sec:eb">4</a> and <a href="#sec:249" data-reference-type="ref" data-reference="sec:249">5</a>, which contain the results that stand unconditionally. Section <a href="#sec:spines" data-reference-type="ref" data-reference="sec:spines">2</a> states the two exact reductions; read them as restatements of the open problems rather than as the contribution. Sections <a href="#sec:architecture" data-reference-type="ref" data-reference="sec:architecture">6</a> and <a href="#sec:unresolved" data-reference-type="ref" data-reference="sec:unresolved">9.3</a> give the comparison limit and every remaining obligation, and Section <a href="#sec:asks" data-reference-type="ref" data-reference="sec:asks">9.2</a> states the four points where an answer from a reader would be decisive. Section <a href="#sec:verify" data-reference-type="ref" data-reference="sec:verify">8</a> gives the verification protocol. The appendices retain alternative certificate, carry, Möbius, and greedy interfaces, local arguments, and audits for readers following a particular route; they are not needed on a first reading. Linked phrases open the corresponding Lean proofs.
+For a first pass, read the list of theorems above, then Sections [4](#sec%3Aeb) and [5](#sec%3A249), which contain the results that stand unconditionally. Section [2](#sec%3Aspines) states the two exact reductions; read them as restatements of the open problems rather than as the contribution. Sections [6](#sec%3Aarchitecture) and [9.3](#sec%3Aunresolved) give the comparison limit and every remaining obligation, and Section [9.2](#sec%3Aasks) states the four points where an answer from a reader would be decisive. Section [8](#sec%3Averify) gives the verification protocol. The appendices retain alternative certificate, carry, Möbius, and greedy interfaces, local arguments, and audits for readers following a particular route; they are not needed on a first reading. Linked phrases open the corresponding Lean proofs.
 
 **Keywords.** irrationality; Erdős–Borwein constant; Euler totient; Lambert series; achievement sets; binary carry systems; Lean 4. **MSC 2020.** 11J72 (primary); 11A25, 68V20 (secondary).
 
@@ -95,7 +95,7 @@ Write
 ``` math
 R_N=\sum_{m\geq1}\frac{\varphi(N+m)}{2^m}.
 ```
-This is the tail of the original series after position $`N`$, multiplied by $`2^N`$; hence $`R_N`$ is $`2^NS`$ minus an integer. Rationality of $`S`$ would force one binary period $`h`$ whose tail differences $`R_{N+h}-R_N`$ are eventually all integral; the certificates below refute exactly such candidate periods (Section <a href="#sec:reduction" data-reference-type="ref" data-reference="sec:reduction">5.3</a>).
+This is the tail of the original series after position $`N`$, multiplied by $`2^N`$; hence $`R_N`$ is $`2^NS`$ minus an integer. Rationality of $`S`$ would force one binary period $`h`$ whose tail differences $`R_{N+h}-R_N`$ are eventually all integral; the certificates below refute exactly such candidate periods (Section [5.3](#sec%3Areduction)).
 
 <a id="exact-reduction."></a>
 
@@ -130,7 +130,7 @@ This is the [denominator exclusion](https://github.com/wcook04/plectis-erdos/blo
 
 #### Open boundary.
 
-The exact open statement is an unbounded certificate supply: for every positive $`h`$, non-integral differences $`R_{N+h}-R_N`$ occur at arbitrarily large $`N`$. Theorem <a href="#res:diag" data-reference-type="ref" data-reference="res:diag">27</a> gives the equivalent one-parameter lcm-diagonal form. Every lcm-diagonal scale $`t\le82`$ is verified, but neither this bounded band nor the denominator bound proves the unbounded supply.
+The exact open statement is an unbounded certificate supply: for every positive $`h`$, non-integral differences $`R_{N+h}-R_N`$ occur at arbitrarily large $`N`$. Theorem [27](#res%3Adiag) gives the equivalent one-parameter lcm-diagonal form. Every lcm-diagonal scale $`t\le82`$ is verified, but neither this bounded band nor the denominator bound proves the unbounded supply.
 
 <a id="three-routes-with-different-logical-status."></a>
 
@@ -165,7 +165,7 @@ Writing $`w_n=(2^n-1)^{-1}`$, the weights satisfy $`w_n>\sum_{m>n}w_m`$, so a va
 \text{a successor terminal bit equal to zero occurs beyond every bound}
 \end{aligned}
 ```
-Here the terminal bit is the $`0/1`$ decision recording whether the next greedy weight is taken; Section <a href="#sec:eb" data-reference-type="ref" data-reference="sec:eb">4</a> gives its formal definition. Concretely, the greedy expansion of $`1/2`$ skips rank $`1`$, takes ranks $`2,3`$, skips $`4,5`$, and takes $`6,7`$; membership asks whether such skips recur beyond every bound.
+Here the terminal bit is the $`0/1`$ decision recording whether the next greedy weight is taken; Section [4](#sec%3Aeb) gives its formal definition. Concretely, the greedy expansion of $`1/2`$ skips rank $`1`$, takes ranks $`2,3`$, skips $`4,5`$, and takes $`6,7`$; membership asks whether such skips recur beyond every bound.
 
 <a id="counterexample-consequence."></a>
 
@@ -177,13 +177,13 @@ Membership would produce an infinite support of rational sum and refute the univ
 
 #### Open boundary.
 
-The open statement is that the terminal bit is zero beyond every bound. The later integer-recurrence analysis splits a putative final skip into two transition branches. It rules out one branch and the integer transition value $`-3`$ in the other, but does not exclude $`-2,-1`$ or prove the required unused-tail inequality for the remaining nonnegative transition values. The exact conditional implication is the [remaining-tail implication](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L436). Proposition <a href="#res:finalskipexclusions" data-reference-type="ref" data-reference="res:finalskipexclusions">18</a> gives the local exclusions and Corollary <a href="#res:taildominance" data-reference-type="ref" data-reference="res:taildominance">19</a> states the sufficient global hypothesis.
+The open statement is that the terminal bit is zero beyond every bound. The later integer-recurrence analysis splits a putative final skip into two transition branches. It rules out one branch and the integer transition value $`-3`$ in the other, but does not exclude $`-2,-1`$ or prove the required unused-tail inequality for the remaining nonnegative transition values. The exact conditional implication is the [remaining-tail implication](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L436). Proposition [18](#res%3Afinalskipexclusions) gives the local exclusions and Corollary [19](#res%3Ataildominance) states the sufficient global hypothesis.
 
 <a id="relation-to-prior-work."></a>
 
 #### Relation to prior work.
 
-Prior results are cited at their first use in the body, beginning in Section <a href="#sec:ladder" data-reference-type="ref" data-reference="sec:ladder">3</a>. The claims above concern formalisation and exact logical status; no historical-priority claim is made for the reductions.
+Prior results are cited at their first use in the body, beginning in Section [3](#sec%3Aladder). The claims above concern formalisation and exact logical status; no historical-priority claim is made for the reductions.
 
 <a id="sec:ladder"></a>
 
@@ -196,7 +196,7 @@ L(f)\;=\;\sum_{n\ge1}\frac{f(n)}{2^n-1}\;=\;\sum_{m\ge1}\frac{(f*\mathbf 1)(m)}{
 ```
 the second equality being the absolutely convergent Lambert rearrangement. It follows by expanding $`(2^n-1)^{-1}=\sum_{k\geq1}2^{-nk}`$, interchanging the sums, and collecting the terms with $`m=nk`$. The coefficient $`(f*\mathbf 1)(m)`$ is the Dirichlet convolution of $`f`$ with the constant function $`\mathbf 1(n)=1`$. We also write $`\mathrm{Id}(n)=n`$, let $`\mu`$ denote the Möbius function, and put $`\sigma(m)=\sum_{d\mid m}d`$. For the exact classical arithmetic-function and Dirichlet-convolution background used here, see Apostol’s Sections 2.6–2.7 and Theorem 11.5 \[apostol, pp. 28–32, 228–229\]. Merca’s general Lambert-series factorisation is Theorem 1.2, proved from its finite Lemma 1.1 \[merca2017, pp. 420–421\]; the totient specialisations are Corollaries 5.13–5.14 \[merca2017, pp. 430–431\]. Merca–Schmidt give the divisor-transform identity and its matrix factorisations in Equations (1.1)–(1.6) \[mercaschmidt, pp. 31–34\].
 
-The rearrangement separates two operations: the divisor transform $`f\mapsto f*\mathbf 1`$, followed by evaluation of the resulting coefficients at binary scales, $`\gamma\mapsto\sum_{m\ge1}\gamma(m)2^{-m}`$. Section <a href="#sec:architecture" data-reference-type="ref" data-reference="sec:architecture">6</a> uses this decomposition to compare the two open questions. Three inputs form the convolution chain
+The rearrangement separates two operations: the divisor transform $`f\mapsto f*\mathbf 1`$, followed by evaluation of the resulting coefficients at binary scales, $`\gamma\mapsto\sum_{m\ge1}\gamma(m)2^{-m}`$. Section [6](#sec%3Aarchitecture) uses this decomposition to compare the two open questions. Three inputs form the convolution chain
 ``` math
 \alpha \xrightarrow{*\mathbf 1} \varphi
  \xrightarrow{*\mathbf 1} \mathrm{Id},
@@ -238,11 +238,11 @@ is transcendental \[nesterenko, Theorem 1 and Corollary 2, p. 1320\].
 <div class="proposition">
 
 **Proposition 1** (Two rational Lambert identities).
-*``` math
+``` math
 L(\mu)=\sum_{d\ge1}\frac{\mu(d)}{2^d-1}=\frac12,
  \qquad
  L(\varphi)=\sum_{d\ge1}\frac{\varphi(d)}{2^d-1}=2.
-```*
+```
 
 </div>
 
@@ -250,10 +250,10 @@ These equalities are formalised as the [Möbius identity](https://github.com/wco
 
 <div id="res:lift" class="proposition">
 
-**Proposition 2** (Lambert representation of $`S`$). *With the weight $`\alpha=\varphi*\mu`$,
+**Proposition 2** (Lambert representation of $`S`$). *With the weight $`\alpha=\varphi*\mu`$,*
 ``` math
 \sum_{d\ge1}\frac{\alpha(d)}{2^d-1}\;=\;\sum_{n\ge1}\frac{\varphi(n)}{2^n}\;=\;S.
-```*
+```
 
 </div>
 
@@ -267,13 +267,13 @@ If $`X,Y`$ are independent fair-coin waiting times, $`\Pr(X=n)=2^{-n}`$, then
 ``` math
 S=\tfrac12+\Pr(\gcd(X,Y)=1).
 ```
-Thus Erdős #249 also asks whether the probability that two independent fair-coin waiting times are coprime is irrational. The exact identity is Proposition <a href="#res:coprime" data-reference-type="ref" data-reference="res:coprime">22</a>; its Möbius-square form and the periodic and finite-algebraic variants of these identities are collected in Appendices <a href="#app:lambert-weighted" data-reference-type="ref" data-reference="app:lambert-weighted">[app:lambert-weighted]</a>–<a href="#app:lambert-algebraic" data-reference-type="ref" data-reference="app:lambert-algebraic">13.2</a>.
+Thus Erdős #249 also asks whether the probability that two independent fair-coin waiting times are coprime is irrational. The exact identity is Proposition [22](#res%3Acoprime); its Möbius-square form and the periodic and finite-algebraic variants of these identities are collected in Appendices [\[app:lambert-weighted\]](#app%3Alambert-weighted)–[13.2](#app%3Alambert-algebraic).
 
 <a id="what-this-section-provesand-does-not-prove."></a>
 
 #### What this section proves—and does not prove.
 
-The content checked here is $`L(\mu)=1/2`$, $`L(\varphi)=2`$, and $`L(\alpha)=S`$; the transcendental row is cited from Nesterenko. None of these statuses transfers between inputs. For \#249 the remaining issue is still the unbounded certificate supply isolated in Section <a href="#sec:249" data-reference-type="ref" data-reference="sec:249">5</a>; for \#257 this section supplies context rather than either the universal theorem or a rational counterexample.
+The content checked here is $`L(\mu)=1/2`$, $`L(\varphi)=2`$, and $`L(\alpha)=S`$; the transcendental row is cited from Nesterenko. None of these statuses transfers between inputs. For \#249 the remaining issue is still the unbounded certificate supply isolated in Section [5](#sec%3A249); for \#257 this section supplies context rather than either the universal theorem or a rational counterexample.
 
 <a id="sec:eb"></a>
 
@@ -291,7 +291,7 @@ We begin with the classical full-support theorem and named structured supports. 
 
 </div>
 
-The [all-base theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8328) and its [base-$`2`$ corollary](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8335) are formalised. This is Erdős’s 1948 theorem \[erdos1948, Theorem, p. 63\]. The same note closes by listing the totient series $`\sum_{n\ge1}\varphi(n)/t^n`$ among analogous problems that still presented difficulties \[erdos1948, p. 66\]. That is historical lineage for \#249, not a transfer of the full-support theorem or evidence for current status. Section <a href="#sec:ladder" data-reference-type="ref" data-reference="sec:ladder">3</a> writes this constant as $`L(\mathbf 1)`$, a proved comparison value in the same Mersenne–Lambert family as the open $`S`$. This comparison supplies no further convolution step from $`S`$. Borwein later proved that, for every integer $`q`$ with $`|q|>1`$ and every nonzero rational $`c`$ away from the poles $`c=-q^n`$, both $`\sum_{n\ge1}(q^n+c)^{-1}`$ and $`\sum_{n\ge1}(-1)^n(q^n+c)^{-1}`$ are irrational and not Liouville  \[borwein1992, Thms. 1–2, pp. 142, 145–146\]; those rational-shift theorems do not cover arbitrary supports and are not formalised here.
+The [all-base theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8328) and its [base-$`2`$ corollary](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8335) are formalised. This is Erdős’s 1948 theorem \[erdos1948, Theorem, p. 63\]. The same note closes by listing the totient series $`\sum_{n\ge1}\varphi(n)/t^n`$ among analogous problems that still presented difficulties \[erdos1948, p. 66\]. That is historical lineage for \#249, not a transfer of the full-support theorem or evidence for current status. Section [3](#sec%3Aladder) writes this constant as $`L(\mathbf 1)`$, a proved comparison value in the same Mersenne–Lambert family as the open $`S`$. This comparison supplies no further convolution step from $`S`$. Borwein later proved that, for every integer $`q`$ with $`|q|>1`$ and every nonzero rational $`c`$ away from the poles $`c=-q^n`$, both $`\sum_{n\ge1}(q^n+c)^{-1}`$ and $`\sum_{n\ge1}(-1)^n(q^n+c)^{-1}`$ are irrational and not Liouville  \[borwein1992, Thms. 1–2, pp. 142, 145–146\]; those rational-shift theorems do not cover arbitrary supports and are not formalised here.
 
 The proof turns rationality into a spacing obstruction. Its coefficient model is the Lambert identity
 ``` math
@@ -310,7 +310,7 @@ These divisibilities make the first $`K`$ terms of the shifted tail integral. Th
 ```
 along that progression. A pigeonhole choice then selects one translate with a small middle contribution; see the [weighted-middle selection lemma](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L7574). Third, the elementary estimate $`\tau(n)\leq n`$ controls the infinite tail after $`L`$. The parameters are chosen so that the middle and far-tail bounds together are smaller than $`1/q`$; the shifted tail is strictly positive because every divisor count is positive, so the dilated sum is not an integer.
 
-Thus the analytic series is used only in the Lambert identity and the geometric tail estimate. The remaining proof is a finite CRT construction, divisor counting, and explicit parameter arithmetic. The final certificate existence theorem holds for every $`b\geq2`$ and every precision $`q`$; see the [uniform certificate theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8187). Its composition with the near-integer criterion is Theorem <a href="#res:full" data-reference-type="ref" data-reference="res:full">3</a>, which formalises the classical full-support theorem rather than a new irrationality result.
+Thus the analytic series is used only in the Lambert identity and the geometric tail estimate. The remaining proof is a finite CRT construction, divisor counting, and explicit parameter arithmetic. The final certificate existence theorem holds for every $`b\geq2`$ and every precision $`q`$; see the [uniform certificate theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8187). Its composition with the near-integer criterion is Theorem [3](#res%3Afull), which formalises the classical full-support theorem rather than a new irrationality result.
 
 <a id="named-infinite-support-cases"></a>
 
@@ -388,11 +388,11 @@ When $`\varepsilon_n(x)=1`$ we say the expansion *takes* rank $`n`$; otherwise i
 
 <div id="res:greedy" class="theorem">
 
-**Theorem 5** (strict-tail greedy coding). *For every $`n\geq1`$,
+**Theorem 5** (strict-tail greedy coding). *For every $`n\geq1`$,*
 ``` math
 T_n<w_n.
 ```
-Hence every $`x\in\mathcal A`$ has a unique support by positive exponents (the “normalised” support in the formal source). Moreover, a real number $`x`$ lies in $`\mathcal A`$ if and only if $`x\geq0`$ and $`r_n(x)\leq T_n`$ for every $`n\geq0`$. In that case $`x=\sum_{n\geq1}\varepsilon_n(x)w_n`$.*
+*Hence every $`x\in\mathcal A`$ has a unique support by positive exponents (the “normalised” support in the formal source). Moreover, a real number $`x`$ lies in $`\mathcal A`$ if and only if $`x\geq0`$ and $`r_n(x)\leq T_n`$ for every $`n\geq0`$. In that case $`x=\sum_{n\geq1}\varepsilon_n(x)w_n`$.*
 
 </div>
 
@@ -402,20 +402,20 @@ The strict-tail inequality and greedy criterion are the [strict-tail theorem](ht
 
 #### Geometric and finite-arithmetic consequences.
 
-Proposition <a href="#res:greedytopology" data-reference-type="ref" data-reference="res:greedytopology">57</a> proves that $`\mathcal A`$ is compact, perfect, totally disconnected, nowhere dense, and of Lebesgue measure $`1`$. Proposition <a href="#res:death" data-reference-type="ref" data-reference="res:death">58</a> shows that the greedy recursion in exact rational arithmetic agrees step by step with the real recursion and gives sound finite certificates of nonmembership. For the half-value question, Theorem <a href="#res:greedy" data-reference-type="ref" data-reference="res:greedy">5</a> makes the candidate support canonical, while compactness passes from finite approximations at arbitrarily large depths to a point of $`\mathcal A`$. The measure-one statement does not decide whether $`1/2\in\mathcal A`$; a finite certificate can prove nonmembership, but survival through any finite depth proves nothing about membership. These consequences use the same greedy coordinates but are not clauses of the membership equivalence. Their detailed statements and the one-sided certificate boundary are in Appendix <a href="#app:carry-geometry" data-reference-type="ref" data-reference="app:carry-geometry">11.5</a>. No novelty claim is made for the strict-tail geometry. Before specialising to $`1/2`$, we record the carry constraints forced by any rational $`X_A\in\mathcal A`$; these are necessary conditions in the universal direction, not yet a contradiction.
+Proposition [57](#res%3Agreedytopology) proves that $`\mathcal A`$ is compact, perfect, totally disconnected, nowhere dense, and of Lebesgue measure $`1`$. Proposition [58](#res%3Adeath) shows that the greedy recursion in exact rational arithmetic agrees step by step with the real recursion and gives sound finite certificates of nonmembership. For the half-value question, Theorem [5](#res%3Agreedy) makes the candidate support canonical, while compactness passes from finite approximations at arbitrarily large depths to a point of $`\mathcal A`$. The measure-one statement does not decide whether $`1/2\in\mathcal A`$; a finite certificate can prove nonmembership, but survival through any finite depth proves nothing about membership. These consequences use the same greedy coordinates but are not clauses of the membership equivalence. Their detailed statements and the one-sided certificate boundary are in Appendix [11.5](#app%3Acarry-geometry). No novelty claim is made for the strict-tail geometry. Before specialising to $`1/2`$, we record the carry constraints forced by any rational $`X_A\in\mathcal A`$; these are necessary conditions in the universal direction, not yet a contradiction.
 
 The same strict-tail coding gives a hereditary refinement that was absent from earlier versions of this manuscript. For $`J\subseteq\mathbb{N}`$, let $`\mathcal A_J`$ be the range of binary digit strings whose $`k`$-th digit may be nonzero only when $`k\in J`$, with that digit multiplying $`w_{k+1}`$.
 
 <div id="res:supportedgeometry" class="theorem">
 
-**Theorem 6** (support-restricted geometry). *For every $`J\subseteq\mathbb{N}`$, the set $`\mathcal A_J`$ is compact and nowhere dense, and its binary coding is injective. If $`J`$ is infinite, then $`\mathcal A_J`$ is perfect. Moreover,
+**Theorem 6** (support-restricted geometry). *For every $`J\subseteq\mathbb{N}`$, the set $`\mathcal A_J`$ is compact and nowhere dense, and its binary coding is injective. If $`J`$ is infinite, then $`\mathcal A_J`$ is perfect. Moreover,*
 ``` math
 \operatorname{vol}(\mathcal A_J)=
  \begin{cases}
    2^{-|F|},&J=F^c\text{ for a finite set }F,\\
    0,&J^c\text{ is infinite}.
  \end{cases}
-```*
+```
 
 </div>
 
@@ -438,61 +438,61 @@ Thus $`f_A(m)`$ counts the selected exponents dividing $`m`$, $`X_A`$ is the ori
 
 <div id="res:rigidity-main" class="theorem">
 
-**Theorem 7** (rational-support carry recurrence). *Suppose that $`A\neq\varnothing`$ and
+**Theorem 7** (rational-support carry recurrence). *Suppose that $`A\neq\varnothing`$ and*
 ``` math
 X_A=\frac{p}{2^c v},
  \qquad p\in\mathbb{Z},\quad c\in\mathbb{N},\quad v\geq1\ \text{odd}.
 ```
-Then $`u_N=vT_{f_A}(c+N)`$ is a positive integer for every $`N`$, and
+*Then $`u_N=vT_{f_A}(c+N)`$ is a positive integer for every $`N`$, and*
 ``` math
 u_{N+1}+v f_A(c+N+1)=2u_N. \tag{4.1}
-```*
+```
 
 </div>
 
-This is formalised by [the shifted natural-state theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L671). Here $`u_N`$ is the scaled remaining binary tail, or carry. Equation <span class="upright">(4.1)</span> is binary long division. The identity $`2T_f(M)=f(M+1)+T_f(M+1)`$ shows that doubling the scaled tail separates the next coefficient. Rationality makes the states $`u_N`$ integers. A two-element support, with its explicit period-six orbit and multiplier $`21`$, is worked at the end of Appendix <a href="#app:carry-boolean" data-reference-type="ref" data-reference="app:carry-boolean">11.2</a>. The recurrence is a necessary consequence of rationality, not a criterion by itself. Wang uses the same forward mechanism for $`\gamma(n)=n d_n`$ \[wang2026, Proposition 3.1, pp. 5–6\]; Appendix <a href="#app:carry-normal-form" data-reference-type="ref" data-reference="app:carry-normal-form">11.1</a> separates that antecedent from the generic converse and rigidity statements formalised here. Wang’s density theorem and its Erdős #260 corollary are not used.
+This is formalised by [the shifted natural-state theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L671). Here $`u_N`$ is the scaled remaining binary tail, or carry. Equation <span class="upright">(4.1)</span> is binary long division. The identity $`2T_f(M)=f(M+1)+T_f(M+1)`$ shows that doubling the scaled tail separates the next coefficient. Rationality makes the states $`u_N`$ integers. A two-element support, with its explicit period-six orbit and multiplier $`21`$, is worked at the end of Appendix [11.2](#app%3Acarry-boolean). The recurrence is a necessary consequence of rationality, not a criterion by itself. Wang uses the same forward mechanism for $`\gamma(n)=n d_n`$ \[wang2026, Proposition 3.1, pp. 5–6\]; Appendix [11.1](#app%3Acarry-normal-form) separates that antecedent from the generic converse and rigidity statements formalised here. Wang’s density theorem and its Erdős #260 corollary are not used.
 
 For the fixed totient input of \#249, the source-current refinement is a different, complementary frontier: the same rationality-supplied carry is simultaneously periodic in every dyadic section modulo one multiplier and unbounded in canonical carry-kernel rank. The exact conjunction is [the modular-period/rank theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailCarryPeriod.lean#L224). It remains only a necessary consequence. The reason it does not yield the missing contradiction is visible in the source: if $`p\mid v`$, the totient forcing vanishes modulo $`p`$ and $`u_N\equiv2^N u_0`$ there ([forcing vanishing](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailCarryPeriod.lean#L126); [geometric reduction](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailCarryPeriod.lean#L140)), so modular periodicity does not control the finite $`\mathbb Q`$-rank that would be needed to contradict the lower bound. No irrationality result for \#249 is claimed.
 
 <div id="res:rigidity-unbounded-main" class="corollary">
 
-**Corollary 8** (unbounded-state consequence). *Under the hypotheses of Theorem <a href="#res:rigidity-main" data-reference-type="ref" data-reference="res:rigidity-main">7</a>, if $`A`$ is infinite, then $`(u_N)`$ is unbounded.*
+**Corollary 8** (unbounded-state consequence). *Under the hypotheses of Theorem [7](#res%3Arigidity-main), if $`A`$ is infinite, then $`(u_N)`$ is unbounded.*
 
 </div>
 
-This is formalised by [the unbounded-state theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L2383); see also Theorem <a href="#res:unbounded" data-reference-type="ref" data-reference="res:unbounded">55</a>.
+This is formalised by [the unbounded-state theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L2383); see also Theorem [55](#res%3Aunbounded).
 
 <div id="res:rigidity-sublog-main" class="corollary">
 
-**Corollary 9** (sublogarithmic coverage consequence). *Under the hypotheses of Theorem <a href="#res:rigidity-main" data-reference-type="ref" data-reference="res:rigidity-main">7</a>, for every $`\varepsilon>0`$ there is $`B=B(\varepsilon,c,v)`$ such that every interval $`\{c+N+1,\ldots,c+N+\ell\}`$ on which $`f_A`$ vanishes satisfies
+**Corollary 9** (sublogarithmic coverage consequence). *Under the hypotheses of Theorem [7](#res%3Arigidity-main), for every $`\varepsilon>0`$ there is $`B=B(\varepsilon,c,v)`$ such that every interval $`\{c+N+1,\ldots,c+N+\ell\}`$ on which $`f_A`$ vanishes satisfies*
 ``` math
 \ell\leq\varepsilon\log_2(N+1)+B;
-```*
+```
 
 </div>
 
-This is formalised by [the sublogarithmic zero-window theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SublogDivisorCoverage.lean#L392); see also Theorem <a href="#res:sublog" data-reference-type="ref" data-reference="res:sublog">51</a>.
+This is formalised by [the sublogarithmic zero-window theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SublogDivisorCoverage.lean#L392); see also Theorem [51](#res%3Asublog).
 
 <div id="res:rigidity-mass-main" class="corollary">
 
-**Corollary 10** (odd-denominator reciprocal-mass consequence). *Under the hypotheses of Theorem <a href="#res:rigidity-main" data-reference-type="ref" data-reference="res:rigidity-main">7</a>, if $`\rho(A)=\sum_{a\in A}a^{-1}<\infty`$, $`v>1`$, and $`h=\operatorname{ord}_v(2)`$, then
+**Corollary 10** (odd-denominator reciprocal-mass consequence). *Under the hypotheses of Theorem [7](#res%3Arigidity-main), if $`\rho(A)=\sum_{a\in A}a^{-1}<\infty`$, $`v>1`$, and $`h=\operatorname{ord}_v(2)`$, then*
 ``` math
 \rho(A)=\frac{w}{h}
    +\lim_{M\to\infty}\frac1M\sum_{N<M}e_N\geq\frac{w}{h},
 ```
-where $`w`$ is the number of wraps in one doubling-residue cycle and $`e_N=\lfloor u_N/v\rfloor`$ is the integral excess in the split $`u_N=ve_N+\bar p_N`$, with $`\bar p_N`$ the least residue of $`p2^N`$ modulo $`v`$. A step wraps precisely when doubling $`\bar p_N`$ crosses $`v`$; thus $`w`$ counts the resulting carry digits over one cycle of length $`h`$. The term $`w/h`$ is the cycle’s mean residue contribution, while the displayed excess mean is nonnegative. If $`(p,v)=1`$, then $`w\geq1`$.*
+*where $`w`$ is the number of wraps in one doubling-residue cycle and $`e_N=\lfloor u_N/v\rfloor`$ is the integral excess in the split $`u_N=ve_N+\bar p_N`$, with $`\bar p_N`$ the least residue of $`p2^N`$ modulo $`v`$. A step wraps precisely when doubling $`\bar p_N`$ crosses $`v`$; thus $`w`$ counts the resulting carry digits over one cycle of length $`h`$. The term $`w/h`$ is the cycle’s mean residue contribution, while the displayed excess mean is nonnegative. If $`(p,v)=1`$, then $`w\geq1`$.*
 
 </div>
 
-The exact excess-mean identity is [the shifted excess-mean theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L1579); see also Proposition <a href="#res:orderwrap" data-reference-type="ref" data-reference="res:orderwrap">53</a>.
+The exact excess-mean identity is [the shifted excess-mean theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L1579); see also Proposition [53](#res%3Aorderwrap).
 
 <div id="res:rigidity-dyadic-mass-main" class="corollary">
 
-**Corollary 11** (dyadic reciprocal-mass consequence). *Under the hypotheses of Theorem <a href="#res:rigidity-main" data-reference-type="ref" data-reference="res:rigidity-main">7</a>, if $`v=1`$ and $`A`$ is infinite, then either $`\rho(A)`$ diverges or $`\rho(A)>1`$.*
+**Corollary 11** (dyadic reciprocal-mass consequence). *Under the hypotheses of Theorem [7](#res%3Arigidity-main), if $`v=1`$ and $`A`$ is infinite, then either $`\rho(A)`$ diverges or $`\rho(A)>1`$.*
 
 </div>
 
-This is formalised by [the dyadic reciprocal-mass alternative](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L2210); see also Corollary <a href="#res:collision" data-reference-type="ref" data-reference="res:collision">54</a>.
+This is formalised by [the dyadic reciprocal-mass alternative](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/RationalSupportCarrySkeleton.lean#L2210); see also Corollary [54](#res%3Acollision).
 
 Read together, the four statements say that rationality would force an unbounded integer state sequence for an infinite support, severely limit intervals containing no support divisor, and constrain the reciprocal mass according to whether the reduced denominator has an odd factor. They are independent necessary consequences of one rationality premise, not a contradiction. The corresponding appendices develop the common recurrence and Boolean certificate, then the sublogarithmic and reciprocal-mass filters. The corollaries share carry machinery but are not hypotheses of one another.
 
@@ -502,7 +502,7 @@ Read together, the four statements say that rationality would force an unbounded
 
 </div>
 
-Concretely, the name means an integer carry orbit $`U`$ with $`U(0)=p`$, positive states bounded by $`q(2\sqrt N+4)`$, and $`q\mid 2U(N)-U(N+1)`$. Dividing these differences by $`q`$ gives an integer coefficient sequence $`f_U`$. Its Boolean Möbius condition is $`(\mu*f_U)(n)\in\{0,1\}`$, and inversion reconstructs the support as $`A_U=\{n\geq1:(\mu*f_U)(n)=1\}`$. These are exactly the conditions in Theorem <a href="#res:carrycert" data-reference-type="ref" data-reference="res:carrycert">49</a>, the Lean-checked equivalence [support/carry equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L949); the corollary quantifies it over $`p/q`$ and separates finite from infinite supports. This remains an exact reformulation over infinite objects, not a finite algorithm.
+Concretely, the name means an integer carry orbit $`U`$ with $`U(0)=p`$, positive states bounded by $`q(2\sqrt N+4)`$, and $`q\mid 2U(N)-U(N+1)`$. Dividing these differences by $`q`$ gives an integer coefficient sequence $`f_U`$. Its Boolean Möbius condition is $`(\mu*f_U)(n)\in\{0,1\}`$, and inversion reconstructs the support as $`A_U=\{n\geq1:(\mu*f_U)(n)=1\}`$. These are exactly the conditions in Theorem [49](#res%3Acarrycert), the Lean-checked equivalence [support/carry equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L949); the corollary quantifies it over $`p/q`$ and separates finite from infinite supports. This remains an exact reformulation over infinite objects, not a finite algorithm.
 
 <a id="the-target-12"></a>
 
@@ -514,7 +514,7 @@ Concretely, the name means an integer carry orbit $`U`$ with $`U(0)=p`$, positiv
 
 Any infinite support with any rational value would refute the universal statement. Fixing $`1/2`$ turns one possible counterexample route into the point-membership question $`1/2\in\mathcal A`$. This target is convenient, not forced.
 
-The reason it is distinguished is the signed Möbius identity $`L(\mu)=1/2`$ from Section <a href="#sec:ladder" data-reference-type="ref" data-reference="sec:ladder">3</a>. A support series is different: each term has coefficient $`0`$ or $`1`$. The most immediate conversion, selecting exactly the indices with $`\mu(d)=-1`$, overshoots $`1/2`$ by at least $`1/63`$ (Proposition <a href="#res:mobiussignnogo" data-reference-type="ref" data-reference="res:mobiussignnogo">47</a>). Moreover, no finite support attains $`1/2`$ (Proposition <a href="#res:nofinitehalf" data-reference-type="ref" data-reference="res:nofinitehalf">15</a> below), while the strict-tail coding of Theorem <a href="#res:greedy" data-reference-type="ref" data-reference="res:greedy">5</a> makes any candidate support unique.
+The reason it is distinguished is the signed Möbius identity $`L(\mu)=1/2`$ from Section [3](#sec%3Aladder). A support series is different: each term has coefficient $`0`$ or $`1`$. The most immediate conversion, selecting exactly the indices with $`\mu(d)=-1`$, overshoots $`1/2`$ by at least $`1/63`$ (Proposition [47](#res%3Amobiussignnogo)). Moreover, no finite support attains $`1/2`$ (Proposition [15](#res%3Anofinitehalf) below), while the strict-tail coding of Theorem [5](#res%3Agreedy) makes any candidate support unique.
 
 Let
 ``` math
@@ -535,11 +535,11 @@ The exact calculation continues with the next take at rank $`14`$, and through r
 ``` math
 2,3,6,7,14,20,21,26.
 ```
-The finite seam model introduced below reproduces this prefix uniformly for every row $`s\geq27`$; this is the [kernel-checked rank-(26) prefix](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfFinalMiddlePhaseSieve.lean#L899) used again in Appendix <a href="#app:half-final-skip" data-reference-type="ref" data-reference="app:half-final-skip">10.4</a>.
+The finite seam model introduced below reproduces this prefix uniformly for every row $`s\geq27`$; this is the [kernel-checked rank-(26) prefix](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfFinalMiddlePhaseSieve.lean#L899) used again in Appendix [10.4](#app%3Ahalf-final-skip).
 
-This is only an initial segment. Membership of $`1/2`$ in $`\mathcal A`$ requires the complementary skips to recur beyond every bound. Nonmembership has a finite alternative: one skip is the *last*, precisely when its residual lies strictly above the whole remaining tail (Appendix <a href="#res:fixedtailsocket" data-reference-type="ref" data-reference="res:fixedtailsocket">10.4.6</a>). Theorem <a href="#res:fatalright" data-reference-type="ref" data-reference="res:fatalright">17</a> below identifies nonmembership with the existence of such a skip.
+This is only an initial segment. Membership of $`1/2`$ in $`\mathcal A`$ requires the complementary skips to recur beyond every bound. Nonmembership has a finite alternative: one skip is the *last*, precisely when its residual lies strictly above the whole remaining tail (Appendix [10.4.6](#res%3Afixedtailsocket)). Theorem [17](#res%3Afatalright) below identifies nonmembership with the existence of such a skip.
 
-The next definition replaces the real greedy calculation by an integer one. A *row* $`s`$ keeps the ranks $`2,\ldots,s-1`$, rescales every weight by $`4^s`$, rounds down, and uses a target $`2^s`$ below the rescaled value $`4^s/2`$. The resulting zero–one word records the finite take/skip decisions across adjacent cutoffs; this aligned family is the “seam.” Its last entry records whether rank $`s-1`$ is taken or skipped and is the terminal bit used in Theorem <a href="#res:halfmembership" data-reference-type="ref" data-reference="res:halfmembership">14</a>.
+The next definition replaces the real greedy calculation by an integer one. A *row* $`s`$ keeps the ranks $`2,\ldots,s-1`$, rescales every weight by $`4^s`$, rounds down, and uses a target $`2^s`$ below the rescaled value $`4^s/2`$. The resulting zero–one word records the finite take/skip decisions across adjacent cutoffs; this aligned family is the “seam.” Its last entry records whether rank $`s-1`$ is taken or skipped and is the terminal bit used in Theorem [14](#res%3Ahalfmembership).
 
 <div id="def:terminal-bit" class="definition">
 
@@ -565,11 +565,11 @@ The Boolean word $`(\beta_{s,2},\ldots,\beta_{s,s-1})`$ is the *finite greedy se
 
 </div>
 
-For example, at $`s=7`$ we have $`\kappa_7=8064`$, and the run takes $`q_{7,2}=5461`$ and $`q_{7,3}=2340`$, skips $`1092`$ and $`528`$, and takes $`q_{7,6}=260`$, leaving $`3`$: the word is $`1,1,0,0,1`$, matching the real greedy decisions at ranks $`2`$–$`6`$, with terminal bit $`\tau_7=1`$. The seam is thus an exact integer coordinate model of the real greedy process. Appendix <a href="#app:half-final-skip" data-reference-type="ref" data-reference="app:half-final-skip">10.4</a> develops the equivalence with final skips and the unresolved transition carries; the finite coordinate changes in Appendix <a href="#app:half-evidence" data-reference-type="ref" data-reference="app:half-evidence">10.5</a> do not strengthen that equivalence.
+For example, at $`s=7`$ we have $`\kappa_7=8064`$, and the run takes $`q_{7,2}=5461`$ and $`q_{7,3}=2340`$, skips $`1092`$ and $`528`$, and takes $`q_{7,6}=260`$, leaving $`3`$: the word is $`1,1,0,0,1`$, matching the real greedy decisions at ranks $`2`$–$`6`$, with terminal bit $`\tau_7=1`$. The seam is thus an exact integer coordinate model of the real greedy process. Appendix [10.4](#app%3Ahalf-final-skip) develops the equivalence with final skips and the unresolved transition carries; the finite coordinate changes in Appendix [10.5](#app%3Ahalf-evidence) do not strengthen that equivalence.
 
 <div id="res:halfmembership" class="theorem">
 
-**Theorem 14** (exact half-membership classification). *The following are equivalent:
+**Theorem 14** (exact half-membership classification). *The following are equivalent:*
 ``` math
 \begin{aligned}
 \textup{(i)}\;&\quad \frac12\in\mathcal A;\\
@@ -579,7 +579,7 @@ For example, at $`s=7`$ we have $`\kappa_7=8064`$, and the run takes $`q_{7,2}=5
   \text{for every }N\text{ there is }s\geq\max\{N,6\}
   \text{ with }\tau_s=0.
 \end{aligned}
-```*
+```
 
 </div>
 
@@ -607,19 +607,19 @@ This is the [finite-support theorem](https://github.com/wcook04/plectis-erdos/bl
 
 <div id="res:halfcounterexample" class="corollary">
 
-**Corollary 16** (counterexample from half-membership). *Any one of the equivalent conditions in Theorem <a href="#res:halfmembership" data-reference-type="ref" data-reference="res:halfmembership">14</a> produces an infinite support $`A\subseteq\mathbb{N}_{>0}`$ with $`X_A=1/2`$, and therefore refutes the universal form of Erdős #257.*
+**Corollary 16** (counterexample from half-membership). *Any one of the equivalent conditions in Theorem [14](#res%3Ahalfmembership) produces an infinite support $`A\subseteq\mathbb{N}_{>0}`$ with $`X_A=1/2`$, and therefore refutes the universal form of Erdős #257.*
 
 </div>
 
-This combines the unique greedy support from Theorem <a href="#res:greedy" data-reference-type="ref" data-reference="res:greedy">5</a> with Proposition <a href="#res:nofinitehalf" data-reference-type="ref" data-reference="res:nofinitehalf">15</a>. A tempting signed-to-Boolean shortcut also fails: selecting precisely the negative Möbius indices overshoots $`1/2`$ by at least $`1/63`$. Proposition <a href="#res:mobiussignnogo" data-reference-type="ref" data-reference="res:mobiussignnogo">47</a> gives the exact sign-separation identity.
+This combines the unique greedy support from Theorem [5](#res%3Agreedy) with Proposition [15](#res%3Anofinitehalf). A tempting signed-to-Boolean shortcut also fails: selecting precisely the negative Möbius indices overshoots $`1/2`$ by at least $`1/63`$. Proposition [47](#res%3Amobiussignnogo) gives the exact sign-separation identity.
 
-In ordinary terms, Theorem <a href="#res:halfmembership" data-reference-type="ref" data-reference="res:halfmembership">14</a> says that membership means no skip is the last. It does not prove that skips continue beyond every bound. The next subsection characterises the opposite case and identifies what would be required to exclude it.
+In ordinary terms, Theorem [14](#res%3Ahalfmembership) says that membership means no skip is the last. It does not prove that skips continue beyond every bound. The next subsection characterises the opposite case and identifies what would be required to exclude it.
 
 <a id="sec:final-skip-reduction"></a>
 
 ## The final-skip reduction
 
-Appendix <a href="#app:half-final-skip" data-reference-type="ref" data-reference="app:half-final-skip">10.4</a> contains the detailed derivations used in this subsection; the statements and their logical status are recorded here. Here $`w_n=(2^n-1)^{-1}`$, and $`T_n=\sum_{m>n}w_m`$ is the full later weight. Assume a final skip, classify its successor by comparing the ranks selected in consecutive seam rows, and eliminate every branch. The elimination stops at two middle carry values and one future-tail inequality; these are the open inputs stated below.
+Appendix [10.4](#app%3Ahalf-final-skip) contains the detailed derivations used in this subsection; the statements and their logical status are recorded here. Here $`w_n=(2^n-1)^{-1}`$, and $`T_n=\sum_{m>n}w_m`$ is the full later weight. Assume a final skip, classify its successor by comparing the ranks selected in consecutive seam rows, and eliminate every branch. The elimination stops at two middle carry values and one future-tail inequality; these are the open inputs stated below.
 
 For each $`s\geq6`$, let
 ``` math
@@ -647,7 +647,7 @@ P_D=2f_{G_D}(2D+1)+f_{G_D}(2D+2),
  \quad C_D=4R_{D,D}-P_D-4,
  \quad \Theta_D=\sum_{j\geq1}\frac{f_{A_D}(2D+2+j)}{2^j}.
 ```
-Here $`R_{D,D}`$ is the final integer remainder in seam row $`D`$, $`P_D`$ is its paired divisor-incidence pulse, $`C_D\in\mathbb{Z}`$ is the resulting carry, and $`\Theta_D`$ is the full future tail, not a finite truncation. The residual identity of Appendix <a href="#res:producercarry" data-reference-type="ref" data-reference="res:producercarry">10.4.7</a> compares the two quantities exactly:
+Here $`R_{D,D}`$ is the final integer remainder in seam row $`D`$, $`P_D`$ is its paired divisor-incidence pulse, $`C_D\in\mathbb{Z}`$ is the resulting carry, and $`\Theta_D`$ is the full future tail, not a finite truncation. The residual identity of Appendix [10.4.7](#res%3Aproducercarry) compares the two quantities exactly:
 ``` math
 \frac12-\sum_{a\in A_D}w_a
  =2^{-(2D+2)}\bigl(C_D-\Theta_D\bigr),
@@ -680,15 +680,15 @@ The three equivalent nonmembership criteria are formalised in [fatal-gap classif
 
 </div>
 
-The upper and $`C_D=-3`$ exclusions are the [upper-branch exclusion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L299) and [middle-$`-3`$ exclusion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L364); the upper case is proved directly at the linked declaration, and Appendix <a href="#app:half-final-skip" data-reference-type="ref" data-reference="app:half-final-skip">10.4</a> sketches a prose argument only for the case $`C_D=-3`$. The three exceptional values are identified by the [three exceptional carry values](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4125).
+The upper and $`C_D=-3`$ exclusions are the [upper-branch exclusion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L299) and [middle-$`-3`$ exclusion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L364); the upper case is proved directly at the linked declaration, and Appendix [10.4](#app%3Ahalf-final-skip) sketches a prose argument only for the case $`C_D=-3`$. The three exceptional values are identified by the [three exceptional carry values](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4125).
 
 <div id="res:taildominance" class="corollary">
 
-**Corollary 19** (tail-dominance membership criterion). *If every middle transition at a row $`D\geq13`$ with $`C_D\neq-3`$ satisfies
+**Corollary 19** (tail-dominance membership criterion). *If every middle transition at a row $`D\geq13`$ with $`C_D\neq-3`$ satisfies*
 ``` math
 \Theta_D<C_D, \tag{4.2}
 ```
-then no final skipped exponent exists, and hence $`1/2\in\mathcal A`$.*
+*then no final skipped exponent exists, and hence $`1/2\in\mathcal A`$.*
 
 </div>
 
@@ -710,7 +710,7 @@ The proved levels of the argument are
  &[\text{proved}].
 \end{array}
 ```
-These lines do not imply membership. The unproved hypothesis has two parts: exclude all actual middle transitions with $`C_D\in\{-2,-1\}`$, and prove <span class="upright">(4.2)</span> at every remaining non-$`(-3)`$ middle transition. Together they establish the global hypothesis of Corollary <a href="#res:taildominance" data-reference-type="ref" data-reference="res:taildominance">19</a>; only then does Corollary <a href="#res:halfcounterexample" data-reference-type="ref" data-reference="res:halfcounterexample">16</a> produce an infinite rational-valued support and a counterexample to the universal \#257 statement.
+These lines do not imply membership. The unproved hypothesis has two parts: exclude all actual middle transitions with $`C_D\in\{-2,-1\}`$, and prove <span class="upright">(4.2)</span> at every remaining non-$`(-3)`$ middle transition. Together they establish the global hypothesis of Corollary [19](#res%3Ataildominance); only then does Corollary [16](#res%3Ahalfcounterexample) produce an infinite rational-valued support and a counterexample to the universal \#257 statement.
 
 <a id="sec:twenty-one-frontier"></a>
 
@@ -720,11 +720,11 @@ The target $`1/21`$ supplies a second one-sided test of universal \#257. It is n
 
 <div id="res:twentyonefrontier" class="theorem">
 
-**Theorem 20** (finite obstruction and quotient-greedy frontier at $`1/21`$). *No finite set $`F\subseteq\{2,3,\ldots\}`$ satisfies
+**Theorem 20** (finite obstruction and quotient-greedy frontier at $`1/21`$). *No finite set $`F\subseteq\{2,3,\ldots\}`$ satisfies*
 ``` math
 \sum_{n\in F}\frac1{2^n-1}=\frac1{21}.
 ```
-For the canonical quotient-greedy remainder $`s_R`$ at even depth $`2R`$, membership of $`1/21`$ is equivalent to failure of one explicit fatal/cofinite/aligned branch $`\mathcal F_{21}`$. An unbounded sequence of closed rows with $`s_R\le2^R`$ implies membership. On $`\mathcal F_{21}`$, the remainder is eventually strictly above $`2^R`$, the boundary rank is selected, and the support and remainder follow one exact affine recurrence.*
+*For the canonical quotient-greedy remainder $`s_R`$ at even depth $`2R`$, membership of $`1/21`$ is equivalent to failure of one explicit fatal/cofinite/aligned branch $`\mathcal F_{21}`$. An unbounded sequence of closed rows with $`s_R\le2^R`$ implies membership. On $`\mathcal F_{21}`$, the remainder is eventually strictly above $`2^R`$, the boundary rank is selected, and the support and remainder follow one exact affine recurrence.*
 
 </div>
 
@@ -736,13 +736,13 @@ The finite obstruction is [kernel checked](https://github.com/wcook04/plectis-er
 
 Three endpoint questions remain separate.
 
-1.  The universal problem is to prove $`X_A\notin\mathbb{Q}`$ for every infinite $`A\subseteq\mathbb{N}_{>0}`$. Theorem <a href="#res:support" data-reference-type="ref" data-reference="res:support">4</a> proves several families, while Theorem <a href="#res:rigidity-main" data-reference-type="ref" data-reference="res:rigidity-main">7</a> and its four corollaries constrain a hypothetical rational support. Neither route supplies the universal quantifier.
+1.  The universal problem is to prove $`X_A\notin\mathbb{Q}`$ for every infinite $`A\subseteq\mathbb{N}_{>0}`$. Theorem [4](#res%3Asupport) proves several families, while Theorem [7](#res%3Arigidity-main) and its four corollaries constrain a hypothetical rational support. Neither route supplies the universal quantifier.
 
-2.  The distinguished half-value route asks whether $`1/2\in\mathcal A`$. Theorem <a href="#res:halfmembership" data-reference-type="ref" data-reference="res:halfmembership">14</a> identifies this with infinitely many greedy skips, while Theorem <a href="#res:fatalright" data-reference-type="ref" data-reference="res:fatalright">17</a> identifies nonmembership with a final skip. Proposition <a href="#res:finalskipexclusions" data-reference-type="ref" data-reference="res:finalskipexclusions">18</a> proves that this final transition cannot be upper and that a final middle transition cannot have $`C_D=-3`$. Corollary <a href="#res:taildominance" data-reference-type="ref" data-reference="res:taildominance">19</a> would prove membership if no actual middle transition had $`C_D=-2`$ or $`-1`$, and if every remaining middle transition with $`C_D\geq0`$ satisfied $`\Theta_D<C_D`$, comparing its full future tail to its transition carry as in <span class="upright">(4.2)</span>. Neither statement is proved.
+2.  The distinguished half-value route asks whether $`1/2\in\mathcal A`$. Theorem [14](#res%3Ahalfmembership) identifies this with infinitely many greedy skips, while Theorem [17](#res%3Afatalright) identifies nonmembership with a final skip. Proposition [18](#res%3Afinalskipexclusions) proves that this final transition cannot be upper and that a final middle transition cannot have $`C_D=-3`$. Corollary [19](#res%3Ataildominance) would prove membership if no actual middle transition had $`C_D=-2`$ or $`-1`$, and if every remaining middle transition with $`C_D\geq0`$ satisfied $`\Theta_D<C_D`$, comparing its full future tail to its transition carry as in <span class="upright">(4.2)</span>. Neither statement is proved.
 
-3.  The second rational-target route asks whether $`1/21\in\mathcal A`$. Theorem <a href="#res:twentyonefrontier" data-reference-type="ref" data-reference="res:twentyonefrontier">20</a> rules out finite support and reduces membership exactly to excluding $`\mathcal F_{21}`$. Contradicting the eventual affine-supercapacity recurrence forced by $`\mathcal F_{21}`$, or producing closed canonical rows at unbounded depth, would suffice; neither is proved, and neither sufficient route is asserted to be equivalent by itself.
+3.  The second rational-target route asks whether $`1/21\in\mathcal A`$. Theorem [20](#res%3Atwentyonefrontier) rules out finite support and reduces membership exactly to excluding $`\mathcal F_{21}`$. Contradicting the eventual affine-supercapacity recurrence forced by $`\mathcal F_{21}`$, or producing closed canonical rows at unbounded depth, would suffice; neither is proved, and neither sufficient route is asserted to be equivalent by itself.
 
-Appendix <a href="#app:half-technical" data-reference-type="ref" data-reference="app:half-technical">10</a> records the exact local reductions, conditional compactness criteria, finite certificates, counterexamples to stronger local assertions, and failed strategies. These narrow the remaining cases but decide none of the three endpoints.
+Appendix [10](#app%3Ahalf-technical) records the exact local reductions, conditional compactness criteria, finite certificates, counterexamples to stronger local assertions, and failed strategies. These narrow the remaining cases but decide none of the three endpoints.
 
 <a id="sec:249"></a>
 
@@ -754,7 +754,7 @@ S=\sum_{n\ge1}\frac{\varphi(n)}{2^n}
 ```
 is irrational remains open. The argument has four logically distinct layers. First, a finite Farey computation excludes every rational denominator up to an explicit bound. Second, irrationality is characterised exactly by the existence of finite certificates against every possible eventual binary period. Third, many such certificates are verified at bounded parameters. Fourth, and still missing, is a theorem supplying them at unbounded parameters. Only the fourth layer would settle the problem.
 
-The main section states this reduction. Appendix <a href="#app:totient-normal" data-reference-type="ref" data-reference="app:totient-normal">12.1</a> gives equivalent forms of the missing assertion that certificates occur at arbitrarily large scales. Appendix <a href="#app:totient-finite" data-reference-type="ref" data-reference="app:totient-finite">12.2</a> collects finite estimates and checked certificates; any conclusion of irrationality there assumes, rather than proves, an unbounded supply. Appendix  <a href="#app:totient-boundaries" data-reference-type="ref" data-reference="app:totient-boundaries">12.3</a> records candidate sufficient conditions and shows why several natural shortcuts fail. Appendix <a href="#app:totient-rank" data-reference-type="ref" data-reference="app:totient-rank">12.4</a> proves exact dyadic rank growth but not the missing implication from that growth to irrationality. Only the first appendix is an exact reformulation of the open fourth layer.
+The main section states this reduction. Appendix [12.1](#app%3Atotient-normal) gives equivalent forms of the missing assertion that certificates occur at arbitrarily large scales. Appendix [12.2](#app%3Atotient-finite) collects finite estimates and checked certificates; any conclusion of irrationality there assumes, rather than proves, an unbounded supply. Appendix  [12.3](#app%3Atotient-boundaries) records candidate sufficient conditions and shows why several natural shortcuts fail. Appendix [12.4](#app%3Atotient-rank) proves exact dyadic rank growth but not the missing implication from that growth to irrationality. Only the first appendix is an exact reformulation of the open fourth layer.
 
 <a id="sec:uncond"></a>
 
@@ -762,16 +762,16 @@ The main section states this reduction. Appendix <a href="#app:totient-normal" 
 
 <div id="res:farey" class="theorem">
 
-**Theorem 21** (denominator exclusion). *Set
+**Theorem 21** (denominator exclusion). *Set*
 ``` math
 Q_0:=79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053
        \approx7.96\times10^{34}.
 ```
-For every integer $`p`$ and every $`q`$ with $`1\le q\le Q_0`$,
+*For every integer $`p`$ and every $`q`$ with $`1\le q\le Q_0`$,*
 ``` math
 S \;\ne\; \frac{p}{q}.
 ```
-Equivalently, if $`S`$ is rational then its reduced denominator exceeds that bound.*
+*Equivalently, if $`S`$ is rational then its reduced denominator exceeds that bound.*
 
 </div>
 
@@ -788,7 +788,7 @@ This excludes rational denominators through $`Q_0`$, not rationality; larger den
 
 <div class="remark">
 
-*Remark 1* (one bound, four representations). The Lambert identities of Section <a href="#sec:ladder" data-reference-type="ref" data-reference="sec:ladder">3</a> are equalities, so the same finite record transfers verbatim to three other representations of the constant. The first is the Lambert representation $`\sum_d \alpha(d)/(2^d-1)`$ ([Lambert-representation denominator transfer](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18473)), the second is the signed Möbius-square constant $`T=\sum_d\mu(d)/(2^d-1)^2`$ at half the bound ([signed-square denominator transfer](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18487)), and the third is the coprimality probability of Section <a href="#sec:geom" data-reference-type="ref" data-reference="sec:geom">5.2</a>, also at half the bound. Half appears because $`S=\tfrac12+T`$ turns a denominator $`d`$ for $`T`$ into $`2d`$ for $`S`$.
+*Remark 1* (one bound, four representations). The Lambert identities of Section [3](#sec%3Aladder) are equalities, so the same finite record transfers verbatim to three other representations of the constant. The first is the Lambert representation $`\sum_d \alpha(d)/(2^d-1)`$ ([Lambert-representation denominator transfer](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18473)), the second is the signed Möbius-square constant $`T=\sum_d\mu(d)/(2^d-1)^2`$ at half the bound ([signed-square denominator transfer](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18487)), and the third is the coprimality probability of Section [5.2](#sec%3Ageom), also at half the bound. Half appears because $`S=\tfrac12+T`$ turns a denominator $`d`$ for $`T`$ into $`2d`$ for $`S`$.
 
 </div>
 
@@ -803,14 +803,14 @@ Counting visible lattice points $`(a,b)`$ with $`a+b=n`$, $`a\ge1`$, $`b\ge0`$, 
 <div id="res:coprime" class="proposition">
 
 **Proposition 22** (coprimality probability).
-*``` math
+``` math
 S \;=\; \tfrac12 \;+\; \Pr\!\big(\gcd(X,Y)=1\big)
 \;=\; \tfrac12 \;+\!\!\sum_{\substack{a,b\ge1\\ \gcd(a,b)=1}}\!\! 2^{-(a+b)}.
-```*
+```
 
 </div>
 
-Formalised: [coprime-pair representation](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18557), with the underlying lattice identity at [visible-lattice-point identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18544). Base $`2`$ is the one point where $`\Pr(X=a)\Pr(Y=b)=2^{-(a+b)}`$ needs no normalising constant. Restricting the half-open lattice mass to positive waiting times removes $`(1,0)`$, producing the boundary term $`1/2`$. Thus \#249 asks whether two independent fair-coin waiting times are coprime with irrational probability. After reducing $`(X,Y)`$ by their gcd, the same distribution has an exact Stern–Brocot cylinder decomposition. Appendix <a href="#app:lambert-probability" data-reference-type="ref" data-reference="app:lambert-probability">13.3</a> states the resulting probability law and the sharp Fibonacci stability of its alternating runs. These are unconditional structural theorems inside one representation of $`S`$; they do not produce $`\mathsf{Sep}(h,N,L)`$ certificates after every cutoff.
+Formalised: [coprime-pair representation](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18557), with the underlying lattice identity at [visible-lattice-point identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18544). Base $`2`$ is the one point where $`\Pr(X=a)\Pr(Y=b)=2^{-(a+b)}`$ needs no normalising constant. Restricting the half-open lattice mass to positive waiting times removes $`(1,0)`$, producing the boundary term $`1/2`$. Thus \#249 asks whether two independent fair-coin waiting times are coprime with irrational probability. After reducing $`(X,Y)`$ by their gcd, the same distribution has an exact Stern–Brocot cylinder decomposition. Appendix [13.3](#app%3Alambert-probability) states the resulting probability law and the sharp Fibonacci stability of its alternating runs. These are unconditional structural theorems inside one representation of $`S`$; they do not produce $`\mathsf{Sep}(h,N,L)`$ certificates after every cutoff.
 
 <a id="sec:reduction"></a>
 
@@ -852,12 +852,12 @@ Here $`h`$ is the candidate period, $`N`$ the tail location, and $`L`$ the numbe
 
 <div id="res:complete" class="proposition">
 
-**Proposition 24** (certificate completeness). *For every $`h\ge1`$ and $`N\ge0`$,
+**Proposition 24** (certificate completeness). *For every $`h\ge1`$ and $`N\ge0`$,*
 ``` math
 \bigl(\exists L,\ \mathsf{Sep}(h,N,L)\bigr)
 \quad\Longleftrightarrow\quad
 R_{N+h}-R_N\notin\mathbb{Z}.
-```*
+```
 
 </div>
 
@@ -865,7 +865,7 @@ This is the [certificate-completeness equivalence](https://github.com/wcook04/pl
 
 <div id="res:pointwisecomplete" class="theorem">
 
-**Theorem 25** (pointwise certificate characterisation). *The following are equivalent:
+**Theorem 25** (pointwise certificate characterisation). *The following are equivalent:*
 ``` math
 \begin{aligned}
  &S\notin\mathbb{Q},\\
@@ -873,13 +873,13 @@ This is the [certificate-completeness equivalence](https://github.com/wcook04/pl
  &\forall\,h\ge1\ \forall\,N\ge0\ \exists\,L,\qquad
       \mathsf{Sep}(h,N,L).
 \end{aligned}
-```*
+```
 
 </div>
 
 Formalised: [all-differences equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L386), and [pointwise certificate equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L399). The converse direction uses the fact that integrality of even one positive-shift tail difference forces $`S`$ to be rational ([integral-difference rationality criterion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L357)).
 
-The next two equivalences compress the search without changing its conclusion. Theorem <a href="#res:red21" data-reference-type="ref" data-reference="res:red21">26</a> replaces “every $`N`$” by one $`N`$ after every cutoff for each $`h`$; Theorem <a href="#res:diag" data-reference-type="ref" data-reference="res:diag">27</a> then restricts both $`h`$ and $`N`$ to $`M_t`$. A bounded list satisfies neither condition.
+The next two equivalences compress the search without changing its conclusion. Theorem [26](#res%3Ared21) replaces “every $`N`$” by one $`N`$ after every cutoff for each $`h`$; Theorem [27](#res%3Adiag) then restricts both $`h`$ and $`N`$ to $`M_t`$. A bounded list satisfies neither condition.
 
 <div id="res:red21" class="theorem">
 
@@ -893,14 +893,14 @@ For the diagonal compression, every multiple of an eventual period is again a pe
 
 <div id="res:diag" class="theorem">
 
-**Theorem 27** (exact diagonal characterisation). *The following are equivalent:
+**Theorem 27** (exact diagonal characterisation). *The following are equivalent:*
 ``` math
 \begin{aligned}
  &S\notin\mathbb{Q};\\
  &\forall\,t_0\in\mathbb{N}\ \exists\,t\geq t_0\ \exists\,L,\qquad
    \mathsf{Sep}(M_t,M_t,L).
 \end{aligned}
-```*
+```
 
 </div>
 
@@ -943,13 +943,16 @@ which is exactly $`\mathsf{Sep}(1,12,16)`$ and therefore proves $`R_{13}-R_{12}\
 
 ## What remains open
 
-By Theorem <a href="#res:red21" data-reference-type="ref" data-reference="res:red21">26</a>, the unresolved statement is precisely
+By Theorem [26](#res%3Ared21), the unresolved statement is precisely
+
+<a id="eq:unbounded-certificate-supply"></a>
+
 ``` math
 \forall h\ge1\ \forall N_0\ge0\ \exists N\ge N_0\ \exists L\ge1,\qquad
 \mathsf{Sep}(h,N,L).
 \tag{5.1}\label{eq:unbounded-certificate-supply}
 ```
-The diagonal condition in Theorem <a href="#res:diag" data-reference-type="ref" data-reference="res:diag">27</a> is an equivalent one-parameter form of this statement. The verified scales in Example <a href="#res:deposits" data-reference-type="ref" data-reference="res:deposits">28</a> form a finite set; they do not give certificates for every period after every cutoff. No theorem in the formal source proves <a href="#eq:unbounded-certificate-supply" data-reference-type="eqref" data-reference="eq:unbounded-certificate-supply">[eq:unbounded-certificate-supply]</a>; consequently no irrationality claim for $`S`$ is made here.
+The diagonal condition in Theorem [27](#res%3Adiag) is an equivalent one-parameter form of this statement. The verified scales in Example [28](#res%3Adeposits) form a finite set; they do not give certificates for every period after every cutoff. No theorem in the formal source proves [\[eq:unbounded-certificate-supply\]](#eq%3Aunbounded-certificate-supply); consequently no irrationality claim for $`S`$ is made here.
 
 <div class="remark">
 
@@ -958,11 +961,11 @@ The diagonal condition in Theorem <a href="#res:diag" data-reference-type="ref"
 \sum_{n\ge1}\frac{\gamma(n)}{2^n}
  =\sum_{n\le B}\frac{\varphi(n)}{2^n}+\frac{B+2}{2^B}-\frac1{2^P-1}
 ```
-is rational, and its reduced denominator has odd part exactly $`2^P-1`$. Every finite computation that inspects only coefficients with index at most $`B`$ — in particular every certificate $`\mathsf{Sep}(h,N,L)`$ with $`N+h+L\le B`$ — returns the same result for $`\gamma`$ as for $`\varphi`$, and choosing $`P`$ with $`2^P-1>Q_0`$ makes the splice consistent with the denominator exclusion as well. This elementary splice is not formalised in the source and proves nothing about $`\varphi`$ itself; it shows that a proof of <a href="#eq:unbounded-certificate-supply" data-reference-type="eqref" data-reference="eq:unbounded-certificate-supply">[eq:unbounded-certificate-supply]</a> must use totient values at unbounded indices, so no extension of the finite record in Example <a href="#res:deposits" data-reference-type="ref" data-reference="res:deposits">28</a> can establish the supply.
+is rational, and its reduced denominator has odd part exactly $`2^P-1`$. Every finite computation that inspects only coefficients with index at most $`B`$ — in particular every certificate $`\mathsf{Sep}(h,N,L)`$ with $`N+h+L\le B`$ — returns the same result for $`\gamma`$ as for $`\varphi`$, and choosing $`P`$ with $`2^P-1>Q_0`$ makes the splice consistent with the denominator exclusion as well. This elementary splice is not formalised in the source and proves nothing about $`\varphi`$ itself; it shows that a proof of [\[eq:unbounded-certificate-supply\]](#eq%3Aunbounded-certificate-supply) must use totient values at unbounded indices, so no extension of the finite record in Example [28](#res%3Adeposits) can establish the supply.
 
 </div>
 
-Appendix <a href="#app:totient-normal" data-reference-type="ref" data-reference="app:totient-normal">12.1</a> records the exact reformulations of this open obligation. Appendix <a href="#app:totient-finite" data-reference-type="ref" data-reference="app:totient-finite">12.2</a> records fixed-scale enclosures, projections, and certificates, followed by conditional implications that assume them at arbitrarily large scales. Appendices  <a href="#app:totient-boundaries" data-reference-type="ref" data-reference="app:totient-boundaries">12.3</a>–<a href="#app:totient-rank" data-reference-type="ref" data-reference="app:totient-rank">12.4</a> delimit candidate unbounded routes. None proves <a href="#eq:unbounded-certificate-supply" data-reference-type="eqref" data-reference="eq:unbounded-certificate-supply">[eq:unbounded-certificate-supply]</a>.
+Appendix [12.1](#app%3Atotient-normal) records the exact reformulations of this open obligation. Appendix [12.2](#app%3Atotient-finite) records fixed-scale enclosures, projections, and certificates, followed by conditional implications that assume them at arbitrarily large scales. Appendices  [12.3](#app%3Atotient-boundaries)–[12.4](#app%3Atotient-rank) delimit candidate unbounded routes. None proves [\[eq:unbounded-certificate-supply\]](#eq%3Aunbounded-certificate-supply).
 
 <a id="sec:architecture"></a>
 
@@ -974,14 +977,14 @@ This section maps the two open reductions and the limit of finite evidence. It a
 
 ## One transform, three distinct questions
 
-The Lambert rearrangement of Section <a href="#sec:ladder" data-reference-type="ref" data-reference="sec:ladder">3</a> factors the common transform through two maps, the divisor transform followed by binary evaluation:
+The Lambert rearrangement of Section [3](#sec%3Aladder) factors the common transform through two maps, the divisor transform followed by binary evaluation:
 ``` math
 f\;\longmapsto\;f*\mathbf 1\;\longmapsto\;
  \sum_{m\ge1}\frac{(f*\mathbf 1)(m)}{2^m}\;=\;L(f).
 ```
-In this summary, $`*`$ denotes Dirichlet convolution, $`\mathbf 1`$ is the constant-one arithmetic function, $`\mu`$ is the Möbius function, and $`\alpha=\varphi*\mu`$; Section <a href="#sec:ladder" data-reference-type="ref" data-reference="sec:ladder">3</a> gives the full definitions. Here $`(f*\mathbf 1)(m)=\sum_{d\mid m}f(d)`$ is the *divisor stream*: the first map sums over divisors, and the second reads those sums as binary-series coefficients. The input $`f=\alpha`$ gives $`L(\alpha)=S`$ with divisor stream $`\alpha*\mathbf 1=\varphi`$ (Proposition <a href="#res:lift" data-reference-type="ref" data-reference="res:lift">2</a>). A support indicator $`f=\mathbf 1_A`$ gives $`L(\mathbf 1_A)=X_A`$ with divisor stream $`f_A(m)=\sum_{d\mid m}\mathbf 1_A(d)`$ (Appendix <a href="#app:carry-boolean" data-reference-type="ref" data-reference="app:carry-boolean">11.2</a>). The comparison inputs $`\mu`$, $`\mathbf 1`$, and $`\varphi`$ give the comparison values listed in Section <a href="#sec:ladder" data-reference-type="ref" data-reference="sec:ladder">3</a>.
+In this summary, $`*`$ denotes Dirichlet convolution, $`\mathbf 1`$ is the constant-one arithmetic function, $`\mu`$ is the Möbius function, and $`\alpha=\varphi*\mu`$; Section [3](#sec%3Aladder) gives the full definitions. Here $`(f*\mathbf 1)(m)=\sum_{d\mid m}f(d)`$ is the *divisor stream*: the first map sums over divisors, and the second reads those sums as binary-series coefficients. The input $`f=\alpha`$ gives $`L(\alpha)=S`$ with divisor stream $`\alpha*\mathbf 1=\varphi`$ (Proposition [2](#res%3Alift)). A support indicator $`f=\mathbf 1_A`$ gives $`L(\mathbf 1_A)=X_A`$ with divisor stream $`f_A(m)=\sum_{d\mid m}\mathbf 1_A(d)`$ (Appendix [11.2](#app%3Acarry-boolean)). The comparison inputs $`\mu`$, $`\mathbf 1`$, and $`\varphi`$ give the comparison values listed in Section [3](#sec%3Aladder).
 
-For any $`\mathbb{N}`$-valued stream $`\gamma`$ with $`\gamma(n)\le n`$, including $`\varphi`$ and every $`f_A`$, Theorem <a href="#res:rigidity" data-reference-type="ref" data-reference="res:rigidity">46</a> says that $`\sum_n\gamma(n)2^{-n}`$ is rational exactly when an integer sequence $`u(N)`$ and positive integer $`v`$ satisfy $`v\gamma(N+1)=2u(N)-u(N+1)`$ and $`u(N)=o(2^N)`$. This exact recurrence plus subexponential bound is what *tempered integer orbit* means here. Tail differences (Section <a href="#sec:reduction" data-reference-type="ref" data-reference="sec:reduction">5.3</a>) and carry states (Theorem <a href="#res:rigidity-main" data-reference-type="ref" data-reference="res:rigidity-main">7</a>) are two coordinates for that condition. Möbius inversion recovers the underlying input: $`\alpha=\varphi*\mu`$ for \#249 and $`\mu*f_A=\mathbf 1_A`$ for \#257 (Proposition <a href="#res:boolmob" data-reference-type="ref" data-reference="res:boolmob">48</a>).
+For any $`\mathbb{N}`$-valued stream $`\gamma`$ with $`\gamma(n)\le n`$, including $`\varphi`$ and every $`f_A`$, Theorem [46](#res%3Arigidity) says that $`\sum_n\gamma(n)2^{-n}`$ is rational exactly when an integer sequence $`u(N)`$ and positive integer $`v`$ satisfy $`v\gamma(N+1)=2u(N)-u(N+1)`$ and $`u(N)=o(2^N)`$. This exact recurrence plus subexponential bound is what *tempered integer orbit* means here. Tail differences (Section [5.3](#sec%3Areduction)) and carry states (Theorem [7](#res%3Arigidity-main)) are two coordinates for that condition. Möbius inversion recovers the underlying input: $`\alpha=\varphi*\mu`$ for \#249 and $`\mu*f_A=\mathbf 1_A`$ for \#257 (Proposition [48](#res%3Aboolmob)).
 
 The three open questions have different quantifiers, even though they use this one map. Write $`\mathcal I_\infty`$ for the indicator functions $`\mathbf 1_A`$ of infinite supports $`A\subseteq\{2,3,\ldots\}`$. Restricting to exponents at least $`2`$ loses no universal-#257 case: toggling exponent $`1`$ adds the rational number $`1`$, so it preserves whether $`X_A`$ is rational. Then:
 
@@ -989,11 +992,13 @@ The three open questions have different quantifiers, even though they use this o
 
 2.  Universal \#257 asks whether every permitted value is irrational: $`L(\mathcal I_\infty)\cap\mathbb{Q}=\varnothing`$. Its negation is one infinite support $`A`$ with $`X_A\in\mathbb{Q}`$.
 
-3.  The half-value route fixes one rational target and asks an existence question: $`L^{-1}(1/2)\cap\mathcal I_\infty\ne\varnothing`$. Here $`L^{-1}(1/2)`$ is the *fibre*, meaning all inputs mapped to $`1/2`$. Theorem <a href="#res:greedy" data-reference-type="ref" data-reference="res:greedy">5</a> allows at most one positive-exponent support in that fibre, namely the canonical greedy orbit.
+3.  The half-value route fixes one rational target and asks an existence question: $`L^{-1}(1/2)\cap\mathcal I_\infty\ne\varnothing`$. Here $`L^{-1}(1/2)`$ is the *fibre*, meaning all inputs mapped to $`1/2`$. Theorem [5](#res%3Agreedy) allows at most one positive-exponent support in that fibre, namely the canonical greedy orbit.
 
-Question (iii) would refute (ii), but failure at the particular target $`1/2`$ would not prove (ii): another rational target could still be reached. Figure <a href="#fig:transform" data-reference-type="ref" data-reference="fig:transform">1</a> marks these three ways of interrogating the map; it supplies no theorem transferring status between them.
+Question (iii) would refute (ii), but failure at the particular target $`1/2`$ would not prove (ii): another rational target could still be reached. Figure [1](#fig%3Atransform) marks these three ways of interrogating the map; it supplies no theorem transferring status between them.
 
-<figure id="fig:transform" data-latex-placement="t">
+<a id="fig:transform"></a>
+
+<figure data-latex-placement="t">
 
 <figcaption>The divisor transform and its five benchmark inputs. The shaded rows are the open questions: (i) asks for the status of the single value <span class="math inline"><em>S</em></span>, while (ii) asks whether an infinite Boolean input can have any rational image. The dashed arrow marks (iii), the narrower question of whether such an input can reach <span class="math inline">1/2</span>. The remaining three rows calibrate the transform with known rational and irrational values.</figcaption>
 </figure>
@@ -1002,11 +1007,11 @@ Question (iii) would refute (ii), but failure at the particular target $`1/2`$ w
 
 ## Why no status transfers
 
-The transform alone does not determine status: Section <a href="#sec:ladder" data-reference-type="ref" data-reference="sec:ladder">3</a> gives rational $`L(\varphi)=2`$ and $`L(\mu)=1/2`$, irrational $`L(\mathbf 1)=E`$, transcendental $`L(\mathrm{Id})`$, and open $`L(\alpha)=S`$.
+The transform alone does not determine status: Section [3](#sec%3Aladder) gives rational $`L(\varphi)=2`$ and $`L(\mu)=1/2`$, irrational $`L(\mathbf 1)=E`$, transcendental $`L(\mathrm{Id})`$, and open $`L(\alpha)=S`$.
 
-Nor do simple input properties distinguish them: $`\varphi`$ and $`\mathbf 1`$ are positive, multiplicative, and at most linear, yet their values are rational and irrational. Every finite Boolean support has rational value, whereas Theorem <a href="#res:support" data-reference-type="ref" data-reference="res:support">4</a> gives infinite supports with irrational values. Appendix <a href="#app:carry-boolean" data-reference-type="ref" data-reference="app:carry-boolean">11.2</a> works out the finite support $`\{2,3\}`$, value $`10/21`$, and its period-six carry orbit.
+Nor do simple input properties distinguish them: $`\varphi`$ and $`\mathbf 1`$ are positive, multiplicative, and at most linear, yet their values are rational and irrational. Every finite Boolean support has rational value, whereas Theorem [4](#res%3Asupport) gives infinite supports with irrational values. Appendix [11.2](#app%3Acarry-boolean) works out the finite support $`\{2,3\}`$, value $`10/21`$, and its period-six carry orbit.
 
-The transform therefore leaves the input-specific arithmetic untouched: exact totient values for \#249, Boolean Möbius inversion plus infinitude for universal \#257, and greedy divisor feedback for the half-value fibre. Appendix <a href="#app:totient-boundaries" data-reference-type="ref" data-reference="app:totient-boundaries">12.3</a> rules out several generic shortcuts.
+The transform therefore leaves the input-specific arithmetic untouched: exact totient values for \#249, Boolean Möbius inversion plus infinitude for universal \#257, and greedy divisor feedback for the half-value fibre. Appendix [12.3](#app%3Atotient-boundaries) rules out several generic shortcuts.
 
 <a id="the-shared-bottleneck"></a>
 
@@ -1024,7 +1029,7 @@ Both reductions require finite events beyond every proposed cutoff, but the conc
  \forall N_0\;\exists s\ge\max\{N_0,6\}\;(\tau_s=0).
 \end{aligned}
 ```
-The first line requires separating certificates after every cutoff for each shift $`h`$; the second requires terminal zero bits after every row cutoff. The events belong to different constructions and imply opposite kinds of conclusion: irrationality in the first line, membership in the second. Proposition <a href="#res:complete" data-reference-type="ref" data-reference="res:complete">24</a>, Theorem <a href="#res:pointwisecomplete" data-reference-type="ref" data-reference="res:pointwisecomplete">25</a>, and Theorem <a href="#res:red21" data-reference-type="ref" data-reference="res:red21">26</a> give the first equivalence; Theorem <a href="#res:halfmembership" data-reference-type="ref" data-reference="res:halfmembership">14</a> gives the second. Neither required unbounded-depth supply is known. By contrast, the classical full-support argument uses Bertrand–CRT and averaging to construct witnesses at every precision. Other coordinate identities and rational-support filters do not change either missing quantifier.
+The first line requires separating certificates after every cutoff for each shift $`h`$; the second requires terminal zero bits after every row cutoff. The events belong to different constructions and imply opposite kinds of conclusion: irrationality in the first line, membership in the second. Proposition [24](#res%3Acomplete), Theorem [25](#res%3Apointwisecomplete), and Theorem [26](#res%3Ared21) give the first equivalence; Theorem [14](#res%3Ahalfmembership) gives the second. Neither required unbounded-depth supply is known. By contrast, the classical full-support argument uses Bertrand–CRT and averaging to construct witnesses at every precision. Other coordinate identities and rational-support filters do not change either missing quantifier.
 
 In these coordinates, resolving the displayed statements requires $`\mathsf{Sep}`$-certificates at unbounded parameters for \#249, or terminal zeros beyond every row cutoff (or an eventually right greedy seam) for the half-value route. More fixed-scale computation alone changes neither open statement.
 
@@ -1032,15 +1037,15 @@ In these coordinates, resolving the displayed statements requires $`\mathsf{Sep}
 
 #### What finite witnesses can decide.
 
-Here a *finite witness* is exactly checkable data whose conclusion does not assume how the uninspected tail behaves; its force depends on the claim. For the half-value route, a finite calculation can settle nonmembership. By Theorem <a href="#res:fatalright" data-reference-type="ref" data-reference="res:fatalright">17</a>, $`1/2\notin\mathcal A`$ is equivalent to the existence of a fatal half-gap. Exact rational evaluation of the greedy prefix, together with the rational tail enclosures of Proposition <a href="#res:death" data-reference-type="ref" data-reference="res:death">58</a>, can verify such a gap after finitely many steps. The gap excludes every support agreeing with that prefix. The reverse direction has no finite certificate here: survival through any finite row is inconclusive, while membership requires $`\tau_s=0`$ beyond every row cutoff.
+Here a *finite witness* is exactly checkable data whose conclusion does not assume how the uninspected tail behaves; its force depends on the claim. For the half-value route, a finite calculation can settle nonmembership. By Theorem [17](#res%3Afatalright), $`1/2\notin\mathcal A`$ is equivalent to the existence of a fatal half-gap. Exact rational evaluation of the greedy prefix, together with the rational tail enclosures of Proposition [58](#res%3Adeath), can verify such a gap after finitely many steps. The gap excludes every support agreeing with that prefix. The reverse direction has no finite certificate here: survival through any finite row is inconclusive, while membership requires $`\tau_s=0`$ beyond every row cutoff.
 
-For $`S`$, each $`\mathsf{Sep}`$-certificate has narrower scope: it proves that one specified tail difference is non-integral. Theorem <a href="#res:red21" data-reference-type="ref" data-reference="res:red21">26</a> requires certificates after every cutoff for every positive shift, so no single certificate proves irrationality. Rationality forces eventual integrality, but failure to find a certificate at one truncation proves neither integrality nor rationality: a greater binary depth $`L`$ may still certify the same tail difference. Thus finite discovery can certify half-value nonmembership, but not half-value membership or either status of $`S`$ within these certificate systems.
+For $`S`$, each $`\mathsf{Sep}`$-certificate has narrower scope: it proves that one specified tail difference is non-integral. Theorem [26](#res%3Ared21) requires certificates after every cutoff for every positive shift, so no single certificate proves irrationality. Rationality forces eventual integrality, but failure to find a certificate at one truncation proves neither integrality nor rationality: a greater binary depth $`L`$ may still certify the same tail difference. Thus finite discovery can certify half-value nonmembership, but not half-value membership or either status of $`S`$ within these certificate systems.
 
 <div class="remark">
 
 *Remark 3* (why finite agreement does not decide the open cases). The following two elementary countermodels are not formalised in the source. Both alter the object beyond a finite inspected range; neither makes a claim about the actual totient stream or the actual Mersenne weights.
 
-For \#249, any fixed finite family of certificate computations inspects only finitely many coefficients. The splice in Section <a href="#sec:249-open" data-reference-type="ref" data-reference="sec:249-open">5.4</a> constructs a stream $`\gamma`$ agreeing with $`\varphi`$ on all of them, still satisfying $`0\leq\gamma(n)\leq n`$, whose binary series is rational. The same finite output is therefore compatible with rationality. A proof of the missing supply must use totient values beyond every fixed bound.
+For \#249, any fixed finite family of certificate computations inspects only finitely many coefficients. The splice in Section [5.4](#sec%3A249-open) constructs a stream $`\gamma`$ agreeing with $`\varphi`$ on all of them, still satisfying $`0\leq\gamma(n)\leq n`$, whose binary series is rational. The same finite output is therefore compatible with rationality. A proof of the missing supply must use totient values beyond every fixed bound.
 
 For the half-value route, fix any finite prefix of greedy decisions and replace only the uninspected weights by a ratio-one-third geometric tail. If its total mass is below the pending residual, the complete modified tail falls short and the last inspected skip is final. If its total mass equals the residual, that tail realises the target. Both choices preserve strict tails and every inspected decision. Thus a finite prefix and strict-tail geometry do not decide membership; a proof must use the specific Mersenne arithmetic of the tail.
 
@@ -1059,6 +1064,9 @@ The standalone \#249 and \#257 notes repeat much of this section on purpose. The
 ## A strict prime-tail endpoint for \#249
 
 The first packet sharpens the first-harmonic pivot route to the actual endpoint consumed by the finite certificate theorem. If $`\mathcal T_{h,N}`$ denotes the natural prime-tail phase used in the pivot anti-reconstruction module, the proposed producer is
+
+<a id="eq:packet-prime-gap"></a>
+
 ``` math
 \forall h>0\;\forall N_0\;\exists p\text{ prime},\quad
  p\ge\max(N_0+h+1,h+5),\qquad
@@ -1071,9 +1079,9 @@ N=p-h-1,
  \qquad
  \varepsilon=\frac9{10}-\Re\mathcal T_{h,N}>0.
 ```
-The existing natural-window approximation chooses a finite depth whose error is at most $`\varepsilon`$. The resulting finite first cosine is at most $`9/10`$, which is exactly the pivot-point escape input already consumed by the irrationality theorem. Thus <a href="#eq:packet-prime-gap" data-reference-type="eqref" data-reference="eq:packet-prime-gap">[eq:packet-prime-gap]</a>, if proved, is not a heuristic: it closes \#249 through a checked implication.
+The existing natural-window approximation chooses a finite depth whose error is at most $`\varepsilon`$. The resulting finite first cosine is at most $`9/10`$, which is exactly the pivot-point escape input already consumed by the irrationality theorem. Thus [\[eq:packet-prime-gap\]](#eq%3Apacket-prime-gap), if proved, is not a heuristic: it closes \#249 through a checked implication.
 
-The packet also separates this deterministic producer from a nearby metric statement. A Riesz-product theorem may show the desired inequality for almost every phase in an auxiliary model, but the arithmetic orbit is one locked point and may belong to the exceptional set. The packet constructs an irrational adversarial phase illustrating precisely that failure. Metric typicality therefore cannot be inserted as the missing premise of <a href="#eq:packet-prime-gap" data-reference-type="eqref" data-reference="eq:packet-prime-gap">[eq:packet-prime-gap]</a>.
+The packet also separates this deterministic producer from a nearby metric statement. A Riesz-product theorem may show the desired inequality for almost every phase in an auxiliary model, but the arithmetic orbit is one locked point and may belong to the exceptional set. The packet constructs an irrational adversarial phase illustrating precisely that failure. Metric typicality therefore cannot be inserted as the missing premise of [\[eq:packet-prime-gap\]](#eq%3Apacket-prime-gap).
 
 The exact finite deposit at parameters $`(147,23)`$ through $`h=5022`$ remains a finite deposit. It supports the producer experimentally but supplies neither the universal quantifier in $`h`$ nor witnesses beyond every $`N_0`$.
 
@@ -1095,6 +1103,9 @@ The packet also identifies its own missing bridge. Nonzero Hankel curvature does
 ## A finite Euler-sieve tower and its radial obstruction
 
 The third \#249 packet starts from the local squarefree Möbius factor with coefficients $`1,-2,1`$. The problem-owned finite layer isolates
+
+<a id="eq:packet-euler-factors"></a>
+
 ``` math
 1-\frac2p+\frac1{p^2}=\left(1-\frac1p\right)^2,
  \qquad
@@ -1102,6 +1113,9 @@ The third \#249 packet starts from the local squarefree Möbius factor with coef
  \tag{S1}\label{eq:packet-euler-factors}
 ```
 and, for $`\sigma(p^e)=1+p+\cdots+p^e`$,
+
+<a id="eq:packet-second-difference"></a>
+
 ``` math
 \sigma(p^{e+2})-2\sigma(p^{e+1})+\sigma(p^e)
    =p^{e+1}(p-1).
@@ -1109,13 +1123,16 @@ and, for $`\sigma(p^e)=1+p+\cdots+p^e`$,
 ```
 These identities are the exact local algebra behind a tower formed by sieving over larger finite prime sets.
 
-The analytic proposal is that every finite stage admits a quasimodular description and is transcendental at the relevant algebraic point, while the infinite tower develops the unit circle as a natural boundary. Neither fact, even if proved, forces the limiting value $`S`$ to be irrational: transcendental numbers can converge to a rational number, and a natural boundary for a function does not directly control one radial value. Equations <a href="#eq:packet-euler-factors" data-reference-type="eqref" data-reference="eq:packet-euler-factors">[eq:packet-euler-factors]</a> expose an additional difficulty. The $`s=1`$ and $`s=2`$ products have different limiting strength, so nonvanishing at one radial exponent cannot simply be copied to the other. The required bridge is a uniform arithmetic estimate that survives the finite-stage limit.
+The analytic proposal is that every finite stage admits a quasimodular description and is transcendental at the relevant algebraic point, while the infinite tower develops the unit circle as a natural boundary. Neither fact, even if proved, forces the limiting value $`S`$ to be irrational: transcendental numbers can converge to a rational number, and a natural boundary for a function does not directly control one radial value. Equations [\[eq:packet-euler-factors\]](#eq%3Apacket-euler-factors) expose an additional difficulty. The $`s=1`$ and $`s=2`$ products have different limiting strength, so nonvanishing at one radial exponent cannot simply be copied to the other. The required bridge is a uniform arithmetic estimate that survives the finite-stage limit.
 
 <a id="sec:packet-cusp"></a>
 
 ## A sharp parabolic cusp for the actual totient measure
 
-The fourth \#249 packet uses the coprime-pair interpretation from Section <a href="#sec:geom" data-reference-type="ref" data-reference="sec:geom">5.2</a>. Reduced slopes are coded by Stern–Brocot cylinders, and long one-sided runs approach a parabolic cusp. Its selected theorem target is a sharp weighted asymptotic
+The fourth \#249 packet uses the coprime-pair interpretation from Section [5.2](#sec%3Ageom). Reduced slopes are coded by Stern–Brocot cylinders, and long one-sided runs approach a parabolic cusp. Its selected theorem target is a sharp weighted asymptotic
+
+<a id="eq:packet-cusp"></a>
+
 ``` math
 \mathcal M(k)=L+\frac{c}{k}+O(k^{-1-\delta}),
  \qquad c\ne0,
@@ -1123,7 +1140,7 @@ The fourth \#249 packet uses the coprime-pair interpretation from Section <a hr
 ```
 for the *actual* Mersenne-weighted totient mass along a cofinal cusp family. The intended consumer is the pivot or certificate route: the nonzero secondary coefficient must survive the projection to a finite escape witness.
 
-The rational geometric-$`x`$ toy model is an essential negative result. Its transfer calculation can be completed explicitly, yet the analogous irrationality conclusion is false. Thus “parabolic cusp” is not itself an arithmetic obstruction. A successful theorem must prove <a href="#eq:packet-cusp" data-reference-type="eqref" data-reference="eq:packet-cusp">[eq:packet-cusp]</a> for the actual totient-weighted measure and show that $`c\ne0`$ is visible in the certificate coordinate. A generic mixing or renewal estimate does not supply either conclusion.
+The rational geometric-$`x`$ toy model is an essential negative result. Its transfer calculation can be completed explicitly, yet the analogous irrationality conclusion is false. Thus “parabolic cusp” is not itself an arithmetic obstruction. A successful theorem must prove [\[eq:packet-cusp\]](#eq%3Apacket-cusp) for the actual totient-weighted measure and show that $`c\ne0`$ is visible in the certificate coordinate. A generic mixing or renewal estimate does not supply either conclusion.
 
 <a id="sec:packet-curvature"></a>
 
@@ -1154,13 +1171,16 @@ The strict Mersenne tail theorem already gives
 \sum_{k>n}w_k<w_n.
 ```
 Deleting future weights only makes the tail smaller, so for every selected offset set $`J`$,
+
+<a id="eq:packet-hereditary-tail"></a>
+
 ``` math
 \sum_{k\in J}w_{n+k+1}<w_n.
  \tag{H}\label{eq:packet-hereditary-tail}
 ```
 This hereditary inequality makes the digit map on every support injective: the first differing digit outweighs every possible later disagreement.
 
-The topology-and-measure classification is now formalised in Theorem <a href="#res:supportedgeometry" data-reference-type="ref" data-reference="res:supportedgeometry">6</a>: every restricted set is compact and nowhere dense, every infinite allowed support gives a perfect set, and the Lebesgue measure is exactly $`2^{-c}`$ when the complement has finite size $`c`$, versus zero when the complement is infinite. Equation <a href="#eq:packet-hereditary-tail" data-reference-type="eqref" data-reference="eq:packet-hereditary-tail">[eq:packet-hereditary-tail]</a> supplies the disjoint-cylinder geometry. What remains unformalised in this packet is the finer probability and dimension layer: whether fair Bernoulli digits give normalized Lebesgue measure exactly in the cofinite case, the singularity of biased or infinite-complement laws, and the expected Hausdorff-dimension formula $`1/d`$ for stride supports $`A=\{r,r+d,r+2d,\ldots\}`$ together with its entropy refinement.
+The topology-and-measure classification is now formalised in Theorem [6](#res%3Asupportedgeometry): every restricted set is compact and nowhere dense, every infinite allowed support gives a perfect set, and the Lebesgue measure is exactly $`2^{-c}`$ when the complement has finite size $`c`$, versus zero when the complement is infinite. Equation [\[eq:packet-hereditary-tail\]](#eq%3Apacket-hereditary-tail) supplies the disjoint-cylinder geometry. What remains unformalised in this packet is the finer probability and dimension layer: whether fair Bernoulli digits give normalized Lebesgue measure exactly in the cofinite case, the singularity of biased or infinite-complement laws, and the expected Hausdorff-dimension formula $`1/d`$ for stride supports $`A=\{r,r+d,r+2d,\ldots\}`$ together with its entropy refinement.
 
 Neither the proved geometry nor completion of that finer layer would prove universal \#257. A null or positive-measure Cantor set may contain rational points, and neither the absolutely continuous nor singular phase says anything about the all-ones endpoint selected by a fixed support. The missing bridge must be denominator-sensitive: at increasing cylinder depth it must exclude rational targets of a height bound tending to infinity. This separates the hereditary geometry programme from the half-value programme. Proving that $`1/2`$ is attained would refute the universal assertion, while rational avoidance for every support would prove it.
 
@@ -1183,7 +1203,7 @@ The packets do not need to be forced into one method. They do, however, share on
  \text{existing exact irrationality consumer.}
  \end{array}
 ```
-For \#249 the shortest current fan-in is the strict prime-tail endpoint <a href="#eq:packet-prime-gap" data-reference-type="eqref" data-reference="eq:packet-prime-gap">[eq:packet-prime-gap]</a>. The other four routes are valuable precisely because they may supply the quantitative unboundedness that the endpoint proof lacks. For \#257 the hereditary geometry provides exact symbolic coding; the new theorem producer must make that coding sensitive to rational denominator height.
+For \#249 the shortest current fan-in is the strict prime-tail endpoint [\[eq:packet-prime-gap\]](#eq%3Apacket-prime-gap). The other four routes are valuable precisely because they may supply the quantitative unboundedness that the endpoint proof lacks. For \#257 the hereditary geometry provides exact symbolic coding; the new theorem producer must make that coding sensitive to rational denominator height.
 
 No row of this architecture changes the status of either Erdős problem. It does change the research state: all six returned packets now have an exact home, an explicit false bridge, and a named consumer or remaining theorem producer inside the same integration manuscript.
 
@@ -1215,19 +1235,19 @@ A fresh copy of the published repository is checked with `lake build`. The relea
 
 #### What the computation establishes.
 
-Lean elaborates each declaration into a proof term, which the kernel checks; tactics construct these terms but are not separate proof authority. `norm_num` constructs concrete arithmetic proofs, and `decide` reduces a decidable finite proposition to obtain a proof. The [finite survivor-count theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfFinalMiddlePhaseSieve.lean#L1759) uses `decide` to count 412 phases. Its local `maxRecDepth` setting only raises the permitted unfolding depth; the proposition and logical rules are unchanged. The finite survivor-count proof does not use compiler-backed native evaluation, and its adjoining `#print axioms` report lists neither `Lean.trustCompiler`, which would trust compiler evaluation, nor `sorryAx`, Lean’s unfinished-proof axiom. Generated Lean certificate declarations receive the same check; external data, scripts, indexes, and this manuscript do not receive kernel proof checking. Appendix <a href="#app:index" data-reference-type="ref" data-reference="app:index">14</a> connects each displayed result to its exact formal statement.
+Lean elaborates each declaration into a proof term, which the kernel checks; tactics construct these terms but are not separate proof authority. `norm_num` constructs concrete arithmetic proofs, and `decide` reduces a decidable finite proposition to obtain a proof. The [finite survivor-count theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfFinalMiddlePhaseSieve.lean#L1759) uses `decide` to count 412 phases. Its local `maxRecDepth` setting only raises the permitted unfolding depth; the proposition and logical rules are unchanged. The finite survivor-count proof does not use compiler-backed native evaluation, and its adjoining `#print axioms` report lists neither `Lean.trustCompiler`, which would trust compiler evaluation, nor `sorryAx`, Lean’s unfinished-proof axiom. Generated Lean certificate declarations receive the same check; external data, scripts, indexes, and this manuscript do not receive kernel proof checking. Appendix [14](#app%3Aindex) connects each displayed result to its exact formal statement.
 
 <a id="section-consequence."></a>
 
 #### Section consequence.
 
-At the published source revision, the linked declarations and their checked proof terms certify the stated proved, conditional, finite, and equivalence results. This verification does not change the mathematical status of the unresolved statements: the open problems collected in Section <a href="#sec:further" data-reference-type="ref" data-reference="sec:further">9</a> remain open.
+At the published source revision, the linked declarations and their checked proof terms certify the stated proved, conditional, finite, and equivalence results. This verification does not change the mathematical status of the unresolved statements: the open problems collected in Section [9](#sec%3Afurther) remain open.
 
 <a id="sec:further"></a>
 
 # Exact remaining problems and further questions
 
-Section <a href="#sec:spines" data-reference-type="ref" data-reference="sec:spines">2</a> gives the exact reductions. Here we record two concrete sufficient criteria, then set out in Section <a href="#sec:asks" data-reference-type="ref" data-reference="sec:asks">9.2</a> what we need from a mathematician, and then state the unresolved questions. Erdős \#249 has one open obligation in two equivalent forms. Erdős \#257 has a universal statement and a counterexample route pointing in opposite directions: half-value membership would refute the universal statement, while nonmembership would decide only the half-value question.
+Section [2](#sec%3Aspines) gives the exact reductions. Here we record two concrete sufficient criteria, then set out in Section [9.2](#sec%3Aasks) what we need from a mathematician, and then state the unresolved questions. Erdős \#249 has one open obligation in two equivalent forms. Erdős \#257 has a universal statement and a counterexample route pointing in opposite directions: half-value membership would refute the universal statement, while nonmembership would decide only the half-value question.
 
 <a id="two-concrete-scalar-criteria"></a>
 
@@ -1261,11 +1281,11 @@ This fixed-scale equivalence and its beyond-every-cutoff strict-jump form are th
 
 <div id="res:slackcriterion" class="corollary">
 
-**Corollary 30** (central-band supply criterion for irrationality). *If, for every $`t_0`$, there is a $`t\ge\max\{3,t_0\}`$ such that
+**Corollary 30** (central-band supply criterion for irrationality). *If, for every $`t_0`$, there is a $`t\ge\max\{3,t_0\}`$ such that*
 ``` math
 M_t<M_{t+1}\qquad\text{and}\qquad \sigma_t\ge0,
 ```
-then $`S`$ is irrational.*
+*then $`S`$ is irrational.*
 
 </div>
 
@@ -1342,9 +1362,9 @@ One convention applies to all four. A negative answer is worth as much to us as 
 
 #### Ask 1 (#249): certificates beyond every cutoff.
 
-*Wanted.* For every period $`h\ge1`$ and every cutoff $`N_0`$, there are $`N\ge N_0`$ and $`L\ge1`$ with $`\mathsf{Sep}(h,N,L)`$ as in Definition <a href="#def:totient-certificate" data-reference-type="ref" data-reference="def:totient-certificate">23</a>: the integer $`\Delta_{h,N,L}`$ built from $`\varphi(N{+}h{+}1{+}j)-\varphi(N{+}1{+}j)`$ has least residue modulo $`2^L`$ at distance more than $`N+h+L+2`$ from both $`0`$ and $`2^L`$. This is the right-hand side of the [certificate-supply equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L412), and in one-parameter form the right-hand side of the [lcm-diagonal equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L426).
+*Wanted.* For every period $`h\ge1`$ and every cutoff $`N_0`$, there are $`N\ge N_0`$ and $`L\ge1`$ with $`\mathsf{Sep}(h,N,L)`$ as in Definition [23](#def%3Atotient-certificate): the integer $`\Delta_{h,N,L}`$ built from $`\varphi(N{+}h{+}1{+}j)-\varphi(N{+}1{+}j)`$ has least residue modulo $`2^L`$ at distance more than $`N+h+L+2`$ from both $`0`$ and $`2^L`$. This is the right-hand side of the [certificate-supply equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L412), and in one-parameter form the right-hand side of the [lcm-diagonal equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L426).
 
-*Already checked.* At a fixed pair $`(h,N)`$ the finite predicate loses nothing: some $`L`$ succeeds exactly when $`R_{N+h}-R_N\notin\mathbb{Z}`$ ([certificate completeness](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L316)), and one integral positive-shift difference already forces $`S\in\mathbb{Q}`$ ([integral-difference criterion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L357)). Certificates are verified for $`1\le h\le8`$ at $`N=12`$ ([small-window family](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailPeriodKiller.lean#L404)), for $`1\le h\le16`$ ([periods through sixteen](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CarrySurvivorExtinction.lean#L574)), and on the lcm diagonal ([imported diagonal certificates](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerCertificatesT64.lean#L1967)). Any rational $`S=p/q`$ has $`q>Q_0`$ ([denominator exclusion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18384)). The splice in Section <a href="#sec:249-open" data-reference-type="ref" data-reference="sec:249-open">5.4</a> shows that extending the finite record cannot help: any proof must use $`\varphi`$ at unbounded indices.
+*Already checked.* At a fixed pair $`(h,N)`$ the finite predicate loses nothing: some $`L`$ succeeds exactly when $`R_{N+h}-R_N\notin\mathbb{Z}`$ ([certificate completeness](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L316)), and one integral positive-shift difference already forces $`S\in\mathbb{Q}`$ ([integral-difference criterion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L357)). Certificates are verified for $`1\le h\le8`$ at $`N=12`$ ([small-window family](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailPeriodKiller.lean#L404)), for $`1\le h\le16`$ ([periods through sixteen](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CarrySurvivorExtinction.lean#L574)), and on the lcm diagonal ([imported diagonal certificates](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerCertificatesT64.lean#L1967)). Any rational $`S=p/q`$ has $`q>Q_0`$ ([denominator exclusion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18384)). The splice in Section [5.4](#sec%3A249-open) shows that extending the finite record cannot help: any proof must use $`\varphi`$ at unbounded indices.
 
 *Most useful answer: a reference.* What we cannot search for effectively is existing work controlling the binary digits of the shifted totient sums $`\Delta_{h,N,L}`$, or equivalently the distance from $`\mathbb{Z}`$ of the tail differences $`R_{N+h}-R_N`$, at arbitrarily large $`N`$ with $`h`$ fixed. Equidistribution, anti-concentration, or any explicit repulsion from $`0`$ and $`2^L`$ would do. A construction would settle \#249 outright and is not what we expect from a reader; a named obstruction to digit control at this scale would be almost as useful as a reference.
 
@@ -1362,9 +1382,9 @@ because its integer carry increment vanishes after exponentiation [exact squarin
 ``` math
 \cos\bigl(2\pi\,(R_{N+h}-R_N)\bigr)\le\frac45,
 ```
-that is, $`R_{N+h}-R_N`$ lies at distance at least $`\arccos(4/5)/(2\pi)=0.10241\ldots`$ from the nearest integer, for one shift whose index $`N+h+1`$ is prime, beyond every cutoff. This is the formal hypothesis [DTWNaturalPrimeTailOrbitGap](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PivotAntiReconstruction.lean#L1256); the strict variant <a href="#eq:packet-prime-gap" data-reference-type="eqref" data-reference="eq:packet-prime-gap">[eq:packet-prime-gap]</a> at threshold $`9/10`$ is equally good, since the surplus is absorbed into the truncation budget.
+that is, $`R_{N+h}-R_N`$ lies at distance at least $`\arccos(4/5)/(2\pi)=0.10241\ldots`$ from the nearest integer, for one shift whose index $`N+h+1`$ is prime, beyond every cutoff. This is the formal hypothesis [DTWNaturalPrimeTailOrbitGap](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PivotAntiReconstruction.lean#L1256); the strict variant [\[eq:packet-prime-gap\]](#eq%3Apacket-prime-gap) at threshold $`9/10`$ is equally good, since the surplus is absorbed into the truncation budget.
 
-*Already checked.* The implication from this hypothesis to irrationality is proved end to end ([prime-orbit endpoint](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PivotAntiReconstruction.lean#L1574)), through a singleton bridge ([prime-to-point bridge](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PivotAntiReconstruction.lean#L1266)) and a point-escape consumer ([point-escape consumer](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PivotAntiReconstruction.lean#L1550)). The truncation accounting is proved as well: an infinite-orbit gap survives finite windows with an explicit error budget ([window transfer](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PivotAntiReconstruction.lean#L220)), exponential depth pays that budget past any prescribed depth ([depth selection](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PivotAntiReconstruction.lean#L257)), and the $`4/5`$ gap becomes the $`9/10`$ window gap ([threshold transfer](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PivotAntiReconstruction.lean#L233)). No window, dyadic-room, or supplier bookkeeping is left: the arithmetic gap is the only unproved input. Section <a href="#sec:packet-prime-tail" data-reference-type="ref" data-reference="sec:packet-prime-tail">7.1</a> records why an almost-everywhere Riesz-product statement cannot be substituted, since the orbit is one locked point.
+*Already checked.* The implication from this hypothesis to irrationality is proved end to end ([prime-orbit endpoint](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PivotAntiReconstruction.lean#L1574)), through a singleton bridge ([prime-to-point bridge](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PivotAntiReconstruction.lean#L1266)) and a point-escape consumer ([point-escape consumer](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PivotAntiReconstruction.lean#L1550)). The truncation accounting is proved as well: an infinite-orbit gap survives finite windows with an explicit error budget ([window transfer](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PivotAntiReconstruction.lean#L220)), exponential depth pays that budget past any prescribed depth ([depth selection](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PivotAntiReconstruction.lean#L257)), and the $`4/5`$ gap becomes the $`9/10`$ window gap ([threshold transfer](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/PivotAntiReconstruction.lean#L233)). No window, dyadic-room, or supplier bookkeeping is left: the arithmetic gap is the only unproved input. Section [7.1](#sec%3Apacket-prime-tail) records why an almost-everywhere Riesz-product statement cannot be substituted, since the orbit is one locked point.
 
 *Most useful answer: a reason the route is hopeless.* Concretely, a proof that for some fixed $`h`$ the quantity $`\cos(2\pi(R_{N+h}-R_N))`$ exceeds $`4/5`$ for all large $`N`$ with $`N+h+1`$ prime, or a structural reason why prime-indexed sampling of this orbit cannot be controlled by any available method. Either would end the route. A reference on the distribution of $`2^{N}(2^{h}-1)S`$ modulo $`1`$ along shifted primes would be the next most useful answer.
 
@@ -1374,13 +1394,13 @@ that is, $`R_{N+h}-R_N`$ lies at distance at least $`\arccos(4/5)/(2\pi)=0.10241
 
 #### Ask 3 (#257): the two surviving carries.
 
-*Wanted.* Show that no actual middle transition at a final skipped exponent $`D\ge13`$ has $`C_D=-2`$ or $`C_D=-1`$, where $`C_D=4R_{D,D}-P_D-4`$ is the transition carry of Section <a href="#sec:final-skip-reduction" data-reference-type="ref" data-reference="sec:final-skip-reduction">4.6</a>. This is the first of the two unproved inputs to Corollary <a href="#res:taildominance" data-reference-type="ref" data-reference="res:taildominance">19</a>; the three exceptional values are pinned down by the [three-cell classification](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4125).
+*Wanted.* Show that no actual middle transition at a final skipped exponent $`D\ge13`$ has $`C_D=-2`$ or $`C_D=-1`$, where $`C_D=4R_{D,D}-P_D-4`$ is the transition carry of Section [4.6](#sec%3Afinal-skip-reduction). This is the first of the two unproved inputs to Corollary [19](#res%3Ataildominance); the three exceptional values are pinned down by the [three-cell classification](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L4125).
 
 *Already checked.* At a final skip the upper successor is impossible ([upper-branch exclusion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L299)), and $`C_D=-3`$ is impossible ([middle exclusion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L364), refined by the [final-cell exclusion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFinalMiddleCellEscape.lean#L587)). For $`C_D=-2`$ with an all-right suffix and $`D\ge27`$, the greedy prefix through rank $`26`$ is exactly $`\{2,3,6,7,14,20,21,26\}`$ ([rank-26 prefix](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfFinalMiddlePhaseSieve.lean#L899)), which confines $`D`$ to $`412`$ residue classes modulo $`2730`$ ([phase sieve](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfFinalMiddlePhaseSieve.lean#L1622), [survivor count](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfFinalMiddlePhaseSieve.lean#L1759)). The case $`C_D=-1`$ is untouched. Note that shrinking the survivor density is not enough, since nested nonempty residue sets can have nonempty inverse limit; the sieve must reach the empty set or be replaced by an Archimedean argument.
 
 *Most useful answer: a construction or a counterexample, either way.* Either an argument excluding $`C_D\in\{-2,-1\}`$ at every actual final middle transition, or an explicit $`D`$ at which one of these carries occurs with an all-right suffix. The second would show that the exclusion programme is unavailable and we would retract it.
 
-*If answered.* It closes one of the two inputs to Corollary <a href="#res:taildominance" data-reference-type="ref" data-reference="res:taildominance">19</a> and nothing more. It does not by itself decide whether $`1/2\in\mathcal A`$, and it does not bear on the universal statement of \#257.
+*If answered.* It closes one of the two inputs to Corollary [19](#res%3Ataildominance) and nothing more. It does not by itself decide whether $`1/2\in\mathcal A`$, and it does not bear on the universal statement of \#257.
 
 <a id="ask-4-257-the-tail-comparison."></a>
 
@@ -1396,9 +1416,9 @@ where $`A_D=G_D\cup\{D\}`$ and $`f_{A_D}(n)`$ counts the elements of $`A_D`$ div
 
 *Already checked.* The comparison is exact, not heuristic: $`\tfrac12-\sum_{a\in A_D}w_a=2^{-(2D+2)}(C_D-\Theta_D)`$ ([residual identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderProducerCarrySocket.lean#L27)), so $`\Theta_D<C_D`$ is equivalent to $`\sum_{a\in A_D}w_a<\tfrac12`$ ([below-half equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderProducerCarrySocket.lean#L48)). Three stronger hypotheses are proved sufficient: with $`g_D=\#G_D`$, the inequality $`g_D+1<C_D`$ ([cardinality criterion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L2364)), the row bound $`R_{D,D}\ge D`$ at every late middle row ([row-scale criterion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderMiddleCarryLowerBound.lean#L2371)), and a square-root variant ([square-root criterion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLastProducerContradiction.lean#L458)). A separate finite certificate covers the upper-reset band for $`13\le d\le30`$ ([finite band certificate](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderUpperResetBandCertificates.lean#L78)). None of these hypotheses is proved at every late row.
 
-*Most useful answer: a construction.* A divisor-counting bound giving $`\Theta_D<C_D`$, or the cleaner sufficient bound $`R_{D,D}\ge D`$ at every late middle row, would be decisive. A single actual middle transition with $`\Theta_D\ge C_D`$ would be nearly as useful: it kills the tail-dominance route, and we would retract Corollary <a href="#res:taildominance" data-reference-type="ref" data-reference="res:taildominance">19</a> as a programme.
+*Most useful answer: a construction.* A divisor-counting bound giving $`\Theta_D<C_D`$, or the cleaner sufficient bound $`R_{D,D}\ge D`$ at every late middle row, would be decisive. A single actual middle transition with $`\Theta_D\ge C_D`$ would be nearly as useful: it kills the tail-dominance route, and we would retract Corollary [19](#res%3Ataildominance) as a programme.
 
-*If answered.* Asks 3 and 4 together give $`1/2\in\mathcal A`$, and Corollary <a href="#res:halfcounterexample" data-reference-type="ref" data-reference="res:halfcounterexample">16</a> then produces an infinite support of rational value $`1/2`$, refuting the universal assertion in \#257. Ask 4 alone closes one input and decides nothing. A single failing row does not prove nonmembership either: it removes a sufficient criterion, and the half-value question stays open.
+*If answered.* Asks 3 and 4 together give $`1/2\in\mathcal A`$, and Corollary [16](#res%3Ahalfcounterexample) then produces an infinite support of rational value $`1/2`$, refuting the universal assertion in \#257. Ask 4 alone closes one input and decides nothing. A single failing row does not prove nonmembership either: it removes a sufficient criterion, and the half-value question stays open.
 
 <a id="sec:unresolved"></a>
 
@@ -1418,15 +1438,15 @@ is irrational.
 
 </div>
 
-By Theorem <a href="#res:red21" data-reference-type="ref" data-reference="res:red21">26</a>, the preceding problem is equivalent to the following exact quantifier statement.
+By Theorem [26](#res%3Ared21), the preceding problem is equivalent to the following exact quantifier statement.
 
 <div class="problem">
 
-**Problem 34** (unbounded certificate supply). Prove that for every $`h\ge1`$ and cutoff $`N_0\ge0`$, there exist $`N\ge N_0`$ and $`L\ge1`$ with $`\mathsf{Sep}(h,N,L)`$, where $`\mathsf{Sep}`$ is the finite tail-separation certificate defined in Section <a href="#res:249story" data-reference-type="ref" data-reference="res:249story">2.1</a>. Equivalently, prove the lcm-diagonal supply in Theorem <a href="#res:diag" data-reference-type="ref" data-reference="res:diag">27</a>. The finite scales in Example <a href="#res:deposits" data-reference-type="ref" data-reference="res:deposits">28</a> do not establish either unbounded form.
+**Problem 34** (unbounded certificate supply). Prove that for every $`h\ge1`$ and cutoff $`N_0\ge0`$, there exist $`N\ge N_0`$ and $`L\ge1`$ with $`\mathsf{Sep}(h,N,L)`$, where $`\mathsf{Sep}`$ is the finite tail-separation certificate defined in Section [2.1](#res%3A249story). Equivalently, prove the lcm-diagonal supply in Theorem [27](#res%3Adiag). The finite scales in Example [28](#res%3Adeposits) do not establish either unbounded form.
 
 </div>
 
-These are not two independent open problems: Theorem <a href="#res:red21" data-reference-type="ref" data-reference="res:red21">26</a> and Theorem <a href="#res:diag" data-reference-type="ref" data-reference="res:diag">27</a> identify the second as an exact certificate form of the first.
+These are not two independent open problems: Theorem [26](#res%3Ared21) and Theorem [27](#res%3Adiag) identify the second as an exact certificate form of the first.
 
 <a id="erdős-257-universal-statement-and-counterexample-route."></a>
 
@@ -1438,13 +1458,13 @@ These are not two independent open problems: Theorem <a href="#res:red21" data-
 ``` math
 \sum_{n\in A}\frac{1}{2^n-1}
 ```
-is irrational for every infinite set $`A\subseteq\mathbb{N}_{>0}`$, rather than only for the support families in Theorem <a href="#res:support" data-reference-type="ref" data-reference="res:support">4</a>.
+is irrational for every infinite set $`A\subseteq\mathbb{N}_{>0}`$, rather than only for the support families in Theorem [4](#res%3Asupport).
 
 </div>
 
 <div class="problem">
 
-**Problem 36** (the half-value counterexample route). Decide whether $`1/2\in\mathcal A`$. By Theorem <a href="#res:halfmembership" data-reference-type="ref" data-reference="res:halfmembership">14</a>, this is equivalent to the canonical greedy orbit omitting infinitely many exponents. A positive answer would give an infinite support of rational value $`1/2`$ and refute the universal \#257 statement; a negative answer would decide only this distinguished point-membership question.
+**Problem 36** (the half-value counterexample route). Decide whether $`1/2\in\mathcal A`$. By Theorem [14](#res%3Ahalfmembership), this is equivalent to the canonical greedy orbit omitting infinitely many exponents. A positive answer would give an infinite support of rational value $`1/2`$ and refute the universal \#257 statement; a negative answer would decide only this distinguished point-membership question.
 
 </div>
 
@@ -1452,7 +1472,7 @@ is irrational for every infinite set $`A\subseteq\mathbb{N}_{>0}`$, rather than 
 
 #### The $`1/21`$ counterexample route.
 
-Decide whether $`1/21\in\mathcal A`$. By Theorem <a href="#res:twentyonefrontier" data-reference-type="ref" data-reference="res:twentyonefrontier">20</a>, this is equivalent to excluding the fatal/cofinite/aligned branch $`\mathcal F_{21}`$. That branch forces an eventual affine-supercapacity recurrence, so contradicting the recurrence is a sufficient way to exclude it, not a second equivalence. A positive answer would give an infinite rational-valued support and refute universal \#257; a negative answer would decide only this target.
+Decide whether $`1/21\in\mathcal A`$. By Theorem [20](#res%3Atwentyonefrontier), this is equivalent to excluding the fatal/cofinite/aligned branch $`\mathcal F_{21}`$. That branch forces an eventual affine-supercapacity recurrence, so contradicting the recurrence is a sufficient way to exclude it, not a second equivalence. A positive answer would give an infinite rational-valued support and refute universal \#257; a negative answer would decide only this target.
 
 <a id="conclusion-what-the-reductions-change."></a>
 
@@ -1468,7 +1488,7 @@ The paper is an obstruction atlas: it records finite certificates and local no-g
 
 #### Artefact and data availability.
 
-The [archived formal-source revision](https://github.com/wcook04/plectis-erdos/tree/99f4bf47422abbd8757cbb22b50ba079d764d3a7) contains the Lean sources, fixed toolchain, library manifest, and generated certificate data used in the verification. Repository metadata and this manuscript provide navigation rather than proof authority; Section <a href="#sec:verify" data-reference-type="ref" data-reference="sec:verify">8</a> gives the verification route.
+The [archived formal-source revision](https://github.com/wcook04/plectis-erdos/tree/99f4bf47422abbd8757cbb22b50ba079d764d3a7) contains the Lean sources, fixed toolchain, library manifest, and generated certificate data used in the verification. Repository metadata and this manuscript provide navigation rather than proof authority; Section [8](#sec%3Averify) gives the verification route.
 
 <a id="declaration-of-generative-ai-use."></a>
 
@@ -1492,9 +1512,9 @@ The problem numbering and status follow the Erdős Problems catalogue maintained
 
 # Technical reductions for the half-value branch
 
-This appendix records the local arithmetic used to reach Theorems <a href="#res:halfmembership" data-reference-type="ref" data-reference="res:halfmembership">14</a> and <a href="#res:fatalright" data-reference-type="ref" data-reference="res:fatalright">17</a>, Proposition <a href="#res:finalskipexclusions" data-reference-type="ref" data-reference="res:finalskipexclusions">18</a>, and Corollary <a href="#res:taildominance" data-reference-type="ref" data-reference="res:taildominance">19</a>. Its statements have four statuses: exact identities or equivalences; implications with an unproved hypothesis; exact finite calculations; and counterexamples showing that a proposed local argument is insufficient. None changes the two open conclusions at the end of Section <a href="#sec:eb" data-reference-type="ref" data-reference="sec:eb">4</a>. Readers concerned only with the main reductions may skip the appendix.
+This appendix records the local arithmetic used to reach Theorems [14](#res%3Ahalfmembership) and [17](#res%3Afatalright), Proposition [18](#res%3Afinalskipexclusions), and Corollary [19](#res%3Ataildominance). Its statements have four statuses: exact identities or equivalences; implications with an unproved hypothesis; exact finite calculations; and counterexamples showing that a proposed local argument is insufficient. None changes the two open conclusions at the end of Section [4](#sec%3Aeb). Readers concerned only with the main reductions may skip the appendix.
 
-The parts are ordered by their role in the greedy argument. Appendix <a href="#app:half-localizer" data-reference-type="ref" data-reference="app:half-localizer">[app:half-localizer]</a> computes the residual interval for one take–skip–take pattern, without showing that the half-value orbit enters or avoids it. Appendix <a href="#app:half-conditional-producers" data-reference-type="ref" data-reference="app:half-conditional-producers">10.2</a> gives one conditional irrationality criterion for a structured support, several sufficient hypotheses for $`1/2\in\mathcal A`$, and the local identities they use. Appendix <a href="#app:half-finite-cofinal" data-reference-type="ref" data-reference="app:half-finite-cofinal">10.3</a> separates a finite witness from the unbounded supply of such witnesses needed for membership. Appendix <a href="#app:half-final-skip" data-reference-type="ref" data-reference="app:half-final-skip">10.4</a> identifies nonmembership with a last greedy skip, excludes some possible last transitions, and states the two exceptional carry exclusions and unused-tail inequality still missing. Appendix <a href="#app:half-evidence" data-reference-type="ref" data-reference="app:half-evidence">10.5</a> contains finite checks, changes of coordinates, and counterexamples to shortcuts.
+The parts are ordered by their role in the greedy argument. Appendix [\[app:half-localizer\]](#app%3Ahalf-localizer) computes the residual interval for one take–skip–take pattern, without showing that the half-value orbit enters or avoids it. Appendix [10.2](#app%3Ahalf-conditional-producers) gives one conditional irrationality criterion for a structured support, several sufficient hypotheses for $`1/2\in\mathcal A`$, and the local identities they use. Appendix [10.3](#app%3Ahalf-finite-cofinal) separates a finite witness from the unbounded supply of such witnesses needed for membership. Appendix [10.4](#app%3Ahalf-final-skip) identifies nonmembership with a last greedy skip, excludes some possible last transitions, and states the two exceptional carry exclusions and unused-tail inequality still missing. Appendix [10.5](#app%3Ahalf-evidence) contains finite checks, changes of coordinates, and counterexamples to shortcuts.
 
 The two routes used below have the logical form
 ``` math
@@ -1513,7 +1533,7 @@ Throughout this appendix:
 
 - a *take* (respectively a *skip*) at rank $`n`$ is the greedy decision $`\varepsilon_n=1`$ (respectively $`\varepsilon_n=0`$);
 
-- the *finite greedy seam at row $`s`$* is the Boolean word of Definition <a href="#def:terminal-bit" data-reference-type="ref" data-reference="def:terminal-bit">13</a>; an unqualified *seam* in this appendix is an adjacent pair of such words at a branch boundary, and the compounds seam pair, one-hole seam, first-wrap seam, and rewind seam carry this pair sense;
+- the *finite greedy seam at row $`s`$* is the Boolean word of Definition [13](#def%3Aterminal-bit); an unqualified *seam* in this appendix is an adjacent pair of such words at a branch boundary, and the compounds seam pair, one-hole seam, first-wrap seam, and rewind seam carry this pair sense;
 
 - the *square-root strip* at depth $`N`$ is the carry interval $`[1,H_N]`$ with $`H_N=2\lfloor\sqrt N\rfloor+4`$; an interval of carries kept available by a construction is *protected*;
 
@@ -1605,12 +1625,12 @@ Let $`A_g`$ be the canonical greedy support of $`1/2`$, and set $`\Gamma_N=K_{N+
 
 <div id="res:cofinalstripreturn" class="proposition">
 
-**Proposition 37** (arbitrarily late strip-return criterion). *Let $`\Gamma_M`$ be the uncentred integer carry of the canonical greedy expansion of $`1/2`$. If
+**Proposition 37** (arbitrarily late strip-return criterion). *Let $`\Gamma_M`$ be the uncentred integer carry of the canonical greedy expansion of $`1/2`$. If*
 ``` math
 \forall N\in\mathbb{N}\;\exists M\geq N,\qquad
  \Gamma_M\leq 2\lfloor\sqrt{M+1}\rfloor+4,
 ```
-then $`1/2\in\mathcal A`$, and its canonical greedy support is infinite.*
+*then $`1/2\in\mathcal A`$, and its canonical greedy support is infinite.*
 
 </div>
 
@@ -1801,7 +1821,7 @@ Here $`r_M(1/2)=1/2-\sum_{n\leq M}\varepsilon_n(1/2)w_n`$ is the post-rank-$`M`$
 
 ### Residual identity for the middle-transition support
 
-For the middle-transition coordinates $`A_D,C_D,\Theta_D`$ introduced in Section <a href="#sec:final-skip-reduction" data-reference-type="ref" data-reference="sec:final-skip-reduction">4.6</a>, the generic finite-support theorem reads $`1/2-X_{A_D}=2^{-(2D+2)}(C_D-\Theta_D)`$, [the residual identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderProducerCarrySocket.lean#L27). Since the scale is positive, $`C_D>\Theta_D\iff X_{A_D}<1/2`$ and $`C_D<\Theta_D\iff X_{A_D}>1/2`$, [the below-half equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderProducerCarrySocket.lean#L48) and [the above-half equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderProducerCarrySocket.lean#L78). Tail nonnegativity makes $`C_D<0`$ sufficient for $`X_{A_D}>1/2`$, [the negative-carry corollary](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderProducerCarrySocket.lean#L145). A carry at most $`-8`$ strengthens this to $`1/2+(w_D-T_D)<X_{A_D}`$, [the full-gap corollary](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderProducerCarrySocket.lean#L190). These criteria do not determine $`C_D`$ on actual middle transitions or compare every nonnegative $`C_D`$ with $`\Theta_D`$.
+For the middle-transition coordinates $`A_D,C_D,\Theta_D`$ introduced in Section [4.6](#sec%3Afinal-skip-reduction), the generic finite-support theorem reads $`1/2-X_{A_D}=2^{-(2D+2)}(C_D-\Theta_D)`$, [the residual identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderProducerCarrySocket.lean#L27). Since the scale is positive, $`C_D>\Theta_D\iff X_{A_D}<1/2`$ and $`C_D<\Theta_D\iff X_{A_D}>1/2`$, [the below-half equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderProducerCarrySocket.lean#L48) and [the above-half equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderProducerCarrySocket.lean#L78). Tail nonnegativity makes $`C_D<0`$ sufficient for $`X_{A_D}>1/2`$, [the negative-carry corollary](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderProducerCarrySocket.lean#L145). A carry at most $`-8`$ strengthens this to $`1/2+(w_D-T_D)<X_{A_D}`$, [the full-gap corollary](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderProducerCarrySocket.lean#L190). These criteria do not determine $`C_D`$ on actual middle transitions or compare every nonnegative $`C_D`$ with $`\Theta_D`$.
 
 <a id="res:quarterband"></a>
 
@@ -1896,18 +1916,18 @@ The logical roles differ. Depth $`18`$ is checked data. The one-row and gap upda
 
 **Proposition 41** (verified base and one-row cylinder update). *The depth-$`18`$ selected window has $`R=12`$ and a suffix cylinder at cutoff $`M=13`$ with endpoint $`E=17`$.*
 
-*More generally, let a depth-$`N`$, radius-$`R`$ selected window $`(a^{(k)})_{1\leq k\leq R}`$ have a suffix cylinder at cutoff $`M\leq N`$ with endpoint $`E`$, where $`1\leq N`$ and $`R\leq E`$. Let $`1\leq R'\leq H_{N+1}`$. If
+*More generally, let a depth-$`N`$, radius-$`R`$ selected window $`(a^{(k)})_{1\leq k\leq R}`$ have a suffix cylinder at cutoff $`M\leq N`$ with endpoint $`E`$, where $`1\leq N`$ and $`R\leq E`$. Let $`1\leq R'\leq H_{N+1}`$. If*
 ``` math
 f_{a^{(k)}}(N+1)=C\qquad(1\leq k\leq R)
 ```
-and
+*and*
 ``` math
 R'+C\leq2R,
 ```
-then the radius-$`R'`$ successor remains a suffix cylinder, with endpoint
+*then the radius-$`R'`$ successor remains a suffix cylinder, with endpoint*
 ``` math
 E'=2E-C.
-```*
+```
 
 </div>
 
@@ -1915,11 +1935,11 @@ The base and endpoint update are the [depth-$`18`$ cylinder](https://github.com/
 
 <div id="res:feedbackdichotomy" class="proposition">
 
-**Proposition 42** (full-cylinder or profiled-gap transition). *Let a full suffix-cylinder stage have depth $`N`$, cutoff $`M`$, with $`1\leq N`$, $`M+1\leq N`$, and
+**Proposition 42** (full-cylinder or profiled-gap transition). *Let a full suffix-cylinder stage have depth $`N`$, cutoff $`M`$, with $`1\leq N`$, $`M+1\leq N`$, and*
 ``` math
 N+1=2(M+1).
 ```
-At depth $`N+1`$, either a full stage exists at cutoff $`M+1`$, or the exceptional carries form a two-sheet profiled gap stage. If $`27\leq H_{N+1}`$, the residual alternative also realises a protected one-hole seam.*
+*At depth $`N+1`$, either a full stage exists at cutoff $`M+1`$, or the exceptional carries form a two-sheet profiled gap stage. If $`27\leq H_{N+1}`$, the residual alternative also realises a protected one-hole seam.*
 
 </div>
 
@@ -1927,7 +1947,7 @@ Formalised by the [full-cylinder/gap alternative](https://github.com/wcook04/ple
 
 <div id="res:profiledgap" class="proposition">
 
-**Proposition 43** (one-row profiled-gap recurrence). *Suppose a profiled gap stage has lower and upper next coefficients $`C_-`$ and $`C_+`$, respectively. If
+**Proposition 43** (one-row profiled-gap recurrence). *Suppose a profiled gap stage has lower and upper next coefficients $`C_-`$ and $`C_+`$, respectively. If*
 ``` math
 \begin{gathered}
  1\leq 2g_- -C_- -1,\qquad C_+\leq2g_+,\\
@@ -1935,12 +1955,12 @@ Formalised by the [full-cylinder/gap alternative](https://github.com/wcook04/ple
  H_{N+1}+C_+\leq2H_N,
 \end{gathered}
 ```
-then the stage advances one row with exact child gap
+*then the stage advances one row with exact child gap*
 ``` math
 [g'_-,g'_+]
    =[\,2g_- -C_- -1,\;2g_+ -C_+\,].
 ```
-At a cutoff boundary $`N=2M+1`$, $`M\geq4`$, the lower and upper prefixes acquire the forced bits $`0`$ and $`1`$; their consecutiveness is preserved. Under the displayed child-gap conditions at the next row, this promoted stage therefore advances with coefficients determined by its retained prefixes.*
+*At a cutoff boundary $`N=2M+1`$, $`M\geq4`$, the lower and upper prefixes acquire the forced bits $`0`$ and $`1`$; their consecutiveness is preserved. Under the displayed child-gap conditions at the next row, this promoted stage therefore advances with coefficients determined by its retained prefixes.*
 
 </div>
 
@@ -1948,11 +1968,11 @@ Formalised by the [two-coefficient gap recurrence](https://github.com/wcook04/pl
 
 <div id="res:cylinderswallow" class="proposition">
 
-**Proposition 44** (two-row full-gap width bound). *Suppose that after a two-row update the child gap has lower endpoint at most $`1`$ and upper endpoint at least $`B`$, so neither tracked sheet supplies a canonical parent for any protected carry $`1,\ldots,B`$. If the lower coefficient pulse is at most the upper pulse plus $`2`$, then
+**Proposition 44** (two-row full-gap width bound). *Suppose that after a two-row update the child gap has lower endpoint at most $`1`$ and upper endpoint at least $`B`$, so neither tracked sheet supplies a canonical parent for any protected carry $`1,\ldots,B`$. If the lower coefficient pulse is at most the upper pulse plus $`2`$, then*
 ``` math
 B\leq4(g_+-g_-+1)+2. \tag{A.1}
 ```
-This is a necessary gap-width condition, not a contradiction.*
+*This is a necessary gap-width condition, not a contradiction.*
 
 </div>
 
@@ -1960,10 +1980,10 @@ Formalised as the [two-row gap-width bound](https://github.com/wcook04/plectis-e
 
 <div id="res:cofinalcylinder" class="corollary">
 
-**Corollary 45** (unbounded-depth suffix-cylinder criterion). *If full suffix-cylinder stages exist at arbitrarily large depths, then there is an infinite set $`A\subseteq\mathbb{N}_{>0}`$ such that
+**Corollary 45** (unbounded-depth suffix-cylinder criterion). *If full suffix-cylinder stages exist at arbitrarily large depths, then there is an infinite set $`A\subseteq\mathbb{N}_{>0}`$ such that*
 ``` math
 \sum_{n\in A}\frac1{2^n-1}=\frac12.
-```*
+```
 
 </div>
 
@@ -1973,7 +1993,7 @@ This is the [positive-support unbounded-depth cylinder criterion](https://github
 
 #### Status and relation to prior work.
 
-The two transition propositions do not supply their coefficient inequalities, and the finite base does not supply witnesses at unbounded depths as required by Corollary <a href="#res:cofinalcylinder" data-reference-type="ref" data-reference="res:cofinalcylinder">45</a>. The strict-tail achievement-set literature supplies the surrounding Cantor-set geometry \[kovactao, Remark 4.1, p. 13\], not this finite carry recurrence; the comparison record makes no novelty claim for the recurrence itself.
+The two transition propositions do not supply their coefficient inequalities, and the finite base does not supply witnesses at unbounded depths as required by Corollary [45](#res%3Acofinalcylinder). The strict-tail achievement-set literature supplies the surrounding Cantor-set geometry \[kovactao, Remark 4.1, p. 13\], not this finite carry recurrence; the comparison record makes no novelty claim for the recurrence itself.
 
 <a id="res:prefeedback"></a>
 
@@ -1987,7 +2007,7 @@ The finite record has three milestones.
 
 3.  *Depth $`52`$.* An independent exact run reaches depth $`51`$ with endpoint $`51{,}327{,}745`$, beyond the next head-bit threshold, and the promoted successor at depth $`52`$ is checked: [depth-$`51`$ threshold margin](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SuffixCylinderStage51.lean#L536) and [depth-$`52`$ terminal-strip witness](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SuffixCylinderTerminalOnlyBridge.lean#L238).
 
-These are finite milestones, not an unbounded induction; they do not provide the arbitrarily large stages required by Corollary <a href="#res:cofinalcylinder" data-reference-type="ref" data-reference="res:cofinalcylinder">45</a>.
+These are finite milestones, not an unbounded induction; they do not provide the arbitrarily large stages required by Corollary [45](#res%3Acofinalcylinder).
 
 <a id="res:halfdivisordrop"></a>
 
@@ -2029,15 +2049,15 @@ The associated shifted-zero condition is guarded by a putative last skip: it req
 
 #### Appendix consequence.
 
-This appendix supplies the local implications behind Theorems <a href="#res:halfmembership" data-reference-type="ref" data-reference="res:halfmembership">14</a> and <a href="#res:fatalright" data-reference-type="ref" data-reference="res:fatalright">17</a>, Proposition <a href="#res:finalskipexclusions" data-reference-type="ref" data-reference="res:finalskipexclusions">18</a>, and Corollary <a href="#res:taildominance" data-reference-type="ref" data-reference="res:taildominance">19</a>. It does not establish the corollary’s global hypothesis. One sufficient route is a window, seam, or terminal approximation at unbounded depths producing $`1/2\in\mathcal A`$. A second route requires both an exclusion of every actual middle transition with $`C_D=-2,-1`$ and a proof of $`\Theta_D<C_D`$ at every remaining non-$`(-3)`$ middle transition. The bounded checks and local no-go theorems provide neither route.
+This appendix supplies the local implications behind Theorems [14](#res%3Ahalfmembership) and [17](#res%3Afatalright), Proposition [18](#res%3Afinalskipexclusions), and Corollary [19](#res%3Ataildominance). It does not establish the corollary’s global hypothesis. One sufficient route is a window, seam, or terminal approximation at unbounded depths producing $`1/2\in\mathcal A`$. A second route requires both an exclusion of every actual middle transition with $`C_D=-2,-1`$ and a proof of $`\Theta_D<C_D`$ at every remaining non-$`(-3)`$ middle transition. The bounded checks and local no-go theorems provide neither route.
 
 <a id="sec:carry"></a>
 
 # Auxiliary rationality criteria from binary carry systems
 
-This appendix supplies the general results assembled in Theorem <a href="#res:rigidity-main" data-reference-type="ref" data-reference="res:rigidity-main">7</a> and Corollaries <a href="#res:rigidity-unbounded-main" data-reference-type="ref" data-reference="res:rigidity-unbounded-main">8</a>–<a href="#res:rigidity-dyadic-mass-main" data-reference-type="ref" data-reference="res:rigidity-dyadic-mass-main">11</a>, and the detailed greedy geometry cited after Theorem <a href="#res:greedy" data-reference-type="ref" data-reference="res:greedy">5</a>. Readers interested only in achievement-set geometry may skip to Appendix <a href="#app:carry-geometry" data-reference-type="ref" data-reference="app:carry-geometry">11.5</a>. It has two independent roles. Appendix <a href="#app:carry-normal-form" data-reference-type="ref" data-reference="app:carry-normal-form">11.1</a> gives the first exact coordinate change: rationality is equivalent to a *tempered tail orbit*, an integer recurrence with a vanishing boundary condition. Appendix <a href="#app:carry-boolean" data-reference-type="ref" data-reference="app:carry-boolean">11.2</a> gives the second: the orbit becomes a Boolean–Möbius certificate whose quotient stream reconstructs a Boolean support. Appendices <a href="#app:carry-sublog" data-reference-type="ref" data-reference="app:carry-sublog">11.3</a> and <a href="#app:carry-mass" data-reference-type="ref" data-reference="app:carry-mass">11.4</a> use those coordinates only forward, to derive necessary divisor-coverage, denominator-wrap, reciprocal-mass, and carry-growth conditions. A *wrap* occurs when doubling a least residue crosses its odd modulus; the reciprocal mass is $`\rho(A)=\sum_{a\in A}1/a`$.
+This appendix supplies the general results assembled in Theorem [7](#res%3Arigidity-main) and Corollaries [8](#res%3Arigidity-unbounded-main)–[11](#res%3Arigidity-dyadic-mass-main), and the detailed greedy geometry cited after Theorem [5](#res%3Agreedy). Readers interested only in achievement-set geometry may skip to Appendix [11.5](#app%3Acarry-geometry). It has two independent roles. Appendix [11.1](#app%3Acarry-normal-form) gives the first exact coordinate change: rationality is equivalent to a *tempered tail orbit*, an integer recurrence with a vanishing boundary condition. Appendix [11.2](#app%3Acarry-boolean) gives the second: the orbit becomes a Boolean–Möbius certificate whose quotient stream reconstructs a Boolean support. Appendices [11.3](#app%3Acarry-sublog) and [11.4](#app%3Acarry-mass) use those coordinates only forward, to derive necessary divisor-coverage, denominator-wrap, reciprocal-mass, and carry-growth conditions. A *wrap* occurs when doubling a least residue crosses its odd modulus; the reciprocal mass is $`\rho(A)=\sum_{a\in A}1/a`$.
 
-Appendix <a href="#app:carry-geometry" data-reference-type="ref" data-reference="app:carry-geometry">11.5</a> is separate. It studies the achievement set itself: a finite nonmembership certificate proves exclusion, whereas survival through a finite depth proves nothing. The following display records these statuses before introducing the detailed coordinates.
+Appendix [11.5](#app%3Acarry-geometry) is separate. It studies the achievement set itself: a finite nonmembership certificate proves exclusion, whereas survival through a finite depth proves nothing. The following display records these statuses before introducing the detailed coordinates.
 
 The dependency chain is
 ``` math
@@ -2063,7 +2083,7 @@ The dependency chain is
  \quad\text{(\ref{app:carry-mass}).}
 \end{array}
 ```
-The last four lines list independent necessary conditions, at the weakest hypotheses under which they are proved, not converses and not contradictions. Appendix <a href="#app:carry-geometry" data-reference-type="ref" data-reference="app:carry-geometry">11.5</a> is orthogonal to this rationality chain: finite greedy failure proves nonmembership in the achievement set, whereas survival through any finite depth proves nothing.
+The last four lines list independent necessary conditions, at the weakest hypotheses under which they are proved, not converses and not contradictions. Appendix [11.5](#app%3Acarry-geometry) is orthogonal to this rationality chain: finite greedy failure proves nonmembership in the achievement set, whereas survival through any finite depth proves nothing.
 
 The prior-art boundary is theorem-family-specific. The integral carry recurrence has a direct antecedent in Wang \[wang2026, Proposition 3.1, pp. 5–6\]; the strict-tail geometry is recorded by Kovač–Tao \[kovactao, Remark 4.1, p. 13\]; Möbius inversion and divisor averaging are classical  \[apostol, Thms. 2.2, 2.9, pp. 25, 32\]; the repetend algebra used here is the elementary finite-geometric-series identity. We make no claim of mathematical priority for the converse/rigidity, certificate-normal-form, or coupled reciprocal-mass/collision statements collected here.
 
@@ -2071,7 +2091,7 @@ The prior-art boundary is theorem-family-specific. The integral carry recurrence
 
 ## Exact normal form: tail-orbit rigidity
 
-This subsection supplies the generic equivalence used in Appendix <a href="#app:carry-boolean" data-reference-type="ref" data-reference="app:carry-boolean">11.2</a>. It converts rationality into an integer recurrence with a boundary condition; it does not itself exclude such an orbit or impose the Boolean support constraint.
+This subsection supplies the generic equivalence used in Appendix [11.2](#app%3Acarry-boolean). It converts rationality into an integer recurrence with a boundary condition; it does not itself exclude such an orbit or impose the Boolean support constraint.
 
 For a coefficient sequence $`\gamma:\mathbb{N}\to\mathbb{N}`$ with $`\gamma(n)\le n`$, write
 ``` math
@@ -2095,7 +2115,7 @@ The recurrence is exact binary long division against the coefficient stream; the
 
 Formalised: [the scaled-tail orbit identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L339) (rigidity) and [the rationality–orbit equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L426) (the criterion), restated in Mathlib’s irrationality vocabulary at [the non-irrationality–orbit equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L435). The engine is one observation: a real orbit with $`d(N+1)=2\,d(N)`$ and $`d(N)=o(2^N)`$ vanishes identically ([zero-tail rigidity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GenericTailOrbitRigidity.lean#L315)).
 
-The tempered boundary is essential: the homogeneous parasite $`N\mapsto2^N`$ can be added to any orbit without disturbing the recurrence, so positivity of an orbit certifies nothing by itself, and positivity is nowhere advertised as an equivalent criterion. The linear-growth hypothesis covers both constants introduced in Section <a href="#sec:intro" data-reference-type="ref" data-reference="sec:intro">1</a>: $`\varphi(n)\le n`$ for the \#249 coefficients, and $`f_A(n)\le\tau(n)\le n`$ for the \#257 support coefficients $`f_A(n)=\#\{a\in A:a\mid n\}`$. The results below instantiate the criterion on supports. Its separate totient carry-rank consequence belongs to the \#249 rank route in Appendix <a href="#app:totient-rank" data-reference-type="ref" data-reference="app:totient-rank">12.4</a>.
+The tempered boundary is essential: the homogeneous parasite $`N\mapsto2^N`$ can be added to any orbit without disturbing the recurrence, so positivity of an orbit certifies nothing by itself, and positivity is nowhere advertised as an equivalent criterion. The linear-growth hypothesis covers both constants introduced in Section [1](#sec%3Aintro): $`\varphi(n)\le n`$ for the \#249 coefficients, and $`f_A(n)\le\tau(n)\le n`$ for the \#257 support coefficients $`f_A(n)=\#\{a\in A:a\mid n\}`$. The results below instantiate the criterion on supports. Its separate totient carry-rank consequence belongs to the \#249 rank route in Appendix [12.4](#app%3Atotient-rank).
 
 <a id="app:carry-boolean"></a>
 
@@ -2105,18 +2125,18 @@ This subsection has one preliminary boundary result and then one exact equivalen
 
 <div id="res:mobiussignnogo" class="proposition">
 
-**Proposition 47** (Möbius-sign support no-go). *Let
+**Proposition 47** (Möbius-sign support no-go). *Let*
 ``` math
 A_-=\{d\ge2:\mu(d)=-1\},
  \qquad A_+=\{d\ge2:\mu(d)=1\}.
 ```
-Then
+*Then*
 ``` math
 \sum_{d\in A_-}\frac1{2^d-1}
  =\frac12+\sum_{d\in A_+}\frac1{2^d-1}
  \ge\frac12+\frac1{63}>\frac12.
 ```
-In particular, the signed identity $`L(\mu)=1/2`$ cannot be converted into a Boolean support of value $`1/2`$ merely by selecting the negative Möbius indices.*
+*In particular, the signed identity $`L(\mu)=1/2`$ cannot be converted into a Boolean support of value $`1/2`$ merely by selecting the negative Möbius indices.*
 
 </div>
 
@@ -2126,7 +2146,7 @@ Formalised: [the negative-Möbius decomposition](https://github.com/wcook04/plec
 
 #### The exact coordinate chain.
 
-At base $`2`$ the support series of Section <a href="#sec:eb" data-reference-type="ref" data-reference="sec:eb">4</a> is itself a binary coefficient series, $`\sum_{n\in A}1/(2^n-1)=X_{f_A}`$ ([the support-series/binary-series identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L377)). Boolean Möbius inversion first identifies the support from its divisor coefficients; tail-orbit rigidity then identifies rationality with a tempered integer orbit. Theorem <a href="#res:carrycert" data-reference-type="ref" data-reference="res:carrycert">49</a> is exactly the composition of those two equivalences. The divisor transform and Möbius inversion are classical arithmetic-function tools \[apostol, Thm. 2.9, p. 32\]; their Lambert-series factorisation formulations are Merca’s Theorem 1.2 \[merca2017, pp. 420–421\] and Merca–Schmidt’s Equations (1.1)–(1.6) \[mercaschmidt, pp. 31–34\]. The composition with the tempered-orbit criterion is what is checked here.
+At base $`2`$ the support series of Section [4](#sec%3Aeb) is itself a binary coefficient series, $`\sum_{n\in A}1/(2^n-1)=X_{f_A}`$ ([the support-series/binary-series identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L377)). Boolean Möbius inversion first identifies the support from its divisor coefficients; tail-orbit rigidity then identifies rationality with a tempered integer orbit. Theorem [49](#res%3Acarrycert) is exactly the composition of those two equivalences. The divisor transform and Möbius inversion are classical arithmetic-function tools \[apostol, Thm. 2.9, p. 32\]; their Lambert-series factorisation formulations are Merca’s Theorem 1.2 \[merca2017, pp. 420–421\] and Merca–Schmidt’s Equations (1.1)–(1.6) \[mercaschmidt, pp. 31–34\]. The composition with the tempered-orbit criterion is what is checked here.
 
 <div id="res:boolmob" class="proposition">
 
@@ -2136,17 +2156,17 @@ At base $`2`$ the support series of Section <a href="#sec:eb" data-reference-ty
 
 Formalised: [the positive-support divisor identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L77), [the Möbius inversion identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L95), and, with no search or finiteness hypothesis, the converse [the Boolean reconstruction theorem](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L181).
 
-On the carry side, Theorem <a href="#res:rigidity" data-reference-type="ref" data-reference="res:rigidity">46</a> applies at $`\gamma=f_A`$. The support series is rational exactly when a tempered carry orbit for $`f_A`$ exists ([the rationality–carry equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L384)). A displayed fraction $`p/q`$ corresponds to an orbit $`U`$ with multiplier $`q`$ and initial value $`U(0)=p`$ ([the support-fraction carry equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L467)). Exact division then recovers the coefficient from the orbit, $`\bigl(2U(N)-U(N+1)\bigr)/q=f_A(N+1)`$ ([carry-quotient recovery](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L681)). The elementary divisor-pair bound $`\tau(n)\le2\lfloor\sqrt n\rfloor`$ confines the tails to a square-root strip, $`T_{f_A}(N)\le2\sqrt N+4`$. For a nonempty support the orbit states are positive and satisfy $`U(N)\le q\,(2\sqrt N+4)`$ ([the carry upper bound](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L706)); and the strip is strong enough to re-derive the tempered boundary, so the analytic side condition can be traded for one inequality. The two coordinate changes compose.
+On the carry side, Theorem [46](#res%3Arigidity) applies at $`\gamma=f_A`$. The support series is rational exactly when a tempered carry orbit for $`f_A`$ exists ([the rationality–carry equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L384)). A displayed fraction $`p/q`$ corresponds to an orbit $`U`$ with multiplier $`q`$ and initial value $`U(0)=p`$ ([the support-fraction carry equivalence](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L467)). Exact division then recovers the coefficient from the orbit, $`\bigl(2U(N)-U(N+1)\bigr)/q=f_A(N+1)`$ ([carry-quotient recovery](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L681)). The elementary divisor-pair bound $`\tau(n)\le2\lfloor\sqrt n\rfloor`$ confines the tails to a square-root strip, $`T_{f_A}(N)\le2\sqrt N+4`$. For a nonempty support the orbit states are positive and satisfy $`U(N)\le q\,(2\sqrt N+4)`$ ([the carry upper bound](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCarry.lean#L706)); and the strip is strong enough to re-derive the tempered boundary, so the analytic side condition can be traded for one inequality. The two coordinate changes compose.
 
 <div id="res:carrycert" class="theorem">
 
-**Theorem 49** (support fraction–Boolean-carry equivalence). *Fix $`p\in\mathbb Z`$ and an integer $`q\ge1`$. There is a nonempty support $`A`$ of positive integers with $`\sum_{n\in A}1/(2^n-1)=p/q`$ if and only if there is an integer sequence $`U`$, with $`U(0)=p`$, such that, for every $`N`$,
+**Theorem 49** (support fraction–Boolean-carry equivalence). *Fix $`p\in\mathbb Z`$ and an integer $`q\ge1`$. There is a nonempty support $`A`$ of positive integers with $`\sum_{n\in A}1/(2^n-1)=p/q`$ if and only if there is an integer sequence $`U`$, with $`U(0)=p`$, such that, for every $`N`$,*
 ``` math
 0<U(N)\le q\,(2\sqrt N+4)
   \qquad\text{and}\qquad
   q\mid 2U(N)-U(N+1),
 ```
-and the Möbius transform of the quotient sequence $`N\mapsto\bigl(2U(N)-U(N+1)\bigr)/q`$ is Boolean. The support is not guessed: it is reconstructed from the certificate by Proposition <a href="#res:boolmob" data-reference-type="ref" data-reference="res:boolmob">48</a>.*
+*and the Möbius transform of the quotient sequence $`N\mapsto\bigl(2U(N)-U(N+1)\bigr)/q`$ is Boolean. The support is not guessed: it is reconstructed from the certificate by Proposition [48](#res%3Aboolmob).*
 
 </div>
 
@@ -2164,23 +2184,23 @@ These are coordinates, not by themselves a strategy: nothing here excludes infin
 
 ## Necessary condition I: sublogarithmic divisor coverage
 
-This theorem is a one-way consequence of a rational support value and is used in Corollary <a href="#res:rigidity-sublog-main" data-reference-type="ref" data-reference="res:rigidity-sublog-main">9</a>. It limits zero gaps in the divisor-coefficient stream; it neither reconstructs a support nor contradicts the existence of an infinite rational support.
+This theorem is a one-way consequence of a rational support value and is used in Corollary [9](#res%3Arigidity-sublog-main). It limits zero gaps in the divisor-coefficient stream; it neither reconstructs a support nor contradicts the existence of an infinite rational support.
 
 The coefficient $`f_A(n)`$ counts the elements of $`A`$ dividing $`n`$. Say that a zero window of length $`h`$ starts after $`c+N`$ when $`f_A(c+N+j+1)=0`$ for every $`0\le j<h`$. Thus no integer in that interval is divisible by an element of the support.
 
 <div id="res:sublog" class="theorem">
 
-**Theorem 51** (sublogarithmic zero windows). *Let $`A`$ contain a positive integer and suppose
+**Theorem 51** (sublogarithmic zero windows). *Let $`A`$ contain a positive integer and suppose*
 ``` math
 \sum_{a\in A}\frac1{2^a-1}=\frac{p}{2^c v},
   \qquad p\in\mathbb{Z},\quad c\in\mathbb{N},\quad v\ge1.
 ```
-For every $`\varepsilon>0`$ there is a constant $`B\ge0`$, depending only on $`\varepsilon,c,`$ and $`v`$, such that every zero window after $`c+N`$ satisfies
+*For every $`\varepsilon>0`$ there is a constant $`B\ge0`$, depending only on $`\varepsilon,c,`$ and $`v`$, such that every zero window after $`c+N`$ satisfies*
 ``` math
 h\le \varepsilon\log_2(N+1)+B,
   \qquad \log_2 x:=\frac{\log x}{\log 2}.
 ```
-The bound is uniform in $`A,p,N,`$ and $`h`$.*
+*The bound is uniform in $`A,p,N,`$ and $`h`$.*
 
 </div>
 
@@ -2210,11 +2230,11 @@ Three routes use the carry recurrence:
 ```
 The first two routes use Cesàro averages when the reciprocal mass is finite; the third needs no summability hypothesis. These are parallel necessary consequences of rationality, not implications from one conclusion to the next. The one-wrap classification identifies the extremal residue cycles and is not a premise of any of the three routes.
 
-Suppose now the support series equals $`p/(2^c v)`$ with $`v`$ odd and $`A`$ containing a positive element. Write $`q=2^cv`$, and let $`U`$ be the tempered orbit of Appendix <a href="#app:carry-boolean" data-reference-type="ref" data-reference="app:carry-boolean">11.2</a> with multiplier $`q`$. Removing the first $`c`$ binary places and the dyadic factor gives the positive integer state
+Suppose now the support series equals $`p/(2^c v)`$ with $`v`$ odd and $`A`$ containing a positive element. Write $`q=2^cv`$, and let $`U`$ be the tempered orbit of Appendix [11.2](#app%3Acarry-boolean) with multiplier $`q`$. Removing the first $`c`$ binary places and the dyadic factor gives the positive integer state
 ``` math
 u(N)=\frac{U(c+N)}{2^c}=v\,T_{f_A}(c+N);
 ```
-this is $`u_N`$ in Theorem <a href="#res:rigidity-main" data-reference-type="ref" data-reference="res:rigidity-main">7</a>, and it satisfies $`u(N+1)+v\,f_A(c+N+1)=2u(N)`$. Its least residue modulo $`v`$ is $`\bar p_N=p2^N\bmod v`$, with $`0\leq\bar p_N<v`$. Put
+this is $`u_N`$ in Theorem [7](#res%3Arigidity-main), and it satisfies $`u(N+1)+v\,f_A(c+N+1)=2u(N)`$. Its least residue modulo $`v`$ is $`\bar p_N=p2^N\bmod v`$, with $`0\leq\bar p_N<v`$. Put
 ``` math
 e_N=\left\lfloor\frac{u(N)}v\right\rfloor,
  \qquad u(N)=ve_N+\bar p_N;
@@ -2239,19 +2259,19 @@ The analytic bridge is Cesàro averaging. Write $`\rho(A)=\sum_{a\in A}1/a`$ for
 
 <div id="res:orderwrap" class="proposition">
 
-**Proposition 53** (order-wrap lower bound, with exact excess mean). *Let $`A\subseteq\mathbb{N}_{>0}`$ be nonempty and suppose
+**Proposition 53** (order-wrap lower bound, with exact excess mean). *Let $`A\subseteq\mathbb{N}_{>0}`$ be nonempty and suppose*
 ``` math
 X_A=\frac{p}{2^cv},
  \qquad p\in\mathbb{Z},\quad c\in\mathbb{N},\quad v>1\ \text{odd}.
 ```
-Let $`h=\operatorname{ord}_v(2)`$, let $`w`$ be the number of wraps in the least-residue cycle $`p2^N\bmod v`$ for $`0\leq N<h`$, and set
+*Let $`h=\operatorname{ord}_v(2)`$, let $`w`$ be the number of wraps in the least-residue cycle $`p2^N\bmod v`$ for $`0\leq N<h`$, and set*
 ``` math
 u(N)=vT_{f_A}(c+N),\qquad e_N=\left\lfloor\frac{u(N)}v\right\rfloor.
 ```
-Then $`\sum_{a\in A}1/a`$ diverges or $`\rho(A)\ge w/h`$; if moreover $`p`$ is coprime to $`v`$, then $`w\ge1`$, so $`\rho(A)\ge1/\operatorname{ord}_v(2)`$. In the summable case the bound is the periodic part of an exact identity: the Cesàro mean of $`e_N`$ converges, and
+*Then $`\sum_{a\in A}1/a`$ diverges or $`\rho(A)\ge w/h`$; if moreover $`p`$ is coprime to $`v`$, then $`w\ge1`$, so $`\rho(A)\ge1/\operatorname{ord}_v(2)`$. In the summable case the bound is the periodic part of an exact identity: the Cesàro mean of $`e_N`$ converges, and*
 ``` math
 \rho(A)\;=\;\frac{w}{h}\;+\;\lim_{N\to\infty}\frac1N\sum_{n<N}e_n .
-```*
+```
 
 </div>
 
@@ -2259,11 +2279,11 @@ The divergent-or-bounded conclusion is formalised by the [wrap-ratio mass altern
 
 <div id="res:collision" class="corollary">
 
-**Corollary 54** (collision strengthening at common multiples). *In the summable case, let $`F\subseteq A`$ be finite and let $`L\ge1`$ be a common multiple of $`F`$. Then
+**Corollary 54** (collision strengthening at common multiples). *In the summable case, let $`F\subseteq A`$ be finite and let $`L\ge1`$ be a common multiple of $`F`$. Then*
 ``` math
 \rho(A)\;\ge\;\frac{w}{h}\;+\;\frac{\lceil(|F|-1)/2\rceil}{L}.
 ```
-In particular, an infinite support whose value is a dyadic rational $`p/2^c`$ has $`\sum_{a\in A}1/a`$ divergent or $`\rho(A)>1`$.*
+*In particular, an infinite support whose value is a dyadic rational $`p/2^c`$ has $`\sum_{a\in A}1/a`$ divergent or $`\rho(A)>1`$.*
 
 </div>
 
@@ -2311,12 +2331,12 @@ Formalised: [measure-one theorem](https://github.com/wcook04/plectis-erdos/blob/
 
 <div id="res:death" class="proposition">
 
-**Proposition 58** (exact rational runs and finite nonmembership certificates). *The greedy recursion executed in exact rational arithmetic agrees step by step with the real recursion under casting. For a rational target $`x`$, write $`r_n(x)`$ for its exact rational residual after level $`n`$ and, for a lookahead $`\ell\ge0`$, put
+**Proposition 58** (exact rational runs and finite nonmembership certificates). *The greedy recursion executed in exact rational arithmetic agrees step by step with the real recursion under casting. For a rational target $`x`$, write $`r_n(x)`$ for its exact rational residual after level $`n`$ and, for a lookahead $`\ell\ge0`$, put*
 ``` math
 \widehat T_{n,\ell}
   =\sum_{k=0}^{\ell-1}w_{n+k+1}+2w_{n+\ell+1}\in\mathbb{Q}.
 ```
-The sum is empty when $`\ell=0`$, and always $`T(n)<\widehat T_{n,\ell}`$. Hence the finite inequality $`\widehat T_{n,\ell}\le r_n(x)`$ soundly proves $`x\notin\mathcal A`$; its level-one instance shows $`3/4\notin\mathcal A`$. A rational number already known to lie in $`\mathcal A`$ has computable support bits.*
+*The sum is empty when $`\ell=0`$, and always $`T(n)<\widehat T_{n,\ell}`$. Hence the finite inequality $`\widehat T_{n,\ell}\le r_n(x)`$ soundly proves $`x\notin\mathcal A`$; its level-one instance shows $`3/4\notin\mathcal A`$. A rational number already known to lie in $`\mathcal A`$ has computable support bits.*
 
 </div>
 
@@ -2326,13 +2346,13 @@ Formalised: [rational–real greedy agreement](https://github.com/wcook04/plecti
 
 #### Appendix consequence.
 
-The transfer to the main text is Theorem <a href="#res:rigidity-main" data-reference-type="ref" data-reference="res:rigidity-main">7</a> followed by the four independent Corollaries <a href="#res:rigidity-unbounded-main" data-reference-type="ref" data-reference="res:rigidity-unbounded-main">8</a>–<a href="#res:rigidity-dyadic-mass-main" data-reference-type="ref" data-reference="res:rigidity-dyadic-mass-main">11</a>. Rationality yields the exact carry recurrence. Any nonempty rational support must satisfy the sublogarithmic divisor-coverage bound. If its denominator has odd part $`v>1`$, it must also satisfy the wrap and mass bounds. If the support is infinite, the carry states are unbounded; at a dyadic denominator, the reciprocal-mass alternative also holds. Appendix <a href="#app:carry-geometry" data-reference-type="ref" data-reference="app:carry-geometry">11.5</a> also supplies the finite nonmembership certificates used in Theorem <a href="#res:greedy" data-reference-type="ref" data-reference="res:greedy">5</a>. What is not proved is that the support attached to either target violates one of these necessary conditions. That contradiction, not another rational normal form, is the missing premise.
+The transfer to the main text is Theorem [7](#res%3Arigidity-main) followed by the four independent Corollaries [8](#res%3Arigidity-unbounded-main)–[11](#res%3Arigidity-dyadic-mass-main). Rationality yields the exact carry recurrence. Any nonempty rational support must satisfy the sublogarithmic divisor-coverage bound. If its denominator has odd part $`v>1`$, it must also satisfy the wrap and mass bounds. If the support is infinite, the carry states are unbounded; at a dyadic denominator, the reciprocal-mass alternative also holds. Appendix [11.5](#app%3Acarry-geometry) also supplies the finite nonmembership certificates used in Theorem [5](#res%3Agreedy). What is not proved is that the support attached to either target violates one of these necessary conditions. That contradiction, not another rational normal form, is the missing premise.
 
 <a id="app:totient-technical"></a>
 
 # Technical reductions for the totient-certificate branch
 
-Recall the scaled tail $`R_N=\sum_{m\geq1}\varphi(N+m)/2^m`$. The predicate $`\mathsf{Sep}(h,N,L)`$ retains the first $`L`$ binary places of $`R_{N+h}-R_N`$ and checks, by finite integer arithmetic, that their least residue modulo $`2^L`$ clears the rigorous omitted-tail margins at both $`0`$ and $`2^L`$. Thus $`N`$ is the tail location and $`L`$ the finite certificate depth. At a fixed pair $`(h,N)`$, some $`L`$ succeeds exactly when the difference is non-integral. Irrationality requires the stronger unbounded statement: for every candidate period $`h`$, a certificate must occur after every cutoff. This appendix develops coordinates and finite mechanisms for that statement; it does not prove the required unbounded supply <a href="#eq:unbounded-certificate-supply" data-reference-type="eqref" data-reference="eq:unbounded-certificate-supply">[eq:unbounded-certificate-supply]</a>. Readers following only the exact main reduction may skip the details here. Appendix <a href="#app:totient-normal" data-reference-type="ref" data-reference="app:totient-normal">12.1</a> contains the exact reduction; Appendices <a href="#app:totient-finite" data-reference-type="ref" data-reference="app:totient-finite">12.2</a>–<a href="#app:totient-rank" data-reference-type="ref" data-reference="app:totient-rank">12.4</a> give independent finite mechanisms, candidate inputs and their limits, and dyadic-rank consequences.
+Recall the scaled tail $`R_N=\sum_{m\geq1}\varphi(N+m)/2^m`$. The predicate $`\mathsf{Sep}(h,N,L)`$ retains the first $`L`$ binary places of $`R_{N+h}-R_N`$ and checks, by finite integer arithmetic, that their least residue modulo $`2^L`$ clears the rigorous omitted-tail margins at both $`0`$ and $`2^L`$. Thus $`N`$ is the tail location and $`L`$ the finite certificate depth. At a fixed pair $`(h,N)`$, some $`L`$ succeeds exactly when the difference is non-integral. Irrationality requires the stronger unbounded statement: for every candidate period $`h`$, a certificate must occur after every cutoff. This appendix develops coordinates and finite mechanisms for that statement; it does not prove the required unbounded supply [\[eq:unbounded-certificate-supply\]](#eq%3Aunbounded-certificate-supply). Readers following only the exact main reduction may skip the details here. Appendix [12.1](#app%3Atotient-normal) contains the exact reduction; Appendices [12.2](#app%3Atotient-finite)–[12.4](#app%3Atotient-rank) give independent finite mechanisms, candidate inputs and their limits, and dyadic-rank consequences.
 
 The exact chain is
 ``` math
@@ -2346,7 +2366,7 @@ The exact chain is
  \mathsf{Sep}(h,N,L).
 \end{array}
 ```
-Appendix <a href="#app:totient-normal" data-reference-type="ref" data-reference="app:totient-normal">12.1</a> gives exact coordinates for the two lines. Appendix <a href="#app:totient-finite" data-reference-type="ref" data-reference="app:totient-finite">12.2</a> separates fixed-scale mechanisms from conditional implications that assume repetition at unbounded scales. Appendix <a href="#app:totient-boundaries" data-reference-type="ref" data-reference="app:totient-boundaries">12.3</a> records candidate sufficient inputs and rules out several shortcuts. Appendix <a href="#app:totient-rank" data-reference-type="ref" data-reference="app:totient-rank">12.4</a> proves unconditional dyadic rank growth but not the missing implication from rank to the second line. Thus only the normal forms are equivalences; the remaining subsections provide finite results, conditional routes, or boundaries.
+Appendix [12.1](#app%3Atotient-normal) gives exact coordinates for the two lines. Appendix [12.2](#app%3Atotient-finite) separates fixed-scale mechanisms from conditional implications that assume repetition at unbounded scales. Appendix [12.3](#app%3Atotient-boundaries) records candidate sufficient inputs and rules out several shortcuts. Appendix [12.4](#app%3Atotient-rank) proves unconditional dyadic rank growth but not the missing implication from rank to the second line. Thus only the normal forms are equivalences; the remaining subsections provide finite results, conditional routes, or boundaries.
 
 <a id="app:totient-normal"></a>
 
@@ -2368,7 +2388,7 @@ For fixed $`t`$, the *lcm cone* is the sequence $`\{kM_t:k\ge1\}`$. Cone flatnes
 
 Formalised: [cone flatness under rationality](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeFlatness.lean#L90).
 
-Proposition <a href="#res:complete" data-reference-type="ref" data-reference="res:complete">24</a> states fixed-parameter certificate completeness, and Theorem <a href="#res:pointwisecomplete" data-reference-type="ref" data-reference="res:pointwisecomplete">25</a> gives its global pointwise form. Their additional role here is cone-level: a joint finite refuter tests several multipliers $`k`$ at once rather than one pair. It refutes the single-fractional-part model that rationality predicts on a finite sample ([common-fraction contradiction](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeNonflat.lean#L126)). This finite cone predicate is sound in the direction just stated: a certificate produces a non-integral pair and hence contradicts the sampled flatness model. No converse is proved saying that every non-flat finite sample, or every irrational value of $`S`$, must be detected by this joint predicate. It is therefore a refuter, not a complete decision procedure.
+Proposition [24](#res%3Acomplete) states fixed-parameter certificate completeness, and Theorem [25](#res%3Apointwisecomplete) gives its global pointwise form. Their additional role here is cone-level: a joint finite refuter tests several multipliers $`k`$ at once rather than one pair. It refutes the single-fractional-part model that rationality predicts on a finite sample ([common-fraction contradiction](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeNonflat.lean#L126)). This finite cone predicate is sound in the direction just stated: a certificate produces a non-integral pair and hence contradicts the sampled flatness model. No converse is proved saying that every non-flat finite sample, or every irrational value of $`S`$, must be detected by this joint predicate. It is therefore a refuter, not a complete decision procedure.
 
 <a id="an-exact-target-residue-class."></a>
 
@@ -2396,34 +2416,34 @@ This is the [full-target equivalence](https://github.com/wcook04/plectis-erdos/b
 
 <div id="res:fulltargetavoidance" class="corollary">
 
-**Corollary 61** (exact unbounded target-avoidance characterisation). *The following are equivalent:
+**Corollary 61** (exact unbounded target-avoidance characterisation). *The following are equivalent:*
 ``` math
 \begin{aligned}
  &S\notin\mathbb{Q};\\
  &\forall\,t_0\in\mathbb{N}\ \exists\,t\geq t_0,\qquad
    \neg\mathsf{Hit}(t).
 \end{aligned}
-```*
+```
 
 </div>
 
-The reverse implication is the [unbounded target-avoidance criterion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerDecomposition.lean#L290). For the forward implication, Theorem <a href="#res:diag" data-reference-type="ref" data-reference="res:diag">27</a> supplies non-integral diagonal differences at unbounded $`t`$, and Proposition <a href="#res:pincer" data-reference-type="ref" data-reference="res:pincer">60</a> converts each one into a missed full target. Thus the proposition is the fixed-scale equivalence and the corollary is its exact global form. The unbounded avoidance statement remains open.
+The reverse implication is the [unbounded target-avoidance criterion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerDecomposition.lean#L290). For the forward implication, Theorem [27](#res%3Adiag) supplies non-integral diagonal differences at unbounded $`t`$, and Proposition [60](#res%3Apincer) converts each one into a missed full target. Thus the proposition is the fixed-scale equivalence and the corollary is its exact global form. The unbounded avoidance statement remains open.
 
 <a id="app:totient-finite"></a>
 
 ## Fixed-scale mechanisms and conditional unbounded implications
 
-This subsection groups alternative fixed-scale mechanisms, not a dependency chain. Enclosure and projected-separation tests are sufficient only: separation forces a missed target, with no converse asserted. Prime-power unit-gap characterisations, divisor-index decompositions, the shadow-denominator formula, and the residue–projection equivalence are exact at fixed parameters but, unless stated, do not characterise target avoidance. Irrationality corollaries assume unproved repetition at unbounded scales. The tabulated rows, primality facts, and diagonal certificates through $`t=82`$ are verified finite instances; none proves <a href="#eq:unbounded-certificate-supply" data-reference-type="eqref" data-reference="eq:unbounded-certificate-supply">[eq:unbounded-certificate-supply]</a>.
+This subsection groups alternative fixed-scale mechanisms, not a dependency chain. Enclosure and projected-separation tests are sufficient only: separation forces a missed target, with no converse asserted. Prime-power unit-gap characterisations, divisor-index decompositions, the shadow-denominator formula, and the residue–projection equivalence are exact at fixed parameters but, unless stated, do not characterise target avoidance. Irrationality corollaries assume unproved repetition at unbounded scales. The tabulated rows, primality facts, and diagonal certificates through $`t=82`$ are verified finite instances; none proves [\[eq:unbounded-certificate-supply\]](#eq%3Aunbounded-certificate-supply).
 
 <a id="a-one-way-analytic-enclosure."></a>
 
 #### A one-way analytic enclosure.
 
-For $`H\ge1`$, put $`\mathcal D_H=R_{2H}-R_H`$, $`c_H=2^H(2^H-1)`$, and $`\Phi_N=\sum_{0\le n\le N}\varphi(n)2^{N-n}`$. The binary shift identity gives $`\mathcal D_H=c_HS+\Phi_H-\Phi_{2H}`$. Truncate the Möbius-square identity of Proposition <a href="#res:lens" data-reference-type="ref" data-reference="res:lens">86</a> after $`D`$ terms.
+For $`H\ge1`$, put $`\mathcal D_H=R_{2H}-R_H`$, $`c_H=2^H(2^H-1)`$, and $`\Phi_N=\sum_{0\le n\le N}\varphi(n)2^{N-n}`$. The binary shift identity gives $`\mathcal D_H=c_HS+\Phi_H-\Phi_{2H}`$. Truncate the Möbius-square identity of Proposition [86](#res%3Alens) after $`D`$ terms.
 
 <div id="res:squareenclosure" class="proposition">
 
-**Proposition 62** (squared-Mersenne enclosure). *For $`D\ge0`$, the rational centre and its exact error are
+**Proposition 62** (squared-Mersenne enclosure). *For $`D\ge0`$, the rational centre and its exact error are*
 ``` math
 \begin{aligned}
  C_{H,D}&=\Phi_H-\Phi_{2H}
@@ -2433,7 +2453,7 @@ For $`H\ge1`$, put $`\mathcal D_H=R_{2H}-R_H`$, $`c_H=2^H(2^H-1)`$, and $`\Phi_N
    &=c_H\sum_{d>D}\frac{\mu(d)}{(2^d-1)^2}.
  \end{aligned}
 ```
-The second identity is exact, and $`|\mathcal D_H-C_{H,D}|\le4c_H/[3(2^{D+1}-1)^2]`$. Hence separation of $`C_{H,D}`$ from every integer by more than this bound forces $`\mathcal D_H\notin\mathbb{Z}`$ and full-target avoidance. No converse is asserted.*
+*The second identity is exact, and $`|\mathcal D_H-C_{H,D}|\le4c_H/[3(2^{D+1}-1)^2]`$. Hence separation of $`C_{H,D}`$ from every integer by more than this bound forces $`\mathcal D_H\notin\mathbb{Z}`$ and full-target avoidance. No converse is asserted.*
 
 </div>
 
@@ -2481,7 +2501,7 @@ Four bounded certificate families are machine-checked. Each successful $`\mathsf
 
 The four validation classes are formalised, in order, by the [small-window certificate family](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailPeriodKiller.lean#L404), [periods through sixteen](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CarrySurvivorExtinction.lean#L574), [28 imported diagonal certificates through scale 64](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerCertificatesT64.lean#L1967), and [joint-nonflatness table](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/LcmConeNonflat.lean#L506). For the first three classes, fixed-parameter completeness converts each successful $`\mathsf{Sep}`$ instance into the stated non-integral tail difference. The fourth uses the separate cone-refuter soundness theorem. None is evidence that certificates occur at unbounded scales.
 
-The first instance is worked in full following Example <a href="#res:deposits" data-reference-type="ref" data-reference="res:deposits">28</a>; its underlying implication is [certificate soundness](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailPeriodKiller.lean#L262). No instance asserts that such differences occur at unbounded scales.
+The first instance is worked in full following Example [28](#res%3Adeposits); its underlying implication is [certificate soundness](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientTailPeriodKiller.lean#L262). No instance asserts that such differences occur at unbounded scales.
 
 <a id="exact-finite-divisor-index-split-and-sufficient-projection-test."></a>
 
@@ -2495,17 +2515,17 @@ where $`c_H`$ is the diagonal coefficient. Thus, if the actual foreign defect ag
 
 <div id="res:foreignresidue" class="proposition">
 
-**Proposition 65** (finite sufficient test for diagonal nonintegrality). *Let $`F_H^{(D)}`$ be the retained nondivisor projection at cutoff $`D`$, let $`F_H`$ be the actual foreign defect, and let $`Q_H`$ be the scaled explicit divisor shadow. The finite residue diagonal is exactly the sum of $`F_H^{(D)}`$ and its divisor-index complement. For $`2H\leq D`$, put
+**Proposition 65** (finite sufficient test for diagonal nonintegrality). *Let $`F_H^{(D)}`$ be the retained nondivisor projection at cutoff $`D`$, let $`F_H`$ be the actual foreign defect, and let $`Q_H`$ be the scaled explicit divisor shadow. The finite residue diagonal is exactly the sum of $`F_H^{(D)}`$ and its divisor-index complement. For $`2H\leq D`$, put*
 ``` math
 B_{H,D}=c_H\left(\frac{2}{2^D}+\frac{4}{3\,4^D}\right).
 ```
-If
+*If*
 ``` math
 |F_H-F_H^{(D)}|\leq B_{H,D}
  \quad\text{and}\quad
  |Q_H+F_H^{(D)}-z|>B_{H,D}\quad\text{for every }z\in\mathbb{Z},
 ```
-then the full target at height $`H`$ is not attained.*
+*then the full target at height $`H`$ is not attained.*
 
 </div>
 
@@ -2521,18 +2541,18 @@ For $`t\geq5`$, the product of the Mersenne factors $`2^p-1`$ over primes $`t/2<
 
 <div id="res:shadowden" class="proposition">
 
-**Proposition 66** (exact denominator of the M"obius shadow). *Let $`r_t`$ be the square-free kernel of $`M_t`$, let $`s_t=M_t/r_t`$, and let $`J(r_t)`$ be the odd Jordan scalar. The reduced denominator $`d_t`$ of the scaled Möbius shadow is
+**Proposition 66** (exact denominator of the M"obius shadow). *Let $`r_t`$ be the square-free kernel of $`M_t`$, let $`s_t=M_t/r_t`$, and let $`J(r_t)`$ be the odd Jordan scalar. The reduced denominator $`d_t`$ of the scaled Möbius shadow is*
 ``` math
 d_t=
  \frac{2^{r_t}-1}
  {\gcd\!\bigl(2^{r_t}-1,\,s_t\lvert J(r_t)\rvert\bigr)}.
 ```
-If $`t\geq5`$, then
+*If $`t\geq5`$, then*
 ``` math
 \prod_{\substack{p\ \mathrm{prime}\\ t/2<p\leq t}}(2^p-1)
  \ \mid\ d_t,
  \qquad d_t\geq2^{\lfloor t/2\rfloor}.
-```*
+```
 
 </div>
 
@@ -2542,7 +2562,7 @@ Finally, a second finite coordinate projects the diagonal difference to an integ
 ``` math
 P_L(M)=\sum_{j=0}^{L-1}\varphi(M+1+j)\,2^{L-1-j}
 ```
-be the length-$`L`$ window numerator underlying Definition <a href="#def:totient-certificate" data-reference-type="ref" data-reference="def:totient-certificate">23</a>, and define
+be the length-$`L`$ window numerator underlying Definition [23](#def%3Atotient-certificate), and define
 ``` math
 W_{t,L}=P_L(2M_t)-P_L(M_t),\qquad
  \eta_{t,L}=W_{t,L}\bmod 2^L,
@@ -2555,16 +2575,16 @@ The two unequal margins are the tail bounds at the two cone vertices $`M_t`$ and
 
 <div id="res:freshloss" class="corollary">
 
-**Corollary 67** (finite residue projection). *For every $`t,L\in\mathbb{N}`$, the diagonal projection certificate is equivalent to
+**Corollary 67** (finite residue projection). *For every $`t,L\in\mathbb{N}`$, the diagonal projection certificate is equivalent to*
 ``` math
 M_t+L+2<\eta_{t,L}<2^L-(2M_t+L+2),
 ```
-and either condition forces full-target avoidance at height $`t`$. Consequently,
+*and either condition forces full-target avoidance at height $`t`$. Consequently,*
 ``` math
 \forall t_0\in\mathbb{N}\;\exists t\geq t_0\;\exists L\in\mathbb{N},\qquad
  M_t+L+2<\eta_{t,L}<2^L-(2M_t+L+2)
 ```
-implies that $`S`$ is irrational.*
+*implies that $`S`$ is irrational.*
 
 </div>
 
@@ -2580,7 +2600,7 @@ A finite family of Lucas certificates proves the primality facts required by the
 
 #### The diagonal certificate at $`t=64`$.
 
-Using those primality facts, Lean checks the individual diagonal certificate at $`t=64`$, [scale-64 diagonal certificate](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerCertificateT64Endpoint.lean#L1928). This endpoint is one of the 28 finite diagonal certificates in Example <a href="#res:deposits" data-reference-type="ref" data-reference="res:deposits">28</a>.
+Using those primality facts, Lean checks the individual diagonal certificate at $`t=64`$, [scale-64 diagonal certificate](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DiagonalPincerCertificateT64Endpoint.lean#L1928). This endpoint is one of the 28 finite diagonal certificates in Example [28](#res%3Adeposits).
 
 <a id="app:totient-boundaries"></a>
 
@@ -2632,20 +2652,20 @@ Formalised: [one-bit divisibility lift](https://github.com/wcook04/plectis-erdos
 
 #### Independent no-go: parity is not a margin certificate.
 
-Proposition <a href="#res:powertwobitlift" data-reference-type="ref" data-reference="res:powertwobitlift">69</a> does not settle the reduced signed-margin interval condition. For a positive even modulus $`m`$ and integral radius parameter $`a`$ with $`16<a<8m-16`$, each parity class contains both a residue inside the interval and one outside it. The same statement applies to a positive power-of-two modulus. Thus even a fifth-bit computation, by itself, cannot decide the required margin condition.
+Proposition [69](#res%3Apowertwobitlift) does not settle the reduced signed-margin interval condition. For a positive even modulus $`m`$ and integral radius parameter $`a`$ with $`16<a<8m-16`$, each parity class contains both a residue inside the interval and one outside it. The same statement applies to a positive power-of-two modulus. Thus even a fifth-bit computation, by itself, cannot decide the required margin condition.
 
 <div id="res:paritysocket" class="proposition">
 
-**Proposition 70** (parity does not decide the reduced margin condition). *Let $`m,a\in\mathbb{Z}`$, with $`m>0`$ even and
+**Proposition 70** (parity does not decide the reduced margin condition). *Let $`m,a\in\mathbb{Z}`$, with $`m>0`$ even and*
 ``` math
 16<a<8m-16,
 ```
-and put
+*and put*
 ``` math
 \mathcal M_{m,a}
  =\{y\in\mathbb{Z}:\exists k\in\mathbb{Z},\ 16|y-km|<a\}.
 ```
-Each parity class contains both a member and a nonmember of $`\mathcal M_{m,a}`$. In particular, the conclusion holds for $`m=2^j`$ whenever $`j\geq1`$.*
+*Each parity class contains both a member and a nonmember of $`\mathcal M_{m,a}`$. In particular, the conclusion holds for $`m=2^j`$ whenever $`j\geq1`$.*
 
 </div>
 
@@ -2659,12 +2679,12 @@ One tempting way to seek an unbounded obstruction is to compare the full target 
 
 <div id="res:primeadjunction" class="proposition">
 
-**Proposition 71** (prime-adjunction transport collapse). *For every positive $`H`$ and $`k`$, the actual diagonal satisfies
+**Proposition 71** (prime-adjunction transport collapse). *For every positive $`H`$ and $`k`$, the actual diagonal satisfies*
 ``` math
 D_{kH}=Q_k(H)D_H+Z_k(H),
  \qquad Q_k(H)\in\mathbb{N},\quad Z_k(H)\in\mathbb{Z}.
 ```
-Hence integrality at $`H`$ propagates to every multiple, and the four target hits at the prime-adjunction diamond are equivalent to the single hit at its root. The corresponding transport of the complete foreign defect has zero diamond curvature: the two transport compositions around the diamond agree exactly.*
+*Hence integrality at $`H`$ propagates to every multiple, and the four target hits at the prime-adjunction diamond are equivalent to the single hit at its root. The corresponding transport of the complete foreign defect has zero diamond curvature: the two transport compositions around the diamond agree exactly.*
 
 </div>
 
@@ -2672,10 +2692,10 @@ Formalised: [the prime-adjunction diamond collapse](https://github.com/wcook04/p
 
 <div id="res:adelic" class="proposition">
 
-**Proposition 72** (independent no-go: scalar localisation). *Let $`x\in\mathbb{Q}`$ and $`c\in\mathbb{Z}`$. If $`H\mid\operatorname{den}(x)`$ and the reduced denominator of $`cx`$ divides $`H`$, then
+**Proposition 72** (independent no-go: scalar localisation). *Let $`x\in\mathbb{Q}`$ and $`c\in\mathbb{Z}`$. If $`H\mid\operatorname{den}(x)`$ and the reduced denominator of $`cx`$ divides $`H`$, then*
 ``` math
 \frac{\operatorname{den}(x)}{H}\mid |c|.
-```*
+```
 
 </div>
 
@@ -2683,12 +2703,12 @@ Formalised: [complementary-denominator divisibility](https://github.com/wcook04/
 
 <div id="res:squarecrt" class="proposition">
 
-**Proposition 73** (independent no-go: square-CRT correction suppression). *Let $`\mathcal E`$ be a finite family indexed by distinct primes $`p_i`$, with prescribed anchors $`A_i`$ and residues $`a_i`$. There is a bounded common base $`n`$ such that, for each $`i\in\mathcal E`$ and each shift $`h`$ with $`p_i\nmid a_i+h`$, one has
+**Proposition 73** (independent no-go: square-CRT correction suppression). *Let $`\mathcal E`$ be a finite family indexed by distinct primes $`p_i`$, with prescribed anchors $`A_i`$ and residues $`a_i`$. There is a bounded common base $`n`$ such that, for each $`i\in\mathcal E`$ and each shift $`h`$ with $`p_i\nmid a_i+h`$, one has*
 ``` math
 n=A_i+p_i(a_i+p_i t)\quad\text{and}\quad
  \varphi(n+p_i h-A_i)=(p_i-1)\varphi(a_i+p_i t+h)
 ```
-for a suitable $`t\in\mathbb{N}`$. In particular, if every $`p_i`$ exceeds a fixed horizon $`J`$, the choice $`a_i=0`$ works simultaneously for all $`1\le h\le J`$.*
+*for a suitable $`t\in\mathbb{N}`$. In particular, if every $`p_i`$ exceeds a fixed horizon $`J`$, the choice $`a_i=0`$ works simultaneously for all $`1\le h\le J`$.*
 
 </div>
 
@@ -2702,11 +2722,11 @@ For a sequence $`a(n)`$, its level-$`j`$ *dyadic sections* are the $`2^j`$ subse
 
 <div id="res:dyadictotient" class="theorem">
 
-**Theorem 74** (unconditional dyadic totient-kernel rank). *For every $`e\geq0`$, take the sections $`n\mapsto\varphi(n)`$ and $`n\mapsto\varphi(2n)`$, together with every odd-residue section $`n\mapsto\varphi(2^jn+r)`$ for $`1\leq j\leq e`$. These $`2^e+1`$ functions are linearly independent over $`\mathbb{Q}`$. Consequently, the span of all sections
+**Theorem 74** (unconditional dyadic totient-kernel rank). *For every $`e\geq0`$, take the sections $`n\mapsto\varphi(n)`$ and $`n\mapsto\varphi(2n)`$, together with every odd-residue section $`n\mapsto\varphi(2^jn+r)`$ for $`1\leq j\leq e`$. These $`2^e+1`$ functions are linearly independent over $`\mathbb{Q}`$. Consequently, the span of all sections*
 ``` math
 n\longmapsto \varphi(2^j n+r),\qquad j\geq0,\quad 0\leq r<2^j,
 ```
-is not finite-dimensional over $`\mathbb{Q}`$.*
+*is not finite-dimensional over $`\mathbb{Q}`$.*
 
 </div>
 
@@ -2716,7 +2736,7 @@ Formalised by the all-level minor construction [CRT–Dirichlet separated minors
 
 #### Relation to prior work.
 
-The related qualitative nonregularity is known. In the terminology of Allouche and Shallit, a sequence is $`2`$-regular when the $`\mathbb{Z}`$-module generated by all its dyadic sections is finitely generated  \[alloucheshallit, Defs. 1.1 and 2.1, author-preprint pp. 2–3\]. Coons proved that $`\varphi`$ is not $`k`$-regular for any $`k\geq2`$ by comparing the poles of $`\zeta(s-1)/\zeta(s)`$ with the meromorphic continuation available to a regular sequence’s Dirichlet series \[coons2010, Theorem 3.2, pp. 348–349\]. Bell and Smertnig proved more generally that a multiplicative-coefficient $`k`$-Mahler series has a $`k`$-regular coefficient sequence of an explicit form; their Theorem 1.3 yields directly that the totient generating series is not $`k`$-Mahler for any $`k\ge2`$ \[bellsmertnig2026, Theorem 1.3, pp. 2–3\]. Their Corollary 1.4 further forces such a series to be rational whenever $`k`$ is not a prime power. Theorem <a href="#res:dyadictotient" data-reference-type="ref" data-reference="res:dyadictotient">74</a> instead gives an explicit $`\mathbb{Q}`$-linear statement: the exact rank $`2^e+1`$ at each level, witnessed by a CRT–Dirichlet evaluation minor and checked without analytic continuation. Proposition <a href="#res:carryrank" data-reference-type="ref" data-reference="res:carryrank">75</a> uses exactly this level-by-level form.
+The related qualitative nonregularity is known. In the terminology of Allouche and Shallit, a sequence is $`2`$-regular when the $`\mathbb{Z}`$-module generated by all its dyadic sections is finitely generated  \[alloucheshallit, Defs. 1.1 and 2.1, author-preprint pp. 2–3\]. Coons proved that $`\varphi`$ is not $`k`$-regular for any $`k\geq2`$ by comparing the poles of $`\zeta(s-1)/\zeta(s)`$ with the meromorphic continuation available to a regular sequence’s Dirichlet series \[coons2010, Theorem 3.2, pp. 348–349\]. Bell and Smertnig proved more generally that a multiplicative-coefficient $`k`$-Mahler series has a $`k`$-regular coefficient sequence of an explicit form; their Theorem 1.3 yields directly that the totient generating series is not $`k`$-Mahler for any $`k\ge2`$ \[bellsmertnig2026, Theorem 1.3, pp. 2–3\]. Their Corollary 1.4 further forces such a series to be rational whenever $`k`$ is not a prime power. Theorem [74](#res%3Adyadictotient) instead gives an explicit $`\mathbb{Q}`$-linear statement: the exact rank $`2^e+1`$ at each level, witnessed by a CRT–Dirichlet evaluation minor and checked without analytic continuation. Proposition [75](#res%3Acarryrank) uses exactly this level-by-level form.
 
 <div id="res:carryrank" class="proposition">
 
@@ -2728,7 +2748,7 @@ Formalised: [the carry-kernel rank lower bound](https://github.com/wcook04/plect
 
 <div class="remark">
 
-*Remark 4* (rank alone cannot decide rationality). The following counterexample is an unformalised observation. The same class of coefficient streams satisfying $`0\leq\gamma(n)\leq n`$ contains rational series whose tempered orbits have infinite-dimensional section span. Choose Boolean values $`a_N\in\{0,1\}`$ with $`a_0=a_1=1`$ whose dyadic sections satisfy no nontrivial rational linear relation, obtained by successively violating the countably many finite relations on disjoint sparse blocks. Set $`u_N=N+a_N`$ and $`\gamma(N+1)=2u_N-u_{N+1}`$. Then $`0\le\gamma(n)\le n`$, the orbit $`u`$ is tempered, and Theorem <a href="#res:rigidity" data-reference-type="ref" data-reference="res:rigidity">46</a> evaluates $`\sum_{n\ge1}\gamma(n)2^{-n}=u_0=1\in\mathbb{Q}`$; yet the sections of $`u`$ span an infinite-dimensional space, because the sections of $`N\mapsto N`$ span only two dimensions. This fixes the shape of the missing ingredient: a route through Proposition <a href="#res:carryrank" data-reference-type="ref" data-reference="res:carryrank">75</a> must couple carry-section rank to the arithmetic size of a totient carry, since dimension alone is compatible with rationality.
+*Remark 4* (rank alone cannot decide rationality). The following counterexample is an unformalised observation. The same class of coefficient streams satisfying $`0\leq\gamma(n)\leq n`$ contains rational series whose tempered orbits have infinite-dimensional section span. Choose Boolean values $`a_N\in\{0,1\}`$ with $`a_0=a_1=1`$ whose dyadic sections satisfy no nontrivial rational linear relation, obtained by successively violating the countably many finite relations on disjoint sparse blocks. Set $`u_N=N+a_N`$ and $`\gamma(N+1)=2u_N-u_{N+1}`$. Then $`0\le\gamma(n)\le n`$, the orbit $`u`$ is tempered, and Theorem [46](#res%3Arigidity) evaluates $`\sum_{n\ge1}\gamma(n)2^{-n}=u_0=1\in\mathbb{Q}`$; yet the sections of $`u`$ span an infinite-dimensional space, because the sections of $`N\mapsto N`$ span only two dimensions. This fixes the shape of the missing ingredient: a route through Proposition [75](#res%3Acarryrank) must couple carry-section rank to the arithmetic size of a totient carry, since dimension alone is compatible with rationality.
 
 </div>
 
@@ -2748,7 +2768,7 @@ This is the [rectangular determinant expansion](https://github.com/wcook04/plect
 
 Formalised by [dominant dyadic parity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SignedQMomentObstruction.lean#L78), and [dominant dyadic nonvanishing](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SignedQMomentObstruction.lean#L96). These are finite algebraic inputs to a signed-moment route. They do not show that any actual totient Hankel determinant is nonzero, and they give no irrationality criterion for $`S`$.
 
-The formal proof also exposes the generic theorem that any supplied separated minor gives the corresponding rank, [separated-minor rank criterion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L111). Propositions <a href="#res:signedmoment" data-reference-type="ref" data-reference="res:signedmoment">76</a> and <a href="#res:dominantdyadic" data-reference-type="ref" data-reference="res:dominantdyadic">77</a> remain useful as possible inputs to other determinant routes, but the totient-kernel minor itself is supplied at every level by Theorem <a href="#res:dyadictotient" data-reference-type="ref" data-reference="res:dyadictotient">74</a>.
+The formal proof also exposes the generic theorem that any supplied separated minor gives the corresponding rank, [separated-minor rank criterion](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/TotientMahlerDefect.lean#L111). Propositions [76](#res%3Asignedmoment) and [77](#res%3Adominantdyadic) remain useful as possible inputs to other determinant routes, but the totient-kernel minor itself is supplied at every level by Theorem [74](#res%3Adyadictotient).
 
 <div id="res:evenresidue" class="proposition">
 
@@ -2778,20 +2798,20 @@ Formalised: [residual-gauge determinant equivalence](https://github.com/wcook04/
 
 #### Appendix consequence.
 
-Nothing in this appendix strengthens the fixed-parameter completeness of Proposition <a href="#res:complete" data-reference-type="ref" data-reference="res:complete">24</a> into an unbounded supply. Its remaining condition is therefore the still-open quantifier in Theorem <a href="#res:red21" data-reference-type="ref" data-reference="res:red21">26</a>:
+Nothing in this appendix strengthens the fixed-parameter completeness of Proposition [24](#res%3Acomplete) into an unbounded supply. Its remaining condition is therefore the still-open quantifier in Theorem [26](#res%3Ared21):
 ``` math
 \forall h\geq1\;\forall N_0\;\exists N\geq N_0\;\exists L\geq1,\qquad
  \mathsf{Sep}(h,N,L).
 ```
-The one-scale mechanisms and conditional implications in Appendix <a href="#app:totient-finite" data-reference-type="ref" data-reference="app:totient-finite">12.2</a>, the candidate inputs and no-go boundaries in Appendix <a href="#app:totient-boundaries" data-reference-type="ref" data-reference="app:totient-boundaries">12.3</a>, and the conditional rank routes in Appendix <a href="#app:totient-rank" data-reference-type="ref" data-reference="app:totient-rank">12.4</a> delimit possible approaches to this statement. None provides the required certificates after every cutoff.
+The one-scale mechanisms and conditional implications in Appendix [12.2](#app%3Atotient-finite), the candidate inputs and no-go boundaries in Appendix [12.3](#app%3Atotient-boundaries), and the conditional rank routes in Appendix [12.4](#app%3Atotient-rank) delimit possible approaches to this statement. None provides the required certificates after every cutoff.
 
 <a id="app:lambert-complements"></a>
 
 # Lambert, probability, and finite-algebraic complements
 
-This appendix supplies the extensions cited from the Lambert-series identities in Section <a href="#sec:ladder" data-reference-type="ref" data-reference="sec:ladder">3</a> and from the coprime-pair representation after Proposition <a href="#res:coprime" data-reference-type="ref" data-reference="res:coprime">22</a>. The results proved here are the periodic-weight classifications, finite denominator obstructions, the Möbius-square and squared Lambert identities, and the Stern–Brocot cylinder and continuant laws. These enlarge the two coordinate pictures; they are not additional steps in either open proof.
+This appendix supplies the extensions cited from the Lambert-series identities in Section [3](#sec%3Aladder) and from the coprime-pair representation after Proposition [22](#res%3Acoprime). The results proved here are the periodic-weight classifications, finite denominator obstructions, the Möbius-square and squared Lambert identities, and the Stern–Brocot cylinder and continuant laws. These enlarge the two coordinate pictures; they are not additional steps in either open proof.
 
-The three parallel families may be skipped on a first reading. Appendix <a href="#app:lambert-weighted" data-reference-type="ref" data-reference="app:lambert-weighted">[app:lambert-weighted]</a> proves or classifies weighted Lambert series with coefficient inputs different from the open totient input. Appendix <a href="#app:lambert-algebraic" data-reference-type="ref" data-reference="app:lambert-algebraic">13.2</a> gives exact identities and finite algebraic boundaries for the squared and Möbius coordinates. Appendix <a href="#app:lambert-probability" data-reference-type="ref" data-reference="app:lambert-probability">13.3</a> develops unconditional geometry internal to the coprime-pair probability coordinate. No conclusion about a comparison input transfers irrationality to $`S`$, and none of the three families supplies the after-every-cutoff $`\mathsf{Sep}`$ theorem.
+The three parallel families may be skipped on a first reading. Appendix [\[app:lambert-weighted\]](#app%3Alambert-weighted) proves or classifies weighted Lambert series with coefficient inputs different from the open totient input. Appendix [13.2](#app%3Alambert-algebraic) gives exact identities and finite algebraic boundaries for the squared and Möbius coordinates. Appendix [13.3](#app%3Alambert-probability) develops unconditional geometry internal to the coprime-pair probability coordinate. No conclusion about a comparison input transfers irrationality to $`S`$, and none of the three families supplies the after-every-cutoff $`\mathsf{Sep}`$ theorem.
 
 <a id="sec:additional-lambert"></a>
 
@@ -2835,7 +2855,7 @@ Formalised: [period-four coefficient obstruction](https://github.com/wcook04/ple
 
 ## Finite algebraic boundaries and squared-Lambert coordinates
 
-This subsection has three logically distinct parts. Propositions <a href="#res:primitiveindex" data-reference-type="ref" data-reference="res:primitiveindex">84</a> and <a href="#res:mersennetailatoms" data-reference-type="ref" data-reference="res:mersennetailatoms">85</a> give finite denominator-clearing boundaries, not irrationality criteria. Proposition <a href="#res:lens" data-reference-type="ref" data-reference="res:lens">86</a> rewrites $`S`$ exactly. Proposition <a href="#res:gcdmoment" data-reference-type="ref" data-reference="res:gcdmoment">87</a> then compares three squared-denominator transforms; only its constant-weight row has a cited irrationality theorem.
+This subsection has three logically distinct parts. Propositions [84](#res%3Aprimitiveindex) and [85](#res%3Amersennetailatoms) give finite denominator-clearing boundaries, not irrationality criteria. Proposition [86](#res%3Alens) rewrites $`S`$ exactly. Proposition [87](#res%3Agcdmoment) then compares three squared-denominator transforms; only its constant-weight row has a cited irrationality theorem.
 
 <a id="sec:primitiveindex"></a>
 
@@ -2863,17 +2883,17 @@ The indicator is $`1`$ exactly when the binary phase wraps.
 
 <div id="res:mersennetailatoms" class="proposition">
 
-**Proposition 85** (finite Mersenne-atom determinant identity). *Fix $`m\ge1`$, conductors $`d_j\ge1`$, indices $`n_{ij}\ge0`$, and integer column weights $`w_j`$, and set
+**Proposition 85** (finite Mersenne-atom determinant identity). *Fix $`m\ge1`$, conductors $`d_j\ge1`$, indices $`n_{ij}\ge0`$, and integer column weights $`w_j`$, and set*
 ``` math
 W_{ij}=w_j\omega_{d_j}(n_{ij}),
  \qquad U_{ij}=2^{\,n_{ij}\bmod d_j}.
 ```
-Then
+*Then*
 ``` math
 \left(\prod_{j=1}^m(2^{d_j}-1)\right)\det W
  =\left(\prod_{j=1}^m w_j\right)\det U\in\mathbb{Z}.
 ```
-If the integer on the right is nonzero, then the absolute value of the cleared determinant on the left is at least $`1`$.*
+*If the integer on the right is nonzero, then the absolute value of the cleared determinant on the left is at least $`1`$.*
 
 </div>
 
@@ -2882,39 +2902,39 @@ Formalised: [Mersenne-atom carry law](https://github.com/wcook04/plectis-erdos/b
 <div id="res:lens" class="proposition">
 
 **Proposition 86** (Möbius-square identity for $`S`$).
-*``` math
+``` math
 S \;=\; \tfrac12 \;+\; \sum_{d\ge1}\frac{\mu(d)}{(2^d-1)^2}.
-```*
+```
 
 </div>
 
-Formalised: [Möbius-square identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18454). Writing $`T=\sum_{d\ge1}\mu(d)/(2^d-1)^2`$, Proposition <a href="#res:coprime" data-reference-type="ref" data-reference="res:coprime">22</a> gives $`T=\Pr(\gcd(X,Y)=1)=S-\tfrac12`$; hence $`S`$ is irrational exactly when $`T`$ is. By contrast, the tail residual $`R_N=2^NS-\sum_{n\le N}\varphi(n)2^{N-n}`$ depends on $`N`$ and is an integer translate of $`2^NS`$. Section <a href="#sec:reduction" data-reference-type="ref" data-reference="sec:reduction">5.3</a> uses its differences to encode rationality; $`R_N`$ is not another name for $`T`$.
+Formalised: [Möbius-square identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L18454). Writing $`T=\sum_{d\ge1}\mu(d)/(2^d-1)^2`$, Proposition [22](#res%3Acoprime) gives $`T=\Pr(\gcd(X,Y)=1)=S-\tfrac12`$; hence $`S`$ is irrational exactly when $`T`$ is. By contrast, the tail residual $`R_N=2^NS-\sum_{n\le N}\varphi(n)2^{N-n}`$ depends on $`N`$ and is an integer translate of $`2^NS`$. Section [5.3](#sec%3Areduction) uses its differences to encode rationality; $`R_N`$ is not another name for $`T`$.
 
 <a id="sec:squared"></a>
 
 #### Squared Lambert calculus.
 
-Write $`L^{(2)}(f)=\sum_{d\ge1}f(d)/(2^d-1)^2`$; this notation distinguishes the squared-denominator transform from the ordinary base-two transform $`L_2`$ in Appendix <a href="#app:lambert-weighted" data-reference-type="ref" data-reference="app:lambert-weighted">[app:lambert-weighted]</a>. If $`X,Y`$ are independent and $`\Pr(X=n)=\Pr(Y=n)=2^{-n}`$ for $`n\ge1`$, then $`\Pr(d\mid\gcd(X,Y))=(2^d-1)^{-2}`$. The formal transfer theorem, [squared Lambert transfer](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L105), therefore gives a divisor calculus for their gcd.
+Write $`L^{(2)}(f)=\sum_{d\ge1}f(d)/(2^d-1)^2`$; this notation distinguishes the squared-denominator transform from the ordinary base-two transform $`L_2`$ in Appendix [\[app:lambert-weighted\]](#app%3Alambert-weighted). If $`X,Y`$ are independent and $`\Pr(X=n)=\Pr(Y=n)=2^{-n}`$ for $`n\ge1`$, then $`\Pr(d\mid\gcd(X,Y))=(2^d-1)^{-2}`$. The formal transfer theorem, [squared Lambert transfer](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L105), therefore gives a divisor calculus for their gcd.
 
 <div id="res:gcdmoment" class="proposition">
 
-**Proposition 87** (squared Lambert identity). *The three weights $`f=\mu,\mathbf 1,\varphi`$ give respectively
+**Proposition 87** (squared Lambert identity). *The three weights $`f=\mu,\mathbf 1,\varphi`$ give respectively*
 ``` math
 L^{(2)}(\mu)=S-\tfrac12,\qquad
  L^{(2)}(\mathbf 1)=\sum_{n\ge1}\frac{\sigma(n)-\tau(n)}{2^n},\qquad
  L^{(2)}(\varphi)=\sum_{n\ge1}\frac{P(n)-n}{2^n},
 ```
-where $`P`$ is Pillai’s gcd-sum function.*
+*where $`P`$ is Pillai’s gcd-sum function.*
 
 </div>
 
-The first identity is Proposition <a href="#res:lens" data-reference-type="ref" data-reference="res:lens">86</a>. The other two are formalised as [constant-weight squared-Lambert identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L216) and [totient gcd-moment identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L235). Write $`\zeta_q(1)=\sum_{n\ge1}q^n/(1-q^n)`$ and $`\zeta_q(2)=\sum_{n\ge1}nq^n/(1-q^n)`$. Postelmans–Van Assche prove that $`1,\zeta_q(1),\zeta_q(2)`$ are linearly independent over $`\mathbb{Q}`$ for $`q=1/p`$ and every integer $`p\ge2`$  \[postelmansvanassche, Theorem 1.3 in the published version; Theorem 3 on p. 4 and proof in Section 7, pp. 30–34, of the linked preprint\]. Since $`L^{(2)}(\mathbf1)=\zeta_{1/2}(2)-\zeta_{1/2}(1)`$, their theorem makes the constant-weight value irrational. This cited conclusion is not formalised here and does not transfer to the Möbius row $`L^{(2)}(\mu)=S-\tfrac12`$.
+The first identity is Proposition [86](#res%3Alens). The other two are formalised as [constant-weight squared-Lambert identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L216) and [totient gcd-moment identity](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L235). Write $`\zeta_q(1)=\sum_{n\ge1}q^n/(1-q^n)`$ and $`\zeta_q(2)=\sum_{n\ge1}nq^n/(1-q^n)`$. Postelmans–Van Assche prove that $`1,\zeta_q(1),\zeta_q(2)`$ are linearly independent over $`\mathbb{Q}`$ for $`q=1/p`$ and every integer $`p\ge2`$  \[postelmansvanassche, Theorem 1.3 in the published version; Theorem 3 on p. 4 and proof in Section 7, pp. 30–34, of the linked preprint\]. Since $`L^{(2)}(\mathbf1)=\zeta_{1/2}(2)-\zeta_{1/2}(1)`$, their theorem makes the constant-weight value irrational. This cited conclusion is not formalised here and does not transfer to the Möbius row $`L^{(2)}(\mu)=S-\tfrac12`$.
 
 <a id="app:lambert-probability"></a>
 
 ## Probability-coordinate geometry: reduced slopes and cylinders
 
-Two measures appear below. The cylinder law uses the reduced-direction mass $`\nu`$, which sums every gcd layer; Proposition <a href="#res:onerunmass" data-reference-type="ref" data-reference="res:onerunmass">91</a> uses only the gcd-one contribution $`2^{-(a+b)}`$. Neither supplies the open certificate theorem.
+Two measures appear below. The cylinder law uses the reduced-direction mass $`\nu`$, which sums every gcd layer; Proposition [91](#res%3Aonerunmass) uses only the gcd-one contribution $`2^{-(a+b)}`$. Neither supplies the open certificate theorem.
 
 <a id="reduced-directions-and-cylinder-masses."></a>
 
@@ -2930,10 +2950,10 @@ The first quantity is the probability that the reduced pair equals $`(a,b)`$. Th
 
 <div id="res:directionnormalization" class="proposition">
 
-**Proposition 88** (reduced-direction normalisation). *The reduced directions form a probability distribution,
+**Proposition 88** (reduced-direction normalisation). *The reduced directions form a probability distribution,*
 ``` math
 \sum_{\substack{a,b\ge1\\(a,b)=1}}\nu(a,b)=1.
-```*
+```
 
 </div>
 
@@ -2941,16 +2961,16 @@ This is the [reduced-direction mass one](https://github.com/wcook04/plectis-erdo
 
 <div id="res:sternbrocotcylinders" class="theorem">
 
-**Theorem 89** (Stern–Brocot cylinder recursion and convergence). *At every positive node,
+**Theorem 89** (Stern–Brocot cylinder recursion and convergence). *At every positive node,*
 ``` math
 M(a,b)=\frac1{2^{a+b}-1}+M(a+b,b)+M(a,a+b),
 ```
-and, uniformly in $`a,b`$ and $`d`$,
+*and, uniformly in $`a,b`$ and $`d`$,*
 ``` math
 0\le M(a,b)-M_d(a,b)
   \le \left(\frac23\right)^d M(a,b).
 ```
-Consequently $`M_d(a,b)\to M(a,b)`$; at the root $`M(1,1)=1`$.*
+*Consequently $`M_d(a,b)\to M(a,b)`$; at the root $`M(1,1)=1`$.*
 
 </div>
 
@@ -2970,18 +2990,18 @@ Thus $`H`$ is the arithmetic height of the primitive pair reached by the word. L
 
 <div id="res:sternbrocotruns" class="theorem">
 
-**Theorem 90** (Fibonacci height bound and exact run-length defects). *Every $`r`$-run word satisfies
+**Theorem 90** (Fibonacci height bound and exact run-length defects). *Every $`r`$-run word satisfies*
 ``` math
 H(1+e_1,\ldots,1+e_r)
  \ge F_{r+3}+F_{r+1}\sum_{i=1}^r e_i,
 ```
-and $`H(1,\ldots,1)=F_{r+3}`$. A defect at position $`i\in\{0,\ldots,r-1\}`$ (the newest run is $`i=0`$) has the exact size
+*and $`H(1,\ldots,1)=F_{r+3}`$. A defect at position $`i\in\{0,\ldots,r-1\}`$ (the newest run is $`i=0`$) has the exact size*
 ``` math
 H(\underbrace{1,\ldots,1}_{i},1+e,
    \underbrace{1,\ldots,1}_{r-i-1})
  =F_{r+3}+F_{i+2}F_{r-i+1}e.
 ```
-More generally, the excess over $`F_{r+3}`$ is a polynomial in the $`e_i`$, with nonnegative coefficients and degree at most one in each variable; the linked recursive formula determines every mixed coefficient.*
+*More generally, the excess over $`F_{r+3}`$ is a polynomial in the $`e_i`$, with nonnegative coefficients and degree at most one in each variable; the linked recursive formula determines every mixed coefficient.*
 
 </div>
 
@@ -3003,7 +3023,7 @@ This is the [one-run mass](https://github.com/wcook04/plectis-erdos/blob/99f4bf4
 
 This is the [unit-run exponent sum](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/SternBrocotRunGeometry.lean#L491). The sum $`E_r`$ records exponents before any denominator cancellation. This identity does not identify a reduced denominator for a probability mass or for $`S`$.
 
-For arithmetic functions and Möbius inversion we use Apostol \[apostol, §§2.6–2.7, pp. 28–32\]; Merca’s Theorem 1.2 \[merca2017, pp. 420–421\] and Merca–Schmidt’s Equations (1.1)–(1.6) \[mercaschmidt, pp. 31–34\] treat Lambert-series factorisations and their matrix forms. Stern’s Sections 6–8 prove that every ordered coprime pair occurs exactly once in his insertion rows, and Section 10 gives its continued-fraction row locator \[stern1858, pp. 200–204\]; the tree terminology is later. The Postelmans–Van Assche theorem concerns only Appendix <a href="#app:lambert-algebraic" data-reference-type="ref" data-reference="app:lambert-algebraic">13.2</a>’s constant-weight value. The claims here are the linked Lean identities and estimates, not priority for the classical mediant or continuant framework.
+For arithmetic functions and Möbius inversion we use Apostol \[apostol, §§2.6–2.7, pp. 28–32\]; Merca’s Theorem 1.2 \[merca2017, pp. 420–421\] and Merca–Schmidt’s Equations (1.1)–(1.6) \[mercaschmidt, pp. 31–34\] treat Lambert-series factorisations and their matrix forms. Stern’s Sections 6–8 prove that every ordered coprime pair occurs exactly once in his insertion rows, and Section 10 gives its continued-fraction row locator \[stern1858, pp. 200–204\]; the tree terminology is later. The Postelmans–Van Assche theorem concerns only Appendix [13.2](#app%3Alambert-algebraic)’s constant-weight value. The claims here are the linked Lean identities and estimates, not priority for the classical mediant or continuant framework.
 
 <a id="appendix-consequence.-3"></a>
 
@@ -3015,7 +3035,7 @@ The three subsections independently change the Lambert weight, rewrite the squar
 
 # Guide to the formal sources
 
-Each blue phrase opens its Lean declaration at the fixed source revision; the accompanying claim index records its name and status. For bounded rational exclusion, see Theorem <a href="#res:farey" data-reference-type="ref" data-reference="res:farey">21</a>; for the exact \#249 reduction, see Proposition <a href="#res:complete" data-reference-type="ref" data-reference="res:complete">24</a> and Theorems <a href="#res:pointwisecomplete" data-reference-type="ref" data-reference="res:pointwisecomplete">25</a>–<a href="#res:diag" data-reference-type="ref" data-reference="res:diag">27</a>; for the \#257 half-value classification, see Theorems <a href="#res:halfmembership" data-reference-type="ref" data-reference="res:halfmembership">14</a> and <a href="#res:fatalright" data-reference-type="ref" data-reference="res:fatalright">17</a>. Theorem <a href="#res:full" data-reference-type="ref" data-reference="res:full">3</a> is the classical benchmark, and Section <a href="#sec:architecture" data-reference-type="ref" data-reference="sec:architecture">6</a> compares the reductions. Independent structural results, none of which closes either problem, are Theorem <a href="#res:dyadictotient" data-reference-type="ref" data-reference="res:dyadictotient">74</a>, the sublogarithmic zero-window corollary, and Theorems <a href="#res:sternbrocotcylinders" data-reference-type="ref" data-reference="res:sternbrocotcylinders">89</a> and <a href="#res:sternbrocotruns" data-reference-type="ref" data-reference="res:sternbrocotruns">90</a>.
+Each blue phrase opens its Lean declaration at the fixed source revision; the accompanying claim index records its name and status. For bounded rational exclusion, see Theorem [21](#res%3Afarey); for the exact \#249 reduction, see Proposition [24](#res%3Acomplete) and Theorems [25](#res%3Apointwisecomplete)–[27](#res%3Adiag); for the \#257 half-value classification, see Theorems [14](#res%3Ahalfmembership) and [17](#res%3Afatalright). Theorem [3](#res%3Afull) is the classical benchmark, and Section [6](#sec%3Aarchitecture) compares the reductions. Independent structural results, none of which closes either problem, are Theorem [74](#res%3Adyadictotient), the sublogarithmic zero-window corollary, and Theorems [89](#res%3Asternbrocotcylinders) and [90](#res%3Asternbrocotruns).
 
 <div class="thebibliography">
 

@@ -4,7 +4,7 @@
 
 Start with [Hankel Determinants of Geometric Moments and Rational Lambert Values](../../../docs/papers/full-text/erdos-1049-rational-base-lambert.md). The longer account is [Geometric Moments and Rational Lambert Values: Proofs and Further Results](../../../docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md).
 
-Registered assertions: 7 short, 41 long. Located long-record links: 4. Proofs retained in the short paper: 1. Long correspondences still open: 3.
+Registered assertions: 7 short, 41 long. Located long-record links: 4. Proofs retained in the short paper: 3. Long correspondences still open: 3.
 
 Checks registered asserting environments and registered claim spans. Unregistered prose assertions, mathematical equivalence, correctness of ordinary proofs, Lean compilation, Comparator replay and PDF freshness are not established by this audit.
 
@@ -23,11 +23,19 @@ A complete registered-evidence match locates the same full declaration set in th
 
 ### res:rational-base-threshold
 
-State: **unresolved**.
+State: **short_proof_explained_long_link_open**.
 
 Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 675-687.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
+
+Retained short-paper argument: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 698-926.
+
+The short paper retains the complete source-to-rational-base argument in Section 4: polynomial cancellation, the exact denominator degree, nonzero remainder and strict decay condition. The queue’s unresolved registry association is not treated as a missing proof. This round does not add a new long-record association.
+
+Review status: 10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5 and current complete proofs; statement, hypotheses and dependencies unchanged; no long-record correspondence or independent review..
+
+This hash-bound passage records proof availability; its mathematical correctness is not checked by this audit. No accepted long-record correspondence is established by this disposition.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
@@ -83,11 +91,19 @@ Long-record location: [paper/reasoning-parts/erdos1049/core.tex](../../../paper/
 
 ### res:sharp-fixed-base
 
-State: **unresolved**.
+State: **short_proof_explained_long_link_open**.
 
 Short statement: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 65-72.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
+
+Retained short-paper argument: [paper/1049/erdos-1049-rational-base-lambert.tex](../../../paper/1049/erdos-1049-rational-base-lambert.tex) lines 463-561.
+
+The page-one theorem retains its complete proof through the geometric-moment theorem and Section 3.2. This pass clarifies the partition sum and the two relative weight corrections; it preserves the renormalised product and positive constant. The disposition binds the current complete proof at these locations; the asymptotic fixes 0<q<1 and asserts neither uniformity as q approaches 1 nor irrationality.
+
+Review status: 10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5 and current complete proofs; statement, hypotheses and dependencies unchanged; no long-record correspondence or independent review..
+
+This hash-bound passage records proof availability; its mathematical correctness is not checked by this audit. No accepted long-record correspondence is established by this disposition.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 

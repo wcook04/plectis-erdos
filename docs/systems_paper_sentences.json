@@ -62,10 +62,10 @@
       "path": "docs/papers/corpus.json",
       "start_line": 1,
       "end_line": 9274,
-      "sha256": "b6d4a6fd436510bddc381dbc9b8465264a2f66d3116505d69545be207e84bd93",
-      "excerpt_sha256": "b6d4a6fd436510bddc381dbc9b8465264a2f66d3116505d69545be207e84bd93",
+      "sha256": "75480e96d170432b2f0dd37d1bfd6a479fc89bf9e14cb046eb71f8e1880dc694",
+      "excerpt_sha256": "75480e96d170432b2f0dd37d1bfd6a479fc89bf9e14cb046eb71f8e1880dc694",
       "kind": "source",
-      "custody_note": "Reviewed acknowledgement withdrawal on 10 October 2026: corpus source/PDF digests and generated section coordinates refreshed after withdrawing pending-consent personal acknowledgements. The inventory, paper roles, citation identities, mathematical claims and authority ceilings are unchanged."
+      "custody_note": "Reviewed acknowledgement withdrawal on 10 October 2026: corpus source/PDF digests and generated section coordinates refreshed after withdrawing pending-consent personal acknowledgements. The inventory, paper roles, citation identities, mathematical claims and authority ceilings are unchanged. Reviewed GitHub paper-navigation repair on 10 October 2026: only generated section and first-pass line coordinates changed. The full paper inventory, manuscript/PDF hashes, published source pins, citation identities, paper roles, authority ceilings and both cited identification warrants are unchanged; no Lean or Comparator execution is claimed. Reviewed inline-label, table and source-preserving display-layout conversion on 10 October 2026: corpus changes are 206 section/first-pass line coordinates only. Inventory, source/PDF hashes, published pins, citation identities, roles, authority ceilings and both identification warrants remain unchanged; two source-backed #249 inequalities are restored in the Markdown, with no manuscript, proof or evidence promotion."
     },
     {
       "id": "counts",

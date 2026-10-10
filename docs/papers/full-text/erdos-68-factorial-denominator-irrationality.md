@@ -30,11 +30,11 @@ The elementary proof that $`e`$ is irrational clears the partial sum by a factor
 
 At depth four, the weight congruences force $`115\mid M`$. Restricting the coefficient support to $`n\ge2`$ strengthens this to $`1380\mid M`$, and every multiple of $`1380`$ occurs. We determine the exact factor at every depth $`D\ge2`$ and construct a vector attaining the least positive multiplier.
 
-First allow a coefficient at index one. Theorem <a href="#res:divisor-channel-coordinates" data-reference-type="ref" data-reference="res:divisor-channel-coordinates">2</a> constructs an integral basis by correcting adjacent factorial differences at proper divisors to isolate each weighted sum. At fixed $`M`$, cancellation determines the lower basis coefficients; removing index one leaves a single equation in the higher coefficients. Theorem <a href="#res:finite-channel-moment-certificate" data-reference-type="ref" data-reference="res:finite-channel-moment-certificate">3</a> reduces its infinite gcd to a calculation below $`2D^2`$. Bézout coefficients then construct an attaining vector. No assumption on the rationality of $`S`$ enters this classification.
+First allow a coefficient at index one. Theorem [2](#res%3Adivisor-channel-coordinates) constructs an integral basis by correcting adjacent factorial differences at proper divisors to isolate each weighted sum. At fixed $`M`$, cancellation determines the lower basis coefficients; removing index one leaves a single equation in the higher coefficients. Theorem [3](#res%3Afinite-channel-moment-certificate) reduces its infinite gcd to a calculation below $`2D^2`$. Bézout coefficients then construct an attaining vector. No assumption on the rationality of $`S`$ enters this classification.
 
-Hančl and Tijdeman’s tail-integrality lemma treats factorial series with integer coefficients \[hancl-tijdeman, Lemma 2.1 and the following remark, p. 385\]. Their factorial-scaled partial sums are integers. Here the scaled partial sum need not be integral. Instead, the weight congruences give $`\mathcal R-MS\in\mathbb Z`$ <a href="#eq:integer-linear-form" data-reference-type="eqref" data-reference="eq:integer-linear-form">[eq:integer-linear-form]</a>; the assumption $`S=a/q`$ and $`q\mid M`$ then makes $`\mathcal R`$ integral. Koepf and Schmersau’s factorial-digit criterion \[koepf-schmersau, Example 3.2, p. 121\] is used in the [companion’s digit argument](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-digits) to give an equivalent eventual-pattern condition for $`S-e+2`$. Failure of that pattern at arbitrarily large indices also remains unproved.
+Hančl and Tijdeman’s tail-integrality lemma treats factorial series with integer coefficients \[hancl-tijdeman, Lemma 2.1 and the following remark, p. 385\]. Their factorial-scaled partial sums are integers. Here the scaled partial sum need not be integral. Instead, the weight congruences give $`\mathcal R-MS\in\mathbb Z`$ [\[eq:integer-linear-form\]](#eq%3Ainteger-linear-form); the assumption $`S=a/q`$ and $`q\mid M`$ then makes $`\mathcal R`$ integral. Koepf and Schmersau’s factorial-digit criterion \[koepf-schmersau, Example 3.2, p. 121\] is used in the [companion’s digit argument](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-digits) to give an equivalent eventual-pattern condition for $`S-e+2`$. Failure of that pattern at arbitrarily large indices also remains unproved.
 
-Section <a href="#sec:depth-four" data-reference-type="ref" data-reference="sec:depth-four">4</a> tests an attaining form; Section <a href="#sec:open" data-reference-type="ref" data-reference="sec:open">5</a> gives the general nonintegrality test.
+Section [4](#sec%3Adepth-four) tests an attaining form; Section [5](#sec%3Aopen) gives the general nonintegrality test.
 
 <a id="sec:channels"></a>
 
@@ -57,6 +57,9 @@ and let
 \mathcal R(\lambda)=\sum_{d\ge2}\frac{V_d(\lambda)}{d!-1}.
 ```
 Here $`n`$ indexes coefficients and $`d`$ indexes remainder summands. If the support lies in $`n\le N`$, $`N\ge2`$, then $`V_d=M`$ for $`d>N`$. Thus the remainder converges absolutely, and subtracting $`MS`$ leaves only finitely many terms. The weight congruence makes each an integer:
+
+<a id="eq:integer-linear-form"></a>
+
 ``` math
 \begin{equation}
  \mathcal R(\lambda)-M(\lambda)S
@@ -64,7 +67,7 @@ Here $`n`$ indexes coefficients and $`d`$ indexes remainder summands. If the sup
  \label{eq:integer-linear-form}
 \end{equation}
 ```
-We solve $`V_2=\cdots=V_D=0`$, allowing either sign of $`M`$. Write $`e_n`$ for the unit vector at index $`n`$. Index one is auxiliary: it makes the basis triangular but introduces no term $`1/(1!-1)`$, since the remainder still starts at $`d=2`$. We impose $`\lambda_1=0`$ in Section <a href="#sec:moments" data-reference-type="ref" data-reference="sec:moments">3</a>.
+We solve $`V_2=\cdots=V_D=0`$, allowing either sign of $`M`$. Write $`e_n`$ for the unit vector at index $`n`$. Index one is auxiliary: it makes the basis triangular but introduces no term $`1/(1!-1)`$, since the remainder still starts at $`d=2`$. We impose $`\lambda_1=0`$ in Section [3](#sec%3Amoments).
 
 The identity $`n(n-1)!-n!=0`$ suggests starting with $`T_n=ne_{n-1}-e_n`$. At $`n=2`$, the vector $`U_2=2e_1-e_2`$ has $`V_2=1`$ and every other weighted sum zero. At $`n=4`$, the difference $`T_4=4e_3-e_4`$ has two nonzero weighted sums. One correction suffices:
 
@@ -83,24 +86,27 @@ For $`d>4`$ these weighted sums equal $`M=0`$. Thus $`U_4=T_4-6U_2`$ isolates $`
 <div id="res:divisor-channel-coordinates" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos68/PaperCompleteDivisorCoordinates.lean#L260">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-68-factorial-denominator-irrationality.md#res-divisor-channel-coordinates-comparator">Comparator</a></p>
 
-**Theorem 2** (an integer basis with prescribed weighted sums). *Set
+**Theorem 2** (an integer basis with prescribed weighted sums). *Set*
 ``` math
 T_n=ne_{n-1}-e_n,\qquad
 U_n=T_n-\sum_{\substack{d\mid n\\2\le d<n}}W_{d,n}U_d
 \quad(n\ge2).
 ```
-Then
+*Then*
 ``` math
 M(U_n)=0,\qquad V_d(U_n)=(d!-1)\mathbf1_{d=n}.
 ```
-The vectors $`e_1,U_2,U_3,\ldots`$ form an integral basis. Every finite vector has the unique finite expansion
+*The vectors $`e_1,U_2,U_3,\ldots`$ form an integral basis. Every finite vector has the unique finite expansion*
+
+<a id="eq:channel-basis-expansion"></a>
+
 ``` math
 \begin{equation}
 \lambda=M(\lambda)e_1+
 \sum_{d\ge2}\frac{V_d(\lambda)-M(\lambda)}{d!-1}U_d.
 \label{eq:channel-basis-expansion}
 \end{equation}
-```*
+```
 
 </div>
 
@@ -114,13 +120,16 @@ Suppose the asserted identities hold below $`n`$. For each proper divisor $`d`$,
 
 For completeness, restrict to indices $`1,\ldots,N`$. The columns $`e_1,T_2,\ldots,T_N`$ form a triangular integer matrix with diagonal $`1,-1,\ldots,-1`$. Replacing each $`T_n`$ by $`U_n`$ subtracts an integer combination of earlier columns, so the second change of basis is triangular with diagonal one. Both matrices have integer inverses: back-substitution divides only by $`1`$ or $`-1`$. Hence $`e_1,U_2,\ldots,U_N`$ is a basis over $`\mathbb Z`$.
 
-In the resulting expansion, applying $`M`$ gives the coefficient of $`e_1`$. If the coefficient of $`U_d`$ is $`c_d`$, applying $`V_d`$ gives $`V_d=M+(d!-1)c_d`$, which proves <a href="#eq:channel-basis-expansion" data-reference-type="eqref" data-reference="eq:channel-basis-expansion">[eq:channel-basis-expansion]</a>. For $`d>N`$ that coefficient is zero because $`V_d=M`$. ◻
+In the resulting expansion, applying $`M`$ gives the coefficient of $`e_1`$. If the coefficient of $`U_d`$ is $`c_d`$, applying $`V_d`$ gives $`V_d=M+(d!-1)c_d`$, which proves [\[eq:channel-basis-expansion\]](#eq%3Achannel-basis-expansion). For $`d>N`$ that coefficient is zero because $`V_d=M`$. ◻
 
 </div>
 
-The $`U_d`$-coordinates in <a href="#eq:channel-basis-expansion" data-reference-type="eqref" data-reference="eq:channel-basis-expansion">[eq:channel-basis-expansion]</a> are exactly the integer summands in <a href="#eq:integer-linear-form" data-reference-type="eqref" data-reference="eq:integer-linear-form">[eq:integer-linear-form]</a>. Their sum is therefore $`k`$ in $`\mathcal R=MS+k`$.
+The $`U_d`$-coordinates in [\[eq:channel-basis-expansion\]](#eq%3Achannel-basis-expansion) are exactly the integer summands in [\[eq:integer-linear-form\]](#eq%3Ainteger-linear-form). Their sum is therefore $`k`$ in $`\mathcal R=MS+k`$.
 
 For a prime $`p\ge3`$ the divisor sum is empty, and $`U_p=pe_{p-1}-e_p`$. At a composite index the correction terms remove the extra weighted sums. For example,
+
+<a id="res:translator"></a>
+
 ``` math
 \begin{equation}
  U_9=9e_8-e_9-5040e_2+1680e_3.
@@ -133,7 +142,10 @@ Adding $`U_n`$ changes only $`V_n`$ among the weighted sums, preserves $`M`$, an
 
 # Possible values of $`M`$
 
-Fix $`D\ge2`$ and solve $`V_2=\cdots=V_D=0`$, allowing index one temporarily. The coordinates in <a href="#eq:channel-basis-expansion" data-reference-type="eqref" data-reference="eq:channel-basis-expansion">[eq:channel-basis-expansion]</a> give
+Fix $`D\ge2`$ and solve $`V_2=\cdots=V_D=0`$, allowing index one temporarily. The coordinates in [\[eq:channel-basis-expansion\]](#eq%3Achannel-basis-expansion) give
+
+<a id="res:congruence"></a>
+
 ``` math
 \begin{equation}
  V_d(\lambda)\equiv M(\lambda)\pmod{d!-1}.
@@ -149,6 +161,9 @@ This necessary condition is sufficient while index one is allowed: $`L_De_1`$ ha
 K_D=L_De_1-\sum_{d=2}^D\frac{L_D}{d!-1}U_d.
 ```
 Uniqueness of the coordinates now gives the complete solution
+
+<a id="eq:low-channel-classification"></a>
+
 ``` math
 \begin{equation}
  V_2=\cdots=V_D=0
@@ -157,7 +172,10 @@ Uniqueness of the coordinates now gives the complete solution
  \label{eq:low-channel-classification}
 \end{equation}
 ```
-with $`t\in\mathbb Z`$ and finitely many nonzero integers $`z_n`$. The coefficient of $`e_1`$ in <a href="#eq:channel-basis-expansion" data-reference-type="eqref" data-reference="eq:channel-basis-expansion">[eq:channel-basis-expansion]</a> is $`M`$; the original coordinate $`\lambda_1`$ also receives contributions from the $`U_n`$. Write $`a_D=(K_D)_1`$ and $`u_n=(U_n)_1`$. The support restriction is exactly
+with $`t\in\mathbb Z`$ and finitely many nonzero integers $`z_n`$. The coefficient of $`e_1`$ in [\[eq:channel-basis-expansion\]](#eq%3Achannel-basis-expansion) is $`M`$; the original coordinate $`\lambda_1`$ also receives contributions from the $`U_n`$. Write $`a_D=(K_D)_1`$ and $`u_n=(U_n)_1`$. The support restriction is exactly
+
+<a id="eq:support-equation"></a>
+
 ``` math
 \begin{equation}
  ta_D+\sum_{n>D}z_nu_n=0.
@@ -167,6 +185,9 @@ with $`t\in\mathbb Z`$ and finitely many nonzero integers $`z_n`$. The coefficie
 The higher corrections leave cancellation untouched and change the first coordinate by exactly $`g_D\mathbb Z`$, where $`g_D=\gcd\{u_n:n>D\}`$. They can therefore remove $`ta_D`$ precisely when $`g_D\mid ta_D`$. For example, at depth four we shall find $`a_4=-55`$ and $`g_4=60`$. Removing index one then requires $`60\mid55t`$, or $`12\mid t`$; hence $`M=115t`$ must be a multiple of $`1380`$.
 
 In general, the possible values of $`M`$ form the ideal
+
+<a id="eq:attainable-moment-ideal"></a>
+
 ``` math
 \begin{equation}
  \mu_D\mathbb Z,\qquad
@@ -192,10 +213,10 @@ The remaining issue is whether later coefficients reduce this gcd. In each recur
 <div id="res:finite-channel-moment-certificate" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-68-factorial-denominator-irrationality.md#res-finite-channel-moment-certificate-comparator">Comparator</a></p>
 
-**Theorem 3** (a finite formula for the gcd). *Choose a prime $`\ell`$ with $`D/2<\ell\le D`$ and put $`H=D(2\ell-1)`$. Then
+**Theorem 3** (a finite formula for the gcd). *Choose a prime $`\ell`$ with $`D/2<\ell\le D`$ and put $`H=D(2\ell-1)`$. Then*
 ``` math
 g_D=\gcd(u_{D+1},\ldots,u_H),\qquad H<2D^2.
-```*
+```
 
 </div>
 
@@ -219,13 +240,16 @@ To attain the least positive multiplier, compute integers $`b_n`$ with $`\sum_{n
 ``` math
 t=g_D/h,\qquad z_n=-(a_D/h)b_n\quad(D<n\le H)
 ```
-makes $`ta_D+\sum z_nu_n=0`$. Substitution in <a href="#eq:low-channel-classification" data-reference-type="eqref" data-reference="eq:low-channel-classification">[eq:low-channel-classification]</a> therefore gives $`M=\mu_D`$ with support in $`2,\ldots,H`$.
+makes $`ta_D+\sum z_nu_n=0`$. Substitution in [\[eq:low-channel-classification\]](#eq%3Alow-channel-classification) therefore gives $`M=\mu_D`$ with support in $`2,\ldots,H`$.
 
 <a id="sec:coordinate-remainder"></a>
 
 ## The associated remainder
 
-Fix $`M\in\mu_D\mathbb Z`$ and put $`t=M/L_D`$. For choices of $`z_n`$ satisfying <a href="#eq:support-equation" data-reference-type="eqref" data-reference="eq:support-equation">[eq:support-equation]</a>, the identities $`\mathcal R(e_1)=S`$ and $`\mathcal R(U_n)=1`$ give
+Fix $`M\in\mu_D\mathbb Z`$ and put $`t=M/L_D`$. For choices of $`z_n`$ satisfying [\[eq:support-equation\]](#eq%3Asupport-equation), the identities $`\mathcal R(e_1)=S`$ and $`\mathcal R(U_n)=1`$ give
+
+<a id="eq:residual-transparency"></a>
+
 ``` math
 \begin{equation}
  \mathcal R\left(tK_D+\sum_{n>D}z_nU_n\right)
@@ -245,26 +269,29 @@ At depth four the recursion gives
 L_4=115,\qquad
  K_4=-55e_1+16e_2+3e_3+5e_4,\qquad a_4=-55.
 ```
-Take $`\ell=3`$ in Theorem <a href="#res:finite-channel-moment-certificate" data-reference-type="ref" data-reference="res:finite-channel-moment-certificate">3</a>, so that $`H=20`$. Since $`u_6=-180`$, $`u_8=-4200`$ and $`23u_6-u_8=60`$, we have $`g_4\mid60`$. For the converse,
+Take $`\ell=3`$ in Theorem [3](#res%3Afinite-channel-moment-certificate), so that $`H=20`$. Since $`u_6=-180`$, $`u_8=-4200`$ and $`23u_6-u_8=60`$, we have $`g_4\mid60`$. For the converse,
+
+<a id="eq:channel-lcm-envelope"></a>
+
 ``` math
 \begin{equation}
  \operatorname{lcm}(1,\ldots,n)\mid u_n
  \label{eq:channel-lcm-envelope}
 \end{equation}
 ```
-gives $`60\mid u_n`$ for every $`n>4`$, hence $`60\mid g_4`$. To prove <a href="#eq:channel-lcm-envelope" data-reference-type="eqref" data-reference="eq:channel-lcm-envelope">[eq:channel-lcm-envelope]</a>, put $`\Lambda_n=\operatorname{lcm}(1,\ldots,n)`$. For a prime $`r`$, write $`v_r`$ for its valuation. If $`d\mid n`$, Legendre’s formula gives
+gives $`60\mid u_n`$ for every $`n>4`$, hence $`60\mid g_4`$. To prove [\[eq:channel-lcm-envelope\]](#eq%3Achannel-lcm-envelope), put $`\Lambda_n=\operatorname{lcm}(1,\ldots,n)`$. For a prime $`r`$, write $`v_r`$ for its valuation. If $`d\mid n`$, Legendre’s formula gives
 ``` math
 v_r(W_{d,n})=\sum_{j\ge1}\left(
  \left\lfloor\frac n{r^j}\right\rfloor
  -\frac nd\left\lfloor\frac d{r^j}\right\rfloor\right)
  \ge v_r(\Lambda_n)-v_r(\Lambda_d).
 ```
-Each summand is nonnegative, and each power $`d<r^j\le n`$ contributes at least one. Hence $`\Lambda_n\mid W_{d,n}\Lambda_d`$, and induction in the recurrence, starting from $`u_2=2`$, proves the assertion. Thus $`g_4=60`$, and <a href="#eq:attainable-moment-ideal" data-reference-type="eqref" data-reference="eq:attainable-moment-ideal">[eq:attainable-moment-ideal]</a> gives
+Each summand is nonnegative, and each power $`d<r^j\le n`$ contributes at least one. Hence $`\Lambda_n\mid W_{d,n}\Lambda_d`$, and induction in the recurrence, starting from $`u_2=2`$, proves the assertion. Thus $`g_4=60`$, and [\[eq:attainable-moment-ideal\]](#eq%3Aattainable-moment-ideal) gives
 ``` math
 \mu_4=115\frac{60}{\gcd(60,55)}=1380.
 ```
 
-To attain $`M=1380`$, take $`t=12`$ in <a href="#eq:support-equation" data-reference-type="eqref" data-reference="eq:support-equation">[eq:support-equation]</a>. The choice $`z_6=-27`$, $`z_8=1`$ works because
+To attain $`M=1380`$, take $`t=12`$ in [\[eq:support-equation\]](#eq%3Asupport-equation). The choice $`z_6=-27`$, $`z_8=1`$ works because
 ``` math
 12(-55)-27(-180)-4200=0.
 ```
@@ -273,6 +300,9 @@ The vector $`12K_4-27U_6+U_8`$ therefore has no index-one coefficient and cancel
 \lambda=12K_4-26U_5-27U_6+8U_7+U_8,
 ```
 which expands to
+
+<a id="eq:depth-four-short-vector"></a>
+
 ``` math
 \begin{equation}
  \lambda=1482e_2-784e_3-136e_5+83e_6-e_8,
@@ -280,7 +310,7 @@ which expands to
  \label{eq:depth-four-short-vector}
 \end{equation}
 ```
-Table <a href="#tab:depth-four" data-reference-type="ref" data-reference="tab:depth-four">1</a> verifies all four sums directly.
+Table [1](#tab%3Adepth-four) verifies all four sums directly.
 
 <div id="tab:depth-four">
 
@@ -349,11 +379,14 @@ Table <a href="#tab:depth-four" data-reference-type="ref" data-reference="tab:d
 
 </div>
 
-The basis coordinates give the offset $`-26-27+8+1=-44`$ in <a href="#eq:residual-transparency" data-reference-type="eqref" data-reference="eq:residual-transparency">[eq:residual-transparency]</a>. Since $`H_4=143/115`$, the original linear form is
+The basis coordinates give the offset $`-26-27+8+1=-44`$ in [\[eq:residual-transparency\]](#eq%3Aresidual-transparency). Since $`H_4=143/115`$, the original linear form is
 ``` math
 \mathcal R(\lambda)=1380(S-H_4)-44=1380S-1760.
 ```
 For the remainder estimate, the inequality $`(n+1)!-1>(n+1)(n!-1)`$ gives the geometric bound
+
+<a id="eq:series-tail-bound"></a>
+
 ``` math
 \begin{equation}
  0<S-H_N<\frac{N+2}{(N+1)((N+1)!-1)}
@@ -370,9 +403,9 @@ Exact rational arithmetic gives
  <-31+\frac56,
  \qquad \frac{2\cdot1380}{9!-1}<\frac1{100}.
 ```
-The omitted contribution to $`\mathcal R`$ is positive and less than $`1/100`$, so $`-31<\mathcal R(\lambda)<-30`$. If $`S=a/q`$ with $`q\mid1380`$, <a href="#eq:integer-linear-form" data-reference-type="eqref" data-reference="eq:integer-linear-form">[eq:integer-linear-form]</a> would make this remainder an integer. Every divisor of $`1380`$ is therefore excluded.
+The omitted contribution to $`\mathcal R`$ is positive and less than $`1/100`$, so $`-31<\mathcal R(\lambda)<-30`$. If $`S=a/q`$ with $`q\mid1380`$, [\[eq:integer-linear-form\]](#eq%3Ainteger-linear-form) would make this remainder an integer. Every divisor of $`1380`$ is therefore excluded.
 
-The [depth-six calculation](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r15-depth-six) gives $`\mu_6=24L_6`$: the extra factor need not equal $`12`$. The companion also gives a [dual congruence, support bounds and coefficient-norm refinements](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-depth-refinements). Least multiplier, least support size and least coefficient norm are distinct problems; <a href="#eq:attainable-moment-ideal" data-reference-type="eqref" data-reference="eq:attainable-moment-ideal">[eq:attainable-moment-ideal]</a> settles only the first.
+The [depth-six calculation](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r15-depth-six) gives $`\mu_6=24L_6`$: the extra factor need not equal $`12`$. The companion also gives a [dual congruence, support bounds and coefficient-norm refinements](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-depth-refinements). Least multiplier, least support size and least coefficient norm are distinct problems; [\[eq:attainable-moment-ideal\]](#eq%3Aattainable-moment-ideal) settles only the first.
 
 <a id="sec:open"></a>
 
@@ -385,7 +418,10 @@ Fix a vector with $`V_2=\cdots=V_D=0`$ and $`M>0`$, and choose any cutoff $`N\ge
 A_N=\sum_{d=D+1}^N\frac{V_d(\lambda)}{d!-1},\qquad
  \mathcal R(\lambda)=A_N+M(S-H_N).
 ```
-The remainder exceeds $`A_N`$. By <a href="#eq:series-tail-bound" data-reference-type="eqref" data-reference="eq:series-tail-bound">[eq:series-tail-bound]</a>, it lies below the least integer strictly above $`A_N`$ whenever
+The remainder exceeds $`A_N`$. By [\[eq:series-tail-bound\]](#eq%3Aseries-tail-bound), it lies below the least integer strictly above $`A_N`$ whenever
+
+<a id="eq:signed-block-gap"></a>
+
 ``` math
 \begin{equation}
  \frac{2M}{(N+1)!-1}<\lfloor A_N\rfloor+1-A_N.
@@ -394,9 +430,9 @@ The remainder exceeds $`A_N`$. By <a href="#eq:series-tail-bound" data-reference
 ```
 Then $`\lfloor A_N\rfloor<\mathcal R(\lambda)<\lfloor A_N\rfloor+1`$, excluding every denominator dividing $`M`$. The strict successor matters: at an integral $`A_N`$ the gap is one, whereas just below an integer it can be arbitrarily small. Failure of the comparison is inconclusive.
 
-At depth two, fix $`\lambda=-6e_2+e_4`$, with $`M=12`$, and vary only the cutoff. At $`N=4`$, its finite part $`A_4=-239/115`$ lies just below $`-2`$, and its gap $`9/115`$ is smaller than the bound $`24/119`$. At $`N=5`$, the finite part $`A_5=-27061/13685`$ has crossed $`-2`$: the next integer is now $`-1`$, and the gap $`13376/13685`$ exceeds $`24/719`$. For any fixed vector with $`M>0`$, $`A_N`$ increases to $`\mathcal R`$. If $`\mathcal R`$ is nonintegral, the gap tends to a positive number and the test eventually succeeds. If $`\mathcal R`$ is integral, the eventual gap equals the omitted tail, so the strict upper-bound test fails. Changing the cutoff detects nonintegrality; it neither creates it nor changes $`M`$. Coefficient changes at fixed $`M`$ preserve nonintegrality by <a href="#eq:residual-transparency" data-reference-type="eqref" data-reference="eq:residual-transparency">[eq:residual-transparency]</a>.
+At depth two, fix $`\lambda=-6e_2+e_4`$, with $`M=12`$, and vary only the cutoff. At $`N=4`$, its finite part $`A_4=-239/115`$ lies just below $`-2`$, and its gap $`9/115`$ is smaller than the bound $`24/119`$. At $`N=5`$, the finite part $`A_5=-27061/13685`$ has crossed $`-2`$: the next integer is now $`-1`$, and the gap $`13376/13685`$ exceeds $`24/719`$. For any fixed vector with $`M>0`$, $`A_N`$ increases to $`\mathcal R`$. If $`\mathcal R`$ is nonintegral, the gap tends to a positive number and the test eventually succeeds. If $`\mathcal R`$ is integral, the eventual gap equals the omitted tail, so the strict upper-bound test fails. Changing the cutoff detects nonintegrality; it neither creates it nor changes $`M`$. Coefficient changes at fixed $`M`$ preserve nonintegrality by [\[eq:residual-transparency\]](#eq%3Aresidual-transparency).
 
-To exclude every denominator, $`M`$ must vary. The [companion’s progression construction](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-progression) adds size control: polynomial root conditions give primitive vectors (coefficient gcd one) with $`0<M<N!`$, where $`N`$ is their largest supported index. Every fixed $`q`$ divides their multipliers for all sufficiently large $`N`$. The tail at that endpoint is below $`2/N`$, but the next-integer gap may shrink too. For each $`q>0`$, one still needs a vector with $`q\mid M`$ and a cutoff satisfying <a href="#eq:signed-block-gap" data-reference-type="eqref" data-reference="eq:signed-block-gap">[eq:signed-block-gap]</a>; the cutoff may exceed its support endpoint. No minimal-support assertion is made.
+To exclude every denominator, $`M`$ must vary. The [companion’s progression construction](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-progression) adds size control: polynomial root conditions give primitive vectors (coefficient gcd one) with $`0<M<N!`$, where $`N`$ is their largest supported index. Every fixed $`q`$ divides their multipliers for all sufficiently large $`N`$. The tail at that endpoint is below $`2/N`$, but the next-integer gap may shrink too. For each $`q>0`$, one still needs a vector with $`q\mid M`$ and a cutoff satisfying [\[eq:signed-block-gap\]](#eq%3Asigned-block-gap); the cutoff may exceed its support endpoint. No minimal-support assertion is made.
 
 The companion treats the [equivalent carry condition](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-carry) and the [complementary-denominator tail inequality](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r5-complement). It also records two larger finite computations: a non-unit carry at $`m=300000`$ excludes every $`q\mid299999!`$, and a continued-fraction enclosure excludes every $`q<2^{39990}`$. Both computations were performed outside Lean; their [algorithms, exact outputs and scope](../../../paper/68/erdos68-factorial-reasoning-surface.pdf#nameddest=r12-finite) are given there. The factorial-divisibility exclusion does not exclude all denominators with only small prime factors, whose exponents may be larger. Neither finite restriction establishes the required condition at arbitrarily large indices.
 

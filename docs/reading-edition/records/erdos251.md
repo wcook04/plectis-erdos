@@ -4,7 +4,7 @@
 
 Start with [Sparse Congruence-Preserving Perturbations of Dyadic Series](../../../docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md). The longer account is [Prime-Gap Dyadic Series: Perturbations, Exact Criteria and Certificates](../../../docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md).
 
-Registered assertions: 9 short, 36 long. Located long-record links: 2. Proofs retained in the short paper: 6. Long correspondences still open: 7.
+Registered assertions: 9 short, 36 long. Located long-record links: 2. Proofs retained in the short paper: 7. Long correspondences still open: 7.
 
 Checks registered asserting environments and registered claim spans. Unregistered prose assertions, mathematical equivalence, correctness of ordinary proofs, Lean compilation, Comparator replay and PDF freshness are not established by this audit.
 
@@ -23,11 +23,19 @@ A complete registered-evidence match locates the same full declaration set in th
 
 ### res:sparserationalisation
 
-State: **unresolved**.
+State: **short_proof_explained_long_link_open**.
 
 Short statement: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 104-126.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
+
+Retained short-paper argument: [paper/251/erdos-251-prime-gap-dyadic-series.tex](../../../paper/251/erdos-251-prime-gap-dyadic-series.tex) lines 148-384.
+
+The complete construction remains in sec:construction. Both ordinary and weighted triple totals and the finite common-modulus telescoping comparison are now displayed; density, uniform cutoffs, interval selection, remainder limit and quantitative coupling are retained.
+
+Review status: 10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5 and current complete proofs; statement, hypotheses and dependencies unchanged; no long-record correspondence or independent review..
+
+This hash-bound passage records proof availability; its mathematical correctness is not checked by this audit. No accepted long-record correspondence is established by this disposition.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 

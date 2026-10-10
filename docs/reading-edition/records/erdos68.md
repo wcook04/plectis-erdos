@@ -4,7 +4,7 @@
 
 Start with [Integer Linear Forms for a Factorial Reciprocal Series](../../../docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md). The longer account is [Factorial Linear Forms and Denominators Detailed Proofs and Rationality Criteria](../../../docs/papers/full-text/erdos68-factorial-reasoning-surface.md).
 
-Registered assertions: 2 short, 18 long. Located long-record links: 0. Proofs retained in the short paper: 0. Long correspondences still open: 2.
+Registered assertions: 2 short, 18 long. Located long-record links: 0. Proofs retained in the short paper: 2. Long correspondences still open: 2.
 
 Checks registered asserting environments and registered claim spans. Unregistered prose assertions, mathematical equivalence, correctness of ordinary proofs, Lean compilation, Comparator replay and PDF freshness are not established by this audit.
 
@@ -23,11 +23,19 @@ A complete registered-evidence match locates the same full declaration set in th
 
 ### res:divisor-channel-coordinates
 
-State: **unresolved**.
+State: **short_proof_explained_long_link_open**.
 
 Short statement: [paper/68/erdos-68-factorial-denominator-irrationality.tex](../../../paper/68/erdos-68-factorial-denominator-irrationality.tex) lines 157-175.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
+
+Retained short-paper argument: [paper/68/erdos-68-factorial-denominator-irrationality.tex](../../../paper/68/erdos-68-factorial-denominator-irrationality.tex) lines 177-201.
+
+The proof first isolates the divisor-indexed weighted sums and then uses both triangular integer changes with unit determinants to establish completeness and integral coordinates. Applying M and V_d identifies every coefficient.
+
+Review status: 10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5 and current complete proofs; statement, hypotheses and dependencies unchanged; no long-record correspondence or independent review..
+
+This hash-bound passage records proof availability; its mathematical correctness is not checked by this audit. No accepted long-record correspondence is established by this disposition.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
@@ -35,11 +43,19 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 ### res:finite-channel-moment-certificate
 
-State: **unresolved**.
+State: **short_proof_explained_long_link_open**.
 
 Short statement: [paper/68/erdos-68-factorial-denominator-irrationality.tex](../../../paper/68/erdos-68-factorial-denominator-irrationality.tex) lines 292-299.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
+
+Retained short-paper argument: [paper/68/erdos-68-factorial-denominator-irrationality.tex](../../../paper/68/erdos-68-factorial-denominator-irrationality.tex) lines 301-323.
+
+The proof uses a nonzero coefficient at 2ell to obtain g>0 and g | (2ell)!. Above H=D(2ell−1), small divisors provide (2ell)! | W_{d,n}; larger proper divisors use the induction hypothesis g | u_d. This proves whole-tail divisibility, and interval inclusion gives the reverse. No match is inferred from wording alone.
+
+Review status: 10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5 and current complete proofs; statement, hypotheses and dependencies unchanged; no long-record correspondence or independent review..
+
+This hash-bound passage records proof availability; its mathematical correctness is not checked by this audit. No accepted long-record correspondence is established by this disposition.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 

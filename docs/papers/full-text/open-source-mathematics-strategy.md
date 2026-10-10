@@ -78,7 +78,9 @@ The [systems paper](../../../paper/systems/claim-faithful-publication-systems-pa
 
 A contributor does not need to understand the whole repository before doing useful work. From one clone, a person or agent can choose one of six first actions: read the corpus as one body of mathematics and decide what is worth developing; mine a bounded problem route; contribute mathematical direction without paying for the compute that follows it; formalise or review one claim; repair the research machinery; or propose another sourced problem world. The first action has no target at the start. Finding a question that deserves attention is part of the research, and a well-posed new question, a general theorem behind a recorded example, or a clearer account of an existing proof is a contribution in the same sense as a proof. The [`explore-the-corpus skill`](https://github.com/wcook04/plectis-erdos/blob/402497d8e1ae025518ee34190664e8f67aa40f93/skills/explore-the-corpus/SKILL.md) owns that route and hands an emerged question to the workflows below. The clone-local [`explain-public-system skill`](https://github.com/wcook04/plectis-erdos/blob/402497d8e1ae025518ee34190664e8f67aa40f93/skills/explain-public-system/SKILL.md) lets an agent read the public corpus and companion papers on the newcomer’s behalf, explain the claim boundaries at the requested level, and point back to exact evidence. The reader can therefore begin with the ordinary request “explain this repository to me” rather than first mastering its file layout. The other skills select and run a frontier, coordinate the coupled goals, install the same workflows in a compatible agent harness, and describe the present multi-stage process for adding a problem.
 
-<figure id="fig:first-actions" data-latex-placement="H">
+<a id="fig:first-actions"></a>
+
+<figure data-latex-placement="H">
 
 <figcaption>Six useful first actions. None requires an endpoint solution, and none receives a stronger status than the evidence returned with it.</figcaption>
 </figure>
@@ -92,18 +94,27 @@ Candidate production depends jointly on compute, model capability, human directi
 C_t,\ A_t,\ H_t,\ I_t,\ P,\ K_t,\ V_t,\ R_t
 ```
 denote, at time $`t`$, available compute, agent capability, contributed human mathematical direction, infrastructure quality, problem selection, accumulated research knowledge, validation capacity, and review capacity. The rate of candidate generation may be written schematically as
+
+<a id="eq:generation"></a>
+
 ``` math
 G_t=G(C_t,A_t,H_t,I_t,P,K_t).
 \tag{2.1}\label{eq:generation}
 ```
 The rate of *reviewable mathematical progress* is a different quantity:
+
+<a id="eq:accepted"></a>
+
 ``` math
 Y_t=Q(G_t,V_t,R_t),
 \tag{2.2}\label{eq:accepted}
 ```
-where $`Q`$ includes formal checking, statement reconciliation, attribution, and editorial selection. Equations <a href="#eq:generation" data-reference-type="eqref" data-reference="eq:generation">[eq:generation]</a> and <a href="#eq:accepted" data-reference-type="eqref" data-reference="eq:accepted">[eq:accepted]</a> are a conceptual production model, not a fitted empirical law. They record complementarity and bottlenecks. More compute can generate more attempts without increasing the rate at which strong results are validated or understood. A better model can still revisit a closed route if the corpus is difficult to navigate. Expert insight can change the search distribution without supplying any compute. Review capacity can be the binding constraint even when proof generation is cheap.
+where $`Q`$ includes formal checking, statement reconciliation, attribution, and editorial selection. Equations [\[eq:generation\]](#eq%3Ageneration) and [\[eq:accepted\]](#eq%3Aaccepted) are a conceptual production model, not a fitted empirical law. They record complementarity and bottlenecks. More compute can generate more attempts without increasing the rate at which strong results are validated or understood. A better model can still revisit a closed route if the corpus is difficult to navigate. Expert insight can change the search distribution without supplying any compute. Review capacity can be the binding constraint even when proof generation is cheap.
 
 The open-source strategy proposes two recursive updates:
+
+<a id="eq:feedback"></a>
+
 ``` math
 \begin{aligned}
  K_{t+1}&=K_t+\Delta_t^{\rm theorem}
@@ -120,7 +131,9 @@ The open-source strategy proposes two recursive updates:
 ```
 These $`\Delta`$ terms are *net changes to the currently endorsed record*, not nonnegative counts of retained files. A correction may withdraw an earlier claim, replace a proof or close an unproductive route, so $`K_{t+1}`$ need not exceed $`K_t`$ even though the provenance history is append-only. Reviewed, scoped returns may make later research less forgetful or infrastructure more reliable; the equations do not estimate either gain. A local failure can add a mathematical obstruction to the record or reveal a process defect whose repair improves infrastructure. It cannot change a conjecture’s truth status merely because it changed the process.
 
-<figure id="fig:conversion" data-latex-placement="H">
+<a id="fig:conversion"></a>
+
+<figure data-latex-placement="H">
 
 <figcaption>The conversion loop. The labels on the left are functions, not classes of people: one person may perform several, and several people may perform one. Search output crosses replay and review before it enters the accepted corpus. Mathematical returns enlarge the corpus; architecture returns alter the engine.</figcaption>
 </figure>
@@ -137,7 +150,9 @@ Computation has a second role. It can provide an artificial form of local intuit
 
 The eight current problems were selected as demanding research environments, not as a claim that they were the eight most tractable or valuable open problems. Their papers expose materially different contribution points.
 
-<figure id="fig:problem-worlds" data-latex-placement="H">
+<a id="fig:problem-worlds"></a>
+
+<figure data-latex-placement="H">
 
 <figcaption>Eight distinct research environments. The results map and the problem papers state their exact frontiers; this strategy paper does not reproduce the specialist vocabulary needed to attack them.</figcaption>
 </figure>
@@ -156,7 +171,9 @@ The research was initially developed inside a private workbench. The public rele
 
 The public layers carry different kinds of evidence. An ordinary proof, a cited theorem, a finite experiment and a Lean proof can each support a candidate on its stated domain. Review asks what that evidence establishes; formal statement alignment applies when a Lean claim is made. Uptake by other researchers is a separate observation.
 
-<figure id="fig:authority-ladder" data-latex-placement="H">
+<a id="fig:authority-ladder"></a>
+
+<figure data-latex-placement="H">
 
 <figcaption>Evidence routes keep their own scope. Formal claims require a meaning check; ordinary proofs and citations do not require Lean. Outside use is recorded separately.</figcaption>
 </figure>
@@ -355,7 +372,7 @@ The two differ in what the shared object is. Prove2Me is a hosted service with s
 
 #### Semi-autonomous discovery on the Erdős problems.
 
-Feng et al. ran a research agent built on Gemini Deep Think over the 700 problems then marked open in Bloom’s database and published the full accounting \[aletheia\]: from 200 graded candidates, two autonomous resolutions, two partial solutions, four independent rediscoveries, and five literature identifications. They classify outcomes by novelty as well as correctness, cede priority wherever a prior human argument exists, name the risk that a model reproduces a training-set argument without attribution, and warn that a correct proof of a mistranscribed statement settles nothing; their Erdős-75 appendix is the specimen. Each of those distinctions is an evidence class or a review step in this paper, and their study is the prior published demonstration that the distinctions matter at scale. Their run was a single-organisation sweep with a human grading team, released once with raw outputs; the commons here is a persistent per-problem record that anyone can extend. None of this repository’s eight problems appears in their results. Their companion report on the same agent \[autonomousmath\] adds the generate, verify, and revise loop with a separated verifier that declines to answer, four further papers, the finding that a search-equipped model still misquotes real references, and the two-axis disclosure taxonomy and interaction cards taken up in Sections <a href="#sec:credit" data-reference-type="ref" data-reference="sec:credit">7</a> and <a href="#sec:security" data-reference-type="ref" data-reference="sec:security">8</a>. It concludes that formal verification systems cannot yet formulate the questions of interest on most research frontiers and chooses informal natural-language verification for that reason. This project accepts that bound and works the other side of it: each problem world exists because its endpoint can be stated exactly, and the Lean layer is empty wherever it cannot. The report also concedes that benchmark results may be contaminated by training data and mitigates this by perturbing known problems. An open endpoint has no known solution to recall, but its prompt, partial results, antecedents and solved exercises may still be familiar from training or tool access. An evaluation must record that exposure and use dated snapshots or changed-hypothesis tasks when testing discovery. The refuted exact Formal Conjectures statement for Problem 1041 instead tests counterexample recognition and fidelity to the historical wording.
+Feng et al. ran a research agent built on Gemini Deep Think over the 700 problems then marked open in Bloom’s database and published the full accounting \[aletheia\]: from 200 graded candidates, two autonomous resolutions, two partial solutions, four independent rediscoveries, and five literature identifications. They classify outcomes by novelty as well as correctness, cede priority wherever a prior human argument exists, name the risk that a model reproduces a training-set argument without attribution, and warn that a correct proof of a mistranscribed statement settles nothing; their Erdős-75 appendix is the specimen. Each of those distinctions is an evidence class or a review step in this paper, and their study is the prior published demonstration that the distinctions matter at scale. Their run was a single-organisation sweep with a human grading team, released once with raw outputs; the commons here is a persistent per-problem record that anyone can extend. None of this repository’s eight problems appears in their results. Their companion report on the same agent \[autonomousmath\] adds the generate, verify, and revise loop with a separated verifier that declines to answer, four further papers, the finding that a search-equipped model still misquotes real references, and the two-axis disclosure taxonomy and interaction cards taken up in Sections [7](#sec%3Acredit) and [8](#sec%3Asecurity). It concludes that formal verification systems cannot yet formulate the questions of interest on most research frontiers and chooses informal natural-language verification for that reason. This project accepts that bound and works the other side of it: each problem world exists because its endpoint can be stated exactly, and the Lean layer is empty wherever it cannot. The report also concedes that benchmark results may be contaminated by training data and mitigates this by perturbing known problems. An open endpoint has no known solution to recall, but its prompt, partial results, antecedents and solved exercises may still be familiar from training or tool access. An evaluation must record that exposure and use dated snapshots or changed-hypothesis tasks when testing discovery. The refuted exact Formal Conjectures statement for Problem 1041 instead tests counterexample recognition and fidelity to the historical wording.
 
 Tao’s community wiki of AI contributions to the Erdős problems was the public register in this exact domain until its updates stopped on 30 June 2026 \[taowiki\]. It recorded which problems AI systems had touched and with what outcome, failed attempts included, edited by hand and without evidence classes, roles, or checkable claim boundaries. The protocol here produces returns that already carry those fields, with a trail from each record back to the exact commit, receipt, and surviving boundary, so any such register can cite them.
 
@@ -363,7 +380,7 @@ Tao’s community wiki of AI contributions to the Erdős problems was the public
 
 #### Proof abundance.
 
-Tao separates problem solving into generation, verification, exposition, digestion and acceptance, and canonicalisation, and argues that proof abundance will create bottlenecks between these stages \[tao2026\]. The strategy here treats those bottlenecks as contribution surfaces. A reviewer who prevents an overclaim or an expositor who makes a hard step recoverable is not ancillary to the research pipeline. Tao’s rule of thumb, that a result whose authors cannot give a clear, correct, properly attributed expert-level account of it is incomplete even when formally verified, sets the bar for the exposition layer here. Two questions are kept apart: whether the record lets a reader learn the result, and whether the people responsible for its publication have given that account. The record is designed for the first; the second is a per-result event. At the time of writing no selected result carries a recorded expert account of that kind, and adopting the standard is not compliance with it. Whether the record supports such an account is what the protocol of Section <a href="#sec:evaluation" data-reference-type="ref" data-reference="sec:evaluation">12</a> asks a reader to show.
+Tao separates problem solving into generation, verification, exposition, digestion and acceptance, and canonicalisation, and argues that proof abundance will create bottlenecks between these stages \[tao2026\]. The strategy here treats those bottlenecks as contribution surfaces. A reviewer who prevents an overclaim or an expositor who makes a hard step recoverable is not ancillary to the research pipeline. Tao’s rule of thumb, that a result whose authors cannot give a clear, correct, properly attributed expert-level account of it is incomplete even when formally verified, sets the bar for the exposition layer here. Two questions are kept apart: whether the record lets a reader learn the result, and whether the people responsible for its publication have given that account. The record is designed for the first; the second is a per-result event. At the time of writing no selected result carries a recorded expert account of that kind, and adopting the standard is not compliance with it. Whether the record supports such an account is what the protocol of Section [12](#sec%3Aevaluation) asks a reader to show.
 
 The proposed composition joins these precedents. It combines volunteer compute, small shared insights, formal task decomposition, agent-native problem worlds, explicit negative knowledge, untrusted public returns, role-aware credit, and human review. The candidate contribution is this composition and its implementation in one open mathematical corpus. The paper makes no universal priority claim and reports no controlled comparison showing that the composition increases discovery rate.
 
@@ -489,7 +506,9 @@ Hard problems are useful partly because they generate mathematical by-products u
 
 6.  ask a qualified mathematician and Lean contributor to decide whether the result is important, well-shaped, documented, maintainable, and ready for an upstream discussion.
 
-<figure id="fig:local-to-general" data-latex-placement="H">
+<a id="fig:local-to-general"></a>
+
+<figure data-latex-placement="H">
 
 <figcaption>A local result becomes reusable only through a second mathematical and social gate. Formal correctness is necessary where Lean applies, but it does not decide generality, library fit, or stewardship.</figcaption>
 </figure>
@@ -524,7 +543,7 @@ The present strategy has substantial limits.
 
 First, the Lean-checked Hausdorff-length refutation of the exact Formal Conjectures statement for Problem 1041 uses one polynomial from ani’s construction; correspondence with the 1958 question remains unreviewed. The other seven targets remain unresolved here. The repository contains intermediate mathematics and deep records of failed routes, but no evidence that a distributed run will solve any problem. The claim that infrastructure improves the conversion from compute to mathematics has not yet been measured in a controlled experiment.
 
-On 14 September 2026 the prototype had no recorded completed external cold-clone use or accepted external contribution. The later architecture receipt in Section <a href="#sec:protocol" data-reference-type="ref" data-reference="sec:protocol">5</a> demonstrates a maintainer-operated adoption path, but still no independent first-use result. Its clone instructions, agent skills, cross-paper links, pull-request path, and credit machinery may contain friction that an author-operated audit does not reveal. Reproducing a clean clone, reporting a broken instruction, simplifying setup, repairing an unsafe default, or making the contribution route easier to understand are first-class architecture contributions even when they do not alter any mathematics.
+On 14 September 2026 the prototype had no recorded completed external cold-clone use or accepted external contribution. The later architecture receipt in Section [5](#sec%3Aprotocol) demonstrates a maintainer-operated adoption path, but still no independent first-use result. Its clone instructions, agent skills, cross-paper links, pull-request path, and credit machinery may contain friction that an author-operated audit does not reveal. Reproducing a clean clone, reporting a broken instruction, simplifying setup, repairing an unsafe default, or making the contribution route easier to understand are first-class architecture contributions even when they do not alter any mathematics.
 
 Second, the project remains maintainer-centred. The initial problem selection, architecture, claim boundaries, review decisions, and public presentation were all chosen through one operator-controlled process. Open source makes those choices inspectable and contestable; it does not make them independent. A serious growth phase needs external maintainers and reviewers, published conflict and appeal rules, and a way for contributor-controlled reports to remain visible when the project declines to adopt them.
 
@@ -540,7 +559,7 @@ Finally, openness does not remove resource inequality. Compute donors, frontier-
 
 # The next decision and its dependencies
 
-The public clone already gives readers problem papers, exact open boundaries, bounded query routes, ordinary-language return paths and an accepted architecture receipt: an inspectable mechanism whose benefit to a new reader is unmeasured. The next decision is whether an unfamiliar reader can use one mathematical case and return evidence a maintainer can assess without the original sessions, and the protocol of Section <a href="#sec:evaluation" data-reference-type="ref" data-reference="sec:evaluation">12</a> is its test. Reading a paper, running a bounded public check or contributing an ordinary mathematical idea need not wait for it; higher-throughput services need their own resource, security and review boundaries. If the route fails the test, the mathematical case remains useful and the default entry should be simplified. A donated-compute service, public task market and transfer to physical science would need separate evidence and governance; none is a reported capability of this repository.
+The public clone already gives readers problem papers, exact open boundaries, bounded query routes, ordinary-language return paths and an accepted architecture receipt: an inspectable mechanism whose benefit to a new reader is unmeasured. The next decision is whether an unfamiliar reader can use one mathematical case and return evidence a maintainer can assess without the original sessions, and the protocol of Section [12](#sec%3Aevaluation) is its test. Reading a paper, running a bounded public check or contributing an ordinary mathematical idea need not wait for it; higher-throughput services need their own resource, security and review boundaries. If the route fails the test, the mathematical case remains useful and the default entry should be simplified. A donated-compute service, public task market and transfer to physical science would need separate evidence and governance; none is a reported capability of this repository.
 
 <a id="sec:conclusion"></a>
 
