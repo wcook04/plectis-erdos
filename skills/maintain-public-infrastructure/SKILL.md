@@ -105,7 +105,9 @@ finished patch, entry should name `CONTRIBUTING.md` and the submission workflow.
 When a visitor explicitly avoids a prerequisite, do not count that mention as
 requesting the tool. Match the positive task and test separate positive proof
 or validation mentions in the same sentence. Keep examples in ordinary reader
-language as well as the catalogue's named cues.
+language as well as the catalogue's named cues. A reported setup fault can be
+an implicit request for help; keep explicit explanation, status and proof tasks
+on their own routes, and retain a separately requested repair.
 A nearby proof, theorem-status or returned-proof request must retain its own
 lane. Preserve these neighboring requests as fixtures alongside the observed
 failure; contribution words alone should not turn proof search into Git work.

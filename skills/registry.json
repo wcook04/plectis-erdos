@@ -1477,6 +1477,30 @@
             "repo",
             "repos"
           ]
+        },
+        {
+          "actions": [
+            "fix",
+            "repair",
+            "debug"
+          ],
+          "objects": [
+            "setup",
+            "installation"
+          ]
+        },
+        {
+          "actions": [
+            "fails",
+            "failed",
+            "broken"
+          ],
+          "objects": [
+            "clone",
+            "cloned",
+            "setup",
+            "installation"
+          ]
         }
       ],
       "skills": [
