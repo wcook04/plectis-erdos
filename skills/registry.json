@@ -1131,7 +1131,12 @@
         "find contribution guidelines",
         "find the contribution guide",
         "where is the contribution guide",
-        "how to contribute"
+        "how to contribute",
+        "contribute a correction",
+        "contribute corrections",
+        "contributing a correction",
+        "contributing corrections",
+        "report corrections"
       ],
       "skills": [
         "submit-pull-request"
@@ -1436,6 +1441,37 @@
             "folder",
             "folders",
             "documentation"
+          ]
+        },
+        {
+          "actions": [
+            "fix",
+            "repair",
+            "debug",
+            "improve",
+            "refine",
+            "prepare"
+          ],
+          "objects": [
+            "clone",
+            "clones",
+            "readiness",
+            "impression",
+            "impressions"
+          ]
+        },
+        {
+          "actions": [
+            "organize",
+            "organise",
+            "cleanup",
+            "tidy"
+          ],
+          "objects": [
+            "repository",
+            "repositories",
+            "repo",
+            "repos"
           ]
         }
       ],

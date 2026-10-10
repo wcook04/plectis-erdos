@@ -31,6 +31,20 @@ COMMANDS = (
     ('-O', 'scripts/test_paper_claim_evidence.py'),
     ('scripts/test_short_paper_writer.py',),
     ('-O', 'scripts/test_short_paper_writer.py'),
+    # Unit checks in build and first-contact jobs also run before transport.
+    ('-O', 'scripts/test_external_verification.py'),
+    ('-O', 'scripts/test_external_verification_release.py'),
+    ('-O', 'scripts/test_lean_dependency_environment.py'),
+    ('-O', 'scripts/test_lean_fast_build.py'),
+    ('scripts/test_agent_entry.py',),
+    ('scripts/test_choices_contraction_probe.py',),
+    ('scripts/test_compact_agent_entry.py',),
+    ('scripts/test_external_verification.py',),
+    ('scripts/test_external_verification_release.py',),
+    ('scripts/test_lean_dependency_environment.py',),
+    ('scripts/test_lean_dependency_index_cache.py',),
+    ('scripts/test_lean_fast_build.py',),
+    ('scripts/test_reading_edition_synthesis.py',),
     # Replay the actual offline browser core against Python and the checker.
     ('scripts/test_rational_explorer.py',),
     ('-O', 'scripts/test_rational_explorer.py'),
@@ -165,7 +179,7 @@ COMMANDS = (
 )
 
 
-def workflow_errors(source: str) -> list[str]:
+def workflow_errors(source: str, commands=COMMANDS) -> list[str]:
     match = re.search(r"(?ms)^  release-surfaces:\n(.*?)(?=^  \S|\Z)", source)
     if match is None:
         return ["missing release-surfaces job"]
@@ -198,6 +212,16 @@ def workflow_errors(source: str) -> list[str]:
         seen.add(name)
     for name in sorted(set(allowed) - seen):
         errors.append(f"missing shared release entry or corpus boundary: {name}")
+    # Build and first-contact jobs contain bounded Python unit checks too.
+    # Compile commands keep their separate Lean authority; standalone test
+    # invocations must be covered by this local/CI registry before transport.
+    unit_checks = re.findall(
+        r"(?m)^[ \t]+(?:-[ \t]+)?(?:run:[ \t]*)?python3[ \t]+((?:-O[ \t]+)?scripts/test_[a-z_]+\.py)[ \t]*$",
+        source,
+    )
+    for command in sorted({tuple(line.split()) for line in unit_checks}):
+        if command not in commands:
+            errors.append("CI unit check missing from local release registry: " + " ".join(command))
     return errors
 
 

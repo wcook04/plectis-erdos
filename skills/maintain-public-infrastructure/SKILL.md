@@ -31,7 +31,7 @@ not just whether one relevant skill appears. Test natural modifiers and plural
 objects as well as the exact failed wording. Registry `task_intents` can require
 an action token and an object token without requiring adjacent words; keep both
 conditions so merely mentioning a paper does not select manuscript editing.
-Check neighboring tasks that should retain their original lane. Keep purpose and scope separate: a problem or paper identifies the object,
+Check neighboring tasks that should retain their original lane. A broad correction action/object intent can outrank an existing documentation, proof or status route. Prefer the observed intake phrases when the action would otherwise change those earlier stages; keep their controls alongside the new fixtures. Keep purpose and scope separate: a problem or paper identifies the object,
 while research, method development or infrastructure work identifies the action.
 An existing mathematical proof offered for review belongs to the research-return
 lane, which preserves provenance and credit before pull-request preparation.
@@ -54,7 +54,7 @@ records separately. Replacing a whole ledger to settle one digest conflict can
 silently discard valid source bindings.
 Keep the human clone/prompt instructions in `docs/agents/README.md`
 and the behavioral provenance cases in `scripts/test_agent_entry.py`, which
-the release gate already runs. Exercise forks, tags, archives, dirty worktrees,
+the release gate already runs. Inspect bounded Python unit checks in the separate CI build and first-contact jobs as well as release-surfaces. Register them in the shared local/CI leaf gate: a passing release-surfaces job cannot account for a test that runs only later in another job. Exercise forks, tags, archives, dirty worktrees,
 and unavailable network access without requiring a network in tests. Check the
 combined first-contact route budget as well as each entry file: newcomer setup
 belongs in the agent index, not in an already full technical reading bundle.
