@@ -181,6 +181,15 @@ file boundary. Resolving a path first can hide a symlink that the reader must
 reject. Exercise the public CLI as well as the direct reader, including leaf
 and parent symlinks, relative paths and allowed platform aliases.
 
+For release manifests, a commit substring alone does not bind a locator to
+the declared file. Check the exact repository, commit and source path, and
+require canonical receipt asset names. When storage moves, emit the concrete
+source path selected by the resolver alongside its digest and immutable URL;
+retain historical download basenames separately. Exercise nested publication
+and verification storage as well as direct files. For a return naming a
+proposed commit, intake must account for its complete changed source set;
+keep draft returns without a proposed commit on their existing route.
+
 ## Know the public owner graph
 
 - `skills/registry.json` owns skill families, task lanes, composition edges,
@@ -451,6 +460,13 @@ skill family, prepare a fixture, or trace downstream consumers. Never spend the
 turn repeatedly polling a build when task-coupled work remains. Lean validation
 still goes through `skills/lean-concurrent-validation/SKILL.md`; do not launch a
 competing build to look busy.
+
+For a recurring timeout, preserve the failed committed snapshot and measure phase wall and CPU time at the existing deadline before selecting a repair. Keep parsed-source caches within one live audit input snapshot. Verify unchanged findings and fresh source reads in subsequent audits. Record a successful focused replay separately from a completed release gate.
+
+Generate canonical reading navigators with `build_reading_edition.py --records`.
+The lower-level audit CLI emits a structural report without the navigator
+receipt map. Check complete projection equality as well as input freshness
+before treating the canonical record as regenerated.
 
 ## Return, assimilate, and propagate
 

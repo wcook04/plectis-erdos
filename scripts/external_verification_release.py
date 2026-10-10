@@ -338,11 +338,12 @@ def artifact_rows(
     rows = []
     for relative in release_contract["tracked_artifacts"]:
         path = tracked_artifact_path(root, relative)
+        source_relative = path.relative_to(root).as_posix()
         rows.append(
             {
-                "path": relative,
+                "path": source_relative,
                 "sha256": sha256_file(path, root=root),
-                "immutable_url": f"{repository}/blob/{source_commit}/{relative}",
+                "immutable_url": f"{repository}/blob/{source_commit}/{source_relative}",
             }
         )
     return rows
@@ -434,10 +435,9 @@ def validate_manifest(
         raise ReleaseIdentityError("manifest repository differs from contract")
     if source.get("commit_url") != f"{source['repository']}/commit/{source_commit}":
         raise ReleaseIdentityError("manifest commit URL is not commit-pinned")
-    if f"/blob/{source_commit}/" not in manifest.get("contract", {}).get(
-        "immutable_url", ""
-    ):
-        raise ReleaseIdentityError("manifest contract URL is not commit-pinned")
+    expected_contract_url = f"{source['repository']}/blob/{source_commit}/{CONTRACT_PATH}"
+    if manifest.get("contract", {}).get("immutable_url") != expected_contract_url:
+        raise ReleaseIdentityError("manifest contract URL does not identify the source-bound contract")
     if manifest.get("contract", {}).get("sha256") != sha256_file(
         root / CONTRACT_PATH, root=root
     ):
@@ -466,6 +466,8 @@ def validate_manifest(
             source_commit=source_commit
         ),
     ]
+    if manifest.get("runtime_receipt", {}).get("asset_name") != expected_names[0]:
+        raise ReleaseIdentityError("manifest runtime-receipt asset name is not canonical")
     if manifest.get("release_assets", {}).get("required") != expected_names:
         raise ReleaseIdentityError("manifest release-asset names are not canonical")
     encoded = json.dumps(manifest, sort_keys=True)
