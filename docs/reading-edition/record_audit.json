@@ -134,7 +134,7 @@
     "scripts/build_reading_edition.py": "sha256:adab68bf11c05d3bc4baebd588dcf508427690c50d8c07b86d0058dca93dd988",
     "scripts/check_lean_paper_propagation.py": "sha256:0f70bd947b02efe91291389e0430e1140a729de1ae3d311092e20152ea1b813c",
     "scripts/lean_source.py": "sha256:9957255054732a3ee1ddcadfd4aab80ea56c927077868153f8d7bddfa09672fe",
-    "scripts/reasoning_record_audit.py": "sha256:5181f76da0658a08400a1fc35c6f72dc0370e375fd4d11caf41a4eb38ce5c62b"
+    "scripts/reasoning_record_audit.py": "sha256:04af3af6007a0b75b4bdbf7474d6a010552e111dd9fd9bceae287164acc57b7a"
   },
   "navigation_sha256": {
     "docs/reading-edition/RECORDS.md": "sha256:363de36a25d5a8702d29e76906d09cfa627e0cba2e030e811bd85c2f3801caca",

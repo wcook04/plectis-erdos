@@ -461,6 +461,13 @@ turn repeatedly polling a build when task-coupled work remains. Lean validation
 still goes through `skills/lean-concurrent-validation/SKILL.md`; do not launch a
 competing build to look busy.
 
+For a recurring timeout, preserve the failed committed snapshot and measure phase wall and CPU time at the existing deadline before selecting a repair. Keep parsed-source caches within one live audit input snapshot. Verify unchanged findings and fresh source reads in subsequent audits. Record a successful focused replay separately from a completed release gate.
+
+Generate canonical reading navigators with `build_reading_edition.py --records`.
+The lower-level audit CLI emits a structural report without the navigator
+receipt map. Check complete projection equality as well as input freshness
+before treating the canonical record as regenerated.
+
 ## Return, assimilate, and propagate
 
 An external contributor normally forks the repository, commits a coherent
