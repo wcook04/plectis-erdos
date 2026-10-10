@@ -813,7 +813,17 @@ def check_unfinished_outcome_refuses_fresh_export_label() -> None:
         )
 
 
+def check_process_discovery_handles_non_utf8_arguments() -> None:
+    # The exporter reaches process discovery before compilation. Reuse its
+    # real-child decoding and ownership control in both admission modes.
+    from test_validation_singleflight import ValidationSingleflightTests
+    ValidationSingleflightTests(
+        "test_process_table_preserves_non_utf8_arguments_and_ownership"
+    ).debug()
+
+
 def main() -> int:
+    check_process_discovery_handles_non_utf8_arguments()
     check_full_exports_enter_shared_owner()
     check_safe_dependency_input_boundary()
     check_safe_dependency_output_boundary()

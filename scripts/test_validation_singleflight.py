@@ -1462,6 +1462,35 @@ class ValidationSingleflightTests(unittest.TestCase):
             )
         self.assertIn("partial", caught.exception.output or "")
 
+    def test_process_table_preserves_non_utf8_arguments_and_ownership(self) -> None:
+        payload = (
+            b"10 1 /home/u/lean /srv/checkout/export.lean --label \xff\n"
+            b"11 10 /home/u/lean /srv/checkout/child.lean --label \xfe\n"
+            b"12 1 /home/u/lean /srv/other/export.lean --label \xff\n"
+            b"13 1 /usr/bin/python3 /srv/checkout/run.py --label \xff\n"
+            b"14 10 \xffopaque-child\n"
+            b"\xffnot-a-pid 1 unrelated\n"
+        )
+        real_run = subprocess.run
+
+        def process_output(command, **kwargs):
+            self.assertEqual(command, ["ps", "-A", "-o", "pid=,ppid=,command="])
+            # Keep the production decoding path: a real child writes raw bytes.
+            return real_run(
+                [sys.executable, "-c", "import os; os.write(1, " + repr(payload) + ")"],
+                **kwargs,
+            )
+
+        with mock.patch.object(singleflight.subprocess, "run", side_effect=process_output):
+            table = singleflight.process_table()
+            orphans = singleflight.orphaned_lean_processes(Path("/srv/checkout"))
+        self.assertEqual([pid for pid, _, _ in table], [10, 11, 12, 13, 14])
+        self.assertEqual(table[0][2].encode("utf-8", "surrogateescape"),
+                         b"/home/u/lean /srv/checkout/export.lean --label \xff")
+        self.assertEqual(table[-1][2].encode("utf-8", "surrogateescape"), b"\xffopaque-child")
+        self.assertEqual([pid for pid, _ in orphans], [10])
+        self.assertEqual(singleflight.descendant_pids(10, table), [11, 14])
+
     def test_orphaned_lean_processes_select_only_reparented_lean_under_root(self) -> None:
         root = Path("/srv/checkout")
         table = [

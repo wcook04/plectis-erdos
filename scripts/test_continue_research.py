@@ -756,6 +756,52 @@ def check_partial_workbench_open_retry() -> None:
         require([move["move_id"] for move in moves] == ["m001", "m002"], "retry retained partial ledger entries")
 
 
+def check_relative_session_root_across_child_cwd() -> None:
+    """Parent and real workbench children must share a caller-relative root."""
+    with tempfile.TemporaryDirectory(prefix="continue-relative-root-") as temporary:
+        temporary_root = Path(temporary).resolve()
+        repo = temporary_root / "repo"
+        caller = temporary_root / "caller"
+        repo.mkdir()
+        caller.mkdir()
+        (repo / "README.md").write_text("Fixture public starting file.", encoding="utf-8")
+        args = continue_research.build_parser().parse_args([
+            "--sessions-root", "sessions", "start", "--session", "relative_root",
+            "--area", "tooling", "--starting-path", "README.md",
+            "--validation-plan", "inspect entry workflow", "--frontier", "entry",
+            "--intent", "repair agent entry", "--stop-condition", "record observation",
+            "--contributor", "Fixture Contributor",
+            "--repository-origin", "https://github.com/example/public",
+        ])
+
+        def git_output(*arguments: str) -> str:
+            if arguments[0] == "status":
+                return ""
+            if arguments[0] == "rev-parse":
+                return "a" * 40
+            raise AssertionError(f"unexpected Git read: {arguments}")
+
+        previous = Path.cwd()
+        try:
+            os.chdir(caller)
+            with (
+                mock.patch.object(continue_research, "ROOT", repo),
+                mock.patch.object(continue_research, "git_output", side_effect=git_output),
+            ):
+                started = continue_research.cmd_start(args)
+            directory = caller / "sessions" / "relative_root"
+            require(started["session"] == "relative_root", "relative-root start failed")
+            require((directory / "continuation.json").is_file(), "parent session manifest missing")
+            require((directory / "ledger.jsonl").is_file(), "child workbench ledger missing")
+            require(not (repo / "sessions").exists(), "child left a stranded repository-relative session")
+            moves = proof_workbench.Session(caller / "sessions", "relative_root").moves()
+            require([move["move_id"] for move in moves] == ["m001", "m002"], "workbench lifecycle incomplete")
+            command = continue_research.workbench_command(Path("linked/../sessions"), "show")
+            require("linked/.." in command[3], "session binding normalized security-relevant components")
+        finally:
+            os.chdir(previous)
+
+
 def subject_start_command(
     sessions: Path, session: str, subject: str, related: tuple[int, ...]
 ) -> list[str]:
@@ -1326,6 +1372,7 @@ def main() -> int:
     check_start_session_path_boundary()
     check_start_arguments_before_side_effects()
     check_partial_workbench_open_retry()
+    check_relative_session_root_across_child_cwd()
     check_repository_origin_override()
     check_subject_frontier_round_trip()
     check_architecture_frontier_round_trip()
