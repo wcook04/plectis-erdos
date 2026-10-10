@@ -513,8 +513,9 @@
       "start_line": 1,
       "end_line": 255,
       "kind": "source",
-      "sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f",
-      "excerpt_sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f"
+      "sha256": "0aa032b44b537f427877bffcffd4a739d5f0f86b477d9ff313f850d7acf9612c",
+      "excerpt_sha256": "0aa032b44b537f427877bffcffd4a739d5f0f86b477d9ff313f850d7acf9612c",
+      "custody": "Contribution guide reviewed on 10 October 2026 after naming Python 3.11 or later for the optional documentation checks. Its ordinary-proposal, patch, credit, review and adoption responsibilities remain unchanged. The 17 contribution-bound sentence/figure warrants retain their existing classes and limits; no new proof, independent review or adoption claim."
     },
     {
       "id": "software-citation",
@@ -718,9 +719,9 @@
       "path": "CONTRIBUTING.md",
       "start_line": 1,
       "end_line": 89,
-      "sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f",
-      "excerpt_sha256": "9dddfc8f6ceefc14e83ed1967c38a10de331ac98552bfb9efa825ec06e2009c4",
-      "custody": "Current native public file inspected as source; no fresh execution."
+      "sha256": "0aa032b44b537f427877bffcffd4a739d5f0f86b477d9ff313f850d7acf9612c",
+      "excerpt_sha256": "20990a656615512cd5b3fd2eeb861c03c90cf7de0f2f18e3eb1a9f6f88d5ac50",
+      "custody": "Current native public file inspected as source; no fresh execution. Contribution guide reviewed on 10 October 2026 after naming Python 3.11 or later for the optional documentation checks. Its ordinary-proposal, patch, credit, review and adoption responsibilities remain unchanged. The 17 contribution-bound sentence/figure warrants retain their existing classes and limits; no new proof, independent review or adoption claim."
     },
     {
       "id": "r8-paper-resolve",

@@ -63,8 +63,8 @@ For a small documentation or tooling patch:
 1. Fork this repository and follow the [clone instructions](docs/REPRODUCIBILITY.md#1-start-with-a-complete-committed-checkout).
 2. Make one focused change and explain the reader's problem it fixes.
 3. Run the [documentation check](docs/REPRODUCIBILITY.md#check-a-documentation-change)
-   or your changed tool's test. Report the result; prose corrections need no
-   full Lean build.
+   with Python 3.11 or later, or your changed tool's test. Report the result;
+   prose corrections need no full Lean build.
 4. Open a pull request and name your preferred credit. An
    [issue](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
    is enough without a patch.
