@@ -141,6 +141,31 @@ ROUTE_CASES = {
     "Update a paper after landing a Lean proof": (
         "land_lean_proof", "land-lean-proofs",
     ),
+    # A visitor can try the existing exact example without knowing its name.
+    "Run a quick math example without installing Lean": (
+        "rational_subsum_probe", "explain-public-system",
+    ),
+    "Try a small runnable maths example from a clean clone": (
+        "rational_subsum_probe", "explain-public-system",
+    ),
+    "Try the small runnable experiment": (
+        "rational_subsum_probe", "explain-public-system",
+    ),
+    "Run quick maths examples without installing Lean": (
+        "rational_subsum_probe", "explain-public-system",
+    ),
+    "Try a simple exact calculation": (
+        "rational_subsum_probe", "explain-public-system",
+    ),
+    "Prove a theorem using this quick math example": (
+        "bounded_research", "mine-open-problem",
+    ),
+    "Validate a Lean proof based on this quick math example": (
+        "lean_validation", "lean-concurrent-validation",
+    ),
+    "Write a clearer explanation of this runnable math example": (
+        "public_writing", "public-mathematical-writing",
+    ),
     "test whether 189/388 is a reciprocal-Mersenne subsum with exact rational arithmetic": (
         "rational_subsum_probe", "explain-public-system",
     ),
