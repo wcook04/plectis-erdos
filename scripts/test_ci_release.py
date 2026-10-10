@@ -26,6 +26,24 @@ class ReleaseParityTests(unittest.TestCase):
         self.assertIn(('scripts/test_rational_explorer.py',), release.COMMANDS)
         self.assertIn(('-O', 'scripts/test_rational_explorer.py'), release.COMMANDS)
 
+    def test_build_unit_checks_cannot_escape_local_publication_admission(self):
+        source = (release.ROOT / '.github/workflows/lean.yml').read_text()
+        # Removing the planner from local admission must fail against the
+        # existing build job, even while release-surfaces remains untouched.
+        missing = tuple(c for c in release.COMMANDS
+                        if c != ('scripts/test_lean_fast_build.py',))
+        errors = release.workflow_errors(source, commands=missing)
+        self.assertTrue(any('scripts/test_lean_fast_build.py' in e for e in errors))
+        self.assertIn(('-O', 'scripts/test_lean_fast_build.py'), release.COMMANDS)
+        # A new unit check in a different job has the same contract.
+        extra = source.replace(
+            '  build:\n',
+            '  future-build-check:\n    runs-on: ubuntu-latest\n    steps:\n      - run: python3 -O scripts/test_future_planner.py\n  build:\n',
+            1,
+        )
+        self.assertTrue(any('test_future_planner.py' in e
+                            for e in release.workflow_errors(extra)))
+
     def test_github_only_check_and_missing_shared_gate_are_rejected(self):
         source = (release.ROOT / '.github/workflows/lean.yml').read_text()
         extra = source + '\n      - name: Escaped test\n        run: python3 scripts/test_new.py\n'
