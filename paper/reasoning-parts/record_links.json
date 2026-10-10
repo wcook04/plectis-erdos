@@ -237,15 +237,15 @@
     },
     {
       "action": "explained_in_short",
-      "rationale": "Section 4 retains the complete bounded-residue proof, its totient prime-isolation construction and the isolated-pulse argument. It does not assert a conclusion for the unreduced unbounded coefficients. Revised statement: line 311, printed 4.1, preview p. 5. This is a writer disposition for native review, not a claim that the queued correspondence has already been accepted.",
-      "review_status": "R5 Type A source-reading review of retained proof and evidence boundary; no new independent mathematical review.",
+      "rationale": "Section sec:family retains the complete proof of res:residueseries, its totient prime-isolation construction and the isolated-pulse argument. It does not assert a conclusion for the unreduced unbounded coefficients or establish a long-record correspondence.",
+      "review_status": "10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5 and current complete proofs, including the bounded-pulse dependency; statement, hypotheses and dependencies unchanged; no long-record correspondence or independent review.",
       "short_id": "erdos-249-binary-totient-series#res:residueseries",
       "short_statement_sha256": "sha256:b117882faa4839ccd8505e8b344750c516f78fe60433d73109f0ec2906c375cf",
       "support": {
         "label": "res:residueseries",
         "path": "paper/249/erdos-249-binary-totient-series.tex",
         "selector": "proof_of",
-        "sha256": "sha256:e410a251387f24b424b0c7c9d82313245f49d8aae4118f4bbaebe9adf780872c"
+        "sha256": "sha256:d4efa175b29c7e393df15c57249e4487b52373bde7938ca44e55cd3b991e4618"
       }
     },
     {
