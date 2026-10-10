@@ -14,6 +14,8 @@ import unittest
 import subprocess
 import contextlib
 import io
+from collections import Counter
+from unittest import mock
 
 import reasoning_record_audit as audit
 
@@ -30,6 +32,40 @@ class SpanTests(unittest.TestCase):
     def read(self, text, spec):
         self.path.write_text(text)
         return audit.support_span(audit.Inputs(self.root), {'path': self.rel, **spec})
+
+
+    def test_statement_conversion_is_snapshot_local_and_keeps_refusals(self):
+        loc = audit.coverage.Located({'id': 'a', 'environment': 'theorem'}, self.rel, 1, 3)
+        self.path.write_text('\\begin{theorem}\nFirst assertion.\n\\end{theorem}\n')
+        before = audit.Inputs(self.root)
+        with mock.patch.object(audit.coverage, 'counter_view', wraps=audit.coverage.counter_view) as convert:
+            self.assertIn('First assertion.', audit.statement_text(loc, before))
+            self.assertIn('First assertion.', audit.statement_text(loc, before))
+            self.assertEqual(convert.call_count, 1)
+        self.path.write_text('\\begin{theorem}\nChanged assertion.\n\\end{theorem}\n')
+        after = audit.Inputs(self.root)
+        with mock.patch.object(audit.coverage, 'counter_view', wraps=audit.coverage.counter_view) as convert:
+            self.assertIn('Changed assertion.', audit.statement_text(loc, after))
+            self.assertIn('Changed assertion.', audit.statement_text(loc, after))
+            self.assertEqual(convert.call_count, 1)
+        self.assertIn('First assertion.', audit.statement_text(loc, before))
+        self.path.write_text('\\begin{theorem}\nUnclosed assertion.\n')
+        for value in (audit.Inputs(self.root), self.path.read_text()):
+            with self.subTest(input_kind=type(value).__name__), self.assertRaisesRegex(audit.RecordInputError, 'cannot recover assertion a'):
+                audit.statement_text(loc, value)
+
+    def test_explicit_counter_lines_retains_priority_after_snapshot_composition(self):
+        loc = audit.coverage.Located({'id': 'a', 'environment': 'theorem'}, self.rel, 1, 3)
+        lines = ['\\begin{theorem}', 'Prepared assertion.', '\\end{theorem}']
+        self.path.write_text('unusable source text')
+        inputs = audit.Inputs(self.root)
+        with mock.patch.object(audit.coverage, 'counter_view',
+                               side_effect=AssertionError('explicit line input was reparsed')):
+            for source in ('unusable source text', inputs):
+                with self.subTest(input_kind=type(source).__name__):
+                    self.assertIn('Prepared assertion.',
+                                  audit.statement_text(loc, source, counter_lines=lines))
+        self.assertEqual(inputs.hashes, {})
 
     def test_named_closed_proof_selected(self):
         loc, text = self.read(r'\begin{proof}[Proof of \ref{a}]A reason.\end{proof}',
@@ -163,6 +199,40 @@ class CorpusTests(unittest.TestCase):
             path.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(audit.ROOT/rel, path)
         return root
+
+
+    def test_statement_sources_convert_once_per_report_and_refresh_next_report(self):
+        root = self.clone_inputs()
+        path = root / 'paper/reasoning-parts/erdos269/core.tex'
+        inputs_type = audit.Inputs
+        observations = []
+        class ObservedInputs(inputs_type):
+            def __init__(self, *args):
+                super().__init__(*args)
+                self.requests, self.conversions = Counter(), Counter()
+                observations.append(self)
+            def statement_lines(self, relative):
+                self.requests[relative] += 1
+                before = convert.call_count
+                lines = super().statement_lines(relative)
+                self.conversions[relative] += convert.call_count - before
+                return lines
+        values = []
+        for report_number in range(2):
+            if report_number:
+                path.write_text(path.read_text() + '\n% changed between independent reports\n')
+            with mock.patch.object(audit.coverage, 'counter_view', wraps=audit.coverage.counter_view) as convert, \
+                    mock.patch.object(audit, 'Inputs', ObservedInputs):
+                values.append(audit.report(root, [269]))
+            current = observations[-1]
+            self.assertNotEqual(values[-1]['status'], 'refusal', values[-1].get('reason'))
+            self.assertTrue(any(count > 1 for count in current.requests.values()))
+            self.assertEqual(set(current.conversions), set(current.requests))
+            self.assertTrue(all(count == 1 for count in current.conversions.values()), current.conversions)
+        self.assertIsNot(observations[0], observations[1])
+        relative = path.relative_to(root).as_posix()
+        self.assertNotEqual(values[0]['input_sha256'][relative], values[1]['input_sha256'][relative])
+        self.assertIn('stale record audit input: ' + relative, audit.freshness_errors(root, values[0]))
 
     def test_all_eight_pairs_are_examined(self):
         self.assertEqual({p['problem'] for p in self.base['pairs']}, {68,243,249,251,257,269,1041,1049})
