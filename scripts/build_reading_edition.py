@@ -143,6 +143,15 @@ BIBLIOGRAPHY_RE = re.compile(r'<div class="thebibliography">.*?</div>', re.DOTAL
 ANCHOR_ID_RE = re.compile(r'\b(id|data-reference)="([^"]+)"')
 ANCHOR_HREF_RE = re.compile(r'href="#([^"]+)"')
 MD_ANCHOR_RE = re.compile(r'\]\(#([^)]+)\)')
+MARKDOWN_LITERAL_RE = re.compile(
+    r"^[ ]{0,3}(?P<tick_fence>`{3,})[^\n`]*\n.*?"
+    r"(?:^[ ]{0,3}(?P=tick_fence)`*[ \t]*(?=\r?$)|\Z)"
+    r"|^[ ]{0,3}(?P<tilde_fence>~{3,})[^\n]*\n.*?"
+    r"(?:^[ ]{0,3}(?P=tilde_fence)~*[ \t]*(?=\r?$)|\Z)"
+    r"|(?<!`)(?P<ticks>`+)(?!`).*?(?<!`)(?P=ticks)(?!`)"
+    r"|(?<!\\)(?P<dollars>\${1,2})(?!\$).*?(?<!\\)(?P=dollars)(?!\$)",
+    re.DOTALL | re.MULTILINE,
+)
 WORKED_EXAMPLES = ("research/experiments/choices_contraction/README.md",)
 
 
@@ -191,9 +200,18 @@ def scope_anchors(markdown: str, paper_id: str) -> str:
     Every short paper uses ids such as sec:problem, so a plain concatenation
     sends each internal link to the first paper that defined the id.
     """
-    markdown = ANCHOR_ID_RE.sub(lambda m: f'{m.group(1)}="{paper_id}--{m.group(2)}"', markdown)
-    markdown = ANCHOR_HREF_RE.sub(lambda m: f'href="#{paper_id}--{m.group(1)}"', markdown)
-    return MD_ANCHOR_RE.sub(lambda m: f"](#{paper_id}--{m.group(1)})", markdown)
+    def scope(text: str) -> str:
+        text = ANCHOR_ID_RE.sub(lambda m: f'{m.group(1)}="{paper_id}--{m.group(2)}"', text)
+        text = ANCHOR_HREF_RE.sub(lambda m: f'href="#{paper_id}--{m.group(1)}"', text)
+        return MD_ANCHOR_RE.sub(lambda m: f"](#{quote(paper_id, safe='')}--{m.group(1)})", text)
+
+    parts: list[str] = []
+    start = 0
+    for literal in MARKDOWN_LITERAL_RE.finditer(markdown):
+        parts.extend((scope(markdown[start:literal.start()]), literal.group()))
+        start = literal.end()
+    parts.append(scope(markdown[start:]))
+    return "".join(parts)
 
 
 def tex_title(title: str) -> str:

@@ -6,12 +6,14 @@ The publication exporter and native-clone refresher use the same functions.
 from __future__ import annotations
 
 import hashlib
+import html
 import json
 import posixpath
 import re
 import subprocess
 from pathlib import Path
 from typing import Any
+from urllib.parse import quote
 
 CORPUS_DIR_REL = "docs/papers"
 FULL_TEXT_DIR = "full-text"
@@ -110,6 +112,8 @@ class _AstWalk:
         self.section_number = 0
         self.statement_number = 0
         self.statement_numbers: dict[str, str] = {}
+        self.equation_labels: set[str] = set()
+        self.reference_labels: set[str] = set()
 
     def blocks(self, blocks: list[Any]) -> list[Any]:
         out: list[Any] = []
@@ -129,6 +133,7 @@ class _AstWalk:
                     # the stable names everything else refers to -- would not
                     # exist in the generated file at all.
                     out.append({"t": "RawBlock", "c": ["html", f'<a id="{anchor}"></a>']})
+                    self.reference_labels.add(anchor)
                 self.sections.append({"level": level, "id": anchor, "title": title})
             if (self.section_numbered_statements and isinstance(block, dict)
                     and block.get("t") == "Div"):
@@ -143,18 +148,97 @@ class _AstWalk:
                     first[2]["c"] = number
                     if attr[0]:
                         self.statement_numbers[attr[0]] = number
-            out.append(self.node(block))
+            out.extend(self.node([block]))
         return out
 
     def node(self, node: Any) -> Any:
         if isinstance(node, list):
-            return [self.node(x) for x in node]
+            out: list[Any] = []
+            for item in node:
+                if isinstance(item, dict) and item.get("t") == "Figure" and item["c"][0][0]:
+                    label = item["c"][0][0]
+                    # GitHub removes the figure wrapper and its id. Move the
+                    # label to a surviving anchor without altering the caption.
+                    out.append({"t": "RawBlock", "c": ["html", f'<a id="{html.escape(label, quote=True)}"></a>']})
+                    self.reference_labels.add(label)
+                    item["c"][0][0] = ""
+                if isinstance(item, dict) and item.get("t") in {"Emph", "Strong"}:
+                    styled = self.node(item)
+                    if not any(child.get("t") == "Math" and child["c"][0].get("t") == "DisplayMath"
+                               for child in styled["c"]):
+                        out.append(styled)
+                        continue
+                    # Inline emphasis cannot wrap a fenced display in GFM:
+                    # Pandoc otherwise writes an invalid closing line ```*.
+                    # Keep prose styling on each side and leave math untouched.
+                    run: list[Any] = []
+
+                    def flush() -> None:
+                        whitespace = {"Space", "SoftBreak", "LineBreak"}
+                        while run and run[0].get("t") in whitespace:
+                            out.append(run.pop(0))
+                        trailing = []
+                        while run and run[-1].get("t") in whitespace:
+                            trailing.insert(0, run.pop())
+                        if run:
+                            out.append({"t": styled["t"], "c": run[:]})
+                        out.extend(trailing)
+                        run.clear()
+
+                    for child in styled["c"]:
+                        display = child.get("t") == "Math" and child["c"][0].get("t") == "DisplayMath"
+                        anchor = (child.get("t") == "RawInline" and child["c"][0] == "html"
+                                  and child["c"][1].startswith("\n\n<a id="))
+                        if display or anchor:
+                            flush()
+                            out.append(child)
+                        else:
+                            run.append(child)
+                    flush()
+                    continue
+                if (isinstance(item, dict) and item.get("t") == "Math"
+                        and item["c"][0].get("t") == "DisplayMath"):
+                    labels = list(dict.fromkeys(re.findall(
+                        r"\\label\{([^{}]+)\}", _TEX_COMMENT_RE.sub("", item["c"][1])
+                    )))
+                    if labels:
+                        # GitHub's math renderer does not expose TeX labels as
+                        # DOM targets. Keep targets outside the unchanged math,
+                        # with blank lines so GFM still recognises its fence.
+                        anchors = "\n".join(
+                            f'<a id="{html.escape(label, quote=True)}"></a>'
+                            for label in labels
+                        )
+                        out.append({"t": "RawInline", "c": ["html", f"\n\n{anchors}\n\n"]})
+                        self.equation_labels.update(labels)
+                out.append(self.node(item))
+            return out
         if not isinstance(node, dict):
             return node
+        if node.get("t") == "Div" and node["c"][0][0]:
+            # GFM retains labelled statement blocks as HTML div targets.
+            self.reference_labels.add(node["c"][0][0])
         if node.get("t") == "Cite":
             self.citations_rendered += 1
             return _render_citation(node)
         return {k: (self.node(v) if k == "c" else v) for k, v in node.items()}
+
+
+def _equation_rows(body: str) -> list[str]:
+    """Separate numbered alignment rows, retaining nested aligned displays."""
+    if not re.match(r"\s*\\begin\{(?:align|alignat|flalign|gather)\*?\}", body):
+        return [body]
+    rows: list[str] = []
+    depth, start = 0, 0
+    for token in re.finditer(r"\\(?:begin|end)\{[^{}]+\}|\\\\(?:\*?(?:\[[^\]]*\])?)", body):
+        if token.group().startswith("\\begin"):
+            depth += 1
+        elif token.group().startswith("\\end"):
+            depth -= 1
+        elif depth == 1:
+            rows.append(body[start:token.start()])
+            start = token.end()
+    return [*rows, body[start:]]
 
 
 def _tagged_equation_numbers(node: Any) -> dict[str, str]:
@@ -168,10 +252,12 @@ def _tagged_equation_numbers(node: Any) -> dict[str, str]:
             if value.get("t") == "Math" and isinstance(value.get("c"), list):
                 body = value["c"][1]
                 if isinstance(body, str):
-                    tag = re.search(r"\\tag\{([^{}]+)\}", body)
-                    if tag:
-                        for label in re.findall(r"\\label\{([^{}]+)\}", body):
-                            numbers[label] = f"({tag.group(1)})"
+                    for row in _equation_rows(_TEX_COMMENT_RE.sub("", body)):
+                        tag = re.search(r"\\tag(\*?)\{([^{}]+)\}", row)
+                        if tag:
+                            number = tag.group(2) if tag.group(1) else f"({tag.group(2)})"
+                            for label in re.findall(r"\\label\{([^{}]+)\}", row):
+                                numbers[label] = number
             for child in value.values():
                 visit(child)
     visit(node)
@@ -197,21 +283,31 @@ def _declared_equation_numbers(tex: str) -> dict[str, str]:
     return numbers
 
 
-def _render_numbered_references(node: Any, numbers: dict[str, str]) -> None:
-    """Replace Pandoc's raw label display while retaining its stable anchor."""
+def _render_numbered_references(node: Any, numbers: dict[str, str],
+                                anchored_labels: set[str] | frozenset[str] = frozenset()) -> None:
+    """Use recorded numbers and native GFM links only to emitted targets."""
     if isinstance(node, list):
         for item in node:
-            _render_numbered_references(item, numbers)
+            _render_numbered_references(item, numbers, anchored_labels)
     elif isinstance(node, dict):
         if node.get("t") == "Link":
             attr, inlines, target = node["c"]
             metadata = dict(attr[2])
             label = metadata.get("reference")
             if (metadata.get("reference-type") in {"ref", "eqref"}
-                    and target[0] == f"#{label}" and label in numbers):
-                inlines[:] = [{"t": "Str", "c": numbers[label]}]
+                    and target[0] == f"#{label}"):
+                if label in numbers:
+                    inlines[:] = [{"t": "Str", "c": numbers[label]}]
+                if label in anchored_labels:
+                    # Drop Pandoc-only metadata so its writer emits a native
+                    # GFM link rather than an attributed raw HTML reference.
+                    attr[2][:] = [pair for pair in attr[2]
+                                  if pair[0] not in {"reference-type", "reference"}]
+                    # A literal colon fragment also loses its href on GitHub;
+                    # URI encoding keeps it linked to the unchanged DOM id.
+                    target[0] = "#" + quote(label, safe="")
         for child in node.values():
-            _render_numbered_references(child, numbers)
+            _render_numbered_references(child, numbers, anchored_labels)
 
 
 def _pandoc(args: list[str], stdin: str | None = None, cwd: Path | None = None) -> str:
@@ -1189,7 +1285,8 @@ def _convert(tex_path: Path, stem: str) -> dict[str, Any]:
     )
     ast["blocks"] = walk.blocks(front + ast["blocks"])
     _render_numbered_references(ast["blocks"],
-                                {**walk.statement_numbers, **tagged_equations})
+                                {**walk.statement_numbers, **tagged_equations},
+                                walk.equation_labels | walk.reference_labels)
     markdown = _pandoc(["-f", "json", "-t", "gfm", "--wrap=none"], stdin=json.dumps(ast))
     markdown = _remove_immediate_duplicate_gfm_table_headers(markdown)
     markdown = _externalize_long_gfm_table_source_notes(markdown)

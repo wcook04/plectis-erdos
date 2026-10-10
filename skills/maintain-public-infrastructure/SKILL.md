@@ -93,6 +93,12 @@ native Markdown instead of adding a frontend framework to a README.
 Keep the claim boundary visible. Collapse supporting inventories, not limitations
 needed to understand a result. Preserve existing anchors, manuscript paths and
 citation identities; check light and dark modes and phone-width wrapping.
+For generated paper references, verify the delivered GitHub rendering as well
+as matching source anchors. GitHub can remove an unencoded colon fragment's
+href even when its target exists. Emit native Markdown links with URI-encoded
+fragments to explicit targets outside math, preserve the manuscript's formulas
+and reference text, and check standalone and bundled editions. Scope only
+rendered anchors and links; code and math literals must remain unchanged.
 These principles adapt the [pinned Taste Skill redesign guidance](https://github.com/leonxlnx/taste-skill/blob/b482f7a970abb98c4108d4a9f761e458c64cefc8/skills/taste-skill/SKILL.md)
 to the public clone; no external skill installation is needed.
 
