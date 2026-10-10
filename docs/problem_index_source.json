@@ -431,10 +431,6 @@
         {
           "id": "cofinal_adjacent_small_mismatch",
           "statement": "For every fixed h >= 1 and every N0, find N >= N0 such that both adjacent full tail shifts have absolute value less than 1 and g_{N+h+1} != g_{N+1}. The checked local consumer then excludes eventual integrality of the h-shift."
-        },
-        {
-          "id": "actual_prime_gap_tail_formal_bridge",
-          "statement": "Formalise summability of the actual prime and prime-gap dyadic series and identify the concrete infinite prime-gap tail with the checked real/rational dyadic recurrence, so the local consumer reaches the target series without a paper-only analytic bridge."
         }
       ],
       "finite_search": null,
@@ -632,10 +628,6 @@
         {
           "id": "actual_local_window_residue_escape",
           "statement": "For every positive B coprime to 30 and every starting index, produce a later actual {2,3,5} window whose least positive forcing residue exceeds the exact denominator-dependent carry bound."
-        },
-        {
-          "id": "actual_rational_carry_instantiation",
-          "statement": "Identify the formal radix word with the checked four-symbol dyadic block base, formalize the exact block digit and its link to the original summand multiplicities, and derive the positive reduced carry recurrence and its bound from a hypothetical rational value."
         },
         {
           "id": "nonstationary_analytic_theorem",

@@ -103,8 +103,58 @@ def check_discrepancy_intake() -> None:
         require(missing == {absent}, f"source identity bypasses required {absent}")
 
 
+def check_erdos269_bridge_frontier() -> None:
+    """Do not offer the closed actual-series bridge as contributor research."""
+    bridge = text("lean/ErdosProblems/Erdos269/RationalityCarryBridge.lean")
+    require("theorem exists_reducedCarry_of_value_eq_rat" in bridge,
+            "retired #269 task lost its formal bridge evidence")
+    require("(hescape : ActualCofinalLocalWindowEscape)" in bridge,
+            "#269 conditional consumer lost its actual escape hypothesis")
+    for owner in ("docs/problem_index_source.json", "docs/problems.json"):
+        problem = next(row for row in json.loads(text(owner))["problems"] if row["erdos_number"] == 269)
+        obligations = {row["id"] for row in problem["open_obligations"]}
+        require("actual_rational_carry_instantiation" not in obligations,
+                f"{owner} offers the formally closed #269 bridge as open research")
+        require("actual_local_window_residue_escape" in obligations,
+                f"{owner} lost the unresolved actual #269 escape producer")
+        require(problem["status"] == "open", f"{owner} promotes the #269 endpoint")
+    for guide in ("docs/CONTRIBUTE_BY_PAPER.md", "docs/SOURCE_MAP.md"):
+        require("actual_rational_carry_instantiation" not in text(guide),
+                f"{guide} still advertises the retired #269 task")
+    claims = json.loads(text("docs/claims.json"))
+    escape = next(row for row in claims["remaining_open_propositions"]
+                  if row["id"] == "remaining_open.erdos_269_cofinal_local_window_escape")
+    require(escape["status"] == "open", "#269 escape was silently closed")
+
+
+def check_erdos251_tail_frontier() -> None:
+    """Keep completed analytic bridges separate from the prime-specific supply."""
+    source = text("lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean")
+    for declaration in (
+        "summable_primeDyadicTerm", "summable_primeGapDyadicTerm",
+        "cast_rationalPrimeGapTailState_eq_scaled_tsum_nat_add",
+        "exists_rationalPrimeGapTailState_representation_of_not_irrational",
+        "rationalPrimeGapTailState_recurrence",
+        "cast_rationalPrimeGapTailShift_eq_scaled_tsum_sub",
+    ):
+        require(f"theorem {declaration}" in source, f"retired #251 task lost {declaration}")
+    for owner in ("docs/problem_index_source.json", "docs/problems.json"):
+        problem = next(row for row in json.loads(text(owner))["problems"] if row["erdos_number"] == 251)
+        obligations = {row["id"] for row in problem["open_obligations"]}
+        require("actual_prime_gap_tail_formal_bridge" not in obligations,
+                f"{owner} offers the completed #251 analytic bridge as open research")
+        require({"prime_gap_cofinal_shift_escape", "cofinal_adjacent_small_mismatch"} <= obligations,
+                f"{owner} lost an unresolved actual-prime-gap supplier")
+        require(problem["status"] == "open", f"{owner} promotes the #251 endpoint")
+    for guide in ("docs/CONTRIBUTE_BY_PAPER.md", "docs/SOURCE_MAP.md"):
+        require("actual_prime_gap_tail_formal_bridge" not in text(guide),
+                f"{guide} still advertises the retired #251 task")
+
+
 def main() -> int:
     check_discrepancy_intake()
+    check_erdos269_bridge_frontier()
+    check_erdos251_tail_frontier()
     # Both source-relative variants looked valid locally but GitHub rendered
     # them as /wcook04/CONTRIBUTING.md and /issues/research_progress.yml.
     for target in ("../../CONTRIBUTING.md", "research_progress.yml"):
