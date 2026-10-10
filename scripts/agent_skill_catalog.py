@@ -213,6 +213,14 @@ def normalize(text: str) -> str:
 
 def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
     normalized_task = normalize(task)
+    # A prerequisite explicitly avoided by the reader is not an action object.
+    # Remove only that bounded mention: a separate positive Lean/proof request
+    # in the same task must still reach its existing validation or research lane.
+    normalized_task = re.sub(
+        r"\bwithout (?:(?:installing|running|using|setting up) )?"
+        r"(?:(?:a|the) )?lean(?: (?:installation|toolchain))?\b",
+        "", normalized_task,
+    )
     task_tokens = set(normalized_task.split())
     proof_intent = bool(
         task_tokens & {"attack", "counterexample", "prove", "solve"}
@@ -240,6 +248,15 @@ def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
             actions = task_tokens.intersection(intent["actions"])
             objects = task_tokens.intersection(intent["objects"])
             if actions and objects:
+                # A reported setup fault is an implicit request for help, but
+                # does not override an explicit explanation, status or proof task.
+                if actions <= {"fails", "failed", "broken"} and (
+                    task_tokens & {"explain", "describe", "summarize", "status", "report"}
+                    or proof_intent
+                    or (task_tokens & {"validate", "verify", "compile", "check"}
+                        and task_tokens & {"proof", "proofs", "theorem", "theorems"})
+                ):
+                    continue
                 matches.append(f"{sorted(actions)[0]} + {sorted(objects)[0]}")
                 # Two explicit intent components outweigh a generic later
                 # stage such as "propagate the downstream consequences".

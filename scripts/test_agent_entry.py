@@ -157,6 +157,31 @@ ROUTE_CASES = {
     "Try a simple exact calculation": (
         "rational_subsum_probe", "explain-public-system",
     ),
+    # Actual cold-visitor language; avoiding a tool is not requesting that tool.
+    "I found this on HN. Show me a small exact calculation I can run without Lean.": (
+        "rational_subsum_probe", "explain-public-system",
+    ),
+    "Can I reproduce a calculation without installing Lean?": (
+        "rational_subsum_probe", "explain-public-system",
+    ),
+    "Reproduce a calculation without running Lean": (
+        "rational_subsum_probe", "explain-public-system",
+    ),
+    "Reproduce a calculation without a Lean installation": (
+        "rational_subsum_probe", "explain-public-system",
+    ),
+    "Reproduce a calculation without setting up the Lean toolchain": (
+        "rational_subsum_probe", "explain-public-system",
+    ),
+    "Validate a Lean proof using this small exact calculation without installing Lean locally": (
+        "lean_validation", "lean-concurrent-validation",
+    ),
+    "Prove a theorem using this small exact calculation without using Lean": (
+        "bounded_research", "mine-open-problem",
+    ),
+    "Reproduce the Lean proof without installing Python": (
+        "lean_validation", "lean-concurrent-validation",
+    ),
     "Prove a theorem using this quick math example": (
         "bounded_research", "mine-open-problem",
     ),
@@ -567,8 +592,20 @@ ROUTE_CASES = {
     'Review the #257 theorem in the paper without running Comparator': ('understand_repository', 'explain-public-system'),
     # Cold visitor corrections and clone repair use their existing workflows.
     'Help me fix my clone and keep my local work': ('repository_architecture', 'maintain-public-infrastructure'),
+    'I cloned this on Linux and the setup command fails.': ('repository_architecture', 'maintain-public-infrastructure'),
+    'My installation failed': ('repository_architecture', 'maintain-public-infrastructure'),
+    'My clone is broken': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Explain why the setup command fails': ('understand_repository', 'explain-public-system'),
+    'Describe the failed setup': ('understand_repository', 'explain-public-system'),
+    'Report whether my installation failed': ('understand_repository', 'explain-public-system'),
+    'Explain why the setup command fails and fix it': ('repository_architecture', 'maintain-public-infrastructure'),
+    'Prove the theorem after setup failed': ('bounded_research', 'mine-open-problem'),
+    'Validate the Lean proof after setup failed': ('lean_validation', 'lean-concurrent-validation'),
     'Repair the clones without discarding the local work': ('repository_architecture', 'maintain-public-infrastructure'),
     'I found an unclear explanation and want to contribute a correction': ('submit_change', 'submit-pull-request'),
+    'I want to fix a typo in the paper and send a correction.': ('submit_change', 'submit-pull-request'),
+    'Send these corrections to the reading guide': ('submit_change', 'submit-pull-request'),
+    'Send my mathematical proof and its corrections': ('return_research', 'erdos-research-return'),
     'I am contributing corrections to the first reader guide': ('submit_change', 'submit-pull-request'),
     'Report corrections to the public reading guide': ('submit_change', 'submit-pull-request'),
     'Explain how a clone preserves local work': ('understand_repository', 'explain-public-system'),

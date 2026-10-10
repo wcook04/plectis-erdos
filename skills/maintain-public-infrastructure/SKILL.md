@@ -54,8 +54,16 @@ records separately. Replacing a whole ledger to settle one digest conflict can
 silently discard valid source bindings.
 Keep the human clone/prompt instructions in `docs/agents/README.md`
 and the behavioral provenance cases in `scripts/test_agent_entry.py`, which
-the release gate already runs. Inspect bounded Python unit checks in the separate CI build and first-contact jobs as well as release-surfaces. Register them in the shared local/CI leaf gate: a passing release-surfaces job cannot account for a test that runs only later in another job. Exercise forks, tags, archives, dirty worktrees,
-and unavailable network access without requiring a network in tests. Check the
+the release gate already runs. Before enabling automatic merge, inventory every
+applicable workflow, including path-triggered checks that branch protection may
+leave optional. If that complete gate is not enforced automatically, wait for
+all applicable checks and perform an ordinary exact-head merge. Platform
+acceptance alone does not establish that every check passed.
+Inspect bounded Python unit checks in the separate CI build and first-contact jobs as well as release-surfaces. Register them in the shared local/CI leaf gate: a passing release-surfaces job cannot account for a test that runs only later in another job. Exercise forks, tags, archives, dirty worktrees,
+and unavailable network access without requiring a network in tests. When a
+fixture mocks PATH or tool selection, derive expected child environments before
+leaving that context. Retain independent assertions that hostile selectors are
+absent, and exercise the direct CI case without the local runner's prebound Node. Check the
 combined first-contact route budget as well as each entry file: newcomer setup
 belongs in the agent index, not in an already full technical reading bundle.
 
@@ -102,6 +110,12 @@ The Formal Conjectures crosswalk owns this distinction and its generated guide.
 For a repository governance or documentation task, verify that entry selects
 this maintenance workflow. For finding contribution guidelines or preparing a
 finished patch, entry should name `CONTRIBUTING.md` and the submission workflow.
+When a visitor explicitly avoids a prerequisite, do not count that mention as
+requesting the tool. Match the positive task and test separate positive proof
+or validation mentions in the same sentence. Keep examples in ordinary reader
+language as well as the catalogue's named cues. A reported setup fault can be
+an implicit request for help; keep explicit explanation, status and proof tasks
+on their own routes, and retain a separately requested repair.
 A nearby proof, theorem-status or returned-proof request must retain its own
 lane. Preserve these neighboring requests as fixtures alongside the observed
 failure; contribution words alone should not turn proof search into Git work.
