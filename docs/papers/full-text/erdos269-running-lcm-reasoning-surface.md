@@ -2474,10 +2474,10 @@ Multiplying block radices along a run of blocks gives the product of the prime m
 
 For completeness we reproduce the first-success counts from the larger scan in Section [11](#long269%3Asec%3Aevidence). It tested $`B\le5000`$ coprime to $`30`$ and $`100\le\ell\le3000`$, stopping each search at depth $`24`$. The saved output ([scan-5000-100-3000.json](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos269/large-computations/receipts/scan-5000-100-3000.json)) gives $`3{,}869{,}934`$ pairs, a segment satisfying the inequality in every case, and the following first-success histogram:
 ``` math
-\resizebox{\linewidth}{!}{$\begin{array}{c|rrrrrrrrrrrrrrr}
+\begin{array}{c|rrrrrrrrrrrrrrr}
 h&4&5&6&7&8&9&10&11&12&13&14&15&16&17&18\\ \hline
 \#&1&104&812&5437&51409&237423&735450&1431226&1132756&236752&34910&3076&521&49&8
-\end{array}$}
+\end{array}
 ```
 The first case attaining the maximal observed length $`18`$ has $`B=917`$ and $`\ell=2980`$. The smaller run ([scan-1000-100-500.json](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos269/large-computations/receipts/scan-1000-100-500.json)) over $`B\le1000`$ coprime to $`30`$ and $`100\le\ell\le500`$ gives $`106{,}666`$ pairs and maximal first successful length $`14`$, first attained at $`B=359`$ and $`\ell=291`$. The two cases have the following data.
 

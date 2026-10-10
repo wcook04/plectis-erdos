@@ -3832,72 +3832,74 @@ Table [1](#tab%3Ascale-ladder) records both the exact parameter ranges and the 
 | [detail note 1](#paper-table-note-6af8075221cbd809) | $`D=\{2,3\},\ c=5`$ |
 | Exact residual: $`\tfrac12-W(\{2,3,6,7\})=\tfrac1{16002}`$ (exact computation). [`half_sub_four_term_prefix_eq`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCutLocator.lean#L664) | none (numeric instance) |
 | Closed-form Möbius–Lambert value $`\sum_{d\ge1}\mu(d)/(2^d-1)=1/2`$ (classical identity, cited). [`tsum_moebius_div_two_pow_sub_one_eq_half`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MersenneLambertLadder.lean#L587) | none (closed-form value) |
-| The one natural negative-Möbius candidate support overshoots: $`1/2 <
-\sum_{d\in N}1/(2^d-1)`$ for $`N=\{d\ge2:\mu(d)=-1\}`$. [`half_lt_tsum_negativeMobius`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MobiusSignSupportNoGo.lean#L164) | one fixed candidate support $`N`$ |
+| [detail note 2](#paper-table-note-f2306130f9df10c3) | one fixed candidate support $`N`$ |
 |  |  |
-| [detail note 2](#paper-table-note-afaa2883817b967d) | $`\forall n\ge6`$, given a row at $`n`$: $`(\ldots)\lor\exists c\le n(\ldots)`$ |
-| [detail note 3](#paper-table-note-abffbca55a06ebc8) | $`E\subseteq[2,n]`$, $`X_E(2)>1/2`$: $`\exists c\le n`$ |
-| [detail note 4](#paper-table-note-4e7b4c139890961c) | $`1\le h\le16`$ (explicit bound) |
+| [detail note 3](#paper-table-note-2f66740488415eab) | $`\forall n\ge6`$, given a row at $`n`$: $`(\ldots)\lor\exists c\le n(\ldots)`$ |
+| [detail note 4](#paper-table-note-d1d6bd83ed248875) | $`E\subseteq[2,n]`$, $`X_E(2)>1/2`$: $`\exists c\le n`$ |
+| [detail note 5](#paper-table-note-40bc8d2e4fbc6c9b) | $`1\le h\le16`$ (explicit bound) |
 | Truncation-rung ladder: $`\mathrm{HalfRung}(J)`$ proved for every $`3\le J\le22`$ via the finite decision procedure (§[8](#sec%3Afour-coordinates), Theorem [200](#thm%3Atr-finite-decision)); ordinary argument with exact computation ([working note](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/notes/truncation-rung-ladder-2026-07-24.md), [program](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/check_truncation_rung_ladder.py)). | $`3\le J\le22`$ (finite table, exhaustive) |
 |  |  |
-| [detail note 5](#paper-table-note-3ed95892f1755856) | $`\forall x\ge0`$, membership iff survival at every rank |
-| [detail note 6](#paper-table-note-331d28e483534677) | $`\forall M\in`$ skipped support |
-| [detail note 7](#paper-table-note-6e33c78a4a2a6d04) | $`c\ge4`$, $`D\subseteq[2,c)`$, $`0<1/2-X_D(2)<w_c`$ |
-| [detail note 8](#paper-table-note-b549d9bea78a5a79) | $`\forall s\ge14`$, given the hypothesis |
-| [detail note 9](#paper-table-note-371190a488915c96) | $`13\le r\le30`$, exhaustive |
-| [detail note 10](#paper-table-note-dd1484fe640fb70b) | $`\forall d,E`$ with $`E\le2^{d+1}`$ |
+| [detail note 6](#paper-table-note-d6862bc77944166c) | $`\forall x\ge0`$, membership iff survival at every rank |
+| [detail note 7](#paper-table-note-f4ec8da9fd37bf7c) | $`\forall M\in`$ skipped support |
+| [detail note 8](#paper-table-note-9fc63683e6b40476) | $`c\ge4`$, $`D\subseteq[2,c)`$, $`0<1/2-X_D(2)<w_c`$ |
+| [detail note 9](#paper-table-note-e33d13adb6ef3f6f) | $`\forall s\ge14`$, given the hypothesis |
+| [detail note 10](#paper-table-note-eb92846706941c16) | $`13\le r\le30`$, exhaustive |
+| [detail note 11](#paper-table-note-ae5a4feb08c1841e) | $`\forall d,E`$ with $`E\le2^{d+1}`$ |
 | Parity obstruction: no finite support has value $`1/2`$. [`finite_boolSupport_ne_half`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCarryReachability.lean#L589) | $`\forall A`$ finite, $`0\notin A`$ |
 | Full-support irrationality at every integer base. [`irrational_erdosSum_full_support`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8328); base two: [`irrational_erdosBorwein_series`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8335) | $`\forall b\ge2`$ |
-| [detail note 11](#paper-table-note-637b19cbb3c14b52) | $`\forall b\ge2\ \forall A`$ (infinite, coprime, summable) |
-| [detail note 12](#paper-table-note-6e32fc6cbd6116b5) | [detail note 13](#paper-table-note-d534d5b034adea1b) |
+| [detail note 12](#paper-table-note-03b7708817fd7a2b) | $`\forall b\ge2\ \forall A`$ (infinite, coprime, summable) |
+| [detail note 13](#paper-table-note-b94dd95e1c8aabb2) | [detail note 14](#paper-table-note-5f41d00cad392c57) |
 | Finite greedy-prefix denominators are odd (source of the parity boundary exclusion, §[8](#sec%3Afour-coordinates)). [`halfGreedyPrefixDenominator_odd`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/DyadicPrefixCompression.lean#L1521) | $`\forall n`$ |
 |  |  |
 |  |  |
 | The exact-row existence condition: exact rows recur at arbitrarily large endpoints, with no coherence required between witnesses (unproved). [`CofinalExactLocalMersenneHalfRows`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCofinalExactRows.lean#L38) | $`\forall N\ \exists n\ge N`$: an exact row at depth $`n`$ |
-| [detail note 14](#paper-table-note-191aede1c49e8bec) | given $`\forall N\,\exists n\ge N(\ldots)`$ |
-| An equivalent membership condition: the canonical rational half-greedy orbit itself has infinitely many positive skips (unproved). [`CofinalPositiveHalfGreedySkips`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L22) | [detail note 15](#paper-table-note-f6e3fe8b7edce452) |
-| [detail note 16](#paper-table-note-95c2ae150bc76774) | given $`\forall N\,\exists c\ge N(\ldots)`$ |
-| [detail note 17](#paper-table-note-e2f956f4eea0be63) | the skipped support is infinite |
-| [detail note 18](#paper-table-note-738d5aab90351586) | every right-hand side asserts unboundedly many indices |
+| [detail note 15](#paper-table-note-bfbf4530b780e4f5) | given $`\forall N\,\exists n\ge N(\ldots)`$ |
+| An equivalent membership condition: the canonical rational half-greedy orbit itself has infinitely many positive skips (unproved). [`CofinalPositiveHalfGreedySkips`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L22) | [detail note 16](#paper-table-note-9c5d2356ca370c1d) |
+| [detail note 17](#paper-table-note-d2a7d6e1f5968237) | given $`\forall N\,\exists c\ge N(\ldots)`$ |
+| [detail note 18](#paper-table-note-6233177199e84499) | the skipped support is infinite |
+| [detail note 19](#paper-table-note-c46ad586d84cd890) | every right-hand side asserts unboundedly many indices |
 | Ladder dichotomy: either infinitely many rungs survive (#257 false, explicit limit support) or an eventual bad-rank obstruction closes only this route (ordinary argument, Corollary 8 of the [truncation-rung note](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/notes/truncation-rung-ladder-2026-07-24.md)). | open branch (a): $`\exists^\infty J,\ \mathrm{HalfRung}(J)`$ |
 | Reset square-root escape, a sufficient all-reset hypothesis (unproved). Theorem [247](#thm%3Alower-bound-every-reset) gives the conditional implication; the run-length comparison is discussed separately in Section [12.5](#sec%3Ao4). | $`\forall r\ge10`$ that are resets, $`|\mathrm{rem}(r+1)-2^{r+1}|>2^{(r+5)/2}`$ |
 |  |  |
 
 <a id="paper-table-note-6af8075221cbd809"></a> **Detail note 1.** The combined-residue-mass $`\le 1`$ sufficient test for sharp capacity is not necessary: example $`D=\{2,3\}`$, $`c=5`$ (exact computation). [`splitFractionMass_one_bound_not_necessary_fixture`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkippedCoreCriticalCapacity.lean#L183)
 
-<a id="paper-table-note-afaa2883817b967d"></a> **Detail note 2.** From an exact row, either repeated doubling is available or an exact row is obtained at some $`2c-2`$ with $`c\le n`$; these alternatives need not be disjoint. [`exactLocalMersenneHalfRow_double_or_recycle`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDichotomy.lean#L26)
+<a id="paper-table-note-f2306130f9df10c3"></a> **Detail note 2.** The one natural negative-Möbius candidate support overshoots: $`1/2 <
+\sum_{d\in N}1/(2^d-1)`$ for $`N=\{d\ge2:\mu(d)=-1\}`$. [`half_lt_tsum_negativeMobius`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MobiusSignSupportNoGo.lean#L164)
 
-<a id="paper-table-note-abffbca55a06ebc8"></a> **Detail note 3.** Every above-half bounded support recycles into a genuine exact row at some $`2c-2`$ with $`c\le n`$. [`exists_skippedCoreExactRow_of_value_above`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowCrossing.lean#L155)
+<a id="paper-table-note-2f66740488415eab"></a> **Detail note 3.** From an exact row, either repeated doubling is available or an exact row is obtained at some $`2c-2`$ with $`c\le n`$; these alternatives need not be disjoint. [`exactLocalMersenneHalfRow_double_or_recycle`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDichotomy.lean#L26)
 
-<a id="paper-table-note-4e7b4c139890961c"></a> **Detail note 4.** (A cross-check for Problem #249.) $`\sum\varphi(n)/2^n`$ matches no rational whose denominator divides $`2^{14}(2^h-1)`$, for some $`1\le h\le16`$ (exact computation). [`totient_series_ne_rat_of_den_dvd_upto_sixteen`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CarrySurvivorExtinction.lean#L587)
+<a id="paper-table-note-d1d6bd83ed248875"></a> **Detail note 4.** Every above-half bounded support recycles into a genuine exact row at some $`2c-2`$ with $`c\le n`$. [`exists_skippedCoreExactRow_of_value_above`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowCrossing.lean#L155)
 
-<a id="paper-table-note-3ed95892f1755856"></a> **Detail note 5.** Membership equals greedy survival. [`mem_mersenneAchievementSet_iff_greedy_survival`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1458)
+<a id="paper-table-note-40bc8d2e4fbc6c9b"></a> **Detail note 5.** (A cross-check for Problem #249.) $`\sum\varphi(n)/2^n`$ matches no rational whose denominator divides $`2^{14}(2^h-1)`$, for some $`1\le h\le16`$ (exact computation). [`totient_series_ne_rat_of_den_dvd_upto_sixteen`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CarrySurvivorExtinction.lean#L587)
 
-<a id="paper-table-note-331d28e483534677"></a> **Detail note 6.** Membership iff every actually skipped rank survives. [`no_lastHalfGreedySkip_iff_every_skip_survives`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFixedTailSocket.lean#L57)
+<a id="paper-table-note-d6862bc77944166c"></a> **Detail note 6.** Membership equals greedy survival. [`mem_mersenneAchievementSet_iff_greedy_survival`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L1458)
 
-<a id="paper-table-note-6e33c78a4a2a6d04"></a> **Detail note 7.** Every crossing core is forced to be the canonical rational half-greedy prefix. [`eq_halfGreedyPrefixSupport_of_critical_crossing`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L50)
+<a id="paper-table-note-f4ec8da9fd37bf7c"></a> **Detail note 7.** Membership iff every actually skipped rank survives. [`no_lastHalfGreedySkip_iff_every_skip_survives`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderFixedTailSocket.lean#L57)
 
-<a id="paper-table-note-b549d9bea78a5a79"></a> **Detail note 8.** Largest-skip conditional implication used in the reset argument. [`half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLargestSkipInduction.lean#L167)
+<a id="paper-table-note-9fc63683e6b40476"></a> **Detail note 8.** Every crossing core is forced to be the canonical rational half-greedy prefix. [`eq_halfGreedyPrefixSupport_of_critical_crossing`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCriticalCapacityCofinal.lean#L50)
 
-<a id="paper-table-note-371190a488915c96"></a> **Detail note 9.** Band avoidance verified by exact computation at reset indices $`13\le r\le30`$, using successor remainders at indices $`14,\ldots,31`$. This is a finite range of the conditional hypothesis. [`seamUpperResetDyadicBandEscape_through_thirty`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderUpperResetBandCertificates.lean#L78)
+<a id="paper-table-note-e33d13adb6ef3f6f"></a> **Detail note 9.** Largest-skip conditional implication used in the reset argument. [`half_mem_mersenneAchievementSet_of_largestSkipLateStepSocket`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderLargestSkipInduction.lean#L167)
 
-<a id="paper-table-note-dd1484fe640fb70b"></a> **Detail note 10.** Critical-band-index reduction: a $`(d{+}1)`$-way check collapses to one nearest-boundary check. [`half_mem_mersenneAchievementSet_of_upperResetCriticalBandEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfUpperResetCriticalBand.lean#L896)
+<a id="paper-table-note-eb92846706941c16"></a> **Detail note 10.** Band avoidance verified by exact computation at reset indices $`13\le r\le30`$, using successor remainders at indices $`14,\ldots,31`$. This is a finite range of the conditional hypothesis. [`seamUpperResetDyadicBandEscape_through_thirty`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderUpperResetBandCertificates.lean#L78)
 
-<a id="paper-table-note-637b19cbb3c14b52"></a> **Detail note 11.** Erdős 1968: any infinite, pairwise-coprime, reciprocal-summable index set gives an irrational support series. [`irrational_erdosSupportSeries_pairwise_coprime`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L10776)
+<a id="paper-table-note-ae5a4feb08c1841e"></a> **Detail note 11.** Critical-band-index reduction: a $`(d{+}1)`$-way check collapses to one nearest-boundary check. [`half_mem_mersenneAchievementSet_of_upperResetCriticalBandEscape`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfUpperResetCriticalBand.lean#L896)
 
-<a id="paper-table-note-6e32fc6cbd6116b5"></a> **Detail note 12.** Block-certificate criterion, independent of the problem: a weighted-coefficient series is irrational given a divisibility and window certificate at every precision. [`irrational_coeff_series_of_weighted_coeff_block_certificates`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8665)
+<a id="paper-table-note-03b7708817fd7a2b"></a> **Detail note 12.** Erdős 1968: any infinite, pairwise-coprime, reciprocal-summable index set gives an irrational support series. [`irrational_erdosSupportSeries_pairwise_coprime`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L10776)
 
-<a id="paper-table-note-d534d5b034adea1b"></a> **Detail note 13.** $`\forall b\ge2\ \forall c\,(\forall m,c(m)\le m)`$, given $`\forall q\,\exists N,K,L,C`$
+<a id="paper-table-note-b94dd95e1c8aabb2"></a> **Detail note 13.** Block-certificate criterion, independent of the problem: a weighted-coefficient series is irrational given a divisibility and window certificate at every precision. [`irrational_coeff_series_of_weighted_coeff_block_certificates`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/CertificateKernel.lean#L8665)
 
-<a id="paper-table-note-191aede1c49e8bec"></a> **Detail note 14.** The preceding condition implies $`1/2\in\mathcal A`$ by compactness (theorem proved; hypothesis open). [`half_mem_mersenneAchievementSet_of_cofinalExactLocalRows`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCofinalExactRows.lean#L71)
+<a id="paper-table-note-5f41d00cad392c57"></a> **Detail note 14.** $`\forall b\ge2\ \forall c\,(\forall m,c(m)\le m)`$, given $`\forall q\,\exists N,K,L,C`$
 
-<a id="paper-table-note-f6e3fe8b7edce452"></a> **Detail note 15.** $`\forall N\ \exists c\ge\max(N,4),\ 0<\mathrm{rem}(c{-}1)<w_c`$
+<a id="paper-table-note-bfbf4530b780e4f5"></a> **Detail note 15.** The preceding condition implies $`1/2\in\mathcal A`$ by compactness (theorem proved; hypothesis open). [`half_mem_mersenneAchievementSet_of_cofinalExactLocalRows`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusCofinalExactRows.lean#L71)
 
-<a id="paper-table-note-95c2ae150bc76774"></a> **Detail note 16.** Infinitely many positive greedy skips imply $`1/2\in\mathcal A`$ (theorem proved; hypothesis open). [`half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L97)
+<a id="paper-table-note-9c5d2356ca370c1d"></a> **Detail note 16.** $`\forall N\ \exists c\ge\max(N,4),\ 0<\mathrm{rem}(c{-}1)<w_c`$
 
-<a id="paper-table-note-e2f956f4eea0be63"></a> **Detail note 17.** Membership iff the greedy skip set is infinite (equivalence proved; both sides assert unboundedly many indices). [`half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L2583)
+<a id="paper-table-note-d2a7d6e1f5968237"></a> **Detail note 17.** Infinitely many positive greedy skips imply $`1/2\in\mathcal A`$ (theorem proved; hypothesis open). [`half_mem_mersenneAchievementSet_of_positiveHalfGreedySkips`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusSkipRowCofinal.lean#L97)
 
-<a id="paper-table-note-738d5aab90351586"></a> **Detail note 18.** Seven equivalent forms of membership (Theorem [76](#thm%3Anine-way-hub)): the integer-greedy sequence is not eventually always on branch $`\mathrm R`$, the terminal rank is omitted at unboundedly many rows, there are cofinally many skipped ranks, *etc.* [`half_mem_mersenneAchievementSet_iff_not_seamGreedyEventuallyRight`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L112)
+<a id="paper-table-note-6233177199e84499"></a> **Detail note 18.** Membership iff the greedy skip set is infinite (equivalence proved; both sides assert unboundedly many indices). [`half_mem_mersenneAchievementSet_iff_greedySkippedSupport_infinite`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GreedyAchievementSet.lean#L2583)
+
+<a id="paper-table-note-c46ad586d84cd890"></a> **Detail note 19.** Seven equivalent forms of membership (Theorem [76](#thm%3Anine-way-hub)): the integer-greedy sequence is not eventually always on branch $`\mathrm R`$, the terminal rank is omitted at unboundedly many rows, there are cofinally many skipped ranks, *etc.* [`half_mem_mersenneAchievementSet_iff_not_seamGreedyEventuallyRight`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/HalfCylinderHalfMembershipClassification.lean#L112)
 
 
 Quantifiers for the stated results. The groups separate finite tests, uniform implications, unbounded witness conditions and all-reset hypotheses. A theorem conditional on an unproved hypothesis is not a proof of that hypothesis.

@@ -267,7 +267,7 @@ If $`X,Y`$ are independent fair-coin waiting times, $`\Pr(X=n)=2^{-n}`$, then
 ``` math
 S=\tfrac12+\Pr(\gcd(X,Y)=1).
 ```
-Thus Erdős #249 also asks whether the probability that two independent fair-coin waiting times are coprime is irrational. The exact identity is Proposition [22](#res%3Acoprime); its Möbius-square form and the periodic and finite-algebraic variants of these identities are collected in Appendices <a href="#app:lambert-weighted" data-reference-type="ref" data-reference="app:lambert-weighted">[app:lambert-weighted]</a>–[13.2](#app%3Alambert-algebraic).
+Thus Erdős #249 also asks whether the probability that two independent fair-coin waiting times are coprime is irrational. The exact identity is Proposition [22](#res%3Acoprime); its Möbius-square form and the periodic and finite-algebraic variants of these identities are collected in Appendices [\[app:lambert-weighted\]](#app%3Alambert-weighted)–[13.2](#app%3Alambert-algebraic).
 
 <a id="what-this-section-provesand-does-not-prove."></a>
 
@@ -1514,7 +1514,7 @@ The problem numbering and status follow the Erdős Problems catalogue maintained
 
 This appendix records the local arithmetic used to reach Theorems [14](#res%3Ahalfmembership) and [17](#res%3Afatalright), Proposition [18](#res%3Afinalskipexclusions), and Corollary [19](#res%3Ataildominance). Its statements have four statuses: exact identities or equivalences; implications with an unproved hypothesis; exact finite calculations; and counterexamples showing that a proposed local argument is insufficient. None changes the two open conclusions at the end of Section [4](#sec%3Aeb). Readers concerned only with the main reductions may skip the appendix.
 
-The parts are ordered by their role in the greedy argument. Appendix <a href="#app:half-localizer" data-reference-type="ref" data-reference="app:half-localizer">[app:half-localizer]</a> computes the residual interval for one take–skip–take pattern, without showing that the half-value orbit enters or avoids it. Appendix [10.2](#app%3Ahalf-conditional-producers) gives one conditional irrationality criterion for a structured support, several sufficient hypotheses for $`1/2\in\mathcal A`$, and the local identities they use. Appendix [10.3](#app%3Ahalf-finite-cofinal) separates a finite witness from the unbounded supply of such witnesses needed for membership. Appendix [10.4](#app%3Ahalf-final-skip) identifies nonmembership with a last greedy skip, excludes some possible last transitions, and states the two exceptional carry exclusions and unused-tail inequality still missing. Appendix [10.5](#app%3Ahalf-evidence) contains finite checks, changes of coordinates, and counterexamples to shortcuts.
+The parts are ordered by their role in the greedy argument. Appendix [\[app:half-localizer\]](#app%3Ahalf-localizer) computes the residual interval for one take–skip–take pattern, without showing that the half-value orbit enters or avoids it. Appendix [10.2](#app%3Ahalf-conditional-producers) gives one conditional irrationality criterion for a structured support, several sufficient hypotheses for $`1/2\in\mathcal A`$, and the local identities they use. Appendix [10.3](#app%3Ahalf-finite-cofinal) separates a finite witness from the unbounded supply of such witnesses needed for membership. Appendix [10.4](#app%3Ahalf-final-skip) identifies nonmembership with a last greedy skip, excludes some possible last transitions, and states the two exceptional carry exclusions and unused-tail inequality still missing. Appendix [10.5](#app%3Ahalf-evidence) contains finite checks, changes of coordinates, and counterexamples to shortcuts.
 
 The two routes used below have the logical form
 ``` math
@@ -2811,7 +2811,7 @@ The one-scale mechanisms and conditional implications in Appendix [12.2](#app%3
 
 This appendix supplies the extensions cited from the Lambert-series identities in Section [3](#sec%3Aladder) and from the coprime-pair representation after Proposition [22](#res%3Acoprime). The results proved here are the periodic-weight classifications, finite denominator obstructions, the Möbius-square and squared Lambert identities, and the Stern–Brocot cylinder and continuant laws. These enlarge the two coordinate pictures; they are not additional steps in either open proof.
 
-The three parallel families may be skipped on a first reading. Appendix <a href="#app:lambert-weighted" data-reference-type="ref" data-reference="app:lambert-weighted">[app:lambert-weighted]</a> proves or classifies weighted Lambert series with coefficient inputs different from the open totient input. Appendix [13.2](#app%3Alambert-algebraic) gives exact identities and finite algebraic boundaries for the squared and Möbius coordinates. Appendix [13.3](#app%3Alambert-probability) develops unconditional geometry internal to the coprime-pair probability coordinate. No conclusion about a comparison input transfers irrationality to $`S`$, and none of the three families supplies the after-every-cutoff $`\mathsf{Sep}`$ theorem.
+The three parallel families may be skipped on a first reading. Appendix [\[app:lambert-weighted\]](#app%3Alambert-weighted) proves or classifies weighted Lambert series with coefficient inputs different from the open totient input. Appendix [13.2](#app%3Alambert-algebraic) gives exact identities and finite algebraic boundaries for the squared and Möbius coordinates. Appendix [13.3](#app%3Alambert-probability) develops unconditional geometry internal to the coprime-pair probability coordinate. No conclusion about a comparison input transfers irrationality to $`S`$, and none of the three families supplies the after-every-cutoff $`\mathsf{Sep}`$ theorem.
 
 <a id="sec:additional-lambert"></a>
 
@@ -2914,7 +2914,7 @@ Formalised: [Möbius-square identity](https://github.com/wcook04/plectis-erdos/b
 
 #### Squared Lambert calculus.
 
-Write $`L^{(2)}(f)=\sum_{d\ge1}f(d)/(2^d-1)^2`$; this notation distinguishes the squared-denominator transform from the ordinary base-two transform $`L_2`$ in Appendix <a href="#app:lambert-weighted" data-reference-type="ref" data-reference="app:lambert-weighted">[app:lambert-weighted]</a>. If $`X,Y`$ are independent and $`\Pr(X=n)=\Pr(Y=n)=2^{-n}`$ for $`n\ge1`$, then $`\Pr(d\mid\gcd(X,Y))=(2^d-1)^{-2}`$. The formal transfer theorem, [squared Lambert transfer](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L105), therefore gives a divisor calculus for their gcd.
+Write $`L^{(2)}(f)=\sum_{d\ge1}f(d)/(2^d-1)^2`$; this notation distinguishes the squared-denominator transform from the ordinary base-two transform $`L_2`$ in Appendix [\[app:lambert-weighted\]](#app%3Alambert-weighted). If $`X,Y`$ are independent and $`\Pr(X=n)=\Pr(Y=n)=2^{-n}`$ for $`n\ge1`$, then $`\Pr(d\mid\gcd(X,Y))=(2^d-1)^{-2}`$. The formal transfer theorem, [squared Lambert transfer](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/GcdMomentCalculus.lean#L105), therefore gives a divisor calculus for their gcd.
 
 <div id="res:gcdmoment" class="proposition">
 

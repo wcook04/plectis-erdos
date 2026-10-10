@@ -4,7 +4,7 @@
 
 Start with [Distinct running least common multiples](../../../docs/papers/full-text/erdos-269-three-prime-running-lcm.md). The longer account is [Running least common multiples: distinct values and multiplicities](../../../docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md).
 
-Registered assertions: 14 short, 48 long. Located long-record links: 5. Proofs retained in the short paper: 5. Long correspondences still open: 9.
+Registered assertions: 14 short, 48 long. Located long-record links: 5. Proofs retained in the short paper: 6. Long correspondences still open: 9.
 
 Checks registered asserting environments and registered claim spans. Unregistered prose assertions, mathematical equivalence, correctness of ordinary proofs, Lean compilation, Comparator replay and PDF freshness are not established by this audit.
 
@@ -220,11 +220,19 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 ### res:windowconsumer
 
-State: **unresolved**.
+State: **short_proof_explained_long_link_open**.
 
 Short statement: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 547-557.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
+
+Retained short-paper argument: [paper/269/erdos-269-three-prime-running-lcm.tex](../../../paper/269/erdos-269-three-prime-running-lcm.tex) lines 558-585.
+
+Both directions of the existing residue-window equivalence remain in the short paper, including every coprime denominator and every sufficiently late start. No finite scan is substituted for that quantification. This argument was already present in the r5 input and has been retained. The disposition accounts for the queue; it does not assert acceptance of a new long-record binding.
+
+Review status: 10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5 and current complete proofs; statement, hypotheses and dependencies unchanged; no long-record correspondence or independent review..
+
+This hash-bound passage records proof availability; its mathematical correctness is not checked by this audit. No accepted long-record correspondence is established by this disposition.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
