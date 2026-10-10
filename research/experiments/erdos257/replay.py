@@ -21,6 +21,8 @@ ROOT = Path(__file__).resolve().parent
 SCHEMA = "erdos257-public-computation/1"
 LADDER_STDLIB = [str(j) for j in range(3, 17)]
 LADDER_NUMPY = [str(j) for j in range(17, 23)]
+# eps_1 ... eps_64 of the greedy expansion of 1/2, printed by exact_half_greedy.py.
+HALF_PREFIX_64 = "0110011000000100000110000110000111100110010111111110101111110010"
 MACRO_OUTPUTS = (
     "/tmp/coefficient_selected_423377.csv",
     "/tmp/coefficient_support_423377.bin",
@@ -49,11 +51,24 @@ CASES = {
                              "greedy-prefix-100000.json", "json", "stdlib"),
     "coefficient-macro": ("half_prefix_coefficient_macro_verify.cpp", [],
                           "coefficient-macro-13548057.json", "cpp", "c++ and GMP"),
+    # Reproduction of C. M. Hong, doi:10.5281/zenodo.23287959 (notes/hong-carry-calculus-remarks).
+    "half-greedy-exact-1500": ("exact_half_greedy.py", ["1500", "64"],
+                               "half-greedy-exact-1500.json", "json", "stdlib"),
+    "hong-process-100000000": ("hong_c2_process.c", ["100000000", HALF_PREFIX_64, "13548057", "43177919"],
+                               "hong-process-100000000.json", "c", "C compiler, 1.3 GB memory"),
+    "hong-pinning-2-22": ("hong_pinning_lengths.c", ["2", "22", "8"],
+                          "hong-pinning-lengths-2-22.json", "c", "C compiler with pthreads"),
+    "hong-pinning-23-24": ("hong_pinning_lengths.c", ["23", "24", "8"],
+                           "hong-pinning-lengths-23-24.json", "c", "C compiler with pthreads"),
+    "full-series-cap-resets": ("full_series_cap_resets.c", ["1000000", "10000000"],
+                               "full-series-cap-resets.json", "c", "C compiler"),
 }
 QUICK = ["truncation-ladder", "quotient-identity", "tail-margins-3000"]
 # Default time limits in seconds; --timeout overrides them for every case.
 TIMEOUTS = {"truncation-ladder-numpy": 1200, "seam-200000": 1800,
-            "greedy-prefix-200000": 900, "greedy-prefix-100000": 600}
+            "greedy-prefix-200000": 900, "greedy-prefix-100000": 600,
+            "hong-process-100000000": 1800, "hong-pinning-2-22": 900,
+            "hong-pinning-23-24": 3600, "full-series-cap-resets": 600}
 # Timing and path fields differ from run to run; they are not part of the result.
 IGNORED = {"elapsed", "wall_time_seconds", "jsonl_path", "script_path", "notes"}
 
@@ -151,6 +166,15 @@ def compute(name: str, timeout: int) -> object:
             hashes = {Path(p).name: hashlib.sha256(Path(p).read_bytes()).hexdigest()
                       for p in MACRO_OUTPUTS}
             return {"stdout_without_timings": lines, "output_sha256": hashes}
+        if kind == "c":
+            compiler = shutil.which("cc") or shutil.which("clang") or shutil.which("gcc")
+            if not compiler:
+                raise ValueError(f"{name}: needs a C compiler")
+            binary = out / "program"
+            run_checked([compiler, "-O3", str(ROOT / program), "-o", str(binary), "-lm", "-lpthread"],
+                        ROOT, timeout, name)
+            stdout = run_checked([str(binary), *args], out, timeout, name)
+            return {"stdout": stdout.splitlines()}
         command = [sys.executable, str(ROOT / program), *[a.replace("{out}", tmp) for a in args]]
         stdout = run_checked(command, ROOT, timeout, name)
         if kind == "json":
