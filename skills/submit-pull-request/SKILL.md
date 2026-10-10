@@ -88,11 +88,18 @@ dependent job can satisfy a required check; its failed upstream admission must
 therefore be required itself. Preserve the GitHub Actions application binding
 and strict current-base checks when updating protection.
 
-Install the shared guard once for the repository, including its worktrees:
+Install the shared guard for the repository, including its worktrees:
 
 ```sh
 python3 scripts/check_push.py --install-shared
 ```
+
+Run this before the first push, and rerun it from the updated checkout when
+any file listed in `PUBLICATION_DRIVER_FILES` in `scripts/check_push.py` changes.
+The managed shared hook uses a versioned copy; preparing with the updated
+checkout driver does not refresh that copy. After refreshing the shared guard,
+prepare the exact outgoing commit again before retrying the push, reusing its
+successful release receipt when available.
 
 After committing, complete validation before opening a push connection:
 

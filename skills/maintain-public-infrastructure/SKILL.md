@@ -153,6 +153,14 @@ statements, and report unavailable history explicitly for source archives.
 `scripts/research_query.py` owns the compact contract; the rich corpus routes
 remain owned by `scripts/query_corpus.py`.
 
+For a CLI with an object-shaped JSON request contract, validate explicitly
+selected file or stdin inputs before choosing a default mode or launching
+tools. Reject input I/O, decoding and schema errors through that CLI's input
+refusal contract. An explicit JSON `null` must not be treated as an absent
+request. Keep actual runtime errors separate, and cover both input sources in
+normal and optimized runs with checks that rejected requests start no
+subprocess and create no artifacts.
+
 ## Know the public owner graph
 
 - `skills/registry.json` owns skill families, task lanes, composition edges,
@@ -227,7 +235,16 @@ At a child-process boundary, bind a caller-relative artifact root before
 changing working directory. Preserve symlink and `..` components for the
 existing path checks. Reproduce the journey with a real child from another
 working directory; a command-string check alone cannot establish that parent
-and child artifacts agree.
+and child artifacts agree. Replay returned inspection and retry commands from
+that same foreign directory with the selected interpreter; retained material
+still needs a usable recovery route.
+
+A failed parent cannot reclaim published session files through a filename
+allowlist. Retain changed or uncertain session and package artifacts after
+errors or interruption. Refuse overwrite by another writer, distinguish a
+complete package by every expected byte and declared digest, and give a fresh
+output path for retry. Use the existing continuation suite's package-recovery
+controls, including actual SIGINT, rather than adding duplicate admission gates.
 
 Cold Lean setup guidance must follow the selected request imports or inspected
 module. Use the existing build wrapper's target resolver. A library-root or

@@ -173,8 +173,10 @@ def return_gate(root: Path, capsule: dict[str, Any], candidate: dict[str, Any]) 
     as a duplicate merely because its statement is known.
     """
     decision.check_decision(root, capsule)
+    if not isinstance(candidate, dict):
+        raise decision.DecisionError("candidate must be a JSON object")
     kind = candidate.get("contribution")
-    if kind not in {"new_statement", "new_proof", "representation_gain", "transfer_evidence"}:
+    if not isinstance(kind, str) or kind not in {"new_statement", "new_proof", "representation_gain", "transfer_evidence"}:
         raise decision.DecisionError("candidate needs an explicit contribution kind")
     statement = candidate.get("statement")
     if not isinstance(statement, str) or not statement.strip():
