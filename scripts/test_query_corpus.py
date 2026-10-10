@@ -1066,6 +1066,22 @@ def validate_paper_guide() -> None:
     assert packet["recommended_routes"]["understand_the_mathematics"][0][
         "path"
     ] == ranked[0]["preferred_read_path"]
+    programme_routes = {
+        "understand_the_system": ["claim-faithful-publication-systems"],
+        "write_or_revise_a_paper": [
+            "writing-a-good-mathematical-paper",
+            "writing-mathematics-from-reviewed-revisions",
+        ],
+        "read_across_problems": ["optimal-sparse-perturbations"],
+    }
+    for purpose, paper_ids in programme_routes.items():
+        routes = packet["recommended_routes"][purpose]
+        assert [route["paper_id"] for route in routes] == paper_ids
+        for route in routes:
+            paper = packet_by_id[route["paper_id"]]
+            assert paper["publication_state"] != "retired"
+            assert route["path"] == paper["preferred_read_path"]
+            assert (ROOT / route["path"]).is_file()
     assert packet["default_gateway"]["id"] != "human_exposition"
     assert packet["default_gateway"]["artifact_class"] == "problem_note"
     assert packet["historical_joint_manuscript"]["id"] == "human_exposition"
@@ -1092,6 +1108,13 @@ def validate_paper_guide() -> None:
     assert "papers are exposition" in card.stdout
     assert "paper_signal #1" in card.stdout
     assert "paper_frontier | ranked=" in card.stdout
+    for purpose, paper_ids in programme_routes.items():
+        for paper_id in paper_ids:
+            paper = packet_by_id[paper_id]
+            assert paper["title"] in card.stdout
+            assert paper["preferred_read_path"] in card.stdout
+    assert "cold-clone-to-proof-receipt" not in card.stdout
+    assert "open-source-mathematics-strategy" not in card.stdout
     assert "--paper-source <path>" in card.stdout
     assert "--papers --format json" in card.stdout
     assert len(card.stdout.strip().splitlines()) <= 8

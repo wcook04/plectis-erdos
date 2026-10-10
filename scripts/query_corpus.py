@@ -10794,6 +10794,25 @@ def paper_reading_guide_packet() -> dict[str, Any]:
         ],
         "mathematical_default_gateway": mathematical_default_gateway,
         "recommended_routes": {
+            "understand_the_system": [
+                {
+                    "paper_id": "claim-faithful-publication-systems",
+                    "path": paper_index["claim-faithful-publication-systems"]["preferred_read_path"],
+                }
+            ],
+            "write_or_revise_a_paper": [
+                {"paper_id": paper_id, "path": paper_index[paper_id]["preferred_read_path"]}
+                for paper_id in (
+                    "writing-a-good-mathematical-paper",
+                    "writing-mathematics-from-reviewed-revisions",
+                )
+            ],
+            "read_across_problems": [
+                {
+                    "paper_id": "optimal-sparse-perturbations",
+                    "path": paper_index["optimal-sparse-perturbations"]["preferred_read_path"],
+                }
+            ],
             "understand_the_mathematics": [
                 {
                     "path": mathematical_default_gateway["preferred_read_path"],
@@ -11969,14 +11988,26 @@ def render_card(packet: dict[str, Any]) -> str:
     if kind == "paper_reading_guide":
         signal = packet["mathematical_signal_spine"]
         lead = signal["ranked_frontier"][0]
+        papers = {row["paper_id"]: row for row in packet["papers"]}
+
+        def reading_route(purpose: str, label: str) -> str:
+            routes = packet["recommended_routes"][purpose]
+            return f"{label} | " + " ; ".join(
+                f"{papers[route['paper_id']]['title']} | read={route['path']}"
+                for route in routes
+            )
+
         rows = [
             f"paper reading guide | papers={packet['paper_count']} "
             f"| index={packet['clone_local_paper_index']}",
             (
                 "authority | papers are exposition; Lean source proves, "
-                "docs/claims.json declares public status"
+                "docs/claims.json declares public status; "
+                "signal rule | Palomar rank precedes inventory; shelf order is not significance"
             ),
-            "signal rule | Palomar rank precedes inventory; shelf order is not significance",
+            reading_route("understand_the_system", "system paper"),
+            reading_route("write_or_revise_a_paper", "writing and revision"),
+            reading_route("read_across_problems", "cross-problem paper"),
             (
                 f"paper_signal #1 | problem=#{lead['problem']} "
                 f"| tier={lead['reader_tier']} | family={lead['family_id']} "
@@ -11988,8 +12019,8 @@ def render_card(packet: dict[str, Any]) -> str:
                 f"| natural_friction={len(signal['natural_friction']['results'])} "
                 f"| long_tail_declarations={signal['long_tail']['declaration_count']}"
             ),
-            "paper_routes | one=--paper-source <path> | exact=--paper-anchor <label-or-source-ref>",
-            "paper_detail | command=python3 scripts/query_corpus.py --papers --format json",
+            "paper_routes | one=--paper-source <path> | exact=--paper-anchor <label-or-source-ref> "
+            "| paper_detail | command=python3 scripts/query_corpus.py --papers --format json",
         ]
         return "\n".join(rows)
     if kind == "agent_corpus_tour":
