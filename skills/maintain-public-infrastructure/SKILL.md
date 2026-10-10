@@ -69,12 +69,19 @@ belongs in the agent index, not in an already full technical reading bundle.
 
 ## Design the human reading surfaces
 
-For a public demonstration, replay the smallest advertised action without the
-authoring environment. If an existing standalone example avoids a large clone,
-make it findable at first contact with a raw-file link, prerequisites, expected
-output and the exact boundary of the result. When a browser cannot complete a result download, expose the same serialized evidence for inspection and copying. Exercise the shipped form and export handlers against the independent checker, and clear stale export data after an input edit or failed calculation. A client download timeout alone does not establish a page defect. Keep recorded editions pinned;
-do not link an HTML source page as a downloadable script. State availability
-beside films of private interfaces so viewers know what they can actually use.
+When preparing the repository for visitors, begin with the complete programme:
+the problem papers, systems paper, writing guides, cross-problem work,
+Lean/Comparator evidence and recorded demonstrations. Give readers direct
+routes to the part that interests them before selecting one small example.
+A runnable experiment may support that route; it does not justify a separate
+branded website or replacing the repository's identity with the easiest demo.
+The fraction-subsums browser presentation was retired by the maintainer on
+10 October 2026. Do not recover it from an older branch as unfinished launch work.
+
+Replay advertised actions without the authoring environment. Keep useful
+standalone research scripts beside their prerequisites, expected output and
+exact result boundaries. State availability beside films of private interfaces
+so viewers know what they can actually use. Keep recorded editions pinned.
 
 For a README or folder index, inspect the rendered page before editing. Keep
 one clear opening, a useful first argument and a consistent heading hierarchy.

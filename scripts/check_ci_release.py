@@ -45,9 +45,6 @@ COMMANDS = (
     ('scripts/test_lean_dependency_index_cache.py',),
     ('scripts/test_lean_fast_build.py',),
     ('scripts/test_reading_edition_synthesis.py',),
-    # Replay the actual offline browser core against Python and the checker.
-    ('scripts/test_rational_explorer.py',),
-    ('-O', 'scripts/test_rational_explorer.py'),
     ('scripts/test_reasoning_record_audit.py',),
     ('-O', 'scripts/test_reasoning_record_audit.py'),
     ('research/experiments/round8_finite/test_round8_finite.py',),

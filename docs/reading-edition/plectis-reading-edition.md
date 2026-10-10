@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `117889e6fddf9c43`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `2b03ff88fbbdda81`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -3655,28 +3655,6 @@ not a finite subseries sum is rejected by the greedy rule at some finite
 index.**
 
 #### The probe
-
-##### Try it in a browser
-
-Download [`explorer.html`](https://github.com/wcook04/plectis-erdos/blob/main/research/experiments/choices_contraction/explorer.html) using GitHub's **Download raw file**
-button, then open the saved file in a modern browser. It is a single offline
-page with no dependencies or installation. Change the target, allowed
-exponents or depth, inspect each forced choice, and download its exact result
-as JSON. **View result JSON** exposes the same data for inspection and copying
-when a browser cannot save a download. Start with `189/388` at depths 16 and 17 to see finite survival become
-a strict exclusion.
-
-The page uses integer fractions with JavaScript BigInt, through depth 64 with
-tail horizon 160. Its result rows follow the Python probe's contract below.
-The [independent terminal-witness checker](https://github.com/wcook04/plectis-erdos/blob/main/research/experiments/choices_contraction/verify_terminal_witness.py) accepts
-its finite sums and exclusions and refuses undecided records. Reaching a
-finite depth is not a membership certificate. This remains a finite
-computation, not a Lean proof or a solution to Erdős #257.
-
-To replay the browser arithmetic against Python and the separate checker, run
-`python3 scripts/test_rational_explorer.py` from the repository root with
-Node.js available. The test executes the script embedded in the HTML and
-also checks deliberately corrupted exports.
 
 ##### Run the Python probe
 

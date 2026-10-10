@@ -568,10 +568,14 @@ def main() -> int:
     # Remove a required verification destination, independent of the heading's
     # wording. Require an actual mutation so a renamed heading cannot turn
     # this regression into a no-op.
+    # The programme overview may link the same dossier before its detailed
+    # section. Remove the destination everywhere so earlier navigation cannot
+    # absorb the mutation while leaving the required section intact.
     mutated["README.md"] = mutated["README.md"].replace(
-        "(docs/EXTERNAL_VERIFICATION.md)", "(docs/README.md)", 1
+        "(docs/EXTERNAL_VERIFICATION.md)", "(docs/README.md)"
     )
-    require(mutated["README.md"] != human_surfaces["README.md"],
+    require(mutated["README.md"] != human_surfaces["README.md"]
+            and "(docs/EXTERNAL_VERIFICATION.md)" not in mutated["README.md"],
             "first-contact fixture did not remove its verification destination")
     assert_human_rejected(summary, mutated, "first-contact section contract")
     checks += 1
