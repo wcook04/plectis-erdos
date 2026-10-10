@@ -13,7 +13,7 @@ import re
 import subprocess
 from pathlib import Path
 from typing import Any
-from urllib.parse import quote, urlsplit
+from urllib.parse import quote, unquote, urlsplit
 
 CORPUS_DIR_REL = "docs/papers"
 FULL_TEXT_DIR = "full-text"
@@ -310,6 +310,117 @@ def _render_numbered_references(node: Any, numbers: dict[str, str],
                     target[0] = "#" + quote(label, safe="")
         for child in node.values():
             _render_numbered_references(child, numbers, anchored_labels)
+
+
+_HTML_TARGET_TAG_RE = re.compile(
+    r'''<!--.*?-->|<(?:a|div|span)\b(?:[^>"']|"[^"]*"|'[^']*')*>''', re.DOTALL | re.I
+)
+_HTML_ATTRIBUTE_RE = re.compile(
+    r'''(?<!\S)([^\s"'<>/=]+)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))'''
+)
+
+
+def _html_attribute_value(attr: re.Match[str]) -> tuple[int, str]:
+    for group in (2, 3, 4):
+        if attr[group] is not None:
+            return group, html.unescape(attr[group])
+    raise ValueError("HTML attribute has no value")
+
+
+def _rendered_anchor_labels(node: Any) -> set[str]:
+    """Collect emitted targets, excluding code and mathematical literals."""
+    labels: set[str] = set()
+    if isinstance(node, list):
+        for item in node:
+            labels.update(_rendered_anchor_labels(item))
+    elif isinstance(node, dict):
+        tag, content = node.get("t"), node.get("c")
+        if tag in {"Code", "CodeBlock", "Math"}:
+            return labels
+        if tag in {"Header", "Div", "Span", "Figure"}:
+            attr = content[1] if tag == "Header" else content[0]
+            if attr[0]:
+                labels.add(attr[0])
+        if tag in {"RawInline", "RawBlock"} and content[0] == "html":
+            for target in _HTML_TARGET_TAG_RE.finditer(content[1]):
+                if not target.group().startswith("<!--"):
+                    labels.update(_html_attribute_value(attr)[1]
+                                  for attr in _HTML_ATTRIBUTE_RE.finditer(target.group())
+                                  if attr[1].lower() == "id")
+        else:
+            labels.update(_rendered_anchor_labels(content))
+    return labels
+
+
+def _case_safe_anchor_ids(labels: set[str]) -> dict[str, str]:
+    """Disambiguate case-distinct targets that GitHub lowercases on delivery."""
+    groups: dict[str, list[str]] = {}
+    for label in sorted(labels):
+        groups.setdefault(label.lower(), []).append(label)
+    occupied = set(groups)
+    renamed: dict[str, str] = {}
+    for folded, group in sorted(groups.items()):
+        if len(group) < 2:
+            continue
+        retained = folded if folded in group else group[0]
+        for label in group:
+            if label == retained:
+                continue
+            digest = hashlib.sha256(label.encode("utf-8")).hexdigest()[:8]
+            base = f"{folded}--case-{digest}"
+            candidate, suffix = base, 2
+            while candidate in occupied:
+                candidate = f"{base}-{suffix}"
+                suffix += 1
+            occupied.add(candidate)
+            renamed[label] = candidate
+    return renamed
+
+
+def _remap_delivery_anchors(node: Any, renamed: dict[str, str]) -> None:
+    """Change target coordinates and local links, preserving their contents."""
+    if not renamed:
+        return
+
+    def fragment(target: str) -> str:
+        if target.startswith("#") and (label := unquote(target[1:])) in renamed:
+            return "#" + quote(renamed[label], safe="")
+        return target
+
+    def html_tag(match: re.Match[str]) -> str:
+        tag = match.group()
+        if tag.startswith("<!--"):
+            return tag
+        def attribute(attr: re.Match[str]) -> str:
+            group, value = _html_attribute_value(attr)
+            if attr[1].lower() == "id":
+                replacement = renamed.get(value, value)
+            elif attr[1].lower() == "href":
+                replacement = fragment(value)
+            else:
+                replacement = value
+            if replacement == value:
+                return attr.group()
+            start, end = attr.start(group) - attr.start(), attr.end(group) - attr.start()
+            return attr.group()[:start] + html.escape(replacement, quote=True) + attr.group()[end:]
+        return _HTML_ATTRIBUTE_RE.sub(attribute, tag)
+
+    if isinstance(node, list):
+        for item in node:
+            _remap_delivery_anchors(item, renamed)
+    elif isinstance(node, dict):
+        tag, content = node.get("t"), node.get("c")
+        if tag in {"Code", "CodeBlock", "Math"}:
+            return
+        if tag in {"Header", "Div", "Span", "Figure"}:
+            attr = content[1] if tag == "Header" else content[0]
+            attr[0] = renamed.get(attr[0], attr[0])
+        if tag == "Link":
+            content[2][0] = fragment(content[2][0])
+        if tag in {"RawInline", "RawBlock"} and content[0] == "html":
+            content[1] = _HTML_TARGET_TAG_RE.sub(html_tag, content[1])
+        else:
+            _remap_delivery_anchors(content, renamed)
 
 
 def _pandoc(args: list[str], stdin: str | None = None, cwd: Path | None = None) -> str:
@@ -1455,10 +1566,16 @@ def _convert(tex_path: Path, stem: str) -> dict[str, Any]:
     _render_numbered_references(ast["blocks"],
                                 {**walk.statement_numbers, **tagged_equations},
                                 walk.equation_labels | walk.reference_labels)
+    anchor_ids = _case_safe_anchor_ids(_rendered_anchor_labels(ast["blocks"]))
+    _remap_delivery_anchors(ast["blocks"], anchor_ids)
+    for section in walk.sections:
+        section["id"] = anchor_ids.get(section["id"], section["id"])
     markdown = _pandoc(["-f", "json", "-t", "gfm", "--wrap=none"], stdin=json.dumps(ast))
     markdown = _remove_immediate_duplicate_gfm_table_headers(markdown)
     markdown = _externalize_long_gfm_table_source_notes(markdown)
-    markdown = _place_evidence_marks(markdown, marks)
+    markdown = _place_evidence_marks(
+        markdown, {anchor_ids.get(label, label): mark for label, mark in marks.items()}
+    )
 
     # Bind each section to a line in the file it actually landed in. An index
     # that only names sections makes an agent scan; one that names lines lets it

@@ -3,6 +3,8 @@
 # SPDX-License-Identifier: Apache-2.0
 """Keep one complete cross-problem paper in every reading edition."""
 
+import copy
+import hashlib
 import io
 import importlib.util
 import json
@@ -256,14 +258,16 @@ Literal code: \verb|<span id="res:code"></span>|.
             path.write_text(source)
             text = renderer._convert(path, "fixture")['markdown']
             numbered = renderer._convert(path, "optimal-sparse-perturbations")['markdown']
+        renamed = renderer._case_safe_anchor_ids({"eq:ani-F", "eq:ani-f", "eq:third", "eq:declared"})
+        target = lambda label: quote(renamed.get(label, label), safe='')
         self.assertIn(self.BODY, re.findall(r'``` math\n(.*?)\n```', text, re.DOTALL))
         for label in ("eq:ani-F", "eq:ani-f", "eq:third", "eq:declared"):
-            self.assertEqual(text.count(f'<a id="{label}"></a>'), 1)
-            self.assertIn(f"](#{quote(label, safe='')})", text)
-        self.assertNotIn("[(A)](#eq%3Aani-F)", text)
+            self.assertEqual(text.count(f'<a id="{renamed.get(label, label)}"></a>'), 1)
+            self.assertIn(f"](#{target(label)})", text)
+        self.assertNotIn(f"[(A)](#{target('eq:ani-F')})", text)
         self.assertNotIn("[(C)](#eq%3Athird)", text)
         self.assertNotIn("[(17)](#eq%3Adeclared)", text)
-        self.assertIn("[(A)](#eq%3Aani-F)", numbered)
+        self.assertIn(f"[(A)](#{target('eq:ani-F')})", numbered)
         self.assertIn("[(C)](#eq%3Athird)", numbered)
         self.assertIn("[(17)](#eq%3Adeclared)", numbered)
         self.assertNotIn("[(A)](#eq%3Aani-f)", numbered)
@@ -275,6 +279,174 @@ Literal code: \verb|<span id="res:code"></span>|.
             self.assertIn(f"](#{paper}--eq%3Aani-f)", combined)
             self.assertEqual(unquote(f"{paper}--eq%3Aani-f"), f"{paper}--eq:ani-f")
         self.assertEqual(combined.count(self.BODY), 2)
+
+
+class CaseCollisionReadingTests(unittest.TestCase):
+    def test_allocator_reserves_authored_ids_and_changes_only_real_collisions(self):
+        upper, lower = "prop:B7", "prop:b7"
+        occupied = lower + "--case-" + hashlib.sha256(upper.encode()).hexdigest()[:8]
+        labels = {upper, lower, occupied.upper(), "sec:Unchanged"}
+        renamed = renderer._case_safe_anchor_ids(labels)
+        self.assertEqual(renamed, {upper: occupied + "-2"})
+        self.assertEqual(renamed, renderer._case_safe_anchor_ids(set(reversed(sorted(labels)))))
+        self.assertEqual(len({renamed.get(label, label).lower() for label in labels}), len(labels))
+        self.assertEqual(renderer._case_safe_anchor_ids({"eq:OnlyUpper"}), {})
+
+    def test_all_emitted_target_paths_and_local_links_preserve_semantic_contents(self):
+        def reference(label, text):
+            return {"t": "Link", "c": [["", [], [["reference-type", "ref"], ["reference", label]]],
+                    [{"t": "Str", "c": text}], ["#" + label, ""]]}
+        math = {"t": "Math", "c": [{"t": "DisplayMath"}, EquationReadingLinkTests.BODY]}
+        literals = [
+            {"t": "Code", "c": [["", [], []], '<span id="ghost:A"></span><a href="#prop:B7">127</a>']},
+            {"t": "CodeBlock", "c": [["", [], []], '<a id="ghost:a"></a>']},
+            {"t": "Math", "c": [{"t": "InlineMath"}, r'\text{<span id="ghost:A"></span>}\label{ghost:a}']},
+            {"t": "Math", "c": [{"t": "DisplayMath"}, r'\text{<a id="ghost:a"></a>}']},
+        ]
+        external = {"t": "Link", "c": [["", [], []], [{"t": "Str", "c": "External"}],
+                                             ["https://example.org/paper#prop:B7", "title"]]}
+        unknown = reference("ghost:A", "[ghost:A]")
+        raw = ('<!-- <a id="ghost:A"></a> --><a title=\'literal id="ghost:A">\' '
+               'data-id="ghost:a" href="https://example.org/#prop:B7"></a>')
+        blocks = [
+            {"t": "Header", "c": [1, ["sec:UP", [], []], [{"t": "Str", "c": "A section"}]]},
+            {"t": "Header", "c": [1, ["sec:up", [], []], [{"t": "Str", "c": "Another section"}]]},
+            {"t": "Div", "c": [["prop:b7", ["prop"], []],
+                                    [{"t": "Para", "c": [{"t": "Str", "c": "Proposition 26"}]}]]},
+            {"t": "Div", "c": [["prop:B7", ["prop"], []],
+                                    [{"t": "Para", "c": [{"t": "Str", "c": "Proposition 127"}]}]]},
+            {"t": "Figure", "c": [["fig:UP", [], []], [None, []], []]},
+            {"t": "Figure", "c": [["fig:up", [], []], [None, []], []]},
+            literals[1],
+            {"t": "Para", "c": [
+                {"t": "Span", "c": [["span:UP", [], [["label", "span:UP"]]], []]},
+                {"t": "Span", "c": [["span:up", [], []], []]}, math,
+                literals[0], *literals[2:], external, unknown,
+                reference("prop:b7", "26"), reference("prop:B7", "127"),
+                {"t": "RawInline", "c": ["html", '<a HREF = "#prop%3AB7">127</a>']},
+                {"t": "RawInline", "c": ["html", raw]},
+            ]},
+        ]
+        walk = renderer._AstWalk()
+        walked = walk.blocks(copy.deepcopy(blocks))
+        renderer._render_numbered_references(walked, {}, walk.reference_labels | walk.equation_labels)
+        before = copy.deepcopy(walked)
+        labels = renderer._rendered_anchor_labels(walked)
+        self.assertNotIn("ghost:A", labels)
+        self.assertNotIn("ghost:a", labels)
+        renamed = renderer._case_safe_anchor_ids(labels)
+        self.assertEqual(set(renamed), {"sec:UP", "prop:B7", "fig:UP", "span:UP", "eq:ani-F"})
+        renderer._remap_delivery_anchors(walked, renamed)
+        delivered = renderer._rendered_anchor_labels(walked)
+        self.assertEqual(len({label.lower() for label in delivered}), len(labels))
+        self.assertIn(math, walked[-1]['c'])
+        for literal in literals:
+            self.assertIn(literal, walked if literal['t'] == 'CodeBlock' else walked[-1]['c'])
+        self.assertIn(external, walked[-1]['c'])
+        self.assertIn(unknown, walked[-1]['c'])
+        self.assertIn({"t": "RawInline", "c": ["html", raw]}, walked[-1]['c'])
+        refs = [node for node in walked[-1]['c'] if node.get('t') == 'Link']
+        self.assertEqual(refs[-2]['c'][1:], [[{"t": "Str", "c": "26"}], ['#prop%3Ab7', '']])
+        self.assertEqual(refs[-1]['c'][1:], [[{"t": "Str", "c": "127"}],
+                         ['#' + quote(renamed['prop:B7'], safe=''), '']])
+        span = next(node for node in walked[-1]['c'] if node.get('t') == 'Span')
+        self.assertEqual(span['c'][0][2], [["label", "span:UP"]])
+        renderer._remap_delivery_anchors(before, {})
+        self.assertNotEqual(before, walked)
+
+    @unittest.skipUnless(shutil.which("pandoc"), "case collision conversion requires Pandoc")
+    def test_real_separated_249_and_adjacent_1041_targets_keep_bodies_and_bundle_routes(self):
+        # Actual #249 statement excerpts (source labels prop:b7 / prop:B7),
+        # followed by the actual #1041 case-distinct alignment shape.
+        source = (
+            "\\documentclass{article}\n\\usepackage{amsmath}\n"
+            "\\newtheorem{prop}{Proposition}\n\\begin{document}\n"
+            "\\section{Unchanged}\\label{sec:Unchanged}\n"
+            "See Proposition~\\ref{prop:B7} and \\eqref{eq:ani-F}, \\eqref{eq:ani-f}.\n"
+            "\\begin{prop}[The coefficient properties of the rational example]\\label{prop:b7}\n"
+            "The rational sequence in Proposition~\\ref{prop:parity} satisfies uniform\n"
+            "boundedness, $c(n)\\le n$, agreement with $\\varphi(n)$ modulo $2$ at every\n"
+            "index, and the stated separated-carry form of aperiodicity. Consequently,\n"
+            "those properties alone cannot imply irrationality of a dyadic series.\n"
+            "The example does not exclude arguments using further totient identities,\n"
+            "including its multiplicative relations.\n\\end{prop}\n\n"
+            "A separate part of the argument follows.\n\n"
+            "\\begin{prop}[A sufficient condition on the LCM grid]\\label{prop:B7}\n"
+            "\\[\n"
+            "\\big(\\forall t_0,\\ \\exists t\\ge t_0,\\ \\exists q\\,m\\,L,\\ 0<q \\wedge \\mathcal{C}(m\\cdot{H}\\,t)(q\\cdot{H}\\,t)\\ L\\big)\n"
+            "\\implies S\\notin\\mathbb Q.\n\\]\n"
+            "One residue certificate \\emph{anywhere} on the two-multiplier LCM cone, at arbitrarily large $t$,\n"
+            "suffices; the diagonal choice $q=m=1$ recovers Proposition~\\ref{prop:B3}.\n"
+            "\\end{prop}\n\n" + EquationReadingLinkTests.BODY + "\n\\end{document}\n"
+        )
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "paper.tex"
+            path.write_text(source)
+            marks = {
+                'prop:b7': ('Lean', 'https://example.org/evidence#prop-b7', ''),
+                'prop:B7': ('Lean', 'https://example.org/evidence#prop-b7-60c3ed',
+                            'https://example.org/comparator#prop-b7-60c3ed'),
+            }
+            with patch.object(renderer, '_evidence_marks', return_value=(marks, {})):
+                with patch.object(renderer, '_case_safe_anchor_ids', return_value={}):
+                    before = renderer._convert(path, "fixture")
+                after = renderer._convert(path, "fixture")
+        renamed = renderer._case_safe_anchor_ids({"prop:b7", "prop:B7", "eq:ani-F", "eq:ani-f"})
+        expected = before['markdown']
+        for original, target in renamed.items():
+            expected = expected.replace(f'id="{original}"', f'id="{target}"')
+            expected = expected.replace(f'](#{quote(original, safe="")})', f'](#{quote(target, safe="")})')
+        self.assertEqual(after['markdown'], expected)
+        self.assertEqual({k: v for k, v in after.items() if k != 'markdown'},
+                         {k: v for k, v in before.items() if k != 'markdown'})
+        self.assertIn(EquationReadingLinkTests.BODY, after['markdown'])
+        self.assertIn('<a id="eq:ani-f"></a>', after['markdown'])
+        self.assertIn(f'<a id="{renamed["eq:ani-F"]}"></a>\n<a id="eq:ani-f"></a>', after['markdown'])
+        self.assertIn(f'](#{quote(renamed["prop:B7"], safe="")})', after['markdown'])
+        self.assertIn('<a id="sec:Unchanged"></a>', after['markdown'])
+        self.assertIn(f'<div id="{renamed["prop:B7"]}" class="prop">\n<p class="evidence-marks">',
+                      after['markdown'])
+        for mark in marks.values():
+            for url in mark[1:]:
+                if url:
+                    self.assertIn(url, after['markdown'])
+        combined = '\n'.join(edition.scope_anchors(after['markdown'], paper) for paper in ('one', 'two'))
+        for paper in ('one', 'two'):
+            for original, target in renamed.items():
+                self.assertIn(f'id="{paper}--{target}"', combined)
+                self.assertIn(f'](#{paper}--{quote(target, safe="")})', combined)
+        self.assertEqual(combined.count(EquationReadingLinkTests.BODY), 2)
+
+    @unittest.skipUnless(shutil.which("pandoc"), "section collision conversion requires Pandoc")
+    def test_real_section_coordinates_and_span_targets_follow_delivery_ids(self):
+        source = (
+            "\\documentclass{article}\n\\begin{document}\n"
+            "\\section{First}\\label{sec:UP}\n"
+            "\\hypertarget{span:UP}{First named point}.\n"
+            "\\section{Second}\\label{sec:up}\n"
+            "\\hypertarget{span:up}{Second named point}.\n"
+            "See \\ref{sec:UP} and \\hyperlink{span:UP}{the first point}.\n\n"
+            "\\verb|<span id=\"ghost:A\"></span>|\n"
+            "$\\text{<a id=\"ghost:a\">}$\n"
+            "\\end{document}\n"
+        )
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / 'paper.tex'
+            path.write_text(source)
+            converted = renderer._convert(path, 'fixture')
+        renamed = renderer._case_safe_anchor_ids({'sec:UP', 'sec:up', 'span:UP', 'span:up'})
+        sections = {section['title']: section for section in converted['sections']}
+        self.assertEqual(sections['First']['id'], renamed['sec:UP'])
+        self.assertEqual(sections['Second']['id'], 'sec:up')
+        lines = converted['markdown'].splitlines()
+        for section in sections.values():
+            self.assertEqual(lines[section['line'] - 1], f'<a id="{section["id"]}"></a>')
+        for target in renamed.values():
+            self.assertIn(f'id="{target}"', converted['markdown'])
+            self.assertIn(f'](#{quote(target, safe="")})', converted['markdown'])
+        self.assertIn('`<span id="ghost:A"></span>`', converted['markdown'])
+        self.assertIn(r'\text{<a id="ghost:a">}', converted['markdown'])
+        self.assertNotIn('ghost:a--case-', converted['markdown'])
 
 
 class DisplayLayoutReadingTests(unittest.TestCase):

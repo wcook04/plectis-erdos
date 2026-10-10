@@ -99,6 +99,9 @@ href even when its target exists. Emit native Markdown links with URI-encoded
 fragments to explicit targets outside math, preserve the manuscript's formulas
 and reference text, and check standalone and bundled editions. Scope only
 rendered anchors and links; code and math literals must remain unchanged.
+GitHub lowercases target IDs. When authored labels differ only by case, assign
+distinct delivery IDs, update their local links and section coordinates, and
+click both targets in the rendered edition; retain the source labels and pins.
 For source conversion, compare the actual manuscript passages: a successful
 Pandoc run can silently discard a presentation macro's contents. Expand only
 demonstrated layout semantics, retain the inner formulas and literal code, and
