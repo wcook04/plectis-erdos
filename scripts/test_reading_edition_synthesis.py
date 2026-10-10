@@ -16,6 +16,7 @@ from unittest.mock import patch
 from urllib.parse import quote, unquote
 
 import build_reading_edition as edition
+import check_markdown_table_render as table_render
 
 _RENDERER_SPEC = importlib.util.spec_from_file_location(
     "paper_corpus_renderer", edition.ROOT / "docs/papers/paper_corpus_renderer.py"
@@ -274,6 +275,153 @@ Literal code: \verb|<span id="res:code"></span>|.
             self.assertIn(f"](#{paper}--eq%3Aani-f)", combined)
             self.assertEqual(unquote(f"{paper}--eq%3Aani-f"), f"{paper}--eq:ani-f")
         self.assertEqual(combined.count(self.BODY), 2)
+
+
+class LayoutAdjustboxReadingTests(unittest.TestCase):
+    INEQUALITIES = (
+        r"0<q\le Q_0=79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053",
+        r"0<d\le Q_1=39\,819\,823\,323\,350\,687\,661\,677\,887\,437\,915\,526",
+    )
+
+    def test_layout_only_wrapper_keeps_nested_body_bytes_and_comments(self):
+        body = "$" + r"\frac{q+\{1\}}{\mathbb{N}}" + "\n% ignored }\n$"
+        wrapped = "Before \\adjustbox{% ignored }\n max width = \\linewidth}{" + body + "} after."
+        self.assertEqual(renderer._preserve_layout_adjustbox(wrapped), "Before " + body + " after.")
+
+    def test_other_options_and_starred_commands_are_retained(self):
+        for command in (
+            r"\adjustbox{width=\linewidth}{$q=1$}",
+            r"\adjustbox{max width=\linewidth,trim=1 2 3 4}{$q=1$}",
+            r"\adjustbox{max width=\textwidth}{$q=1$}",
+            r"\adjustbox*{max width=\linewidth}{$q=1$}",
+        ):
+            with self.subTest(command=command):
+                self.assertEqual(renderer._preserve_layout_adjustbox(command), command)
+
+    def test_percent_encoded_url_stays_literal_before_layout_conversion(self):
+        url = r"\url{https://example.org/paper%20name}"
+        source = url + r" and \adjustbox{max width=\linewidth}{$q=1$}"
+        self.assertEqual(renderer._preserve_layout_adjustbox(source), url + " and $q=1$")
+
+    def test_comments_code_math_and_escaped_lookalikes_are_unchanged(self):
+        command = r"\adjustbox{max width=\linewidth}{$q=1$}"
+        literals = (
+            "% " + command + "\n",
+            r"\verb|" + command + "|",
+            r"\verb*%" + command + "%",
+            r"\texttt{" + command + "}",
+            r"\begin{Verbatim}" + "\n" + command + "\n" + r"\end{Verbatim}",
+            "$" + command + "$",
+            "$$" + command + "$$",
+            r"\(" + command + r"\)",
+            r"\[" + command + r"\]",
+            r"\begin{equation}" + command + r"\end{equation}",
+            "\\" + command,
+        )
+        for literal in literals:
+            with self.subTest(literal=literal):
+                self.assertEqual(renderer._preserve_layout_adjustbox(literal), literal)
+        self.assertEqual(renderer._preserve_layout_adjustbox("\\% " + command), "\\% $q=1$")
+
+    def test_incomplete_wrapper_is_rejected_without_a_partial_rewrite(self):
+        for source in (r"\adjustbox{max width=\linewidth}",
+                       r"\adjustbox{max width=\linewidth}{$q=1$"):
+            with self.subTest(source=source), self.assertRaises(ValueError):
+                renderer._preserve_layout_adjustbox(source)
+
+    @unittest.skipUnless(shutil.which("pandoc"), "layout conversion requires Pandoc")
+    def test_conversion_restores_both_exact_farey_inequality_cells(self):
+        first, second = self.INEQUALITIES
+        command = r"\adjustbox{max width=\linewidth}{" + "$" + first + "$}"
+        source = (
+            r"\documentclass{article}\begin{document}\begin{tabular}{ll}" + "\n"
+            r"Computation & Exact statement \\ \hline" + "\n"
+            "Farey & Every $q\\in\\mathbb{N}$ with " + command + r" satisfies the gap certificate. \\" + "\n"
+            "Coprimality & Every $d\\in\\mathbb{N}$ with \\adjustbox{max width=\\linewidth}{$" + second
+            + r"$} (exactly $\lfloor Q_0/2\rfloor$) is excluded. \\" + "\n"
+            r"\end{tabular}" + "\n"
+            + r"Literal code: \verb|" + command + "|.\n"
+            + r"Nested braces: \adjustbox{max width=\linewidth}{$\frac{q+1}{\mathbb{N}}$}."
+            + r"\end{document}"
+        )
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "fixture.tex"
+            path.write_text(source)
+            text = renderer._convert(path, "fixture")['markdown']
+        for formula in (*self.INEQUALITIES, r"\frac{q+1}{\mathbb{N}}"):
+            self.assertIn("$`" + formula + "`$", text)
+        self.assertNotIn("with satisfies", text)
+        self.assertNotIn("with (exactly", text)
+        self.assertIn("`" + command + "`", text)
+        tables = list(table_render.find_tables(text.splitlines()))
+        self.assertEqual(len(tables), 1)
+        self.assertEqual(len(tables[0][2]), 2)
+        self.assertEqual(table_render.analyse(tables[0][1], tables[0][2])['overflow_px'], 0)
+
+
+class GfmTableReadingTests(unittest.TestCase):
+    def test_multiline_cell_moves_intact_after_all_complete_rows(self):
+        cell = "Before $`1/2 <\n\\sum_{d\\in N}1/(2^d-1)`$ after [8](#sec%3Aknown)."
+        link = "[`half_lt_tsum_negativeMobius`](https://example.org/source.lean#L164)"
+        source = (
+            "| Result | Source |\n|:---|:---|\n"
+            + "| " + cell + " | " + link + " |\n"
+            + "| Second row remains | [2](#sec%3Asecond) |\n\nFollowing prose.\n"
+        )
+        projected = renderer._externalize_long_gfm_table_source_notes(source)
+        tables = list(table_render.find_tables(projected.splitlines()))
+        self.assertEqual(len(tables), 1)
+        self.assertEqual(len(tables[0][2]), 2)
+        self.assertEqual(table_render.analyse(tables[0][1], tables[0][2])['overflow_px'], 0)
+        self.assertIn("**Detail note 1.** " + cell, projected)
+        self.assertEqual(projected.count(cell), 1)
+        self.assertEqual(projected.count(link), 1)
+        self.assertLess(projected.index("Second row remains"), projected.index("**Detail note 1.**"))
+        self.assertIn("\n\nFollowing prose.\n", projected)
+
+    def test_incomplete_rows_remain_exact_and_do_not_absorb_following_rows(self):
+        for broken in (
+            "| broken | $`unterminated\ncontinuation with no close\n",
+            "| broken | still incomplete\n(source: `a_very_long_exact_source_coordinate_that_must_stay_here.lean`)\n",
+            "| broken | wrong | column count |\n",
+        ):
+            source = "| Result | Source |\n|:---|:---|\n" + broken + "| valid | untouched |\n\n"
+            with self.subTest(broken=broken):
+                self.assertEqual(renderer._externalize_long_gfm_table_source_notes(source), source)
+
+    @unittest.skipUnless(shutil.which("pandoc"), "multiline table conversion requires Pandoc")
+    def test_pandoc_multiline_rows_keep_every_formula_and_link_in_notes(self):
+        formulas = (
+            "1/2 <\n\\sum_{d\\in N}1/(2^d-1)",
+            "\\{19,\\allowbreak23,\\allowbreak25,\n\\allowbreak27,\\allowbreak29\\}",
+        )
+        source = (
+            r"\documentclass{article}\begin{document}\section{Known}\label{sec:known}" + "\n"
+            + r"\begin{tabular}{ll}Result & Scope \\ \hline" + "\n"
+            + "Overshoots: $" + formulas[0] + r"$; Section~\ref{sec:known}. & One support \\" + "\n"
+            + "Finite set: $" + formulas[1] + r"$. & Exact computation \\" + "\n"
+            + r"\end{tabular}\end{document}"
+        )
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "fixture.tex"
+            path.write_text(source)
+            with patch.object(renderer, "_externalize_long_gfm_table_source_notes", side_effect=lambda text: text):
+                unprojected = renderer._convert(path, "fixture")['markdown']
+            text = renderer._convert(path, "fixture")['markdown']
+        # Pandoc may pad a small pipe table before this owner sees it. Preserve
+        # those emitted formula bytes too, including every physical newline.
+        emitted_formulas = re.findall(r'\$`(.*?)`\$', unprojected, re.DOTALL)
+        self.assertEqual(len(emitted_formulas), 2)
+        self.assertCountEqual(re.findall(r'\$`(.*?)`\$', text, re.DOTALL), emitted_formulas)
+        self.assertCountEqual([re.sub(r'\s+', '', formula) for formula in emitted_formulas],
+                              [re.sub(r'\s+', '', formula) for formula in formulas])
+        self.assertIn('[1](#sec%3Aknown)', text)
+        self.assertIn('<a id="sec:known"></a>', text)
+        tables = list(table_render.find_tables(text.splitlines()))
+        self.assertEqual(len(tables), 1)
+        self.assertEqual(len(tables[0][2]), 2)
+        self.assertEqual(table_render.analyse(tables[0][1], tables[0][2])['overflow_px'], 0)
+        self.assertEqual(text.count("**Detail note "), 2)
 
 
 class SynthesisReadingTests(unittest.TestCase):

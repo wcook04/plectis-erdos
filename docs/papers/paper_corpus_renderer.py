@@ -484,6 +484,103 @@ def _preserve_path_macros(tex: str) -> str:
         cursor = close_index + 1
 
 
+def _preserve_layout_adjustbox(tex: str) -> str:
+    """Keep the contents of the demonstrated layout-only ``\\adjustbox``.
+
+    Pandoc silently discards both arguments outside math. Only the paper's
+    ``max width=\\linewidth`` option is removed; other options may carry
+    semantics. Comments, literal code and existing math bodies stay untouched.
+    """
+    protected_environments = {
+        "verbatim", "verbatim*", "Verbatim", "BVerbatim", "LVerbatim",
+        "lstlisting", "minted", "alltt", "comment", "math", "displaymath",
+        "equation", "equation*", "align", "align*", "alignat", "alignat*",
+        "flalign", "flalign*", "gather", "gather*", "multline", "multline*",
+    }
+    command_pattern = re.compile(r"\\([A-Za-z]+)\*?")
+
+    def skip_space(index: int) -> int:
+        while index < len(tex):
+            if tex[index].isspace():
+                index += 1
+            elif tex[index] == "%":
+                newline = tex.find("\n", index)
+                index = len(tex) if newline < 0 else newline + 1
+            else:
+                break
+        return index
+
+    def skip_math(index: int, closing: str) -> int:
+        while index < len(tex):
+            if tex.startswith(closing, index):
+                return index + len(closing)
+            if tex[index] == "\\":
+                index += 2
+            elif tex[index] == "%":
+                newline = tex.find("\n", index)
+                index = len(tex) if newline < 0 else newline + 1
+            else:
+                index += 1
+        return len(tex)
+
+    chunks: list[str] = []
+    cursor = index = 0
+    while index < len(tex):
+        if tex[index] == "%":
+            index = skip_space(index)
+            continue
+        if tex[index] == "$":
+            delimiter = "$$" if tex.startswith("$$", index) else "$"
+            index = skip_math(index + len(delimiter), delimiter)
+            continue
+        if tex[index] != "\\":
+            index += 1
+            continue
+        if tex.startswith((r"\(", r"\["), index):
+            closing = r"\)" if tex[index + 1] == "(" else r"\]"
+            index = skip_math(index + 2, closing)
+            continue
+        command = command_pattern.match(tex, index)
+        if command is None:
+            index += 2  # Includes escaped percent, dollar and backslash.
+            continue
+        name = command.group(1)
+        argument = command.end()
+        if name == "verb" and argument < len(tex):
+            end = tex.find(tex[argument], argument + 1)
+            index = len(tex) if end < 0 else end + 1
+            continue
+        argument = skip_space(argument)
+        if name in {"begin", "texttt", "url", "path"} and tex[argument:argument + 1] == "{":
+            close = (_path_argument_end(tex, argument) if name in {"url", "path"}
+                     else _matching_brace(tex, argument))
+            if name != "begin":
+                index = close + 1
+                continue
+            environment = tex[argument + 1:close]
+            if environment in protected_environments:
+                closing = rf"\end{{{environment}}}"
+                end = tex.find(closing, close + 1)
+                index = len(tex) if end < 0 else end + len(closing)
+                continue
+        if (name != "adjustbox" or command.group().endswith("*")
+                or tex[argument:argument + 1] != "{"):
+            index = command.end()
+            continue
+        options_end = _matching_brace(tex, argument)
+        body_start = skip_space(options_end + 1)
+        if tex[body_start:body_start + 1] != "{":
+            raise ValueError("missing body argument in \\adjustbox")
+        body_end = _matching_brace(tex, body_start)
+        options = _TEX_COMMENT_RE.sub("", tex[argument + 1:options_end])
+        if re.fullmatch(r"\s*max\s+width\s*=\s*\\linewidth\s*", options):
+            chunks.extend((tex[cursor:index], tex[body_start + 1:body_end]))
+            cursor = body_end + 1
+        index = body_end + 1
+    chunks.append(tex[cursor:])
+    return "".join(chunks)
+
+
 def _readable_lean_label(identifier: str) -> str:
     """Reproduce the paper preamble's human-readable declaration label.
 
@@ -820,7 +917,7 @@ _GFM_CODE_SPAN = re.compile(r"`([^`]+)`")
 def _gfm_row_cells(
     line: str, expected_cell_count: int | None = None
 ) -> tuple[list[str], str] | None:
-    """Split one complete physical GFM row, failing closed on continuations."""
+    """Split one complete GFM row, retaining any cell continuation bytes."""
 
     newline = "\r\n" if line.endswith("\r\n") else "\n" if line.endswith("\n") else ""
     body = line[: -len(newline)] if newline else line
@@ -948,19 +1045,33 @@ def _externalize_long_gfm_table_source_notes(markdown: str) -> str:
             note_number, anchor = add_note("Source", match.group(0))
             return f"[source note {note_number}](#{anchor})"
 
+        parsed_header = _gfm_row_cells(table_lines[0])
+        expected_cell_count = len(parsed_header[0]) if parsed_header else None
+        # Pandoc preserves newlines inside inline math, but a physical newline
+        # splits a GFM table row. Collect only complete logical rows, without
+        # absorbing a following row when a malformed one remains incomplete.
+        logical_rows = table_lines[:2]
+        row_index = 2
+        while row_index < len(table_lines):
+            row = table_lines[row_index]
+            row_index += 1
+            if row.lstrip().startswith("|") and _gfm_row_cells(row, expected_cell_count) is None:
+                while row_index < len(table_lines) and not table_lines[row_index].lstrip().startswith("|"):
+                    row += table_lines[row_index]
+                    row_index += 1
+                    if _gfm_row_cells(row, expected_cell_count) is not None:
+                        break
+            logical_rows.append(row)
         projected = [
-            _LONG_GFM_TABLE_SOURCE.sub(replace_source, line)
-            if row_index >= 2
-            else line
-            for row_index, line in enumerate(table_lines)
+            _LONG_GFM_TABLE_SOURCE.sub(replace_source, row)
+            if row_index >= 2 and _gfm_row_cells(row, expected_cell_count) is not None
+            else row
+            for row_index, row in enumerate(logical_rows)
         ]
 
-        # If another cell still has a hard inline-code floor, externalize the
-        # complete cell rather than rewriting mathematics or inserting hidden
-        # break characters. Source-note markers produced above remain as useful
-        # short context in otherwise readable cells.
-        parsed_header = _gfm_row_cells(projected[0])
-        expected_cell_count = len(parsed_header[0]) if parsed_header else None
+        # Move multiline cells and hard inline-code floors intact into notes.
+        # This keeps formulas, source coordinates and their literal newlines
+        # rather than rewriting them to fit the table's physical row.
         for row_index in range(2, len(projected)):
             parsed = _gfm_row_cells(projected[row_index], expected_cell_count)
             if parsed is None:
@@ -968,10 +1079,10 @@ def _externalize_long_gfm_table_source_notes(markdown: str) -> str:
             cells, newline = parsed
             changed = False
             for cell_index, cell in enumerate(cells):
-                if not any(
+                if not ("\n" in cell or "\r" in cell or any(
                     len(match.group(1)) > _LONG_GFM_CODE_LIMIT
                     for match in _GFM_CODE_SPAN.finditer(cell)
-                ):
+                )):
                     continue
                 content = cell.strip()
                 note_number, anchor = add_note("Detail", content)
@@ -1256,6 +1367,7 @@ def _convert(tex_path: Path, stem: str) -> dict[str, Any]:
     """LaTeX -> markdown, section index with line numbers, and front matter."""
     source = _preserve_path_macros(tex_path.read_text())
     source = _fold_custom_verbatim_environments(source)
+    source = _preserve_layout_adjustbox(source)
     source = _strip_description_list_options(source)
     source = _preserve_declaration_macros(source)
     source = _preserve_lean_citation_macros(source)
