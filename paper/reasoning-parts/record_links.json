@@ -42,10 +42,10 @@
     },
     {
       "action": "explained_in_short",
-      "rationale": "With E=0 the next numerator equals C. The next error is divisible by C and has absolute value smaller than C, hence is zero. For eventual nonnegative error, the positive integer numerator is eventually nonincreasing and stabilises. Classical zero absorption/descent is credited locally to Koizumi. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.",
-      "review_status": "R5 Type A source-reading review of retained proof and evidence boundary; no new independent mathematical review.",
+      "rationale": "For the stated positive integer sequences satisfying eq:recurrences, divisibility from res:update and strict successor centring force zero-error absorption. Separately, C_{n+1}=C_n-E_n and eventual nonnegative error make the positive integer numerator eventually nonincreasing and hence constant; this descent clause needs no centring. The proof is unchanged and the revised statement makes its domains and recurrence hypotheses explicit. Classical zero absorption/descent is credited locally to Koizumi. This authored disposition does not establish a new long-record correspondence or settle Problem 243.",
+      "review_status": "10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5: complete proof unchanged; current statement makes domains and recurrence hypotheses explicit. No new long-record correspondence or independent review.",
       "short_id": "erdos-243-reciprocal-tail-rigidity#res:absorb",
-      "short_statement_sha256": "sha256:2d9bfe04bdba4040687b7c183032cf184b74e92ca187c701a796bbfdb420fdce",
+      "short_statement_sha256": "sha256:50fff80183a6440757800aca1fbc8fe4fea0ea266d9ae1c77fdad43013eeafa9",
       "support": {
         "label": "res:absorb",
         "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
@@ -146,10 +146,10 @@
     },
     {
       "action": "explained_in_short",
-      "rationale": "Set both errors to zero in the defect identity and cancel the stated nonzero successor numerator. For a positive orbit with strict centring, absorption supplies two consecutive zero errors. This is an authored disposition, not a claim that Type A has accepted a new native correspondence binding.",
-      "review_status": "R5 Type A source-reading review of retained proof and evidence boundary; no new independent mathematical review.",
+      "rationale": "For integer sequences satisfying eq:recurrences, set both errors to zero in the defect identity and cancel the stated nonzero successor numerator to obtain the Sylvester recurrence. Eventual zero error therefore gives the eventual recurrence for the stated positive orbit; this clause does not require strict centring. The proof is unchanged and the revised statement makes the recurrence hypotheses explicit. This authored disposition does not establish a new long-record correspondence or settle Problem 243.",
+      "review_status": "10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5: complete proof unchanged; current statement makes domains and recurrence hypotheses explicit. No new long-record correspondence or independent review.",
       "short_id": "erdos-243-reciprocal-tail-rigidity#res:step",
-      "short_statement_sha256": "sha256:ef3731e6d3c3f722a80a2058ed247bb363fe46e8ae0074176ecb93d41b0c9b23",
+      "short_statement_sha256": "sha256:f6d9cc1baa2a93bdd5624b89cbe61b1d957e1271d56dc9b91f93b0f5e633c5f4",
       "support": {
         "label": "res:step",
         "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex",
@@ -250,15 +250,15 @@
     },
     {
       "action": "explained_in_short",
-      "rationale": "The complete ordinary proof is in section 2: scalar reductions, the implication of Martin Theorem 1, the independent CRT--Dirichlet matrix proof, and separation of the proportional zero-residue forms. The statement is unchanged. Revised statement: line 72, printed 1.1, preview p. 1. This is a writer disposition for native review, not a claim that the queued correspondence has already been accepted.",
-      "review_status": "R5 Type A source-reading review of retained proof and evidence boundary; no new independent mathematical review.",
+      "rationale": "The complete ordinary proof of thm:kkernelrank remains in sec:rank: scalar reductions, the implication of Martin Theorem 1, the independent CRT--Dirichlet matrix argument, and separation of the two proportional zero-residue forms. The statement is unchanged. This finite-level coefficient basis does not establish irrationality of the binary totient series. This authored disposition does not accept the queued long-record correspondence.",
+      "review_status": "10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5 and current complete proofs; statement, hypotheses and dependencies unchanged; no long-record correspondence or independent review.",
       "short_id": "erdos-249-binary-totient-series#thm:kkernelrank",
       "short_statement_sha256": "sha256:4c32e3285243f70c0fb4a1763a43a27fc74727596e7a4d4251c54e59600b5828",
       "support": {
         "end": "which completes the proof of Theorem~\\ref{thm:kkernelrank}.",
         "path": "paper/249/erdos-249-binary-totient-series.tex",
         "selector": "between",
-        "sha256": "sha256:6293dc6e4217f8c9937beba485c19e9ae1ad680c8c6ebc15af7972dbe2bfb276",
+        "sha256": "sha256:12439d686133047087da39f686b54783a3766ac6ef26e44b5ffcef591ba0574e",
         "start": "\\label{sec:rank}"
       }
     },
@@ -330,14 +330,14 @@
     {
       "action": "explained_in_short",
       "rationale": "The complete construction remains in sec:construction. Both ordinary and weighted triple totals and the finite common-modulus telescoping comparison are now displayed; density, uniform cutoffs, interval selection, remainder limit and quantitative coupling are retained.",
-      "review_status": "R5 Type A source-reading review of retained proof and evidence boundary; no new independent mathematical review.",
+      "review_status": "10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5 and current complete proofs; statement, hypotheses and dependencies unchanged; no long-record correspondence or independent review.",
       "short_id": "erdos-251-prime-gap-dyadic-series#res:sparserationalisation",
       "short_statement_sha256": "sha256:7de874b2b88e80be5e8352fbccd1f71cb165b302972bebf6be8806a2f3dacafb",
       "support": {
         "end": "\\end{proof}",
         "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex",
         "selector": "between",
-        "sha256": "sha256:987d299461ed1bbcc3b5c3b90b916c6761bf20ffa9a098869bfc4015c5345193",
+        "sha256": "sha256:41dcfa17e4072e4277cd18220283678ebc474dbfb3d71500afe08503fafe15a7",
         "start": "\\label{sec:construction}"
       }
     },
