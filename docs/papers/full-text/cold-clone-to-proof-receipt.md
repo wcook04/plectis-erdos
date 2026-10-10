@@ -42,7 +42,7 @@ Poor first-contact navigation changes the mathematics an agent attempts. An agen
 
 The [development studied here](https://github.com/wcook04/plectis-erdos) indexes eight Erdős problem programmes. The ten map entries are thematic routes across these problems, not ten separately indexed problems. The claim registry now covers selected statements from all eight; a paper’s inclusion does not give every statement in it formal status. The degree-seven counterexample due to the erdosproblems.com contributor [`ani`](https://www.erdosproblems.com/forum/thread/1041#post-8861), formalised in Lean in this repository, refutes the Formal Conjectures 1041 one-dimensional Hausdorff path-image claim, while correspondence with its historical curve-length question remains unreviewed and the other seven targets remain unresolved here. The detailed navigation examples in this paper concentrate on Problems 249 and 257: exact separation equivalences for Problem 249, a machine-checked rational countermodel agreeing with the totient’s parity at every index, and quotient-greedy classifications for Problem 257, with obstruction theorems recorded beside the routes they close. The generated certificate shards named in the abstract sit underneath these results as checked finite evidence, not beside them as further claims. The design goal is not to replace reasoning with a fixed pipeline. It is to let a capable reader see enough structure to reason well, while reserving mathematical authority for the pinned proof kernel.
 
-The paper first separates the repository’s four navigation layers and then shows how a bounded tour expands into exact source and dependency routes. Sections <a href="#sec:authority" data-reference-type="ref" data-reference="sec:authority">4</a> and <a href="#sec:incremental" data-reference-type="ref" data-reference="sec:incremental">5</a> mark the transition from navigation to kernel authority and explain the incremental validation path. Section <a href="#sec:dogfood" data-reference-type="ref" data-reference="sec:dogfood">6</a> gives a replayed case study; the remaining sections compare related systems and state the limits of transfer.
+The paper first separates the repository’s four navigation layers and then shows how a bounded tour expands into exact source and dependency routes. Sections [4](#sec%3Aauthority) and [5](#sec%3Aincremental) mark the transition from navigation to kernel authority and explain the incremental validation path. Section [6](#sec%3Adogfood) gives a replayed case study; the remaining sections compare related systems and state the limits of transfer.
 
 This paper owns the navigation and validation case study. The wider [claim-transition lifecycle](../../../paper/systems/claim-faithful-publication-systems-paper.pdf#nameddest=systems-lifecycle) is described in the systems paper, while the [contribution protocol](../../../paper/systems/open-source-mathematics-strategy.pdf#nameddest=strategy-protocol) specifies how an outsider returns a change. These links lead to named destinations in the sibling PDFs rather than to page numbers.
 
@@ -52,9 +52,11 @@ The same proof-state compiler also supports bounded inspection of a selected ela
 
 # Four views of the mathematical library
 
-No single graph can serve all readers without hiding an important distinction. The repository therefore commits four related layers (Figure <a href="#fig:layers" data-reference-type="ref" data-reference="fig:layers">1</a>). They are projections with different coverage contracts, not successive claims of understanding.
+No single graph can serve all readers without hiding an important distinction. The repository therefore commits four related layers (Figure [1](#fig%3Alayers)). They are projections with different coverage contracts, not successive claims of understanding.
 
-<figure id="fig:layers" data-latex-placement="!t">
+<a id="fig:layers"></a>
+
+<figure data-latex-placement="!t">
 
 <figcaption>The navigation layers. The dependency index and semantic graph are different partial views of the exhaustive atlas; neither is presented as a complete interpretation.</figcaption>
 </figure>
@@ -117,9 +119,11 @@ The packet also answers four different cold readers. A research mathematician ge
 
 </div>
 
-The architecture treats navigation and proof as separate capabilities (Figure <a href="#fig:sequence" data-reference-type="ref" data-reference="fig:sequence">2</a>). A static query may nominate a theorem or dependency path. It cannot establish that a proposed application typechecks, that a proof closes a goal, or that an English interpretation is mathematically faithful.
+The architecture treats navigation and proof as separate capabilities (Figure [2](#fig%3Asequence)). A static query may nominate a theorem or dependency path. It cannot establish that a proposed application typechecks, that a proof closes a goal, or that an English interpretation is mathematically faithful.
 
-<figure id="fig:sequence" data-latex-placement="!t">
+<a id="fig:sequence"></a>
+
+<figure data-latex-placement="!t">
 
 <figcaption>The shortest path from first contact to an authoritative receipt. The agent chooses the route; the notary derives the verdict from pinned Lean execution.</figcaption>
 </figure>
