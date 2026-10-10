@@ -161,6 +161,26 @@ request. Keep actual runtime errors separate, and cover both input sources in
 normal and optimized runs with checks that rejected requests start no
 subprocess and create no artifacts.
 
+For a producer with several named output files, inspect every selected final
+path before writing the first file. Refuse symlinks, including broken links,
+and nonregular-file collisions without changing earlier output or material
+outside the selected directory. Preserve the producer's documented
+regeneration behavior for regular files. Test clean output, repeated
+regeneration, and a collision at each output in normal and optimized runs.
+For regular-file refresh, acquire every selected output without truncation
+before changing any output. A later opening refusal must preserve earlier
+bytes and remove only unchanged empty files created during preparation.
+Check that distinct named outputs do not alias the same regular file, both
+before generation and through the acquired file handles. Test real read-only
+destinations, a missing paired output, both hardlink creation orders and an
+alias introduced after path preflight. This boundary covers acquisition
+failure; later write or flush failures can still leave a partial pair.
+
+Pass user-selected receipt paths unchanged to the reader that enforces the
+file boundary. Resolving a path first can hide a symlink that the reader must
+reject. Exercise the public CLI as well as the direct reader, including leaf
+and parent symlinks, relative paths and allowed platform aliases.
+
 ## Know the public owner graph
 
 - `skills/registry.json` owns skill families, task lanes, composition edges,
