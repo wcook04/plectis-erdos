@@ -215,6 +215,8 @@ class _AstWalk:
             return out
         if not isinstance(node, dict):
             return node
+        if node.get("t") == "Math" and node["c"][0].get("t") == "DisplayMath":
+            return {**node, "c": [node["c"][0], _unwrap_display_layout(node["c"][1])]}
         if node.get("t") in {"Div", "Span"} and node["c"][0][0]:
             # GFM retains labelled block and inline HTML targets.
             self.reference_labels.add(node["c"][0][0])
@@ -422,6 +424,60 @@ def _matching_brace(text: str, open_index: int) -> int:
                 return i
         i += 1
     raise ValueError("unbalanced brace while expanding a \\long\\def macro")
+
+
+def _unwrap_display_layout(body: str) -> str:
+    """Remove a complete, known PDF layout wrapper from a display payload.
+
+    GitHub's math renderer does not implement these text-layout commands.
+    Retain unknown, partial and mixed bodies; the recognized wrapper must
+    contain exactly one dollar-delimited mathematical interior. Its bytes,
+    including comments, newlines and labels, are returned unchanged.
+    """
+    text = body.strip()
+    command = re.match(r"\\(adjustbox|resizebox)(?![A-Za-z*])", text)
+    if command is None:
+        return body
+    count = 2 if command.group(1) == "adjustbox" else 3
+    arguments: list[str] = []
+    index = command.end()
+    for _ in range(count):
+        while index < len(text) and text[index].isspace():
+            index += 1
+        if text[index:index + 1] != "{":
+            return body
+        try:
+            end = _matching_brace(text, index)
+        except ValueError:
+            return body
+        arguments.append(text[index + 1:end])
+        index = end + 1
+    if text[index:].strip():
+        return body
+    options = [_TEX_COMMENT_RE.sub("", argument).strip() for argument in arguments[:-1]]
+    if command.group(1) == "adjustbox":
+        if not re.fullmatch(r"max\s+width\s*=\s*\\linewidth", options[0]):
+            return body
+    elif options != [r"\linewidth", "!"]:
+        return body
+    math = arguments[-1]
+    if not (math.startswith("$") and math.endswith("$") and len(math) > 2):
+        return body
+    payload = math[1:-1]
+    if not payload.strip():
+        return body
+    index = 0
+    while index < len(payload):
+        if payload[index] == "\\":
+            index += 2
+        elif payload[index] == "%":
+            newline = payload.find("\n", index)
+            index = len(payload) if newline < 0 else newline + 1
+        elif payload[index] == "$":
+            return body
+        else:
+            index += 1
+    return payload
 
 
 def _path_argument_end(text: str, open_index: int) -> int:

@@ -277,6 +277,106 @@ Literal code: \verb|<span id="res:code"></span>|.
         self.assertEqual(combined.count(self.BODY), 2)
 
 
+class DisplayLayoutReadingTests(unittest.TestCase):
+    PAYLOADS = (
+        "\\displaystyle\n"
+        " \\operatorname{ev}_e:\\mathbb Z^{I_e}\\longrightarrow L_e,\n"
+        " \\qquad (c_i)\\longmapsto\\sum_{i\\in I_e}c_iF_i.\n",
+        "\\displaystyle\n"
+        " \\ker(\\operatorname{ev}_e)\n"
+        "   =\\bigoplus_{i\\in I_e\\mathbin{\\backslash} J_e}\\mathbb Z R_i,\n"
+        " \\qquad\n"
+        " \\operatorname{rank}_{\\mathbb Z}\\ker(\\operatorname{ev}_e)=2^e-2.\n",
+        "\\begin{array}{c|rrrrrrrrrrrrrrr}\n"
+        "h&4&5&6&7&8&9&10&11&12&13&14&15&16&17&18\\\\ \\hline\n"
+        "\\#&1&104&812&5437&51409&237423&735450&1431226&1132756&236752&34910&3076&521&49&8\n"
+        "\\end{array}",
+    )
+
+    @staticmethod
+    def wrappers(payloads):
+        return [r"\adjustbox{max width=\linewidth}{$" + payload + "$}"
+                for payload in payloads[:2]] + [r"\resizebox{\linewidth}{!}{$" + payloads[2] + "$}"]
+
+    def test_whole_display_wrappers_keep_commands_comments_newlines_and_labels(self):
+        payload = "\n\\displaystyle\\frac{a_{i+1}}{b\\{i\\}}\n% ignored } $ \\label{eq:fake}\n\\tag{A}\\label{eq:real}\n"
+        for wrapper in (r"\adjustbox{max width=\linewidth}{$" + payload + "$}",
+                        r"\resizebox{\linewidth}{!}{$" + payload + "$}"):
+            walk = renderer._AstWalk()
+            blocks = [{"t": "Para", "c": [{"t": "Math", "c": [{"t": "DisplayMath"}, wrapper]}]}]
+            with self.subTest(wrapper=wrapper):
+                inlines = walk.blocks(blocks)[0]['c']
+                self.assertEqual(inlines[-1], {"t": "Math", "c": [{"t": "DisplayMath"}, payload]})
+                self.assertEqual(walk.equation_labels, {"eq:real"})
+                self.assertIn('<a id="eq:real"></a>', inlines[0]['c'][1])
+
+    def test_unknown_partial_starred_and_mixed_display_wrappers_are_unchanged(self):
+        known = r"\adjustbox{max width=\linewidth}{$x+y$}"
+        for body in (
+            r"\adjustbox*{max width=\linewidth}{$x+y$}",
+            r"\adjustbox{max width=\linewidth,angle=90}{$x+y$}",
+            r"\resizebox*{\linewidth}{!}{$x+y$}",
+            r"\resizebox{\textwidth}{!}{$x+y$}",
+            r"\resizebox{\linewidth}{\linewidth}{$x+y$}",
+            r"\adjustbox{max width=\linewidth}{$x+y$",
+            r"\resizebox{\linewidth}{!}{$x+y$",
+            r"\adjustbox{max width=\linewidth}{text $x+y$}",
+            r"\adjustbox{max width=\linewidth}{$x+y$ text}",
+            r"\adjustbox{max width=\linewidth}{$x$ and $y$}",
+            r"\adjustbox{max width=\linewidth}{$$x+y$$}",
+            r"\adjustbox{max width=\linewidth}{$$}",
+            r"\resizebox{\linewidth}{!}{$ $}",
+            "x+" + known,
+            known + "+y",
+        ):
+            math = {"t": "Math", "c": [{"t": "DisplayMath"}, body]}
+            with self.subTest(body=body):
+                self.assertEqual(renderer._AstWalk().blocks([{"t": "Para", "c": [math]}]),
+                                 [{"t": "Para", "c": [math]}])
+
+    def test_inline_math_and_code_lookalikes_remain_exact(self):
+        wrapper = r"\resizebox{\linewidth}{!}{$\frac{x}{y}$}"
+        inline = {"t": "Math", "c": [{"t": "InlineMath"}, wrapper]}
+        code = {"t": "Code", "c": [["", [], []], wrapper]}
+        code_block = {"t": "CodeBlock", "c": [["", [], []], wrapper]}
+        blocks = [{"t": "Para", "c": [inline, code]}, code_block]
+        self.assertEqual(renderer._AstWalk().blocks(blocks), blocks)
+
+    def test_three_source_payloads_retain_their_exact_ast_interiors(self):
+        for wrapper, payload in zip(self.wrappers(self.PAYLOADS), self.PAYLOADS):
+            math = {"t": "Math", "c": [{"t": "DisplayMath"}, wrapper]}
+            with self.subTest(wrapper=wrapper):
+                converted = renderer._AstWalk().blocks([{"t": "Para", "c": [math]}])
+                self.assertEqual(converted, [{"t": "Para", "c": [
+                    {"t": "Math", "c": [{"t": "DisplayMath"}, payload]},
+                ]}])
+
+    @unittest.skipUnless(shutil.which("pandoc"), "display layout conversion requires Pandoc")
+    def test_pandoc_conversion_removes_only_three_complete_display_wrappers(self):
+        wrappers = self.wrappers(self.PAYLOADS)
+        inline = r"\resizebox{\linewidth}{!}{$x+y$}"
+        unknown = r"\resizebox{\textwidth}{!}{$x+y$}"
+        source = (r"\documentclass{article}\begin{document}" + "\n"
+                  + "\n".join(r"\[" + wrapper + r"\]" for wrapper in wrappers)
+                  + "\n" + r"\[" + unknown + r"\]" + "\n"
+                  + r"Inline: \(" + inline + r"\)." + "\n"
+                  + r"Literal: \verb|" + inline + "|.\n"
+                  + r"\begin{Verbatim}" + "\n" + wrappers[0] + "\n" + r"\end{Verbatim}" + "\n"
+                  + r"\end{document}")
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "fixture.tex"
+            path.write_text(source)
+            text = renderer._convert(path, "fixture")['markdown']
+        displays = re.findall(r'``` math\n(.*?)\n```', text, re.DOTALL)
+        # Pandoc normalizes fence-boundary whitespace; the AST test above
+        # retains the exact interiors before that ordinary writer behavior.
+        self.assertEqual(displays, [*(payload.strip() for payload in self.PAYLOADS), unknown])
+        self.assertIn("$`" + inline + "`$", text)
+        self.assertIn("`" + inline + "`", text)
+        code_block = "\n".join(line[4:] for line in text.splitlines() if line.startswith("    "))
+        self.assertIn(wrappers[0], code_block)
+
+
 class LayoutAdjustboxReadingTests(unittest.TestCase):
     INEQUALITIES = (
         r"0<q\le Q_0=79\,639\,646\,646\,701\,375\,323\,355\,774\,875\,831\,053",
