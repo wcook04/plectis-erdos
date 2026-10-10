@@ -35,7 +35,7 @@ SCHEMA = "erdos249257-clean-ref-release-receipt/1"
 TAIL_BYTES = 16_000
 DIRTY_PATH_LIMIT = 120
 MINIMUM_PYTHON = (3, 11)
-ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v2"
+ENVIRONMENT_CONTRACT = "clean_committed_snapshot_subprocess_environment_v3"
 SOURCE_REPOSITORY_LABEL = "local_checkout"
 SANITIZED_GIT_ENVIRONMENT_KEYS = (
     "GIT_DIR",
@@ -64,7 +64,7 @@ SANITIZED_RUNTIME_ENVIRONMENT_KEYS = (
     "LANG",
     "LANGUAGE",
 )
-SANITIZED_RUNTIME_ENVIRONMENT_PREFIXES = ("PYTHON",)
+SANITIZED_RUNTIME_ENVIRONMENT_PREFIXES = ("PYTHON", "NODE")
 RELEASE_COMMANDS = (
     ("python3", "scripts/check_release.py"),
     ("python3", "scripts/test_root_import_closure.py"),
@@ -97,6 +97,7 @@ def is_safe_snapshot_file(root: Path, path: Path) -> bool:
 def clean_environment(base: Mapping[str, str] | None = None) -> dict[str, str]:
     """Run snapshot subprocesses without inherited Git, Python, or locale state."""
     environment = dict(os.environ if base is None else base)
+    selected_node = singleflight.node_executable(environment)
     for key in list(environment):
         if key.startswith("GIT_CONFIG_") or any(
             key.startswith(prefix) for prefix in SANITIZED_RUNTIME_ENVIRONMENT_PREFIXES
@@ -123,6 +124,8 @@ def clean_environment(base: Mapping[str, str] | None = None) -> dict[str, str]:
             "PYTHONUTF8": "1",
         }
     )
+    if selected_node:
+        environment[singleflight.NODE_EXECUTABLE_ENV] = selected_node
     return environment
 
 
