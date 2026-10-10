@@ -1638,21 +1638,36 @@ def check_child_environment_contract() -> None:
         "GIT_NAMESPACE": "wrong-namespace",
         "GIT_REPLACE_REF_BASE": "refs/replacements/wrong",
         "PYTHONPATH": "/private/wrong-python-path",
+        "NODE_OPTIONS": "--import /private/wrong-node-loader",
+        "NODE_PATH": "/private/wrong-node-path",
+        # Model the direct CI invocation rather than the local leaf runner's
+        # prebound Node. The hostile PATH makes Node unavailable in this context.
+        "PLECTIS_NODE_EXECUTABLE": "",
         "PATH": "/private/wrong-bin",
         "LC_ALL": "C",
         "LANG": "C",
         "LANGUAGE": "C",
     }
     with patch.dict(os.environ, hostile, clear=False):
+        # Node selection is context-sensitive: compare children with the same
+        # hostile context, not the restored ambient PATH after this patch ends.
+        expected_git = workbench.singleflight.command_environment()
         with patch.object(workbench.subprocess, "run", side_effect=fake_run):
             workbench.environment_fingerprint(workbench.repo_root())
             workbench.run_lean_probe(workbench.repo_root(), "#check True\n")
 
     require(len(observed) == 3, "fingerprint and Lean probes must each invoke one child")
-    expected_git = workbench.singleflight.command_environment()
     for command, kwargs in observed[:2]:
         require(command[0] == "git", f"unexpected fingerprint command: {command}")
         require(kwargs["env"] == expected_git, "Git fingerprint inherited ambient environment")
+        # These independent invariants keep the hostile-context comparison
+        # from accepting a matching but contaminated expected environment.
+        for key in ("GIT_DIR", "GIT_NAMESPACE", "GIT_REPLACE_REF_BASE", "PYTHONPATH",
+                    "NODE_OPTIONS", "NODE_PATH"):
+            require(key not in kwargs["env"], f"Git fingerprint inherited {key}")
+        require(kwargs["env"]["PATH"] == os.defpath, "Git fingerprint inherited PATH")
+        for key in ("LC_ALL", "LANG", "LANGUAGE"):
+            require(kwargs["env"][key] == "C.UTF-8", f"Git fingerprint inherited {key}")
         require(
             kwargs["timeout"] == workbench.singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
             "Git fingerprint is missing its bounded timeout",
