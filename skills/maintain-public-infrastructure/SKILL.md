@@ -216,6 +216,13 @@ identity; a new digest cannot supply new semantic or empirical evidence.
 
 ## Classify before changing
 
+Host process arguments need not be UTF-8. Decode process-discovery output
+losslessly while retaining PID, parent and command bytes. Do not turn an
+unrelated undecodable argument into an empty table or relax the executable,
+parent and checkout-root checks. Test the actual child decoding path and the
+orphan/descendant classification together.
+
+
 At a child-process boundary, bind a caller-relative artifact root before
 changing working directory. Preserve symlink and `..` components for the
 existing path checks. Reproduce the journey with a real child from another

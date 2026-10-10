@@ -1224,6 +1224,10 @@ def process_table() -> list[tuple[int, int, str]]:
             ["ps", "-A", "-o", "pid=,ppid=,command="],
             capture_output=True,
             text=True,
+            # POSIX arguments may contain arbitrary bytes. Preserve them so
+            # one unrelated command cannot disable discovery or alter identity.
+            encoding="utf-8",
+            errors="surrogateescape",
             check=False,
             env=command_environment(),
             timeout=PROCESS_TABLE_TIMEOUT_SECONDS,
