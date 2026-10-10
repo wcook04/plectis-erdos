@@ -19,6 +19,7 @@ import hashlib
 import json
 import os
 import re
+import shlex
 import subprocess
 import stat
 import sys
@@ -254,7 +255,9 @@ def _canonical_route_memory(root: Path, problem: Mapping[str, Any]) -> dict[str,
     }
 
 
-def _semantic_family_handoffs(record: Mapping[str, Any]) -> dict[str, Any]:
+def _semantic_family_handoffs(
+    record: Mapping[str, Any], *, root: Path = ROOT
+) -> dict[str, Any]:
     """Expose executable semantic follow-through for a canonical route record.
 
     Route memory remains the authority for the exact source locators and
@@ -272,6 +275,45 @@ def _semantic_family_handoffs(record: Mapping[str, Any]) -> dict[str, Any]:
     )
     evidence = record.get("evidence")
     evidence = evidence if isinstance(evidence, Mapping) else {}
+    palomar = _json(root / "docs" / "PALOMAR_RESULT_SHOWCASE.json")
+    selection = palomar.get("selection_contract", {})
+    registered_families = {
+        family_id
+        for programme in selection.get("programme_family_order", [])
+        for family_id in programme.get("family_ids", [])
+    } | {
+        relation[key]
+        for relation in selection.get("family_relations", [])
+        for key in ("from_family_id", "to_family_id")
+    }
+    if root_family not in registered_families:
+        # A route name is not a semantic family identity. Join an explicit
+        # canonical binding only when it covers this source and every anchor.
+        anchors = evidence.get("anchors", [])
+        anchors = {
+            anchor.rsplit(".", 1)[-1]
+            for anchor in anchors
+            if isinstance(anchor, str)
+        }
+        candidates = palomar.get("candidate_value_dispositions", {}).get(
+            "source_landscape_candidates", []
+        )
+        bindings = {
+            candidate["canonical_family_binding"]
+            for candidate in candidates
+            if isinstance(candidate, Mapping)
+            and isinstance(candidate.get("canonical_family_binding"), str)
+            and candidate.get("source_file") == evidence.get("path")
+            and isinstance(candidate.get("source_declaration"), str)
+            and anchors
+            and anchors <= {
+                name.strip().rsplit(".", 1)[-1]
+                for name in candidate["source_declaration"].split(";")
+            }
+        }
+        root_family = next(iter(bindings)) if len(bindings) == 1 else None
+        if root_family not in registered_families:
+            root_family = None
     source_current = evidence.get("source_current")
     source_current = (
         source_current if isinstance(source_current, Mapping) else {}
@@ -296,7 +338,7 @@ def _semantic_family_handoffs(record: Mapping[str, Any]) -> dict[str, Any]:
     related = related if isinstance(related, Mapping) else {}
 
     rows: list[dict[str, Any]] = []
-    if root_family:
+    if route_id:
         rows.append(
             {
                 "family_id": root_family,
@@ -312,7 +354,7 @@ def _semantic_family_handoffs(record: Mapping[str, Any]) -> dict[str, Any]:
                 "query": (
                     "python3 scripts/query_semantic.py family-relations "
                     f"{root_family}"
-                ),
+                ) if root_family else None,
             }
         )
 
@@ -338,6 +380,35 @@ def _semantic_family_handoffs(record: Mapping[str, Any]) -> dict[str, Any]:
                 ),
             }
         )
+
+    fallback_open_id = None
+    if any(row["family_id"] not in registered_families for row in rows):
+        problem_row = _problem_row(root, problem)
+        targets = _problem_target_claim_ids(problem_row) or {
+            problem_row["problem_id"]
+        }
+        claims = _json(root / "docs" / "claims.json")
+        fallback_open_id = next(
+            (
+                proposition["id"]
+                for proposition in claims.get("remaining_open_propositions", [])
+                if proposition.get("open_target_claim") in targets
+            ),
+            None,
+        )
+    for row in rows:
+        if row["family_id"] in registered_families:
+            continue
+        row["family_id"] = None
+        if fallback_open_id:
+            row["query"] = (
+                "python3 scripts/query_corpus.py --open "
+                + shlex.quote(fallback_open_id)
+            )
+            row["disposition"] = "open_proposition_only"
+        else:
+            row["query"] = None
+            row["disposition"] = "unavailable"
 
     return {
         "authority_posture": (
@@ -721,7 +792,7 @@ def build_packet(
     source_commit = _head(root)
     canonical_route_memory = _canonical_route_memory(root, problem)
     semantic_family_handoffs = _semantic_family_handoffs(
-        canonical_route_memory["record"]
+        canonical_route_memory["record"], root=root
     )
     semantic_programme_family_queries = _semantic_programme_family_queries(
         root, problem
