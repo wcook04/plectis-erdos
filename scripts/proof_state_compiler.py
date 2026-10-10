@@ -256,6 +256,8 @@ def environment_fingerprint(
 
 
 def _validate_request(request: dict[str, Any]) -> None:
+    if not isinstance(request, dict):
+        raise RequestError("request must be a JSON object")
     if request.get("schema_version") != REQUEST_SCHEMA:
         raise RequestError(
             f"request schema must be {REQUEST_SCHEMA!r}"
@@ -1251,13 +1253,19 @@ def compile_pilot_suite(
 
 
 def _load_request(args: argparse.Namespace) -> dict[str, Any] | None:
-    if args.request_file is not None:
-        return json.loads(args.request_file.read_text(encoding="utf-8"))
-    if args.request_stdin:
-        import sys
-
-        return json.load(sys.stdin)
-    return None
+    if args.request_file is None and not args.request_stdin:
+        return None
+    source = str(args.request_file) if args.request_file is not None else "stdin"
+    try:
+        if args.request_file is not None:
+            request = json.loads(args.request_file.read_text(encoding="utf-8"))
+        else:
+            request = json.load(sys.stdin)
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
+        raise RequestError(f"cannot read request from {source}: {error}") from error
+    if not isinstance(request, dict):
+        raise RequestError(f"request from {source} must be a JSON object")
+    return request
 
 
 def inspection_source(module: str, declaration: str, nodes: int = 160,
@@ -1390,8 +1398,8 @@ def main() -> int:
         print(json.dumps(packet, indent=2))
         return packet.get('exit_code', 0)
 
-    request = _load_request(args)
     try:
+        request = _load_request(args)
         if request is not None:
             packet = compile_request(
                 request,
@@ -1403,7 +1411,7 @@ def main() -> int:
                 repo_root=args.repo_root,
                 timeout_seconds=args.timeout_seconds,
             )
-    except ToolchainUnavailable as error:
+    except (ToolchainUnavailable, RequestError) as error:
         print(f"REFUSED: {error}", file=sys.stderr)
         return 2
     if packet.get("packet_bytes", 0) > MAX_PACKET_BYTES:

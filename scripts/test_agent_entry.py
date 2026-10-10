@@ -1025,6 +1025,39 @@ def main() -> int:
 
         shutil.copy2(ROOT / "skills" / "README.md", clone_readme)
         clone_registry = clone / "skills" / "registry.json"
+        # Wrong root shapes use the catalog refusal contract, including under -O.
+        registry_bytes = clone_registry.read_bytes()
+        index_bytes = clone_readme.read_bytes()
+        catalog_driver = [sys.executable, *(["-O"] * sys.flags.optimize)]
+        message = "skills/registry.json must be a JSON object"
+        for value in ([], None):
+            clone_registry.write_text(json.dumps(value) + "\n", encoding="utf-8")
+            refused = subprocess.run(
+                [*catalog_driver, str(catalog_script), "--check"],
+                cwd=clone, text=True, capture_output=True, check=False,
+            )
+            if (refused.returncode != 1 or refused.stdout
+                    or refused.stderr != f"agent skill catalog: {message}\n"):
+                raise AssertionError((value, refused.returncode, refused.stdout, refused.stderr))
+            with patch.object(agent_skill_catalog, "REGISTRY_PATH", clone_registry):
+                try:
+                    load_catalog()
+                except agent_skill_catalog.SkillCatalogError as error:
+                    if str(error) != message:
+                        raise AssertionError((value, str(error)))
+                else:
+                    raise AssertionError(("invalid registry root accepted", value))
+            if clone_readme.read_bytes() != index_bytes:
+                raise AssertionError("invalid registry root changed the generated catalog")
+        clone_registry.write_bytes(registry_bytes)
+        restored = subprocess.run(
+            [*catalog_driver, str(catalog_script), "--check"],
+            cwd=clone, text=True, capture_output=True, check=False,
+        )
+        if (restored.returncode != 0 or restored.stdout != current.stdout
+                or restored.stderr or clone_readme.read_bytes() != index_bytes):
+            raise AssertionError(("restored catalog control changed", restored))
+
         invalid_registry = json.loads(clone_registry.read_text(encoding="utf-8"))
         invalid_registry["skills"][0]["family"] = "missing-family"
         clone_registry.write_text(json.dumps(invalid_registry), encoding="utf-8")

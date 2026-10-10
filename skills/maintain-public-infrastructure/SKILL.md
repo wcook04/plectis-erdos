@@ -153,6 +153,14 @@ statements, and report unavailable history explicitly for source archives.
 `scripts/research_query.py` owns the compact contract; the rich corpus routes
 remain owned by `scripts/query_corpus.py`.
 
+For a CLI with an object-shaped JSON request contract, validate explicitly
+selected file or stdin inputs before choosing a default mode or launching
+tools. Reject input I/O, decoding and schema errors through that CLI's input
+refusal contract. An explicit JSON `null` must not be treated as an absent
+request. Keep actual runtime errors separate, and cover both input sources in
+normal and optimized runs with checks that rejected requests start no
+subprocess and create no artifacts.
+
 ## Know the public owner graph
 
 - `skills/registry.json` owns skill families, task lanes, composition edges,
