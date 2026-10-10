@@ -11,7 +11,9 @@ Skill archive, **not a Codex or Claude plugin**.
 
 ## Build and inspect
 
-From the public checkout:
+From the public checkout, choose a new ZIP filename in an existing writable
+directory. Replace `/absolute/new` below with that directory; create it first
+if needed. Both preview and apply require the parent directory to exist:
 
 ```sh
 python3 scripts/build_plectis_companion.py --output /absolute/new/companion.zip
@@ -120,6 +122,15 @@ initial partial fixture omitted an ancillary definition; the complete-source
 rerun supplied it. Global reasoning skills were available in these internal
 sessions. These observations test source-reading behaviour, not fresh proof
 execution, isolated onboarding, independent review or outside adoption.
+
+On 10 October, a local Python 3.12.7 replay built the 7,726-byte archive,
+verified every manifest hash, installed it into a new custom directory, and
+used its installed bootstrap for an anonymous public download of
+`dce7c6011efe1b24b4af0cbf71a70fc6cd55ef1d`. The outside-checkout smoke run
+routed a one-hint #257 request to `read_mathematics`, produced the corpus
+overview, and preserved the clean exact-pin checkout. This is a local download
+and command-routing observation; no hosted agent, Lean build, proof or outside
+adoption was tested.
 
 Focused checks:
 
