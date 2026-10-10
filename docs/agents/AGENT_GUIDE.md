@@ -190,10 +190,11 @@ For whole-corpus source navigation, do not compile or skim modules first. Run:
 python3 scripts/query_corpus.py --tour --format card
 ```
 
-The six-line tour reports the full scale, canonical all-problem map, exact
-loaded-root dependency graph, authority boundary, and next command. It keeps
-the all-problem open fleet distinct from the reviewed #249/#257 open-
-proposition frontier. Then run
+The result-first card introduces a selected contribution and its exact
+boundary, then gives its programme route and source declaration. It lists the
+indexed problems and follow-up paper, connection, statement-identity and
+review-scope commands. Use `--tour --format json` when the task needs the full
+tour, ranking and counts. Then run
 `python3 scripts/query_corpus.py --route agent_native_corpus_navigation` for
 the generic declaration, connection, proof-cone, workbench, and focused-build
 commands. All navigation reads committed JSON and therefore works in a cold
@@ -257,22 +258,26 @@ Lean build when a result must be checked.
    missing original run logs or exact targets.
 7. Read `docs/SCOPE.md` before describing what the project proves. Erdős #249 and
    the universal form of #257 remain open.
-8. For one claim, use `docs/papers/corpus.json` to resolve its `paper_label`
-   to the owning individual problem paper, then follow its `declarations` to
-   the named Lean source coordinates. The archived combined #249/#257
-   manuscript is provenance, not the default gateway. To read surrounding
-   exposition rather than locate a claim, use the generated full text in
-   `docs/papers/`, where each manuscript's own section labels are HTML anchors:
-   `grep -n '<a id="sec:unresolved">' docs/papers/full-text/*.md`.
-9. Read `docs/papers/corpus.json` when the task concerns what the papers say
-   rather than what Lean checked. It is the bounded index to every registered
-   manuscript, including the Plectis paper carried as a mirror so this clone is
-   readable offline. It names the question each paper answers, the reading
-   route each paper states for itself, every section with its label and line,
-   and what each paper is not authority for. The generated Markdown is a
-   projection: it resolves theorem numbers, cross-references, and Lean source
-   links that the `.tex` only implies, but the `.tex` remains the manuscript and
-   the hash of record. Neither is proof authority.
+8. For one claim, follow the paper and declaration handles returned by its
+   claim query to the owning problem paper and named Lean source coordinates.
+   To choose surrounding exposition, start with
+   `python3 scripts/query_corpus.py --papers --format card`, then use
+   `--paper-anchor <label-or-source-ref>` for a named passage, or
+   `--paper-source <manuscript.tex>` to list the selected source's anchors.
+   The archived combined #249/#257 manuscript is provenance, not the default
+   gateway. Each manuscript's own section labels are HTML anchors in its
+   generated full text.
+9. For a whole-system explanation, follow the paper card's current routes for
+   the system paper, writing and revision guides, and cross-problem paper. For
+   a bounded question, follow only the relevant paper and section handles. Use
+   `--papers --format json` or `docs/papers/corpus.json` when the task needs
+   detailed inventory, section metadata or source hashes. The inventory names
+   each paper's question, reading route and authority limits. Papers marked
+   `retired` are historical background; read them only for an explicit
+   historical request, keeping their recorded revision attached. The generated
+   Markdown resolves theorem numbers, cross-references and Lean source links;
+   the `.tex` remains the manuscript and the hash of record. Neither is proof
+   authority.
 10. Read `docs/problems.json` when the task names a single Erdős problem
    covered by the `ErdosProblems` expansion library. It is the generated,
    bounded problem-owned index: one row per currently indexed problem giving
