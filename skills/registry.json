@@ -1061,7 +1061,10 @@
         "package evidence",
         "resume work",
         "return it for acceptance",
-        "public contribution round trip"
+        "public contribution round trip",
+        "return a corrected proof step",
+        "return corrected proof steps",
+        "returning corrected proof steps"
       ],
       "task_intents": [
         {

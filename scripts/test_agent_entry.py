@@ -662,6 +662,14 @@ def validate_finished_patch_routes() -> None:
         "Check this documentation patch before opening a pull request": "repository_architecture",
         "submit my finished proof": "return_research",
         "send this proof patch for review": "return_research",
+        "Return a corrected proof step with credit": "return_research",
+        "Return corrected proof steps for review and credit": "return_research",
+        "Returning corrected proof steps for review and credit": "return_research",
+        "Find a proof and return it with credit": "bounded_research",
+        "Prove the theorem and return the proof with credit": "bounded_research",
+        "Correct a typo in a paper": "public_writing",
+        "Fix a typo in README.md": "repository_architecture",
+        "I want to send a documentation correction": "submit_change",
         "Prove the Lean theorem while following the contribution guide": "bounded_research",
     }
     for task, expected in cases.items():
