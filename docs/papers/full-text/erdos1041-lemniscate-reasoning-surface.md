@@ -134,7 +134,7 @@ a=A_0-is,\qquad b=iB_0+\frac95s,\qquad
 ```
 The polynomial is
 
-<a id="eq:ani-F-long"></a>
+<a id="eq:ani-f-long--case-ad7d2032"></a>
 <a id="eq:ani-f-long"></a>
 
 ``` math

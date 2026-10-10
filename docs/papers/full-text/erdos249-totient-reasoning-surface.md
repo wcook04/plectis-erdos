@@ -2182,7 +2182,7 @@ At $`H_3=6`$ and $`L=6`$, the discrepancy is $`D(6,6,6)=270`$, with residue $`14
 
 </div>
 
-<div id="prop:B7" class="prop">
+<div id="prop:b7--case-60c3edd0" class="prop">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/CertificateKernel.lean#L19014">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos249-totient-reasoning-surface/section-6-3.md#prop-b7-60c3ed-comparator">Comparator</a></p>
 
 **Proposition 127** (A sufficient condition on the LCM grid).
@@ -2506,7 +2506,7 @@ R_N=\sum_{d\ge1}\mu(d)2^{d-r_d(N)}
 ``` math
 R_{(q+m)H(t)}-R_{qH(t)}\in\mathbb Z.
 ```
-*The threshold may depend on the hypothetical rational value. A certificate at one fixed scale therefore gives a finite denominator exclusion, not irrationality. Proposition [127](#prop%3AB7) requires certificates at arbitrarily large scales, so that one lies beyond the threshold supplied by any such rational value.*
+*The threshold may depend on the hypothetical rational value. A certificate at one fixed scale therefore gives a finite denominator exclusion, not irrationality. Proposition [127](#prop%3Ab7--case-60c3edd0) requires certificates at arbitrarily large scales, so that one lies beyond the threshold supplied by any such rational value.*
 
 </div>
 
@@ -2596,7 +2596,7 @@ b\ge\frac{1}{q_N\varepsilon_N}.
 ``` math
 \forall t\in\mathbb N,\quad t\le82\ \Longrightarrow\ P\,t,
 ```
-*where $`P\,t`$ is the diagonal certificate predicate in Proposition [126](#prop%3AB3). The earlier aggregate covered 28 explicit cases through $`64`$, including $`1,2,3,4,5,7,8,9,11,13,16,17`$; the later theorem fills the gaps and extends the range through $`82`$. Each instance reduces to exact finite arithmetic with the displayed totient values, using the prime-power factorisations and Lucas primality certificates in the source. This proves neither $`P\,83`$ nor infinitely many instances, and therefore does not establish the quantified conditions in Propositions [125](#prop%3AA10), [126](#prop%3AB3) and [127](#prop%3AB7).*
+*where $`P\,t`$ is the diagonal certificate predicate in Proposition [126](#prop%3AB3). The earlier aggregate covered 28 explicit cases through $`64`$, including $`1,2,3,4,5,7,8,9,11,13,16,17`$; the later theorem fills the gaps and extends the range through $`82`$. Each instance reduces to exact finite arithmetic with the displayed totient values, using the prime-power factorisations and Lucas primality certificates in the source. This proves neither $`P\,83`$ nor infinitely many instances, and therefore does not establish the quantified conditions in Propositions [125](#prop%3AA10), [126](#prop%3AB3) and [127](#prop%3Ab7--case-60c3edd0).*
 
 </div>
 
