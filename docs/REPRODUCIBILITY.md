@@ -37,6 +37,8 @@ The first target survives the finite search at 16 and is excluded by an exact
 gap at 17; the second is an exact finite sum. A surviving search does not prove
 infinite membership or solve Erdős #257. You can download a result and check
 it separately with the Python checker linked on the page.
+If the browser cannot save the download, open **View result JSON** and copy
+the same data into a file named `plectis-result.json`.
 
 To try the same calculation in a terminal, use the
 [standalone Python example](#try-a-calculation-without-cloning).
