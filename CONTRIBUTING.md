@@ -60,12 +60,16 @@ and report an example someone can inspect.
 
 For a small documentation or tooling patch:
 
-1. Fork this repository and follow the [clone instructions](docs/REPRODUCIBILITY.md#1-start-with-a-complete-committed-checkout).
-2. Make one focused change and explain the reader's problem it fixes.
+1. Fork this repository and follow the [clone instructions](docs/REPRODUCIBILITY.md#1-start-with-a-complete-committed-checkout),
+   replacing the upstream repository URL in the clone command with your fork's URL.
+2. Create a named branch with `git switch -c <new-branch-name>`, replacing
+   `<new-branch-name>` with a new name you choose. Make one focused change and
+   explain the reader's problem it fixes.
 3. Run the [documentation check](docs/REPRODUCIBILITY.md#check-a-documentation-change)
    with Python 3.11 or later, or your changed tool's test. Report the result;
    prose corrections need no full Lean build.
-4. Open a pull request and name your preferred credit. An
+4. Push your branch to your fork, then open a pull request against this
+   repository's `main` and name your preferred credit. An
    [issue](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
    is enough without a patch.
 
