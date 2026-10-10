@@ -5,7 +5,7 @@ SPDX-License-Identifier: Apache-2.0
 
 # Related Erdős problems
 
-Where this work sits among the numbered problems it is near. Statuses are as listed on the individual problem pages ([68](https://www.erdosproblems.com/68), [249](https://www.erdosproblems.com/249), [257](https://www.erdosproblems.com/257), [1041](https://www.erdosproblems.com/1041), [1049](https://www.erdosproblems.com/1049), [69](https://www.erdosproblems.com/69), [250](https://www.erdosproblems.com/250), [258](https://www.erdosproblems.com/258)) in July 2026; none of the external results is re-proved in this repository.
+Where this work sits among the numbered problems it is near. Statuses are as listed on the individual problem pages ([68](https://www.erdosproblems.com/68), [249](https://www.erdosproblems.com/249), [257](https://www.erdosproblems.com/257), [1041](https://www.erdosproblems.com/1041), [1049](https://www.erdosproblems.com/1049), [69](https://www.erdosproblems.com/69), [250](https://www.erdosproblems.com/250), [258](https://www.erdosproblems.com/258)) in July 2026. The catalogue column preserves those dated classifications; the local-scope column and source links below describe this repository.
 
 ## Bounded status route
 
