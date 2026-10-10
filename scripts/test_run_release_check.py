@@ -5,6 +5,7 @@
 
 from __future__ import annotations
 
+import os
 import subprocess
 import sys
 import tempfile
@@ -43,6 +44,43 @@ class ReleasePreparationTests(unittest.TestCase):
             patch.object(release, "python_version", side_effect=[(3, 14), (3, 12)]),
         ):
             self.assertEqual(release.select_python(), "/python3.12")
+
+    def test_relative_interpreter_remains_usable_after_child_changes_directory(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            caller = Path(directory).resolve() / "caller"
+            child = Path(directory).resolve() / "child"
+            caller.mkdir()
+            child.mkdir()
+            interpreter = caller / "python312"
+            interpreter.symlink_to(sys.executable)
+            previous = Path.cwd()
+            try:
+                os.chdir(caller)
+                with patch.object(release, "python_version", return_value=(3, 12)):
+                    selected = release.select_python("./python312")
+                self.assertEqual(selected, str(interpreter))
+                release.run([selected, "-c", "pass"], root=child)
+            finally:
+                os.chdir(previous)
+
+    def test_relative_path_lookup_is_pinned_before_child_changes_directory(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            caller = Path(directory).resolve()
+            interpreter = caller / "bin" / "python312"
+            interpreter.parent.mkdir()
+            interpreter.symlink_to(sys.executable)
+            previous = Path.cwd()
+            try:
+                os.chdir(caller)
+                with (
+                    patch.dict(os.environ, {"PATH": "./bin"}),
+                    patch.object(release, "python_version", return_value=(3, 12)),
+                ):
+                    selected = release.select_python("python312")
+                self.assertEqual(selected, str(interpreter))
+                release.run([selected, "-c", "pass"], root=release.ROOT)
+            finally:
+                os.chdir(previous)
 
     def test_missing_exact_interpreter_stops_before_install(self) -> None:
         with patch.object(release, "python_version", return_value=(3, 14)):

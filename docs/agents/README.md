@@ -56,8 +56,8 @@ If you already have a clone with work in it, keep it. Compare its revision first
 do not reset or overwrite it to obtain newer material. A separate clone in a
 new directory gives you current public work while preserving the old delta.
 For a historical reproduction, check out the requested tag explicitly.
-[Issue #106](https://github.com/wcook04/plectis-erdos/issues/106) reproduces a
-frozen edition; [#105](https://github.com/wcook04/plectis-erdos/issues/105)
+[Issue #106](https://github.com/wcook04/plectis-erdos/issues/106) asks you to trace
+one current weighted-support result; [#105](https://github.com/wcook04/plectis-erdos/issues/105)
 introduces research frontiers. This checkout's router and source files describe
 the capabilities actually available to your agent.
 

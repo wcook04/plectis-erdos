@@ -578,9 +578,9 @@
       "path": "docs/agents/README.md",
       "start_line": 1,
       "end_line": 173,
-      "sha256": "ef5f971e1b2cf671e0b43c99b66d41fe308a927865da87892b8cf6e7270cdd22",
-      "excerpt_sha256": "ef5f971e1b2cf671e0b43c99b66d41fe308a927865da87892b8cf6e7270cdd22",
-      "custody": "Complete public agent guide inspected on 9 October 2026 after adding the portable continuation prompts link. Existing clone, task selection, evidence routes and observation boundaries are unchanged. No new mathematical or performance claim. Current full public source reviewed on 10 October 2026 after restoring the supported-Python prerequisite and same-interpreter instruction. Existing requested-depth, research, contribution and review responsibilities remain unchanged; no new mathematical, independent-review or measured learning claim."
+      "sha256": "db846e19f7674515397365546e549c3ba85ecf09d19092cf52eb985f8cff2678",
+      "excerpt_sha256": "db846e19f7674515397365546e549c3ba85ecf09d19092cf52eb985f8cff2678",
+      "custody": "Complete public agent guide inspected on 9 October 2026 after adding the portable continuation prompts link. Existing clone, task selection, evidence routes and observation boundaries are unchanged. No new mathematical or performance claim. Current full public source reviewed on 10 October 2026 after restoring the supported-Python prerequisite and same-interpreter instruction. Existing requested-depth, research, contribution and review responsibilities remain unchanged; no new mathematical, independent-review or measured learning claim. The live issue #106 task was observed through GitHub on 10 October and its guide description corrected to current-main weighted-support tracing; r8.architecture.roles remains a method description of setup and contribution responsibilities."
     },
     {
       "id": "r8-lookup",

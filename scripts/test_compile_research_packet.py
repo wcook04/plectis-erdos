@@ -521,6 +521,10 @@ class DossierTests(unittest.TestCase):
             self.put(key, value)
         write(self.root, crp.DOSSIER_PATHS["journal"], "")
         self.git("init", "-q")
+        # Git may detach automatic maintenance after a commit. Keep all fixture
+        # work synchronous so TemporaryDirectory cleanup cannot race .git/objects.
+        self.git("config", "gc.auto", "0")
+        self.git("config", "maintenance.auto", "false")
         self.git("config", "user.email", "fixture@example.invalid")
         self.git("config", "user.name", "Fixture")
         self.commit = self.commit_all()
@@ -547,6 +551,40 @@ class DossierTests(unittest.TestCase):
             {"id": self.rid, "review_state": "candidate_editorial_synthesis",
              "mechanism_sentence": {"text": "The hypothesis supplies the conclusion.", "sources": [
                  {"path": self.path, "start_line": 3, "end_line": 3, "must_contain": [":= h"]}]}}]}
+
+    def test_fixture_cannot_start_automatic_git_maintenance(self):
+        # Commit-triggered auto-maintenance must stay disabled, even
+        # when loose-object housekeeping has a deliberately low threshold.
+        # Trace the real Git child instead of weakening temporary-tree cleanup.
+        trace = self.root / ".git/git-maintenance.trace"
+        self.git("config", "maintenance.loose-objects.enabled", "true")
+        self.git("config", "maintenance.loose-objects.auto", "1")
+        self.assertEqual(self.git("config", "--local", "--get", "gc.auto"), "0")
+        self.assertEqual(self.git("config", "--local", "--get", "maintenance.auto"), "false")
+        from unittest.mock import patch
+        with patch.dict(os.environ, {"GIT_TRACE2_EVENT": str(trace)}):
+            write(self.root, "second.txt", "another commit\n")
+            self.commit_all()
+        events = [json.loads(line) for line in trace.read_text().splitlines()]
+        children = [event.get("argv", []) for event in events
+                    if event.get("event") == "child_start"]
+        self.assertFalse(any("maintenance" in argv or "gc" in argv
+                             for argv in children), children)
+
+        # Positive control: enable the same maintenance policy, force it to
+        # stay in the foreground, and show that another commit runs a child.
+        self.git("config", "maintenance.auto", "true")
+        self.git("config", "maintenance.autoDetach", "false")
+        self.git("config", "gc.autoDetach", "false")
+        trace.unlink()
+        with patch.dict(os.environ, {"GIT_TRACE2_EVENT": str(trace)}):
+            write(self.root, "third.txt", "maintenance control\n")
+            self.commit_all()
+        events = [json.loads(line) for line in trace.read_text().splitlines()]
+        children = [event.get("argv", []) for event in events
+                    if event.get("event") == "child_start"]
+        self.assertTrue(any("maintenance" in argv for argv in children), children)
+        self.assertTrue(any("pack-objects" in argv for argv in children), children)
 
     def test_source_bound_lean_class_is_not_a_new_build(self):
         row = self.result()
