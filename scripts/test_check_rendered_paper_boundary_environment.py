@@ -103,8 +103,6 @@ Nine of the ten deliberately false edits were rejected and one escaped.
 The edits were authored by the checker’s author.
 The other nine edits were not rerun.
 It supplies no post-repair ten-of-ten result.
-The contributor and reviewer were the same agent.
-The receipt records no public pull request, human review or independent outside clone replay.
 There is no comparative reader result.""",
         """8 Related work
 This is not a general incremental scheduler.""",
@@ -143,7 +141,6 @@ It supports document checks, not a full Lean, Comparator or release rerun.""",
         (3, "measures neither reader benefit nor autonomous discovery", "measures reader benefit and autonomous discovery"),
         (5, "Nine of the ten deliberately false edits were rejected and one escaped", "All ten deliberately false edits were rejected"),
         (5, "no post-repair ten-of-ten result", "a post-repair ten-of-ten result"),
-        (5, "were the same agent", "were independent people"),
         (5, "no comparative reader result", "a comparative reader result"),
         (7, "require direct evaluation", "have been demonstrated"),
         (7, "cannot confer acceptance", "confers acceptance"),

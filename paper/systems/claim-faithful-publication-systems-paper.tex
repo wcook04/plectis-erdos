@@ -10,9 +10,9 @@
  pdfsubject={Architecture, evidence and iteration in a Lean research repository},pdflang={en-GB},
  bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=1}
 \newcommand{\repobase}{https://github.com/wcook04/plectis-erdos}
-\newcommand{\repolink}[2]{\href{\repobase/blob/992cf60a27efd8c34f437e347c413bb781d75c32/#1}{\texttt{#2}}}
+\newcommand{\repolink}[2]{\href{\repobase/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/#1}{\texttt{#2}}}
 % Prose links retain the same pinned destination without printing a file identifier.
-\newcommand{\reporef}[2]{\href{\repobase/blob/992cf60a27efd8c34f437e347c413bb781d75c32/#1}{#2}}
+\newcommand{\reporef}[2]{\href{\repobase/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/#1}{#2}}
 % Records, derived views and review decisions have distinct forms.
 \tikzset{
  w/.style={text width=#1cm},h/.style={minimum height=#1cm},
@@ -30,7 +30,7 @@
 \title{A Repository-Based System for Research and Publication}
 \subtitle{Architecture, evidence and iteration in a Lean research repository}
 \author{Will Cook}
-\date{5 October 2026}
+\date{10 October 2026}
 % BEGIN generated_pipeline_counts
 \newcommand{\LedgerRows}{689}
 \newcommand{\LedgerExact}{498}
@@ -76,22 +76,22 @@
 % END SENTENCE r4.provenance
 \begin{abstract}
 % SENTENCE r4.abstract.01
-Plectis is a repository-based research environment for retaining mathematical work across sessions and carrying selected results into publication.
+Plectis is a repository-based system for turning AI-assisted mathematical research into papers that a first-time reader can follow and check. Researchers and agents choose the work, and maintainers decide what to adopt.
 % END SENTENCE r4.abstract.01
 % SENTENCE r4.abstract.02
-The public prototype brings questions, sources, proofs, computations and failed approaches together in eight problem collections.
+The public prototype brings questions, sources, proofs, computations and failed approaches together in eight problem collections, one per Erd\H{o}s problem, each with a short paper and a longer research record.
 % END SENTENCE r4.abstract.02
 % SENTENCE r4.abstract.03
-Its publication workflow records the formal-support status of paper statements and binds explanatory passages to cited sources, while keeping these records distinct.
+A machine-readable ledger links each of \LedgerRows{} labelled statements in those papers to its Lean declarations and Comparator status, and every passage of this paper is bound to the source lines that support it.
 % END SENTENCE r4.abstract.03
 % SENTENCE r4.abstract.04
-Researchers and agents choose the work; Python tools retrieve evidence, record Lean probes and regenerate views. Maintainers decide what to adopt, and a journal retains entered contributions and review decisions.
+Reader criticism becomes a writing rule applied across the corpus: when one mathematician said a note used unexplained terms and never said how restrictive its main hypothesis was, all sixteen papers were revised for a first-time reader, and a public ledger credits the comment with links to the change.
 % END SENTENCE r4.abstract.04
 % SENTENCE r4.abstract.05
-A worked revision shows how an explanation can lose a hypothesis while its formal proofs remain valid.
+A worked revision shows how an explanation can lose a hypothesis while its formal proofs stay valid, which is why explanations need checks of their own. A historical author-run test rejected \HistoricalRejected{} of \HistoricalEdits{} false edits and accepted one false completion claim.
 % END SENTENCE r4.abstract.05
 % SENTENCE r4.abstract.06
-A historical author-run test rejected \HistoricalRejected{} of \HistoricalEdits{} false edits and accepted one false completion claim. Reader benefit, discovery rate and adoption by independent laboratories remain unmeasured.
+Five contributions have merged into Google DeepMind's Formal Conjectures, one with an independently replayed proof, and a selection of \#257 results is registered on Palomar. Reader benefit, discovery rate and adoption by independent laboratories remain unmeasured.
 % END SENTENCE r4.abstract.06
 \end{abstract}
 \section{Introduction}\label{sec:intro}
@@ -114,6 +114,10 @@ Erd\H{o}s Problems supplies the questions and their public discussion, while Lea
 % SENTENCE r4.intro2.02
 Formalisation blueprints link a written argument to named Lean declarations~\cite{leanblueprint,leanarchitect}, and the Equational Theories Project maintains shared problem records~\cite{etp}. Prove2Me combines human-audited missions, source-linked milestones and separately submitted proofs, with intermediate results available for other agents to reuse~\cite[Sections~3--4]{prove2me}.
 % END SENTENCE r4.intro2.02
+
+% SENTENCE r16.intro.context
+The AlphaProof Nexus paper reports Lean proofs for nine of 353 Erd\H{o}s problem statements~\cite{apn2026}, and in October 2026 OpenAI released 719 manuscripts with about 42 per cent of their principal results formalised~\cite{openaimath2026}. The Advisory Group on Mathematics and Artificial Intelligence at IAS asks the laboratories behind such results for attribution and conventional exposition, and calls links between prose and formal artefacts helpful~\cite{agmai2026}. Exposition, attribution and those links are the subject of this paper.
+% END SENTENCE r16.intro.context
 
 % SENTENCE r4.intro2.03
 The question is how to keep a publication aligned with its changing research record. Assertions, formal supports, explanations and acceptance decisions need separate identities and links. Checks detect specified disagreements; preserving the mathematics remains a review task.
@@ -327,22 +331,13 @@ Each marked passage in this systems paper has a text record, specified source li
 For the appendix\textquotesingle s conclusion about infinite subsets, the sources explain why restriction preserves the weighted condition. The passage checker compares cryptographic hashes of the marked text and declared sources, rejects missing records or unbound passages, and requires a nonempty rationale. It does not assess whether the rationale justifies the text.
 % END SENTENCE r4.checks2.04
 
-% SENTENCE r4.checks2.05
-A matching digest establishes agreement with recorded bytes. It does not establish that the source entails the passage.
-% END SENTENCE r4.checks2.05
 % SENTENCE r4.checks2.06
 In the worked revision, review must check the hypothesis and quantifiers even if both Lean links still resolve. Historical edit~8 tested a different failure: an unresolved step was described as complete (Table~\ref{tab:mutations}).
 % END SENTENCE r4.checks2.06
 
-% SENTENCE r4.checks3.01
-Execution is a separate question. A matching declaration type and reachable source link do not identify a successful continuous-integration run for that module.
-% END SENTENCE r4.checks3.01
 % SENTENCE r4.checks3.02
 The probe interface takes verdicts from the specified Lean process; callers cannot submit their own verdict through it.
 % END SENTENCE r4.checks3.02
-% SENTENCE r4.checks3.03
-An actor with filesystem access can still alter the implementation or stored record.
-% END SENTENCE r4.checks3.03
 % SENTENCE r4.checks3.04
 The protocol distinguishes contributor and reviewer roles but does not technically force a second independent mathematician. No independent human mathematical review of the corpus is recorded.
 % END SENTENCE r4.checks3.04
@@ -497,12 +492,6 @@ To decide what was learned, a later reviewer must compare the return with earlie
 % END SENTENCE r4.contribute2.04
 
 \papersectiontarget{systems-mathloop}
-% SENTENCE r4.contribute3.01
-The repository's proposed route from a local result to an upstream library includes a literature and library comparison, a proof of the extension and a second useful instance before expert submission~\cite{mathlibcontrib}.
-% END SENTENCE r4.contribute3.01
-% SENTENCE r4.contribute3.02
-This route is not automated, and the supplied record reports no Mathlib contribution from it.
-% END SENTENCE r4.contribute3.02
 % SENTENCE r4.contribute3.03
 Credit distinguishes an idea from its implementation, formalisation and exposition. CRediT supplies a vocabulary for roles, not an authorship decision~\cite{credit}.
 % END SENTENCE r4.contribute3.03
@@ -525,6 +514,19 @@ Of the \LedgerFormal{} exact-or-specialising occurrences, \LedgerCompared{} are 
 These are occurrence counts, not counts of distinct theorems or independently reviewed proofs. Exact support matches the printed statement; specialising support yields it by specialization. Named-input entries retain an additional assumed result. An entry without Lean support may have an ordinary proof; neither of these last two groups is counted as fully covered.
 % END SENTENCE r4.obs1.03
 
+\subsection{Revisions prompted by readers}
+% SENTENCE r16.obs.readers.01
+The \repolink{docs/research-commons/CREDIT_LEDGER.md}{credit ledger} records nine outside comments, what each changed and the lines where the change can be seen. One mathematician found that the \#243 note used terms that meant nothing on first reading and never said how restrictive its main hypothesis was; all sixteen problem papers were then revised for a first-time reader, and the public writing rules require both repairs. The \#243 paper, for example, says that its cubic-rate hypothesis excludes the behaviour of the Sylvester recurrence and imposes much more than the quadratic limit, and gives an example showing why the precision of its error term matters.
+% END SENTENCE r16.obs.readers.01
+% SENTENCE r16.obs.readers.02
+Another comment, that AI-assisted mathematics rarely shows where its ideas come from, led to a literature review for each problem; each paper now credits its sources where they are used. A \repolink{paper/exposition/writing-mathematics-from-reviewed-revisions.pdf}{writing guide} sets out the method drawn from these revisions, with worked cases.
+% END SENTENCE r16.obs.readers.02
+
+\subsection{Outside checks of the formal statements}
+% SENTENCE r16.obs.outside.01
+Five mathematical contributions have merged into Google DeepMind's Formal Conjectures~\cite{formalconjectures}. One proves a negative answer to its formal statement of Problem~1041, using a counterexample posted by an erdosproblems.com contributor; a reviewer of the newest one checked its statement against the source and replayed the proof independently. A selection of five \#257 statements is registered on Palomar~\cite{palomar} after mechanical checking. These checks concern formal statements and proofs; the exposition has had no systematic outside review.
+% END SENTENCE r16.obs.outside.01
+
 \subsection{Historical false-edit trial}
 % SENTENCE r4.obs2.01
 The historical publication-evidence record reports that \HistoricalRejected{} of the \HistoricalEdits{} deliberately false edits were rejected and \HistoricalEscaped{} escaped.
@@ -532,9 +534,6 @@ The historical publication-evidence record reports that \HistoricalRejected{} of
 % SENTENCE r4.obs2.02
 The edits were authored by the checker's author, the original run logs were not retained, and the other \HistoricalNotRerun{} edits were not rerun against the extended checklist.
 % END SENTENCE r4.obs2.02
-% SENTENCE r4.obs2.03
-The edits were applied separately, with the baseline restored between trials.
-% END SENTENCE r4.obs2.03
 % SENTENCE r4.obs2.04
 The escaped edit changed a description of an unresolved step from ``does not supply\textquotesingle\textquotesingle\ to ``completes\textquotesingle\textquotesingle, and the publication checks accepted it.
 % END SENTENCE r4.obs2.04
@@ -578,33 +577,15 @@ The follow-up tested the intact baseline and only the escaped edit against an ad
 % SENTENCE r4.obs3.02
 In that recorded follow-up, the post-repair witness accepts the current README and rejects a test copy containing the false clause.
 % END SENTENCE r4.obs3.02
-% SENTENCE r4.obs3.03
-The trial uses one corpus and the checker's own selection of errors, with no manual-review control or ordinary continuous-integration comparator.
-% END SENTENCE r4.obs3.03
 % SENTENCE r4.obs3.04
 The study locates a coverage boundary. Its nine rejections do not estimate how reliable the checker is.
 % END SENTENCE r4.obs3.04
 
-\subsection{Local integration and unperformed reader evaluation}
-% SENTENCE r4.obs4.01
-On 23 September 2026, a maintainer-operated agent accepted one architecture handoff into a local integration history after focused checks of return routing and architecture packaging.
-% END SENTENCE r4.obs4.01
-% SENTENCE r4.obs4.02
-The contributor and reviewer were the same agent. The receipt records no public pull request, human review or independent outside clone replay.
-% END SENTENCE r4.obs4.02
+\subsection{Reader evaluation}
 
 % SENTENCE r4.obs5.01
-A proposed reader study would hold the mathematical task fixed and compare an ordinary repository, an information-equivalent static briefing and the navigation tools.
+No independent writing comparison, blind grading run or cold-reader experiment is reported, so there is no comparative reader result. A proposed study would hold the mathematical task fixed and compare an ordinary repository, an equivalent static briefing and these tools, measuring understanding, severe errors and the costs of use, review and repair.
 % END SENTENCE r4.obs5.01
-% SENTENCE r4.obs5.02
-It would measure understanding and severe errors alongside preparation, use, review and repair costs, retaining missing returns, timeouts and disagreements.
-% END SENTENCE r4.obs5.02
-% SENTENCE r4.obs5.03
-No independent writing comparison, blind grading run or cold-reader experiment is reported, so there is no comparative reader result.
-% END SENTENCE r4.obs5.03
-% SENTENCE r4.obs5.04
-The records above document inventory, a checker failure and one local integration; general reliability, reader understanding and mathematical transfer remain unmeasured.
-% END SENTENCE r4.obs5.04
 
 \section{Related work}\label{sec:related}\label{app:credit}
 % SENTENCE r4.related1.01
@@ -616,12 +597,17 @@ We use its published version~2, dated 31 August 2026; the first version appeared
 % END SENTENCE r4.related1.02
 
 % SENTENCE r11.related.prove2me-audit
-Human review is part of Prove2Me\textquotesingle s design. A mission fixes a human-audited core of goals, definitions and milestones; each milestone pairs a source statement with its attested canonical formalisation. For read-back, an independent agent receives the Lean declaration and dependent definitions without the original source; a human compares its mathematical rendering with that source. Natural-language accounts accompany statements and proofs, statement descriptions support library search, and imports give contributors reuse credit. The discussion record also includes a disproved statement followed by a corrected replacement~\cite[Sections~3.3 and~4.3--4.5]{prove2me}. Explanation, reuse, correction and shared agent work are therefore established parts of this comparison.
+Human review is part of Prove2Me\textquotesingle s design: a mission fixes a human-audited core of goals, definitions and milestones, and a human reviewer compares an independent agent\textquotesingle s rendering of each milestone\textquotesingle s Lean declaration with its source. Natural-language accounts, statement search, reuse credit and corrected statements are also part of its record~\cite[Sections~3.3 and~4.3--4.5]{prove2me}, so explanation, reuse and correction are features of both designs.
 % END SENTENCE r11.related.prove2me-audit
 
 % SENTENCE r4.related1.03
-For correspondence with a source, the closest analogue is Prove2Me\textquotesingle s milestone: both designs identify the mathematical statement whose formalisation is being reviewed. Our coverage record follows a particular paper occurrence and can list several overlapping formal supports, with a relation note explaining their connection to the printed claim. It is not a proof-sketch: listing those supports does not compose proof terms or discharge open lemmas. A separate passage record binds the explanation to sources and rationale, while entered contribution records retain revision decisions and role credit. The focus here is the consistency and review of these publication records across revisions. This difference of focus establishes neither priority for persistent research records nor a measured advantage over Prove2Me.
+For correspondence with a source, the closest analogue is Prove2Me\textquotesingle s milestone: both designs identify the mathematical statement whose formalisation is being reviewed. Our coverage record follows a particular paper occurrence and can list several overlapping formal supports, with a relation note explaining their connection to the printed claim. It is not a proof-sketch: listing those supports does not compose proof terms or discharge open lemmas. A separate passage record binds the explanation to sources and rationale, while entered contribution records retain revision decisions and role credit. The focus here is the consistency and review of these publication records across revisions.
 % END SENTENCE r4.related1.03
+
+% SENTENCE r16.related.apn
+\paragraph{AlphaProof Nexus.}
+Language-model agents search for a Lean proof of a stated target, and a failed episode leaves its lessons as a comment in the proof sketch~\cite{apn2026}. The authors report failed attempts that moved the difficulty into one unproved lemma or relied on lemmas wrongly presented as known results, and note that formal sketches let experts concentrate on the unresolved subgoals. Six of the authors wrote the natural-language proofs with the help of agent drafts; these proofs do not tie their steps to Lean declarations. Formal statements of six of the eight problems here were among its 353 targets; none is among its released resolutions. For those six, the records here keep checked partial results, what remains open and an explanation of both.
+% END SENTENCE r16.related.apn
 
 % SENTENCE r4.related1.04
 Polymath, BOINC and GIMPS supply precedents for small mathematical contributions and donated compute~\cite{polymath,boinc,gimps}, while the Carleson blueprint shows formalisation organised into publicly claimable tasks~\cite{carleson}.
@@ -629,23 +615,14 @@ Polymath, BOINC and GIMPS supply precedents for small mathematical contributions
 
 
 % SENTENCE r8.related.systems
-The regeneration tools address the familiar build-system problem of keeping derived outputs consistent with their inputs~\cite{buildsystems}. They run an explicit ordered list of builders and then check the resulting views; this is not a general incremental scheduler. Source bindings and the journal add provenance for assertions and entered returns at particular revisions. Together these mechanisms make dependencies and changes available for inspection. Their effect on research efficiency and semantic correctness needs separate evaluation.
+The regeneration tools address the familiar build-system problem of keeping derived outputs consistent with their inputs~\cite{buildsystems}. They run an explicit ordered list of builders and then check the resulting views; this is not a general incremental scheduler. Source bindings and the journal add provenance for assertions and entered returns at particular revisions.
 % END SENTENCE r8.related.systems
 
 
 \section{Limits}\label{sec:limits}\label{sec:conclusion}
 % SENTENCE r4.limits1.01
-The prototype establishes a set of implemented record and review operations, with the limited observations in Section~\ref{sec:evaluation}. It reports no comparative formalisation result or autonomous-optimisation experiment.
+The observations above document implemented record and review operations, outside checks of formal statements and revisions prompted by readers. Transfer to unseen mathematics and understanding by independent readers require direct evaluation, and no new project has adopted the system.
 % END SENTENCE r4.limits1.01
-% SENTENCE r4.limits1.02
-Transfer to unseen mathematics and understanding by independent readers require direct evaluation.
-% END SENTENCE r4.limits1.02
-% SENTENCE r4.limits1.03
-In particular, no controlled comparison shows that the contribution process converts compute into useful mathematics more effectively or increases discovery rate.
-% END SENTENCE r4.limits1.03
-% SENTENCE r4.limits1.04
-There is also no evidence of inexpensive adoption by a new project or an advantage over an agent using a good README.
-% END SENTENCE r4.limits1.04
 % SENTENCE r4.limits1.05
 Full scans and initial builds still have costs, and an open corpus cannot rule out prior model exposure to its contents.
 % END SENTENCE r4.limits1.05
@@ -674,17 +651,7 @@ and disclosure of the research process.
 % END SENTENCE r14.agmai.intro
 
 % SENTENCE r14.agmai.limits
-Several of these proposed release practices have counterparts in the
-records described here~\cite[Section 2.B, Step I]{agmai2026}: the short
-paper and companion paper explain and attribute the argument, the paper-to-Lean
-ledger records formal correspondence and its limits, and the files prepared for formal comparison identify its inputs.
-Those records make the result inspectable; they do not certify a
-mathematician's understanding. The architecture alone does not establish
-complete per-result model, prompt, time and cost disclosure, an account of
-campaign-wide selection and unsuccessful attempts, or an independent
-scholarly deposit. The further recommendations on funding community-led
-understanding and equitable model access address AI laboratories; this
-prototype does not demonstrate those institutional outcomes.
+Several of these practices are implemented here~\cite[Section 2.B, Step I]{agmai2026}: the papers explain their arguments and credit sources where they are used, the paper-to-Lean ledger is a machine-readable link between prose and formal statements, and the research records keep failed approaches. Per-result disclosure of model, prompts, time and cost and a campaign-wide count of unsuccessful attempts are not provided.
 % END SENTENCE r14.agmai.limits
 
 % SENTENCE r4.limits2.05
@@ -704,7 +671,7 @@ The materials support reading a result, inspecting its records and rerunning che
 \subsection{Read a result and follow its sources}
 
 % SENTENCE r4.repro4.04
-The \reporef{docs/READING_GUIDE.md}{reading guide} routes readers through one problem or across the papers, including \emph{Reading Eight Erd\H{o}s Problems Together}~\cite{synthesis}. Read a result's short paper, then follow its argument, attribution and formal-support references. Agents can use \reporef{AGENTS.md}{agent instructions} and the \reporef{docs/agents/AGENT_WORKBENCH.md}{workbench's} optional proof sessions. Corrections follow the \reporef{CONTRIBUTING.md}{contribution guide} and \reporef{docs/research-commons/CREDIT_POLICY.md}{credit policy}.
+The \reporef{docs/READING_GUIDE.md}{reading guide} routes readers through one problem or across the papers, including \emph{Reading Eight Erd\H{o}s Problems Together}~\cite{synthesis}. Agents can use \reporef{AGENTS.md}{agent instructions} and the \reporef{docs/agents/AGENT_WORKBENCH.md}{workbench's} optional proof sessions. Corrections follow the \reporef{CONTRIBUTING.md}{contribution guide} and \reporef{docs/research-commons/CREDIT_POLICY.md}{credit policy}.
 % END SENTENCE r4.repro4.04
 
 \subsection{Inspect the records and rerun document checks}
@@ -783,7 +750,7 @@ Explanatory text is recorded for \SemanticAuthoredInterpreted{} of the \Semantic
 \subsection{Identify the version and the earlier design accounts}
 
 % SENTENCE r4.repro1.02
-Repository links in this paper identify fixed file versions, so that a reader can inspect the material cited even if the working repository later changes. Unless a link states otherwise, its revision is \texttt{992cf60a27ef}; the Comparator runs identify their own inputs. No new Lean or Comparator run was performed for this revision.
+Repository links in this paper identify fixed file versions, so that a reader can inspect the material cited even if the working repository later changes. Unless a link states otherwise, its revision is \texttt{0064fc9b2a26}; the Comparator runs identify their own inputs. No new Lean or Comparator run was performed for this revision.
 % END SENTENCE r4.repro1.02
 
 % SENTENCE r4.repro1.01
@@ -795,9 +762,7 @@ This paper supersedes the two earlier design accounts described below. Cite a ma
 % END SENTENCE r4.repro1.03
 
 % SENTENCE r8.repro.historical-crosswalk
-\emph{\reporef{paper/systems/cold-clone-to-proof-receipt.tex}{From a Cold Clone to a Proof Receipt}} (August 2026) describes the declaration, dependency, interpretation and claim views and the optional recorded proof session. Its counts and audit figures belong to that snapshot; Section~\ref{sec:world} describes the current task entry and inspected implementation.
-
-\emph{\reporef{paper/systems/open-source-mathematics-strategy.tex}{From Spare Compute to Cumulative Mathematics}} (September 2026) describes contribution roles, reproduction against the original inputs, subsequent integration and role credit. Section~\ref{sec:contribute} gives the current procedure. The earlier paper's volunteer-compute services, inexpensive adoption by new laboratories and increased discovery rate remain proposals or unmeasured outcomes. These manuscripts explain the design's history; they are not additional current specifications.
+\emph{\reporef{paper/systems/cold-clone-to-proof-receipt.tex}{From a Cold Clone to a Proof Receipt}} (August 2026) and \emph{\reporef{paper/systems/open-source-mathematics-strategy.tex}{From Spare Compute to Cumulative Mathematics}} (September 2026) record earlier states of this design, from navigation views and proof sessions to contribution roles and role credit. Their counts, proposals and projected outcomes belong to those snapshots; Sections~\ref{sec:world} and~\ref{sec:contribute} describe the current design.
 % END SENTENCE r8.repro.historical-crosswalk
 
 \section{The mathematical example: a criterion for irrationality}\label{app:worked-proof}
@@ -1038,7 +1003,7 @@ A revised statement must retain its scope, attribution and registered supports. 
 \section{A reading map for the wider literature}\label{app:source-map}
 
 % SENTENCE r14p3.sources.purpose
-Section~\ref{sec:related} compares the closest systems; Appendices~\ref{app:worked-proof} and~\ref{app:attribution} explain the mathematical antecedents used in the examples. Figure~\ref{fig:credit} is a guide to the remaining references and to sources cited by the two historical design accounts in Appendix~\ref{app:repro}. Its groups indicate why a source is cited, not that every listed method is implemented here or that every work has been evaluated against this system.
+Figure~\ref{fig:credit} is a guide to the remaining references and to sources cited by the two historical design accounts in Appendix~\ref{app:repro}. Its groups say why each source is cited; inclusion does not mean a method is implemented here or a work was evaluated against this system.
 % END SENTENCE r14p3.sources.purpose
 
 
@@ -1118,6 +1083,10 @@ at IAS, \emph{Responsible Release of AI-Generated Mathematics},
 29 September 2026,
 \href{https://agmai.org/general-sep29/}{recommendations},
 \href{https://agmai.org/wp-content/uploads/2026/09/recommendations.pdf}{PDF}.
+
+\bibitem{apn2026} G.~Tsoukalas, A.~Kovsharov, S.~Shirobokov et al., \emph{Advancing mathematics research with AI-driven formal proof search}, Science 394 (2026), 234--239, \href{https://doi.org/10.1126/science.aej2213}{DOI}, \href{https://arxiv.org/abs/2605.22763}{arXiv:2605.22763}.
+
+\bibitem{openaimath2026} OpenAI, \emph{Mathematical manuscripts and supporting proof artifacts}, repository \texttt{openai/math}, 6 October 2026, \href{https://github.com/openai/math}{GitHub}.
 
 \bibitem{lean4} L.~de Moura and S.~Ullrich, \emph{The Lean 4 Theorem Prover
 and Programming Language}, in \emph{Automated Deduction, CADE 28}, Lecture

@@ -404,6 +404,11 @@ def bound_units(text: str) -> tuple[list[dict[str, Any]], list[str]]:
     return units,errors
 
 
+def source_lines(data: bytes) -> list[str]:
+    """Split at newlines only, so span numbers match editors and GitHub."""
+    return re.findall(r"[^\n]*\n|[^\n]+$", data.decode("utf-8"))
+
+
 def validate_bound_paper(paper_text: str, root: Path = ROOT,
                          ledger: dict[str, Any] | None = None) -> list[str]:
     """Check traceability and evidence freshness; semantic entailment stays reviewed.
@@ -429,7 +434,7 @@ def validate_bound_paper(paper_text: str, root: Path = ROOT,
             if source["path"] not in cache:cache[source["path"]]=path.read_bytes()
             data=cache[source["path"]]
             if sha256(data)!=source["sha256"]:errors.append(f"source digest changed: {source['id']}")
-            lines=data.decode("utf-8").splitlines(keepends=True)
+            lines=source_lines(data)
             a,b=source["start_line"],source["end_line"]
             if not isinstance(a,int) or not isinstance(b,int) or not 1<=a<=b<=len(lines):
                 errors.append(f"source range invalid: {source['id']}");continue

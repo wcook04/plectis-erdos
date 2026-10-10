@@ -447,7 +447,7 @@ Start here (selected for this guide): [From individual problems to reusable ques
 
 **A Repository-Based System for Research and Publication**
 
-[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 41 sections · `claim-faithful-publication-systems` · native to this repository
+[full text](full-text/claim-faithful-publication-systems-paper.md) · [PDF](../../paper/systems/claim-faithful-publication-systems-paper.pdf) · [LaTeX source](../../paper/systems/claim-faithful-publication-systems-paper.tex) · 44 sections · `claim-faithful-publication-systems` · native to this repository
 
 Start here (selected for this guide): [Introduction](full-text/claim-faithful-publication-systems-paper.md#sec:intro), [Worked case: reviewing an explanation](full-text/claim-faithful-publication-systems-paper.md#sec:example), [Publication and revision](full-text/claim-faithful-publication-systems-paper.md#sec:paper), [Proof and publication checks](full-text/claim-faithful-publication-systems-paper.md#sec:checks), [Limits](full-text/claim-faithful-publication-systems-paper.md#sec:limits).
 

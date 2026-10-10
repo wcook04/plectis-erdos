@@ -52,30 +52,29 @@
       "id": "audit-code",
       "path": "scripts/systems_paper_evidence.py",
       "start_line": 1,
-      "end_line": 489,
-      "sha256": "907d9fc8e8d17ee05c2c0032d89bbee67f5f6f8534a807fff538d878f1e89985",
-      "excerpt_sha256": "907d9fc8e8d17ee05c2c0032d89bbee67f5f6f8534a807fff538d878f1e89985",
+      "end_line": 494,
+      "sha256": "fa226b369b75572869ef195f57694990cd36b273885af23bf7e17df29fbde3e7",
+      "excerpt_sha256": "fa226b369b75572869ef195f57694990cd36b273885af23bf7e17df29fbde3e7",
       "kind": "source"
     },
     {
       "id": "corpus",
       "path": "docs/papers/corpus.json",
       "start_line": 1,
-      "end_line": 9546,
-      "sha256": "3586875947364bb104ebf9834e93444d0fdeefd264e23c38a674f32032f2a092",
-      "excerpt_sha256": "3586875947364bb104ebf9834e93444d0fdeefd264e23c38a674f32032f2a092",
+      "end_line": 9292,
+      "sha256": "fa67fa998eff61b9d6b0a595487acd0b898e5eb5465c3927b5a3207deb45c48e",
+      "excerpt_sha256": "fa67fa998eff61b9d6b0a595487acd0b898e5eb5465c3927b5a3207deb45c48e",
       "kind": "source",
-      "custody_note": "Reviewed acknowledgement withdrawal on 10 October 2026: corpus source/PDF digests and generated section coordinates refreshed after withdrawing pending-consent personal acknowledgements. The inventory, paper roles, citation identities, mathematical claims and authority ceilings are unchanged. Reviewed GitHub paper-navigation repair on 10 October 2026: only generated section and first-pass line coordinates changed. The full paper inventory, manuscript/PDF hashes, published source pins, citation identities, paper roles, authority ceilings and both cited identification warrants are unchanged; no Lean or Comparator execution is claimed. Reviewed inline-label, table and source-preserving display-layout conversion on 10 October 2026: corpus changes are 206 section/first-pass line coordinates only. Inventory, source/PDF hashes, published pins, citation identities, roles, authority ceilings and both identification warrants remain unchanged; two source-backed #249 inequalities are restored in the Markdown, with no manuscript, proof or evidence promotion. Reviewed expository-paper registration on 11 October 2026: one row is added for erdos257-expository-sums-never-fractions (form 'Expository paper', class expository_paper), with its paper id, count and class added to the corpus header and taxonomy summary. The only other row that changed is the systems paper's own, whose source digest, PDF digest and PDF byte count moved because its generated registered-paper count went from 24 to 25. Every other row, citation identity, role, authority ceiling and both identification warrants are unchanged; no Lean or Comparator execution is claimed. Reviewed expository-paper revision on 17 October 2026: only the erdos257-expository-sums-never-fractions row changed, carrying the reviewed 12 October manuscript (title 'Why certain sums of 1/(2^n-1) are irrational', its citation text, source and PDF digests, PDF byte count, sections, first-pass and citation coordinates). The inventory, the registered-paper count of 25, every other row, citation identity, role, authority ceiling and both identification warrants are unchanged; no Lean or Comparator execution is claimed."
+      "custody_note": "Reviewed acknowledgement withdrawal on 10 October 2026: corpus source/PDF digests and generated section coordinates refreshed after withdrawing pending-consent personal acknowledgements. The inventory, paper roles, citation identities, mathematical claims and authority ceilings are unchanged. Reviewed GitHub paper-navigation repair on 10 October 2026: only generated section and first-pass line coordinates changed. The full paper inventory, manuscript/PDF hashes, published source pins, citation identities, paper roles, authority ceilings and both cited identification warrants are unchanged; no Lean or Comparator execution is claimed. Reviewed inline-label, table and source-preserving display-layout conversion on 10 October 2026: corpus changes are 206 section/first-pass line coordinates only. Inventory, source/PDF hashes, published pins, citation identities, roles, authority ceilings and both identification warrants remain unchanged; two source-backed #249 inequalities are restored in the Markdown, with no manuscript, proof or evidence promotion."
     },
     {
       "id": "counts",
       "path": "docs/systems_paper_counts.json",
       "start_line": 1,
       "end_line": 65,
-      "sha256": "5cc544760bc66e8ee8c3b7bbac40a44a48b31447ec17db7432c3f907a3fd1207",
-      "excerpt_sha256": "5cc544760bc66e8ee8c3b7bbac40a44a48b31447ec17db7432c3f907a3fd1207",
-      "kind": "source",
-      "custody_note": "Regenerated with scripts/build_systems_paper_counts.py --snapshot on 11 October 2026 after the expository-paper registration: RegisteredPapers moves from 24 to 25 and every other value is unchanged; the input digests are the current files."
+      "sha256": "b7bd28191f898f9f84e9fce8477e48ba0119583f21f0cb59acab2d74b67e6dae",
+      "excerpt_sha256": "b7bd28191f898f9f84e9fce8477e48ba0119583f21f0cb59acab2d74b67e6dae",
+      "kind": "source"
     },
     {
       "id": "counts-code",
@@ -141,8 +140,8 @@
       "start_line": 1,
       "end_line": 36487,
       "kind": "supplied_snapshot",
-      "sha256": "1672720993467d5f4a9ca97bf2fdd17f493a4574db7fc3fc61e427221bdbc88a",
-      "excerpt_sha256": "1672720993467d5f4a9ca97bf2fdd17f493a4574db7fc3fc61e427221bdbc88a",
+      "sha256": "fa2d0bbbac49962842a1e756e02ffdced755653a691d9a66c1b6260d1b630d80",
+      "excerpt_sha256": "fa2d0bbbac49962842a1e756e02ffdced755653a691d9a66c1b6260d1b630d80",
       "custody_note": "Reviewed 10 October 2026: every attribution content field and cited excerpt digest is unchanged; only line_start/line_end coordinates moved after acknowledgement withdrawal and the consent-rule insertion."
     },
     {
@@ -177,7 +176,7 @@
       "path": "docs/systems-paper-evidence/source-excerpts.md",
       "start_line": 359,
       "end_line": 655,
-      "sha256": "8b11f16bf7ba42d8ef857870b58fa43b5df74c0444d58d10b62415049960bef9",
+      "sha256": "e8d89b9101ec6171efff77493f9b2183f56faf8dd83006e4879bdf742679cedc",
       "excerpt_sha256": "8947988697a03a66d12e95463415d81caa2adea73626fe088aa158d17506b443",
       "kind": "supplied_snapshot"
     },
@@ -186,7 +185,7 @@
       "path": "docs/systems-paper-evidence/source-excerpts.md",
       "start_line": 657,
       "end_line": 722,
-      "sha256": "8b11f16bf7ba42d8ef857870b58fa43b5df74c0444d58d10b62415049960bef9",
+      "sha256": "e8d89b9101ec6171efff77493f9b2183f56faf8dd83006e4879bdf742679cedc",
       "excerpt_sha256": "9499d7c42376b2652db6311409ad9b4c06f6d61d824f0c1d40fb9ee01710d58e",
       "kind": "supplied_snapshot"
     },
@@ -195,7 +194,7 @@
       "path": "docs/systems-paper-evidence/source-excerpts.md",
       "start_line": 797,
       "end_line": 831,
-      "sha256": "8b11f16bf7ba42d8ef857870b58fa43b5df74c0444d58d10b62415049960bef9",
+      "sha256": "e8d89b9101ec6171efff77493f9b2183f56faf8dd83006e4879bdf742679cedc",
       "excerpt_sha256": "b3d20dccc3062213d7e252f9778871999490727eeda00b3c034eeade668f0e74",
       "kind": "supplied_snapshot"
     },
@@ -240,7 +239,7 @@
       "path": "docs/systems-paper-evidence/source-excerpts.md",
       "start_line": 55,
       "end_line": 97,
-      "sha256": "8b11f16bf7ba42d8ef857870b58fa43b5df74c0444d58d10b62415049960bef9",
+      "sha256": "e8d89b9101ec6171efff77493f9b2183f56faf8dd83006e4879bdf742679cedc",
       "excerpt_sha256": "ea6404442a0d1e8e93be0ec4f57c93e4ff6b9f3efbe149a0d57751e22fad12af",
       "kind": "supplied_snapshot"
     },
@@ -249,7 +248,7 @@
       "path": "docs/systems-paper-evidence/source-excerpts.md",
       "start_line": 99,
       "end_line": 160,
-      "sha256": "8b11f16bf7ba42d8ef857870b58fa43b5df74c0444d58d10b62415049960bef9",
+      "sha256": "e8d89b9101ec6171efff77493f9b2183f56faf8dd83006e4879bdf742679cedc",
       "excerpt_sha256": "145c0589a9a90cf7bbfd124168e5dab1da1a37af47219406c6273b0ac9e98180",
       "kind": "supplied_snapshot"
     },
@@ -276,7 +275,7 @@
       "path": "docs/systems-paper-evidence/source-excerpts.md",
       "start_line": 243,
       "end_line": 316,
-      "sha256": "8b11f16bf7ba42d8ef857870b58fa43b5df74c0444d58d10b62415049960bef9",
+      "sha256": "e8d89b9101ec6171efff77493f9b2183f56faf8dd83006e4879bdf742679cedc",
       "excerpt_sha256": "f99f540d4793e991a01744f3da1ea5abf1cd0cbe61d6f2684d9a2359ecb58afe",
       "kind": "supplied_snapshot"
     },
@@ -285,7 +284,7 @@
       "path": "docs/systems-paper-evidence/source-excerpts.md",
       "start_line": 318,
       "end_line": 357,
-      "sha256": "8b11f16bf7ba42d8ef857870b58fa43b5df74c0444d58d10b62415049960bef9",
+      "sha256": "e8d89b9101ec6171efff77493f9b2183f56faf8dd83006e4879bdf742679cedc",
       "excerpt_sha256": "92a00dd6ce58ac0ceaa606b429bb6730aba9ed7f44064a08cd801186ba0f05b2",
       "kind": "supplied_snapshot"
     },
@@ -465,9 +464,9 @@
       "kind": "supplied_snapshot",
       "path": "docs/systems-paper-evidence/source-excerpts.md",
       "start_line": 1121,
-      "end_line": 1144,
-      "sha256": "8b11f16bf7ba42d8ef857870b58fa43b5df74c0444d58d10b62415049960bef9",
-      "excerpt_sha256": "e10b2e3c51e7c53d0747ea09b4fc20fe4372978b4950c5992b7c805070fff262"
+      "end_line": 1143,
+      "sha256": "e8d89b9101ec6171efff77493f9b2183f56faf8dd83006e4879bdf742679cedc",
+      "excerpt_sha256": "715bfd6c402b58dbaeb739b7cca669d80df2a67bab4f25c5db6c25fe8aa1f4c5"
     },
     {
       "id": "reader-guide",
@@ -475,9 +474,8 @@
       "start_line": 1,
       "end_line": 147,
       "kind": "source",
-      "sha256": "fed7428c2048d573586a786340882c416ed8cc932be433da756a69cbc9b93eee",
-      "excerpt_sha256": "fed7428c2048d573586a786340882c416ed8cc932be433da756a69cbc9b93eee",
-      "custody_note": "Reviewed 12 October 2026 after adding the introductory #257 paper and current video links. The four reader-guide warrants still hold: paper-first reading, selected-result conditions, examples and hypothesis changes at reader-selected depth, and one-problem/cross-paper routes. Removed only repeated encouragement following the synthesis link to preserve the reader budget. No systems-paper sentence, mathematical claim, or execution evidence changed. On 21 October 2026, Codex rechecked this binding after replacing only the #257 video URL with the current public edition. The reader-guide warrants and all other source text are unchanged. Later on 21 October 2026, Codex refreshed this binding for the webcam-corrected video edition; only the #257 YouTube URL changed. The four reader-guide warrants and all prose remain unchanged. On 22 October 2026, Codex rebound the unchanged reader-guide warrants to the face-safe corrected #257 upload; only its video URL changed."
+      "sha256": "be42520dc670c95303a30daa3eda2c1bd5057d02292fa4c2f6ec20b91c871991",
+      "excerpt_sha256": "be42520dc670c95303a30daa3eda2c1bd5057d02292fa4c2f6ec20b91c871991"
     },
     {
       "id": "explanation-depth",
@@ -680,9 +678,9 @@
       "kind": "source",
       "path": "scripts/systems_paper_evidence.py",
       "start_line": 372,
-      "end_line": 462,
-      "sha256": "907d9fc8e8d17ee05c2c0032d89bbee67f5f6f8534a807fff538d878f1e89985",
-      "excerpt_sha256": "dab0895aa9230f0109fc6ddf9ebef8ae7bae4fd801b55796da0b96e891573526",
+      "end_line": 467,
+      "sha256": "fa226b369b75572869ef195f57694990cd36b273885af23bf7e17df29fbde3e7",
+      "excerpt_sha256": "f0775fe02534798af7a3e9f69b528bd3ab1b6fc9a65a85324b965f9cf65a44ff",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
     {
@@ -709,9 +707,9 @@
       "id": "r8-release",
       "kind": "source",
       "path": "scripts/check_release.py",
-      "start_line": 1664,
-      "end_line": 1740,
-      "sha256": "1eebff1f826477fe1b08b9e143505c547803953879c3b2032914ea6665fb9863",
+      "start_line": 1662,
+      "end_line": 1738,
+      "sha256": "282c8d8b9b3aee376f4d6e6e9e8c87f5a3f18995501712c93748851c4b177129",
       "excerpt_sha256": "da39690f9c38fd66ca7b1f7496108ac87673b67260a7c1c234b842008edd0adb",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
@@ -861,8 +859,8 @@
       "path": "docs/research-commons/source-attributions.json",
       "start_line": 16125,
       "end_line": 16173,
-      "sha256": "1672720993467d5f4a9ca97bf2fdd17f493a4574db7fc3fc61e427221bdbc88a",
-      "excerpt_sha256": "8e826af82fe4e34d97e2987871af9dbcdac012c299aeca4bd95c0c6e87bf7d2c",
+      "sha256": "fa2d0bbbac49962842a1e756e02ffdced755653a691d9a66c1b6260d1b630d80",
+      "excerpt_sha256": "55f07fb7ab0ca24fd282b09fb06fd097348f463e5713782a727439783108b4f2",
       "custody": "Public attribution inventory, marked bibliography_only. Used for feature attribution, not for its conflicting first-publication chronology. Direct claims are checked against the enclosed original v2 in this pass.",
       "custody_note": "Reviewed 10 October 2026: the cited excerpt is byte-identical to the starting public main; surrounding attribution coordinates changed."
     },
@@ -881,7 +879,7 @@
       "start_line": 286,
       "end_line": 304,
       "kind": "source",
-      "sha256": "907d9fc8e8d17ee05c2c0032d89bbee67f5f6f8534a807fff538d878f1e89985",
+      "sha256": "fa226b369b75572869ef195f57694990cd36b273885af23bf7e17df29fbde3e7",
       "excerpt_sha256": "fc546e10c86e2d0438c6fc755e72e53beba0ac82990a25bf7289020a11b522bc"
     },
     {
@@ -944,8 +942,44 @@
       "start_line": 1,
       "end_line": 42,
       "kind": "source",
-      "sha256": "4b2947142ea31b0a1aeb69a516296320d7d579cfd6ac739da4adc9a319bc934f",
+      "sha256": "45d46df84010206304316771c8dbd46dc139a769ec712a58e60a005fa6815635",
       "excerpt_sha256": "8ae455f30db225c2403202b65aa4c23e947cb95b29ab8a7785bcefdab2bdc670"
+    },
+    {
+      "id": "lit-apn",
+      "kind": "supplied_snapshot",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 1145,
+      "end_line": 1180,
+      "sha256": "e8d89b9101ec6171efff77493f9b2183f56faf8dd83006e4879bdf742679cedc",
+      "excerpt_sha256": "0d2ca63964cb7dbbcb12fb4d3e09968abe9154c5b9f2aa8e9a8450cdeb4cf579"
+    },
+    {
+      "id": "lit-openai-math",
+      "kind": "supplied_snapshot",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 1182,
+      "end_line": 1190,
+      "sha256": "e8d89b9101ec6171efff77493f9b2183f56faf8dd83006e4879bdf742679cedc",
+      "excerpt_sha256": "046e225ae6d13ebfccd352da502646ee02c5f0b62c8121cbaf4ef66e699e4082"
+    },
+    {
+      "id": "rec-outside-checks",
+      "kind": "supplied_snapshot",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 1192,
+      "end_line": 1212,
+      "sha256": "e8d89b9101ec6171efff77493f9b2183f56faf8dd83006e4879bdf742679cedc",
+      "excerpt_sha256": "f6f39008d6fa3b8e310ee2097841ee4cdfbc1ec6aa38b46024ad26db0ee87fea"
+    },
+    {
+      "id": "rec-reader-revisions",
+      "kind": "supplied_snapshot",
+      "path": "docs/systems-paper-evidence/source-excerpts.md",
+      "start_line": 1214,
+      "end_line": 1242,
+      "sha256": "e8d89b9101ec6171efff77493f9b2183f56faf8dd83006e4879bdf742679cedc",
+      "excerpt_sha256": "9320284204c53986a274c27df03dedbb37ef7c5b608928c5393debe041e60055"
     }
   ],
   "sentences": [
@@ -963,61 +997,14 @@
     },
     {
       "id": "r4.abstract.01",
-      "text": "Plectis is a repository-based research environment for retaining mathematical work across sessions and carrying selected results into publication.",
+      "text": "Plectis is a repository-based system for turning AI-assisted mathematical research into papers that a first-time reader can follow and check. Researchers and agents choose the work, and maintainers decide what to adopt.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
         "r8-architecture",
-        "r8-contribution",
-        "r8-journal",
-        "r8-exchange",
-        "r9-session-state"
-      ],
-      "warrant": "The architecture and research-record sources place questions, proofs, manuscript sources and entered research returns in persistent repository files. This describes the supported activity of continuing work and preparing selected publications, not an evaluated gain in discovery or continuity.",
-      "statement_sha256": "a8b79ed8feeaa945f05a3fec00bdcce8f43abe720bcfc9972f08041cd03d14a5",
-      "section": "frontmatter"
-    },
-    {
-      "id": "r4.abstract.02",
-      "text": "The public prototype brings questions, sources, proofs, computations and failed approaches together in eight problem collections.",
-      "owner": "systems",
-      "class": "implemented",
-      "evidence_refs": [
-        "r8-architecture",
-        "r8-contribution",
-        "r8-journal",
-        "r8-exchange",
-        "r8-entry",
-        "r8-probe"
-      ],
-      "warrant": "The frozen architecture and corpus inventory identify eight problem collections with mathematical sources, computations and retained unsuccessful approaches. They establish the documented prototype setting, not a general-purpose service or new successful execution.",
-      "statement_sha256": "f4e2d318a827c696df37e2409fb2e775eafd87dc840f4e2f280b59916b8483b7",
-      "section": "frontmatter"
-    },
-    {
-      "id": "r4.abstract.03",
-      "text": "Its publication workflow records the formal-support status of paper statements and binds explanatory passages to cited sources, while keeping these records distinct.",
-      "owner": "systems",
-      "class": "method",
-      "evidence_refs": [
-        "r8-architecture",
-        "coverage-weighted",
+        "rec-reader-revisions",
+        "coverage",
         "r8-sentence-check",
-        "r8-journal",
-        "r12-resolver-relations",
-        "audit-code"
-      ],
-      "warrant": "The coverage ledger includes exact, specialising, named-input and unsupported-by-Lean occurrences. It records formal-support status rather than proving every printed assertion. The distinct passage ledger binds explanatory text to source spans and rationale.",
-      "statement_sha256": "0f44c6f4b33f4e62c0fbac0d589a237a3f514e91185dc767a16f4c3377803bff",
-      "section": "frontmatter"
-    },
-    {
-      "id": "r4.abstract.04",
-      "text": "Researchers and agents choose the work; Python tools retrieve evidence, record Lean probes and regenerate views. Maintainers decide what to adopt, and a journal retains entered contributions and review decisions.",
-      "owner": "systems",
-      "class": "implemented",
-      "evidence_refs": [
-        "r8-architecture",
         "r8-probe",
         "r8-journal",
         "r8-projection-refresh",
@@ -1025,37 +1012,87 @@
         "r8-entry",
         "r9-session-state"
       ],
-      "warrant": "The architecture guide identifies query and evidence tools and their input owners; proof_workbench.py records the result of its Lean subprocess; refresh_projections.py calls an ordered list of builders. CONTRIBUTING.md assigns adoption to review, and research_record.py stores entered events. The summary does not assert that every research activity is automatically captured.",
-      "statement_sha256": "d6f596027c86236ff8700fc2b3abf25047fc0c4e8df4ddf022f920ac35ea5c61",
+      "warrant": "States the system's purpose and its division of work. The architecture guide, the reader-prompted revisions and the coverage ledger describe papers revised for first-time readers with statements bound to Lean support; the architecture and journal sources assign the choice of work to researchers and agents and adoption to maintainers. No reader outcome is measured.",
+      "statement_sha256": "669a72dc3f91a41bf9b25271c97949a3f56486f4b2c4429035654e5b9f657e95",
+      "section": "frontmatter"
+    },
+    {
+      "id": "r4.abstract.02",
+      "text": "The public prototype brings questions, sources, proofs, computations and failed approaches together in eight problem collections, one per Erd\\H{o}s problem, each with a short paper and a longer research record.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "r8-architecture",
+        "r8-contribution",
+        "r8-journal",
+        "r8-exchange",
+        "r8-entry",
+        "r8-probe",
+        "corpus"
+      ],
+      "warrant": "The architecture guide describes eight problem collections holding questions, sources, proofs, computations and failed approaches; the paper corpus registers a short paper and a longer research record with each collection.",
+      "statement_sha256": "d396068dab1e05dd96c7fda8897c22a3c2546c9c9e4616debf1620b740fd8b13",
+      "section": "frontmatter"
+    },
+    {
+      "id": "r4.abstract.03",
+      "text": "A machine-readable ledger links each of \\LedgerRows{} labelled statements in those papers to its Lean declarations and Comparator status, and every passage of this paper is bound to the source lines that support it.",
+      "owner": "systems",
+      "class": "implemented",
+      "evidence_refs": [
+        "coverage",
+        "paper-evidence",
+        "r8-sentence-check",
+        "audit-code"
+      ],
+      "warrant": "docs/paper_lean_coverage.json lists each labelled statement occurrence with its registered Lean declarations and Comparator status (the generated LedgerRows count); systems_paper_evidence.py rejects audited-body prose outside a bound unit and checks each unit's binding to declared source lines.",
+      "statement_sha256": "58ad9e2f04aa5e078ed5ff8e9d4437f07d21ac1bf381c9f86756afda47cbe600",
+      "section": "frontmatter"
+    },
+    {
+      "id": "r4.abstract.04",
+      "text": "Reader criticism becomes a writing rule applied across the corpus: when one mathematician said a note used unexplained terms and never said how restrictive its main hypothesis was, all sixteen papers were revised for a first-time reader, and a public ledger credits the comment with links to the change.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "rec-reader-revisions",
+        "writing-contract"
+      ],
+      "warrant": "The credit ledger records the 17 September comment on the #243 note (unexplained names, one-use notation, unstated restrictiveness of the main hypothesis), the rewrite of all sixteen problem papers, and line locations where the change can be seen; the short-paper contract carries the resulting rules.",
+      "statement_sha256": "0e5b8a9e6ea728fff7a81892f347f03b6fbe4bfcf7ffb6a147ef504ad09845b5",
       "section": "frontmatter"
     },
     {
       "id": "r4.abstract.05",
-      "text": "A worked revision shows how an explanation can lose a hypothesis while its formal proofs remain valid.",
+      "text": "A worked revision shows how an explanation can lose a hypothesis while its formal proofs stay valid, which is why explanations need checks of their own. A historical author-run test rejected \\HistoricalRejected{} of \\HistoricalEdits{} false edits and accepted one false completion claim.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
         "257-statement",
         "coverage-weighted",
         "r8-sentence-check",
-        "r8-weighted-formal"
-      ],
-      "warrant": "The cited weighted theorem includes a support hypothesis. Removing it from the explanation leaves the cited formal declarations unchanged while enlarging the asserted conclusion. The case is a constructed revision example, not a new mutation trial or a claim that the sufficient hypothesis is necessary.",
-      "statement_sha256": "c9a8d1f7968d47ad95e3e02656f03ec4a6a0319654c4cbb7d21fcff935623b35",
-      "section": "frontmatter"
-    },
-    {
-      "id": "r4.abstract.06",
-      "text": "A historical author-run test rejected \\HistoricalRejected{} of \\HistoricalEdits{} false edits and accepted one false completion claim. Reader benefit, discovery rate and adoption by independent laboratories remain unmeasured.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
+        "r8-weighted-formal",
         "historical",
         "reader-study",
         "strategy-limits"
       ],
-      "warrant": "Dated author-run nine rejections/one escape preserved; discovery, reader benefit and independent-laboratory adoption remain unmeasured.",
-      "statement_sha256": "1a828582980bd6d99028d1e8e84c0909c6884912909afb9fb0a2bf88f4e2e3f3",
+      "warrant": "The worked case keeps the weighted statement and its Lean supports fixed while a revised explanation drops the hypothesis; binding checks detect the stale passage and review must compare the wording with the cited statements. The historical evidence record reports nine of ten author-written false edits rejected and one false completion claim accepted.",
+      "statement_sha256": "2939ba8224fed5328c8a2a47197bbf75f3e2e42cd6bfe125dbb8089e6b913996",
+      "section": "frontmatter"
+    },
+    {
+      "id": "r4.abstract.06",
+      "text": "Five contributions have merged into Google DeepMind's Formal Conjectures, one with an independently replayed proof, and a selection of \\#257 results is registered on Palomar. Reader benefit, discovery rate and adoption by independent laboratories remain unmeasured.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "rec-outside-checks",
+        "reader-study",
+        "historical",
+        "strategy-limits"
+      ],
+      "warrant": "The crosswalk records five merged mathematical contributions; the README records an independent replay in the review of pull request 6529; the Palomar registry lists the E257_01 selection as registered. The evaluation and limits sources record reader benefit, discovery rate and independent adoption as unmeasured.",
+      "statement_sha256": "23ced196df551e4dd33ca7d98031c7a6d752d390eb568eb882b9d5b75a723d46",
       "section": "frontmatter"
     },
     {
@@ -1146,6 +1183,20 @@
         "sections_read": "Supplied complete main article and figures; this passage uses Sections 3.3, 4.2 and 4.3--4.5.",
         "boundary": "The external original supplies literature content. Native bindings check public custody records, not semantic agreement with this PDF."
       }
+    },
+    {
+      "id": "r16.intro.context",
+      "text": "The AlphaProof Nexus paper reports Lean proofs for nine of 353 Erd\\H{o}s problem statements~\\cite{apn2026}, and in October 2026 OpenAI released 719 manuscripts with about 42 per cent of their principal results formalised~\\cite{openaimath2026}. The Advisory Group on Mathematics and Artificial Intelligence at IAS asks the laboratories behind such results for attribution and conventional exposition, and calls links between prose and formal artefacts helpful~\\cite{agmai2026}. Exposition, attribution and those links are the subject of this paper.",
+      "owner": "systems",
+      "class": "literature",
+      "evidence_refs": [
+        "lit-apn",
+        "lit-openai-math",
+        "lit-agmai"
+      ],
+      "warrant": "AlphaProof Nexus reports 9 of 353 Erdos statements solved (arXiv v2 line 73); the openai/math README at commit fd4aeeb2ee4f (8 October 2026) reports 719 manuscripts and about 42 per cent of top-line results formalised; the AGMAI summary asks AI laboratories for attribution and conventional exposition and describes formal artefact correlation as helpful.",
+      "statement_sha256": "f1a49065d8f01edd7ebf7d0b9e9c61f6acc99814765f6715ffbb82d5345c333e",
+      "section": "sec:intro"
     },
     {
       "id": "r4.intro2.03",
@@ -1458,6 +1509,26 @@
       "section": "sec:example"
     },
     {
+      "id": "r15.fig.hypothesis",
+      "owner": "systems",
+      "class": "method",
+      "evidence_refs": [
+        "coverage-weighted",
+        "r8-weighted-proof",
+        "r8-hereditary-formal",
+        "r8-sentence-check",
+        "writing-contract",
+        "r8-exchange"
+      ],
+      "warrant": "The illustrative revision keeps formal statements fixed. The weighted conditional conclusion is retained first, broadened without support second, and retained as an unsupported general assertion with refreshed byte binding third. The unrestricted assertion is unresolved, not refuted; the publication error is claiming that the weighted evidence establishes it. The cited theorem supplies the hypothesis and quantifiers. The passage checker verifies recorded bytes and requires a rationale without assessing entailment. This is not a new test or historical edit 8.",
+      "section": "sec:example",
+      "unit_type": "figure",
+      "figure_title": "A lost hypothesis",
+      "text": "\\begin{figure}[htbp]\\centering\n\\begin{tikzpicture}\n\\node[rec,w=12.8](f)at(0,0){\\textbf{Formal supports held fixed throughout}\\\\The statements retain their weighted hypothesis.};\n\\foreach \\x/\\n in {-4.6/1,0/2,4.6/3}{\n \\node[tag]at(\\x,-1){\\textsc{Version \\n}};}\n\\node[box,w=3.75,h=2.6](a)at(-4.6,-2.65){\\textbf{Faithful explanation}\\\\[4pt]\nUnder the weighted condition, irrationality holds for every infinite subset and every integer base at least two.};\n\\node[gate,w=3.75,h=2.6](b)at(0,-2.65){\\textbf{Hypothesis removed}\\\\[4pt]\nEvery infinite subseries is irrational.\\\\[4pt]\n\\emph{The unresolved general case is now claimed.}};\n\\node[gate,w=3.75,h=2.6](c)at(4.6,-2.65){\\textbf{Binding refreshed}\\\\[4pt]\nThe unsupported wording remains; the passage record is updated to match the new bytes.};\n\\node[note,w=3.75,anchor=north]at(-4.6,-4.35){Recorded wording agrees with its sources.};\n\\node[note,w=3.75,anchor=north]at(0,-4.35){Prose-only edit:\\\\passage binding is stale.};\n\\node[note,w=3.75,anchor=north]at(4.6,-4.35){Binding warning can disappear; the claim remains unproved.};\n\\draw[black!30](-6.7,-5.55)--(6.7,-5.55);\n\\node[note,w=12.8,anchor=north]at(0,-5.8){\\textbf{Review question:} does the explanation retain the hypothesis and quantifiers of the cited statements? Valid formal proofs and matching source hashes do not answer it.};\n\\end{tikzpicture}\n\\caption{Hypothesis loss with unchanged formal supports. Rebinding can restore byte consistency while leaving the overclaim intact. This is an illustration, not a new test or historical edit~8.}\n\\label{fig:hypothesis}\\end{figure}\\FloatBarrier",
+      "statement_sha256": "4e3438852e2e4ab1b11616f939321dbf2624890711420730c511a563c620d89d",
+      "caption": "Hypothesis loss with unchanged formal supports. Rebinding can restore byte consistency while leaving the overclaim intact. This is an illustration, not a new test or historical edit~8."
+    },
+    {
       "id": "r4.checks1.01",
       "text": "The two formal supports in the example overlap (Figure~\\ref{fig:theorem}). One gives fixed-base irrationality and the all-base conclusion for every infinite subset; the other states the fixed-base hereditary conclusion explicitly. The \\emph{registered support set} is the list attached to this paper occurrence, not the dependency closure of those proofs. The publication audit checks the full registered list even when one declaration suffices for a particular clause. That checks the record; it adds no mathematical hypothesis.",
       "owner": "systems",
@@ -1584,19 +1655,6 @@
       "section": "sec:checks"
     },
     {
-      "id": "r4.checks2.05",
-      "text": "A matching digest establishes agreement with recorded bytes. It does not establish that the source entails the passage.",
-      "owner": "systems",
-      "class": "method",
-      "evidence_refs": [
-        "r8-sentence-check",
-        "audit-code"
-      ],
-      "warrant": "The checker recomputes the digest of each delimited unit and compares it with the ledger. Changing only the passage causes a mismatch; updating the ledger to the new bytes can restore that equality. Since the checker does not decide the passage’s meaning, this equality is compatible with an unsupported assertion.",
-      "statement_sha256": "159b259cdcedc39a081278de41b587369fd03b932bc284dd13e95011359d369e",
-      "section": "sec:checks"
-    },
-    {
       "id": "r4.checks2.06",
       "text": "In the worked revision, review must check the hypothesis and quantifiers even if both Lean links still resolve. Historical edit~8 tested a different failure: an unresolved step was described as complete (Table~\\ref{tab:mutations}).",
       "owner": "systems",
@@ -1612,21 +1670,6 @@
       "section": "sec:checks"
     },
     {
-      "id": "r4.checks3.01",
-      "text": "Execution is a separate question. A matching declaration type and reachable source link do not identify a successful continuous-integration run for that module.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "world-authority",
-        "world-limits",
-        "strategy-protocol",
-        "world-compilation"
-      ],
-      "warrant": "The inspection and journal sources distinguish a declaration listing or formal statement match from a recorded successful execution. Source reachability alone does not identify a CI result for the module.",
-      "statement_sha256": "0bb9f782bd67ad0bcc94d18a82036fef7a72b693bcecd2a81cfdbe298c760bfa",
-      "section": "sec:checks"
-    },
-    {
       "id": "r4.checks3.02",
       "text": "The probe interface takes verdicts from the specified Lean process; callers cannot submit their own verdict through it.",
       "owner": "systems",
@@ -1639,21 +1682,6 @@
       ],
       "warrant": "run_lean_probe obtains its verdict from the Lean process result, error count and sorry count. cmd_claim accepts only a stored accepted probe. This is the interface restriction; it does not rule out changes by an actor able to modify the filesystem.",
       "statement_sha256": "ca509e5f3673ce4f092f9233385241b96a1663fffa186b0fb9d86876bbe303d3",
-      "section": "sec:checks"
-    },
-    {
-      "id": "r4.checks3.03",
-      "text": "An actor with filesystem access can still alter the implementation or stored record.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "world-authority",
-        "world-limits",
-        "strategy-protocol",
-        "r9-session-state"
-      ],
-      "warrant": "The session and trust-boundary accounts distinguish the provided probe interface from an actor with write access to the implementation or records. The interface restriction is not an adversarial filesystem-integrity guarantee.",
-      "statement_sha256": "e8ea26da9d98dd6de6e2974f26e4d62baf08e6122c70d057373c5ac7b5021a30",
       "section": "sec:checks"
     },
     {
@@ -2090,36 +2118,6 @@
       "section": "sec:contribute"
     },
     {
-      "id": "r4.contribute3.01",
-      "text": "The repository's proposed route from a local result to an upstream library includes a literature and library comparison, a proof of the extension and a second useful instance before expert submission~\\cite{mathlibcontrib}.",
-      "owner": "systems",
-      "class": "proposed",
-      "evidence_refs": [
-        "strategy-transfer",
-        "strategy-credit",
-        "strategy-add",
-        "credit"
-      ],
-      "warrant": "The retired strategy explicitly proposes a local-to-general route including literature and library search, proof of the extension and another real use before expert judgement. Its second-use condition belongs to this project proposal, not a universal mathlib submission requirement. The cited contribution guide supplies the upstream context.",
-      "statement_sha256": "81eec58674ff8c52b4b822c464bb970e4ead5d41f8de1fa38a66b15d234df68b",
-      "section": "sec:contribute"
-    },
-    {
-      "id": "r4.contribute3.02",
-      "text": "This route is not automated, and the supplied record reports no Mathlib contribution from it.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "strategy-transfer",
-        "strategy-credit",
-        "strategy-add",
-        "credit"
-      ],
-      "warrant": "The strategy describes the local-to-general route as proposed and unautomated. The frozen supplied evidence reports no upstream mathlib contribution from that route; this is a bounded statement about that record, not a live repository search.",
-      "statement_sha256": "536aed7328af97147999a01dd0c77945b48206ba0f6125da9a0bcdd99ac41672",
-      "section": "sec:contribute"
-    },
-    {
       "id": "r4.contribute3.03",
       "text": "Credit distinguishes an idea from its implementation, formalisation and exposition. CRediT supplies a vocabulary for roles, not an authorship decision~\\cite{credit}.",
       "owner": "systems",
@@ -2204,6 +2202,43 @@
       "section": "sec:instance"
     },
     {
+      "id": "r16.obs.readers.01",
+      "text": "The \\repolink{docs/research-commons/CREDIT_LEDGER.md}{credit ledger} records nine outside comments, what each changed and the lines where the change can be seen. One mathematician found that the \\#243 note used terms that meant nothing on first reading and never said how restrictive its main hypothesis was; all sixteen problem papers were then revised for a first-time reader, and the public writing rules require both repairs. The \\#243 paper, for example, says that its cubic-rate hypothesis excludes the behaviour of the Sylvester recurrence and imposes much more than the quadratic limit, and gives an example showing why the precision of its error term matters.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "rec-reader-revisions",
+        "writing-contract"
+      ],
+      "warrant": "Credit-ledger entry of 17 September (unexplained names, one-use notation, unstated restrictiveness) and the #243 paper lines 82-84 and 231-233, quoted in the excerpt file; the short-paper contract carries the rules.",
+      "statement_sha256": "29e6fc29377b39677e561bc321d2a35f12709ce69482dd5a8fe3e588b2822497",
+      "section": "sec:instance"
+    },
+    {
+      "id": "r16.obs.readers.02",
+      "text": "Another comment, that AI-assisted mathematics rarely shows where its ideas come from, led to a literature review for each problem; each paper now credits its sources where they are used. A \\repolink{paper/exposition/writing-mathematics-from-reviewed-revisions.pdf}{writing guide} sets out the method drawn from these revisions, with worked cases.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "rec-reader-revisions"
+      ],
+      "warrant": "Credit-ledger entry of 15 September and the abstract of the writing guide, quoted in the excerpt file.",
+      "statement_sha256": "f7d36a82b6649df1a2cc32963e249f4a77634c9215d994c1cabc9745b898634c",
+      "section": "sec:instance"
+    },
+    {
+      "id": "r16.obs.outside.01",
+      "text": "Five mathematical contributions have merged into Google DeepMind's Formal Conjectures~\\cite{formalconjectures}. One proves a negative answer to its formal statement of Problem~1041, using a counterexample posted by an erdosproblems.com contributor; a reviewer of the newest one checked its statement against the source and replayed the proof independently. A selection of five \\#257 statements is registered on Palomar~\\cite{palomar} after mechanical checking. These checks concern formal statements and proofs; the exposition has had no systematic outside review.",
+      "owner": "systems",
+      "class": "reported",
+      "evidence_refs": [
+        "rec-outside-checks"
+      ],
+      "warrant": "Crosswalk line 10 (five merged contributions); lines 24 and 26 (#6505: a negative answer to the exact formal statement, credited to ani); the merge dates make #6529 (9 October) the newest; the README records Bo Cowgill's review of #6529 checking source correspondence and replaying the proof; Palomar entry PALOMAR-2026-09-25-000009 version 1, read 10 October 2026.",
+      "statement_sha256": "558ae758424e24f678d00cd93c8c738716f9acf8cb33d7d95b0ab4c5cc09f911",
+      "section": "sec:instance"
+    },
+    {
       "id": "r4.obs2.01",
       "text": "The historical publication-evidence record reports that \\HistoricalRejected{} of the \\HistoricalEdits{} deliberately false edits were rejected and \\HistoricalEscaped{} escaped.",
       "owner": "systems",
@@ -2225,18 +2260,6 @@
       ],
       "warrant": "Reports the structured historical transcription and original limits. It is not a fresh mutation replay.",
       "statement_sha256": "d6c44a3358c7a248c9ae42b79cc2ec1a41043286f31230b6e4642ac08daeaa3f",
-      "section": "sec:instance"
-    },
-    {
-      "id": "r4.obs2.03",
-      "text": "The edits were applied separately, with the baseline restored between trials.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "historical"
-      ],
-      "warrant": "Reports the structured historical transcription and original limits. It is not a fresh mutation replay.",
-      "statement_sha256": "11e9d8d1735888f56c28ddd6cc217eaf9ac21d19a853eec41f6fed8cc5c341c3",
       "section": "sec:instance"
     },
     {
@@ -2289,18 +2312,6 @@
       "section": "sec:instance"
     },
     {
-      "id": "r4.obs3.03",
-      "text": "The trial uses one corpus and the checker's own selection of errors, with no manual-review control or ordinary continuous-integration comparator.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "historical"
-      ],
-      "warrant": "The publication-evidence record describes an author-run trial on one corpus, without a manual-review control or an ordinary-CI comparison. Those design limits preclude a comparative reliability estimate.",
-      "statement_sha256": "22c2a68508f69b271f9a3713bfd93dea9e96a4f23a9d95bcdeaedc35e892817d",
-      "section": "sec:instance"
-    },
-    {
       "id": "r4.obs3.04",
       "text": "The study locates a coverage boundary. Its nine rejections do not estimate how reliable the checker is.",
       "owner": "systems",
@@ -2313,32 +2324,8 @@
       "section": "sec:instance"
     },
     {
-      "id": "r4.obs4.01",
-      "text": "On 23 September 2026, a maintainer-operated agent accepted one architecture handoff into a local integration history after focused checks of return routing and architecture packaging.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "architecture-return"
-      ],
-      "warrant": "The dated accepted_handoff receipt reports local integration of one architecture return after focused checks. It expressly identifies the reviewer as maintainer-operated and the same agent as the contributor.",
-      "statement_sha256": "39bf7aca7c403ac920707d108a97a80d76f9d3d3bfd7846f71a556389c2bb31c",
-      "section": "sec:instance"
-    },
-    {
-      "id": "r4.obs4.02",
-      "text": "The contributor and reviewer were the same agent. The receipt records no public pull request, human review or independent outside clone replay.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "architecture-return"
-      ],
-      "warrant": "The accepted_handoff review fields record same-agent contributor/reviewer roles, no public pull request and no independent outside clone replay or human mathematical review. Acceptance is local to the recorded integration history.",
-      "statement_sha256": "817115a6f0a06ced8230f7e5a472a0f7e4617e15fe30defaf1d37062b69aeea5",
-      "section": "sec:instance"
-    },
-    {
       "id": "r4.obs5.01",
-      "text": "A proposed reader study would hold the mathematical task fixed and compare an ordinary repository, an information-equivalent static briefing and the navigation tools.",
+      "text": "No independent writing comparison, blind grading run or cold-reader experiment is reported, so there is no comparative reader result. A proposed study would hold the mathematical task fixed and compare an ordinary repository, an equivalent static briefing and these tools, measuring understanding, severe errors and the costs of use, review and repair.",
       "owner": "systems",
       "class": "proposed",
       "evidence_refs": [
@@ -2346,53 +2333,8 @@
         "reader-study",
         "round10-contract"
       ],
-      "warrant": "The proposed reader protocol compares repository access, an information-equivalent static briefing and navigation tools while holding the task fixed. It is a proposed design and has no reported participant outcomes.",
-      "statement_sha256": "d1c1f59eb7eab3537d945d5b25dbcf048b601713c8df190bb1c58abd1fe58c78",
-      "section": "sec:instance"
-    },
-    {
-      "id": "r4.obs5.02",
-      "text": "It would measure understanding and severe errors alongside preparation, use, review and repair costs, retaining missing returns, timeouts and disagreements.",
-      "owner": "systems",
-      "class": "proposed",
-      "evidence_refs": [
-        "strategy-evaluation",
-        "reader-study",
-        "round10-contract"
-      ],
-      "warrant": "The proposed evaluation accounts for understanding, severe errors, preparation, usage, review and repair costs, including unsuccessful or missing returns. These are intended measurements, not observations made by this revision.",
-      "statement_sha256": "4212b30f2254e16e00c858e00da3ef0d74d5f677fc425441ac0872a706dc1afd",
-      "section": "sec:instance"
-    },
-    {
-      "id": "r4.obs5.03",
-      "text": "No independent writing comparison, blind grading run or cold-reader experiment is reported, so there is no comparative reader result.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "strategy-evaluation",
-        "reader-study",
-        "round10-contract"
-      ],
-      "warrant": "The supplied reader-study source and evaluation account describe a protocol without a completed independent writing comparison, blind grading or cold-reader run. No comparative reader conclusion can be drawn from that supplied record.",
-      "statement_sha256": "76d5376b9aec1728a3833eb6cdff886ba5c268bfbdd0b61ee77333faf42b26dd",
-      "section": "sec:instance"
-    },
-    {
-      "id": "r4.obs5.04",
-      "text": "The records above document inventory, a checker failure and one local integration; general reliability, reader understanding and mathematical transfer remain unmeasured.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "strategy-evaluation",
-        "reader-study",
-        "round10-contract",
-        "historical",
-        "architecture-return",
-        "counts"
-      ],
-      "warrant": "The count owner records inventory, publication_evidence.json records the false-edit trial and its escape, and the dated architecture return records a same-agent local integration. These different records do not measure general reliability, reader understanding or transfer to new mathematics.",
-      "statement_sha256": "21721e19d5ff8f85d1428a98b25e0b5bceb49d5e7be7d1bda8d66c2594267f01",
+      "warrant": "The supplied reader-study source and evaluation account describe a protocol without a completed independent writing comparison, blind grading or cold-reader run, so no comparative reader conclusion is drawn; the proposed design holds the task fixed and compares an ordinary repository, a static briefing and the tools.",
+      "statement_sha256": "fe8de96e8ad0aa3d58bec5b5fa3a619d45a2315d058ae86ea1fa3b5f0a7fe288",
       "section": "sec:instance"
     },
     {
@@ -2433,8 +2375,8 @@
     {
       "id": "r11.related.prove2me-audit",
       "owner": "systems",
-      "text": "Human review is part of Prove2Me\\textquotesingle s design. A mission fixes a human-audited core of goals, definitions and milestones; each milestone pairs a source statement with its attested canonical formalisation. For read-back, an independent agent receives the Lean declaration and dependent definitions without the original source; a human compares its mathematical rendering with that source. Natural-language accounts accompany statements and proofs, statement descriptions support library search, and imports give contributors reuse credit. The discussion record also includes a disproved statement followed by a corrected replacement~\\cite[Sections~3.3 and~4.3--4.5]{prove2me}. Explanation, reuse, correction and shared agent work are therefore established parts of this comparison.",
-      "statement_sha256": "af1805521f85f9c5ec320f56ce0db146e9939a878f01ca544aef4363588b7fc6",
+      "text": "Human review is part of Prove2Me\\textquotesingle s design: a mission fixes a human-audited core of goals, definitions and milestones, and a human reviewer compares an independent agent\\textquotesingle s rendering of each milestone\\textquotesingle s Lean declaration with its source. Natural-language accounts, statement search, reuse credit and corrected statements are also part of its record~\\cite[Sections~3.3 and~4.3--4.5]{prove2me}, so explanation, reuse and correction are features of both designs.",
+      "statement_sha256": "db01aaa3b7411b190ed12c43d218cab85986e7b94fbc97c00c91a3de17176e3f",
       "class": "literature",
       "evidence_refs": [
         "strategy-related",
@@ -2453,7 +2395,7 @@
     },
     {
       "id": "r4.related1.03",
-      "text": "For correspondence with a source, the closest analogue is Prove2Me\\textquotesingle s milestone: both designs identify the mathematical statement whose formalisation is being reviewed. Our coverage record follows a particular paper occurrence and can list several overlapping formal supports, with a relation note explaining their connection to the printed claim. It is not a proof-sketch: listing those supports does not compose proof terms or discharge open lemmas. A separate passage record binds the explanation to sources and rationale, while entered contribution records retain revision decisions and role credit. The focus here is the consistency and review of these publication records across revisions. This difference of focus establishes neither priority for persistent research records nor a measured advantage over Prove2Me.",
+      "text": "For correspondence with a source, the closest analogue is Prove2Me\\textquotesingle s milestone: both designs identify the mathematical statement whose formalisation is being reviewed. Our coverage record follows a particular paper occurrence and can list several overlapping formal supports, with a relation note explaining their connection to the printed claim. It is not a proof-sketch: listing those supports does not compose proof terms or discharge open lemmas. A separate passage record binds the explanation to sources and rationale, while entered contribution records retain revision decisions and role credit. The focus here is the consistency and review of these publication records across revisions.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
@@ -2465,7 +2407,7 @@
         "r8-journal"
       ],
       "warrant": "Prove2Me v2 Section 4.4 pairs a source statement with an attested canonical formalization, while Sections 4.2–4.3 give proof-sketch imports conditional proof-composition semantics. Locally, the weighted coverage row and paper_evidence.py bind a paper occurrence and a row-level relation note to a list of supports; the passage checker and journal bind explanations and entered review events separately. The closest-analogue judgment is an architectural comparison: a coverage list is not a Lean proof term and does not close a subgoal. The sources support no priority or comparative-performance conclusion.",
-      "statement_sha256": "d860fc7e6ac4294e4829e6322a78559f8c27ada98516b99b6bedd9b0f9aa4eeb",
+      "statement_sha256": "d5e780dc11c13d065c4416acd209102648b16a2a035e49b8ef2ea981126857ee",
       "section": "sec:related",
       "external_reading": {
         "source": "annex/arxiv-2608-28433-prove2me-open-collaborative-platform/source.pdf",
@@ -2474,6 +2416,20 @@
         "sections_read": "Supplied complete main article and figures; this passage uses Sections 3.3, 4.2 and 4.3--4.5.",
         "boundary": "The external original supplies literature content. Native bindings check public custody records, not semantic agreement with this PDF."
       }
+    },
+    {
+      "id": "r16.related.apn",
+      "text": "\\paragraph{AlphaProof Nexus.}\nLanguage-model agents search for a Lean proof of a stated target, and a failed episode leaves its lessons as a comment in the proof sketch~\\cite{apn2026}. The authors report failed attempts that moved the difficulty into one unproved lemma or relied on lemmas wrongly presented as known results, and note that formal sketches let experts concentrate on the unresolved subgoals. Six of the authors wrote the natural-language proofs with the help of agent drafts; these proofs do not tie their steps to Lean declarations. Formal statements of six of the eight problems here were among its 353 targets; none is among its released resolutions. For those six, the records here keep checked partial results, what remains open and an explanation of both.",
+      "owner": "systems",
+      "class": "literature",
+      "evidence_refs": [
+        "lit-apn",
+        "corpus",
+        "coverage"
+      ],
+      "warrant": "Lines 41, 48, 86, 188 and 209 of the arXiv v2 source and the supplementary proofs support the description; the attempted list names formal statements of 1049, 251, 243, 257 and 68 and a variant of 269, and the released outputs include none of the eight; the corpus and coverage ledger hold the checked partial results and open questions for those six.",
+      "statement_sha256": "e5ccc93930d059db8b57055fb41a3e0b464994beac74fd90a96508df2c6139d8",
+      "section": "sec:related"
     },
     {
       "id": "r4.related1.04",
@@ -2492,8 +2448,8 @@
     {
       "id": "r8.related.systems",
       "owner": "systems",
-      "text": "The regeneration tools address the familiar build-system problem of keeping derived outputs consistent with their inputs~\\cite{buildsystems}. They run an explicit ordered list of builders and then check the resulting views; this is not a general incremental scheduler. Source bindings and the journal add provenance for assertions and entered returns at particular revisions. Together these mechanisms make dependencies and changes available for inspection. Their effect on research efficiency and semantic correctness needs separate evaluation.",
-      "statement_sha256": "22be06aca54a3602d2af5bb48350c25988387901277aa8ef7bb01bc4bb503383",
+      "text": "The regeneration tools address the familiar build-system problem of keeping derived outputs consistent with their inputs~\\cite{buildsystems}. They run an explicit ordered list of builders and then check the resulting views; this is not a general incremental scheduler. Source bindings and the journal add provenance for assertions and entered returns at particular revisions.",
+      "statement_sha256": "9e0e818d84946bafaedda7d96a3afa8e8504106de4990af4b7d4ecef9263aa4d",
       "class": "method",
       "evidence_refs": [
         "r8-projection-order",
@@ -2507,7 +2463,7 @@
     },
     {
       "id": "r4.limits1.01",
-      "text": "The prototype establishes a set of implemented record and review operations, with the limited observations in Section~\\ref{sec:evaluation}. It reports no comparative formalisation result or autonomous-optimisation experiment.",
+      "text": "The observations above document implemented record and review operations, outside checks of formal statements and revisions prompted by readers. Transfer to unseen mathematics and understanding by independent readers require direct evaluation, and no new project has adopted the system.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -2515,58 +2471,12 @@
         "strategy-evaluation",
         "strategy-limits",
         "round10-state",
-        "r8-architecture",
-        "r8-exchange",
-        "historical"
-      ],
-      "warrant": "The inspected source entry points establish the described prototype operations. The frozen observations are limited to inventory, the historical checker trial and local integration, with no comparative formalisation or autonomous-optimisation experiment.",
-      "statement_sha256": "d17929257959e7d563b2ca63a6f431267a937407bbe187416b779cab5fc5c178",
-      "section": "sec:limits"
-    },
-    {
-      "id": "r4.limits1.02",
-      "text": "Transfer to unseen mathematics and understanding by independent readers require direct evaluation.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "world-limits",
-        "strategy-evaluation",
-        "strategy-limits",
-        "round10-state",
+        "rec-outside-checks",
+        "rec-reader-revisions",
         "reader-study"
       ],
-      "warrant": "The evaluation and limits sources identify unseen-task transfer and independent reader understanding as outcomes still needing direct study. This is an evidence limit, not a claim that transfer or understanding is impossible.",
-      "statement_sha256": "39a95d71f14b9eb642b9b0ae1c32fd84bb146b3114db8235b5b1fb5903a8cb72",
-      "section": "sec:limits"
-    },
-    {
-      "id": "r4.limits1.03",
-      "text": "In particular, no controlled comparison shows that the contribution process converts compute into useful mathematics more effectively or increases discovery rate.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "world-limits",
-        "strategy-evaluation",
-        "strategy-limits",
-        "round10-state"
-      ],
-      "warrant": "The strategy evaluation account proposes tests of useful mathematical work and the cost of a contribution process but supplies no controlled gain in discovery rate or conversion of compute into mathematics.",
-      "statement_sha256": "269f94b9f0edbdb9c0aef66acfb3a3128afb4a61c8e5b4c2b94e860504ffc0c3",
-      "section": "sec:limits"
-    },
-    {
-      "id": "r4.limits1.04",
-      "text": "There is also no evidence of inexpensive adoption by a new project or an advantage over an agent using a good README.",
-      "owner": "systems",
-      "class": "reported",
-      "evidence_refs": [
-        "world-limits",
-        "strategy-evaluation",
-        "strategy-limits",
-        "round10-state"
-      ],
-      "warrant": "The transfer and evaluation limits contain no controlled new-project adoption study and no demonstrated advantage over a well-documented repository used by an agent. The sentence keeps both comparisons open.",
-      "statement_sha256": "3c9b91dd3aac1a200a5bcb8c0f2d1be3f3e66dfe385bf773df2842aa3c061c7c",
+      "warrant": "The observations cover implemented operations, outside formal checks and reader-prompted revisions. The evaluation and limits sources identify unseen-task transfer and independent reader understanding as outcomes still needing direct study, and record no outside adoption.",
+      "statement_sha256": "530db7f20ef93a7917186225264c51e30eacbbd4acba027c7dddf820327286f1",
       "section": "sec:limits"
     },
     {
@@ -2661,16 +2571,17 @@
     },
     {
       "id": "r14.agmai.limits",
-      "text": "Several of these proposed release practices have counterparts in the\nrecords described here~\\cite[Section 2.B, Step I]{agmai2026}: the short\npaper and companion paper explain and attribute the argument, the paper-to-Lean\nledger records formal correspondence and its limits, and the files prepared for formal comparison identify its inputs.\nThose records make the result inspectable; they do not certify a\nmathematician's understanding. The architecture alone does not establish\ncomplete per-result model, prompt, time and cost disclosure, an account of\ncampaign-wide selection and unsuccessful attempts, or an independent\nscholarly deposit. The further recommendations on funding community-led\nunderstanding and equitable model access address AI laboratories; this\nprototype does not demonstrate those institutional outcomes.",
-      "statement_sha256": "075f528ab56b3a7c38893e8caee85df4bae60b7ee3a7eb84eae99591d82458f8",
+      "text": "Several of these practices are implemented here~\\cite[Section 2.B, Step I]{agmai2026}: the papers explain their arguments and credit sources where they are used, the paper-to-Lean ledger is a machine-readable link between prose and formal statements, and the research records keep failed approaches. Per-result disclosure of model, prompts, time and cost and a campaign-wide count of unsuccessful attempts are not provided.",
+      "statement_sha256": "9d6a4c1529f713392122a36579ada6d7b5de6c30f2c95a4d865667612cbde376",
       "class": "literature",
       "evidence_refs": [
         "lit-agmai",
         "paper-evidence",
         "coverage",
-        "writing-contract"
+        "writing-contract",
+        "rec-reader-revisions"
       ],
-      "warrant": "The supplied AGMAI release recommendations distinguish explanatory mathematical writing, formal correspondence and reproducible records from understanding, disclosure and institutional responsibilities. The publication evidence, coverage and writing records exhibit only the named local counterparts; they do not establish the other outcomes.",
+      "warrant": "Compares AGMAI's practices with the attribution rules, the machine-readable coverage ledger and the failed approaches kept in research records; per-result process disclosure and campaign-wide failure counts are absent.",
       "section": "sec:limits"
     },
     {
@@ -2721,7 +2632,7 @@
     },
     {
       "id": "r4.repro4.04",
-      "text": "The \\reporef{docs/READING_GUIDE.md}{reading guide} routes readers through one problem or across the papers, including \\emph{Reading Eight Erd\\H{o}s Problems Together}~\\cite{synthesis}. Read a result's short paper, then follow its argument, attribution and formal-support references. Agents can use \\reporef{AGENTS.md}{agent instructions} and the \\reporef{docs/agents/AGENT_WORKBENCH.md}{workbench's} optional proof sessions. Corrections follow the \\reporef{CONTRIBUTING.md}{contribution guide} and \\reporef{docs/research-commons/CREDIT_POLICY.md}{credit policy}.",
+      "text": "The \\reporef{docs/READING_GUIDE.md}{reading guide} routes readers through one problem or across the papers, including \\emph{Reading Eight Erd\\H{o}s Problems Together}~\\cite{synthesis}. Agents can use \\reporef{AGENTS.md}{agent instructions} and the \\reporef{docs/agents/AGENT_WORKBENCH.md}{workbench's} optional proof sessions. Corrections follow the \\reporef{CONTRIBUTING.md}{contribution guide} and \\reporef{docs/research-commons/CREDIT_POLICY.md}{credit policy}.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
@@ -2733,7 +2644,7 @@
         "software-citation"
       ],
       "warrant": "The reading guide explicitly offers one-problem and cross-paper routes, including the synthesis. The linked agent, workbench, contribution and credit guides describe optional agent operation, recorded sessions and submission roles; they do not make agent use a prerequisite for reading a result.",
-      "statement_sha256": "a32993613486d2f074ecb0a6a3ee85d0f32827949860a8c18a257b05c08ae01e",
+      "statement_sha256": "97674ce8bdf44cf201da0b8075bab1e1a7c602e056fd92d3314d0827bfff5cbe",
       "section": "app:repro"
     },
     {
@@ -2925,15 +2836,15 @@
     },
     {
       "id": "r4.repro1.02",
-      "text": "Repository links in this paper identify fixed file versions, so that a reader can inspect the material cited even if the working repository later changes. Unless a link states otherwise, its revision is \\texttt{992cf60a27ef}; the Comparator runs identify their own inputs. No new Lean or Comparator run was performed for this revision.",
+      "text": "Repository links in this paper identify fixed file versions, so that a reader can inspect the material cited even if the working repository later changes. Unless a link states otherwise, its revision is \\texttt{0064fc9b2a26}; the Comparator runs identify their own inputs. No new Lean or Comparator run was performed for this revision.",
       "owner": "systems",
       "class": "reported",
       "evidence_refs": [
         "corpus",
         "round10-state"
       ],
-      "warrant": "The repository-link macro pins ordinary file links to revision 992cf60a27ef, and the cited corpus/state records identify separately pinned comparison inputs. This identifies cited versions; it does not report a new Lean or Comparator execution.",
-      "statement_sha256": "6686f6c04e7f95fd066dcaa08ab3b9c6d9a63a6556c8d3aa46ee56407604da52",
+      "warrant": "The repository-link macro pins ordinary file links to revision 0064fc9b2a26, and the cited corpus/state records identify separately pinned comparison inputs. This identifies cited versions; it does not report a new Lean or Comparator execution.",
+      "statement_sha256": "a7150b38ef9a259c80ed03c820a2a59005850135efabe9a2003744fd867f3b22",
       "section": "app:repro"
     },
     {
@@ -2966,8 +2877,8 @@
     {
       "id": "r8.repro.historical-crosswalk",
       "owner": "systems",
-      "text": "\\emph{\\reporef{paper/systems/cold-clone-to-proof-receipt.tex}{From a Cold Clone to a Proof Receipt}} (August 2026) describes the declaration, dependency, interpretation and claim views and the optional recorded proof session. Its counts and audit figures belong to that snapshot; Section~\\ref{sec:world} describes the current task entry and inspected implementation.\n\n\\emph{\\reporef{paper/systems/open-source-mathematics-strategy.tex}{From Spare Compute to Cumulative Mathematics}} (September 2026) describes contribution roles, reproduction against the original inputs, subsequent integration and role credit. Section~\\ref{sec:contribute} gives the current procedure. The earlier paper's volunteer-compute services, inexpensive adoption by new laboratories and increased discovery rate remain proposals or unmeasured outcomes. These manuscripts explain the design's history; they are not additional current specifications.",
-      "statement_sha256": "d02dae10a7c66f5fa9858551ab93b4d49e927b277d4993affa38765dc9f42235",
+      "text": "\\emph{\\reporef{paper/systems/cold-clone-to-proof-receipt.tex}{From a Cold Clone to a Proof Receipt}} (August 2026) and \\emph{\\reporef{paper/systems/open-source-mathematics-strategy.tex}{From Spare Compute to Cumulative Mathematics}} (September 2026) record earlier states of this design, from navigation views and proof sessions to contribution roles and role credit. Their counts, proposals and projected outcomes belong to those snapshots; Sections~\\ref{sec:world} and~\\ref{sec:contribute} describe the current design.",
+      "statement_sha256": "b0d7935988cf5be0081a6ce37e74315e16249e8734697a957270fdaedb945a93",
       "class": "reported",
       "evidence_refs": [
         "r8-old-navigation",
@@ -3481,7 +3392,7 @@
     },
     {
       "id": "r14p3.sources.purpose",
-      "text": "Section~\\ref{sec:related} compares the closest systems; Appendices~\\ref{app:worked-proof} and~\\ref{app:attribution} explain the mathematical antecedents used in the examples. Figure~\\ref{fig:credit} is a guide to the remaining references and to sources cited by the two historical design accounts in Appendix~\\ref{app:repro}. Its groups indicate why a source is cited, not that every listed method is implemented here or that every work has been evaluated against this system.",
+      "text": "Figure~\\ref{fig:credit} is a guide to the remaining references and to sources cited by the two historical design accounts in Appendix~\\ref{app:repro}. Its groups say why each source is cited; inclusion does not mean a method is implemented here or a work was evaluated against this system.",
       "owner": "systems",
       "class": "method",
       "evidence_refs": [
@@ -3491,7 +3402,7 @@
         "credit-registry"
       ],
       "warrant": "The related-work sections, historical design accounts and attribution registry associate the grouped references with different roles. The table is therefore a reading guide across these accounts, not evidence that each cited method was implemented or comparatively evaluated.",
-      "statement_sha256": "c344d64116c39e0b4178919f506915c08af50bdb1722d30480f50d0583585cab",
+      "statement_sha256": "8e61d645789a3030a89bddb7288638d103aa88f986bbc39c8a4b30dfd4c62ba2",
       "section": "app:source-map"
     },
     {
@@ -3516,26 +3427,6 @@
       "unit_type": "figure",
       "caption": "Reading map for this paper and its two historical predecessors. The groups record uses of sources, not a performance ranking or a list of implemented components. Appendices~\\ref{app:worked-proof} and~\\ref{app:attribution} distinguish mathematical antecedents, refinements and independent rediscovery.",
       "figure_title": "Reading map and reasons for citation"
-    },
-    {
-      "id": "r15.fig.hypothesis",
-      "owner": "systems",
-      "class": "method",
-      "evidence_refs": [
-        "coverage-weighted",
-        "r8-weighted-proof",
-        "r8-hereditary-formal",
-        "r8-sentence-check",
-        "writing-contract",
-        "r8-exchange"
-      ],
-      "warrant": "The illustrative revision keeps formal statements fixed. The weighted conditional conclusion is retained first, broadened without support second, and retained as an unsupported general assertion with refreshed byte binding third. The unrestricted assertion is unresolved, not refuted; the publication error is claiming that the weighted evidence establishes it. The cited theorem supplies the hypothesis and quantifiers. The passage checker verifies recorded bytes and requires a rationale without assessing entailment. This is not a new test or historical edit 8.",
-      "section": "sec:example",
-      "unit_type": "figure",
-      "figure_title": "A lost hypothesis",
-      "text": "\\begin{figure}[htbp]\\centering\n\\begin{tikzpicture}\n\\node[rec,w=12.8](f)at(0,0){\\textbf{Formal supports held fixed throughout}\\\\The statements retain their weighted hypothesis.};\n\\foreach \\x/\\n in {-4.6/1,0/2,4.6/3}{\n \\node[tag]at(\\x,-1){\\textsc{Version \\n}};}\n\\node[box,w=3.75,h=2.6](a)at(-4.6,-2.65){\\textbf{Faithful explanation}\\\\[4pt]\nUnder the weighted condition, irrationality holds for every infinite subset and every integer base at least two.};\n\\node[gate,w=3.75,h=2.6](b)at(0,-2.65){\\textbf{Hypothesis removed}\\\\[4pt]\nEvery infinite subseries is irrational.\\\\[4pt]\n\\emph{The unresolved general case is now claimed.}};\n\\node[gate,w=3.75,h=2.6](c)at(4.6,-2.65){\\textbf{Binding refreshed}\\\\[4pt]\nThe unsupported wording remains; the passage record is updated to match the new bytes.};\n\\node[note,w=3.75,anchor=north]at(-4.6,-4.35){Recorded wording agrees with its sources.};\n\\node[note,w=3.75,anchor=north]at(0,-4.35){Prose-only edit:\\\\passage binding is stale.};\n\\node[note,w=3.75,anchor=north]at(4.6,-4.35){Binding warning can disappear; the claim remains unproved.};\n\\draw[black!30](-6.7,-5.55)--(6.7,-5.55);\n\\node[note,w=12.8,anchor=north]at(0,-5.8){\\textbf{Review question:} does the explanation retain the hypothesis and quantifiers of the cited statements? Valid formal proofs and matching source hashes do not answer it.};\n\\end{tikzpicture}\n\\caption{Hypothesis loss with unchanged formal supports. Rebinding can restore byte consistency while leaving the overclaim intact. This is an illustration, not a new test or historical edit~8.}\n\\label{fig:hypothesis}\\end{figure}\\FloatBarrier",
-      "statement_sha256": "4e3438852e2e4ab1b11616f939321dbf2624890711420730c511a563c620d89d",
-      "caption": "Hypothesis loss with unchanged formal supports. Rebinding can restore byte consistency while leaving the overclaim intact. This is an illustration, not a new test or historical edit~8."
     }
   ],
   "figures": [

@@ -8,7 +8,7 @@
 
 </div>
 
-Plectis is a repository-based research environment for retaining mathematical work across sessions and carrying selected results into publication. The public prototype brings questions, sources, proofs, computations and failed approaches together in eight problem collections. Its publication workflow records the formal-support status of paper statements and binds explanatory passages to cited sources, while keeping these records distinct. Researchers and agents choose the work; Python tools retrieve evidence, record Lean probes and regenerate views. Maintainers decide what to adopt, and a journal retains entered contributions and review decisions. A worked revision shows how an explanation can lose a hypothesis while its formal proofs remain valid. A historical author-run test rejected nine of ten false edits and accepted one false completion claim. Reader benefit, discovery rate and adoption by independent laboratories remain unmeasured.
+Plectis is a repository-based system for turning AI-assisted mathematical research into papers that a first-time reader can follow and check. Researchers and agents choose the work, and maintainers decide what to adopt. The public prototype brings questions, sources, proofs, computations and failed approaches together in eight problem collections, one per Erdős problem, each with a short paper and a longer research record. A machine-readable ledger links each of 689 labelled statements in those papers to its Lean declarations and Comparator status, and every passage of this paper is bound to the source lines that support it. Reader criticism becomes a writing rule applied across the corpus: when one mathematician said a note used unexplained terms and never said how restrictive its main hypothesis was, all sixteen papers were revised for a first-time reader, and a public ledger credits the comment with links to the change. A worked revision shows how an explanation can lose a hypothesis while its formal proofs stay valid, which is why explanations need checks of their own. A historical author-run test rejected nine of ten false edits and accepted one false completion claim. Five contributions have merged into Google DeepMind’s Formal Conjectures, one with an independently replayed proof, and a selection of \#257 results is registered on Palomar. Reader benefit, discovery rate and adoption by independent laboratories remain unmeasured.
 
 <a id="sec:intro"></a>
 
@@ -25,6 +25,8 @@ Plectis supports this work in a public repository. Questions, prior sources, com
 The architecture separates authored records, derived views and adoption decisions (Figure [1](#fig%3Alifecycle)). A successful proof probe can remain a session result; a revised explanation can remain a proposal. Acceptance updates the source records, after which builders regenerate their indexes and summaries.
 
 Erdős Problems supplies the questions and their public discussion, while Lean and mathlib supply the formal language and library \[erdosproblems; lean4; mathlib\]. Formalisation blueprints link a written argument to named Lean declarations \[leanblueprint; leanarchitect\], and the Equational Theories Project maintains shared problem records \[etp\]. Prove2Me combines human-audited missions, source-linked milestones and separately submitted proofs, with intermediate results available for other agents to reuse \[prove2me, Sections 3–4\].
+
+The AlphaProof Nexus paper reports Lean proofs for nine of 353 Erdős problem statements \[apn2026\], and in October 2026 OpenAI released 719 manuscripts with about 42 per cent of their principal results formalised \[openaimath2026\]. The Advisory Group on Mathematics and Artificial Intelligence at IAS asks the laboratories behind such results for attribution and conventional exposition, and calls links between prose and formal artefacts helpful \[agmai2026\]. Exposition, attribution and those links are the subject of this paper.
 
 The question is how to keep a publication aligned with its changing research record. Assertions, formal supports, explanations and acceptance decisions need separate identities and links. Checks detect specified disagreements; preserving the mathematics remains a review task.
 
@@ -49,7 +51,7 @@ Section [2](#sec%3Aworld) describes the architecture; Sections [3](#sec%3Aexam
 
 ## Stored records and derived views
 
-Files store the research state: Lean and manuscript arguments, selected claims and obligations, evidence, entered returns and decisions. Indexes, coordinates and status summaries derive from them. Freshness checks detect disagreement; builders regenerate views. Neither adopts a claim. The [`architecture guide`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/ARCHITECTURE.md) identifies each view’s source, where repairs belong.
+Files store the research state: Lean and manuscript arguments, selected claims and obligations, evidence, entered returns and decisions. Indexes, coordinates and status summaries derive from them. Freshness checks detect disagreement; builders regenerate views. Neither adopts a claim. The [`architecture guide`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/docs/ARCHITECTURE.md) identifies each view’s source, where repairs belong.
 
 The coverage ledger follows a labelled *paper occurrence*, identified by location and statement digest, and lists its registered Lean supports and evidence status. A stronger formal result needs an authored relation note bound to both statements. The passage ledger records explanatory text, cited spans, evidence class and rationale. The first asks what supports the statement; the second exposes the explanation’s sources for review. Neither generates prose from a proof.
 
@@ -109,17 +111,17 @@ The entry points below act on the same repository records. They support a resear
 
 | Component | Input, output and responsibility |
 |:---|:---|
-| Task routing | [`agent_entry.py`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/agent_entry.py) maps a stated task to instructions, relevant files and commands. It routes a request rather than choosing the research question. |
-| Evidence retrieval | [`query_corpus.py`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/query_corpus.py) returns problem, claim, declaration and paper-source records from the indexes. |
-| Proof sessions | [`proof_workbench.py`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/proof_workbench.py) stores notes and submitted Lean probes, obtains verdicts from Lean, and binds a session claim to an accepted probe. |
-| Statement evidence | [`paper_evidence.py`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/paper_evidence.py) locates each registered support at the recorded revision and checks its source and verification bindings; [`paper_claim_evidence.py`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/paper_claim_evidence.py) derives status and gap reports from those records. |
-| Editorial exchange | [`short_paper_writer.py`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/short_paper_writer.py) audits manuscripts and packages proposed revisions without applying or approving the return. |
-| Research history | [`research_record.py`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/research_record.py) verifies the journal of entered returns and dispositions and reports the outstanding milestones of recorded outputs. |
-| Derived views | [`refresh_projections.py`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/refresh_projections.py) runs builders in dependency order; [`check_release.py`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/check_release.py) checks release contracts and freshness. |
+| Task routing | [`agent_entry.py`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/scripts/agent_entry.py) maps a stated task to instructions, relevant files and commands. It routes a request rather than choosing the research question. |
+| Evidence retrieval | [`query_corpus.py`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/scripts/query_corpus.py) returns problem, claim, declaration and paper-source records from the indexes. |
+| Proof sessions | [`proof_workbench.py`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/scripts/proof_workbench.py) stores notes and submitted Lean probes, obtains verdicts from Lean, and binds a session claim to an accepted probe. |
+| Statement evidence | [`paper_evidence.py`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/scripts/paper_evidence.py) locates each registered support at the recorded revision and checks its source and verification bindings; [`paper_claim_evidence.py`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/scripts/paper_claim_evidence.py) derives status and gap reports from those records. |
+| Editorial exchange | [`short_paper_writer.py`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/scripts/short_paper_writer.py) audits manuscripts and packages proposed revisions without applying or approving the return. |
+| Research history | [`research_record.py`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/scripts/research_record.py) verifies the journal of entered returns and dispositions and reports the outstanding milestones of recorded outputs. |
+| Derived views | [`refresh_projections.py`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/scripts/refresh_projections.py) runs builders in dependency order; [`check_release.py`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/scripts/check_release.py) checks release contracts and freshness. |
 
 </div>
 
-A separate self-audit, [`systems_paper_evidence.py`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/systems_paper_evidence.py), checks this systems manuscript’s text and cited source bindings. These are implemented interfaces, not reports that every operation has been executed successfully.
+A separate self-audit, [`systems_paper_evidence.py`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/scripts/systems_paper_evidence.py), checks this systems manuscript’s text and cited source bindings. These are implemented interfaces, not reports that every operation has been executed successfully.
 
 An optional proof session illustrates the boundary between producing evidence and adopting a result. It stores notes, exact Lean inputs, process-derived receipts and a closing outcome. Its claim command requires an accepted probe and appends a session claim; it does not alter the reviewed public claim registry. The journal separately checks the sequence and hash chain of entered returns and dispositions. Later work can therefore inspect recorded inputs and decisions without the original conversation.
 
@@ -127,7 +129,7 @@ An optional proof session illustrates the boundary between producing evidence an
 
 ## Responsibilities and adoption
 
-A researcher chooses the question and the evidence needed to answer it. An agent can inspect files, run tools and prepare a change under the public instructions; a contributor can also send an ordinary argument or explanation without a clone or an agent. The maintainer reviews scope, attribution and unresolved obligations before adoption. These are responsibilities, not necessarily different people or agents: contributor and reviewer may coincide. The [`agent quickstart`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/agents/README.md) and [`contribution guide`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/CONTRIBUTING.md) describe setup and review.
+A researcher chooses the question and the evidence needed to answer it. An agent can inspect files, run tools and prepare a change under the public instructions; a contributor can also send an ordinary argument or explanation without a clone or an agent. The maintainer reviews scope, attribution and unresolved obligations before adoption. These are responsibilities, not necessarily different people or agents: contributor and reviewer may coincide. The [`agent quickstart`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/docs/agents/README.md) and [`contribution guide`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/CONTRIBUTING.md) describe setup and review.
 
 An iteration retrieves relevant work, investigates a question and returns an argument, experiment, correction or manuscript change with its evidence and limits. Review can adopt, revise, defer or reject the proposal. Accepted changes update the authored records; builders regenerate dependent views and release checks test consistency. Structured returns explicitly entered into the journal retain their dispositions. Ordinary issues and pull requests can reach review without a journal session (Section [6](#sec%3Acontribute)).
 
@@ -139,7 +141,7 @@ An iteration retrieves relevant work, investigates a question and returns an arg
 
 The worked case comes from Erdős Problem 257, which asks whether every infinite subseries of $`1+1/3+1/7+1/15+\cdots`$ is irrational. The theorem used here proves irrationality under a weighted summability condition on the retained exponents, with the same conclusion for every infinite subset and every integer base at least two. Dropping that condition would claim the unresolved general case. Appendix [11](#app%3Aworked-proof) introduces the series, its antecedents and the proof.
 
-Consider a contributor revising that explanation. The coverage row `res:weighted-support` in [`paper_lean_coverage.json`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/paper_lean_coverage.json) fixes the printed statement and lists two Lean supports. The explanation here has a separate [`passage record`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/systems_paper_sentences.json), citing the ordinary proof and a formal declaration. The claim-evidence builder derives status or gap reports; the passage checker tests text and source bindings.
+Consider a contributor revising that explanation. The coverage row `res:weighted-support` in [`paper_lean_coverage.json`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/docs/paper_lean_coverage.json) fixes the printed statement and lists two Lean supports. The explanation here has a separate [`passage record`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/docs/systems_paper_sentences.json), citing the ordinary proof and a formal declaration. The claim-evidence builder derives status or gap reports; the passage checker tests text and source bindings.
 
 Neither Lean proof need change when the explanation loses its weighted hypothesis. The prose edit makes its passage binding stale; rebinding can remove that warning without repairing the claim. Review must compare the wording with the cited statements. Accepted edits update the explanation and its record before publication views are regenerated. Figure [3](#fig%3Ahypothesis) compares the three versions. This is an illustration, not a new test run.
 
@@ -171,9 +173,9 @@ Each marked passage in this systems paper has a text record, specified source li
 
 For the appendix's conclusion about infinite subsets, the sources explain why restriction preserves the weighted condition. The passage checker compares cryptographic hashes of the marked text and declared sources, rejects missing records or unbound passages, and requires a nonempty rationale. It does not assess whether the rationale justifies the text.
 
-A matching digest establishes agreement with recorded bytes. It does not establish that the source entails the passage. In the worked revision, review must check the hypothesis and quantifiers even if both Lean links still resolve. Historical edit 8 tested a different failure: an unresolved step was described as complete (Table [1](#tab%3Amutations)).
+In the worked revision, review must check the hypothesis and quantifiers even if both Lean links still resolve. Historical edit 8 tested a different failure: an unresolved step was described as complete (Table [1](#tab%3Amutations)).
 
-Execution is a separate question. A matching declaration type and reachable source link do not identify a successful continuous-integration run for that module. The probe interface takes verdicts from the specified Lean process; callers cannot submit their own verdict through it. An actor with filesystem access can still alter the implementation or stored record. The protocol distinguishes contributor and reviewer roles but does not technically force a second independent mathematician. No independent human mathematical review of the corpus is recorded.
+The probe interface takes verdicts from the specified Lean process; callers cannot submit their own verdict through it. The protocol distinguishes contributor and reviewer roles but does not technically force a second independent mathematician. No independent human mathematical review of the corpus is recorded.
 
 <a id="sec:paper"></a>
 
@@ -226,7 +228,7 @@ After acceptance, the integrating reviewer edits the owning sources and updates 
 
 A reusable writing lesson is a separate proposal, with an example and limits. Adopting it requires a reviewed change to the writing contract.
 
-The packet and audit stages in Figure [5](#fig%3Arefinement) are implemented by [`short_paper_writer.py`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/short_paper_writer.py) and [`paper_refinement.py`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/paper_refinement.py). A return can change the paper without changing the rules for later writers. Accepted lessons revise documents and instructions, not model weights; the procedure itself measures neither reader benefit nor autonomous discovery.
+The packet and audit stages in Figure [5](#fig%3Arefinement) are implemented by [`short_paper_writer.py`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/scripts/short_paper_writer.py) and [`paper_refinement.py`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/scripts/paper_refinement.py). A return can change the paper without changing the rules for later writers. Accepted lessons revise documents and instructions, not model weights; the procedure itself measures neither reader benefit nor autonomous discovery.
 
 <a id="sec:contribute"></a>
 
@@ -255,7 +257,7 @@ For explicitly entered returns, the journal preserves an append-only, hash-linke
 
 </div>
 
-The repository’s proposed route from a local result to an upstream library includes a literature and library comparison, a proof of the extension and a second useful instance before expert submission \[mathlibcontrib\]. This route is not automated, and the supplied record reports no Mathlib contribution from it. Credit distinguishes an idea from its implementation, formalisation and exposition. CRediT supplies a vocabulary for roles, not an authorship decision \[credit\]. An attributed dependency or correction can record later use; it implies neither a scalar impact score nor a financial contract. Opening another problem collection still requires assembling a sourced question, explicit status, inspection routes and a review owner.
+Credit distinguishes an idea from its implementation, formalisation and exposition. CRediT supplies a vocabulary for roles, not an authorship decision \[credit\]. An attributed dependency or correction can record later use; it implies neither a scalar impact score nor a financial contract. Opening another problem collection still requires assembling a sourced question, explicit status, inspection routes and a review owner.
 
 <a id="sec:instance"></a>
 
@@ -269,11 +271,23 @@ The repository’s proposed route from a local result to an upstream library inc
 
 The frozen inventory contains 689 paper occurrences, of which 640 have exact or specialising Lean support; 23 depend on a named input and 26 have no recorded Lean support. Of the 640 exact-or-specialising occurrences, 616 are recorded as compared and 24 as queued. These are occurrence counts, not counts of distinct theorems or independently reviewed proofs. Exact support matches the printed statement; specialising support yields it by specialization. Named-input entries retain an additional assumed result. An entry without Lean support may have an ordinary proof; neither of these last two groups is counted as fully covered.
 
+<a id="revisions-prompted-by-readers"></a>
+
+## Revisions prompted by readers
+
+The [`credit ledger`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/docs/research-commons/CREDIT_LEDGER.md) records nine outside comments, what each changed and the lines where the change can be seen. One mathematician found that the \#243 note used terms that meant nothing on first reading and never said how restrictive its main hypothesis was; all sixteen problem papers were then revised for a first-time reader, and the public writing rules require both repairs. The \#243 paper, for example, says that its cubic-rate hypothesis excludes the behaviour of the Sylvester recurrence and imposes much more than the quadratic limit, and gives an example showing why the precision of its error term matters. Another comment, that AI-assisted mathematics rarely shows where its ideas come from, led to a literature review for each problem; each paper now credits its sources where they are used. A [`writing guide`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/paper/exposition/writing-mathematics-from-reviewed-revisions.pdf) sets out the method drawn from these revisions, with worked cases.
+
+<a id="outside-checks-of-the-formal-statements"></a>
+
+## Outside checks of the formal statements
+
+Five mathematical contributions have merged into Google DeepMind’s Formal Conjectures \[formalconjectures\]. One proves a negative answer to its formal statement of Problem 1041, using a counterexample posted by an erdosproblems.com contributor; a reviewer of the newest one checked its statement against the source and replayed the proof independently. A selection of five \#257 statements is registered on Palomar \[palomar\] after mechanical checking. These checks concern formal statements and proofs; the exposition has had no systematic outside review.
+
 <a id="historical-false-edit-trial"></a>
 
 ## Historical false-edit trial
 
-The historical publication-evidence record reports that nine of the ten deliberately false edits were rejected and one escaped. The edits were authored by the checker’s author, the original run logs were not retained, and the other nine edits were not rerun against the extended checklist. The edits were applied separately, with the baseline restored between trials. The escaped edit changed a description of an unresolved step from “does not supply'' to “completes'', and the publication checks accepted it.
+The historical publication-evidence record reports that nine of the ten deliberately false edits were rejected and one escaped. The edits were authored by the checker’s author, the original run logs were not retained, and the other nine edits were not rerun against the extended checklist. The escaped edit changed a description of an unresolved step from “does not supply'' to “completes'', and the publication checks accepted it.
 
 <div id="tab:mutations">
 
@@ -308,15 +322,13 @@ Baseline accepted, edit 8 rejected; the other nine edits were not rerun.
 
 </div>
 
-The follow-up tested the intact baseline and only the escaped edit against an added check. It supplies no post-repair ten-of-ten result. In that recorded follow-up, the post-repair witness accepts the current README and rejects a test copy containing the false clause. The trial uses one corpus and the checker’s own selection of errors, with no manual-review control or ordinary continuous-integration comparator. The study locates a coverage boundary. Its nine rejections do not estimate how reliable the checker is.
+The follow-up tested the intact baseline and only the escaped edit against an added check. It supplies no post-repair ten-of-ten result. In that recorded follow-up, the post-repair witness accepts the current README and rejects a test copy containing the false clause. The study locates a coverage boundary. Its nine rejections do not estimate how reliable the checker is.
 
-<a id="local-integration-and-unperformed-reader-evaluation"></a>
+<a id="reader-evaluation"></a>
 
-## Local integration and unperformed reader evaluation
+## Reader evaluation
 
-On 23 September 2026, a maintainer-operated agent accepted one architecture handoff into a local integration history after focused checks of return routing and architecture packaging. The contributor and reviewer were the same agent. The receipt records no public pull request, human review or independent outside clone replay.
-
-A proposed reader study would hold the mathematical task fixed and compare an ordinary repository, an information-equivalent static briefing and the navigation tools. It would measure understanding and severe errors alongside preparation, use, review and repair costs, retaining missing returns, timeouts and disagreements. No independent writing comparison, blind grading run or cold-reader experiment is reported, so there is no comparative reader result. The records above document inventory, a checker failure and one local integration; general reliability, reader understanding and mathematical transfer remain unmeasured.
+No independent writing comparison, blind grading run or cold-reader experiment is reported, so there is no comparative reader result. A proposed study would hold the mathematical task fixed and compare an ordinary repository, an equivalent static briefing and these tools, measuring understanding, severe errors and the costs of use, review and repair.
 
 <a id="sec:related"></a>
 
@@ -330,25 +342,31 @@ A proposed reader study would hold the mathematical task fixed and compare an or
 
 We use its published version 2, dated 31 August 2026; the first version appeared on 28 August 2026 \[prove2me\]. Its basic unit is an immutable theorem statement, stored separately from the proofs submitted for it. A proof is checked against the target type in a pinned verification environment. A *proof-sketch* derives a target using imported theorem statements, some of which may remain open. Contributors can prove those children separately; the target becomes verified when the required children are verified. Immutability makes those local proofs composable without changing their targets \[prove2me, Sections 3.1–3.2 and 4.2\].
 
-Human review is part of Prove2Me's design. A mission fixes a human-audited core of goals, definitions and milestones; each milestone pairs a source statement with its attested canonical formalisation. For read-back, an independent agent receives the Lean declaration and dependent definitions without the original source; a human compares its mathematical rendering with that source. Natural-language accounts accompany statements and proofs, statement descriptions support library search, and imports give contributors reuse credit. The discussion record also includes a disproved statement followed by a corrected replacement \[prove2me, Sections 3.3 and 4.3–4.5\]. Explanation, reuse, correction and shared agent work are therefore established parts of this comparison.
+Human review is part of Prove2Me's design: a mission fixes a human-audited core of goals, definitions and milestones, and a human reviewer compares an independent agent's rendering of each milestone's Lean declaration with its source. Natural-language accounts, statement search, reuse credit and corrected statements are also part of its record \[prove2me, Sections 3.3 and 4.3–4.5\], so explanation, reuse and correction are features of both designs.
 
-For correspondence with a source, the closest analogue is Prove2Me's milestone: both designs identify the mathematical statement whose formalisation is being reviewed. Our coverage record follows a particular paper occurrence and can list several overlapping formal supports, with a relation note explaining their connection to the printed claim. It is not a proof-sketch: listing those supports does not compose proof terms or discharge open lemmas. A separate passage record binds the explanation to sources and rationale, while entered contribution records retain revision decisions and role credit. The focus here is the consistency and review of these publication records across revisions. This difference of focus establishes neither priority for persistent research records nor a measured advantage over Prove2Me.
+For correspondence with a source, the closest analogue is Prove2Me's milestone: both designs identify the mathematical statement whose formalisation is being reviewed. Our coverage record follows a particular paper occurrence and can list several overlapping formal supports, with a relation note explaining their connection to the printed claim. It is not a proof-sketch: listing those supports does not compose proof terms or discharge open lemmas. A separate passage record binds the explanation to sources and rationale, while entered contribution records retain revision decisions and role credit. The focus here is the consistency and review of these publication records across revisions.
+
+<a id="alphaproof-nexus."></a>
+
+#### AlphaProof Nexus.
+
+Language-model agents search for a Lean proof of a stated target, and a failed episode leaves its lessons as a comment in the proof sketch \[apn2026\]. The authors report failed attempts that moved the difficulty into one unproved lemma or relied on lemmas wrongly presented as known results, and note that formal sketches let experts concentrate on the unresolved subgoals. Six of the authors wrote the natural-language proofs with the help of agent drafts; these proofs do not tie their steps to Lean declarations. Formal statements of six of the eight problems here were among its 353 targets; none is among its released resolutions. For those six, the records here keep checked partial results, what remains open and an explanation of both.
 
 Polymath, BOINC and GIMPS supply precedents for small mathematical contributions and donated compute \[polymath; boinc; gimps\], while the Carleson blueprint shows formalisation organised into publicly claimable tasks \[carleson\].
 
-The regeneration tools address the familiar build-system problem of keeping derived outputs consistent with their inputs \[buildsystems\]. They run an explicit ordered list of builders and then check the resulting views; this is not a general incremental scheduler. Source bindings and the journal add provenance for assertions and entered returns at particular revisions. Together these mechanisms make dependencies and changes available for inspection. Their effect on research efficiency and semantic correctness needs separate evaluation.
+The regeneration tools address the familiar build-system problem of keeping derived outputs consistent with their inputs \[buildsystems\]. They run an explicit ordered list of builders and then check the resulting views; this is not a general incremental scheduler. Source bindings and the journal add provenance for assertions and entered returns at particular revisions.
 
 <a id="sec:limits"></a>
 
 # Limits
 
-<span id="sec:conclusion" label="sec:conclusion"></span> The prototype establishes a set of implemented record and review operations, with the limited observations in Section [\[sec:evaluation\]](#sec%3Aevaluation). It reports no comparative formalisation result or autonomous-optimisation experiment. Transfer to unseen mathematics and understanding by independent readers require direct evaluation. In particular, no controlled comparison shows that the contribution process converts compute into useful mathematics more effectively or increases discovery rate. There is also no evidence of inexpensive adoption by a new project or an advantage over an agent using a good README. Full scans and initial builds still have costs, and an open corpus cannot rule out prior model exposure to its contents.
+<span id="sec:conclusion" label="sec:conclusion"></span> The observations above document implemented record and review operations, outside checks of formal statements and revisions prompted by readers. Transfer to unseen mathematics and understanding by independent readers require direct evaluation, and no new project has adopted the system. Full scans and initial builds still have costs, and an open corpus cannot rule out prior model exposure to its contents.
 
 Governance remains maintainer-centred. Review capacity is scarce and credit is contestable; openness alone does not equalise resources or resolve appeals. Repository adoption cannot confer acceptance by the wider mathematical community. Returned code is untrusted, and expensive or privileged continuous-integration jobs must not execute fork code with repository secrets \[githubsecurity\]. A volunteer-compute service and extensions to physical science remain proposals requiring their own validation, resource and safety governance.
 
 The Advisory Group on Mathematics and Artificial Intelligence at IAS recommends distinguishing papers fully understood by a responsible mathematician from AI output that its human prompters do not understand, and asks AI laboratories to support subsequent community-led understanding \[agmai2026\]. Its 29 September 2026 statement gives concrete release expectations for attribution, exposition, formalisation and disclosure of the research process.
 
-Several of these proposed release practices have counterparts in the records described here \[agmai2026, Section 2.B, Step I\]: the short paper and companion paper explain and attribute the argument, the paper-to-Lean ledger records formal correspondence and its limits, and the files prepared for formal comparison identify its inputs. Those records make the result inspectable; they do not certify a mathematician’s understanding. The architecture alone does not establish complete per-result model, prompt, time and cost disclosure, an account of campaign-wide selection and unsuccessful attempts, or an independent scholarly deposit. The further recommendations on funding community-led understanding and equitable model access address AI laboratories; this prototype does not demonstrate those institutional outcomes.
+Several of these practices are implemented here \[agmai2026, Section 2.B, Step I\]: the papers explain their arguments and credit sources where they are used, the paper-to-Lean ledger is a machine-readable link between prose and formal statements, and the research records keep failed approaches. Per-result disclosure of model, prompts, time and cost and a campaign-wide count of unsuccessful attempts are not provided.
 
 The contribution is an inspectable record from which to recover a claim’s conditions, argument and limits, then submit a correction or extension against identified sources. Checks preserve specified links; review decides what the work justifies. Revision requires both.
 
@@ -362,13 +380,13 @@ The materials support reading a result, inspecting its records and rerunning che
 
 ## Read a result and follow its sources
 
-The [reading guide](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/READING_GUIDE.md) routes readers through one problem or across the papers, including *Reading Eight Erdős Problems Together* \[synthesis\]. Read a result’s short paper, then follow its argument, attribution and formal-support references. Agents can use [agent instructions](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/AGENTS.md) and the [workbench’s](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/agents/AGENT_WORKBENCH.md) optional proof sessions. Corrections follow the [contribution guide](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/CONTRIBUTING.md) and [credit policy](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/research-commons/CREDIT_POLICY.md).
+The [reading guide](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/docs/READING_GUIDE.md) routes readers through one problem or across the papers, including *Reading Eight Erdős Problems Together* \[synthesis\]. Agents can use [agent instructions](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/AGENTS.md) and the [workbench’s](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/docs/agents/AGENT_WORKBENCH.md) optional proof sessions. Corrections follow the [contribution guide](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/CONTRIBUTING.md) and [credit policy](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/docs/research-commons/CREDIT_POLICY.md).
 
 <a id="inspect-the-records-and-rerun-document-checks"></a>
 
 ## Inspect the records and rerun document checks
 
-The [experiment record](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/publication_evidence.json) contains the ten-edit matrix and limited follow-up in Section [4](#sec%3Achecks). The [publication-check specification](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/publication_contract.json) identifies required checks. These structured files trace evidence; they do not replace the paper’s explanation.
+The [experiment record](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/docs/publication_evidence.json) contains the ten-edit matrix and limited follow-up in Section [4](#sec%3Achecks). The [publication-check specification](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/docs/publication_contract.json) identifies required checks. These structured files trace evidence; they do not replace the paper’s explanation.
 
 From a complete public checkout, run:
 
@@ -377,7 +395,7 @@ From a complete public checkout, run:
 
 The first checks passage-to-source links and content hashes; the second compares the generated inventory with its records. Success establishes agreement, not the correctness of an explanation.
 
-For proof replay, the [Lean entry file](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/lean/Erdos249257.lean) and [CI workflow](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/.github/workflows/lean.yml) identify build entry points. The [claim register](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/claims.json) lists curated assertions; [release checks](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/scripts/check_release.py) cover wider publication requirements. Use the result’s recorded revisions and environment.
+For proof replay, the [Lean entry file](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/lean/Erdos249257.lean) and [CI workflow](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/.github/workflows/lean.yml) identify build entry points. The [claim register](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/docs/claims.json) lists curated assertions; [release checks](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/scripts/check_release.py) cover wider publication requirements. Use the result’s recorded revisions and environment.
 
 A writing packet contains manuscripts, selected records and inspection tools, but no Lean tree. It supports document checks, not a full Lean, Comparator or release rerun.
 
@@ -385,7 +403,7 @@ A writing packet contains manuscripts, selected records and inspection tools, bu
 
 ## Locate the formal supports of the worked example
 
-For the weighted criterion in Appendix [11](#app%3Aworked-proof), the [paper-to-Lean coverage record](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/docs/paper_lean_coverage.json) identifies two formal supports: a weighted criterion and a version whose conclusion explicitly covers every infinite subset. Figure [7](#fig%3Atheorem) shows the recorded links. The exact declaration names are provided for readers locating them in Lean.[^1] These entries support the stated conclusion; they do not assert line-by-line agreement between the ordinary proof and the Lean proofs.
+For the weighted criterion in Appendix [11](#app%3Aworked-proof), the [paper-to-Lean coverage record](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/docs/paper_lean_coverage.json) identifies two formal supports: a weighted criterion and a version whose conclusion explicitly covers every infinite subset. Figure [7](#fig%3Atheorem) shows the recorded links. The exact declaration names are provided for readers locating them in Lean.[^1] These entries support the stated conclusion; they do not assert line-by-line agreement between the ordinary proof and the Lean proofs.
 
 The recorded Comparator runs are the [first comparison run](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35544127144) and the [second comparison run](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35624228171). Comparator checks a formal result against a separately stated challenge. These records concern the specified formal statements, not the historical attribution or the correctness of this paper’s explanation.
 
@@ -414,15 +432,13 @@ Explanatory text is recorded for 139,818 of the 152,386 authored theorem-like de
 
 ## Identify the version and the earlier design accounts
 
-Repository links in this paper identify fixed file versions, so that a reader can inspect the material cited even if the working repository later changes. Unless a link states otherwise, its revision is `992cf60a27ef`; the Comparator runs identify their own inputs. No new Lean or Comparator run was performed for this revision.
+Repository links in this paper identify fixed file versions, so that a reader can inspect the material cited even if the working repository later changes. Unless a link states otherwise, its revision is `0064fc9b2a26`; the Comparator runs identify their own inputs. No new Lean or Comparator run was performed for this revision.
 
 For archival identification, the initial unified manuscript was prepared from the frozen packet at `ced96e58b337`, a local integration commit rather than public main. The 29 September state report lists it under the earlier title *Problem-Sized Lean Worlds*.
 
-This paper supersedes the two earlier design accounts described below. Cite a mathematical result by the paper and version actually used; cite repository software using its [software citation record](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/CITATION.cff) at the chosen commit or release tag.
+This paper supersedes the two earlier design accounts described below. Cite a mathematical result by the paper and version actually used; cite repository software using its [software citation record](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/CITATION.cff) at the chosen commit or release tag.
 
-*[From a Cold Clone to a Proof Receipt](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/paper/systems/cold-clone-to-proof-receipt.tex)* (August 2026) describes the declaration, dependency, interpretation and claim views and the optional recorded proof session. Its counts and audit figures belong to that snapshot; Section [2](#sec%3Aworld) describes the current task entry and inspected implementation.
-
-*[From Spare Compute to Cumulative Mathematics](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/paper/systems/open-source-mathematics-strategy.tex)* (September 2026) describes contribution roles, reproduction against the original inputs, subsequent integration and role credit. Section [6](#sec%3Acontribute) gives the current procedure. The earlier paper’s volunteer-compute services, inexpensive adoption by new laboratories and increased discovery rate remain proposals or unmeasured outcomes. These manuscripts explain the design’s history; they are not additional current specifications.
+*[From a Cold Clone to a Proof Receipt](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/paper/systems/cold-clone-to-proof-receipt.tex)* (August 2026) and *[From Spare Compute to Cumulative Mathematics](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/paper/systems/open-source-mathematics-strategy.tex)* (September 2026) record earlier states of this design, from navigation views and proof sessions to contribution roles and role credit. Their counts, proposals and projected outcomes belong to those snapshots; Sections [2](#sec%3Aworld) and [6](#sec%3Acontribute) describe the current design.
 
 <a id="app:worked-proof"></a>
 
@@ -630,7 +646,7 @@ Reorganising a proof, making its consequences explicit and formalising it are di
 
 Problem 1041 concerns connecting roots of a polynomial by short curves in a strict lemniscate: for a complex polynomial $`f`$, this is the region $`|f(z)|<1`$. The degree-seven counterexample construction is due to the forum contributor ani \[aniforum; erdos1041\]. The recorded Lean result refutes the exact statement in the Formal Conjectures repository; independent human review of its correspondence with the curve-length wording in the 1958 paper has not been recorded \[formalconjectures; fcpr; ehp1958\]. The construction, its formalisation and that historical correspondence are separate claims.
 
-Readers inspecting the formal result can follow the [counterexample assembly](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean) and the [Hausdorff-length proofs](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean).[^4]
+Readers inspecting the formal result can follow the [counterexample assembly](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean) and the [Hausdorff-length proofs](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean).[^4]
 
 The coverage row records exact-or-stronger Lean support for these statements.
 
@@ -644,7 +660,7 @@ A revised statement must retain its scope, attribution and registered supports. 
 
 # A reading map for the wider literature
 
-Section [8](#sec%3Arelated) compares the closest systems; Appendices [11](#app%3Aworked-proof) and [12](#app%3Aattribution) explain the mathematical antecedents used in the examples. Figure [8](#fig%3Acredit) is a guide to the remaining references and to sources cited by the two historical design accounts in Appendix [10](#app%3Arepro). Its groups indicate why a source is cited, not that every listed method is implemented here or that every work has been evaluated against this system.
+Figure [8](#fig%3Acredit) is a guide to the remaining references and to sources cited by the two historical design accounts in Appendix [10](#app%3Arepro). Its groups say why each source is cited; inclusion does not mean a method is implemented here or a work was evaluated against this system.
 
 <a id="fig:credit"></a>
 
@@ -738,7 +754,7 @@ Section [8](#sec%3Arelated) compares the closest systems; Appendices [11](#app
 
 999 T. F. Bloom, *Erdős problems*, [erdosproblems.com](https://www.erdosproblems.com), accessed September 2026.
 
-W. Cook, *Weighted and Covered Supports for Mersenne Subseries*, short paper on Erdős Problem 257, September 2026, [`PDF`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/paper/257/erdos-257-mersenne-support-subseries.pdf).
+W. Cook, *Weighted and Covered Supports for Mersenne Subseries*, short paper on Erdős Problem 257, September 2026, [`PDF`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/paper/257/erdos-257-mersenne-support-subseries.pdf).
 
 P. Erdős, *On the irrationality of certain series*, Math. Student 36 (1968), 222–226 (issued 1969), [scan](https://users.renyi.hu/~p_erdos/1969-09.pdf).
 
@@ -756,11 +772,15 @@ G. Sanderson, *If math is more than proof, we need to better celebrate the rest
 
 Advisory Group on Mathematics and Artificial Intelligence at IAS, *Responsible Release of AI-Generated Mathematics*, 29 September 2026, [recommendations](https://agmai.org/general-sep29/), [PDF](https://agmai.org/wp-content/uploads/2026/09/recommendations.pdf).
 
+G. Tsoukalas, A. Kovsharov, S. Shirobokov et al., *Advancing mathematics research with AI-driven formal proof search*, Science 394 (2026), 234–239, [DOI](https://doi.org/10.1126/science.aej2213), [arXiv:2605.22763](https://arxiv.org/abs/2605.22763).
+
+OpenAI, *Mathematical manuscripts and supporting proof artifacts*, repository `openai/math`, 6 October 2026, [GitHub](https://github.com/openai/math).
+
 L. de Moura and S. Ullrich, *The Lean 4 Theorem Prover and Programming Language*, in *Automated Deduction, CADE 28*, Lecture Notes in Computer Science 12699, 2021, pp. 625–635, [DOI](https://doi.org/10.1007/978-3-030-79876-5_37).
 
 P. Erdős and R. L. Graham, *Old and New Problems and Results in Combinatorial Number Theory*, Monographies de L’Enseignement Mathématique 28, 1980, p. 61.
 
-W. Cook, *Integral Relations among Totient Sections*, short paper on Erdős Problem 249, revised 30 September 2026, [`PDF`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/paper/249/erdos-249-binary-totient-series.pdf).
+W. Cook, *Integral Relations among Totient Sections*, short paper on Erdős Problem 249, revised 30 September 2026, [`PDF`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/paper/249/erdos-249-binary-totient-series.pdf).
 
 M. Coons, *(Non)Automaticity of number theoretic functions*, J. Théor. Nombres Bordeaux 22 (2010), 339–352, [DOI](https://doi.org/10.5802/jtnb.718), Theorem 3.2.
 
@@ -790,7 +810,7 @@ J. H. Loxton and A. J. van der Poorten, *Arithmetic properties of certain fu
 
 Y. Bugeaud and M. Laurent, *Transcendence and continued fraction expansion of values of Hecke–Mahler series*, Acta Arith. **209** (2023), 59–90.
 
-W. Cook, *Distinct running least common multiples*, short paper on Erdős Problem 269, September 2026, [`PDF`](https://github.com/wcook04/plectis-erdos/blob/992cf60a27efd8c34f437e347c413bb781d75c32/paper/269/erdos-269-three-prime-running-lcm.pdf).
+W. Cook, *Distinct running least common multiples*, short paper on Erdős Problem 269, September 2026, [`PDF`](https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/paper/269/erdos-269-three-prime-running-lcm.pdf).
 
 S. Fan, comment on Erdős Problem \#269, erdosproblems.com forum, 26 June 2026, [forum post](https://www.erdosproblems.com/forum/thread/269#post-7218).
 
