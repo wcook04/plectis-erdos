@@ -129,7 +129,7 @@
     "paper/reasoning-parts/erdos68/extended_record.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos68/family_catalogue.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos68/preamble.tex": "sha256:7bbd6207745d2f3e5c7db3b788c3cafcfd17504ac075cad8df1f5e5310dda21d",
-    "paper/reasoning-parts/record_links.json": "sha256:a1fc9b1d4a5c95fcb079de7e38ec9d83218119c90957d81b5c310339c09a6629",
+    "paper/reasoning-parts/record_links.json": "sha256:1d93f3b309d9ee580394f7d86b36916253091d6184daf226fb653305df05e50e",
     "scripts/assemble_reasoning_surfaces.py": "sha256:0d8f6426d736fd371921e11e7bd2e721413f2d881b10da0be88c6f19b5ffb2b2",
     "scripts/build_reading_edition.py": "sha256:aa7bd9db277a7183efaa72f950a7c10a337fd8b01e8d585d6c037bad82668828",
     "scripts/check_lean_paper_propagation.py": "sha256:0f70bd947b02efe91291389e0430e1140a729de1ae3d311092e20152ea1b813c",
@@ -137,11 +137,11 @@
     "scripts/reasoning_record_audit.py": "sha256:5181f76da0658a08400a1fc35c6f72dc0370e375fd4d11caf41a4eb38ce5c62b"
   },
   "navigation_sha256": {
-    "docs/reading-edition/RECORDS.md": "sha256:a01188b83b188ac59927485771ad79a671491b57df659a45626245d648f7b029",
+    "docs/reading-edition/RECORDS.md": "sha256:aa5c23f321242e1dbb035a479b6cc59f628ca7ce7dccbcf000e56347a3aa0760",
     "docs/reading-edition/records/erdos1041.md": "sha256:9beb1305271fc895385a04949fb536d76a2869f1a98c2a5ecfda29e35e74996d",
     "docs/reading-edition/records/erdos1049.md": "sha256:deef2f36138a03ac594f7c113a6f853e7f374325768ec0698cfb8894342d3ebc",
     "docs/reading-edition/records/erdos243.md": "sha256:2a0c5a730c3f81d6f66ae39c6d0f70a7019569d19d5de5d8ab9e1664fc8cbaeb",
-    "docs/reading-edition/records/erdos249.md": "sha256:0fff72e8bd0c7e82e29743de86d8f852b3c2078cea930f15e058fa5cf192c101",
+    "docs/reading-edition/records/erdos249.md": "sha256:dcfafbecb49973ec6d61e42a409edd6e4df47038c495ca9defb74bab4ed644b4",
     "docs/reading-edition/records/erdos251.md": "sha256:4bcc6a9bb066e14c0f819488a0404a1ea13489b519049e155f1248aa2c27307c",
     "docs/reading-edition/records/erdos257.md": "sha256:b4278521f3c32ecdd7920b2819126e0446abd162686d679a5427a930528242ab",
     "docs/reading-edition/records/erdos269.md": "sha256:b5e0610e9971fa0fc90a192ae2922054deb791ad97d723aee238f3354852c6ce",
@@ -3075,7 +3075,22 @@
             "line": 366,
             "path": "paper/249/erdos-249-binary-totient-series.tex"
           },
-          "state": "unresolved",
+          "short_proof": {
+            "availability": "located",
+            "kind": "ordinary_proof_text",
+            "locator": {
+              "end_line": 440,
+              "label": null,
+              "line": 414,
+              "path": "paper/249/erdos-249-binary-totient-series.tex"
+            },
+            "long_correspondence": "open; this disposition does not establish a long-record link",
+            "rationale": "Section sec:family retains the complete proof of res:residueseries, its totient prime-isolation construction and the isolated-pulse argument. It does not assert a conclusion for the unreduced unbounded coefficients or establish a long-record correspondence.",
+            "review_status": "10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5 and current complete proofs, including the bounded-pulse dependency; statement, hypotheses and dependencies unchanged; no long-record correspondence or independent review.",
+            "sha256": "sha256:d4efa175b29c7e393df15c57249e4487b52373bde7938ca44e55cd3b991e4618",
+            "validation": "text_presence_and_digest_only; proof_correctness_not_checked"
+          },
+          "state": "short_proof_explained_long_link_open",
           "statement_sha256": "sha256:b117882faa4839ccd8505e8b344750c516f78fe60433d73109f0ec2906c375cf"
         },
         {
@@ -3349,23 +3364,9 @@
           }
         },
         {
-          "code": "stale_or_missing_short_proof",
-          "detail": "stale short proof span; text changed after disposition review",
-          "severity": "error",
-          "short_claim": "erdos-249-binary-totient-series#res:residueseries",
-          "short_location": {
-            "end_line": 375,
-            "label": "res:residueseries",
-            "line": 366,
-            "path": "paper/249/erdos-249-binary-totient-series.tex"
-          }
-        },
-        {
-          "code": "unresolved_short_long_link",
-          "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
-          "long_locations": [],
-          "long_record": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "severity": "error",
+          "code": "short_proof_explained_long_link_open",
+          "detail": "A hash-bound complete proof is retained in the short paper. No long-record correspondence is asserted by this disposition.",
+          "severity": "warning",
           "short_claim": "erdos-249-binary-totient-series#res:residueseries",
           "short_location": {
             "end_line": 375,
@@ -6382,13 +6383,13 @@
       "summary": {
         "duplicate_passages": 0,
         "duplicates": 0,
-        "explained_in_short": 3,
+        "explained_in_short": 4,
         "linked_short_claims": 2,
         "long_claims": 204,
         "long_correspondence_open": 6,
         "possible_stale_passages": 0,
         "short_claims": 8,
-        "unresolved_short_claims": 3
+        "unresolved_short_claims": 2
       }
     },
     {
@@ -15812,7 +15813,7 @@
     "duplicate_passages": 0,
     "duplicates": 0,
     "evidence_lean_pin": "436f55ebdafa67e4af0fff79f621c13f2ded12bf",
-    "explained_in_short": 34,
+    "explained_in_short": 35,
     "explicit_links": 8,
     "explicit_short_proof_dispositions": 45,
     "global_findings": 0,
@@ -15822,6 +15823,6 @@
     "pairs": 8,
     "possible_stale_passages": 0,
     "short_claims": 77,
-    "unresolved_short_claims": 16
+    "unresolved_short_claims": 15
   }
 }

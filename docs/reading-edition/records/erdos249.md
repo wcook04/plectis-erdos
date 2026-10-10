@@ -4,7 +4,7 @@
 
 Start with [Integral Relations among Totient Sections](../../../docs/papers/full-text/erdos-249-binary-totient-series.md). The longer account is [The Binary Totient Series](../../../docs/papers/full-text/erdos249-totient-reasoning-surface.md).
 
-Registered assertions: 8 short, 204 long. Located long-record links: 2. Proofs retained in the short paper: 3. Long correspondences still open: 6.
+Registered assertions: 8 short, 204 long. Located long-record links: 2. Proofs retained in the short paper: 4. Long correspondences still open: 6.
 
 Checks registered asserting environments and registered claim spans. Unregistered prose assertions, mathematical equivalence, correctness of ordinary proofs, Lean compilation, Comparator replay and PDF freshness are not established by this audit.
 
@@ -95,11 +95,19 @@ No candidate was found by the bounded label/declaration rules. Read the long rec
 
 ### res:residueseries
 
-State: **unresolved**.
+State: **short_proof_explained_long_link_open**.
 
 Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 366-375.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
+
+Retained short-paper argument: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 414-440.
+
+Section sec:family retains the complete proof of res:residueseries, its totient prime-isolation construction and the isolated-pulse argument. It does not assert a conclusion for the unreduced unbounded coefficients or establish a long-record correspondence.
+
+Review status: 10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5 and current complete proofs, including the bounded-pulse dependency; statement, hypotheses and dependencies unchanged; no long-record correspondence or independent review..
+
+This hash-bound passage records proof availability; its mathematical correctness is not checked by this audit. No accepted long-record correspondence is established by this disposition.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
