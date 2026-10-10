@@ -9,6 +9,7 @@ Everything below uses this public checkout and public tools.
 
 | What you want to do | Start here | What you need |
 |---|---|---|
+| Try an exact calculation in a browser | [Offline explorer](#try-a-calculation-in-a-browser) | A modern web browser; no clone or installation |
 | Follow one result to its evidence | [Try one claim](#try-one-claim-without-lean) | Git and Python 3.11 or later |
 | Inspect an accepted native #243 or #257 proof | [Native theorem reader routes](research-commons/README.md#native-prove2me-theorems) | A web browser; the public packets print the accepted Solutions without sign-in |
 | Replay the #257 weighted theorem against a separate statement | [Weighted theorem replay](verification/EXTERNAL_VERIFICATION_REPLAY.md#reviewer-replay) | Linux, Git, Python 3.11+, Elan/Lake, Go, and systemd |
@@ -17,11 +18,28 @@ Everything below uses this public checkout and public tools.
 | Check a documentation edit | [Check a documentation change](#check-a-documentation-change) | Python; no Lean installation |
 | Compile a proof | [Set up Lean](#2-reproduce-the-pinned-lean-environment) | elan, the pinned dependencies, and space for several gigabytes of cache |
 | Import the library in another project | [Use it as a dependency](#use-the-library-in-another-lean-project) | The same Lean toolchain and the library's dependencies |
-| Reproduce all public checks | [Release checks](#3-run-the-release-surface-checks) | Lean plus the pinned Python validation tools |
+| Reproduce all public checks | [Release checks](#3-run-the-release-surface-checks) | Lean, the pinned Python validation tools, and Node.js for browser-arithmetic tests |
 
 Commands run from the repository root. Shell setup below uses macOS/Linux
 syntax; on Windows, use WSL for the same commands. To read the mathematics
 without installing anything, return to [the papers](../paper/README.md).
+
+## Try a calculation in a browser
+
+Open the public [`explorer.html`](../research/experiments/choices_contraction/explorer.html)
+source and use GitHub's **Download raw file** button. Open the saved HTML file
+in a modern browser. The page runs entirely offline, with no account,
+installation or network requests.
+
+Change `189/388` from depth 16 to 17, inspect a forced choice, or try `1/3`.
+The first target survives the finite search at 16 and is excluded by an exact
+gap at 17; the second is an exact finite sum. A surviving search does not prove
+infinite membership or solve Erdős #257. You can download a result and check
+it separately with the Python checker linked on the page.
+
+For larger runs, use the [Python example](#reproduce-the-257-exact-rational-example).
+Full release checks also execute the browser's JavaScript against Python and
+require the `node` command on `PATH`.
 
 ## 1. Start with a complete committed checkout
 

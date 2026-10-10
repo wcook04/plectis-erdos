@@ -12,11 +12,16 @@ arithmetic check, not a Lean proof of the weighted-support theorem.
 from __future__ import annotations
 
 import json
+import re
 import sys
 from fractions import Fraction
 from pathlib import Path
 
 MAX_HORIZON = 512
+# Bound each component before Fraction can allocate integers. Keep Python's
+# own integer-string guard enabled; a stricter interpreter setting still wins.
+MAX_RATIONAL_DIGITS = 4300
+RATIONAL_RE = re.compile(r"(-?[0-9]+)(?:/([0-9]+))?")
 HOSTS = {"all", "odd", "not_divisible_by_3", "squarefree"}
 
 
@@ -33,6 +38,14 @@ def positive_integer(value: object, label: str) -> int:
 
 def rational(value: object, label: str) -> Fraction:
     require(type(value) is str, f"invalid {label}")
+    require(len(value) <= 2 * MAX_RATIONAL_DIGITS + 2,
+            f"{label} exceeds rational digit limit")
+    match = RATIONAL_RE.fullmatch(value)
+    require(match is not None, f"{label} must be an integer or fraction")
+    numerator, denominator = match.groups()
+    require(len(numerator.removeprefix("-")) <= MAX_RATIONAL_DIGITS and
+            (denominator is None or len(denominator) <= MAX_RATIONAL_DIGITS),
+            f"{label} exceeds rational digit limit")
     try:
         return Fraction(value)
     except (ValueError, ZeroDivisionError) as exc:
