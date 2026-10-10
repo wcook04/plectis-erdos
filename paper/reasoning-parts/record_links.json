@@ -438,15 +438,15 @@
     },
     {
       "action": "explained_in_short",
-      "rationale": "Section 4 retains both constructions: dyadic divisor cubes with bounded weighted mass and unbounded logarithmic lower cost, and fresh-prime cubes with summable cover cost but no finite-prime weighted witness. These printed ordinary constructions remain distinct from the formal reverse witness. The native Comparator status stays pending.",
-      "review_status": "R5 Type A source-reading review of retained proof and evidence boundary; no new independent mathematical review.",
+      "rationale": "The comparison section retains both constructions: dyadic divisor cubes with bounded weighted mass and unbounded logarithmic lower cost, and fresh-prime cubes with summable cover cost but no finite-prime weighted witness. These printed ordinary constructions remain distinct from the formal reverse witness. The native Comparator status stays pending.",
+      "review_status": "10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5 and current complete proofs; statement, hypotheses and dependencies unchanged; no long-record correspondence or independent review.",
       "short_id": "erdos-257-mersenne-support-subseries#res:weighted-cover-incomparability",
       "short_statement_sha256": "sha256:e0a8fff5d2de2a4b70ca7c51caa977154c634916e33fd6f5b73f38628f270c11",
       "support": {
         "label": "res:weighted-cover-incomparability",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-        "selector": "adjacent_proof",
-        "sha256": "sha256:1ce687cb4730bd8d60dc7db27b4c655c6f1cc261814da3621a68df1c08e38eff"
+        "selector": "proof_of",
+        "sha256": "sha256:31c3c95e21b8a1a866bd701a665e8fd1345e3bf99cc76f234f3fc2aee869f4b9"
       }
     },
     {
@@ -556,14 +556,14 @@
     {
       "action": "explained_in_short",
       "rationale": "Both directions of the existing residue-window equivalence remain in the short paper, including every coprime denominator and every sufficiently late start. No finite scan is substituted for that quantification. This argument was already present in the r5 input and has been retained. The disposition accounts for the queue; it does not assert acceptance of a new long-record binding.",
-      "review_status": "R5 Type A source-reading review of retained proof and evidence boundary; no new independent mathematical review.",
+      "review_status": "10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5 and current complete proofs; statement, hypotheses and dependencies unchanged; no long-record correspondence or independent review.",
       "short_id": "erdos-269-three-prime-running-lcm#res:windowconsumer",
       "short_statement_sha256": "sha256:0d9ff8e4757ce37a274a706af2598af55924c7527674b9fd545490d9e0eb6bd3",
       "support": {
         "label": "res:windowconsumer",
         "path": "paper/269/erdos-269-three-prime-running-lcm.tex",
         "selector": "adjacent_proof",
-        "sha256": "sha256:a0b384f16c1008afa26369c7f62501f7a64b08ddb4f12a9afeeaab18fef37911"
+        "sha256": "sha256:2ba9d60f83bd4c5ee78459371374e757e74bd5b3e3b618f9e240a53026b1d57a"
       }
     },
     {
