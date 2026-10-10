@@ -1385,31 +1385,57 @@ def check_architecture_frontier_round_trip() -> None:
     ) == {"established"}
     with tempfile.TemporaryDirectory(prefix="continue-architecture-") as temporary:
         temp = Path(temporary)
-        sessions = temp / "sessions"
-        command = [sys.executable, str(CLI), "--sessions-root", str(sessions)]
+        repo = temp / "checkout"
+        scripts = repo / "scripts"
+        scripts.mkdir(parents=True)
+        # Exercise the real CLI's default session root in a clean public fixture,
+        # including the actual composition and Git omission check.
+        for name in (
+            "continue_research.py", "proof_workbench.py", "validate_research_return.py",
+            "route_memory_receipt.py", "validation_singleflight.py", "lean_build_share.py",
+            "lean_package_share.py", "agent_entry.py", "agent_skill_catalog.py",
+            "repository_identity.py",
+        ):
+            shutil.copy2(ROOT / "scripts" / name, scripts / name)
+        shutil.copytree(ROOT / "skills", repo / "skills")
+        (repo / "docs").mkdir()
+        shutil.copy2(ROOT / "docs/repository_identity.json", repo / "docs/repository_identity.json")
+        run(["git", "-C", str(repo), "init", "-q"])
+        run(["git", "-C", str(repo), "config", "user.name", "Return Fixture"])
+        run(["git", "-C", str(repo), "config", "user.email", "fixture@example.invalid"])
+        run(["git", "-C", str(repo), "add", "--", "scripts", "skills", "docs"])
+        run(["git", "-C", str(repo), "commit", "-qm", "public architecture fixture"])
+        sessions = repo / "research/workbench/sessions"
+        command = [sys.executable, str(scripts / "continue_research.py")]
         started = run([*command, "start", "--session", "architecture_test", "--area", "navigation",
                        "--starting-path", "scripts/agent_entry.py", "--validation-plan", "Replay contributor paraphrases",
                        "--repository-origin", "https://github.com/wcook04/plectis-erdos",
                        "--frontier", "fixture/router", "--intent", "Improve the paper contributor journey",
                        "--stop-condition", "Stop after a bounded routing comparison", "--contributor", "Fixture Contributor",
-                       "--model-system", "not_used", "--provider", "not_used", "--allow-dirty"])
+                       "--model-system", "not_used", "--provider", "not_used"])
         start = json.loads(started.stdout)
         assert start["track"] == "architecture" and "problem" not in start
         manifest = load(sessions / "architecture_test" / "continuation.json")
+        require(manifest["dirty_at_start"] is False, "default-root fixture did not start clean")
         assert "route_memory" not in manifest
         assert not (sessions / "architecture_test" / "route-memory-return-template.json").exists()
         assert json.loads(run([*command, "check", "--session", "architecture_test"]).stdout)["valid"]
-        run([sys.executable, str(WORKBENCH), "--sessions-root", str(sessions), "close",
+        run([sys.executable, str(scripts / "proof_workbench.py"), "close",
              "--session", "architecture_test", "--outcome", "open", "--summary", "Bounded proposal ready for review"])
         returned = load(RETURN_FIXTURE)
         returned["record_kind"] = "submitted_return"
-        returned["repository"].update(starting_commit=manifest["starting_commit"], origin=manifest["repository_origin"])
+        returned["repository"].update(starting_commit=manifest["starting_commit"], origin=manifest["repository_origin"],
+                                      changed_paths=["scripts/agent_entry.py"])
         returned["frontier"] = {"track": "architecture", "area": "navigation", "handle": "fixture/router",
                                 "bounded_question": manifest["frontier"]["intent"],
                                 "stop_condition": manifest["frontier"]["stop_condition"],
                                 "starting_paths": ["scripts/agent_entry.py"]}
         returned["result"].update(claim_ceiling="architecture_proposal", surviving_boundary="Routing proposal; no mathematical claim.")
         returned["evidence"][0]["command"] = "python3 scripts/test_agent_entry.py"
+        returned["evidence"][0]["artifacts"] = ["scripts/agent_entry.py"]
+        returned["attribution"]["artifact_credit"][0]["artifact_paths"] = ["scripts/agent_entry.py"]
+        source = scripts / "agent_entry.py"
+        source.write_text(source.read_text(encoding="utf-8") + "\n# Architecture fixture change.\n", encoding="utf-8")
         path = temp / "return.json"
         path.write_text(json.dumps(returned))
         checked = json.loads(run([*command, "check", "--session", "architecture_test", "--return-json", str(path)]).stdout)
@@ -1421,10 +1447,19 @@ def check_architecture_frontier_round_trip() -> None:
         package = temp / "package"
         run([*command, "package", "--session", "architecture_test", "--return-json", str(path), "--output", str(package)])
         packed = load(package / "package.json")
+        require(packed["source_artifact"]["omission_check"] == "clean_start_worktree", packed)
+        require(
+            [entry["path"] for entry in packed["source_artifact"]["entries"]] == ["scripts/agent_entry.py"],
+            "generated session records were credited as source changes",
+        )
+        require(
+            (package / "source/scripts/agent_entry.py").read_bytes() == source.read_bytes(),
+            "default-root package lost the declared source edit",
+        )
         assert packed["track"] == "architecture" and "route_memory" not in packed
         assert not (package / "route-memory.json").exists()
         assert "--require-route-memory-receipt" not in packed["validation"]["repository_backed"]["command"]
-        run([sys.executable, str(ROOT / "scripts/validate_research_return.py"), str(package / "return.json"), "--require-submitted", "--check-git"])
+        run([sys.executable, str(scripts / "validate_research_return.py"), str(package / "return.json"), "--require-submitted", "--check-git"])
         positive = json.loads(json.dumps(returned))
         positive["return_id"] = "rr-fixture-valid-architecture-positive"
         positive["result"]["class"] = "checked_positive"
@@ -1448,6 +1483,47 @@ def check_architecture_frontier_round_trip() -> None:
             load(positive_package / "return.json")["result"]["claim_ceiling"]
             == "validated_architecture_change"
         )
+        # Only the exact packaged active-session inputs are exempt. Preserve
+        # rejection of undeclared tracked/untracked edits and nearby sessions.
+        for index, relative in enumerate((
+            "scripts/proof_workbench.py",
+            "unlisted.txt",
+            "research/workbench/sessions/other_session/route.json",
+            "research/workbench/sessions/architecture_test/nested/unexpected.txt",
+            "research/workbench/sessions/architecture_test/probes/nested/unexpected.lean",
+        )):
+            outsider = repo / relative
+            original = outsider.read_bytes() if outsider.exists() else None
+            outsider.parent.mkdir(parents=True, exist_ok=True)
+            outsider.write_bytes((original or b"") + b"\n# undeclared fixture edit\n")
+            rejected_output = temp / f"rejected-package-{index}"
+            try:
+                rejected = run([
+                    *command, "package", "--session", "architecture_test",
+                    "--return-json", str(path), "--output", str(rejected_output),
+                ], expected=1)
+                require(relative in rejected.stderr, (relative, rejected.stderr))
+                require("omit clean-start worktree paths" in rejected.stderr, rejected.stderr)
+                require(not rejected_output.exists(), "rejected package wrote output")
+            finally:
+                if original is None:
+                    outsider.unlink()
+                else:
+                    outsider.write_bytes(original)
+        linked_probe = sessions / "architecture_test/probes/linked.lean"
+        outside_probe = temp / "outside.lean"
+        outside_probe.write_text("-- outside session artifact\n", encoding="utf-8")
+        linked_probe.symlink_to(outside_probe)
+        unsafe_output = temp / "unsafe-package"
+        try:
+            unsafe = run([
+                *command, "package", "--session", "architecture_test",
+                "--return-json", str(path), "--output", str(unsafe_output),
+            ], expected=1)
+            require("must not traverse symbolic links" in unsafe.stderr, unsafe.stderr)
+            require(not unsafe_output.exists(), "unsafe session input wrote a package")
+        finally:
+            linked_probe.unlink()
         consultation = sessions / "architecture_test" / "workflow-consultation.json"
         changed = load(consultation); changed["validation_plan"] = "Changed after the return"
         consultation.write_text(json.dumps(changed))
@@ -1518,7 +1594,9 @@ def check_source_snapshot_detached_recipient() -> None:
         omitted = json.loads(json.dumps(returned))
         omitted["repository"]["changed_paths"].remove("c.txt")
         try:
-            continue_research.source_artifact_files(omitted, author)
+            continue_research.source_artifact_files(
+                omitted, author, bundled_session_paths=frozenset({"c.txt"})
+            )
         except SystemExit as exc:
             require("omitted=['c.txt']" in str(exc), exc)
         else:

@@ -1508,11 +1508,14 @@ def _source_git(root: Path, *args: str) -> bytes:
 
 def source_artifact_files(
     returned: dict[str, Any], root: Path = ROOT, *, dirty_at_start: bool = False,
+    bundled_session_paths: frozenset[str] = frozenset(),
 ) -> tuple[dict[str, bytes], dict[str, Any]]:
     """Bundle every claimed source path, including deletions, for another clone.
 
     A proposed commit gives an exact Git delta boundary. A clean uncommitted
-    start can also detect omitted tracked and nonignored untracked paths. Dirt
+    start can also detect omitted tracked and nonignored untracked paths. Only
+    exact session inputs already bundled separately are exempt from that check.
+    A proposed commit still requires its complete changed-path set. Dirt
     present before session start has no recorded path baseline, so that case
     remains an explicitly limited declared-content snapshot.
     """
@@ -1544,7 +1547,7 @@ def source_artifact_files(
             )
             for item in _source_git(root, *command).split(b"\0") if item
         }
-        omitted = sorted(observed - set(declared))
+        omitted = sorted(observed - set(declared) - bundled_session_paths)
         if omitted:
             raise SystemExit(
                 f"package source changed_paths omit clean-start worktree paths: {omitted}"
@@ -1629,26 +1632,27 @@ def cmd_package(args: argparse.Namespace) -> dict[str, Any]:
     architecture = manifest.get("track") == "architecture"
     files: dict[str, bytes] = {
         "return.json": dump_json(returned).encode("utf-8"),
-        "session/continuation.json": session_artifact_bytes(
-            directory / "continuation.json", args.sessions_root, "session continuation"
-        ),
-        "session/route.json": session_artifact_bytes(
-            directory / "route.json", args.sessions_root, "session route"
-        ),
-        "session/workbench/ledger.jsonl": session_artifact_bytes(
-            directory / "ledger.jsonl", args.sessions_root, "workbench ledger"
-        ),
-        "session/check.json": dump_json(receipt).encode("utf-8"),
     }
+    bundled_session_paths: set[str] = set()
+    resolved_root = ROOT.resolve()
+
+    def bundle_session_file(relative: str, source: Path, label: str) -> None:
+        files[relative] = session_artifact_bytes(source, args.sessions_root, label)
+        # The read above enforces the session/link boundary before resolution.
+        # Exempt exact bundled inputs, never the session directory or a prefix.
+        resolved_source = source.resolve()
+        if resolved_source.is_relative_to(resolved_root):
+            bundled_session_paths.add(resolved_source.relative_to(resolved_root).as_posix())
+
+    bundle_session_file("session/continuation.json", directory / "continuation.json", "session continuation")
+    bundle_session_file("session/route.json", directory / "route.json", "session route")
+    bundle_session_file("session/workbench/ledger.jsonl", directory / "ledger.jsonl", "workbench ledger")
+    files["session/check.json"] = dump_json(receipt).encode("utf-8")
     if architecture:
-        files["session/workflow-consultation.json"] = session_artifact_bytes(directory / "workflow-consultation.json", args.sessions_root, "workflow consultation")
+        bundle_session_file("session/workflow-consultation.json", directory / "workflow-consultation.json", "workflow consultation")
     else:
-        files["session/route-memory-consultation.json"] = session_artifact_bytes(directory / "route-memory-consultation.json", args.sessions_root, "route-memory consultation")
+        bundle_session_file("session/route-memory-consultation.json", directory / "route-memory-consultation.json", "route-memory consultation")
         files["route-memory.json"] = args.route_memory_receipt.read_bytes()
-    source_files, source_artifact = source_artifact_files(
-        returned, dirty_at_start=bool(manifest.get("dirty_at_start"))
-    )
-    files.update(source_files)
     probes_dir = directory / "probes"
     if probes_dir.is_dir():
         if has_symlink_component(probes_dir, args.sessions_root):
@@ -1658,9 +1662,14 @@ def cmd_package(args: argparse.Namespace) -> dict[str, Any]:
             )
         for probe in sorted(probes_dir.iterdir()):
             if probe.is_file():
-                files[f"session/workbench/probes/{probe.name}"] = session_artifact_bytes(
-                    probe, args.sessions_root, f"probe {probe.name}"
+                bundle_session_file(
+                    f"session/workbench/probes/{probe.name}", probe, f"probe {probe.name}"
                 )
+    source_files, source_artifact = source_artifact_files(
+        returned, dirty_at_start=bool(manifest.get("dirty_at_start")),
+        bundled_session_paths=frozenset(bundled_session_paths),
+    )
+    files.update(source_files)
     for relative, data in files.items():
         try:
             text = data.decode("utf-8")
