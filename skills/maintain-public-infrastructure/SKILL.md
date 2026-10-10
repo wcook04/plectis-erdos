@@ -99,6 +99,12 @@ href even when its target exists. Emit native Markdown links with URI-encoded
 fragments to explicit targets outside math, preserve the manuscript's formulas
 and reference text, and check standalone and bundled editions. Scope only
 rendered anchors and links; code and math literals must remain unchanged.
+For source conversion, compare the actual manuscript passages: a successful
+Pandoc run can silently discard a presentation macro's contents. Expand only
+demonstrated layout semantics, retain the inner formulas and literal code, and
+identify restored source content separately from changes to mathematics.
+Move complete multiline table cells intact into the existing detail-note lane;
+preserve their formulas and links, and leave malformed rows unchanged.
 These principles adapt the [pinned Taste Skill redesign guidance](https://github.com/leonxlnx/taste-skill/blob/b482f7a970abb98c4108d4a9f761e458c64cefc8/skills/taste-skill/SKILL.md)
 to the public clone; no external skill installation is needed.
 
