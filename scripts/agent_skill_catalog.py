@@ -213,6 +213,14 @@ def normalize(text: str) -> str:
 
 def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
     normalized_task = normalize(task)
+    # A prerequisite explicitly avoided by the reader is not an action object.
+    # Remove only that bounded mention: a separate positive Lean/proof request
+    # in the same task must still reach its existing validation or research lane.
+    normalized_task = re.sub(
+        r"\bwithout (?:(?:installing|running|using|setting up) )?"
+        r"(?:(?:a|the) )?lean(?: (?:installation|toolchain))?\b",
+        "", normalized_task,
+    )
     task_tokens = set(normalized_task.split())
     proof_intent = bool(
         task_tokens & {"attack", "counterexample", "prove", "solve"}

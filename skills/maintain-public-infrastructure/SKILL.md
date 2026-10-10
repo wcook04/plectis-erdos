@@ -102,6 +102,10 @@ The Formal Conjectures crosswalk owns this distinction and its generated guide.
 For a repository governance or documentation task, verify that entry selects
 this maintenance workflow. For finding contribution guidelines or preparing a
 finished patch, entry should name `CONTRIBUTING.md` and the submission workflow.
+When a visitor explicitly avoids a prerequisite, do not count that mention as
+requesting the tool. Match the positive task and test separate positive proof
+or validation mentions in the same sentence. Keep examples in ordinary reader
+language as well as the catalogue's named cues.
 A nearby proof, theorem-status or returned-proof request must retain its own
 lane. Preserve these neighboring requests as fixtures alongside the observed
 failure; contribution words alone should not turn proof search into Git work.

@@ -201,7 +201,9 @@
         "runnable math example",
         "runnable maths example",
         "small runnable experiment",
-        "simple exact calculation"
+        "simple exact calculation",
+        "small exact calculation",
+        "reproduce a calculation"
       ],
       "task_intents": [
         {
@@ -1163,7 +1165,9 @@
             "change",
             "changes",
             "commit",
-            "commits"
+            "commits",
+            "correction",
+            "corrections"
           ]
         }
       ]

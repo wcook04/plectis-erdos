@@ -157,6 +157,31 @@ ROUTE_CASES = {
     "Try a simple exact calculation": (
         "rational_subsum_probe", "explain-public-system",
     ),
+    # Actual cold-visitor language; avoiding a tool is not requesting that tool.
+    "I found this on HN. Show me a small exact calculation I can run without Lean.": (
+        "rational_subsum_probe", "explain-public-system",
+    ),
+    "Can I reproduce a calculation without installing Lean?": (
+        "rational_subsum_probe", "explain-public-system",
+    ),
+    "Reproduce a calculation without running Lean": (
+        "rational_subsum_probe", "explain-public-system",
+    ),
+    "Reproduce a calculation without a Lean installation": (
+        "rational_subsum_probe", "explain-public-system",
+    ),
+    "Reproduce a calculation without setting up the Lean toolchain": (
+        "rational_subsum_probe", "explain-public-system",
+    ),
+    "Validate a Lean proof using this small exact calculation without installing Lean locally": (
+        "lean_validation", "lean-concurrent-validation",
+    ),
+    "Prove a theorem using this small exact calculation without using Lean": (
+        "bounded_research", "mine-open-problem",
+    ),
+    "Reproduce the Lean proof without installing Python": (
+        "lean_validation", "lean-concurrent-validation",
+    ),
     "Prove a theorem using this quick math example": (
         "bounded_research", "mine-open-problem",
     ),
@@ -569,6 +594,9 @@ ROUTE_CASES = {
     'Help me fix my clone and keep my local work': ('repository_architecture', 'maintain-public-infrastructure'),
     'Repair the clones without discarding the local work': ('repository_architecture', 'maintain-public-infrastructure'),
     'I found an unclear explanation and want to contribute a correction': ('submit_change', 'submit-pull-request'),
+    'I want to fix a typo in the paper and send a correction.': ('submit_change', 'submit-pull-request'),
+    'Send these corrections to the reading guide': ('submit_change', 'submit-pull-request'),
+    'Send my mathematical proof and its corrections': ('return_research', 'erdos-research-return'),
     'I am contributing corrections to the first reader guide': ('submit_change', 'submit-pull-request'),
     'Report corrections to the public reading guide': ('submit_change', 'submit-pull-request'),
     'Explain how a clone preserves local work': ('understand_repository', 'explain-public-system'),
