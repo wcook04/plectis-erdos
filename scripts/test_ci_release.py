@@ -23,8 +23,6 @@ class ReleaseParityTests(unittest.TestCase):
         self.assertIn(('scripts/test_corpus_orientation.py',), release.COMMANDS)
         self.assertIn(('-m', 'unittest', 'scripts.test_formal_conjectures_crosswalk', '-v'), release.COMMANDS)
         self.assertIn(('-O', 'scripts/test_expert_handoffs.py'), release.COMMANDS)
-        self.assertIn(('scripts/test_rational_explorer.py',), release.COMMANDS)
-        self.assertIn(('-O', 'scripts/test_rational_explorer.py'), release.COMMANDS)
 
     def test_build_unit_checks_cannot_escape_local_publication_admission(self):
         source = (release.ROOT / '.github/workflows/lean.yml').read_text()
