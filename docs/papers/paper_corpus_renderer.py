@@ -2191,7 +2191,8 @@ def render_record_navigation(pair: dict[str, Any], boundary: str) -> str:
 
     def file_link(loc: dict[str, Any]) -> str:
         path = loc['path']
-        return f"[{path}](../../../{quote(path, safe='/')}) lines {loc['line']}-{loc['end_line']}"
+        target = f"../../../{quote(path, safe='/')}#L{loc['line']}-L{loc['end_line']}"
+        return f"[{path}]({target}) lines {loc['line']}-{loc['end_line']}"
 
     def paper_link(paper: dict[str, Any], anchor: str = '') -> str:
         target = '../../../' + quote(paper['local_full_text'], safe='/')

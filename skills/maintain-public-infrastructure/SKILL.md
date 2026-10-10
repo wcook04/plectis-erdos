@@ -240,6 +240,8 @@ URL.  When a cited module was added after a paper's global source pin, use an
 explicit module-specific immutable pin that has been checked this way.  Do not
 move the global pin merely to repair that link unless every pin-relative link
 in the paper has been audited at the proposed revision.
+When a navigator names an inspected source range, put that range in the link's
+`#Lstart-Lend` fragment and verify that clicking it opens the selected passage.
 
 When a producer regenerates text cited by `source-attributions.json`, its own
 `--check` does not validate that attribution anchor. Run

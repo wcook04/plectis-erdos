@@ -288,6 +288,27 @@ class CorpusTests(unittest.TestCase):
         self.assertIn('Retained short-paper argument:',text)
         self.assertIn('No accepted long-record correspondence is established by this disposition.',text)
 
+    def test_retained_proof_link_opens_the_selected_source_range(self):
+        import re
+        from urllib.parse import unquote, urlsplit
+        sys.path.insert(0, str(audit.ROOT/'docs/papers'))
+        try:
+            import paper_corpus_renderer as renderer
+        finally:
+            sys.path.pop(0)
+        pair = next(p for p in self.base['pairs'] if p['problem'] == 249)
+        claim = next(c for c in pair['claims'] if c['label'] == 'res:residueseries')
+        loc = claim['short_proof']['locator']
+        text = renderer.render_record_navigation(pair, audit.BOUNDARY)
+        section = text.split('### res:residueseries\n', 1)[1].split('\n### ', 1)[0]
+        target = re.search(r'Retained short-paper argument: \[[^\]]+\]\(([^)]+)\)', section)
+        self.assertIsNotNone(target)
+        url = urlsplit(target.group(1))
+        self.assertEqual(unquote(url.path), '../../../' + loc['path'])
+        self.assertEqual(url.fragment, f"L{loc['line']}-L{loc['end_line']}")
+        self.assertIn('short_proof_explained_long_link_open', section)
+        self.assertIn('No accepted long-record correspondence is established', section)
+
 
 if __name__ == '__main__':
     unittest.main()
