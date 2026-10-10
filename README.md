@@ -26,6 +26,7 @@ or the [glossary](https://wcook04.github.io/plectis/docs/glossary.html).
 - **Mathematics:** [eight short papers and longer research records](#problem-papers).
 - **Research system:** [A Repository-Based System for Research and Publication](paper/systems/claim-faithful-publication-systems-paper.pdf).
 - **Writing and revision:** [writing guide](paper/exposition/writing-a-good-mathematical-paper.pdf) and [method](paper/exposition/writing-mathematics-from-reviewed-revisions.pdf).
+- **Reader feedback:** [paper revisions](docs/research-commons/CREDIT_LEDGER.md#credit-correspondence-004).
 - **Connections between problems:** [cross-problem paper](paper/synthesis/optimal-sparse-perturbations.pdf).
 - **Formal evidence:** [Lean source](docs/SOURCE_MAP.md) and [Comparator checks](docs/EXTERNAL_VERIFICATION.md).
 - **Working environment:** [introduction, mathematics, CodeMap and Agent Trace films](#videos).

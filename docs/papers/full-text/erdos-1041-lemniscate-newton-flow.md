@@ -127,7 +127,7 @@ Starting from $`z^7-1`$, we put the roots on $`|z|=\rho<1`$ and split the multip
 ```
 Define
 
-<a id="eq:ani-F"></a>
+<a id="eq:ani-f--case-d599dca2"></a>
 <a id="eq:ani-f"></a>
 
 ``` math

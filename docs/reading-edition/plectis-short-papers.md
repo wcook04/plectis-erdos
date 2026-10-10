@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `7b8a33e2a0211a1a`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `0216d12d73e3346f`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -5844,7 +5844,7 @@ Starting from $`z^7-1`$, we put the roots on $`|z|=\rho<1`$ and split the multip
 ```
 Define
 
-<a id="erdos-1041-lemniscate-newton-flow--eq:ani-F"></a>
+<a id="erdos-1041-lemniscate-newton-flow--eq:ani-f--case-d599dca2"></a>
 <a id="erdos-1041-lemniscate-newton-flow--eq:ani-f"></a>
 
 ``` math

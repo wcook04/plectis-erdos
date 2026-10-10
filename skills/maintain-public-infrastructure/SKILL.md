@@ -99,6 +99,9 @@ href even when its target exists. Emit native Markdown links with URI-encoded
 fragments to explicit targets outside math, preserve the manuscript's formulas
 and reference text, and check standalone and bundled editions. Scope only
 rendered anchors and links; code and math literals must remain unchanged.
+GitHub lowercases target IDs. When authored labels differ only by case, assign
+distinct delivery IDs, update their local links and section coordinates, and
+click both targets in the rendered edition; retain the source labels and pins.
 For source conversion, compare the actual manuscript passages: a successful
 Pandoc run can silently discard a presentation macro's contents. Expand only
 demonstrated layout semantics, retain the inner formulas and literal code, and
@@ -237,6 +240,8 @@ URL.  When a cited module was added after a paper's global source pin, use an
 explicit module-specific immutable pin that has been checked this way.  Do not
 move the global pin merely to repair that link unless every pin-relative link
 in the paper has been audited at the proposed revision.
+When a navigator names an inspected source range, put that range in the link's
+`#Lstart-Lend` fragment and verify that clicking it opens the selected passage.
 
 When a producer regenerates text cited by `source-attributions.json`, its own
 `--check` does not validate that attribution anchor. Run
