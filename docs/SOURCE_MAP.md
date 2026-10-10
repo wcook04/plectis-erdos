@@ -129,7 +129,7 @@ table put these sentences 354px past the rendered column, so they read here:
 - **#251** — `prime_gap_cofinal_shift_escape`; `cofinal_adjacent_small_mismatch`. Under a rationality witness, the actual infinite-tail identification is proved in [`PrimeGapDyadicTail.lean`](../lean/ErdosProblems/Erdos251/PrimeGapDyadicTail.lean#L494); the cofinal escape and small-shift supplies remain open.
 - **#257** — Index: `arithmetic_rigidity_for_thin_supports`; `formalise_measure_and_stride_geometry`. Reviewed: `remaining_open.half_value_membership`; `remaining_open.twenty_one_permanent_affine_supercapacity`; `remaining_open.universal_257_all_infinite_supports`
 - **#269** — `actual_local_window_residue_escape`; `nonstationary_analytic_theorem`; `unbounded_height_certificate`. The actual rationality-to-reduced-carry bridge is proved in [`RationalityCarryBridge.lean`](../lean/ErdosProblems/Erdos269/RationalityCarryBridge.lean#L324); the actual cofinal escape producer remains open.
-- **#1041** — `repair_or_refute_saddle_block`; `compact_ray_cut_strip_decomposition`; `metric_gluing_below_two`; `two_stage_stable_perturbation`; `relative_global_newton_flow_theorem`
+- **#1041** — `historical_curve_length_correspondence`; `repair_or_refute_saddle_block`; `compact_ray_cut_strip_decomposition`; `corrected_metric_gluing_for_restricted_families`; `two_stage_stable_perturbation`; `relative_global_newton_flow_theorem`
 - **#1049** — `three_halves_growing_rank_endpoint_jet_kernel`
 
 From a reviewed route, use the registered claim or paper-anchor query to

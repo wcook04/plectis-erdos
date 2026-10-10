@@ -151,10 +151,21 @@ def check_erdos251_tail_frontier() -> None:
                 f"{guide} still advertises the retired #251 task")
 
 
+def check_erdos1041_source_map_obligations() -> None:
+    """The source map keeps historical review separate from refuted gluing."""
+    owner = json.loads(text("docs/problem_index_source.json"))
+    problem = next(row for row in owner["problems"] if row["erdos_number"] == 1041)
+    line = next(line for line in text("docs/SOURCE_MAP.md").splitlines()
+                if line.startswith("- **#1041**"))
+    require(re.findall(r"`([^`]+)`", line) == [row["id"] for row in problem["open_obligations"]],
+            "#1041 source map does not preserve the current six owned boundaries")
+
+
 def main() -> int:
     check_discrepancy_intake()
     check_erdos269_bridge_frontier()
     check_erdos251_tail_frontier()
+    check_erdos1041_source_map_obligations()
     # Both source-relative variants looked valid locally but GitHub rendered
     # them as /wcook04/CONTRIBUTING.md and /issues/research_progress.yml.
     for target in ("../../CONTRIBUTING.md", "research_progress.yml"):
