@@ -1,0 +1,48 @@
+{
+  "schema": "erdos257-public-computation/1",
+  "verification_scope": "finite_computation_only",
+  "claim_boundary": "A finite exact computation over the stated range. It proves no statement about unbounded ranges and decides no Erdős problem. No Lean kernel is run.",
+  "case": "hong-pinning-2-22",
+  "program": "hong_pinning_lengths.c",
+  "program_sha256": "3d1c256e5c80449ae0ad562db6961e3edba9653af73b8d78494055bc0095b6bb",
+  "arguments": [
+    "2",
+    "22",
+    "8"
+  ],
+  "requires": "C compiler with pthreads",
+  "recorded_on": "2026-10-10",
+  "recorded_with": {
+    "python": "3.14.7",
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "compiler": "Apple clang version 17.0.0 (clang-1700.0.13.5)"
+  },
+  "observed_wall_seconds": 33.6,
+  "comparison": "integers, strings and booleans exact; floats rel_tol = abs_tol = 1e-12; timing and output-path fields omitted",
+  "paper_figures_reproduced": "The pinning lengths ell_r of Hong's Table 2 for 2 <= r <= 22.",
+  "result": {
+    "stdout": [
+      "r=2 L_r=2 C_r=0 ell_r=0 maximizing_right_ends=2 first_maximizing_right_end=0 right_ends_scanned=2 histogram_fnv1a64=726e1b304556688e",
+      "r=3 L_r=6 C_r=1 ell_r=3 maximizing_right_ends=1 first_maximizing_right_end=4 right_ends_scanned=6 histogram_fnv1a64=de4db93c84d6e7a7",
+      "r=4 L_r=12 C_r=1 ell_r=5 maximizing_right_ends=1 first_maximizing_right_end=0 right_ends_scanned=12 histogram_fnv1a64=6f477021694d1cfb",
+      "r=5 L_r=60 C_r=2 ell_r=15 maximizing_right_ends=1 first_maximizing_right_end=32 right_ends_scanned=60 histogram_fnv1a64=fab3df596165fde0",
+      "r=6 L_r=60 C_r=2 ell_r=19 maximizing_right_ends=1 first_maximizing_right_end=32 right_ends_scanned=60 histogram_fnv1a64=7793f35fa5f77964",
+      "r=7 L_r=420 C_r=3 ell_r=27 maximizing_right_ends=1 first_maximizing_right_end=100 right_ends_scanned=420 histogram_fnv1a64=ea9e50d08eea3d3c",
+      "r=8 L_r=840 C_r=3 ell_r=39 maximizing_right_ends=1 first_maximizing_right_end=652 right_ends_scanned=840 histogram_fnv1a64=14834bd3c7fd6e11",
+      "r=9 L_r=2520 C_r=4 ell_r=49 maximizing_right_ends=2 first_maximizing_right_end=1598 right_ends_scanned=2520 histogram_fnv1a64=d68de30d038c62b9",
+      "r=10 L_r=2520 C_r=4 ell_r=61 maximizing_right_ends=1 first_maximizing_right_end=1598 right_ends_scanned=2520 histogram_fnv1a64=603ff0281b6bf438",
+      "r=11 L_r=27720 C_r=5 ell_r=88 maximizing_right_ends=1 first_maximizing_right_end=18641 right_ends_scanned=27720 histogram_fnv1a64=6b31c2dbde4400c9",
+      "r=12 L_r=27720 C_r=5 ell_r=88 maximizing_right_ends=1 first_maximizing_right_end=18641 right_ends_scanned=27720 histogram_fnv1a64=08b4e472b0dffe63",
+      "r=13 L_r=360360 C_r=6 ell_r=144 maximizing_right_ends=1 first_maximizing_right_end=332977 right_ends_scanned=360360 histogram_fnv1a64=c2e7bd743f872d2c",
+      "r=14 L_r=360360 C_r=6 ell_r=149 maximizing_right_ends=1 first_maximizing_right_end=176802 right_ends_scanned=360360 histogram_fnv1a64=8217ec4704d2369e",
+      "r=15 L_r=360360 C_r=7 ell_r=219 maximizing_right_ends=1 first_maximizing_right_end=200260 right_ends_scanned=360360 histogram_fnv1a64=6ff9b6a37f500c37",
+      "r=16 L_r=720720 C_r=7 ell_r=219 maximizing_right_ends=3 first_maximizing_right_end=23380 right_ends_scanned=720720 histogram_fnv1a64=df269afaa1324148",
+      "r=17 L_r=12252240 C_r=8 ell_r=376 maximizing_right_ends=1 first_maximizing_right_end=8672957 right_ends_scanned=12252240 histogram_fnv1a64=f2ba2828c54a3402",
+      "r=18 L_r=12252240 C_r=8 ell_r=377 maximizing_right_ends=1 first_maximizing_right_end=8672958 right_ends_scanned=12252240 histogram_fnv1a64=129e985ba216f502",
+      "r=19 L_r=232792560 C_r=9 ell_r=570 maximizing_right_ends=1 first_maximizing_right_end=43327627 right_ends_scanned=232792560 histogram_fnv1a64=2211e3e2ffdf8505",
+      "r=20 L_r=232792560 C_r=9 ell_r=617 maximizing_right_ends=1 first_maximizing_right_end=8841258 right_ends_scanned=232792560 histogram_fnv1a64=2ae9f299d4e21a20",
+      "r=21 L_r=232792560 C_r=10 ell_r=666 maximizing_right_ends=3 first_maximizing_right_end=46926043 right_ends_scanned=232792560 histogram_fnv1a64=0433c61117acf933",
+      "r=22 L_r=232792560 C_r=10 ell_r=730 maximizing_right_ends=5 first_maximizing_right_end=39508061 right_ends_scanned=232792560 histogram_fnv1a64=f47d2df315a14d64"
+    ]
+  }
+}

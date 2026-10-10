@@ -11,7 +11,8 @@ reproduce these finite computations and the others cited in the
 [Mersenne reasoning paper](../../../paper/257/erdos257-mersenne-reasoning-surface.tex):
 the integer quotient rows, the sharp tail margins and the forced prefix to
 depth 13,548,057. The two working notes behind those statements are in
-[notes/](notes/). Every take, skip, witness and crossing decision is made
+[notes/](notes/), together with a note on C. M. Hong's preprint on the target
+1/2, whose computations five further cases reproduce. Every take, skip, witness and crossing decision is made
 with exact integers. Each run covers a finite range, and none decides
 Erdős #257. The programs do not run Lean.
 
@@ -25,7 +26,7 @@ python3 research/experiments/erdos257/replay.py
 
 Expect `matched_recorded_result: true` for `truncation-ladder`,
 `quotient-identity` and `tail-margins-3000`, in about half a minute. `--case NAME` runs one case and
-`--case all` runs all nine in sequence. `--check` confirms that every saved
+`--case all` runs all fourteen in sequence. `--check` confirms that every saved
 receipt still matches the program bytes without rerunning anything.
 `--timeout` sets one time limit for every case; without it each case uses five minutes, or longer for the four large cases.
 
@@ -201,8 +202,51 @@ proof. It reports zero mismatches. The paper proves (I) for every n ≥ 6;
 this program is a finite check written for this release. `--max-row`
 extends the range.
 
+## Hong's carry process and pinning lengths
+
+C. M. Hong's preprint *On the rationality of reciprocal Mersenne subsums:
+carry pinning, quasi-polynomial certificates, and exact computation*
+(Zenodo, 2026, [doi:10.5281/zenodo.23287959](https://doi.org/10.5281/zenodo.23287959))
+computes the greedy candidate support for 1/2 with a carry-pinning process
+and certifies finite truncation orders r through pinning lengths ℓ_r. Five
+cases reproduce those computations from the description in the preprint,
+without its ancillary archive, and check two statements of the
+[note on the preprint](notes/hong-carry-calculus-remarks.pdf).
+
+| Case | Statement | Program | Range | Needs | Observed time |
+| --- | --- | --- | --- | --- | --- |
+| [half-greedy-exact-1500](receipts/half-greedy-exact-1500.json) | exact greedy for 1/2; its first 64 digits are the prefix of the process | [exact_half_greedy.py](exact_half_greedy.py) | ranks 1 to 1500 | standard library | 5 seconds |
+| [hong-process-100000000](receipts/hong-process-100000000.json) | Hong §6.1 and Table 3: no stall to depth 10^8, largest carry 196, longest window 31 | [hong_c2_process.c](hong_c2_process.c) | depth 10^8 | C compiler, 1.3 GB memory | 71 seconds |
+| [hong-pinning-2-22](receipts/hong-pinning-lengths-2-22.json) | ℓ_r of Hong's Table 2 | [hong_pinning_lengths.c](hong_pinning_lengths.c) | 2 ≤ r ≤ 22 | C compiler with pthreads | 34 seconds |
+| [hong-pinning-23-24](receipts/hong-pinning-lengths-23-24.json) | ℓ_23 = ℓ_24 = 1023 at six right ends, the first 871,374,004 | same program | r = 23, 24 | C compiler with pthreads | 6 minutes |
+| [full-series-cap-resets](receipts/full-series-cap-resets.json) | U(m) < 1 only for m in {2, 3, 4, 5, 7}; the cap recursion vanishes only at the same five positions | [full_series_cap_resets.c](full_series_cap_resets.c) | m ≤ 10^6 and i ≤ 10^7 | C compiler | 4 seconds |
+
+The process run selects 50,009,676 ranks up to 10^8, 25,002,260 of them in
+(5·10^7, 10^8], so the density there is 0.500045. Its longest window has
+length 31, first at depth 43,177,919, where a run of 27 consecutive elements
+begins at 43,177,920, and its window counts equal those of Hong's Table 3 at
+every listed length. At depth 13,548,057 it selects 6,782,259 ranks, the
+count of the coefficient-macro case above, which is a separately written
+program. Its digits through rank 1500 have the FNV-1a hash of the exact greedy
+expansion. The pinning-length program reproduces every row 2 ≤ r ≤ 24 of
+Hong's Table 2; for r = 23 and 24 it is a second complete scan beside Hong's
+own. The last case confirms two statements of the note on its stated range;
+their proofs are in the note.
+
+To run the process by hand:
+
+```sh
+cc -O3 research/experiments/erdos257/hong_c2_process.c -o hong_c2_process
+./hong_c2_process 100000000 0110011000000100000110000110000111100110010111111110101111110010
+```
+
 ## Working notes
 
+* [Remarks on Hong's carry calculus](notes/hong-carry-calculus-remarks.pdf)
+  ([source](notes/hong-carry-calculus-remarks.tex)), 10 October 2026,
+  relates the reciprocal-summable theorem and the fair-digit measure to
+  Hong's preprint, proves that no depth k ≥ 7 is uniformly cap-certified,
+  and reports the reproduction above.
 * [Truncation-rung ladder](notes/truncation-rung-ladder-2026-07-24.md)
   gives the ordinary proofs of witness exclusion, the half-LCM horizon, the
   mod-12 filter, the finite decision procedure, compactness transfer and the
@@ -213,16 +257,17 @@ extends the range.
   decision structure of the greedy orbit, and in its section 8 the
   2500-row and 3000-rank runs reproduced above.
 
-Both notes were written with AI assistance in the maintainer's research
-sessions and are published unchanged apart from a licence header. Neither
-has had independent review. Their reproduction commands name the
+The notes were written with AI assistance in the maintainer's research
+sessions. The two July notes are published unchanged apart from a licence
+header. None has had independent review. Their reproduction commands name the
 maintainer's working paths; the programs are the files of the same name in
 this directory.
 
 ## Provenance and reporting
 
 Will Cook directed the original programs, which were written with AI
-assistance. [Source provenance](source-provenance.json) records the
+assistance. The five programs for Hong's preprint were written for this
+release on 10 October 2026 and have no earlier private copies. [Source provenance](source-provenance.json) records the
 original hashes and every change made for the public copies. Each saved
 receipt binds the public program bytes and exact arguments. Changing an
 argument computes a different finite experiment and does not update a

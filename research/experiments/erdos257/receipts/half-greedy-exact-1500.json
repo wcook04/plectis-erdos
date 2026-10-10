@@ -1,0 +1,61 @@
+{
+  "schema": "erdos257-public-computation/1",
+  "verification_scope": "finite_computation_only",
+  "claim_boundary": "A finite exact computation over the stated range. It proves no statement about unbounded ranges and decides no Erdős problem. No Lean kernel is run.",
+  "case": "half-greedy-exact-1500",
+  "program": "exact_half_greedy.py",
+  "program_sha256": "353e0ac5f87c0f6f2f3d2d0592f6aeec707b0a8a3e2929632e58639d98c0eb04",
+  "arguments": [
+    "1500",
+    "64"
+  ],
+  "requires": "stdlib",
+  "recorded_on": "2026-10-10",
+  "recorded_with": {
+    "python": "3.14.7",
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O"
+  },
+  "observed_wall_seconds": 4.6,
+  "comparison": "integers, strings and booleans exact; floats rel_tol = abs_tol = 1e-12; timing and output-path fields omitted",
+  "paper_figures_reproduced": "The exact greedy expansion of 1/2 survives every rank through 1500 with 732 selected ranks; its first 64 digits are the prefix used by the process, and its digit hash equals the hash printed by hong_c2_process.c at depth 1500.",
+  "result": {
+    "target": "1/2",
+    "depth": 1500,
+    "status": "survived",
+    "selected": 732,
+    "first_selected": [
+      2,
+      3,
+      6,
+      7,
+      14,
+      20,
+      21,
+      26,
+      27,
+      32,
+      33,
+      34,
+      35,
+      38,
+      39,
+      42,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      53,
+      55,
+      56,
+      57,
+      58,
+      59
+    ],
+    "prefix_digits": "0110011000000100000110000110000111100110010111111110101111110010",
+    "fnv1a64_of_digits_1_to_depth": "ee51eca3c8a54c4b"
+  }
+}

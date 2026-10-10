@@ -1,0 +1,54 @@
+{
+  "schema": "erdos257-public-computation/1",
+  "verification_scope": "finite_computation_only",
+  "claim_boundary": "A finite exact computation over the stated range. It proves no statement about unbounded ranges and decides no Erdős problem. No Lean kernel is run.",
+  "case": "hong-process-100000000",
+  "program": "hong_c2_process.c",
+  "program_sha256": "d65740b6bcdf1a02cf89dc959a4b650f6e1645b19a7e4274388829c879a0fb87",
+  "arguments": [
+    "100000000",
+    "0110011000000100000110000110000111100110010111111110101111110010",
+    "13548057",
+    "43177919"
+  ],
+  "requires": "C compiler, 1.3 GB memory",
+  "recorded_on": "2026-10-10",
+  "recorded_with": {
+    "python": "3.14.7",
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "compiler": "Apple clang version 17.0.0 (clang-1700.0.13.5)"
+  },
+  "observed_wall_seconds": 70.7,
+  "comparison": "integers, strings and booleans exact; floats rel_tol = abs_tol = 1e-12; timing and output-path fields omitted",
+  "paper_figures_reproduced": "Hong's C_2 process for 1/2 runs to depth 10^8 without a stall: density 0.500045 on (N/2,N], largest carry 196, longest window 31 first at depth 43,177,919, a run of 27 consecutive elements, and window counts 195,868, 12,453, 3,140, 813, 198, 37, 7 at lengths 14 to 28 (Hong, Table 3). At depth 13,548,057 it selects 6,782,259 ranks, matching the coefficient-macro case.",
+  "result": {
+    "stdout": [
+      "checkpoint k=13548057 selected=6782259 largest_carry=123 longest_window=27 first_at=10759363",
+      "checkpoint k=43177919 selected=21594148 largest_carry=163 longest_window=31 first_at=43177919",
+      "depth=100000000 stall=none selected=50009676",
+      "selected_in_upper_half=25002260 of 50000000",
+      "largest_carry=196",
+      "longest_window=31 first_at_depth=43177919",
+      "depths_with_window_at_least_2=99998958",
+      "depths_with_window_at_least_4=96151205",
+      "depths_with_window_at_least_6=46580986",
+      "depths_with_window_at_least_8=12521424",
+      "depths_with_window_at_least_10=3132759",
+      "depths_with_window_at_least_12=782748",
+      "depths_with_window_at_least_14=195868",
+      "depths_with_window_at_least_16=49200",
+      "depths_with_window_at_least_18=12453",
+      "depths_with_window_at_least_20=3140",
+      "depths_with_window_at_least_22=813",
+      "depths_with_window_at_least_24=198",
+      "depths_with_window_at_least_26=37",
+      "depths_with_window_at_least_28=7",
+      "depths_with_window_at_least_30=2",
+      "depths_with_window_at_least_32=0",
+      "depths_with_window_at_least_34=0",
+      "longest_run_of_elements=27 from 43177920 to 43177946",
+      "longest_gap=24 from 83764427 to 83764450",
+      "fnv1a64_of_digits_1_to_N=08bf4d1cecbb7a19"
+    ]
+  }
+}

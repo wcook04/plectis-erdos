@@ -1,0 +1,30 @@
+{
+  "schema": "erdos257-public-computation/1",
+  "verification_scope": "finite_computation_only",
+  "claim_boundary": "A finite exact computation over the stated range. It proves no statement about unbounded ranges and decides no Erdős problem. No Lean kernel is run.",
+  "case": "full-series-cap-resets",
+  "program": "full_series_cap_resets.c",
+  "program_sha256": "699a04347cd7fda468c25c4ee42b5bb643efdf67d5a02c6407d3ed49cc8e1484",
+  "arguments": [
+    "1000000",
+    "10000000"
+  ],
+  "requires": "C compiler",
+  "recorded_on": "2026-10-10",
+  "recorded_with": {
+    "python": "3.14.7",
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "compiler": "Apple clang version 17.0.0 (clang-1700.0.13.5)"
+  },
+  "observed_wall_seconds": 3.9,
+  "comparison": "integers, strings and booleans exact; floats rel_tol = abs_tol = 1e-12; timing and output-path fields omitted",
+  "paper_figures_reproduced": "U(m) < 1 exactly for m in {2,3,4,5,7} among m <= 10^6, and the cap recursion with C = 2 can vanish only at the same five positions among i <= 10^7 (Proposition 4 of the note).",
+  "result": {
+    "stdout": [
+      "part1 positions m<=1000000 with U(m)<1: 2 3 4 5 7",
+      "part1 count=5",
+      "part2 positions i<=10000000 where the cap recursion with C=2 can vanish: 2 3 4 5 7",
+      "part2 count=5"
+    ]
+  }
+}

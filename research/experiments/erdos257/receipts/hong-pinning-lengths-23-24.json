@@ -1,0 +1,29 @@
+{
+  "schema": "erdos257-public-computation/1",
+  "verification_scope": "finite_computation_only",
+  "claim_boundary": "A finite exact computation over the stated range. It proves no statement about unbounded ranges and decides no Erdős problem. No Lean kernel is run.",
+  "case": "hong-pinning-23-24",
+  "program": "hong_pinning_lengths.c",
+  "program_sha256": "3d1c256e5c80449ae0ad562db6961e3edba9653af73b8d78494055bc0095b6bb",
+  "arguments": [
+    "23",
+    "24",
+    "8"
+  ],
+  "requires": "C compiler with pthreads",
+  "recorded_on": "2026-10-10",
+  "recorded_with": {
+    "python": "3.14.7",
+    "platform": "macOS-15.6.1-arm64-arm-64bit-Mach-O",
+    "compiler": "Apple clang version 17.0.0 (clang-1700.0.13.5)"
+  },
+  "observed_wall_seconds": 364.4,
+  "comparison": "integers, strings and booleans exact; floats rel_tol = abs_tol = 1e-12; timing and output-path fields omitted",
+  "paper_figures_reproduced": "ell_23 = ell_24 = 1023, attained at six right ends, the first 871,374,004 (Hong, Section 5.1).",
+  "result": {
+    "stdout": [
+      "r=23 L_r=5354228880 C_r=11 ell_r=1023 maximizing_right_ends=6 first_maximizing_right_end=871374004 right_ends_scanned=5354228880 histogram_fnv1a64=b2feb2408dd71f0b",
+      "r=24 L_r=5354228880 C_r=11 ell_r=1023 maximizing_right_ends=6 first_maximizing_right_end=871374004 right_ends_scanned=5354228880 histogram_fnv1a64=f1c6e315a6e6819c"
+    ]
+  }
+}
