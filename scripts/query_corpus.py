@@ -9570,10 +9570,11 @@ def bounded_programme_signal_projection(spine: Mapping[str, Any]) -> dict[str, A
 def problem_reader_answer(route_id: str) -> dict[str, Any]:
     """Select a small source-grounded result preview and the entire open boundary.
 
-    Palomar's programme signal orders families; the claim registry owns their
-    wording and boundaries. A declaration preview is a navigation witness, not
-    a new elaboration or a promotion of a conditional result. The full JSON route
-    retains every family and signal-spine row.
+    The existing claim-bound source spine leads, coalescing claims already
+    represented by a family's declarations. Palomar's programme signal orders
+    the remaining families. Native source evidence retains its recorded rank
+    and boundary without conferring Comparator admission. Declaration previews
+    are navigation witnesses; the full JSON retains every family and spine row.
     """
     packet = route_packet(route_id)
     route = packet["route"]
@@ -9592,21 +9593,72 @@ def problem_reader_answer(route_id: str) -> dict[str, Any]:
         family["id"] for family in families if family["id"] not in signal_by_id
     )
     claims = load("docs/claims.json")
+    claims_by_id = {claim["id"]: claim for claim in claims["claims"]}
+    declaration_rows_by_family = {
+        family["id"]: [
+            row for name in family["declarations"]
+            for row in declaration_rows_for_handle(name)
+        ]
+        for family in families
+    }
+    source_results = []
+    source_results_by_family: dict[str, list[dict[str, Any]]] = {}
+    source_family_order = []
+    seen_source_claims = set()
+    for source in packet.get("source_result_spine", {}).get("ranked_results", []):
+        claim_id = source["claim_id"]
+        if claim_id in seen_source_claims:
+            continue
+        seen_source_claims.add(claim_id)
+        represented_by = next((
+            family_id for family_id in ordered_family_ids
+            if any(claim_id in row["claim_ids"]
+                   for row in declaration_rows_by_family[family_id])
+        ), None)
+        source_binding = {
+            "rank": source["rank"], "claim_id": claim_id,
+            "boundary": source["exact_boundary"],
+            "comparator_admission": "not_inferred_from_source_spine",
+        }
+        if represented_by is not None:
+            source_results_by_family.setdefault(represented_by, []).append(source_binding)
+            if represented_by not in source_family_order:
+                source_family_order.append(represented_by)
+            continue
+        witness = next((
+            row for row in declaration_rows_for_handle(source["source_declaration"])
+            if row["kind"] in ("theorem", "lemma") and claim_id in row["claim_ids"]
+            and checkout_lean_file(row["module"]).relative_to(ROOT).as_posix() == source["source_file"]
+        ), None)
+        if witness is None:
+            raise ValueError(f"source result lacks its claim-bound declaration: {claim_id}")
+        preview = compact_declaration(witness)
+        preview["source_ref"] = f"{source['source_file']}:{witness['line']}"
+        claim = claims_by_id[claim_id]
+        source_results.append({
+            "id": claim_id, "summary": claim["statement"],
+            "claim_status": claim["status"], "evidence_mode": "Lean kernel",
+            "source_spine_rank": source["rank"],
+            "boundary": source["exact_boundary"],
+            "comparator_admission": "not_inferred_from_source_spine",
+            "declaration_preview": preview,
+        })
+    ordered_family_ids = source_family_order + [
+        family_id for family_id in ordered_family_ids if family_id not in source_family_order
+    ]
+    source_results = source_results[:PROBLEM_READER_RESULT_LIMIT]
     comparator_family_by_source = {
         row["original_declaration"]: row["review_family"]
         for row in claims["external_verification_packet"]["main_results"]
         if row.get("original_declaration") and row.get("review_family")
     }
     results = []
-    for family_id in ordered_family_ids[:PROBLEM_READER_RESULT_LIMIT]:
+    family_limit = PROBLEM_READER_RESULT_LIMIT - len(source_results)
+    for family_id in ordered_family_ids[:family_limit]:
         family = families_by_id[family_id]
         signal_row = signal_by_id.get(family_id)
         source_declaration = signal_row["source_declaration"] if signal_row else None
-        declaration_rows = [
-            row
-            for name in family["declarations"]
-            for row in declaration_rows_for_handle(name)
-        ]
+        declaration_rows = declaration_rows_by_family[family_id]
         registered_row_ids = {row["id"] for row in declaration_rows}
         source_rows = (
             declaration_rows_for_handle(source_declaration)
@@ -9634,7 +9686,7 @@ def problem_reader_answer(route_id: str) -> dict[str, Any]:
         if preview:
             source_path = checkout_lean_file(witness["module"]).relative_to(ROOT).as_posix()
             preview["source_ref"] = f"{source_path}:{witness['line']}"
-        results.append({
+        result = {
             "id": family["id"],
             "summary": family["summary"],
             "contribution_class": family["contribution_class"],
@@ -9642,7 +9694,10 @@ def problem_reader_answer(route_id: str) -> dict[str, Any]:
             "boundary": family["boundary"],
             "declaration_preview": preview,
             "declaration_count": len(family["declarations"]),
-        })
+        }
+        if family_id in source_results_by_family:
+            result["source_result_spine"] = source_results_by_family[family_id]
+        results.append(result)
     targets = {route_id, f"universal_{route['erdos_number']}"}
     exact_open = [
         {
@@ -9660,7 +9715,12 @@ def problem_reader_answer(route_id: str) -> dict[str, Any]:
         "source_directory": route["directory"],
         "paper_source": (route.get("paper") or {}).get("source"),
         "result_evidence": results,
-        "result_selection": "palomar_programme_signal_then_registry_fallback",
+        "source_result_evidence": source_results,
+        "source_result_count": len(seen_source_claims),
+        "result_selection": (
+            "claim_bound_source_spine_then_programme_signal_and_registry_fallback"
+            if seen_source_claims else "palomar_programme_signal_then_registry_fallback"
+        ),
         "result_family_count": len(families),
         "omitted_result_family_count": max(0, len(families) - len(results)),
         "exact_open_records": exact_open,
@@ -9676,13 +9736,33 @@ def problem_reader_answer(route_id: str) -> dict[str, Any]:
 
 
 def render_problem_reader_answer(answer: dict[str, Any]) -> list[str]:
+    source_results = answer["source_result_evidence"]
+    ordering = (
+        "claim-bound source spine then Palomar programme signal"
+        if answer["source_result_count"] else "Palomar programme signal"
+    )
     rows = [
         f"source={answer['source_directory']} | paper={answer['paper_source'] or 'unavailable'}",
         f"results={len(answer['result_evidence'])}/{answer['result_family_count']} "
-        "| order=Palomar programme signal",
+        f"| source_results={len(source_results)} | order={ordering}",
     ]
+    for result in source_results:
+        witness = result["declaration_preview"]
+        rows.extend([
+            f"source_result {result['id']} | source_spine_rank={result['source_spine_rank']} "
+            f"| {result['claim_status']} | {result['summary']}",
+            f"  evidence={result['evidence_mode']} | Comparator admission not inferred",
+            f"  declaration={witness['qualified_name']} | source={witness['source_ref']} "
+            f"| claims={','.join(witness['claim_ids'])}",
+            f"  boundary={result['boundary']}",
+        ])
     for result in answer["result_evidence"]:
-        rows.append(f"result {result['id']} | {result['contribution_class']} | {result['summary']}")
+        source_binding = result.get("source_result_spine", [])
+        source_rank = "".join(
+            f" | source_spine_rank={row['rank']} claim={row['claim_id']}"
+            for row in source_binding
+        )
+        rows.append(f"result {result['id']} | {result['contribution_class']} | {result['summary']}{source_rank}")
         rows.append(f"  evidence={result['evidence_mode']}")
         witness = result["declaration_preview"]
         if witness:
@@ -9780,6 +9860,14 @@ def route_packet(route_id: str) -> dict[str, Any]:
             "authority_posture": problem_route["authority_posture"],
             "route": problem_route,
             "mathematical_signal_spine": programme_signal,
+            "source_result_spine": {
+                **signal["source_result_spine"],
+                "ranked_results": [
+                    row for row in signal["source_result_spine"]["ranked_results"]
+                    if row["problem"] == problem_number
+                ],
+                "comparator_admission": "not_inferred_from_source_spine",
+            },
             "proof_authority": "Lean source checked by the pinned Lean kernel",
             "release_provenance": claims["release"]["public_projection"],
             "validation": "python3 scripts/check_release.py",

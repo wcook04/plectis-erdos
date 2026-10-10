@@ -472,7 +472,8 @@ def validate_problem_reader_journey() -> None:
         assert len(card.stdout.splitlines()) <= 36
         families = packet["route"]["result_families"]
         results = answer["result_evidence"]
-        assert 1 <= len(results) <= 3
+        source_results = answer["source_result_evidence"]
+        assert 1 <= len(results) + len(source_results) <= 3
         assert answer["omitted_result_family_count"] == len(families) - len(results)
         family_by_id = {family["id"]: family for family in families}
         signal_order = list(dict.fromkeys(
@@ -483,9 +484,20 @@ def validate_problem_reader_journey() -> None:
         expected_order = signal_order + [
             family["id"] for family in families if family["id"] not in signal_order
         ]
-        assert [result["id"] for result in results] == expected_order[:3]
-        assert answer["result_selection"] == "palomar_programme_signal_then_registry_fallback"
-        assert "order=Palomar programme signal" in card.stdout
+        assert [result["id"] for result in results] == expected_order[:3 - len(source_results)]
+        has_source_spine = bool(packet["source_result_spine"]["ranked_results"])
+        assert answer["result_selection"] == (
+            "claim_bound_source_spine_then_programme_signal_and_registry_fallback"
+            if has_source_spine else "palomar_programme_signal_then_registry_fallback"
+        )
+        assert "Palomar programme signal" in card.stdout
+        if has_source_spine:
+            assert "claim-bound source spine" in card.stdout
+        for result in source_results:
+            assert result["summary"] in card.stdout and result["boundary"] in card.stdout
+            assert result["comparator_admission"] == "not_inferred_from_source_spine"
+            witness = result["declaration_preview"]
+            assert witness["qualified_name"] in card.stdout and witness["source_ref"] in card.stdout
         for result in results:
             family = family_by_id[result["id"]]
             for field in ("id", "summary", "contribution_class", "evidence_mode", "boundary"):
@@ -529,6 +541,9 @@ def validate_problem_reader_journey() -> None:
         assert len(question_card.stdout.encode("utf-8")) <= 9_000
         assert len(question_card.stdout.splitlines()) <= 40
         for result in results:
+            assert result["summary"] in question_card.stdout
+            assert result["boundary"] in question_card.stdout
+        for result in source_results:
             assert result["summary"] in question_card.stdout
             assert result["boundary"] in question_card.stdout
         for row in expected_open:
@@ -578,6 +593,70 @@ def validate_problem_reader_journey() -> None:
         assert "result " in completed.stdout
         assert "open remaining_open." in completed.stdout
         assert "--format json" in completed.stdout
+
+
+def validate_problem_source_result_reader() -> None:
+    """Native source results reach a problem reader without Comparator promotion."""
+    showcase = load("docs/PALOMAR_RESULT_SHOWCASE.json")
+    authored = showcase["selection_contract"]["source_result_spine"]["ranked_results"]
+    expected = next(row for row in authored if row["problem"] == 1041)
+    packet = query_corpus.route_packet("erdos_1041")
+    assert "source_result_spine" in packet, "problem route dropped the claim-bound source spine"
+    source = packet["source_result_spine"]["ranked_results"]
+    assert len(source) == 1 and source[0]["rank"] == expected["rank"] == 3
+    assert source[0]["claim_id"] == expected["claim_id"]
+    assert source[0]["source_declaration"] == expected["source_declaration"]
+    assert source[0]["exact_boundary"] == expected["boundary"]
+    answer = query_corpus.problem_reader_answer("erdos_1041")
+    native = answer["source_result_evidence"]
+    assert len(native) == 1 and native[0]["id"] == expected["claim_id"]
+    assert native[0]["source_spine_rank"] == expected["rank"]
+    assert native[0]["evidence_mode"] == "Lean kernel"
+    assert native[0]["comparator_admission"] == "not_inferred_from_source_spine"
+    assert native[0]["boundary"] == expected["boundary"]
+    assert "Ani supplied the polynomial" in native[0]["boundary"]
+    assert "1958 wording" in native[0]["boundary"]
+    witness = native[0]["declaration_preview"]
+    assert witness["qualified_name"] == "Erdos1041.Counterexample.erdos1041_counterexample_hausdorff"
+    assert witness["source_ref"] == "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean:283"
+    assert len(packet["route"]["result_families"]) == 6
+    assert len(packet["mathematical_signal_spine"]["results"]) == 4
+    assert len(answer["result_evidence"]) == 2
+    card = run("--route", "erdos_1041")
+    assert card.returncode == 0
+    assert len(card.stdout.encode("utf-8")) <= 8_000 and len(card.stdout.splitlines()) <= 36
+    assert card.stdout.index(expected["claim_id"]) < card.stdout.index("result newton_value_decay")
+    assert witness["qualified_name"] in card.stdout and witness["source_ref"] in card.stdout
+    assert native[0]["boundary"] in card.stdout
+    for obligation in packet["route"]["open_obligations"]:
+        assert obligation["statement"] in card.stdout
+    assert "historical_curve_length_correspondence" in card.stdout
+    assert answer["exact_open_records"][0]["statement"] in card.stdout
+    assert "--format json" in card.stdout
+
+    weighted = query_corpus.problem_reader_answer("erdos_257")
+    assert weighted["source_result_evidence"] == []
+    represented = [row for row in weighted["result_evidence"] if row["id"] == "finite_prime_weighted_support"]
+    assert len(represented) == 1
+    assert represented[0]["source_result_spine"][0]["claim_id"] == "finite_prime_weighted_support"
+    assert represented[0]["source_result_spine"][0]["rank"] == 1
+
+    # Coalescing follows exact declaration-to-claim bindings, not a family id
+    # coincidentally sharing the claim's spelling.
+    coalesced_packet = copy.deepcopy(packet)
+    family = copy.deepcopy(packet["route"]["result_families"][0])
+    family.update(id="fixture_native_counterexample", declarations=[witness["qualified_name"]],
+                  summary=native[0]["summary"], boundary=native[0]["boundary"],
+                  evidence_mode="Lean kernel")
+    coalesced_packet["route"]["result_families"].append(family)
+    with patch.object(query_corpus, "route_packet", return_value=coalesced_packet):
+        query_corpus.problem_reader_answer.cache_clear()
+        coalesced = query_corpus.problem_reader_answer("erdos_1041")
+    query_corpus.problem_reader_answer.cache_clear()
+    assert coalesced["source_result_evidence"] == []
+    assert coalesced["result_evidence"][0]["id"] == family["id"]
+    assert coalesced["result_evidence"][0]["source_result_spine"][0]["claim_id"] == expected["claim_id"]
+    assert coalesced["result_evidence"][0]["source_result_spine"][0]["rank"] == expected["rank"]
 
 
 def validate_indexed_problem_routes() -> None:
@@ -3035,6 +3114,7 @@ def main() -> int:
     validate_programme_routes()
     validate_indexed_problem_routes()
     validate_problem_reader_journey()
+    validate_problem_source_result_reader()
     validate_finite_computation_replay_queries()
     validate_research_corpus_fingerprint()
     validate_lean_code_projection()
