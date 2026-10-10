@@ -15,7 +15,7 @@ import copy
 import io
 import json
 import re
-from contextlib import redirect_stdout
+from contextlib import redirect_stderr, redirect_stdout
 from fractions import Fraction
 from pathlib import Path
 
@@ -64,6 +64,28 @@ def load_verifier():
 def main() -> int:
     probe = load_probe()
     verifier = load_verifier()
+
+    # Invalid batch inputs must not look like a successful empty experiment,
+    # including an invalid later cell after a valid first cell.
+    for flags, message in (
+        (["--q", "-1"], "denominator bound must be at least 2"),
+        (["--q", "12", "1"], "denominator bound must be at least 2"),
+        (["--depth", "0"], "depth must be positive"),
+        (["--depth", "10", "-1"], "depth must be positive"),
+        (["--depth", "10", "20", "--horizon", "83"],
+         "horizon must exceed depth by at least 64 indices"),
+    ):
+        output, errors = io.StringIO(), io.StringIO()
+        with redirect_stdout(output), redirect_stderr(errors):
+            try:
+                probe.main(["--hosts", "all", "--json", *flags])
+            except SystemExit as exc:
+                if exc.code != 2:
+                    raise AssertionError((flags, exc.code))
+            else:
+                raise AssertionError((flags, "invalid batch accepted"))
+        if output.getvalue() or message not in errors.getvalue():
+            raise AssertionError((flags, output.getvalue(), errors.getvalue()))
 
     # The three outcomes partition the candidates and replay the saved rows.
     saved = json.loads((HOME / "results" / "grid_q12_24_36.json").read_text(encoding="utf-8"))
@@ -134,8 +156,10 @@ def main() -> int:
             raise AssertionError((invalid, "invalid target accepted"))
     output = io.StringIO()
     with redirect_stdout(output):
-        assert probe.main(["--target", "189/388", "--depth", "16", "17",
-                           "--horizon", "160", "--json"]) == 0
+        result = probe.main(["--target", "189/388", "--depth", "16", "17",
+                             "--horizon", "160", "--json"])
+    if result != 0:
+        raise AssertionError(("single-target CLI", result))
     cli_rows = json.loads(output.getvalue())["rows"]
     assert [row["outcome"] for row in cli_rows] == ["not_excluded", "excluded"]
     assert cli_rows[1] == late

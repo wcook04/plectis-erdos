@@ -14,13 +14,14 @@ Everything below uses this public checkout and public tools.
 | Inspect an accepted native #243 or #257 proof | [Native theorem reader routes](research-commons/README.md#native-prove2me-theorems) | A web browser; the public packets print the accepted Solutions without sign-in |
 | Replay the #257 weighted theorem against a separate statement | [Weighted theorem replay](verification/EXTERNAL_VERIFICATION_REPLAY.md#reviewer-replay) | Linux, Git, Python 3.11+, Elan/Lake, Go, and systemd |
 | Rerun the #257 exact-rational example | [Try the late rejection](#reproduce-the-257-exact-rational-example) | Python 3.11 or later; no extra packages |
+| Try a fraction without cloning | [Single-file calculation](#try-a-calculation-without-cloning) | Python 3.11 or later; standard library only |
 | Rerun a #251 finite computation | [Reproduce the #251 computations](#reproduce-a-finite-computation) | Python 3.11 or later; the first run needs no extra packages |
 | Check a documentation edit | [Check a documentation change](#check-a-documentation-change) | Python; no Lean installation |
 | Compile a proof | [Set up Lean](#2-reproduce-the-pinned-lean-environment) | elan, the pinned dependencies, and space for several gigabytes of cache |
 | Import the library in another project | [Use it as a dependency](#use-the-library-in-another-lean-project) | The same Lean toolchain and the library's dependencies |
 | Reproduce all public checks | [Release checks](#3-run-the-release-surface-checks) | Lean, the pinned Python validation tools, and Node.js for browser-arithmetic tests |
 
-Commands run from the repository root. Shell setup below uses macOS/Linux
+Unless an example says otherwise, commands run from the repository root. Shell setup below uses macOS/Linux
 syntax; on Windows, use WSL for the same commands. To read the mathematics
 without installing anything, return to [the papers](../paper/README.md).
 
@@ -37,9 +38,32 @@ gap at 17; the second is an exact finite sum. A surviving search does not prove
 infinite membership or solve Erdős #257. You can download a result and check
 it separately with the Python checker linked on the page.
 
-For larger runs, use the [Python example](#reproduce-the-257-exact-rational-example).
+To try the same calculation in a terminal, use the
+[standalone Python example](#try-a-calculation-without-cloning).
 Full release checks also execute the browser's JavaScript against Python and
 require the `node` command on `PATH`.
+
+## Try a calculation without cloning
+
+Can `189/388` be a sum of selected terms `1/(2^n - 1)`? Try the exact-rational
+probe with Python 3.11 or later; it needs only one file and the standard library.
+
+Download the [raw Python file at a fixed commit](https://raw.githubusercontent.com/wcook04/plectis-erdos/0f3d8b08c8f5fee06888ec11ea0ed672f92d2266/research/experiments/choices_contraction/rational_membership_probe.py),
+save it as `rational_membership_probe.py`, and inspect it before running.
+In that directory:
+
+```sh
+python3 -I rational_membership_probe.py --target 189/388 --depth 16 17 --horizon 160
+```
+
+At depth 16 it reports `not_excluded`; at depth 17 it reports `excluded` and
+prints the exact gap certificate. Taking the next term overshoots the target;
+omitting it leaves too little in the entire later tail.
+
+Change `--target` to `1/3` for a finite sum, or to `1/2` for an undecided case.
+`not_excluded` makes no claim beyond the tested depth. This finite calculation
+does not prove the weighted infinite-support theorem or settle #257.
+[Understand the experiment and check its certificate](#reproduce-the-257-exact-rational-example).
 
 ## 1. Start with a complete committed checkout
 
@@ -108,6 +132,11 @@ To rerun that formal comparison, use the
 [#257 theorem replay](verification/EXTERNAL_VERIFICATION_REPLAY.md#reviewer-replay).
 
 ### Reproduce the #257 exact-rational example
+
+For a first run without cloning, use the
+[single-file probe](#try-a-calculation-without-cloning). It lets you change the
+target and compare two depths. The commands below use the complete checkout
+and include an independent certificate checker.
 
 Run this from the repository root with Python 3.11 or later. It uses only the
 standard library and needs no Lean installation:

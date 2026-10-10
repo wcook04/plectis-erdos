@@ -133,8 +133,12 @@ def single_target(x: Fraction, host: str, depth: int, horizon: int) -> dict:
 
 
 def run(host: str, q_max: int, depth: int, horizon: int) -> dict:
+    if q_max < 2:
+        raise ValueError("denominator bound must be at least 2")
+    if depth < 1:
+        raise ValueError("depth must be positive")
     if horizon < depth + 64:
-        raise SystemExit("horizon must exceed depth by at least 64 indices")
+        raise ValueError("horizon must exceed depth by at least 64 indices")
     indices, weight, tail_upper, total_lower, total_upper = host_weights(HOSTS[host], horizon)
     counts = {name: 0 for name in OUTCOMES}
     excluded_at: dict[int, int] = {}
@@ -215,6 +219,13 @@ def main(argv=None) -> int:
         return 0
     if args.host is not None:
         ap.error("--host belongs to --target; use --hosts for batch mode")
+    # Validate the whole grid before doing any calculation or printing results.
+    if any(q < 2 for q in (args.q or [12, 24, 36])):
+        ap.error("denominator bound must be at least 2")
+    if any(depth < 1 for depth in (args.depth or [10, 20, 40, 80, 160])):
+        ap.error("depth must be positive")
+    if args.horizon < max(args.depth or [10, 20, 40, 80, 160]) + 64:
+        ap.error("horizon must exceed depth by at least 64 indices")
     packet = grid(args.hosts or list(HOSTS), args.q or [12, 24, 36],
                   args.depth or [10, 20, 40, 80, 160], args.horizon)
     if args.json:

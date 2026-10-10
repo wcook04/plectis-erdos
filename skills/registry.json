@@ -195,7 +195,13 @@
         "rational membership probe",
         "test a rational candidate",
         "reciprocal mersenne subsum",
-        "greedy subsum test"
+        "greedy subsum test",
+        "quick math example",
+        "quick maths example",
+        "runnable math example",
+        "runnable maths example",
+        "small runnable experiment",
+        "simple exact calculation"
       ],
       "task_intents": [
         {
