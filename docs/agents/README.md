@@ -20,7 +20,24 @@ provider does not matter; the shared entry is the root `AGENTS.md`. No plugin,
 private checkout, model API key or Lean installation is needed to route a task.
 Proof work later uses the toolchain described by its selected skill.
 
-For a new workspace, use Git and Python 3:
+For a new workspace, use Git and Python 3.11 or later for navigation. Check
+which version your `python3` command selects before running the commands below:
+
+```sh
+python3 -c 'import sys; print(sys.version); sys.exit(0 if sys.version_info >= (3, 11) else "Python 3.11 or later is required; select a supported interpreter.")'
+```
+
+If it reports an older version, install Python 3.11 or later, or select a
+supported interpreter already installed. For example, check `python3.12 --version`
+and replace `python3` with `python3.12` in the commands below if that interpreter
+is available. You can also use the absolute path to your supported Python
+executable. Use that same interpreter for the route and its returned commands.
+
+The [full release check](../REPRODUCIBILITY.md#3-run-the-release-surface-checks)
+separately uses Python 3.12 and Elan to prepare dependencies and its live Lean
+pilot; navigation needs no Lean installation.
+
+Then clone and route the task:
 
 ```sh
 git clone --filter=blob:none --branch main https://github.com/wcook04/plectis-erdos.git
@@ -29,7 +46,7 @@ python3 scripts/agent_entry.py --checkout --check-upstream
 python3 scripts/agent_entry.py --entry "Can you explain when the weighted criterion applies and help me change a hypothesis?"
 ```
 
-The version check reads public `main` without fetching or changing your files.
+The checkout comparison reads public `main` without fetching or changing your files.
 It distinguishes an equal commit, a different commit, and an unavailable
 comparison, and reports local modifications separately. An offline task still
 works; omit `--check-upstream`. Matching `main` is an observation at check time,
@@ -97,7 +114,7 @@ for offline reading. Choose one hint, a second hint, or the full worked answer.
 For an agent started elsewhere, see the [portable companion](PORTABLE_COMPANION.md)
 for the directory skill package, supported installation routes and observed client limits.
 
-With a clone, use Git and Python 3; Lean is needed only for proof compilation.
+With a clone, use Git and Python 3.11 or later; Lean is needed only for proof compilation.
 After setup, route the actual task:
 
 ```sh
