@@ -1,0 +1,349 @@
+% SPDX-FileCopyrightText: 2026 Will Cook
+% SPDX-License-Identifier: Apache-2.0
+\documentclass[11pt]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue!50!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\pin}{436f55ebdafa67e4af0fff79f621c13f2ded12bf}
+\newcommand{\codeurl}{https://github.com/wcook04/plectis-erdos/tree/3cc8df2faad681b26f6694772167d13ef26dac49/research/experiments/erdos257}
+
+\title{Remarks on Hong's carry calculus for Erd\H{o}s Problem 257}
+\author{Will Cook}
+\date{10 October 2026}
+
+\begin{document}
+
+\begin{abstract}
+For every integer $b\ge2$ and every infinite set $A$ of positive integers
+with $\sum_{a\in A}1/a<\infty$, the sum $\sum_{a\in A}(b^a-1)^{-1}$ is
+irrational. Erd\H{o}s stated this and printed a proof of the pairwise coprime
+case; a complete proof, formalised in Lean, is in the Plectis record for
+Erd\H{o}s Problem 257. It settles a conditional remark in Hong's preprint on
+the target $1/2$: every support with a rational sum has divergent reciprocal
+sum, and every dilation-closed support has an irrational sum at every
+integer base. We add three remarks on that preprint. The fair-digit measure
+used there is normalised Lebesgue measure on the achievement set, so its
+almost-everywhere decoding theorem holds for Lebesgue-almost every target.
+No depth $k\ge7$ is uniformly cap-certified, so the hypothesis of its prime-pair
+proposition is never met; in particular the full series has no
+support-independent reset positions beyond $7$. Finally, a program written
+independently from the preprint's description reproduces exactly every
+statistic reported for its carry process to depth $10^8$, and the pinning
+lengths of its Table~2 for $2\le r\le 24$.
+\end{abstract}
+
+\maketitle
+
+\section{Setting}
+
+Let $w_n=(2^n-1)^{-1}$ for $n\ge1$ and $X_A=\sum_{n\in A}w_n$ for
+$A\subseteq\N=\{1,2,3,\dots\}$, and write $C_2=\{X_A:A\subseteq\N\}$.
+Erd\H{o}s Problem~257 asks whether $X_A$ is irrational for every infinite $A$.
+Hong~\cite{hong} studies the target $1/2$. A digit sequence
+$\varepsilon_n\in\{0,1\}$ with $\varepsilon_1=0$ has the divisor channel
+\[
+ S_m=\sum_{j\ge2,\ j\mid m}\varepsilon_{m/j}\qquad(m\ge2),
+\]
+which counts the elements of $A=\{n:\varepsilon_n=1\}$ that divide $m$ and are
+smaller than $m$. By \cite[Lemma~2.6 and Proposition~7.1]{hong}, $X_A=1/2$
+exactly when there are integers $c_m\ge0$ with $c_2=0$,
+$c_m2^{-m}\to0$ and
+\begin{equation}\label{eq:carry}
+ \varepsilon_m+S_m+c_{m+1}=1+2c_m\qquad(m\ge2).
+\end{equation}
+Because $1\notin A$, every $q\ge2$ satisfies $0\le S_q\le d(q)-2$, where $d$ is
+the divisor function. The $C_2$ process of \cite[\S6]{hong} computes the
+greedy expansion $A_*$ of $1/2$ one depth at a time. At depth $k$ it reads
+$S_{k+1},S_{k+2},\dots$, which depend only on digits below $k$, until a window
+$[k+1,k+l]$ is \emph{pinned}: the carry $c_{k+1}$ takes the same value for
+every value of the later carry $c_{k+l+1}$ between $0$ and a valid upper bound.
+It then sets
+$\varepsilon_k=1-\bigl((S_k+c_{k+1})\bmod 2\bigr)$. The process \emph{stalls} at
+$k$ if no window inside $[k+1,2k-1]$ is pinned. If it never stalls, then
+$X_{A_*}=1/2$ \cite[Theorem~6.1]{hong}; Hong runs it to depth $10^8$ without a
+stall.
+
+\section{Supports with rational sums}
+
+\begin{theorem}\label{thm:recip}
+Let $b\ge2$ be an integer and let $A\subseteq\N$ be infinite with
+$\sum_{a\in A}1/a<\infty$. Then $\sum_{a\in A}(b^a-1)^{-1}$ is irrational.
+\end{theorem}
+
+Erd\H{o}s proved the case of pairwise coprime $A$ and stated this extension
+without proof \cite[p.~222]{erdos1968}. The proof in
+\cite[Theorem~A.1]{cooknote} uses the displacements
+\[
+ \Delta_{b,A}(N)=\sum_{a\in A}\frac{b^{N\bmod a}-1}{b^a-1}
+ =(b^N-1)X_A(b)-J_{b,A}(N),\qquad J_{b,A}(N)\in\Z,
+\]
+which are positive because $A$ is infinite. A rational value $p/q$ would give
+$\Delta_{b,A}(N)\ge1/q$ for every $N$. Averaging $N$ over the multiples of
+$\operatorname{lcm}(1,\dots,t)$ and then letting $t\to\infty$ drives the
+average displacement to $0$; reciprocal summability supplies the dominating
+sums for both limits. The Lean declaration is
+\texttt{irrational\_erdosSupportSeries\_of\_summable\_reciprocal}
+\cite{leanrecip}, and it has passed a Comparator replay against a statement
+written from Mathlib alone.
+
+The introduction of \cite{hong} observes that if Erd\H{o}s's unprinted
+statement holds, a rational value requires $\sum_{a\in A}1/a=\infty$.
+Theorem~\ref{thm:recip} supplies that statement. A weighted version gives
+more. For a finite nonempty set $P$ of primes, write
+$h(a)=\prod_{p\in P}p^{v_p(a)}$. If
+$\sum_{a\in A}h(a)/\bigl(a(2^{h(a)}-1)\bigr)<\infty$ for an infinite $A$, then
+$X_A$ is irrational \cite[Theorem~1.2]{cooknote}, also with a Lean proof
+\cite{leanweighted}. A support with a rational sum therefore satisfies
+\[
+ \sum_{a\in A}\frac{h(a)}{a\,(2^{h(a)}-1)}=\infty
+ \qquad\text{for every finite nonempty set $P$ of primes.}
+\]
+Since $h(a)=1$ when $a$ is coprime to every prime in $P$, this condition holds
+whenever the elements of $A$ coprime to $\prod_{p\in P}p$ have divergent
+reciprocal sum. The candidate $A_*$, whose computed density is close to $1/2$
+at every scale examined, is consistent with all of these conditions.
+
+\begin{proposition}\label{prop:dilation}
+Let $d\ge2$ and let $A\subseteq\{2,3,\dots\}$ be nonempty with $dA\subseteq A$
+and $A\setminus dA$ finite. Then $\sum_{a\in A}1/a<\infty$, so $X_A(b)$ is
+irrational for every integer $b\ge2$.
+\end{proposition}
+
+\begin{proof}
+Put $B=A\setminus dA$. An element $a\in A\setminus B$ equals $da'$ with
+$a'\in A$ and $a'<a$, so by descent every $a\in A$ equals $d^jb$ for some
+$b\in B$ and $j\ge0$. Hence
+$\sum_{a\in A}1/a\le\frac{d}{d-1}\sum_{b\in B}1/b<\infty$. The set $A$ is
+infinite because $dA\subseteq A$, and Theorem~\ref{thm:recip} applies.
+\end{proof}
+
+For these supports Hong proves that $X_A(2)$ is transcendental
+\cite[Proposition~9.2]{hong}, a stronger conclusion at base $2$.
+Proposition~\ref{prop:dilation} adds irrationality at every other integer base.
+
+\section{The fair-digit measure}
+
+Let $\nu$ be the law of $\sum_{n\ge2}\varepsilon_nw_n$ when
+$\varepsilon_2,\varepsilon_3,\dots$ are independent fair digits, as in
+\cite[\S8]{hong}. Let $E=\sum_{n\ge1}w_n$ and let $\lambda$ be Lebesgue measure.
+
+\begin{proposition}\label{prop:fair}
+$\nu=2\lambda$ restricted to $C_2\cap[0,E-1]$. In particular a subset of
+$C_2\cap[0,E-1]$ is $\nu$-null exactly when it is Lebesgue-null.
+\end{proposition}
+
+\begin{proof}
+For $n\ge1$ let $K_n=\bigl\{\sum_{m\ge n}\varepsilon_mw_m:\varepsilon_m\in\{0,1\}\bigr\}$.
+Since $w_n>\sum_{m>n}w_m$, the set $K_n$ is the disjoint union of $K_{n+1}$ and
+$w_n+K_{n+1}$, so $\lambda(K_n)=2\lambda(K_{n+1})$. As $\lambda(K_1)=1$
+\cite[\S2.1]{hong}, \cite[\S C.2]{cooknote}, this gives $\lambda(K_n)=2^{1-n}$.
+In particular $K_2=C_2\cap[0,E-1]$, because $K_1=K_2\cup(1+K_2)$ and $E-1<1$.
+Fixing $\varepsilon_2,\dots,\varepsilon_{n-1}$ confines the sum to a translate
+of $K_n$, of Lebesgue measure $2^{1-n}$; its $\nu$-probability is
+$2^{2-n}=2\cdot2^{1-n}$. Distinct choices give disjoint translates, and these
+translates generate the Borel sets of $K_2$, because
+$(\varepsilon_n)_{n\ge2}\mapsto\sum_{n\ge2}\varepsilon_nw_n$ is a homeomorphism
+from $\{0,1\}^{\{2,3,\dots\}}$ onto $K_2$. Hence $\nu=2\lambda$ on $K_2$.
+\end{proof}
+
+The Lean development of the record proves the same identity with
+$\varepsilon_1$ included: the fair-digit law of $\sum_{n\ge1}\varepsilon_nw_n$ is
+$\lambda$ restricted to $C_2$ (theorem
+\texttt{fairCoding\_pushforward\_eq\_volume\_restrict}, built on 8 September
+2026 with axioms \texttt{propext}, \texttt{Classical.choice} and
+\texttt{Quot.sound}). Proposition~\ref{prop:fair} is its restriction to
+$\varepsilon_1=0$.
+
+Consequently \cite[Theorem~8.5]{hong} holds for Lebesgue-almost every target
+in $C_2\cap(0,E-1)$, which settles the point left open after that theorem.
+Rational targets form a Lebesgue-null set and stay outside its scope.
+
+\section{Uniform cap certificates}
+
+Hong calls a depth $k$ \emph{uniformly cap-certified} if for some
+$e\in[k+1,2k-1]$ and some valid carry bound $C\ge2$ the window $[k+1,e]$ is
+pinned for every choice of values $0\le S_q\le d(q)-2$ \cite[\S9.4]{hong}. By
+\cite[Lemma~3.4]{hong} this happens exactly when the recursion
+\begin{equation}\label{eq:caprec}
+ g_{e+1}=C,\qquad g_i=\Bigl\lfloor\frac{d(i)-2+g_{i+1}}{2}\Bigr\rfloor\quad(i\le e)
+\end{equation}
+reaches $0$ at some $i\in[k+1,e]$. \cite[Proposition~9.4]{hong} shows that a
+uniformly cap-certified depth $k\ge7$ forces a prime $q\in(k,2k)$ with
+$(q+1)/2$ prime, and notes that such pairs are not known to exist in every
+interval $(k,2k)$. The hypothesis is never satisfied.
+
+\begin{proposition}\label{prop:nocert}
+Let $C\ge2$ and $e\ge8$ be integers and define $g$ by \eqref{eq:caprec}.
+Then $g_i\ge1$ for every integer $i$ with $8\le i\le e$. Consequently no depth
+$k\ge7$ is uniformly cap-certified.
+\end{proposition}
+
+\begin{proof}
+Suppose otherwise and let $i$ be the largest integer with $8\le i\le e$ and
+$g_i=0$. Then $g_j\ge1$ for $i<j\le e+1$, since $g_{e+1}=C\ge2$. Each step
+below uses $d(j)-2+g_{j+1}\le 2g_j+1$, which is \eqref{eq:caprec} read as an
+inequality.
+
+(i) From $g_i=0$ and $g_{i+1}\ge1$ we get $d(i)=2$ and $g_{i+1}=1$. So $i$ is a
+prime with $i\ge11$, and $i+1\le e$ because $g_{e+1}\ne1$.
+
+(ii) From $g_{i+1}=1$ and $g_{i+2}\ge1$ we get $d(i+1)\le4$. The even number
+$i+1\ge12$ is then $2q$ with $q$ an odd prime: a multiple $4m$ with $m\ge3$ has
+the five divisors $1,2,4,2m,4m$, and $2m$ with $m$ odd and composite has
+$d(2m)=2d(m)\ge6$. Hence $d(i+1)=4$, $g_{i+2}=1$ and $i+2\le e$.
+
+(iii) The primes $i$ and $q=(i+1)/2\ge7$ are prime to $3$, so $3\nmid i$ and
+$3\nmid i+1$, and therefore $3\mid i+2$. Write $i+2=3m$ with $m\ge5$ odd; its
+divisors include $1,3,m,3m$, so $d(i+2)\ge4$. From $g_{i+2}=1$ and
+$g_{i+3}\ge1$ we get $d(i+2)=4$, $g_{i+3}=1$ and $i+3\le e$.
+
+(iv) Finally $i+3=2(q+1)$ with $q$ odd, so $4\mid i+3$, and $i+3\ge16$. Its
+divisors include $1,2,4,(i+3)/2,i+3$, so $d(i+3)\ge5$. But $g_{i+3}=1$ and
+$g_{i+4}\ge1$ give $d(i+3)\le4$, a contradiction.
+\end{proof}
+
+The obstruction sits in the three integers after the prime $i$, which are
+divisible by $2$, $3$ and $4$. The caps $d(q)-2+(1-b_q)$ that \cite[\S7]{hong} uses for a target with
+binary digits $b_q$ are at least $d(q)-2$, and \eqref{eq:caprec} is monotone in
+the caps, so the conclusion holds for every target.
+
+\begin{corollary}\label{cor:noreset}
+For every integer $m\ge8$,
+\[
+ U(m)=\sum_{t\ge0}\bigl(d(m+t)-2\bigr)\,2^{-(t+1)}\ge1.
+\]
+\end{corollary}
+
+\begin{proof}
+Suppose $U(m)<1$ and run \eqref{eq:caprec} with $C=2$ from a right end
+$e\ge m$. Repeated use of $\lfloor(n+\lfloor x\rfloor)/2\rfloor=\lfloor(n+x)/2\rfloor$,
+for integers $n$ and reals $x$, gives
+\[
+ g_m=\Bigl\lfloor\sum_{t=0}^{e-m}\bigl(d(m+t)-2\bigr)2^{-(t+1)}+2^{-(e-m)}\Bigr\rfloor
+ \le\bigl\lfloor U(m)+2^{-(e-m)}\bigr\rfloor,
+\]
+which is $0$ once $2^{-(e-m)}<1-U(m)$. This contradicts
+Proposition~\ref{prop:nocert}.
+\end{proof}
+
+The carries of every representation of $1/2$ satisfy $c_m\le\lfloor U(m)\rfloor$,
+by \cite[Lemma~3.1]{hong} and $S_q\le d(q)-2$. A position with $U(m)<1$ would
+therefore force $c_m=0$ for every support. At each finite order $r$ such reset
+positions exist: $U_r(m)<0.61$ whenever $m\equiv1\pmod{L_r}$
+\cite[Lemma~4.1]{hong}, and they drive the reset propagation of
+\cite[Theorem~4.6]{hong}. Corollary~\ref{cor:noreset} shows that the full
+series has none beyond $7$. A direct computation of $U$ for $m\le10^6$ finds
+exactly the positions $2,3,4,5,7$, and a computation of \eqref{eq:caprec} with
+$C=2$ for $i\le10^7$ finds zeros only at the same five positions. So the
+pointwise caps force no carry to vanish at any depth beyond $7$, and a
+certificate for \cite[Conjecture~6.3]{hong} needs more than the pointwise caps,
+for instance the relations among the $S_q$ that come from a single support, as
+anticipated at the end of \cite[\S9.4]{hong}.
+
+\section{Independent reproduction}
+
+\subsection*{The process to depth $10^8$}
+We implemented the process of \cite[\S6]{hong} from its description, without
+the ancillary archive of \cite{hong}. The program computes the greedy prefix of
+length $64$ in exact rational arithmetic, uses the carry bound
+$\overline C(k)=\lfloor(d(k)-2+\overline C(k+1))/2\rfloor$ started from
+$3\cdot10^4$, takes at each depth the shortest pinned window $[k+1,k+l]$ for the
+bound $\overline C(k+l+1)$, and checks \eqref{eq:carry} at every depth. Its
+digits agree with the greedy expansion of $1/2$ computed in exact rational
+arithmetic through $n=1500$. Table~\ref{tab:repro} compares the run with
+\cite[\S6.1 and Table~3]{hong}.
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{@{}lll@{}}
+\toprule
+Quantity, for $N=10^8$ & Hong \cite{hong} & This note\\
+\midrule
+Depth reached without a stall & $10^8$ & $10^8$\\
+Density of $A_*$ on $(N/2,N]$ & $0.50005$ & $0.500045$\\
+Largest carry & $196$ & $196$\\
+Longest window, first depth & $31$, $43{,}177{,}919$ & $31$, $43{,}177{,}919$\\
+Longest run of consecutive elements & $27$ & $27$ (from $43{,}177{,}920$)\\
+Depths with window $\ge14,\,18,\,20,\,22$ & $195{,}868;\ 12{,}453;\ 3{,}140;\ 813$ & identical\\
+Depths with window $\ge24,\,26,\,28$ & $198;\ 37;\ 7$ & identical\\
+\bottomrule
+\end{tabular}
+\medskip
+\caption{The process for $1/2$ to depth $10^8$.}\label{tab:repro}
+\end{table}
+
+The run also gives $|A_*\cap[1,10^8]|=50{,}009{,}676$, a longest gap of $24$
+(the integers $83{,}764{,}427$ to $83{,}764{,}450$ lie outside $A_*$), and
+windows of length at least $30$ at exactly two depths. It took about two
+minutes on an Apple M4 machine shared with other jobs.
+
+An earlier program in the Plectis record, written independently of both
+\cite{hong} and the present code, computes the same support by doubling the
+depth in blocks with $256$-bit tail windows \cite{cookrecord}. Both programs
+give $|A_*\cap[1,13{,}548{,}057]|=6{,}782{,}259$ and the same largest carry,
+$123$, on that range.
+
+\subsection*{Pinning lengths}
+For the finite orders of \cite[Table~2]{hong} we computed $\ell_r$ directly
+from \cite[Lemma~3.4]{hong}: for every right end $e$ modulo $L_r$ the recursion
+with $g_{e+1}=C_r$ and caps $d_r$ runs leftwards to its first zero, and $\ell_r$
+is the longest window found. The caps come from a table of $d_{22}$ with
+period $L_{22}$ together with divisibility tests for $23\le j\le r$. The
+program reproduces $\ell_r$ for every $2\le r\le24$. For $r=23$ and $r=24$ the
+maximum $1023$ is attained at six right ends, the first being
+$871{,}374{,}004$, as reported in \cite[\S5.1]{hong}. These two rows, which
+\cite{hong} records as resting on a single complete scan, now rest on two.
+
+\section*{Code and provenance}
+The programs, their outputs and the commands used are at \url{\codeurl}.
+\emph{Authorship and AI use.} Will Cook directed this work. AI agents (Claude,
+Anthropic) wrote the programs, ran the computations and drafted the text; Cook
+did not independently verify every claim.
+
+{\small
+\begin{thebibliography}{9}
+
+\bibitem{cooknote}
+W.~Cook, \emph{Weighted support criteria for reciprocal Mersenne subseries},
+Plectis research note for Erd\H{o}s Problem~257,
+\url{https://github.com/wcook04/plectis-erdos/blob/a042843b67cefd74ce71a2fd9e995a88f7897172/paper/257/erdos-257-mersenne-support-subseries.pdf}.
+
+\bibitem{cookrecord}
+W.~Cook, \emph{Reciprocal Mersenne subseries}, Plectis research record for
+Erd\H{o}s Problem~257, and its computations,
+\url{\codeurl}.
+
+\bibitem{erdos1968}
+P.~Erd\H{o}s, On the irrationality of certain series, \emph{Math. Student}
+\textbf{36} (1968), 222--226.
+
+\bibitem{hong}
+C.~M. Hong, \emph{On the rationality of reciprocal Mersenne subsums: carry
+pinning, quasi-polynomial certificates, and exact computation}, Zenodo, 2026,
+\url{https://doi.org/10.5281/zenodo.23287959}.
+
+\bibitem{leanrecip}
+Lean declaration
+\texttt{Erdos249257.irrational\_erdosSupportSeries\_of\_summable\_reciprocal},
+\url{https://github.com/wcook04/plectis-erdos/blob/\pin/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean\#L395}.
+
+\bibitem{leanweighted}
+Lean declaration
+\texttt{ErdosProblems.Erdos257.PaperCompleteR8.divisibilityWeightedClaim},
+\url{https://github.com/wcook04/plectis-erdos/blob/\pin/lean/ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean\#L120}.
+
+\end{thebibliography}}
+
+\end{document}
