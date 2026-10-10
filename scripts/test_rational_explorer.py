@@ -93,6 +93,82 @@ console.log(JSON.stringify(cases.map(c => {
         with self.assertRaises(ValueError):
             self.checker.verify(forged)
 
+    def run_ui(self, cases):
+        # Execute both shipped scripts and the real form/download handlers.
+        # The DOM fixture only supplies elements; no probe result is synthesized.
+        driver = r"""
+const fs = require('node:fs');
+const vm = require('node:vm');
+const input = JSON.parse(fs.readFileSync(0, 'utf8'));
+class Element {
+  constructor() { this.value = ''; this.children = []; this.listeners = {}; }
+  append(...children) { this.children.push(...children); }
+  replaceChildren(...children) { this.children = children; }
+  setAttribute() {}
+  addEventListener(name, handler) { this.listeners[name] = handler; }
+  click() {}
+}
+const elements = Object.fromEntries([...input.html.matchAll(/\bid="([^"]+)"/g)]
+  .map(match => [match[1], new Element()]));
+elements.target.value = '189/388'; elements.host.value = 'all'; elements.depth.value = '17';
+elements.host.selectedOptions = [{textContent: 'All positive integers'}];
+const downloads = [];
+const context = vm.createContext({
+  document: {getElementById: id => elements[id], createElement: () => new Element(), querySelectorAll: () => []},
+  Blob, URL: {createObjectURL: blob => { downloads.push(blob); return 'blob:fixture'; }, revokeObjectURL() {}},
+  setTimeout() {},
+});
+for (const match of input.html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g))
+  vm.runInContext(match[1], context);
+(async () => {
+  const rows = [];
+  for (const [target, depth] of input.cases) {
+    elements.target.value = target; elements.depth.value = String(depth);
+    elements.controls.listeners.input();
+    const cleared = elements['result-json'].value === '' && elements.result.hidden;
+    elements.controls.listeners.submit({preventDefault() {}});
+    const displayed = elements['result-json'].value;
+    const before = downloads.length;
+    elements.download.listeners.click();
+    rows.push({cleared, hidden: elements.result.hidden, error: elements.error.textContent,
+      displayed, downloaded: downloads.length > before ? await downloads.at(-1).text() : null});
+  }
+  console.log(JSON.stringify(rows));
+})();
+"""
+        result = subprocess.run([self.node, "-e", driver],
+                                input=json.dumps({"html": self.html, "cases": cases}),
+                                env=singleflight.command_environment(), text=True,
+                                capture_output=True, check=True, timeout=30)
+        return json.loads(result.stdout)
+
+    def test_visible_json_matches_download_and_independent_checker(self):
+        cases = [("189/388", 16), ("189/388", 17), ("1/3", 17), ("1/2", 64)]
+        for (target, depth), result in zip(cases, self.run_ui(cases)):
+            with self.subTest(target=target, depth=depth):
+                self.assertTrue(result["cleared"])
+                self.assertFalse(result["hidden"])
+                self.assertEqual(result["error"], "")
+                self.assertEqual(result["displayed"], result["downloaded"])
+                payload = json.loads(result["displayed"])
+                self.assertEqual(payload["schema"], "plectis-single-target-probe/1")
+                row = payload["rows"][0]
+                self.assertEqual(row, self.probe.single_target(Fraction(target), "all", depth, 160))
+                if row["outcome"] == "not_excluded":
+                    with self.assertRaisesRegex(ValueError, "finite survival"):
+                        self.checker.verify(row)
+                else:
+                    self.assertTrue(self.checker.verify(row).startswith("verified_"))
+
+    def test_edit_or_invalid_input_cannot_leave_exportable_stale_json(self):
+        valid, invalid = self.run_ui([("1/3", 17), ("1/0", 17)])
+        self.assertIsNotNone(valid["downloaded"])
+        self.assertTrue(invalid["cleared"])
+        self.assertTrue(invalid["hidden"])
+        self.assertTrue(invalid["error"])
+        self.assertEqual(invalid["displayed"], "")
+        self.assertIsNone(invalid["downloaded"])
+
     def test_tampered_browser_export_is_rejected(self):
         row = self.run_cases([["189/388", "all", 17]])[0]["ok"]["row"]
         for key, value in (("target", "190/388"), ("host", "odd"),

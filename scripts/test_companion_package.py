@@ -57,6 +57,36 @@ class PackageTests(unittest.TestCase):
             self.assertEqual(target('codex-legacy'), Path(temp).resolve() / 'legacy/skills')
             self.assertEqual(target('claude'), Path(temp).resolve() / 'claude/skills')
 
+    def test_builder_missing_parent_is_actionable_and_creates_nothing(self):
+        with tempfile.TemporaryDirectory() as temp:
+            parent = Path(temp) / 'new directory'
+            output = parent / 'companion.zip'
+            cmd = [sys.executable, str(builder.ROOT / 'scripts/build_plectis_companion.py'),
+                   '--output', str(output)]
+            for flags in ([], ['--apply']):
+                result = subprocess.run(cmd + flags, capture_output=True, text=True)
+                self.assertEqual(result.returncode, 2)
+                self.assertIn('create it first or choose an existing output directory', result.stderr)
+                self.assertFalse(parent.exists())
+            # The stated recovery allows the same command to succeed.
+            parent.mkdir()
+            preview = subprocess.run(cmd, check=True, capture_output=True, text=True)
+            self.assertEqual(json.loads(preview.stdout)['status'], 'preview-only')
+            self.assertFalse(output.exists())
+            subprocess.run(cmd + ['--apply'], check=True, capture_output=True)
+            self.assertEqual(output.read_bytes(), builder.package()[0])
+
+    def test_builder_file_parent_has_the_same_actionable_refusal(self):
+        with tempfile.TemporaryDirectory() as temp:
+            parent = Path(temp) / 'keep.txt'
+            parent.write_text('existing user material')
+            cmd = [sys.executable, str(builder.ROOT / 'scripts/build_plectis_companion.py'),
+                   '--output', str(parent / 'companion.zip'), '--apply']
+            result = subprocess.run(cmd, capture_output=True, text=True)
+            self.assertEqual(result.returncode, 2)
+            self.assertIn('create it first or choose an existing output directory', result.stderr)
+            self.assertEqual(parent.read_text(), 'existing user material')
+
     def test_builder_preview_and_existing_refusal(self):
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp) / 'companion.zip'

@@ -16,7 +16,7 @@ Everything below uses this public checkout and public tools.
 | Rerun the #257 exact-rational example | [Try the late rejection](#reproduce-the-257-exact-rational-example) | Python 3.11 or later; no extra packages |
 | Try a fraction without cloning | [Single-file calculation](#try-a-calculation-without-cloning) | Python 3.11 or later; standard library only |
 | Rerun a #251 finite computation | [Reproduce the #251 computations](#reproduce-a-finite-computation) | Python 3.11 or later; the first run needs no extra packages |
-| Check a documentation edit | [Check a documentation change](#check-a-documentation-change) | Python; no Lean installation |
+| Check a documentation edit | [Check a documentation change](#check-a-documentation-change) | Python 3.11 or later; no Lean installation |
 | Compile a proof | [Set up Lean](#2-reproduce-the-pinned-lean-environment) | elan, the pinned dependencies, and space for several gigabytes of cache |
 | Import the library in another project | [Use it as a dependency](#use-the-library-in-another-lean-project) | The same Lean toolchain and the library's dependencies |
 | Reproduce all public checks | [Release checks](#3-run-the-release-surface-checks) | Lean, the pinned Python validation tools, and Node.js for browser-arithmetic tests |
@@ -37,6 +37,8 @@ The first target survives the finite search at 16 and is excluded by an exact
 gap at 17; the second is an exact finite sum. A surviving search does not prove
 infinite membership or solve Erdős #257. You can download a result and check
 it separately with the Python checker linked on the page.
+If the browser cannot save the download, open **View result JSON** and copy
+the same data into a file named `plectis-result.json`.
 
 To try the same calculation in a terminal, use the
 [standalone Python example](#try-a-calculation-without-cloning).
@@ -245,8 +247,10 @@ selectors.
 
 ### Check a documentation change
 
-For a small documentation contribution, check the reader routes and their
-links before opening a pull request:
+For a small documentation contribution, use Python 3.11 or later to check the
+reader routes and their links before opening a pull request. If `python3` is
+older, use the [existing interpreter check](agents/README.md#start-with-current-public-work)
+to select an installed supported interpreter, and use it for both commands:
 
 ```sh
 python3 scripts/test_human_first_contact.py
