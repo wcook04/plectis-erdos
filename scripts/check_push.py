@@ -102,7 +102,8 @@ def admission_identity(commit: str) -> dict:
 def admission_path(commit: str) -> Path:
     result = snapshot.run(["git", "rev-parse", "--path-format=absolute", "--git-common-dir"], cwd=snapshot.ROOT)
     if result.returncode:
-        raise ValueError("cannot find the repository-local admission store")
+        detail = result.stderr.strip() or f"git rev-parse exited {result.returncode}"
+        raise ValueError(f"cannot find the repository-local admission store: {detail}")
     directory = Path(result.stdout.strip()) / "plectis-publication-admission-v1"
     directory.mkdir(mode=0o700, exist_ok=True)
     if directory.is_symlink() or not directory.is_dir() or directory.stat().st_uid != os.getuid():
