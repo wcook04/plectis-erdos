@@ -23,6 +23,45 @@ import lean_build_share as build_share  # noqa: E402
 
 
 class ValidationSingleflightTests(unittest.TestCase):
+    def test_node_binding_survives_path_isolation_and_cwd_changes(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            node = root / "bin" / "node"
+            node.parent.mkdir()
+            node.write_text('#!/bin/sh\nprintf "selected-node\\n"\n')
+            node.chmod(0o755)
+            destination = root / "consumer"
+            destination.mkdir()
+            previous = Path.cwd()
+            try:
+                os.chdir(root)
+                with mock.patch.dict(os.environ, {
+                    "PATH": "bin", singleflight.NODE_EXECUTABLE_ENV: "",
+                    "NODE_OPTIONS": "--require=/missing/preload.js",
+                    "NODE_PATH": "/missing/modules",
+                }):
+                    environment = singleflight.command_environment()
+                os.chdir(destination)
+                with mock.patch.dict(os.environ, environment, clear=True):
+                    nested = singleflight.command_environment()
+                    selected = singleflight.node_executable()
+                result = subprocess.run(
+                    [selected], cwd=destination, env=nested,
+                    capture_output=True, text=True, timeout=5,
+                )
+            finally:
+                os.chdir(previous)
+            self.assertEqual(selected, str(node))
+            self.assertEqual(nested["PATH"], os.defpath)
+            self.assertNotIn("NODE_OPTIONS", nested)
+            self.assertNotIn("NODE_PATH", nested)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout, "selected-node\n")
+
+    def test_missing_node_is_not_replaced_by_an_unrelated_runtime(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            self.assertIsNone(singleflight.node_executable({"PATH": directory}))
+
     def test_elan_home_defaults_without_an_override(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             home = Path(directory)

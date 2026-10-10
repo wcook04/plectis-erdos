@@ -31,6 +31,9 @@ COMMANDS = (
     ('-O', 'scripts/test_paper_claim_evidence.py'),
     ('scripts/test_short_paper_writer.py',),
     ('-O', 'scripts/test_short_paper_writer.py'),
+    # Replay the actual offline browser core against Python and the checker.
+    ('scripts/test_rational_explorer.py',),
+    ('-O', 'scripts/test_rational_explorer.py'),
     ('scripts/test_reasoning_record_audit.py',),
     ('-O', 'scripts/test_reasoning_record_audit.py'),
     ('research/experiments/round8_finite/test_round8_finite.py',),

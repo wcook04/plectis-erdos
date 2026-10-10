@@ -1718,12 +1718,14 @@ import Pkg.TooLate
         ), mock.patch.object(
             fast.singleflight, "run_bounded", return_value=completed
         ) as run:
+            expected_environment = singleflight.command_environment()
             self.assertTrue(fast.lake_targets_up_to_date(["Pkg.Leaf"]))
 
         command = run.call_args.args[0]
         self.assertEqual(command[0], LAKE)
         self.assertNotEqual(command[0], "lake")
-        self.assertEqual(run.call_args.kwargs["env"], singleflight.command_environment())
+        self.assertEqual(run.call_args.kwargs["env"], expected_environment)
+        self.assertEqual(expected_environment["PATH"], os.defpath)
         self.assertEqual(
             run.call_args.kwargs["timeout"], fast.LAKE_COMMAND_TIMEOUT_SECONDS
         )

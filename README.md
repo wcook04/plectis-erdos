@@ -9,7 +9,7 @@ Eight Erdős problems, with papers to read, proofs to inspect and research to co
 
 **[Explore the website](https://wcook04.github.io/plectis/maths/)** ·
 **[Open the maths map](https://wcook04.github.io/plectis/maths/universe.html)** ·
-**[Read the papers](paper/README.md)** · **[Try a calculation](docs/REPRODUCIBILITY.md#try-a-calculation-without-cloning)** · **[Watch the videos](#videos)**
+**[Read the papers](paper/README.md)** · **[Try a calculation](docs/REPRODUCIBILITY.md#try-a-calculation-in-a-browser)** · **[Watch the videos](#videos)**
 
 [![Eight Erdős problem programmes: the interactive maths map connects papers, results and their formal evidence](.github/maths-map.png)](https://wcook04.github.io/plectis/maths/universe.html)
 
@@ -67,8 +67,8 @@ its assumptions, earlier work and remaining questions.
 - **Read and understand.** [A reader's way in](docs/READING_GUIDE.md) introduces
   the questions. The [reading edition](docs/reading-edition/README.md) gathers
   the paper openings in one file, suitable for reading or sharing with an AI.
-- **Inspect or reproduce.** [Try a fraction](docs/REPRODUCIBILITY.md#try-a-calculation-without-cloning)
-  with one Python file, then change the input. No clone or Lean is needed.
+- **Inspect or reproduce.** [Try a fraction](docs/REPRODUCIBILITY.md#try-a-calculation-in-a-browser)
+  in a browser or with Python. No clone or Lean is needed.
   This finite experiment does not reproduce the weighted theorem above.
   [Follow one claim](docs/REPRODUCIBILITY.md#try-one-claim-without-lean) to inspect its evidence.
 - **Work with an agent.** The [agent quickstart](docs/agents/README.md#start-with-current-public-work)
