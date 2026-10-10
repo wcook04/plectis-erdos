@@ -55,13 +55,19 @@ def package(source: Path = SKILL) -> tuple[bytes, dict]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output', required=True, type=Path)
+    parser.add_argument('--output', required=True, type=Path,
+                        help='new archive path inside an existing directory')
     parser.add_argument('--apply', action='store_true')
     args = parser.parse_args()
     try:
         data, manifest = package()
         if args.output.exists() or args.output.is_symlink():
             raise ValueError('output already exists; choose a new archive path')
+        if not args.output.parent.is_dir():
+            raise ValueError(
+                f'output parent is not an existing directory: {args.output.parent}; '
+                'create it first or choose an existing output directory'
+            )
         if args.apply:
             with args.output.open('xb') as stream:
                 stream.write(data)

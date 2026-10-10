@@ -75,7 +75,8 @@ Download [`explorer.html`](explorer.html) using GitHub's **Download raw file**
 button, then open the saved file in a modern browser. It is a single offline
 page with no dependencies or installation. Change the target, allowed
 exponents or depth, inspect each forced choice, and download its exact result
-as JSON. Start with `189/388` at depths 16 and 17 to see finite survival become
+as JSON. **View result JSON** exposes the same data for inspection and copying
+when a browser cannot save a download. Start with `189/388` at depths 16 and 17 to see finite survival become
 a strict exclusion.
 
 The page uses integer fractions with JavaScript BigInt, through depth 64 with

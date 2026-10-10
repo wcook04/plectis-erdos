@@ -64,7 +64,7 @@ belongs in the agent index, not in an already full technical reading bundle.
 For a public demonstration, replay the smallest advertised action without the
 authoring environment. If an existing standalone example avoids a large clone,
 make it findable at first contact with a raw-file link, prerequisites, expected
-output and the exact boundary of the result. Keep recorded editions pinned;
+output and the exact boundary of the result. When a browser cannot complete a result download, expose the same serialized evidence for inspection and copying. Exercise the shipped form and export handlers against the independent checker, and clear stale export data after an input edit or failed calculation. A client download timeout alone does not establish a page defect. Keep recorded editions pinned;
 do not link an HTML source page as a downloadable script. State availability
 beside films of private interfaces so viewers know what they can actually use.
 

@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `2581416ec3aaab6f`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
+Edition fingerprint `117889e6fddf9c43`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/plectis/maths/>.
 
 
 ## How to use this edition
@@ -3662,7 +3662,8 @@ Download [`explorer.html`](https://github.com/wcook04/plectis-erdos/blob/main/re
 button, then open the saved file in a modern browser. It is a single offline
 page with no dependencies or installation. Change the target, allowed
 exponents or depth, inspect each forced choice, and download its exact result
-as JSON. Start with `189/388` at depths 16 and 17 to see finite survival become
+as JSON. **View result JSON** exposes the same data for inspection and copying
+when a browser cannot save a download. Start with `189/388` at depths 16 and 17 to see finite survival become
 a strict exclusion.
 
 The page uses integer fractions with JavaScript BigInt, through depth 64 with

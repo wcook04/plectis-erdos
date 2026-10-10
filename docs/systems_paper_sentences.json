@@ -511,10 +511,11 @@
       "id": "contribution-guide",
       "path": "CONTRIBUTING.md",
       "start_line": 1,
-      "end_line": 255,
+      "end_line": 259,
       "kind": "source",
-      "sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f",
-      "excerpt_sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f"
+      "sha256": "024cd8b3b1087b71ec9bcb80e3eeaed23824f33edca2540a1b4a8055a96dce6e",
+      "excerpt_sha256": "024cd8b3b1087b71ec9bcb80e3eeaed23824f33edca2540a1b4a8055a96dce6e",
+      "custody": "Current native contribution guide inspected: fork URL, named branch and push/main destination clarified; consuming sentence and figure warrants retain their existing classes and outside-adoption boundaries."
     },
     {
       "id": "software-citation",
@@ -717,10 +718,10 @@
       "kind": "source",
       "path": "CONTRIBUTING.md",
       "start_line": 1,
-      "end_line": 89,
-      "sha256": "d364b1ae2501d7a55ac113ae9f4b6ff9ae64928a5b7fddf89e410d5518307b0f",
-      "excerpt_sha256": "9dddfc8f6ceefc14e83ed1967c38a10de331ac98552bfb9efa825ec06e2009c4",
-      "custody": "Current native public file inspected as source; no fresh execution."
+      "end_line": 93,
+      "sha256": "024cd8b3b1087b71ec9bcb80e3eeaed23824f33edca2540a1b4a8055a96dce6e",
+      "excerpt_sha256": "14a86a6825c8f192ec528c5960276782a076b165b150da291e0879656b53d68c",
+      "custody": "Current native contribution guide inspected: fork URL, named branch and push/main destination clarified; consuming sentence and figure warrants retain their existing classes and outside-adoption boundaries."
     },
     {
       "id": "r8-paper-resolve",

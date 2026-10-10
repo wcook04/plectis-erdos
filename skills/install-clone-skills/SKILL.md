@@ -76,7 +76,9 @@ python3 scripts/install_agent_skills.py --target-dir /absolute/path/to/skills --
 
 The installer refuses to replace different same-name material. Inspect the
 destination first; use `--force --apply` only when the user explicitly wants
-that replacement. Copy mode can be removed by deleting the installed skill
+that replacement. Choose a destination outside the clone's source skill
+directories; the installer rejects overlapping paths before changing any
+selection, even with `--force`. Copy mode can be removed by deleting the installed skill
 directories. Symlink mode can be removed by deleting the links. Neither action
 changes this repository.
 
