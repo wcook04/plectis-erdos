@@ -61,6 +61,13 @@ belongs in the agent index, not in an already full technical reading bundle.
 
 ## Design the human reading surfaces
 
+For a public demonstration, replay the smallest advertised action without the
+authoring environment. If an existing standalone example avoids a large clone,
+make it findable at first contact with a raw-file link, prerequisites, expected
+output and the exact boundary of the result. Keep recorded editions pinned;
+do not link an HTML source page as a downloadable script. State availability
+beside films of private interfaces so viewers know what they can actually use.
+
 For a README or folder index, inspect the rendered page before editing. Keep
 one clear opening, a useful first argument and a consistent heading hierarchy.
 Use real project imagery with descriptive alt text; retain dates on captured

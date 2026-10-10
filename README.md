@@ -9,7 +9,7 @@ Eight Erdős problems, with papers to read, proofs to inspect and research to co
 
 **[Explore the website](https://wcook04.github.io/plectis/maths/)** ·
 **[Open the maths map](https://wcook04.github.io/plectis/maths/universe.html)** ·
-**[Read the papers](paper/README.md)** · **[Watch the videos](#videos)**
+**[Read the papers](paper/README.md)** · **[Try a calculation](docs/REPRODUCIBILITY.md#try-a-calculation-without-cloning)** · **[Watch the videos](#videos)**
 
 [![Eight Erdős problem programmes: the interactive maths map connects papers, results and their formal evidence](.github/maths-map.png)](https://wcook04.github.io/plectis/maths/universe.html)
 
@@ -67,9 +67,10 @@ its assumptions, earlier work and remaining questions.
 - **Read and understand.** [A reader's way in](docs/READING_GUIDE.md) introduces
   the questions. The [reading edition](docs/reading-edition/README.md) gathers
   the paper openings in one file, suitable for reading or sharing with an AI.
-- **Inspect or reproduce.** [Follow one claim](docs/REPRODUCIBILITY.md#try-one-claim-without-lean)
-  with Git and Python, or [rerun an exact-rational experiment](docs/REPRODUCIBILITY.md#reproduce-the-257-exact-rational-example).
-  That finite experiment does not reproduce the weighted theorem above.
+- **Inspect or reproduce.** [Try a fraction](docs/REPRODUCIBILITY.md#try-a-calculation-without-cloning)
+  with one Python file, then change the input. No clone or Lean is needed.
+  This finite experiment does not reproduce the weighted theorem above.
+  [Follow one claim](docs/REPRODUCIBILITY.md#try-one-claim-without-lean) to inspect its evidence.
 - **Work with an agent.** The [agent quickstart](docs/agents/README.md#start-with-current-public-work)
   gives clone commands and a copyable prompt. Ask it to explain an argument,
   explore an open question or improve a tool. The repository includes its
@@ -84,6 +85,9 @@ its assumptions, earlier work and remaining questions.
 - [CodeMap demonstration](https://youtu.be/8yk8rmhk02U)
 - [Agent Trace demonstration](https://youtu.be/SGeVUNqjfsk)
 - [Combined film](https://youtu.be/bkHJvRVWtC0)
+
+CodeMap and Agent Trace demonstrate private interfaces in the research
+environment. This repository publishes the mathematical research and its tools.
 
 <a id="about-the-project"></a>
 
@@ -129,9 +133,8 @@ identifies ways to continue the work.
 **[A Repository-Based System for Research and Publication](paper/systems/claim-faithful-publication-systems-paper.pdf)**<br>
 The system paper explains how research, evidence and publication fit together.
 
-[Browse the website catalogue](https://wcook04.github.io/plectis/docs/papers.html)
-for browser reading, or the [repository paper index](paper/README.md) for sources
-and earlier editions.
+[Website catalogue](https://wcook04.github.io/plectis/docs/papers.html) for browser reading;
+[repository paper index](paper/README.md) for sources and earlier editions.
 
 <a id="what-the-checks-establish"></a>
 
@@ -149,16 +152,15 @@ lists the selected statements. The [verification dossier](docs/EXTERNAL_VERIFICA
 records selected statements across all eight problems and their replay requirements;
 it does not cover every argument in the papers.
 
-Researchers still judge whether the formal statement captures the intended
-mathematics, whether a result is new, and whether it is useful. A successful
-build or platform submission does not establish those judgements.
+Researchers judge correspondence with the intended mathematics, novelty and
+usefulness. A build or platform submission does not establish those judgements.
 [Methodology](docs/METHODOLOGY.md) explains the review required to change a claim.
 
 ## Contribute
 
 An idea, correction, reference, counterexample, failed approach or clearer
-explanation can help. One observation is enough; you need not solve a problem or write
-Lean. I can help formalise an argument while preserving its attribution.
+explanation can help. You need not solve a problem or write Lean.
+I can help formalise an argument while preserving attribution.
 
 - **Mathematics or exposition:** [work on a paper](docs/CONTRIBUTE_BY_PAPER.md)
   or [develop a method across problems](paper/synthesis/README.md).
@@ -170,16 +172,16 @@ Lean. I can help formalise an argument while preserving its attribution.
 - **An investigation with your own agent:** the [frontier relay](docs/FRONTIER_RELAY.md)
   explains how to return the argument, evidence, limits and next question.
 
-[CONTRIBUTING](CONTRIBUTING.md) explains what to send,
-including work without a clone. Accepted contributions receive a public record
-of their evidence and credit under the [credit policy](docs/research-commons/CREDIT_POLICY.md).
-If you solve a problem, the credit for your solution is yours. If this repo
-or an intermediate result helped, please cite the relevant work and say how.
+[CONTRIBUTING](CONTRIBUTING.md) explains returns without a clone.
+Accepted contributions receive a public evidence and credit record under the
+[credit policy](docs/research-commons/CREDIT_POLICY.md).
+If you solve a problem, the credit for your solution is yours.
+Please cite any result here that helped and say how.
 
 ## Read or verify locally
 
-[REPRODUCIBILITY](docs/REPRODUCIBILITY.md) gives installation instructions,
-commands and build requirements. Start by [following one claim without Lean](docs/REPRODUCIBILITY.md#try-one-claim-without-lean).
+[REPRODUCIBILITY](docs/REPRODUCIBILITY.md) gives installation and build instructions.
+[Follow one claim without Lean](docs/REPRODUCIBILITY.md#try-one-claim-without-lean).
 Instructions for coding agents are in [AGENTS.md](AGENTS.md) and the
 [agent workbench](docs/agents/AGENT_WORKBENCH.md).
 
