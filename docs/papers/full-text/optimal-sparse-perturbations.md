@@ -1278,19 +1278,19 @@ A. Rahm, N. Solomon, T. Trauthwein and B. Weiss, [*The distribution of ratio
 
 S. Chow, P. Varjú and H. Yu, [*Counting rationals and diophantine approximation in missing-digit Cantor sets*](https://arxiv.org/abs/2402.18395), arXiv:2402.18395.
 
-W. Cook, [*Two incomparable denominator exclusions for $`\sum_{n\ge2}(n!-1)^{-1}`$*](../../../paper/68/erdos-68-factorial-denominator-irrationality.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Two incomparable denominator exclusions for $`\sum_{n\ge2}(n!-1)^{-1}`$*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/68/erdos-68-factorial-denominator-irrationality.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Bounded increments and rational reciprocal sums*](../../../paper/243/erdos-243-reciprocal-tail-rigidity.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Bounded increments and rational reciprocal sums*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/243/erdos-243-reciprocal-tail-rigidity.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Bases and integral relations for the $`k`$-kernel of Euler’s totient*](../../../paper/249/erdos-249-binary-totient-series.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Bases and integral relations for the $`k`$-kernel of Euler’s totient*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/249/erdos-249-binary-totient-series.pdf), Erdős Problem Notes, 2026.
 
 W. Cook, [*Sparse congruence-preserving perturbations of dyadic series*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/251/erdos-251-prime-gap-dyadic-series.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Weighted support criteria for reciprocal Mersenne subseries*](../../../paper/257/erdos-257-mersenne-support-subseries.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Weighted support criteria for reciprocal Mersenne subseries*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/257/erdos-257-mersenne-support-subseries.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*No finite separable representation at three prime generators*](../../../paper/269/erdos-269-three-prime-running-lcm.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*No finite separable representation at three prime generators*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/269/erdos-269-three-prime-running-lcm.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Zudilin’s forms at rational bases and the exact normalised Hankel order*](../../../paper/1049/erdos-1049-rational-base-lambert.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Zudilin’s forms at rational bases and the exact normalised Hankel order*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/1049/erdos-1049-rational-base-lambert.pdf), Erdős Problem Notes, 2026.
 
 W. Cook, *Choices, contraction and rational membership*, exact computation with saved outputs in `research/experiments/choices_contraction/` of the repository, 2026.
 

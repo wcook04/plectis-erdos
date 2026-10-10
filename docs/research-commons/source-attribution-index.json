@@ -96258,7 +96258,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": "source-le-intersective-0910-1880",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{ricepintersective} A.~Rice, \\emph{S\\'ark\\\"ozy's theorem for $P$-intersective polynomials}, \\href{https://arxiv.org/abs/1111.6559}{arXiv:1111.6559}.",
@@ -96282,7 +96282,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": "source-rice-pintersective-1111-6559",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{mishraquadratic} B.~Mishra, \\emph{Polynomials consisting of quadratic factors with roots modulo any positive integer}, Amer. Math. Monthly \\textbf{129} (2022), 178--182, \\href{https://arxiv.org/abs/2102.08379}{arXiv:2102.08379}.",
@@ -96304,7 +96304,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": "source-mishra-quadratic-2102-08379",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{akiyamakaneko} S.~Akiyama and H.~Kaneko, \\emph{Multiplicative analogue of Markoff--Lagrange spectrum and Pisot numbers}, Adv.\\ Math.\\ 380 (2021), 107547, p.~3, reporting the theorem of A.~Dubickas, \\href{https://arxiv.org/abs/1911.06170v6}{arXiv:1911.06170v6}.",
@@ -96333,7 +96333,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{alloucheclarkesidorov} J.-P.~Allouche, M.~Clarke and N.~Sidorov, \\emph{Periodic unique beta-expansions: the Sharkovski\\u{\\i} ordering}, Ergodic Theory Dynam.\\ Systems 29 (2009), 1055--1074, \\href{https://doi.org/10.1017/S0143385708000746}{doi:10.1017/S0143385708000746}.",
@@ -96355,7 +96355,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{erdosgraham1980} P.~Erd\\H{o}s and R.~L. Graham, \\href{https://mathweb.ucsd.edu/~ronspubs/80_11_number_theory.pdf}{\\emph{Old and New Problems and Results in Combinatorial Number Theory}}, Monogr. Enseign. Math. 28, Geneva, 1980.",
@@ -96386,7 +96386,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": "source-10545f868b3e88",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{erdos1988} P.~Erd\\H{o}s, \\emph{On the irrationality of certain series: problems and results}, in A.~Baker (ed.), \\emph{New Advances in Transcendence Theory}, Cambridge UP, 1988, pp.~102--109, doi:\\href{https://doi.org/10.1017/CBO9780511897184.009}{10.1017/CBO9780511897184.009}.",
@@ -96408,7 +96408,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": "source-b378189f39ed98",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{erdos1968} P.~Erd\\H{o}s, \\href{https://users.renyi.hu/~p_erdos/1969-09.pdf}{\\emph{On the irrationality of certain series}}, Math.\\ Student 36 (1968), 222--226 (issued 1969).",
@@ -96430,7 +96430,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": "source-7dc956ce55b7a0",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{hornich1941} H.~Hornich, \\emph{\\\"Uber beliebige Teilsummen absolut konvergenter Reihen}, Monatshefte f\\\"ur Mathematik und Physik \\textbf{49} (1941), 316--320. \\href{https://doi.org/10.1007/BF01707309}{doi:10.1007/BF01707309}.",
@@ -96466,7 +96466,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": "source-691e9cc3c46273",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{nitecki2013} Z.~Nitecki, \\href{https://arxiv.org/abs/1106.3779v2}{\\emph{Subsum sets: intervals, Cantor sets, and Cantorvals}}, arXiv:1106.3779v2 (2013).",
@@ -96502,7 +96502,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{fridy1966} John A. Fridy, \\href{https://www.fq.math.ca/Scanned/4-3/fridy.pdf}{\\emph{Generalized bases for the real numbers}}. The Fibonacci Quarterly \\textbf{4} (1966), no.~3, 193--201.",
@@ -96545,7 +96545,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": "source-fb4194cadb150b",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{crmarickovac2025} T.~Crmari\\'{c} and V.~Kova\\v{c}, \\href{https://arxiv.org/abs/2504.18712v1} {\\emph{On the irrationality of certain super-polynomially decaying series}}, Colloq. Math. \\textbf{179} (2025), 55--68, doi:\\href{https://doi.org/10.4064/cm9628-5-2025}{10.4064/cm9628-5-2025}. Theorem locators follow arXiv:2504.18712v1.",
@@ -96585,7 +96585,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{kovactao2024} Vjekoslav Kova\\v{c} and Terence Tao, \\href{https://arxiv.org/abs/2406.17593v4}{\\emph{On several irrationality problems for Ahmes series}}. Acta Mathematica Hungarica \\textbf{175} (2025), 572--608, doi:\\href{https://doi.org/10.1007/s10474-025-01528-0}{10.1007/s10474-025-01528-0}; arXiv:\\href{https://arxiv.org/abs/2406.17593v4}{2406.17593v4}. Statement and section numbers refer to arXiv version 4.",
@@ -96661,7 +96661,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": "source-4f5fd0d7405e29",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{zudilin2004} W.~Zudilin, \\href{https://geodesic.mathdoc.fr/articles/10.4064/aa111-2-4/}{\\emph{Heine's basic transform and a permutation group for \\(q\\)-harmonic series}}, Acta Arith. \\textbf{111} (2004), no.~2, 153--164, doi:\\href{https://doi.org/10.4064/aa111-2-4}{10.4064/aa111-2-4}.",
@@ -96683,7 +96683,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": "source-120bebce1ffe8c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{taoteravainen2025} T.~Tao and J.~Ter\\\"av\\\"ainen, \\href{https://arxiv.org/abs/2512.01739v2}{\\emph{Quantitative correlations and some problems on prime factors of consecutive integers}}, arXiv:2512.01739v2 (submitted December 2025, revised April 2026).",
@@ -96705,7 +96705,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": "source-685765cbd1ebe2",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{fan2026comment} Steve Fan, \\emph{Comment on Erd\\H{o}s Problem \\#269, thread 269, post 7218} (2026), \\href{https://www.erdosproblems.com/forum/thread/269#post-7218}{source}. 26 June 2026.",
@@ -96727,7 +96727,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": "source-21cdeefea4c8ec",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{mahler1929} K.~Mahler, \\emph{Arithmetische Eigenschaften der L\\\"osungen einer Klasse von Funktionalgleichungen}, Math.\\ Ann.\\ \\textbf{101} (1929), 342--367.",
@@ -96741,7 +96741,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{adamczewskifaverjon2016} B.~Adamczewski and C.~Faverjon, \\href{https://arxiv.org/abs/1508.07158v2}{\\emph{M\\'ethode de Mahler : relations lin\\'eaires, transcendance et applications aux nombres automatiques}}, arXiv:1508.07158v2 (2016), Theorem~1.1, p.~3.",
@@ -96774,7 +96774,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{nishioka1996} Ku.~Nishioka, \\emph{Mahler Functions and Transcendence}, Lecture Notes in Math.\\ 1631, Springer, Berlin, 1996.",
@@ -96796,7 +96796,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{schmidt1972} W.~M. Schmidt, \\emph{Norm form equations}, Ann.\\ of Math.\\ (2) \\textbf{96} (1972), 526--551.",
@@ -96818,7 +96818,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{schlickewei1976} H.~P. Schlickewei, \\emph{Die $p$-adische Verallgemeinerung des Satzes von Thue--Siegel--Roth--Schmidt}, J.\\ Reine Angew.\\ Math.\\ \\textbf{288} (1976), 86--105.",
@@ -96840,7 +96840,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{bilu2008} Yu.~F. Bilu, \\emph{The many faces of the subspace theorem [after Adamczewski, Bugeaud, Corvaja, Zannier\\dots]}, S\\'eminaire Bourbaki, Vol.\\ 2006/2007, Exp.\\ No.~967, Ast\\'erisque \\textbf{317} (2008), 1--38; \\href{https://arxiv.org/abs/0907.2098}{arXiv:0907.2098}. Theorem~2.3 is the statement used here.",
@@ -96864,7 +96864,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{corvajazannier2002} P.~Corvaja and U.~Zannier, \\emph{Some new applications of the subspace theorem}, Compositio Math.\\ \\textbf{131} (2002), 319--340, doi:\\href{https://doi.org/10.1023/A:1015594913393}{\\nolinkurl{10.1023/A:1015594913393}}.",
@@ -96897,7 +96897,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": "source-corvaja-zannier-2002-subspace",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{loxtonvanderpoorten1977} J.~H. Loxton and A.~J. van der Poorten, \\emph{Arithmetic properties of certain functions in several variables III}, Bull.\\ Austral.\\ Math.\\ Soc.\\ \\textbf{16} (1977), 15--47, doi:\\href{https://doi.org/10.1017/S0004972700022978}{\\nolinkurl{10.1017/S0004972700022978}}.",
@@ -96921,7 +96921,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": "source-fcf73a15ff9c7c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{roth1955} K.~F. Roth, \\emph{Rational approximations to algebraic numbers}, Mathematika \\textbf{2} (1955), 1--20.",
@@ -96943,7 +96943,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{boesdarsterdos1981} D.~Boes, R.~Darst and P.~Erd\\H{o}s, \\href{https://www.tandfonline.com/doi/abs/10.1080/00029890.1981.11995266}{\\emph{Fat, symmetric, irrational Cantor sets}}, Amer.\\ Math.\\ Monthly \\textbf{88} (1981), 340--341.",
@@ -96972,7 +96972,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{rstw2019} A.~Rahm, N.~Solomon, T.~Trauthwein and B.~Weiss, \\href{https://arxiv.org/abs/1909.01198}{\\emph{The distribution of rational numbers on Cantor's middle thirds set}}, arXiv:1909.01198.",
@@ -97001,7 +97001,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{chowvarjuyu2024} S.~Chow, P.~Varj\\'u and H.~Yu, \\href{https://arxiv.org/abs/2402.18395}{\\emph{Counting rationals and diophantine approximation in missing-digit Cantor sets}}, arXiv:2402.18395.",
@@ -97030,10 +97030,10 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
-        "citation_text": "\\bibitem{plectis68} W.~Cook, \\href{erdos-68-factorial-denominator-irrationality.pdf}{\\emph{Two incomparable denominator exclusions for $\\sum_{n\\ge2}(n!-1)^{-1}$}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_text": "\\bibitem{plectis68} W.~Cook, \\href{\\repobase/paper/68/erdos-68-factorial-denominator-irrationality.pdf}{\\emph{Two incomparable denominator exclusions for $\\sum_{n\\ge2}(n!-1)^{-1}$}}, Erd\\H{o}s Problem Notes, 2026.",
         "citation_usages": [
           {
             "command": "cite",
@@ -97052,10 +97052,10 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
-        "citation_text": "\\bibitem{plectis243} W.~Cook, \\href{erdos-243-reciprocal-tail-rigidity.pdf}{\\emph{Bounded increments and rational reciprocal sums}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_text": "\\bibitem{plectis243} W.~Cook, \\href{\\repobase/paper/243/erdos-243-reciprocal-tail-rigidity.pdf}{\\emph{Bounded increments and rational reciprocal sums}}, Erd\\H{o}s Problem Notes, 2026.",
         "citation_usages": [
           {
             "command": "cite",
@@ -97074,10 +97074,10 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
-        "citation_text": "\\bibitem{plectis249} W.~Cook, \\href{erdos-249-binary-totient-series.pdf}{\\emph{Bases and integral relations for the $k$-kernel of Euler's totient}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_text": "\\bibitem{plectis249} W.~Cook, \\href{\\repobase/paper/249/erdos-249-binary-totient-series.pdf}{\\emph{Bases and integral relations for the $k$-kernel of Euler's totient}}, Erd\\H{o}s Problem Notes, 2026.",
         "citation_usages": [
           {
             "command": "cite",
@@ -97119,7 +97119,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{plectis251} W.~Cook, \\href{\\repobase/paper/251/erdos-251-prime-gap-dyadic-series.pdf}{\\emph{Sparse congruence-preserving perturbations of dyadic series}}, Erd\\H{o}s Problem Notes, 2026.",
@@ -97148,10 +97148,10 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
-        "citation_text": "\\bibitem{plectis257} W.~Cook, \\href{erdos-257-mersenne-support-subseries.pdf}{\\emph{Weighted support criteria for reciprocal Mersenne subseries}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_text": "\\bibitem{plectis257} W.~Cook, \\href{\\repobase/paper/257/erdos-257-mersenne-support-subseries.pdf}{\\emph{Weighted support criteria for reciprocal Mersenne subseries}}, Erd\\H{o}s Problem Notes, 2026.",
         "citation_usages": [
           {
             "command": "cite",
@@ -97229,10 +97229,10 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
-        "citation_text": "\\bibitem{plectis269} W.~Cook, \\href{erdos-269-three-prime-running-lcm.pdf}{\\emph{No finite separable representation at three prime generators}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_text": "\\bibitem{plectis269} W.~Cook, \\href{\\repobase/paper/269/erdos-269-three-prime-running-lcm.pdf}{\\emph{No finite separable representation at three prime generators}}, Erd\\H{o}s Problem Notes, 2026.",
         "citation_usages": [
           {
             "command": "cite",
@@ -97251,10 +97251,10 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
-        "citation_text": "\\bibitem{plectis1049} W.~Cook, \\href{erdos-1049-rational-base-lambert.pdf}{\\emph{Zudilin's forms at rational bases and the exact normalised Hankel order}}, Erd\\H{o}s Problem Notes, 2026.",
+        "citation_text": "\\bibitem{plectis1049} W.~Cook, \\href{\\repobase/paper/1049/erdos-1049-rational-base-lambert.pdf}{\\emph{Zudilin's forms at rational bases and the exact normalised Hankel order}}, Erd\\H{o}s Problem Notes, 2026.",
         "citation_usages": [
           {
             "command": "cite",
@@ -97298,7 +97298,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{plectisinvestigation} W.~Cook, \\emph{Choices, contraction and rational membership}, exact computation with saved outputs in \\texttt{research/experiments/choices\\_contraction/} of the repository, 2026.",
@@ -97334,7 +97334,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{erdos1948} P.~Erd\\H{o}s, \\emph{On arithmetical properties of Lambert series}, J.~Indian Math.\\ Soc.\\ 12 (1948), 63--66.",
@@ -97356,7 +97356,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": "source-892c567092d6f3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{vandoornkovac2025} Wouter van Doorn and Vjekoslav Kova\\v{c}, \\href{https://arxiv.org/abs/2509.24971v3}{\\emph{Lacunary sequences whose reciprocal sums represent all rational numbers in an interval}}. Acta Arithmetica \\textbf{223} (2026), 275--295, doi:\\href{https://doi.org/10.4064/aa251001-13-1}{10.4064/aa251001-13-1}; arXiv:\\href{https://arxiv.org/abs/2509.24971v3}{2509.24971v3}. Statement numbers refer to arXiv version 3.",
@@ -97385,7 +97385,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": "source-892c567092d6f3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{duverneytachiya} D.~Duverney and Y.~Tachiya, \\href{https://danielduverney.fr/documents/theorie-des-nombres/DuverneyTachiya190522.pdf} {\\emph{Refinement of the Chowla--Erd\\H{o}s method and linear independence of certain Lambert series}}, Forum Math.\\ 31 (2019), no.~6, 1557--1566, \\href{https://doi.org/10.1515/forum-2018-0299}{DOI}. Page numbers refer to the linked author preprint.",
@@ -97409,7 +97409,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": "source-317a740451ce03",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{adamczewskifaverjon2026} Boris Adamczewski and Colin Faverjon, \\emph{Mahler's method in several variables and finite automata}, Annals of Mathematics \\textbf{204}, no.~2 (2026), 455--533, \\href{https://doi.org/10.4007/annals.2026.204.2.1}{doi:\\nolinkurl{10.4007/annals.2026.204.2.1}}. Locators refer to the \\href{https://faverjon.perso.math.cnrs.fr/AdamczewskiFaverjon_MahlerFiniteAutomata.pdf}{68-page author manuscript}.",
@@ -97431,7 +97431,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": "source-eaeb7980382323",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{amv2015} D.~Airey, B.~Mance and J.~Vandehey, \\emph{Normality preserving operations for Cantor series expansions and associated fractals. II}, New York J. Math. \\textbf{21} (2015), 1311--1326. \\url{https://nyjm.albany.edu/j/2015/21-60v.pdf}.",
@@ -97455,7 +97455,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{waldschmidt2022} M.~Waldschmidt, \\emph{Integer-valued functions, Hurwitz functions, and related topics: a survey}, in K.~Kur\\c{s}ung\\\"oz and A.~Zeytin (eds.), \\emph{Number Theory: Proceedings of the Journ\\'ees Arithm\\'etiques 2019}, De Gruyter, 2022, pp.~61--82. \\url{https://doi.org/10.1515/9783110761115-005}.",
@@ -97479,7 +97479,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{wegmann1968} H.~Wegmann, \\emph{Die Hausdorffsche Dimension von Mengen reeller Zahlen, die durch Zifferneigenschaften einer Cantorentwicklung charakterisiert sind}, Czechoslovak Math. J. \\textbf{18} (1968), 622--632. \\url{https://dml.cz/handle/10338.dmlcz/100861}.",
@@ -97503,7 +97503,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{evertseferretti2013} J.-H. Evertse and R. Ferretti, \\emph{A further improvement of the quantitative Subspace Theorem}, Ann. of Math. \\textbf{177} (2013), 513--590. Normalizations refer to \\S1.1, (1.1), and \\S2.1 of the \\href{https://pub.math.leidenuniv.nl/~evertsejh/10-subspace.pdf}{3 May 2012 author version}.",
@@ -97527,7 +97527,7 @@
         "path": "paper/synthesis/optimal-sparse-perturbations.tex",
         "source_id": "source-evertse-ferretti-2013-author2012",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_text": "\\bibitem{runeson2009} Per Runeson and Martin H\\\"ost. ``Guidelines for Conducting and Reporting Case Study Research in Software Engineering.'' \\emph{Empirical Software Engineering}, 14(2):131--164, 2009. \\href{https://doi.org/10.1007/s10664-008-9102-8}{doi:10.1007/s10664-008-9102-8}.",
@@ -122812,7 +122812,7 @@
         "qualifiers": [],
         "source_id": "source-b378189f39ed98",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -122826,7 +122826,7 @@
         "qualifiers": [],
         "source_id": "source-10545f868b3e88",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -122842,7 +122842,7 @@
         ],
         "source_id": "source-10545f868b3e88",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -122856,7 +122856,7 @@
         "qualifiers": [],
         "source_id": "source-fb4194cadb150b",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -122870,7 +122870,7 @@
         "qualifiers": [],
         "source_id": "source-691e9cc3c46273",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -122884,7 +122884,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -122900,7 +122900,7 @@
         ],
         "source_id": "source-4f5fd0d7405e29",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -122914,7 +122914,7 @@
         "qualifiers": [],
         "source_id": "source-691e9cc3c46273",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -122928,7 +122928,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -122942,7 +122942,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -122958,7 +122958,7 @@
         ],
         "source_id": "source-4f5fd0d7405e29",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -122972,7 +122972,7 @@
         "qualifiers": [],
         "source_id": "source-7dc956ce55b7a0",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -122988,7 +122988,7 @@
         ],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123004,7 +123004,7 @@
         ],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123018,7 +123018,7 @@
         "qualifiers": [],
         "source_id": "source-120bebce1ffe8c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123034,7 +123034,7 @@
         ],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123048,7 +123048,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123062,7 +123062,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123078,7 +123078,7 @@
         ],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123092,7 +123092,7 @@
         "qualifiers": [],
         "source_id": "source-fb4194cadb150b",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123108,7 +123108,7 @@
         ],
         "source_id": "source-4f5fd0d7405e29",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123122,7 +123122,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123138,7 +123138,7 @@
         ],
         "source_id": "source-4f5fd0d7405e29",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123152,7 +123152,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123168,7 +123168,7 @@
         ],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123182,7 +123182,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123196,7 +123196,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123212,7 +123212,7 @@
         ],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123228,7 +123228,7 @@
         ],
         "source_id": "source-corvaja-zannier-2002-subspace",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123242,7 +123242,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123258,7 +123258,7 @@
         ],
         "source_id": "source-fcf73a15ff9c7c",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123274,7 +123274,7 @@
         ],
         "source_id": "source-evertse-ferretti-2013-author2012",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123290,7 +123290,7 @@
         ],
         "source_id": "source-corvaja-zannier-2002-subspace",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123306,7 +123306,7 @@
         ],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123320,7 +123320,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123334,7 +123334,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123350,7 +123350,7 @@
         ],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123364,7 +123364,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123378,7 +123378,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123392,7 +123392,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123406,7 +123406,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123420,7 +123420,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123434,7 +123434,7 @@
         "qualifiers": [],
         "source_id": "source-le-intersective-0910-1880",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123450,7 +123450,7 @@
         ],
         "source_id": "source-rice-pintersective-1111-6559",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123464,7 +123464,7 @@
         "qualifiers": [],
         "source_id": "source-mishra-quadratic-2102-08379",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123480,7 +123480,7 @@
         ],
         "source_id": "source-le-intersective-0910-1880",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123494,7 +123494,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123508,7 +123508,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123522,7 +123522,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123536,7 +123536,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123552,7 +123552,7 @@
         ],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123566,7 +123566,7 @@
         "qualifiers": [],
         "source_id": "source-fb4194cadb150b",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123582,7 +123582,7 @@
         ],
         "source_id": "source-4f5fd0d7405e29",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123596,7 +123596,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123610,7 +123610,7 @@
         "qualifiers": [],
         "source_id": "source-892c567092d6f3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123624,7 +123624,7 @@
         "qualifiers": [],
         "source_id": "source-892c567092d6f3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123638,7 +123638,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123652,7 +123652,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123666,7 +123666,7 @@
         "qualifiers": [],
         "source_id": "source-685765cbd1ebe2",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123680,7 +123680,7 @@
         "qualifiers": [],
         "source_id": "source-21cdeefea4c8ec",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123694,7 +123694,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123708,7 +123708,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123722,7 +123722,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123736,7 +123736,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123750,7 +123750,7 @@
         "qualifiers": [],
         "source_id": "source-eaeb7980382323",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123766,7 +123766,7 @@
         ],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123780,7 +123780,7 @@
         "qualifiers": [],
         "source_id": "source-fb4194cadb150b",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123794,7 +123794,7 @@
         "qualifiers": [],
         "source_id": "source-691e9cc3c46273",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123808,7 +123808,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123822,7 +123822,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123836,7 +123836,7 @@
         "qualifiers": [],
         "source_id": "source-4f5fd0d7405e29",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123850,7 +123850,7 @@
         "qualifiers": [],
         "source_id": "source-892c567092d6f3",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123866,7 +123866,7 @@
         ],
         "source_id": "source-4f5fd0d7405e29",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123880,7 +123880,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123894,7 +123894,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123908,7 +123908,7 @@
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123924,7 +123924,7 @@
         ],
         "source_id": "source-317a740451ce03",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123940,7 +123940,7 @@
         ],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123956,7 +123956,7 @@
         ],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123972,7 +123972,7 @@
         ],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -123988,7 +123988,7 @@
         ],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -124004,7 +124004,7 @@
         ],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -124020,7 +124020,7 @@
         ],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+        "source_sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
       },
       {
         "citation_context": "in_text_citation",
@@ -160549,7 +160549,7 @@
           "line_end": 2214,
           "line_start": 2209,
           "path": "paper/synthesis/optimal-sparse-perturbations.tex",
-          "sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+          "sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
         },
         {
           "excerpt_sha256": "sha256:c5730ed1aecc44a1cef58487cebc75be161e05aa5a960b5dcbb3825e6b92cf96",
@@ -160557,7 +160557,7 @@
           "line_end": 1350,
           "line_start": 1350,
           "path": "paper/synthesis/optimal-sparse-perturbations.tex",
-          "sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+          "sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
         }
       ],
       "artifact_links": [
@@ -163900,7 +163900,7 @@
           "line_end": 2314,
           "line_start": 2308,
           "path": "paper/synthesis/optimal-sparse-perturbations.tex",
-          "sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+          "sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
         },
         {
           "excerpt_sha256": "sha256:96ba3449869250ee797a74c61af26bb684a11fdafa259cc3adebbfc6c0c854c7",
@@ -163908,7 +163908,7 @@
           "line_end": 1348,
           "line_start": 1348,
           "path": "paper/synthesis/optimal-sparse-perturbations.tex",
-          "sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+          "sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
         }
       ],
       "artifact_links": [
@@ -165933,7 +165933,7 @@
           "line_end": 2113,
           "line_start": 2109,
           "path": "paper/synthesis/optimal-sparse-perturbations.tex",
-          "sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+          "sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
         }
       ],
       "artifact_links": [
@@ -165989,7 +165989,7 @@
           "line_end": 2121,
           "line_start": 2117,
           "path": "paper/synthesis/optimal-sparse-perturbations.tex",
-          "sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+          "sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
         }
       ],
       "artifact_links": [
@@ -166045,7 +166045,7 @@
           "line_end": 2117,
           "line_start": 2113,
           "path": "paper/synthesis/optimal-sparse-perturbations.tex",
-          "sha256": "sha256:5254c4c025488cd4ea2c7936b67d8a6f6e61a7b298357e6638abd63dc0bd10e3"
+          "sha256": "sha256:b694d769403a4ea5c6bfc9cbcd5df7541b1091ee7040bc881903097637606fe8"
         }
       ],
       "artifact_links": [
