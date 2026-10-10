@@ -524,6 +524,69 @@ class GfmTableReadingTests(unittest.TestCase):
         self.assertEqual(text.count("**Detail note "), 2)
 
 
+class CatalogueSignalLinkTests(unittest.TestCase):
+    def test_source_relative_links_relocate_without_changing_literals_or_url_suffixes(self):
+        prose = (
+            '[replay](verification/replay.md?run=one%20two#record%3Aone) '
+            '[root guide](../README.md) [paper](papers/full-text/fixture.md) '
+            '[web](https://example.org/verification/replay.md#record) '
+            '[mail](mailto:review@example.org) [local](#record) '
+            '[absolute](/verification/replay.md) '
+            '`[code](verification/replay.md)` '
+            '$[z^k](z;q)$ $`[math](verification/replay.md)`$'
+        )
+        expected = (
+            '[replay](../verification/replay.md?run=one%20two#record%3Aone) '
+            '[root guide](../../README.md) [paper](full-text/fixture.md) '
+            '[web](https://example.org/verification/replay.md#record) '
+            '[mail](mailto:review@example.org) [local](#record) '
+            '[absolute](/verification/replay.md) '
+            '`[code](verification/replay.md)` '
+            '$[z^k](z;q)$ $`[math](verification/replay.md)`$'
+        )
+        self.assertEqual(renderer._signal_text(prose, field="evidence_certainty"), expected)
+
+    def test_relocated_catalogue_fixture_resolves_same_authored_destinations(self):
+        records = json.loads((edition.ROOT / 'docs/papers/corpus.json').read_text())['papers']
+        showcase = json.loads((edition.ROOT / 'docs/PALOMAR_RESULT_SHOWCASE.json').read_text())
+        claims = json.loads((edition.ROOT / 'docs/claims.json').read_text())
+        evidence = 'Replay [record](verification/replay.md#record) and [guide](../README.md).'
+        showcase['candidate_ranking'][0]['evidence_certainty'] = evidence
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            (root / 'docs/verification').mkdir(parents=True)
+            (root / 'docs/papers').mkdir()
+            (root / 'docs/PALOMAR_RESULT_SHOWCASE.json').write_text(json.dumps(showcase))
+            (root / 'docs/claims.json').write_text(json.dumps(claims))
+            (root / 'docs/RELATED_PROBLEMS.md').write_text('# Problems\n')
+            (root / 'docs/verification/replay.md').write_text('# Record\n')
+            (root / 'README.md').write_text('# Guide\n')
+            rendered = renderer._readme(records, 'plectis-erdos', root)
+            evidence_line = next(line for line in rendered.splitlines() if '**Evidence:** Replay' in line)
+            self.assertIn('Replay [record](../verification/replay.md#record) and [guide](../../README.md).', evidence_line)
+            for authored, delivered in (('verification/replay.md', '../verification/replay.md'),
+                                        ('../README.md', '../../README.md')):
+                source_target = (root / 'docs' / authored).resolve()
+                reader_target = (root / 'docs/papers' / delivered).resolve()
+                self.assertEqual(reader_target, source_target)
+                self.assertTrue(reader_target.is_file())
+            retained = json.loads((root / 'docs/PALOMAR_RESULT_SHOWCASE.json').read_text())
+            self.assertEqual(retained['candidate_ranking'][0]['evidence_certainty'], evidence)
+
+    def test_actual_catalogue_evidence_link_reaches_repository_replay_guide(self):
+        records = json.loads((edition.ROOT / 'docs/papers/corpus.json').read_text())['papers']
+        rendered = renderer._readme(records, 'plectis-erdos', edition.ROOT)
+        target = '../verification/EXTERNAL_VERIFICATION_REPLAY.md#pull-request-merge-gate'
+        evidence_line = next(line for line in rendered.splitlines() if "replay guide's repository CI record" in line)
+        self.assertIn('](' + target + ')', evidence_line)
+        destination = (edition.ROOT / 'docs/papers' / target.split('#')[0]).resolve()
+        self.assertEqual(destination, edition.ROOT / 'docs/verification/EXTERNAL_VERIFICATION_REPLAY.md')
+        self.assertIn('## Pull-request merge gate', destination.read_text())
+        showcase = json.loads((edition.ROOT / 'docs/PALOMAR_RESULT_SHOWCASE.json').read_text())
+        self.assertIn('](verification/EXTERNAL_VERIFICATION_REPLAY.md#pull-request-merge-gate)',
+                      showcase['candidate_ranking'][0]['evidence_certainty'])
+
+
 class SynthesisReadingTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()

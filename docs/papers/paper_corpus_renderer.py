@@ -13,7 +13,7 @@ import re
 import subprocess
 from pathlib import Path
 from typing import Any
-from urllib.parse import quote
+from urllib.parse import quote, urlsplit
 
 CORPUS_DIR_REL = "docs/papers"
 FULL_TEXT_DIR = "full-text"
@@ -1515,10 +1515,30 @@ def _section_link(record: dict[str, Any], entry: dict[str, Any]) -> str:
 
 
 def _signal_text(value: Any, *, field: str) -> str:
-    """Keep source-owned signal prose on one Markdown line."""
+    """Relocate source-owned signal prose from ``docs/`` to the catalogue."""
     if not isinstance(value, str) or not value.strip():
         raise ValueError(f"Palomar signal field {field} must be non-empty text")
-    return " ".join(value.split())
+
+    def relocate(match: re.Match[str]) -> str:
+        target = match.group("target")
+        if target is None:
+            return match.group(0)
+        parts = urlsplit(target)
+        if parts.scheme or parts.netloc or not parts.path or parts.path.startswith("/"):
+            return match.group(0)
+        # Both authored inventories live in docs/. Their prose links share
+        # that base with docs/RESULTS.md and docs/EXTERNAL_VERIFICATION.md.
+        repository_path = posixpath.normpath(posixpath.join("docs", parts.path))
+        relocated = posixpath.relpath(repository_path, CORPUS_DIR_REL)
+        return f"]({relocated}{target[len(parts.path):]})"
+
+    # Use the reading-edition owner's literal guards: mathematical coefficient
+    # notation and code examples can resemble Markdown links without being one.
+    return re.sub(
+        r"(?P<ticks>`+).*?(?P=ticks)|(?P<tildes>~{3,}).*?(?P=tildes)"
+        r"|(?P<dollars>\${1,2}).*?(?P=dollars)|\]\((?P<target>[^)\s]+)\)",
+        relocate, " ".join(value.split()), flags=re.DOTALL,
+    )
 
 
 def _signal_paper_record(
