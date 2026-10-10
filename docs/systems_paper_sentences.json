@@ -481,11 +481,11 @@
       "id": "explanation-depth",
       "path": "skills/explain-public-system/SKILL.md",
       "start_line": 1,
-      "end_line": 195,
+      "end_line": 196,
       "kind": "source",
-      "sha256": "775293526015f555e41120537b7878a615e3a8c8a34f6a804a5226922960b294",
-      "excerpt_sha256": "775293526015f555e41120537b7878a615e3a8c8a34f6a804a5226922960b294",
-      "custody": "Current full public source reviewed on 10 October 2026 after restoring the supported-Python prerequisite and same-interpreter instruction. Existing requested-depth, research, contribution and review responsibilities remain unchanged; no new mathematical, independent-review or measured learning claim."
+      "sha256": "6d7ef50c97a349fd2209d6254eaaf8c2408139fc2da43714b6cd01f86c6f2b0a",
+      "excerpt_sha256": "6d7ef50c97a349fd2209d6254eaaf8c2408139fc2da43714b6cd01f86c6f2b0a",
+      "custody": "Current full public source reviewed on 10 October 2026 at repository checkpoint e437e36d2b398ed7b5c9b994b76d4601cfdd316d. The supported-Python prerequisite and same-interpreter instruction are retained. Paper reading now selects current system, writing and revision, and cross-problem routes through the compact card, with retired papers limited to explicit historical requests. Requested-depth and hint boundaries, research, contribution and review responsibilities, and authority limits remain unchanged. This is source inspection, not a new mathematical or empirical execution, independent review, or measured learning claim."
     },
     {
       "id": "agent-entry",
@@ -589,7 +589,7 @@
       "path": "scripts/query_corpus.py",
       "start_line": 6609,
       "end_line": 6738,
-      "sha256": "4f32be2ee0a8da5ed14aceb7aeb0ab5f203b2bf96394a333f48509b10a65f808",
+      "sha256": "dd7e6ded7e4c367bab4dfeaa0730e6aef5f5eff2dd4def49ccf577ad71fac79b",
       "excerpt_sha256": "2f13aac684bc48891582a60d8b501c1c1d357db9bfddfbe0c49e4cbb26c8da8b",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
