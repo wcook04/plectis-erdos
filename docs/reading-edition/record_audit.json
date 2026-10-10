@@ -20,7 +20,7 @@
     "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md": "sha256:c070dd59a01cdeb04bf1c741c23f4bf145d211ba9881ccbaeeb399ba0db2659e",
     "docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md": "sha256:2a882392b695457f8cbb79166cc990b20c744d496f972de5b4978c6c1c275b67",
     "docs/papers/full-text/erdos68-factorial-reasoning-surface.md": "sha256:5c38f05383690f8a48b36ce8c5e2788870e8cf4149bdf2198c6b214f9c30ead6",
-    "docs/papers/paper_corpus_renderer.py": "sha256:1553ee26f802ff72e2cdc269afc41debcc887568bf924d574151d0c32d7bf0fb",
+    "docs/papers/paper_corpus_renderer.py": "sha256:5fc94333b24f40b3f1760a7154b02d560a1a8f2ffd9da922e38ddcadbaa27aab",
     "evidence/paper_evidence.json": "sha256:8c7de6f8f5e082fa91698d0c8314620207603080c348a526aa31fa250042b423",
     "lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean": "sha256:c6174888a3c59acf20f827b01a42bbffce05112eb7c7a3f30350dc1af0fb8f19",
     "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean": "sha256:069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4",
@@ -138,14 +138,14 @@
   },
   "navigation_sha256": {
     "docs/reading-edition/RECORDS.md": "sha256:aa5c23f321242e1dbb035a479b6cc59f628ca7ce7dccbcf000e56347a3aa0760",
-    "docs/reading-edition/records/erdos1041.md": "sha256:9beb1305271fc895385a04949fb536d76a2869f1a98c2a5ecfda29e35e74996d",
-    "docs/reading-edition/records/erdos1049.md": "sha256:deef2f36138a03ac594f7c113a6f853e7f374325768ec0698cfb8894342d3ebc",
-    "docs/reading-edition/records/erdos243.md": "sha256:2a0c5a730c3f81d6f66ae39c6d0f70a7019569d19d5de5d8ab9e1664fc8cbaeb",
-    "docs/reading-edition/records/erdos249.md": "sha256:dcfafbecb49973ec6d61e42a409edd6e4df47038c495ca9defb74bab4ed644b4",
-    "docs/reading-edition/records/erdos251.md": "sha256:4bcc6a9bb066e14c0f819488a0404a1ea13489b519049e155f1248aa2c27307c",
-    "docs/reading-edition/records/erdos257.md": "sha256:b4278521f3c32ecdd7920b2819126e0446abd162686d679a5427a930528242ab",
-    "docs/reading-edition/records/erdos269.md": "sha256:b5e0610e9971fa0fc90a192ae2922054deb791ad97d723aee238f3354852c6ce",
-    "docs/reading-edition/records/erdos68.md": "sha256:572acba217978dfe89ee761d6226fc9be83cde0ee4bd3caeb9e9212a79f8e6c7"
+    "docs/reading-edition/records/erdos1041.md": "sha256:7d7b4cfe965f823dab932fe54631cfca4c3b20b016f4e5f9fe69b39e2b5822ac",
+    "docs/reading-edition/records/erdos1049.md": "sha256:87ecef1052abf89547a2ac49df2aac11ddc2f8b481f4b953ace09c90ac05468f",
+    "docs/reading-edition/records/erdos243.md": "sha256:78eff1ff1b734084914d4e5cc836e8c5ac8350968a9f618eae6299f745ffe0a6",
+    "docs/reading-edition/records/erdos249.md": "sha256:17f07b24a181f6f491ec80a6308b06c57679c12610f75ca1a4f85742bc7a3f6a",
+    "docs/reading-edition/records/erdos251.md": "sha256:12c0302b5da2ccbacd1c4a7f04c100ce7580550c0d754268b161c7d38e99afe6",
+    "docs/reading-edition/records/erdos257.md": "sha256:0dc98dc124188a3cceade1d5136f6e6e096e90b17ef0ae04d21ee0401310a20f",
+    "docs/reading-edition/records/erdos269.md": "sha256:e1cf7d2e5666de1f92267f5cebfb3372fc59ab411dfdb0c4b8c0155117f1664e",
+    "docs/reading-edition/records/erdos68.md": "sha256:a55fc05c420c652948917e305419453181673a09cf37de87e78b383562a89485"
   },
   "pairs": [
     {
