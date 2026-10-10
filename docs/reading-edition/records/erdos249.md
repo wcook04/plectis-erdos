@@ -4,7 +4,7 @@
 
 Start with [Integral Relations among Totient Sections](../../../docs/papers/full-text/erdos-249-binary-totient-series.md). The longer account is [The Binary Totient Series](../../../docs/papers/full-text/erdos249-totient-reasoning-surface.md).
 
-Registered assertions: 8 short, 204 long. Located long-record links: 2. Proofs retained in the short paper: 2. Long correspondences still open: 6.
+Registered assertions: 8 short, 204 long. Located long-record links: 2. Proofs retained in the short paper: 3. Long correspondences still open: 6.
 
 Checks registered asserting environments and registered claim spans. Unregistered prose assertions, mathematical equivalence, correctness of ordinary proofs, Lean compilation, Comparator replay and PDF freshness are not established by this audit.
 
@@ -23,11 +23,19 @@ A complete registered-evidence match locates the same full declaration set in th
 
 ### thm:kkernelrank
 
-State: **unresolved**.
+State: **short_proof_explained_long_link_open**.
 
 Short statement: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 86-107.
 
 Ledger evidence: Lean `exact_or_stronger`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
+
+Retained short-paper argument: [paper/249/erdos-249-binary-totient-series.tex](../../../paper/249/erdos-249-binary-totient-series.tex) lines 152-269.
+
+The complete ordinary proof of thm:kkernelrank remains in sec:rank: scalar reductions, the implication of Martin Theorem 1, the independent CRT--Dirichlet matrix argument, and separation of the two proportional zero-residue forms. The statement is unchanged. This finite-level coefficient basis does not establish irrationality of the binary totient series. This authored disposition does not accept the queued long-record correspondence.
+
+Review status: 10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5 and current complete proofs; statement, hypotheses and dependencies unchanged; no long-record correspondence or independent review..
+
+This hash-bound passage records proof availability; its mathematical correctness is not checked by this audit. No accepted long-record correspondence is established by this disposition.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 

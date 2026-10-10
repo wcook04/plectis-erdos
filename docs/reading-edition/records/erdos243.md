@@ -4,7 +4,7 @@
 
 Start with [Reciprocal Sums and the Sylvester Recurrence](../../../docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md). The longer account is [Reciprocal Sums and the Sylvester Recurrence: Further Results and Proofs](../../../docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md).
 
-Registered assertions: 18 short, 53 long. Located long-record links: 7. Proofs retained in the short paper: 7. Long correspondences still open: 11.
+Registered assertions: 18 short, 53 long. Located long-record links: 7. Proofs retained in the short paper: 9. Long correspondences still open: 11.
 
 Checks registered asserting environments and registered claim spans. Unregistered prose assertions, mathematical equivalence, correctness of ordinary proofs, Lean compilation, Comparator replay and PDF freshness are not established by this audit.
 
@@ -87,11 +87,19 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 ### res:absorb
 
-State: **unresolved**.
+State: **short_proof_explained_long_link_open**.
 
 Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 530-536.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
+
+Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 537-543.
+
+For the stated positive integer sequences satisfying eq:recurrences, divisibility from res:update and strict successor centring force zero-error absorption. Separately, C_{n+1}=C_n-E_n and eventual nonnegative error make the positive integer numerator eventually nonincreasing and hence constant; this descent clause needs no centring. The proof is unchanged and the revised statement makes its domains and recurrence hypotheses explicit. Classical zero absorption/descent is credited locally to Koizumi. This authored disposition does not establish a new long-record correspondence or settle Problem 243.
+
+Review status: 10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5: complete proof unchanged; current statement makes domains and recurrence hypotheses explicit. No new long-record correspondence or independent review..
+
+This hash-bound passage records proof availability; its mathematical correctness is not checked by this audit. No accepted long-record correspondence is established by this disposition.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 
@@ -99,11 +107,19 @@ No accepted correspondence is recorded. Check the candidates below; none is sile
 
 ### res:step
 
-State: **unresolved**.
+State: **short_proof_explained_long_link_open**.
 
 Short statement: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 545-551.
 
 Ledger evidence: Lean `exact`; Comparator `compared`. These statuses are copied from the evidence ledger; this build reruns neither checker.
+
+Retained short-paper argument: [paper/243/erdos-243-reciprocal-tail-rigidity.tex](../../../paper/243/erdos-243-reciprocal-tail-rigidity.tex) lines 552-554.
+
+For integer sequences satisfying eq:recurrences, set both errors to zero in the defect identity and cancel the stated nonzero successor numerator to obtain the Sylvester recurrence. Eventual zero error therefore gives the eventual recurrence for the stated positive orbit; this clause does not require strict centring. The proof is unchanged and the revised statement makes the recurrence hypotheses explicit. This authored disposition does not establish a new long-record correspondence or settle Problem 243.
+
+Review status: 10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5: complete proof unchanged; current statement makes domains and recurrence hypotheses explicit. No new long-record correspondence or independent review..
+
+This hash-bound passage records proof availability; its mathematical correctness is not checked by this audit. No accepted long-record correspondence is established by this disposition.
 
 No accepted correspondence is recorded. Check the candidates below; none is silently treated as a proof of this short statement.
 

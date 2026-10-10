@@ -20,7 +20,7 @@
     "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md": "sha256:c070dd59a01cdeb04bf1c741c23f4bf145d211ba9881ccbaeeb399ba0db2659e",
     "docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md": "sha256:2a882392b695457f8cbb79166cc990b20c744d496f972de5b4978c6c1c275b67",
     "docs/papers/full-text/erdos68-factorial-reasoning-surface.md": "sha256:5c38f05383690f8a48b36ce8c5e2788870e8cf4149bdf2198c6b214f9c30ead6",
-    "docs/papers/paper_corpus_renderer.py": "sha256:1dba642ecf1e2fc9edf792bd20f805d730a44a4c9ee1da95e88ba88c9fed2218",
+    "docs/papers/paper_corpus_renderer.py": "sha256:1553ee26f802ff72e2cdc269afc41debcc887568bf924d574151d0c32d7bf0fb",
     "evidence/paper_evidence.json": "sha256:8c7de6f8f5e082fa91698d0c8314620207603080c348a526aa31fa250042b423",
     "lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean": "sha256:c6174888a3c59acf20f827b01a42bbffce05112eb7c7a3f30350dc1af0fb8f19",
     "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean": "sha256:069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4",
@@ -129,7 +129,7 @@
     "paper/reasoning-parts/erdos68/extended_record.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos68/family_catalogue.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos68/preamble.tex": "sha256:7bbd6207745d2f3e5c7db3b788c3cafcfd17504ac075cad8df1f5e5310dda21d",
-    "paper/reasoning-parts/record_links.json": "sha256:555f908361a79a2cfef7616f613451628a02b42c42473f6a37b427104027c3a7",
+    "paper/reasoning-parts/record_links.json": "sha256:a1fc9b1d4a5c95fcb079de7e38ec9d83218119c90957d81b5c310339c09a6629",
     "scripts/assemble_reasoning_surfaces.py": "sha256:0d8f6426d736fd371921e11e7bd2e721413f2d881b10da0be88c6f19b5ffb2b2",
     "scripts/build_reading_edition.py": "sha256:aa7bd9db277a7183efaa72f950a7c10a337fd8b01e8d585d6c037bad82668828",
     "scripts/check_lean_paper_propagation.py": "sha256:0f70bd947b02efe91291389e0430e1140a729de1ae3d311092e20152ea1b813c",
@@ -137,12 +137,12 @@
     "scripts/reasoning_record_audit.py": "sha256:5181f76da0658a08400a1fc35c6f72dc0370e375fd4d11caf41a4eb38ce5c62b"
   },
   "navigation_sha256": {
-    "docs/reading-edition/RECORDS.md": "sha256:9065945bd9bfee69fc22e3a45861e8b98fc972a374605a5b9b3d44eb78d988d0",
+    "docs/reading-edition/RECORDS.md": "sha256:a01188b83b188ac59927485771ad79a671491b57df659a45626245d648f7b029",
     "docs/reading-edition/records/erdos1041.md": "sha256:9beb1305271fc895385a04949fb536d76a2869f1a98c2a5ecfda29e35e74996d",
     "docs/reading-edition/records/erdos1049.md": "sha256:deef2f36138a03ac594f7c113a6f853e7f374325768ec0698cfb8894342d3ebc",
-    "docs/reading-edition/records/erdos243.md": "sha256:f0d8aec1a1942c9e2376a16b5b98fe76da9f4f9fa298b21fd7c04d0de6245759",
-    "docs/reading-edition/records/erdos249.md": "sha256:32896d76c62021d54d6c60f3c9c206b6785882cc57843b3062a902c9db1c98a9",
-    "docs/reading-edition/records/erdos251.md": "sha256:cc26922f0191d3ab9865cca6c89e73322b3dff6db6e70e3d43c2bef947f90f13",
+    "docs/reading-edition/records/erdos243.md": "sha256:2a0c5a730c3f81d6f66ae39c6d0f70a7019569d19d5de5d8ab9e1664fc8cbaeb",
+    "docs/reading-edition/records/erdos249.md": "sha256:0fff72e8bd0c7e82e29743de86d8f852b3c2078cea930f15e058fa5cf192c101",
+    "docs/reading-edition/records/erdos251.md": "sha256:4bcc6a9bb066e14c0f819488a0404a1ea13489b519049e155f1248aa2c27307c",
     "docs/reading-edition/records/erdos257.md": "sha256:b4278521f3c32ecdd7920b2819126e0446abd162686d679a5427a930528242ab",
     "docs/reading-edition/records/erdos269.md": "sha256:b5e0610e9971fa0fc90a192ae2922054deb791ad97d723aee238f3354852c6ce",
     "docs/reading-edition/records/erdos68.md": "sha256:572acba217978dfe89ee761d6226fc9be83cde0ee4bd3caeb9e9212a79f8e6c7"
@@ -1045,7 +1045,22 @@
             "line": 530,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
-          "state": "unresolved",
+          "short_proof": {
+            "availability": "located",
+            "kind": "ordinary_proof_text",
+            "locator": {
+              "end_line": 543,
+              "label": null,
+              "line": 537,
+              "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
+            },
+            "long_correspondence": "open; this disposition does not establish a long-record link",
+            "rationale": "For the stated positive integer sequences satisfying eq:recurrences, divisibility from res:update and strict successor centring force zero-error absorption. Separately, C_{n+1}=C_n-E_n and eventual nonnegative error make the positive integer numerator eventually nonincreasing and hence constant; this descent clause needs no centring. The proof is unchanged and the revised statement makes its domains and recurrence hypotheses explicit. Classical zero absorption/descent is credited locally to Koizumi. This authored disposition does not establish a new long-record correspondence or settle Problem 243.",
+            "review_status": "10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5: complete proof unchanged; current statement makes domains and recurrence hypotheses explicit. No new long-record correspondence or independent review.",
+            "sha256": "sha256:4247cf5c9f1a2b803e69b580657959d1375dbcd9e7b9d1b82802acfd7d89de2e",
+            "validation": "text_presence_and_digest_only; proof_correctness_not_checked"
+          },
+          "state": "short_proof_explained_long_link_open",
           "statement_sha256": "sha256:50fff80183a6440757800aca1fbc8fe4fea0ea266d9ae1c77fdad43013eeafa9"
         },
         {
@@ -1076,7 +1091,22 @@
             "line": 545,
             "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
           },
-          "state": "unresolved",
+          "short_proof": {
+            "availability": "located",
+            "kind": "ordinary_proof_text",
+            "locator": {
+              "end_line": 554,
+              "label": null,
+              "line": 552,
+              "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
+            },
+            "long_correspondence": "open; this disposition does not establish a long-record link",
+            "rationale": "For integer sequences satisfying eq:recurrences, set both errors to zero in the defect identity and cancel the stated nonzero successor numerator to obtain the Sylvester recurrence. Eventual zero error therefore gives the eventual recurrence for the stated positive orbit; this clause does not require strict centring. The proof is unchanged and the revised statement makes the recurrence hypotheses explicit. This authored disposition does not establish a new long-record correspondence or settle Problem 243.",
+            "review_status": "10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5: complete proof unchanged; current statement makes domains and recurrence hypotheses explicit. No new long-record correspondence or independent review.",
+            "sha256": "sha256:e6ac7b9753f0f02be9e10ee3719d25943f6b3954be34316608da5ef5c6b1e480",
+            "validation": "text_presence_and_digest_only; proof_correctness_not_checked"
+          },
+          "state": "short_proof_explained_long_link_open",
           "statement_sha256": "sha256:f6d9cc1baa2a93bdd5624b89cbe61b1d957e1271d56dc9b91f93b0f5e633c5f4"
         },
         {
@@ -1807,9 +1837,9 @@
           }
         },
         {
-          "code": "stale_or_missing_short_proof",
-          "detail": "short statement changed; proof disposition needs review",
-          "severity": "error",
+          "code": "short_proof_explained_long_link_open",
+          "detail": "A hash-bound complete proof is retained in the short paper. No long-record correspondence is asserted by this disposition.",
+          "severity": "warning",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:absorb",
           "short_location": {
             "end_line": 536,
@@ -1819,51 +1849,9 @@
           }
         },
         {
-          "code": "unresolved_short_long_link",
-          "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
-          "long_locations": [
-            {
-              "end_line": 1392,
-              "label": "long243:res:absorb",
-              "line": 1388,
-              "path": "paper/reasoning-parts/erdos243/core.tex"
-            }
-          ],
-          "long_record": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "severity": "error",
-          "short_claim": "erdos-243-reciprocal-tail-rigidity#res:absorb",
-          "short_location": {
-            "end_line": 536,
-            "label": "res:absorb",
-            "line": 530,
-            "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
-          }
-        },
-        {
-          "code": "stale_or_missing_short_proof",
-          "detail": "short statement changed; proof disposition needs review",
-          "severity": "error",
-          "short_claim": "erdos-243-reciprocal-tail-rigidity#res:step",
-          "short_location": {
-            "end_line": 551,
-            "label": "res:step",
-            "line": 545,
-            "path": "paper/243/erdos-243-reciprocal-tail-rigidity.tex"
-          }
-        },
-        {
-          "code": "unresolved_short_long_link",
-          "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
-          "long_locations": [
-            {
-              "end_line": 1231,
-              "label": "long243:res:step",
-              "line": 1225,
-              "path": "paper/reasoning-parts/erdos243/core.tex"
-            }
-          ],
-          "long_record": "paper/243/erdos243-reciprocal-tail-reasoning-surface.tex",
-          "severity": "error",
+          "code": "short_proof_explained_long_link_open",
+          "detail": "A hash-bound complete proof is retained in the short paper. No long-record correspondence is asserted by this disposition.",
+          "severity": "warning",
           "short_claim": "erdos-243-reciprocal-tail-rigidity#res:step",
           "short_location": {
             "end_line": 551,
@@ -2949,13 +2937,13 @@
       "summary": {
         "duplicate_passages": 0,
         "duplicates": 0,
-        "explained_in_short": 7,
+        "explained_in_short": 9,
         "linked_short_claims": 7,
         "long_claims": 53,
         "long_correspondence_open": 11,
         "possible_stale_passages": 0,
         "short_claims": 18,
-        "unresolved_short_claims": 4
+        "unresolved_short_claims": 2
       }
     },
     {
@@ -2974,7 +2962,22 @@
             "line": 86,
             "path": "paper/249/erdos-249-binary-totient-series.tex"
           },
-          "state": "unresolved",
+          "short_proof": {
+            "availability": "located",
+            "kind": "ordinary_proof_text",
+            "locator": {
+              "end_line": 269,
+              "label": null,
+              "line": 152,
+              "path": "paper/249/erdos-249-binary-totient-series.tex"
+            },
+            "long_correspondence": "open; this disposition does not establish a long-record link",
+            "rationale": "The complete ordinary proof of thm:kkernelrank remains in sec:rank: scalar reductions, the implication of Martin Theorem 1, the independent CRT--Dirichlet matrix argument, and separation of the two proportional zero-residue forms. The statement is unchanged. This finite-level coefficient basis does not establish irrationality of the binary totient series. This authored disposition does not accept the queued long-record correspondence.",
+            "review_status": "10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5 and current complete proofs; statement, hypotheses and dependencies unchanged; no long-record correspondence or independent review.",
+            "sha256": "sha256:12439d686133047087da39f686b54783a3766ac6ef26e44b5ffcef591ba0574e",
+            "validation": "text_presence_and_digest_only; proof_correctness_not_checked"
+          },
+          "state": "short_proof_explained_long_link_open",
           "statement_sha256": "sha256:4c32e3285243f70c0fb4a1763a43a27fc74727596e7a4d4251c54e59600b5828"
         },
         {
@@ -3284,23 +3287,9 @@
       ],
       "findings": [
         {
-          "code": "stale_or_missing_short_proof",
-          "detail": "stale short proof span; text changed after disposition review",
-          "severity": "error",
-          "short_claim": "erdos-249-binary-totient-series#thm:kkernelrank",
-          "short_location": {
-            "end_line": 107,
-            "label": "thm:kkernelrank",
-            "line": 86,
-            "path": "paper/249/erdos-249-binary-totient-series.tex"
-          }
-        },
-        {
-          "code": "unresolved_short_long_link",
-          "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
-          "long_locations": [],
-          "long_record": "paper/249/erdos249-totient-reasoning-surface.tex",
-          "severity": "error",
+          "code": "short_proof_explained_long_link_open",
+          "detail": "A hash-bound complete proof is retained in the short paper. No long-record correspondence is asserted by this disposition.",
+          "severity": "warning",
           "short_claim": "erdos-249-binary-totient-series#thm:kkernelrank",
           "short_location": {
             "end_line": 107,
@@ -6393,13 +6382,13 @@
       "summary": {
         "duplicate_passages": 0,
         "duplicates": 0,
-        "explained_in_short": 2,
+        "explained_in_short": 3,
         "linked_short_claims": 2,
         "long_claims": 204,
         "long_correspondence_open": 6,
         "possible_stale_passages": 0,
         "short_claims": 8,
-        "unresolved_short_claims": 4
+        "unresolved_short_claims": 3
       }
     },
     {
@@ -6433,7 +6422,22 @@
             "line": 104,
             "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
           },
-          "state": "unresolved",
+          "short_proof": {
+            "availability": "located",
+            "kind": "ordinary_proof_text",
+            "locator": {
+              "end_line": 384,
+              "label": null,
+              "line": 148,
+              "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
+            },
+            "long_correspondence": "open; this disposition does not establish a long-record link",
+            "rationale": "The complete construction remains in sec:construction. Both ordinary and weighted triple totals and the finite common-modulus telescoping comparison are now displayed; density, uniform cutoffs, interval selection, remainder limit and quantitative coupling are retained.",
+            "review_status": "10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5 and current complete proofs; statement, hypotheses and dependencies unchanged; no long-record correspondence or independent review.",
+            "sha256": "sha256:41dcfa17e4072e4277cd18220283678ebc474dbfb3d71500afe08503fafe15a7",
+            "validation": "text_presence_and_digest_only; proof_correctness_not_checked"
+          },
+          "state": "short_proof_explained_long_link_open",
           "statement_sha256": "sha256:7de874b2b88e80be5e8352fbccd1f71cb165b302972bebf6be8806a2f3dacafb"
         },
         {
@@ -6858,30 +6862,9 @@
       ],
       "findings": [
         {
-          "code": "stale_or_missing_short_proof",
-          "detail": "stale short proof span; text changed after disposition review",
-          "severity": "error",
-          "short_claim": "erdos-251-prime-gap-dyadic-series#res:sparserationalisation",
-          "short_location": {
-            "end_line": 126,
-            "label": "res:sparserationalisation",
-            "line": 104,
-            "path": "paper/251/erdos-251-prime-gap-dyadic-series.tex"
-          }
-        },
-        {
-          "code": "unresolved_short_long_link",
-          "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
-          "long_locations": [
-            {
-              "end_line": 163,
-              "label": "long251:res:sparse-rationalisation",
-              "line": 138,
-              "path": "paper/reasoning-parts/erdos251/core.tex"
-            }
-          ],
-          "long_record": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
-          "severity": "error",
+          "code": "short_proof_explained_long_link_open",
+          "detail": "A hash-bound complete proof is retained in the short paper. No long-record correspondence is asserted by this disposition.",
+          "severity": "warning",
           "short_claim": "erdos-251-prime-gap-dyadic-series#res:sparserationalisation",
           "short_location": {
             "end_line": 126,
@@ -7714,17 +7697,17 @@
         ],
         "title": "Sparse Congruence-Preserving Perturbations of Dyadic Series"
       },
-      "status": "structural_findings",
+      "status": "structurally_linked",
       "summary": {
         "duplicate_passages": 0,
         "duplicates": 0,
-        "explained_in_short": 6,
+        "explained_in_short": 7,
         "linked_short_claims": 2,
         "long_claims": 36,
         "long_correspondence_open": 7,
         "possible_stale_passages": 0,
         "short_claims": 9,
-        "unresolved_short_claims": 1
+        "unresolved_short_claims": 0
       }
     },
     {
@@ -15829,7 +15812,7 @@
     "duplicate_passages": 0,
     "duplicates": 0,
     "evidence_lean_pin": "436f55ebdafa67e4af0fff79f621c13f2ded12bf",
-    "explained_in_short": 30,
+    "explained_in_short": 34,
     "explicit_links": 8,
     "explicit_short_proof_dispositions": 45,
     "global_findings": 0,
@@ -15839,6 +15822,6 @@
     "pairs": 8,
     "possible_stale_passages": 0,
     "short_claims": 77,
-    "unresolved_short_claims": 20
+    "unresolved_short_claims": 16
   }
 }
