@@ -4,27 +4,27 @@
     {
       "action": "explained_in_short",
       "rationale": "The short paper retains the complete source-to-rational-base argument in Section 4: polynomial cancellation, the exact denominator degree, nonzero remainder and strict decay condition. The queue’s unresolved registry association is not treated as a missing proof. This round does not add a new long-record association.",
-      "review_status": "R5 Type A source-reading review of retained proof and evidence boundary; no new independent mathematical review.",
+      "review_status": "10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5 and current complete proofs; statement, hypotheses and dependencies unchanged; no long-record correspondence or independent review.",
       "short_id": "erdos-1049-rational-base-lambert#res:rational-base-threshold",
       "short_statement_sha256": "sha256:d8a1a88caca1f4510a0ec168d71289815642e496141213653da1c4bcf72ee65e",
       "support": {
         "label": "res:rational-base-threshold",
         "path": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "selector": "adjacent_proof",
-        "sha256": "sha256:9177bf9a14c1f5c69adab24f67ff75fa65522a635c347dec98dbcbb5f6945962"
+        "sha256": "sha256:14a24d93f81286272485468e5f50dbd9fbee41dc4f3fc81993ddb417dab039dd"
       }
     },
     {
       "action": "explained_in_short",
-      "rationale": "The page-one theorem retains its complete proof through the geometric-moment theorem and Section 3.2. This pass clarifies the partition sum and the two relative weight corrections; it preserves the renormalised product and positive constant. The registry must be rebound to these existing proof locations during integration.",
-      "review_status": "R5 Type A source-reading review of retained proof and evidence boundary; no new independent mathematical review.",
+      "rationale": "The page-one theorem retains its complete proof through the geometric-moment theorem and Section 3.2. This pass clarifies the partition sum and the two relative weight corrections; it preserves the renormalised product and positive constant. The disposition binds the current complete proof at these locations; the asymptotic fixes 0<q<1 and asserts neither uniformity as q approaches 1 nor irrationality.",
+      "review_status": "10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5 and current complete proofs; statement, hypotheses and dependencies unchanged; no long-record correspondence or independent review.",
       "short_id": "erdos-1049-rational-base-lambert#res:sharp-fixed-base",
       "short_statement_sha256": "sha256:1349309f67f011606cc4e67e5ae8c6845b070eeb7390409fcc6e74b20af79588",
       "support": {
         "label": "res:sharp-fixed-base",
         "path": "paper/1049/erdos-1049-rational-base-lambert.tex",
         "selector": "proof_of",
-        "sha256": "sha256:66425a06349cdb1d88b5555713613a07daf134326ea8a97b31847e7dcc90b932"
+        "sha256": "sha256:bbc610beeede62acdd7a9aa6101519e471f2ec4d62ac9efa7d4ab8afedb4666b"
       }
     },
     {
@@ -569,27 +569,27 @@
     {
       "action": "explained_in_short",
       "rationale": "The proof first isolates the divisor-indexed weighted sums and then uses both triangular integer changes with unit determinants to establish completeness and integral coordinates. Applying M and V_d identifies every coefficient.",
-      "review_status": "R5 Type A source-reading review of retained proof and evidence boundary; no new independent mathematical review.",
+      "review_status": "10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5 and current complete proofs; statement, hypotheses and dependencies unchanged; no long-record correspondence or independent review.",
       "short_id": "erdos-68-factorial-denominator-irrationality#res:divisor-channel-coordinates",
       "short_statement_sha256": "sha256:6d48ce12fa7120cf146a8e45749ba6ec399ef7413872c0f9c9eef280bcf6b511",
       "support": {
         "label": "res:divisor-channel-coordinates",
         "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "selector": "adjacent_proof",
-        "sha256": "sha256:1ed48d8cd120b01042c0ef5f84777f2876c56bf3a530faa16a3a32629d1083aa"
+        "sha256": "sha256:b4f7878b4b58944be13f52fd0046e26a0484bf7912fe9ac3f9d648e95cb6d7bb"
       }
     },
     {
       "action": "explained_in_short",
       "rationale": "The proof uses a nonzero coefficient at 2ell to obtain g>0 and g | (2ell)!. Above H=D(2ell−1), small divisors provide (2ell)! | W_{d,n}; larger proper divisors use the induction hypothesis g | u_d. This proves whole-tail divisibility, and interval inclusion gives the reverse. No match is inferred from wording alone.",
-      "review_status": "R5 Type A source-reading review of retained proof and evidence boundary; no new independent mathematical review.",
+      "review_status": "10 October 2026: Codex/GPT-6.1-sol comparative source review against the digest-bound R5 and current complete proofs; statement, hypotheses and dependencies unchanged; no long-record correspondence or independent review.",
       "short_id": "erdos-68-factorial-denominator-irrationality#res:finite-channel-moment-certificate",
       "short_statement_sha256": "sha256:4da12f5eb0bae8682b68a94080f10e1d93179eb5e55b3bf35a531a9996871a4d",
       "support": {
         "label": "res:finite-channel-moment-certificate",
         "path": "paper/68/erdos-68-factorial-denominator-irrationality.tex",
         "selector": "adjacent_proof",
-        "sha256": "sha256:da0724b23330278d46846d94972b81d12f841740f777916a180468e39781a462"
+        "sha256": "sha256:9b8201fd5177fe9b87fd45e1e8462c52fccb09fbd3af4ca47b41a5515b105516"
       }
     }
   ],
