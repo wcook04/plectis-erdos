@@ -586,7 +586,7 @@ def main() -> int:
                 source_commit=args.source_commit,
                 source_tree=args.source_tree,
                 release_tag=args.release_tag,
-                runtime_receipt_path=args.receipt.resolve(),
+                runtime_receipt_path=args.receipt,
             )
             write_json(args.output, manifest, overwrite=args.overwrite)
             print(args.output)
@@ -595,7 +595,7 @@ def main() -> int:
             validate_manifest(
                 manifest,
                 root=root,
-                runtime_receipt_path=args.receipt.resolve(),
+                runtime_receipt_path=args.receipt,
             )
             print(
                 "external-verification release manifest valid: "
