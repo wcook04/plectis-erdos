@@ -38,6 +38,7 @@ SCHEMA = "repository-validation-singleflight/1"
 SINGLEFLIGHT_STATE_ROOT_ENV = "VALIDATION_SINGLEFLIGHT_STATE_ROOT"
 HOST_LOCK_ROOT_ENV = "PLECTIS_LEAN_HOST_LOCK_ROOT"
 HOST_LOCK_HELD_ENV = "AIW_PLECTIS_LEAN_HOST_LOCK_HELD"
+NODE_EXECUTABLE_ENV = "PLECTIS_NODE_EXECUTABLE"
 ROSTER_VALIDATORS = {
     "cold-clone": "scripts/check_cold_clone_comprehension.py",
     "toolchain-cache": "lean-toolchain",
@@ -231,9 +232,19 @@ def elan_home() -> Path:
     return (Path(configured) if configured else Path.home() / ".elan").resolve()
 
 
+def node_executable(environment: Mapping[str, str] | None = None) -> str | None:
+    """Bind the selected Node file before PATH isolation or a cwd change."""
+    environment = os.environ if environment is None else environment
+    selected = environment.get(NODE_EXECUTABLE_ENV) or shutil.which(
+        "node", path=environment.get("PATH", os.defpath)
+    )
+    return os.path.abspath(selected) if selected else None
+
+
 def command_environment() -> dict[str, str]:
     """Run workers without ambient Git, Python, or locale configuration."""
     environment = os.environ.copy()
+    selected_node = node_executable(environment)
     for key in list(environment):
         if (
             key.startswith("GIT_CONFIG_")
@@ -242,6 +253,7 @@ def command_environment() -> dict[str, str]:
             or key in PYTHON_CONTEXT_KEYS
             or key == SINGLEFLIGHT_STATE_ROOT_ENV
             or key in LOCALE_KEYS
+            or key.startswith("NODE")
         ):
             environment.pop(key, None)
     environment.update(
@@ -264,6 +276,8 @@ def command_environment() -> dict[str, str]:
             "PYTHONUTF8": "1",
         }
     )
+    if selected_node:
+        environment[NODE_EXECUTABLE_ENV] = selected_node
     return environment
 
 

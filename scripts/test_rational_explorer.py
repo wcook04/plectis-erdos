@@ -13,13 +13,14 @@ import importlib.util
 import json
 from pathlib import Path
 import re
-import shutil
 import subprocess
 import sys
 import tempfile
 import unittest
 from unittest.mock import patch
 from fractions import Fraction
+
+import validation_singleflight as singleflight
 
 ROOT = Path(__file__).resolve().parents[1]
 HOME = ROOT / "research/experiments/choices_contraction"
@@ -35,7 +36,7 @@ def load(name):
 class ExplorerTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.node = shutil.which("node")
+        cls.node = singleflight.node_executable()
         if not cls.node:
             raise RuntimeError("Node.js is required; do not treat an unrun browser core as passing")
         cls.html = (HOME / "explorer.html").read_text()
@@ -53,6 +54,7 @@ console.log(JSON.stringify(cases.map(c => {
 })));
 """
         result = subprocess.run([self.node, "-e", driver], input=json.dumps(cases),
+                                env=singleflight.command_environment(),
                                 text=True, capture_output=True, check=True, timeout=30)
         return json.loads(result.stdout)
 

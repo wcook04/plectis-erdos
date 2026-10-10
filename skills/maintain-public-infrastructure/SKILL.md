@@ -197,6 +197,13 @@ identity; a new digest cannot supply new semantic or empirical evidence.
 
 ## Classify before changing
 
+When a new gate requires another runtime, bind its selected executable before
+the clean snapshot or scheduler reduces PATH or changes directory. Replay the
+gate through that isolated environment, as well as directly. For the browser
+arithmetic gate, `PLECTIS_NODE_EXECUTABLE` carries the selected absolute Node
+file; inherited Node preload and module configuration is removed. An absent
+runtime must fail the gate rather than produce an unrun pass.
+
 Choose the first matching class:
 
 1. **Routing drift** — the correct skill exists but the task selects another

@@ -674,6 +674,9 @@ def main() -> int:
                 "PYTHONINTMAXSTRDIGITS": "100",
                 "PYTHONMALLOC": "malloc",
                 "PYTHONPROFILEIMPORTTIME": "1",
+                "NODE_OPTIONS": "--require=/private/wrong-preload.js",
+                "NODE_PATH": "/private/wrong-node-path",
+                "PLECTIS_NODE_EXECUTABLE": "runtime/node",
                 "PYTHONHASHSEED": "random",
                 "LC_ALL": "C",
                 "LANG": "C",
@@ -702,6 +705,8 @@ def main() -> int:
                             "PYTHONINTMAXSTRDIGITS",
                             "PYTHONMALLOC",
                             "PYTHONPROFILEIMPORTTIME",
+                            "NODE_OPTIONS",
+                            "NODE_PATH",
                         )
                     ),
                     "release-ref environment retained inherited selector or Python state",
@@ -722,6 +727,11 @@ def main() -> int:
                 require(
                     sanitized["PATH"] == os.defpath,
                     "release-ref environment did not pin PATH",
+                )
+                require(
+                    sanitized["PLECTIS_NODE_EXECUTABLE"]
+                    == os.path.abspath("runtime/node"),
+                    "release-ref environment lost the selected absolute Node file",
                 )
                 require(
                     sanitized["LC_ALL"] == "C.UTF-8"
