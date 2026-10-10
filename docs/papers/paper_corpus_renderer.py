@@ -215,8 +215,8 @@ class _AstWalk:
             return out
         if not isinstance(node, dict):
             return node
-        if node.get("t") == "Div" and node["c"][0][0]:
-            # GFM retains labelled statement blocks as HTML div targets.
+        if node.get("t") in {"Div", "Span"} and node["c"][0][0]:
+            # GFM retains labelled block and inline HTML targets.
             self.reference_labels.add(node["c"][0][0])
         if node.get("t") == "Cite":
             self.citations_rendered += 1

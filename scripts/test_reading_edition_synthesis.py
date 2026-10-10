@@ -109,6 +109,37 @@ class EquationReadingLinkTests(unittest.TestCase):
         self.assertEqual(figure['c'], [["", [], []], [{"t": "Str", "c": "1"}], ['#fig%3Aknown', '']])
         self.assertEqual(missing, reference("sec:missing", "[sec:missing]"))
 
+    def test_span_targets_preserve_unnumbered_text_and_ignore_literal_lookalikes(self):
+        def reference(label):
+            return {"t": "Link", "c": [
+                ["", [], [["reference-type", "ref"], ["reference", label]]],
+                [{"t": "Str", "c": f"[{label}]"}], [f"#{label}", ""],
+            ]}
+        label = "res:constant-factor-path"
+        span = {"t": "Span", "c": [[label, [], [["label", label]]], []]}
+        literals = [
+            {"t": "Code", "c": [["", [], []], '<span id="res:inline-code"></span>']},
+            {"t": "Math", "c": [{"t": "InlineMath"}, r'\text{<span id="res:inline-math"></span>}']},
+            {"t": "Math", "c": [{"t": "DisplayMath"}, r'\text{<span id="res:display-math"></span>}']},
+        ]
+        code_block = {"t": "CodeBlock", "c": [["", [], []], '<span id="res:block-code"></span>']}
+        missing_labels = ("res:inline-code", "res:inline-math", "res:display-math", "res:block-code")
+        blocks = [
+            {"t": "Para", "c": [reference(label), *(reference(missing) for missing in missing_labels)]},
+            {"t": "Para", "c": [span, *literals]},
+            code_block,
+        ]
+        walk = renderer._AstWalk()
+        converted = walk.blocks(blocks)
+        renderer._render_numbered_references(converted, {}, walk.equation_labels | walk.reference_labels)
+        self.assertEqual(walk.reference_labels, {label})
+        self.assertEqual(converted[0]['c'][0]['c'], [
+            ["", [], []], [{"t": "Str", "c": f"[{label}]"}], ['#res%3Aconstant-factor-path', ''],
+        ])
+        self.assertEqual(converted[0]['c'][1:], [reference(missing) for missing in missing_labels])
+        self.assertEqual(converted[1]['c'], [span, *literals])
+        self.assertEqual(converted[2], code_block)
+
     def test_prose_emphasis_is_split_around_unchanged_display_math(self):
         blocks = [{"t": "Para", "c": [{"t": "Emph", "c": [
             {"t": "Str", "c": "Before."}, {"t": "SoftBreak"},
@@ -174,6 +205,39 @@ See Section~\ref{sec:known}, Theorem~\ref{thm:known}, and Figure~\ref{fig:known}
         self.assertIn('<figure>', text)
         self.assertIn('A fixture caption.', text)
         self.assertNotIn('data-reference-type="ref"', text)
+
+    @unittest.skipUnless(shutil.which("pandoc"), "Span reference conversion requires Pandoc")
+    def test_span_conversion_retains_unnumbered_remark_and_bundle_destination(self):
+        source = r'''\documentclass{article}
+\newtheorem*{remark}{Remark}
+\let\remark\relax
+\let\endremark\relax
+\newtheorem{theorem}{Theorem}
+\newtheorem{remark}[theorem]{Remark}
+\begin{document}
+See Remark~\ref{res:constant-factor-path}.
+\begin{remark}\label{res:constant-factor-path}A fixture statement.\end{remark}
+Literal code: \verb|<span id="res:code"></span>|.
+\[\text{<span id="res:math"></span>}\]
+\end{document}
+'''
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary) / "fixture.tex"
+            path.write_text(source)
+            text = renderer._convert(path, "fixture")['markdown']
+        self.assertIn('<span id="res:constant-factor-path" label="res:constant-factor-path"></span>', text)
+        self.assertIn(r'[\[res:constant-factor-path\]](#res%3Aconstant-factor-path)', text)
+        self.assertNotIn('data-reference-type="ref"', text)
+        self.assertNotIn('href="#res:constant-factor-path"', text)
+        self.assertIn('`<span id="res:code"></span>`', text)
+        self.assertIn(r'\text{<span id="res:math"></span>}',
+                      re.findall(r'``` math\n(.*?)\n```', text, re.DOTALL))
+        scoped = edition.scope_anchors(text, "fixture")
+        self.assertIn('<span id="fixture--res:constant-factor-path"', scoped)
+        self.assertIn(r'[\[res:constant-factor-path\]](#fixture--res%3Aconstant-factor-path)', scoped)
+        self.assertIn('`<span id="res:code"></span>`', scoped)
+        self.assertIn(r'\text{<span id="res:math"></span>}',
+                      re.findall(r'``` math\n(.*?)\n```', scoped, re.DOTALL))
 
     @unittest.skipUnless(shutil.which("pandoc"), "equation conversion requires Pandoc")
     def test_conversion_and_bundle_keep_native_equation_links_and_tags(self):
