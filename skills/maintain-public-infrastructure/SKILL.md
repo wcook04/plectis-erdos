@@ -116,6 +116,11 @@ or validation mentions in the same sentence. Keep examples in ordinary reader
 language as well as the catalogue's named cues. A reported setup fault can be
 an implicit request for help; keep explicit explanation, status and proof tasks
 on their own routes, and retain a separately requested repair.
+For a setup repair, scope the action to the object before a later context
+such as "fix my proof using the workbench". Retain a separately requested
+repair of a reported fault ("explain why setup fails and fix it") without
+using that backward reference across an intervening proof or theorem. Replay
+the existing ordinary-language fixtures when recovering older routing changes.
 A nearby proof, theorem-status or returned-proof request must retain its own
 lane. Preserve these neighboring requests as fixtures alongside the observed
 failure; contribution words alone should not turn proof search into Git work.
@@ -210,6 +215,19 @@ digests. Preserve evidence classes, reported execution limits and historical
 identity; a new digest cannot supply new semantic or empirical evidence.
 
 ## Classify before changing
+
+At a child-process boundary, bind a caller-relative artifact root before
+changing working directory. Preserve symlink and `..` components for the
+existing path checks. Reproduce the journey with a real child from another
+working directory; a command-string check alone cannot establish that parent
+and child artifacts agree.
+
+Cold Lean setup guidance must follow the selected request imports or inspected
+module. Use the existing build wrapper's target resolver. A library-root or
+external import cannot be turned into a falsely sufficient local default;
+explain its preparation route. Refuse before Git or Lean in an incomplete
+clone, and keep an untargeted full-root build in coordinated release validation.
+
 
 When a new gate requires another runtime, bind its selected executable before
 the clean snapshot or scheduler reduces PATH or changes directory. Replay the

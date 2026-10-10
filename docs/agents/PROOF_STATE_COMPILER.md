@@ -24,10 +24,22 @@ status, author mathematical exposition, or promote an unproved bridge.
 
 ## First run
 
+Static corpus queries need Python alone. The pilot, explicit requests and
+selected-declaration inspection execute the pinned Lean toolchain. Install it
+through [the reproducibility setup](../REPRODUCIBILITY.md#2-reproduce-the-pinned-lean-environment),
+then prepare the pilot's focused imports from the repository root:
+
 ```sh
+python3 scripts/lean_fast_build.py --jobs 2 Erdos249257.CurvatureCarry
 python3 scripts/proof_state_compiler.py --pilot-controls
 python3 scripts/test_proof_state_compiler.py
 ```
+
+`CurvatureCarry` imports `TotientTailPeriodKiller` transitively, so this focused
+build supplies both pilot imports. The test script includes live Lean controls
+as well as static contract checks. Never overlap builds; full Lean roots are
+release-only. On missing dependencies, the compiler returns exit `2` before
+executing Git or Lean and suggests preparation for the selected imports.
 
 The pilot contains three causally related controls:
 
@@ -46,14 +58,19 @@ using memory while later controls run.
 
 ## Explicit requests
 
-Use `--request-file PATH` or `--request-stdin`.  The request schema is
+Use `--request-file PATH` or `--request-stdin`. Prepare the local modules in
+that request's `imports` with the focused build wrapper first; the pilot target
+alone does not supply unrelated modules. For `--inspect-declaration`, prepare
+the selected `--module`. External imports and full library roots need their
+own documented setup or coordinated release validation rather than an
+untargeted ordinary build. The request schema is
 `erdos249257-proof-state-request/1`:
 
 ```json
 {
   "schema_version": "erdos249257-proof-state-request/1",
   "goal_id": "example_goal",
-  "imports": ["Erdos249257"],
+  "imports": ["Erdos249257.CurvatureCarry"],
   "opens": [
     "Erdos249257",
     "Erdos249257.TotientTailPeriodKiller"

@@ -230,7 +230,7 @@
       "commands": [
         "python3 research/experiments/choices_contraction/rational_membership_probe.py --target 189/388 --depth 16 17 --horizon 160 --json"
       ],
-      "boundary": "An exact finite exclusion rules out the selected rational; finite survival is not membership, and this probe does not check the weighted irrationality theorem or settle universal Erd\u0151s #257."
+      "boundary": "An exact finite exclusion rules out the selected rational; finite survival is not membership, and this probe does not check the weighted irrationality theorem or settle universal Erdős #257."
     },
     {
       "id": "comparator_replay",
@@ -270,7 +270,7 @@
         "python3 scripts/replay_external_verification.py plan --unit weighted-support --source-commit <40-hex-commit> --source-tree <40-hex-tree>",
         "python3 scripts/replay_external_verification.py run --unit weighted-support --source-commit <40-hex-commit> --source-tree <40-hex-tree> --output weighted-support-replay-receipt.json"
       ],
-      "boundary": "Use an immutable public commit and tree on Linux with systemd. A passing Comparator receipt checks the selected statement, axiom budget and kernel acceptance; it does not solve universal Erd\u0151s #257 or establish novelty."
+      "boundary": "Use an immutable public commit and tree on Linux with systemd. A passing Comparator receipt checks the selected statement, axiom budget and kernel acceptance; it does not solve universal Erdős #257 or establish novelty."
     },
     {
       "id": "reproduce_claim",
@@ -1007,7 +1007,7 @@
       "task_cues": [
         "add problem",
         "new problem",
-        "another erd\u0151s problem",
+        "another erdős problem",
         "register problem",
         "register its paper",
         "expand problem roster",
@@ -1487,6 +1487,23 @@
           "objects": [
             "setup",
             "installation"
+          ],
+          "context_markers": [
+            "after",
+            "before",
+            "by",
+            "during",
+            "for",
+            "from",
+            "in",
+            "inside",
+            "on",
+            "through",
+            "using",
+            "via",
+            "while",
+            "with",
+            "without"
           ]
         },
         {
@@ -1500,6 +1517,41 @@
             "cloned",
             "setup",
             "installation"
+          ]
+        },
+        {
+          "actions": [
+            "repair",
+            "repairing",
+            "fix",
+            "fixing",
+            "debug",
+            "correct",
+            "correcting"
+          ],
+          "objects": [
+            "workbench",
+            "workbenches",
+            "setup",
+            "setups",
+            "guidance"
+          ],
+          "context_markers": [
+            "after",
+            "before",
+            "by",
+            "during",
+            "for",
+            "from",
+            "in",
+            "inside",
+            "on",
+            "through",
+            "using",
+            "via",
+            "while",
+            "with",
+            "without"
           ]
         }
       ],

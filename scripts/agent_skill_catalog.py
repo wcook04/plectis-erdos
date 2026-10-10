@@ -167,9 +167,15 @@ def load_catalog() -> dict[str, Any]:
         if not isinstance(task_intents, list):
             raise SkillCatalogError(f"lane {lane_id} task_intents must be a list")
         for intent in task_intents:
-            if not isinstance(intent, dict) or set(intent) != {"actions", "objects"}:
+            if (
+                not isinstance(intent, dict)
+                or not {"actions", "objects"}.issubset(intent)
+                or set(intent) - {"actions", "objects", "context_markers"}
+            ):
                 raise SkillCatalogError(f"lane {lane_id} task intent needs actions and objects")
-            for field in ("actions", "objects"):
+            for field in ("actions", "objects", "context_markers"):
+                if field not in intent:
+                    continue
                 terms = intent[field]
                 if (
                     not isinstance(terms, list) or not terms
@@ -211,6 +217,40 @@ def normalize(text: str) -> str:
     return " ".join(TOKEN_RE.findall(text.casefold()))
 
 
+def _intent_match(intent: dict[str, Any], tokens: list[str]) -> tuple[str, str] | None:
+    actions = set(tokens).intersection(intent["actions"])
+    objects = set(tokens).intersection(intent["objects"])
+    if not actions or not objects:
+        return None
+    markers = intent.get("context_markers")
+    if markers is None:
+        return sorted(actions)[0], sorted(objects)[0]
+    # Scoped intents describe the repaired object, not a later reference such
+    # as "fix my proof using the workbench". Modifiers remain unrestricted.
+    for index, token in enumerate(tokens):
+        if token not in actions:
+            continue
+        for following in tokens[index + 1:]:
+            if following in markers:
+                break
+            if following in objects:
+                return token, following
+        # Preserve a separately requested repair of the reported setup fault,
+        # e.g. "explain why setup fails and fix it". Limit the backward object
+        # reference to that fault clause; an intervening proof is another object.
+        preceding = tokens[:index]
+        if (
+            tokens[index + 1:index + 2] == ["it"]
+            and preceding[-1:] == ["and"]
+            and set(preceding) & {"fails", "failed", "broken"}
+            and not set(preceding) & {"proof", "proofs", "theorem", "theorems"}
+        ):
+            previous_objects = [token for token in preceding if token in objects]
+            if previous_objects:
+                return token, previous_objects[-1]
+    return None
+
+
 def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
     normalized_task = normalize(task)
     # A prerequisite explicitly avoided by the reader is not an action object.
@@ -221,7 +261,8 @@ def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
         r"(?:(?:a|the) )?lean(?: (?:installation|toolchain))?\b",
         "", normalized_task,
     )
-    task_tokens = set(normalized_task.split())
+    ordered_tokens = normalized_task.split()
+    task_tokens = set(ordered_tokens)
     proof_intent = bool(
         task_tokens & {"attack", "counterexample", "prove", "solve"}
     )
@@ -246,18 +287,18 @@ def rank_lanes(catalog: dict[str, Any], task: str) -> list[dict[str, Any]]:
         # alone must not turn a status or propagation request into authoring.
         for intent in lane.get("task_intents", []):
             actions = task_tokens.intersection(intent["actions"])
-            objects = task_tokens.intersection(intent["objects"])
-            if actions and objects:
+            match = _intent_match(intent, ordered_tokens)
+            if match:
                 # A reported setup fault is an implicit request for help, but
                 # does not override an explicit explanation, status or proof task.
                 if actions <= {"fails", "failed", "broken"} and (
                     task_tokens & {"explain", "describe", "summarize", "status", "report"}
                     or proof_intent
-                    or (task_tokens & {"validate", "verify", "compile", "check"}
+                    or (task_tokens & {"validate", "verify", "compile", "check", "fix", "repair"}
                         and task_tokens & {"proof", "proofs", "theorem", "theorems"})
                 ):
                     continue
-                matches.append(f"{sorted(actions)[0]} + {sorted(objects)[0]}")
+                matches.append(f"{match[0]} + {match[1]}")
                 # Two explicit intent components outweigh a generic later
                 # stage such as "propagate the downstream consequences".
                 score += 12
