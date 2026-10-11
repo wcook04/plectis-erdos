@@ -472,7 +472,7 @@
     }
   ],
   "contribution_activity": {
-    "observed_at": "2026-10-09T22:36:29Z",
+    "observed_at": "2026-10-11T14:30:00Z",
     "repository": "https://github.com/google-deepmind/formal-conjectures",
     "boundary": "A dated observation of public pull requests. Individual review, aggregate approval requirements and merge state are separate. A merge accepts the scoped upstream change, not every mathematical claim in this repository. Maintenance of existing proof links is listed separately and excluded from the merged mathematical contribution count. The pinned statement comparison below retains its original source identity.",
     "requests": [
@@ -606,6 +606,12 @@
             "commit": "f4db4374ba08c195485ee1fea11e837f5759d3e2",
             "submitted_at": "2026-10-06T22:06:31Z",
             "url": "https://github.com/google-deepmind/formal-conjectures/pull/6523#pullrequestreview-5435079771"
+          },
+          {
+            "state": "APPROVED",
+            "commit": "56710453a2af5ac017df557431aa238346e3a35b",
+            "submitted_at": "2026-10-10T05:41:02Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6523#pullrequestreview-5477814639"
           }
         ]
       },
@@ -651,6 +657,12 @@
             "commit": "5d1be45bbe85f5d60a61812eb495602b45609616",
             "submitted_at": "2026-10-06T21:49:55Z",
             "url": "https://github.com/google-deepmind/formal-conjectures/pull/6528#pullrequestreview-5434950823"
+          },
+          {
+            "state": "APPROVED",
+            "commit": "40f7826a7ba761dd39b4542094d6149c60ce6c47",
+            "submitted_at": "2026-10-10T05:34:25Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6528#pullrequestreview-5477798867"
           }
         ]
       },
@@ -701,6 +713,12 @@
             "commit": "43874b729c11b65783050871577a22f9093362a8",
             "submitted_at": "2026-10-06T22:37:31Z",
             "url": "https://github.com/google-deepmind/formal-conjectures/pull/6576#pullrequestreview-5435304111"
+          },
+          {
+            "state": "APPROVED",
+            "commit": "ba0edafdf1bc3b0ad3a563295503ef68751dc514",
+            "submitted_at": "2026-10-10T05:41:39Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6576#pullrequestreview-5477816245"
           }
         ]
       },
@@ -801,15 +819,28 @@
           "Erdos257.erdos_257.variants.tsum_top",
           "Erdos1049.erdos_1049.variants.geq_2_integer"
         ],
-        "scope": "Updates four already accepted proof links to immutable sources checked by Lean and NanoDa in the cited Palomar runs. This maintains their evidence links; it adds no new mathematical result.",
+        "scope": "Replaces four already accepted proof links with immutable Palomar-verified packages; the proof files are byte-for-byte identical and the FC statements are unchanged. [Bo Cowgill reviewed](https://github.com/google-deepmind/formal-conjectures/pull/6971#pullrequestreview-5477230569) statement correspondence, including the Hausdorff path-image measure and series indexing, and the source-bound Lean and NanoDa acceptance reports on Lean 4.29.1 with propext, Classical.choice and Quot.sound. [Moritz Firsching also approved](https://github.com/google-deepmind/formal-conjectures/pull/6971#pullrequestreview-5483329663), asking about file identity and noting the benefit of the Palomar-linked repository. This is proof-link maintenance; it adds no new mathematical result.",
         "url": "https://github.com/google-deepmind/formal-conjectures/pull/6971",
         "title": "Update four proof links to independently verified sources",
-        "state": "OPEN",
+        "state": "MERGED",
         "head": "b47d6ce7ebabf79193826fad5b14b13e44f9c786",
-        "merged_at": null,
-        "review_decision": "REVIEW_REQUIRED",
-        "reviews": [],
-        "display_title": "Update four proof links to kernel-checked sources"
+        "merged_at": "2026-10-11T12:56:29Z",
+        "review_decision": "APPROVED",
+        "reviews": [
+          {
+            "state": "APPROVED",
+            "commit": "b47d6ce7ebabf79193826fad5b14b13e44f9c786",
+            "submitted_at": "2026-10-10T02:50:02Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6971#pullrequestreview-5477230569"
+          },
+          {
+            "state": "APPROVED",
+            "commit": "b47d6ce7ebabf79193826fad5b14b13e44f9c786",
+            "submitted_at": "2026-10-11T12:40:47Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6971#pullrequestreview-5483329663"
+          }
+        ],
+        "merge_commit": "fdce8d042f2054d3cf8d822f5e842550fb184dff"
       }
     ]
   }
