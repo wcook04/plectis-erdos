@@ -104,10 +104,16 @@ PUBLICATION_ROLE_SYSTEMS = "systems_guide"
 # problem number and cannot take the short role, whose stem rule is
 # ``erdos-<n>-<topic>``. It is mathematics, so it is not a systems guide either.
 PUBLICATION_ROLE_SYNTHESIS = "synthesis"
+# An expository paper explains one result of a problem's short paper for a
+# reader new to the problem. It is an optional third paper beside the short
+# paper and the long record, so it takes neither of their roles; its stem
+# must not look like a short paper's, or a filename reader would file it there.
+PUBLICATION_ROLE_EXPOSITORY = "expository"
 ROLE_BY_ARTIFACT_CLASS = {
     "problem_note": PUBLICATION_ROLE_SHORT,
     "synthesis_note": PUBLICATION_ROLE_SYNTHESIS,
     "mathematical_companion": PUBLICATION_ROLE_LONG,
+    "expository_paper": PUBLICATION_ROLE_EXPOSITORY,
     ARCHIVAL_JOINT_CLASS: PUBLICATION_ROLE_ARCHIVAL,
     "repository_architecture_guide": PUBLICATION_ROLE_SYSTEMS,
     "agent_navigation_guide": PUBLICATION_ROLE_SYSTEMS,
@@ -264,6 +270,18 @@ def publication_role_errors(artifact: dict[str, Any]) -> list[str]:
         if hosted_stem != source_stem:
             errors.append(
                 f"short artifact {artifact_id!r} hosted basename {hosted!r} "
+                "must keep the source stem"
+            )
+    if role == PUBLICATION_ROLE_EXPOSITORY:
+        source_stem = Path(str(source)).stem
+        if SHORT_MANUSCRIPT_STEM_RE.fullmatch(source_stem):
+            errors.append(
+                f"expository artifact {artifact_id!r} source stem {source_stem!r} "
+                "matches the short-paper pattern erdos-<n>-<topic>"
+            )
+        if Path(hosted).stem != source_stem:
+            errors.append(
+                f"expository artifact {artifact_id!r} hosted basename {hosted!r} "
                 "must keep the source stem"
             )
     return errors

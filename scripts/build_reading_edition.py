@@ -93,7 +93,9 @@ def mathematical_papers() -> list[dict]:
     problems = sorted({r["problem"] for r in rows})
     if sorted(r["problem"] for r in short) != problems or sorted(r["problem"] for r in long_) != problems:
         raise ReadingEditionError("every problem needs exactly one short paper and one longer record")
-    return sorted(rows, key=lambda r: (r["problem"], r["publication_class"]))
+    # An expository paper is optional and reads after its problem's pair.
+    order = {"problem_paper": 0, "reasoning_surface": 1, "expository_paper": 2}
+    return sorted(rows, key=lambda r: (r["problem"], order.get(r["publication_class"], 3), r["paper_id"]))
 
 
 def synthesis_papers() -> list[dict]:
@@ -394,6 +396,7 @@ def build() -> dict[Path, str]:
         "problem_paper": "short paper",
         "synthesis_paper": "cross-problem paper",
         "reasoning_surface": "longer record",
+        "expository_paper": "expository paper",
     }
     for row in synthesis + papers:
         kind = kinds[row["publication_class"]]

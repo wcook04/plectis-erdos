@@ -8,7 +8,7 @@ PDFs and LaTeX source. Both public repositories include the active papers.
 Older, retired papers are kept only in the repository that published them.
 Some papers may be available in the repository before they appear on the website.
 
-This checkout contains 21 active papers and 3 retired papers.
+This checkout contains 22 active papers and 3 retired papers.
 
 ## System and exposition papers
 
@@ -253,7 +253,7 @@ not currently earn scarce first-contact attention.
 
 <a id="problem-portfolio"></a>
 
-## All papers (24)
+## All papers (25)
 
 The mathematical papers cover Erdős #68, Erdős #243, Erdős #249, Erdős #251, Erdős #257, Erdős #269, Erdős #1041, Erdős #1049. They state the results obtained and what remains unproved. Retired papers are marked below.
 
@@ -363,6 +363,14 @@ Start here (selected for this guide): [Introduction](full-text/erdos-257-mersenn
 [full text](full-text/erdos257-mersenne-reasoning-surface.md) · [PDF](../../paper/257/erdos257-mersenne-reasoning-surface.pdf) · [LaTeX source](../../paper/257/erdos257-mersenne-reasoning-surface.tex) · 162 sections · `erdos257-mersenne-reasoning-surface` · native to this repository
 
 Start here (selected for this guide): [Support criteria and their proofs](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-problem), [Limitations of the recorded methods](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-wall), [Unproved inputs for further arguments](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-survivors), [Reading the detailed record](full-text/erdos257-mersenne-reasoning-surface.md#sec:257-howto).
+
+### Why do the fractions 1/(2^n−1) over an infinite set of exponents n add up to an irrational number whenever 1/n, added up over the same exponents, is finite?
+
+**Sums of 1/(2^n-1) that are never fractions**
+
+[full text](full-text/erdos257-expository-sums-never-fractions.md) · [PDF](../../paper/257/erdos257-expository-sums-never-fractions.pdf) · [LaTeX source](../../paper/257/erdos257-expository-sums-never-fractions.tex) · 38 sections · `erdos257-expository-sums-never-fractions` · native to this repository
+
+Start here (selected for this guide): [What Erdős asked](full-text/erdos257-expository-sums-never-fractions.md#sec:intro), [The test: a fraction cannot leave a tiny positive remainder](full-text/erdos257-expository-sums-never-fractions.md#sec:test), [The doubling exponents: multiply by 2^k-1](full-text/erdos257-expository-sums-never-fractions.md#sec:doubling), [The proof of Theorem 1](full-text/erdos257-expository-sums-never-fractions.md#sec:proof).
 
 ### What infinite-rank and tail-arithmetic facts are proved for the three-prime running LCM, and which residue windows remain open?
 
@@ -512,6 +520,7 @@ responsibility for proof verification, status and explanation as follows:
 - `erdos251-prime-gap-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #251, which remains open.
 - `erdos-257-mersenne-support-subseries` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #257, which remains open.
 - `erdos257-mersenne-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #257, whose universal and half-value questions remain open.
+- `erdos257-expository-sums-never-fractions` is not authority for the validity of the Lean theorem it quotes, which belongs to the cited kernel-checked source, or a solution to Erdős #257, which remains open.
 - `erdos269-running-lcm-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #269, which remains open.
 - `erdos-269-three-prime-running-lcm` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #269, which remains open.
 - `erdos-1041-lemniscate-newton-flow` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or the current status of Erdős #1041 and the correspondence between its historical curve-length formulation and the checked total-variation formulation; those distinctions belong to docs/claims.json in the mathematics repository.

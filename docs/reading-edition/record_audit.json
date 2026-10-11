@@ -3,7 +3,7 @@
   "global_findings": [],
   "input_sha256": {
     "docs/paper_lean_coverage.json": "sha256:633921ae2018e3e674609382150b4733ae6f071793a1589a1ab7f0b4985878a9",
-    "docs/papers/corpus.json": "sha256:75480e96d170432b2f0dd37d1bfd6a479fc89bf9e14cb046eb71f8e1880dc694",
+    "docs/papers/corpus.json": "sha256:07edbed3cdebe4bf288669d26c9d0a333995368caa76a23c7af6c7a84bcade9d",
     "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md": "sha256:485fc1d89029edcfcc5ba1a628700e9eafe153cf93df10f569826e95c8455ca1",
     "docs/papers/full-text/erdos-1049-rational-base-lambert.md": "sha256:c558a11184034b7fc66cb9d6208628813e1f11bb9f8b15f6b99aac9405cdb4c3",
     "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md": "sha256:3940ec6f92e386f6663a0761c72e4fed8bd31f7e624ba7967e5b906aacf5ede5",
@@ -131,7 +131,7 @@
     "paper/reasoning-parts/erdos68/preamble.tex": "sha256:7bbd6207745d2f3e5c7db3b788c3cafcfd17504ac075cad8df1f5e5310dda21d",
     "paper/reasoning-parts/record_links.json": "sha256:1d93f3b309d9ee580394f7d86b36916253091d6184daf226fb653305df05e50e",
     "scripts/assemble_reasoning_surfaces.py": "sha256:0d8f6426d736fd371921e11e7bd2e721413f2d881b10da0be88c6f19b5ffb2b2",
-    "scripts/build_reading_edition.py": "sha256:aa7bd9db277a7183efaa72f950a7c10a337fd8b01e8d585d6c037bad82668828",
+    "scripts/build_reading_edition.py": "sha256:91b90128845285806545f1340cacf048f1c98b8c86b947d731627842aee8d907",
     "scripts/check_lean_paper_propagation.py": "sha256:0f70bd947b02efe91291389e0430e1140a729de1ae3d311092e20152ea1b813c",
     "scripts/lean_source.py": "sha256:9957255054732a3ee1ddcadfd4aab80ea56c927077868153f8d7bddfa09672fe",
     "scripts/reasoning_record_audit.py": "sha256:5181f76da0658a08400a1fc35c6f72dc0370e375fd4d11caf41a4eb38ce5c62b"

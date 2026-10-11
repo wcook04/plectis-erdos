@@ -27,6 +27,7 @@
     "erdos251-prime-gap-reasoning-surface",
     "erdos-257-mersenne-support-subseries",
     "erdos257-mersenne-reasoning-surface",
+    "erdos257-expository-sums-never-fractions",
     "erdos269-running-lcm-reasoning-surface",
     "erdos-269-three-prime-running-lcm",
     "erdos-1041-lemniscate-newton-flow",
@@ -41,7 +42,7 @@
     "writing-mathematics-from-reviewed-revisions",
     "writing-a-good-mathematical-paper"
   ],
-  "paper_count": 24,
+  "paper_count": 25,
   "publication_taxonomy": {
     "generated_by": "docs/papers/build_publication_taxonomy.py",
     "what_these_fields_are": "How each manuscript was published: what kind of document it is, whether anyone outside this project reviewed it, and how to cite it.",
@@ -50,6 +51,7 @@
       "publication_class": {
         "problem_paper": "Exposition of a covered Erd\u0151s problem: what is proved, what is not, and where the boundary between them sits.",
         "reasoning_surface": "A long-form record of attempted routes, the routes that closed, and the obligations that survive.",
+        "expository_paper": "One result of a covered problem's short paper, explained for a reader new to the problem with worked examples and every step of its proof.",
         "synthesis_paper": "Mathematics whose subject is several covered problems read together: what is common, what is not, and what the comparison leaves open.",
         "methods_paper": "A systems or methodology argument: how something is built, checked, or navigated.",
         "software_paper": "A description of a released software artefact and what running it does and does not establish."
@@ -66,12 +68,13 @@
     "by_publication_class": {
       "problem_paper": 9,
       "reasoning_surface": 8,
+      "expository_paper": 1,
       "synthesis_paper": 1,
       "methods_paper": 5,
       "software_paper": 1
     },
     "by_manuscript_status": {
-      "technical_report": 13,
+      "technical_report": 14,
       "working_research_record": 8,
       "retired_provenance": 3
     },
@@ -5503,6 +5506,311 @@
       }
     },
     {
+      "paper_id": "erdos257-expository-sums-never-fractions",
+      "title": "Sums of 1/(2^n-1) that are never fractions",
+      "title_source": "manuscript",
+      "question_this_paper_answers": "Why do the fractions 1/(2^n\u22121) over an infinite set of exponents n add up to an irrational number whenever 1/n, added up over the same exponents, is finite?",
+      "subject": "Erd\u0151s #257",
+      "subject_kind": "problem",
+      "form": "Expository paper",
+      "owns": "an account of Theorem A.1 of the #257 short paper at base 2 for a reader new to the problem: worked examples, figures and exercises, with every step of the proof in an appendix",
+      "not_authority_for": "the validity of the Lean theorem it quotes, which belongs to the cited kernel-checked source, or a solution to Erd\u0151s #257, which remains open",
+      "publication_state": "active",
+      "publication_class": "expository_paper",
+      "publication_class_basis": "problem subject with form 'Expository paper'",
+      "manuscript_status": "technical_report",
+      "peer_review_state": "not_externally_reviewed",
+      "doi": null,
+      "doi_absence_reason": "no_archival_deposit_yet",
+      "preferred_citation": {
+        "author": "Will Cook",
+        "year": "2026",
+        "title": "Sums of 1/(2^n-1) that are never fractions",
+        "repository": "plectis-erdos",
+        "canonical_source_commit": null,
+        "canonical_source_url": null,
+        "licence": "CC-BY-4.0",
+        "identifier_kind": "unversioned_source",
+        "text": "Will Cook (2026). Sums of 1/(2^n-1) that are never fractions. plectis-erdos. CC-BY-4.0.",
+        "derived_from": [
+          "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
+        ]
+      },
+      "relation_to_this_repository": "native",
+      "home_repository": "plectis-erdos",
+      "licence": "CC-BY-4.0",
+      "copyright": "2026 Will Cook",
+      "local_full_text": "docs/papers/full-text/erdos257-expository-sums-never-fractions.md",
+      "local_source": "paper/257/erdos257-expository-sums-never-fractions.tex",
+      "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "local_unpublished",
+      "canonical_source_url": null,
+      "canonical_source_raw_url": null,
+      "section_count": 38,
+      "sections": [
+        {
+          "level": 1,
+          "id": "erdos257-expository-sums-never-fractions",
+          "title": "Sums of 1/(2^n-1) that are never fractions",
+          "line": 1
+        },
+        {
+          "level": 1,
+          "id": "sec:intro",
+          "title": "What Erd\u0151s asked",
+          "line": 13
+        },
+        {
+          "level": 1,
+          "id": "sec:problem",
+          "title": "What this paper proves",
+          "line": 70
+        },
+        {
+          "level": 1,
+          "id": "sec:test",
+          "title": "The test: a fraction cannot leave a tiny positive remainder",
+          "line": 100
+        },
+        {
+          "level": 1,
+          "id": "sec:doubling",
+          "title": "The doubling exponents: multiply by 2^k-1",
+          "line": 130
+        },
+        {
+          "level": 4,
+          "id": "why-this-works-for-every-bottom.",
+          "title": "Why this works for every bottom.",
+          "line": 151
+        },
+        {
+          "level": 1,
+          "id": "sec:split",
+          "title": "Why 2^n-1 divides 2^k-1, and what is left when it does not",
+          "line": 169
+        },
+        {
+          "level": 4,
+          "id": "the-sum-of-the-fractional-parts.",
+          "title": "The sum of the fractional parts.",
+          "line": 205
+        },
+        {
+          "level": 1,
+          "id": "sec:general",
+          "title": "Other choices: averaging",
+          "line": 217
+        },
+        {
+          "level": 4,
+          "id": "why-cancelling-the-early-exponents-is-not-enough.",
+          "title": "Why cancelling the early exponents is not enough.",
+          "line": 221
+        },
+        {
+          "level": 4,
+          "id": "one-exponent-over-a-full-cycle.",
+          "title": "One exponent over a full cycle.",
+          "line": 237
+        },
+        {
+          "level": 4,
+          "id": "steps-of-q.",
+          "title": "Steps of Q.",
+          "line": 254
+        },
+        {
+          "level": 4,
+          "id": "unfinished-cycles.",
+          "title": "Unfinished cycles.",
+          "line": 260
+        },
+        {
+          "level": 1,
+          "id": "sec:proof",
+          "title": "The proof of Theorem\u00a01",
+          "line": 271
+        },
+        {
+          "level": 1,
+          "id": "sec:limits",
+          "title": "What the proof shows, and what it does not",
+          "line": 306
+        },
+        {
+          "level": 4,
+          "id": "every-exponent.",
+          "title": "Every exponent.",
+          "line": 310
+        },
+        {
+          "level": 4,
+          "id": "other-bases.",
+          "title": "Other bases.",
+          "line": 320
+        },
+        {
+          "level": 4,
+          "id": "what-is-open.",
+          "title": "What is open.",
+          "line": 326
+        },
+        {
+          "level": 4,
+          "id": "the-computer-checked-proof.",
+          "title": "The computer-checked proof.",
+          "line": 332
+        },
+        {
+          "level": 1,
+          "id": "app:full",
+          "title": "The proof in full",
+          "line": 338
+        },
+        {
+          "level": 2,
+          "id": "app:sums",
+          "title": "Adding infinitely many numbers",
+          "line": 344
+        },
+        {
+          "level": 4,
+          "id": "adding-up-to-a-number.",
+          "title": "Adding up to a number.",
+          "line": 348
+        },
+        {
+          "level": 4,
+          "id": "halving-lists.",
+          "title": "Halving lists.",
+          "line": 354
+        },
+        {
+          "level": 4,
+          "id": "running-totals-that-only-go-up-and-stay-below-a-fixed-number-add-up-to-a-number.",
+          "title": "Running totals that only go up and stay below a fixed number add up to a number.",
+          "line": 360
+        },
+        {
+          "level": 4,
+          "id": "comparison.",
+          "title": "Comparison.",
+          "line": 381
+        },
+        {
+          "level": 4,
+          "id": "the-part-after-a-cutoff.",
+          "title": "The part after a cutoff.",
+          "line": 387
+        },
+        {
+          "level": 4,
+          "id": "every-choice-of-exponents-gives-a-definite-number.",
+          "title": "Every choice of exponents gives a definite number.",
+          "line": 393
+        },
+        {
+          "level": 2,
+          "id": "app:test",
+          "title": "The fraction test",
+          "line": 399
+        },
+        {
+          "level": 2,
+          "id": "app:split",
+          "title": "Whole parts, fractional parts and R(k)",
+          "line": 417
+        },
+        {
+          "level": 2,
+          "id": "app:doubling",
+          "title": "The doubling exponents",
+          "line": 480
+        },
+        {
+          "level": 2,
+          "id": "app:cycle",
+          "title": "Averages over a full cycle",
+          "line": 506
+        },
+        {
+          "level": 2,
+          "id": "app:crude",
+          "title": "The bound for unfinished cycles",
+          "line": 537
+        },
+        {
+          "level": 2,
+          "id": "app:proof",
+          "title": "The proof of Theorem\u00a01",
+          "line": 577
+        },
+        {
+          "level": 2,
+          "id": "app:numbers",
+          "title": "The four choices with actual numbers",
+          "line": 602
+        },
+        {
+          "level": 2,
+          "id": "app:bases",
+          "title": "Other bases",
+          "line": 618
+        },
+        {
+          "level": 2,
+          "id": "app:lean",
+          "title": "The Lean statement",
+          "line": 624
+        },
+        {
+          "level": 1,
+          "id": "sec:exercises",
+          "title": "Questions and exercises",
+          "line": 645
+        },
+        {
+          "level": 1,
+          "id": "app:answers",
+          "title": "Answers",
+          "line": 709
+        }
+      ],
+      "citations_rendered": 13,
+      "local_pdf": "paper/257/erdos257-expository-sums-never-fractions.pdf",
+      "pdf_sha256": "sha256:3ca4a2c173c8495302addd93332dfa2af95bd9aa4748c65d2116b0b1633d0d01",
+      "pdf_byte_count": 160557,
+      "first_pass": {
+        "stated_by_the_paper": false,
+        "provenance": "editorial selection for this guide",
+        "sections": [
+          {
+            "id": "sec:intro",
+            "title": "What Erd\u0151s asked",
+            "line": 13
+          },
+          {
+            "id": "sec:test",
+            "title": "The test: a fraction cannot leave a tiny positive remainder",
+            "line": 100
+          },
+          {
+            "id": "sec:doubling",
+            "title": "The doubling exponents: multiply by 2^k-1",
+            "line": 130
+          },
+          {
+            "id": "sec:proof",
+            "title": "The proof of Theorem\u00a01",
+            "line": 271
+          }
+        ],
+        "unresolved_count": 0
+      }
+    },
+    {
       "paper_id": "erdos269-running-lcm-reasoning-surface",
       "title": "Running least common multiples: distinct values and multiplicities",
       "title_source": "manuscript",
@@ -7916,7 +8224,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:d268dd185b92190b2c0c4556608387070cfc58660bff0f5c468e9f2bf10bafbc",
+      "source_sha256": "sha256:b6c54d522ad39c0c9d59efdaeb12aa892ff6493d2fe4ccc2a3f9d8e6cdcb3f8f",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8172,8 +8480,8 @@
       ],
       "citations_rendered": 52,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:4d0de95387eb33c6507ef557b0c52fa86a3753dee236feb82e39347053f4d325",
-      "pdf_byte_count": 180168,
+      "pdf_sha256": "sha256:e33907a44e75ab51f2e62fb4e92067669ac748f195853df6bbc072bc91eef2b7",
+      "pdf_byte_count": 180196,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

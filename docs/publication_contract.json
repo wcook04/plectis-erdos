@@ -31,9 +31,9 @@
       "title": "A Repository-Based System for Research and Publication",
       "artifact_class": "repository_architecture_guide",
       "source_path": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_content_digest": "sha256:d268dd185b92190b2c0c4556608387070cfc58660bff0f5c468e9f2bf10bafbc",
+      "source_content_digest": "sha256:b6c54d522ad39c0c9d59efdaeb12aa892ff6493d2fe4ccc2a3f9d8e6cdcb3f8f",
       "rendered_path": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "rendered_content_digest": "sha256:4d0de95387eb33c6507ef557b0c52fa86a3753dee236feb82e39347053f4d325",
+      "rendered_content_digest": "sha256:e33907a44e75ab51f2e62fb4e92067669ac748f195853df6bbc072bc91eef2b7",
       "authority_posture": "authored_repository_architecture_not_Lean_proof_authority",
       "claim_scope": "A first-principles architecture and access guide to the public Lean source, reviewed claim record, authored documents, generated views, release flow, CI jobs, and human trust boundary. It describes a working prototype rather than a validated multi-user service. A 23 September architecture return has an accepted local receipt with same-contributor reproduction, but independent outside first use remains unobserved. Using ani's explicit degree-seven polynomial, Lean here refutes the exact Formal Conjectures path-image-length statement by a one-dimensional Hausdorff-measure bound; correspondence with the 1958 wording lacks independent human review. The guide itself adds no mathematical result.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.architecture_guides",
@@ -183,6 +183,26 @@
         "python3 scripts/check_publication_contract.py"
       ],
       "storage_path": "paper/257/erdos-257-mersenne-support-subseries.pdf"
+    },
+    {
+      "id": "erdos_257_expository",
+      "title": "Sums of 1/(2^n-1) that are never fractions",
+      "artifact_class": "expository_paper",
+      "publication_role": "expository",
+      "source_path": "paper/257/erdos257-expository-sums-never-fractions.tex",
+      "source_content_digest": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8",
+      "rendered_path": "paper/257/erdos257-expository-sums-never-fractions.pdf",
+      "rendered_content_digest": "sha256:3ca4a2c173c8495302addd93332dfa2af95bd9aa4748c65d2116b0b1633d0d01",
+      "storage_path": "paper/257/erdos257-expository-sums-never-fractions.pdf",
+      "authority_posture": "authored_expository_mathematics_not_Lean_proof_authority; public_status_is_owned_per_claim_by_docs/claims.json",
+      "claim_scope": "Expository paper on Erdős Problem 257 for a reader new to the problem. Its theorem is Theorem A.1 of the problem's short paper at base two: the sum of 1/(2^n-1) over an infinite set A of positive integers is irrational whenever the sum of 1/n over A is finite. Sections 1 to 8 explain the proof with worked examples and Appendix A proves every step, closing with a finite average where the short paper takes a limit of averages. Lean proves the all-base theorem irrational_erdosSupportSeries_of_summable_reciprocal, which the paper quotes and reads line by line; the paper's own written proof is checked by hand and is not replayed in Lean. The universal Erdős #257 question remains open.",
+      "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture",
+      "entry_route_id": "read_one_problem_note",
+      "validation": [
+        "python3 scripts/check_publication_contract.py",
+        "python3 scripts/paper_build_manifest.py",
+        "python3 scripts/build_problem_index.py --check"
+      ]
     },
     {
       "id": "erdos_68_note",

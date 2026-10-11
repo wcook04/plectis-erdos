@@ -141,6 +141,17 @@
       "source_path": "paper/251/erdos251-prime-gap-reasoning-surface.tex",
       "storage_path": "paper/251/erdos251-prime-gap-reasoning-surface.pdf"
     },
+    "erdos_257_expository": {
+      "inputs": {
+        "paper/257/erdos257-expository-sums-never-fractions.tex": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8",
+        "paper/module-aliases.tex": "sha256:6d6d9640a9b7f04d003ebbffb78db279f5af838a2afc99ba6b5b247cc67b6954",
+        "paper/paper-house-style.sty": "sha256:554ed85b5315bd936a4d09d58f8727547c5bb1b299f9684eb6ef720b329759a2",
+        "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
+      },
+      "rendered_content_digest": "sha256:3ca4a2c173c8495302addd93332dfa2af95bd9aa4748c65d2116b0b1633d0d01",
+      "source_path": "paper/257/erdos257-expository-sums-never-fractions.tex",
+      "storage_path": "paper/257/erdos257-expository-sums-never-fractions.pdf"
+    },
     "erdos_257_note": {
       "inputs": {
         "paper/257/erdos-257-mersenne-support-subseries.tex": "sha256:2676b3e9f6a5ba6f3ea8fceeed9684ff6ced0fa3bef9c3c0b6a3a878288af5d3",
@@ -285,9 +296,9 @@
         "paper/module-aliases.tex": "sha256:6d6d9640a9b7f04d003ebbffb78db279f5af838a2afc99ba6b5b247cc67b6954",
         "paper/paper-house-style.sty": "sha256:554ed85b5315bd936a4d09d58f8727547c5bb1b299f9684eb6ef720b329759a2",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
-        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:d268dd185b92190b2c0c4556608387070cfc58660bff0f5c468e9f2bf10bafbc"
+        "paper/systems/claim-faithful-publication-systems-paper.tex": "sha256:b6c54d522ad39c0c9d59efdaeb12aa892ff6493d2fe4ccc2a3f9d8e6cdcb3f8f"
       },
-      "rendered_content_digest": "sha256:4d0de95387eb33c6507ef557b0c52fa86a3753dee236feb82e39347053f4d325",
+      "rendered_content_digest": "sha256:e33907a44e75ab51f2e62fb4e92067669ac748f195853df6bbc072bc91eef2b7",
       "source_path": "paper/systems/claim-faithful-publication-systems-paper.tex",
       "storage_path": "paper/systems/claim-faithful-publication-systems-paper.pdf"
     }

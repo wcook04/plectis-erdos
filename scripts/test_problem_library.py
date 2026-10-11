@@ -120,5 +120,37 @@ class ProblemLibraryTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'missing or unsafe pdf'):
                     builder.problem_library(source, {}, corpus)
 
+
+    def test_expository_paper_is_an_optional_third_role_after_the_pair(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            files = {
+                'lean/ErdosProblems/Erdos68/Main.lean': 'def main := 1\n',
+                'paper/short.tex': 'short', 'short.pdf': 'pdf',
+                'paper/long.tex': 'long', 'long.pdf': 'pdf',
+                'paper/explain.tex': 'explain', 'explain.pdf': 'pdf',
+            }
+            for name, text in files.items():
+                path = root / name
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(text)
+            source = {'problems': [{'problem_id': 'erdos_68', 'erdos_number': 68,
+                'directory': 'ErdosProblems/Erdos68', 'principal_module': 'ErdosProblems.Erdos68.Main'}]}
+            short = {'paper_id': 'b-short', 'title': 'Short', 'subject': 'Erdős #68', 'form': 'Problem note',
+                     'publication_state': 'active', 'local_source': 'paper/short.tex', 'local_pdf': 'short.pdf'}
+            long = {**short, 'paper_id': 'c-long', 'form': 'Reasoning surface',
+                    'local_source': 'paper/long.tex', 'local_pdf': 'long.pdf'}
+            # Its id sorts first; its role still reads after the short paper and the long record.
+            explain = {**short, 'paper_id': 'a-explain', 'form': 'Expository paper',
+                       'local_source': 'paper/explain.tex', 'local_pdf': 'explain.pdf'}
+            with patch.object(builder, 'ROOT', root):
+                pair = builder.problem_library(source, {}, {'papers': [long, short]})['problems']['erdos_68']
+                self.assertEqual(sorted(pair['paper_roles']), ['long', 'short'],
+                                 'a problem without an expository paper keeps exactly two roles')
+                three = builder.problem_library(source, {}, {'papers': [explain, long, short]})['problems']['erdos_68']
+                self.assertEqual([p['role'] for p in three['papers']], ['short', 'long', 'expository'])
+                self.assertEqual(three['paper_roles'], {'short': ['b-short'], 'long': ['c-long'],
+                                                        'expository': ['a-explain']})
+
 if __name__ == '__main__':
     unittest.main()
