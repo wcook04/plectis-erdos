@@ -88,7 +88,7 @@ through the [contribution guide](#contribute).
 - [Erdős #257: the reciprocal-summability criterion](https://youtu.be/y8s3t_pwIGM): follow an argument through the map, paper and formal statement.
 - [CodeMap demonstration](https://youtu.be/r48SJdiGKKM): inspect source files, their purposes and dependencies.
 - [Agent Trace demonstration](https://youtu.be/FbMiKx4nwJk): inspect recorded agent work and carry selected context into another review.
-- [Combined film](https://wcook04.github.io/plectis/#film-combined): the introduction and demonstrations together. The replacement is being prepared.
+- [Combined film](https://wcook04.github.io/plectis/#film-combined): replacement being prepared.
 
 CodeMap and Agent Trace demonstrate private interfaces in the research
 environment. This repository publishes the mathematical research and its tools.
