@@ -121,7 +121,7 @@ Latest individual review: [commented](https://github.com/google-deepmind/formal-
 
 ### Proof-link maintenance
 
-**[#6971 · Update four proof links to independently verified sources](https://github.com/google-deepmind/formal-conjectures/pull/6971)**
+**[#6971 · Update four proof links to kernel-checked sources](https://github.com/google-deepmind/formal-conjectures/pull/6971)**
 
 Replaces four already accepted proof links with immutable Palomar-verified packages; the proof files are byte-for-byte identical and the FC statements are unchanged. [Bo Cowgill reviewed](https://github.com/google-deepmind/formal-conjectures/pull/6971#pullrequestreview-5477230569) statement correspondence, including the Hausdorff path-image measure and series indexing, and the source-bound Lean and NanoDa acceptance reports on Lean 4.29.1 with propext, Classical.choice and Quot.sound. [Moritz Firsching also approved](https://github.com/google-deepmind/formal-conjectures/pull/6971#pullrequestreview-5483329663), asking about file identity and noting the benefit of the Palomar-linked repository. This is proof-link maintenance; it adds no new mathematical result.
 
