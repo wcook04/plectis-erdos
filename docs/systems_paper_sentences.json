@@ -475,8 +475,9 @@
       "start_line": 1,
       "end_line": 147,
       "kind": "source",
-      "sha256": "be42520dc670c95303a30daa3eda2c1bd5057d02292fa4c2f6ec20b91c871991",
-      "excerpt_sha256": "be42520dc670c95303a30daa3eda2c1bd5057d02292fa4c2f6ec20b91c871991"
+      "sha256": "46a5462e28bce7ee57cd46172c23ec761360fd7a76ccaef56db9620dd5564d05",
+      "excerpt_sha256": "46a5462e28bce7ee57cd46172c23ec761360fd7a76ccaef56db9620dd5564d05",
+      "custody_note": "Reviewed 12 October 2026 after adding the introductory #257 paper and current video links. The four reader-guide warrants still hold: paper-first reading, selected-result conditions, examples and hypothesis changes at reader-selected depth, and one-problem/cross-paper routes. Removed only repeated encouragement following the synthesis link to preserve the reader budget. No systems-paper sentence, mathematical claim, or execution evidence changed."
     },
     {
       "id": "explanation-depth",
