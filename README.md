@@ -29,7 +29,7 @@ or the [glossary](https://wcook04.github.io/plectis/docs/glossary.html).
 - **Reader feedback:** [paper revisions](docs/research-commons/CREDIT_LEDGER.md#credit-correspondence-004).
 - **Connections between problems:** [cross-problem paper](paper/synthesis/optimal-sparse-perturbations.pdf).
 - **Formal evidence:** [Lean source](docs/SOURCE_MAP.md) and [Comparator checks](docs/EXTERNAL_VERIFICATION.md).
-- **Working environment:** [introduction, mathematics, CodeMap and Agent Trace films](#videos).
+- **Working environment:** [mathematics and CodeMap films](#videos).
 
 This repository is the public research workspace. The [website](https://wcook04.github.io/plectis/)
 provides reading and map views. Its 88-component software map describes the
@@ -84,14 +84,10 @@ through the [contribution guide](#contribute).
 
 ## Watch the videos
 
-- [Plectis: introduction](https://youtu.be/lkO7EARGv2Q): how the research, papers and tools connect.
 - [Erdős #257: the reciprocal-summability criterion](https://youtu.be/3S1t-CvsQjI): follow an argument through the map, paper and formal statement.
 - [CodeMap demonstration](https://youtu.be/1twvvQ-wteI): inspect source files, their purposes and dependencies.
-- [Agent Trace demonstration](https://youtu.be/RKIz8gOmnDI): inspect recorded agent work and carry selected context into another review.
-- [Combined film](https://youtu.be/ab5oQz8G2no): mathematics and software, 37 minutes.
 
-CodeMap and Agent Trace demonstrate private interfaces in the research
-environment. This repository publishes the mathematical research and its tools.
+CodeMap demonstrates a private interface in the research environment. This repository publishes the mathematical research and its tools.
 
 <a id="about-the-project"></a>
 
