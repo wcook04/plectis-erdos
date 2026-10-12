@@ -472,9 +472,9 @@
     }
   ],
   "contribution_activity": {
-    "observed_at": "2026-10-11T14:30:00Z",
+    "observed_at": "2026-10-12T18:49:29.505431+00:00",
     "repository": "https://github.com/google-deepmind/formal-conjectures",
-    "boundary": "A dated observation of public pull requests. Individual review, aggregate approval requirements and merge state are separate. A merge accepts the scoped upstream change, not every mathematical claim in this repository. Maintenance of existing proof links is listed separately and excluded from the merged mathematical contribution count. The pinned statement comparison below retains its original source identity.",
+    "boundary": "A dated observation of public pull requests. Individual review, aggregate approval requirements and merge state are separate. A merge accepts the scoped upstream change, not every mathematical claim in this repository. Maintenance of existing proof links is listed separately and excluded from the merged mathematical contribution count. The pinned statement comparison below retains its original source identity. The #6579 review chain was refreshed on 12 October; other request observations retain the 11 October snapshot.",
     "requests": [
       {
         "number": 5034,
@@ -774,9 +774,9 @@
         "targets": [
           "Erdos249.erdos_249.variants.rational_dyadic_observable"
         ],
-        "scope": "For rational-valued observables modulo 2^k, the binary series is rational exactly when the observable is constant on even residue classes.",
+        "scope": "For rational-valued observables modulo 2^k, the binary series is rational exactly when the observable is constant on even residue classes. The unreduced-totient problem remains open.\n\n[Bo Cowgill approved the current head](https://github.com/google-deepmind/formal-conjectures/pull/6579#pullrequestreview-5493193130) on 12 October, relying on author-hosted evidence; he did not independently rerun verification. [Run 38173617731](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38173617731) compares FC head `a6a2e0e1` with proof source `04e14917` in Lean 4.33.1 and FC's Mathlib environment. It reports matching statements and dependencies, defaultLean/NanoDa acceptance under `propext`, `Classical.choice` and `Quot.sound`, and positive/mismatch controls.\n\nHis [earlier approval](https://github.com/google-deepmind/formal-conjectures/pull/6579#pullrequestreview-5435222238) independently checked the older Lean 4.29.1 proof. The [11 October failure](https://github.com/google-deepmind/formal-conjectures/pull/6579#issuecomment-6112373414) at `e6bf75a5` remains historical evidence of a cross-version comparison mismatch, does not establish a mathematical defect. Individual approval, native verification, aggregate review requirements and merge state remain separate.",
         "state": "OPEN",
-        "head": "e6bf75a53ef0655241873e5f12427fb6b4695de5",
+        "head": "a6a2e0e1e88b01f182c609f8bdb57c3d02c3ab54",
         "merged_at": null,
         "review_decision": "REVIEW_REQUIRED",
         "reviews": [
@@ -784,7 +784,29 @@
             "state": "APPROVED",
             "commit": "cefe2f5b7d735c99dc8d121ba32d2e835d5e5766",
             "submitted_at": "2026-10-06T22:25:49Z",
-            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6579#pullrequestreview-5435222238"
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6579#pullrequestreview-5435222238",
+            "author": "bocowgill",
+            "body": "Reviewed `cefe2f5b`. The criterion at `249.lean:51\u201356` matches the [cited theorem](https://github.com/wcook04/plectis-erdos/blob/c4bff4aa152465b3c92fffe808f76b0e5f78293c/paper/249/erdos-249-binary-totient-series.tex#L297-L306). Constancy on the even classes gives the rational value `3*f(1)/4 + f(0)/4`, including when `k = 1`. I independently verified the complete FC statement using the [linked Lean proof](https://github.com/wcook04/plectis-erdos/blob/c4bff4aa152465b3c92fffe808f76b0e5f78293c/lean/ErdosProblems/Erdos249/PaperCompleteR7/RationalObservableClassification.lean#L221-L233) under Lean 4.29.1, with only `propext`, `Classical.choice`, and `Quot.sound`. The original unreduced-totient problem remains open."
+          },
+          {
+            "state": "APPROVED",
+            "commit": "a6a2e0e1e88b01f182c609f8bdb57c3d02c3ab54",
+            "submitted_at": "2026-10-12T15:57:14Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6579#pullrequestreview-5493193130",
+            "author": "bocowgill",
+            "body": "LGTM, thanks. Reviewed `a6a2e0e1`. The statement still matches the [cited residue-series theorem](https://github.com/wcook04/plectis-erdos/blob/c4bff4aa152465b3c92fffe808f76b0e5f78293c/paper/249/erdos-249-binary-totient-series.tex#L297-L306), including positive indexing and the `k = 1` case.\n\nThe [new receiving-identity run](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38173617731) resolves the comparison gap in my earlier comment: its pinned workflow and logs cover the actual FC declaration at this head and the linked repair at `04e14917`, using Lean 4.33.1 and FC's Mathlib pin. They report matching statements and dependencies, acceptance by Lean and NanoDa with only `propext`, `Classical.choice`, and `Quot.sound` permitted, and successful positive and mismatch controls. I am relying on that author-hosted evidence; I did not independently rerun proof verification.\n"
+          }
+        ],
+        "historical_comments": [
+          {
+            "id": 6112373414,
+            "head": "e6bf75a53ef0655241873e5f12427fb6b4695de5",
+            "created_at": "2026-10-11T18:41:10Z",
+            "updated_at": "2026-10-11T18:41:10Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6579#issuecomment-6112373414",
+            "author": "bocowgill",
+            "body": "Review update for head `e6bf75a53ef0655241873e5f12427fb6b4695de5`:\n\n- The FC statement matches the cited paper and pinned Lean theorem in its quantifiers, positive indexing, and `ZMod (2 ^ k)` coordinates. The `k = 1` boundary and metadata are consistent; the original unreduced-totient question remains open.\n- I checked the successful receiving build at this exact head and exported the actual FC declaration in its Lean 4.33.1 environment.\n- In a separate, offline Linux environment using the proof's original Lean 4.29.1 and pinned dependencies, the unmodified proof and bridge to the FC theorem compiled successfully. The bridge's axiom audit reports only `propext`, `Classical.choice`, and `Quot.sound`. Confinement checks and the Comparator's positive and negative controls passed.\n\nThe remaining check did **not** pass: Comparator rejected the comparison between the current-FC export and the Lean 4.29.1 bridge export at `statement_and_dependencies`, reporting \u201cChallenge and solution theorem statement do not match.\u201d This result does not establish a mathematical defect, but it prevents me from treating the current-FC bridge verification as complete. The linked standalone verification receipt does not resolve this particular cross-version comparison.\n\nThe next step is to inspect the elaborated theorem statements and relevant dependency definitions across the two environments, establish a justified bridge, and rerun Comparator against the actual current-FC export. Approval remains pending that successful check. The logs, exports, and prepared environment have been retained; the isolated VM is stopped.\n",
+            "boundary": "Historical comparison failure at the named receiving head and old-proof environment; later current-head review does not erase this recorded outcome."
           }
         ]
       },
