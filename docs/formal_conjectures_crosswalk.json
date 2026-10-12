@@ -2,7 +2,7 @@
   "schema": "formal-conjectures-crosswalk/1",
   "artifact_role": "authored_statement_identity_and_adapter_review_crosswalk",
   "authority_posture": "Source-identity and comparison metadata only. This artifact is not Lean proof authority, does not establish semantic equivalence, and is not a contribution or submission-readiness decision.",
-  "purpose": "Follow the public Formal Conjectures contributions, then inspect the pinned statement comparison for the eight Erdős programmes. Contribution lifecycle and mathematical source identity have separate evidence.",
+  "purpose": "Follow the public Formal Conjectures contributions, then inspect the pinned statement comparison for the eight Erd\u0151s programmes. Contribution lifecycle and mathematical source identity have separate evidence.",
   "upstream": {
     "repository": "https://github.com/google-deepmind/formal-conjectures",
     "commit": "f2de2ed5841e2105009be778ada0c40c08980125",
@@ -45,7 +45,7 @@
         "proof_status": "sorry",
         "signature_anchors": [
           "theorem erdos_68 :",
-          "Irrational (∑' n : ℕ, 1 / ((n + 2).factorial - 1 : ℝ))"
+          "Irrational (\u2211' n : \u2115, 1 / ((n + 2).factorial - 1 : \u211d))"
         ],
         "related_declarations": [
           {
@@ -85,16 +85,16 @@
         "declaration_line": 38,
         "proof_status": "sorry",
         "signature_anchors": [
-          "theorem erdos_243 (a : ℕ → ℕ) (ha₀ : StrictMono a)",
-          "(ha₂ : Summable ((1 : ℚ) / a ·))",
-          "∀ᶠ n in atTop, a n = a (n - 1) ^ 2 - a (n - 1) + 1"
+          "theorem erdos_243 (a : \u2115 \u2192 \u2115) (ha\u2080 : StrictMono a)",
+          "(ha\u2082 : Summable ((1 : \u211a) / a \u00b7))",
+          "\u2200\u1da0 n in atTop, a n = a (n - 1) ^ 2 - a (n - 1) + 1"
         ],
         "related_declarations": []
       },
       "comparison": {
         "statement_scope": "The rapid-growth, rational reciprocal-sum, eventual-Sylvester question is represented, but the local work proves only conditional state-system consequences.",
         "indexing": "The upstream sequence is zero-based and refers to a (n - 1), using truncated Nat subtraction; comparison with a traditional sequence starting at a_1 requires discarding a finite prefix.",
-        "casts_and_ambient_types": "The growth limit is Real-valued, while ha₂ is Summable for a Rational-valued reciprocal sequence. This asserts a Rational sum exists and must be related explicitly to a Real rationality premise.",
+        "casts_and_ambient_types": "The growth limit is Real-valued, while ha\u2082 is Summable for a Rational-valued reciprocal sequence. This asserts a Rational sum exists and must be related explicitly to a Real rationality premise.",
         "answer_and_proof_status": "The open theorem has a sorry proof and no answer wrapper; the conclusion is an eventual filter statement.",
         "conservative_verdict": "statement_level_alignment_only",
         "machine_checked_equivalence": "none"
@@ -121,8 +121,8 @@
         "declaration_line": 35,
         "proof_status": "sorry",
         "signature_anchors": [
-          "theorem erdos_249 : answer(sorry) ↔ Irrational",
-          "∑' n : ℕ, (φ n) / (2 ^ n)"
+          "theorem erdos_249 : answer(sorry) \u2194 Irrational",
+          "\u2211' n : \u2115, (\u03c6 n) / (2 ^ n)"
         ],
         "related_declarations": []
       },
@@ -156,7 +156,7 @@
         "declaration_line": 31,
         "proof_status": "sorry",
         "signature_anchors": [
-          "theorem erdos_251 : answer(sorry) ↔ Irrational",
+          "theorem erdos_251 : answer(sorry) \u2194 Irrational",
           "Nat.nth Nat.Prime n",
           "(2 ^ n)"
         ],
@@ -192,8 +192,8 @@
         "declaration_line": 35,
         "proof_status": "sorry",
         "signature_anchors": [
-          "theorem erdos_257 : answer(sorry) ↔ ∀ (A : Set ℕ), A.Infinite →",
-          "Irrational (∑' n : A, (1 : ℝ) / (2 ^ n.1 - 1))",
+          "theorem erdos_257 : answer(sorry) \u2194 \u2200 (A : Set \u2115), A.Infinite \u2192",
+          "Irrational (\u2211' n : A, (1 : \u211d) / (2 ^ n.1 - 1))",
           "theorem erdos_257.variants.tsum_top_eq :",
           "theorem erdos_257.variants.tsum_top :"
         ],
@@ -276,10 +276,10 @@
         "declaration_line": 73,
         "proof_status": "sorry",
         "signature_anchors": [
-          "noncomputable def partialLcm (P : Set ℕ) (n : ℕ) : ℕ :=",
-          "noncomputable def series (P : Set ℕ) : ℝ :=  ∑' n",
-          "theorem erdos_269.variants.irrational : answer(sorry) ↔",
-          "Irrational (series (P : Set ℕ))"
+          "noncomputable def partialLcm (P : Set \u2115) (n : \u2115) : \u2115 :=",
+          "noncomputable def series (P : Set \u2115) : \u211d :=  \u2211' n",
+          "theorem erdos_269.variants.irrational : answer(sorry) \u2194",
+          "Irrational (series (P : Set \u2115))"
         ],
         "related_declarations": [
           {
@@ -325,8 +325,8 @@
         "proof_status": "sorry",
         "signature_anchors": [
           "theorem erdos_1041 :",
-          "∃ (z₁ z₂ : ℂ)",
-          "Set.range γ ⊆ { z : ℂ | ‖f.eval z‖ < 1 } ∧ length (Set.range γ) < 2"
+          "\u2203 (z\u2081 z\u2082 : \u2102)",
+          "Set.range \u03b3 \u2286 { z : \u2102 | \u2016f.eval z\u2016 < 1 } \u2227 length (Set.range \u03b3) < 2"
         ],
         "related_declarations": [
           {
@@ -339,7 +339,7 @@
       "comparison": {
         "statement_scope": "The local Hausdorff theorem refutes the exact Formal Conjectures path-image-length proposition for ani's degree-seven polynomial. The 1958 curve-length wording remains a separate historical correspondence audit.",
         "indexing": "There is no series indexing issue. The upstream theorem quantifies polynomial degree n >= 2 and selects roots through multiset containment, including multiplicity.",
-        "casts_and_ambient_types": "Both formal statements use a Complex path whose image lies in the strict unit lemniscate; length is one-dimensional Hausdorff measure of Set.range γ in ENNReal. The older local total-variation theorem is separate.",
+        "casts_and_ambient_types": "Both formal statements use a Complex path whose image lies in the strict unit lemniscate; length is one-dimensional Hausdorff measure of Set.range \u03b3 in ENNReal. The older local total-variation theorem is separate.",
         "answer_and_proof_status": "At the pinned snapshot, the upstream declaration has answer(sorry) and a sorry proof. Local Lean proves the exact Hausdorff negation and answer(False) form. The later answer correction merged as PR #6505; independent historical adjudication remains unrecorded.",
         "conservative_verdict": "statement_level_alignment_only",
         "machine_checked_equivalence": "none",
@@ -376,9 +376,9 @@
         "proof_status": "sorry",
         "signature_anchors": [
           "theorem erdos_1049 :",
-          "∀ t : ℚ, t > 1 → Irrational",
+          "\u2200 t : \u211a, t > 1 \u2192 Irrational",
           "theorem erdos_1049.variants.geq_2_integer :",
-          "theorem lambert_series_eq_num_divisor_sum : ∀ t : ℚ"
+          "theorem lambert_series_eq_num_divisor_sum : \u2200 t : \u211a"
         ],
         "related_declarations": [
           {
@@ -472,19 +472,19 @@
     }
   ],
   "contribution_activity": {
-    "observed_at": "2026-10-09T22:36:29Z",
+    "observed_at": "2026-10-11T14:30:00Z",
     "repository": "https://github.com/google-deepmind/formal-conjectures",
     "boundary": "A dated observation of public pull requests. Individual review, aggregate approval requirements and merge state are separate. A merge accepts the scoped upstream change, not every mathematical claim in this repository. Maintenance of existing proof links is listed separately and excluded from the merged mathematical contribution count. The pinned statement comparison below retains its original source identity.",
     "requests": [
       {
         "number": 5034,
         "url": "https://github.com/google-deepmind/formal-conjectures/pull/5034",
-        "title": "Add formal proof for Erdős Problem 258 constant-base variant",
+        "title": "Add formal proof for Erd\u0151s Problem 258 constant-base variant",
         "kind": "proof_link",
         "targets": [
           "Erdos258.erdos_258.variants.constant"
         ],
-        "scope": "Proof link for the constant-base variant of Erdős's 1948 theorem.",
+        "scope": "Proof link for the constant-base variant of Erd\u0151s's 1948 theorem.",
         "state": "MERGED",
         "head": "88600293ce8e5940b181d9b221410fcfe681747d",
         "merged_at": "2026-09-18T14:04:34Z",
@@ -501,7 +501,7 @@
       {
         "number": 6505,
         "url": "https://github.com/google-deepmind/formal-conjectures/pull/6505",
-        "title": "Erdős 1041: mark solved with answer(False) and link a formal proof",
+        "title": "Erd\u0151s 1041: mark solved with answer(False) and link a formal proof",
         "kind": "status_correction",
         "targets": [
           "Erdos1041.erdos_1041"
@@ -523,12 +523,12 @@
       {
         "number": 6506,
         "url": "https://github.com/google-deepmind/formal-conjectures/pull/6506",
-        "title": "Erdős 257: link a formal proof of variants.tsum_top",
+        "title": "Erd\u0151s 257: link a formal proof of variants.tsum_top",
         "kind": "proof_link",
         "targets": [
           "Erdos257.erdos_257.variants.tsum_top"
         ],
-        "scope": "Proof link for the full-support variant of Erdős's 1948 theorem; arbitrary infinite supports remain open.",
+        "scope": "Proof link for the full-support variant of Erd\u0151s's 1948 theorem; arbitrary infinite supports remain open.",
         "state": "MERGED",
         "head": "81f111e430aa45926c66b1c4774122a6e8ef8aad",
         "merged_at": "2026-09-23T07:17:41Z",
@@ -545,12 +545,12 @@
       {
         "number": 6507,
         "url": "https://github.com/google-deepmind/formal-conjectures/pull/6507",
-        "title": "Erdős 1049: link a formal proof of variants.geq_2_integer",
+        "title": "Erd\u0151s 1049: link a formal proof of variants.geq_2_integer",
         "kind": "proof_link",
         "targets": [
           "Erdos1049.erdos_1049.variants.geq_2_integer"
         ],
-        "scope": "Proof link for integer bases at least two, following Erdős's 1948 theorem; general rational bases remain open.",
+        "scope": "Proof link for integer bases at least two, following Erd\u0151s's 1948 theorem; general rational bases remain open.",
         "state": "MERGED",
         "head": "220f6e9789b5c4a1575aa573178820776c276a66",
         "merged_at": "2026-09-23T07:17:06Z",
@@ -567,7 +567,7 @@
       {
         "number": 6522,
         "url": "https://github.com/google-deepmind/formal-conjectures/pull/6522",
-        "title": "Set Erdős 269 rationality variant to false",
+        "title": "Set Erd\u0151s 269 rationality variant to false",
         "kind": "status_correction",
         "targets": [
           "Erdos269.erdos_269.variants.rational"
@@ -589,7 +589,7 @@
       {
         "number": 6523,
         "url": "https://github.com/google-deepmind/formal-conjectures/pull/6523",
-        "title": "Erdős 243: add cubic-rate irrationality and slow-growth rigidity",
+        "title": "Erd\u0151s 243: add cubic-rate irrationality and slow-growth rigidity",
         "kind": "solved_variant",
         "targets": [
           "Erdos243.erdos_243.variants.cubic_rate",
@@ -606,13 +606,19 @@
             "commit": "f4db4374ba08c195485ee1fea11e837f5759d3e2",
             "submitted_at": "2026-10-06T22:06:31Z",
             "url": "https://github.com/google-deepmind/formal-conjectures/pull/6523#pullrequestreview-5435079771"
+          },
+          {
+            "state": "APPROVED",
+            "commit": "56710453a2af5ac017df557431aa238346e3a35b",
+            "submitted_at": "2026-10-10T05:41:02Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6523#pullrequestreview-5477814639"
           }
         ]
       },
       {
         "number": 6527,
         "url": "https://github.com/google-deepmind/formal-conjectures/pull/6527",
-        "title": "Erdős 1049: add rational-base contour and irrationality exponent bound",
+        "title": "Erd\u0151s 1049: add rational-base contour and irrationality exponent bound",
         "kind": "solved_variant",
         "targets": [
           "Erdos1049.erdos_1049.variants.rational_base_contour_measure"
@@ -634,7 +640,7 @@
       {
         "number": 6528,
         "url": "https://github.com/google-deepmind/formal-conjectures/pull/6528",
-        "title": "Erdős 257: add weighted and mixed-support irrationality variants",
+        "title": "Erd\u0151s 257: add weighted and mixed-support irrationality variants",
         "kind": "solved_variant",
         "targets": [
           "Erdos257.erdos_257.variants.finite_prime_weighted_support",
@@ -651,18 +657,24 @@
             "commit": "5d1be45bbe85f5d60a61812eb495602b45609616",
             "submitted_at": "2026-10-06T21:49:55Z",
             "url": "https://github.com/google-deepmind/formal-conjectures/pull/6528#pullrequestreview-5434950823"
+          },
+          {
+            "state": "APPROVED",
+            "commit": "40f7826a7ba761dd39b4542094d6149c60ce6c47",
+            "submitted_at": "2026-10-10T05:34:25Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6528#pullrequestreview-5477798867"
           }
         ]
       },
       {
         "number": 6529,
         "url": "https://github.com/google-deepmind/formal-conjectures/pull/6529",
-        "title": "Erdős 257: add the reciprocal-summable support variant",
+        "title": "Erd\u0151s 257: add the reciprocal-summable support variant",
         "kind": "solved_variant",
         "targets": [
           "Erdos257.erdos_257.variants.summable_reciprocal_support"
         ],
-        "scope": "Erdős’s classical coprimality-free result: an infinite support with summable reciprocals gives an irrational series at every integer base at least two. The merged subtype formulation links its verified adapter; the unrestricted question remains open.",
+        "scope": "Erd\u0151s\u2019s classical coprimality-free result: an infinite support with summable reciprocals gives an irrational series at every integer base at least two. The merged subtype formulation links its verified adapter; the unrestricted question remains open.",
         "state": "MERGED",
         "head": "f5d7b003955c1418d5e962c781aa55ff322a2c16",
         "merged_at": "2026-10-09T21:55:08Z",
@@ -685,7 +697,7 @@
       {
         "number": 6576,
         "url": "https://github.com/google-deepmind/formal-conjectures/pull/6576",
-        "title": "Erdős 1041: add sharp normalized collinear gap variant",
+        "title": "Erd\u0151s 1041: add sharp normalized collinear gap variant",
         "kind": "solved_variant",
         "targets": [
           "Erdos1041.erdos_1041.variants.sharp_collinear_gap"
@@ -701,13 +713,19 @@
             "commit": "43874b729c11b65783050871577a22f9093362a8",
             "submitted_at": "2026-10-06T22:37:31Z",
             "url": "https://github.com/google-deepmind/formal-conjectures/pull/6576#pullrequestreview-5435304111"
+          },
+          {
+            "state": "APPROVED",
+            "commit": "ba0edafdf1bc3b0ad3a563295503ef68751dc514",
+            "submitted_at": "2026-10-10T05:41:39Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6576#pullrequestreview-5477816245"
           }
         ]
       },
       {
         "number": 6577,
         "url": "https://github.com/google-deepmind/formal-conjectures/pull/6577",
-        "title": "Erdős 249: add countable least-residue dilation independence",
+        "title": "Erd\u0151s 249: add countable least-residue dilation independence",
         "kind": "solved_variant",
         "targets": [
           "Erdos249.erdos_249.variants.least_residue_dilation_independence"
@@ -751,7 +769,7 @@
       {
         "number": 6579,
         "url": "https://github.com/google-deepmind/formal-conjectures/pull/6579",
-        "title": "Erdős 249: classify rational dyadic totient observables",
+        "title": "Erd\u0151s 249: classify rational dyadic totient observables",
         "kind": "solved_variant",
         "targets": [
           "Erdos249.erdos_249.variants.rational_dyadic_observable"
@@ -801,14 +819,28 @@
           "Erdos257.erdos_257.variants.tsum_top",
           "Erdos1049.erdos_1049.variants.geq_2_integer"
         ],
-        "scope": "Updates four already accepted proof links to immutable sources checked by Lean and NanoDa in the cited Palomar runs. This maintains their evidence links; it adds no new mathematical result.",
+        "scope": "Replaces four already accepted proof links with immutable Palomar-verified packages; the proof files are byte-for-byte identical and the FC statements are unchanged. [Bo Cowgill reviewed](https://github.com/google-deepmind/formal-conjectures/pull/6971#pullrequestreview-5477230569) statement correspondence, including the Hausdorff path-image measure and series indexing, and the source-bound Lean and NanoDa acceptance reports on Lean 4.29.1 with propext, Classical.choice and Quot.sound. [Moritz Firsching also approved](https://github.com/google-deepmind/formal-conjectures/pull/6971#pullrequestreview-5483329663), asking about file identity and noting the benefit of the Palomar-linked repository. This is proof-link maintenance; it adds no new mathematical result.",
         "url": "https://github.com/google-deepmind/formal-conjectures/pull/6971",
         "title": "Update four proof links to independently verified sources",
-        "state": "OPEN",
+        "state": "MERGED",
         "head": "b47d6ce7ebabf79193826fad5b14b13e44f9c786",
-        "merged_at": null,
-        "review_decision": "REVIEW_REQUIRED",
-        "reviews": [],
+        "merged_at": "2026-10-11T12:56:29Z",
+        "review_decision": "APPROVED",
+        "reviews": [
+          {
+            "state": "APPROVED",
+            "commit": "b47d6ce7ebabf79193826fad5b14b13e44f9c786",
+            "submitted_at": "2026-10-10T02:50:02Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6971#pullrequestreview-5477230569"
+          },
+          {
+            "state": "APPROVED",
+            "commit": "b47d6ce7ebabf79193826fad5b14b13e44f9c786",
+            "submitted_at": "2026-10-11T12:40:47Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6971#pullrequestreview-5483329663"
+          }
+        ],
+        "merge_commit": "fdce8d042f2054d3cf8d822f5e842550fb184dff",
         "display_title": "Update four proof links to kernel-checked sources"
       }
     ]
