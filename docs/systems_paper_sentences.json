@@ -707,9 +707,9 @@
       "id": "r8-release",
       "kind": "source",
       "path": "scripts/check_release.py",
-      "start_line": 1662,
-      "end_line": 1738,
-      "sha256": "282c8d8b9b3aee376f4d6e6e9e8c87f5a3f18995501712c93748851c4b177129",
+      "start_line": 1664,
+      "end_line": 1740,
+      "sha256": "1eebff1f826477fe1b08b9e143505c547803953879c3b2032914ea6665fb9863",
       "excerpt_sha256": "da39690f9c38fd66ca7b1f7496108ac87673b67260a7c1c234b842008edd0adb",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
