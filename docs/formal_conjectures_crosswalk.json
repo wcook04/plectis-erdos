@@ -472,9 +472,9 @@
     }
   ],
   "contribution_activity": {
-    "observed_at": "2026-10-12T18:49:29.505431+00:00",
+    "observed_at": "2026-10-13T08:59:37.443457+00:00",
     "repository": "https://github.com/google-deepmind/formal-conjectures",
-    "boundary": "A dated observation of public pull requests. Individual review, aggregate approval requirements and merge state are separate. A merge accepts the scoped upstream change, not every mathematical claim in this repository. Maintenance of existing proof links is listed separately and excluded from the merged mathematical contribution count. The pinned statement comparison below retains its original source identity. The #6579 review chain was refreshed on 12 October; other request observations retain the 11 October snapshot.",
+    "boundary": "A dated observation of public pull requests. Individual review, aggregate approval requirements and merge state are separate. A merge accepts the scoped upstream change, not every mathematical claim in this repository. Maintenance of existing proof links is excluded from the merged mathematical contribution count. The earlier pinned statement comparisons below retain their original source identities.\n\nAll fourteen receiving declarations listed here have successful author-hosted checks at the exact delivered heads. Each run exports the actual FC declaration before executing the confined candidate in Lean 4.33.1 with FC's Mathlib pin `0df444a360eaa60ab8c11dca51a86af692955474`; statement-and-dependency equality, default Lean and NanoDa acceptance, the axiom budget (`propext`, `Classical.choice`, `Quot.sound`) and positive/mismatch controls are checked. The eleven repaired adapters use source `d1fe386f`; the three earlier successful declarations retain their own immutable proof pins. These checks confer no independent human rerun or upstream merge.\n\n[Source run 38341643841](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38341643841) separately compiled all ten receiving-adapter projects for fourteen units at [source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/commit/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85). [Source PR37](https://github.com/wcook04/plectis-erdos-lean/pull/37) packages that repair. Source compilation, identity at a receiving head, current upstream deployment and reviewer acceptance are distinct evidence.",
     "requests": [
       {
         "number": 5034,
@@ -494,9 +494,13 @@
             "state": "APPROVED",
             "commit": "531905f271fef660309c1432110416c58b9f1985",
             "submitted_at": "2026-09-18T12:34:29Z",
-            "url": "https://github.com/google-deepmind/formal-conjectures/pull/5034#pullrequestreview-5247811041"
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/5034#pullrequestreview-5247811041",
+            "author": "mo271",
+            "body": "Thanks, LGTM!"
           }
-        ]
+        ],
+        "is_draft": false,
+        "merge_commit": "24984cbe91e37e602f609bc3ef9f3e5f3fcdf051"
       },
       {
         "number": 6505,
@@ -516,9 +520,13 @@
             "state": "APPROVED",
             "commit": "5dd3328591f6ba8fd671d8caa4e5c5d29e0f570d",
             "submitted_at": "2026-09-23T07:04:46Z",
-            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6505#pullrequestreview-5287880895"
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6505#pullrequestreview-5287880895",
+            "author": "mo271",
+            "body": "Thanks, LGTM"
           }
-        ]
+        ],
+        "is_draft": false,
+        "merge_commit": "a01ad23474c14781e4f16f48f6e5a430895e10a0"
       },
       {
         "number": 6506,
@@ -538,9 +546,13 @@
             "state": "APPROVED",
             "commit": "81f111e430aa45926c66b1c4774122a6e8ef8aad",
             "submitted_at": "2026-09-23T06:55:15Z",
-            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6506#pullrequestreview-5287812291"
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6506#pullrequestreview-5287812291",
+            "author": "mo271",
+            "body": "Thanks, LGTM!"
           }
-        ]
+        ],
+        "is_draft": false,
+        "merge_commit": "416cd47251ed1e79bd7d3ffd1cfc373e6ae308b6"
       },
       {
         "number": 6507,
@@ -560,9 +572,13 @@
             "state": "APPROVED",
             "commit": "220f6e9789b5c4a1575aa573178820776c276a66",
             "submitted_at": "2026-09-23T06:54:48Z",
-            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6507#pullrequestreview-5287809168"
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6507#pullrequestreview-5287809168",
+            "author": "mo271",
+            "body": "Thanks, LGTM!"
           }
-        ]
+        ],
+        "is_draft": false,
+        "merge_commit": "378a9b1f087fdf027c8b47461c4519524fbd4d8a"
       },
       {
         "number": 6522,
@@ -582,9 +598,12 @@
             "state": "APPROVED",
             "commit": "3a252c2529b223ff875924384cfc7f678a667195",
             "submitted_at": "2026-10-06T21:50:06Z",
-            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6522#pullrequestreview-5434952248"
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6522#pullrequestreview-5434952248",
+            "author": "bocowgill",
+            "body": "[Fan\u2019s two-prime argument](https://www.erdosproblems.com/forum/thread/269#post-7218) supports the negative answer in lines 71\u201373. Using the reciprocal slope \\(\\theta=\\log 2/\\log 3\\) puts its Hecke\u2013Mahler value within [Bugeaud\u2013Laurent, Theorem 1.1](https://arxiv.org/pdf/2203.12901#page=3). For \\(P=\\{2,3\\}\\), the total is a nonconstant rational polynomial in a transcendental value; the extra empty-prefix term adds 1. This refutes universal rationality and leaves universal irrationality open. Targeted Lean checks verified the initial indexing, the +1 shift, and the polynomial and counterexample steps without admitted statements."
           }
-        ]
+        ],
+        "is_draft": false
       },
       {
         "number": 6523,
@@ -595,9 +614,9 @@
           "Erdos243.erdos_243.variants.cubic_rate",
           "Erdos243.erdos_243.variants.slow_growth_product_defect"
         ],
-        "scope": "Cubic-rate irrationality and slow-growth rigidity under additional growth and increment hypotheses; the original question remains open.",
+        "scope": "Cubic-rate irrationality and slow-growth rigidity under additional growth and increment hypotheses; the original question remains open.\n\nReceiving verification for `Erdos243.erdos_243.variants.cubic_rate`: [run 38356995383](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38356995383) compares the actual FC declaration at `ccb7d725` with [proof source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/blob/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85/verification/FC243DualCurrent/FC6523Solutions.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.\n\nReceiving verification for `Erdos243.erdos_243.variants.slow_growth_product_defect`: [run 38356998998](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38356998998) compares the actual FC declaration at `ccb7d725` with [proof source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/blob/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85/verification/FC243DualCurrent/FC6523Solutions.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.",
         "state": "OPEN",
-        "head": "56710453a2af5ac017df557431aa238346e3a35b",
+        "head": "ccb7d725fc3b8b8ed8fb2e7047210fe31dc34e8d",
         "merged_at": null,
         "review_decision": "REVIEW_REQUIRED",
         "reviews": [
@@ -605,15 +624,43 @@
             "state": "COMMENTED",
             "commit": "f4db4374ba08c195485ee1fea11e837f5759d3e2",
             "submitted_at": "2026-10-06T22:06:31Z",
-            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6523#pullrequestreview-5435079771"
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6523#pullrequestreview-5435079771",
+            "author": "bocowgill",
+            "body": "Please add verification evidence for the exact [cubic-rate adapter](https://github.com/wcook04/plectis-erdos/blob/a1779f508dbede5da6d8c2d5fefe0d8f6dcef6d9/research/adapters/FC243CubicRate.lean#L53-L60), including its axiom closure. The [existing Comparator replay](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572/job/107451602224) checks the underlying `HasSum` theorem; it does not cover the adapter's convergence step to `tsum`.\n\nBoth statements match their sources: [Theorem 7.2](https://raw.githubusercontent.com/wcook04/plectis-erdos/7ab6a901a2fe07e8d0e5c99dc46821adffc7411b/paper/243/erdos-243-reciprocal-tail-rigidity.pdf#page=12) preserves the index in `3/n`, and the [slow-growth clause](https://github.com/wcook04/plectis-erdos/blob/40008384cb6e343c5a93841701ecc25b97974141/paper/reasoning-parts/erdos243/core.tex#L2307-L2320) adds a prefix-product hypothesis. The [exact slow-growth proof](https://github.com/wcook04/plectis-erdos-lean/actions/runs/36733962314/job/109950811803) passed independent kernel checks under the three standard axioms. Neither variant settles the unrestricted problem."
           },
           {
             "state": "APPROVED",
             "commit": "56710453a2af5ac017df557431aa238346e3a35b",
             "submitted_at": "2026-10-10T05:41:02Z",
-            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6523#pullrequestreview-5477814639"
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6523#pullrequestreview-5477814639",
+            "author": "bocowgill",
+            "body": "LGTM, thanks.\n\nThe [new adapter verification](https://github.com/wcook04/plectis-erdos/actions/runs/37602773849) resolves my earlier request: it covers the exact cubic-rate `tsum` statement, including convergence, with Lean and NanoDa under only `propext`, `Classical.choice` and `Quot.sound`. The slow-growth statement and all three definitions match the [proof checked by Lean, NanoDa and con-ron](https://github.com/wcook04/plectis-erdos-lean/actions/runs/36733962314), under the same axiom policy.\n\n[Theorem 7.2, p. 12](https://raw.githubusercontent.com/wcook04/plectis-erdos/7ab6a901a2fe07e8d0e5c99dc46821adffc7411b/paper/243/erdos-243-reciprocal-tail-rigidity.pdf#page=12) preserves the index in `3/n` through a finite-prefix change. The slow-growth variant retains its additional prefix-product bound; neither variant settles the unrestricted problem."
           }
-        ]
+        ],
+        "observation_history": [
+          {
+            "observed_at": "2026-10-12T18:49:29.505431+00:00",
+            "state": "OPEN",
+            "head": "56710453a2af5ac017df557431aa238346e3a35b",
+            "merged_at": null,
+            "review_decision": "REVIEW_REQUIRED",
+            "reviews": [
+              {
+                "state": "COMMENTED",
+                "commit": "f4db4374ba08c195485ee1fea11e837f5759d3e2",
+                "submitted_at": "2026-10-06T22:06:31Z",
+                "url": "https://github.com/google-deepmind/formal-conjectures/pull/6523#pullrequestreview-5435079771"
+              },
+              {
+                "state": "APPROVED",
+                "commit": "56710453a2af5ac017df557431aa238346e3a35b",
+                "submitted_at": "2026-10-10T05:41:02Z",
+                "url": "https://github.com/google-deepmind/formal-conjectures/pull/6523#pullrequestreview-5477814639"
+              }
+            ]
+          }
+        ],
+        "is_draft": false
       },
       {
         "number": 6527,
@@ -623,9 +670,9 @@
         "targets": [
           "Erdos1049.erdos_1049.variants.rational_base_contour_measure"
         ],
-        "scope": "A strict logarithmic contour, all positive powers and an irrationality-exponent bound; the general rational-base question, including 3/2, remains open.",
+        "scope": "A strict logarithmic contour, all positive powers and an irrationality-exponent bound; the general rational-base question, including 3/2, remains open.\n\nReceiving verification for `Erdos1049.erdos_1049.variants.rational_base_contour_measure`: [run 38358957539](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38358957539) compares the actual FC declaration at `ea3a10bd` with [proof source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/blob/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85/verification/FC1049ContourMeasureCurrent/FC6527Solution.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.",
         "state": "OPEN",
-        "head": "4139651cf87e3ec7893d6038e5d12173f075be66",
+        "head": "ea3a10bd40e2b7cc4a53c10dfd7e703f44c85140",
         "merged_at": null,
         "review_decision": "REVIEW_REQUIRED",
         "reviews": [
@@ -633,9 +680,29 @@
             "state": "APPROVED",
             "commit": "4139651cf87e3ec7893d6038e5d12173f075be66",
             "submitted_at": "2026-10-06T21:51:00Z",
-            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6527#pullrequestreview-5434959641"
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6527#pullrequestreview-5434959641",
+            "author": "bocowgill",
+            "body": "The absence of a coprimality assumption is justified: reducing $a/b$ does not increase $\\theta$ and strengthens the bound in [Cook's corollary](https://github.com/wcook04/plectis-erdos/blob/6917e15ec4abc2623512254da93221e446eeb707/paper/1049/erdos-1049-rational-base-lambert.tex#L407). The [archived Comparator verification](https://github.com/wcook04/plectis-erdos-lean/actions/runs/36639310206) accepted the exact linked proof under the three standard Lean axioms. A targeted Lean check confirmed that its challenge matches this FC statement, including the quantifier over positive powers.\n"
           }
-        ]
+        ],
+        "observation_history": [
+          {
+            "observed_at": "2026-10-12T18:49:29.505431+00:00",
+            "state": "OPEN",
+            "head": "4139651cf87e3ec7893d6038e5d12173f075be66",
+            "merged_at": null,
+            "review_decision": "REVIEW_REQUIRED",
+            "reviews": [
+              {
+                "state": "APPROVED",
+                "commit": "4139651cf87e3ec7893d6038e5d12173f075be66",
+                "submitted_at": "2026-10-06T21:51:00Z",
+                "url": "https://github.com/google-deepmind/formal-conjectures/pull/6527#pullrequestreview-5434959641"
+              }
+            ]
+          }
+        ],
+        "is_draft": false
       },
       {
         "number": 6528,
@@ -646,9 +713,9 @@
           "Erdos257.erdos_257.variants.finite_prime_weighted_support",
           "Erdos257.erdos_257.variants.arbitrary_weight_mixed_support"
         ],
-        "scope": "Irrationality under sufficient weighted support and covering hypotheses, not for arbitrary infinite supports.",
+        "scope": "Irrationality under sufficient weighted support and covering hypotheses, not for arbitrary infinite supports.\n\nReceiving verification for `Erdos257.erdos_257.variants.finite_prime_weighted_support`: [run 38360865074](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38360865074) compares the actual FC declaration at `4f5ae941` with [proof source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/blob/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85/verification/FC257WeightedSupportCurrent/FC6528Solutions.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.\n\nReceiving verification for `Erdos257.erdos_257.variants.arbitrary_weight_mixed_support`: [run 38360869036](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38360869036) compares the actual FC declaration at `4f5ae941` with [proof source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/blob/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85/verification/FC257WeightedSupportCurrent/FC6528Solutions.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.",
         "state": "OPEN",
-        "head": "40f7826a7ba761dd39b4542094d6149c60ce6c47",
+        "head": "4f5ae94190756d97e090d84d65ddae36a09767a9",
         "merged_at": null,
         "review_decision": "REVIEW_REQUIRED",
         "reviews": [
@@ -656,15 +723,43 @@
             "state": "COMMENTED",
             "commit": "5d1be45bbe85f5d60a61812eb495602b45609616",
             "submitted_at": "2026-10-06T21:49:55Z",
-            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6528#pullrequestreview-5434950823"
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6528#pullrequestreview-5434950823",
+            "author": "bocowgill",
+            "body": "Before approval, please resolve the weighted `formal_proof` link at [line 150](https://github.com/google-deepmind/formal-conjectures/blob/5d1be45bbe85f5d60a61812eb495602b45609616/FormalConjectures/ErdosProblems/257.lean#L149-L150). Either replace it with the [verified weighted declaration](https://github.com/wcook04/plectis-erdos-lean/blob/fd5388a4ea3a19f0b950395b137fda261c05f9a0/Solutions/PalomarCorpus/E257_01/DivisibilityWeightedSupport.lean#L42-L44), or provide independent verification of the exact adapter currently linked.\n\nThe statements and `LogBudgetCover` match [the paper](https://github.com/wcook04/plectis-erdos/blob/6917e15ec4abc2623512254da93221e446eeb707/docs/papers/full-text/erdos257-mersenne-reasoning-surface.md#thm:257-mixed-supports). The [existing full verification report](https://github.com/wcook04/plectis-erdos-lean/actions/runs/36646563257) verifies the mixed theorem and an equivalent weighted theorem under the standard three axioms, but does not cover the older adapter in that link."
           },
           {
             "state": "APPROVED",
             "commit": "40f7826a7ba761dd39b4542094d6149c60ce6c47",
             "submitted_at": "2026-10-10T05:34:25Z",
-            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6528#pullrequestreview-5477798867"
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6528#pullrequestreview-5477798867",
+            "author": "bocowgill",
+            "body": "LGTM, thanks. The updated weighted `formal_proof` link resolves the question in my earlier review.\n\nThe weighted statement matches [Theorem 1 and its hereditary consequence](https://github.com/wcook04/plectis-erdos/blob/6917e15ec4abc2623512254da93221e446eeb707/docs/papers/full-text/erdos257-mersenne-reasoning-surface.md#thm:257-weighted). `LogBudgetCover` matches Theorems 2\u20133\u2019s positive-weight variant; its positive frames and coverage imply `0 \u2209 V`. I checked the linked declarations against the FC statements and audited the [verification report](https://github.com/wcook04/plectis-erdos-lean/actions/runs/36646563257): it covers both exact declarations at `fd5388a`, with only `propext`, `Classical.choice`, and `Quot.sound` permitted.\n"
           }
-        ]
+        ],
+        "observation_history": [
+          {
+            "observed_at": "2026-10-12T18:49:29.505431+00:00",
+            "state": "OPEN",
+            "head": "40f7826a7ba761dd39b4542094d6149c60ce6c47",
+            "merged_at": null,
+            "review_decision": "REVIEW_REQUIRED",
+            "reviews": [
+              {
+                "state": "COMMENTED",
+                "commit": "5d1be45bbe85f5d60a61812eb495602b45609616",
+                "submitted_at": "2026-10-06T21:49:55Z",
+                "url": "https://github.com/google-deepmind/formal-conjectures/pull/6528#pullrequestreview-5434950823"
+              },
+              {
+                "state": "APPROVED",
+                "commit": "40f7826a7ba761dd39b4542094d6149c60ce6c47",
+                "submitted_at": "2026-10-10T05:34:25Z",
+                "url": "https://github.com/google-deepmind/formal-conjectures/pull/6528#pullrequestreview-5477798867"
+              }
+            ]
+          }
+        ],
+        "is_draft": false
       },
       {
         "number": 6529,
@@ -684,15 +779,21 @@
             "state": "APPROVED",
             "commit": "95d0fbc92a40e7f49d309f563c8e701e12cd6581",
             "submitted_at": "2026-10-06T22:07:59Z",
-            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6529#pullrequestreview-5435090546"
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6529#pullrequestreview-5435090546",
+            "author": "bocowgill",
+            "body": "Reviewed `95d0fbc9`. The variant matches [Erd\u0151s\u2019s coprimality-free result, p. 222](https://users.renyi.hu/~p_erdos/1969-09.pdf#page=1), including every integer base at least two. Exponent zero contributes nothing to either sum. I independently replayed the [linked proof](https://github.com/wcook04/plectis-erdos/blob/598cd7bac8b73dcfef3687f46922c1ef6da766ae/research/adapters/FormalConjecturesVariants.lean#L681-L689) at `598cd7b` with its pinned Lean/Mathlib versions; its axioms are only `propext`, `Classical.choice` and `Quot.sound`."
           },
           {
             "state": "APPROVED",
             "commit": "aa20b47742381d888c233ef4b4c913efe9448c41",
             "submitted_at": "2026-10-08T20:36:49Z",
-            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6529#pullrequestreview-5462549186"
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6529#pullrequestreview-5462549186",
+            "author": "mo271",
+            "body": "Looks good generally, just some nits\n\nPlease add the series in LaTeX, e.g. $\\sum_{a \\in A} \\frac{1}{b^a - 1}$ with $\\sum_{a\\in A} 1/a < \\infty$."
           }
-        ]
+        ],
+        "is_draft": false,
+        "merge_commit": "8ea2fe5c6c09400df80546fffb8fc2e58af7f8cc"
       },
       {
         "number": 6576,
@@ -702,9 +803,9 @@
         "targets": [
           "Erdos1041.erdos_1041.variants.sharp_collinear_gap"
         ],
-        "scope": "Sharp product-height bound for normalized real roots and a whole adjacent interval; separate from the merged negative answer for general paths.",
+        "scope": "Sharp product-height bound for normalized real roots and a whole adjacent interval; separate from the merged negative answer for general paths.\n\nReceiving verification for `Erdos1041.erdos_1041.variants.sharp_collinear_gap`: [run 38174164846](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38174164846) compares the actual FC declaration at `37a6ba52` with [proof source `45bcf390`](https://github.com/wcook04/plectis-erdos-lean/blob/45bcf390b6e027ecea1214e774e484095c213305/verification/FC1041SharpGapCurrent/FC6576Solution.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.",
         "state": "OPEN",
-        "head": "ba0edafdf1bc3b0ad3a563295503ef68751dc514",
+        "head": "37a6ba52b4da44b8b6456ca0f432590716ea4c30",
         "merged_at": null,
         "review_decision": "REVIEW_REQUIRED",
         "reviews": [
@@ -712,15 +813,43 @@
             "state": "COMMENTED",
             "commit": "43874b729c11b65783050871577a22f9093362a8",
             "submitted_at": "2026-10-06T22:37:31Z",
-            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6576#pullrequestreview-5435304111"
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6576#pullrequestreview-5435304111",
+            "author": "bocowgill",
+            "body": "Before I can recommend approval, I need independent verification of the [pinned adapter](https://github.com/wcook04/plectis-erdos/blob/c45de9aab30cf25172040c94c60987dec46645d8/research/adapters/FC1041SharpGap.lean#L16-L26) against [this FC statement](https://github.com/google-deepmind/formal-conjectures/blob/43874b729c11b65783050871577a22f9093362a8/FormalConjectures/ErdosProblems/1041.lean#L100-L106), permitting only `propext`, `Classical.choice` and `Quot.sound`. The [available axiom audit](https://github.com/wcook04/plectis-erdos/actions/runs/36086375005/job/107919145639) covers `363f34a1`, while the proof link pins `c45de9aa`. The whole-gap bound and normalization at \u00b11 agree with [the cited theorem](https://github.com/wcook04/plectis-erdos/blob/a14777b3219873bc8343205cca0bb3bb6530e8fa/paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1745-L1832)."
           },
           {
             "state": "APPROVED",
             "commit": "ba0edafdf1bc3b0ad3a563295503ef68751dc514",
             "submitted_at": "2026-10-10T05:41:39Z",
-            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6576#pullrequestreview-5477816245"
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6576#pullrequestreview-5477816245",
+            "author": "bocowgill",
+            "body": "LGTM, thanks. I checked the [full verification receipt](https://github.com/wcook04/plectis-erdos/actions/runs/37602111611/artifacts/11473478642) and matched its challenge to the current statement. Comparator, Lean and NanoDa accept the pinned adapter using only `propext`, `Classical.choice` and `Quot.sound`, resolving the earlier verification request.\n\nThe whole-gap bound and normalization at \u00b11 agree with the [cited theorem](https://github.com/wcook04/plectis-erdos/blob/a14777b3219873bc8343205cca0bb3bb6530e8fa/paper/1041/erdos1041-lemniscate-reasoning-surface.tex#L1745-L1832). At degree two, the bound is 1, attained at the midpoint."
           }
-        ]
+        ],
+        "observation_history": [
+          {
+            "observed_at": "2026-10-12T18:49:29.505431+00:00",
+            "state": "OPEN",
+            "head": "ba0edafdf1bc3b0ad3a563295503ef68751dc514",
+            "merged_at": null,
+            "review_decision": "REVIEW_REQUIRED",
+            "reviews": [
+              {
+                "state": "COMMENTED",
+                "commit": "43874b729c11b65783050871577a22f9093362a8",
+                "submitted_at": "2026-10-06T22:37:31Z",
+                "url": "https://github.com/google-deepmind/formal-conjectures/pull/6576#pullrequestreview-5435304111"
+              },
+              {
+                "state": "APPROVED",
+                "commit": "ba0edafdf1bc3b0ad3a563295503ef68751dc514",
+                "submitted_at": "2026-10-10T05:41:39Z",
+                "url": "https://github.com/google-deepmind/formal-conjectures/pull/6576#pullrequestreview-5477816245"
+              }
+            ]
+          }
+        ],
+        "is_draft": false
       },
       {
         "number": 6577,
@@ -730,9 +859,9 @@
         "targets": [
           "Erdos249.erdos_249.variants.least_residue_dilation_independence"
         ],
-        "scope": "Rational linear independence of 1 and the countable dilation family for fixed modulus at least three and integer base at least two; the unreduced totient question remains open.",
+        "scope": "Rational linear independence of 1 and the countable dilation family for fixed modulus at least three and integer base at least two; the unreduced totient question remains open.\n\nReceiving verification for `Erdos249.erdos_249.variants.least_residue_dilation_independence`: [run 38174685762](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38174685762) compares the actual FC declaration at `41da78f7` with [proof source `c513ed5e`](https://github.com/wcook04/plectis-erdos-lean/blob/c513ed5ed17985567bf55b6a191afcc21cceb028/verification/FC249CountableIndependenceCurrent/FC6577Solution.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.",
         "state": "OPEN",
-        "head": "38f435dab7ca2da901588a5e91e93452eaba8910",
+        "head": "41da78f75336804104fd93da21e3fe0b34029b6f",
         "merged_at": null,
         "review_decision": "REVIEW_REQUIRED",
         "reviews": [
@@ -740,9 +869,29 @@
             "state": "APPROVED",
             "commit": "38f435dab7ca2da901588a5e91e93452eaba8910",
             "submitted_at": "2026-10-06T22:33:11Z",
-            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6577#pullrequestreview-5435273753"
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6577#pullrequestreview-5435273753",
+            "author": "bocowgill",
+            "body": "Reviewed `38f435da` against `b87dcb3d`. The [pinned proof](https://github.com/wcook04/plectis-erdos-lean/blob/d85765c9ead139e1c562c93e675ad92616923f6b/Solutions/ExternalVerification249CountableDilationIndependence.lean#L12-L19) matches [the variant](https://github.com/google-deepmind/formal-conjectures/blob/38f435dab7ca2da901588a5e91e93452eaba8910/FormalConjectures/ErdosProblems/249.lean#L53-L58), with `1` and all positive dilations; its finite-support argument covers arbitrary rational relations. The [Comparator report](https://github.com/wcook04/plectis-erdos-lean/actions/runs/36641439085/artifacts/11067476040) records acceptance by Lean, con-ron and nanoda using only `propext`, `Classical.choice` and `Quot.sound`. This proves the least-residue variant while the [unreduced Erd\u0151s 249 question](https://www.erdosproblems.com/249) remains open."
           }
-        ]
+        ],
+        "observation_history": [
+          {
+            "observed_at": "2026-10-12T18:49:29.505431+00:00",
+            "state": "OPEN",
+            "head": "38f435dab7ca2da901588a5e91e93452eaba8910",
+            "merged_at": null,
+            "review_decision": "REVIEW_REQUIRED",
+            "reviews": [
+              {
+                "state": "APPROVED",
+                "commit": "38f435dab7ca2da901588a5e91e93452eaba8910",
+                "submitted_at": "2026-10-06T22:33:11Z",
+                "url": "https://github.com/google-deepmind/formal-conjectures/pull/6577#pullrequestreview-5435273753"
+              }
+            ]
+          }
+        ],
+        "is_draft": false
       },
       {
         "number": 6578,
@@ -762,9 +911,13 @@
             "state": "APPROVED",
             "commit": "99d1320e77b5732ab9200604bd85f3c7f4578653",
             "submitted_at": "2026-09-24T19:35:05Z",
-            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6578#pullrequestreview-5309248110"
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6578#pullrequestreview-5309248110",
+            "author": "mo271",
+            "body": ""
           }
-        ]
+        ],
+        "is_draft": false,
+        "merge_commit": "b08220c148a40dea9c7970757b9a3ca5d257047a"
       },
       {
         "number": 6579,
@@ -774,7 +927,7 @@
         "targets": [
           "Erdos249.erdos_249.variants.rational_dyadic_observable"
         ],
-        "scope": "For rational-valued observables modulo 2^k, the binary series is rational exactly when the observable is constant on even residue classes. The unreduced-totient problem remains open.\n\n[Bo Cowgill approved the current head](https://github.com/google-deepmind/formal-conjectures/pull/6579#pullrequestreview-5493193130) on 12 October, relying on author-hosted evidence; he did not independently rerun verification. [Run 38173617731](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38173617731) compares FC head `a6a2e0e1` with proof source `04e14917` in Lean 4.33.1 and FC's Mathlib environment. It reports matching statements and dependencies, defaultLean/NanoDa acceptance under `propext`, `Classical.choice` and `Quot.sound`, and positive/mismatch controls.\n\nHis [earlier approval](https://github.com/google-deepmind/formal-conjectures/pull/6579#pullrequestreview-5435222238) independently checked the older Lean 4.29.1 proof. The [11 October failure](https://github.com/google-deepmind/formal-conjectures/pull/6579#issuecomment-6112373414) at `e6bf75a5` remains historical evidence of a cross-version comparison mismatch, does not establish a mathematical defect. Individual approval, native verification, aggregate review requirements and merge state remain separate.",
+        "scope": "For rational-valued observables modulo 2^k, the binary series is rational exactly when the observable is constant on even residue classes. The unreduced-totient problem remains open.\n\n[Bo Cowgill approved the current head](https://github.com/google-deepmind/formal-conjectures/pull/6579#pullrequestreview-5493193130) on 12 October, relying on author-hosted evidence; he did not independently rerun verification. [Run 38173617731](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38173617731) compares FC head `a6a2e0e1` with proof source `04e14917` in Lean 4.33.1 and FC's Mathlib environment. It reports matching statements and dependencies, defaultLean/NanoDa acceptance under `propext`, `Classical.choice` and `Quot.sound`, and positive/mismatch controls.\n\nHis [earlier approval](https://github.com/google-deepmind/formal-conjectures/pull/6579#pullrequestreview-5435222238) independently checked the older Lean 4.29.1 proof. The [11 October failure](https://github.com/google-deepmind/formal-conjectures/pull/6579#issuecomment-6112373414) at `e6bf75a5` remains historical evidence of a cross-version comparison mismatch, does not establish a mathematical defect. Individual approval, native verification, aggregate review requirements and merge state remain separate.\n\nReceiving verification for `Erdos249.erdos_249.variants.rational_dyadic_observable`: [run 38173617731](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38173617731) compares the actual FC declaration at `a6a2e0e1` with [proof source `04e14917`](https://github.com/wcook04/plectis-erdos-lean/blob/04e14917b7c9296feabf6674f8e596a2c3ec9082/verification/FC249RationalObservableCurrent/FC249Repair.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.",
         "state": "OPEN",
         "head": "a6a2e0e1e88b01f182c609f8bdb57c3d02c3ab54",
         "merged_at": null,
@@ -808,7 +961,8 @@
             "body": "Review update for head `e6bf75a53ef0655241873e5f12427fb6b4695de5`:\n\n- The FC statement matches the cited paper and pinned Lean theorem in its quantifiers, positive indexing, and `ZMod (2 ^ k)` coordinates. The `k = 1` boundary and metadata are consistent; the original unreduced-totient question remains open.\n- I checked the successful receiving build at this exact head and exported the actual FC declaration in its Lean 4.33.1 environment.\n- In a separate, offline Linux environment using the proof's original Lean 4.29.1 and pinned dependencies, the unmodified proof and bridge to the FC theorem compiled successfully. The bridge's axiom audit reports only `propext`, `Classical.choice`, and `Quot.sound`. Confinement checks and the Comparator's positive and negative controls passed.\n\nThe remaining check did **not** pass: Comparator rejected the comparison between the current-FC export and the Lean 4.29.1 bridge export at `statement_and_dependencies`, reporting \u201cChallenge and solution theorem statement do not match.\u201d This result does not establish a mathematical defect, but it prevents me from treating the current-FC bridge verification as complete. The linked standalone verification receipt does not resolve this particular cross-version comparison.\n\nThe next step is to inspect the elaborated theorem statements and relevant dependency definitions across the two environments, establish a justified bridge, and rerun Comparator against the actual current-FC export. Approval remains pending that successful check. The logs, exports, and prepared environment have been retained; the isolated VM is stopped.\n",
             "boundary": "Historical comparison failure at the named receiving head and old-proof environment; later current-head review does not erase this recorded outcome."
           }
-        ]
+        ],
+        "is_draft": false
       },
       {
         "number": 6780,
@@ -818,9 +972,9 @@
         "targets": [
           "GeometricMomentHankel.fixed_base_asymptotic"
         ],
-        "scope": "Asymptotic for each fixed 0 < q < 1; no uniformity as q approaches one and no solution of #1049.",
+        "scope": "Asymptotic for each fixed 0 < q < 1; no uniformity as q approaches one and no solution of #1049.\n\nReceiving verification for `GeometricMomentHankel.fixed_base_asymptotic`: [run 38358960367](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38358960367) compares the actual FC declaration at `d194bd96` with [proof source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/blob/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85/verification/FC1049HankelCurrent/FC6780Solution.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.",
         "state": "OPEN",
-        "head": "009f3ca88924051271af89fc988e0d12e1fad23f",
+        "head": "d194bd963f85a03d78f6c1a20b26c9b4a41126ce",
         "merged_at": null,
         "review_decision": "REVIEW_REQUIRED",
         "reviews": [
@@ -828,9 +982,29 @@
             "state": "COMMENTED",
             "commit": "009f3ca88924051271af89fc988e0d12e1fad23f",
             "submitted_at": "2026-10-07T18:18:31Z",
-            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6780#pullrequestreview-5446498053"
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6780#pullrequestreview-5446498053",
+            "author": "bocowgill",
+            "body": "Reviewed `009f3ca8`. The [definitions and asymptotic statement](https://github.com/google-deepmind/formal-conjectures/blob/009f3ca88924051271af89fc988e0d12e1fad23f/FormalConjectures/Paper/GeometricMomentHankel.lean#L40-L97) match [Zudilin, equation (6)](https://arxiv.org/html/1601.02688v2#S4.E6) and [Cook\u2019s fixed-base theorem](https://github.com/wcook04/plectis-erdos/blob/6917e15ec4abc2623512254da93221e446eeb707/paper/1049/erdos-1049-rational-base-lambert.tex#L740-L747). The quantifiers, factors and boundary conventions agree. A targeted Lean check confirms the statement bridge with all eight definitions.\n\nThe [linked replay](https://github.com/wcook04/plectis-erdos-lean/actions/runs/35935225572/attempts/2) reports Lean and NanoDa acceptance, but its [runner prebuilds the solution](https://github.com/wcook04/plectis-erdos-lean/blob/cc7e541cf2081c6fef5a5e377d52e365e33b01eb/scripts/palomar_replay_shard.py#L571-L582) before Comparator, contrary to [Comparator\u2019s trust assumptions](https://github.com/leanprover/comparator/blob/575674928e239f5bc452aab72d1dd7b0f1326494/README.md#L24-L29). Please provide verification from a fresh workspace with the challenge and dependencies independently controlled. This leaves the `formal_proof` claim unverified in this review; I found no mathematical discrepancy.\n"
           }
-        ]
+        ],
+        "observation_history": [
+          {
+            "observed_at": "2026-10-12T18:49:29.505431+00:00",
+            "state": "OPEN",
+            "head": "009f3ca88924051271af89fc988e0d12e1fad23f",
+            "merged_at": null,
+            "review_decision": "REVIEW_REQUIRED",
+            "reviews": [
+              {
+                "state": "COMMENTED",
+                "commit": "009f3ca88924051271af89fc988e0d12e1fad23f",
+                "submitted_at": "2026-10-07T18:18:31Z",
+                "url": "https://github.com/google-deepmind/formal-conjectures/pull/6780#pullrequestreview-5446498053"
+              }
+            ]
+          }
+        ],
+        "is_draft": false
       },
       {
         "number": 6971,
@@ -853,17 +1027,42 @@
             "state": "APPROVED",
             "commit": "b47d6ce7ebabf79193826fad5b14b13e44f9c786",
             "submitted_at": "2026-10-10T02:50:02Z",
-            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6971#pullrequestreview-5477230569"
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6971#pullrequestreview-5477230569",
+            "author": "bocowgill",
+            "body": "LGTM, thanks.\n\nI checked that the four immutable targets match the FC statements, including Hausdorff measure of the path image in #1041 and the zero term and index shifts in the series adapters. The packaged proof files match the previously linked sources byte for byte.\n\nThe [Hausdorff](https://github.com/wcook04/plectis-erdos-lean/actions/runs/37673477312) and [integer-series](https://github.com/wcook04/plectis-erdos-lean/actions/runs/37676041723) verification reports bind those exact sources and record Lean and NanoDa acceptance on Lean 4.29.1 with only `propext`, `Classical.choice`, and `Quot.sound`."
           },
           {
             "state": "APPROVED",
             "commit": "b47d6ce7ebabf79193826fad5b14b13e44f9c786",
             "submitted_at": "2026-10-11T12:40:47Z",
-            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6971#pullrequestreview-5483329663"
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6971#pullrequestreview-5483329663",
+            "author": "mo271",
+            "body": "the links point to identical files, right?\n\nBut having the palomar linked repo is an improvements I gues..."
           }
         ],
         "merge_commit": "fdce8d042f2054d3cf8d822f5e842550fb184dff",
-        "display_title": "Update four proof links to kernel-checked sources"
+        "display_title": "Update four proof links to kernel-checked sources",
+        "is_draft": false
+      },
+      {
+        "number": 7260,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/7260",
+        "title": "Update five accepted proof links for Lean 4.33.1",
+        "kind": "proof_link_maintenance",
+        "targets": [
+          "Erdos257.erdos_257.variants.tsum_top",
+          "Erdos1049.erdos_1049.variants.geq_2_integer",
+          "Erdos258.erdos_258.variants.constant",
+          "Erdos1041.erdos_1041",
+          "Erdos257.erdos_257.variants.summable_reciprocal_support"
+        ],
+        "scope": "Updates five already accepted proof links for #257, #258, #1041 and #1049 to their exact Lean 4.33.1 receiving-environment adapters. The declarations and their mathematical claims are unchanged; this maintenance adds no mathematical result.\n\nReceiving verification for `Erdos257.erdos_257.variants.tsum_top`: [run 38364928751](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38364928751) compares the actual FC declaration at `49e83c34` with [proof source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/blob/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85/verification/FCMergedIntegerAdaptersCurrent/FC6971IntegerSolutions.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.\n\nReceiving verification for `Erdos1049.erdos_1049.variants.geq_2_integer`: [run 38364932948](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38364932948) compares the actual FC declaration at `49e83c34` with [proof source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/blob/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85/verification/FCMergedIntegerAdaptersCurrent/FC6971IntegerSolutions.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.\n\nReceiving verification for `Erdos258.erdos_258.variants.constant`: [run 38366401558](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38366401558) compares the actual FC declaration at `49e83c34` with [proof source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/blob/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85/verification/FCMergedIntegerAdaptersCurrent/FC6971IntegerSolutions.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.\n\nReceiving verification for `Erdos1041.erdos_1041`: [run 38367503435](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38367503435) compares the actual FC declaration at `49e83c34` with [proof source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/blob/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85/verification/FC1041HausdorffCurrent/FC6971HausdorffSolution.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.\n\nReceiving verification for `Erdos257.erdos_257.variants.summable_reciprocal_support`: [run 38364924459](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38364924459) compares the actual FC declaration at `49e83c34` with [proof source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/blob/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85/verification/FC257ReciprocalSupportCurrent/FC6529Solution.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.",
+        "state": "OPEN",
+        "head": "49e83c3479103458140371e309f74a6cafbda88d",
+        "merged_at": null,
+        "review_decision": "REVIEW_REQUIRED",
+        "is_draft": true,
+        "reviews": []
       }
     ]
   }
