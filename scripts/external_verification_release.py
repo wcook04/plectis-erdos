@@ -122,15 +122,17 @@ def _canonical_input_path(path: Path) -> Path:
     return candidate
 
 
-def _open_input_descriptor(path: Path) -> int:
+def _open_input_descriptor(path: Path, *, root: Path | None = None) -> int:
     """Open a release input relative to no-follow directory descriptors."""
     directory_flags = os.O_RDONLY
     directory_flags |= getattr(os, "O_CLOEXEC", 0)
     directory_flags |= getattr(os, "O_DIRECTORY", 0)
     directory_flags |= getattr(os, "O_NOFOLLOW", 0)
-    directory = os.open(os.sep, directory_flags)
+    anchor = _canonical_input_path(Path(os.path.abspath(root))) if root is not None else Path(os.sep)
+    relative = path.relative_to(anchor)
+    directory = os.open(anchor, directory_flags)
     try:
-        for component in path.parts[1:-1]:
+        for component in relative.parts[:-1]:
             child = os.open(component, directory_flags, dir_fd=directory)
             try:
                 if not stat.S_ISDIR(os.fstat(child).st_mode):
@@ -153,7 +155,7 @@ def _read_safe_bytes(path: Path, *, root: Path | None = None) -> bytes:
     """Read a release input through a no-follow, regular-file descriptor."""
     candidate = _canonical_input_path(safe_release_file(path, root=root))
     try:
-        descriptor = _open_input_descriptor(candidate)
+        descriptor = _open_input_descriptor(candidate, root=root)
     except OSError as exc:
         raise ReleaseIdentityError(f"could not open release input safely: {candidate}") from exc
     try:

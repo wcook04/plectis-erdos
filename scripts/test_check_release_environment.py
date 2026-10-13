@@ -174,6 +174,21 @@ def main() -> int:
         original_root = check_release.ROOT
         check_release.ROOT = Path(raw)
         try:
+            original_open = check_release.os.open
+            canonical_root = check_release._canonical_input_path(Path(raw))
+
+            def deny_ancestor_listing(path, flags, mode=0o777, *, dir_fd=None):
+                if dir_fd is None and Path(path) in canonical_root.parents:
+                    raise PermissionError("ancestor listing denied")
+                if dir_fd is not None:
+                    return original_open(path, flags, mode, dir_fd=dir_fd)
+                return original_open(path, flags, mode)
+
+            with patch.object(check_release.os, "open", side_effect=deny_ancestor_listing):
+                require(
+                    check_release.read_bytes(private / "secret.txt") == b"outside release\n",
+                    "release reader requires access above the checkout",
+                )
             try:
                 check_release.safe_release_path(docs / "linked" / "secret.txt")
             except check_release.UnsafeReleasePath:

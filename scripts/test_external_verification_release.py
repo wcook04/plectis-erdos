@@ -704,6 +704,24 @@ def test_tracked_artifact_path_prefers_nested_storage() -> None:
         )
 
 
+def test_checkout_scoped_readers() -> None:
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw).resolve() / "checkout"
+        root.mkdir()
+        source = root / "input.json"
+        source.write_bytes(b"{}")
+        real_open = os.open
+
+        def scoped_open(path, flags, *args, **kwargs):
+            if isinstance(path, (str, Path)) and Path(path) in root.parents:
+                raise PermissionError("ancestor directory access denied")
+            return real_open(path, flags, *args, **kwargs)
+
+        with patch.object(os, "open", side_effect=scoped_open):
+            for reader in (release._read_safe_bytes, replay._read_safe_bytes, receipt._read_input_bytes):
+                require(reader(source, root=root) == b"{}", "checkout reader opened an ancestor")
+
+
 def test_effective_verifier_identity() -> None:
     with tempfile.TemporaryDirectory() as raw:
         source = Path(raw) / "source"
@@ -714,7 +732,16 @@ def test_effective_verifier_identity() -> None:
         shutil.copyfile(replay.__file__, runner)
         shutil.copyfile(singleflight.__file__, helper)
         (source / "README.md").write_text("unrelated documentation revision\n")
-        identity = replay.effective_verifier_identity(source)
+        real_open = os.open
+        ancestors = set(replay.ROOT.resolve().parents) | set(source.resolve().parents)
+
+        def scoped_open(path, flags, *args, **kwargs):
+            if isinstance(path, (str, Path)) and Path(path) in ancestors:
+                raise PermissionError("checkout ancestors are not granted directory access")
+            return real_open(path, flags, *args, **kwargs)
+
+        with patch.object(os, "open", side_effect=scoped_open):
+            identity = replay.effective_verifier_identity(source)
         require(identity["identity_verified"], "matching loaded verifier was refused")
         require(
             set(identity["files"]) == {"runner", "singleflight"},
@@ -1223,6 +1250,7 @@ def main() -> int:
     test_receipt_subprocess_environment()
     test_replay_subprocess_environment()
     test_tracked_artifact_path_prefers_nested_storage()
+    test_checkout_scoped_readers()
     test_effective_verifier_identity()
     test_replay_plan()
     test_replay_workspace_boundary()

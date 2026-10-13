@@ -286,6 +286,21 @@ def check_public_surface_file_boundary() -> None:
                 diagnostic.safe_read_text("regular.txt") == "public fixture\n",
                 "cold-clone regular file could not be read",
             )
+            original_open = diagnostic.os.open
+            canonical_root = diagnostic._canonical_input_path(root)
+
+            def deny_ancestor_listing(path, flags, mode=0o777, *, dir_fd=None):
+                if dir_fd is None and Path(path) in canonical_root.parents:
+                    raise PermissionError("ancestor listing denied; checkout access allowed")
+                if dir_fd is not None:
+                    return original_open(path, flags, mode, dir_fd=dir_fd)
+                return original_open(path, flags, mode)
+
+            with patch.object(diagnostic.os, "open", side_effect=deny_ancestor_listing):
+                require(
+                    diagnostic.safe_read_text("regular.txt") == "public fixture\n",
+                    "cold-clone reader requires access above its checkout",
+                )
             for path in ("directory", "link.txt"):
                 try:
                     diagnostic.safe_read_text(path)

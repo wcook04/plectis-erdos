@@ -104,15 +104,17 @@ def _canonical_input_path(path: Path) -> Path:
     return candidate
 
 
-def _open_input_descriptor(path: Path) -> int:
+def _open_input_descriptor(path: Path, *, root: Path | None = None) -> int:
     """Open a replay input relative to no-follow directory descriptors."""
     directory_flags = os.O_RDONLY
     directory_flags |= getattr(os, "O_CLOEXEC", 0)
     directory_flags |= getattr(os, "O_DIRECTORY", 0)
     directory_flags |= getattr(os, "O_NOFOLLOW", 0)
-    directory = os.open(os.sep, directory_flags)
+    anchor = _canonical_input_path(Path(os.path.abspath(root))) if root is not None else Path(os.sep)
+    relative = path.relative_to(anchor)
+    directory = os.open(anchor, directory_flags)
     try:
-        for component in path.parts[1:-1]:
+        for component in relative.parts[:-1]:
             child = os.open(component, directory_flags, dir_fd=directory)
             try:
                 if not stat.S_ISDIR(os.fstat(child).st_mode):
@@ -135,7 +137,7 @@ def _read_safe_bytes(path: Path, *, root: Path | None = None) -> bytes:
     """Read replay input through a no-follow, regular-file descriptor."""
     candidate = _canonical_input_path(safe_replay_file(path, root=root))
     try:
-        descriptor = _open_input_descriptor(candidate)
+        descriptor = _open_input_descriptor(candidate, root=root)
     except OSError as exc:
         raise ReplayError(f"could not open replay input safely: {candidate}") from exc
     try:
@@ -162,7 +164,7 @@ def effective_verifier_identity(source: Path) -> dict[str, Any]:
     }
     observed = {}
     for name, (relative, loaded_path) in files.items():
-        loaded_digest = sha256_file(loaded_path)
+        loaded_digest = sha256_file(loaded_path, root=ROOT)
         source_digest = sha256_file(source / relative, root=source)
         observed[name] = {
             "source_path": relative.as_posix(),

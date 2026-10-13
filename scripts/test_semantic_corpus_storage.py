@@ -15,6 +15,23 @@ import semantic_corpus_storage as storage
 
 
 class CorpusStorageTests(unittest.TestCase):
+    def test_checkout_access_does_not_require_opening_its_ancestors(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory).resolve()
+            path = root / "corpus.json.gz"
+            original_open = storage.os.open
+
+            def deny_ancestors(target, flags, mode=0o777, *, dir_fd=None):
+                if dir_fd is None and Path(target) in root.parents:
+                    raise PermissionError("ancestor listing denied")
+                if dir_fd is not None:
+                    return original_open(target, flags, mode, dir_fd=dir_fd)
+                return original_open(target, flags, mode)
+
+            with patch.object(storage.os, "open", side_effect=deny_ancestors):
+                storage.write_corpus(path, storage.encode_corpus('{"ok":true}'), root=root)
+                self.assertEqual(storage.load_corpus(path, root=root), {"ok": True})
+
     def test_roundtrip_preserves_unicode_and_deterministic_bytes(self) -> None:
         text = '{"nodes":["𝓝","λ","\\\\",null],"count":42}\n'
         compressed = storage.encode_corpus(text)
