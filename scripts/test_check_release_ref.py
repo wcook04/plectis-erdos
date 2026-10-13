@@ -178,6 +178,53 @@ def test_snapshot_clone_isolation_flags_are_pinned() -> None:
                     require(not checkout_attempts, f"{mutation} was not rejected before checkout")
 
 
+def test_partial_clone_historical_source_reads() -> None:
+    """A filtered newcomer clone can verify a source absent from its object store."""
+    with tempfile.TemporaryDirectory() as raw:
+        root = Path(raw)
+        upstream = root / "upstream"
+        upstream.mkdir()
+        git(upstream, "init", "-q")
+        git(upstream, "config", "user.email", "release-ref-test@example.invalid")
+        git(upstream, "config", "user.name", "Clean ref release test")
+        git(upstream, "config", "uploadpack.allowFilter", "true")
+        historical_text = "theorem historical : True := True.intro\n"
+        historical = upstream / "Historical.lean"
+        historical.write_text(historical_text, encoding="utf-8")
+        git(upstream, "add", ".")
+        git(upstream, "commit", "-qm", "historical source")
+        historical_commit = git(upstream, "rev-parse", "HEAD")
+        historical_blob = git(upstream, "rev-parse", "HEAD:Historical.lean")
+        historical.unlink()
+        for command in check_release_ref.RELEASE_COMMANDS:
+            path = upstream / command[1]
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text("print('fixture')\n", encoding="utf-8")
+        git(upstream, "add", "-A")
+        git(upstream, "commit", "-qm", "current release commands")
+        current = git(upstream, "rev-parse", "HEAD")
+        source = root / "filtered"
+        git(root, "clone", "--quiet", "--filter=blob:none", "--no-checkout",
+            upstream.as_uri(), str(source))
+        git(source, "checkout", "--quiet", "--detach", current)
+        missing = git(source, "rev-list", "--objects", "--all", "--missing=print")
+        require(f"?{historical_blob}" in missing.splitlines(),
+                "fixture already downloaded the historical source")
+        git(source, "config", "alias.unrelated", "!false")
+        git(source, "config", "remote.origin.pushurl", "https://example.invalid/push")
+        parent = root / "snapshot"
+        parent.mkdir()
+        with patch.object(check_release_ref, "ROOT", source):
+            clone = check_release_ref.prepare_clone(current, parent)
+        shown = git(clone, "show", f"{historical_commit}:Historical.lean")
+        require(shown == historical_text.strip(), "snapshot could not read its historical pin")
+        require(git(clone, "rev-parse", "HEAD") == current, "lazy fetch changed snapshot HEAD")
+        require(git(clone, "status", "--porcelain") == "", "lazy fetch changed snapshot files")
+        config = git(clone, "config", "--local", "--list")
+        require("alias.unrelated" not in config and "pushurl" not in config,
+                "snapshot copied unrelated source configuration")
+
+
 def test_receipt_destination_boundary() -> None:
     with tempfile.TemporaryDirectory() as raw:
         root = Path(raw)
@@ -644,6 +691,7 @@ def main() -> int:
     require(result.wasSuccessful(), "snapshot lifecycle regression failed")
     test_snapshot_command_path_boundary()
     test_snapshot_clone_isolation_flags_are_pinned()
+    test_partial_clone_historical_source_reads()
     test_receipt_destination_boundary()
     test_macos_tmp_receipt_alias()
     test_singleflight_worker_flag_is_accepted()

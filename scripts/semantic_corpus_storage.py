@@ -32,12 +32,13 @@ def _open_regular(path: Path, root: Path, *, write: bool = False) -> int:
         relative = candidate.relative_to(root)
     except ValueError as error:
         raise CorpusStorageError(f"corpus path escaped checkout: {candidate}") from error
-    candidate = root.resolve() / relative
+    root = root.resolve()
+    candidate = root / relative
     flags = os.O_RDONLY | getattr(os, "O_DIRECTORY", 0) | getattr(os, "O_NOFOLLOW", 0)
-    directory = os.open(os.sep, flags)
+    directory = os.open(root, flags)
     descriptor = -1
     try:
-        for component in candidate.parts[1:-1]:
+        for component in relative.parts[:-1]:
             child = os.open(component, flags, dir_fd=directory)
             os.close(directory)
             directory = child

@@ -95,6 +95,8 @@ def _safe_cold_clone_path(path: Path) -> Path:
 def safe_read_text(rel: str) -> str:
     """Read a public cold-clone surface through a no-follow regular descriptor."""
     candidate = _canonical_input_path(_safe_cold_clone_path(ROOT / rel))
+    root = _canonical_input_path(Path(os.path.abspath(ROOT)))
+    relative = candidate.relative_to(root)
     if not candidate.is_file():
         raise UnsafeColdCloneInput(f"cold-clone input is not a regular file: {candidate}")
     directory_flags = os.O_RDONLY
@@ -102,14 +104,17 @@ def safe_read_text(rel: str) -> str:
     directory_flags |= getattr(os, "O_DIRECTORY", 0)
     directory_flags |= getattr(os, "O_NOFOLLOW", 0)
     try:
-        directory = os.open(os.sep, directory_flags)
+        # The checkout is the trust boundary. Opening every ancestor from `/`
+        # unnecessarily requires directory access above it, which macOS TCC
+        # can deny even when the selected checkout itself is accessible.
+        directory = os.open(root, directory_flags)
     except OSError as exc:
         raise UnsafeColdCloneInput(
             f"cold-clone input could not be opened safely: {candidate}"
         ) from exc
     descriptor = -1
     try:
-        for component in candidate.parts[1:-1]:
+        for component in relative.parts[:-1]:
             child = os.open(component, directory_flags, dir_fd=directory)
             try:
                 if not stat.S_ISDIR(os.fstat(child).st_mode):

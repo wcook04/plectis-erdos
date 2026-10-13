@@ -93,6 +93,20 @@ def main() -> int:
         raced_input.write_text("inside\n", encoding="utf-8")
         (outside / raced_input.name).write_text("outside\n", encoding="utf-8")
         original_open = checker.os.open
+        canonical_root = checker._canonical_input_path(root)
+
+        def deny_ancestor_listing(path, flags, mode=0o777, *, dir_fd=None):
+            if dir_fd is None and Path(path) in canonical_root.parents:
+                raise PermissionError("ancestor listing denied")
+            if dir_fd is not None:
+                return original_open(path, flags, mode, dir_fd=dir_fd)
+            return original_open(path, flags, mode)
+
+        with patch.object(checker.os, "open", side_effect=deny_ancestor_listing):
+            require(
+                read_regular_bytes(raced_input, root=root) == b"inside\n",
+                "disposition reader requires access above the checkout",
+            )
 
         def swap_parent(
             path: Path,

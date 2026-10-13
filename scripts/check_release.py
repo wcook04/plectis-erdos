@@ -575,19 +575,21 @@ def release_file_exists(path: Path) -> bool:
 def _read_safe_bytes(path: Path) -> bytes:
     """Read a release file through a no-follow descriptor after admission."""
     candidate = _canonical_input_path(safe_release_path(path))
+    root = _canonical_input_path(Path(os.path.abspath(ROOT)))
+    relative = candidate.relative_to(root)
     directory_flags = os.O_RDONLY
     directory_flags |= getattr(os, "O_CLOEXEC", 0)
     directory_flags |= getattr(os, "O_DIRECTORY", 0)
     directory_flags |= getattr(os, "O_NOFOLLOW", 0)
     try:
-        directory = os.open(os.sep, directory_flags)
+        directory = os.open(root, directory_flags)
     except OSError as exc:
         raise UnsafeReleasePath(
             f"release path could not be opened safely: {candidate}"
         ) from exc
     descriptor = -1
     try:
-        for component in candidate.parts[1:-1]:
+        for component in relative.parts[:-1]:
             child = os.open(component, directory_flags, dir_fd=directory)
             try:
                 if not stat.S_ISDIR(os.fstat(child).st_mode):
