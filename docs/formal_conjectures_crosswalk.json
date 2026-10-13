@@ -472,9 +472,9 @@
     }
   ],
   "contribution_activity": {
-    "observed_at": "2026-10-13T08:59:37.443457+00:00",
+    "observed_at": "2026-10-13T23:11:10.688524+00:00",
     "repository": "https://github.com/google-deepmind/formal-conjectures",
-    "boundary": "A dated observation of public pull requests. Individual review, aggregate approval requirements and merge state are separate. A merge accepts the scoped upstream change, not every mathematical claim in this repository. Maintenance of existing proof links is excluded from the merged mathematical contribution count. The earlier pinned statement comparisons below retain their original source identities.\n\nAll fourteen receiving declarations listed here have successful author-hosted checks at the exact delivered heads. Each run exports the actual FC declaration before executing the confined candidate in Lean 4.33.1 with FC's Mathlib pin `0df444a360eaa60ab8c11dca51a86af692955474`; statement-and-dependency equality, default Lean and NanoDa acceptance, the axiom budget (`propext`, `Classical.choice`, `Quot.sound`) and positive/mismatch controls are checked. The eleven repaired adapters use source `d1fe386f`; the three earlier successful declarations retain their own immutable proof pins. These checks confer no independent human rerun or upstream merge.\n\n[Source run 38341643841](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38341643841) separately compiled all ten receiving-adapter projects for fourteen units at [source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/commit/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85). [Source PR37](https://github.com/wcook04/plectis-erdos-lean/pull/37) packages that repair. Source compilation, identity at a receiving head, current upstream deployment and reviewer acceptance are distinct evidence.",
+    "boundary": "A dated observation of public pull requests. Individual review, aggregate approval requirements and merge state are separate. A merge accepts the scoped upstream change, not every mathematical claim in this repository. Maintenance of existing proof links is excluded from the merged mathematical contribution count. The earlier pinned statement comparisons below retain their original source identities.\n\nAll nineteen receiving declarations listed here have successful author-hosted checks at the exact delivered heads. Each run exports the actual FC declaration before executing the confined candidate in Lean 4.33.1 with FC's Mathlib pin `0df444a360eaa60ab8c11dca51a86af692955474`; statement-and-dependency equality, default Lean and NanoDa acceptance, the axiom budget (`propext`, `Classical.choice`, `Quot.sound`) and positive/mismatch controls are checked. The eleven repaired adapters use source `d1fe386f`; the three earlier successful declarations retain their own immutable proof pins. The five additional statements retain proof pins `71a2bc9f`, `2cd19fba` and `01b23a6e`; [source PR40](https://github.com/wcook04/plectis-erdos-lean/pull/40) and [source PR41](https://github.com/wcook04/plectis-erdos-lean/pull/41) are merged. These checks confer no independent human rerun or upstream merge.\n\n[Source run 38341643841](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38341643841) separately compiled all ten receiving-adapter projects for fourteen units at [source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/commit/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85). [Source PR37](https://github.com/wcook04/plectis-erdos-lean/pull/37) packages that repair. Source compilation, identity at a receiving head, current upstream deployment and reviewer acceptance are distinct evidence.",
     "requests": [
       {
         "number": 5034,
@@ -1062,6 +1062,90 @@
         "merged_at": null,
         "review_decision": "REVIEW_REQUIRED",
         "is_draft": true,
+        "reviews": []
+      },
+      {
+        "number": 7290,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/7290",
+        "title": "Add a noninteger regular-rate irrationality variant for Erd\u0151s 243",
+        "kind": "solved_variant",
+        "targets": [
+          "Erdos243.erdos_243.variants.nonintegral_regular_rate"
+        ],
+        "scope": "For every real noninteger \u03bb > 1, a positive strictly increasing integer sequence with a(n)\u00b2/a(n+1) = 1 + \u03bb/n + o(n^(-\u03bb)), in the original index, has a convergent irrational reciprocal sum. Koizumi\u2019s rational-tail argument is credited. The unrestricted eventual-Sylvester-recurrence problem #243 remains open.\n\n[Receiving run 38472730641](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38472730641) compares the actual FC declaration at `c04dbfd6e3f93a9dda92b62048b2c076516aa989` with [proof source `71a2bc9f`](https://github.com/wcook04/plectis-erdos-lean/blob/71a2bc9f74f8650d7287581f799ba998fe26e60f/verification/FC243NonintegralRateCurrent/FCNonintegralRateSolutions.lean). Statements and dependencies match; default Lean and NanoDa accept under `propext`, `Classical.choice` and `Quot.sound`, with positive and mismatch controls. The exact changed FC module passed a warning-clean build. This author-hosted check is distinct from independent human proof replay and upstream acceptance. Bo Cowgill approved this exact head after checking the little-o remainder, original-index finite-prefix adjustment and noninteger exclusion, relying on the linked author-hosted evidence; he explicitly did not independently rerun the proof. The request remains open with review required.",
+        "state": "OPEN",
+        "head": "c04dbfd6e3f93a9dda92b62048b2c076516aa989",
+        "merged_at": null,
+        "review_decision": "REVIEW_REQUIRED",
+        "reviews": [
+          {
+            "state": "APPROVED",
+            "commit": "c04dbfd6e3f93a9dda92b62048b2c076516aa989",
+            "submitted_at": "2026-10-13T22:36:58Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/7290#pullrequestreview-5510880799",
+            "author": "bocowgill",
+            "body": "LGTM, thanks.\n\nThe weighted limit matches Theorem 2.2's little-o remainder. The indexing appendix preserves the original index by modifying a finite prefix, whose reciprocal sum changes by a rational number; this avoids losing precision through an index shift. Since \u03bb > 1, excluding natural-number values excludes every integer value.\n\nThe linked Lean wrapper has the same hypotheses and conclusion. I checked the pinned workflow and logs for [receiving run 38472730641](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38472730641): they cover FC head `c04dbfd6` and proof revision `71a2bc9f`, with statement/dependency identity, permitted-axiom checks, default Lean and NanoDa verification, and both controls. This reuses author-hosted verification evidence; I did not independently rerun the proof.\n"
+          }
+        ]
+      },
+      {
+        "number": 7291,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/7291",
+        "title": "Add the mixed-modulus totient-observable classification",
+        "kind": "solved_variant",
+        "targets": [
+          "Erdos249.erdos_249.variants.rational_mixed_dyadic_observables"
+        ],
+        "scope": "For a finite family of distinct positive dilations, base B \u2265 2 and rational tables modulo powers 2^k with k \u2265 1, a rational linear combination of the dilated totient observables is rational exactly when every table is constant on its even classes. Odd classes contribute a finite prefix. This classification leaves the original binary totient-series problem #249 open.\n\n[Receiving run 38471271374](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38471271374) compares the actual FC declaration at `c3d91b4f3a1c362db164595d5e114ac21202237f` with [proof source `2cd19fba`](https://github.com/wcook04/plectis-erdos-lean/blob/2cd19fba5298bc4d8ca9fd469962b18ecfbbca31/verification/FC249MixedModuliCurrent/FC249MixedModuliSolution.lean). Statements and dependencies match; default Lean and NanoDa accept under `propext`, `Classical.choice` and `Quot.sound`, with positive and mismatch controls. The exact changed FC module passed a warning-clean build. This author-hosted check is distinct from independent human proof replay and upstream acceptance.",
+        "state": "OPEN",
+        "head": "c3d91b4f3a1c362db164595d5e114ac21202237f",
+        "merged_at": null,
+        "review_decision": "REVIEW_REQUIRED",
+        "reviews": []
+      },
+      {
+        "number": 7292,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/7292",
+        "title": "Add the infinite-rank three-prime running-LCM kernel theorem",
+        "kind": "research_statement",
+        "targets": [
+          "ThreePrimeRunningLcm.uniform_rank_and_nonseparation"
+        ],
+        "scope": "The three-prime running-LCM kernel has nonsingular minors of every finite size uniformly across the third-coordinate layers, and therefore has no finite rational-valued separated representation. This structural theorem gives no rationality or irrationality conclusion for the scalar catalogue series in #269.\n\n[Receiving run 38471274558](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38471274558) compares the actual FC declaration at `72f8836b29a5f9cc3f2ce04176d406e4a593a03e` with [proof source `2cd19fba`](https://github.com/wcook04/plectis-erdos-lean/blob/2cd19fba5298bc4d8ca9fd469962b18ecfbbca31/verification/FC269UniformKernelCurrent/FC269UniformKernelSolution.lean). Statements and dependencies match; default Lean and NanoDa accept under `propext`, `Classical.choice` and `Quot.sound`, with positive and mismatch controls. The exact changed FC module passed a warning-clean build. This author-hosted check is distinct from independent human proof replay and upstream acceptance.",
+        "state": "OPEN",
+        "head": "72f8836b29a5f9cc3f2ce04176d406e4a593a03e",
+        "merged_at": null,
+        "review_decision": "REVIEW_REQUIRED",
+        "reviews": []
+      },
+      {
+        "number": 7293,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/7293",
+        "title": "Add factorial-gap common-denominator growth",
+        "kind": "research_statement",
+        "targets": [
+          "FactorialCommonDenominator.growth_liminf"
+        ],
+        "scope": "The common denominator L_N = lcm_{2\u2264n\u2264N}(n! \u2212 1) satisfies liminf log L_N/(N^(3/2) log N) \u2265 2\u221a2/3. The theorem concerns the denominator before cancellation; it does not establish irrationality of the factorial-gap series in #68.\n\n[Receiving run 38472733409](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38472733409) compares the actual FC declaration at `a4ea288bc7672535c3784d13130e9df95af0f7f7` with [proof source `71a2bc9f`](https://github.com/wcook04/plectis-erdos-lean/blob/71a2bc9f74f8650d7287581f799ba998fe26e60f/verification/FC68CommonDenominatorCurrent/FC68CommonDenominatorSolution.lean). Statements and dependencies match; default Lean and NanoDa accept under `propext`, `Classical.choice` and `Quot.sound`, with positive and mismatch controls. The exact changed FC module passed a warning-clean build. This author-hosted check is distinct from independent human proof replay and upstream acceptance.",
+        "state": "OPEN",
+        "head": "a4ea288bc7672535c3784d13130e9df95af0f7f7",
+        "merged_at": null,
+        "review_decision": "REVIEW_REQUIRED",
+        "reviews": []
+      },
+      {
+        "number": 7294,
+        "url": "https://github.com/google-deepmind/formal-conjectures/pull/7294",
+        "title": "Add the exact initial term of normalized Hankel determinants",
+        "kind": "research_statement",
+        "targets": [
+          "ZudilinHankelInitialTerm.first_nonzero_term"
+        ],
+        "scope": "For every natural rank N, including zero, the normalized Hankel determinant has formal q-order E_N = N(N\u22121)(2N\u22121)/6 and coefficient 2^N[q^E_N]H_N = (N!)\u00b2(N+1)!. Zudilin\u2019s more general lower-order bound and normalized construction are credited. This fixed-rank formal initial term is distinct from #6780\u2019s fixed-real-base large-rank asymptotic and gives no new rational-base irrationality region for #1049.\n\n[Receiving run 38478080939](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38478080939) compares the actual FC declaration at `10c6001c65d3b78b6fee282f4e614a3bc93868d1` with [proof source `01b23a6e`](https://github.com/wcook04/plectis-erdos-lean/blob/01b23a6e0ead0a80b89dd1b3dffed1e4356ad2ba/verification/FC1049OrderCoeffCurrent/FC1049OrderCoeffSolution.lean). Statements and dependencies match; default Lean and NanoDa accept under `propext`, `Classical.choice` and `Quot.sound`, with positive and mismatch controls. The exact changed FC module passed a warning-clean build. This author-hosted check is distinct from independent human proof replay and upstream acceptance.",
+        "state": "OPEN",
+        "head": "10c6001c65d3b78b6fee282f4e614a3bc93868d1",
+        "merged_at": null,
+        "review_decision": "REVIEW_REQUIRED",
         "reviews": []
       }
     ]
