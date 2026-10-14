@@ -8,7 +8,9 @@ import re
 import subprocess
 import tempfile
 from pathlib import Path
+from urllib.parse import unquote
 
+from check_architecture_guide import heading_slug
 from validation_singleflight import command_environment, GIT_COMMAND_TIMEOUT_SECONDS
 
 
@@ -31,12 +33,8 @@ def prose_words(text: str) -> list[str]:
     return words(re.sub(r"```.*?```", "", text, flags=re.DOTALL))
 
 
-def markdown_link_prose(text: str) -> str:
-    """Exclude code, including native Pandoc inline and fenced math.
-
-    Preserve surrounding link syntax: a code span in a real link's label
-    does not stop that link from being checked.
-    """
+def markdown_without_fences(text: str) -> str:
+    """Preserve prose and headings while excluding fenced examples."""
     lines: list[str] = []
     fence = ""
     for line in text.splitlines(keepends=True):
@@ -56,25 +54,73 @@ def markdown_link_prose(text: str) -> str:
             lines.append("\n")
         else:
             lines.append(line)
+    return "".join(lines)
+
+
+def markdown_link_prose(text: str) -> str:
+    """Exclude code without hiding real links that have code in their labels."""
     return re.sub(
         r"(?<!`)(`+)(?!`)(.*?)(?<!`)\1(?!`)",
         lambda match: " " * len(match[0]),
-        "".join(lines),
+        markdown_without_fences(text),
         flags=re.DOTALL,
     )
 
 
-def local_markdown_targets(path: Path) -> list[Path]:
+def local_markdown_references(path: Path) -> list[tuple[Path, str]]:
     """Resolve clone-local Markdown links from the document that owns them."""
 
-    targets: list[Path] = []
+    targets: list[tuple[Path, str]] = []
     prose = markdown_link_prose(path.read_text(encoding="utf-8"))
     for raw in re.findall(r"\[[^]]+\]\(([^)]+)\)", prose):
-        target = raw.split("#", 1)[0]
-        if not target or "://" in target or target.startswith("mailto:"):
+        target, _, fragment = raw.partition("#")
+        if "://" in target or target.startswith("mailto:"):
             continue
-        targets.append((path.parent / target).resolve())
+        if target or fragment:
+            destination = (path.parent / unquote(target)).resolve() if target else path.resolve()
+            targets.append((destination, unquote(fragment)))
     return targets
+
+
+def local_markdown_targets(path: Path) -> list[Path]:
+    """Retain the existing file-target interface for downstream consumers."""
+    return [target for target, _ in local_markdown_references(path)]
+
+
+def markdown_fragments(text: str) -> set[str]:
+    """Resolve repository headings and explicit anchors, excluding examples."""
+    prose = markdown_without_fences(text)
+    fragments: set[str] = set()
+    lines = prose.splitlines()
+    for index, line in enumerate(lines):
+        heading = re.match(r"^ {0,3}#{1,6}[ \t]+(.+?)\s*#*\s*$", line)
+        title = heading[1] if heading else ""
+        if not title and index and re.fullmatch(r" {0,3}(?:=+|-+)[ \t]*", line):
+            title = lines[index - 1].strip()
+        if not title:
+            continue
+        title = re.sub(r"\[([^]]+)\]\([^)]*\)", r"\1", title)
+        base = heading_slug(title)
+        candidate = base
+        duplicate = 0
+        while candidate in fragments:
+            duplicate += 1
+            candidate = f"{base}-{duplicate}"
+        fragments.add(candidate)
+    fragments.update(re.findall(
+        r'''<[A-Za-z][A-Za-z0-9:-]*\b[^>]*\b(?:id|name)=["']([^"']+)["']''',
+        markdown_link_prose(text),
+    ))
+    return fragments
+
+
+def missing_markdown_fragments(source: Path, tracked: set[Path]) -> list[tuple[Path, str]]:
+    missing: list[tuple[Path, str]] = []
+    for target, fragment in local_markdown_references(source):
+        if fragment and target in tracked and target.suffix.lower() == ".md":
+            if fragment not in markdown_fragments(target.read_text(encoding="utf-8")):
+                missing.append((target, fragment))
+    return missing
 
 
 def missing_checkout_targets(
@@ -121,6 +167,38 @@ def test_checkout_link_boundary() -> None:
         )
 
 
+def test_checkout_fragment_boundary() -> None:
+    with tempfile.TemporaryDirectory() as directory:
+        root = Path(directory).resolve()
+        source, target = root / "README.md", root / "crosswalk.md"
+        target.write_text(
+            "## Open requests\n## Open requests\n<a id=\"explicit\"></a>\n"
+            "<div id=\"theorem:existing\">A real statement.</div>\n"
+            "`<div id=\"inline-example\">not an anchor</div>`\n"
+            "```\n## Fenced example\n```\n", encoding="utf-8",
+        )
+        source.write_text(
+            "[approved](crosswalk.md#open-requests) "
+            "[second](crosswalk.md#open-requests-1) "
+            "[alias](crosswalk.md#explicit) "
+            "[statement](crosswalk.md#theorem%3Aexisting) "
+            "[escaped defect](crosswalk.md#research-statements) "
+            "[inline](crosswalk.md#inline-example) "
+            "[example](crosswalk.md#fenced-example)\n", encoding="utf-8",
+        )
+        require(
+            missing_markdown_fragments(source, {source, target})
+            == [(target, "research-statements"), (target, "inline-example"), (target, "fenced-example")],
+            "an existing file must not qualify a missing section or a fenced example",
+        )
+        source.write_text("[approved](crosswalk.md#open-requests)\n", encoding="utf-8")
+        require(not missing_markdown_fragments(source, {source, target}),
+                "the corrected public section link must be accepted")
+        target.write_text("## Renamed requests\n", encoding="utf-8")
+        require(missing_markdown_fragments(source, {source, target}) == [(target, "open-requests")],
+                "a later target-heading change must invalidate its old link")
+
+
 def authored_prose_blocks(text: str) -> list[str]:
     """Return ordinary prose blocks, excluding metadata and navigation syntax."""
     blocks: list[str] = []
@@ -144,6 +222,7 @@ def authored_prose_blocks(text: str) -> list[str]:
 
 def main() -> None:
     test_checkout_link_boundary()
+    test_checkout_fragment_boundary()
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     human_entry = HUMAN_ENTRY.read_text(encoding="utf-8")
     results = (ROOT / "docs/RESULTS.md").read_text(encoding="utf-8")
@@ -196,6 +275,9 @@ def main() -> None:
                 f"{source.relative_to(ROOT)} links outside the public checkout: {missing}")
         for target in local_markdown_targets(source):
             require(target.is_file() or target.is_dir(), f"{source.relative_to(ROOT)} has a dead local link: {target}")
+        missing_fragments = missing_markdown_fragments(source, tracked)
+        require(not missing_fragments,
+                f"{source.relative_to(ROOT)} has missing local Markdown fragments: {missing_fragments}")
 
     # Folder moves must leave every specialist guide reachable from the reader
     # hub, with links resolved from its new location, including generated pages.

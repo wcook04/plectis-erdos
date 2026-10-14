@@ -254,7 +254,7 @@ using author-hosted verification, without an independent rerun.
 The request remains open with review required; the unreduced-totient problem remains open.
 
 All fourteen [receiving checks](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#contribution-activity) pass.
-Bo approved [PR7260](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#proof-link-maintenance) and [PR6780](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#research-statements)
+Bo approved [PR7260](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#proof-link-maintenance) and [PR6780](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#open-requests)
 using author-hosted receipts without independent proof reruns.
 Both remain open with review required.
 
