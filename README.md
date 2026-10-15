@@ -32,6 +32,9 @@ problem papers appears with its Lean statements and Comparator records.
 
 <sub>The maths map on 9 October 2026. Select the image to open the current map.</sub>
 
+The website also provides an [agent-readable guide](https://wcook04.github.io/plectis/llms.txt)
+and [maths map data](https://wcook04.github.io/plectis/lean/experience/manifest.json).
+
 ## Inspect one result
 
 [Problem 257](https://www.erdosproblems.com/257) asks whether the series
