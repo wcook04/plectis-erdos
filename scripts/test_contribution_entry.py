@@ -208,8 +208,12 @@ def main() -> int:
             require(len(targets) == 1 and targets[0].startswith(f"../paper/{number}/"),
                     f"problem {number} lost its own {label.lower()}")
         texts = re.findall(r"\[Read as text\]\(([^)]+)\)", section)
-        require(len(texts) == 2 and len(set(texts)) == 2,
-                f"problem {number} needs both distinct text editions")
+        # An optional expository paper adds its own link and text edition.
+        expository = re.findall(r"\[Expository paper\]\(([^)]+)\)", section)
+        require(len(expository) <= 1 and all(t.startswith(f"../paper/{number}/") for t in expository),
+                f"problem {number} expository paper is not its own")
+        require(len(texts) == 2 + len(expository) and len(set(texts)) == len(texts),
+                f"problem {number} needs a distinct text edition for each of its papers")
         require(row["what_is_checked"][0] in section, f"missing result {number}")
         require(row["claim_registration"]["programme_statement"] in section,
                 f"missing result boundary {number}")

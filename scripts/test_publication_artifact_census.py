@@ -13,6 +13,7 @@ from publication_contract import (
     contract_publication_pdfs,
     publication_census_errors,
     publication_role,
+    publication_role_errors,
     tracked_publication_pdfs,
 )
 from test_license_map_contract import rendered_artifacts
@@ -96,6 +97,27 @@ def main() -> int:
         publication_role({"artifact_class": "archival_joint_manuscript"})
         == "archival_joint_manuscript",
         "archival role drifted",
+    )
+    # The optional third paper beside a problem's short and long papers.
+    require(
+        publication_role({"artifact_class": "expository_paper"}) == "expository",
+        "expository role drifted",
+    )
+    expository = {
+        "id": "erdos_257_expository",
+        "artifact_class": "expository_paper",
+        "source_path": "paper/257/erdos257-expository-sums-never-fractions.tex",
+        "rendered_path": "paper/257/erdos257-expository-sums-never-fractions.pdf",
+    }
+    require(not publication_role_errors(expository), "a distinct expository stem was refused")
+    short_looking = {
+        **expository,
+        "source_path": "paper/257/erdos-257-first-principles.tex",
+        "rendered_path": "paper/257/erdos-257-first-principles.pdf",
+    }
+    require(
+        any("short-paper pattern" in error for error in publication_role_errors(short_looking)),
+        "an expository paper with a short-paper stem was not refused",
     )
     print(
         "test_publication_artifact_census: missing registered and extra "

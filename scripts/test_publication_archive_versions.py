@@ -79,7 +79,10 @@ class ArchiveVersionTests(unittest.TestCase):
             cwd=ROOT, capture_output=True, check=False,
         )
         self.assertEqual(result.returncode, 0, result.stderr.decode())
-        self.assertLessEqual(len(result.stdout), 80_000)
+        # Raised from 80,000 on 11 October 2026: registering the #257
+        # expository paper added one paper entry and took the guide to 80,958
+        # bytes. The growth is that entry, not a repeated projection.
+        self.assertLessEqual(len(result.stdout), 84_000)
         packet = json.loads(result.stdout)
         visible = {}
         for paper in packet["papers"]:

@@ -10,10 +10,10 @@ guess -- and the honest answer is available from data already in the corpus.
 This builder adds, per paper:
 
 ``publication_class``
-    ``problem_paper``, ``reasoning_surface``, ``synthesis_paper``,
-    ``methods_paper``, or
+    ``problem_paper``, ``reasoning_surface``, ``expository_paper``,
+    ``synthesis_paper``, ``methods_paper``, or
     ``software_paper``, decided by ordered rules over the manuscript's own
-    ``owns``, ``title``, and ``home_repository`` fields. The rule that fired is
+    ``form``, ``owns``, ``title``, and ``home_repository`` fields. The rule that fired is
     recorded in ``publication_class_basis`` so the decision can be audited
     rather than taken on trust. An unrecognised paper is an error, never a
     silent default.
@@ -84,6 +84,10 @@ PUBLICATION_CLASSES = {
     "reasoning_surface": (
         "A long-form record of attempted routes, the routes that closed, and "
         "the obligations that survive."
+    ),
+    "expository_paper": (
+        "One result of a covered problem's short paper, explained for a reader "
+        "new to the problem with worked examples and every step of its proof."
     ),
     "synthesis_paper": (
         "Mathematics whose subject is several covered problems read together: "
@@ -235,6 +239,13 @@ def _classify(paper: dict[str, Any]) -> tuple[str, str]:
     owns = (paper.get("owns") or "").lower()
     title = (paper.get("title") or "").strip()
     home = (paper.get("home_repository") or "").strip()
+
+    # An expository paper explains a result of its problem's short paper, so
+    # its prose scope can name the same exposition markers as that paper. The
+    # registry records its form separately; deciding by form first keeps it
+    # out of every surface that counts problem papers.
+    if paper.get("subject_kind") == "problem" and paper.get("form") == "Expository paper":
+        return "expository_paper", "problem subject with form 'Expository paper'"
 
     # Each basis quotes the deciding text in single quotes and nowhere else, so
     # a checker can lift the quoted fragment back out and confirm it really is

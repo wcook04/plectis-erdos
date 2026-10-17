@@ -61,6 +61,17 @@ CORPUS = ROOT / "docs" / "papers" / "corpus.json"
 SCHEMA = "erdos249257-problem-index/1"
 SOURCE_SCHEMA = "erdos249257-problem-index-source/1"
 LIBRARY = "ErdosProblems"
+# A problem's papers, by the form the corpus records. Every problem has a
+# short paper and a long record; an expository paper, which explains one
+# result of the short paper for a reader new to the problem, is optional and
+# reads after both. Its key appears in ``paper_roles`` only where one exists.
+PAPER_ROLE_BY_FORM = {
+    "Problem note": "short",
+    "Reasoning surface": "long",
+    "Expository paper": "expository",
+}
+PAPER_ROLE_ORDER = {"short": 0, "long": 1, "expository": 2}
+PAPER_ROLE_LABEL = {"short": "Short paper", "long": "Long record", "expository": "Expository paper"}
 
 # The review matrix records one authored disposition per contribution family.
 # The vocabulary is open -- a new family arrives with its own suffix -- but each
@@ -252,8 +263,10 @@ def render_contribution_guide(payload: dict, corpus: dict) -> str:
         papers = [paper for paper in corpus.get("papers", [])
                   if paper.get("publication_state") == "active"
                   and paper.get("local_source", "").startswith(f"paper/{n}/")]
+        # Stable: the short paper and long record keep their corpus order.
+        papers.sort(key=lambda paper: PAPER_ROLE_BY_FORM.get(paper.get("form")) == "expository")
         for paper in papers:
-            role = "Long record" if paper.get("form") == "Reasoning surface" else "Short paper"
+            role = PAPER_ROLE_LABEL.get(PAPER_ROLE_BY_FORM.get(paper.get("form"), ""), "Short paper")
             lines += [f"[{role}](../{paper['local_pdf']}) · [Read as text](../{paper['local_full_text']})", ""]
         principal = row["modules"][0]
         lines += [f"[Programme entry module](../{principal['path']}) · "
@@ -524,7 +537,7 @@ def problem_library(source: dict, claims: dict | None, corpus: dict | None) -> d
             if paper.get("publication_state") != "active" or str(number) not in {str(n).removeprefix("erdos_") for n in declared}:
                 continue
             item = {"paper_id": paper["paper_id"], "title": paper["title"],
-                    "role": {"Problem note": "short", "Reasoning surface": "long"}.get(paper.get("form"), "paper"),
+                    "role": PAPER_ROLE_BY_FORM.get(paper.get("form"), "paper"),
                     "source": paper.get("local_source"), "pdf": paper.get("local_pdf"),
                     "full_text": paper.get("local_full_text")}
             for key in ("source", "pdf", "full_text"):
@@ -535,7 +548,7 @@ def problem_library(source: dict, claims: dict | None, corpus: dict | None) -> d
                         raise ValueError(f"{pid}: missing or unsafe {key}: {path}")
             item["github"] = {key: f"{PUBLIC_REPO}/blob/main/{item[key]}" for key in ("source", "pdf", "full_text") if item[key]}
             reading.append(item)
-        reading.sort(key=lambda p: ({"short": 0, "long": 1}.get(p["role"], 2), p["paper_id"]))
+        reading.sort(key=lambda p: (PAPER_ROLE_ORDER.get(p["role"], 3), p["paper_id"]))
         directory_rel = library_storage_path(row["directory"])
         directory = ROOT / directory_rel
         if directory.is_symlink() or not directory.is_dir() or ".." in PurePosixPath(directory_rel).parts or PurePosixPath(directory_rel).is_absolute():
@@ -591,8 +604,12 @@ def problem_library(source: dict, claims: dict | None, corpus: dict | None) -> d
                           "role": modules.get(path, {}).get("role", "")})
         def node_id(path):
             return "lean-module:" + library_identity_path(path).removesuffix(".lean").replace("/", ".")
+        paper_roles = {role: [p["paper_id"] for p in reading if p["role"] == role] for role in ("short", "long")}
+        expository = [p["paper_id"] for p in reading if p["role"] == "expository"]
+        if expository:
+            paper_roles["expository"] = expository
         problems[pid] = {"papers": reading,
-            "paper_roles": {role: [p["paper_id"] for p in reading if p["role"] == role] for role in ("short", "long")},
+            "paper_roles": paper_roles,
             "source_map": {"nodes": nodes, "edges": [{"source": node_id(a), "target": node_id(b)} for a, b in sorted(edges)]}}
     return {"schema": "erdos-problem-library/1", "generated_by": "scripts/build_problem_index.py",
             "repository": PUBLIC_REPO, "link_policy": "moving_main_paths; titles and content updates preserve URLs",

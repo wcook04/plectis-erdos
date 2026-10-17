@@ -11,7 +11,7 @@ Private correspondence appears only under a neutral anonymous identity until pub
 
 ## Coverage and anonymous implementation credits
 
-The registry contains `316` curated sources across `24` registered papers and `1903` Lean library files.
+The registry contains `316` curated sources across `25` registered papers and `1903` Lean library files.
 
 Source review states: `bibliography_only`: `97`; `existing_source_closure`: `31`; `external_claim_unverified`: `1`; `implemented_advice`: `9`; `source_verified`: `178`.
 
@@ -30,7 +30,7 @@ Implemented advice from private correspondence. The [credit ledger](CREDIT_LEDGE
 - [Clarifying the role of persistent research records](#source-correspondence-009) — Advice adopted in the maintainer’s communication process and recorded publicly in the linked credit-policy passage. This credits the change in explanation or scope only. It does not credit a theorem, a completed comparison experiment, a mathematical review or endorsement. Private messages and identity records remain outside the public repository.
 
 - Unmatched citation keys: `0`
-- Bibliography entries awaiting curated links: `120`
+- Bibliography entries awaiting curated links: `123`
 - Lean candidates awaiting review: `827` (`3` direct URL/DOI/arXiv rows; `1678` surname/key rows; categories may overlap).
 
 ## Browse by problem
@@ -1558,6 +1558,7 @@ Paper citation usages:
 - `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:77](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L77-L77), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:876](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L876-L876), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:3749](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L3749-L3749), [cite at paper/reasoning-parts/erdos243/core.tex:38](../../paper/reasoning-parts/erdos243/core.tex#L38-L38), [cite at paper/reasoning-parts/erdos243/core.tex:837](../../paper/reasoning-parts/erdos243/core.tex#L837-L837), [cite at paper/reasoning-parts/erdos243/core.tex:3710](../../paper/reasoning-parts/erdos243/core.tex#L3710-L3710)
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:197](../../paper/archive/erdos249-257-main-paper.tex#L197-L197), [cite at paper/archive/erdos249-257-main-paper.tex:4521](../../paper/archive/erdos249-257-main-paper.tex#L4521-L4521)
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:73](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L73-L73), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:2112](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L2112-L2112), [cite at paper/reasoning-parts/erdos251/core.tex:31](../../paper/reasoning-parts/erdos251/core.tex#L31-L31), [cite at paper/reasoning-parts/erdos251/core.tex:2070](../../paper/reasoning-parts/erdos251/core.tex#L2070-L2070)
+- `erdos257-expository-sums-never-fractions`: [cite at paper/257/erdos257-expository-sums-never-fractions.tex:150](../../paper/257/erdos257-expository-sums-never-fractions.tex#L150-L150)
 - `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:119](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L119-L119), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3861](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3861-L3861), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3879](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3879-L3879), [cite at paper/reasoning-parts/erdos269/core.tex:61](../../paper/reasoning-parts/erdos269/core.tex#L61-L61), [cite at paper/reasoning-parts/erdos269/core.tex:3803](../../paper/reasoning-parts/erdos269/core.tex#L3803-L3803), [cite at paper/reasoning-parts/erdos269/core.tex:3821](../../paper/reasoning-parts/erdos269/core.tex#L3821-L3821)
 - `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:64](../../paper/68/erdos68-factorial-reasoning-surface.tex#L64-L64), [cite at paper/reasoning-parts/erdos68/core.tex:29](../../paper/reasoning-parts/erdos68/core.tex#L29-L29)
 - `open-source-mathematics-strategy`: [cite at paper/systems/open-source-mathematics-strategy.tex:571](../../paper/systems/open-source-mathematics-strategy.tex#L571-L571), [cite at paper/systems/open-source-mathematics-strategy.tex:789](../../paper/systems/open-source-mathematics-strategy.tex#L789-L789)
@@ -5030,6 +5031,7 @@ Paper citation usages:
 
 - `erdos-257-mersenne-support-subseries`: [cite at paper/257/erdos-257-mersenne-support-subseries.tex:832](../../paper/257/erdos-257-mersenne-support-subseries.tex#L832-L832)
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:756](../../paper/archive/erdos249-257-main-paper.tex#L756-L757)
+- `erdos257-expository-sums-never-fractions`: [cite at paper/257/erdos257-expository-sums-never-fractions.tex:800](../../paper/257/erdos257-expository-sums-never-fractions.tex#L800-L800)
 - `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:2249](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L2249-L2249), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:2049](../../paper/reasoning-parts/erdos257/a257_front.tex#L2049-L2049)
 - `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:1854](../../paper/synthesis/optimal-sparse-perturbations.tex#L1854-L1854)
 
@@ -5831,6 +5833,7 @@ Paper citation usages:
 - `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:841](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L841-L841), [cite at paper/reasoning-parts/erdos243/core.tex:802](../../paper/reasoning-parts/erdos243/core.tex#L802-L802)
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:694](../../paper/archive/erdos249-257-main-paper.tex#L694-L694)
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:1951](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L1951-L1951), [cite at paper/reasoning-parts/erdos251/core.tex:1909](../../paper/reasoning-parts/erdos251/core.tex#L1909-L1909)
+- `erdos257-expository-sums-never-fractions`: [cite at paper/257/erdos257-expository-sums-never-fractions.tex:205](../../paper/257/erdos257-expository-sums-never-fractions.tex#L205-L205)
 - `erdos257-mersenne-reasoning-surface`: [cite at paper/257/erdos257-mersenne-reasoning-surface.tex:1178](../../paper/257/erdos257-mersenne-reasoning-surface.tex#L1178-L1178), [cite at paper/reasoning-parts/erdos257/a257\_front.tex:978](../../paper/reasoning-parts/erdos257/a257_front.tex#L978-L978)
 - `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:362](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L362-L362), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:2542](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L2542-L2542), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3927](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3927-L3927), [cite at paper/reasoning-parts/erdos269/core.tex:304](../../paper/reasoning-parts/erdos269/core.tex#L304-L304), [cite at paper/reasoning-parts/erdos269/core.tex:2484](../../paper/reasoning-parts/erdos269/core.tex#L2484-L2484), [cite at paper/reasoning-parts/erdos269/core.tex:3869](../../paper/reasoning-parts/erdos269/core.tex#L3869-L3869)
 - `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:938](../../paper/synthesis/optimal-sparse-perturbations.tex#L938-L938)
@@ -7304,6 +7307,7 @@ Paper citation usages:
 - `erdos243-reciprocal-tail-reasoning-surface`: [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:75](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L75-L75), [cite at paper/243/erdos243-reciprocal-tail-reasoning-surface.tex:876](../../paper/243/erdos243-reciprocal-tail-reasoning-surface.tex#L876-L876), [cite at paper/reasoning-parts/erdos243/core.tex:36](../../paper/reasoning-parts/erdos243/core.tex#L36-L36), [cite at paper/reasoning-parts/erdos243/core.tex:837](../../paper/reasoning-parts/erdos243/core.tex#L837-L837)
 - `erdos249-257-main`: [cite at paper/archive/erdos249-257-main-paper.tex:193](../../paper/archive/erdos249-257-main-paper.tex#L193-L193), [cite at paper/archive/erdos249-257-main-paper.tex:195](../../paper/archive/erdos249-257-main-paper.tex#L195-L195)
 - `erdos251-prime-gap-reasoning-surface`: [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:75](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L75-L75), [cite at paper/251/erdos251-prime-gap-reasoning-surface.tex:531](../../paper/251/erdos251-prime-gap-reasoning-surface.tex#L531-L531), [cite at paper/reasoning-parts/erdos251/core.tex:33](../../paper/reasoning-parts/erdos251/core.tex#L33-L33), [cite at paper/reasoning-parts/erdos251/core.tex:489](../../paper/reasoning-parts/erdos251/core.tex#L489-L489)
+- `erdos257-expository-sums-never-fractions`: [cite at paper/257/erdos257-expository-sums-never-fractions.tex:131](../../paper/257/erdos257-expository-sums-never-fractions.tex#L131-L131)
 - `erdos269-running-lcm-reasoning-surface`: [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:118](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L118-L118), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3877](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3877-L3877), [cite at paper/269/erdos269-running-lcm-reasoning-surface.tex:3913](../../paper/269/erdos269-running-lcm-reasoning-surface.tex#L3913-L3913), [cite at paper/reasoning-parts/erdos269/core.tex:60](../../paper/reasoning-parts/erdos269/core.tex#L60-L60), [cite at paper/reasoning-parts/erdos269/core.tex:3819](../../paper/reasoning-parts/erdos269/core.tex#L3819-L3819), [cite at paper/reasoning-parts/erdos269/core.tex:3855](../../paper/reasoning-parts/erdos269/core.tex#L3855-L3855)
 - `erdos68-factorial-reasoning-surface`: [cite at paper/68/erdos68-factorial-reasoning-surface.tex:60](../../paper/68/erdos68-factorial-reasoning-surface.tex#L60-L60), [cite at paper/reasoning-parts/erdos68/core.tex:25](../../paper/reasoning-parts/erdos68/core.tex#L25-L25)
 - `optimal-sparse-perturbations`: [cite at paper/synthesis/optimal-sparse-perturbations.tex:72](../../paper/synthesis/optimal-sparse-perturbations.tex#L72-L72)
@@ -9502,9 +9506,9 @@ Paper citation usages:
 
 These gaps are shown explicitly so the catalogue cannot be mistaken for complete historical knowledge.
 
-- Registered papers scanned: `24`; TeX source files scanned after local includes: `98`.
+- Registered papers scanned: `25`; TeX source files scanned after local includes: `100`.
 - Citation keys without a local bibliography definition: `0`
-- Bibliography entries without a curated source link: `120`
+- Bibliography entries without a curated source link: `123`
 - Lean lexical candidates awaiting review: `827`
 - Unresolved local TeX includes: `0`
 

@@ -1,0 +1,40 @@
+% SPDX-License-Identifier: CC-BY-4.0
+% The arrow repeats values; it does not represent chronological sampling.
+% Each tuple is remainder/original numerator/repeated numerator, over 63.
+% Common linear height scale and equal widths preserve the comparison.
+\begin{tikzpicture}[x=1mm,y=1mm,font=\small]
+  \node[anchor=west,align=left,inner sep=0pt] at (0,23)
+    {3 sampled values\\(sorted)};
+  \node[anchor=west,inner sep=0pt] (samples) at (0,15)
+    {$0,\ \dfrac{3}{63},\ \dfrac{15}{63}$};
+  % The arrow ends at the copied-value row, not at the original bar labels.
+  \draw[-{Stealth[length=2mm]},line width=.6pt]
+    ([yshift=-2mm]samples.south) -- (samples.south |- 0,-10.5) -- (61,-10.5);
+  \node[anchor=west,inner sep=0pt] at (19,4) {copy each twice};
+  % Adjacent keys distinguish the constructed copies from the comparison data.
+  \filldraw[fill=paperresultrule!30,draw=black!75,line width=.55pt]
+    (33,20.75) rectangle (36.5,24.25);
+  \node[anchor=west,align=left,inner sep=0pt] at (39,22.5)
+    {copied sample\\values};
+  \draw[black!75,line width=.55pt] (33,12.75) rectangle (36.5,16.25);
+  \node[anchor=west,align=left,inner sep=0pt] at (39,14.5)
+    {consecutive\\cycle values};
+  \foreach \r/\v/\w in {0/0/0,1/1/0,2/3/3,3/7/3,4/15/15,5/31/15}{
+    \pgfmathsetmacro{\xx}{62+10*\r+3*floor(\r/2)}
+    \fill[paperresultrule!30] (\xx,0) rectangle (\xx+7,.55*\w);
+    \draw[black!75,line width=.55pt] (\xx,0) rectangle (\xx+7,.55*\v);
+    \node[anchor=south,inner sep=1pt] at (\xx+3.5,.55*\v+1.3)
+      {$\dfrac{\v}{63}$};
+    \node[anchor=north,inner sep=1pt] at (\xx+3.5,-1.3) {$\r$};
+  }
+  \node[anchor=east,inner sep=0pt] at (58,-3) {remainder $r$};
+  \foreach \a in {62,85,108}
+    \draw[decorate,decoration={brace,mirror,amplitude=3pt},black!65]
+      (\a,-6.5) -- (\a+17,-6.5);
+  % List the zero copies explicitly rather than inventing positive bar heights.
+  \node[anchor=north,inner sep=1pt] at (70.5,-8.5) {$0,\ 0$};
+  \node[anchor=north,inner sep=1pt] at (93.5,-8.5)
+    {$3/63,\ 3/63$};
+  \node[anchor=north,inner sep=1pt] at (116.5,-8.5)
+    {$15/63,\ 15/63$};
+\end{tikzpicture}

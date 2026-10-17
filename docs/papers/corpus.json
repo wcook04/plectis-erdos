@@ -27,6 +27,7 @@
     "erdos251-prime-gap-reasoning-surface",
     "erdos-257-mersenne-support-subseries",
     "erdos257-mersenne-reasoning-surface",
+    "erdos257-expository-sums-never-fractions",
     "erdos269-running-lcm-reasoning-surface",
     "erdos-269-three-prime-running-lcm",
     "erdos-1041-lemniscate-newton-flow",
@@ -41,7 +42,7 @@
     "writing-mathematics-from-reviewed-revisions",
     "writing-a-good-mathematical-paper"
   ],
-  "paper_count": 24,
+  "paper_count": 25,
   "publication_taxonomy": {
     "generated_by": "docs/papers/build_publication_taxonomy.py",
     "what_these_fields_are": "How each manuscript was published: what kind of document it is, whether anyone outside this project reviewed it, and how to cite it.",
@@ -50,6 +51,7 @@
       "publication_class": {
         "problem_paper": "Exposition of a covered Erd\u0151s problem: what is proved, what is not, and where the boundary between them sits.",
         "reasoning_surface": "A long-form record of attempted routes, the routes that closed, and the obligations that survive.",
+        "expository_paper": "One result of a covered problem's short paper, explained for a reader new to the problem with worked examples and every step of its proof.",
         "synthesis_paper": "Mathematics whose subject is several covered problems read together: what is common, what is not, and what the comparison leaves open.",
         "methods_paper": "A systems or methodology argument: how something is built, checked, or navigated.",
         "software_paper": "A description of a released software artefact and what running it does and does not establish."
@@ -66,12 +68,13 @@
     "by_publication_class": {
       "problem_paper": 9,
       "reasoning_surface": 8,
+      "expository_paper": 1,
       "synthesis_paper": 1,
       "methods_paper": 5,
       "software_paper": 1
     },
     "by_manuscript_status": {
-      "technical_report": 13,
+      "technical_report": 14,
       "working_research_record": 8,
       "retired_provenance": 3
     },
@@ -5503,6 +5506,275 @@
       }
     },
     {
+      "paper_id": "erdos257-expository-sums-never-fractions",
+      "title": "Why certain sums of 1/(2^n-1) are irrational",
+      "title_source": "manuscript",
+      "question_this_paper_answers": "Why do the fractions 1/(2^n\u22121) over an infinite set of exponents n add up to an irrational number whenever 1/n, added up over the same exponents, is finite?",
+      "subject": "Erd\u0151s #257",
+      "subject_kind": "problem",
+      "form": "Expository paper",
+      "owns": "an account of Theorem A.1 of the #257 short paper at base 2 for a reader new to the problem: worked examples, figures and exercises, with every step of the proof in an appendix",
+      "not_authority_for": "the validity of the Lean theorem it quotes, which belongs to the cited kernel-checked source, or a solution to Erd\u0151s #257, which remains open",
+      "publication_state": "active",
+      "publication_class": "expository_paper",
+      "publication_class_basis": "problem subject with form 'Expository paper'",
+      "manuscript_status": "technical_report",
+      "peer_review_state": "not_externally_reviewed",
+      "doi": null,
+      "doi_absence_reason": "no_archival_deposit_yet",
+      "preferred_citation": {
+        "author": "Will Cook",
+        "year": "2026",
+        "title": "Why certain sums of 1/(2^n-1) are irrational",
+        "repository": "plectis-erdos",
+        "canonical_source_commit": null,
+        "canonical_source_url": null,
+        "licence": "CC-BY-4.0",
+        "identifier_kind": "unversioned_source",
+        "text": "Will Cook (2026). Why certain sums of 1/(2^n-1) are irrational. plectis-erdos. CC-BY-4.0.",
+        "derived_from": [
+          "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
+        ]
+      },
+      "relation_to_this_repository": "native",
+      "home_repository": "plectis-erdos",
+      "licence": "CC-BY-4.0",
+      "copyright": "2026 Will Cook",
+      "local_full_text": "docs/papers/full-text/erdos257-expository-sums-never-fractions.md",
+      "local_source": "paper/257/erdos257-expository-sums-never-fractions.tex",
+      "source_sha256": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352",
+      "canonical_source_commit": null,
+      "canonical_source_pin_status": "local_unpublished",
+      "canonical_source_url": null,
+      "canonical_source_raw_url": null,
+      "section_count": 32,
+      "sections": [
+        {
+          "level": 1,
+          "id": "erdos257-expository-sums-never-fractions",
+          "title": "Why certain sums of 1/(2^n-1) are irrational",
+          "line": 1
+        },
+        {
+          "level": 1,
+          "id": "sec:intro",
+          "title": "The question: which infinite sums are irrational?",
+          "line": 7
+        },
+        {
+          "level": 1,
+          "id": "sec:problem",
+          "title": "Erd\u0151s\u2019s question and the theorem",
+          "line": 75
+        },
+        {
+          "level": 1,
+          "id": "sec:test",
+          "title": "A rational number has a fixed positive gap",
+          "line": 134
+        },
+        {
+          "level": 1,
+          "id": "sec:split",
+          "title": "Multiplying the series and retaining fractional parts",
+          "line": 168
+        },
+        {
+          "level": 4,
+          "id": "the-remainder-can-be-read-from-the-exponents.",
+          "title": "The remainder can be read from the exponents.",
+          "line": 188
+        },
+        {
+          "level": 4,
+          "id": "what-happens-to-the-entire-sum.",
+          "title": "What happens to the entire sum.",
+          "line": 213
+        },
+        {
+          "level": 1,
+          "id": "sec:doubling",
+          "title": "A complete example: the doubling exponents",
+          "line": 250
+        },
+        {
+          "level": 1,
+          "id": "sec:general",
+          "title": "Why averaging works",
+          "line": 273
+        },
+        {
+          "level": 4,
+          "id": "larger-multipliers-need-not-help.",
+          "title": "Larger multipliers need not help.",
+          "line": 277
+        },
+        {
+          "level": 2,
+          "id": "one-table-many-attempts",
+          "title": "One table, many attempts",
+          "line": 288
+        },
+        {
+          "level": 4,
+          "id": "average-complete-attempts.",
+          "title": "Average complete attempts.",
+          "line": 312
+        },
+        {
+          "level": 4,
+          "id": "what-the-two-estimates-will-do.",
+          "title": "What the two estimates will do.",
+          "line": 330
+        },
+        {
+          "level": 2,
+          "id": "sec:cycles",
+          "title": "Complete cycles give small averages",
+          "line": 336
+        },
+        {
+          "level": 4,
+          "id": "keep-the-required-spacing.",
+          "title": "Keep the required spacing.",
+          "line": 359
+        },
+        {
+          "level": 4,
+          "id": "compare-means-without-calculating-a-new-formula.",
+          "title": "Compare means without calculating a new formula.",
+          "line": 392
+        },
+        {
+          "level": 2,
+          "id": "sec:unfinished",
+          "title": "A bound that also covers unfinished cycles",
+          "line": 416
+        },
+        {
+          "level": 4,
+          "id": "first-bound-all-the-consecutive-entries.",
+          "title": "First bound all the consecutive entries.",
+          "line": 440
+        },
+        {
+          "level": 4,
+          "id": "keep-only-the-sampled-entries.",
+          "title": "Keep only the sampled entries.",
+          "line": 454
+        },
+        {
+          "level": 1,
+          "id": "sec:proof",
+          "title": "Combining the estimates",
+          "line": 465
+        },
+        {
+          "level": 2,
+          "id": "app:numbers",
+          "title": "The construction with actual numbers",
+          "line": 471
+        },
+        {
+          "level": 2,
+          "id": "sec:allchoices",
+          "title": "The same choices for any admissible set",
+          "line": 508
+        },
+        {
+          "level": 1,
+          "id": "sec:limits",
+          "title": "Consequences and limits",
+          "line": 546
+        },
+        {
+          "level": 1,
+          "id": "app:full",
+          "title": "Supporting details and formal-proof correspondence",
+          "line": 570
+        },
+        {
+          "level": 2,
+          "id": "app:sums",
+          "title": "Convergence and tails",
+          "line": 576
+        },
+        {
+          "level": 2,
+          "id": "app:split",
+          "title": "Passing to the full transformed sum",
+          "line": 590
+        },
+        {
+          "level": 2,
+          "id": "app:cycle",
+          "title": "Why the sampled remainders form a cycle",
+          "line": 601
+        },
+        {
+          "level": 2,
+          "id": "app:proof",
+          "title": "Adding the row averages",
+          "line": 621
+        },
+        {
+          "level": 2,
+          "id": "app:bases",
+          "title": "Other bases",
+          "line": 627
+        },
+        {
+          "level": 2,
+          "id": "app:lean",
+          "title": "Formal verification and its scope",
+          "line": 643
+        },
+        {
+          "level": 1,
+          "id": "sec:exercises",
+          "title": "Questions and exercises",
+          "line": 678
+        },
+        {
+          "level": 1,
+          "id": "app:answers",
+          "title": "Answers",
+          "line": 742
+        }
+      ],
+      "citations_rendered": 10,
+      "local_pdf": "paper/257/erdos257-expository-sums-never-fractions.pdf",
+      "pdf_sha256": "sha256:5ba7e503be74eb70e221696882eb7e8b3d71543a716903b2dfe8de97db10698d",
+      "pdf_byte_count": 133914,
+      "first_pass": {
+        "stated_by_the_paper": false,
+        "provenance": "editorial selection for this guide",
+        "sections": [
+          {
+            "id": "sec:intro",
+            "title": "The question: which infinite sums are irrational?",
+            "line": 7
+          },
+          {
+            "id": "sec:test",
+            "title": "A rational number has a fixed positive gap",
+            "line": 134
+          },
+          {
+            "id": "sec:doubling",
+            "title": "A complete example: the doubling exponents",
+            "line": 250
+          },
+          {
+            "id": "sec:proof",
+            "title": "Combining the estimates",
+            "line": 465
+          }
+        ],
+        "unresolved_count": 0
+      }
+    },
+    {
       "paper_id": "erdos269-running-lcm-reasoning-surface",
       "title": "Running least common multiples: distinct values and multiplicities",
       "title_source": "manuscript",
@@ -7916,7 +8188,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:d268dd185b92190b2c0c4556608387070cfc58660bff0f5c468e9f2bf10bafbc",
+      "source_sha256": "sha256:b6c54d522ad39c0c9d59efdaeb12aa892ff6493d2fe4ccc2a3f9d8e6cdcb3f8f",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8172,8 +8444,8 @@
       ],
       "citations_rendered": 52,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:4d0de95387eb33c6507ef557b0c52fa86a3753dee236feb82e39347053f4d325",
-      "pdf_byte_count": 180168,
+      "pdf_sha256": "sha256:e33907a44e75ab51f2e62fb4e92067669ac748f195853df6bbc072bc91eef2b7",
+      "pdf_byte_count": 180196,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

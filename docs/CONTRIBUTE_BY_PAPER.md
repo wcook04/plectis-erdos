@@ -146,6 +146,8 @@ Lean proves that for every integer base b ≥ 2 and every finite nonempty set P 
 
 [Long record](../paper/257/erdos257-mersenne-reasoning-surface.pdf) · [Read as text](../docs/papers/full-text/erdos257-mersenne-reasoning-surface.md)
 
+[Expository paper](../paper/257/erdos257-expository-sums-never-fractions.pdf) · [Read as text](../docs/papers/full-text/erdos257-expository-sums-never-fractions.md)
+
 [Programme entry module](../lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean) · [Full source map](SOURCE_MAP.md#complete-eight-problem-return-matrix) · [Reproduce a claim](REPRODUCIBILITY.md#try-one-claim-without-lean)
 
 Existing questions:

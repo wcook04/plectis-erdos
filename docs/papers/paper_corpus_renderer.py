@@ -652,11 +652,13 @@ def _preserve_path_macros(tex: str) -> str:
 
 
 def _preserve_layout_adjustbox(tex: str) -> str:
-    """Keep the contents of the demonstrated layout-only ``\\adjustbox``.
+    """Keep contents of demonstrated width and page-breaking layout wrappers.
 
     Pandoc silently discards both arguments outside math. Only the paper's
     ``max width=\\linewidth`` option is removed; other options may carry
-    semantics. Comments, literal code and existing math bodies stay untouched.
+    semantics. ``samepage`` only constrains page breaks in the PDF; Pandoc
+    otherwise drops its sections and paragraphs. Comments, literal code and
+    existing math bodies stay untouched.
     """
     protected_environments = {
         "verbatim", "verbatim*", "Verbatim", "BVerbatim", "LVerbatim",
@@ -718,9 +720,13 @@ def _preserve_layout_adjustbox(tex: str) -> str:
             index = len(tex) if end < 0 else end + 1
             continue
         argument = skip_space(argument)
-        if name in {"begin", "texttt", "url", "path"} and tex[argument:argument + 1] == "{":
+        if name in {"begin", "end", "texttt", "url", "path"} and tex[argument:argument + 1] == "{":
             close = (_path_argument_end(tex, argument) if name in {"url", "path"}
                      else _matching_brace(tex, argument))
+            if name in {"begin", "end"} and tex[argument + 1:close] == "samepage":
+                chunks.append(tex[cursor:index])
+                cursor = index = close + 1
+                continue
             if name != "begin":
                 index = close + 1
                 continue
@@ -773,7 +779,7 @@ def _preserve_declaration_macros(tex: str) -> str:
 
 _LEDGER_COMMIT_RE = re.compile(r"\\newcommand\{\\ledgercommit\}\{([0-9a-f]{40})\}")
 _LPROOF_RE = re.compile(r"\\lproof\{([^{}]+)\}\{(\d+)\}\{([^{}]+)\}")
-_LEANNOTE_RE = re.compile(r"\\leannote\{")
+_LEANNOTE_RE = re.compile(r"\\(?:leannote|provenancenote)\{")
 _PAPERSECTIONLINK_RE = re.compile(
     r"\\papersectionlink\{([^{}]+)\}\{([^{}]+)\}\{([^{}]+)\}"
 )
@@ -802,9 +808,10 @@ def _ledger_commit(tex: str, tex_path: Path) -> str | None:
 def _preserve_generated_note_macros(tex: str, tex_path: Path) -> str:
     """Expand the generated statement note into links Pandoc can read.
 
-    ``\\leannote`` and ``\\lproof`` are defined in a preamble Pandoc does not
+    ``\\leannote``, ``\\provenancenote`` and ``\\lproof`` are defined in a preamble Pandoc does not
     see, so without this the Markdown mirror would silently lose the line that
-    carries each statement's Lean proof.  The rendered text matches the PDF:
+    carries each statement's Lean proof or the manuscript's production disclosure.
+    The rendered text matches the PDF:
     monospace declaration names in the two reasoning records, and the shared
     spaced reading everywhere else.
     """

@@ -61,20 +61,21 @@
       "id": "corpus",
       "path": "docs/papers/corpus.json",
       "start_line": 1,
-      "end_line": 9274,
-      "sha256": "75480e96d170432b2f0dd37d1bfd6a479fc89bf9e14cb046eb71f8e1880dc694",
-      "excerpt_sha256": "75480e96d170432b2f0dd37d1bfd6a479fc89bf9e14cb046eb71f8e1880dc694",
+      "end_line": 9546,
+      "sha256": "3586875947364bb104ebf9834e93444d0fdeefd264e23c38a674f32032f2a092",
+      "excerpt_sha256": "3586875947364bb104ebf9834e93444d0fdeefd264e23c38a674f32032f2a092",
       "kind": "source",
-      "custody_note": "Reviewed acknowledgement withdrawal on 10 October 2026: corpus source/PDF digests and generated section coordinates refreshed after withdrawing pending-consent personal acknowledgements. The inventory, paper roles, citation identities, mathematical claims and authority ceilings are unchanged. Reviewed GitHub paper-navigation repair on 10 October 2026: only generated section and first-pass line coordinates changed. The full paper inventory, manuscript/PDF hashes, published source pins, citation identities, paper roles, authority ceilings and both cited identification warrants are unchanged; no Lean or Comparator execution is claimed. Reviewed inline-label, table and source-preserving display-layout conversion on 10 October 2026: corpus changes are 206 section/first-pass line coordinates only. Inventory, source/PDF hashes, published pins, citation identities, roles, authority ceilings and both identification warrants remain unchanged; two source-backed #249 inequalities are restored in the Markdown, with no manuscript, proof or evidence promotion."
+      "custody_note": "Reviewed acknowledgement withdrawal on 10 October 2026: corpus source/PDF digests and generated section coordinates refreshed after withdrawing pending-consent personal acknowledgements. The inventory, paper roles, citation identities, mathematical claims and authority ceilings are unchanged. Reviewed GitHub paper-navigation repair on 10 October 2026: only generated section and first-pass line coordinates changed. The full paper inventory, manuscript/PDF hashes, published source pins, citation identities, paper roles, authority ceilings and both cited identification warrants are unchanged; no Lean or Comparator execution is claimed. Reviewed inline-label, table and source-preserving display-layout conversion on 10 October 2026: corpus changes are 206 section/first-pass line coordinates only. Inventory, source/PDF hashes, published pins, citation identities, roles, authority ceilings and both identification warrants remain unchanged; two source-backed #249 inequalities are restored in the Markdown, with no manuscript, proof or evidence promotion. Reviewed expository-paper registration on 11 October 2026: one row is added for erdos257-expository-sums-never-fractions (form 'Expository paper', class expository_paper), with its paper id, count and class added to the corpus header and taxonomy summary. The only other row that changed is the systems paper's own, whose source digest, PDF digest and PDF byte count moved because its generated registered-paper count went from 24 to 25. Every other row, citation identity, role, authority ceiling and both identification warrants are unchanged; no Lean or Comparator execution is claimed. Reviewed expository-paper revision on 17 October 2026: only the erdos257-expository-sums-never-fractions row changed, carrying the reviewed 12 October manuscript (title 'Why certain sums of 1/(2^n-1) are irrational', its citation text, source and PDF digests, PDF byte count, sections, first-pass and citation coordinates). The inventory, the registered-paper count of 25, every other row, citation identity, role, authority ceiling and both identification warrants are unchanged; no Lean or Comparator execution is claimed."
     },
     {
       "id": "counts",
       "path": "docs/systems_paper_counts.json",
       "start_line": 1,
       "end_line": 65,
-      "sha256": "b7bd28191f898f9f84e9fce8477e48ba0119583f21f0cb59acab2d74b67e6dae",
-      "excerpt_sha256": "b7bd28191f898f9f84e9fce8477e48ba0119583f21f0cb59acab2d74b67e6dae",
-      "kind": "source"
+      "sha256": "5cc544760bc66e8ee8c3b7bbac40a44a48b31447ec17db7432c3f907a3fd1207",
+      "excerpt_sha256": "5cc544760bc66e8ee8c3b7bbac40a44a48b31447ec17db7432c3f907a3fd1207",
+      "kind": "source",
+      "custody_note": "Regenerated with scripts/build_systems_paper_counts.py --snapshot on 11 October 2026 after the expository-paper registration: RegisteredPapers moves from 24 to 25 and every other value is unchanged; the input digests are the current files."
     },
     {
       "id": "counts-code",
@@ -474,8 +475,9 @@
       "start_line": 1,
       "end_line": 147,
       "kind": "source",
-      "sha256": "be42520dc670c95303a30daa3eda2c1bd5057d02292fa4c2f6ec20b91c871991",
-      "excerpt_sha256": "be42520dc670c95303a30daa3eda2c1bd5057d02292fa4c2f6ec20b91c871991"
+      "sha256": "46a5462e28bce7ee57cd46172c23ec761360fd7a76ccaef56db9620dd5564d05",
+      "excerpt_sha256": "46a5462e28bce7ee57cd46172c23ec761360fd7a76ccaef56db9620dd5564d05",
+      "custody_note": "Reviewed 12 October 2026 after adding the introductory #257 paper and current video links. The four reader-guide warrants still hold: paper-first reading, selected-result conditions, examples and hypothesis changes at reader-selected depth, and one-problem/cross-paper routes. Removed only repeated encouragement following the synthesis link to preserve the reader budget. No systems-paper sentence, mathematical claim, or execution evidence changed."
     },
     {
       "id": "explanation-depth",

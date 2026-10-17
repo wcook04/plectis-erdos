@@ -18,6 +18,7 @@ PAPERS = erdos1041-lemniscate-reasoning-surface \
   cold-clone-to-proof-receipt open-source-mathematics-strategy \
   erdos249-totient-reasoning-surface \
   erdos257-mersenne-reasoning-surface \
+  erdos257-expository-sums-never-fractions \
   erdos-249-binary-totient-series erdos-257-mersenne-support-subseries \
   erdos-68-factorial-denominator-irrationality \
   erdos-243-reciprocal-tail-rigidity erdos-251-prime-gap-dyadic-series \
@@ -69,6 +70,7 @@ check: all
 # Short and long problem papers and synthesis publications track the preamble.
 $(NOTES:%=%.pdf) $(SYNTHESIS:%=%.pdf) $(filter %-reasoning-surface.pdf,$(PAPERS:%=%.pdf)): $(PREAMBLE)
 $(PAPERS:%=%.pdf): paper-house-style.sty
+erdos257-expository-sums-never-fractions.pdf: 257/figures/cycle-mean.tex
 writing-mathematics-from-reviewed-revisions.pdf: $(EXPOSITION_PARTS)
 # Evidence marks and their placement code are included by the TeX sources.
 # Rebuild their PDFs when the evidence owner changes an included sidecar,

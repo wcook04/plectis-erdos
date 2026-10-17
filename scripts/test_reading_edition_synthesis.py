@@ -995,5 +995,29 @@ class ReadingCheckRepairCommandTests(unittest.TestCase):
                 build.assert_not_called()
 
 
+class ExpositoryPaperTests(unittest.TestCase):
+    """A problem's optional expository paper reads after its short and long papers."""
+
+    def test_an_expository_paper_follows_its_problems_pair(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            corpus = root / "docs/papers/corpus.json"
+            text_dir = root / "docs/papers/full-text"
+            text_dir.mkdir(parents=True)
+            rows = []
+            # The expository id sorts first; its class still reads last.
+            for paper_id, publication_class in (("a-explain", "expository_paper"),
+                                                ("c-long", "reasoning_surface"),
+                                                ("b-short", "problem_paper")):
+                path = text_dir / f"{paper_id}.md"
+                path.write_text(f"# {paper_id}\n")
+                rows.append({"paper_id": paper_id, "publication_class": publication_class,
+                             "publication_state": "active", "subject_kind": "problem",
+                             "subject": "Erdős #257", "local_full_text": path.relative_to(root).as_posix()})
+            corpus.write_text(json.dumps({"papers": rows}))
+            with patch.object(edition, "ROOT", root), patch.object(edition, "CORPUS", corpus):
+                papers = edition.mathematical_papers()
+        self.assertEqual([row["paper_id"] for row in papers], ["b-short", "c-long", "a-explain"])
+
 if __name__ == "__main__":
     unittest.main()

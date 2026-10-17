@@ -47,6 +47,7 @@ ARCHIVED_DOI_ABSENCE_REASON = "archival_identifier_is_not_a_doi"
 PUBLICATION_CLASSES = {
     "problem_paper",
     "reasoning_surface",
+    "expository_paper",
     "synthesis_paper",
     "methods_paper",
     "software_paper",
