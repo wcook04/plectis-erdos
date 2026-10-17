@@ -70,6 +70,7 @@ check: all
 # Short and long problem papers and synthesis publications track the preamble.
 $(NOTES:%=%.pdf) $(SYNTHESIS:%=%.pdf) $(filter %-reasoning-surface.pdf,$(PAPERS:%=%.pdf)): $(PREAMBLE)
 $(PAPERS:%=%.pdf): paper-house-style.sty
+erdos257-expository-sums-never-fractions.pdf: 257/figures/cycle-mean.tex
 writing-mathematics-from-reviewed-revisions.pdf: $(EXPOSITION_PARTS)
 # Evidence marks and their placement code are included by the TeX sources.
 # Rebuild their PDFs when the evidence owner changes an included sidecar,

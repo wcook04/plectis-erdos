@@ -85680,15 +85680,8 @@
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 147,
-            "line_start": 147,
-            "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
-            "qualifiers": []
-          },
-          {
-            "command": "cite",
-            "line_end": 565,
-            "line_start": 565,
+            "line_end": 797,
+            "line_start": 797,
             "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
             "qualifiers": []
           }
@@ -85696,21 +85689,21 @@
         "equivalent_source_coordinates": [],
         "key": "erdos1948",
         "kind": "bibliography_entry",
-        "line_end": 1157,
-        "line_start": 1155,
+        "line_end": 1164,
+        "line_start": 1162,
         "paper_id": "erdos257-expository-sums-never-fractions",
         "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8"
+        "source_sha256": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352"
       },
       {
         "citation_text": "\\bibitem{erdos1968} P.~Erd\\H{o}s, \\href{https://users.renyi.hu/~p_erdos/1969-09.pdf}{\\emph{On the irrationality of certain series}}, Math.\\ Student 36 (1968), 222--226 (issued 1969).",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 200,
-            "line_start": 200,
+            "line_end": 205,
+            "line_start": 205,
             "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
             "qualifiers": [
               "p.~222"
@@ -85720,21 +85713,45 @@
         "equivalent_source_coordinates": [],
         "key": "erdos1968",
         "kind": "bibliography_entry",
-        "line_end": 1160,
-        "line_start": 1157,
+        "line_end": 1167,
+        "line_start": 1164,
         "paper_id": "erdos257-expository-sums-never-fractions",
         "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
         "source_id": "source-7dc956ce55b7a0",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8"
+        "source_sha256": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352"
+      },
+      {
+        "citation_text": "\\bibitem{erdos1988} P.~Erd\\H{o}s, \\href{https://users.renyi.hu/~p_erdos/1988-22.pdf}{\\emph{On the irrationality of certain series: problems and results}}, in A.~Baker (ed.), \\emph{New Advances in Transcendence Theory}, Cambridge University Press, 1988, 102--109.",
+        "citation_usages": [
+          {
+            "command": "cite",
+            "line_end": 131,
+            "line_start": 131,
+            "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
+            "qualifiers": [
+              "p.~105"
+            ]
+          }
+        ],
+        "equivalent_source_coordinates": [],
+        "key": "erdos1988",
+        "kind": "bibliography_entry",
+        "line_end": 1171,
+        "line_start": 1167,
+        "paper_id": "erdos257-expository-sums-never-fractions",
+        "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
+        "source_id": "source-b378189f39ed98",
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352"
       },
       {
         "citation_text": "\\bibitem{erdosproblems257} T.~F.~Bloom, \\emph{Erd\\H{o}s Problem \\#257}, \\url{https://www.erdosproblems.com/257}; the statement is quoted in the Formal Conjectures file \\texttt{FormalConjectures/ErdosProblems/257.lean}.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 148,
-            "line_start": 148,
+            "line_end": 150,
+            "line_start": 150,
             "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
             "qualifiers": []
           }
@@ -85742,21 +85759,21 @@
         "equivalent_source_coordinates": [],
         "key": "erdosproblems257",
         "kind": "bibliography_entry",
-        "line_end": 1163,
-        "line_start": 1160,
+        "line_end": 1174,
+        "line_start": 1171,
         "paper_id": "erdos257-expository-sums-never-fractions",
         "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8"
+        "source_sha256": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352"
       },
       {
         "citation_text": "\\bibitem{taoteravainen2025} T.~Tao and J.~Ter\\\"av\\\"ainen, \\href{https://arxiv.org/abs/2512.01739v2}{\\emph{Quantitative correlations and some problems on prime factors of consecutive integers}}, arXiv:2512.01739v2 (submitted December 2025, revised April 2026).",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 202,
-            "line_start": 202,
+            "line_end": 800,
+            "line_start": 800,
             "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
             "qualifiers": [
               "Theorem~1.3"
@@ -85766,44 +85783,28 @@
         "equivalent_source_coordinates": [],
         "key": "taoteravainen2025",
         "kind": "bibliography_entry",
-        "line_end": 1167,
-        "line_start": 1163,
+        "line_end": 1178,
+        "line_start": 1174,
         "paper_id": "erdos257-expository-sums-never-fractions",
         "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
         "source_id": "source-685765cbd1ebe2",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8"
+        "source_sha256": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352"
       },
       {
         "citation_text": "\\bibitem{shortpaper} W.~Cook, \\href{https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/paper/257/erdos-257-mersenne-support-subseries.pdf}{\\emph{Irrationality criteria for Lambert subseries}}, 30 September 2026.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 206,
-            "line_start": 206,
+            "line_end": 801,
+            "line_start": 801,
             "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
             "qualifiers": []
           },
           {
             "command": "cite",
-            "line_end": 209,
-            "line_start": 209,
-            "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
-            "qualifiers": [
-              "Appendix~A"
-            ]
-          },
-          {
-            "command": "cite",
-            "line_end": 575,
-            "line_start": 575,
-            "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
-            "qualifiers": []
-          },
-          {
-            "command": "cite",
-            "line_end": 996,
-            "line_start": 996,
+            "line_end": 933,
+            "line_start": 933,
             "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
             "qualifiers": [
               "Theorem~A.1"
@@ -85811,8 +85812,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1018,
-            "line_start": 1018,
+            "line_end": 955,
+            "line_start": 955,
             "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
             "qualifiers": [
               "Theorem~A.1"
@@ -85820,8 +85821,8 @@
           },
           {
             "command": "cite",
-            "line_end": 1028,
-            "line_start": 1028,
+            "line_end": 963,
+            "line_start": 963,
             "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
             "qualifiers": [
               "Appendix~A"
@@ -85831,30 +85832,21 @@
         "equivalent_source_coordinates": [],
         "key": "shortpaper",
         "kind": "bibliography_entry",
-        "line_end": 1170,
-        "line_start": 1167,
+        "line_end": 1181,
+        "line_start": 1178,
         "paper_id": "erdos257-expository-sums-never-fractions",
         "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8"
+        "source_sha256": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352"
       },
       {
         "citation_text": "\\bibitem{longrecord} W.~Cook, \\href{https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/paper/257/erdos257-mersenne-reasoning-surface.pdf}{\\emph{Reciprocal Mersenne subseries: support criteria, finite arithmetic and conditional orbit problems}}, 30 September 2026.",
         "citation_usages": [
           {
             "command": "cite",
-            "line_end": 209,
-            "line_start": 209,
-            "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
-            "qualifiers": [
-              "Section~1.1"
-            ]
-          },
-          {
-            "command": "cite",
-            "line_end": 577,
-            "line_start": 577,
+            "line_end": 802,
+            "line_start": 802,
             "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
             "qualifiers": []
           }
@@ -85862,13 +85854,13 @@
         "equivalent_source_coordinates": [],
         "key": "longrecord",
         "kind": "bibliography_entry",
-        "line_end": 1174,
-        "line_start": 1170,
+        "line_end": 1185,
+        "line_start": 1181,
         "paper_id": "erdos257-expository-sums-never-fractions",
         "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8"
+        "source_sha256": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352"
       },
       {
         "citation_text": "\\bibitem{erdos1948} P.~Erd\\H{o}s, \\href{https://www.renyi.hu/~p_erdos/1948-04.pdf}{\\emph{On arithmetical properties of Lambert series}}, J.~Indian Math.\\ Soc.\\ 12 (1948), 63--66.",
@@ -116725,38 +116717,40 @@
       {
         "citation_context": "in_text_citation",
         "command": "cite",
-        "key": "erdos1948",
+        "key": "erdos1988",
         "kind": "citation_usage",
-        "line_end": 147,
-        "line_start": 147,
+        "line_end": 131,
+        "line_start": 131,
         "paper_id": "erdos257-expository-sums-never-fractions",
         "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
-        "qualifiers": [],
-        "source_id": null,
+        "qualifiers": [
+          "p.~105"
+        ],
+        "source_id": "source-b378189f39ed98",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8"
+        "source_sha256": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "erdosproblems257",
         "kind": "citation_usage",
-        "line_end": 148,
-        "line_start": 148,
+        "line_end": 150,
+        "line_start": 150,
         "paper_id": "erdos257-expository-sums-never-fractions",
         "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
         "qualifiers": [],
         "source_id": "erdos_problems_catalog_eight_problem_context",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8"
+        "source_sha256": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "erdos1968",
         "kind": "citation_usage",
-        "line_end": 200,
-        "line_start": 200,
+        "line_end": 205,
+        "line_start": 205,
         "paper_id": "erdos257-expository-sums-never-fractions",
         "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
         "qualifiers": [
@@ -116764,15 +116758,29 @@
         ],
         "source_id": "source-7dc956ce55b7a0",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8"
+        "source_sha256": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352"
+      },
+      {
+        "citation_context": "in_text_citation",
+        "command": "cite",
+        "key": "erdos1948",
+        "kind": "citation_usage",
+        "line_end": 797,
+        "line_start": 797,
+        "paper_id": "erdos257-expository-sums-never-fractions",
+        "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
+        "qualifiers": [],
+        "source_id": null,
+        "source_role": "authored_manuscript",
+        "source_sha256": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "taoteravainen2025",
         "kind": "citation_usage",
-        "line_end": 202,
-        "line_start": 202,
+        "line_end": 800,
+        "line_start": 800,
         "paper_id": "erdos257-expository-sums-never-fractions",
         "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
         "qualifiers": [
@@ -116780,103 +116788,43 @@
         ],
         "source_id": "source-685765cbd1ebe2",
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8"
+        "source_sha256": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "shortpaper",
         "kind": "citation_usage",
-        "line_end": 206,
-        "line_start": 206,
+        "line_end": 801,
+        "line_start": 801,
         "paper_id": "erdos257-expository-sums-never-fractions",
         "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
         "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8"
+        "source_sha256": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "longrecord",
         "kind": "citation_usage",
-        "line_end": 209,
-        "line_start": 209,
+        "line_end": 802,
+        "line_start": 802,
         "paper_id": "erdos257-expository-sums-never-fractions",
         "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
-        "qualifiers": [
-          "Section~1.1"
-        ],
+        "qualifiers": [],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8"
+        "source_sha256": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "shortpaper",
         "kind": "citation_usage",
-        "line_end": 209,
-        "line_start": 209,
-        "paper_id": "erdos257-expository-sums-never-fractions",
-        "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
-        "qualifiers": [
-          "Appendix~A"
-        ],
-        "source_id": null,
-        "source_role": "authored_manuscript",
-        "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8"
-      },
-      {
-        "citation_context": "in_text_citation",
-        "command": "cite",
-        "key": "erdos1948",
-        "kind": "citation_usage",
-        "line_end": 565,
-        "line_start": 565,
-        "paper_id": "erdos257-expository-sums-never-fractions",
-        "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
-        "qualifiers": [],
-        "source_id": null,
-        "source_role": "authored_manuscript",
-        "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8"
-      },
-      {
-        "citation_context": "in_text_citation",
-        "command": "cite",
-        "key": "shortpaper",
-        "kind": "citation_usage",
-        "line_end": 575,
-        "line_start": 575,
-        "paper_id": "erdos257-expository-sums-never-fractions",
-        "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
-        "qualifiers": [],
-        "source_id": null,
-        "source_role": "authored_manuscript",
-        "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8"
-      },
-      {
-        "citation_context": "in_text_citation",
-        "command": "cite",
-        "key": "longrecord",
-        "kind": "citation_usage",
-        "line_end": 577,
-        "line_start": 577,
-        "paper_id": "erdos257-expository-sums-never-fractions",
-        "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
-        "qualifiers": [],
-        "source_id": null,
-        "source_role": "authored_manuscript",
-        "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8"
-      },
-      {
-        "citation_context": "in_text_citation",
-        "command": "cite",
-        "key": "shortpaper",
-        "kind": "citation_usage",
-        "line_end": 996,
-        "line_start": 996,
+        "line_end": 933,
+        "line_start": 933,
         "paper_id": "erdos257-expository-sums-never-fractions",
         "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
         "qualifiers": [
@@ -116884,15 +116832,15 @@
         ],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8"
+        "source_sha256": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "shortpaper",
         "kind": "citation_usage",
-        "line_end": 1018,
-        "line_start": 1018,
+        "line_end": 955,
+        "line_start": 955,
         "paper_id": "erdos257-expository-sums-never-fractions",
         "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
         "qualifiers": [
@@ -116900,15 +116848,15 @@
         ],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8"
+        "source_sha256": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352"
       },
       {
         "citation_context": "in_text_citation",
         "command": "cite",
         "key": "shortpaper",
         "kind": "citation_usage",
-        "line_end": 1028,
-        "line_start": 1028,
+        "line_end": 963,
+        "line_start": 963,
         "paper_id": "erdos257-expository-sums-never-fractions",
         "path": "paper/257/erdos257-expository-sums-never-fractions.tex",
         "qualifiers": [
@@ -116916,7 +116864,7 @@
         ],
         "source_id": null,
         "source_role": "authored_manuscript",
-        "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8"
+        "source_sha256": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352"
       },
       {
         "citation_context": "in_text_citation",
@@ -125434,7 +125382,7 @@
     "paper_denominator": 25,
     "reasoning_surface_contract": "Generated reasoning roots inline authored files declared by scripts/assemble_reasoning_surfaces.py::PAPERS. Both reader-facing roots and maintained anchors are inventoried and labeled by source_role; shared TeX includes resolve through the manuscript directory and then the public paper root. Counts include intentional root/part duplication.",
     "root_source_file_denominator": 25,
-    "scanned_source_file_denominator": 99,
+    "scanned_source_file_denominator": 100,
     "scanned_source_paths": [
       "docs/papers/mirror/plectis-public-system.tex",
       "paper/1041/erdos-1041-lemniscate-newton-flow.tex",
@@ -125450,6 +125398,7 @@
       "paper/257/erdos-257-mersenne-support-subseries.tex",
       "paper/257/erdos257-expository-sums-never-fractions.tex",
       "paper/257/erdos257-mersenne-reasoning-surface.tex",
+      "paper/257/figures/cycle-mean.tex",
       "paper/269/erdos-269-three-prime-running-lcm.tex",
       "paper/269/erdos269-running-lcm-reasoning-surface.tex",
       "paper/68/erdos-68-factorial-denominator-irrationality.tex",

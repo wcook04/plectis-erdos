@@ -83,8 +83,8 @@ and the research process, go to the [project papers](#project-papers).
 ### Erdős #257
 
 **Introductory paper.**
-[Sums of 1/(2ⁿ−1) that are never fractions](257/erdos257-expository-sums-never-fractions.pdf) ([source](257/erdos257-expository-sums-never-fractions.tex)).
-Worked examples and figures lead to a full proof in the appendix.
+[Why certain sums of 1/(2ⁿ−1) are irrational](257/erdos257-expository-sums-never-fractions.pdf) ([source](257/erdos257-expository-sums-never-fractions.tex)).
+Worked examples lead through a complete proof; an appendix gives supporting details, exercises and the link to the formal proof.
 [Watch the #257 video](https://youtu.be/y8s3t_pwIGM).
 
 **Short paper**<br>

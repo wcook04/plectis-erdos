@@ -7,6 +7,8 @@ This directory contains the papers as searchable text, with links to
 PDFs and LaTeX source. Both public repositories include the active papers.
 Older, retired papers are kept only in the repository that published them.
 Some papers may be available in the repository before they appear on the website.
+The website is agent-readable through its [navigation guide](https://wcook04.github.io/plectis/llms.txt)
+and [maths map manifest](https://wcook04.github.io/plectis/lean/experience/manifest.json).
 
 This checkout contains 22 active papers and 3 retired papers.
 
@@ -21,9 +23,22 @@ The mathematical papers are listed below, [by Erdős problem number](#problem-po
 The links above open the full papers as text. The catalogue below
 also links to PDFs, LaTeX sources and individual sections.
 
+## Companion system papers
+
+These are companion copies; the named home repository owns each manuscript.
+
+- [Plectis: What a Stranger Can Check](full-text/plectis-public-system.md) — companion copy from `plectis`
+
 Earlier systems papers are retained below as historical background.
 Their dates, superseding paper and source records distinguish them
 from the current account and instructions.
+
+## Choose a reading route
+
+Start with the [human paper catalogue](../../paper/README.md) or
+[results and limits](../RESULTS.md) for the current mathematical conclusions.
+This index owns searchable paper text and section links; it does not
+confer claim status.
 
 ## Mathematical signal first
 
@@ -257,7 +272,7 @@ not currently earn scarce first-contact attention.
 
 The mathematical papers cover Erdős #68, Erdős #243, Erdős #249, Erdős #251, Erdős #257, Erdős #269, Erdős #1041, Erdős #1049. They state the results obtained and what remains unproved. Retired papers are marked below.
 
-The [problem summaries](../RELATED_PROBLEMS.md) introduce the mathematics. `docs/problems.json` contains the corresponding file paths and identifiers for programs and coding agents.
+[Results and limits](../RESULTS.md) gives the current mathematical account. `docs/problems.json` contains programme identifiers for coding agents.
 
 ### Which exact denominator exclusions are proved for Erdős #68, and what still blocks irrationality?
 
@@ -366,11 +381,11 @@ Start here (selected for this guide): [Support criteria and their proofs](full-t
 
 ### Why do the fractions 1/(2^n−1) over an infinite set of exponents n add up to an irrational number whenever 1/n, added up over the same exponents, is finite?
 
-**Sums of 1/(2^n-1) that are never fractions**
+**Why certain sums of 1/(2^n-1) are irrational**
 
-[full text](full-text/erdos257-expository-sums-never-fractions.md) · [PDF](../../paper/257/erdos257-expository-sums-never-fractions.pdf) · [LaTeX source](../../paper/257/erdos257-expository-sums-never-fractions.tex) · 38 sections · `erdos257-expository-sums-never-fractions` · native to this repository
+[full text](full-text/erdos257-expository-sums-never-fractions.md) · [PDF](../../paper/257/erdos257-expository-sums-never-fractions.pdf) · [LaTeX source](../../paper/257/erdos257-expository-sums-never-fractions.tex) · 32 sections · `erdos257-expository-sums-never-fractions` · native to this repository
 
-Start here (selected for this guide): [What Erdős asked](full-text/erdos257-expository-sums-never-fractions.md#sec:intro), [The test: a fraction cannot leave a tiny positive remainder](full-text/erdos257-expository-sums-never-fractions.md#sec:test), [The doubling exponents: multiply by 2^k-1](full-text/erdos257-expository-sums-never-fractions.md#sec:doubling), [The proof of Theorem 1](full-text/erdos257-expository-sums-never-fractions.md#sec:proof).
+Start here (selected for this guide): [The question: which infinite sums are irrational?](full-text/erdos257-expository-sums-never-fractions.md#sec:intro), [A rational number has a fixed positive gap](full-text/erdos257-expository-sums-never-fractions.md#sec:test), [A complete example: the doubling exponents](full-text/erdos257-expository-sums-never-fractions.md#sec:doubling), [Combining the estimates](full-text/erdos257-expository-sums-never-fractions.md#sec:proof).
 
 ### What infinite-rank and tail-arithmetic facts are proved for the three-prime running LCM, and which residue windows remain open?
 
@@ -509,6 +524,9 @@ responsibility for proof verification, status and explanation as follows:
 
 > checked Lean source is proof authority; the claims registry owns public status and coordinates; methodology owns transition rules; the paper owns exposition.
 
+Each paper's evidence ceiling and publication state remain in
+[the corpus record](corpus.json), including `not_authority_for` and
+the source identity of every imported or archived edition.
 - `erdos249-257-main` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, and public claim status, which belongs to docs/claims.json.
 - `erdos-68-factorial-denominator-irrationality` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #68, which remains open.
 - `erdos68-factorial-reasoning-surface` is not authority for the validity of claims tagged Lean, which belongs to the cited kernel-checked source, or a solution to Erdős #68, which remains open.

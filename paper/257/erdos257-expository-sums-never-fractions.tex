@@ -2,20 +2,20 @@
 % SPDX-License-Identifier: CC-BY-4.0
 %
 % Expository paper for Erdős Problem #257: the theorem of Appendix A of the
-% short paper, explained with examples in Sections 1 to 8 and proved in full in
-% Appendix A. It goes with the films that explain the same argument.
+% short paper, reconstructed as a guided proof in Sections 1 to 8.
+% Appendix A supplies supporting details and formal-proof correspondence.
 \documentclass[10pt]{article}
 \usepackage{paper-house-style}
-\usepackage{tikz}
-\usetikzlibrary{decorations.pathreplacing,calc}
 \usepackage{xurl}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,decorations.pathreplacing}
 \usepackage[colorlinks=true,linkcolor=linkinternal,urlcolor=linkexternal,citecolor=linkinternal]{hyperref}
-\hypersetup{pdftitle={Sums of 1/(2ⁿ−1) that are never fractions},pdfauthor={Will Cook},pdflang={en-GB},bookmarksnumbered=true}
-\runninghead{Sums of $1/(2^n-1)$ that are never fractions}
-\title{Sums of $1/(2^n-1)$ that are never fractions}
-\subtitle{An irrationality theorem stated by Erd\H{o}s, explained with examples\\ and proved in full (Erd\H{o}s Problem \#257)}
+\hypersetup{pdftitle={Why certain reciprocal Mersenne sums are irrational},pdfauthor={Will Cook},pdflang={en-GB},bookmarksnumbered=true}
+\runninghead{Irrationality of reciprocal Mersenne subseries}
+\title{Why certain sums of $1/(2^n-1)$ are irrational}
+\subtitle{An irrationality proof through examples\\ (Erd\H{o}s Problem \#257)}
 \author{Will Cook}
-\date{11 October 2026}
+\date{12 October 2026}
 \emergencystretch=1.5em
 \renewcommand{\bottomfraction}{0.4}
 
@@ -36,966 +36,903 @@
 
 \begin{document}
 \maketitle
-\paperprovenance
+\provenancenote{\emph{Authorship and AI use.}
+Will Cook built and directed the research infrastructure and reviewed the
+claims when he could. AI agents did most of the research and drafting.
+Cook did not independently verify every claim.
+Appendix~\ref{app:lean} identifies the linked formal proof and the
+limits of its coverage of this exposition.}
 
-\begin{abstract}
-Take the powers of $2$, subtract $1$ from each, and put each result under a
-$1$: this gives $1,\tfrac13,\tfrac17,\tfrac1{15},\tfrac1{31},\dots$. Erd\H{o}s
-asked whether adding up an infinite subset of this list, that is, infinitely
-many of these fractions with each used at most once, can ever give a
-fraction. Each fraction comes from an exponent $n$: the exponent $3$ gives
-$\tfrac1{2^3-1}=\tfrac17$. We prove that the chosen fractions add up to an
-irrational number whenever $1/n$, added up over the chosen exponents $n$, is
-finite. For example, for the exponents $2,4,8,16,\dots$ the sum of $1/n$ is $\tfrac12+\tfrac14+\tfrac18+\dots$, which adds up to $1$
-(Section~1 shows why), so the chosen fractions
-$\tfrac13+\tfrac1{15}+\tfrac1{255}+\tfrac1{65535}+\dots$ add up to an
-irrational number. Sections~1 to~8 explain the proof with examples, and
-Appendix~A gives every step in full. A computer has checked a proof of this
-theorem in the Lean proof assistant; the version written here is checked by
-hand. For an arbitrary infinite choice the question is still open.
-\end{abstract}
+\section{The question: which infinite sums are irrational?}\label{sec:intro}
 
-\section{What Erd\H{o}s asked}\label{sec:intro}
+Every finite sum of fractions is a fraction. An infinite sum can be one too:
+\[
+ \frac12+\frac14+\frac18+\dots=1.
+\]
+Now consider
+\[
+ S=\frac13+\frac1{15}+\frac1{255}+\frac1{65535}+\dots,
+\]
+where the denominators are $2^2-1,2^4-1,2^8-1,2^{16}-1,\dots$.
+The exponents double at each step. We will prove that this sum cannot equal
+any fraction.
 
-Start with the powers of $2$, subtract $1$ from each, and put each result
-under a $1$:
+Multiply by $255$, the third denominator:
+\[
+\begin{aligned}
+ 255S&=85+17+1+\frac{255}{65535}+\dots\\
+     &=103+\frac1{257}+\dots.
+\end{aligned}
+\]
+The first three terms have become the integer $103$, leaving a positive
+remainder. If $S=p/q$, with integers $p,q$ and $q>0$, multiplying by an
+integer and subtracting an integer leaves an integer multiple of $1/q$.
+A positive remainder must therefore be at least $1/q$. We will repeat the
+construction to make the \emph{whole} remainder smaller than this fixed gap,
+whatever denominator $q$ is proposed.
+
+This example belongs to a larger family. Its fractions are obtained by
+taking a power of $2$,
+subtracting $1$, and taking the reciprocal:
 \begin{center}
-\begin{tabular}{l|ccccccc}
+\begin{tabular}{l|rrrrrrc}
 \papertablehead
 exponent $n$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $\dots$\\
 $2^n$ & $2$ & $4$ & $8$ & $16$ & $32$ & $64$ & $\dots$\\
-$2^n-1$ & $1$ & $3$ & $7$ & $15$ & $31$ & $63$ & $\dots$\\
-fraction $\dfrac1{2^n-1}$ & $1$ & $\tfrac13$ & $\tfrac17$ & $\tfrac1{15}$ & $\tfrac1{31}$ & $\tfrac1{63}$ & $\dots$
+denominator $2^n-1$ & $1$ & $3$ & $7$ & $15$ & $31$ & $63$ & $\dots$\\
+term $1/(2^n-1)$ & $1$ & $\tfrac13$ & $\tfrac17$ & $\tfrac1{15}$ & $\tfrac1{31}$ & $\tfrac1{63}$ & $\dots$
 \end{tabular}
 \end{center}
-The top row is the \emph{exponent} $n$, and the exponent $n$ gives the
-fraction $1/(2^n-1)$: the exponent $3$ gives $\tfrac17$, because
-$2^3-1=8-1=7$. The exponents are $1,2,3,\dots$; the exponent $0$ is left out,
-since $2^0-1=0$.
+Choose infinitely many of these terms, each at most once, and add them.
+Choosing the terms is equivalent to choosing a set $A$ of positive integer
+exponents. The opening example uses $A=\{2,4,8,16,\dots\}$; choosing all
+even exponents instead gives
+\[
+ A=\{2,4,6,8,\dots\}:\qquad
+ \frac13+\frac1{15}+\frac1{63}+\frac1{255}+\dots.
+\]
+The exponent $0$ is excluded, since $2^0-1=0$. We write
+\[
+ S_A=\sum_{n\in A}\frac1{2^n-1}.
+\]
+The symbol $\sum_{n\in A}$ means that we add the terms whose exponents
+belong to $A$, taking those exponents in increasing order. A \emph{partial
+sum} stops after finitely many selected terms.
+Here \emph{irrational} means that $S_A$ cannot equal $p/q$ for integers
+$p,q$ with $q>0$.
 
-Now choose an infinite subset of the list: infinitely many of its fractions,
-each used at most once. Choosing the subset is the same as choosing its
-exponents. Add up the fractions in it, for example:
+\begin{samepage}
+For the geometric series at the start, the partial sums are
 \begin{center}
-\begin{tabular}{ll}
-every exponent $1,2,3,4,\dots$: & $1+\tfrac13+\tfrac17+\tfrac1{15}+\dots$\\[3pt]
-the even exponents $2,4,6,8,\dots$: & $\tfrac13+\tfrac1{15}+\tfrac1{63}+\tfrac1{255}+\dots$\\[3pt]
-the doubling exponents $2,4,8,16,\dots$: & $\tfrac13+\tfrac1{15}+\tfrac1{255}+\tfrac1{65535}+\dots$
+\begin{tabular}{l|cccc}
+\papertablehead
+number of terms $N$ & $1$ & $2$ & $3$ & $4$\\
+$\tfrac12+\dots+\tfrac1{2^N}$ & $\tfrac12$ & $\tfrac34$ & $\tfrac78$ & $\tfrac{15}{16}$\\
+gap to $1$ & $\tfrac12$ & $\tfrac14$ & $\tfrac18$ & $\tfrac1{16}$
 \end{tabular}
 \end{center}
-Erd\H{o}s asked whether any choice like this can add up to a fraction:
-exactly $\tfrac25$, say, or $\tfrac{17}{41}$, or any other. A number that
-cannot be written as a fraction is called \emph{irrational}. Its decimal never
-ends and never settles into a repeating block, like $\sqrt2=1.41421356\dots$
-(Exercise~\ref{ex:5} proves that $\sqrt2$ is irrational), while a fraction's decimal either ends, like $\tfrac34=0.75$, or repeats for
-ever, like $\tfrac17=0.142857\,142857\dots$.
+\end{samepage}
+In general the partial sum is $1-2^{-N}$. Its gap to $1$ tends to zero,
+which is precisely the assertion
+$\tfrac12+\tfrac14+\tfrac18+\dots=1$.
 
-We can never finish adding infinitely many numbers, so we add them one at a
-time and watch the \emph{running total}. Take
+Every series $S_A$ converges: for $n\ge1$,
 \[
- \frac12+\frac14+\frac18+\frac1{16}+\dots .
+ 0<\frac1{2^n-1}\le\frac1{2^{n-1}},\qquad
+ \sum_{n=1}^{\infty}\frac1{2^{n-1}}=2.
 \]
-The running totals are $\tfrac12,\tfrac34,\tfrac78,\tfrac{15}{16},\dots$, and
-the gaps to $1$ are $\tfrac12,\tfrac14,\tfrac18,\tfrac1{16},\dots$. Each new
-number is exactly half of the gap left before it: $\tfrac14$ is half of the
-gap $\tfrac12$, and $\tfrac18$ is half of the gap $\tfrac14$. So the gap
-halves every time (Figure~\ref{fig:halving}). The running totals therefore
-never reach $1$, and they get as close to $1$ as we like: after $10$ numbers
-the gap is $\tfrac1{1024}$, and after $20$ it is $\tfrac1{1048576}$, less than
-a millionth. That is what
-\[
- \frac12+\frac14+\frac18+\frac1{16}+\dots=1
-\]
-means. So infinitely many fractions \emph{can} add up to a fraction, and a
-proof that our sums are irrational has to use something special about the
-bottoms $1,3,7,15,\dots$.
+The inequality follows from $2^n-1\ge2^{n-1}$. Consequently the partial sums
+of $S_A$ increase and are bounded by $2$. A basic property of real numbers
+says that an increasing, bounded sequence has a finite limit
+(Appendix~\ref{app:sums}). The issue is whether this limit is rational.
 
-\begin{figure}[htb]
-\centering
-\begin{tikzpicture}[x=7.2cm,y=0.80cm]
- \node[anchor=east,font=\small] at (-0.06,0.65) {numbers added};
- \node[anchor=west,font=\small] at (1.08,0.65) {gap to $1$};
- \foreach \v/\yy/\termsadded/\total/\gap in
-   {0.5/0/1/\tfrac12/\tfrac12,
-    0.75/-1/2/\tfrac34/\tfrac14,
-    0.875/-2/3/\tfrac78/\tfrac18,
-    0.9375/-3/4/\tfrac{15}{16}/\tfrac1{16}}
- {
-  \fill[gray!22] (0,\yy-0.10) rectangle (\v,\yy+0.10);
-  \draw (0,\yy) -- (\v,\yy);
-  \draw[densely dashed,thick] (\v,\yy) -- (1,\yy);
-  \draw (0,\yy-0.14) -- (0,\yy+0.14);
-  \draw (1,\yy-0.14) -- (1,\yy+0.14);
-  \fill (\v,\yy) circle (1.6pt);
-  \node[above=2pt,font=\small] at (\v,\yy) {$\total$};
-  \node[anchor=east,font=\small] at (-0.06,\yy) {$\termsadded$};
-  \node[anchor=west,font=\small] at (1.08,\yy) {$\gap$};
- }
- \node[font=\small] at (0,-3.50) {$0$};
- \node[font=\small] at (1,-3.50) {$1$};
- \node[font=\small] at (-0.06,-3.95) {$\vdots$};
- \node[font=\small] at (1.08,-3.95) {$\vdots$};
- \node[font=\small] at (0.50,-4.10) {value of the running total};
-\end{tikzpicture}
-\caption{The running totals of $\tfrac12+\tfrac14+\tfrac18+\dots$, each on a
-line from $0$ to $1$; the dashed part is the gap to $1$, and each new number
-fills half of it. The rows go on for ever.}
-\label{fig:halving}
-\end{figure}
+\section{Erd\H{o}s's question and the theorem}\label{sec:problem}
 
-Erd\H{o}s proved in 1948 that choosing every exponent gives an irrational sum
-\cite{erdos1948}. Whether every infinite choice does is Erd\H{o}s Problem
-\#257 \cite{erdosproblems257}, and it is still open.
-
-\section{What this paper proves}\label{sec:problem}
-
-We write $A$ for the set of chosen exponents, which is an infinite subset of
-$1,2,3,\dots$, and $\sum_{n\in A}$ for ``add up
-over the exponents $n$ in $A$''.
+In a 1988 account, Erd\H{o}s wrote \cite[p.~105]{erdos1988} (excerpt):
+\begin{quote}
+``let $n_1<n_2<\dots$. Is it then true that
+$\sum \frac{1}{2^{n_k}-1}$ is irrational, \ldots''
+\end{quote}
+The indices $k=1,2,\dots$ count the chosen exponents $n_k$.
+In these terms, we prove:
 
 \begin{theorem}\label{thm:main}
-Let $A$ be an infinite set of positive integers such that the sum
-$\sum_{n\in A}1/n$ is finite. Then
+Let $n_1<n_2<\dots$ be an infinite sequence of positive integers.
+If $\sum_{k=1}^{\infty}1/n_k<\infty$, then
 \[
- \sum_{n\in A}\frac1{2^n-1}
+ \sum_{k=1}^{\infty}\frac1{2^{n_k}-1}
 \]
 is irrational.
 \end{theorem}
 
-For $A=\{2,4,8,16,\dots\}$ the theorem reads: $A$ is infinite;
-$\sum_{n\in A}1/n=\tfrac12+\tfrac14+\tfrac18+\dots=1$ is finite; so
-$\sum_{n\in A}1/(2^n-1)=\tfrac13+\tfrac1{15}+\tfrac1{255}+\dots$ is
-irrational. A sum of infinitely many positive numbers is \emph{finite} when
-its running totals get as close as we like to one number without passing it,
-as the running totals of $\tfrac12+\tfrac14+\dots$ do with $1$;
-Appendix~\ref{app:sums} says exactly what that means and shows that every
-choice of exponents gives a definite sum. Two more examples:
+Taking $A=\{n_1,n_2,\dots\}$, this series is exactly $S_A$, and the
+additional hypothesis is exactly $\sum_{n\in A}1/n<\infty$.
+The question for arbitrary infinite $A$ remains open \cite{erdosproblems257}.
 
-\begin{itemize}
-\item \emph{The squares} $1,4,9,16,\dots$. Each $\tfrac1{m^2}$ after the first
- is less than $\tfrac1{(m-1)m}$, which equals $\tfrac1{m-1}-\tfrac1m$: for
- instance $\tfrac14<\tfrac12=1-\tfrac12$ and $\tfrac19<\tfrac16=\tfrac12-\tfrac13$.
- These differences cancel in a chain,
- \[
-  \Bigl(1-\frac12\Bigr)+\Bigl(\frac12-\frac13\Bigr)+\dots+\Bigl(\frac1{m-1}-\frac1m\Bigr)=1-\frac1m ,
- \]
- so $\tfrac14+\tfrac19+\dots+\tfrac1{m^2}$ stays below $1$ however far we
- go, and $1+\tfrac14+\tfrac19+\dots$ is finite: its running totals only go up
- and stay below $2$ (Appendix~\ref{app:sums}). The theorem says that
- $1+\tfrac1{15}+\tfrac1{511}+\tfrac1{65535}+\dots$ is irrational.
-\item \emph{Every exponent} $1,2,3,4,\dots$. Now $1+\tfrac12+\tfrac13+\tfrac14+\dots$
- is infinite: $\tfrac13+\tfrac14$ is at least $\tfrac14+\tfrac14=\tfrac12$;
- the next four numbers, $\tfrac15$ to $\tfrac18$, are each at least $\tfrac18$,
- so they add up to at least $\tfrac12$; the next eight add up to at least
- $\tfrac12$ again; and so on, so the running totals pass every number. The
- theorem says nothing about this choice. (Erd\H{o}s's 1948 proof covers it by
- another method.)
-\end{itemize}
-The theorem also needs $A$ to be infinite: for $A=\{2,4\}$,
-$\tfrac12+\tfrac14=\tfrac34$ is finite, but $\tfrac13+\tfrac1{15}=\tfrac25$ is
-a fraction.
+The condition concerns the reciprocals of the \emph{exponents}. The
+conclusion concerns the fractions with denominators $2^n-1$. For the
+doubling exponents, the distinction is visible in one table:
+\begin{center}
+\begin{tabular}{l|cccc c}
+\papertablehead
+chosen exponent $n$ & $2$ & $4$ & $8$ & $16$ & $\dots$\\
+term in the hypothesis, $1/n$ & $\tfrac12$ & $\tfrac14$ & $\tfrac18$ & $\tfrac1{16}$ & $\dots$\\
+term in $S_A$, $1/(2^n-1)$ & $\tfrac13$ & $\tfrac1{15}$ & $\tfrac1{255}$ & $\tfrac1{65535}$ & $\dots$
+\end{tabular}
+\end{center}
+The second row sums to $1$. The theorem therefore says that the third row
+sums to an irrational number. The hypothesis is an additional restriction
+on $A$; it is not needed merely to make $S_A$ converge.
 
-In 1968 Erd\H{o}s proved Theorem~\ref{thm:main} when no two chosen exponents
-have a common factor bigger than $1$, and wrote that this condition could be
-removed, without giving the details \cite[p.~222]{erdos1968}. Tao and
-Ter\"av\"ainen settled the prime exponents $2,3,5,7,11,\dots$
-\cite[Theorem~1.3]{taoteravainen2025}; for the primes $\sum_{n\in A}1/n$ is
-infinite (a theorem of Euler from 1737), so Theorem~\ref{thm:main} does not
-cover them. Theorem~\ref{thm:main}
-with any whole number $b\ge2$ in place of $2$ is Theorem~A.1 of the short
-paper \cite{shortpaper}, and a computer has checked a proof of it in the Lean
-proof assistant (Section~\ref{sec:limits}). This paper explains the case
-$b=2$ for a reader new to the problem. It follows
-\cite[Appendix~A]{shortpaper} and \cite[Section~1.1]{longrecord} with one
-change in the last step, explained in Appendix~\ref{app:lean}. That version is
-checked by hand, not by Lean.
+\begin{samepage}
+We will use the hypothesis in this form: beyond a sufficiently large exponent,
+the remaining reciprocals $1/n$ together add up to less than any positive
+target we specify. This remaining sum is called a \emph{tail}.\par
+\end{samepage}
 
-\section{The test: a fraction cannot leave a tiny positive remainder}\label{sec:test}
-
-Suppose the sum $S$ of the chosen fractions were a fraction $p/q$, with $p$
-and $q$ whole numbers.
-Multiply it by a whole number $m$ and take away a whole number $j$:
+\begin{samepage}
+The square exponents $A=\{1,4,9,16,\dots\}$ also satisfy the condition.
+Indeed, for $m\ge2$,
 \[
- mS-j=\frac{mp}q-\frac{jq}q=\frac{mp-jq}q .
+ \frac1{m^2}<\frac1{m(m-1)}=\frac1{m-1}-\frac1m,
 \]
-The top, $mp-jq$, is one whole number minus another. So if $mS-j$ is
-positive, its top is a positive whole number, which is at least $1$, and
-$mS-j$ is at least $\tfrac1q$.
-
-For example, if $S$ were $\tfrac25$:
+so the comparison sum cancels:
 \[
- 3\times\frac25-1=\frac15,\qquad 4\times\frac25-1=\frac35,\qquad
- 5\times\frac25-2=0,\qquad 1\times\frac25-1=-\frac35 .
+ (1-\tfrac12)+(\tfrac12-\tfrac13)+(\tfrac13-\tfrac14)
+ +\dots+(\tfrac1{N-1}-\tfrac1N)=1-\tfrac1N<1.
 \]
-Every answer lands on one of the marks
-$\dots,-\tfrac25,-\tfrac15,0,\tfrac15,\tfrac25,\dots$ (Figure~\ref{fig:fifths}),
-and there is no mark between $0$ and $\tfrac15$. So a positive answer is at
-least $\tfrac15$, and no choice of $m$ and $j$ gives $0.00001$.
-The word \emph{positive} matters, since an answer can also be $0$ or negative.
+Thus $\sum_{m=2}^{N}1/m^2<1$. Hence
+$\sum_{m=1}^{\infty}1/m^2$ converges, and the theorem proves that
+$1+\tfrac1{15}+\tfrac1{511}+\tfrac1{65535}+\dots$ is irrational.\par
+\end{samepage}
 
-\begin{figure}[htb]
-\centering
-\begin{tikzpicture}[x=6.5cm,y=1cm]
- \fill[gray!20] (0,-0.10) rectangle (0.2,0.10);
- \draw[thick,<->] (-0.53,0) -- (1.33,0);
- \foreach \v/\lab in {-0.4/-\tfrac25,-0.2/-\tfrac15,0/0,
-    0.2/\tfrac15,0.4/\tfrac25,0.6/\tfrac35,0.8/\tfrac45,1/1,1.2/\tfrac65}
- {
-  \draw (\v,0.12) -- (\v,-0.12);
-  \fill (\v,0) circle (1.5pt);
-  \node[below=4pt,font=\small] at (\v,0) {$\lab$};
- }
- \draw[->] (0.1,0.55) -- (0.1,0.15);
- \node[above,font=\small] at (0.1,0.55) {no mark strictly inside this gap};
- \node[font=\small] at (0.4,-0.95) {values of $m\times\tfrac25-j$ for whole numbers $m$ and $j$};
-\end{tikzpicture}
-\caption{Part of the line of fifths, which continues in both directions. Every value of $m\times\tfrac25-j$ lies on a mark, and the shaded
-gap between $0$ and $\tfrac15$ contains no mark.}
-\label{fig:fifths}
-\end{figure}
-
-This gives the strategy of the whole proof. Whatever bottom $q$ someone
-claims for $S$, find whole numbers $m$ and $j$ with
+By contrast, choosing every positive integer gives the divergent harmonic
+series in the hypothesis. Group its terms as $1$; $1/2$; $1/3+1/4$;
+$1/5+1/6+1/7+1/8$; and so on. For example,
 \[
- 0<mS-j<\frac1q .
+ \frac15+\frac16+\frac17+\frac18\ge4\cdot\frac18=\frac12.
 \]
-Then $S$ is not $p/q$, and doing this for every $q$ shows that $S$ is not a
-fraction at all. The numbers $m$ and $j$ are allowed to depend on $q$.
+Every subsequent block doubles the number of terms and halves their smallest
+value, so again contributes at least $1/2$. These repeated contributions
+make the partial sums unbounded. Even exponents also fail the condition, since their reciprocal sum
+is half the harmonic series. The theorem makes no assertion for these
+choices. Infinitude is essential too: $A=\{2,4\}$ has a finite reciprocal
+sum, but $S_A=\tfrac13+\tfrac1{15}=\tfrac25$.
+(Question~\ref{chk:hypotheses}.)
 
-\section{The doubling exponents: multiply by \texorpdfstring{$2^k-1$}{2\^{}k-1}}\label{sec:doubling}
+Erd\H{o}s proved the theorem in 1968 under the extra assumption that no two
+chosen exponents share a divisor greater than $1$, and stated that this
+assumption could be removed without supplying the details \cite[p.~222]{erdos1968}.
+We explain a proof without that assumption.
 
-Take $S=\tfrac13+\tfrac1{15}+\tfrac1{255}+\tfrac1{65535}+\dots$ and multiply
-it by $255=2^8-1$. The first three fractions give whole numbers, and the rest
-give very small ones:
+The proof has three stages. First, rationality forces a fixed lower bound
+on certain positive remainders. Next, the denominators $2^n-1$ let us
+calculate those remainders explicitly. Finally, a small average guarantees
+at least one choice whose \emph{total} remainder is below that lower bound. The doubling exponents show the
+construction at work before the averaging is needed.
+The main proof ends in Section~\ref{sec:allchoices}.
+Appendices~\ref{app:sums}--\ref{app:proof} justify the supporting infinite-sum
+and divisibility facts; they can be read as needed or after the main proof.
+The other-base extension and formal-proof correspondence are further reading.
+
+\section{A rational number has a fixed positive gap}\label{sec:test}
+
+Start with $2/5$. Multiplying it by an integer and subtracting an integer
+always gives an integer multiple of $1/5$:
 \[
- \frac{255}3=85,\quad \frac{255}{15}=17,\quad \frac{255}{255}=1,\quad
- \frac{255}{65535}=\frac1{257},\quad \frac{255}{2^{32}-1}=\frac1{16843009},\quad\dots .
+ 3\cdot\frac25-1=\frac15,\quad
+ 4\cdot\frac25-1=\frac35,\quad
+ 5\cdot\frac25-2=0,\quad
+ 1\cdot\frac25-1=-\frac35.
 \]
-So, with $103=85+17+1$,
+There is no such value strictly between $0$ and $1/5$.
+The denominator fixes a smallest possible positive result.
+
+The same reasoning applies to any fraction. From now on write $S=S_A$
+for the series belonging to our chosen set $A$, and suppose $S=p/q$,
+where $p\in\mathbb Z$ and $q$ is a positive integer. For integers $u,j$,
 \[
- 255S=103+\Bigl(\frac1{257}+\frac1{16843009}+\dots\Bigr).
+ uS-j=\frac{up-jq}{q}.
 \]
-Take away $103$. What is left,
+Its numerator is an integer. If $uS-j>0$, then $up-jq\ge1$, and therefore
 \[
- R(8)=255S-103=\frac1{257}+\frac1{16843009}+\dots\approx0.0039 ,
+ uS-j\ge\frac1q.
 \]
-is positive and small. This is the test with $m=255$ and $j=103$. If $S$
-were $p/q$, then $R(8)$ would be at least $\tfrac1q$; since $R(8)$ is less
-than $\tfrac1{64}$ (shown below), no bottom $q$ from $1$ to $64$ is possible.
+Positivity is necessary: zero and negative values do not contradict
+rationality.
 
-The multiplier $255$ works because $3$, $15$ and $255$ all divide it.
-Section~\ref{sec:split} shows that this happens because the exponents $2$,
-$4$ and $8$ all divide $8$. Multiplying by $2^{16}-1=65535$
-instead makes the first four fractions whole numbers; the exponent $32$ leaves
-$\tfrac{65535}{2^{32}-1}=\tfrac1{65537}$, and what is left in total is about
-$0.000015$.
+To prove our sum irrational, we will therefore suppose that $S=p/q$ and
+construct integers $u,j$, which may depend on $q$, satisfying
+\begin{equation}\label{eq:goal}
+ 0<uS-j<\frac1q.
+\end{equation}
 
-\paragraph{Why this works for every bottom.} Let $k$ be any of the doubling
-exponents, multiply $S$ by $2^k-1$, and look at each chosen fraction.
-\begin{itemize}
-\item Every chosen exponent up to $k$ divides $k$, so those fractions give
- whole numbers.
-\item Every later chosen exponent $n$ is at least $2k$, and its fraction gives
- $\frac{2^k-1}{2^n-1}$. This is less than $\frac{2^k}{2^{n-1}}=\frac2{2^{n-k}}$,
- because $2^n-1$ is at least half of $2^n$.
-\end{itemize}
-Take away the whole numbers, and call what is left $R(k)$; it is positive,
-because there is always a chosen exponent beyond $k$. The gaps $n-k$ between
-$k$ and the later exponents are different whole numbers, all at least $k$
-(for $k=8$ they are $8,24,56,\dots$). Allowing every gap from $k$ upwards only
-adds more positive numbers, so
+\begin{samepage}
+\section{Multiplying the series and retaining fractional parts}\label{sec:split}
+
+We want a multiplier that makes some terms integers. Choose a positive integer
+$k$ and consider $2^k-1$. Here $k$ is the multiplier exponent; it no longer
+indexes the list $n_1,n_2,\dots$.
+For example, $15=2^4-1$ is divisible by $3=2^2-1$.
+Let us first see exactly what multiplying by $15$ does:
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+\papertablehead
+exponent $n$ & original term & multiplied term & integer part & fractional part\\
+$2$ & $1/3$ & $15/3=5$ & $5$ & $0$\\
+$3$ & $1/7$ & $15/7=2+1/7$ & $2$ & $1/7$\\
+$4$ & $1/15$ & $15/15=1$ & $1$ & $0$\\
+$5$ & $1/31$ & $15/31$ & $0$ & $15/31$
+\end{tabular}
+\end{center}
+\end{samepage}
+These rows illustrate the operation; in the chosen series we retain only
+rows with $n\in A$. For $x\ge0$, its integer part $\lfloor x\rfloor$ is
+the greatest integer at most $x$. Subtracting it leaves the fractional part
+$\{x\}=x-\lfloor x\rfloor\in[0,1)$. For example, $2\le15/7<3$,
+so we subtract $2$ and retain $1/7$. This choice keeps every contribution
+nonnegative.
+
+\paragraph{The remainder can be read from the exponents.}
+Keep the denominator $2^n-1$ fixed and add $n$ to $k$. The identity
 \[
- 0<R(k)<\frac2{2^k}+\frac2{2^{k+1}}+\frac2{2^{k+2}}+\dots=\frac4{2^k}.
+ 2^{k+n}-1=2^k(2^n-1)+(2^k-1)
 \]
-The last step uses the same pattern as $\tfrac12+\tfrac14+\dots=1$: when each
-number is half the one before, the sum is twice the first number. For $k=8$
-the bound is $\tfrac1{64}$, and for $k=16$ it is $\tfrac1{16384}$.
-
-Now take any bottom $q$, and choose a doubling exponent $k$ with $2^k>4q$.
-Then $R(k)<\tfrac4{2^k}<\tfrac1q$. But $R(k)$ is $S$ times the whole number
-$2^k-1$, minus a whole number, and it is positive, so if $S$ were $p/q$ it
-would be at least $\tfrac1q$. It cannot be both. So
-$\tfrac13+\tfrac1{15}+\tfrac1{255}+\dots$ is irrational. That is the whole
-proof for the doubling exponents (Appendix~\ref{app:doubling} writes it out as
-Theorem~\ref{thm:doubling}).
-
-\section{Why \texorpdfstring{$2^n-1$}{2\^{}n-1} divides \texorpdfstring{$2^k-1$}{2\^{}k-1}, and what is left when it does not}\label{sec:split}
-
-A whole number divided by another splits into a \emph{whole part} and a
-\emph{fractional part} that is at least $0$ and less than $1$: for example
-$\tfrac{255}7=36+\tfrac37$, with whole part $36$ and fractional part $\tfrac37$. For
-our numbers the fractional part follows one rule.
-
-Going from $k$ to $k+n$ multiplies $2^k$ by $2^n$, and $2^n$ is one more than
-$2^n-1$. So $2^{k+n}-1=2^k(2^n-1)+(2^k-1)$, and dividing by $2^n-1$,
+gives
 \[
  \frac{2^{k+n}-1}{2^n-1}=2^k+\frac{2^k-1}{2^n-1}.
 \]
-With $n=3$, for example, $\tfrac{63}7=8+\tfrac77$ (Figure~\ref{fig:dots}) and
-$\tfrac{255}7=32+\tfrac{31}7$. So adding $n$ to $k$ adds the whole number
-$2^k$, and adding a whole number does not change the fractional part. For the exponent $n$ the fractional
-part therefore repeats every $n$ steps of $k$, and depends only on the
-remainder $r$ when $k$ is divided by $n$. At $k=r$ the fraction
-$\tfrac{2^r-1}{2^n-1}$ is less than $1$, because $r$ is less than $n$, so it
-is its own fractional part. Hence
-\[
- \text{the fractional part of }\frac{2^k-1}{2^n-1}\text{ is }\frac{2^r-1}{2^n-1},
- \qquad\text{where $r$ is the remainder when $k$ is divided by $n$.}
-\]
-For $k=8$ and $n=3$: $8=2\times3+2$, so $r=2$, and the fractional part is
-$\tfrac{2^2-1}7=\tfrac37$, as above.
+The added term $2^k$ is an integer, so the fractional part is unchanged.
+Write $k=an+r$ with $0\le r<n$. Repeatedly subtracting $n$ from the exponent
+reduces the calculation to $r$. Since $0\le2^r-1<2^n-1$,
+\begin{equation}\label{eq:fracpart-main}
+ \lft_n(k):=\left\{\frac{2^k-1}{2^n-1}\right\}
+ =\frac{2^{k\bmod n}-1}{2^n-1}.
+\end{equation}
+Here $k\bmod n$ denotes the integer remainder $r$ in division by $n$.
+It lies between $0$ and $n-1$; $\lft_n(k)$ is the fractional part calculated
+from it. We will sum these fractional parts to obtain $R(k)$.
+For example, $8=2\cdot3+2$, so $\{255/7\}=(2^2-1)/7=3/7$.
+The fractional part is zero exactly when $n$ divides $k$. Thus the
+multiplier $2^k-1$ turns a selected term into an integer exactly when its
+exponent divides $k$. This is why we chose this multiplier: we can make
+selected contributions vanish by choosing $k$ divisible by their exponents.
 
-The fractional part is $0$ exactly when $r=0$, that is, when $n$ divides $k$; we
-then say that $k$ \emph{cancels} the exponent $n$. So $2^n-1$ divides $2^k-1$
-exactly when $n$ divides $k$: $15=2^4-1$ divides
-$255=2^8-1$ because $4$ divides $8$, while $7=2^3-1$ does not, because $3$
-does not divide $8$. Here is the exponent $3$, with the fraction $\tfrac17$, as $k$
-goes up:
+\pagebreak[0]
+\begin{samepage}
+\paragraph{What happens to the entire sum.}
+Apply the same multiplier to every selected term,
+subtract each integer part, and sum the fractional parts:
+\[
+ R(k)=\sum_{n\in A}\lft_n(k),\qquad
+ J(k)=\sum_{\substack{n\in A\\ n\le k}}
+       \left\lfloor\frac{2^k-1}{2^n-1}\right\rfloor.
+\]
+Only exponents $n\le k$ contribute to $J(k)$: when $n>k$, the multiplied
+term is already less than $1$. Thus $J(k)$ is a finite sum of integers.
+Splitting the terms gives
+\begin{equation}\label{eq:split-main}
+ (2^k-1)S=J(k)+R(k).
+\end{equation}
+The series defining $R(k)$ converges by comparison with $(2^k-1)S$;
+Appendix~\ref{app:split} justifies the identity using partial sums.\par
+\end{samepage}
+
+The sum $R(k)$ need not itself be a fractional part. For the three exponents
+$2,3,6$ and $k=5$, the separate fractional parts sum to
+\[
+ \left\{\frac{31}3\right\}+\left\{\frac{31}7\right\}
+ +\left\{\frac{31}{63}\right\}
+ =\frac13+\frac37+\frac{31}{63}=\frac{79}{63}>1.
+\]
+The fractional part of the whole product is instead $16/63$.
+We retain the separate contributions because each has the explicit formula
+\eqref{eq:fracpart-main}; their sum still has the required form $uS-j$.
+
+Finally, if $A$ is infinite, there is always a selected exponent $n>k$.
+Its multiplied term is positive and less than $1$, so it contributes
+positively to $R(k)$; all other contributions are nonnegative. Therefore
+\[
+ S=p/q\quad\Longrightarrow\quad
+ R(k)=(2^k-1)S-J(k)\ge\frac1q\quad\hbox{for every }k\ge1.
+\]
+Our task is now to find \emph{one} $k$ with $R(k)<1/q$.
+(Question~\ref{chk:positive}.)
+
+\section{A complete example: the doubling exponents}\label{sec:doubling}
+
+Return to the opening example, $A=\{2,4,8,16,\dots\}$.
+We now know why $255$ cleared its first three terms: it is $2^8-1$,
+and the exponents $2,4,8$ all divide $8$. In our new notation that calculation is
+\[
+ 255S=103+R(8),\qquad R(8)=\frac1{257}+\frac1{16843009}+\dots>0.
+\]
+One small remainder rules out only some denominators. To rule out every
+$q$, we need remainders as small as we please. For any doubling exponent
+$k$, all selected $n\le k$ divide $k$ and contribute zero. Every later
+selected exponent is at least $2k$, and
+\[
+ 0<\lft_n(k)=\frac{2^k-1}{2^n-1}
+ <\frac{2^k}{2^{n-1}}=\frac2{2^{n-k}}.
+\]
+For $k=8$, the gaps $n-k$ are $8,24,56,\dots$. In general they are
+distinct integers at least $k$. Insert the missing positive terms so that
+the gaps run through \emph{all} integers $k,k+1,k+2,\dots$; this can only
+increase the upper bound:
+\[
+ 0<R(k)<\sum_{e=k}^{\infty}\frac2{2^e}=\frac4{2^k}.
+\]
+The last equality is the geometric-series formula: the first term is
+$2/2^k$ and each successive term is half its predecessor.
+
+\begin{samepage}
+For $k=8$ this
+gives $R(8)<1/64$, ruling out every denominator $q\le64$: such a
+denominator would force $R(8)\ge1/q\ge1/64$.
+For $k=16$ the bound is $R(16)<1/16384$.
+Given any proposed denominator $q$, choose a doubling exponent $k$ with
+$2^k>4q$. Then $0<R(k)<1/q$, contradicting rationality. This completes
+the proof for the doubling exponents.\par
+\end{samepage}
+
+The special feature was that $k$ both eliminated all earlier terms and
+left the next exponent at least $2k$. A general set $A$ need not have that
+spacing. The next section explains how averaging replaces it.
+
+\begin{samepage}
+\section{Why averaging works}\label{sec:general}
+
+\paragraph{Larger multipliers need not help.}
+For the square exponents $A=\{1,4,9,16,\dots\}$, both $k=4$ and $k=8$
+are divisible by the first two selected exponents $1,4$. All later selected
+exponents exceed $8$, so their integer parts vanish for both multipliers.
+Consequently
+\[
+ R(4)=15\left(\frac1{511}+\frac1{65535}+\dots\right),\qquad
+ R(8)=255\left(\frac1{511}+\frac1{65535}+\dots\right)=17R(4).
+\]
+In fact $R(4)\approx0.0296$ and $R(8)\approx0.503$. Increasing $k$ while
+preserving the same zero contributions has enlarged the remaining terms.
+Even eliminating longer initial groups need not suffice: in
+Exercise~\ref{ex:6}, the next selected exponent is $k+1$, leaving
+$(2^k-1)/(2^{k+1}-1)$, which approaches $1/2$. The choices of $k$ matter,
+not just how many initial rows they make zero.\par
+\end{samepage}
+
+\subsection{One table, many attempts}
+
+Keep $A$, and hence the original number $S$, fixed. For each new choice of
+$k$, repeat the whole calculation: multiply every selected term by $2^k-1$,
+subtract its integer part, and add what remains to obtain $R(k)$.
+\emph{Each column below is one entire attempt to obtain the contradiction.}
+Each row follows the contribution from one original term across the attempts.
+We need one column whose total is less than $1/q$.
+
+Choose candidate exponents spaced $Q$ apart:
+$k=Q,2Q,\dots,MQ$. Here $Q$ is the spacing, $M$ is the number of attempts,
+and $m$ labels the attempt $k=mQ$; the actual multiplier is $2^{mQ}-1$.
+Neither $Q$ nor $k$ has to belong to $A$.
+We choose $Q$ divisible by an initial group of selected exponents so those
+rows stay zero in every column. For the square exponents, $Q=4$ gives:
 \begin{center}
-\begin{tabular}{l|cccccccccc}
+\begin{tabular}{c|cccc}
 \papertablehead
-$k$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$ & $7$ & $8$ & $9$ & $\dots$\\
-remainder of $k$ divided by $3$ & $1$ & $2$ & $0$ & $1$ & $2$ & $0$ & $1$ & $2$ & $0$ & $\dots$\\
-fractional part of $\tfrac{2^k-1}7$ & $\tfrac17$ & $\tfrac37$ & $0$ & $\tfrac17$ & $\tfrac37$ & $0$ & $\tfrac17$ & $\tfrac37$ & $0$ & $\dots$
+selected exponent $n$ & $k=4$ & $k=8$ & $k=12$ & $k=16$\\
+$1$ & $0$ & $0$ & $0$ & $0$\\
+$4$ & $0$ & $0$ & $0$ & $0$\\
+$9$ & $15/511$ & $255/511$ & $7/511$ & $127/511$\\
+$16$ & $15/65535$ & $255/65535$ & $4095/65535$ & $0$\\
+$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$\\\hline
+column total & $R(4)$ & $R(8)$ & $R(12)$ & $R(16)$
 \end{tabular}
 \end{center}
+Every entry is a fractional part $\lft_n(k)$. For example, the cell
+$n=9,k=12$ uses $12=1\cdot9+3$, so
+$\lft_9(12)=(2^3-1)/(2^9-1)=7/511$.
+Each column uses the same multiplier throughout, including in the rows
+not displayed. (Question~\ref{chk:columns}.)
 
-\begin{figure}[htb]
-\centering
-\begin{tikzpicture}[scale=0.38]
- \foreach \r in {0,...,6}{\foreach \c in {0,...,7}{\fill (\c,\r) circle (0.16);}}
- \foreach \c in {0,...,6}{\fill (\c,7) circle (0.16);}
- \draw (7,7) circle (0.16);
- \foreach \r in {0,...,7}{\draw[rounded corners=2pt,gray] (-0.4,\r-0.4) rectangle (6.4,\r+0.4);}
- \draw[rounded corners=2pt,gray,thick] (6.6,-0.4) rectangle (7.4,6.4);
- \node[anchor=west,font=\small,align=left] at (8.2,5.2) {$2^6=8\times8=64$ dots;\\ remove one: $63$};
- \node[anchor=west,font=\small,align=left] at (8.2,2.2) {$8$ rows of $7$, and\\ one column of $7$:\\ $63=8\times7+7=9\times7$};
-\end{tikzpicture}
-\caption{The step from $k=3$ to $k=6$ for the exponent $3$: $2^6-1=2^3\times7+7$,
-so $\tfrac{63}7=8+\tfrac77=9$. The open circle is the dot removed.}
-\label{fig:dots}
-\end{figure}
+\begin{samepage}
+\paragraph{Average complete attempts.}
+Different rows may be small in different columns; choosing a separate
+column for each row would not give one multiplier for the original series.
+Instead average \emph{every row across the same columns}, then add those
+row averages. This gives the average of the complete column totals:
+both calculations add the same entries and divide by the same number $M$.
+In symbols,
+\begin{equation}\label{eq:average-main}
+ \frac1M\sum_{m=1}^{M}R(mQ)
+ =\sum_{n\in A}\frac1M\sum_{m=1}^{M}\lft_n(mQ).
+\end{equation}
+\end{samepage}
+For infinitely many rows we first use finite portions and then let them
+grow; convergence preserves the equality (Appendix~\ref{app:proof}).
+If this average is below $1/q$, at least one whole column has total below
+$1/q$. Otherwise every column total would be at least $1/q$, making their
+average at least $1/q$ too.
 
-\paragraph{The sum of the fractional parts.} Now take any infinite set of exponents $A$,
-with sum $S$, and any whole number $k\ge1$. Multiply every chosen fraction by
-$2^k-1$, take away the whole part of each, and add up the fractional parts. Call the
-result $R(k)$. Two facts make it useful.
-\begin{itemize}
-\item Only exponents up to $k$ can have a whole part other than $0$, because
- a later fraction times $2^k-1$ is less than $1$. So the whole parts add up to a whole
- number $J(k)$, and $R(k)=(2^k-1)S-J(k)$: this is the test of
- Section~\ref{sec:test} with $m=2^k-1$ and $j=J(k)$.
-\item $R(k)$ is positive, because $A$ is infinite, so it has a chosen exponent
- beyond $k$, and that fraction times $2^k-1$ is all fractional part.
-\end{itemize}
-So if $S$ were $p/q$, then \emph{every} $R(k)$ would be at least $\tfrac1q$
-(Lemma~\ref{lem:split} and Corollary~\ref{cor:atleast}). The rest of the proof
-finds one $k$ with $R(k)<\tfrac1q$. ($R(k)$ adds the separate fractional
-parts, so it can be bigger than $1$; Appendix~\ref{app:split} has an
-example.)
+\paragraph{What the two estimates will do.}
+We will divide the rows into three groups. An initial finite group stays
+zero. A further finite group can complete its cycles if we choose $M$
+appropriately; we will bound each such row's average by $1/n$.
+For the infinitely many remaining rows, we need a bound valid for every
+$M$: we will prove $2Q/n$. Once $Q$ is fixed, we can make the sum of these
+bounds as small as needed by moving far enough down the rows: the remaining
+reciprocals $1/n$ have arbitrarily small total. Section~\ref{sec:proof} will choose the two
+row cutoffs and then $M$ so that both nonzero groups have small total averages.
 
-\section{Other choices: averaging}\label{sec:general}
+\subsection{Complete cycles give small averages}\label{sec:cycles}
 
-\paragraph{Why cancelling the early exponents is not enough.} For the squares
-$1,4,9,16,\dots$, both $k=4$ and $k=8$ cancel exponents $1$ and $4$, which
-divide both. Every other square is at least $9$, bigger than $8$, so each of
-those fractions is all fractional part, and $R(k)$ is the multiplier
-times the same sum $\tfrac1{511}+\tfrac1{65535}+\tfrac1{2^{25}-1}+\dots$ in
-both cases. The multipliers are $15$ and $255=17\times15$, so
+To derive a rule for any row, use $n=3$ and $n=6$, which are not
+exponents of the square series. Start with $n=3$ and consecutive $k$:
+\begin{center}
+\begin{tabular}{l|ccc|ccc}
+\papertablehead
+$k$ & $1$ & $2$ & $3$ & $4$ & $5$ & $6$\\
+$k\bmod3$ & $1$ & $2$ & $0$ & $1$ & $2$ & $0$\\
+$\lft_3(k)$ & $1/7$ & $3/7$ & $0$ & $1/7$ & $3/7$ & $0$
+\end{tabular}
+\end{center}
+One repeating block, or \emph{cycle}, has sum $4/7<1$ and average
+$4/21<1/3$. This bounds the average, not every entry: $3/7>1/3$.
+For general $n$, a consecutive cycle has remainders $0,1,\dots,n-1$.
+The powers $2^0,2^1,\dots,2^{n-1}$ add up to $2^n-1$, exactly the
+denominator. Each actual numerator is one less than the corresponding power,
+so the cycle's total is
 \[
- R(8)=17\times R(4)\approx0.503,\qquad R(4)\approx0.0296 .
+ \frac{(2^0-1)+(2^1-1)+\dots+(2^{n-1}-1)}{2^n-1}
+ <\frac{2^0+2^1+\dots+2^{n-1}}{2^n-1}=1.
 \]
-The bigger $k$ kept the same exponents cancelled and made everything else
-seventeen times bigger; the exponent $9$ alone leaves
-$\tfrac{255}{511}\approx0.499$. Cancelling longer batches does not fix this
-by itself: Exercise~\ref{ex:6} gives a choice of exponents and, for every
-$j$, a $k$ that cancels the first $j$ of them while the very next chosen
-exponent, $k+1$, leaves at least $\tfrac37$.
+Dividing by its $n$ entries gives a cycle average below $1/n$.
+These reciprocals bound the row averages, which is why the hypothesis
+controls their sum.
 
-So we use many values of $k$ at once. Fix a whole number $Q$, the
-\emph{step}, that every exponent in an early batch of chosen exponents
-divides, and take
+\pagebreak[0]
+\begin{samepage}
+\paragraph{Keep the required spacing.}
+Our candidates use steps of $Q$, not necessarily $1$, because $Q$ preserves
+the initial zero rows. With $n=6$ and $Q=4$:
+\begin{center}
+\begin{tabular}{l|ccc}
+\papertablehead
+sample number $m$ & $1$ & $2$ & $3$\\
+$k=4m$ & $4$ & $8$ & $12$\\
+$k\bmod6$ & $4$ & $2$ & $0$\\
+$\lft_6(k)$ & $15/63$ & $3/63$ & $0$
+\end{tabular}
+\end{center}
+The last two rows repeat every three samples. Only the even remainders
+occur, and the average is $(15+3+0)/(3\cdot63)=2/21<1/6$.\par
+\end{samepage}
+
+\newpage
+\begin{samepage}
+Let $g=\gcd(n,Q)$ be the \emph{greatest common divisor}, the largest
+positive integer dividing both $n$ and $Q$, and put $c=n/g$.
+In the example $n=6,Q=4$, these are $g=2,c=3$.
+We will show that one cycle has exactly $c$ samples, visiting
+$0,g,2g,\dots,n-g$ once each, in some order. Knowing which remainders
+occur will let us compare the sampled mean with the mean over all remainders.
+Here are the four steps.
+
+\emph{Possible remainders.} Each remainder is a multiple of $g$: it is
+$mQ$ minus a multiple of $n$, and both are divisible by $g$.
+Between $0$ and $n-1$ there are exactly $c$ possibilities,
+$0,g,2g,\dots,n-g$.
+
+\emph{A return after $c$ steps.} Since
 \[
- k=Q,\ 2Q,\ 3Q,\ \dots,\ MQ .
+ cQ=\frac ng Q=n\frac Qg,
 \]
-Every one of these cancels the batch. If the values
-$R(Q),R(2Q),\dots,R(MQ)$ have an average below $\tfrac1q$, then at least one
-of them is below $\tfrac1q$, because if every one were at least $\tfrac1q$, so
-would be their average. (For example, $3$, $5$ and $10$ have average $6$, and
-$3$ is below $6$.)
+taking another $c$ steps adds a multiple of $n$ and leaves the remainder
+unchanged. So $c$ is a period; we still have to exclude earlier repetition.
 
-\paragraph{One exponent over a full cycle.} The exponent $3$ leaves $\tfrac17$,
-$\tfrac37$, $0$ and then repeats. Over one full cycle these average
+\emph{No earlier repetition.} Two integers have the same remainder on
+division by $n$ exactly when their difference is a multiple of $n$.
+For samples $m_1<m_2$, that difference is
+$m_2Q-m_1Q=(m_2-m_1)Q$. Dividing out $g$, equal remainders therefore mean
+that $n/g$ divides $(m_2-m_1)(Q/g)$.
+The integers $n/g$ and $Q/g$ have no common divisor greater than $1$;
+they are called \emph{coprime}. This lets us cancel $Q/g$: $c=n/g$
+must divide $m_2-m_1$. In the example $n=6,Q=4$, write $d=m_2-m_1$:
+if $3$ divides $2d$, it also divides $d=2(2d)-3d$, since both terms on
+the right are multiples of $3$. Appendix~\ref{app:cycle} proves the
+general cancellation fact. Thus samples fewer than $c$ steps apart cannot
+have the same remainder.
+
+\emph{All possibilities are visited.} The first $c$ remainders are distinct
+and there are only $c$ possible values. Hence every possible remainder
+occurs exactly once per cycle.\par
+\end{samepage}
+
+\paragraph{Compare means without calculating a new formula.}
+Sort the sampled remainders $4,2,0$ as $0,2,4$, preserving the sampled mean.
+These start the pairs $(0,1)$, $(2,3)$, $(4,5)$. Since
+\mbox{$(2^r-1)/(2^n-1)$} increases with $r$, each pair's first remainder gives
+its smaller fractional part. Copy each sampled value twice to compare
+with all six consecutive-cycle values.
+\begin{center}
+\captionsetup{hypcap=false}
+\input{257/figures/cycle-mean.tex}
+\captionof{figure}{For $n=6,Q=4$, two copies of each sample double
+both sum and count, preserving the mean. Each filled value is at most its
+outlined counterpart, so the sampled mean is at most the consecutive-cycle
+mean, which is below $1/6$.}
+\label{fig:cycle-mean}
+\end{center}
+\begin{samepage}
+In general, each group has $g$ consecutive remainders, and the sample
+selects its first: $0,g,\dots,n-g$. Repeating each selected value $g$ times
+gives a sum no larger than the sum over all $n$ remainders. Divide by $n$:
+the copied list retains the mean of the $c$ samples, while the consecutive-cycle
+mean is below $1/n$. Thus, whenever $M$ is a positive multiple of $c$,
+\begin{equation}\label{eq:cycle-main}
+ \frac1M\sum_{m=1}^{M}\lft_n(mQ)<\frac1n.
+\end{equation}
+The bound $1/n$ does not grow with $Q$: making the initial rows zero can
+require a large spacing without worsening this bound, provided $M$ completes
+the cycles. If $n$ divides $Q$, the cycle has one entry, zero, which also
+satisfies the bound.\par
+\end{samepage}
+
+\pagebreak[0]
+\begin{samepage}
+\subsection{A bound that also covers unfinished cycles}\label{sec:unfinished}
+
+An unfinished cycle can miss its final zero. For $n=5$ and consecutive
+candidates ($Q=1$), one cycle is
 \[
- \frac13\Bigl(\frac17+\frac37+0\Bigr)=\frac4{21}\approx0.19,
+ \frac1{31},\quad\frac3{31},\quad\frac7{31},\quad\frac{15}{31},\quad0.
 \]
-less than $\tfrac13$. Here is why. Add $\tfrac17$ to each fractional part to get
-$\tfrac27,\tfrac47,\tfrac17$. These add up to exactly $1$, since $2+4+1=7$, so
-they average exactly $\tfrac13$, and the fractional parts themselves average
-$\tfrac17$ less (Figure~\ref{fig:bars}). One of them, $\tfrac37$, is bigger than
-$\tfrac13$; it is the average that is below $\tfrac13$. The same works for every
-exponent $n$, because $1+2+4+\dots+2^{n-1}=2^n-1$: over a full cycle the
-fractional parts for the exponent $n$ average $\tfrac1n-\tfrac1{2^n-1}$, less
-than $\tfrac1n$.
+The first four entries average $26/(4\cdot31)=13/62>1/5$;
+all five average $26/(5\cdot31)=26/155<1/5$.
+The increasing positive list and the full cycle therefore have different
+average bounds. (Question~\ref{chk:partial} gives a spaced example.)\par
+\end{samepage}
 
-\begin{figure}[htb]
-\centering
-\begin{tikzpicture}[x=0.78cm,y=0.50cm]
- \draw[->] (0,0) -- (7.6,0) node[right,font=\small]{$k$};
- \draw[->] (0,0) -- (0,5.2);
- \foreach \y/\l in {0/0,1/\tfrac17,2/\tfrac27,3/\tfrac37,4/\tfrac47}
-   {\draw (-0.1,\y) -- (0.1,\y) node[left=3pt,font=\scriptsize]{$\l$};}
- \foreach \k/\h in {1/1,2/3,3/0,4/1,5/3,6/0}
-   {\fill[gray!55] (\k-0.3,0) rectangle (\k+0.3,\h);
-    \draw[gray!70!black] (\k-0.3,\h) rectangle (\k+0.3,\h+1);
-    \fill[gray!12] (\k-0.3+0.02,\h+0.04) rectangle (\k+0.3-0.02,\h+1-0.04);
-    \node[below,font=\scriptsize] at (\k,0) {\k};}
- \draw[densely dashed,thick] (0,1.3333) -- (6.6,1.3333);
- \node[right,font=\scriptsize] at (6.6,1.3333) {average of the fractional parts, $\tfrac4{21}$};
- \draw[thick] (0,2.3333) -- (6.6,2.3333);
- \node[right,font=\scriptsize] at (6.6,2.3333) {average with $\tfrac17$ added, $\tfrac13$};
- \node[font=\scriptsize] at (7.2,-0.55) {$\dots$};
- \node[font=\small,anchor=west] at (0,-1.9) {fractional part of $\tfrac{2^k-1}7$ for each $k$ (dark), with $\tfrac17$ added (light)};
-\end{tikzpicture}
-\caption{The exponent $3$ leaves $\tfrac17,\tfrac37,0$ and repeats (dark bars).
-With $\tfrac17$ added (light caps) they are $\tfrac27,\tfrac47,\tfrac17$, which
-average exactly $\tfrac13$ (solid line), so the fractional parts average
-$\tfrac13-\tfrac17=\tfrac4{21}$ (dashed line). Only the averages are compared:
-the bar $\tfrac37$ is above $\tfrac13$.}
-\label{fig:bars}
-\end{figure}
+Nor can finitely many columns complete infinitely many rows: if $n>MQ$,
+the last sample has not even reached the first positive multiple of $n$.
 
-\paragraph{Steps of $Q$.} With $k$ going up in steps of $Q$, an exponent can
-skip some remainders. Take the exponent $6$ with $Q=4$: the values $k=4,8,12$
-leave remainders $4,2,0$ when divided by $6$, then repeat, so the fractional parts
-are $\tfrac{15}{63},\tfrac3{63},0$, averaging $\tfrac2{21}$, which is less than
-$\tfrac16$. The skipped remainders do not spoil the bound, for a reason:
-the remainders visited are exactly $0,2,4$, the multiples of $2$, the highest
-common factor of $6$ and $4$, each once per cycle. With $\tfrac1{63}$ added,
-the fractional parts are $\tfrac{16}{63},\tfrac4{63},\tfrac1{63}$, which add up to
-$\tfrac{21}{63}=\tfrac13$; so they average $\tfrac19$, and the fractional parts
-average $\tfrac19-\tfrac1{63}=\tfrac2{21}$. In general, over a full cycle of $k=Q,2Q,3Q,\dots$,
-exponent $n$ averages less than $\tfrac1n$ (Lemma~\ref{lem:cycle}).
+We need another estimate, valid for \emph{every} positive $M$:
+\begin{equation}\label{eq:uniform-main}
+ \frac1M\sum_{m=1}^{M}\lft_n(mQ)\le\frac{2Q}{n}.
+\end{equation}
+For fixed $Q$, this bound holds for every $M$, so choosing the number of
+columns later cannot invalidate it. We prove it using the same cycles.
 
-\paragraph{Unfinished cycles.} Over part of a cycle the average can be
-bigger than $\tfrac1n$. The exponent $9$ with $Q=4$ leaves $\tfrac{15}{511},\tfrac{255}{511},\tfrac7{511},\tfrac{127}{511}$
-at the first four values of $k$, which average $\tfrac{101}{511}$, more than
-$\tfrac19$; the full cycle of nine values averages $\tfrac19-\tfrac1{511}$,
-below $\tfrac19$. With infinitely many exponents, a fixed number $M$ of values
-of $k$ always leaves some exponents unfinished: a chosen exponent $n$ bigger
-than $MQ$ never even reaches remainder $0$. For those exponents we use a
-weaker bound that holds however few values of $k$ we take:
+\paragraph{First bound all the consecutive entries.}
+The $M$ sampled exponents $Q,2Q,\dots,MQ$ lie among the first $MQ$
+positive integers. We first bound the sum over all $MQ$ entries.
+For $n\ge2$, consecutive entries beginning at $k=1$ repeat the block
 \[
- \text{the average fractional part for the exponent $n$ over }k=Q,2Q,\dots,MQ
- \text{ is at most }\frac{Q+2}n .
+ \underbrace{\frac1{2^n-1},\frac3{2^n-1},\dots,
+ \frac{2^{n-1}-1}{2^n-1}}_{n-1\text{ positive entries, increasing}},\quad 0.
 \]
-The idea: a fractional part for the exponent $n$ is large only when $k$ is just below a
-multiple of $n$. If $s$ is the distance from $k$ up to the next multiple of
-$n$, the fractional part is less than $\tfrac1{2^s}+\tfrac1{2^{s+n}}+\tfrac1{2^{s+2n}}+\dots$.
-As $k$ runs through $Q,2Q,\dots,MQ$, each distance $s$ comes up at most
-$\tfrac{MQ+s}n$ times, and adding up gives at most $\tfrac{MQ+2}n$ in total
-(Lemma~\ref{lem:crude}). The bound grows with $Q$ but not with $M$, so taking
-more values of $k$ never spoils it.
+\begin{samepage}
+For $n=2$, the positive list consists only of $1/3$.
+The positive entries sum to less than $1$, as the complete-cycle calculation
+showed. Their average is therefore less than $1/(n-1)$.
+Any beginning portion of this \emph{positive} list has no larger average:
+each omitted entry is at least every included entry, so appending the
+omitted entries cannot lower the average. Thus a nonempty beginning portion
+has average at most $2/n$, since $1/(n-1)\le2/n$ for $n\ge2$.
+We excluded the final zero for this comparison; the whole block including
+zero already has the stronger bound $1/n$.\par
+\end{samepage}
 
-\section{The proof of Theorem~\ref{thm:main}}\label{sec:proof}
+The first $MQ$ entries consist of complete blocks followed, possibly,
+by a beginning portion of the positive list. For example, the first seven
+entries when $n=5$ have numerators $(1,3,7,15,0)$ followed by $(1,3)$,
+all over $31$. Each piece has sum at most its number of entries times $2/n$.
+The pieces contain $MQ$ entries altogether, so their total is at most $2MQ/n$.
+For $n=1$, all entries are zero and the bound still holds.
 
-Suppose the sum $S$ were $p/q$. We find values of $k$ whose values $R(k)$
-average less than $\tfrac1q$. Picture a table with a row for each chosen
-exponent and a column for each $k=Q,2Q,\dots,MQ$; each entry is the
-fractional part for that exponent at that $k$, and each column adds up to $R(k)$. We call
-this table the \emph{grid}, and $R(k)$ its bottom row. The
-average of the column totals equals the sum of the row averages, since both
-add up the same entries (Appendix~\ref{app:proof} checks this for infinitely
-many rows). Split the rows at two cutoffs $t\le T$, chosen below, into three
-groups:
+\paragraph{Keep only the sampled entries.}
+Removing nonnegative entries cannot increase the sum. Hence
+\[
+ \sum_{m=1}^{M}\lft_n(mQ)
+ \le\sum_{k=1}^{MQ}\lft_n(k)\le\frac{2MQ}{n}.
+\]
+Divide by the number $M$ of actual candidates to obtain
+\eqref{eq:uniform-main}. This explains the factor $Q$: we bounded $M$
+sampled entries by including all $MQ$ consecutive entries.
+We have not changed our candidates or assumed that their sampled values
+are increasing.
+
+\section{Combining the estimates}\label{sec:proof}
+
+Suppose $S=p/q$. Every column total $R(k)$ is then at least $1/q$.
+We will contradict this by making a finite average of column totals
+less than $1/q$.
+
+\subsection{The construction with actual numbers}\label{app:numbers}
+
+Use the doubling exponents again, this time to see the general method
+at work. We already have a shorter proof for them. Assume the proposed
+denominator is $q=5$. It is enough to make the average of the column totals
+less than $1/5$; allow less than $1/10$ from each of the two nonzero groups.
+
+Beyond a doubling exponent $2^h$, the reciprocal tail is
+$1/2^{h+1}+1/2^{h+2}+\dots=1/2^h$.
+\begin{enumerate}
+\item \emph{Decide which early rows to make zero.}
+ Set the first cutoff at exponent $t=16$. The reciprocal sum of all later
+ rows is $1/16<1/10$, so any middle group will have enough room in its bound.
+ The earlier cutoff $8$ would give $1/8>1/10$.
+\item \emph{Preserve those zeros in every attempt.}
+ Choose $Q=16$, divisible by $2,4,8,16$. Every candidate $k=16m$ therefore
+ gives zero in these four rows.
+\item \emph{Make the infinite far group small despite the factor $2Q$.}
+ Applying $2Q/n$ to every row beyond $t=16$ would bound the sum of their
+ averages by $32/16=2$. Increasing a doubling cutoff $t$ together with $Q=t$ still
+ gives $2Q/t=2$. This shows a limitation of the estimate, not a lower
+ bound on $R(k)$. Instead keep $Q=16$ and put the second cutoff at
+ $T=512$. The remaining rows have exponents $1024,2048,\dots$.
+ Adding the bounds $32/n$ on their averages gives
+ \[
+  32\left(\frac1{1024}+\frac1{2048}+\dots\right)
+  =\frac{32}{512}<\frac1{10}.
+ \]
+ A cutoff of $256$ would leave $32/256=1/8$, above the reserved $1/10$.
+\item \emph{Complete all cycles between the cutoffs.}
+ The middle exponents $32,64,128,256,512$ have cycle lengths
+ $2,4,8,16,32$. Choose $M=64$, a common multiple of these lengths.
+ Every middle row completes its cycles, and the far bound is still valid
+ because it holds for every $M$.
+\end{enumerate}
+Here $t$ and $T$ are cutoffs on \emph{exponent values}, not counts of terms.
+The last candidate is $MQ=1024$, whereas the second cutoff is $T=512$:
+the number of columns and the division into groups of rows have different jobs.
+$M=32$ would also work; choosing $64$ shows that we may use more columns
+without changing either cutoff.
+
+The initial rows contribute zero. The middle row averages together are
+less than
+\[
+ \frac1{32}+\frac1{64}+\frac1{128}+\frac1{256}+\frac1{512}
+ =\frac{31}{512}.
+\]
+The far row averages add up to at most $2Q/T=32/512$. Hence
+\[
+ \frac1{64}\sum_{m=1}^{64}R(16m)
+ <\frac{31}{512}+\frac{32}{512}=\frac{63}{512}<\frac15.
+\]
+At least one of the 64 complete attempts has $0<R(k)<1/5$, contradicting
+$S=p/5$. We have proved that a candidate works without identifying which
+one. That existence is enough for the contradiction.
+
+The first cutoff determines which rows $Q$ must keep zero; the second is
+chosen after $Q$ is fixed, to compensate for the factor $2Q$.
+Only then do we choose how many columns to use.
+(For a change of $Q$, see Question~\ref{chk:order}.)
+
+\begin{samepage}
+\subsection{The same choices for any admissible set}\label{sec:allchoices}
+
+Let $A$ satisfy the theorem's hypotheses, and suppose $S_A=p/q$, where
+$q$ is a positive integer. Since only finitely many positive integers lie
+below any fixed bound, the infinite set $A$ has arbitrarily large elements.
+Moving a cutoff farther out can only decrease a reciprocal tail. We may
+therefore choose cutoffs $t,T\in A$, with $T>t$: the initial group then
+contains $t$, and the middle group contains $T$.
+Make the choices in this order:
+\[
+ t\ \longrightarrow\ Q\ \longrightarrow\ T\ \longrightarrow\ M.
+\]
+\begin{enumerate}
+\item Choose $t\in A$ so that
+ $\sum_{n\in A,\,n>t}1/n<1/(2q)$.
+ This is possible because the reciprocal tails tend to zero.
+\item Choose a positive common multiple $Q$ of the selected exponents
+ $n\le t$. Their product works.
+ These exponents divide every candidate $mQ$, so their rows are zero.
+\item With $Q$ fixed, choose $T\in A$, with $T>t$, so that
+ $2Q\sum_{n\in A,\,n>T}1/n<1/(2q)$.
+ The tails again tend to zero, now with a fixed coefficient $2Q$.
+\item For the finitely many selected $t<n\le T$, choose $M$ to be a
+ positive common multiple of their cycle lengths $n/\gcd(n,Q)$.
+ Their product works.
+ The far-tail bound remains valid for this final choice of $M$.
+\end{enumerate}
+\end{samepage}
+Add the row averages over these same $M$ columns:
 \begin{center}
 \small
-\begin{tabular}{>{\raggedright\arraybackslash}p{2.2cm}|>{\raggedright\arraybackslash}p{5.2cm}|>{\raggedright\arraybackslash}p{4.4cm}}
+\begin{tabular}{l|p{4cm}|p{5.4cm}}
 \papertablehead
-exponents & what we do & contribution to the average\\
-early, $n\le t$ & choose $Q$ so that every one of them divides $Q$ & $0$\\
-middle, $t<n\le T$ & choose $M$ so that every one of them finishes whole cycles & less than $\sum_{n\in A,\,n>t}\tfrac1n$\\
-far, $n>T$ & use the bound $\tfrac{Q+2}n$ & at most $(Q+2)\sum_{n\in A,\,n>T}\tfrac1n$
+selected exponents & reason for the bound & total contribution\\
+$n\le t$ & each $n$ divides $Q$ & $0$\\
+$t<n\le T$ & complete cycles; row average below $1/n$
+ & below $\sum_{n\in A,\,n>t}1/n<1/(2q)$\\
+$n>T$ & bound $2Q/n$ for every $M$
+ & at most $2Q\sum_{n\in A,\,n>T}1/n<1/(2q)$
 \end{tabular}
 \end{center}
-The four numbers are chosen in this order, each with a job.
-\begin{enumerate}
-\item[$t$:] Since $\sum_{n\in A}1/n$ is finite, the part of it beyond a
- cutoff gets as small as we like as the cutoff grows. Choose $t$ so that the
- part beyond $t$ is less than $\tfrac1{2q}$.
-\item[$Q$:] Multiply together the chosen exponents up to $t$ (or take $Q=1$ if
- there are none). Every one of them divides $Q$, so they leave $0$ at every
- $k=Q,2Q,\dots$.
-\item[$T$:] Now that $Q$ is fixed, choose $T$, at least $t$, so that $Q+2$
- times the part beyond $T$ is less than $\tfrac1{2q}$. This is why $T$ comes
- after $Q$: the far bound contains $Q+2$.
-\item[$M$:] There are only finitely many middle exponents. Take $M$ to be the
- product of their cycle lengths (or $1$ if there are none), so that every
- middle row finishes whole cycles.
-\end{enumerate}
-Then the early rows contribute $0$, the middle rows less than $\tfrac1{2q}$,
-and the far rows less than $\tfrac1{2q}$. So
+By \eqref{eq:average-main}, the average of the column totals is therefore
 \[
- \frac{R(Q)+R(2Q)+\dots+R(MQ)}M<\frac1{2q}+\frac1{2q}=\frac1q ,
+ \frac1M\sum_{m=1}^{M}R(mQ)<0+\frac1{2q}+\frac1{2q}=\frac1q.
 \]
-and at least one of these values $R(k)$ is less than $\tfrac1q$. But every
-$R(k)$ is positive, so if $S$ were $p/q$, every one would be at least
-$\tfrac1q$ (Section~\ref{sec:split}). Both cannot hold. The same argument
-works whatever bottom $q$ we start from, so $S$ is not a fraction. That proves
-Theorem~\ref{thm:main}.
+At least one total is below $1/q$, contradicting the rationality lower bound
+for every column. This proves Theorem~\ref{thm:main}.
 
-Each assumption did one job. $A$ being infinite made every $R(k)$
-positive. Supposing $S=p/q$ made every $R(k)$ at least $\tfrac1q$. And
-$\sum_{n\in A}1/n$ being finite made the parts beyond $t$ and beyond $T$
-small. Appendix~\ref{app:numbers} runs the four choices with actual numbers:
-for the doubling exponents and $q=5$ they are $t=16$, $Q=1024$, $T=16384$ and
-$M=1024$.
+Infinitude supplied positivity; rationality supplied the fixed gap;
+reciprocal convergence supplied both small tails. The order of choices
+ensured that all bounds apply to the same finite collection of complete
+attempts.
 
-\section{What the proof shows, and what it does not}\label{sec:limits}
+\begin{samepage}
+\section{Consequences and limits}\label{sec:limits}
 
-\paragraph{Every exponent.} If every exponent is chosen, then for any $k$ the
-exponents beyond $k$ are all fractional part, and
+For every integer $b\ge2$, the same method proves
 \[
- R(k)>\frac{2^k-1}{2^{k+1}}+\frac{2^k-1}{2^{k+2}}+\dots=\frac{2^k-1}{2^k}\ge\frac12 ,
+ A\text{ infinite},\quad\sum_{n\in A}\frac1n<\infty
+ \quad\Longrightarrow\quad
+ \sum_{n\in A}\frac1{b^n-1}\text{ is irrational}.
 \]
-since replacing each bottom $2^n-1$ by the bigger $2^n$ makes each fraction
-smaller, and the halving list on the right adds up to twice its first number.
-So $R(k)$ never gets below $\tfrac12$ (for instance
-$R(7)\approx2.05$), and this proof cannot reach this choice. Its sum is still
-irrational, by Erd\H{o}s's 1948 argument \cite{erdos1948}. A proof for every
-infinite set of exponents will need more than small values of $R(k)$.
+Replace the multiplier by $b^k-1$. The fractional parts are
+$(b^{k\bmod n}-1)/(b^n-1)$, and their cycle averages are still below $1/n$.
+Appendix~\ref{app:bases} checks both estimates.
+\end{samepage}
 
-\paragraph{Other bases.} The same proof works with any whole number $b\ge2$ in
-place of $2$, giving the sums of $1/(b^n-1)$, for example
-$\tfrac18+\tfrac1{80}+\tfrac1{6560}+\dots$ for $b=3$ and exponents
-$2,4,8,\dots$ (Appendix~\ref{app:bases}).
+The theorem covers arbitrary selections from the square-exponent series
+$1+\tfrac1{15}+\tfrac1{511}+\dots$.
+If infinitely many remain, their sum is irrational: deleting terms cannot
+increase the reciprocal-exponent sum
+$\sum_{m\ge1}1/m^2<\infty$, so Theorem~\ref{thm:main} still applies.
+If only finitely many remain, their sum is rational.
+Thus a selection from this series has rational sum exactly when it is finite;
+no pattern in the retained exponents is required.
+Replacing $2$ by any integer $b\ge2$ gives the same conclusion for the
+same retained exponents.
 
-\paragraph{What is open.} Theorem~\ref{thm:main} answers Erd\H{o}s's question
-for every choice with $\sum_{n\in A}1/n$ finite. The short paper
-\cite{shortpaper} proves irrationality under weaker conditions, which include
-some choices where $\sum_{n\in A}1/n$ is infinite, and the long record
-\cite{longrecord} keeps every route tried on the full problem, including those
-that failed and why. For an arbitrary infinite choice the question is open.
+The reciprocal-sum condition is sufficient, not necessary. These particular
+remainders $R(k)$ need not become arbitrarily small for every infinite $A$.
+When every positive exponent is selected, the terms with $n>k$ alone give
+\[
+ R(k)\ge\sum_{n>k}\frac{2^k-1}{2^n-1}
+ >\sum_{n>k}\frac{2^k-1}{2^n}
+ =1-2^{-k}\ge\frac12.
+\]
+Thus these remainders can never be arbitrarily small. Nevertheless,
+Erd\H{o}s proved that the full sum is irrational in 1948 \cite{erdos1948}.
+Failure of our method does not imply rationality.
+Tao and Ter\"av\"ainen proved irrationality for the prime exponents
+\cite[Theorem~1.3]{taoteravainen2025}, another case with divergent reciprocal
+sum. The short paper \cite{shortpaper} gives further sufficient conditions;
+the long record \cite{longrecord} develops the proofs and the obstructions
+to extending them. The question for every infinite set $A$ remains open.
 
-\paragraph{The computer-checked proof.} Lean is a programming language in which
-a computer checks every step of a proof. The theorem for every base $b\ge2$ is
-the Lean theorem \texttt{irrational\_erdosSupportSeries\_of\_summable\_reciprocal}
-(\href{https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395}{source at a fixed commit}).
-Its proof takes about two thousand lines in its own file and the file it
-builds on, and reading it takes fluency in Lean. A separate tool, Comparator,
-checked that the proof proves exactly a separately written copy of the
-statement, using only Lean's three standard axioms (replay run 35935225572).
-Neither check says that the Lean statement means the sentence of
-Theorem~\ref{thm:main}; Appendix~\ref{app:lean} reads it line by line so the
-reader can compare. The argument of Sections~\ref{sec:test}
-to~\ref{sec:proof} is this paper's rewriting, checked by hand.
+Appendix~\ref{app:lean} identifies the Lean-checked theorem and explains how
+its proof differs from the finite-average proof given here.
 
 \appendix
 
-\section{The proof in full}\label{app:full}
+\section{Supporting details and formal-proof correspondence}\label{app:full}
 
-This appendix proves every step of Sections~\ref{sec:test}
-to~\ref{sec:proof}, the facts about infinite sums used in
-Sections~\ref{sec:intro} and~\ref{sec:problem}, and the other bases of
-Section~\ref{sec:limits}. Whole numbers are $0,1,2,3,\dots$, and positive integers
-are $1,2,3,\dots$.
+This appendix supplies convergence and limit details, the divisibility
+argument for sampled cycles, the other-base estimates, and an optional
+account of formal verification.
 
-\subsection{Adding infinitely many numbers}\label{app:sums}
+\subsection{Convergence and tails}\label{app:sums}
 
-\paragraph{Adding up to a number.} Infinitely many positive numbers \emph{add
-up to} a number $L$ when their running totals never pass $L$ and get as close
-to $L$ as we like: however small a positive number we name, from some point
-on every running total is within that distance of $L$. For
-$\tfrac12+\tfrac14+\tfrac18+\dots$ the running total after $N$ numbers is
-$1-\tfrac1{2^N}$ (Section~\ref{sec:intro}), and $\tfrac1{2^N}$ gets below any
-positive number we name, since $2^N$ doubles at each step and so passes every
-number. The sum is \emph{finite} when it adds up to some number, and
-\emph{infinite} when its running totals pass every number.
+For nonnegative terms $a_n$, the partial sums
+$\sum_{n=1}^{N}a_n$ increase. If they are bounded above, let $L$ be their
+least upper bound: the smallest real number at least every partial sum.
+For every $\varepsilon>0$, some partial sum exceeds $L-\varepsilon$;
+otherwise $L-\varepsilon$ would be a smaller upper bound. Every later
+partial sum then lies in $(L-\varepsilon,L]$, so the series converges to $L$. Its tail after $N$ equals
+$L-\sum_{n=1}^{N}a_n$ and tends to zero. This is the property used twice
+when choosing the cutoffs in Section~\ref{sec:proof}.
 
-\paragraph{Halving lists.} Putting $1$ in front of
-$\tfrac12+\tfrac14+\dots=1$ gives $1+\tfrac12+\tfrac14+\dots=2$, and
-multiplying every number by the same amount multiplies every running total,
-and so the sum, by that amount. So a list in which each number is half the one
-before adds up to twice its first number: for example
-$\tfrac14+\tfrac18+\tfrac1{16}+\dots=\tfrac12$.
+Comparison follows by comparing partial sums. In particular,
+$0\le a_n\le b_n$ and $\sum b_n<\infty$ imply
+$\sum a_n\le\sum b_n<\infty$. If one term is strictly smaller, the sums
+differ by at least that positive difference. Restricting a nonnegative
+series to a subset of its indices can only decrease its sum.
 
-\paragraph{Running totals that only go up and stay below a fixed number add up
-to a number.} Suppose the running totals only go up and never pass some fixed
-number. Then they add up to
-a number, and the decimals show why. Here are the running totals for every
-exponent:
-\begin{center}
-\small
-\begin{tabular}{c|c||c|c}
-\papertablehead
-fractions added & running total & fractions added & running total\\
-$1$ & $1.0000\dots$ & $6$ & $1.5909\dots$\\
-$2$ & $1.3333\dots$ & $7$ & $1.5988\dots$\\
-$3$ & $1.4761\dots$ & $8$ & $1.6027\dots$\\
-$4$ & $1.5428\dots$ & $9$ & $1.6047\dots$\\
-$5$ & $1.5751\dots$ & $10$ & $1.6057\dots$
-\end{tabular}
-\end{center}
-The whole-number part can only go up, and it stays below the fixed number, so
-it changes only finitely often and then stays fixed; here it is $1$ from the
-start. After that, the first digit after the point can only go up, and it
-cannot pass $9$, so it also changes at most nine times and then stays fixed;
-here it reads $0,3,4,5,5,5,5,6,6,6$. The same holds for the second digit, the
-third, and every later one. The digits they settle on make one number, here
-$1.6066951\dots$; the running totals never pass it, and once the first $d$
-digits have settled they are within $\tfrac1{10^d}$ of it. So they add up to
-that number.
-
-\paragraph{Comparison.} If each number in one list is at most the matching
-number in a second list, then each running total of the first is at most the
-matching running total of the second. So if the second sum is finite, the
-first is finite and no bigger; if moreover one number of the first list is
-strictly smaller than its partner, the first sum is strictly smaller, by at
-least the difference of those two numbers. Leaving numbers out of a list of
-positive numbers only lowers its running totals.
-
-\paragraph{The part after a cutoff.} For a finite sum, the numbers after a
-cutoff add up to the whole sum minus the running total at the cutoff: for
-$\tfrac12+\tfrac14+\dots=1$ cut after $\tfrac1{16}$, the rest is
-$\tfrac1{32}+\tfrac1{64}+\dots=\tfrac1{16}=1-\tfrac{15}{16}$. Since the running
-totals get as close to the sum as we like, the part after the cutoff gets as
-small as we like. For a set of exponents $A$ and a cutoff $t$, the \emph{part
-of $\sum_{n\in A}1/n$ beyond $t$} means $\sum_{n\in A,\,n>t}1/n$, the sum of
-$1/n$ over the chosen exponents bigger than $t$; for the doubling exponents
-and $t=4$ it is $\tfrac18+\tfrac1{16}+\dots=\tfrac14$.
-
-\paragraph{Every choice of exponents gives a definite number.} Compare our
-fractions with the halving list $1,\tfrac12,\tfrac14,\tfrac18,\dots$: exponent
-by exponent, $1\le1$, $\tfrac13\le\tfrac12$, $\tfrac17\le\tfrac14$,
-$\tfrac1{15}\le\tfrac18$, and in general $\tfrac1{2^n-1}\le\tfrac1{2^{n-1}}$,
-because $2^n-1=2^{n-1}+(2^{n-1}-1)$ is at least $2^{n-1}$. The halving list adds
-up to $2$, so for every set of exponents $A$ the running totals of
-$\sum_{n\in A}1/(2^n-1)$ only go up and never pass $2$. So this sum is a
-definite number $S_A$, at most $2$.
-
-\subsection{The fraction test}\label{app:test}
-
-\begin{lemma}[the fraction test]\label{lem:grid}
-Let $x=p/q$, where $p$ and $q$ are whole numbers and $q\ge1$. If $m$ and $j$
-are whole numbers and $mx-j$ is positive, then $mx-j\ge\tfrac1q$.
-\end{lemma}
-
-\begin{proof}
-$mx-j=\tfrac{mp-jq}q$. The top is a whole number minus a whole number, and it
-is positive because $mx-j$ is. So it is a positive whole number, at least $1$,
-and $mx-j\ge\tfrac1q$.
-\end{proof}
-
-So to prove that a number $x$ is irrational it is enough to find, for every
-positive integer $q$, whole numbers $m$ and $j$ (which may depend on $q$) with
-$0<mx-j<\tfrac1q$: if $x$ were $p/q$, the lemma would give $mx-j\ge\tfrac1q$
-for that $q$. The value $0$ must be excluded: $5\times\tfrac25-2=0$ is below
-every $\tfrac1q$.
-
-\subsection{Whole parts, fractional parts and \texorpdfstring{$R(k)$}{R(k)}}\label{app:split}
-
-Dividing a whole number $a$ by a positive integer $b$ gives $a=sb+r$ with
-whole numbers $s$ and $r$ and $0\le r<b$, so $\tfrac ab=s+\tfrac rb$. The
-\emph{whole part} of $\tfrac ab$ is $s$ and its \emph{fractional part} is
-$\tfrac rb$, which is at least $0$ and less than $1$. Only one such pair
-exists: if $sb+r=s'b+r'$ with $r$ and $r'$ both between $0$ and $b-1$, then
-$r-r'=(s'-s)b$ is a multiple of $b$ strictly between $-b$ and $b$, so it is
-$0$. We write $k\rmod n$ for the remainder when $k$ is divided by $n$, so
-$8\rmod3=2$. Adding a whole number $w$ to $\tfrac ab$ adds $w$ to the whole part
-and leaves the fractional part unchanged.
-
-Fix a set of exponents $A$ with sum $S=S_A$. For each chosen exponent $n$ and
-each positive integer $k$, write $\lft_n(k)$ for the fractional part of
-$\tfrac{2^k-1}{2^n-1}$, and define
+For $0<x<1$, multiplication and subtraction of the finite geometric sum
+give
 \[
- R(k)=\sum_{n\in A}\lft_n(k).
+ (1-x)(1+x+\dots+x^{N-1})=1-x^N.
 \]
-It adds the separate fractional parts, so it can be bigger than $1$. For the three
-exponents $2,3,6$ and $k=5$, the multiplier is $31$, and
-$\tfrac{31}3=10+\tfrac13$, $\tfrac{31}7=4+\tfrac37$,
-$\tfrac{31}{63}=0+\tfrac{31}{63}$, so the fractional parts add up to
-\[
- \frac13+\frac37+\frac{31}{63}=\frac{21+27+31}{63}=\frac{79}{63}=1+\frac{16}{63},
-\]
-while the whole product $31\times\bigl(\tfrac13+\tfrac17+\tfrac1{63}\bigr)=31\times\tfrac{31}{63}=\tfrac{961}{63}=15+\tfrac{16}{63}$
-has fractional part $\tfrac{16}{63}$. The proof always uses the sum of the separate
-fractional parts.
+Letting $N\to\infty$ yields $\sum_{j=0}^{\infty}x^j=1/(1-x)$.
+At $x=1/2$, this gives $\sum_{j=1}^{\infty}2^{-j}=1$ and, by scaling,
+$\sum_{j=h}^{\infty}2^{-j}=2^{1-h}$.
+Consequently $1/(2^n-1)\le2^{1-n}$ proves convergence of $S_A$ for every
+set $A$, irrespective of whether $\sum_{n\in A}1/n$ converges.
 
-\begin{lemma}\label{lem:split}
-For every positive integer $k$, the number $(2^k-1)S-R(k)$ is a whole number
-$J(k)$. If $A$ is infinite, then $R(k)>0$.
-\end{lemma}
+\subsection{Passing to the full transformed sum}\label{app:split}
 
-\begin{proof}
-An exponent $n>k$ has $2^n-1>2^k-1$, so its multiplied fraction is less than
-$1$ and has whole part $0$. So only the finitely many chosen exponents up to
-$k$ can have whole parts other than $0$, and the whole parts add up to a whole
-number $J(k)$. Each fractional part
-is at least $0$ and at most the multiplied fraction it comes from, and the
-multiplied fractions add up to $(2^k-1)S$, so by comparison $R(k)$ is a definite
-number. For the chosen exponents up to some $L\ge k$, splitting each of these
-finitely many multiplied fractions gives
+Fix $k$. Each $\lft_n(k)$ is nonnegative and at most
+$(2^k-1)/(2^n-1)$, so $R(k)$ converges by comparison with $(2^k-1)S$.
+Only selected exponents $n\le k$ have nonzero integer parts. For any
+integer $L\ge k$, splitting the finitely many terms up to $L$ gives
 \[
  (2^k-1)\sum_{\substack{n\in A\\n\le L}}\frac1{2^n-1}
  =J(k)+\sum_{\substack{n\in A\\n\le L}}\lft_n(k).
 \]
-As $L$ grows, $J(k)$ does not change, and the two sums get as close as we like
-to $S$ and to $R(k)$. Hence $(2^k-1)S=J(k)+R(k)$. If $A$ is infinite, it has a
-chosen exponent $n>k$, because only $k$ positive integers are at most $k$; that
-fraction's fractional part is all of $\tfrac{2^k-1}{2^n-1}$, which is positive, and
-no fractional part is negative. So $R(k)>0$.
-\end{proof}
+As $L$ grows, $J(k)$ stays fixed and the two convergent partial sums tend
+to $S$ and $R(k)$. This proves \eqref{eq:split-main}.
 
-\begin{corollary}\label{cor:atleast}
-Let $A$ be infinite. If $S=p/q$ with whole numbers $p$ and $q\ge1$, then
-$R(k)\ge\tfrac1q$ for every positive integer $k$.
-\end{corollary}
+\subsection{Why the sampled remainders form a cycle}\label{app:cycle}
 
-\begin{proof}
-$R(k)=(2^k-1)S-J(k)$ is positive, so the fraction test with $m=2^k-1$ and
-$j=J(k)$ gives $R(k)\ge\tfrac1q$.
-\end{proof}
-
-Being infinite gives $R(k)>0$ for each $k$ separately, through a chosen
-exponent beyond $k$; it gives no single positive number that all the $R(k)$
-stay above (for the doubling exponents they get as small as we like). The
-bound $\tfrac1q$ comes only from supposing $S=p/q$.
-
-\begin{lemma}\label{lem:fracpart}
-Let $k$ and $n$ be positive integers and $r=k\rmod n$. The fractional part of
-$\tfrac{2^k-1}{2^n-1}$ is
+The elementary cancellation fact is: if positive integers $c,u$ are
+coprime and $c$ divides $du$, then $c$ divides $d$.
+The example in Section~\ref{sec:cycles} used $c=3,u=2$.
+For general coprime $c,u$, the same argument uses integers $a,b$ with
+$au+bc=1$. Here is why they exist. Among the positive values
+$au+bc$, allowing $a,b$ to be any integers, choose the smallest, $v$;
+there is at least one since $u=1\cdot u+0\cdot c$ is such a combination.
+Write $v=au+bc$ for coefficients attaining this minimum. Division gives
+$u=sv+r$ with $0\le r<v$, so
 \[
- \lft_n(k)=\frac{2^r-1}{2^n-1}.
+ r=u-sv=(1-sa)u-sbc.
 \]
-It is $0$ exactly when $n$ divides $k$, and it repeats every $n$ steps of $k$.
-\end{lemma}
+Thus $r$ is another integer combination of $u,c$. If it were positive,
+it would contradict the choice of $v$ as the smallest positive combination.
+Hence $r=0$, so $v$ divides $u$. The same reasoning with $c$ shows that
+$v$ divides $c$ too. Since $u,c$ are coprime, $v=1$.
+Now $d=a(du)+b(dc)$ proves cancellation.
 
-\begin{proof}
-For every whole number $j$, $2^{j+n}-1=2^j(2^n-1)+(2^j-1)$, so
-$\tfrac{2^{j+n}-1}{2^n-1}=2^j+\tfrac{2^j-1}{2^n-1}$: adding $n$ to the exponent
-adds the whole number $2^j$ and leaves the fractional part unchanged. Write $k=sn+r$.
-Applying this $s$ times, the fractional part at $k$ equals the fractional part at $r$. Since
-$0\le r<n$, the fraction $\tfrac{2^r-1}{2^n-1}$ is at least $0$ and less than
-$1$, so it is its own fractional part. It is $0$ exactly when $2^r=1$, that is, when
-$r=0$, which says that $n$ divides $k$.
-\end{proof}
-
-\subsection{The doubling exponents}\label{app:doubling}
-
-\begin{theorem}\label{thm:doubling}
-The sum $\tfrac13+\tfrac1{15}+\tfrac1{255}+\tfrac1{65535}+\dots$ of the
-fractions in exponents $2,4,8,16,\dots$ is irrational.
-\end{theorem}
-
-\begin{proof}
-Let $k$ be one of the exponents $2,4,8,\dots$. Every chosen exponent up to $k$
-divides $k$, so its fractional part is $0$ (Lemma~\ref{lem:fracpart}). Every later
-chosen exponent $n$ is bigger than $k$, so its fractional part is the whole
-multiplied fraction, and since $2^n-1\ge2^{n-1}$,
+Return to $g=\gcd(n,Q)$, $c=n/g$ and $u=Q/g$. The integers $c,u$ are
+coprime: a larger common divisor would give a common divisor of $n,Q$
+larger than $g$. Write $x\mid y$ to mean that $x$ divides $y$.
+Two sampled exponents $m_1Q$ and $m_2Q$ have equal remainders exactly when
+their difference is divisible by $n$, that is,
 \[
- 0<\frac{2^k-1}{2^n-1}<\frac{2^k}{2^{n-1}}=\frac2{2^{n-k}} .
+ n\mid(m_2-m_1)Q
+ \quad\Longleftrightarrow\quad
+ c\mid(m_2-m_1)u
+ \quad\Longleftrightarrow\quad
+ c\mid m_2-m_1.
 \]
-The gaps $n-k$ are different whole numbers, the smallest being $2k-k=k$.
-Allowing every gap $e\ge k$ only adds positive numbers, so by comparison
-\[
- 0<R(k)<\sum_{e=k}^{\infty}\frac2{2^e}=\frac4{2^k}.
-\]
-If the sum were $p/q$, Corollary~\ref{cor:atleast} would give
-$R(k)\ge\tfrac1q$ for every $k$. But the chosen exponents $k$ grow without
-end, so some $k$ has $2^k>4q$, and then $R(k)<\tfrac1q$. This is a
-contradiction.
-\end{proof}
+Thus the first $c$ sampled remainders are distinct and repeat after $c$
+steps. Every remainder is divisible by $g$, since both $mQ$ and $n$ are.
+There are exactly $c$ possibilities $0,g,\dots,n-g$, so each occurs once.
+This supplies the remainder rule used in Section~\ref{sec:cycles}.
 
-For example $R(8)=\tfrac1{257}+\tfrac1{16843009}+\dots\approx0.0039$, below the
-bound $\tfrac1{64}$, and $R(16)\approx0.000015$, below $\tfrac1{16384}$.
+\subsection{Adding the row averages}\label{app:proof}
 
-\subsection{Averages over a full cycle}\label{app:cycle}
-
-\begin{lemma}[average over a cycle]\label{lem:cycle}
-Let $n$ and $Q$ be positive integers, let $g$ be their highest common factor
-(the biggest whole number dividing both), and let $c=n/g$. As $m$ runs through
-$1,2,\dots,c$, the remainders $mQ\rmod n$ are the numbers $0,g,2g,\dots,n-g$,
-each exactly once, in some order, and after that they repeat with period $c$.
-So for every positive multiple $M$ of $c$,
-\[
- \frac1M\sum_{m=1}^{M}\lft_n(mQ)=\frac{g}{n(2^g-1)}-\frac1{2^n-1}<\frac1n .
-\]
-\end{lemma}
-
-\begin{proof}
-\emph{Period $c$.} Two values $m_1<m_2$ give the same remainder exactly when
-$n$ divides $(m_2-m_1)Q$. Since $cQ=n\times\tfrac Qg$ and $\tfrac Qg$ is a
-whole number, $n$ divides $cQ$, so moving $c$ steps on never changes the
-remainder.
-
-\emph{No shorter period.} Let $d$ be the smallest positive integer for which
-$n$ divides $dQ$; so $d\le c$. Divide $c$ by $d$: $c=sd+r$ with $0\le r<d$.
-Both $cQ$ and $sdQ$ are multiples of $n$, so $rQ$ is too, and since $r<d$, the
-choice of $d$ gives $r=0$. So $d$ divides $c$, and hence $d$ divides $n=cg$.
-Now $dQ=nf$ for a whole number $f$, so $Q=\tfrac nd\,f$: the whole number
-$\tfrac nd$ divides both $n$ and $Q$, and therefore $\tfrac nd\le g$, that is,
-$d\ge c$. So $d=c$.
-
-\emph{Which remainders occur.} If two of $m=1,\dots,c$ gave the same
-remainder, $n$ would divide $(m_2-m_1)Q$ with $0<m_2-m_1<c=d$, which is
-impossible. So the first $c$ values give $c$ different remainders, each a
-multiple of $g$ (because $g$ divides $mQ$ and $n$). There are exactly $c$
-multiples of $g$ from $0$ to $n-g$, so each occurs once.
-
-\emph{The average.} By Lemma~\ref{lem:fracpart} the fractional parts over one cycle
-are $\tfrac{2^{ig}-1}{2^n-1}$ for $i=0,1,\dots,c-1$. Add $\tfrac1{2^n-1}$ to
-each. With $G=1+2^g+2^{2g}+\dots+2^{(c-1)g}$, we have
-$2^gG-G=2^{cg}-1=2^n-1$, so these add up to
-\[
- \frac G{2^n-1}=\frac1{2^g-1}.
-\]
-Divide by the $c=\tfrac ng$ values and take away the amount added to each: the
-average is $\tfrac g{n(2^g-1)}-\tfrac1{2^n-1}$. A whole number of cycles has
-the same average. Finally $2^g-1=1+2+\dots+2^{g-1}\ge g$, so
-$\tfrac g{n(2^g-1)}\le\tfrac1n$, and taking away the positive amount
-$\tfrac1{2^n-1}$ leaves less than $\tfrac1n$.
-\end{proof}
-
-For $n=6$ and $Q=4$: $g=2$, $c=3$, and the average is
-$\tfrac2{6\times3}-\tfrac1{63}=\tfrac19-\tfrac1{63}=\tfrac2{21}$, as in
-Section~\ref{sec:general}. For $n=3$ and $Q=1$ it is
-$\tfrac13-\tfrac17=\tfrac4{21}$.
-
-\subsection{The bound for unfinished cycles}\label{app:crude}
-
-\begin{lemma}\label{lem:crude}
-For all positive integers $n$, $Q$ and $M$,
-\[
- \frac1M\sum_{m=1}^{M}\lft_n(mQ)\le\frac{Q+2}{n} .
-\]
-\end{lemma}
-
-\begin{proof}
-\emph{One fractional part.} Fix $N\ge1$ and let $r=N\rmod n$. The distances $s\ge1$
-from $N$ up to the later multiples of $n$ are $n-r,\,2n-r,\,3n-r,\dots$. Call
-$X=\tfrac1{2^{n-r}}+\tfrac1{2^{2n-r}}+\tfrac1{2^{3n-r}}+\dots$, which is finite
-by comparison with a halving list. Multiplying $X$ by $2^n$ gives $2^r+X$, so
-$(2^n-1)X=2^r$ and $X=\tfrac{2^r}{2^n-1}$. Hence
-\[
- \lft_n(N)=\frac{2^r-1}{2^n-1}<\frac{2^r}{2^n-1}
- =\frac1{2^{n-r}}+\frac1{2^{2n-r}}+\frac1{2^{3n-r}}+\dots
- =\sum_{\substack{s\ge1\\n\text{ divides }N+s}}\frac1{2^s} .
-\]
-For example $\lft_6(4)=\tfrac{15}{63}<\tfrac{16}{63}=\tfrac1{2^2}+\tfrac1{2^8}+\tfrac1{2^{14}}+\dots$,
-the distances from $4$ to $6,12,18,\dots$ being $2,8,14,\dots$.
-
-\emph{Cut off at $H$.} Fix a positive integer $H$. The terms with $s>H$ add up
-to at most $\sum_{s>H}2^{-s}=2^{-H}$, so for each $m=1,\dots,M$,
-\[
- \lft_n(mQ)<\sum_{\substack{1\le s\le H\\n\text{ divides }mQ+s}}\frac1{2^s}+\frac1{2^H}.
-\]
-
-\emph{Count by distance.} Add these $M$ inequalities. The right side now has
-finitely many terms, so we may collect them by distance. For each $s$, let
-$C_s$ be the number of $m$ for which $n$ divides $mQ+s$. The numbers
-$Q+s,2Q+s,\dots,MQ+s$ are different and none is bigger than $MQ+s$, and there
-are at most $\tfrac{MQ+s}n$ multiples of $n$ from $1$ to $MQ+s$; so
-$C_s\le\tfrac{MQ+s}n$. Hence
-\[
- \sum_{m=1}^{M}\lft_n(mQ)<\frac{MQ}n\sum_{s=1}^{H}\frac1{2^s}+\frac1n\sum_{s=1}^{H}\frac s{2^s}+\frac M{2^H}.
-\]
-The first sum is $1-\tfrac1{2^H}<1$. For the second, $U_H=\sum_{s=1}^{H}\tfrac s{2^s}$,
-take away half of it from itself: the terms pair off as
-$\tfrac s{2^s}-\tfrac{s-1}{2^s}=\tfrac1{2^s}$, so
-$U_H-\tfrac{U_H}2=1-\tfrac1{2^H}-\tfrac H{2^{H+1}}$ and
-$U_H=2-\tfrac{H+2}{2^H}<2$. So
-$\sum_{m=1}^{M}\lft_n(mQ)<\tfrac{MQ+2}n+\tfrac M{2^H}$.
-
-\emph{Let $H$ grow.} The left side does not depend on $H$, and
-$\tfrac M{2^H}$ gets below any positive number we name, so the left side is at
-most $\tfrac{MQ+2}n$. Dividing by $M\ge1$ gives at most
-$\tfrac{Q+2/M}n\le\tfrac{Q+2}n$.
-\end{proof}
-
-For $n=6$, $Q=4$ and $M=2$, the actual average is
-$\tfrac{15+3}{2\times63}=\tfrac17$ and the bound is $\tfrac{4+2}6=1$: weak, but
-once $Q$ is fixed it is the same multiple of $\tfrac1n$ for every $M$.
-
-\subsection{The proof of Theorem~\ref{thm:main}}\label{app:proof}
-
-Let $A$ be infinite with $\sum_{n\in A}1/n$ finite, and suppose $S=p/q$ with
-whole numbers $p$ and $q\ge1$. By Corollary~\ref{cor:atleast},
-\begin{equation}\label{eq:atleast}
- R(k)\ge\frac1q\qquad\text{for every positive integer }k .
-\end{equation}
-
-\emph{The four choices.} By the part after a cutoff (Appendix~\ref{app:sums}),
-choose $t$ with $\sum_{n\in A,\,n>t}\tfrac1n<\tfrac1{2q}$. Let $Q$ be the
-product of the chosen exponents up to $t$, or $1$ if there are none; each of
-them divides every $mQ$, so leaves $0$ there (Lemma~\ref{lem:fracpart}). With
-$Q$ fixed, choose $T\ge t$ with $(Q+2)\sum_{n\in A,\,n>T}\tfrac1n<\tfrac1{2q}$.
-Let $M$ be the product of the cycle lengths $\tfrac n{g}$ (with $g$ the highest
-common factor of $n$ and $Q$) of the finitely many chosen exponents with
-$t<n\le T$, or $1$ if there are none.
-
-\emph{Adding by rows.} We need
-\[
- \frac1M\sum_{m=1}^{M}R(mQ)=\sum_{n\in A}\frac1M\sum_{m=1}^{M}\lft_n(mQ).
-\]
-Keep only the rows $n\le H$; then both sides add the same finitely many
-entries and agree. Every entry in a row $n$ is at most
-$\tfrac{2^{MQ}-1}{2^n-1}\le(2^{MQ}-1)\tfrac2{2^n}$, so the rows $n>H$ add at
-most $E_H=(2^{MQ}-1)\tfrac2{2^H}$ to each side. With $Q$ and $M$ fixed, $E_H$
-gets below any positive number we name as $H$ grows, so the two sides are
-equal.
-
-\emph{The three groups.} Rows $n\le t$ contribute $0$. Each middle row
-$t<n\le T$ finishes whole cycles, so by Lemma~\ref{lem:cycle} its average is
-less than $\tfrac1n$, and together they contribute at most
-$\sum_{n\in A,\,t<n\le T}\tfrac1n\le\sum_{n\in A,\,n>t}\tfrac1n<\tfrac1{2q}$
-(``at most'' because the middle group may be empty). By
-Lemma~\ref{lem:crude}, the far rows contribute at most
-$(Q+2)\sum_{n\in A,\,n>T}\tfrac1n<\tfrac1{2q}$. So the average of
-$R(Q),\dots,R(MQ)$ is less than $\tfrac1q$, and at least one of them is less
-than $\tfrac1q$, contradicting~\eqref{eq:atleast}. Since $q$ was arbitrary,
-$S$ is irrational.\qed
-
-\subsection{The four choices with actual numbers}\label{app:numbers}
-
-Take the doubling exponents and $q=5$, so the middle and far groups each get
-$\tfrac1{2q}=\tfrac1{10}$. Beyond a doubling exponent $2^h$, the part of
-$\sum_{n\in A}1/n$ is $\tfrac1{2^{h+1}}+\tfrac1{2^{h+2}}+\dots=\tfrac1{2^h}$.
-\begin{itemize}
-\item $t=16$: the part beyond it is $\tfrac1{16}<\tfrac1{10}$ ($t=8$ fails,
- since $\tfrac18>\tfrac1{10}$).
-\item $Q=2\times4\times8\times16=1024$.
-\item $T=16384$: $\tfrac{Q+2}{16384}=\tfrac{1026}{16384}<\tfrac1{10}$, since
- $10260<16384$ ($T=8192$ fails, since $10260>8192$).
-\item The middle exponents are $32,64,\dots,16384$, with cycle lengths
- $1,1,1,1,1,1,2,4,8,16$ (each is $n$ divided by the smaller of $n$ and
- $1024$), so $M=2\times4\times8\times16=1024$.
-\end{itemize}
-The middle rows contribute less than
-$\tfrac1{32}+\tfrac1{64}+\dots+\tfrac1{16384}=\tfrac{1023}{16384}$ and the far
-rows at most $\tfrac{1026}{16384}$, so the average of $R(1024m)$ over
-$m=1,\dots,1024$ is less than $\tfrac{2049}{16384}$, which is less than
-$\tfrac15$ because $5\times2049=10245<16384$. So some $R(k)$ is below
-$\tfrac15$, which rules out $S=p/5$ (in fact every bottom up to $7$, since
-$7\times2049=14343<16384$). The largest $k$ used is $1024\times1024=1048576$;
-the multiplier $2^{1048576}-1$ is never written out, because every step uses
-only the bounds.
+For finitely many rows $n\le H$, adding the row averages equals averaging
+the column totals: both operations add the same entries and divide by $M$.
+Keep $Q$ and $M$ fixed. Given any positive target $\varepsilon$, each of
+the $M$ convergent column sums $R(mQ)$ has tail less than $\varepsilon$
+beyond some row cutoff. Take the largest of these finitely many cutoffs.
+All column tails, and therefore their average, are less than $\varepsilon$
+beyond it. Consequently the finite sums of row averages tend to the
+average of the full column totals. This proves \eqref{eq:average-main};
+no interchange of two infinite sums is needed.
 
 \subsection{Other bases}\label{app:bases}
 
-Replace $2$ by a whole number $b\ge2$. For $b=3$ the list is
-$\tfrac12,\tfrac18,\tfrac1{26},\tfrac1{80},\dots$, and exponents $2,4,8,\dots$
-give $\tfrac18+\tfrac1{80}+\tfrac1{6560}+\dots$. Each step above carries over:
-$b^n-1\ge2^{n-1}$, so the comparisons hold; the same calculation as in
-Lemma~\ref{lem:fracpart} gives the fractional part $\tfrac{b^r-1}{b^n-1}$ with
-$r=k\rmod n$; Lemma~\ref{lem:cycle} gives the average
-$\tfrac g{n(b^g-1)}-\tfrac1{b^n-1}<\tfrac1n$, since $b^g-1\ge g$; and in
-Lemma~\ref{lem:crude}, with $\tfrac1b$ in place of $\tfrac12$, the first sum is
-at most $\tfrac1{b-1}\le1$ and the second at most $\tfrac b{(b-1)^2}=\tfrac1{b-1}+\tfrac1{(b-1)^2}\le2$,
-so the bound $\tfrac{Q+2}n$ still holds. So for every $b\ge2$,
-$\sum_{n\in A}1/(b^n-1)$ is irrational whenever $A$ is infinite and
-$\sum_{n\in A}1/n$ is finite \cite[Theorem~A.1]{shortpaper}.
+Let $b\ge2$ be an integer. For $b=3$, exponents $2,4,8,\dots$ give
+$1/8+1/80+1/6560+\dots$. Convergence and the fractional-part formula carry
+over because $b^n-1\ge2^{n-1}$ and
+$b^{k+n}-1=b^k(b^n-1)+(b^k-1)$.
 
-\subsection{The Lean statement}\label{app:lean}
+For a consecutive cycle, the sum of the fractional parts is
+\[
+ \frac{(b^0-1)+\dots+(b^{n-1}-1)}{b^n-1}
+ <\frac{b^0+b^1+\dots+b^{n-1}}{b^n-1}
+ =\frac1{b-1}\le1.
+\]
+Here we used $1+b+\dots+b^{n-1}=(b^n-1)/(b-1)$ and $b\ge2$.
+The fractional parts still increase with the remainder, so the equal-group
+comparison bounds a complete sampled-cycle average by the consecutive-cycle
+average, which is below $1/n$.
+
+For $n\ge2$ the $n-1$ positive entries are still increasing and have total
+less than $1$. The beginning-portion argument in
+Section~\ref{sec:unfinished} therefore gives the same $2/n$ bound for
+consecutive entries starting at $k=1$. Keeping only the sampled entries
+then gives the bound $2Q/n$ for any sampled length $M$. For $n=1$ the
+fractional parts are all zero: $(b^k-1)/(b-1)$ is an integer.
+Both estimates required for the three groups remain valid. With the same
+choices of $t,Q,T,M$, the proof establishes irrationality of
+$\sum_{n\in A}1/(b^n-1)$ whenever $A$ is infinite and
+$\sum_{n\in A}1/n<\infty$ \cite[Theorem~A.1]{shortpaper}.
+
+\subsection{Formal verification and its scope}\label{app:lean}
 
 \begin{center}
 \begin{minipage}{0.9\linewidth}
@@ -1006,82 +943,130 @@ theorem irrational\_erdosSupportSeries\_of\_summable\_reciprocal\\
 \hspace*{2em}Irrational (erdosSupportSeries b A)
 \end{minipage}
 \end{center}
-Line by line: $b$ is a whole number and \texttt{hb} assumes $b\ge2$; $A$ is a
-set of whole numbers and \texttt{hA} assumes it is infinite;
-\texttt{reciprocalSupportTerm A} is the list whose entry at $n$ is $1/n$ when
+Line by line: $b$ is a nonnegative integer and \texttt{hb} assumes $b\ge2$; $A$ is a
+set of nonnegative integers and \texttt{hA} assumes it is infinite;
+\texttt{reciprocalSupportTerm A} is a sequence indexed by $n=0,1,\dots$, with entry $1/n$ when
 $n$ is in $A$ and $0$ otherwise, and \texttt{hsum} assumes its sum is finite;
 the conclusion says that \texttt{erdosSupportSeries b A}, the sum of
-$1/(b^n-1)$ over $A$, is irrational. Lean's whole numbers start at $0$, and in
+$1/(b^n-1)$ over $A$, is irrational. Lean's nonnegative integers start at $0$, and in
 Lean dividing by $0$ gives $0$, so the exponent $0$ counts as $0$ in both sums;
 removing it changes neither sum and leaves an infinite set infinite. So for
 $b=2$ the statement says the same as Theorem~\ref{thm:main}. It is the formal
 version of \cite[Theorem~A.1]{shortpaper}.
 
-The Lean kernel, a small program, has checked every step of the proof.
-Comparator checked that the proof proves exactly a separately written formal
-statement, one of eight theorems restated in the challenge
-\texttt{E257\_47}, using only the axioms \texttt{propext},
-\texttt{Quot.sound} and \texttt{Classical.choice}. The replay run 35935225572
-passed, and its
-\href{https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/evidence/comparator/replay-35935225572/receipt-E257_47.json}{Comparator receipt}
+The \href{https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/Erdos249257/AllBaseReciprocalSupportIrrationality.lean#L395}{Lean source at a fixed commit}
+contains this statement and its proof. The Lean kernel, a small program,
+has checked every step of that proof.
+Comparator checked that the proof establishes a separately written formal
+statement. Its \href{https://github.com/wcook04/plectis-erdos/blob/0064fc9b2a2693de97aebc8abec26090c3cd1095/evidence/comparator/replay-35935225572/receipt-E257_47.json}{verification receipt}
 records acceptance by Lean's kernel and by a second, independent kernel
 checker. At base $2$ the Lean proof follows \cite[Appendix~A]{shortpaper},
 which takes limits of averages; it reaches the other bases by comparing each
 base-$b$ fractional part with twice the base-$2$ one, a different route from
-Appendix~\ref{app:bases}. The finite average of Appendix~\ref{app:proof} is
-this paper's rewriting, checked by hand.
+Appendix~\ref{app:bases}.
 
+With exponent $0$ omitted as above, the shifted quantity used in Lean is
+\[
+ \sum_{n\in A}\frac{2^{k\bmod n}}{2^n-1}=S_A+R(k).
+\]
+Its value at $k=0$ is $S_A$. A value strictly between $S_A$ and
+$S_A+\varepsilon$ therefore means exactly $0<R(k)<\varepsilon$, the target of our
+proof. Subtracting $S_A$, we can describe the two limits in terms of our
+fractional parts.
+
+First fix $Q$ and let the averaging length tend to infinity.
+Each row's average tends to its cycle mean: complete cycles have that mean,
+and the unfinished last cycle has bounded length, so its weight in the
+average tends to zero. Throughout this limit the row averages are bounded
+by $2(Q+1)/n$.
+
+To pass from the row limits to the whole sum, choose a row cutoff so far
+out that the sum of these bounds beyond it is small. This is possible
+because $Q$ is fixed and $\sum_{n\in A}1/n$ converges.
+The same bound holds for each row's limit, so it controls both the tails
+before taking the limit and the tail of the limiting row averages.
+Only finitely many earlier rows remain, and their limits can be taken one
+at a time. Combining that finite part with the two small tails justifies
+passing the limit through the sum.
+
+Next consider $Q=\operatorname{lcm}(1,\dots,t)$. For every $n\le t$, the
+limiting row average is zero, because $n$ divides $Q$. All remaining
+limiting row averages are bounded by $1/n$, independently of $t$.
+Their total is therefore at most $\sum_{n\in A,\,n>t}1/n$, which tends to
+zero. This is the second use of small reciprocal tails.
+The averaging length tends to infinity with $Q$ fixed before $t$ varies.
+To obtain one witness, the proof chooses a suitable $Q$ first and a
+sufficiently long average second.
+
+Our cutoffs $t,T$ and number $M$ of candidate columns make those choices explicit,
+using the separately proved estimate $2Q/n$. Under the rationality assumption, both arguments make the integer
+$qR(k)$ strictly between $0$ and $1$.
+The finite reconstruction and its estimates are ordinary proofs
+provided here; the historical Lean and Comparator receipts establish the
+linked formal theorem and its own proof.
+
+\clearpage
+\begin{samepage}
 \section{Questions and exercises}\label{sec:exercises}
 
 \begin{readercheck}\label{chk:hypotheses}
 Which of $\{2,4\}$, $\{2,4,8,16,\dots\}$ and $\{2,4,6,8,\dots\}$ does
 Theorem~\ref{thm:main} apply to?
 \end{readercheck}
+\end{samepage}
 
 \begin{readercheck}\label{chk:positive}
-If $A$ is infinite and $k$ cancels every chosen exponent up to $k$, why is
-$R(k)$ still not $0$?
+Suppose $S=p/q$. Why would $0<R(k)<1/q$ be impossible, even if $k$
+was chosen using $q$? Why do we need $R(k)>0$, and where does infinitude
+of $A$ supply it?
+\end{readercheck}
+
+\begin{readercheck}\label{chk:columns}
+In the square-exponent table, what stays fixed and what changes when we
+move from $k=4$ to $k=8$? Why can we not choose the smallest entry in each
+row and regard their sum as one successful attempt?
 \end{readercheck}
 
 \begin{readercheck}\label{chk:partial}
-For the exponent $6$ and $Q=4$ the full cycle averages $\tfrac2{21}<\tfrac16$. Is
-the first value alone also below $\tfrac16$?
+Why is the mean over a complete consecutive cycle below $1/n$? Why
+does the same bound hold for a complete sampled cycle, which may have fewer
+than $n$ entries? For $n=6$ and $Q=4$, the full cycle averages
+$\tfrac2{21}<\tfrac16$. Is the first value alone also below $\tfrac16$?
 \end{readercheck}
 
 \begin{readercheck}\label{chk:order}
-In Appendix~\ref{app:numbers}, replace $Q=1024$ by $Q'=4096$ and keep
-$T=16384$. Does the far bound still give less than $\tfrac1{10}$? What must
+In Section~\ref{app:numbers}, replace $Q=16$ by $Q'=64$ and keep
+$T=512$. Does the far bound still give less than $\tfrac1{10}$? What must
 be chosen again?
 \end{readercheck}
 
-\begin{exercise}\label{ex:1}
-Write $\tfrac13+\tfrac17+\tfrac1{63}$ as a single fraction in lowest terms.
-\end{exercise}
-
 \begin{exercise}\label{ex:2}
-List the fractional parts of $\tfrac{2^k-1}{15}$ for $k=1,\dots,8$, and check that
-their average over one cycle is $\tfrac14-\tfrac1{15}$.
+For $n=5$ and $Q=1$, calculate the mean of the first seven entries.
+Separate them into a complete cycle and a beginning portion of the next.
+Why is the mean of all seven not simply half the sum of the two piece-means?
 \end{exercise}
 
 \begin{exercise}\label{ex:3}
-Use Lemma~\ref{lem:fracpart} to show that $2^{12}-1$ is divisible by $7$ and
+Use the fractional-part formula~\eqref{eq:fracpart-main} to show that $2^{12}-1$ is divisible by $7$ and
 by $63$, and find its remainder on division by $2^5-1=31$.
 \end{exercise}
 
 \begin{exercise}\label{ex:4}
-Adapt the proof of Theorem~\ref{thm:doubling} to the exponents
+Adapt the proof in Section~\ref{sec:doubling} to the exponents
 $3,9,27,81,\dots$, using $k=3^j$.
 \end{exercise}
 
 \begin{exercise}\label{ex:5}
 Show that $5\sqrt2-7=(\sqrt2-1)^3$, and that multiplying a number
-$a\sqrt2-c$ by $3-2\sqrt2$ gives another number of that form. Use the test of
+$a\sqrt2-c$, where $a,c$ are nonnegative integers, by $3-2\sqrt2$ gives
+another number $a'\sqrt2-c'$, where $a',c'$ are nonnegative integers. Use the test of
 Section~\ref{sec:test} to show that $\sqrt2$ is irrational.
 \end{exercise}
 
 \begin{exercise}\label{ex:6}
 Let $a_1=2$ and let each later exponent be one more than the product of the
-earlier ones, giving $2,3,7,43,1807,\dots$, and write $P_j=a_1a_2\cdots a_j$.
+earlier ones, giving $2,3,7,43,1807,\dots$. Set $A=\{a_1,a_2,\dots\}$
+and write $P_j=a_1a_2\cdots a_j$.
 (a) Show that $\tfrac1{a_1}+\dots+\tfrac1{a_j}=1-\tfrac1{P_j}$. (b) Show that
 with $k=P_j$ the first $j$ exponents leave $0$ but the exponent $P_j+1$ leaves at
 least $\tfrac37$, so $R(P_j)\ge\tfrac37$ for every $j$.
@@ -1093,33 +1078,47 @@ least $\tfrac37$, so $R(P_j)\ge\tfrac37$ for every $j$.
 \setlength{\parindent}{0pt}
 
 \emph{Question~\ref{chk:hypotheses}.} Only $\{2,4,8,16,\dots\}$: $\{2,4\}$ is
-finite (its sum $\tfrac25$ is a fraction), and for $\{2,4,6,\dots\}$ the sum
+finite (its sum $\tfrac25$ is rational), and for $\{2,4,6,\dots\}$ the sum
 $\tfrac12+\tfrac14+\tfrac16+\dots$ is half of $1+\tfrac12+\tfrac13+\dots$,
-which is infinite.
+which diverges.
 
-\emph{Question~\ref{chk:positive}.} $A$ is infinite, so some chosen exponent $n$
-is bigger than $k$; that fraction times $2^k-1$ is positive and less than $1$,
-so all of it is fractional part.
+\emph{Question~\ref{chk:positive}.} The identity
+$R(k)=((2^k-1)p-qJ(k))/q$ has an integer numerator. If positive, that
+numerator is at least $1$, so $R(k)\ge1/q$. Choosing $k$ using $q$ does not
+change this argument: $2^k-1$ and $J(k)$ remain integers. Zero would give no
+contradiction. Infinitude supplies a selected $n>k$, whose multiplied term
+is positive and less than $1$; all of it contributes to $R(k)$, and the
+other contributions are nonnegative.
 
-\emph{Question~\ref{chk:partial}.} No: the first value leaves
-$\tfrac{15}{63}=\tfrac5{21}=\tfrac{10}{42}$, more than $\tfrac16=\tfrac7{42}$.
-The full-cycle bound says nothing about part of a cycle, which is why
-Lemma~\ref{lem:crude} is needed.
+\emph{Question~\ref{chk:columns}.} The exponents $A$ and the original sum
+$S$ stay fixed. The multiplier changes from $15$ to $255$, and every
+selected term is transformed using that same multiplier within its column.
+Separate row minima may come from different columns and need not describe
+any one multiplier applied to $S$.
+
+\emph{Question~\ref{chk:partial}.} A consecutive cycle has total below $1$
+and $n$ entries, hence mean below $1/n$. A sampled cycle selects the smallest
+remainder from each equal-sized group. Since the fractional parts increase
+with the remainder, its mean is no larger, even when it has fewer entries.
+The first value
+alone, however, is $\tfrac{15}{63}=\tfrac5{21}=\tfrac{10}{42}$, more than
+$\tfrac16=\tfrac7{42}$. The complete-cycle bound need not hold for a
+beginning portion; the separate bound~\eqref{eq:uniform-main} covers these too.
 
 \emph{Question~\ref{chk:order}.} No:
-$\tfrac{4098}{16384}=\tfrac{2049}{8192}$ is more than $\tfrac1{10}$, since
-$20490>8192$. $T$ must be chosen again, for instance $T'=65536$, where
-$\tfrac{4098}{65536}=\tfrac{2049}{32768}<\tfrac1{10}$, and then $M$ again. This
-is why $Q$ is fixed before $T$.
+$2Q'/T=128/512=1/4>1/10$. Choose $T$ again: $T'=1024$ still fails,
+but $T'=2048$ works, since $128/2048=1/16<1/10$.
+The middle exponents $32,64,\dots,2048$ now have cycle lengths
+$1,1,2,4,8,16,32$, so $M=64$ still works. Its validity had to be
+rechecked, even though its value did not change. This is why $Q$ is fixed
+before $T$.
 
-\emph{Exercise~\ref{ex:1}.} $\tfrac{21}{63}+\tfrac9{63}+\tfrac1{63}=\tfrac{31}{63}$,
-already in lowest terms, since $31$ is prime and does not divide $63$.
-
-\emph{Exercise~\ref{ex:2}.} The remainders of $k=1,\dots,8$ divided by $4$ are
-$1,2,3,0,1,2,3,0$, so the fractional parts are
-$\tfrac1{15},\tfrac3{15},\tfrac7{15},0,\tfrac1{15},\tfrac3{15},\tfrac7{15},0$.
-One cycle adds up to $\tfrac{11}{15}$, so the average is
-$\tfrac{11}{60}=\tfrac14-\tfrac1{15}$.
+\emph{Exercise~\ref{ex:2}.} The first five entries sum to $26/31$;
+the next two sum to $4/31$. All seven therefore average $30/217$.
+The two piece-means, $26/155$ and $2/31$, must be weighted by their lengths:
+$\bigl(5\cdot\tfrac{26}{155}+2\cdot\tfrac2{31}\bigr)/7=30/217$.
+Giving the two pieces equal weight would give each entry in the shorter
+piece more weight than each entry in the longer one.
 
 \emph{Exercise~\ref{ex:3}.} $3$ and $6$ divide $12$, so $7$ and $63$ divide
 $2^{12}-1=4095$. The remainder of $12$ divided by $5$ is $2$, so the remainder
@@ -1133,30 +1132,42 @@ which is below $\tfrac1q$ for large $j$.
 
 \emph{Exercise~\ref{ex:5}.} $(\sqrt2-1)^2=3-2\sqrt2$ and
 $(\sqrt2-1)(3-2\sqrt2)=5\sqrt2-7$. Also
-$(a\sqrt2-c)(3-2\sqrt2)=(3a+2c)\sqrt2-(4a+3c)$. So every odd power
-$(\sqrt2-1)^{2i+1}$ is $m\sqrt2-j$ for whole numbers $m$ and $j$, and it is
-positive. Since $2.8^2=7.84<8$, we have $3-2\sqrt2<\tfrac15$, and
-$\sqrt2-1<\tfrac12$, so $(\sqrt2-1)^{2i+1}<\tfrac12\times\tfrac1{5^i}$, which is
-below $\tfrac1q$ once $5^i>q$. By the test, $\sqrt2$ is irrational.
+$(a\sqrt2-c)(3-2\sqrt2)=(3a+2c)\sqrt2-(4a+3c)$. Start with $\sqrt2-1=1\sqrt2-1$. The displayed recurrence preserves
+nonnegative integer values of $a$ and $c$, so every odd power
+$(\sqrt2-1)^{2i+1}$ is $m\sqrt2-j$ for nonnegative integers $m$ and $j$, and it is
+positive. Since $1^2<2<(3/2)^2$, we have $0<\sqrt2-1<\tfrac12$. Hence
+$0<(\sqrt2-1)^{2i+1}<\tfrac1{2\cdot4^i}$, which is below $\tfrac1q$ once
+$2\cdot4^i>q$. By the test, $\sqrt2$ is irrational.
 
+\begin{samepage}
 \emph{Exercise~\ref{ex:6}.} (a) With $P_0=1$, $a_j=P_{j-1}+1$ and
 $P_j=P_{j-1}a_j$, so
 $\tfrac1{P_{j-1}}-\tfrac1{P_j}=\tfrac{a_j-1}{P_j}=\tfrac1{a_j}$, and adding
-these for $1,\dots,j$ leaves $1-\tfrac1{P_j}$. (b) The first $j$ exponents
+these for $1,\dots,j$ leaves $1-\tfrac1{P_j}$. Since $P_j\ge2^j$,
+these partial sums tend to $1$. The set $A$ is infinite and satisfies
+the theorem's reciprocal-sum hypothesis. (b) The first $j$ exponents
 divide $P_j$. The exponent $P_j+1$ is bigger than $k=P_j$, so it leaves
 $\tfrac{2^{P_j}-1}{2^{P_j+1}-1}$, which is at least $\tfrac37$ because
-$7(2^{P_j}-1)-3(2^{P_j+1}-1)=2^{P_j}-4\ge0$. So cancelling longer and longer
-early batches still leaves $R(P_j)\ge\tfrac37$, which is why the proof
-averages.
+$7(2^{P_j}-1)-3(2^{P_j+1}-1)=2^{P_j}-4\ge0$. Thus the particular choices
+$k=P_j$ fail to make the remainders small. Other multiples of $P_j$ preserve
+the same initial zeros; averaging lets us search among those choices.\par
+\end{samepage}
 
 \endgroup
 
 \begin{thebibliography}{9}
+\setlength{\itemsep}{2pt}
+\setlength{\parsep}{0pt}
+\setlength{\parskip}{0pt}
 \bibitem{erdos1948} P.~Erd\H{o}s, \emph{On arithmetical properties of Lambert
  series}, J.~Indian Math.\ Soc.\ 12 (1948), 63--66.
 \bibitem{erdos1968} P.~Erd\H{o}s,
  \href{https://users.renyi.hu/~p_erdos/1969-09.pdf}{\emph{On the irrationality of
  certain series}}, Math.\ Student 36 (1968), 222--226 (issued 1969).
+\bibitem{erdos1988} P.~Erd\H{o}s,
+ \href{https://users.renyi.hu/~p_erdos/1988-22.pdf}{\emph{On the irrationality of
+ certain series: problems and results}}, in A.~Baker (ed.), \emph{New Advances
+ in Transcendence Theory}, Cambridge University Press, 1988, 102--109.
 \bibitem{erdosproblems257} T.~F.~Bloom, \emph{Erd\H{o}s Problem \#257},
  \url{https://www.erdosproblems.com/257}; the statement is quoted in the Formal
  Conjectures file \texttt{FormalConjectures/ErdosProblems/257.lean}.

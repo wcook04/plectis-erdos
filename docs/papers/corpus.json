@@ -5507,7 +5507,7 @@
     },
     {
       "paper_id": "erdos257-expository-sums-never-fractions",
-      "title": "Sums of 1/(2^n-1) that are never fractions",
+      "title": "Why certain sums of 1/(2^n-1) are irrational",
       "title_source": "manuscript",
       "question_this_paper_answers": "Why do the fractions 1/(2^n\u22121) over an infinite set of exponents n add up to an irrational number whenever 1/n, added up over the same exponents, is finite?",
       "subject": "Erd\u0151s #257",
@@ -5525,13 +5525,13 @@
       "preferred_citation": {
         "author": "Will Cook",
         "year": "2026",
-        "title": "Sums of 1/(2^n-1) that are never fractions",
+        "title": "Why certain sums of 1/(2^n-1) are irrational",
         "repository": "plectis-erdos",
         "canonical_source_commit": null,
         "canonical_source_url": null,
         "licence": "CC-BY-4.0",
         "identifier_kind": "unversioned_source",
-        "text": "Will Cook (2026). Sums of 1/(2^n-1) that are never fractions. plectis-erdos. CC-BY-4.0.",
+        "text": "Will Cook (2026). Why certain sums of 1/(2^n-1) are irrational. plectis-erdos. CC-BY-4.0.",
         "derived_from": [
           "docs/papers/corpus.json: title, copyright, home_repository, canonical_source_commit, canonical_source_url, licence"
         ]
@@ -5542,269 +5542,233 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-expository-sums-never-fractions.md",
       "local_source": "paper/257/erdos257-expository-sums-never-fractions.tex",
-      "source_sha256": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8",
+      "source_sha256": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 38,
+      "section_count": 32,
       "sections": [
         {
           "level": 1,
           "id": "erdos257-expository-sums-never-fractions",
-          "title": "Sums of 1/(2^n-1) that are never fractions",
+          "title": "Why certain sums of 1/(2^n-1) are irrational",
           "line": 1
         },
         {
           "level": 1,
           "id": "sec:intro",
-          "title": "What Erd\u0151s asked",
-          "line": 13
+          "title": "The question: which infinite sums are irrational?",
+          "line": 7
         },
         {
           "level": 1,
           "id": "sec:problem",
-          "title": "What this paper proves",
-          "line": 70
+          "title": "Erd\u0151s\u2019s question and the theorem",
+          "line": 75
         },
         {
           "level": 1,
           "id": "sec:test",
-          "title": "The test: a fraction cannot leave a tiny positive remainder",
-          "line": 100
-        },
-        {
-          "level": 1,
-          "id": "sec:doubling",
-          "title": "The doubling exponents: multiply by 2^k-1",
-          "line": 130
-        },
-        {
-          "level": 4,
-          "id": "why-this-works-for-every-bottom.",
-          "title": "Why this works for every bottom.",
-          "line": 151
+          "title": "A rational number has a fixed positive gap",
+          "line": 134
         },
         {
           "level": 1,
           "id": "sec:split",
-          "title": "Why 2^n-1 divides 2^k-1, and what is left when it does not",
-          "line": 169
+          "title": "Multiplying the series and retaining fractional parts",
+          "line": 168
         },
         {
           "level": 4,
-          "id": "the-sum-of-the-fractional-parts.",
-          "title": "The sum of the fractional parts.",
-          "line": 205
+          "id": "the-remainder-can-be-read-from-the-exponents.",
+          "title": "The remainder can be read from the exponents.",
+          "line": 188
+        },
+        {
+          "level": 4,
+          "id": "what-happens-to-the-entire-sum.",
+          "title": "What happens to the entire sum.",
+          "line": 213
+        },
+        {
+          "level": 1,
+          "id": "sec:doubling",
+          "title": "A complete example: the doubling exponents",
+          "line": 250
         },
         {
           "level": 1,
           "id": "sec:general",
-          "title": "Other choices: averaging",
-          "line": 217
+          "title": "Why averaging works",
+          "line": 273
         },
         {
           "level": 4,
-          "id": "why-cancelling-the-early-exponents-is-not-enough.",
-          "title": "Why cancelling the early exponents is not enough.",
-          "line": 221
+          "id": "larger-multipliers-need-not-help.",
+          "title": "Larger multipliers need not help.",
+          "line": 277
+        },
+        {
+          "level": 2,
+          "id": "one-table-many-attempts",
+          "title": "One table, many attempts",
+          "line": 288
         },
         {
           "level": 4,
-          "id": "one-exponent-over-a-full-cycle.",
-          "title": "One exponent over a full cycle.",
-          "line": 237
+          "id": "average-complete-attempts.",
+          "title": "Average complete attempts.",
+          "line": 312
         },
         {
           "level": 4,
-          "id": "steps-of-q.",
-          "title": "Steps of Q.",
-          "line": 254
+          "id": "what-the-two-estimates-will-do.",
+          "title": "What the two estimates will do.",
+          "line": 330
+        },
+        {
+          "level": 2,
+          "id": "sec:cycles",
+          "title": "Complete cycles give small averages",
+          "line": 336
         },
         {
           "level": 4,
-          "id": "unfinished-cycles.",
-          "title": "Unfinished cycles.",
-          "line": 260
+          "id": "keep-the-required-spacing.",
+          "title": "Keep the required spacing.",
+          "line": 359
+        },
+        {
+          "level": 4,
+          "id": "compare-means-without-calculating-a-new-formula.",
+          "title": "Compare means without calculating a new formula.",
+          "line": 392
+        },
+        {
+          "level": 2,
+          "id": "sec:unfinished",
+          "title": "A bound that also covers unfinished cycles",
+          "line": 416
+        },
+        {
+          "level": 4,
+          "id": "first-bound-all-the-consecutive-entries.",
+          "title": "First bound all the consecutive entries.",
+          "line": 440
+        },
+        {
+          "level": 4,
+          "id": "keep-only-the-sampled-entries.",
+          "title": "Keep only the sampled entries.",
+          "line": 454
         },
         {
           "level": 1,
           "id": "sec:proof",
-          "title": "The proof of Theorem\u00a01",
-          "line": 271
-        },
-        {
-          "level": 1,
-          "id": "sec:limits",
-          "title": "What the proof shows, and what it does not",
-          "line": 306
-        },
-        {
-          "level": 4,
-          "id": "every-exponent.",
-          "title": "Every exponent.",
-          "line": 310
-        },
-        {
-          "level": 4,
-          "id": "other-bases.",
-          "title": "Other bases.",
-          "line": 320
-        },
-        {
-          "level": 4,
-          "id": "what-is-open.",
-          "title": "What is open.",
-          "line": 326
-        },
-        {
-          "level": 4,
-          "id": "the-computer-checked-proof.",
-          "title": "The computer-checked proof.",
-          "line": 332
-        },
-        {
-          "level": 1,
-          "id": "app:full",
-          "title": "The proof in full",
-          "line": 338
-        },
-        {
-          "level": 2,
-          "id": "app:sums",
-          "title": "Adding infinitely many numbers",
-          "line": 344
-        },
-        {
-          "level": 4,
-          "id": "adding-up-to-a-number.",
-          "title": "Adding up to a number.",
-          "line": 348
-        },
-        {
-          "level": 4,
-          "id": "halving-lists.",
-          "title": "Halving lists.",
-          "line": 354
-        },
-        {
-          "level": 4,
-          "id": "running-totals-that-only-go-up-and-stay-below-a-fixed-number-add-up-to-a-number.",
-          "title": "Running totals that only go up and stay below a fixed number add up to a number.",
-          "line": 360
-        },
-        {
-          "level": 4,
-          "id": "comparison.",
-          "title": "Comparison.",
-          "line": 381
-        },
-        {
-          "level": 4,
-          "id": "the-part-after-a-cutoff.",
-          "title": "The part after a cutoff.",
-          "line": 387
-        },
-        {
-          "level": 4,
-          "id": "every-choice-of-exponents-gives-a-definite-number.",
-          "title": "Every choice of exponents gives a definite number.",
-          "line": 393
-        },
-        {
-          "level": 2,
-          "id": "app:test",
-          "title": "The fraction test",
-          "line": 399
-        },
-        {
-          "level": 2,
-          "id": "app:split",
-          "title": "Whole parts, fractional parts and R(k)",
-          "line": 417
-        },
-        {
-          "level": 2,
-          "id": "app:doubling",
-          "title": "The doubling exponents",
-          "line": 480
-        },
-        {
-          "level": 2,
-          "id": "app:cycle",
-          "title": "Averages over a full cycle",
-          "line": 506
-        },
-        {
-          "level": 2,
-          "id": "app:crude",
-          "title": "The bound for unfinished cycles",
-          "line": 537
-        },
-        {
-          "level": 2,
-          "id": "app:proof",
-          "title": "The proof of Theorem\u00a01",
-          "line": 577
+          "title": "Combining the estimates",
+          "line": 465
         },
         {
           "level": 2,
           "id": "app:numbers",
-          "title": "The four choices with actual numbers",
-          "line": 602
+          "title": "The construction with actual numbers",
+          "line": 471
+        },
+        {
+          "level": 2,
+          "id": "sec:allchoices",
+          "title": "The same choices for any admissible set",
+          "line": 508
+        },
+        {
+          "level": 1,
+          "id": "sec:limits",
+          "title": "Consequences and limits",
+          "line": 546
+        },
+        {
+          "level": 1,
+          "id": "app:full",
+          "title": "Supporting details and formal-proof correspondence",
+          "line": 570
+        },
+        {
+          "level": 2,
+          "id": "app:sums",
+          "title": "Convergence and tails",
+          "line": 576
+        },
+        {
+          "level": 2,
+          "id": "app:split",
+          "title": "Passing to the full transformed sum",
+          "line": 590
+        },
+        {
+          "level": 2,
+          "id": "app:cycle",
+          "title": "Why the sampled remainders form a cycle",
+          "line": 601
+        },
+        {
+          "level": 2,
+          "id": "app:proof",
+          "title": "Adding the row averages",
+          "line": 621
         },
         {
           "level": 2,
           "id": "app:bases",
           "title": "Other bases",
-          "line": 618
+          "line": 627
         },
         {
           "level": 2,
           "id": "app:lean",
-          "title": "The Lean statement",
-          "line": 624
+          "title": "Formal verification and its scope",
+          "line": 643
         },
         {
           "level": 1,
           "id": "sec:exercises",
           "title": "Questions and exercises",
-          "line": 645
+          "line": 678
         },
         {
           "level": 1,
           "id": "app:answers",
           "title": "Answers",
-          "line": 709
+          "line": 742
         }
       ],
-      "citations_rendered": 13,
+      "citations_rendered": 10,
       "local_pdf": "paper/257/erdos257-expository-sums-never-fractions.pdf",
-      "pdf_sha256": "sha256:3ca4a2c173c8495302addd93332dfa2af95bd9aa4748c65d2116b0b1633d0d01",
-      "pdf_byte_count": 160557,
+      "pdf_sha256": "sha256:5ba7e503be74eb70e221696882eb7e8b3d71543a716903b2dfe8de97db10698d",
+      "pdf_byte_count": 133914,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
         "sections": [
           {
             "id": "sec:intro",
-            "title": "What Erd\u0151s asked",
-            "line": 13
+            "title": "The question: which infinite sums are irrational?",
+            "line": 7
           },
           {
             "id": "sec:test",
-            "title": "The test: a fraction cannot leave a tiny positive remainder",
-            "line": 100
+            "title": "A rational number has a fixed positive gap",
+            "line": 134
           },
           {
             "id": "sec:doubling",
-            "title": "The doubling exponents: multiply by 2^k-1",
-            "line": 130
+            "title": "A complete example: the doubling exponents",
+            "line": 250
           },
           {
             "id": "sec:proof",
-            "title": "The proof of Theorem\u00a01",
-            "line": 271
+            "title": "Combining the estimates",
+            "line": 465
           }
         ],
         "unresolved_count": 0

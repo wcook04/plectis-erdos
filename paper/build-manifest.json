@@ -143,12 +143,13 @@
     },
     "erdos_257_expository": {
       "inputs": {
-        "paper/257/erdos257-expository-sums-never-fractions.tex": "sha256:45f417f56ce9e890f5f67416dbdc94f067c0cbf4a760d0de4c7516885b60ebe8",
+        "paper/257/erdos257-expository-sums-never-fractions.tex": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352",
+        "paper/257/figures/cycle-mean.tex": "sha256:6155b89fc5370c923a1b66e349ae7086bbb3e30c9d34bd3ca09a0583064893da",
         "paper/module-aliases.tex": "sha256:6d6d9640a9b7f04d003ebbffb78db279f5af838a2afc99ba6b5b247cc67b6954",
         "paper/paper-house-style.sty": "sha256:554ed85b5315bd936a4d09d58f8727547c5bb1b299f9684eb6ef720b329759a2",
         "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778"
       },
-      "rendered_content_digest": "sha256:3ca4a2c173c8495302addd93332dfa2af95bd9aa4748c65d2116b0b1633d0d01",
+      "rendered_content_digest": "sha256:5ba7e503be74eb70e221696882eb7e8b3d71543a716903b2dfe8de97db10698d",
       "source_path": "paper/257/erdos257-expository-sums-never-fractions.tex",
       "storage_path": "paper/257/erdos257-expository-sums-never-fractions.pdf"
     },
