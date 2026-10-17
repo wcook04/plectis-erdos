@@ -20,7 +20,7 @@
     "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md": "sha256:c070dd59a01cdeb04bf1c741c23f4bf145d211ba9881ccbaeeb399ba0db2659e",
     "docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md": "sha256:2a882392b695457f8cbb79166cc990b20c744d496f972de5b4978c6c1c275b67",
     "docs/papers/full-text/erdos68-factorial-reasoning-surface.md": "sha256:5c38f05383690f8a48b36ce8c5e2788870e8cf4149bdf2198c6b214f9c30ead6",
-    "docs/papers/paper_corpus_renderer.py": "sha256:a0115fbce04618453760f69e189b014cde0cdd9ed5da1c3d4a1a92fecf9ac8ee",
+    "docs/papers/paper_corpus_renderer.py": "sha256:0bd25eba944e333c6fe63756e3cc274bcc9561337f79079df7f4bcee4645028c",
     "evidence/paper_evidence.json": "sha256:8c7de6f8f5e082fa91698d0c8314620207603080c348a526aa31fa250042b423",
     "lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean": "sha256:c6174888a3c59acf20f827b01a42bbffce05112eb7c7a3f30350dc1af0fb8f19",
     "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean": "sha256:069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4",

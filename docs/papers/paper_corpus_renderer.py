@@ -16,16 +16,6 @@ from typing import Any
 from urllib.parse import quote, unquote, urlsplit
 
 CORPUS_DIR_REL = "docs/papers"
-NATIVE_REFRESH_COMMAND = "python3 docs/papers/refresh_paper_corpus.py --write"
-
-
-def normalise_native_refresh_metadata(corpus: dict[str, Any]) -> dict[str, Any]:
-    """Update only the generated clone-local command, preserving paper records."""
-    result = dict(corpus)
-    if "native_refresh_command" in result:
-        result["native_refresh_command"] = NATIVE_REFRESH_COMMAND
-    return result
-
 FULL_TEXT_DIR = "full-text"
 
 AUTHORITY_ORDER = (
@@ -2017,8 +2007,6 @@ def _readme(
         "PDFs and LaTeX source. Both public repositories include the active papers.",
         "Older, retired papers are kept only in the repository that published them.",
         "Some papers may be available in the repository before they appear on the website.",
-        "The website is agent-readable through its [navigation guide](https://wcook04.github.io/plectis/llms.txt)",
-        "and [maths map manifest](https://wcook04.github.io/plectis/lean/experience/manifest.json).",
         "",
         (
             f"This checkout contains {active_count} active "
@@ -2062,21 +2050,6 @@ def _readme(
             "also links to PDFs, LaTeX sources and individual sections.",
             "",
         ]
-    companion_systems = sorted(
-        (record for record in active_records
-         if record.get("subject_kind") == "system"
-         and record.get("relation_to_this_repository") == "mirror"),
-        key=lambda record: record["paper_id"],
-    )
-    if companion_systems:
-        lines += ["## Companion system papers", "",
-                  "These are companion copies; the named home repository owns each manuscript.", ""]
-        lines += [
-            f"- [{record['title']}]({_relative_to_corpus(record['local_full_text'])})"
-            + f" — companion copy from `{record.get('home_repository', 'the source repository')}`"
-            for record in companion_systems
-        ]
-        lines.append("")
     earlier_systems = [record for record in non_active_records
                        if record.get("subject_kind") == "system"
                        and record.get("publication_state") == "retired"
@@ -2087,14 +2060,6 @@ def _readme(
             "Their dates, superseding paper and source records distinguish them",
             "from the current account and instructions.",
             "",
-        ]
-    if target_repo == "plectis-erdos":
-        lines += [
-            "## Choose a reading route", "",
-            "Start with the [human paper catalogue](../../paper/README.md) or",
-            "[results and limits](../RESULTS.md) for the current mathematical conclusions.",
-            "This index owns searchable paper text and section links; it does not",
-            "confer claim status.", "",
         ]
     lines.extend(_signal_hierarchy_lines(records, target_repo, repo_root))
     if active_problem_subjects:
@@ -2109,15 +2074,16 @@ def _readme(
             "",
         ]
         if target_repo == "plectis-erdos":
-            portfolio_path = repo_root / "docs" / "RESULTS.md"
+            portfolio_path = repo_root / "docs" / "RELATED_PROBLEMS.md"
             if not portfolio_path.is_file():
                 raise FileNotFoundError(
                     "Lean paper portfolio route requires "
                     f"{portfolio_path.relative_to(repo_root)}"
                 )
             lines += [
-                "[Results and limits](../RESULTS.md) gives the current mathematical account. "
-                "`docs/problems.json` contains programme identifiers for coding agents.",
+                "The [problem summaries](../RELATED_PROBLEMS.md) introduce the "
+                "mathematics. `docs/problems.json` contains the corresponding "
+                "file paths and identifiers for programs and coding agents.",
                 "",
             ]
     for record in ordered_records:
@@ -2191,11 +2157,6 @@ def _readme(
         f"> {AUTHORITY_ORDER}.",
         "",
     ]
-    lines += [
-        "Each paper's evidence ceiling and publication state remain in",
-        "[the corpus record](corpus.json), including `not_authority_for` and",
-        "the source identity of every imported or archived edition.",
-    ]
     for record in records:
         lines.append(
             f"- `{record['paper_id']}` is not authority for {record['not_authority_for']}."
@@ -2221,7 +2182,7 @@ def _readme(
         "consult that source and report the conversion error.",
         "",
         "After editing a native manuscript, install Pandoc and run",
-        f"`{NATIVE_REFRESH_COMMAND}` from the repository root.",
+        "`python3 docs/papers/refresh_paper_corpus.py --write` from the repository root.",
         "This refreshes the text, section maps and this index. Rebuild changed PDFs",
         "and run the repository release checks separately. Companion copies retain",
         "their imported source identities; local edits do not publish a new revision.",
