@@ -29,7 +29,7 @@ or the [glossary](https://wcook04.github.io/plectis/docs/glossary.html).
 - **Reader feedback:** [paper revisions](docs/research-commons/CREDIT_LEDGER.md#credit-correspondence-004).
 - **Connections between problems:** [cross-problem paper](paper/synthesis/optimal-sparse-perturbations.pdf).
 - **Formal evidence:** [Lean source](docs/SOURCE_MAP.md) and [Comparator checks](docs/EXTERNAL_VERIFICATION.md).
-- **Working environment:** [introduction, mathematics, CodeMap and Agent Trace films](#videos).
+- **Working environment:** [mathematics and CodeMap films](#videos).
 
 This repository is the public research workspace. The [website](https://wcook04.github.io/plectis/)
 provides reading and map views. Its 88-component software map describes the
@@ -84,14 +84,9 @@ Return ideas through the [contribution guide](#contribute).
 
 ## Watch the videos
 
-- [Plectis: introduction](https://youtu.be/lkO7EARGv2Q): how the research, papers and tools connect.
-- [Erdős #257: the reciprocal-summability criterion](https://youtu.be/y8s3t_pwIGM): follow an argument through the map, paper and formal statement.
-- [CodeMap demonstration](https://youtu.be/r48SJdiGKKM): inspect source files, their purposes and dependencies.
-- [Agent Trace demonstration](https://youtu.be/FbMiKx4nwJk): inspect recorded agent work and carry selected context into another review.
-- [Combined film](https://youtu.be/di1k5zf5MnM): mathematics and software, 37 minutes.
-
-CodeMap and Agent Trace demonstrate private interfaces in the research
-environment. This repository publishes the mathematical research and its tools.
+- [Plectis introduction](https://www.youtube.com/watch?v=uO2lbstEH9M): the wider project and tools for understanding AI-produced work.
+- [Mathematics overview](https://www.youtube.com/watch?v=4jObDlHmJRA): papers, proofs and the mathematics map.
+- [Erdős #257 explanation](https://www.youtube.com/watch?v=Ok5LkL1owjA): Erdős's reciprocal-summability condition; the unrestricted problem remains open.
 
 <a id="about-the-project"></a>
 
@@ -243,21 +238,27 @@ order without asking you to decode Lean declaration names first.
 
 ## Formal Conjectures contributions
 
-As of **9 October 2026**, [five mathematical contributions](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#merged-mathematical-contributions)
-have merged into Formal Conjectures. The latest,
-[#6529](https://github.com/google-deepmind/formal-conjectures/pull/6529), adds
-Erdős's reciprocal-summable support variant for every integer base at least two;
+[Five mathematical contributions](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#merged-mathematical-contributions)
+have merged into Formal Conjectures. [#6529](https://github.com/google-deepmind/formal-conjectures/pull/6529)
+covers reciprocal-summable supports for integer bases at least two;
 arbitrary infinite supports remain open.
 
-[Bo Cowgill's review](https://github.com/google-deepmind/formal-conjectures/pull/6529#pullrequestreview-5435090546)
-checked source correspondence and independently replayed the original proof.
-The [contribution record](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#contribution-activity)
-separates accepted changes, pending requests, proof-link maintenance and authorship.
-[Trace the #1041 Lean proof](docs/case-studies/formal-conjectures-1041.md).
+[#6971](https://github.com/google-deepmind/formal-conjectures/pull/6971) repaired four immutable proof links on 11 October.
+[Bo Cowgill's checks and Moritz Firsching's approval](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#proof-link-maintenance)
+concern maintenance, with proofs and statements unchanged and no new mathematics.
+[Trace #1041](docs/case-studies/formal-conjectures-1041.md).
 
-The [Prove2Me #243/#257 proof packets](docs/research-commons/README.md#native-prove2me-theorems)
-and [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean) provide
-additional selected statement checks and their recorded outcomes.
+On 12 October, [Bo Cowgill approved #6579](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#open-requests)
+using author-hosted verification, without an independent rerun.
+The request remains open with review required; the unreduced-totient problem remains open.
+
+Nineteen [receiving checks](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#contribution-activity) pass.
+Bo approved [PR7260](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#proof-link-maintenance), [PR6780](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#open-requests) and [PR7290–7294](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#open-requests)
+using author-hosted checks without independent proof replay.
+All seven await required reviews.
+
+Other checks: [Prove2Me #243/#257 packets](docs/research-commons/README.md#native-prove2me-theorems)
+and [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean).
 
 [Palomar](https://palomar-registry.org/) checks Lean proofs and publishes
 registered results with their review comments. Our [submission record](https://github.com/wcook04/plectis-erdos-lean#palomar-publication-surface)

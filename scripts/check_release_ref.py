@@ -216,6 +216,44 @@ def parse_release_summary(stdout: str) -> dict[str, Any]:
     }
 
 
+def copy_promisor_remotes(clone: Path) -> None:
+    """Keep lazy historical reads available in a shared partial-clone snapshot.
+
+    Alternates share objects already present in the source, but Git does not
+    inherit its promisor remotes. Copy only those fetch endpoints and filters;
+    unrelated configuration, credential helpers, hooks and push settings stay out.
+    """
+    remotes = run(["git", "remote"], cwd=ROOT)
+    if remotes.returncode != 0:
+        raise SnapshotError("could not inspect source promisor remotes")
+    for index, name in enumerate(remotes.stdout.splitlines()):
+        promised = run(
+            ["git", "config", "--bool", "--get", f"remote.{name}.promisor"], cwd=ROOT
+        )
+        if promised.returncode == 1:
+            continue
+        if promised.returncode != 0:
+            raise SnapshotError("could not read source promisor configuration")
+        if promised.stdout.strip() != "true":
+            continue
+        endpoint = run(["git", "remote", "get-url", name], cwd=ROOT)
+        if endpoint.returncode != 0 or not endpoint.stdout.strip():
+            raise SnapshotError("source promisor remote has no fetch endpoint")
+        filter_spec = run(
+            ["git", "config", "--get", f"remote.{name}.partialclonefilter"], cwd=ROOT
+        )
+        if filter_spec.returncode not in (0, 1):
+            raise SnapshotError("could not read source partial-clone filter")
+        prefix = f"remote.release-promisor-{index}"
+        settings = [("url", endpoint.stdout.strip()), ("promisor", "true")]
+        if filter_spec.returncode == 0:
+            settings.append(("partialclonefilter", filter_spec.stdout.strip()))
+        for key, value in settings:
+            configured = run(["git", "config", f"{prefix}.{key}", value], cwd=clone)
+            if configured.returncode != 0:
+                raise SnapshotError("could not configure snapshot promisor remote")
+
+
 def prepare_clone(commit: str, parent: Path) -> Path:
     clone = parent / "repo"
     cloned = run(
@@ -248,6 +286,7 @@ def prepare_clone(commit: str, parent: Path) -> Path:
         raise SnapshotError("shared snapshot did not record its source object store") from exc
     if alternates.is_symlink() or shared_objects != expected_objects:
         raise SnapshotError("shared snapshot points at an unexpected Git object store")
+    copy_promisor_remotes(clone)
     checked_out = run(
         ["git", "checkout", "--detach", "--quiet", commit],
         cwd=clone,

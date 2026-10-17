@@ -124,6 +124,7 @@ class FormalConjecturesCrosswalkTest(unittest.TestCase):
     def test_maintenance_merge_does_not_count_the_same_results_again(self) -> None:
         activity = copy.deepcopy(self.manifest["contribution_activity"])
         row = next(r for r in activity["requests"] if r["kind"] == "proof_link_maintenance")
+        row.update(state="OPEN", merged_at=None)
         before = crosswalk.contribution_counts(activity)
         row.update(state="MERGED", merged_at=activity["observed_at"])
         self.assertEqual(crosswalk.contribution_activity_errors(activity), [])
@@ -139,6 +140,7 @@ class FormalConjecturesCrosswalkTest(unittest.TestCase):
         activity = copy.deepcopy(self.manifest["contribution_activity"])
         row = next(r for r in activity["requests"] if r["kind"] == "proof_link_maintenance")
         observed_title = row["title"]
+        row["display_title"] = "Reader-facing proof-link maintenance summary"
         rendered = "\n".join(crosswalk.render_contribution_activity(activity))
         self.assertIn(row["display_title"], rendered)
         self.assertNotIn(observed_title, rendered)

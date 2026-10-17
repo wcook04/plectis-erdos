@@ -268,6 +268,12 @@ identity; a new digest cannot supply new semantic or empirical evidence.
 
 ## Classify before changing
 
+For filtered Git clones, a shared validation snapshot must retain the source's
+promisor fetch endpoints as well as its object-store alternates. Test an
+immutable historical blob that is still absent locally; warming the source
+cache can hide a broken cold-clone path. Preserve the pinned revision and
+citation checks rather than rewriting source links to make validation pass.
+
 Host process arguments need not be UTF-8. Decode process-discovery output
 losslessly while retaining PID, parent and command bytes. Do not turn an
 unrelated undecodable argument into an empty table or relax the executable,

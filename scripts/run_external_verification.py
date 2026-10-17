@@ -87,15 +87,17 @@ def _canonical_input_path(path: Path) -> Path:
     return candidate
 
 
-def _open_input_descriptor(path: Path) -> int:
+def _open_input_descriptor(path: Path, *, root: Path | None = None) -> int:
     """Open a runtime input relative to no-follow directory descriptors."""
     directory_flags = os.O_RDONLY
     directory_flags |= getattr(os, "O_CLOEXEC", 0)
     directory_flags |= getattr(os, "O_DIRECTORY", 0)
     directory_flags |= getattr(os, "O_NOFOLLOW", 0)
-    directory = os.open(os.sep, directory_flags)
+    anchor = _canonical_input_path(Path(os.path.abspath(root))) if root is not None else Path(os.sep)
+    relative = path.relative_to(anchor)
+    directory = os.open(anchor, directory_flags)
     try:
-        for component in path.parts[1:-1]:
+        for component in relative.parts[:-1]:
             child = os.open(component, directory_flags, dir_fd=directory)
             try:
                 if not stat.S_ISDIR(os.fstat(child).st_mode):
@@ -118,7 +120,7 @@ def _read_input_bytes(path: Path, *, root: Path | None = None) -> bytes:
     """Read a runtime input through a no-follow, regular-file descriptor."""
     candidate = _canonical_input_path(safe_runtime_file(path, root=root))
     try:
-        descriptor = _open_input_descriptor(candidate)
+        descriptor = _open_input_descriptor(candidate, root=root)
     except OSError as exc:
         raise VerificationInputError(
             f"verification input could not be opened safely: {candidate}"
@@ -152,11 +154,11 @@ def optional_runtime_text(path: Path | None) -> str:
         return ""
 
 
-def digest(path: Path | None) -> str | None:
+def digest(path: Path | None, *, root: Path | None = None) -> str | None:
     if path is None:
         return None
     try:
-        data = _read_input_bytes(path)
+        data = _read_input_bytes(path, root=root)
     except (OSError, VerificationInputError):
         return None
     return "sha256:" + hashlib.sha256(data).hexdigest()
@@ -299,9 +301,9 @@ def weighted_support_runtime_row(
             "challenge_module": selected["challenge_module"],
             "permitted_axioms": selected["permitted_axioms"],
             "positive_config": selected["positive_config"],
-            "positive_config_digest": digest(ROOT / selected["positive_config"]),
+            "positive_config_digest": digest(ROOT / selected["positive_config"], root=ROOT),
             "negative_config": selected["negative_config"],
-            "negative_config_digest": digest(ROOT / selected["negative_config"]),
+            "negative_config_digest": digest(ROOT / selected["negative_config"], root=ROOT),
             "negative_expected_diagnostic": diagnostic,
             "negative_expected_diagnostic_observed": observed,
         })
@@ -465,7 +467,7 @@ def main() -> int:
                 "headline_interface_count_changed": False,
                 "config": "verification/comparator-1049-numerical-height.json",
                 "config_digest": digest(
-                    ROOT / "verification/comparator-1049-numerical-height.json"
+                    ROOT / "verification/comparator-1049-numerical-height.json", root=ROOT
                 ),
                 "positive_comparator_exit": args.local_1049_positive_exit,
                 "positive_log_digest": digest(args.local_1049_positive_log),

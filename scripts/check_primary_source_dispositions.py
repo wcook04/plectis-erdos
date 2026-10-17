@@ -111,14 +111,16 @@ def read_regular_bytes(path: Path, *, root: Path | None = ROOT) -> bytes:
     if not candidate.is_file():
         raise OSError(f"disposition input is not a regular file: {candidate}")
     candidate = _canonical_input_path(candidate)
+    anchor = _canonical_input_path(root_path) if root_path is not None else Path(os.sep)
+    relative = candidate.relative_to(anchor)
     directory_flags = os.O_RDONLY
     directory_flags |= getattr(os, "O_CLOEXEC", 0)
     directory_flags |= getattr(os, "O_DIRECTORY", 0)
     directory_flags |= getattr(os, "O_NOFOLLOW", 0)
-    directory = os.open(os.sep, directory_flags)
+    directory = os.open(anchor, directory_flags)
     descriptor = -1
     try:
-        for component in candidate.parts[1:-1]:
+        for component in relative.parts[:-1]:
             child = os.open(component, directory_flags, dir_fd=directory)
             try:
                 if not stat.S_ISDIR(os.fstat(child).st_mode):

@@ -408,6 +408,37 @@ def cache_restore_prefixes(workflow: str) -> list[str]:
 
 
 class LeanFastBuildTests(unittest.TestCase):
+    @classmethod
+    def public_modules(cls) -> dict[str, Path]:
+        """Share only the frozen checkout inventory within this test-class run.
+
+        Each integration assertion still computes its own reachable graph.
+        Mutable source fixtures use the real discover function with their own
+        roots. Class cleanup prevents a later run from retaining an old tree.
+        """
+        if "_public_module_inventory" not in cls.__dict__:
+            cls._public_module_inventory = fast.discover(fast.ROOT)
+            cls.addClassCleanup(delattr, cls, "_public_module_inventory")
+        return dict(cls._public_module_inventory)
+
+    def test_public_inventory_fixture_does_not_leak_mutation_or_later_sources(self) -> None:
+        class InventoryRun(LeanFastBuildTests):
+            pass
+
+        first = {"Pkg.A": Path("first/A.lean")}
+        later = {**first, "Pkg.B": Path("later/B.lean")}
+        with mock.patch.object(fast, "discover", side_effect=[first, later]) as discover:
+            try:
+                observed = InventoryRun.public_modules()
+                observed.clear()
+                self.assertEqual(InventoryRun.public_modules(), first)
+                self.assertEqual(discover.call_count, 1)
+                InventoryRun.doClassCleanups()
+                self.assertEqual(InventoryRun.public_modules(), later)
+                self.assertEqual(discover.call_count, 2)
+            finally:
+                InventoryRun.doClassCleanups()
+
     def test_custom_elan_proxy_runs_through_the_bounded_consumer(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
@@ -593,7 +624,7 @@ class LeanFastBuildTests(unittest.TestCase):
         )
         # The CI root imports every certificate module, so building it
         # kernel-checks the whole chain.
-        graph = fast.reachable_graph([LARGE_CERTIFICATE_ROOT], fast.discover(fast.ROOT))
+        graph = fast.reachable_graph([LARGE_CERTIFICATE_ROOT], self.public_modules())
         self.assertEqual(sorted(modules - set(graph)), [])
 
     def test_automatic_worker_default_is_memory_bounded(self) -> None:
@@ -867,7 +898,7 @@ class LeanFastBuildTests(unittest.TestCase):
         compile.
         """
 
-        modules = fast.discover(fast.ROOT)
+        modules = self.public_modules()
         targets = coverage_build_targets()
         self.assertEqual(
             [target for target in targets if target not in modules],
@@ -940,7 +971,7 @@ class LeanFastBuildTests(unittest.TestCase):
         )
         # The unchecked #68 certificates must stay out of every compiled
         # environment, this one included.
-        modules = fast.discover(fast.ROOT)
+        modules = self.public_modules()
         covered = fast.reachable(targets, fast.reachable_graph(targets, modules))
         self.assertEqual(
             sorted(
@@ -991,7 +1022,7 @@ class LeanFastBuildTests(unittest.TestCase):
     def test_coverage_build_is_one_owner_outside_the_supported_roots(self) -> None:
         workflow = read_workflow(COVERAGE_WORKFLOW)
         targets = coverage_build_targets(workflow)
-        modules = fast.discover(fast.ROOT)
+        modules = self.public_modules()
         graph = fast.reachable_graph([*SUPPORTED_ROOTS, *targets], modules)
         supported = fast.reachable(SUPPORTED_ROOTS, graph)
 
@@ -1095,7 +1126,7 @@ class LeanFastBuildTests(unittest.TestCase):
                 r"[*?\[\]!]",
                 f"unsupported path-filter shape: {pattern}",
             )
-        modules = fast.discover(fast.ROOT)
+        modules = self.public_modules()
         targets = coverage_build_targets(workflow)
         covered = fast.reachable(targets, fast.reachable_graph(targets, modules))
         inputs = {
