@@ -11,7 +11,7 @@ For each result, the record reproduces the printed statement and gives:
 - every Lean declaration that states it, quoted from the repository at the pinned commit, with
   a sentence saying how a stronger Lean statement implies the printed one;
 - the independent Comparator check, when there is one: the Challenge (the same statement
-  written again from Mathlib alone in [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean)),
+  written again from Mathlib alone in the linked repository),
   the Solution that proves it from our declaration, and the replay report of the run that
   checked it, kept under `comparator/`;
 - what the Lean proof assumes, when it assumes an input the printed statement does not.
@@ -26,6 +26,16 @@ The records, the concordance links (`paper/evidence/`) and `paper_evidence.json`
 `comparator/associations.json`, the replay reports and `relations.json`; do not edit them by
 hand. `config.json` pins the corpus commit, the replay run and the commit of the records the
 papers link to.
+
+A later exact proposition can carry its own official Comparator run through
+`comparator/associations.json::official_receipts`. The entry names the selected
+declaration, authenticated identity receipt, original mechanical report and
+downloaded artifact ZIP. Its repository, immutable proof revision, run and check
+date belong to that result; earlier results retain their recorded replay.
+The evidence builder checks the reviewed workflow identity, successful job and
+artifact binding, exact Challenge, axiom budget, both kernel acceptances and
+the complete proof import closure. It also checks the current Lean pin, so a
+later source edit or changed import resolution cannot inherit that receipt.
 
 Definition and structure identity uses `plectis-complete-source-support/1`.
 It includes the full owning module and every local module in its transitive

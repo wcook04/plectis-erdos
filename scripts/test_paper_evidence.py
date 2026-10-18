@@ -200,6 +200,149 @@ def with_fixture(test: Callable[[Fixture], None]) -> Callable[[], None]:
     return run
 
 
+def official_fixture(f: Fixture) -> tuple[dict, dict]:
+    """Add a later exact receipt while retaining the earlier synthetic replay."""
+    challenge_path = "verification/Exact/Challenge.lean"
+    solution_path = "verification/Exact/Solution.lean"
+    config_path = "verification/exact.json"
+    config = {"theorem_names": ["Syn.first_result"], "permitted_axioms": pe.PERMITTED_AXIOMS,
+              "enable_nanoda": True,
+              "challenge_module": "Exact.Challenge", "solution_module": "Exact.Solution"}
+    workflow = next(iter(pe.OFFICIAL_CALLERS))
+    write(f.root, workflow, (pe.ROOT / workflow).read_text())
+    write(f.root, challenge_path, CHALLENGE)
+    write(f.root, solution_path, "import Syn.Results\n")
+    write(f.root, LEAN_FILE, "import Syn.Helper\n" + LEAN_TEXT)
+    write(f.root, "lean/Syn/Helper.lean", "import Mathlib\nnamespace Syn\ndef helper : Nat := 1\nend Syn\n")
+    write(f.root, config_path, json.dumps(config))
+    write(f.root, "lakefile.toml", 'name = "synthetic"\n[[lean_lib]]\nname = "Syn"\nsrcDir = "lean"\n[[lean_lib]]\nname = "Exact"\nsrcDir = "verification"\n')
+    f.pin = commit_all(f.root, "new exact challenge")
+    digest = lambda rel: "sha256:" + hashlib.sha256((f.root / rel).read_bytes()).hexdigest()
+    report = {"schema_version": 1, "status": "pass", "stage": "complete", "errors": [],
+              "diagnostics": [], "source": {"repository": "wcook04/plectis-erdos", "commit": f.pin},
+              "workflow_url": "https://github.com/wcook04/plectis-erdos/actions/runs/2",
+              "checked_at": "2026-10-18T12:00:00Z",
+              "comparator_log_tail": "nanoda kernel accepts the solution\nLean default kernel accepts the solution\nYour solution is okay!"}
+    for group, path, module in (("challenge", challenge_path, "Exact.Challenge"),
+                                ("solution", solution_path, "Exact.Solution"),
+                                ("comparator", config_path, None)):
+        report[group] = {"path": path, "sha256": digest(path)}
+        if module:
+            report[group]["module"] = module
+    report["comparator"].update(config)
+    report_path = "evidence/comparator/exact-2/mechanical-report.json"
+    receipt_path = "evidence/comparator/exact-2/identity.json"
+    write(f.root, report_path, json.dumps(report))
+    import io
+    import zipfile
+    archive = io.BytesIO()
+    with zipfile.ZipFile(archive, "w") as package:
+        package.writestr("mechanical-report.json", (f.root / report_path).read_bytes())
+    archive_path = "evidence/comparator/exact-2/original-artifact.zip"
+    (f.root / archive_path).write_bytes(archive.getvalue())
+    receipt = {"schema": pe.OFFICIAL_IDENTITY_SCHEMA, "status": "pass_existing_selected_identity",
+               "selected_exact_fqn": True, "conditional_on": [], "verified_ci_commit": f.pin,
+               "verified_ci_run_id": "2", "source_declaration": "Syn.first_result",
+               "workflow": workflow, "source_statement_sha256": "sha256:" + sha(pe.lean_declaration(pe.LeanFile((f.root / LEAN_FILE).read_text()), LEAN_FILE, "Syn.first_result", allow_suffix=False).normalised),
+               "source_closure_sha256": "sha256:" + "b" * 64,
+               "source_closure_rule": "fixture", "source_closure_members": ["Syn.first_result"],
+               "source_closure_unresolved": [],
+               "challenge_declaration": "Syn.first_result", "solution_declaration": "Syn.first_result",
+               "ci_receipt": {"kind": "official_historical_mechanical_report_v1_two_kernel",
+                              "pipeline_commit": pe.HISTORICAL_OFFICIAL_PIPELINE,
+                              "kernel_acceptance": {"lean_default": True, "nanoda": True},
+                              "report_sha256": digest(report_path),
+                              "attestation": {"repository": "wcook04/plectis-erdos", "run_id": "2",
+                                              "status": "completed", "conclusion": "success",
+                                              "head_sha": f.pin, "run_attempt": 1,
+                                              "workflow_path": workflow, "workflow_sha256": digest(workflow),
+                                              "jobs": [{"name": "verify / verify", "id": 3, "run_id": "2",
+                                                        "head_sha": f.pin, "run_attempt": 1,
+                                                        "status": "completed", "conclusion": "success"}],
+                                              "artifact": {"id": 4, "expired": False,
+                                                           "size_in_bytes": len(archive.getvalue()),
+                                                           "digest": digest(archive_path),
+                                                           "workflow_run": {"id": "2", "head_sha": f.pin}}},
+                              "source_binding": {"declaration": "Syn.first_result", "path": LEAN_FILE,
+                                                 "sha256": digest(LEAN_FILE), "commit": f.pin,
+                                                 "project_path": "", "aggregate_path": solution_path,
+                                                 "aggregate_sha256": digest(solution_path),
+                                                 "selected_declarations": ["Syn.first_result"],
+                                                 "import_graph_sha256": {p: digest(p) for p in
+                                                                         (LEAN_FILE, solution_path, "lean/Syn/Helper.lean")}}}}
+    for group in ("challenge", "solution", "comparator"):
+        receipt[group + "_path"] = report[group]["path"]
+        receipt[group + "_sha256"] = report[group]["sha256"]
+    write(f.root, receipt_path, json.dumps(receipt))
+    f.associations["official_receipts"] = {"Syn.first_result": {
+        "receipt": receipt_path, "report": report_path, "archive": archive_path, "entry": "exact-first"}}
+    return receipt, report
+
+
+@with_fixture
+def test_official_exact_receipt_preserves_earlier_replay(f: Fixture) -> None:
+    official_fixture(f)
+    require(f.resolve() == [], f"exact official receipt failed: {f.resolve()}")
+    problems = pe.Problems()
+    evidence = pe.resolve(f.root, pe.Repo(f.corpus), None, None, problems, require_relations=False)
+    first, second = evidence["papers"][0]["results"]
+    require(first["comparator"]["run_id"] == "2" and second["comparator"]["run_id"] == "1",
+            "the new exact receipt replaced the earlier replay")
+    rendered = "\n".join(pe.render_results(evidence, [first, second], "../"))
+    require(f"plectis-erdos/blob/{f.pin}/verification/Exact/Challenge.lean" in rendered,
+            "new exact Challenge link used the historical corpus")
+    require("[2](https://github.com/wcook04/plectis-erdos/actions/runs/2)" in rendered
+            and "checked 2026-10-18T12:00:00Z" in rendered,
+            "exact evidence record lost its own dated run link")
+    require(f"plectis-erdos-lean/blob/{f.corpus_commit}/PalomarCorpus/E1/Challenge.lean" in rendered,
+            "historical Challenge link was changed")
+
+
+@with_fixture
+def test_official_receipt_rejects_wrong_result_run_and_kernel(f: Fixture) -> None:
+    receipt, _ = official_fixture(f)
+    path = f.associations["official_receipts"]["Syn.first_result"]["receipt"]
+    import copy
+    for mutation in (lambda r: r.update(source_declaration="Syn.second_result"),
+                     lambda r: r.update(source_statement_sha256="sha256:" + "a" * 64),
+                     lambda r: r.update(verified_ci_run_id="3"),
+                     lambda r: r["ci_receipt"]["kernel_acceptance"].update(nanoda=False),
+                     lambda r: r["ci_receipt"]["source_binding"].update(import_graph_sha256={}),
+                     lambda r: r["ci_receipt"]["source_binding"]["import_graph_sha256"].pop("lean/Syn/Helper.lean"),
+                     lambda r: r["ci_receipt"]["attestation"].update(jobs=[])):
+        changed = copy.deepcopy(receipt)
+        mutation(changed)
+        write(f.root, path, json.dumps(changed))
+        require(any("official exact comparison refused" in p for p in f.resolve()),
+                "a wrong result, run, kernel or missing proof closure was accepted")
+
+
+@with_fixture
+def test_official_receipt_rejects_changed_proof_and_report(f: Fixture) -> None:
+    _, report = official_fixture(f)
+    report["status"] = "fail"
+    path = f.associations["official_receipts"]["Syn.first_result"]["report"]
+    write(f.root, path, json.dumps(report))
+    require(any("official exact comparison refused" in p for p in f.resolve()),
+            "changed report bytes were accepted")
+    report["status"] = "pass"
+    write(f.root, path, json.dumps(report))
+    write(f.root, LEAN_FILE, "import Syn.Helper\n" + LEAN_TEXT.replace(":= trivial", ":= True.intro"))
+    f.pin = commit_all(f.root, "proof changed after checked revision")
+    require(any("proof dependency changed" in p for p in f.resolve()),
+            "receipt was transferred to an unverified proof revision")
+
+
+@with_fixture
+def test_official_receipt_rejects_new_local_shadow_of_checked_external_import(f: Fixture) -> None:
+    official_fixture(f)
+    require(f.resolve() == [], "official fixture should start valid")
+    write(f.root, "lean/Mathlib.lean", "-- Newly introduced local module shadows the dependency.\n")
+    f.pin = commit_all(f.root, "shadow previously external import")
+    require(any("import resolution changed" in p for p in f.resolve()),
+            "receipt accepted different import resolution despite identical old source files")
+
+
 @with_fixture
 def test_sound_fixture_resolves(f: Fixture) -> None:
     require(f.resolve() == [], f"the sound fixture failed: {f.resolve()}")
@@ -728,6 +871,10 @@ def test_changed_generation_replaces_the_render_input():
 
 def main() -> int:
     tests = [
+        test_official_exact_receipt_preserves_earlier_replay,
+        test_official_receipt_rejects_wrong_result_run_and_kernel,
+        test_official_receipt_rejects_changed_proof_and_report,
+        test_official_receipt_rejects_new_local_shadow_of_checked_external_import,
         test_concordance_names_follow_printed_statements,
         test_sidecar_declares_typed_names_even_without_formal_marks,
         test_unchanged_generation_preserves_render_input_timestamp,
