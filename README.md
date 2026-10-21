@@ -39,7 +39,7 @@ earlier Plectis toolkit. The films also show private interfaces, not included he
 
 Start with the [introductory paper](paper/257/erdos257-expository-sums-never-fractions.pdf):
 examples, figures and a complete proof. Or
-[watch the #257 video](https://youtu.be/y8s3t_pwIGM).
+[watch the #257 video](https://www.youtube.com/watch?v=crpv9N4R7qw).
 
 [Problem 257](https://www.erdosproblems.com/257) asks whether the series
 
@@ -84,9 +84,9 @@ Return ideas through the [contribution guide](#contribute).
 
 ## Watch the videos
 
-- [Plectis introduction](https://www.youtube.com/watch?v=uO2lbstEH9M): the wider project and tools for understanding AI-produced work.
-- [Mathematics overview](https://www.youtube.com/watch?v=4jObDlHmJRA): papers, proofs and the mathematics map.
-- [Erdős #257 explanation](https://www.youtube.com/watch?v=Ok5LkL1owjA): Erdős's reciprocal-summability condition; the unrestricted problem remains open.
+- [Plectis introduction (v2)](https://www.youtube.com/watch?v=Ut9068O-HGU): the wider project and tools for understanding AI-produced work.
+- [Mathematics overview](https://www.youtube.com/watch?v=4QGO80qDDc4): papers, proofs and the mathematics map.
+- [Erdős #257 explanation](https://www.youtube.com/watch?v=crpv9N4R7qw): Erdős's reciprocal-summability condition; the unrestricted problem remains open.
 
 <a id="about-the-project"></a>
 
