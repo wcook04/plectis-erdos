@@ -45,9 +45,9 @@ service receipts. No command above submits or registers a result.
 
 ## Dated Palomar registry observations
 
-Observed at 2026-10-21T15:54:00Z. [The public status record](palomar_registry_status.json) owns these dated observations.
+Observed at 2026-10-21T16:01:10Z. [The public status record](palomar_registry_status.json) owns these dated observations.
 
-Dated observations of separately identified historical submission editions. Three editions are registered. The broader E257 corpus has registration consent and was queued again by a Palomar operator on 21 October; no public registry URL has yet been returned for it. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers these four editions, not every prepared or historical submission.
+Dated observations of separately identified submission editions. Three editions are registered. The broader E257 corpus and the corrected E249 totient-kernel edition have registration consent; neither has yet returned a public registry URL. Palomar queued the E257 registration again on 21 October. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers these five editions, not every prepared or historical submission.
 
 Registration requests are pending and are not published registry editions. Each observation binds the named repository, exact source commit, configuration and selected declarations. It does not transfer to current main, update this repository's selected candidate or claim status, or count new mathematics.
 
@@ -179,5 +179,27 @@ Observed at 2026-10-21T15:54:00Z; public registry record and authenticated servi
 <summary>Exact selected declarations</summary>
 
 - `Erdos249257.ExternalVerification257ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal`
+
+</details>
+
+### PalomarCorpus_E249_29: All-base bases and integral relations for the totient kernel
+
+Status: **registration requested; pending**.
+Observed at 2026-10-21T16:01:10Z; maintainer's authenticated service status.
+
+- Repository: `wcook04/plectis-erdos-lean`; commit: `9ab395cda99d13f8fcd16cf655fc17458b3eaa38`.
+- Problem identities: `erdos_249`.
+- [Comparator configuration](https://github.com/wcook04/plectis-erdos-lean/blob/9ab395cda99d13f8fcd16cf655fc17458b3eaa38/PalomarCorpus/E249_29/comparator.json): `PalomarCorpus/E249_29/comparator.json`.
+- [Formalization metadata](https://github.com/wcook04/plectis-erdos-lean/blob/9ab395cda99d13f8fcd16cf655fc17458b3eaa38/PalomarCorpus/E249_29/formalization.yaml): `PalomarCorpus/E249_29/formalization.yaml`.
+- [Recorded verification run](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37973490141).
+
+<details>
+<summary>Exact selected declarations</summary>
+
+- `PalomarCorpus.E249.CompleteKernelBases.displayed_all_base_kernel`
+- `PalomarCorpus.E249.CompleteKernelBases.displayed_full_dyadic_basis`
+- `PalomarCorpus.E249.TotientKernelBasis.allBaseTotientKernelBasisRankAndRelationDimension`
+- `PalomarCorpus.E249.TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent`
+- `PalomarCorpus.E249.TotientKernelBasis.displayed_integral_normal_form`
 
 </details>

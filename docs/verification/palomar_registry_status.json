@@ -1,7 +1,7 @@
 {
   "schema": "plectis_palomar_registry_status_v1",
-  "observed_at": "2026-10-21T15:54:00Z",
-  "boundary": "Dated observations of separately identified historical submission editions. Three editions are registered. The broader E257 corpus has registration consent and was queued again by a Palomar operator on 21 October; no public registry URL has yet been returned for it. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers these four editions, not every prepared or historical submission.",
+  "observed_at": "2026-10-21T16:01:10Z",
+  "boundary": "Dated observations of separately identified submission editions. Three editions are registered. The broader E257 corpus and the corrected E249 totient-kernel edition have registration consent; neither has yet returned a public registry URL. Palomar queued the E257 registration again on 21 October. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers these five editions, not every prepared or historical submission.",
   "entries": [
     {
       "entry": "PalomarCorpus_E257_01",
@@ -137,6 +137,29 @@
       "registered_url": "https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-21-000018&version=1",
       "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/35192583926",
       "observation_basis": "public_registry_and_authenticated_status"
+    },
+    {
+      "entry": "PalomarCorpus_E249_29",
+      "title": "All-base bases and integral relations for the totient kernel",
+      "problem_ids": [
+        "erdos_249"
+      ],
+      "repository": "wcook04/plectis-erdos-lean",
+      "commit": "9ab395cda99d13f8fcd16cf655fc17458b3eaa38",
+      "comparator_config_path": "PalomarCorpus/E249_29/comparator.json",
+      "formalization_metadata_path": "PalomarCorpus/E249_29/formalization.yaml",
+      "theorem_names": [
+        "PalomarCorpus.E249.CompleteKernelBases.displayed_all_base_kernel",
+        "PalomarCorpus.E249.CompleteKernelBases.displayed_full_dyadic_basis",
+        "PalomarCorpus.E249.TotientKernelBasis.allBaseTotientKernelBasisRankAndRelationDimension",
+        "PalomarCorpus.E249.TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent",
+        "PalomarCorpus.E249.TotientKernelBasis.displayed_integral_normal_form"
+      ],
+      "status": "registration_requested",
+      "observed_at": "2026-10-21T16:01:10Z",
+      "registered_url": null,
+      "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37973490141",
+      "observation_basis": "maintainer_authenticated_status"
     }
   ]
 }
