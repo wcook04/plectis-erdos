@@ -33,8 +33,8 @@ explains project terminology.
 - **Formal evidence:** [Lean source](docs/SOURCE_MAP.md) and [Comparator checks](docs/EXTERNAL_VERIFICATION.md).
 
 The [mathematics website](https://wcook04.github.io/plectis/maths/) connects each
-problem's papers, results and sources. The films also show private working
-interfaces; this repository contains the research and checking tools.
+problem's papers, results and sources. The films also show private interfaces.
+Do not infer results from private or unreleased work.
 
 ## For a first look: #257
 
