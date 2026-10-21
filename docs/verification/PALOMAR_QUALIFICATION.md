@@ -45,16 +45,16 @@ service receipts. No command above submits or registers a result.
 
 ## Dated Palomar registry observations
 
-Observed at 2026-10-09T15:50:27.855436+00:00. [The public status record](palomar_registry_status.json) owns these dated observations.
+Observed at 2026-10-21T15:54:00Z. [The public status record](palomar_registry_status.json) owns these dated observations.
 
-Dated observations of separately identified historical submission editions. One edition is registered. Three existing reviews have registration consent, and all three have failed publication renders under the newer Lean minimum. These are not three published records. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers the registered edition and the three requests of 9 October, not every historical submission.
+Dated observations of separately identified historical submission editions. Three editions are registered. The broader E257 corpus has registration consent and was queued again by a Palomar operator on 21 October; no public registry URL has yet been returned for it. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers these four editions, not every prepared or historical submission.
 
 Registration requests are pending and are not published registry editions. Each observation binds the named repository, exact source commit, configuration and selected declarations. It does not transfer to current main, update this repository's selected candidate or claim status, or count new mathematics.
 
 ### PalomarCorpus_E257_01: Weighted support criteria for reciprocal Mersenne subseries
 
 Status: **registered**, [PALOMAR-2026-09-25-000009 v1](https://palomar-registry.org/entry.html?id=PALOMAR-2026-09-25-000009&version=1).
-Observed at 2026-10-09T14:42:56Z; public registry record and authenticated service status.
+Observed at 2026-10-21T15:47:16Z; public registry record and authenticated service status.
 
 - Repository: `wcook04/plectis-erdos-lean`; commit: `b85ed30805188eb4390a686b111294b24363418e`.
 - Problem identities: `erdos_257`.
@@ -75,11 +75,8 @@ Observed at 2026-10-09T14:42:56Z; public registry record and authenticated servi
 
 ### ExternalVerification269ThreePrimeStructure: Erdős #269 — three-prime structure
 
-Status: **registration requested; pending**.
-
-Publication blocker: **unsupported Lean version**. The publication renderer rejected the reviewed Lean 4.29.0 source because its current minimum is Lean 4.35.0-rc2. Palomar must repair rendering and retry this registration; sending consent again does not resume it.
-[Official renderer evidence](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37948913697); observed at 2026-10-09T15:33:02Z.
-Observed at 2026-10-09T15:33:02Z; maintainer's authenticated service status.
+Status: **registered**, [PALOMAR-2026-10-21-000019 v1](https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-21-000019&version=1).
+Observed at 2026-10-21T15:54:00Z; public registry record and authenticated service status.
 
 - Repository: `wcook04/plectis-erdos-lean`; commit: `c39cea6a976747d132a848d26f110b9c608d5a45`.
 - Problem identities: `erdos_269`.
@@ -103,10 +100,7 @@ Observed at 2026-10-09T15:33:02Z; maintainer's authenticated service status.
 ### PalomarCorpus_E257: Erdős #257 — September corpus edition
 
 Status: **registration requested; pending**.
-
-Publication blocker: **unsupported Lean version**. The publication renderer rejected the reviewed Lean 4.30.0 source because its current minimum is Lean 4.35.0-rc2. Palomar must repair rendering and retry this registration; sending consent again does not resume it.
-[Official renderer evidence](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37953891799); observed at 2026-10-09T15:50:27.855436+00:00.
-Observed at 2026-10-09T15:50:27.855436+00:00; maintainer's authenticated service status.
+Observed at 2026-10-21T15:47:16Z; maintainer's authenticated service status.
 
 - Repository: `wcook04/plectis-erdos-lean`; commit: `52f29ad173b04e3bac941b3663f2b9aebe5de0bb`.
 - Problem identities: `erdos_257`.
@@ -172,11 +166,8 @@ Observed at 2026-10-09T15:50:27.855436+00:00; maintainer's authenticated service
 
 ### ExternalVerification257ReciprocalSupport: Erdős #257 — reciprocal support
 
-Status: **registration requested; pending**.
-
-Publication blocker: **unsupported Lean version**. The publication renderer rejected the reviewed Lean 4.29.0 source because its current minimum is Lean 4.35.0-rc2. Palomar must repair rendering and retry this registration; sending consent again does not resume it.
-[Official renderer evidence](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37949424576); observed at 2026-10-09T15:33:04Z.
-Observed at 2026-10-09T15:33:04Z; maintainer's authenticated service status.
+Status: **registered**, [PALOMAR-2026-10-21-000018 v1](https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-21-000018&version=1).
+Observed at 2026-10-21T15:54:00Z; public registry record and authenticated service status.
 
 - Repository: `wcook04/plectis-erdos-lean`; commit: `c39cea6a976747d132a848d26f110b9c608d5a45`.
 - Problem identities: `erdos_257`.

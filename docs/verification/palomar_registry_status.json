@@ -1,7 +1,7 @@
 {
   "schema": "plectis_palomar_registry_status_v1",
-  "observed_at": "2026-10-09T15:50:27.855436+00:00",
-  "boundary": "Dated observations of separately identified historical submission editions. One edition is registered. Three existing reviews have registration consent, and all three have failed publication renders under the newer Lean minimum. These are not three published records. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers the registered edition and the three requests of 9 October, not every historical submission.",
+  "observed_at": "2026-10-21T15:54:00Z",
+  "boundary": "Dated observations of separately identified historical submission editions. Three editions are registered. The broader E257 corpus has registration consent and was queued again by a Palomar operator on 21 October; no public registry URL has yet been returned for it. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers these four editions, not every prepared or historical submission.",
   "entries": [
     {
       "entry": "PalomarCorpus_E257_01",
@@ -21,7 +21,7 @@
         "PalomarCorpus.E257.WeightedCloseReturn.weighted_displacement_cofinal_close_return"
       ],
       "status": "registered",
-      "observed_at": "2026-10-09T14:42:56Z",
+      "observed_at": "2026-10-21T15:47:16Z",
       "registered_url": "https://palomar-registry.org/entry.html?id=PALOMAR-2026-09-25-000009&version=1",
       "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/36009433226",
       "observation_basis": "public_registry_and_authenticated_status"
@@ -45,17 +45,11 @@
         "Erdos249257.ExternalVerification269ThreePrimeStructure.kernel_235_minor_eq_neg_one_fifteen",
         "Erdos249257.ExternalVerification269ThreePrimeStructure.threePrimeKernel_infiniteRank_and_noFiniteSeparation"
       ],
-      "status": "registration_requested",
-      "observed_at": "2026-10-09T15:33:02Z",
-      "registered_url": null,
+      "status": "registered",
+      "observed_at": "2026-10-21T15:54:00Z",
+      "registered_url": "https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-21-000019&version=1",
       "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/35190946875",
-      "observation_basis": "maintainer_authenticated_status",
-      "publication_blocker": {
-        "reason": "unsupported_lean_version",
-        "summary": "The publication renderer rejected the reviewed Lean 4.29.0 source because its current minimum is Lean 4.35.0-rc2. Palomar must repair rendering and retry this registration; sending consent again does not resume it.",
-        "evidence_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37948913697",
-        "observed_at": "2026-10-09T15:33:02Z"
-      }
+      "observation_basis": "public_registry_and_authenticated_status"
     },
     {
       "entry": "PalomarCorpus_E257",
@@ -120,16 +114,10 @@
         "PalomarCorpus.E257.VariableExponentCover.strengthenedPositiveCoverClaim"
       ],
       "status": "registration_requested",
-      "observed_at": "2026-10-09T15:50:27.855436+00:00",
+      "observed_at": "2026-10-21T15:47:16Z",
       "registered_url": null,
       "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/35186739364",
-      "observation_basis": "maintainer_authenticated_status",
-      "publication_blocker": {
-        "reason": "unsupported_lean_version",
-        "summary": "The publication renderer rejected the reviewed Lean 4.30.0 source because its current minimum is Lean 4.35.0-rc2. Palomar must repair rendering and retry this registration; sending consent again does not resume it.",
-        "evidence_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37953891799",
-        "observed_at": "2026-10-09T15:50:27.855436+00:00"
-      }
+      "observation_basis": "maintainer_authenticated_status"
     },
     {
       "entry": "ExternalVerification257ReciprocalSupport",
@@ -144,17 +132,11 @@
       "theorem_names": [
         "Erdos249257.ExternalVerification257ReciprocalSupport.irrational_supportPowerSeries_of_summable_reciprocal"
       ],
-      "status": "registration_requested",
-      "observed_at": "2026-10-09T15:33:04Z",
-      "registered_url": null,
+      "status": "registered",
+      "observed_at": "2026-10-21T15:54:00Z",
+      "registered_url": "https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-21-000018&version=1",
       "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/35192583926",
-      "observation_basis": "maintainer_authenticated_status",
-      "publication_blocker": {
-        "reason": "unsupported_lean_version",
-        "summary": "The publication renderer rejected the reviewed Lean 4.29.0 source because its current minimum is Lean 4.35.0-rc2. Palomar must repair rendering and retry this registration; sending consent again does not resume it.",
-        "evidence_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37949424576",
-        "observed_at": "2026-10-09T15:33:04Z"
-      }
+      "observation_basis": "public_registry_and_authenticated_status"
     }
   ]
 }
