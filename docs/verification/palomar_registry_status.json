@@ -1,7 +1,7 @@
 {
   "schema": "plectis_palomar_registry_status_v1",
-  "observed_at": "2026-10-21T16:31:08.494194+00:00",
-  "boundary": "Dated observations of separately identified submission editions. Four editions are registered. The corrected E249 totient-kernel edition has registration consent and has not yet returned a public registry URL. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers these five editions, not every prepared or historical submission.",
+  "observed_at": "2026-10-22T15:44:45.944204+00:00",
+  "boundary": "Dated observations of five separately identified registered submission editions. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers these five editions, not every prepared or historical submission.",
   "entries": [
     {
       "entry": "PalomarCorpus_E257_01",
@@ -155,11 +155,11 @@
         "PalomarCorpus.E249.TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent",
         "PalomarCorpus.E249.TotientKernelBasis.displayed_integral_normal_form"
       ],
-      "status": "registration_requested",
-      "observed_at": "2026-10-21T16:01:10Z",
-      "registered_url": null,
+      "status": "registered",
+      "observed_at": "2026-10-22T15:44:45.944204+00:00",
+      "registered_url": "https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-21-000021&version=1",
       "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37973490141",
-      "observation_basis": "maintainer_authenticated_status"
+      "observation_basis": "public_registry_and_authenticated_status"
     }
   ]
 }

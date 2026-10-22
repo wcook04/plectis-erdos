@@ -45,9 +45,9 @@ service receipts. No command above submits or registers a result.
 
 ## Dated Palomar registry observations
 
-Observed at 2026-10-21T16:31:08.494194+00:00. [The public status record](palomar_registry_status.json) owns these dated observations.
+Observed at 2026-10-22T15:44:45.944204+00:00. [The public status record](palomar_registry_status.json) owns these dated observations.
 
-Dated observations of separately identified submission editions. Four editions are registered. The corrected E249 totient-kernel edition has registration consent and has not yet returned a public registry URL. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers these five editions, not every prepared or historical submission.
+Dated observations of five separately identified registered submission editions. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers these five editions, not every prepared or historical submission.
 
 Registration requests are pending and are not published registry editions. Each observation binds the named repository, exact source commit, configuration and selected declarations. It does not transfer to current main, update this repository's selected candidate or claim status, or count new mathematics.
 
@@ -184,8 +184,8 @@ Observed at 2026-10-21T15:54:00Z; public registry record and authenticated servi
 
 ### PalomarCorpus_E249_29: All-base bases and integral relations for the totient kernel
 
-Status: **registration requested; pending**.
-Observed at 2026-10-21T16:01:10Z; maintainer's authenticated service status.
+Status: **registered**, [PALOMAR-2026-10-21-000021 v1](https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-21-000021&version=1).
+Observed at 2026-10-22T15:44:45.944204+00:00; public registry record and authenticated service status.
 
 - Repository: `wcook04/plectis-erdos-lean`; commit: `9ab395cda99d13f8fcd16cf655fc17458b3eaa38`.
 - Problem identities: `erdos_249`.
