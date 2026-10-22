@@ -31,6 +31,13 @@ repository metadata proves that no projection builder needs to inspect a branch,
 index, or commit merely to render current content. Requiring the check commands
 to leave every projection byte-identical also keeps this cold-clone test
 read-only without paying for two redundant 150 MB regeneration passes.
+
+Set ``PLECTIS_PROJECTION_SCRATCH_ROOT`` to an existing directory to place the
+archived corpus on a separate scratch disk. Otherwise the normal temporary
+directory is used. This selects storage only: every builder and byte comparison
+still runs, with the same deadlines. ``PLECTIS_PROJECTION_JOBS`` selects one to
+four concurrent builders (default four); use one when memory or disk throughput
+is constrained.
 """
 
 from __future__ import annotations
@@ -205,7 +212,7 @@ def projection_bytes(checkout: Path) -> dict[str, bytes]:
     }
 
 
-def validate_checkout(checkout: Path) -> None:
+def validate_checkout(checkout: Path, *, workers: int = 4) -> None:
     before = projection_bytes(checkout)
 
     def check_builder(builder: str) -> tuple[str, subprocess.CompletedProcess[str]]:
@@ -217,7 +224,7 @@ def validate_checkout(checkout: Path) -> None:
     # Check mode is read-only: every builder compares committed inputs with
     # committed outputs. Bound the fan-out so independent JSON/source scans do
     # not become another serial tail in a fresh clone.
-    with ThreadPoolExecutor(max_workers=min(4, len(BUILDERS))) as executor:
+    with ThreadPoolExecutor(max_workers=min(workers, 4, len(BUILDERS))) as executor:
         results = list(executor.map(check_builder, BUILDERS))
     for builder, result in results:
         if result.returncode != 0:
@@ -238,15 +245,28 @@ def validate_checkout(checkout: Path) -> None:
 
 
 def main() -> int:
+    try:
+        workers = int(os.environ.get("PLECTIS_PROJECTION_JOBS", "4"))
+    except ValueError:
+        raise SystemExit("PLECTIS_PROJECTION_JOBS must be an integer from 1 to 4")
+    if not 1 <= workers <= 4:
+        raise SystemExit("PLECTIS_PROJECTION_JOBS must be an integer from 1 to 4")
     check_run_contract()
     check_source_coordinate_title_contract()
-    workspace = Path(tempfile.mkdtemp(prefix="projection-shape-"))
+    selected_root = os.environ.get("PLECTIS_PROJECTION_SCRATCH_ROOT")
+    scratch_root = Path(selected_root).expanduser().resolve() if selected_root else None
+    if scratch_root is not None and not scratch_root.is_dir():
+        raise SystemExit(
+            "PLECTIS_PROJECTION_SCRATCH_ROOT must name an existing directory: "
+            f"{scratch_root}"
+        )
+    workspace = Path(tempfile.mkdtemp(prefix="projection-shape-", dir=scratch_root))
     try:
         checkout = workspace / "metadata-free"
         materialise(checkout)
 
         with patch.dict(os.environ, HOSTILE_ENVIRONMENT):
-            validate_checkout(checkout)
+            validate_checkout(checkout, workers=workers)
     finally:
         shutil.rmtree(workspace, ignore_errors=True)
 
