@@ -202,7 +202,7 @@
       "observed_at": "2026-10-22T15:48:05.721319+00:00",
       "registered_url": null,
       "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/39649415901",
-      "observation_basis": "maintainer_authenticated_status_and_accepted_registration_consent"
+      "observation_basis": "maintainer_authenticated_status"
     },
     {
       "entry": "PalomarCorpus_E243_01",
@@ -233,7 +233,7 @@
       "observed_at": "2026-10-22T15:48:05.721319+00:00",
       "registered_url": null,
       "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/39630984306",
-      "observation_basis": "maintainer_authenticated_status_and_accepted_registration_consent"
+      "observation_basis": "maintainer_authenticated_status"
     },
     {
       "entry": "PalomarCorpus_E251_01",
@@ -262,7 +262,7 @@
       "observed_at": "2026-10-22T15:48:05.721319+00:00",
       "registered_url": null,
       "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/39643951047",
-      "observation_basis": "maintainer_authenticated_status_and_accepted_registration_consent"
+      "observation_basis": "maintainer_authenticated_status"
     },
     {
       "entry": "PalomarCorpus_E269_02",
@@ -293,7 +293,7 @@
       "observed_at": "2026-10-22T15:48:05.721319+00:00",
       "registered_url": null,
       "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/39646911715",
-      "observation_basis": "maintainer_authenticated_status_and_accepted_registration_consent"
+      "observation_basis": "maintainer_authenticated_status"
     },
     {
       "entry": "PalomarCorpus_E68_05",
@@ -317,7 +317,7 @@
       "observed_at": "2026-10-22T15:48:05.721319+00:00",
       "registered_url": null,
       "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/39652409857",
-      "observation_basis": "maintainer_authenticated_status_and_accepted_registration_consent"
+      "observation_basis": "maintainer_authenticated_status"
     }
   ]
 }
