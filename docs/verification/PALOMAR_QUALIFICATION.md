@@ -45,9 +45,9 @@ service receipts. No command above submits or registers a result.
 
 ## Dated Palomar registry observations
 
-Observed at 2026-10-22T15:52:23.552505+00:00. [The public status record](palomar_registry_status.json) owns these dated observations.
+Observed at 2026-10-22T17:58:21.357873+00:00. [The public status record](palomar_registry_status.json) owns these dated observations.
 
-Dated observations of ten separately identified submission editions: five registered editions and five editions with accepted registration requests awaiting public registry URLs. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. The sixth new intake remains in verification and is excluded from this registration inventory.
+Dated observations of ten separately identified registered submission editions. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers these ten editions. The E1041_01 intake has not been registered and is excluded.
 
 Registration requests are pending and are not published registry editions. Each observation binds the named repository, exact source commit, configuration and selected declarations. It does not transfer to current main, update this repository's selected candidate or claim status, or count new mathematics.
 
@@ -206,8 +206,8 @@ Observed at 2026-10-22T15:44:45.944204+00:00; public registry record and authent
 
 ### PalomarCorpus_E1049_01: An explicit rational-base irrationality region for Zudilin's Lambert series
 
-Status: **registration requested; pending**.
-Observed at 2026-10-22T15:48:05.721319+00:00; maintainer's authenticated service status.
+Status: **registered**, [PALOMAR-2026-10-22-000039 v1](https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-22-000039&version=1).
+Observed at 2026-10-22T17:58:21.357873+00:00; public registry record and authenticated service status.
 
 - Repository: `wcook04/plectis-erdos-lean`; commit: `8d47efd230e041b76b8233a49164ca798977053c`.
 - Problem identities: `erdos_1049`.
@@ -248,8 +248,8 @@ Observed at 2026-10-22T15:48:05.721319+00:00; maintainer's authenticated service
 
 ### PalomarCorpus_E243_01: Cubic-rate irrationality for reciprocal sums
 
-Status: **registration requested; pending**.
-Observed at 2026-10-22T15:48:05.721319+00:00; maintainer's authenticated service status.
+Status: **registered**, [PALOMAR-2026-10-22-000036 v1](https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-22-000036&version=1).
+Observed at 2026-10-22T17:58:21.357873+00:00; public registry record and authenticated service status.
 
 - Repository: `wcook04/plectis-erdos-lean`; commit: `eb6cd7ceae9ff5c5bceeb514cac749c30861d8c6`.
 - Problem identities: `erdos_243`.
@@ -278,8 +278,8 @@ Observed at 2026-10-22T15:48:05.721319+00:00; maintainer's authenticated service
 
 ### PalomarCorpus_E251_01: Uniform sparse rationalisation of dyadic series
 
-Status: **registration requested; pending**.
-Observed at 2026-10-22T15:48:05.721319+00:00; maintainer's authenticated service status.
+Status: **registered**, [PALOMAR-2026-10-22-000037 v1](https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-22-000037&version=1).
+Observed at 2026-10-22T17:58:21.357873+00:00; public registry record and authenticated service status.
 
 - Repository: `wcook04/plectis-erdos-lean`; commit: `34ab2ba6304c936a3537fd1cd8a91f23bbf2e575`.
 - Problem identities: `erdos_251`.
@@ -306,8 +306,8 @@ Observed at 2026-10-22T15:48:05.721319+00:00; maintainer's authenticated service
 
 ### PalomarCorpus_E269_02: Infinite rank of the three-prime running-LCM kernel
 
-Status: **registration requested; pending**.
-Observed at 2026-10-22T15:48:05.721319+00:00; maintainer's authenticated service status.
+Status: **registered**, [PALOMAR-2026-10-22-000038 v1](https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-22-000038&version=1).
+Observed at 2026-10-22T17:58:21.357873+00:00; public registry record and authenticated service status.
 
 - Repository: `wcook04/plectis-erdos-lean`; commit: `80024c64bc77a95249e34824a36bf43989f62ae6`.
 - Problem identities: `erdos_269`.
@@ -336,8 +336,8 @@ Observed at 2026-10-22T15:48:05.721319+00:00; maintainer's authenticated service
 
 ### PalomarCorpus_E68_05: Carry and divisor-channel criteria for the factorial-minus-one reciprocal series
 
-Status: **registration requested; pending**.
-Observed at 2026-10-22T15:48:05.721319+00:00; maintainer's authenticated service status.
+Status: **registered**, [PALOMAR-2026-10-22-000040 v1](https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-22-000040&version=1).
+Observed at 2026-10-22T17:58:21.357873+00:00; public registry record and authenticated service status.
 
 - Repository: `wcook04/plectis-erdos-lean`; commit: `d8db022f33199491ba88d47fac6d66f8690f2c1a`.
 - Problem identities: `erdos_68`.

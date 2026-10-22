@@ -1,7 +1,7 @@
 {
   "schema": "plectis_palomar_registry_status_v1",
-  "observed_at": "2026-10-22T15:52:23.552505+00:00",
-  "boundary": "Dated observations of ten separately identified submission editions: five registered editions and five editions with accepted registration requests awaiting public registry URLs. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. The sixth new intake remains in verification and is excluded from this registration inventory.",
+  "observed_at": "2026-10-22T17:58:21.357873+00:00",
+  "boundary": "Dated observations of ten separately identified registered submission editions. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers these ten editions. The E1041_01 intake has not been registered and is excluded.",
   "entries": [
     {
       "entry": "PalomarCorpus_E257_01",
@@ -198,11 +198,11 @@
         "PalomarCorpus.E1049.RationalBaseRegion.rational_base_power_measure",
         "PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four_power_measure_lt_301"
       ],
-      "status": "registration_requested",
-      "observed_at": "2026-10-22T15:48:05.721319+00:00",
-      "registered_url": null,
+      "status": "registered",
+      "observed_at": "2026-10-22T17:58:21.357873+00:00",
+      "registered_url": "https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-22-000039&version=1",
       "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/39649415901",
-      "observation_basis": "maintainer_authenticated_status"
+      "observation_basis": "public_registry_and_authenticated_status"
     },
     {
       "entry": "PalomarCorpus_E243_01",
@@ -229,11 +229,11 @@
         "PalomarCorpus.E243.PaperStructuresAD.minus_one_forbidden_word",
         "PalomarCorpus.E243.PaperStructuresAD.plus_one_forbidden_word"
       ],
-      "status": "registration_requested",
-      "observed_at": "2026-10-22T15:48:05.721319+00:00",
-      "registered_url": null,
+      "status": "registered",
+      "observed_at": "2026-10-22T17:58:21.357873+00:00",
+      "registered_url": "https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-22-000036&version=1",
       "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/39630984306",
-      "observation_basis": "maintainer_authenticated_status"
+      "observation_basis": "public_registry_and_authenticated_status"
     },
     {
       "entry": "PalomarCorpus_E251_01",
@@ -258,11 +258,11 @@
         "PalomarCorpus.E251.UniformSparseRationalisation.arbitrary_word_sparse_rationalisation_uniform",
         "PalomarCorpus.E251.UniformSparseRationalisation.polylogarithmic_word_interval_uniform"
       ],
-      "status": "registration_requested",
-      "observed_at": "2026-10-22T15:48:05.721319+00:00",
-      "registered_url": null,
+      "status": "registered",
+      "observed_at": "2026-10-22T17:58:21.357873+00:00",
+      "registered_url": "https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-22-000037&version=1",
       "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/39643951047",
-      "observation_basis": "maintainer_authenticated_status"
+      "observation_basis": "public_registry_and_authenticated_status"
     },
     {
       "entry": "PalomarCorpus_E269_02",
@@ -289,11 +289,11 @@
         "PalomarCorpus.E269.PaperStatementsE.uniform_rank_complete",
         "PalomarCorpus.E269.PaperStructuresH.rank_cutMatrix"
       ],
-      "status": "registration_requested",
-      "observed_at": "2026-10-22T15:48:05.721319+00:00",
-      "registered_url": null,
+      "status": "registered",
+      "observed_at": "2026-10-22T17:58:21.357873+00:00",
+      "registered_url": "https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-22-000038&version=1",
       "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/39646911715",
-      "observation_basis": "maintainer_authenticated_status"
+      "observation_basis": "public_registry_and_authenticated_status"
     },
     {
       "entry": "PalomarCorpus_E68_05",
@@ -313,11 +313,11 @@
         "PalomarCorpus.E68.PaperStatementsA.finite_channel_moment_certificate_eq",
         "PalomarCorpus.E68.PaperStatementsA.global_complementary_criterion_nat"
       ],
-      "status": "registration_requested",
-      "observed_at": "2026-10-22T15:48:05.721319+00:00",
-      "registered_url": null,
+      "status": "registered",
+      "observed_at": "2026-10-22T17:58:21.357873+00:00",
+      "registered_url": "https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-22-000040&version=1",
       "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/39652409857",
-      "observation_basis": "maintainer_authenticated_status"
+      "observation_basis": "public_registry_and_authenticated_status"
     }
   ]
 }
