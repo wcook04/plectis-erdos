@@ -1,7 +1,7 @@
 {
   "schema": "plectis_palomar_registry_status_v1",
-  "observed_at": "2026-10-22T15:44:45.944204+00:00",
-  "boundary": "Dated observations of five separately identified registered submission editions. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers these five editions, not every prepared or historical submission.",
+  "observed_at": "2026-10-22T15:52:23.552505+00:00",
+  "boundary": "Dated observations of ten separately identified submission editions: five registered editions and five editions with accepted registration requests awaiting public registry URLs. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. The sixth new intake remains in verification and is excluded from this registration inventory.",
   "entries": [
     {
       "entry": "PalomarCorpus_E257_01",
@@ -160,6 +160,164 @@
       "registered_url": "https://palomar-registry.org/entry.html?id=PALOMAR-2026-10-21-000021&version=1",
       "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/37973490141",
       "observation_basis": "public_registry_and_authenticated_status"
+    },
+    {
+      "entry": "PalomarCorpus_E1049_01",
+      "title": "An explicit rational-base irrationality region for Zudilin's Lambert series",
+      "problem_ids": [
+        "erdos_1049"
+      ],
+      "repository": "wcook04/plectis-erdos-lean",
+      "commit": "8d47efd230e041b76b8233a49164ca798977053c",
+      "comparator_config_path": "PalomarCorpus/E1049_01/comparator.json",
+      "formalization_metadata_path": "PalomarCorpus/E1049_01/formalization.yaml",
+      "theorem_names": [
+        "PalomarCorpus.E1049.PaperStatementsA.contour_enclosure",
+        "PalomarCorpus.E1049.PaperStatementsA.four_rpow_mu_lt_thirtyOne",
+        "PalomarCorpus.E1049.PaperStatementsA.inv_bvMu_eq",
+        "PalomarCorpus.E1049.PaperStatementsA.omega_indicator",
+        "PalomarCorpus.E1049.PaperStatementsA.paperBvMu_eq",
+        "PalomarCorpus.E1049.PaperStatementsA.printed_bvMu",
+        "PalomarCorpus.E1049.PaperStatementsA.printed_bv_cutoff",
+        "PalomarCorpus.E1049.PaperStatementsA.printed_contour",
+        "PalomarCorpus.E1049.PaperStatementsA.printed_four_rpow_bvMu",
+        "PalomarCorpus.E1049.PaperStatementsA.printed_four_rpow_mu",
+        "PalomarCorpus.E1049.PaperStatementsA.printed_log_ratio",
+        "PalomarCorpus.E1049.PaperStatementsA.thirtyoneFour_between_rpow",
+        "PalomarCorpus.E1049.PaperStatementsA.thirtyoneFour_ratio_chain",
+        "PalomarCorpus.E1049.PaperStatementsA.zudilinC0_enclosure",
+        "PalomarCorpus.E1049.PaperStatementsA.zudilinJ_enclosure",
+        "PalomarCorpus.E1049.PaperStatementsA.zudilin_rpow_lt_iff_contourRegion",
+        "PalomarCorpus.E1049.PaperStatementsG.thirtyoneFour_outside_bv_inside_contour",
+        "PalomarCorpus.E1049.PaperStatementsI.rational_base_measure_uniform",
+        "PalomarCorpus.E1049.PaperStatementsI.thirtyoneFour_power_measure_lt_301",
+        "PalomarCorpus.E1049.PaperStatementsJ.rational_base_threshold",
+        "PalomarCorpus.E1049.PaperStatementsJ.rational_base_threshold_log",
+        "PalomarCorpus.E1049.PaperStatementsJ.thirtyoneFour_irrational",
+        "PalomarCorpus.E1049.PaperStatementsJ.thirtyoneFour_pow_irrational",
+        "PalomarCorpus.E1049.RationalBaseRegion.rational_base_power_measure",
+        "PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four_power_measure_lt_301"
+      ],
+      "status": "registration_requested",
+      "observed_at": "2026-10-22T15:48:05.721319+00:00",
+      "registered_url": null,
+      "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/39649415901",
+      "observation_basis": "maintainer_authenticated_status_and_accepted_registration_consent"
+    },
+    {
+      "entry": "PalomarCorpus_E243_01",
+      "title": "Cubic-rate irrationality for reciprocal sums",
+      "problem_ids": [
+        "erdos_243"
+      ],
+      "repository": "wcook04/plectis-erdos-lean",
+      "commit": "eb6cd7ceae9ff5c5bceeb514cac749c30861d8c6",
+      "comparator_config_path": "PalomarCorpus/E243_01/comparator.json",
+      "formalization_metadata_path": "PalomarCorpus/E243_01/formalization.yaml",
+      "theorem_names": [
+        "PalomarCorpus.E243.CompletePaperRecords.fixed_offsets_periodic_lowerDensity",
+        "PalomarCorpus.E243.PaperStatementsA.cubic_profile_gcd_stabilisation_and_primitive_shape",
+        "PalomarCorpus.E243.PaperStatementsA.primitive_zero_density_paper_multiplier_lemma",
+        "PalomarCorpus.E243.PaperStatementsG.regular_rate_extraction",
+        "PalomarCorpus.E243.PaperStatementsL.canonical_tail_ratio_quantitative",
+        "PalomarCorpus.E243.PaperStatementsN.regular_rate_extraction_cubic",
+        "PalomarCorpus.E243.PaperStatementsP.scale_twelve_of_square_in_rootField",
+        "PalomarCorpus.E243.PaperStructuresAC.cubic_exclusion_unconditional",
+        "PalomarCorpus.E243.PaperStructuresAC.cubic_rate_irrationality_unconditional",
+        "PalomarCorpus.E243.PaperStructuresAC.squareSpecialisation",
+        "PalomarCorpus.E243.PaperStructuresAC.transport_square_unconditional",
+        "PalomarCorpus.E243.PaperStructuresAD.minus_one_forbidden_word",
+        "PalomarCorpus.E243.PaperStructuresAD.plus_one_forbidden_word"
+      ],
+      "status": "registration_requested",
+      "observed_at": "2026-10-22T15:48:05.721319+00:00",
+      "registered_url": null,
+      "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/39630984306",
+      "observation_basis": "maintainer_authenticated_status_and_accepted_registration_consent"
+    },
+    {
+      "entry": "PalomarCorpus_E251_01",
+      "title": "Uniform sparse rationalisation of dyadic series",
+      "problem_ids": [
+        "erdos_251"
+      ],
+      "repository": "wcook04/plectis-erdos-lean",
+      "commit": "34ab2ba6304c936a3537fd1cd8a91f23bbf2e575",
+      "comparator_config_path": "PalomarCorpus/E251_01/comparator.json",
+      "formalization_metadata_path": "PalomarCorpus/E251_01/formalization.yaml",
+      "theorem_names": [
+        "PalomarCorpus.E251.PaperStatementsA.bounded_test_finite_coupling",
+        "PalomarCorpus.E251.PaperStatementsC.real_dyadic_orbit_eq_true_tail_iff",
+        "PalomarCorpus.E251.PaperStatementsG.dyadicPartialSumQ_eq_start_add_differences",
+        "PalomarCorpus.E251.PaperStatementsG.infinite_prime_gap_identity",
+        "PalomarCorpus.E251.PaperStatementsG.irrationality_reformulation",
+        "PalomarCorpus.E251.PaperStatementsG.prime0_dyadic_summation_by_parts",
+        "PalomarCorpus.E251.PaperStatementsG.rationality_classification",
+        "PalomarCorpus.E251.PaperStatementsH.real_block_identity",
+        "PalomarCorpus.E251.PaperStatementsI.local_target_interval",
+        "PalomarCorpus.E251.UniformSparseRationalisation.arbitrary_word_sparse_rationalisation_uniform",
+        "PalomarCorpus.E251.UniformSparseRationalisation.polylogarithmic_word_interval_uniform"
+      ],
+      "status": "registration_requested",
+      "observed_at": "2026-10-22T15:48:05.721319+00:00",
+      "registered_url": null,
+      "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/39643951047",
+      "observation_basis": "maintainer_authenticated_status_and_accepted_registration_consent"
+    },
+    {
+      "entry": "PalomarCorpus_E269_02",
+      "title": "Infinite rank of the three-prime running-LCM kernel",
+      "problem_ids": [
+        "erdos_269"
+      ],
+      "repository": "wcook04/plectis-erdos-lean",
+      "commit": "80024c64bc77a95249e34824a36bf43989f62ae6",
+      "comparator_config_path": "PalomarCorpus/E269_02/comparator.json",
+      "formalization_metadata_path": "PalomarCorpus/E269_02/formalization.yaml",
+      "theorem_names": [
+        "PalomarCorpus.E269.PaperStatementsA.dyadicBlockBase235_cases",
+        "PalomarCorpus.E269.PaperStatementsA.dyadicBlockBase235_mem_interval",
+        "PalomarCorpus.E269.PaperStatementsA.dyadicInternalPower_exponent_unique",
+        "PalomarCorpus.E269.PaperStatementsA.exists_dyadicInternalPower_iff_log_succ",
+        "PalomarCorpus.E269.PaperStatementsA.log_dyadic_succ_eq_of_no_internalPower",
+        "PalomarCorpus.E269.PaperStatementsA.paper_two_by_two_fixture",
+        "PalomarCorpus.E269.PaperStatementsA.paper_uniform_rank_and_nonseparation",
+        "PalomarCorpus.E269.PaperStatementsA.radix_eq_height_ratio",
+        "PalomarCorpus.E269.PaperStatementsA.threePrimeHeight_dyadicBlock_succ",
+        "PalomarCorpus.E269.PaperStatementsB.real_two_prime_separation",
+        "PalomarCorpus.E269.PaperStatementsC.long_actual_orbit",
+        "PalomarCorpus.E269.PaperStatementsE.uniform_rank_complete",
+        "PalomarCorpus.E269.PaperStructuresH.rank_cutMatrix"
+      ],
+      "status": "registration_requested",
+      "observed_at": "2026-10-22T15:48:05.721319+00:00",
+      "registered_url": null,
+      "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/39646911715",
+      "observation_basis": "maintainer_authenticated_status_and_accepted_registration_consent"
+    },
+    {
+      "entry": "PalomarCorpus_E68_05",
+      "title": "Carry and divisor-channel criteria for the factorial-minus-one reciprocal series",
+      "problem_ids": [
+        "erdos_68"
+      ],
+      "repository": "wcook04/plectis-erdos-lean",
+      "commit": "d8db022f33199491ba88d47fac6d66f8690f2c1a",
+      "comparator_config_path": "PalomarCorpus/E68_05/comparator.json",
+      "formalization_metadata_path": "PalomarCorpus/E68_05/formalization.yaml",
+      "theorem_names": [
+        "PalomarCorpus.E68.PaperStatementsA.carry_characterisation",
+        "PalomarCorpus.E68.PaperStatementsA.companion_orbit_boundary",
+        "PalomarCorpus.E68.PaperStatementsA.divisor_channel_coordinates",
+        "PalomarCorpus.E68.PaperStatementsA.finite_channel_moment_certificate",
+        "PalomarCorpus.E68.PaperStatementsA.finite_channel_moment_certificate_eq",
+        "PalomarCorpus.E68.PaperStatementsA.global_complementary_criterion_nat"
+      ],
+      "status": "registration_requested",
+      "observed_at": "2026-10-22T15:48:05.721319+00:00",
+      "registered_url": null,
+      "verification_run_url": "https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/39652409857",
+      "observation_basis": "maintainer_authenticated_status_and_accepted_registration_consent"
     }
   ]
 }

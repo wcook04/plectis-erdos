@@ -45,9 +45,9 @@ service receipts. No command above submits or registers a result.
 
 ## Dated Palomar registry observations
 
-Observed at 2026-10-22T15:44:45.944204+00:00. [The public status record](palomar_registry_status.json) owns these dated observations.
+Observed at 2026-10-22T15:52:23.552505+00:00. [The public status record](palomar_registry_status.json) owns these dated observations.
 
-Dated observations of five separately identified registered submission editions. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. This inventory covers these five editions, not every prepared or historical submission.
+Dated observations of ten separately identified submission editions: five registered editions and five editions with accepted registration requests awaiting public registry URLs. Overlapping selections do not count as new mathematics, and no outcome transfers to another commit, repository or declaration by name alone. The sixth new intake remains in verification and is excluded from this registration inventory.
 
 Registration requests are pending and are not published registry editions. Each observation binds the named repository, exact source commit, configuration and selected declarations. It does not transfer to current main, update this repository's selected candidate or claim status, or count new mathematics.
 
@@ -201,5 +201,158 @@ Observed at 2026-10-22T15:44:45.944204+00:00; public registry record and authent
 - `PalomarCorpus.E249.TotientKernelBasis.allBaseTotientKernelBasisRankAndRelationDimension`
 - `PalomarCorpus.E249.TotientKernelBasis.allSlopeAffineTotientFormsLinearIndependent`
 - `PalomarCorpus.E249.TotientKernelBasis.displayed_integral_normal_form`
+
+</details>
+
+### PalomarCorpus_E1049_01: An explicit rational-base irrationality region for Zudilin's Lambert series
+
+Status: **registration requested; pending**.
+Observed at 2026-10-22T15:48:05.721319+00:00; maintainer_authenticated_status_and_accepted_registration_consent.
+
+- Repository: `wcook04/plectis-erdos-lean`; commit: `8d47efd230e041b76b8233a49164ca798977053c`.
+- Problem identities: `erdos_1049`.
+- [Comparator configuration](https://github.com/wcook04/plectis-erdos-lean/blob/8d47efd230e041b76b8233a49164ca798977053c/PalomarCorpus/E1049_01/comparator.json): `PalomarCorpus/E1049_01/comparator.json`.
+- [Formalization metadata](https://github.com/wcook04/plectis-erdos-lean/blob/8d47efd230e041b76b8233a49164ca798977053c/PalomarCorpus/E1049_01/formalization.yaml): `PalomarCorpus/E1049_01/formalization.yaml`.
+- [Recorded verification run](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/39649415901).
+
+<details>
+<summary>Exact selected declarations</summary>
+
+- `PalomarCorpus.E1049.PaperStatementsA.contour_enclosure`
+- `PalomarCorpus.E1049.PaperStatementsA.four_rpow_mu_lt_thirtyOne`
+- `PalomarCorpus.E1049.PaperStatementsA.inv_bvMu_eq`
+- `PalomarCorpus.E1049.PaperStatementsA.omega_indicator`
+- `PalomarCorpus.E1049.PaperStatementsA.paperBvMu_eq`
+- `PalomarCorpus.E1049.PaperStatementsA.printed_bvMu`
+- `PalomarCorpus.E1049.PaperStatementsA.printed_bv_cutoff`
+- `PalomarCorpus.E1049.PaperStatementsA.printed_contour`
+- `PalomarCorpus.E1049.PaperStatementsA.printed_four_rpow_bvMu`
+- `PalomarCorpus.E1049.PaperStatementsA.printed_four_rpow_mu`
+- `PalomarCorpus.E1049.PaperStatementsA.printed_log_ratio`
+- `PalomarCorpus.E1049.PaperStatementsA.thirtyoneFour_between_rpow`
+- `PalomarCorpus.E1049.PaperStatementsA.thirtyoneFour_ratio_chain`
+- `PalomarCorpus.E1049.PaperStatementsA.zudilinC0_enclosure`
+- `PalomarCorpus.E1049.PaperStatementsA.zudilinJ_enclosure`
+- `PalomarCorpus.E1049.PaperStatementsA.zudilin_rpow_lt_iff_contourRegion`
+- `PalomarCorpus.E1049.PaperStatementsG.thirtyoneFour_outside_bv_inside_contour`
+- `PalomarCorpus.E1049.PaperStatementsI.rational_base_measure_uniform`
+- `PalomarCorpus.E1049.PaperStatementsI.thirtyoneFour_power_measure_lt_301`
+- `PalomarCorpus.E1049.PaperStatementsJ.rational_base_threshold`
+- `PalomarCorpus.E1049.PaperStatementsJ.rational_base_threshold_log`
+- `PalomarCorpus.E1049.PaperStatementsJ.thirtyoneFour_irrational`
+- `PalomarCorpus.E1049.PaperStatementsJ.thirtyoneFour_pow_irrational`
+- `PalomarCorpus.E1049.RationalBaseRegion.rational_base_power_measure`
+- `PalomarCorpus.E1049.RationalBaseRegion.thirtyone_four_power_measure_lt_301`
+
+</details>
+
+### PalomarCorpus_E243_01: Cubic-rate irrationality for reciprocal sums
+
+Status: **registration requested; pending**.
+Observed at 2026-10-22T15:48:05.721319+00:00; maintainer_authenticated_status_and_accepted_registration_consent.
+
+- Repository: `wcook04/plectis-erdos-lean`; commit: `eb6cd7ceae9ff5c5bceeb514cac749c30861d8c6`.
+- Problem identities: `erdos_243`.
+- [Comparator configuration](https://github.com/wcook04/plectis-erdos-lean/blob/eb6cd7ceae9ff5c5bceeb514cac749c30861d8c6/PalomarCorpus/E243_01/comparator.json): `PalomarCorpus/E243_01/comparator.json`.
+- [Formalization metadata](https://github.com/wcook04/plectis-erdos-lean/blob/eb6cd7ceae9ff5c5bceeb514cac749c30861d8c6/PalomarCorpus/E243_01/formalization.yaml): `PalomarCorpus/E243_01/formalization.yaml`.
+- [Recorded verification run](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/39630984306).
+
+<details>
+<summary>Exact selected declarations</summary>
+
+- `PalomarCorpus.E243.CompletePaperRecords.fixed_offsets_periodic_lowerDensity`
+- `PalomarCorpus.E243.PaperStatementsA.cubic_profile_gcd_stabilisation_and_primitive_shape`
+- `PalomarCorpus.E243.PaperStatementsA.primitive_zero_density_paper_multiplier_lemma`
+- `PalomarCorpus.E243.PaperStatementsG.regular_rate_extraction`
+- `PalomarCorpus.E243.PaperStatementsL.canonical_tail_ratio_quantitative`
+- `PalomarCorpus.E243.PaperStatementsN.regular_rate_extraction_cubic`
+- `PalomarCorpus.E243.PaperStatementsP.scale_twelve_of_square_in_rootField`
+- `PalomarCorpus.E243.PaperStructuresAC.cubic_exclusion_unconditional`
+- `PalomarCorpus.E243.PaperStructuresAC.cubic_rate_irrationality_unconditional`
+- `PalomarCorpus.E243.PaperStructuresAC.squareSpecialisation`
+- `PalomarCorpus.E243.PaperStructuresAC.transport_square_unconditional`
+- `PalomarCorpus.E243.PaperStructuresAD.minus_one_forbidden_word`
+- `PalomarCorpus.E243.PaperStructuresAD.plus_one_forbidden_word`
+
+</details>
+
+### PalomarCorpus_E251_01: Uniform sparse rationalisation of dyadic series
+
+Status: **registration requested; pending**.
+Observed at 2026-10-22T15:48:05.721319+00:00; maintainer_authenticated_status_and_accepted_registration_consent.
+
+- Repository: `wcook04/plectis-erdos-lean`; commit: `34ab2ba6304c936a3537fd1cd8a91f23bbf2e575`.
+- Problem identities: `erdos_251`.
+- [Comparator configuration](https://github.com/wcook04/plectis-erdos-lean/blob/34ab2ba6304c936a3537fd1cd8a91f23bbf2e575/PalomarCorpus/E251_01/comparator.json): `PalomarCorpus/E251_01/comparator.json`.
+- [Formalization metadata](https://github.com/wcook04/plectis-erdos-lean/blob/34ab2ba6304c936a3537fd1cd8a91f23bbf2e575/PalomarCorpus/E251_01/formalization.yaml): `PalomarCorpus/E251_01/formalization.yaml`.
+- [Recorded verification run](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/39643951047).
+
+<details>
+<summary>Exact selected declarations</summary>
+
+- `PalomarCorpus.E251.PaperStatementsA.bounded_test_finite_coupling`
+- `PalomarCorpus.E251.PaperStatementsC.real_dyadic_orbit_eq_true_tail_iff`
+- `PalomarCorpus.E251.PaperStatementsG.dyadicPartialSumQ_eq_start_add_differences`
+- `PalomarCorpus.E251.PaperStatementsG.infinite_prime_gap_identity`
+- `PalomarCorpus.E251.PaperStatementsG.irrationality_reformulation`
+- `PalomarCorpus.E251.PaperStatementsG.prime0_dyadic_summation_by_parts`
+- `PalomarCorpus.E251.PaperStatementsG.rationality_classification`
+- `PalomarCorpus.E251.PaperStatementsH.real_block_identity`
+- `PalomarCorpus.E251.PaperStatementsI.local_target_interval`
+- `PalomarCorpus.E251.UniformSparseRationalisation.arbitrary_word_sparse_rationalisation_uniform`
+- `PalomarCorpus.E251.UniformSparseRationalisation.polylogarithmic_word_interval_uniform`
+
+</details>
+
+### PalomarCorpus_E269_02: Infinite rank of the three-prime running-LCM kernel
+
+Status: **registration requested; pending**.
+Observed at 2026-10-22T15:48:05.721319+00:00; maintainer_authenticated_status_and_accepted_registration_consent.
+
+- Repository: `wcook04/plectis-erdos-lean`; commit: `80024c64bc77a95249e34824a36bf43989f62ae6`.
+- Problem identities: `erdos_269`.
+- [Comparator configuration](https://github.com/wcook04/plectis-erdos-lean/blob/80024c64bc77a95249e34824a36bf43989f62ae6/PalomarCorpus/E269_02/comparator.json): `PalomarCorpus/E269_02/comparator.json`.
+- [Formalization metadata](https://github.com/wcook04/plectis-erdos-lean/blob/80024c64bc77a95249e34824a36bf43989f62ae6/PalomarCorpus/E269_02/formalization.yaml): `PalomarCorpus/E269_02/formalization.yaml`.
+- [Recorded verification run](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/39646911715).
+
+<details>
+<summary>Exact selected declarations</summary>
+
+- `PalomarCorpus.E269.PaperStatementsA.dyadicBlockBase235_cases`
+- `PalomarCorpus.E269.PaperStatementsA.dyadicBlockBase235_mem_interval`
+- `PalomarCorpus.E269.PaperStatementsA.dyadicInternalPower_exponent_unique`
+- `PalomarCorpus.E269.PaperStatementsA.exists_dyadicInternalPower_iff_log_succ`
+- `PalomarCorpus.E269.PaperStatementsA.log_dyadic_succ_eq_of_no_internalPower`
+- `PalomarCorpus.E269.PaperStatementsA.paper_two_by_two_fixture`
+- `PalomarCorpus.E269.PaperStatementsA.paper_uniform_rank_and_nonseparation`
+- `PalomarCorpus.E269.PaperStatementsA.radix_eq_height_ratio`
+- `PalomarCorpus.E269.PaperStatementsA.threePrimeHeight_dyadicBlock_succ`
+- `PalomarCorpus.E269.PaperStatementsB.real_two_prime_separation`
+- `PalomarCorpus.E269.PaperStatementsC.long_actual_orbit`
+- `PalomarCorpus.E269.PaperStatementsE.uniform_rank_complete`
+- `PalomarCorpus.E269.PaperStructuresH.rank_cutMatrix`
+
+</details>
+
+### PalomarCorpus_E68_05: Carry and divisor-channel criteria for the factorial-minus-one reciprocal series
+
+Status: **registration requested; pending**.
+Observed at 2026-10-22T15:48:05.721319+00:00; maintainer_authenticated_status_and_accepted_registration_consent.
+
+- Repository: `wcook04/plectis-erdos-lean`; commit: `d8db022f33199491ba88d47fac6d66f8690f2c1a`.
+- Problem identities: `erdos_68`.
+- [Comparator configuration](https://github.com/wcook04/plectis-erdos-lean/blob/d8db022f33199491ba88d47fac6d66f8690f2c1a/PalomarCorpus/E68_05/comparator.json): `PalomarCorpus/E68_05/comparator.json`.
+- [Formalization metadata](https://github.com/wcook04/plectis-erdos-lean/blob/d8db022f33199491ba88d47fac6d66f8690f2c1a/PalomarCorpus/E68_05/formalization.yaml): `PalomarCorpus/E68_05/formalization.yaml`.
+- [Recorded verification run](https://github.com/PalomarRegistry/PalomarSubmission/actions/runs/39652409857).
+
+<details>
+<summary>Exact selected declarations</summary>
+
+- `PalomarCorpus.E68.PaperStatementsA.carry_characterisation`
+- `PalomarCorpus.E68.PaperStatementsA.companion_orbit_boundary`
+- `PalomarCorpus.E68.PaperStatementsA.divisor_channel_coordinates`
+- `PalomarCorpus.E68.PaperStatementsA.finite_channel_moment_certificate`
+- `PalomarCorpus.E68.PaperStatementsA.finite_channel_moment_certificate_eq`
+- `PalomarCorpus.E68.PaperStatementsA.global_complementary_criterion_nat`
 
 </details>
