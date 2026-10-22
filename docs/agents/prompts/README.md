@@ -4,8 +4,8 @@
 # Prompts for working from an agent trace
 
 These are public adaptations of Will Cook's Continue Intelligently, Semantic
-Carryforward and Context Compaction prompts used in the
-[Agent Trace demonstration](https://youtu.be/SGeVUNqjfsk). They retain the original
+Carryforward and Context Compaction prompts used in an earlier
+Agent Trace demonstration. They retain the original
 purposes without the private workspace's paths, routing rules or parser contract.
 
 The workflow is simple: an agent works on a project, you give its trace and any
