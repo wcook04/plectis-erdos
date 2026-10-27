@@ -45,8 +45,8 @@ source and an on-demand model remains untested. The
 
 The [website](https://wcook04.github.io/practical-formal-verification/maths/) and its
 [maths map](https://wcook04.github.io/practical-formal-verification/maths/universe.html) connect a
-problem to papers, results and recorded formal evidence. This checkout holds
-the sources and works independently of the site. Humans enter through
+problem to papers, results and formal evidence. This checkout holds
+the sources and works without the site. Humans enter through
 [README.md](../README.md); agents use [AGENTS.md](../AGENTS.md). Both lead to
 the same evidence.
 
