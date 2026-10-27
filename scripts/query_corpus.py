@@ -10705,7 +10705,7 @@ def mathematical_signal_spine(
 def companion_repository_packet() -> dict[str, Any]:
     return {
         "name": "plectis",
-        "repository": "https://github.com/wcook04/practical-formal-verification",
+        "repository": "https://github.com/wcook04/plectis",
         "relationship": (
             "Public systems and software companion, not dependency; this "
             "mathematical checkout remains self-contained."
