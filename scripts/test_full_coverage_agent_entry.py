@@ -134,7 +134,7 @@ def assert_complete(packet: dict) -> None:
     )
     require(
         packet["companion_repository"]["repository"]
-        == "https://github.com/wcook04/practical-formal-verification",
+        == "https://github.com/wcook04/plectis",
         "companion repository URL drifted",
     )
     require(
