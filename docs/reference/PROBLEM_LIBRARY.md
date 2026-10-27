@@ -1,6 +1,6 @@
 # Papers and Lean source by problem
 
-[Choose a problem on the website](https://wcook04.github.io/plectis/maths/).
+[Choose a problem on the website](https://wcook04.github.io/practical-formal-verification/maths/).
 Every problem has a short paper, a long paper, and a searchable source map.
 PDF and TeX links point to stable file paths on this repository's `main` branch.
 The website's HTML reader is a published snapshot.

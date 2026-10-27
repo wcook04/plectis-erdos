@@ -276,7 +276,7 @@ def header(title: str, edition: str) -> str:
         f"{GENERATED}\n# {title}\n\n"
         f"Edition fingerprint `{edition}`. Papers CC-BY-4.0, Will Cook, 2026. "
         f"Source: <https://github.com/wcook04/plectis-erdos>. "
-        f"Website: <https://wcook04.github.io/plectis/maths/>.\n"
+        f"Website: <https://wcook04.github.io/practical-formal-verification/maths/>.\n"
     )
 
 

@@ -38,7 +38,7 @@ when the receipt format calls for them.
 ## Return what you learned
 
 Use the [research-progress form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml),
-a pull request, or [email Will](https://wcook04.github.io/plectis/#contact).
+a pull request, or [email Will](https://wcook04.github.io/practical-formal-verification/#contact).
 Say what you investigated, what changed or became clearer, what another person
 can inspect, what remains uncertain, and how you want to be credited. Include
 the paper edition or starting commit if you know it. You do not need an account

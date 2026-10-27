@@ -495,7 +495,7 @@ def main() -> None:
         "start-here issue must not send people to frozen release PDFs",
     )
     require(
-        "wcook04.github.io/plectis/maths/problems/erdos_257.html" in start_here,
+        "wcook04.github.io/practical-formal-verification/maths/problems/erdos_257.html" in start_here,
         "start-here issue lost the live #257 problem page",
     )
     require(

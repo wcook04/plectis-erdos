@@ -9,7 +9,7 @@ People have told us things about this work that changed it. Each entry says what
 
 Entries: `9`. Names withheld until confirmed: `9`. Named with permission: `0`. Anonymous at their request: `0`.
 
-Published papers, forum posts and software are credited in [source attributions](SOURCE_ATTRIBUTIONS.md), and the [credit policy](CREDIT_POLICY.md) explains how credit works here. If an entry is about your advice and you would like to be named, to stay anonymous, or to correct the entry, [get in touch](https://wcook04.github.io/plectis/docs/contact.html#get-in-touch).
+Published papers, forum posts and software are credited in [source attributions](SOURCE_ATTRIBUTIONS.md), and the [credit policy](CREDIT_POLICY.md) explains how credit works here. If an entry is about your advice and you would like to be named, to stay anonymous, or to correct the entry, [get in touch](https://wcook04.github.io/practical-formal-verification/docs/contact.html#get-in-touch).
 
 <a id="credit-correspondence-007"></a>
 
