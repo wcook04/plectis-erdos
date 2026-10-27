@@ -58,7 +58,7 @@ error, with an exact arithmetic checker and links to the original theorem.
 
 You do not need a clone to contribute. Send a mathematical account through the
 [research-progress form](https://github.com/wcook04/plectis-erdos/issues/new?template=research_progress.yml)
-or by [email](https://wcook04.github.io/plectis/#contact), and say which
+or by [email](https://wcook04.github.io/practical-formal-verification/#contact), and say which
 edition fingerprint you started from. Useful prose is kept as written.
 Accepted work is credited by name in the repository's contribution record
 under its [credit policy](https://github.com/wcook04/plectis-erdos/blob/main/docs/research-commons/CREDIT_POLICY.md).

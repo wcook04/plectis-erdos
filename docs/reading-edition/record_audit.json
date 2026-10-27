@@ -131,7 +131,7 @@
     "paper/reasoning-parts/erdos68/preamble.tex": "sha256:7bbd6207745d2f3e5c7db3b788c3cafcfd17504ac075cad8df1f5e5310dda21d",
     "paper/reasoning-parts/record_links.json": "sha256:1d93f3b309d9ee580394f7d86b36916253091d6184daf226fb653305df05e50e",
     "scripts/assemble_reasoning_surfaces.py": "sha256:0d8f6426d736fd371921e11e7bd2e721413f2d881b10da0be88c6f19b5ffb2b2",
-    "scripts/build_reading_edition.py": "sha256:91b90128845285806545f1340cacf048f1c98b8c86b947d731627842aee8d907",
+    "scripts/build_reading_edition.py": "sha256:a18292ea2d342fd37b912276a5c58914981170c9214f72fc4ca01553abedebb0",
     "scripts/check_lean_paper_propagation.py": "sha256:0f70bd947b02efe91291389e0430e1140a729de1ae3d311092e20152ea1b813c",
     "scripts/lean_source.py": "sha256:9957255054732a3ee1ddcadfd4aab80ea56c927077868153f8d7bddfa09672fe",
     "scripts/reasoning_record_audit.py": "sha256:5181f76da0658a08400a1fc35c6f72dc0370e375fd4d11caf41a4eb38ce5c62b"

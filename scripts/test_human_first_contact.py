@@ -307,8 +307,10 @@ def main() -> None:
     # URLs that this counter charges as words. The budget follows the authored
     # page, it does not reshape it. The 2026-09-19 exact #1041 release boundary
     # adds one authority-owned paragraph, so the same bounded surface allows 2_100.
+    # 2026-10-27: the Plectis site moved to /practical-formal-verification/; its
+    # twelve README links each charge two more URL words, so the budget is 2_124.
     require(
-        len(prose_words(readme)) <= 2_100,
+        len(prose_words(readme)) <= 2_124,
         "README prose exceeds the human front-door budget",
     )
     # 2026-09-10, operator-directed: the front page carries no command block at
@@ -495,7 +497,7 @@ def main() -> None:
         "start-here issue must not send people to frozen release PDFs",
     )
     require(
-        "wcook04.github.io/plectis/maths/problems/erdos_257.html" in start_here,
+        "wcook04.github.io/practical-formal-verification/maths/problems/erdos_257.html" in start_here,
         "start-here issue lost the live #257 problem page",
     )
     require(
