@@ -254,14 +254,11 @@ arbitrary infinite supports remain open.
 concern maintenance, with proofs and statements unchanged and no new mathematics.
 [Trace #1041](docs/case-studies/formal-conjectures-1041.md).
 
-On 12 October, [Bo Cowgill approved #6579](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#open-requests)
-using author-hosted verification, without an independent rerun.
-The request remains open with review required; the unreduced-totient problem remains open.
+On 12 October, [Bo Cowgill approved #6579](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#open-requests), then [PR7260](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#proof-link-maintenance), [PR6780](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#open-requests) and [PR7290–7294](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#open-requests), using author-hosted checks without independent replay.
+All await required reviews; the unreduced-totient problem remains open.
 
 Nineteen [receiving checks](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#contribution-activity) pass.
-Bo approved [PR7260](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#proof-link-maintenance), [PR6780](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#open-requests) and [PR7290–7294](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#open-requests)
-using author-hosted checks without independent proof replay.
-All seven await required reviews.
+Moritz Firsching wrote that [PR6523](docs/verification/FORMAL_CONJECTURES_CROSSWALK.md#open-requests) generally looked mathematically correct, with minor comments, now made.
 
 Other checks: [Prove2Me #243/#257 packets](docs/research-commons/README.md#native-prove2me-theorems)
 and [plectis-erdos-lean](https://github.com/wcook04/plectis-erdos-lean).

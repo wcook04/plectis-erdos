@@ -472,9 +472,9 @@
     }
   ],
   "contribution_activity": {
-    "observed_at": "2026-10-14T11:24:16.859470+00:00",
+    "observed_at": "2026-10-31T16:00:00+00:00",
     "repository": "https://github.com/google-deepmind/formal-conjectures",
-    "boundary": "A dated observation of public pull requests. Individual review, aggregate approval requirements and merge state are separate. A merge accepts the scoped upstream change, not every mathematical claim in this repository. Maintenance of existing proof links is excluded from the merged mathematical contribution count. The earlier pinned statement comparisons below retain their original source identities.\n\nAll nineteen receiving declarations listed here have successful author-hosted checks at the exact delivered heads. Each run exports the actual FC declaration before executing the confined candidate in Lean 4.33.1 with FC's Mathlib pin `0df444a360eaa60ab8c11dca51a86af692955474`; statement-and-dependency equality, default Lean and NanoDa acceptance, the axiom budget (`propext`, `Classical.choice`, `Quot.sound`) and positive/mismatch controls are checked. The eleven repaired adapters use source `d1fe386f`; the three earlier successful declarations retain their own immutable proof pins. The five additional statements retain proof pins `71a2bc9f`, `2cd19fba` and `01b23a6e`; [source PR40](https://github.com/wcook04/plectis-erdos-lean/pull/40) and [source PR41](https://github.com/wcook04/plectis-erdos-lean/pull/41) are merged. These checks confer no independent human rerun or upstream merge.\n\n[Source run 38341643841](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38341643841) separately compiled all ten receiving-adapter projects for fourteen units at [source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/commit/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85). [Source PR37](https://github.com/wcook04/plectis-erdos-lean/pull/37) packages that repair. Source compilation, identity at a receiving head, current upstream deployment and reviewer acceptance are distinct evidence.",
+    "boundary": "A dated observation of public pull requests. Individual review, aggregate approval requirements and merge state are separate. A merge accepts the scoped upstream change, not every mathematical claim in this repository. Maintenance of existing proof links is excluded from the merged mathematical contribution count. The earlier pinned statement comparisons below retain their original source identities.\n\nAll nineteen receiving declarations listed here have successful author-hosted checks at the exact delivered heads. Each run exports the actual FC declaration before executing the confined candidate in Lean 4.33.1 with FC's Mathlib pin `0df444a360eaa60ab8c11dca51a86af692955474`; statement-and-dependency equality, default Lean and NanoDa acceptance, the axiom budget (`propext`, `Classical.choice`, `Quot.sound`) and positive/mismatch controls are checked. Nine repaired adapters use source `d1fe386f`; the two #6523 adapters moved to source `76c3a0cb` after review; the three earlier successful declarations retain their own immutable proof pins. The five additional statements retain proof pins `71a2bc9f`, `2cd19fba` and `01b23a6e`; [source PR40](https://github.com/wcook04/plectis-erdos-lean/pull/40) and [source PR41](https://github.com/wcook04/plectis-erdos-lean/pull/41) are merged. These checks confer no independent human rerun or upstream merge.\n\n[Source run 38341643841](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38341643841) separately compiled all ten receiving-adapter projects for fourteen units at [source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/commit/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85). [Source PR37](https://github.com/wcook04/plectis-erdos-lean/pull/37) packages that repair. Source compilation, identity at a receiving head, current upstream deployment and reviewer acceptance are distinct evidence.",
     "requests": [
       {
         "number": 5034,
@@ -615,9 +615,9 @@
           "Erdos243.erdos_243.variants.cubic_rate",
           "Erdos243.erdos_243.variants.slow_growth_product_defect"
         ],
-        "scope": "Cubic-rate irrationality and slow-growth rigidity under additional growth and increment hypotheses; the original question remains open.\n\nReceiving verification for `Erdos243.erdos_243.variants.cubic_rate`: [run 38356995383](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38356995383) compares the actual FC declaration at `ccb7d725` with [proof source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/blob/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85/verification/FC243DualCurrent/FC6523Solutions.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.\n\nReceiving verification for `Erdos243.erdos_243.variants.slow_growth_product_defect`: [run 38356998998](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38356998998) compares the actual FC declaration at `ccb7d725` with [proof source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/blob/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85/verification/FC243DualCurrent/FC6523Solutions.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.",
+        "scope": "Cubic-rate irrationality and slow-growth rigidity under additional growth and increment hypotheses; the original question remains open.\n\nReceiving verification for `Erdos243.erdos_243.variants.cubic_rate`: [run 39586148057](https://github.com/wcook04/plectis-erdos-lean/actions/runs/39586148057) compares the actual FC declaration at `c3f49ae1` with [proof source `76c3a0cb`](https://github.com/wcook04/plectis-erdos-lean/blob/76c3a0cb0934068c76a9ebb5a4fc3ac045e3692f/verification/FC243DualCurrent/FC6523Solutions.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.\n\nReceiving verification for `Erdos243.erdos_243.variants.slow_growth_product_defect`: [run 39586145375](https://github.com/wcook04/plectis-erdos-lean/actions/runs/39586145375) compares the actual FC declaration at `c3f49ae1` with [proof source `76c3a0cb`](https://github.com/wcook04/plectis-erdos-lean/blob/76c3a0cb0934068c76a9ebb5a4fc3ac045e3692f/verification/FC243DualCurrent/FC6523Solutions.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.\n\nOn 21 October, Moritz Firsching reviewed `ccb7d725`, writing that the request generally looked mathematically correct to him, with minor comments on helper placement, a helper name, computability and a redundant scope opening. Those changes are in `c3f49ae1`; the formulas and theorem names are unchanged. Bo Cowgill's approval of 10 October was on the earlier head `56710453`. On 31 October he removed the awaiting-author marker. The request remains open with review required.",
         "state": "OPEN",
-        "head": "ccb7d725fc3b8b8ed8fb2e7047210fe31dc34e8d",
+        "head": "c3f49ae12a5b63b4ea8f8343836863a1844aab6f",
         "merged_at": null,
         "review_decision": "REVIEW_REQUIRED",
         "reviews": [
@@ -636,6 +636,14 @@
             "url": "https://github.com/google-deepmind/formal-conjectures/pull/6523#pullrequestreview-5477814639",
             "author": "bocowgill",
             "body": "LGTM, thanks.\n\nThe [new adapter verification](https://github.com/wcook04/plectis-erdos/actions/runs/37602773849) resolves my earlier request: it covers the exact cubic-rate `tsum` statement, including convergence, with Lean and NanoDa under only `propext`, `Classical.choice` and `Quot.sound`. The slow-growth statement and all three definitions match the [proof checked by Lean, NanoDa and con-ron](https://github.com/wcook04/plectis-erdos-lean/actions/runs/36733962314), under the same axiom policy.\n\n[Theorem 7.2, p. 12](https://raw.githubusercontent.com/wcook04/plectis-erdos/7ab6a901a2fe07e8d0e5c99dc46821adffc7411b/paper/243/erdos-243-reciprocal-tail-rigidity.pdf#page=12) preserves the index in `3/n` through a finite-prefix change. The slow-growth variant retains its additional prefix-product bound; neither variant settles the unrestricted problem."
+          },
+          {
+            "state": "COMMENTED",
+            "commit": "ccb7d725fc3b8b8ed8fb2e7047210fe31dc34e8d",
+            "submitted_at": "2026-10-21T08:15:50Z",
+            "url": "https://github.com/google-deepmind/formal-conjectures/pull/6523#pullrequestreview-5596763312",
+            "author": "mo271",
+            "body": "Thanks, generally this looks mathematically correct to me, just some minor comments: \n\nThe three definitions sit in Erdos243.erdos_243.variants, so their full names are Erdos243.erdos_243.variants.prefixProduct and so on. Put them directly in Erdos243, or inline \u220f j \u2208 Finset.range n, a j.\n- rename recordLogLog: it is an odd name for $\\log_2\\log_2\\max(4,x)$. Consider `logLogTwo` or similar.\n - `prefixProduct` is computable, right? if it is drop `noncomputable`"
           }
         ],
         "observation_history": [
@@ -643,6 +651,27 @@
             "observed_at": "2026-10-12T18:49:29.505431+00:00",
             "state": "OPEN",
             "head": "56710453a2af5ac017df557431aa238346e3a35b",
+            "merged_at": null,
+            "review_decision": "REVIEW_REQUIRED",
+            "reviews": [
+              {
+                "state": "COMMENTED",
+                "commit": "f4db4374ba08c195485ee1fea11e837f5759d3e2",
+                "submitted_at": "2026-10-06T22:06:31Z",
+                "url": "https://github.com/google-deepmind/formal-conjectures/pull/6523#pullrequestreview-5435079771"
+              },
+              {
+                "state": "APPROVED",
+                "commit": "56710453a2af5ac017df557431aa238346e3a35b",
+                "submitted_at": "2026-10-10T05:41:02Z",
+                "url": "https://github.com/google-deepmind/formal-conjectures/pull/6523#pullrequestreview-5477814639"
+              }
+            ]
+          },
+          {
+            "observed_at": "2026-10-14T11:24:16.859470+00:00",
+            "state": "OPEN",
+            "head": "ccb7d725fc3b8b8ed8fb2e7047210fe31dc34e8d",
             "merged_at": null,
             "review_decision": "REVIEW_REQUIRED",
             "reviews": [
@@ -979,7 +1008,7 @@
         "targets": [
           "GeometricMomentHankel.fixed_base_asymptotic"
         ],
-        "scope": "Asymptotic for each fixed 0 < q < 1; no uniformity as q approaches one and no solution of #1049.\n\nReceiving verification for `GeometricMomentHankel.fixed_base_asymptotic`: [run 38358960367](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38358960367) compares the actual FC declaration at `d194bd96` with [proof source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/blob/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85/verification/FC1049HankelCurrent/FC6780Solution.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.\n\nOn 13 October, Bo Cowgill approved `d194bd96`: the statement still matches Cook\u2019s fixed-base theorem, and Zudilin\u2019s equation (6) at x = z = 1 gives the moment summand; its zeroth Lambert term is zero. He said the actual-FC export-before-candidate order and consumed-export check resolve his earlier workspace concern. He relied on the author-hosted receiving receipt without independently rerunning the proof. The request remains open with review required.",
+        "scope": "Asymptotic for each fixed 0 < q < 1; no uniformity as q approaches one and no solution of #1049.\n\nReceiving verification for `GeometricMomentHankel.fixed_base_asymptotic`: [run 38358960367](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38358960367) compares the actual FC declaration at `d194bd96` with [proof source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/blob/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85/verification/FC1049HankelCurrent/FC6780Solution.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.\n\nOn 13 October, Bo Cowgill approved `d194bd96`: the statement still matches Cook\u2019s fixed-base theorem, and Zudilin\u2019s equation (6) at x = z = 1 gives the moment summand; its zeroth Lambert term is zero. He said the actual-FC export-before-candidate order and consumed-export check resolve his earlier workspace concern. He relied on the author-hosted receiving receipt without independently rerunning the proof. The request remains open with review required. On 31 October he removed the awaiting-author marker.",
         "state": "OPEN",
         "head": "d194bd963f85a03d78f6c1a20b26c9b4a41126ce",
         "merged_at": null,
