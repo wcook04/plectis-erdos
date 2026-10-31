@@ -396,7 +396,7 @@ class FormalConjecturesCrosswalkTest(unittest.TestCase):
 
     def test_local_navigation_contract_is_projected(self) -> None:
         self.assertIn(
-            "Canonical local return route: "
+            "Command for this problem: "
             "`python3 scripts/query_corpus.py --route erdos_68`",
             self.projection,
         )
