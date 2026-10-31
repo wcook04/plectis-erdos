@@ -550,13 +550,46 @@ def contribution_counts(activity: dict[str, Any]) -> dict[str, int]:
     }
 
 
+def latest_review(row: dict[str, Any]) -> tuple[dict[str, Any], str, str] | None:
+    """Return the latest individual review, its state and its head and date."""
+    if not row["reviews"]:
+        return None
+    review = max(
+        row["reviews"],
+        key=lambda r: datetime.fromisoformat(r["submitted_at"].replace("Z", "+00:00")),
+    )
+    relation = "current head" if review["commit"] == row["head"] else "an earlier head"
+    state = review["state"].lower().replace("_", " ")
+    return review, state, f"{relation}, {review['submitted_at'][:10]}"
+
+
+def render_contribution_summary(activity: dict[str, Any]) -> list[str]:
+    """One row per request, so a reader sees every state before the detail."""
+    lines = [
+        "| Request | Title | State | Latest individual review |",
+        "|---|---|---|---|",
+    ]
+    for row in sorted(activity["requests"], key=lambda r: (r["state"] != "MERGED", r["number"])):
+        title = row.get("display_title", row["title"]).replace("|", "\\|")
+        if row["state"] == "MERGED":
+            state = f"Merged {row['merged_at'][:10]}"
+        else:
+            decision = (row.get("review_decision") or "not reported").lower().replace("_", " ")
+            state = f"{row['state'].capitalize()}, {decision}"
+        latest = latest_review(row)
+        cell = f"{latest[1]} on {latest[2]}" if latest else "none"
+        lines.append(f"| [#{row['number']}]({row['url']}) | {title} | {state} | {cell} |")
+    return [*lines, ""]
+
+
 def render_contribution_activity(activity: dict[str, Any]) -> list[str]:
     counts = contribution_counts(activity)
     lines = [
         "## Contribution activity", "",
-        f"Observed **{activity['observed_at']}** from the linked public pull requests.", "",
+        f"Read from the linked public pull requests at **{activity['observed_at']}**.", "",
         f"**{counts['merged_mathematical']} merged mathematical contributions · "
         f"{counts['open']} open requests · {counts['merged_authorship']} merged AUTHORS update.**", "",
+        *render_contribution_summary(activity),
         activity["boundary"], "",
     ]
     groups = [
@@ -578,15 +611,11 @@ def render_contribution_activity(activity: dict[str, Any]) -> list[str]:
             else:
                 decision = (row.get("review_decision") or "not reported").lower().replace("_", " ")
                 lines.extend([f"{row['state'].capitalize()}; aggregate review decision: **{decision}**.", ""])
-            if row["reviews"]:
-                review = max(
-                    row["reviews"],
-                    key=lambda r: datetime.fromisoformat(r["submitted_at"].replace("Z", "+00:00")),
-                )
-                relation = "current head" if review["commit"] == row["head"] else "an earlier head"
+            latest = latest_review(row)
+            if latest:
+                review, state, placement = latest
                 lines.extend([
-                    f"Latest individual review: [{review['state'].lower().replace('_', ' ')}]({review['url']}) "
-                    f"on {relation}, {review['submitted_at'][:10]}.", "",
+                    f"Latest individual review: [{state}]({review['url']}) on {placement}.", "",
                 ])
     lines.extend([
         "Exact target names, reviewed commits and observation fields are recorded in "
@@ -858,9 +887,9 @@ def render_markdown(
         f"**Upstream:** [{repository}]({repository}) at exact commit "
         f"[`{commit}`]({repository}/commit/{commit}). Source hashes are SHA-256 over exact file bytes.",
         "",
-        "**Boundary:** this section records statement identity and local adapter evidence at the pinned snapshot. It does not establish novelty or historical correspondence. The exact Formal Conjectures #1041 Hausdorff path-image statement is refuted by ani's one-polynomial example, while correspondence with the 1958 wording still needs independent review. The other seven original targets remain open. Historical adapter-admission fields below are not current upstream lifecycle; use the dated contribution activity above.",
+        "This section compares statements at the commit above and records adapters, which are Lean files that derive a Formal Conjectures statement from a theorem in this repository. It does not establish novelty or historical correspondence. The exact Formal Conjectures #1041 Hausdorff path-image statement is refuted by ani's one-polynomial example, while correspondence with the 1958 wording still needs independent review. The other seven original targets remain open. The adapter fields below date from this pinned commit; the contribution activity above gives the current state of each request.",
         "",
-        "| Problem | Upstream primary declaration | Adapter |",
+        "| Problem | Formal Conjectures declaration | Adapter at the pinned commit |",
         "|---:|---|---|",
     ]
     for row in manifest["problems"]:
@@ -907,16 +936,16 @@ def render_markdown(
                 "",
                 f"Local question: {indexed[problem]['question']}",
                 "",
-                f"- Canonical local return route: `{row['local_navigation']['route']}` "
+                f"- Command for this problem: `{row['local_navigation']['route']}` "
                 f"({row['local_navigation']['surface']}); "
                 f"{row['local_navigation']['return_contract']}",
                 "",
-                f"- Upstream declaration: [`{source['primary_declaration']}`]({source_url}) at `{source['path']}:{source['declaration_line']}`; proof status `{source['proof_status']}`.",
+                f"- Formal Conjectures declaration: [`{source['primary_declaration']}`]({source_url}) at `{source['path']}:{source['declaration_line']}`; proof status `{source['proof_status']}`.",
                 f"- Statement scope: {comparison['statement_scope']}",
                 f"- Indexing: {comparison['indexing']}",
                 f"- Casts and ambient types: {comparison['casts_and_ambient_types']}",
                 f"- Answer/proof status: {comparison['answer_and_proof_status']}",
-                f"- Conservative verdict: `{comparison['conservative_verdict']}`.",
+                f"- Comparison result: `{comparison['conservative_verdict']}`.",
                 f"- Machine-checked equivalence: {render_checked(comparison['machine_checked_equivalence'])}",
             ]
         )
@@ -928,7 +957,7 @@ def render_markdown(
                 f"`{refutation['source_commit']}`; {refutation['credit']}. "
                 f"{refutation['boundary']}"
             )
-        lines.extend([f"- Historical adapter-admission record: `{row['submission_status']}`. See [contribution activity](#contribution-activity) for upstream lifecycle.", ""])
+        lines.extend([f"- Adapter status at the pinned commit: `{row['submission_status']}`. See [contribution activity](#contribution-activity) for the current state.", ""])
 
     lines.extend(["## Adapter candidates", ""])
     for row in manifest["problems"]:
@@ -956,7 +985,7 @@ def render_markdown(
             lines.append(
                 f"- `{evidence['declaration']}` in `{evidence['path']}:{evidence['line']}`"
             )
-        lines.extend(["", "Unproved bridge obligations:", ""])
+        lines.extend(["", "Steps listed as unproved at the pinned commit:", ""])
         for obligation in adapter["unproved_bridge_obligations"]:
             lines.append(f"- {obligation}")
         lines.append("")
@@ -965,9 +994,8 @@ def render_markdown(
         [
             "## Cross-index matches",
             "",
-            "Upstream declarations this library can discharge that sit under a "
-            "problem number it does not work on. An index keyed by local problem "
-            "cannot hold these, so they are keyed by the upstream declaration.",
+            "These Formal Conjectures declarations follow from this library and "
+            "sit under a problem number outside the eight studied here.",
             "",
         ]
     )
@@ -985,22 +1013,22 @@ def render_markdown(
                 f"- Recorded here because: {row['why_recorded_here']}",
                 f"- Machine-checked equivalence: "
                 f"{render_checked(row['machine_checked_equivalence'])}",
-                f"- Historical adapter-admission record: `{row['submission_status']}`; upstream lifecycle is recorded above.",
+                f"- Adapter status at the pinned commit: `{row['submission_status']}`. The contribution activity above gives the current state.",
                 "",
             ]
         )
 
     lines.extend(
         [
-            "## Reproduction",
+            "## Rerun this comparison",
             "",
-            "Offline contract and projection check:",
+            "Validate this page and its source without a network connection:",
             "",
             "```console",
             "python3 scripts/check_formal_conjectures_crosswalk.py",
             "```",
             "",
-            "Byte-level verification against an exact upstream checkout:",
+            "Compare the recorded hashes with a Formal Conjectures checkout at the pinned commit:",
             "",
             "```console",
             "python3 scripts/check_formal_conjectures_crosswalk.py --upstream-checkout /path/to/formal-conjectures",
