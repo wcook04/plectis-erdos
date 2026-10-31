@@ -5,13 +5,13 @@ Follow the public Formal Conjectures contributions, then inspect the pinned stat
 
 ## Contribution activity
 
-Observed **2026-10-14T11:24:16.859470+00:00** from the linked public pull requests.
+Observed **2026-10-31T16:00:00+00:00** from the linked public pull requests.
 
 **5 merged mathematical contributions · 14 open requests · 1 merged AUTHORS update.**
 
 A dated observation of public pull requests. Individual review, aggregate approval requirements and merge state are separate. A merge accepts the scoped upstream change, not every mathematical claim in this repository. Maintenance of existing proof links is excluded from the merged mathematical contribution count. The earlier pinned statement comparisons below retain their original source identities.
 
-All nineteen receiving declarations listed here have successful author-hosted checks at the exact delivered heads. Each run exports the actual FC declaration before executing the confined candidate in Lean 4.33.1 with FC's Mathlib pin `0df444a360eaa60ab8c11dca51a86af692955474`; statement-and-dependency equality, default Lean and NanoDa acceptance, the axiom budget (`propext`, `Classical.choice`, `Quot.sound`) and positive/mismatch controls are checked. The eleven repaired adapters use source `d1fe386f`; the three earlier successful declarations retain their own immutable proof pins. The five additional statements retain proof pins `71a2bc9f`, `2cd19fba` and `01b23a6e`; [source PR40](https://github.com/wcook04/plectis-erdos-lean/pull/40) and [source PR41](https://github.com/wcook04/plectis-erdos-lean/pull/41) are merged. These checks confer no independent human rerun or upstream merge.
+All nineteen receiving declarations listed here have successful author-hosted checks at the exact delivered heads. Each run exports the actual FC declaration before executing the confined candidate in Lean 4.33.1 with FC's Mathlib pin `0df444a360eaa60ab8c11dca51a86af692955474`; statement-and-dependency equality, default Lean and NanoDa acceptance, the axiom budget (`propext`, `Classical.choice`, `Quot.sound`) and positive/mismatch controls are checked. Nine repaired adapters use source `d1fe386f`; the two #6523 adapters moved to source `76c3a0cb` after review; the three earlier successful declarations retain their own immutable proof pins. The five additional statements retain proof pins `71a2bc9f`, `2cd19fba` and `01b23a6e`; [source PR40](https://github.com/wcook04/plectis-erdos-lean/pull/40) and [source PR41](https://github.com/wcook04/plectis-erdos-lean/pull/41) are merged. These checks confer no independent human rerun or upstream merge.
 
 [Source run 38341643841](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38341643841) separately compiled all ten receiving-adapter projects for fourteen units at [source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/commit/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85). [Source PR37](https://github.com/wcook04/plectis-erdos-lean/pull/37) packages that repair. Source compilation, identity at a receiving head, current upstream deployment and reviewer acceptance are distinct evidence.
 
@@ -71,13 +71,15 @@ Latest individual review: [approved](https://github.com/google-deepmind/formal-c
 
 Cubic-rate irrationality and slow-growth rigidity under additional growth and increment hypotheses; the original question remains open.
 
-Receiving verification for `Erdos243.erdos_243.variants.cubic_rate`: [run 38356995383](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38356995383) compares the actual FC declaration at `ccb7d725` with [proof source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/blob/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85/verification/FC243DualCurrent/FC6523Solutions.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.
+Receiving verification for `Erdos243.erdos_243.variants.cubic_rate`: [run 39586148057](https://github.com/wcook04/plectis-erdos-lean/actions/runs/39586148057) compares the actual FC declaration at `c3f49ae1` with [proof source `76c3a0cb`](https://github.com/wcook04/plectis-erdos-lean/blob/76c3a0cb0934068c76a9ebb5a4fc3ac045e3692f/verification/FC243DualCurrent/FC6523Solutions.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.
 
-Receiving verification for `Erdos243.erdos_243.variants.slow_growth_product_defect`: [run 38356998998](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38356998998) compares the actual FC declaration at `ccb7d725` with [proof source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/blob/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85/verification/FC243DualCurrent/FC6523Solutions.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.
+Receiving verification for `Erdos243.erdos_243.variants.slow_growth_product_defect`: [run 39586145375](https://github.com/wcook04/plectis-erdos-lean/actions/runs/39586145375) compares the actual FC declaration at `c3f49ae1` with [proof source `76c3a0cb`](https://github.com/wcook04/plectis-erdos-lean/blob/76c3a0cb0934068c76a9ebb5a4fc3ac045e3692f/verification/FC243DualCurrent/FC6523Solutions.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.
+
+On 21 October, Moritz Firsching reviewed `ccb7d725`, writing that the request generally looked mathematically correct to him, with minor comments on helper placement, a helper name, computability and a redundant scope opening. Those changes are in `c3f49ae1`; the formulas and theorem names are unchanged. Bo Cowgill's approval of 10 October was on the earlier head `56710453`. On 31 October he removed the awaiting-author marker. The request remains open with review required.
 
 Open; aggregate review decision: **review required**.
 
-Latest individual review: [approved](https://github.com/google-deepmind/formal-conjectures/pull/6523#pullrequestreview-5477814639) on an earlier head, 2026-10-10.
+Latest individual review: [commented](https://github.com/google-deepmind/formal-conjectures/pull/6523#pullrequestreview-5596763312) on an earlier head, 2026-10-21.
 
 **[#6527 · Erdős 1049: add rational-base contour and irrationality exponent bound](https://github.com/google-deepmind/formal-conjectures/pull/6527)**
 
@@ -141,7 +143,7 @@ Asymptotic for each fixed 0 < q < 1; no uniformity as q approaches one and no so
 
 Receiving verification for `GeometricMomentHankel.fixed_base_asymptotic`: [run 38358960367](https://github.com/wcook04/plectis-erdos-lean/actions/runs/38358960367) compares the actual FC declaration at `d194bd96` with [proof source `d1fe386f`](https://github.com/wcook04/plectis-erdos-lean/blob/d1fe386ff1d6f6ca49bbad2e8a309fea2b58cb85/verification/FC1049HankelCurrent/FC6780Solution.lean). Statements and dependencies match; default Lean and NanoDa accept under the three permitted core axioms, and positive/mismatch controls pass.
 
-On 13 October, Bo Cowgill approved `d194bd96`: the statement still matches Cook’s fixed-base theorem, and Zudilin’s equation (6) at x = z = 1 gives the moment summand; its zeroth Lambert term is zero. He said the actual-FC export-before-candidate order and consumed-export check resolve his earlier workspace concern. He relied on the author-hosted receiving receipt without independently rerunning the proof. The request remains open with review required.
+On 13 October, Bo Cowgill approved `d194bd96`: the statement still matches Cook’s fixed-base theorem, and Zudilin’s equation (6) at x = z = 1 gives the moment summand; its zeroth Lambert term is zero. He said the actual-FC export-before-candidate order and consumed-export check resolve his earlier workspace concern. He relied on the author-hosted receiving receipt without independently rerunning the proof. The request remains open with review required. On 31 October he removed the awaiting-author marker.
 
 Open; aggregate review decision: **review required**.
 
