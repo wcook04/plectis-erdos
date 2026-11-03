@@ -1,0 +1,246 @@
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+# Adapted from the reviewed immutable-source official Comparator preflight.
+# Candidate build scripts never execute in the caller. The pinned official job
+# prepares its own dependencies and protects the separately compiled Challenge.
+# The official verify job is expected to fail. Only its exact statement-mismatch
+# report makes the separate assessment pass; other failures do not count.
+name: Corollary 5.2 Comparator mismatch control
+
+on:
+  push:
+    branches: [codex/257-corollary-52-verification-20261018]
+    paths:
+      - .github/workflows/cor52-negative-comparator-preflight.yml
+      - verification/ExternalVerification/StrictMixedNegativeSolution.lean
+      - verification/ExternalVerification/StrictMixed/Challenge.lean
+      - verification/comparator-257-strict-mixed-negative-mismatch.json
+      - verification/ExternalVerification/StrictMixed/formalization.yaml
+      - lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean
+  workflow_dispatch:
+    inputs:
+      source_commit:
+        description: Full immutable proof-source SHA (Lean v4.29.1); blank selects this caller revision
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  select:
+    runs-on: ubuntu-24.04
+    outputs:
+      source_commit: ${{ steps.inputs.outputs.source_commit }}
+      request_id: ${{ steps.inputs.outputs.request_id }}
+      options: ${{ steps.inputs.outputs.options }}
+    steps:
+      - name: Validate immutable proof source
+        id: inputs
+        env:
+          SOURCE_COMMIT: ${{ inputs.source_commit || github.sha }}
+          CALLER_SHA: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, re
+          source = os.environ['SOURCE_COMMIT']
+          if os.environ['REPOSITORY'] != 'wcook04/plectis-erdos':
+              raise SystemExit('unexpected repository')
+          if not re.fullmatch(r'[0-9a-f]{40}', source):
+              raise SystemExit('source_commit must be a full lowercase SHA')
+          options = {
+              'authorization_relationship': 'I am a responsible author or maintainer',
+              'project_path': '',
+              'comparator_config_path': 'verification/comparator-257-strict-mixed-negative-mismatch.json',
+              'formalization_metadata_path': 'verification/ExternalVerification/StrictMixed/formalization.yaml',
+          }
+          request = hashlib.sha256(
+              f"cor52-negative:{source}:{os.environ['CALLER_SHA']}:{os.environ['RUN_ID']}:{os.environ['RUN_ATTEMPT']}".encode()
+          ).hexdigest()[:12]
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'source_commit={source}\nrequest_id={request}\n')
+              output.write(f"options={json.dumps(options, separators=(',', ':'))}\n")
+          print(f'Caller {os.environ["CALLER_SHA"]}; deliberately mismatched corollary source {source}')
+          PY
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: wcook04/plectis-erdos
+          ref: ${{ steps.inputs.outputs.source_commit }}
+          path: source
+          persist-credentials: false
+      - name: Inspect selected source without executing it
+        env:
+          SOURCE_COMMIT: ${{ steps.inputs.outputs.source_commit }}
+        run: |
+          python3 - <<'PY'
+          import json, os, subprocess
+          from pathlib import Path
+          root = Path('source')
+          if subprocess.check_output(['git', '-C', str(root), 'rev-parse', 'HEAD'], text=True).strip() != os.environ['SOURCE_COMMIT']:
+              raise SystemExit('checkout differs from immutable source')
+          paths = [
+              'lean-toolchain', 'verification/comparator-257-strict-mixed-negative-mismatch.json',
+              'verification/ExternalVerification/StrictMixed/formalization.yaml',
+              'verification/ExternalVerification/StrictMixed/Challenge.lean',
+              'verification/ExternalVerification/StrictMixedNegativeSolution.lean',
+              'lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean',
+          ]
+          for rel in paths:
+              path = root / rel
+              if path.is_symlink() or not path.is_file():
+                  raise SystemExit(f'missing or symlinked {rel}')
+          if (root / 'lean-toolchain').read_text().strip() != 'leanprover/lean4:v4.29.1':
+              raise SystemExit('reviewed historical pipeline requires Lean v4.29.1')
+          config = json.loads((root / paths[1]).read_text())
+          expected = {
+              'challenge_module': 'ExternalVerification.StrictMixed.Challenge',
+              'solution_module': 'ExternalVerification.StrictMixedNegativeSolution',
+              'theorem_names': ['ErdosProblems.Erdos257.PaperCompleteR8.exists_strict_mixed_support_host'],
+              'permitted_axioms': ['propext', 'Quot.sound', 'Classical.choice'],
+              'enable_nanoda': True,
+          }
+          if config != expected:
+              raise SystemExit('exact corollary selection or axiom/kernel budget changed')
+          challenge_imports = [x.strip() for x in (root / paths[3]).read_text().splitlines() if x.startswith('import ')]
+          solution_imports = [x.strip() for x in (root / paths[4]).read_text().splitlines() if x.startswith('import ')]
+          if challenge_imports != ['import Mathlib']:
+              raise SystemExit('challenge imports proof-bearing corpus code')
+          if solution_imports != ['import ErdosProblems.Erdos257.PaperCompleteR7.AnalyticTargets']:
+              raise SystemExit('negative fixture must import its statement vocabulary')
+          PY
+
+  verify:
+    needs: select
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@f49b4f29aa458fc70c3a4c8cadca9312adbdc559
+    with:
+      repository: wcook04/plectis-erdos
+      commit: ${{ needs.select.outputs.source_commit }}
+      pipeline_commit: f49b4f29aa458fc70c3a4c8cadca9312adbdc559
+      request_id: ${{ needs.select.outputs.request_id }}
+      mode: full
+      execution_profile: palomar-standard-v1
+      options: ${{ needs.select.outputs.options }}
+
+  assess_expected_rejection:
+    needs: [select, verify]
+    if: ${{ always() && needs.select.result == 'success' }}
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: wcook04/plectis-erdos
+          ref: ${{ needs.select.outputs.source_commit }}
+          persist-credentials: false
+      - name: Download this attempt's original official report
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ github.run_id }}
+          REQUEST_ID: ${{ needs.select.outputs.request_id }}
+        run: >-
+          gh run download "$RUN_ID" --repo wcook04/plectis-erdos
+          --name "mechanical-report-$REQUEST_ID"
+          --dir "$RUNNER_TEMP/cor52-negative-report"
+      - name: Require the exact statement-inequality rejection
+        env:
+          SOURCE_COMMIT: ${{ needs.select.outputs.source_commit }}
+          CALLER_SHA: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
+          OFFICIAL_JOB_RESULT: ${{ needs.verify.result }}
+          REPORT_ROOT: ${{ runner.temp }}/cor52-negative-report
+          CONTROL_OUTPUT: ${{ runner.temp }}/cor52-negative-control.json
+        run: |
+          python3 - <<'PY'
+          import datetime as dt
+          import hashlib, json, os, re
+          from pathlib import Path
+          target = 'ErdosProblems.Erdos257.PaperCompleteR8.exists_strict_mixed_support_host'
+          expected = f"Challenge and solution theorem statement do not match: '{target}'"
+          reports = list(Path(os.environ['REPORT_ROOT']).rglob('mechanical-report.json'))
+          if len(reports) != 1 or reports[0].is_symlink():
+              raise SystemExit('one original official mechanical report is required')
+          report_bytes = reports[0].read_bytes()
+          report = json.loads(report_bytes)
+          source = os.environ['SOURCE_COMMIT']
+          run_url = f"https://github.com/wcook04/plectis-erdos/actions/runs/{os.environ['RUN_ID']}"
+          if (os.environ['OFFICIAL_JOB_RESULT'] != 'failure'
+                  or report.get('schema_version') != 1 or report.get('status') != 'fail'
+                  or report.get('stage') != 'comparator'
+                  or report.get('source', {}).get('repository') != 'wcook04/plectis-erdos'
+                  or report.get('source', {}).get('commit') != source
+                  or report.get('workflow_url') != run_url):
+              raise SystemExit('official run did not reach the expected Comparator rejection')
+          diagnostics = report.get('diagnostics', [])
+          if (len(diagnostics) != 1 or diagnostics[0].get('code') != 'comparator.rejected'
+                  or diagnostics[0].get('stage') != 'comparator'
+                  or diagnostics[0].get('owner') != 'submitter'):
+              raise SystemExit('an unrelated failure is not a successful negative control')
+          failure = re.fullmatch(r'Comparator rejected the project \(exit ([0-9]+)\)',
+                                 diagnostics[0].get('summary', ''))
+          exit_code = int(failure[1]) if failure else -999
+          # Same criterion as scripts/run_external_verification.py, kept inline
+          # so no candidate-controlled Python executes in this assessment.
+          if exit_code != 1 or expected not in report.get('comparator_log_tail', ''):
+              raise SystemExit('exact theorem statement-mismatch diagnostic is absent')
+          modules = {
+              'challenge': ('verification/ExternalVerification/StrictMixed/Challenge.lean',
+                            'ExternalVerification.StrictMixed.Challenge'),
+              'solution': ('verification/ExternalVerification/StrictMixedNegativeSolution.lean',
+                           'ExternalVerification.StrictMixedNegativeSolution'),
+              'comparator': ('verification/comparator-257-strict-mixed-negative-mismatch.json', None),
+              'formalization': ('verification/ExternalVerification/StrictMixed/formalization.yaml', None),
+          }
+          source_digests = {}
+          for group, (path, module) in modules.items():
+              digest = hashlib.sha256(Path(path).read_bytes()).hexdigest()
+              record = report[group]
+              if (record.get('path') != path or record.get('sha256', '').removeprefix('sha256:') != digest
+                      or (module is not None and record.get('module') != module)):
+                  raise SystemExit(f'{group} differs from the exact checked source')
+              source_digests[path] = 'sha256:' + digest
+          configuration = json.loads(Path(modules['comparator'][0]).read_text())
+          if (configuration.get('theorem_names') != [target]
+                  or report['comparator'].get('theorem_names') != [target]
+                  or report['comparator'].get('challenge_module') != modules['challenge'][1]
+                  or report['comparator'].get('solution_module') != modules['solution'][1]
+                  or configuration.get('permitted_axioms') != ['propext', 'Quot.sound', 'Classical.choice']
+                  or report['comparator'].get('permitted_axioms') != configuration['permitted_axioms']
+                  or configuration.get('enable_nanoda') is not True
+                  or report['challenge'].get('untrusted_sources') != []
+                  or not re.fullmatch(r'[0-9a-f]{64}', report['challenge'].get('canonical_olean_sha256', ''))):
+              raise SystemExit('negative statement selection or protected Challenge boundary changed')
+          tools = {
+              'comparator_commit': '575674928e239f5bc452aab72d1dd7b0f1326494',
+              'lean4export_commit': '6f4e21dd70c3c11d7fbd07d39e3192792c657448',
+              'landrun_commit': '811cfff51ceaf3d9843708aa6d22e9b84ccac8b4',
+              'nanoda_commit': '68d5ca9db226849b41a6fff59d796ff19d0a8840',
+          }
+          if (any(report.get(key) != value for key, value in tools.items())
+                  or report.get('lean_toolchain') != 'leanprover/lean4:v4.29.1'):
+              raise SystemExit('official checker or Lean toolchain identity changed')
+          control = {
+              'schema': 'plectis-comparator-negative-control/1', 'result': 'pass',
+              'assessed_at': dt.datetime.now(dt.timezone.utc).isoformat(),
+              'official_report_checked_at': report.get('checked_at'), 'source_commit': source,
+              'caller_commit': os.environ['CALLER_SHA'], 'workflow_url': run_url,
+              'theorem': target, 'expected_diagnostic': expected,
+              'observed_comparator_exit': exit_code, 'source_files': source_digests,
+              'official_report_sha256': 'sha256:' + hashlib.sha256(report_bytes).hexdigest(),
+              'pipeline_commit': 'f49b4f29aa458fc70c3a4c8cadca9312adbdc559',
+              'tool_source_commits': tools,
+              'boundary': 'Derived assessment of the deliberately mismatched fixture. The original official report and independently fetched attempt/artifact API evidence are retained at intake. This is not a positive theorem-verification receipt.',
+          }
+          Path(os.environ['CONTROL_OUTPUT']).write_text(json.dumps(control, indent=2) + '\n')
+          print(expected)
+          print('Expected statement mismatch observed; positive proof verification remains a separate run.')
+          PY
+      - name: Save the bounded negative-control assessment
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: cor52-negative-control-${{ needs.select.outputs.source_commit }}
+          path: ${{ runner.temp }}/cor52-negative-control.json
+          if-no-files-found: error
+          retention-days: 90

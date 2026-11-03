@@ -1,0 +1,66 @@
+version: v0.4
+project:
+  name: 'Erdős #257 Corollary 5.2: a host requiring the mixed criterion'
+  description: >-
+    There exists an infinite positive support U outside the strengthened positive
+    cover class and every fixed-base finite-prime weighted class, such that every
+    infinite subset of U has irrational reciprocal-power series at every integer
+    base at least two. The selected theorem is the complete composed existential
+    statement, not an ingredient or a conditional mixed implication.
+  authors: [Will Cook]
+  license: Apache-2.0
+  responsible_maintainers: [Will Cook]
+repository:
+  role: substantive-development
+classification:
+  arxiv: [math.NT]
+  msc2020: ['11J72']
+sources:
+  - title: 'Mersenne support subseries: short note, Corollary 5.2'
+    authors: [Will Cook]
+    id: paper/257/erdos-257-mersenne-support-subseries.tex
+    type: paper
+    relationship: formalizes
+    license: CC-BY-4.0
+    author_endorsement: participated
+    note: 'The stable source label is res:strict-mixed-supports. No human peer review or historical priority is claimed.'
+status:
+  scope: >-
+    The exact existential strict-mixed-host corollary only. Universal Erdős #257,
+    including the rational targets 1/2 and 1/21, remains open. The formal witness
+    may use the squarefree divisor-cube construction rather than the printed
+    fresh-prime witness; the corollary is an existential assertion. The counts
+    below apply only to this selected packet; other repository Challenge
+    fixtures are outside this selection.
+  sorry_count: 1
+  sorry_in_definitions: 0
+  proof_corpus_sorry_count: 0
+  trusted_challenge_sorry_count: 1
+  sorry_boundary: 'One trusted statement hole in ExternalVerification/StrictMixed/Challenge.lean; none in the proof source, solution module, or Mathlib-only statement definitions.'
+  permitted_axiom_budget: [propext, Quot.sound, Classical.choice]
+  main_results:
+    - declaration: ErdosProblems.Erdos257.PaperCompleteR8.exists_strict_mixed_support_host
+      file: lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean
+      sorry_count: 0
+      comparator_config: verification/comparator-257-strict-mixed.json
+automation:
+  methods:
+    - method: agent
+      models: [OpenAI Codex]
+      framework: Lean 4 and Mathlib
+      tool_setup: AI-assisted proof composition, statement audit, and verification packaging.
+    - method: other
+      framework: Lean kernel, Comparator, NanoDa, and Landrun
+      tool_setup: >-
+        The pinned workflow checks the independent statement and standard axiom
+        budget. Its deliberately mismatched control must be rejected specifically
+        for statement inequality. These are procedures, not recorded outcomes.
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    The exact statement and its definitions were audited against the paper and
+    proof source by a separate agent. Independent human review, historical
+    priority, and mathematical novelty have not been established by that audit
+    or by the configured mechanical checks. Actual build and checker outcomes
+    belong in their dated, source-bound receipts.

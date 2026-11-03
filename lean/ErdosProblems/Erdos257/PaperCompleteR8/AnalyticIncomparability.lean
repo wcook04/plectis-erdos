@@ -1,5 +1,6 @@
 import ErdosProblems.Erdos257.PaperCompleteR8.AnalyticSeparationReturn
 import ErdosProblems.Erdos257.PaperCompleteR8.FixedExponentCover
+import ErdosProblems.Erdos257.PaperCompleteR8.WeightedHereditaryClaim
 
 /-! # Paper-facing strict inclusion, incomparability and mixed host
 
@@ -66,6 +67,24 @@ theorem exists_incomparable_hosts_with_mixed_heredity :
     (fun α hα hα1 => reverseHost_no_fixed_exponent_cover hα hα1),
     reverseHost_not_finitePrimeWeighted, ?_⟩
   exact mixedSupportClaim W reverseHost hW0 hW reverseHost_has_strengthened_cover
+
+/-- **`res:strict-mixed-supports`.** Exact short-paper Corollary 5.2: one positive
+infinite host lies outside the strengthened-cover class and every fixed-base
+finite-prime weighted class, while all its infinite subsets have irrational
+support series in every integer base at least two. -/
+theorem exists_strict_mixed_support_host :
+    ∃ U : Set ℕ, U.Infinite ∧ 0 ∉ U ∧ ¬ HasStrengthenedPositiveCover U ∧
+      (∀ b : ℕ, 2 ≤ b → ¬ FinitePrimeWeighted b U) ∧
+      (∀ A : Set ℕ, A ⊆ U → A.Infinite → ∀ b : ℕ, 2 ≤ b →
+        Irrational (erdosSupportSeries b A)) := by
+  obtain ⟨W, V, hWi, _hVi, hW0, hV0, _hW, hWc, _hVc, _hVold, _hVfixed,
+    hVw, hhereditary⟩ := exists_incomparable_hosts_with_mixed_heredity
+  refine ⟨W ∪ V, hWi.mono Set.subset_union_left, ?_, ?_, ?_, hhereditary⟩
+  · exact fun h0 => h0.elim hW0 hV0
+  · rintro ⟨C, hUC, hC⟩
+    exact hWc ⟨C, Set.subset_union_left.trans hUC, hC⟩
+  · intro b hb hU
+    exact hVw b hb (finitePrimeWeighted_subset b hb Set.subset_union_right hU)
 
 end ErdosProblems.Erdos257.PaperCompleteR8
 end

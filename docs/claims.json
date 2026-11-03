@@ -26373,6 +26373,11 @@
           "line": 126,
           "module": "ErdosProblems/Erdos257/PaperCompleteR8/WeightedReturn.lean",
           "name": "mixedSupportClaim"
+        },
+        {
+          "line": 75,
+          "module": "ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean",
+          "name": "exists_strict_mixed_support_host"
         }
       ],
       "id": "mixed_weighted_cover_support",
@@ -26382,7 +26387,7 @@
       "remaining_open_proposition_ids": [
         "remaining_open.universal_257_all_infinite_supports"
       ],
-      "statement": "Let E have finite base-two finite-prime weighted mass and let V lie in a strengthened positive-cover host. Every infinite support A contained in E union V has irrational support series at every integer base b >= 2. The theorem uses a common observation scale; it does not assume separate irrationality conclusions for the two components.",
+      "statement": "Let E have finite base-two finite-prime weighted mass and let V lie in a strengthened positive-cover host. Every infinite support A contained in E union V has irrational support series at every integer base b >= 2. The theorem uses a common observation scale; it does not assume separate irrationality conclusions for the two components. There also exists one infinite positive host U outside the strengthened positive-cover class and outside every finite-prime weighted class at every integer base b >= 2, such that every infinite subset A of U has irrational support series at every integer base b >= 2.",
       "status": "unconditional progress"
     },
     {
