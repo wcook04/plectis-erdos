@@ -1,0 +1,13 @@
+{
+  "area": "navigation",
+  "boundary": "Workflow consultation and planned checks are not validation evidence.",
+  "lane": "repository_architecture",
+  "read": [
+    "skills/maintain-public-infrastructure/SKILL.md"
+  ],
+  "schema": "research-workflow-consultation/1",
+  "starting_paths": [
+    "scripts/agent_entry.py"
+  ],
+  "validation_plan": "Replay contributor paraphrases and neighboring tasks"
+}

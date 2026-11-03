@@ -1,0 +1,54 @@
+{
+  "alternatives": [
+    {
+      "id": "bounded_research",
+      "matched_cues": [
+        "work + paper"
+      ],
+      "score": 12,
+      "skills": [
+        "mine-open-problem",
+        "lean-concurrent-validation"
+      ],
+      "title": "Attack one bounded open frontier"
+    }
+  ],
+  "authority_posture": "This registry routes tasks to clone-local workflows. Each referenced SKILL.md owns the workflow itself; Lean source and the public claim authorities remain mathematically authoritative.",
+  "catalog_command": "python3 scripts/agent_entry.py --skills",
+  "primary_lane": {
+    "boundary": "Repair the public owner surface and preserve the observed journey as a fixture; do not depend on private infrastructure or hand-edit generated projections.",
+    "commands": [
+      "python3 scripts/agent_skill_catalog.py --check",
+      "python3 scripts/test_agent_entry.py",
+      "python3 scripts/test_compact_agent_entry.py",
+      "python3 scripts/check_cold_clone_comprehension.py --quick"
+    ],
+    "id": "repository_architecture",
+    "matched_cues": [],
+    "read": [
+      "skills/maintain-public-infrastructure/SKILL.md"
+    ],
+    "score": 0,
+    "title": "Improve cold-clone architecture or agent navigation"
+  },
+  "purpose": "infrastructure",
+  "route_status": "explicit",
+  "schema": "plectis-agent-entry/2",
+  "scope": "navigation",
+  "selection_reason": "explicit purpose",
+  "skills": [
+    {
+      "composes_with": [
+        "propagate-research-consequences",
+        "submit-pull-request"
+      ],
+      "description": "Dogfood, organize, consolidate, and repair the public clone's agent, query, validation, contribution, credit, and projection infrastructure without depending on private systems.",
+      "family": "stewardship",
+      "id": "maintain-public-infrastructure",
+      "path": "skills/maintain-public-infrastructure/SKILL.md",
+      "stage": "continuous-dogfood",
+      "status": "active"
+    }
+  ],
+  "task": "Route paper contributors to their intended work"
+}
