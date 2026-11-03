@@ -4,11 +4,11 @@
   "projection_not_authority": true,
   "proof_authority": "Lean source checked by the pinned Lean kernel",
   "argument_authority": "docs/claims.json::machine_readable_paper.argument_graph",
-  "source_fingerprint": "sha256:a79d23a8eed79908ff940bdf62675bfc745f238e7a5935f4b72143e25fbc4a15",
+  "source_fingerprint": "sha256:644a2fea35800afb0e9657388111d26132f5cf6d300879024e924c275dbb51d8",
   "summary": {
-    "module_count": 1823,
-    "declaration_count": 163598,
-    "theorem_like_count": 159691,
+    "module_count": 1824,
+    "declaration_count": 163599,
+    "theorem_like_count": 159692,
     "generated_certificate_declaration_count": 8171,
     "principal_claim_link_count": 468,
     "kind_counts": {
@@ -18,7 +18,7 @@
       "instance": 14,
       "lemma": 1446,
       "structure": 58,
-      "theorem": 158245
+      "theorem": 158246
     }
   },
   "modules": [
@@ -10444,6 +10444,7 @@
         "ErdosProblems.Erdos1041.PaperStraightObstructions",
         "ErdosProblems.Erdos1041.PaperWeightedRefinementsR10",
         "ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail",
+        "ErdosProblems.Erdos1041.QuantitativeFCWrapper",
         "ErdosProblems.Erdos1041.SharpCollinearChebyshev"
       ],
       "declaration_count": 0,
@@ -10731,6 +10732,17 @@
       "kind_counts": {
         "def": 1,
         "theorem": 6
+      }
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.QuantitativeFCWrapper",
+      "path": "lean/ErdosProblems/Erdos1041/QuantitativeFCWrapper.lean",
+      "imports": [
+        "ErdosProblems.Erdos1041.PaperCompleteR21.CollinearDiameterWhole"
+      ],
+      "declaration_count": 1,
+      "kind_counts": {
+        "theorem": 1
       }
     },
     {
@@ -209523,6 +209535,17 @@
       "generated_certificate": false,
       "claim_ids": [],
       "docstring": "Finite interior moment theorem for the primitive sparse quintic. The conclusion gives two distinct root-tail energies strictly below one."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/QuantitativeFCWrapper.lean:12:exists_gap_le_sharpClosedForm",
+      "name": "exists_gap_le_sharpClosedForm",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/QuantitativeFCWrapper.lean",
+      "line": 12,
+      "signature": "theorem exists_gap_le_sharpClosedForm {m : ℕ} (Y : Fin (m + 2) → ℝ) (hY : StrictMono Y) (hY0 : Y 0 = -1) (hY1 : Y (Fin.last (m + 1)) = 1) : ∃ i : Fin (m + 1), ∀ x ∈ Set.Icc (Y i.castSucc) (Y i.succ), |∏ j, (x - Y j)| ≤ 1 / (2 ^ ((m + 2) - 1) * Real.cos (Real.pi / (2 * (((m + 2 : ℕ) : ℝ)))) ^ (m + 2))",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Closed-form restatement of the sharp normalized whole-gap theorem."
     },
     {
       "id": "lean/ErdosProblems/Erdos1041/ReturnV5/CrossReturnR18.lean:15:DegreeFourFirstMergeResidual",

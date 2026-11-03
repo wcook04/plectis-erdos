@@ -9668,6 +9668,7 @@
             "ErdosProblems.Erdos1041.PaperStraightObstructions",
             "ErdosProblems.Erdos1041.PaperWeightedRefinementsR10",
             "ErdosProblems.Erdos1041.PrimitiveQuinticInteriorTail",
+            "ErdosProblems.Erdos1041.QuantitativeFCWrapper",
             "ErdosProblems.Erdos1041.SharpCollinearChebyshev"
           ]
         },
@@ -9868,6 +9869,14 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos1041.PrimitiveQuinticBoundaryTail"
+          ]
+        },
+        {
+          "id": "ErdosProblems.Erdos1041.QuantitativeFCWrapper",
+          "path": "lean/ErdosProblems/Erdos1041/QuantitativeFCWrapper.lean",
+          "role": "Lean proof module",
+          "imports": [
+            "ErdosProblems.Erdos1041.PaperCompleteR21.CollinearDiameterWhole"
           ]
         },
         {
