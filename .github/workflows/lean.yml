@@ -133,7 +133,7 @@ jobs:
           filter: blob:none # retain history without eagerly transferring obsolete large blobs
           persist-credentials: false
       - name: Install the pinned Python runtime
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.12.9"
       - name: Detect supported-root Lean changes
@@ -481,7 +481,7 @@ jobs:
       # relabel the pre-existing tracked files as this checkout's export.
       - name: Upload the fresh dependency index
         if: steps.dependency-index.outputs.fresh_export_written == 'true'
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: lean-dependency-index-fresh-${{ steps.dependency-index.outputs.checkout_revision || github.sha }}
           path: |
@@ -495,7 +495,7 @@ jobs:
           steps.lean-inputs.outputs.changed == 'true' &&
           steps.dependency-index.outcome != 'success' &&
           steps.dependency-index.outputs.fresh_export_written != 'true'
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: lean-dependency-index-diagnostics-${{ steps.dependency-index.outputs.checkout_revision || github.sha }}
           path: |
@@ -572,7 +572,7 @@ jobs:
           echo "External-verification inputs changed: $changed"
       - name: Install the pinned Python runtime
         if: steps.external-inputs.outputs.changed == 'true'
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.12.9"
       - name: Initialize failure-safe verification receipt
@@ -908,7 +908,7 @@ jobs:
             --audit-source verification/ExternalVerification1041SolvedFamilies/AxiomAudit.lean
       - name: Upload external-verification receipt
         if: ${{ always() && steps.external-inputs.outputs.changed == 'true' }}
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: external-verification-receipt-${{ github.event.pull_request.head.sha || github.sha }}
           path: |
@@ -1030,7 +1030,7 @@ jobs:
           python3 scripts/test_erdos1041_research_corpus.py
           python3 -O scripts/test_erdos1041_research_corpus.py
       - name: Install the pinned Python runtime
-        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
         with:
           python-version: "3.12.9"
       - name: Install metadata validators
