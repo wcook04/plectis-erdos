@@ -6,38 +6,42 @@
     {
       "id": "257-example",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 276,
-      "end_line": 300,
+      "start_line": 288,
+      "end_line": 313,
       "kind": "source",
-      "sha256": "2676b3e9f6a5ba6f3ea8fceeed9684ff6ced0fa3bef9c3c0b6a3a878288af5d3",
-      "excerpt_sha256": "759b9b8c4afbd722b38ed84f39f5a4553e03d03f8d4c868d65b79dde659a2d3e"
+      "sha256": "dc3986fdadf0e875ef95894e7cab1eb36f42dddfcf2bceb1eea588e556a3fd0b",
+      "excerpt_sha256": "cba8f15a6fd045c75bca3addd96b95c8d6e08ad69c35ac18a3bd8ef61824a3be",
+      "custody_note": "Register line edit, 3 November 2026: prose of the short paper revised paragraph by paragraph with statements, hypotheses, displays and labels unchanged; this span was rebound to the same block of the revised file."
     },
     {
       "id": "257-proof",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 126,
-      "end_line": 267,
+      "start_line": 130,
+      "end_line": 278,
       "kind": "source",
-      "sha256": "2676b3e9f6a5ba6f3ea8fceeed9684ff6ced0fa3bef9c3c0b6a3a878288af5d3",
-      "excerpt_sha256": "bc31f70cb2dbd6e192db687225c80fad326d6585fe1eae0819d0073e02c6e98a"
+      "sha256": "dc3986fdadf0e875ef95894e7cab1eb36f42dddfcf2bceb1eea588e556a3fd0b",
+      "excerpt_sha256": "4d04d56cfa237a0ea08e4237f42d23065dce38ace2a7e0a1c6b88836c7e9c7a5",
+      "custody_note": "Register line edit, 3 November 2026: prose of the short paper revised paragraph by paragraph with statements, hypotheses, displays and labels unchanged; this span was rebound to the same block of the revised file."
     },
     {
       "id": "257-reciprocal",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 917,
-      "end_line": 944,
+      "start_line": 943,
+      "end_line": 971,
       "kind": "source",
-      "sha256": "2676b3e9f6a5ba6f3ea8fceeed9684ff6ced0fa3bef9c3c0b6a3a878288af5d3",
-      "excerpt_sha256": "1503e95a1512c955ea09d78b93ef7ffab89744207a420465ab2fdc00e326d6bb"
+      "sha256": "dc3986fdadf0e875ef95894e7cab1eb36f42dddfcf2bceb1eea588e556a3fd0b",
+      "excerpt_sha256": "7291e9cd66ca622eea5b222401e5dd14e52d0bc11f46d1bf0221323b3627d696",
+      "custody_note": "Register line edit, 3 November 2026: prose of the short paper revised paragraph by paragraph with statements, hypotheses, displays and labels unchanged; this span was rebound to the same block of the revised file."
     },
     {
       "id": "257-statement",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 74,
-      "end_line": 90,
+      "start_line": 76,
+      "end_line": 92,
       "kind": "source",
-      "sha256": "2676b3e9f6a5ba6f3ea8fceeed9684ff6ced0fa3bef9c3c0b6a3a878288af5d3",
-      "excerpt_sha256": "76093fcff9c86ff532b2182837e7c4e191e9806f477c420bc2602d706c643e17"
+      "sha256": "dc3986fdadf0e875ef95894e7cab1eb36f42dddfcf2bceb1eea588e556a3fd0b",
+      "excerpt_sha256": "76093fcff9c86ff532b2182837e7c4e191e9806f477c420bc2602d706c643e17",
+      "custody_note": "Register line edit, 3 November 2026: prose of the short paper revised paragraph by paragraph with statements, hypotheses, displays and labels unchanged; this span was rebound to the same block of the revised file."
     },
     {
       "id": "assembler",
@@ -61,11 +65,11 @@
       "id": "corpus",
       "path": "docs/papers/corpus.json",
       "start_line": 1,
-      "end_line": 9546,
-      "sha256": "3586875947364bb104ebf9834e93444d0fdeefd264e23c38a674f32032f2a092",
-      "excerpt_sha256": "3586875947364bb104ebf9834e93444d0fdeefd264e23c38a674f32032f2a092",
+      "end_line": 9540,
+      "sha256": "5aba8816be83da10c764dbc946491b80274dadb809e5f94cd6789d1022a87fca",
+      "excerpt_sha256": "5aba8816be83da10c764dbc946491b80274dadb809e5f94cd6789d1022a87fca",
       "kind": "source",
-      "custody_note": "Reviewed acknowledgement withdrawal on 10 October 2026: corpus source/PDF digests and generated section coordinates refreshed after withdrawing pending-consent personal acknowledgements. The inventory, paper roles, citation identities, mathematical claims and authority ceilings are unchanged. Reviewed GitHub paper-navigation repair on 10 October 2026: only generated section and first-pass line coordinates changed. The full paper inventory, manuscript/PDF hashes, published source pins, citation identities, paper roles, authority ceilings and both cited identification warrants are unchanged; no Lean or Comparator execution is claimed. Reviewed inline-label, table and source-preserving display-layout conversion on 10 October 2026: corpus changes are 206 section/first-pass line coordinates only. Inventory, source/PDF hashes, published pins, citation identities, roles, authority ceilings and both identification warrants remain unchanged; two source-backed #249 inequalities are restored in the Markdown, with no manuscript, proof or evidence promotion. Reviewed expository-paper registration on 11 October 2026: one row is added for erdos257-expository-sums-never-fractions (form 'Expository paper', class expository_paper), with its paper id, count and class added to the corpus header and taxonomy summary. The only other row that changed is the systems paper's own, whose source digest, PDF digest and PDF byte count moved because its generated registered-paper count went from 24 to 25. Every other row, citation identity, role, authority ceiling and both identification warrants are unchanged; no Lean or Comparator execution is claimed. Reviewed expository-paper revision on 17 October 2026: only the erdos257-expository-sums-never-fractions row changed, carrying the reviewed 12 October manuscript (title 'Why certain sums of 1/(2^n-1) are irrational', its citation text, source and PDF digests, PDF byte count, sections, first-pass and citation coordinates). The inventory, the registered-paper count of 25, every other row, citation identity, role, authority ceiling and both identification warrants are unchanged; no Lean or Comparator execution is claimed."
+      "custody_note": "Reviewed acknowledgement withdrawal on 10 October 2026: corpus source/PDF digests and generated section coordinates refreshed after withdrawing pending-consent personal acknowledgements. The inventory, paper roles, citation identities, mathematical claims and authority ceilings are unchanged. Reviewed GitHub paper-navigation repair on 10 October 2026: only generated section and first-pass line coordinates changed. The full paper inventory, manuscript/PDF hashes, published source pins, citation identities, paper roles, authority ceilings and both cited identification warrants are unchanged; no Lean or Comparator execution is claimed. Reviewed inline-label, table and source-preserving display-layout conversion on 10 October 2026: corpus changes are 206 section/first-pass line coordinates only. Inventory, source/PDF hashes, published pins, citation identities, roles, authority ceilings and both identification warrants remain unchanged; two source-backed #249 inequalities are restored in the Markdown, with no manuscript, proof or evidence promotion. Reviewed expository-paper registration on 11 October 2026: one row is added for erdos257-expository-sums-never-fractions (form 'Expository paper', class expository_paper), with its paper id, count and class added to the corpus header and taxonomy summary. The only other row that changed is the systems paper's own, whose source digest, PDF digest and PDF byte count moved because its generated registered-paper count went from 24 to 25. Every other row, citation identity, role, authority ceiling and both identification warrants are unchanged; no Lean or Comparator execution is claimed. Reviewed expository-paper revision on 17 October 2026: only the erdos257-expository-sums-never-fractions row changed, carrying the reviewed 12 October manuscript (title 'Why certain sums of 1/(2^n-1) are irrational', its citation text, source and PDF digests, PDF byte count, sections, first-pass and citation coordinates). The inventory, the registered-paper count of 25, every other row, citation identity, role, authority ceiling and both identification warrants are unchanged; no Lean or Comparator execution is claimed. Regenerated 3 November 2026 by the corpus and attribution builders after the #257 register line edit; whole-file binding refreshed."
     },
     {
       "id": "counts",
@@ -91,8 +95,8 @@
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
       "end_line": 29162,
-      "sha256": "633921ae2018e3e674609382150b4733ae6f071793a1589a1ab7f0b4985878a9",
-      "excerpt_sha256": "633921ae2018e3e674609382150b4733ae6f071793a1589a1ab7f0b4985878a9",
+      "sha256": "132c36881b9d10304bcfecdbfb73b6ed4d60db90b645203667ae93eeeff50127",
+      "excerpt_sha256": "132c36881b9d10304bcfecdbfb73b6ed4d60db90b645203667ae93eeeff50127",
       "kind": "source",
       "custody_note": "Reviewed 10 October 2026 after acknowledgement withdrawal: exactly ten source coordinates and the coverage content digest changed; statement hashes, supports, all evidence statuses and counts are unchanged."
     },
@@ -102,8 +106,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "633921ae2018e3e674609382150b4733ae6f071793a1589a1ab7f0b4985878a9",
-      "excerpt_sha256": "633921ae2018e3e674609382150b4733ae6f071793a1589a1ab7f0b4985878a9",
+      "sha256": "132c36881b9d10304bcfecdbfb73b6ed4d60db90b645203667ae93eeeff50127",
+      "excerpt_sha256": "132c36881b9d10304bcfecdbfb73b6ed4d60db90b645203667ae93eeeff50127",
       "custody_note": "Reviewed 10 October 2026 after acknowledgement withdrawal: exactly ten source coordinates and the coverage content digest changed; statement hashes, supports, all evidence statuses and counts are unchanged."
     },
     {
@@ -112,8 +116,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "633921ae2018e3e674609382150b4733ae6f071793a1589a1ab7f0b4985878a9",
-      "excerpt_sha256": "633921ae2018e3e674609382150b4733ae6f071793a1589a1ab7f0b4985878a9",
+      "sha256": "132c36881b9d10304bcfecdbfb73b6ed4d60db90b645203667ae93eeeff50127",
+      "excerpt_sha256": "132c36881b9d10304bcfecdbfb73b6ed4d60db90b645203667ae93eeeff50127",
       "custody_note": "Reviewed 10 October 2026 after acknowledgement withdrawal: exactly ten source coordinates and the coverage content digest changed; statement hashes, supports, all evidence statuses and counts are unchanged."
     },
     {
@@ -122,8 +126,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "633921ae2018e3e674609382150b4733ae6f071793a1589a1ab7f0b4985878a9",
-      "excerpt_sha256": "633921ae2018e3e674609382150b4733ae6f071793a1589a1ab7f0b4985878a9",
+      "sha256": "132c36881b9d10304bcfecdbfb73b6ed4d60db90b645203667ae93eeeff50127",
+      "excerpt_sha256": "132c36881b9d10304bcfecdbfb73b6ed4d60db90b645203667ae93eeeff50127",
       "custody_note": "Reviewed 10 October 2026 after acknowledgement withdrawal: exactly ten source coordinates and the coverage content digest changed; statement hashes, supports, all evidence statuses and counts are unchanged."
     },
     {
@@ -141,9 +145,9 @@
       "start_line": 1,
       "end_line": 36487,
       "kind": "supplied_snapshot",
-      "sha256": "1672720993467d5f4a9ca97bf2fdd17f493a4574db7fc3fc61e427221bdbc88a",
-      "excerpt_sha256": "1672720993467d5f4a9ca97bf2fdd17f493a4574db7fc3fc61e427221bdbc88a",
-      "custody_note": "Reviewed 10 October 2026: every attribution content field and cited excerpt digest is unchanged; only line_start/line_end coordinates moved after acknowledgement withdrawal and the consent-rule insertion."
+      "sha256": "d88735668a0483f52241135ea11922014eb761217effc219eaae9d713ed45e25",
+      "excerpt_sha256": "d88735668a0483f52241135ea11922014eb761217effc219eaae9d713ed45e25",
+      "custody_note": "Reviewed 10 October 2026: every attribution content field and cited excerpt digest is unchanged; only line_start/line_end coordinates moved after acknowledgement withdrawal and the consent-rule insertion. Regenerated 3 November 2026 by the corpus and attribution builders after the #257 register line edit; whole-file binding refreshed."
     },
     {
       "id": "essay-pages",
@@ -749,11 +753,12 @@
       "id": "r8-weighted-proof",
       "kind": "source",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 170,
-      "end_line": 290,
-      "sha256": "2676b3e9f6a5ba6f3ea8fceeed9684ff6ced0fa3bef9c3c0b6a3a878288af5d3",
-      "excerpt_sha256": "f96d12ef53e4d5ae643c573be9a112c981c0966339d2eabea7ef0fe76c33aa85",
-      "custody": "Current native public file inspected as source; no fresh execution."
+      "start_line": 178,
+      "end_line": 303,
+      "sha256": "dc3986fdadf0e875ef95894e7cab1eb36f42dddfcf2bceb1eea588e556a3fd0b",
+      "excerpt_sha256": "2ed67a1005c847ff5c6f061a15b6f64fed659f2ab79aa8d308fc35ba9dd6e6b6",
+      "custody": "Current native public file inspected as source; no fresh execution.",
+      "custody_note": "Register line edit, 3 November 2026: prose of the short paper revised paragraph by paragraph with statements, hypotheses, displays and labels unchanged; this span was rebound to the same block of the revised file."
     },
     {
       "id": "r8-weighted-formal",
@@ -861,7 +866,7 @@
       "path": "docs/research-commons/source-attributions.json",
       "start_line": 16125,
       "end_line": 16173,
-      "sha256": "1672720993467d5f4a9ca97bf2fdd17f493a4574db7fc3fc61e427221bdbc88a",
+      "sha256": "d88735668a0483f52241135ea11922014eb761217effc219eaae9d713ed45e25",
       "excerpt_sha256": "8e826af82fe4e34d97e2987871af9dbcdac012c299aeca4bd95c0c6e87bf7d2c",
       "custody": "Public attribution inventory, marked bibliography_only. Used for feature attribution, not for its conflicting first-publication chronology. Direct claims are checked against the enclosed original v2 in this pass.",
       "custody_note": "Reviewed 10 October 2026: the cited excerpt is byte-identical to the starting public main; surrounding attribution coordinates changed."
@@ -887,11 +892,12 @@
     {
       "id": "r14p3-257-introduction",
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "start_line": 48,
-      "end_line": 136,
+      "start_line": 49,
+      "end_line": 141,
       "kind": "source",
-      "sha256": "2676b3e9f6a5ba6f3ea8fceeed9684ff6ced0fa3bef9c3c0b6a3a878288af5d3",
-      "excerpt_sha256": "f21e6e23a5bc3599c8ad05c80e9fb1beb6c57b6d7ef1370b165fc67a4f132799"
+      "sha256": "dc3986fdadf0e875ef95894e7cab1eb36f42dddfcf2bceb1eea588e556a3fd0b",
+      "excerpt_sha256": "27f5e56661c27b081e822035c6410cbcfb2982431a040680910d20cd6e3d76fe",
+      "custody_note": "Register line edit, 3 November 2026: prose of the short paper revised paragraph by paragraph with statements, hypotheses, displays and labels unchanged; this span was rebound to the same block of the revised file."
     },
     {
       "id": "r14p3-269-introduction",
