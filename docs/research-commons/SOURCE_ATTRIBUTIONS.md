@@ -11,7 +11,7 @@ Private correspondence appears only under a neutral anonymous identity until pub
 
 ## Coverage and anonymous implementation credits
 
-The registry contains `301` curated sources across `22` registered papers and `1860` Lean library files.
+The registry contains `301` curated sources across `22` registered papers and `1868` Lean library files.
 
 Source review states: `bibliography_only`: `96`; `existing_source_closure`: `31`; `external_claim_unverified`: `1`; `implemented_advice`: `3`; `source_verified`: `170`.
 
@@ -25,7 +25,7 @@ Implemented advice whose identity is awaiting confirmation:
 
 - Unmatched citation keys: `0`
 - Bibliography entries awaiting curated links: `42`
-- Lean candidates awaiting review: `706` (`3` direct URL/DOI/arXiv rows; `1560` surname/key rows; categories may overlap).
+- Lean candidates awaiting review: `707` (`3` direct URL/DOI/arXiv rows; `1561` surname/key rows; categories may overlap).
 
 ## Browse by problem
 
@@ -1556,7 +1556,7 @@ Exact source locations:
 Public implementation or evidence coordinates:
 
 - [research/adapters/FormalConjecturesAdapter.lean](../../research/adapters/FormalConjecturesAdapter.lean#L10-L42) — lines `10–42`; excerpt `sha256:a09ac08e4260951af6627cc74ccc029207e6497eb1840a65bda22888010525ed`
-- [lakefile.toml](../../lakefile.toml#L67-L79) — lines `67–79`; excerpt `sha256:831b7c7270f57c8606e4effd1314f87cfd4b9ad0eee57b89a546b5457b16aa78`
+- [lakefile.toml](../../lakefile.toml#L74-L86) — lines `74–86`; excerpt `sha256:831b7c7270f57c8606e4effd1314f87cfd4b9ad0eee57b89a546b5457b16aa78`
 
 <a id="source-lean4-toolchain-v4-29-1"></a>
 
@@ -9069,7 +9069,7 @@ These gaps are shown explicitly so the catalogue cannot be mistaken for complete
 - Registered papers scanned: `22`; TeX source files scanned after local includes: `91`.
 - Citation keys without a local bibliography definition: `0`
 - Bibliography entries without a curated source link: `42`
-- Lean lexical candidates awaiting review: `706`
+- Lean lexical candidates awaiting review: `707`
 - Unresolved local TeX includes: `0`
 
 Machine-readable inventories, hashes, unresolved keys, and lexical candidates: [source-attribution-index.json](source-attribution-index.json).

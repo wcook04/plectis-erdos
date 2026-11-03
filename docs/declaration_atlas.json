@@ -4,9 +4,9 @@
   "projection_not_authority": true,
   "proof_authority": "Lean source checked by the pinned Lean kernel",
   "argument_authority": "docs/claims.json::machine_readable_paper.argument_graph",
-  "source_fingerprint": "sha256:e023ddfd4f6922c37fc8ce76dbb2491a5eba382376eeafdfbdc9fb4276de8057",
+  "source_fingerprint": "sha256:f7b3fc3bd7e1eaaf63f2cf06151ef5b61142d41f78dc54a403c75883acbdd05f",
   "summary": {
-    "module_count": 1860,
+    "module_count": 1868,
     "declaration_count": 163947,
     "theorem_like_count": 159982,
     "generated_certificate_declaration_count": 8171,
@@ -8780,6 +8780,104 @@
         "ErdosProblems.Erdos68.ShrinkingTargetNormalForm",
         "ErdosProblems.Shared.IrrationalRotationStaircase",
         "ErdosProblems.Synthesis"
+      ],
+      "declaration_count": 0,
+      "kind_counts": {}
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos1041",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos1041.lean",
+      "imports": [
+        "ErdosProblems.Erdos1041.PaperCompleteR21.ConstantFactorAreaCriteria",
+        "ErdosProblems.Erdos1041.PaperCompleteR21.CriticalValueSeparationTransport",
+        "ErdosProblems.Erdos1041.PaperCompleteR21.HyperbolicLawOfCosines",
+        "ErdosProblems.Erdos1041.PaperCompleteR21.SeparationParent",
+        "ErdosProblems.Erdos1041.PaperCompleteR21.SubcriticalPerimeterPath"
+      ],
+      "declaration_count": 0,
+      "kind_counts": {}
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos1049",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos1049.lean",
+      "imports": [
+        "ErdosProblems.Erdos1049.PaperCompleteR21.RationalBaseThreshold"
+      ],
+      "declaration_count": 0,
+      "kind_counts": {}
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos243",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos243.lean",
+      "imports": [
+        "ErdosProblems.Erdos243.PaperCompleteR21.ExactOrbitRecordDichotomy",
+        "ErdosProblems.Erdos243.PaperCompleteR21.MaximalGapConstant",
+        "ErdosProblems.Erdos243.PaperCompleteR21.ReducedDenominatorPrimePowers",
+        "ErdosProblems.Erdos243.PaperCompleteR21.ReducedStepLocalArithmetic",
+        "ErdosProblems.Erdos243.PaperCompleteR21.WindowAvoidance"
+      ],
+      "declaration_count": 0,
+      "kind_counts": {}
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos249",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos249.lean",
+      "imports": [
+        "ErdosProblems.Erdos249.PaperCompleteR20.LcmGridCorrespondence",
+        "ErdosProblems.Erdos249.PaperCompleteR21.DivisorChannelSplitAndSeamDoubling",
+        "ErdosProblems.Erdos249.PaperCompleteR21.ExtremalOrderDirectedAndPulse",
+        "ErdosProblems.Erdos249.PaperCompleteR21.FirstHarmonicBlockCriteria",
+        "ErdosProblems.Erdos249.PaperCompleteR21.MersennePrimeSupportAnchors",
+        "ErdosProblems.Erdos249.PaperCompleteR21.MobiusMersenneLadderLogConcavity",
+        "ErdosProblems.Erdos249.PaperCompleteR21.NearIntegerIrrationalityCriterion",
+        "ErdosProblems.Erdos249.PaperCompleteR21.NumeratorPolynomialAndMersenneRemainder",
+        "ErdosProblems.Erdos249.PaperCompleteR21.PhaseEnergyAndForeignResidueProjection",
+        "ErdosProblems.Erdos249.PaperCompleteR21.ScalarLocalisationAndInversePhaseGauge"
+      ],
+      "declaration_count": 0,
+      "kind_counts": {}
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos251",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos251.lean",
+      "imports": [
+        "ErdosProblems.Erdos251.PaperCompleteR20.FiniteSeparation",
+        "ErdosProblems.Erdos251.PaperCompleteR21.JointPrimeGapCountermodel"
+      ],
+      "declaration_count": 0,
+      "kind_counts": {}
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos257",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos257.lean",
+      "imports": [
+        "ErdosProblems.Erdos257.PaperCompleteR21.ArithmeticCounterexampleAssembly",
+        "ErdosProblems.Erdos257.PaperCompleteR21.EventualNonnegativeMargin",
+        "ErdosProblems.Erdos257.PaperCompleteR21.FeedbackRowStripWitnessAllDepths",
+        "ErdosProblems.Erdos257.PaperCompleteR21.GreedyOrbitNoTies",
+        "ErdosProblems.Erdos257.PaperCompleteR21.LogarithmicInitialInterval",
+        "ErdosProblems.Erdos257.PaperCompleteR21.MersenneChannelSurvivalAllHeights",
+        "ErdosProblems.Erdos257.PaperCompleteR21.ShortWindowDivisorPhase",
+        "ErdosProblems.Erdos257.PaperCompleteR21.SkipSafetyAndDivisorZeroRuns"
+      ],
+      "declaration_count": 0,
+      "kind_counts": {}
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos269",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos269.lean",
+      "imports": [
+        "ErdosProblems.Erdos269.PaperR7BasicAssembly",
+        "ErdosProblems.Erdos269.PaperR7WindowResults"
+      ],
+      "declaration_count": 0,
+      "kind_counts": {}
+    },
+    {
+      "id": "ErdosProblems.ArgumentGraph.Derived.Erdos68",
+      "path": "lean/ErdosProblems/ArgumentGraph/Derived/Erdos68.lean",
+      "imports": [
+        "ErdosProblems.Erdos68.PaperCompletePrimePole"
       ],
       "declaration_count": 0,
       "kind_counts": {}
