@@ -4,7 +4,7 @@
 
 # Plectis reading edition: eight Erdős problems
 
-Edition fingerprint `fa90edda1811b657`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/practical-formal-verification/maths/>.
+Edition fingerprint `b8c1e1b6124de59a`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/practical-formal-verification/maths/>.
 
 
 ## How to use this edition
@@ -1311,7 +1311,7 @@ What survives is the agreement itself. At $`Q=200`$ the counts at steps $`1`$ to
 
 ### Verification and sources
 
-The starting point is the sparse perturbation construction accompanying Erdős Problem \#251 in this repository, especially its [short paper](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos-251-prime-gap-dyadic-series.pdf) and [`ResidueFeedbackCore.lean`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/lean/ErdosProblems/Erdos251/ResidueFeedbackCore.lean). The latter already proves residue-dependent selection and an abstract infinite sum endpoint. An operator-supplied review supplied the form of Lemma [3.4](#optimal-sparse-perturbations--capacity%3Alem%3Afeedback), the sharp exponential support constants, and the linear/superlinear factorial contrast. Those ingredients are credited to that review, not presented as discoveries of this paper. The extensions developed here are the exact capacity criterion on arbitrary strict integer divisibility chains, the factorial support classification and its integer-exponent comparison, the common-divisor formulation, and the derivative dimension and rationality thresholds proved above.
+The starting point is the sparse perturbation construction accompanying Erdős Problem \#251 in this repository, especially its [short paper](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/251/erdos-251-prime-gap-dyadic-series.pdf) and [`ResidueFeedbackCore.lean`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/lean/ErdosProblems/Erdos251/ResidueFeedbackCore.lean). The latter already proves residue-dependent selection and an abstract infinite sum endpoint. An operator-supplied review supplied the form of Lemma [3.4](#optimal-sparse-perturbations--capacity%3Alem%3Afeedback), the sharp exponential support constants, and the linear/superlinear factorial contrast. Those ingredients are credited to that review, not presented as discoveries of this paper. The extensions developed here are the exact capacity criterion on arbitrary strict integer divisibility chains, the factorial support classification and its integer-exponent comparison, the common-divisor formulation, and the derivative dimension and rationality thresholds proved above.
 
 The derivative theorem combines residue feedback from \#251 with the treatment of factorial carries in \#68. Identity [(J)](#optimal-sparse-perturbations--capacity%3Aeq%3Ajet-carry) interprets a carry as multiplication by a polynomial vanishing at the evaluation point. This produces the independent higher derivative instead of assuming its availability. The moving coordinates in [(T)](#optimal-sparse-perturbations--capacity%3Aeq%3Amoving-taylor) make the full-dimensional critical construction possible; the counting obstruction proves its measure is zero. Conversely, division by the same vanishing polynomial preserves integer factorial coefficients and eventual divisibility. The complementary tail formula then proves rational-derivative rigidity at precisely the same threshold. These are explicit transfers between representations, not evidence for a general improvement in automated discovery. The other programmes motivated comparison of rank, arithmetic and analytic obstructions; their endpoints are not premises here.
 
@@ -1395,19 +1395,19 @@ A. Rahm, N. Solomon, T. Trauthwein and B. Weiss, [*The distribution of ratio
 
 S. Chow, P. Varjú and H. Yu, [*Counting rationals and diophantine approximation in missing-digit Cantor sets*](https://arxiv.org/abs/2402.18395), arXiv:2402.18395.
 
-W. Cook, [*Two incomparable denominator exclusions for $`\sum_{n\ge2}(n!-1)^{-1}`$*](https://github.com/wcook04/plectis-erdos/blob/main/paper/68/erdos-68-factorial-denominator-irrationality.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Two incomparable denominator exclusions for $`\sum_{n\ge2}(n!-1)^{-1}`$*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/68/erdos-68-factorial-denominator-irrationality.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Bounded increments and rational reciprocal sums*](https://github.com/wcook04/plectis-erdos/blob/main/paper/243/erdos-243-reciprocal-tail-rigidity.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Bounded increments and rational reciprocal sums*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/243/erdos-243-reciprocal-tail-rigidity.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Bases and integral relations for the $`k`$-kernel of Euler’s totient*](https://github.com/wcook04/plectis-erdos/blob/main/paper/249/erdos-249-binary-totient-series.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Bases and integral relations for the $`k`$-kernel of Euler’s totient*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/249/erdos-249-binary-totient-series.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Sparse congruence-preserving perturbations of dyadic series*](https://github.com/wcook04/plectis-erdos/blob/main/paper/251/erdos-251-prime-gap-dyadic-series.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Sparse congruence-preserving perturbations of dyadic series*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/251/erdos-251-prime-gap-dyadic-series.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Weighted support criteria for reciprocal Mersenne subseries*](https://github.com/wcook04/plectis-erdos/blob/main/paper/257/erdos-257-mersenne-support-subseries.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Weighted support criteria for reciprocal Mersenne subseries*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/257/erdos-257-mersenne-support-subseries.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*No finite separable representation at three prime generators*](https://github.com/wcook04/plectis-erdos/blob/main/paper/269/erdos-269-three-prime-running-lcm.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*No finite separable representation at three prime generators*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/269/erdos-269-three-prime-running-lcm.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Zudilin’s forms at rational bases and the exact normalised Hankel order*](https://github.com/wcook04/plectis-erdos/blob/main/paper/1049/erdos-1049-rational-base-lambert.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Zudilin’s forms at rational bases and the exact normalised Hankel order*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/1049/erdos-1049-rational-base-lambert.pdf), Erdős Problem Notes, 2026.
 
 W. Cook, *Choices, contraction and rational membership*, exact computation with saved outputs in `research/experiments/choices_contraction/` of the repository, 2026.
 
@@ -4469,7 +4469,7 @@ Arguments based on prime incidences need further care: multiplying all prime exp
 
 #### Algebraic bases on separated supports
 
-The companion paper [*Reading eight Erdős problems together*](https://github.com/wcook04/plectis-erdos/blob/main/paper/synthesis/optimal-sparse-perturbations.pdf), in its subsection “Divisibility cuts at every algebraic base”, states a transcendence extension based on the number-field Subspace Theorem. Its hypothesis is an infinite set $`H`$ with indices $`L_j<M_j`$, where $`L_j\to\infty`$ and $`M_j-L_j\to\infty`$, such that every $`n\in H`$ with $`n\le L_j`$ divides $`L_j`$ and every $`n\in H`$ with $`n>L_j`$ is a multiple of $`M_j`$. Its stated conclusion is that $`\sum_{n\in B}w_n/(t^n-1)`$ is transcendental for every infinite $`B\subseteq H`$, all bounded positive integer weights $`w_n`$ and every real algebraic $`t>1`$.
+The companion paper [*Reading eight Erdős problems together*](https://github.com/wcook04/plectis-erdos/blob/58c4042b103a8263e3a8214a9af20999ff4897a9/paper/synthesis/optimal-sparse-perturbations.pdf), in its subsection “Divisibility cuts at every algebraic base”, states a transcendence extension based on the number-field Subspace Theorem. Its hypothesis is an infinite set $`H`$ with indices $`L_j<M_j`$, where $`L_j\to\infty`$ and $`M_j-L_j\to\infty`$, such that every $`n\in H`$ with $`n\le L_j`$ divides $`L_j`$ and every $`n\in H`$ with $`n>L_j`$ is a multiple of $`M_j`$. Its stated conclusion is that $`\sum_{n\in B}w_n/(t^n-1)`$ is transcendental for every infinite $`B\subseteq H`$, all bounded positive integer weights $`w_n`$ and every real algebraic $`t>1`$.
 
 Every divisibility chain has such cuts, and so does $`H_* = \bigcup_j N_j\{1,\ldots,2^{N_j}\}`$ with $`N_0=1`$ and $`N_{j+1}=2N_j\operatorname{lcm}(1,\ldots,2^{N_j})`$. Each block of $`H_*`$ has reciprocal sum at least $`1/2`$ and contains antichains of unbounded size, while the weighted sum for one prime is at most $`2t^2/(t-1)^3`$ at every real $`t>1`$. The example thus also satisfies the weighted criterion; we make no claim that every support satisfying that criterion has the separation property.
 

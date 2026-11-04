@@ -1194,7 +1194,7 @@ What survives is the agreement itself. At $`Q=200`$ the counts at steps $`1`$ to
 
 # Verification and sources
 
-The starting point is the sparse perturbation construction accompanying Erdős Problem \#251 in this repository, especially its [short paper](../../../paper/251/erdos-251-prime-gap-dyadic-series.pdf) and [`ResidueFeedbackCore.lean`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/lean/ErdosProblems/Erdos251/ResidueFeedbackCore.lean). The latter already proves residue-dependent selection and an abstract infinite sum endpoint. An operator-supplied review supplied the form of Lemma [3.4](#capacity%3Alem%3Afeedback), the sharp exponential support constants, and the linear/superlinear factorial contrast. Those ingredients are credited to that review, not presented as discoveries of this paper. The extensions developed here are the exact capacity criterion on arbitrary strict integer divisibility chains, the factorial support classification and its integer-exponent comparison, the common-divisor formulation, and the derivative dimension and rationality thresholds proved above.
+The starting point is the sparse perturbation construction accompanying Erdős Problem \#251 in this repository, especially its [short paper](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/251/erdos-251-prime-gap-dyadic-series.pdf) and [`ResidueFeedbackCore.lean`](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/lean/ErdosProblems/Erdos251/ResidueFeedbackCore.lean). The latter already proves residue-dependent selection and an abstract infinite sum endpoint. An operator-supplied review supplied the form of Lemma [3.4](#capacity%3Alem%3Afeedback), the sharp exponential support constants, and the linear/superlinear factorial contrast. Those ingredients are credited to that review, not presented as discoveries of this paper. The extensions developed here are the exact capacity criterion on arbitrary strict integer divisibility chains, the factorial support classification and its integer-exponent comparison, the common-divisor formulation, and the derivative dimension and rationality thresholds proved above.
 
 The derivative theorem combines residue feedback from \#251 with the treatment of factorial carries in \#68. Identity [(J)](#capacity%3Aeq%3Ajet-carry) interprets a carry as multiplication by a polynomial vanishing at the evaluation point. This produces the independent higher derivative instead of assuming its availability. The moving coordinates in [(T)](#capacity%3Aeq%3Amoving-taylor) make the full-dimensional critical construction possible; the counting obstruction proves its measure is zero. Conversely, division by the same vanishing polynomial preserves integer factorial coefficients and eventual divisibility. The complementary tail formula then proves rational-derivative rigidity at precisely the same threshold. These are explicit transfers between representations, not evidence for a general improvement in automated discovery. The other programmes motivated comparison of rank, arithmetic and analytic obstructions; their endpoints are not premises here.
 
@@ -1278,19 +1278,19 @@ A. Rahm, N. Solomon, T. Trauthwein and B. Weiss, [*The distribution of ratio
 
 S. Chow, P. Varjú and H. Yu, [*Counting rationals and diophantine approximation in missing-digit Cantor sets*](https://arxiv.org/abs/2402.18395), arXiv:2402.18395.
 
-W. Cook, [*Two incomparable denominator exclusions for $`\sum_{n\ge2}(n!-1)^{-1}`$*](../../../paper/68/erdos-68-factorial-denominator-irrationality.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Two incomparable denominator exclusions for $`\sum_{n\ge2}(n!-1)^{-1}`$*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/68/erdos-68-factorial-denominator-irrationality.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Bounded increments and rational reciprocal sums*](../../../paper/243/erdos-243-reciprocal-tail-rigidity.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Bounded increments and rational reciprocal sums*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/243/erdos-243-reciprocal-tail-rigidity.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Bases and integral relations for the $`k`$-kernel of Euler’s totient*](../../../paper/249/erdos-249-binary-totient-series.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Bases and integral relations for the $`k`$-kernel of Euler’s totient*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/249/erdos-249-binary-totient-series.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Sparse congruence-preserving perturbations of dyadic series*](../../../paper/251/erdos-251-prime-gap-dyadic-series.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Sparse congruence-preserving perturbations of dyadic series*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/251/erdos-251-prime-gap-dyadic-series.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Weighted support criteria for reciprocal Mersenne subseries*](../../../paper/257/erdos-257-mersenne-support-subseries.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Weighted support criteria for reciprocal Mersenne subseries*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/257/erdos-257-mersenne-support-subseries.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*No finite separable representation at three prime generators*](../../../paper/269/erdos-269-three-prime-running-lcm.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*No finite separable representation at three prime generators*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/269/erdos-269-three-prime-running-lcm.pdf), Erdős Problem Notes, 2026.
 
-W. Cook, [*Zudilin’s forms at rational bases and the exact normalised Hankel order*](../../../paper/1049/erdos-1049-rational-base-lambert.pdf), Erdős Problem Notes, 2026.
+W. Cook, [*Zudilin’s forms at rational bases and the exact normalised Hankel order*](https://github.com/wcook04/plectis-erdos/blob/8d6596fbde2c4aacf946adec4b0226ba1a97545d/paper/1049/erdos-1049-rational-base-lambert.pdf), Erdős Problem Notes, 2026.
 
 W. Cook, *Choices, contraction and rational membership*, exact computation with saved outputs in `research/experiments/choices_contraction/` of the repository, 2026.
 

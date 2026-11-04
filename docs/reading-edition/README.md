@@ -4,7 +4,7 @@
 
 # Reading edition
 
-Edition fingerprint `fa90edda1811b657`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/practical-formal-verification/maths/>.
+Edition fingerprint `b8c1e1b6124de59a`. Papers CC-BY-4.0, Will Cook, 2026. Source: <https://github.com/wcook04/plectis-erdos>. Website: <https://wcook04.github.io/practical-formal-verification/maths/>.
 
 Read the mathematics with your own AI model, or without one, and without a clone. All three files come from one builder and one set of sources, so they agree with the papers and with each other.
 
@@ -12,7 +12,7 @@ Read the mathematics with your own AI model, or without one, and without a clone
 |---|---|---:|
 | [plectis-reading-edition.md](plectis-reading-edition.md) | Start here. Introduction, research instruction, the cross-problem paper in full, the opening sections and references of each short paper, and one worked example in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-reading-edition.md) | 356 KB |
 | [plectis-short-papers.md](plectis-short-papers.md) | The same front matter with the cross-problem paper and all eight short papers in full. [Raw](https://raw.githubusercontent.com/wcook04/plectis-erdos/main/docs/reading-edition/plectis-short-papers.md) | 621 KB |
-| Complete edition | All 18 papers below. Written on demand, because it repeats `docs/papers/full-text/`. | 3,368 KB |
+| Complete edition | All 18 papers below. Written on demand, because it repeats `docs/papers/full-text/`. | 3,369 KB |
 
 ```sh
 python3 scripts/build_reading_edition.py --complete plectis-complete-edition.md
