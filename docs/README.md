@@ -28,8 +28,8 @@ connects papers, results and recorded evidence; the
 browser reading and PDFs. This index gives the corresponding routes inside a
 clone. No website account or coding agent is needed to read the work.
 
-Agents can navigate the same website through its [text guide](https://wcook04.github.io/plectis/llms.txt)
-and [maths map manifest](https://wcook04.github.io/plectis/lean/experience/manifest.json),
+Agents can navigate the same website through its [text guide](https://wcook04.github.io/practical-formal-verification/llms.txt)
+and [maths map manifest](https://wcook04.github.io/practical-formal-verification/lean/experience/manifest.json),
 which points to the graph data and source-linked research records.
 
 ## Choose a way in
