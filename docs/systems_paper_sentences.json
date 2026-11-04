@@ -61,9 +61,9 @@
       "id": "corpus",
       "path": "docs/papers/corpus.json",
       "start_line": 1,
-      "end_line": 9292,
-      "sha256": "fa67fa998eff61b9d6b0a595487acd0b898e5eb5465c3927b5a3207deb45c48e",
-      "excerpt_sha256": "fa67fa998eff61b9d6b0a595487acd0b898e5eb5465c3927b5a3207deb45c48e",
+      "end_line": 9564,
+      "sha256": "601644be4c0975b71207960fa1f06172ec94e50fff2bbc0f2a359965fbb3ebd3",
+      "excerpt_sha256": "601644be4c0975b71207960fa1f06172ec94e50fff2bbc0f2a359965fbb3ebd3",
       "kind": "source",
       "custody_note": "Reviewed acknowledgement withdrawal on 10 October 2026: corpus source/PDF digests and generated section coordinates refreshed after withdrawing pending-consent personal acknowledgements. The inventory, paper roles, citation identities, mathematical claims and authority ceilings are unchanged. Reviewed GitHub paper-navigation repair on 10 October 2026: only generated section and first-pass line coordinates changed. The full paper inventory, manuscript/PDF hashes, published source pins, citation identities, paper roles, authority ceilings and both cited identification warrants are unchanged; no Lean or Comparator execution is claimed. Reviewed inline-label, table and source-preserving display-layout conversion on 10 October 2026: corpus changes are 206 section/first-pass line coordinates only. Inventory, source/PDF hashes, published pins, citation identities, roles, authority ceilings and both identification warrants remain unchanged; two source-backed #249 inequalities are restored in the Markdown, with no manuscript, proof or evidence promotion."
     },
@@ -72,8 +72,8 @@
       "path": "docs/systems_paper_counts.json",
       "start_line": 1,
       "end_line": 65,
-      "sha256": "b7bd28191f898f9f84e9fce8477e48ba0119583f21f0cb59acab2d74b67e6dae",
-      "excerpt_sha256": "b7bd28191f898f9f84e9fce8477e48ba0119583f21f0cb59acab2d74b67e6dae",
+      "sha256": "5cc544760bc66e8ee8c3b7bbac40a44a48b31447ec17db7432c3f907a3fd1207",
+      "excerpt_sha256": "5cc544760bc66e8ee8c3b7bbac40a44a48b31447ec17db7432c3f907a3fd1207",
       "kind": "source"
     },
     {
@@ -474,8 +474,8 @@
       "start_line": 1,
       "end_line": 147,
       "kind": "source",
-      "sha256": "be42520dc670c95303a30daa3eda2c1bd5057d02292fa4c2f6ec20b91c871991",
-      "excerpt_sha256": "be42520dc670c95303a30daa3eda2c1bd5057d02292fa4c2f6ec20b91c871991"
+      "sha256": "fed7428c2048d573586a786340882c416ed8cc932be433da756a69cbc9b93eee",
+      "excerpt_sha256": "fed7428c2048d573586a786340882c416ed8cc932be433da756a69cbc9b93eee"
     },
     {
       "id": "explanation-depth",
@@ -707,9 +707,9 @@
       "id": "r8-release",
       "kind": "source",
       "path": "scripts/check_release.py",
-      "start_line": 1662,
-      "end_line": 1738,
-      "sha256": "282c8d8b9b3aee376f4d6e6e9e8c87f5a3f18995501712c93748851c4b177129",
+      "start_line": 1664,
+      "end_line": 1740,
+      "sha256": "1eebff1f826477fe1b08b9e143505c547803953879c3b2032914ea6665fb9863",
       "excerpt_sha256": "da39690f9c38fd66ca7b1f7496108ac87673b67260a7c1c234b842008edd0adb",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
@@ -942,7 +942,7 @@
       "start_line": 1,
       "end_line": 42,
       "kind": "source",
-      "sha256": "45d46df84010206304316771c8dbd46dc139a769ec712a58e60a005fa6815635",
+      "sha256": "4b2947142ea31b0a1aeb69a516296320d7d579cfd6ac739da4adc9a319bc934f",
       "excerpt_sha256": "8ae455f30db225c2403202b65aa4c23e947cb95b29ab8a7785bcefdab2bdc670"
     },
     {
