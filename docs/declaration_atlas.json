@@ -4,7 +4,7 @@
   "projection_not_authority": true,
   "proof_authority": "Lean source checked by the pinned Lean kernel",
   "argument_authority": "docs/claims.json::machine_readable_paper.argument_graph",
-  "source_fingerprint": "sha256:7bc57d040c304dbd5ef2542bf3887c0ac549febd517e40cb708ddcdb5ef24a67",
+  "source_fingerprint": "sha256:0a42cbfe292ab1c17fe70390493187f3877bc42198b28a70614d903cbf6b618c",
   "summary": {
     "module_count": 1904,
     "declaration_count": 164664,
@@ -8660,6 +8660,7 @@
         "ErdosProblems.Erdos1041.PaperStraightObstructions",
         "ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10",
         "ErdosProblems.Erdos1041.PaperSeparationCounterexample",
+        "ErdosProblems.Erdos1041.OutwardSlitDomain",
         "ErdosProblems.Erdos1049.RationalBaseContour",
         "ErdosProblems.Erdos243.PaperCompleteR7.Frontier",
         "ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect",
@@ -8797,8 +8798,7 @@
         "ErdosProblems.Erdos68.PrimePoleDenominator",
         "ErdosProblems.Erdos68.ShrinkingTargetNormalForm",
         "ErdosProblems.Shared.IrrationalRotationStaircase",
-        "ErdosProblems.Synthesis",
-        "ErdosProblems.Erdos1041.OutwardSlitDomain"
+        "ErdosProblems.Synthesis"
       ],
       "declaration_count": 0,
       "kind_counts": {}

@@ -145,9 +145,9 @@
       "start_line": 1,
       "end_line": 36487,
       "kind": "supplied_snapshot",
-      "sha256": "d88735668a0483f52241135ea11922014eb761217effc219eaae9d713ed45e25",
-      "excerpt_sha256": "d88735668a0483f52241135ea11922014eb761217effc219eaae9d713ed45e25",
-      "custody_note": "Reviewed 10 October 2026: every attribution content field and cited excerpt digest is unchanged; only line_start/line_end coordinates moved after acknowledgement withdrawal and the consent-rule insertion. Regenerated 3 November 2026 by the corpus and attribution builders after the #257 register line edit; whole-file binding refreshed."
+      "sha256": "2ba8b4a15c7e757b312622a4f87310a85ee7b8b2c807fb37b459082dcdb88d54",
+      "excerpt_sha256": "2ba8b4a15c7e757b312622a4f87310a85ee7b8b2c807fb37b459082dcdb88d54",
+      "custody_note": "Reviewed 10 October 2026: every attribution content field and cited excerpt digest is unchanged; only line_start/line_end coordinates moved after acknowledgement withdrawal and the consent-rule insertion. Regenerated 3 November 2026 by the corpus and attribution builders after the #257 register line edit; whole-file binding refreshed. Rebound after the supported-root import move: only source/context line coordinates changed; attribution content and excerpt digests are identical."
     },
     {
       "id": "essay-pages",
@@ -299,8 +299,9 @@
       "start_line": 26,
       "end_line": 36,
       "kind": "supplied_snapshot",
-      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
-      "excerpt_sha256": "23e85424be0f92c97324743dbaceb55f1e3207460d07ebb61a03514a8f2260ae"
+      "sha256": "8dd6ea9ce3a1d118519e5fb3826995bcfdf96b293bae4edb1ad10ebfd183fcd5",
+      "excerpt_sha256": "aefca69c36f30e437c2db76abec5dd271f51ab5de951bb69561620e746bf6746",
+      "custody_note": "Rebound to builder-owned semantic coverage counts for the component-covering source addition. Outside the generated macro block the historical source is byte-identical to current main; the cited qualitative coverage warrants are unchanged."
     },
     {
       "id": "strategy-add",
@@ -389,7 +390,7 @@
       "start_line": 317,
       "end_line": 411,
       "kind": "supplied_snapshot",
-      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
+      "sha256": "8dd6ea9ce3a1d118519e5fb3826995bcfdf96b293bae4edb1ad10ebfd183fcd5",
       "excerpt_sha256": "6cbb917477c55ae56bf4b98cc4c0967cfbecfef0a227a8a867217a4944aa3cc1"
     },
     {
@@ -398,7 +399,7 @@
       "start_line": 411,
       "end_line": 469,
       "kind": "supplied_snapshot",
-      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
+      "sha256": "8dd6ea9ce3a1d118519e5fb3826995bcfdf96b293bae4edb1ad10ebfd183fcd5",
       "excerpt_sha256": "cf06baacd7c5858b5919a0f624d620bcd4e0279e1538c7d9aa2174b5e3f7d167"
     },
     {
@@ -407,7 +408,7 @@
       "start_line": 572,
       "end_line": 629,
       "kind": "supplied_snapshot",
-      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
+      "sha256": "8dd6ea9ce3a1d118519e5fb3826995bcfdf96b293bae4edb1ad10ebfd183fcd5",
       "excerpt_sha256": "1f3093160d7b9a0a67d3082170519063e2608d43c9e5b197a9468b78aed244db"
     },
     {
@@ -416,7 +417,7 @@
       "start_line": 469,
       "end_line": 528,
       "kind": "supplied_snapshot",
-      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
+      "sha256": "8dd6ea9ce3a1d118519e5fb3826995bcfdf96b293bae4edb1ad10ebfd183fcd5",
       "excerpt_sha256": "571960e814e47129f0ac76e3eff2ae52fe1192a154896d99467c4f3779deae92"
     },
     {
@@ -425,7 +426,7 @@
       "start_line": 170,
       "end_line": 261,
       "kind": "supplied_snapshot",
-      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
+      "sha256": "8dd6ea9ce3a1d118519e5fb3826995bcfdf96b293bae4edb1ad10ebfd183fcd5",
       "excerpt_sha256": "ab1ece62588b2cb176c1a5b86709b0f4faab321201a66ccb4978767026e0526a"
     },
     {
@@ -786,7 +787,7 @@
       "path": "paper/systems/cold-clone-to-proof-receipt.tex",
       "start_line": 170,
       "end_line": 261,
-      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
+      "sha256": "8dd6ea9ce3a1d118519e5fb3826995bcfdf96b293bae4edb1ad10ebfd183fcd5",
       "excerpt_sha256": "ab1ece62588b2cb176c1a5b86709b0f4faab321201a66ccb4978767026e0526a",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
@@ -796,7 +797,7 @@
       "path": "paper/systems/cold-clone-to-proof-receipt.tex",
       "start_line": 317,
       "end_line": 411,
-      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
+      "sha256": "8dd6ea9ce3a1d118519e5fb3826995bcfdf96b293bae4edb1ad10ebfd183fcd5",
       "excerpt_sha256": "6cbb917477c55ae56bf4b98cc4c0967cfbecfef0a227a8a867217a4944aa3cc1",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
@@ -806,7 +807,7 @@
       "path": "paper/systems/cold-clone-to-proof-receipt.tex",
       "start_line": 572,
       "end_line": 629,
-      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
+      "sha256": "8dd6ea9ce3a1d118519e5fb3826995bcfdf96b293bae4edb1ad10ebfd183fcd5",
       "excerpt_sha256": "1f3093160d7b9a0a67d3082170519063e2608d43c9e5b197a9468b78aed244db",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
@@ -866,7 +867,7 @@
       "path": "docs/research-commons/source-attributions.json",
       "start_line": 16125,
       "end_line": 16173,
-      "sha256": "d88735668a0483f52241135ea11922014eb761217effc219eaae9d713ed45e25",
+      "sha256": "2ba8b4a15c7e757b312622a4f87310a85ee7b8b2c807fb37b459082dcdb88d54",
       "excerpt_sha256": "8e826af82fe4e34d97e2987871af9dbcdac012c299aeca4bd95c0c6e87bf7d2c",
       "custody": "Public attribution inventory, marked bibliography_only. Used for feature attribution, not for its conflicting first-publication chronology. Direct claims are checked against the enclosed original v2 in this pass.",
       "custody_note": "Reviewed 10 October 2026: the cited excerpt is byte-identical to the starting public main; surrounding attribution coordinates changed."
