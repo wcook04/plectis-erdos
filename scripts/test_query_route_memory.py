@@ -8,6 +8,7 @@ from __future__ import annotations
 import copy
 import json
 import os
+import shlex
 import subprocess
 import sys
 import tempfile
@@ -132,6 +133,68 @@ def test_semantic_family_handoff_binds_251_source_current_route() -> None:
     )
 
 
+def test_semantic_family_handoff_uses_complete_canonical_source_binding() -> None:
+    record = _canonical_record("erdos_1049_rectangular_hermite_pade")
+    handoff = route_memory._semantic_family_handoffs(record)["families"][0]
+    require(
+        handoff["family_id"] == "height_and_pade_arithmetic",
+        "#1049 guessed a family from its route name",
+    )
+    require(handoff["route_id"] == record["route_id"], "route identity changed")
+    for field, source in (
+        ("proof_status", "status"),
+        ("hard_mechanism", "actual_established"),
+        ("natural_friction", "failure_boundary"),
+        ("open_boundary", "next_obligation"),
+    ):
+        require(handoff[field] == record[source], f"#1049 changed {field}")
+    require(handoff["proof_status"] == "negative", "model comparison was promoted")
+
+    palomar = route_memory._json(ROOT / "docs" / "PALOMAR_RESULT_SHOWCASE.json")
+    rows = palomar["candidate_value_dispositions"]["source_landscape_candidates"]
+    binding = next(
+        row for row in rows
+        if row.get("candidate_id") == "erdos1049_four_jet_pade_obstruction"
+    )
+    missing = copy.deepcopy(palomar)
+    missing["candidate_value_dispositions"]["source_landscape_candidates"].remove(binding)
+    partial = copy.deepcopy(palomar)
+    partial_binding = next(
+        row for row in partial["candidate_value_dispositions"]["source_landscape_candidates"]
+        if row.get("candidate_id") == binding["candidate_id"]
+    )
+    partial_binding["source_declaration"] = (
+        "ErdosProblems.Erdos1049.rectangular_hp_threshold_le_classical"
+    )
+    ambiguous = copy.deepcopy(palomar)
+    rival = dict(binding, canonical_family_binding="rational_base_tail_recurrence")
+    ambiguous["candidate_value_dispositions"]["source_landscape_candidates"].append(rival)
+    original_json = route_memory._json
+    for document in (missing, partial, ambiguous):
+        def read(path: Path) -> dict:
+            return document if path.name == "PALOMAR_RESULT_SHOWCASE.json" else original_json(path)
+
+        with patch.object(route_memory, "_json", side_effect=read):
+            fallback = route_memory._semantic_family_handoffs(record)["families"][0]
+        require(fallback["family_id"] is None, "missing/ambiguous binding invented a family")
+        require(
+            fallback["disposition"] == "open_proposition_only",
+            "missing/ambiguous binding lost its honest disposition",
+        )
+        require(
+            fallback["query"] == (
+                "python3 scripts/query_corpus.py --open remaining_open.erdos_1049_irrationality"
+            ),
+            "missing/ambiguous binding lost the registered open continuation",
+        )
+    mismatched = copy.deepcopy(record)
+    mismatched["evidence"]["path"] = "ErdosProblems/Erdos68/RunCylinder.lean"
+    require(
+        route_memory._semantic_family_handoffs(mismatched)["families"][0]["family_id"] is None,
+        "source mismatch selected a canonical family",
+    )
+
+
 def test_semantic_programme_family_queries_project_complete_palomar_rosters() -> None:
     problems = route_memory._json(ROOT / "docs" / "problems.json")["problems"]
     by_number = {
@@ -237,6 +300,88 @@ def run_cli(
     )
 
 
+def test_every_emitted_semantic_handoff_executes_without_payload_error() -> None:
+    import query_semantic
+
+    packets = json.loads(run_cli("--all", check=True, optimized=bool(sys.flags.optimize)).stdout)
+    expected_fallbacks = {
+        68: "remaining_open.erdos_68_irrationality",
+        243: "remaining_open.erdos_243_eventual_recurrence",
+        249: "remaining_open.erdos_249_irrationality",
+        257: "remaining_open.half_value_membership",
+        1041: "remaining_open.erdos_1041_lemniscate_connection",
+    }
+    registry = route_memory._json(ROOT / "docs" / "claims.json")
+    palomar = route_memory._json(ROOT / "docs" / "PALOMAR_RESULT_SHOWCASE.json")
+    propositions = {row["id"]: row for row in registry["remaining_open_propositions"]}
+    commands: set[str] = set()
+    cli_commands: set[str] = set()
+    for packet in packets:
+        number = packet["problem"]["erdos_number"]
+        root = packet["route"]["semantic_family_handoffs"]["families"][0]
+        if number in expected_fallbacks:
+            require(root["family_id"] is None, f"#{number} advertised an unsupported family")
+            require(root["disposition"] == "open_proposition_only", "fallback disposition missing")
+            require(
+                root["query"] == f"python3 scripts/query_corpus.py --open {expected_fallbacks[number]}",
+                f"#{number} lost its appropriate registered continuation",
+            )
+        record = packet["route"]["canonical_route_memory"]["record"]
+        require(root["proof_status"] == record["status"], f"#{number} status changed")
+        require(root["open_boundary"] == record["next_obligation"], f"#{number} boundary changed")
+        route_memory.validate_packet(packet)
+        require(route_memory._card(packet).startswith("route-memory "), "card rejected nullable family")
+        for field in ("semantic_family_handoffs", "semantic_programme_family_queries"):
+            for row in packet["route"][field]["families"]:
+                require(isinstance(row["query"], str), "an actual corpus handoff became unavailable")
+                commands.add(row["query"])
+                if field == "semantic_family_handoffs":
+                    cli_commands.add(row["query"])
+    for query in sorted(commands):
+        tokens = shlex.split(query)
+        require(tokens[0] == "python3", "advertised interpreter changed")
+        if query in cli_commands:
+            executable = [sys.executable, *(["-O"] if sys.flags.optimize else [])]
+            completed = subprocess.run(
+                [*executable, *tokens[1:]], cwd=ROOT,
+                capture_output=True, text=True,
+                env=singleflight.command_environment(),
+                timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+            )
+            require(completed.returncode == 0, f"handoff failed: {query}: {completed.stderr}")
+            payload = json.loads(completed.stdout)
+        else:
+            # Programme queries share the real receiver and one loaded atlas;
+            # execute every root/related handoff through its public CLI above.
+            require(
+                tokens[1:3] == ["scripts/query_semantic.py", "family-relations"],
+                f"unexpected programme receiver: {query}",
+            )
+            payload = query_semantic.build_family_relations_packet(palomar, registry, tokens[-1])
+        require("error" not in payload, f"handoff returned an error payload: {query}: {payload}")
+        if tokens[1] == "scripts/query_semantic.py":
+            require(payload["family"]["family_id"] == tokens[-1], "receiver selected another family")
+        else:
+            require(payload["kind"] == "open_proposition", "fallback lost its typed reader")
+            require(payload["open_proposition"] == propositions[tokens[-1]], "fallback changed its proposition")
+    for family_id in ("rectangular_hermite_pade", "not_a_registered_family"):
+        completed = subprocess.run(
+            [sys.executable, *(["-O"] if sys.flags.optimize else []),
+             str(ROOT / "scripts" / "query_semantic.py"), "family-relations", family_id],
+            cwd=ROOT, capture_output=True, text=True,
+            env=singleflight.command_environment(),
+            timeout=singleflight.GIT_COMMAND_TIMEOUT_SECONDS,
+        )
+        require(
+            json.loads(completed.stdout).get("error") == f"unknown Palomar family {family_id!r}",
+            "receiver unknown-family guard was weakened",
+        )
+    print(
+        f"route-memory handoffs: {len(commands)} receiver payloads, "
+        f"{len(cli_commands)} actual CLIs and unknown-family controls PASS"
+    )
+
+
 def check_cli_environment() -> None:
     """Prove route-memory CLI fixtures ignore hostile inherited selectors."""
     hostile_environment = {
@@ -277,6 +422,8 @@ def main() -> int:
     test_semantic_family_handoffs_preserve_exact_269_spine()
     test_semantic_family_handoffs_retain_all_eight_problem_roots()
     test_semantic_family_handoff_binds_251_source_current_route()
+    test_semantic_family_handoff_uses_complete_canonical_source_binding()
+    test_every_emitted_semantic_handoff_executes_without_payload_error()
     test_semantic_programme_family_queries_project_complete_palomar_rosters()
     test_semantic_programme_family_queries_ignore_relation_array_order()
     hostile = {
