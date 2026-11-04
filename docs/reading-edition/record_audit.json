@@ -129,7 +129,7 @@
     "paper/reasoning-parts/erdos68/extended_record.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos68/family_catalogue.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos68/preamble.tex": "sha256:7bbd6207745d2f3e5c7db3b788c3cafcfd17504ac075cad8df1f5e5310dda21d",
-    "paper/reasoning-parts/record_links.json": "sha256:856b1cac96d9ab2ddcb2473bb7e792f5dcd9fc9e450aa0d5bb17c6ede0899b7e",
+    "paper/reasoning-parts/record_links.json": "sha256:2ab7b59fdad0d03e97c8e4b065714dd3ef1966f64515e9d027fb266c00de19d0",
     "scripts/assemble_reasoning_surfaces.py": "sha256:0d8f6426d736fd371921e11e7bd2e721413f2d881b10da0be88c6f19b5ffb2b2",
     "scripts/build_reading_edition.py": "sha256:a18292ea2d342fd37b912276a5c58914981170c9214f72fc4ca01553abedebb0",
     "scripts/check_lean_paper_propagation.py": "sha256:0f70bd947b02efe91291389e0430e1140a729de1ae3d311092e20152ea1b813c",
@@ -137,13 +137,13 @@
     "scripts/reasoning_record_audit.py": "sha256:5181f76da0658a08400a1fc35c6f72dc0370e375fd4d11caf41a4eb38ce5c62b"
   },
   "navigation_sha256": {
-    "docs/reading-edition/RECORDS.md": "sha256:7b0aad8749ccf8d25cca1e91639ad0d0bfa12ffc8bc3b10de1c083b2e0deefe6",
+    "docs/reading-edition/RECORDS.md": "sha256:8fed6abaf61324aaf6f1eb0a0fce424a714c1c6a4ef7ed3554b957bf9c782f0c",
     "docs/reading-edition/records/erdos1041.md": "sha256:7d7b4cfe965f823dab932fe54631cfca4c3b20b016f4e5f9fe69b39e2b5822ac",
     "docs/reading-edition/records/erdos1049.md": "sha256:87ecef1052abf89547a2ac49df2aac11ddc2f8b481f4b953ace09c90ac05468f",
     "docs/reading-edition/records/erdos243.md": "sha256:78eff1ff1b734084914d4e5cc836e8c5ac8350968a9f618eae6299f745ffe0a6",
     "docs/reading-edition/records/erdos249.md": "sha256:17f07b24a181f6f491ec80a6308b06c57679c12610f75ca1a4f85742bc7a3f6a",
     "docs/reading-edition/records/erdos251.md": "sha256:12c0302b5da2ccbacd1c4a7f04c100ce7580550c0d754268b161c7d38e99afe6",
-    "docs/reading-edition/records/erdos257.md": "sha256:f5b22818bae74fc7991c9e50778a4f19dc0a8c0baac41ec4bc380973848b4b06",
+    "docs/reading-edition/records/erdos257.md": "sha256:be27dc965f9a10b9e2740f45218fc2d78e819930dc6c305d6a30d9408adca20a",
     "docs/reading-edition/records/erdos269.md": "sha256:e1cf7d2e5666de1f92267f5cebfb3372fc59ab411dfdb0c4b8c0155117f1664e",
     "docs/reading-edition/records/erdos68.md": "sha256:a55fc05c420c652948917e305419453181673a09cf37de87e78b383562a89485"
   },
@@ -7981,8 +7981,34 @@
           "label": "res:strict-mixed-supports",
           "ledger_comparator_status": "pending",
           "ledger_lean_status": "exact",
-          "long_locations": [],
-          "matches": [],
+          "long_locations": [
+            {
+              "end_line": 923,
+              "label": null,
+              "line": 887,
+              "path": "paper/reasoning-parts/erdos257/a257_front.tex"
+            }
+          ],
+          "matches": [
+            {
+              "basis": "authored_correspondence",
+              "long_claim": null,
+              "rationale": "The long passage now repeats the short corollary’s union argument with both host hypotheses explicit and points to the existing mixed criterion. The differing printed and Lean constructions remain distinguished. The union argument depends on the short paper’s host-existence proposition; the printed host constructions have not been moved or independently reviewed here.",
+              "support": {
+                "availability": "located",
+                "kind": "ordinary_proof_text",
+                "locator": {
+                  "end_line": 923,
+                  "label": null,
+                  "line": 887,
+                  "path": "paper/reasoning-parts/erdos257/a257_front.tex"
+                },
+                "review_status": "Ordinary proof text transferred from the short paper; no independent review recorded. Rebound after the formal-status paragraph linked the separately compiled composed endpoint; the union argument and statement are unchanged, and this correspondence remains ordinary proof text, not an independent proof review",
+                "sha256": "sha256:3cd142b3c5edc0f0e0c9ffab9148e7cb8d8e97700345636a126ba5ede0fc98c3",
+                "validation": "text_presence_and_digest_only; proof_correctness_not_checked"
+              }
+            }
+          ],
           "short_claim": "erdos-257-mersenne-support-subseries#res:strict-mixed-supports",
           "short_location": {
             "end_line": 795,
@@ -7990,7 +8016,7 @@
             "line": 789,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           },
-          "state": "unresolved",
+          "state": "authored_proof_text_linked",
           "statement_sha256": "sha256:ec8cba3f6409742197fa4fa63d81b4e71f2aba928597821a4600ea8cfa8c3f4a"
         },
         {
@@ -8175,39 +8201,6 @@
             "end_line": 646,
             "label": "res:weighted-cover-incomparability",
             "line": 638,
-            "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
-          }
-        },
-        {
-          "code": "stale_or_missing_proof",
-          "detail": "stale support span; text changed after correspondence review",
-          "long_location": {
-            "end": "The mixed implication itself is kernel-checked.",
-            "path": "paper/reasoning-parts/erdos257/a257_front.tex",
-            "selector": "between",
-            "sha256": "sha256:40acfeaf5af4e93798fe0af9687d0dab8a4b5707d673ccb905a2ab6189e56a79",
-            "start": "\\paragraph{Why the mixed criterion is strict.}\\label{record257:strict-mixed-proof}"
-          },
-          "severity": "error",
-          "short_claim": "erdos-257-mersenne-support-subseries#res:strict-mixed-supports",
-          "short_location": {
-            "end_line": 795,
-            "label": "res:strict-mixed-supports",
-            "line": 789,
-            "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
-          }
-        },
-        {
-          "code": "unresolved_short_long_link",
-          "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
-          "long_locations": [],
-          "long_record": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-          "severity": "error",
-          "short_claim": "erdos-257-mersenne-support-subseries#res:strict-mixed-supports",
-          "short_location": {
-            "end_line": 795,
-            "label": "res:strict-mixed-supports",
-            "line": 789,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           }
         },
@@ -11064,12 +11057,12 @@
         "duplicate_passages": 0,
         "duplicates": 0,
         "explained_in_short": 5,
-        "linked_short_claims": 3,
+        "linked_short_claims": 4,
         "long_claims": 175,
-        "long_correspondence_open": 8,
+        "long_correspondence_open": 7,
         "possible_stale_passages": 0,
         "short_claims": 11,
-        "unresolved_short_claims": 3
+        "unresolved_short_claims": 2
       }
     },
     {
@@ -15796,12 +15789,12 @@
     "explicit_links": 8,
     "explicit_short_proof_dispositions": 45,
     "global_findings": 0,
-    "linked_short_claims": 27,
+    "linked_short_claims": 28,
     "long_claims": 612,
-    "long_correspondence_open": 50,
+    "long_correspondence_open": 49,
     "pairs": 8,
     "possible_stale_passages": 0,
     "short_claims": 77,
-    "unresolved_short_claims": 14
+    "unresolved_short_claims": 13
   }
 }

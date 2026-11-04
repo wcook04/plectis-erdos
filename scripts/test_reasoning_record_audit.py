@@ -186,11 +186,40 @@ class CorpusTests(unittest.TestCase):
                         self.assertIn('UNRUN', m['support']['validation'])
 
     def test_ordinary_authored_status_not_upgraded(self):
-        p = next(p for p in self.base['pairs'] if p['problem']==257)
-        c = next(c for c in p['claims'] if c['short_claim']==self.link['short_id'])
+        root = self.clone_inputs()
+        path = root/'docs/paper_lean_coverage.json'
+        ledger = json.loads(path.read_text())
+        row = next(r for r in ledger['rows'] if r['id']==self.link['short_id'])
+        row['lean'] = {'status': 'none', 'declarations': []}
+        row['comparator'] = {'status': 'not_applicable'}
+        row['palomar'] = {'status': 'not_applicable'}
+        path.write_text(audit.canonical(audit.coverage.restamped(ledger, [])))
+        value = audit.report(root, [257])
+        self.assertNotEqual(value['status'], 'refusal', value.get('reason'))
+        c = next(c for c in value['pairs'][0]['claims'] if c['short_claim']==self.link['short_id'])
         self.assertEqual(c['state'], 'authored_proof_text_linked')
         self.assertEqual(c['ledger_lean_status'], 'none')
         self.assertEqual(c['ledger_comparator_status'], 'not_applicable')
+        self.assertEqual(c['matches'][0]['support']['kind'], 'ordinary_proof_text')
+
+    def test_authored_correspondence_retains_its_boundary_after_lean_landing(self):
+        root = self.clone_inputs()
+        path = root/'docs/paper_lean_coverage.json'
+        ledger = json.loads(path.read_text())
+        row = next(r for r in ledger['rows'] if r['id']==self.link['short_id'])
+        row['lean']['status'] = 'exact'
+        row['comparator'] = {'status': 'pending', 'queued_at': '2026-11-04'}
+        row['palomar'] = {'status': 'pending'}
+        path.write_text(audit.canonical(audit.coverage.restamped(ledger, [])))
+        value = audit.report(root, [257])
+        self.assertNotEqual(value['status'], 'refusal', value.get('reason'))
+        c = next(c for c in value['pairs'][0]['claims'] if c['short_claim']==self.link['short_id'])
+        self.assertEqual(c['ledger_lean_status'], 'exact')
+        self.assertEqual(c['ledger_comparator_status'], 'pending')
+        self.assertEqual(c['state'], 'authored_proof_text_linked')
+        support = c['matches'][0]['support']
+        self.assertEqual(support['kind'], 'ordinary_proof_text')
+        self.assertIn('proof_correctness_not_checked', support['validation'])
 
     def test_real_missing_proof_is_reported(self):
         root = self.clone_inputs()
