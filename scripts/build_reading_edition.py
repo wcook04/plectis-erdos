@@ -368,6 +368,10 @@ def build() -> dict[Path, str]:
     total = sum(r["text_path"].stat().st_size for r in synthesis + papers)
     index = [
         header("Reading edition", edition),
+        "The website is agent-readable through its "
+        "[navigation guide](https://wcook04.github.io/practical-formal-verification/llms.txt) and "
+        "[maths map manifest](https://wcook04.github.io/practical-formal-verification/lean/experience/manifest.json). "
+        "Use these to follow research records and graph data without running the visual map.\n",
         "Read the mathematics with your own AI model, or without one, and without a clone. "
         "All three files come from one builder and one set of sources, so they agree with the "
         "papers and with each other.\n",

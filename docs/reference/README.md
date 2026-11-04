@@ -8,6 +8,9 @@ or published. For a current mathematical argument, start with the
 [papers](../../paper/README.md); for the result and its remaining open question,
 use [results and limits](../RESULTS.md).
 
+For the agent-readable website, start with the [navigation guide](https://wcook04.github.io/practical-formal-verification/llms.txt)
+and [maths map manifest](https://wcook04.github.io/practical-formal-verification/lean/experience/manifest.json).
+
 ## Trace a record
 
 | What you are looking for | Record | How to use it |

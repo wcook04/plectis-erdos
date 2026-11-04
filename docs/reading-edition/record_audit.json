@@ -20,7 +20,7 @@
     "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md": "sha256:ecd5ecb3d985f9bf345d7d7993cd686cf4f5bf2b81c49d143115d28eb88131ca",
     "docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md": "sha256:2a882392b695457f8cbb79166cc990b20c744d496f972de5b4978c6c1c275b67",
     "docs/papers/full-text/erdos68-factorial-reasoning-surface.md": "sha256:4f5854cf808789d2bb8111724a69918766ccfe6b25afebc0e25ec63b7d072fb0",
-    "docs/papers/paper_corpus_renderer.py": "sha256:0bd25eba944e333c6fe63756e3cc274bcc9561337f79079df7f4bcee4645028c",
+    "docs/papers/paper_corpus_renderer.py": "sha256:4638ba8be69fe8c55d1cec7b84bad3edeafe378333ee06f2b971ade44b1b01fb",
     "evidence/paper_evidence.json": "sha256:8c7de6f8f5e082fa91698d0c8314620207603080c348a526aa31fa250042b423",
     "lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean": "sha256:c6174888a3c59acf20f827b01a42bbffce05112eb7c7a3f30350dc1af0fb8f19",
     "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean": "sha256:069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4",
@@ -131,7 +131,7 @@
     "paper/reasoning-parts/erdos68/preamble.tex": "sha256:7bbd6207745d2f3e5c7db3b788c3cafcfd17504ac075cad8df1f5e5310dda21d",
     "paper/reasoning-parts/record_links.json": "sha256:856b1cac96d9ab2ddcb2473bb7e792f5dcd9fc9e450aa0d5bb17c6ede0899b7e",
     "scripts/assemble_reasoning_surfaces.py": "sha256:0d8f6426d736fd371921e11e7bd2e721413f2d881b10da0be88c6f19b5ffb2b2",
-    "scripts/build_reading_edition.py": "sha256:a18292ea2d342fd37b912276a5c58914981170c9214f72fc4ca01553abedebb0",
+    "scripts/build_reading_edition.py": "sha256:b41d0a4a2b0a8259d945ffe23d6025a9ce0f56b241a5ec1c15a3ceaf95cc2fb6",
     "scripts/check_lean_paper_propagation.py": "sha256:0f70bd947b02efe91291389e0430e1140a729de1ae3d311092e20152ea1b813c",
     "scripts/lean_source.py": "sha256:9957255054732a3ee1ddcadfd4aab80ea56c927077868153f8d7bddfa09672fe",
     "scripts/reasoning_record_audit.py": "sha256:5181f76da0658a08400a1fc35c6f72dc0370e375fd4d11caf41a4eb38ce5c62b"

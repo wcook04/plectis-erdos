@@ -21,16 +21,18 @@ problem papers appears with its Lean statements and Comparator records.
   shows its statement, its Lean statements and its Comparator record.
 - **As a reader, without Lean:** start with [A reader's way in](docs/READING_GUIDE.md).
   The [glossary](https://wcook04.github.io/practical-formal-verification/docs/glossary.html) explains project terms.
-- **In a terminal, with Git and Python 3.11 or later:** clone this repository and
-  run `python3 scripts/verify_claims.py --claim finite_prime_weighted_support`.
-  This prints one claim's statement, Lean declarations, Comparator interface,
-  paper and limits. It finds the declarations in your checkout and does not run
-  Lean. [REPRODUCIBILITY](docs/REPRODUCIBILITY.md)
-  gives the clone command and the steps for rebuilding a proof in Lean.
+- **With Git and Python 3.11 or later:** clone and run
+  `python3 scripts/verify_claims.py --claim finite_prime_weighted_support`
+  to inspect one claim's statement, Lean declarations, Comparator interface,
+  paper and limits. This does not run Lean.
+  [REPRODUCIBILITY](docs/REPRODUCIBILITY.md) covers installation and proof rebuilding.
 
 [![Eight Erdős problem programmes: the interactive maths map connects papers, results and their formal evidence](.github/maths-map.png)](https://wcook04.github.io/practical-formal-verification/map/#mathematics)
 
 <sub>The maths map on 9 October 2026. Select the image to open the current map.</sub>
+
+The website also provides an [agent-readable guide](https://wcook04.github.io/practical-formal-verification/llms.txt)
+and [maths map data](https://wcook04.github.io/practical-formal-verification/lean/experience/manifest.json).
 
 ## Inspect one result
 

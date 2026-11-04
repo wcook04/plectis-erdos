@@ -7,6 +7,10 @@
 [Explore the maths map](https://wcook04.github.io/practical-formal-verification/maths/universe.html) ·
 [Read without a clone](../docs/reading-edition/README.md)
 
+The website is agent-readable through its [navigation guide](https://wcook04.github.io/practical-formal-verification/llms.txt)
+and [maths map manifest](https://wcook04.github.io/practical-formal-verification/lean/experience/manifest.json).
+Follow those links to research records and map data without running the visual map.
+
 Each problem has a short first-read paper and a longer complete reasoning record.
 For an introduction with worked examples, start with the
 [#257 introductory paper](257/erdos257-expository-sums-never-fractions.pdf).
