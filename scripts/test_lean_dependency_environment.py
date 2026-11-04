@@ -5,6 +5,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import subprocess
@@ -23,6 +24,99 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
+def check_explicit_runtime_state_root(root: Path) -> None:
+    """External runtime state is explicit, no-follow, and worker-keyed."""
+    builder = build_lean_dependency_index
+    canonical = root.resolve() / "runtime"
+    with patch.object(builder, "CHECK_RECEIPT", root / "initial-check.json"), \
+         patch.object(builder, "CI_OUTCOME_PATH", root / "initial-outcome.json"), \
+         patch.object(builder, "EXPORT_DIAGNOSTIC_LOG", root / "initial-diagnostics.log"):
+        selected = builder.configure_runtime_state_root(canonical)
+        require(selected == canonical and not canonical.exists(),
+                "runtime selection created state before an output was needed")
+        builder.preserve_export_diagnostics("runtime stdout", "runtime stderr")
+        require((canonical / "lean_dependency_export_diagnostics.log").read_text()
+                == "runtime stdout\nruntime stderr\n", "explicit diagnostics were misplaced")
+        packet = {"source_fingerprint": "fixture", "coverage": {
+            "source_resolved_node_count": 1, "source_resolved_direct_edge_count": 0}}
+        builder.write_check_receipt("fixture\n", packet, input_fingerprint="fixture")
+        require((canonical / "lean_dependency_index_check.json").is_file(),
+                "receipt default retained the import-time runtime path")
+        with patch.object(builder, "checkout_identity", return_value={}), \
+             patch.object(builder, "emit_github_output"):
+            builder.write_ci_outcome(outcome="current", exit_code=0,
+                                     fresh_export_written=False, detail="fixture")
+        require((canonical / "lean_dependency_index_outcome.json").is_file(),
+                "explicit runtime outcome was misplaced")
+
+        elsewhere = root / "elsewhere"
+        elsewhere.mkdir()
+        link = root / "linked-runtime"
+        link.symlink_to(elsewhere, target_is_directory=True)
+        previous = builder.CHECK_RECEIPT
+        for unsafe in (link / "new-runtime", link, link / ".." / "runtime"):
+            try:
+                builder.configure_runtime_state_root(unsafe)
+            except builder.UnsafeDependencyInput:
+                pass
+            else:
+                raise AssertionError("symlinked explicit runtime root was accepted")
+        require(builder.CHECK_RECEIPT == previous and not (elsewhere / "new-runtime").exists(),
+                "rejected runtime selection changed state or created a directory")
+        try:
+            builder.prepare_output_parent(link / "fresh-parent" / "output.json")
+        except builder.UnsafeDependencyInput:
+            pass
+        else:
+            raise AssertionError("runtime parent creation followed a symlink")
+        require(not (elsewhere / "fresh-parent").exists(),
+                "output validation created a parent through a rejected symlink")
+
+        sentinel = elsewhere / "sentinel"
+        sentinel.write_text("unchanged")
+        unsafe_output = canonical / "symlinked-output"
+        unsafe_output.symlink_to(sentinel)
+        for operation in (
+            lambda: builder.safe_output_text(unsafe_output, "changed", root=canonical),
+            lambda: builder.safe_dependency_text(unsafe_output, root=canonical),
+        ):
+            try:
+                operation()
+            except builder.UnsafeDependencyInput:
+                pass
+            else:
+                raise AssertionError("explicit runtime selection weakened source/output safety")
+        require(sentinel.read_text() == "unchanged", "rejected output changed its target")
+
+        command = [sys.executable, "scripts/build_lean_dependency_index.py", "--singleflight-worker"]
+        inputs = {"validation_class": "dependency-index", "normalized_command": command}
+        original = {"schema": validation_singleflight.SCHEMA, "command": command,
+                    "inputs": inputs, "key": hashlib.sha256(
+                        validation_singleflight.canonical_json(inputs)).hexdigest()}
+        observed = []
+        def submit(specification: dict, _state_root: Path) -> dict:
+            validation_singleflight.validate_specification(specification)
+            observed.append(specification)
+            return {"key": specification["key"]}
+        with patch.object(validation_singleflight, "default_state_root", return_value=root / "scheduler"), \
+             patch.object(validation_singleflight, "validator_spec", return_value=original), \
+             patch.object(validation_singleflight, "submit", side_effect=submit), \
+             patch.object(validation_singleflight, "collect", return_value=({"state": "terminal"}, 0)):
+            for selected_root in (canonical, root.resolve() / "second-runtime"):
+                require(builder.coordinated_export(check=False, full_check=False, write_stale=False,
+                                                   runtime_state_root=selected_root) == 0,
+                        "explicit runtime coordination failed")
+                require(observed[-1]["command"][-2:] == ["--runtime-state-root", str(selected_root)],
+                        "coordinated worker lost explicit runtime selection")
+        require(len({original["key"], *(row["key"] for row in observed)}) == 3,
+                "runtime selection was absent from the singleflight fingerprint")
+        with patch.object(builder.sys, "argv", ["builder", "--runtime-state-root", str(canonical)]), \
+             patch.object(builder, "coordinated_export", return_value=75) as coordinate:
+            require(builder.main() == 75, "runtime CLI lost the deferred owner outcome")
+            coordinate.assert_called_once_with(check=False, full_check=False, write_stale=False,
+                                               runtime_state_root=canonical)
+
+
 def main() -> int:
     hostile_environment = {
         "GIT_DIR": "/private/wrong-git-dir",
@@ -35,7 +129,10 @@ def main() -> int:
         "LANG": "en_US.UTF-8",
         "LANGUAGE": "fr_FR",
     }
-    with tempfile.TemporaryDirectory() as raw:
+    with tempfile.TemporaryDirectory() as raw, \
+         patch.object(build_lean_dependency_index, "CHECK_RECEIPT", Path(raw) / "check.json"), \
+         patch.object(build_lean_dependency_index, "CI_OUTCOME_PATH", Path(raw) / "outcome.json"), \
+         patch.object(build_lean_dependency_index, "EXPORT_DIAGNOSTIC_LOG", Path(raw) / "diagnostics.log"):
         with patch.dict(os.environ, hostile_environment, clear=False):
             sanitized = validation_singleflight.command_environment()
             require(
@@ -146,9 +243,7 @@ def main() -> int:
                 ["fixture"], 0, stdout="compiler diagnostic\n", stderr=""
             )
 
-        with patch.object(build_lean_dependency_index, "run", successful_export), patch.object(
-            build_lean_dependency_index, "EXPORT_DIAGNOSTIC_LOG", diagnostic_log
-        ):
+        with patch.object(build_lean_dependency_index, "run", successful_export):
             nodes, relations, omissions, shapes = (
                 build_lean_dependency_index.export_environment()
             )
@@ -210,9 +305,7 @@ def main() -> int:
                 ["fixture"], 7, stdout="compiler stdout\n", stderr="compiler stderr\n"
             )
 
-        with patch.object(build_lean_dependency_index, "run", failed_export), patch.object(
-            build_lean_dependency_index, "EXPORT_DIAGNOSTIC_LOG", diagnostic_log
-        ):
+        with patch.object(build_lean_dependency_index, "run", failed_export):
             try:
                 build_lean_dependency_index.export_environment()
             except build_lean_dependency_index.ClassifiedExportError as exc:
@@ -230,6 +323,7 @@ def main() -> int:
             and "compiler stderr" in failed_diagnostics,
             "failed dependency export dropped compiler diagnostics",
         )
+        check_explicit_runtime_state_root(Path(raw))
 
     require(
         build_lean_dependency_index.ENVIRONMENT_CONTRACT

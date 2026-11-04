@@ -39,7 +39,8 @@ SCHEMA = "erdos249257-lean-dependency-index/3"
 LEAN_ROOT_TARGETS = ("Erdos249257", "ErdosProblems")
 LEAN_FAST_BUILD = ROOT / "scripts" / "lean_fast_build.py"
 LEAN_ROOT_BUILD_TIMEOUT_SECONDS = 4 * singleflight.DEFAULT_WORKER_TIMEOUT_SECONDS
-CHECK_RECEIPT = ROOT / ".lake" / "aiw" / "lean_dependency_index_check.json"
+DEFAULT_RUNTIME_STATE_ROOT = ROOT / ".lake" / "aiw"
+CHECK_RECEIPT = DEFAULT_RUNTIME_STATE_ROOT / "lean_dependency_index_check.json"
 TRACKED_CHECK_RECEIPT = ROOT / "docs" / "lean_dependency_index_check.json"
 FULL_EXPORT_TRACKED_POSTURE = (
     "tracked_receipt_from_full_supported_root_build_and_elaborated_"
@@ -194,6 +195,32 @@ def safe_output_path(path: Path, root: Path | None = None) -> Path:
             if current.parent == current:
                 break
             current = current.parent
+    return candidate
+
+
+def configure_runtime_state_root(path: Path) -> Path:
+    """Select an explicit regular runtime directory without resolving symlinks.
+
+    Local diagnostics and disposable check receipts may live on another volume.
+    Source inputs and tracked output paths retain their independent strict rules.
+    A caller using a linked Lake cache must name its canonical directory here.
+    """
+    if ".." in path.parts:
+        raise UnsafeDependencyInput(f"runtime state root must be a direct path: {path}")
+    candidate = safe_output_path(path.expanduser())
+    if candidate.exists() and not candidate.is_dir():
+        raise UnsafeDependencyInput(f"runtime state root is not a directory: {candidate}")
+    global CHECK_RECEIPT, CI_OUTCOME_PATH, EXPORT_DIAGNOSTIC_LOG
+    CHECK_RECEIPT = candidate / "lean_dependency_index_check.json"
+    CI_OUTCOME_PATH = candidate / "lean_dependency_index_outcome.json"
+    EXPORT_DIAGNOSTIC_LOG = candidate / "lean_dependency_export_diagnostics.log"
+    return candidate
+
+
+def prepare_output_parent(path: Path) -> Path:
+    """Validate all output components before creating any parent directories."""
+    candidate = safe_output_path(path)
+    candidate.parent.mkdir(parents=True, exist_ok=True)
     return candidate
 
 
@@ -355,9 +382,9 @@ def write_ci_outcome(
         "detail": detail,
         **checkout_identity(),
     }
-    CI_OUTCOME_PATH.parent.mkdir(parents=True, exist_ok=True)
+    output = prepare_output_parent(CI_OUTCOME_PATH)
     safe_output_text(
-        CI_OUTCOME_PATH,
+        output,
         json.dumps(payload, indent=2, sort_keys=True) + "\n",
     )
     emit_github_output(payload)
@@ -366,13 +393,13 @@ def write_ci_outcome(
 
 def preserve_export_diagnostics(stdout: str, stderr: str) -> None:
     """Keep timeout/crash output even when the tracked index must stay untouched."""
-    EXPORT_DIAGNOSTIC_LOG.parent.mkdir(parents=True, exist_ok=True)
+    output = prepare_output_parent(EXPORT_DIAGNOSTIC_LOG)
     body = ""
     if stdout:
         body += stdout if stdout.endswith("\n") else stdout + "\n"
     if stderr:
         body += stderr if stderr.endswith("\n") else stderr + "\n"
-    safe_output_text(EXPORT_DIAGNOSTIC_LOG, body)
+    safe_output_text(output, body)
 
 
 def report_ci_outcome(*, fail: bool) -> int:
@@ -559,12 +586,13 @@ def write_check_receipt(
     *,
     input_fingerprint: str,
     root: Path = ROOT,
-    receipt_path: Path = CHECK_RECEIPT,
+    receipt_path: Path | None = None,
     verification_posture: str = (
         "full_supported_root_build_and_elaborated_environment_export_"
         "matched_the_committed_index"
     ),
 ) -> None:
+    receipt_path = prepare_output_parent(CHECK_RECEIPT if receipt_path is None else receipt_path)
     coverage = packet["coverage"]
     receipt = {
         "schema": CHECK_RECEIPT_SCHEMA,
@@ -580,7 +608,6 @@ def write_check_receipt(
         ],
         "verification_posture": verification_posture,
     }
-    receipt_path.parent.mkdir(parents=True, exist_ok=True)
     safe_output_text(
         receipt_path,
         json.dumps(receipt, indent=2, sort_keys=True) + "\n",
@@ -592,7 +619,7 @@ def refresh_environment_validation_metadata(
     root: Path = ROOT,
     output: Path = OUTPUT,
     tracked_receipt_path: Path = TRACKED_CHECK_RECEIPT,
-    local_receipt_path: Path = CHECK_RECEIPT,
+    local_receipt_path: Path | None = None,
 ) -> dict[str, Any]:
     """Refresh operational metadata without repeating a current Lean export.
 
@@ -1278,13 +1305,28 @@ def encoded(packet: dict[str, Any]) -> str:
     ) + "\n"
 
 
-def coordinated_export(*, check: bool, full_check: bool, write_stale: bool) -> int:
+def coordinated_export(
+    *, check: bool, full_check: bool, write_stale: bool,
+    runtime_state_root: Path | None = None,
+) -> int:
     """Hold the existing host owner across root preparation and environment export."""
     state_root = singleflight.default_state_root()
     specification = singleflight.validator_spec(
         "dependency-index", [], None, state_root, check=check,
         dependency_full_check=full_check, dependency_write_stale=write_stale,
     )
+    if runtime_state_root is not None:
+        # Runtime output selection is part of the exact worker command and key,
+        # so collecting another directory's prior terminal job cannot conceal
+        # missing local diagnostics or outcomes. The shared Lean lock is unchanged.
+        command = [*specification["command"], "--runtime-state-root", str(runtime_state_root)]
+        inputs = {**specification["inputs"], "normalized_command": command}
+        specification = {
+            **specification,
+            "command": command,
+            "inputs": inputs,
+            "key": hashlib.sha256(singleflight.canonical_json(inputs)).hexdigest(),
+        }
     receipt = singleflight.submit(specification, state_root)
     terminal, code = singleflight.collect(
         state_root, receipt["key"], True, LEAN_ROOT_BUILD_TIMEOUT_SECONDS,
@@ -1304,6 +1346,13 @@ def coordinated_export(*, check: bool, full_check: bool, write_stale: bool) -> i
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true")
+    parser.add_argument(
+        "--runtime-state-root", type=Path,
+        help=(
+            "direct directory for local receipts, outcomes and export diagnostics "
+            "(default: .lake/aiw); use a canonical path with no symlink components"
+        ),
+    )
     parser.add_argument(
         "--tracked-only",
         action="store_true",
@@ -1344,6 +1393,12 @@ def main() -> int:
         help="with --report-ci-outcome, exit nonzero unless the outcome is current",
     )
     args = parser.parse_args()
+    runtime_state_root = None
+    if args.runtime_state_root is not None:
+        try:
+            runtime_state_root = configure_runtime_state_root(args.runtime_state_root)
+        except UnsafeDependencyInput as exc:
+            parser.error(str(exc))
     if args.tracked_only and (
         not args.check or args.full_check or args.refresh_validation_metadata
         or args.report_ci_outcome or args.singleflight_worker
@@ -1399,8 +1454,13 @@ def main() -> int:
         )
         return 1
     if not args.singleflight_worker:
+        runtime_options = (
+            {"runtime_state_root": runtime_state_root}
+            if runtime_state_root is not None else {}
+        )
         return coordinated_export(
             check=args.check, full_check=args.full_check, write_stale=args.write_stale,
+            **runtime_options,
         )
     singleflight.install_child_termination_forwarding()
     try:

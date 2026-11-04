@@ -38,6 +38,8 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import io
+import zipfile
 import os
 import re
 import subprocess
@@ -73,6 +75,14 @@ SUPPORT_SCHEMA = "plectis-complete-source-support/1"
 PROPOSITION_KINDS = ("theorem", "lemma")
 RECEIPT_SCHEMA = "palomar_replay_receipt_v1"
 PERMITTED_AXIOMS = ["propext", "Quot.sound", "Classical.choice"]
+OFFICIAL_IDENTITY_SCHEMA = "comparator_identity_receipt_v1"
+HISTORICAL_OFFICIAL_PIPELINE = "f49b4f29aa458fc70c3a4c8cadca9312adbdc559"
+# Reviewed caller bytes used by the authenticated intake owner. This public
+# consumer preserves the same immutable workflow boundary for offline reads.
+OFFICIAL_CALLERS = {
+    ".github/workflows/cor52-trusted-comparator-preflight.yml":
+        "sha256:d16df28a88244d18be80d5dbfe721e51627128af0b1b8b15959a23ee98d35e4a",
+}
 
 # The printed name of each theorem-like environment, as the preambles define it.
 ENVIRONMENT_NAMES = {
@@ -567,6 +577,182 @@ class Problems:
         self.items.append(f"{where}: {what}")
 
 
+def official_identity_comparison(root: Path, here: Repo, pin: str,
+                                 declarations: list[LeanDeclaration], links: dict,
+                                 problems: Problems, where: str) -> dict | None:
+    """Consume authenticated official receipts without rebasing older replay evidence.
+
+    The receipt intake owner authenticates the GitHub attempt and original artifact.
+    This offline publication consumer checks the saved report and every compared
+    source byte, including the transitive solution imports, against immutable Git
+    objects and the selected paper Lean pin. It does not run a kernel or confer
+    Palomar submission/acceptance.
+    """
+    checks = []
+    identities = set()
+    try:
+        for d in declarations:
+            if d.kind not in PROPOSITION_KINDS:
+                raise EvidenceError("official selected endpoint is not a proposition")
+            link = links[d.name]
+            def local_file(key: str) -> Path:
+                value = link[key]
+                if not isinstance(value, str) or Path(value).is_absolute() or ".." in Path(value).parts:
+                    raise EvidenceError(f"unsafe official {key} path")
+                target = root / value
+                if target.is_symlink() or not target.resolve().is_relative_to(root.resolve()):
+                    raise EvidenceError(f"unsafe official {key} target")
+                return target
+            receipt = load_json(local_file("receipt"))
+            report_bytes = local_file("report").read_bytes()
+            report = json.loads(report_bytes)
+            ci = receipt["ci_receipt"]
+            attestation = ci["attestation"]
+            binding = ci["source_binding"]
+            commit = receipt["verified_ci_commit"]
+            run = str(receipt["verified_ci_run_id"])
+            repository = attestation["repository"]
+            caller = attestation["head_sha"]
+            workflow = receipt["workflow"]
+            if (receipt.get("schema") != OFFICIAL_IDENTITY_SCHEMA
+                    or receipt.get("status") != "pass_existing_selected_identity"
+                    or receipt.get("selected_exact_fqn") is not True
+                    or receipt.get("conditional_on") != []
+                    or any(receipt.get(k) != d.name for k in
+                           ("source_declaration", "challenge_declaration", "solution_declaration"))
+                    or repository != "wcook04/plectis-erdos"
+                    or not re.fullmatch(r"[0-9a-f]{40}", commit)
+                    or not here.has_commit(commit)
+                    or str(attestation.get("run_id")) != run
+                    or attestation.get("status") != "completed"
+                    or attestation.get("conclusion") != "success"):
+                raise EvidenceError("official receipt identity or completed run mismatch")
+            if (workflow != attestation.get("workflow_path") or workflow not in OFFICIAL_CALLERS
+                    or not re.fullmatch(r"[0-9a-f]{40}", caller)
+                    or "sha256:" + sha256_hex(here.blob(caller, workflow) or b"") != OFFICIAL_CALLERS[workflow]
+                    or attestation.get("workflow_sha256") != OFFICIAL_CALLERS[workflow]):
+                raise EvidenceError("official reviewed caller identity mismatch")
+            jobs = [j for j in attestation["jobs"] if j.get("name") == "verify / verify"]
+            if (len(jobs) != 1 or not jobs[0].get("id") or not attestation.get("run_attempt")
+                    or jobs[0].get("status") != "completed" or jobs[0].get("conclusion") != "success"
+                    or str(jobs[0].get("run_id")) != run
+                    or jobs[0].get("run_attempt") != attestation["run_attempt"]
+                    or jobs[0].get("head_sha") != caller):
+                raise EvidenceError("official decisive attempt mismatch")
+            artifact = attestation["artifact"]
+            archive_bytes = local_file("archive").read_bytes()
+            if (artifact.get("expired") is not False or not artifact.get("id")
+                    or artifact.get("size_in_bytes") != len(archive_bytes)
+                    or artifact.get("digest") != "sha256:" + sha256_hex(archive_bytes)
+                    or str(artifact.get("workflow_run", {}).get("id")) != run
+                    or artifact.get("workflow_run", {}).get("head_sha") != caller):
+                raise EvidenceError("official artifact attempt or digest mismatch")
+            with zipfile.ZipFile(io.BytesIO(archive_bytes)) as archive:
+                members = archive.infolist()
+                if (len(members) != 1 or members[0].is_dir()
+                        or Path(members[0].filename).is_absolute() or ".." in Path(members[0].filename).parts
+                        or Path(members[0].filename).name != "mechanical-report.json"
+                        or archive.read(members[0]) != report_bytes):
+                    raise EvidenceError("official artifact report mismatch")
+            if (receipt.get("source_statement_sha256") != "sha256:" + sha256_hex(d.normalised.encode())
+                    or not re.fullmatch(r"sha256:[0-9a-f]{64}", receipt.get("source_closure_sha256", ""))
+                    or not receipt.get("source_closure_rule")
+                    or not receipt.get("source_closure_members")
+                    or receipt.get("source_closure_unresolved") != []):
+                raise EvidenceError("official declaration closure identity missing")
+            if (ci.get("kind") != "official_historical_mechanical_report_v1_two_kernel"
+                    or ci.get("pipeline_commit") != HISTORICAL_OFFICIAL_PIPELINE
+                    or ci.get("kernel_acceptance") != {"lean_default": True, "nanoda": True}
+                    or ci.get("report_sha256") != "sha256:" + sha256_hex(report_bytes)
+                    or report.get("schema_version") != 1 or report.get("status") != "pass"
+                    or report.get("stage") != "complete" or report.get("errors")
+                    or report.get("diagnostics")
+                    or report.get("source", {}).get("repository") != repository
+                    or report.get("source", {}).get("commit") != commit
+                    or report.get("workflow_url") != f"https://github.com/{repository}/actions/runs/{run}"):
+                raise EvidenceError("official report or two-kernel acceptance mismatch")
+            log = report.get("comparator_log_tail", "")
+            if any(text not in log for text in ("nanoda kernel accepts the solution",
+                                                "Lean default kernel accepts the solution",
+                                                "Your solution is okay!")):
+                raise EvidenceError("official kernel transcript incomplete")
+            def checked_blob(path: str, digest: str, *, current: bool = False) -> bytes:
+                if not isinstance(path, str) or Path(path).is_absolute() or ".." in Path(path).parts:
+                    raise EvidenceError("unsafe official source path")
+                blob = here.blob(commit, path)
+                if blob is None or "sha256:" + sha256_hex(blob) != digest:
+                    raise EvidenceError(f"official compared source digest mismatch: {path}")
+                if current and here.blob(pin, path) != blob:
+                    raise EvidenceError(f"official proof dependency changed at Lean pin: {path}")
+                return blob
+            if (binding.get("declaration") != d.name or binding.get("path") != d.path
+                    or binding.get("commit") != commit or binding.get("project_path", "") != ""):
+                raise EvidenceError("official selected source binding mismatch")
+            checked_blob(d.path, binding["sha256"], current=True)
+            graph = binding.get("import_graph_sha256")
+            if not isinstance(graph, dict) or d.path not in graph or binding.get("aggregate_path") not in graph:
+                raise EvidenceError("official solution import closure missing")
+            support = SourceSupport(here, commit)
+            closure = support.closure(binding["aggregate_path"])
+            complete_graph = {support.modules[module]: "sha256:" + digest
+                              for module, digest in closure["modules"].items()}
+            if graph != complete_graph:
+                raise EvidenceError("official solution import closure is incomplete")
+            for path, digest in graph.items():
+                checked_blob(path, digest, current=True)
+            if SourceSupport(here, pin).closure(binding["aggregate_path"]) != closure:
+                raise EvidenceError("official proof import resolution changed at Lean pin")
+            for path in ("lean-toolchain", "lake-manifest.json", "lakefile.toml"):
+                if here.blob(commit, path) is None or here.blob(commit, path) != here.blob(pin, path):
+                    raise EvidenceError(f"official proof environment changed: {path}")
+            for group in ("challenge", "solution", "comparator"):
+                if (receipt[group + "_path"] != report[group]["path"]
+                        or receipt[group + "_sha256"] != "sha256:" + report[group]["sha256"].removeprefix("sha256:")):
+                    raise EvidenceError(f"official {group} report binding mismatch")
+                checked_blob(receipt[group + "_path"], receipt[group + "_sha256"])
+            configuration = json.loads(here.text(commit, receipt["comparator_path"]) or "null")
+            selected = configuration.get("theorem_names", [])
+            if (selected != [d.name] or selected != report["comparator"].get("theorem_names")
+                    or selected != binding.get("selected_declarations")
+                    or sorted(configuration.get("permitted_axioms", [])) != sorted(PERMITTED_AXIOMS)
+                    or sorted(report["comparator"].get("permitted_axioms", [])) != sorted(PERMITTED_AXIOMS)
+                    or configuration.get("enable_nanoda") is not True
+                    or configuration.get("definition_names", [])
+                    or report["comparator"].get("definition_names", [])
+                    or configuration.get("challenge_module") != report["challenge"]["module"]
+                    or configuration.get("challenge_module") != report["comparator"].get("challenge_module")
+                    or configuration.get("solution_module") != report["solution"]["module"]
+                    or configuration.get("solution_module") != report["comparator"].get("solution_module")):
+                raise EvidenceError("official exact challenge or axiom budget mismatch")
+            challenge_path = receipt["challenge_path"]
+            challenge = lean_declaration(LeanFile(here.text(commit, challenge_path) or ""),
+                                         challenge_path, d.name, allow_suffix=False)
+            if challenge.normalised != d.normalised:
+                raise EvidenceError("official challenge differs from selected Lean statement")
+            if (binding["aggregate_path"] != receipt["solution_path"]
+                    or binding["aggregate_sha256"] != receipt["solution_sha256"]):
+                raise EvidenceError("official solution aggregate mismatch")
+            identities.add((repository, commit, run))
+            checks.append({"declaration": d.name, "entry": link["entry"],
+                           "challenge": {"declaration": d.name, "path": challenge_path,
+                                         "line": challenge.line, "statement": challenge.statement,
+                                         "same_as_lean": True},
+                           "solution": {"declaration": d.name, "module": report["solution"]["module"],
+                                        "path": receipt["solution_path"], "line": 1},
+                           "configuration": receipt["comparator_path"], "receipt": link["receipt"],
+                           "report": link["report"]})
+        if len(identities) != 1 or not declarations:
+            raise EvidenceError("official row needs one exact run covering every declaration")
+        repository, commit, run = identities.pop()
+        return {"status": "compared", "repository": f"https://github.com/{repository}",
+                "commit": commit, "run_id": run, "checks": checks,
+                "evidence_kind": "official_identity_receipt", "kernel_acceptance": ci["kernel_acceptance"],
+                "checked_at": report.get("checked_at")}
+    except (KeyError, TypeError, ValueError, AttributeError, OSError, EvidenceError, zipfile.BadZipFile) as error:
+        problems.add(where, f"official exact comparison refused: {error}")
+        return None
+
+
 def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
             previous: dict | None, problems: Problems, *, require_relations: bool,
             aux_papers: set[str] | None = None) -> dict:
@@ -840,7 +1026,10 @@ def resolve(root: Path, corpus: Repo | None, aux_dir: Path | None,
                 else:
                     relation = note["note"]
             comparator = None
-            if row["comparator"]["status"] == "compared":
+            official_links = associations.get("official_receipts") or {}
+            if row["comparator"]["status"] == "compared" and any(d.name in official_links for d in decls):
+                comparator = official_identity_comparison(root, here, pin, decls, official_links, problems, where)
+            elif row["comparator"]["status"] == "compared":
                 checks = []
                 for d in decls:
                     if d.kind not in PROPOSITION_KINDS:
@@ -1121,6 +1310,17 @@ def record_header(evidence: dict, paper: dict, title: str, pdf_path: str, up: st
     for r in paper["results"]:
         counts[r["lean"]["mark"]] += 1
         compared += r["comparator"]["status"] == "compared"
+    has_official = any(r["comparator"].get("evidence_kind") == "official_identity_receipt"
+                       for r in paper["results"])
+    comparator_intro = (
+        "- **Comparator.** Each compared result below names its own repository, immutable source "
+        "commit, run and saved receipt. Its Challenge restates the target from Mathlib alone; "
+        "its Solution supplies the proof. The default Lean kernel and independent NanoDa kernel "
+        "both accepted the selected proof, with only `propext`, `Quot.sound` and "
+        "`Classical.choice` permitted. A later result's own official receipt does not alter "
+        "the earlier replay records. A Challenge shows `sorry` because it states the target "
+        "without proving it. These checks do not report Palomar submission or acceptance."
+    ) if has_official else None
     return [
         f"# Formal evidence: {title}",
         "",
@@ -1131,7 +1331,7 @@ def record_header(evidence: dict, paper: dict, title: str, pdf_path: str, up: st
         f"- **Lean.** Every declaration is quoted from [plectis-erdos]({REPO_URL}) at commit "
         f"[`{pin[:12]}`]({REPO_URL}/tree/{pin}) and is checked there by Lean's kernel "
         f"(`{evidence['lean_toolchain']}`, Mathlib `{(evidence.get('mathlib') or '')[:12]}`).",
-        f"- **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib "
+        comparator_intro or f"- **Comparator.** For a compared result, each declaration was stated a second time, from Mathlib "
         f"alone, as a *Challenge* in [plectis-erdos-lean]({CORPUS_URL}), and a *Solution* that uses our proof "
         f"was checked against it by [Comparator](https://github.com/leanprover/comparator), which also confirms "
         f"that only the axioms {', '.join(f'`{a}`' for a in evidence['permitted_axioms'])} are used. "
@@ -1211,7 +1411,16 @@ def render_results(evidence: dict, results: list[dict], up: str) -> list[str]:
         out.append(f'<a id="{r["anchor"]}-comparator"></a>')
         out.append("")
         if cmp["status"] == "compared":
-            out.append(f"**Comparator: passed** (run {run}, corpus commit `{commit[:12]}`).")
+            selected_run = cmp.get("run_id", run)
+            selected_commit = cmp.get("commit", commit)
+            selected_repository = cmp.get("repository", CORPUS_URL)
+            def selected_url(path: str, line: int | None = None) -> str:
+                return f"{selected_repository}/blob/{selected_commit}/{path}" + (f"#L{line}" if line else "")
+            checked_date = f", checked {cmp['checked_at']}" if cmp.get("checked_at") else ""
+            official = cmp.get("evidence_kind") == "official_identity_receipt"
+            run_label = f"[{selected_run}]({selected_repository}/actions/runs/{selected_run})" if official else selected_run
+            commit_label = "source commit" if official else "corpus commit"
+            out.append(f"**Comparator: passed** (run {run_label}, {commit_label} `{selected_commit[:12]}`{checked_date}).")
             out.append("")
             # A list, not a table: declaration names run to ninety characters and would
             # push a table past the width GitHub renders without a scrollbar.
@@ -1223,9 +1432,9 @@ def render_results(evidence: dict, results: list[dict], up: str) -> list[str]:
                 ch, so = c["challenge"], c["solution"]
                 out.append(
                     f"- `{short}`: "
-                    f"[Challenge]({corpus_url(commit, ch['path'], ch['line'])}) "
+                    f"[Challenge]({selected_url(ch['path'], ch['line'])}) "
                     f"({ch['path'].rsplit('/', 2)[-2]}, line {ch['line']}), "
-                    f"[Solution]({corpus_url(commit, so['path'], so['line'])}) "
+                    f"[Solution]({selected_url(so['path'], so['line'])}) "
                     f"({so['path'].rsplit('/', 1)[-1]}, line {so['line']}), "
                     f"[replay report]({up}{c['receipt']}) ({c['entry']})")
             out.append("")
@@ -1428,6 +1637,7 @@ def main(argv: list[str] | None = None) -> int:
         ledger = load_json(root / LEDGER)
         mapped = {r["id"]: r for p in previous["papers"] for r in p["results"]}
         support_source = SourceSupport(Repo(root), ledger["lean_pin"])
+        official_links = load_json(root / ASSOCIATIONS).get("official_receipts") or {}
         if previous.get("schema") != SCHEMA:
             problems.add(EVIDENCE_MAP, "legacy identity schema; regenerate complete support identities")
         for paper in previous["papers"]:
@@ -1460,6 +1670,19 @@ def main(argv: list[str] | None = None) -> int:
                 problems.add(row["id"], "the evidence map records different Lean evidence than the ledger")
             if r["comparator"]["status"] != row["comparator"]["status"]:
                 problems.add(row["id"], "the evidence map records a different Comparator status than the ledger")
+            if any(d["name"] in official_links for d in r["lean"]["declarations"]):
+                selected = []
+                for d in r["lean"]["declarations"]:
+                    try:
+                        text = support_source.repo.text(ledger["lean_pin"], d["path"])
+                        selected.append(lean_declaration(LeanFile(text or ""), d["path"],
+                                                         d["name"], allow_suffix=False))
+                    except EvidenceError as error:
+                        problems.add(row["id"], str(error))
+                fresh = official_identity_comparison(root, support_source.repo, ledger["lean_pin"],
+                                                     selected, official_links, problems, row["id"])
+                if fresh != r["comparator"]:
+                    problems.add(row["id"], "the evidence map records different official comparison evidence")
             requested_support = row["lean"].get("supporting_declarations", [])
             recorded_support = r["lean"].get("supporting_declarations", [])
             support_key = lambda d: (d.get("name"), d.get("path", d.get("file")), d.get("consumer"))

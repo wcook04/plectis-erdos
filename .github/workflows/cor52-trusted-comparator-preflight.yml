@@ -1,0 +1,123 @@
+# SPDX-FileCopyrightText: 2026 Will Cook
+# SPDX-License-Identifier: Apache-2.0
+# Adapted from the reviewed immutable-source official Comparator preflight.
+# Candidate build scripts never execute in the caller. The pinned official job
+# prepares its own dependencies and protects the separately compiled Challenge.
+name: Corollary 5.2 trusted Comparator preflight
+
+on:
+  push:
+    branches: [codex/257-corollary-52-verification-20261018]
+    paths:
+      - .github/workflows/cor52-trusted-comparator-preflight.yml
+      - verification/ExternalVerification/StrictMixed*.lean
+      - verification/ExternalVerification/StrictMixed/Challenge.lean
+      - verification/comparator-257-strict-mixed.json
+      - verification/ExternalVerification/StrictMixed/formalization.yaml
+      - lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean
+  workflow_dispatch:
+    inputs:
+      source_commit:
+        description: Full immutable proof-source SHA (Lean v4.29.1); blank selects this caller revision
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  select:
+    runs-on: ubuntu-24.04
+    outputs:
+      source_commit: ${{ steps.inputs.outputs.source_commit }}
+      request_id: ${{ steps.inputs.outputs.request_id }}
+      options: ${{ steps.inputs.outputs.options }}
+    steps:
+      - name: Validate immutable proof source
+        id: inputs
+        env:
+          SOURCE_COMMIT: ${{ inputs.source_commit || github.sha }}
+          CALLER_SHA: ${{ github.sha }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, os, re
+          source = os.environ['SOURCE_COMMIT']
+          if os.environ['REPOSITORY'] != 'wcook04/plectis-erdos':
+              raise SystemExit('unexpected repository')
+          if not re.fullmatch(r'[0-9a-f]{40}', source):
+              raise SystemExit('source_commit must be a full lowercase SHA')
+          options = {
+              'authorization_relationship': 'I am a responsible author or maintainer',
+              'project_path': '',
+              'comparator_config_path': 'verification/comparator-257-strict-mixed.json',
+              'formalization_metadata_path': 'verification/ExternalVerification/StrictMixed/formalization.yaml',
+          }
+          request = hashlib.sha256(
+              f"cor52:{source}:{os.environ['CALLER_SHA']}:{os.environ['RUN_ID']}:{os.environ['RUN_ATTEMPT']}".encode()
+          ).hexdigest()[:12]
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
+              output.write(f'source_commit={source}\nrequest_id={request}\n')
+              output.write(f"options={json.dumps(options, separators=(',', ':'))}\n")
+          print(f'Caller {os.environ["CALLER_SHA"]}; exact corollary proof source {source}')
+          PY
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: wcook04/plectis-erdos
+          ref: ${{ steps.inputs.outputs.source_commit }}
+          path: source
+          persist-credentials: false
+      - name: Inspect selected source without executing it
+        env:
+          SOURCE_COMMIT: ${{ steps.inputs.outputs.source_commit }}
+        run: |
+          python3 - <<'PY'
+          import json, os, subprocess
+          from pathlib import Path
+          root = Path('source')
+          if subprocess.check_output(['git', '-C', str(root), 'rev-parse', 'HEAD'], text=True).strip() != os.environ['SOURCE_COMMIT']:
+              raise SystemExit('checkout differs from immutable source')
+          paths = [
+              'lean-toolchain', 'verification/comparator-257-strict-mixed.json',
+              'verification/ExternalVerification/StrictMixed/formalization.yaml',
+              'verification/ExternalVerification/StrictMixed/Challenge.lean',
+              'verification/ExternalVerification/StrictMixedSolution.lean',
+              'lean/ErdosProblems/Erdos257/PaperCompleteR8/AnalyticIncomparability.lean',
+          ]
+          for rel in paths:
+              path = root / rel
+              if path.is_symlink() or not path.is_file():
+                  raise SystemExit(f'missing or symlinked {rel}')
+          if (root / 'lean-toolchain').read_text().strip() != 'leanprover/lean4:v4.29.1':
+              raise SystemExit('reviewed historical pipeline requires Lean v4.29.1')
+          config = json.loads((root / paths[1]).read_text())
+          expected = {
+              'challenge_module': 'ExternalVerification.StrictMixed.Challenge',
+              'solution_module': 'ExternalVerification.StrictMixedSolution',
+              'theorem_names': ['ErdosProblems.Erdos257.PaperCompleteR8.exists_strict_mixed_support_host'],
+              'permitted_axioms': ['propext', 'Quot.sound', 'Classical.choice'],
+              'enable_nanoda': True,
+          }
+          if config != expected:
+              raise SystemExit('exact corollary selection or axiom/kernel budget changed')
+          challenge_imports = [x.strip() for x in (root / paths[3]).read_text().splitlines() if x.startswith('import ')]
+          solution_imports = [x.strip() for x in (root / paths[4]).read_text().splitlines() if x.startswith('import ')]
+          if challenge_imports != ['import Mathlib']:
+              raise SystemExit('challenge imports proof-bearing corpus code')
+          if solution_imports != ['import ErdosProblems.Erdos257.PaperCompleteR8.AnalyticIncomparability']:
+              raise SystemExit('solution must select the actual composed endpoint')
+          PY
+
+  verify:
+    needs: select
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@f49b4f29aa458fc70c3a4c8cadca9312adbdc559
+    with:
+      repository: wcook04/plectis-erdos
+      commit: ${{ needs.select.outputs.source_commit }}
+      pipeline_commit: f49b4f29aa458fc70c3a4c8cadca9312adbdc559
+      request_id: ${{ needs.select.outputs.request_id }}
+      mode: full
+      execution_profile: palomar-standard-v1
+      options: ${{ needs.select.outputs.options }}

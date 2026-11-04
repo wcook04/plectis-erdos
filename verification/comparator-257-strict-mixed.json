@@ -1,0 +1,9 @@
+{
+  "challenge_module": "ExternalVerification.StrictMixed.Challenge",
+  "solution_module": "ExternalVerification.StrictMixedSolution",
+  "theorem_names": [
+    "ErdosProblems.Erdos257.PaperCompleteR8.exists_strict_mixed_support_host"
+  ],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": true
+}

@@ -689,14 +689,14 @@
     {
       "rationale": "The long passage now repeats the short corollary’s union argument with both host hypotheses explicit and points to the existing mixed criterion. The differing printed and Lean constructions remain distinguished. The union argument depends on the short paper’s host-existence proposition; the printed host constructions have not been moved or independently reviewed here.",
       "relation": "authored_correspondence",
-      "review_status": "Ordinary proof text transferred from the short paper; no independent review recorded.",
+      "review_status": "Ordinary proof text transferred from the short paper; no independent review recorded. Rebound after the formal-status paragraph linked the separately compiled composed endpoint; the union argument and statement are unchanged, and this correspondence remains ordinary proof text, not an independent proof review",
       "short_id": "erdos-257-mersenne-support-subseries#res:strict-mixed-supports",
       "short_statement_sha256": "sha256:ec8cba3f6409742197fa4fa63d81b4e71f2aba928597821a4600ea8cfa8c3f4a",
       "support": {
         "end": "The mixed implication itself is kernel-checked.",
         "path": "paper/reasoning-parts/erdos257/a257_front.tex",
         "selector": "between",
-        "sha256": "sha256:40acfeaf5af4e93798fe0af9687d0dab8a4b5707d673ccb905a2ab6189e56a79",
+        "sha256": "sha256:3cd142b3c5edc0f0e0c9ffab9148e7cb8d8e97700345636a126ba5ede0fc98c3",
         "start": "\\paragraph{Why the mixed criterion is strict.}\\label{record257:strict-mixed-proof}"
       }
     },
