@@ -21,7 +21,7 @@ Part of the [evidence record](../erdos249-totient-reasoning-surface.md) of the p
 
 The Lean declarations below together state this result.
 
-1. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_support_gap`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean#L44)
+1. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_support_gap`](https://github.com/wcook04/plectis-erdos/blob/74163c42aff9214b1199ff9bd5408721b78f0251/lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean#L44)
 
 ```lean
 theorem irrational_totient_series_of_support_gap
@@ -31,7 +31,7 @@ theorem irrational_totient_series_of_support_gap
     Irrational (∑' n : ℕ, (Nat.totient n : ℝ) / 2 ^ n)
 ```
 
-2. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap`](https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean#L100)
+2. [`ErdosProblems.Erdos249.PaperCompleteR21.irrational_totient_series_of_goodBase_gap`](https://github.com/wcook04/plectis-erdos/blob/74163c42aff9214b1199ff9bd5408721b78f0251/lean/ErdosProblems/ArgumentGraph/Results/Erdos249Endpoint.lean#L100)
 
 ```lean
 theorem irrational_totient_series_of_goodBase_gap
