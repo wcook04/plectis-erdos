@@ -45,6 +45,8 @@ class EvidenceTests(unittest.TestCase):
         for a,b in [(0,1),(2,1),(1,10**9)]:
             with self.subTest(a=a,b=b):
                 v=copy.deepcopy(self.ledger);v['sources'][0].update(start_line=a,end_line=b);self.assertTrue(self.check(ledger=v))
+    def test_source_lines_follow_newlines(self):
+        self.assertEqual(evidence.source_lines('a\n\x0cb\r\nc'.encode()),['a\n','\x0cb\r\n','c'])
     def test_missing_source(self):
         v=copy.deepcopy(self.ledger);v['sources'][0]['path']='docs/no-such-source';self.assertTrue(self.check(ledger=v))
     def test_unsafe_source(self):

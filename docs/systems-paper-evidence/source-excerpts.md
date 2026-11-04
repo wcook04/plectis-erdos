@@ -1141,3 +1141,102 @@ This independent project's comparison is limited to inspectable records and rele
 preparation. Repository consistency, kernel checking and prose source bindings do
 not demonstrate a mathematician's understanding, complete process disclosure,
 institutional funding, an independent scholarly deposit, equitable access or endorsement.
+
+## AlphaProof Nexus (recorded 10 October 2026)
+
+Primary sources: https://arxiv.org/abs/2605.22763 (version 2, 8 June 2026);
+https://doi.org/10.1126/science.aej2213 (Crossref, read 10 October 2026:
+Science 394, issue 6820, pages 234-239, published 8 October 2026, 21 authors);
+https://github.com/google-deepmind/alphaproof-nexus-results (head 0647711a7118,
+5 June 2026). Operator-supplied arXiv source archive arXiv-2605.22763v2.tar.gz,
+SHA256 87306588ff54ecc1cc1e0e463873ff2be8a184e35782b264ba2858e22c7bba94.
+Short quotations from main_arxiv_submission_v2.tex in that archive:
+
+- Input, line 41: "The agents take as input a Lean file consisting of a target
+  theorem with sorry in place of a proof [...] Optionally, the user may input
+  additional natural-language context and domain knowledge encoded in Lean."
+- Episodes, line 48: "If the sketch contains sorry when the episode
+  terminates, the subagent adds a comment to the sketch summarizing the lessons
+  learned from the episode."
+- Evaluation, line 73: "We ran Agent (D) on all these formal statements (353 at
+  the time of the run) [...] The agent solved 9/353 problems".
+- Failure analysis, line 86: "the agent frequently offloaded a problem's core
+  difficulty into a single sorry within a helper lemma that reiterated the
+  target statement in a slightly different form" and "the top sketches relied
+  on lemmas marked with sorry that the agent claimed were established results in
+  the mathematical literature. Upon manual inspection, these lemmas proved to be
+  hallucinations."
+- Discussion, line 188: "Because the sketches were formal, experts could focus
+  on the unresolved subgoals rather than re-verifying the entire argument."
+- Author contributions, line 209: "GB, AZW, MF, GT, A.Surina and CG wrote the
+  natural language proofs, with HM providing agent-generated drafts to
+  facilitate the writing process."
+- Supplementary proofs (proofs/*.tex in the archive): none of the nine Erdős
+  proofs names a Lean declaration; the #152 proof links the whole Lean file.
+
+From erdos_problems_attempted.txt in the results repository, lines 3, 158,
+186, 192, 193 and 197: erdos_1049, erdos_251, erdos_269.variants.irrational,
+erdos_243, erdos_257, erdos_68. The released Erdős outputs
+(APNOutputs/ErdosProblems) cover problems 12, 26, 125, 138, 152, 741 and 846.
+
+## OpenAI mathematics release (recorded 10 October 2026)
+
+Primary source: https://github.com/openai/math, README.md at commit
+fd4aeeb2ee4f (8 October 2026), read 10 October 2026:
+
+- "The current catalogue contains 719 manuscripts organized into 372 families."
+- "The repository has ~42% top-line results formalized."
+- "Over the course of the evaluation, the model was posed approximately 4,000
+  problems."
+
+## Outside checks of the formal statements (recorded 10 October 2026)
+
+At public commit 0064fc9b2a2693de97aebc8abec26090c3cd1095:
+
+- docs/verification/FORMAL_CONJECTURES_CROSSWALK.md, line 10: "5 merged
+  mathematical contributions · 9 open requests · 1 merged AUTHORS update."
+  Line 24: "#6505 · Erdős 1041: mark solved with answer(False) and link a
+  formal proof". Line 26: "Negative answer to the exact formal path-image
+  statement, credited to ani". Merge dates, lines 20-52: #5034 on 2026-09-18;
+  #6505, #6506 and #6507 on 2026-09-23; #6529 on 2026-10-09.
+- README.md, Results section: the #1041 Lean proof uses "the degree-seven
+  polynomial constructed by the erdosproblems.com contributor ani".
+- README.md, Formal Conjectures section, on pull request 6529: "Bo Cowgill's
+  review checked source correspondence and independently replayed the original
+  proof."
+
+Palomar registry entry PALOMAR-2026-09-25-000009, version 1, read 10 October
+2026: "Weighted support criteria for reciprocal Mersenne subseries";
+"Registered on 25 September 2026"; "Mechanically verified 24 September 2026";
+five theorems checked; the entry "makes no claim of independent human peer
+review or a novelty verdict".
+
+## Revisions prompted by readers (recorded 10 October 2026)
+
+From docs/research-commons/CREDIT_LEDGER.md at public commit
+0064fc9b2a2693de97aebc8abec26090c3cd1095:
+
+- "Entries: `9`. Names withheld until confirmed: `9`."
+- 17 September 2026. Told: "A mathematician said the #243 note used names that
+  meant nothing on a first or second reading, defined notation it used once,
+  and never said how restrictive its main hypothesis was." Changed: "All
+  sixteen problem papers were rewritten for a first-time reader, naming
+  standard tools and saying how restrictive each hypothesis is, and the public
+  writing rules now require it."
+- 15 September 2026. Told: "A mathematician said the trouble with AI-assisted
+  mathematics is that it rarely shows where its methods and ideas come from."
+  Changed: "A literature review was run for each of the eight problems, and
+  each paper now credits its sources at the point where they are used."
+
+From paper/243/erdos-243-reciprocal-tail-rigidity.tex at the same commit,
+lines 82-84: "The Sylvester recurrence gives $a_n^2/a_{n+1}-1=O(1/a_n)$, so
+the cubic-rate hypothesis excludes that behaviour. It imposes much more than
+the quadratic limit". Lines 231-233: "The precision matters at the subtraction
+step. The integer sequence $F_n+(-1)^n$ has ratio $1+3/n+O(n^{-3})$ and never
+agrees eventually with a polynomial".
+
+From paper/exposition/writing-mathematics-from-reviewed-revisions.tex at the
+same commit, abstract: "locate the step a reader cannot reconstruct, study a
+relevant argument in the literature, and explain the step using the
+manuscript's own proof" and "Drawn from revisions of eight Erdős-problem papers
+and their supporting systems manuscript".

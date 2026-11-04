@@ -170,8 +170,8 @@ UNIFIED_SYSTEMS_SECTION_LIMITS = (
         "the edits were authored by the checker’s author",
         "the other nine edits were not rerun",
         "it supplies no post-repair ten-of-ten result",
-        "the contributor and reviewer were the same agent",
-        "the receipt records no public pull request, human review or independent outside clone replay",
+        # The 10 October 2026 revision removed the local-integration observation
+        # (one agent-reviewed handoff); its two qualifiers left with the claim.
         "there is no comparative reader result",
     )),
     ("8 related work", "9 limits", 3, (
