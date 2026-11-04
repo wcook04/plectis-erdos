@@ -145,9 +145,9 @@
       "start_line": 1,
       "end_line": 36487,
       "kind": "supplied_snapshot",
-      "sha256": "d88735668a0483f52241135ea11922014eb761217effc219eaae9d713ed45e25",
-      "excerpt_sha256": "d88735668a0483f52241135ea11922014eb761217effc219eaae9d713ed45e25",
-      "custody_note": "Reviewed 10 October 2026: every attribution content field and cited excerpt digest is unchanged; only line_start/line_end coordinates moved after acknowledgement withdrawal and the consent-rule insertion. Regenerated 3 November 2026 by the corpus and attribution builders after the #257 register line edit; whole-file binding refreshed."
+      "sha256": "8fc21271f51005ad9ebf291ea14e5c0b106ed1409d2202bf234e192ebf93d012",
+      "excerpt_sha256": "8fc21271f51005ad9ebf291ea14e5c0b106ed1409d2202bf234e192ebf93d012",
+      "custody_note": "Reviewed 10 October 2026: every attribution content field and cited excerpt digest is unchanged; only line_start/line_end coordinates moved after acknowledgement withdrawal and the consent-rule insertion. Regenerated 3 November 2026 by the corpus and attribution builders after the #257 register line edit; whole-file binding refreshed. Rebound after the strict-mixed challenge registration: the registry differs from main only in the manifest-context digest for the additional trusted challenge hole. Citation identities, roles and attribution content are unchanged."
     },
     {
       "id": "essay-pages",
@@ -225,19 +225,21 @@
       "id": "paper-evidence",
       "path": "scripts/paper_evidence.py",
       "start_line": 1,
-      "end_line": 1539,
-      "sha256": "1b89e0a64707ea212e40e2cc7c59e8a70b1243e3c7869ad8208902edbb2b32ad",
-      "excerpt_sha256": "1b89e0a64707ea212e40e2cc7c59e8a70b1243e3c7869ad8208902edbb2b32ad",
-      "kind": "source"
+      "end_line": 1762,
+      "sha256": "bbc6bbebb714e380d1a44222b94ce38efe23bbc7339ffde6b1fd69e225a2a361",
+      "excerpt_sha256": "bbc6bbebb714e380d1a44222b94ce38efe23bbc7339ffde6b1fd69e225a2a361",
+      "kind": "source",
+      "custody_note": "Reviewed the additive official-identity receipt consumer and per-result rendering changes. The source-pin, registered-support and authored relation-note checks cited by this paper remain; existing replay records are preserved and official handling is selected only by an explicit receipt association. The existing 41-fixture resolver suite passed; no new external replay is claimed."
     },
     {
       "id": "paper-resolver",
       "path": "scripts/paper_evidence.py",
       "kind": "source",
-      "sha256": "1b89e0a64707ea212e40e2cc7c59e8a70b1243e3c7869ad8208902edbb2b32ad",
+      "sha256": "bbc6bbebb714e380d1a44222b94ce38efe23bbc7339ffde6b1fd69e225a2a361",
       "start_line": 1,
-      "end_line": 1539,
-      "excerpt_sha256": "1b89e0a64707ea212e40e2cc7c59e8a70b1243e3c7869ad8208902edbb2b32ad"
+      "end_line": 1762,
+      "excerpt_sha256": "bbc6bbebb714e380d1a44222b94ce38efe23bbc7339ffde6b1fd69e225a2a361",
+      "custody_note": "Reviewed the additive official-identity receipt consumer and per-result rendering changes. The source-pin, registered-support and authored relation-note checks cited by this paper remain; existing replay records are preserved and official handling is selected only by an explicit receipt association. The existing 41-fixture resolver suite passed; no new external replay is claimed."
     },
     {
       "id": "private-writer",
@@ -299,8 +301,9 @@
       "start_line": 26,
       "end_line": 36,
       "kind": "supplied_snapshot",
-      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
-      "excerpt_sha256": "23e85424be0f92c97324743dbaceb55f1e3207460d07ebb61a03514a8f2260ae"
+      "sha256": "c305f9a0e8d017e950feb5c139b51aa63f7d3e9559f8e2fe614ba7f8f708438f",
+      "excerpt_sha256": "cdd8ee7d09d0acada6b73279b3f7376ff83580aa69bd4afa508dd71140eaf7aa",
+      "custody_note": "Rebound to builder-owned coverage macros: the added strict-mixed declaration changes the inventory counts only; historical prose and qualitative coverage warrants are unchanged."
     },
     {
       "id": "strategy-add",
@@ -389,7 +392,7 @@
       "start_line": 317,
       "end_line": 411,
       "kind": "supplied_snapshot",
-      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
+      "sha256": "c305f9a0e8d017e950feb5c139b51aa63f7d3e9559f8e2fe614ba7f8f708438f",
       "excerpt_sha256": "6cbb917477c55ae56bf4b98cc4c0967cfbecfef0a227a8a867217a4944aa3cc1"
     },
     {
@@ -398,7 +401,7 @@
       "start_line": 411,
       "end_line": 469,
       "kind": "supplied_snapshot",
-      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
+      "sha256": "c305f9a0e8d017e950feb5c139b51aa63f7d3e9559f8e2fe614ba7f8f708438f",
       "excerpt_sha256": "cf06baacd7c5858b5919a0f624d620bcd4e0279e1538c7d9aa2174b5e3f7d167"
     },
     {
@@ -407,7 +410,7 @@
       "start_line": 572,
       "end_line": 629,
       "kind": "supplied_snapshot",
-      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
+      "sha256": "c305f9a0e8d017e950feb5c139b51aa63f7d3e9559f8e2fe614ba7f8f708438f",
       "excerpt_sha256": "1f3093160d7b9a0a67d3082170519063e2608d43c9e5b197a9468b78aed244db"
     },
     {
@@ -416,7 +419,7 @@
       "start_line": 469,
       "end_line": 528,
       "kind": "supplied_snapshot",
-      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
+      "sha256": "c305f9a0e8d017e950feb5c139b51aa63f7d3e9559f8e2fe614ba7f8f708438f",
       "excerpt_sha256": "571960e814e47129f0ac76e3eff2ae52fe1192a154896d99467c4f3779deae92"
     },
     {
@@ -425,7 +428,7 @@
       "start_line": 170,
       "end_line": 261,
       "kind": "supplied_snapshot",
-      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
+      "sha256": "c305f9a0e8d017e950feb5c139b51aa63f7d3e9559f8e2fe614ba7f8f708438f",
       "excerpt_sha256": "ab1ece62588b2cb176c1a5b86709b0f4faab321201a66ccb4978767026e0526a"
     },
     {
@@ -733,11 +736,12 @@
       "id": "r8-paper-resolve",
       "kind": "source",
       "path": "scripts/paper_evidence.py",
-      "start_line": 570,
-      "end_line": 635,
-      "sha256": "1b89e0a64707ea212e40e2cc7c59e8a70b1243e3c7869ad8208902edbb2b32ad",
+      "start_line": 756,
+      "end_line": 821,
+      "sha256": "bbc6bbebb714e380d1a44222b94ce38efe23bbc7339ffde6b1fd69e225a2a361",
       "excerpt_sha256": "dedb18e1e7983c374b871df0dd1044bf6911170ae2bb1a16e2f8ca5a0b28c550",
-      "custody": "Current native public file inspected as source; no fresh execution."
+      "custody": "Current native public file inspected as source; no fresh execution.",
+      "custody_note": "Relocated the byte-identical resolver entry span after the additive official-receipt helper."
     },
     {
       "id": "r8-claim-project",
@@ -786,7 +790,7 @@
       "path": "paper/systems/cold-clone-to-proof-receipt.tex",
       "start_line": 170,
       "end_line": 261,
-      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
+      "sha256": "c305f9a0e8d017e950feb5c139b51aa63f7d3e9559f8e2fe614ba7f8f708438f",
       "excerpt_sha256": "ab1ece62588b2cb176c1a5b86709b0f4faab321201a66ccb4978767026e0526a",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
@@ -796,7 +800,7 @@
       "path": "paper/systems/cold-clone-to-proof-receipt.tex",
       "start_line": 317,
       "end_line": 411,
-      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
+      "sha256": "c305f9a0e8d017e950feb5c139b51aa63f7d3e9559f8e2fe614ba7f8f708438f",
       "excerpt_sha256": "6cbb917477c55ae56bf4b98cc4c0967cfbecfef0a227a8a867217a4944aa3cc1",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
@@ -806,7 +810,7 @@
       "path": "paper/systems/cold-clone-to-proof-receipt.tex",
       "start_line": 572,
       "end_line": 629,
-      "sha256": "b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
+      "sha256": "c305f9a0e8d017e950feb5c139b51aa63f7d3e9559f8e2fe614ba7f8f708438f",
       "excerpt_sha256": "1f3093160d7b9a0a67d3082170519063e2608d43c9e5b197a9468b78aed244db",
       "custody": "Current native public file inspected as source; no fresh execution."
     },
@@ -866,7 +870,7 @@
       "path": "docs/research-commons/source-attributions.json",
       "start_line": 16125,
       "end_line": 16173,
-      "sha256": "d88735668a0483f52241135ea11922014eb761217effc219eaae9d713ed45e25",
+      "sha256": "8fc21271f51005ad9ebf291ea14e5c0b106ed1409d2202bf234e192ebf93d012",
       "excerpt_sha256": "8e826af82fe4e34d97e2987871af9dbcdac012c299aeca4bd95c0c6e87bf7d2c",
       "custody": "Public attribution inventory, marked bibliography_only. Used for feature attribution, not for its conflicting first-publication chronology. Direct claims are checked against the enclosed original v2 in this pass.",
       "custody_note": "Reviewed 10 October 2026: the cited excerpt is byte-identical to the starting public main; surrounding attribution coordinates changed."
@@ -874,11 +878,12 @@
     {
       "id": "r12-resolver-relations",
       "path": "scripts/paper_evidence.py",
-      "start_line": 750,
-      "end_line": 846,
+      "start_line": 1016,
+      "end_line": 1027,
       "kind": "source",
-      "sha256": "1b89e0a64707ea212e40e2cc7c59e8a70b1243e3c7869ad8208902edbb2b32ad",
-      "excerpt_sha256": "b781b6be3310fb2bea4d39c6f028c217361977d277ae0ae6efe89ad82486575a"
+      "sha256": "bbc6bbebb714e380d1a44222b94ce38efe23bbc7339ffde6b1fd69e225a2a361",
+      "excerpt_sha256": "2c7dc6f75ab28a6cd96e331e8cd0287745c9f1a6210378712353351f121fb687",
+      "custody_note": "Narrowed to the byte-identical authored relation-note block, which checks paper statement keys and declaration stamps. The inserted official Comparator dispatch follows this unchanged block."
     },
     {
       "id": "r12-bound-parser",
@@ -1166,7 +1171,7 @@
         "r8-journal",
         "r8-exchange"
       ],
-      "warrant": "The weighted coverage row stores the paper occurrence and registered declarations. paper_evidence.py lines 750–846 checks a row-level relation note against the paper statement key and Lean declaration stamps. systems_paper_evidence.py binds marked text, source spans and a nonempty rationale; research_record.py retains entered review events. These operations make provenance inspectable but do not decide the truth of a paraphrase.",
+      "warrant": "The weighted coverage row stores the paper occurrence and registered declarations. paper_evidence.py lines 1016–1027 checks a row-level relation note against the paper statement key and Lean declaration stamps. systems_paper_evidence.py binds marked text, source spans and a nonempty rationale; research_record.py retains entered review events. These operations make provenance inspectable but do not decide the truth of a paraphrase.",
       "statement_sha256": "77b56b554d53d6ce1468b9e8c0ee0bacd2a36cb47ebabf4ccdaa318ff3630af8",
       "section": "sec:intro"
     },
@@ -1236,7 +1241,7 @@
         "r8-sentence-check",
         "audit-code"
       ],
-      "warrant": "The res:weighted-support coverage row supplies a concrete labelled paper occurrence with a statement digest, source coordinate and registered Lean supports. paper_evidence.py lines 750–846 binds its authored relation note to the paper statement key and declaration stamps. systems_paper_evidence.py lines 367–457 instead checks marked prose, source digests, an evidence class and a nonempty rationale. The inspected checks do not construct a natural-language proof or certify semantic entailment."
+      "warrant": "The res:weighted-support coverage row supplies a concrete labelled paper occurrence with a statement digest, source coordinate and registered Lean supports. paper_evidence.py lines 1016–1027 binds its authored relation note to the paper statement key and declaration stamps. systems_paper_evidence.py lines 367–457 instead checks marked prose, source digests, an evidence class and a nonempty rationale. The inspected checks do not construct a natural-language proof or certify semantic entailment."
     },
     {
       "id": "r4.world1.01",
