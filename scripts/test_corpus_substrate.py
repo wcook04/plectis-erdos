@@ -5,6 +5,7 @@ The synthetic hooks deliberately do NOT act as proof/attestation authorities.
 """
 from __future__ import annotations
 import copy
+import gzip
 import json
 from pathlib import Path
 import sqlite3
@@ -97,6 +98,22 @@ class ModelTest(unittest.TestCase):
     def test_added_source_refuses_old_index(self):
         p=self.root/'lean/New.lean';p.parent.mkdir();p.write_text('-- new source')
         with self.assertRaises(s.SubstrateError):s.View(self.root,self.path)
+    def test_downloaded_source_archive_does_not_change_registered_projection(self):
+        p=self.root/'docs/primary-sources/example/source.tar.gz'
+        p.parent.mkdir(parents=True);p.write_bytes(gzip.compress(b'custody payload'))
+        with s.View(self.root,self.path) as view:
+            before=view.register()
+        p.write_bytes(gzip.compress(b'updated custody payload'))
+        with s.View(self.root,self.path) as view:
+            self.assertEqual(view.register(),before)
+        self.assertEqual(gzip.decompress(p.read_bytes()),b'updated custody payload')
+    def test_compressed_json_inputs_still_invalidate_the_view(self):
+        for name in ('semantic_corpus.json.gz','declaration_search_index.json.gz'):
+            with self.subTest(name=name):
+                p=self.root/'docs'/name;p.write_bytes(gzip.compress(b'{"version":1}'))
+                s.build(self.root,self.path,hooks=FakeOwners())
+                p.write_bytes(gzip.compress(b'{"version":2}'))
+                with self.assertRaises(s.SubstrateError):s.View(self.root,self.path)
     def test_missing_owner_refuses(self):
         (self.root/s.OWNER['route']).unlink()
         with self.assertRaises(s.SubstrateError):s.build(self.root,self.path,hooks=FakeOwners())

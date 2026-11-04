@@ -93,7 +93,9 @@ def input_paths(root: Path) -> list[str]:
     """Coarse initial invalidation frontier; generated SQLite stays outside it.
 
     Omit no existing input on permission errors. Exclude .lake and nested .git
-    intentionally. This enumerates supported source families, not a live Git tree.
+    intentionally. Packed source-download archives are custody payloads, not
+    registered source projections; compressed JSON remains an input. This
+    enumerates supported source families, not a live Git tree.
     """
     paths = set()
     for folder in INPUT_DIRS:
@@ -111,7 +113,7 @@ def input_paths(root: Path) -> list[str]:
                     raise SubstrateError(f"symlink source directory: {directory}/{d}")
             for name in names:
                 p = Path(directory) / name
-                if p.suffix in INPUT_SUFFIXES:
+                if p.suffix in INPUT_SUFFIXES and not p.name.endswith(".tar.gz"):
                     rel = p.relative_to(root).as_posix()
                     safe_file(root, rel)
                     if rel not in GENERATED_FILES:
