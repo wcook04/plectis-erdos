@@ -361,11 +361,11 @@
       "short_id": "erdos-257-mersenne-support-subseries#res:cylinderhalf",
       "short_statement_sha256": "sha256:5c22fc2b248124c7ac79ba7ded11c0c5f6865cb3f991e496cb9796a06a1286f5",
       "support": {
-        "end": "is established here.",
+        "end": "We have no construction of such families at unbounded depths.",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "selector": "between",
-        "sha256": "sha256:b4e8fbdba8e7529607a970806212122607f4e953d784a7784022557876dbe463",
-        "start": "At each available depth $M$, choose the member with terminal carry\n$1$."
+        "sha256": "sha256:a129d31f31d9c9194de58f5203c097546a85e791706731676c021315b8aff101",
+        "start": "For the proof, choose at each available depth $M$ the member with\nterminal carry $1$."
       }
     },
     {
@@ -378,7 +378,7 @@
         "label": "res:general-repair",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "selector": "adjacent_proof",
-        "sha256": "sha256:18c4cba199faa2c464b38e306223284928a8fc2ac178df22ce0cfc546bf8a5b5"
+        "sha256": "sha256:537d3d2f41cef547e2302733413a9906994c6811c037c5e0e9d4578ead4e9618"
       }
     },
     {
@@ -391,7 +391,7 @@
         "label": "res:one-over-twenty-one-frontier",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "selector": "adjacent_proof",
-        "sha256": "sha256:76315e30177102d8033161e836535ac3aca86970d0e4306454e8c77c981f7302"
+        "sha256": "sha256:2cfaf8a2b93d92cb6ace944638297890057139ed6f5da37e4d78e47fee7089a4"
       }
     },
     {
@@ -401,10 +401,10 @@
       "short_id": "erdos-257-mersenne-support-subseries#res:period",
       "short_statement_sha256": "sha256:cd113fd70ca4c2abd225bd8ad990894db12f084a29b2b278d78752c1eac1461b",
       "support": {
-        "end": "The case $F=\\{1\\}$ has order one directly.",
+        "end": "$F=\\{1\\}$ the order is one directly.",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "selector": "between",
-        "sha256": "sha256:3f77903b76b875c060c0611fcc3c906c17d6dbd1e9ef16a3abe68e719bc8c7b1",
+        "sha256": "sha256:0844bb930fed78ec6185b8ae3c188f1e195aac609d82cfb0c7bace797645bbec",
         "start": "Put $L=\\operatorname{lcm}(F)$."
       }
     },
@@ -446,7 +446,7 @@
         "label": "res:weighted-cover-incomparability",
         "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
         "selector": "proof_of",
-        "sha256": "sha256:31c3c95e21b8a1a866bd701a665e8fd1345e3bf99cc76f234f3fc2aee869f4b9"
+        "sha256": "sha256:962f07827bcb93e1fad3b668c58a3d5d1e377c3da9b4c9559f7a9323cff447d5"
       }
     },
     {
@@ -696,7 +696,7 @@
         "end": "The mixed implication itself is kernel-checked.",
         "path": "paper/reasoning-parts/erdos257/a257_front.tex",
         "selector": "between",
-        "sha256": "sha256:32d2c302f9c890b5d4804cf7f7c3dc5658f996d42b9b44540e41fed635d75078",
+        "sha256": "sha256:40acfeaf5af4e93798fe0af9687d0dab8a4b5707d673ccb905a2ab6189e56a79",
         "start": "\\paragraph{Why the mixed criterion is strict.}\\label{record257:strict-mixed-proof}"
       }
     },
@@ -712,7 +712,7 @@
         "end": "This contradicts~\\eqref{eq:257-weighted-gap} if $X_A(b)$ is rational.\n\\end{proof}",
         "path": "paper/reasoning-parts/erdos257/a257_front.tex",
         "selector": "between",
-        "sha256": "sha256:dc1387c505e8db82e943e3cf5cec1a83113dd125e1253fd4a3f4f8ef5d22a7ee",
+        "sha256": "sha256:b52df7d8dc5fe54e16c49446b6641e8c61bba828c360c129e5b736c4596fc6fd",
         "start": "\\label{thm:257-weighted}"
       }
     }

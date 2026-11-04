@@ -2024,8 +2024,6 @@ The terms $`a_n`$ eventually exceed one, and $`e_n/c_n\to0`$ by that corollary. 
 
 We can bound a positive integer sequence by multiplying the relative increases of its terms. If their sum converges, that product is finite. Only finitely many upward integer steps can then occur, and descent finishes the argument. No denominator recurrence is needed. For comparison, $`C_n=n+1`$ and $`C_n=(n+1)^2`$ have relative increases tending to zero but divergent sums. The eventual Sylvester recurrence gives an eventually constant numerator, so it satisfies the summability condition.
 
-<div class="samepage">
-
 <div id="long243:res:mass" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos243/PaperCompleteR7/Frontier.lean#L84">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos243-reciprocal-tail-reasoning-surface.md#long243-res-mass-comparator">Comparator</a></p>
 
@@ -2034,8 +2032,6 @@ We can bound a positive integer sequence by multiplying the relative increases o
 \sum_{n=0}^{\infty}\frac{(-E_n)_+}{C_n}<\infty,
 ```
 *then $`E_n=0`$ eventually. For an exact reciprocal-tail orbit this implies $`a_{n+1}=a_n^2-a_n+1`$ eventually. No hypothesis $`|E_n|/C_n\to0`$ is required.*
-
-</div>
 
 </div>
 
