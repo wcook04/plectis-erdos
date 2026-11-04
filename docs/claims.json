@@ -15227,7 +15227,8 @@
           "role": "Lean proof module",
           "imports": [
             "ErdosProblems.Erdos257.PaperCompleteR8.AnalyticSeparationReturn",
-            "ErdosProblems.Erdos257.PaperCompleteR8.FixedExponentCover"
+            "ErdosProblems.Erdos257.PaperCompleteR8.FixedExponentCover",
+            "ErdosProblems.Erdos257.PaperCompleteR8.WeightedHereditaryClaim"
           ]
         },
         {
@@ -20266,7 +20267,7 @@
     "lean_toolchain": "leanprover/lean4:v4.29.1",
     "repository": "https://github.com/wcook04/plectis-erdos",
     "formal_source": {
-      "ref": "2a8c1667566020d123a081b6165e3ee94550566d",
+      "ref": "74163c42aff9214b1199ff9bd5408721b78f0251",
       "ref_kind": "commit",
       "publication_state": "committed_checkpoint_pending_remote_publication",
       "relationship_to_last_tag": "post_tag_checkpoint",

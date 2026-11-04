@@ -338,14 +338,10 @@ The same proof permits any positive weights $`\eta_j`$ with $`\sum_j\eta_j=1`$: 
 
 Small displacements at unrelated indices do not control the union. Put both finite cancellation requirements in one modulus, then bound both remaining errors on the same finite distribution. The weighted proof enlarges the modulus; (S) keeps the cover estimate valid. We work at base two and compare displacements for larger integer bases.
 
-<div class="samepage">
-
 <div id="res:mixed-supports" class="theorem">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-257-mersenne-support-subseries.md#res-mixed-supports">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos-257-mersenne-support-subseries.md#res-mixed-supports-comparator">Comparator</a></p>
 
 **Theorem 4** (mixed weighted and cover supports). *Let $`E,V\subseteq\mathbb{N}_{>0}`$. Suppose $`E`$ satisfies [\[eq:weighted-return\]](#eq%3Aweighted-return) for a finite nonempty prime set $`P`$, and $`V\subseteq\bigcup_jF_j`$ for finite sets and nonnegative majorants satisfying the hypotheses of Theorem [3](#thm%3Avariable-fractional-cover), with either [\[eq:strengthened-cover\]](#eq%3Astrengthened-cover) or its positive-weight variant. Then $`X_A(b)`$ is irrational for every infinite $`A\subseteq E\cup V`$ and every integer $`b\ge2`$.*
-
-</div>
 
 </div>
 

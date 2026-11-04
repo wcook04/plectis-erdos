@@ -144,14 +144,14 @@ specified ingredients.
 
 ## Corpus at a glance
 
-The reviewed layer a mathematician should judge: 160 curated claim records in 38 contribution families, reaching Lean source through 478 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
+The reviewed layer a mathematician should judge: 160 curated claim records in 38 contribution families, reaching Lean source through 479 principal declaration links. `docs/SCOPE.md` gives its shape and `docs/RESULTS.md` gives the strongest checked result per problem. The website and the papers are the human reading path.
 
-The rest is engineering inventory. About 87% of the 164,639 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
+The rest is engineering inventory. About 87% of the 164,640 declarations (142,668 across 695 modules) are machine-emitted certificate shards: one integer checked prime, one position excluded. The remainder is not all hand-written either.
 
 | Engineering inventory | Current size |
 |---|---:|
 | Lean modules (the two library roots) | 1,903 |
-| Formal results and supporting lemmas | 160,373 |
+| Formal results and supporting lemmas | 160,374 |
 | Curated claim records | 160 |
 | Contribution families | 38 |
 

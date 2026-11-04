@@ -1,12 +1,12 @@
 {
-  "atlas_digest": "sha256:697cb2030a729c447595fcda7efc110ff2073cb093df2763b5372059549a1bcc",
+  "atlas_digest": "sha256:8864f1568bf83b5560e6610b00df7a77e057430e4a1dea50e463f09c6badea63",
   "builder_digest": "sha256:bbe9c7455d149ec4dd9362c985bd69a69e43719f3a8456598fbbd6e734d511b4",
-  "claim_binding_fingerprint": "sha256:a76f3f5c9496e9eb7f8df03fdcfe2347fb96b8d3c3075f80e40dff17503e0f33",
+  "claim_binding_fingerprint": "sha256:743e039de91eaa3bcc2161cf23ca29cb79c9fe0fc1b49c3e92a8fe640555c824",
   "generated_manifest_digest": "sha256:2bfcecad9a04352cf5a9b6939dca294e665a6dffe7ee25d4b451e5c7231f7bbb",
   "schema": "erdos249257-declaration-atlas-check/1",
-  "source_fingerprint": "sha256:0152e16a5172b6421df56331fbec043d8979ea884ddc9f014a02d92497bea904",
+  "source_fingerprint": "sha256:dd12127b8f6ca3796b83260470716d28d287f44ed427259ad7e5b4d0dda02577",
   "summary": {
-    "declaration_count": 164639,
+    "declaration_count": 164640,
     "generated_certificate_declaration_count": 8171,
     "kind_counts": {
       "abbrev": 58,
@@ -15,10 +15,10 @@
       "instance": 14,
       "lemma": 1448,
       "structure": 80,
-      "theorem": 158925
+      "theorem": 158926
     },
     "module_count": 1903,
-    "principal_claim_link_count": 478,
-    "theorem_like_count": 160373
+    "principal_claim_link_count": 479,
+    "theorem_like_count": 160374
   }
 }
