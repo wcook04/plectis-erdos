@@ -8510,7 +8510,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/cold-clone-to-proof-receipt.md",
       "local_source": "paper/systems/cold-clone-to-proof-receipt.tex",
-      "source_sha256": "sha256:b49322acf67d58f7018ce742206bd3ed00fe3446fb71b269a6774cd178dd568b",
+      "source_sha256": "sha256:8dd6ea9ce3a1d118519e5fb3826995bcfdf96b293bae4edb1ad10ebfd183fcd5",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8640,7 +8640,7 @@
       ],
       "citations_rendered": 12,
       "local_pdf": "paper/systems/cold-clone-to-proof-receipt.pdf",
-      "pdf_sha256": "sha256:544d94e78fbfe671e65e7a506f3b6b95e8e81c3c7bb6f766201cd7b5d91e99a1",
+      "pdf_sha256": "sha256:a7a2e67e6e0ea05e1f69d1a4cfc4a3dd614f5391920b453527c085bb2255936c",
       "pdf_byte_count": 89146,
       "first_pass": {
         "stated_by_the_paper": false,
