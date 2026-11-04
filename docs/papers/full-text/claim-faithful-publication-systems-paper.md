@@ -408,7 +408,7 @@ The recorded inventory counts occurrences of paper statements, rather than disti
 
 The contribution journal records 7 rounds and 25 returned contributions at the recorded journal revision.[^3] Of the rounds, 2 are sealed, meaning no further arrivals are expected. Of the returns, 18 have been admitted for integration and 7 remain unreviewed; admission does not itself record integration. Earlier private-history rounds do not constitute a complete public journal.
 
-Explanatory text is recorded for 139,818 of the 152,386 authored theorem-like declarations (91.8%). Most of these descriptions provide surrounding context. This inventory measures the presence of recorded interpretations, not individual proof review or demonstrated reader understanding.
+Explanatory text is recorded for 139,818 of the 152,407 authored theorem-like declarations (91.7%). Most of these descriptions provide surrounding context. This inventory measures the presence of recorded interpretations, not individual proof review or demonstrated reader understanding.
 
 <a id="identify-the-version-and-the-earlier-design-accounts"></a>
 
