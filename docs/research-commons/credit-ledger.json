@@ -402,5 +402,5 @@
   "naming_policy": "Every entry starts with the name withheld. A name appears only after that person confirms the public name they want, and an entry stays anonymous if they ask. Private messages stay outside this repository.",
   "schema": "plectis-credit-ledger/1",
   "source_registry": "docs/research-commons/source-attributions.json",
-  "source_registry_sha256": "sha256:2605721e4df5fb5024e390e6c8fc25ebb7a5fc25024f7aa84e123aa802716b50"
+  "source_registry_sha256": "sha256:8fc21271f51005ad9ebf291ea14e5c0b106ed1409d2202bf234e192ebf93d012"
 }
