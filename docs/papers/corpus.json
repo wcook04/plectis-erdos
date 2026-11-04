@@ -4139,7 +4139,7 @@
       ],
       "citations_rendered": 67,
       "local_pdf": "paper/251/erdos251-prime-gap-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:34a247ccd1c00b6b916ad8dfac5cba8c70d07d7c24e164e72f9c069693f79949",
+      "pdf_sha256": "sha256:bafa6f09062d0b18560fa2f5cce8691b9532c19632c71e75aea0d5fc6c1e2063",
       "pdf_byte_count": 300444,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -4230,12 +4230,12 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:2a7272ed32e00b7b428d69f34a2e53e0d79851521b00cbb1488139816ac3ad4f",
+      "source_sha256": "sha256:abb8203a648678e5abcdc68ad0d3ac646307cfd9640e7bdd53ef1593cf4f3728",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
       "canonical_source_raw_url": null,
-      "section_count": 31,
+      "section_count": 30,
       "sections": [
         {
           "level": 1,
@@ -4295,139 +4295,133 @@
           "level": 1,
           "id": "sec:comparison",
           "title": "Comparison of the support classes",
-          "line": 383
+          "line": 385
         },
         {
           "level": 2,
           "id": "a-lower-bound-independent-of-the-cover",
           "title": "A lower bound independent of the cover",
-          "line": 403
+          "line": 405
         },
         {
           "level": 2,
           "id": "two-separating-constructions",
           "title": "Two separating constructions",
-          "line": 427
+          "line": 429
         },
         {
           "level": 2,
           "id": "a-strict-enlargement-and-finite-unions",
           "title": "A strict enlargement and finite unions",
-          "line": 473
+          "line": 475
         },
         {
           "level": 1,
           "id": "sec:map",
           "title": "Limits of the small-displacement criterion",
-          "line": 498
+          "line": 500
         },
         {
           "level": 2,
           "id": "sec:separated-support-transfer",
           "title": "Algebraic bases on separated supports",
-          "line": 522
+          "line": 524
         },
         {
           "level": 1,
           "id": "sec:reciprocal-support",
           "title": "Reciprocal-summable supports",
-          "line": 532
+          "line": 534
         },
         {
           "level": 1,
           "id": "sec:period",
           "title": "Finite-support denominator periods",
-          "line": 597
+          "line": 599
         },
         {
           "level": 1,
           "id": "sec:rational-membership",
           "title": "Rational membership",
-          "line": 625
+          "line": 627
         },
         {
           "level": 2,
           "id": "sec:forced",
           "title": "Rational values and scaled tails",
-          "line": 631
+          "line": 633
         },
         {
           "level": 2,
           "id": "sec:geometry",
           "title": "The achievement set",
-          "line": 646
+          "line": 648
         },
         {
           "level": 2,
           "id": "sec:actual-repairs",
           "title": "The greedy recurrence",
-          "line": 662
+          "line": 666
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Integer quotients, approximation and further questions",
-          "line": 741
+          "line": 745
         },
         {
           "level": 4,
           "id": "integer-quotients-for-121.",
           "title": "Integer quotients for 1/21.",
-          "line": 747
+          "line": 751
         },
         {
           "level": 4,
           "id": "approximation-to-12-by-finite-supports.",
           "title": "Approximation to 1/2 by finite supports.",
-          "line": 818
+          "line": 822
         },
         {
           "level": 4,
           "id": "finite-families-with-a-shared-prefix.",
           "title": "Finite families with a shared prefix.",
-          "line": 858
+          "line": 862
         },
         {
           "level": 1,
           "id": "app:elementary-details",
           "title": "Elementary details used in the proofs",
-          "line": 926
+          "line": 930
         },
         {
           "level": 4,
           "id": "cyclotomic-prime-power-fact.",
           "title": "Cyclotomic prime-power fact.",
-          "line": 930
+          "line": 934
         },
         {
           "level": 4,
           "id": "exact-scalar-cover-cost.",
           "title": "Exact scalar cover cost.",
-          "line": 945
+          "line": 949
         },
         {
           "level": 2,
           "id": "the-cost-for-a-finite-set-of-divisors",
           "title": "The cost for a finite set of divisors",
-          "line": 958
+          "line": 962
         },
         {
           "level": 1,
           "id": "app:sources",
-          "title": "Sources, verification and reproducibility",
-          "line": 983
-        },
-        {
-          "level": 4,
-          "id": "reproducing-the-weighted-theorem.",
-          "title": "Reproducing the weighted theorem.",
-          "line": 993
+          "title": "Sources and formal verification",
+          "line": 987
         }
       ],
       "citations_rendered": 24,
       "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:727ab95eaefdd5a0cae74fa839b30f9873606b4854407d6a168defae85841cb3",
-      "pdf_byte_count": 192168,
+      "pdf_sha256": "sha256:1787c65edf71811eea4a0770a0cfe87a86d3e7e252383e642a3f189d623e91d4",
+      "pdf_byte_count": 193963,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -4440,7 +4434,7 @@
           {
             "id": "sec:reciprocal-support",
             "title": "Reciprocal-summable supports",
-            "line": 532
+            "line": 534
           },
           {
             "id": "sec:eight-return-extensions",
@@ -4450,7 +4444,7 @@
           {
             "id": "sec:open",
             "title": "Integer quotients, approximation and further questions",
-            "line": 741
+            "line": 745
           }
         ],
         "unresolved_count": 0
@@ -4493,7 +4487,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
       "local_source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-      "source_sha256": "sha256:47cf6a152738f17c6879bd5070adb73c34a1254775afd44dbf7b6ccd346aa100",
+      "source_sha256": "sha256:09285ac50fbb892b4a027489ccaf1e986fc72d502a761c343c6cb6334a321489",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -5475,8 +5469,8 @@
       ],
       "citations_rendered": 42,
       "local_pdf": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:fec61fb31ab39bd676a83e3d718940a0f072dda2a9ee197cf2e65c942cd0d728",
-      "pdf_byte_count": 832017,
+      "pdf_sha256": "sha256:59445e943ac9586d1bc2793a56e70704231ed2a9d679411a375ae24023b421bf",
+      "pdf_byte_count": 835067,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -5542,7 +5536,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-expository-sums-never-fractions.md",
       "local_source": "paper/257/erdos257-expository-sums-never-fractions.tex",
-      "source_sha256": "sha256:5efdc16fe9917b634a2af0068bab9ce0e17127b58d5e82e6ab3e412c1e791352",
+      "source_sha256": "sha256:27275fec09eb84e1bd833411f9e30ed4e8bfae35ab711d373cc7395bd1845002",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -5649,103 +5643,103 @@
           "level": 2,
           "id": "sec:unfinished",
           "title": "A bound that also covers unfinished cycles",
-          "line": 416
+          "line": 417
         },
         {
           "level": 4,
           "id": "first-bound-all-the-consecutive-entries.",
           "title": "First bound all the consecutive entries.",
-          "line": 440
+          "line": 439
         },
         {
           "level": 4,
           "id": "keep-only-the-sampled-entries.",
           "title": "Keep only the sampled entries.",
-          "line": 454
+          "line": 453
         },
         {
           "level": 1,
           "id": "sec:proof",
           "title": "Combining the estimates",
-          "line": 465
+          "line": 464
         },
         {
           "level": 2,
           "id": "app:numbers",
           "title": "The construction with actual numbers",
-          "line": 471
+          "line": 470
         },
         {
           "level": 2,
           "id": "sec:allchoices",
           "title": "The same choices for any admissible set",
-          "line": 508
+          "line": 505
         },
         {
           "level": 1,
           "id": "sec:limits",
           "title": "Consequences and limits",
-          "line": 546
+          "line": 543
         },
         {
           "level": 1,
           "id": "app:full",
           "title": "Supporting details and formal-proof correspondence",
-          "line": 570
+          "line": 567
         },
         {
           "level": 2,
           "id": "app:sums",
           "title": "Convergence and tails",
-          "line": 576
+          "line": 573
         },
         {
           "level": 2,
           "id": "app:split",
           "title": "Passing to the full transformed sum",
-          "line": 590
+          "line": 587
         },
         {
           "level": 2,
           "id": "app:cycle",
           "title": "Why the sampled remainders form a cycle",
-          "line": 601
+          "line": 598
         },
         {
           "level": 2,
           "id": "app:proof",
           "title": "Adding the row averages",
-          "line": 621
+          "line": 618
         },
         {
           "level": 2,
           "id": "app:bases",
           "title": "Other bases",
-          "line": 627
+          "line": 624
         },
         {
           "level": 2,
           "id": "app:lean",
-          "title": "Formal verification and its scope",
-          "line": 643
+          "title": "The formal proof and how it differs",
+          "line": 640
         },
         {
           "level": 1,
           "id": "sec:exercises",
           "title": "Questions and exercises",
-          "line": 678
+          "line": 652
         },
         {
           "level": 1,
           "id": "app:answers",
           "title": "Answers",
-          "line": 742
+          "line": 716
         }
       ],
       "citations_rendered": 10,
       "local_pdf": "paper/257/erdos257-expository-sums-never-fractions.pdf",
-      "pdf_sha256": "sha256:5ba7e503be74eb70e221696882eb7e8b3d71543a716903b2dfe8de97db10698d",
-      "pdf_byte_count": 133914,
+      "pdf_sha256": "sha256:34e8bdfbe8ca43adff8e7e400cad8bf1e109cc76150f57fb98184d55d1944e0d",
+      "pdf_byte_count": 134013,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -5768,7 +5762,7 @@
           {
             "id": "sec:proof",
             "title": "Combining the estimates",
-            "line": 465
+            "line": 464
           }
         ],
         "unresolved_count": 0
@@ -8121,7 +8115,7 @@
       ],
       "citations_rendered": 73,
       "local_pdf": "paper/synthesis/optimal-sparse-perturbations.pdf",
-      "pdf_sha256": "sha256:c690788354bb9c36a35e6958d47f80d0a0eb41d94d9c98f1d0efba2d37b44b1a",
+      "pdf_sha256": "sha256:d8434e0ffb7d4afa7a6882d3fc86c56f37058f14d4344f012a6c8ba332b3707b",
       "pdf_byte_count": 261357,
       "first_pass": {
         "stated_by_the_paper": false,
