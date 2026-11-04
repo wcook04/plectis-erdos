@@ -349,7 +349,7 @@ Start here (selected for this guide): [The tail recurrence and the exact criteri
 
 **Irrationality criteria for Lambert subseries**
 
-[full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../paper/257/erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](../../paper/257/erdos-257-mersenne-support-subseries.tex) · 31 sections · `erdos-257-mersenne-support-subseries` · native to this repository
+[full text](full-text/erdos-257-mersenne-support-subseries.md) · [PDF](../../paper/257/erdos-257-mersenne-support-subseries.pdf) · [LaTeX source](../../paper/257/erdos-257-mersenne-support-subseries.tex) · 30 sections · `erdos-257-mersenne-support-subseries` · native to this repository
 
 Archived edition: [aiXiv:2609.02921v1](https://aixiv.online/abs/2609.02921v1) ([PDF](https://aixiv.online/pdf/2609.02921v1), [source archive](https://aixiv.online/src/2609.02921v1)); published 2026-09-25 from [source `2945372c6d30`](https://github.com/wcook04/plectis-erdos/blob/2945372c6d306dc8c5bf62c95dfd8bc2939c650d/paper/257/erdos-257-mersenne-support-subseries.tex).
 

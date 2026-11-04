@@ -718,8 +718,6 @@ This ratio is an integer. Merely naming it supplies neither its growth nor a sma
 
 The lcm estimates also constrain the size of a cancellation vector when its multiplier is bounded by a factorial. At depth $`D=2t^2`$, cancellation gives $`L_D\mid M`$; the next theorem additionally assumes $`0<M<(R+1)!-1`$. Its $`R`$ is an index, not the remainder or the modulus $`R_p`$ of §[5](#long68%3Asec%3Aresidue). The conclusion bounds the largest supported index only when $`R`$ denotes that index. Taking $`R`$ to be a later cutoff gives a bound on the cutoff instead.
 
-<div class="samepage">
-
 <span id="long68:res:lead-channel-radius" label="long68:res:lead-channel-radius"></span>
 
 <div id="long68:res:channel-radius" class="theorem">
@@ -730,8 +728,6 @@ The lcm estimates also constrain the size of a cancellation vector when its mult
 t\ge2^{32},\qquad M>0,\qquad L_{2t^2}\mid M,\qquad M<(R+1)!-1 .
 ```
 *Then $`3t^3<2(R+1)`$. Consequently no family satisfying these hypotheses for all sufficiently large $`t`$ has $`(R(t)+1)/t^3\le3/2`$ eventually, and none has $`R(t)=o(t^3)`$.*
-
-</div>
 
 </div>
 

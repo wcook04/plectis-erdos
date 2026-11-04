@@ -961,8 +961,6 @@ The first count is $`o(N)`$ by nonconcentration for $`a`$; the remaining finitel
 
 </div>
 
-<div class="samepage">
-
 <div id="long251:res:jointcountermodel" class="corollary">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos251-prime-gap-reasoning-surface.md#long251-res-jointcountermodel">Lean†</a></p>
 
@@ -976,8 +974,6 @@ The first count is $`o(N)`$ by nonconcentration for $`a`$; the remaining finitel
 </div>
 
 Lean proves this for every $`\varepsilon>0`$, assuming Schlage-Puchta’s Lemma 4 \[schlagepuchta2011\] only for the nonconcentration clause and the prime number theorem only for $`P_n\sim n\log n`$.
-
-</div>
 
 <div class="proof">
 
@@ -1410,8 +1406,6 @@ These are the totient shift and the propagation theorems cited in the note. For 
 
 For the actual gaps, we enclose each complete weighted difference by a finite sum and a bound on the omitted terms. A nonnegative summable majorant gives such an enclosure, but need not provide a computable remainder. Proposition [17](#long251%3Ares%3Aexplicit-remainder) supplies the rational bound used in the finite tests.
 
-<div class="samepage">
-
 <div id="long251:xr:truncation" class="proposition">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/436f55ebdafa67e4af0fff79f621c13f2ded12bf/lean/ErdosProblems/Erdos251/PaperTailBoundsR7.lean#L261">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/846d57d3f9926696332d782eb232aaf3cf803a99/evidence/erdos251-prime-gap-reasoning-surface.md#long251-xr-truncation-comparator">Comparator</a></p>
 
@@ -1421,8 +1415,6 @@ S_{h,N,L}=\sum_{j=1}^{L}\frac{g_{N+h+j}-g_{N+j}}{2^{\,j}},\qquad
  R_{h,N,L}(M)=\sum_{j>L}\frac{M(N+h+j)+M(N+j)}{2^{\,j}} .
 ```
 *If for every $`h\ge1`$ and every $`N_0`$ there are $`N\ge N_0`$ and $`L\ge1`$ with $`\operatorname{dist}(S_{h,N,L},\mathbb{Z})>R_{h,N,L}(M)`$, then the nonintegrality condition in Problem [32](#long251%3Aprob%3Aescape) holds.*
-
-</div>
 
 </div>
 
