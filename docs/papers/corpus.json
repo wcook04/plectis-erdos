@@ -1288,7 +1288,7 @@
         "manuscript_title": "Integer Linear Forms for a Factorial Reciprocal Series"
       },
       "local_pdf": "paper/68/erdos-68-factorial-denominator-irrationality.pdf",
-      "pdf_sha256": "sha256:c7529ca1aaa1527dfdfdf43971a9c299a51383e2aec50f550109235ea0e761f4",
+      "pdf_sha256": "sha256:705916e7faca398ebe50a1430cfe68f5b5af327c078a7de95d8bef4b82699947",
       "pdf_byte_count": 74133,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -1645,8 +1645,8 @@
         "manuscript_title": "Factorial Linear Forms and Denominators Detailed Proofs and Rationality Criteria"
       },
       "local_pdf": "paper/68/erdos68-factorial-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:415cb5beab327bc915f604ea62220ac9edb96708e43ee3ca2037f3445fa706e4",
-      "pdf_byte_count": 323997,
+      "pdf_sha256": "sha256:bfccca24acf34514cf7f4766bb299f336dafc94cb66d271fab440db483e8d683",
+      "pdf_byte_count": 324015,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -1874,8 +1874,8 @@
       ],
       "citations_rendered": 24,
       "local_pdf": "paper/243/erdos-243-reciprocal-tail-rigidity.pdf",
-      "pdf_sha256": "sha256:bf318bc614b65265ac2f029b700c6660218d4c65885ab480b0903cc0b66e66a1",
-      "pdf_byte_count": 147206,
+      "pdf_sha256": "sha256:572fec2e5b0770291e7e27f12e5d47f0e5c52481e9499a6ab2cc69a3c1317d83",
+      "pdf_byte_count": 147198,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -2317,8 +2317,8 @@
       ],
       "citations_rendered": 62,
       "local_pdf": "paper/243/erdos243-reciprocal-tail-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:60eff4671411cf1a3359ac21836c21caeb2d0300905f7044b7dcd5a9f4f94b39",
-      "pdf_byte_count": 381042,
+      "pdf_sha256": "sha256:2d80d49f534055826b4b4950f7211b9b6b1d9736b41adc978ac1be63520b776f",
+      "pdf_byte_count": 381038,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -2508,8 +2508,8 @@
         "manuscript_title": "Integral Relations among Totient Sections"
       },
       "local_pdf": "paper/249/erdos-249-binary-totient-series.pdf",
-      "pdf_sha256": "sha256:e438d82f2bbcb40473e8254e26f004a247c906811f381c1907c1094a6932f8f9",
-      "pdf_byte_count": 120209,
+      "pdf_sha256": "sha256:9b8fce7de1361b17bb8adea510e10433b5cc4a409a7fae4df4a6f6f23867a013",
+      "pdf_byte_count": 120211,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -3587,8 +3587,8 @@
       ],
       "citations_rendered": 57,
       "local_pdf": "paper/249/erdos249-totient-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:d40de1f47ca2377ce5cd5a5e033f5463a7c17ae5e474584970f614d10b814b53",
-      "pdf_byte_count": 861368,
+      "pdf_sha256": "sha256:06304e8e2eaceee65b7050f99ac04d3d4face035e09e6c7c78f63198ea4d736d",
+      "pdf_byte_count": 861112,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -3762,8 +3762,8 @@
       ],
       "citations_rendered": 23,
       "local_pdf": "paper/251/erdos-251-prime-gap-dyadic-series.pdf",
-      "pdf_sha256": "sha256:67701b18e058f5f06da8deb112d631135a8a8e63eace86efeee6a602ecf7068d",
-      "pdf_byte_count": 113084,
+      "pdf_sha256": "sha256:d6a7e253544f0bdac834307baa115dacff184812c41dffb25a4acd705afee0e5",
+      "pdf_byte_count": 113080,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -4139,8 +4139,8 @@
       ],
       "citations_rendered": 67,
       "local_pdf": "paper/251/erdos251-prime-gap-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:109a9a5dbc507c23b6547df907a716da5d25936846818e74360e8c57503767a6",
-      "pdf_byte_count": 300443,
+      "pdf_sha256": "sha256:3197b425a2a8eba17b8b921a3c83ee3c1e49b29c5f59077127c71056b9ba7658",
+      "pdf_byte_count": 300437,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -4230,7 +4230,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos-257-mersenne-support-subseries.md",
       "local_source": "paper/257/erdos-257-mersenne-support-subseries.tex",
-      "source_sha256": "sha256:dc3986fdadf0e875ef95894e7cab1eb36f42dddfcf2bceb1eea588e556a3fd0b",
+      "source_sha256": "sha256:6f9961dc0307a7f7896cebd0cb8db09330c22cd39c88aefc73b36f57348ca713",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -4319,109 +4319,109 @@
           "level": 1,
           "id": "sec:map",
           "title": "Limits of the small-displacement criterion",
-          "line": 500
+          "line": 501
         },
         {
           "level": 2,
           "id": "sec:separated-support-transfer",
           "title": "Algebraic bases on separated supports",
-          "line": 524
+          "line": 525
         },
         {
           "level": 1,
           "id": "sec:reciprocal-support",
           "title": "Reciprocal-summable supports",
-          "line": 534
+          "line": 535
         },
         {
           "level": 1,
           "id": "sec:period",
           "title": "Finite-support denominator periods",
-          "line": 599
+          "line": 600
         },
         {
           "level": 1,
           "id": "sec:rational-membership",
           "title": "Rational membership",
-          "line": 627
+          "line": 628
         },
         {
           "level": 2,
           "id": "sec:forced",
           "title": "Rational values and scaled tails",
-          "line": 633
+          "line": 634
         },
         {
           "level": 2,
           "id": "sec:geometry",
           "title": "The achievement set",
-          "line": 648
+          "line": 649
         },
         {
           "level": 2,
           "id": "sec:actual-repairs",
           "title": "The greedy recurrence",
-          "line": 666
+          "line": 667
         },
         {
           "level": 1,
           "id": "sec:open",
           "title": "Integer quotients, approximation and further questions",
-          "line": 745
+          "line": 746
         },
         {
           "level": 4,
           "id": "integer-quotients-for-121.",
           "title": "Integer quotients for 1/21.",
-          "line": 751
+          "line": 752
         },
         {
           "level": 4,
           "id": "approximation-to-12-by-finite-supports.",
           "title": "Approximation to 1/2 by finite supports.",
-          "line": 822
+          "line": 823
         },
         {
           "level": 4,
           "id": "finite-families-with-a-shared-prefix.",
           "title": "Finite families with a shared prefix.",
-          "line": 862
+          "line": 863
         },
         {
           "level": 1,
           "id": "app:elementary-details",
           "title": "Elementary details used in the proofs",
-          "line": 930
+          "line": 931
         },
         {
           "level": 4,
           "id": "cyclotomic-prime-power-fact.",
           "title": "Cyclotomic prime-power fact.",
-          "line": 934
+          "line": 935
         },
         {
           "level": 4,
           "id": "exact-scalar-cover-cost.",
           "title": "Exact scalar cover cost.",
-          "line": 949
+          "line": 950
         },
         {
           "level": 2,
           "id": "the-cost-for-a-finite-set-of-divisors",
           "title": "The cost for a finite set of divisors",
-          "line": 962
+          "line": 963
         },
         {
           "level": 1,
           "id": "app:sources",
           "title": "Sources and formal verification",
-          "line": 987
+          "line": 988
         }
       ],
       "citations_rendered": 24,
       "local_pdf": "paper/257/erdos-257-mersenne-support-subseries.pdf",
-      "pdf_sha256": "sha256:1af62f16ead7d782bd5b5c8fe6caf162f513992827e5114b69c1a89676b39a69",
-      "pdf_byte_count": 193916,
+      "pdf_sha256": "sha256:630098a75b40932e20b693bc6e7067b1774f7e3de6cc3723de6be04e80000280",
+      "pdf_byte_count": 193889,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -4434,7 +4434,7 @@
           {
             "id": "sec:reciprocal-support",
             "title": "Reciprocal-summable supports",
-            "line": 534
+            "line": 535
           },
           {
             "id": "sec:eight-return-extensions",
@@ -4444,7 +4444,7 @@
           {
             "id": "sec:open",
             "title": "Integer quotients, approximation and further questions",
-            "line": 745
+            "line": 746
           }
         ],
         "unresolved_count": 0
@@ -4487,7 +4487,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md",
       "local_source": "paper/257/erdos257-mersenne-reasoning-surface.tex",
-      "source_sha256": "sha256:09285ac50fbb892b4a027489ccaf1e986fc72d502a761c343c6cb6334a321489",
+      "source_sha256": "sha256:48455e4e35a64d99be6b277ade72018431d12290618928f14aaa373c93f77de7",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -5469,8 +5469,8 @@
       ],
       "citations_rendered": 42,
       "local_pdf": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:59445e943ac9586d1bc2793a56e70704231ed2a9d679411a375ae24023b421bf",
-      "pdf_byte_count": 835067,
+      "pdf_sha256": "sha256:7544532c0fdafee3889316e7c0c079bf4a854f930aaed0aea27a34d229e69785",
+      "pdf_byte_count": 835009,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6163,8 +6163,8 @@
       ],
       "citations_rendered": 59,
       "local_pdf": "paper/269/erdos269-running-lcm-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:39a6cee1ba4d19ffc8f35e8725f41006ced21d23c80e982d73dd53ba45a40431",
-      "pdf_byte_count": 430215,
+      "pdf_sha256": "sha256:a6d9a562fe39059512bd9f3a99c36e27ac6973f648c0ef6f57b415f8e7341f41",
+      "pdf_byte_count": 430211,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6362,8 +6362,8 @@
       ],
       "citations_rendered": 23,
       "local_pdf": "paper/269/erdos-269-three-prime-running-lcm.pdf",
-      "pdf_sha256": "sha256:4b8ac179046df934ccc7aee723be8994507e1978505b4475ab81329a50ae4dab",
-      "pdf_byte_count": 135503,
+      "pdf_sha256": "sha256:80a8f9379a838b08dd7880fd7697134e5bbd890e1774a469fafa536139970f9b",
+      "pdf_byte_count": 135501,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -6633,7 +6633,7 @@
       ],
       "citations_rendered": 30,
       "local_pdf": "paper/1041/erdos-1041-lemniscate-newton-flow.pdf",
-      "pdf_sha256": "sha256:feebe127ea8276dc7160f822b2caaf318c03a018bd88ad0e6a486424f3f99bb2",
+      "pdf_sha256": "sha256:f9ce7d062d8845c1f08ca51daf0c03377415fea25ed014db75ef4cfbb123280a",
       "pdf_byte_count": 151326,
       "first_pass": {
         "stated_by_the_paper": false,
@@ -7148,8 +7148,8 @@
       ],
       "citations_rendered": 74,
       "local_pdf": "paper/1041/erdos1041-lemniscate-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:d483e77c5b3ba1c0b55513a786f1bbe9dcdab16e9eb0a8e0fbdca990a3e877e0",
-      "pdf_byte_count": 486740,
+      "pdf_sha256": "sha256:8f5d721725779b39274f84985936228372916522e838f75f03cf8fee51d3fd34",
+      "pdf_byte_count": 486717,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7351,8 +7351,8 @@
         "manuscript_title": "Hankel Determinants of Geometric Moments and Rational Lambert Values"
       },
       "local_pdf": "paper/1049/erdos-1049-rational-base-lambert.pdf",
-      "pdf_sha256": "sha256:47158ba221c458dd8d481defff08a2fb84de862aae7adf9091e839fa39585986",
-      "pdf_byte_count": 153333,
+      "pdf_sha256": "sha256:53a92e623dcf9e846cdc1ca11f86eef43d9f5d9b7db3fcdbeec7eec266073923",
+      "pdf_byte_count": 153346,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -7810,8 +7810,8 @@
         "manuscript_title": "Geometric Moments and Rational Lambert Values: Proofs and Further Results"
       },
       "local_pdf": "paper/1049/erdos1049-rational-base-lambert-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:a194f232dd94d768eea2f0052eafd9c4135ffa7f4c4445eada8bbe735a37cfcd",
-      "pdf_byte_count": 473894,
+      "pdf_sha256": "sha256:104916df2e5adedc7177e202756efb2f545d46998e8c8afdc2f2706aa02b7a11",
+      "pdf_byte_count": 473896,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
@@ -8182,7 +8182,7 @@
       "copyright": "2026 Will Cook",
       "local_full_text": "docs/papers/full-text/claim-faithful-publication-systems-paper.md",
       "local_source": "paper/systems/claim-faithful-publication-systems-paper.tex",
-      "source_sha256": "sha256:ebab01d5374035e17d31e7e5330acd89d13c9b46042639354000e82b81f26336",
+      "source_sha256": "sha256:75d90e859f2ada14a0887c9460eeb369300511b32508d023c0754e9adef1934b",
       "canonical_source_commit": null,
       "canonical_source_pin_status": "local_unpublished",
       "canonical_source_url": null,
@@ -8438,8 +8438,8 @@
       ],
       "citations_rendered": 52,
       "local_pdf": "paper/systems/claim-faithful-publication-systems-paper.pdf",
-      "pdf_sha256": "sha256:04905e5d8bef48da468f33a6d9666aa25612dab49965108b21af002a491805e9",
-      "pdf_byte_count": 180196,
+      "pdf_sha256": "sha256:78854152c8a9650c94d107925b2b6472d211d45d3896fe54208eb3ce65ad62f9",
+      "pdf_byte_count": 180167,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",

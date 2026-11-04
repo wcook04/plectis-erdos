@@ -2,26 +2,26 @@
   "boundary": "Checks registered asserting environments and registered claim spans. Unregistered prose assertions, mathematical equivalence, correctness of ordinary proofs, Lean compilation, Comparator replay and PDF freshness are not established by this audit.",
   "global_findings": [],
   "input_sha256": {
-    "docs/paper_lean_coverage.json": "sha256:132c36881b9d10304bcfecdbfb73b6ed4d60db90b645203667ae93eeeff50127",
-    "docs/papers/corpus.json": "sha256:44bb61d9c18a9495b0e43570687c2fea0a3236545ce75ea015bbc20665192fe2",
-    "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md": "sha256:485fc1d89029edcfcc5ba1a628700e9eafe153cf93df10f569826e95c8455ca1",
-    "docs/papers/full-text/erdos-1049-rational-base-lambert.md": "sha256:9a68e578ac35c79fc3c1eb5757565a46bcacab3b65eca71ee8390d4fd5cfebf6",
-    "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md": "sha256:3940ec6f92e386f6663a0761c72e4fed8bd31f7e624ba7967e5b906aacf5ede5",
-    "docs/papers/full-text/erdos-249-binary-totient-series.md": "sha256:2c847bf432391ccda1ec01c4461413d710585c6a9234f095b97e7f8b009b0fe4",
-    "docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md": "sha256:16e39f718430189bf7c0713381d8225e346c28607e0f65009c85cf1136135178",
-    "docs/papers/full-text/erdos-257-mersenne-support-subseries.md": "sha256:37beed6af1038beb2d901a5af22a86980a7f2bc5c27c8c40e26a524ee6a247ca",
-    "docs/papers/full-text/erdos-269-three-prime-running-lcm.md": "sha256:f3c1c2ce5ff1f91334f6768a648738b785854520fd622a110066ae0163d0d0e2",
-    "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md": "sha256:7cd74177e49ca2539c68d05e38214521d7e060ad55677c0ab5022be30a610c24",
-    "docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md": "sha256:7251fa2e93dc36383dadb4b8a356df976846048c1af636eab13042354c14c1df",
-    "docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md": "sha256:a0f6ba0a8d4b36a8764cb5b52d361af50c2a47d24b1aca5e6f18edfc410fdeb2",
-    "docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md": "sha256:207826f3032688da020e9bb0eb4ef608e8c7632300a44734364809be911665b4",
-    "docs/papers/full-text/erdos249-totient-reasoning-surface.md": "sha256:a8dfc3250a33fd0c0c0281b49960fc294c3d61a53d089e55e9911e26a601b8e2",
-    "docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md": "sha256:ddfc4be759b93827ea282e30285b97b40fc04b4598b1caf566da84f9f335c064",
-    "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md": "sha256:ecd5ecb3d985f9bf345d7d7993cd686cf4f5bf2b81c49d143115d28eb88131ca",
-    "docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md": "sha256:2a882392b695457f8cbb79166cc990b20c744d496f972de5b4978c6c1c275b67",
-    "docs/papers/full-text/erdos68-factorial-reasoning-surface.md": "sha256:4f5854cf808789d2bb8111724a69918766ccfe6b25afebc0e25ec63b7d072fb0",
+    "docs/paper_lean_coverage.json": "sha256:45699116666618b542beeb2be08c143cc598d448f6b11aba53a0bd5b00399e1a",
+    "docs/papers/corpus.json": "sha256:0d7afcce0fb02c3729bda89e8ae7d2b7621c9aae00865f05989f56f6e04adf08",
+    "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md": "sha256:3ecf528f70ed33ec8d6c612b2f4220bd04e389e7376fa541afdfbf0e20318b4b",
+    "docs/papers/full-text/erdos-1049-rational-base-lambert.md": "sha256:69b4ef09fe5748e528be6164c13217a991e3f731b9b9c85468bf1112f50a0620",
+    "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md": "sha256:f14532df577809875e81e8545ff2e2283be0cb906e9d831ebf9f44afd5371893",
+    "docs/papers/full-text/erdos-249-binary-totient-series.md": "sha256:f630e8164ab354fe1a705925ccc6ed61aac0b786848b2973bde983549f1e0eb3",
+    "docs/papers/full-text/erdos-251-prime-gap-dyadic-series.md": "sha256:4bed520e67fd0cec7c95b080c0522c3ccad62ec37be0e2f84b65f85c8044d4ed",
+    "docs/papers/full-text/erdos-257-mersenne-support-subseries.md": "sha256:8e1373a116ab893d1577be0808ab89b6b03c50b6ede6d9733a04aa01f484f0d8",
+    "docs/papers/full-text/erdos-269-three-prime-running-lcm.md": "sha256:d6405c59f6c7a3fee18369b7e500faae787de09117756d1629250319933f6824",
+    "docs/papers/full-text/erdos-68-factorial-denominator-irrationality.md": "sha256:c2123a80fc3d619f4ddb85572e3654dbac8701320f36c3ac464ca798b73bab05",
+    "docs/papers/full-text/erdos1041-lemniscate-reasoning-surface.md": "sha256:a19e41cbfaaece062851cd73ab7584e3f7a052f129f59e2a4a189e2e277940e5",
+    "docs/papers/full-text/erdos1049-rational-base-lambert-reasoning-surface.md": "sha256:e8d7c7f11f2b055144fd9e91fb906680294dfdc884567af22bf2b67ff30fe898",
+    "docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md": "sha256:d1c23a28be0f6cdbc94ff6f9745cd201fb14e318409852b1e487b70d2d03d414",
+    "docs/papers/full-text/erdos249-totient-reasoning-surface.md": "sha256:c124601edddd812b3bb65a0144416ce99044236b4e24454aac829b8d5b881be8",
+    "docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md": "sha256:2340cfd928919d04ecf7fab57cf7fb858ae3ed8c96f9d000482d650b71158253",
+    "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md": "sha256:778f655560fdffab908b95a64dad67a9150b887c16895405e0d28a0ec873fa9d",
+    "docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md": "sha256:7731c394c2fc5c255d27076d751e0fef1bf19460c3d5423c7ee01f978655d640",
+    "docs/papers/full-text/erdos68-factorial-reasoning-surface.md": "sha256:2dc9a94c4b714f84d8bbab25c31634b9af924e69c3dcfb8fd6020faf41913cb9",
     "docs/papers/paper_corpus_renderer.py": "sha256:0bd25eba944e333c6fe63756e3cc274bcc9561337f79079df7f4bcee4645028c",
-    "evidence/paper_evidence.json": "sha256:8c7de6f8f5e082fa91698d0c8314620207603080c348a526aa31fa250042b423",
+    "evidence/paper_evidence.json": "sha256:de893e2105d3aa082af886fdd942b976aeaa6094f95e9b620b145e54d4ba7e2f",
     "lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean": "sha256:c6174888a3c59acf20f827b01a42bbffce05112eb7c7a3f30350dc1af0fb8f19",
     "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean": "sha256:069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4",
     "lean/ErdosProblems/Erdos1049/AllRow/Producer.lean": "sha256:d144b89024846b30a267eb4879b2cf9406c98d9602061b399094e4a1296a4e30",
@@ -56,28 +56,28 @@
     "paper/249/erdos249-totient-reasoning-surface.tex": "sha256:2be13b340f9dafc4e3a3dcb34742a66225b3216015b6efa7ae3222c3e3d4a0ed",
     "paper/251/erdos-251-prime-gap-dyadic-series.tex": "sha256:fa4220506e9c2822a70b5d554d7626dcc026497d3bb571ae9f07cc273a3d3957",
     "paper/251/erdos251-prime-gap-reasoning-surface.tex": "sha256:db2a5b20038e07a9770ef3d11493bbe706ee883da69d3add57267bc2534c84bd",
-    "paper/257/erdos-257-mersenne-support-subseries.tex": "sha256:dc3986fdadf0e875ef95894e7cab1eb36f42dddfcf2bceb1eea588e556a3fd0b",
-    "paper/257/erdos257-mersenne-reasoning-surface.tex": "sha256:09285ac50fbb892b4a027489ccaf1e986fc72d502a761c343c6cb6334a321489",
+    "paper/257/erdos-257-mersenne-support-subseries.tex": "sha256:6f9961dc0307a7f7896cebd0cb8db09330c22cd39c88aefc73b36f57348ca713",
+    "paper/257/erdos257-mersenne-reasoning-surface.tex": "sha256:48455e4e35a64d99be6b277ade72018431d12290618928f14aaa373c93f77de7",
     "paper/269/erdos-269-three-prime-running-lcm.tex": "sha256:ac61a4c170358ab7006ac37c42a8201bd1c4dc8502d010204fcff66995fc1e2f",
     "paper/269/erdos269-running-lcm-reasoning-surface.tex": "sha256:27b68b4b0cf24ce2b4ca045ed96a303fc713164e33a2e646792c62fcddfa4f4c",
     "paper/68/erdos-68-factorial-denominator-irrationality.tex": "sha256:b4eba8fb48d81d851b0679a5d77bdc3b20e60913d48f403184365009d4f30edd",
     "paper/68/erdos68-factorial-reasoning-surface.tex": "sha256:0af0d85ec1beab46b63ef9a54e0326abb872d3c38403af575b2ca63ae9dea60d",
-    "paper/evidence/erdos-1041-lemniscate-newton-flow.tex": "sha256:c60b85cd02a4f493465fbd32c1bccecab7e8d11a0e28a5321ac62a8c2612ec6c",
-    "paper/evidence/erdos-1049-rational-base-lambert.tex": "sha256:c4e6515515effaf60879a0a41f057fed821263558b84d7840fcca132c4946e83",
-    "paper/evidence/erdos-243-reciprocal-tail-rigidity.tex": "sha256:0e7e160adf8e923389a043dcbe026ad47117224e41e32e439482b959f6e629c0",
-    "paper/evidence/erdos-249-binary-totient-series.tex": "sha256:14e84041b4cec4a73ce38c89903cfffc431d1d5a0d526bedac6273f11136dcaf",
-    "paper/evidence/erdos-251-prime-gap-dyadic-series.tex": "sha256:1503e2c6bd58455fe1bd1c53e5288b1af4d8bd76c16108a050589063d20700ab",
-    "paper/evidence/erdos-257-mersenne-support-subseries.tex": "sha256:722ce3fc0640d2a265e5dd747e1c1d9a5d87a65aa5975d51a664acfed4135fef",
-    "paper/evidence/erdos-269-three-prime-running-lcm.tex": "sha256:3423b65aad1bfd226e7dde1b807177e87e05cc3d618bef4928f830acb38d80f2",
-    "paper/evidence/erdos-68-factorial-denominator-irrationality.tex": "sha256:b769fad136514a48e1ea36d23191d3140b849fbf9676ea4e2279ebfe64f2abe5",
-    "paper/evidence/erdos1041-lemniscate-reasoning-surface.tex": "sha256:9da9d47d30da5719a9568419f21fa0ef6ee2ca6a4b6b5ea20c987cb1766ec2e3",
-    "paper/evidence/erdos1049-rational-base-lambert-reasoning-surface.tex": "sha256:40598a8029bfe0c8db72229ad40d1ffef53b110185e6238bffaff99aecfb0062",
-    "paper/evidence/erdos243-reciprocal-tail-reasoning-surface.tex": "sha256:0104e889a8d89ec6b5c7921287e8d8fddc9f799fd9d620b1f8b3c2b5a3da5949",
-    "paper/evidence/erdos249-totient-reasoning-surface.tex": "sha256:91d61a5d18554ffe705e1fdd27c1c77ba20fe6f82bd194990aa0f73097947fc8",
-    "paper/evidence/erdos251-prime-gap-reasoning-surface.tex": "sha256:1d722846605b1bd9faaedd3a9034a8f33d36984f1d6826bccb4c0e722ee6284d",
-    "paper/evidence/erdos257-mersenne-reasoning-surface.tex": "sha256:3ae0d45633dae1966b9dbcad7d3ef837698acfd238679766000f37b47d213f37",
-    "paper/evidence/erdos269-running-lcm-reasoning-surface.tex": "sha256:f62bede753be77e31c5015dc5546ed26b63a49bdfb0931c7c552418a39063de4",
-    "paper/evidence/erdos68-factorial-reasoning-surface.tex": "sha256:1a4adf5d82ec871f1b62e3b9af6d6e0c6470e6de5b5650392144acd526c84c85",
+    "paper/evidence/erdos-1041-lemniscate-newton-flow.tex": "sha256:3392c10faf0d3c01c656b80eecab5b8992451e95d507c085df9ef50cce5f20e2",
+    "paper/evidence/erdos-1049-rational-base-lambert.tex": "sha256:c4326ad997540fd72d56645be7ad6c538f21e95ae460d9e4c618b24f32ea325f",
+    "paper/evidence/erdos-243-reciprocal-tail-rigidity.tex": "sha256:383bf089a549b5b02a84a8bdd30b4a857222e4b9c0f90025067f37e90810d796",
+    "paper/evidence/erdos-249-binary-totient-series.tex": "sha256:833efda0bd7a6f97c0ff6a98091452bc8959cd8e5e61a98c0f53822220941b6b",
+    "paper/evidence/erdos-251-prime-gap-dyadic-series.tex": "sha256:7451fbcf989cc4509ac7fb1cf343f097ff8ad6ac7e421a5ffe8eb5a9029607cf",
+    "paper/evidence/erdos-257-mersenne-support-subseries.tex": "sha256:6b893fd7e633de06b03c2591d2d45015f80b92a72d748a8d9df665384a320f63",
+    "paper/evidence/erdos-269-three-prime-running-lcm.tex": "sha256:82de57bc4169f30a6b4658221a50cd71add392632c1770d2861848f4b63040ab",
+    "paper/evidence/erdos-68-factorial-denominator-irrationality.tex": "sha256:fbbe07a6049ab024e0cf3c8a393c28f583551c0bd6346c046cc7525984c5a83c",
+    "paper/evidence/erdos1041-lemniscate-reasoning-surface.tex": "sha256:c23c604f33c1a22f53a27010e686a02498b20a827e7e5a1983fa1b14fc3fed49",
+    "paper/evidence/erdos1049-rational-base-lambert-reasoning-surface.tex": "sha256:7f447d941ce4c42162e8f822022b8def67e569de7f50dedf8a9ccc0dee54a3a8",
+    "paper/evidence/erdos243-reciprocal-tail-reasoning-surface.tex": "sha256:11eba530f4fc653cd70ddc53c9eb8c1d1a97b6d4573927079e00dacaebacf981",
+    "paper/evidence/erdos249-totient-reasoning-surface.tex": "sha256:baa8fb12b77c583585a80372356af406e991ea7c541996bb828914a400062394",
+    "paper/evidence/erdos251-prime-gap-reasoning-surface.tex": "sha256:f84c814a79ce8b2bbbf150850d05b276e342a67c13986609d75a903eeee2cd1c",
+    "paper/evidence/erdos257-mersenne-reasoning-surface.tex": "sha256:8a8d09aa288d07379249c85c77dc7b0be6bda06cd980bc86b003ceac6503f1e2",
+    "paper/evidence/erdos269-running-lcm-reasoning-surface.tex": "sha256:01b5b3f6883c404e98cfd502909fc7f223eb5546b9dd1b43410b46b69ea4d87a",
+    "paper/evidence/erdos68-factorial-reasoning-surface.tex": "sha256:4898c8ca57bcfbfcffb0cf27c0e9ccc0fa7312b8a91022a6effe2067a5fd39e7",
     "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
     "paper/reasoning-parts/erdos1041/back.tex": "sha256:7c0796754f02f5feb9aadd6a37d7145d65bd53ddb0779dba48832b3bbb06fcb2",
     "paper/reasoning-parts/erdos1041/core.tex": "sha256:8c49b1116f4837d29ba8e922525f4ff0c5ffa08ba987c11f3c3a83dfc6046ecd",
@@ -108,7 +108,7 @@
     "paper/reasoning-parts/erdos251/extended_record.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos251/family_catalogue.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos251/preamble.tex": "sha256:5bfc3d35b9732283873164ba09752254037583c99da5db3cf4bf3dec05b5b070",
-    "paper/reasoning-parts/erdos257/a257_front.tex": "sha256:dbfdfb27e10b02bb168d0df9cf0d2deef7ad25f5375be9059bfe1bb2b4295a3f",
+    "paper/reasoning-parts/erdos257/a257_front.tex": "sha256:6b0bd9dc1d446fa0d447fe88deacafa1a8cb75c152d08903202d6dbf91dd0230",
     "paper/reasoning-parts/erdos257/a257_invent.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos257/a257_newdecls.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "paper/reasoning-parts/erdos257/a257_p0.tex": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -137,13 +137,13 @@
     "scripts/reasoning_record_audit.py": "sha256:5181f76da0658a08400a1fc35c6f72dc0370e375fd4d11caf41a4eb38ce5c62b"
   },
   "navigation_sha256": {
-    "docs/reading-edition/RECORDS.md": "sha256:8fed6abaf61324aaf6f1eb0a0fce424a714c1c6a4ef7ed3554b957bf9c782f0c",
+    "docs/reading-edition/RECORDS.md": "sha256:7b0aad8749ccf8d25cca1e91639ad0d0bfa12ffc8bc3b10de1c083b2e0deefe6",
     "docs/reading-edition/records/erdos1041.md": "sha256:7d7b4cfe965f823dab932fe54631cfca4c3b20b016f4e5f9fe69b39e2b5822ac",
     "docs/reading-edition/records/erdos1049.md": "sha256:87ecef1052abf89547a2ac49df2aac11ddc2f8b481f4b953ace09c90ac05468f",
     "docs/reading-edition/records/erdos243.md": "sha256:78eff1ff1b734084914d4e5cc836e8c5ac8350968a9f618eae6299f745ffe0a6",
     "docs/reading-edition/records/erdos249.md": "sha256:17f07b24a181f6f491ec80a6308b06c57679c12610f75ca1a4f85742bc7a3f6a",
     "docs/reading-edition/records/erdos251.md": "sha256:12c0302b5da2ccbacd1c4a7f04c100ce7580550c0d754268b161c7d38e99afe6",
-    "docs/reading-edition/records/erdos257.md": "sha256:d6cb7f1c1cca9750ec5fce8cb3086bf426acb16665c6b0e0dfe2d4c4f0c4f6ec",
+    "docs/reading-edition/records/erdos257.md": "sha256:f5b22818bae74fc7991c9e50778a4f19dc0a8c0baac41ec4bc380973848b4b06",
     "docs/reading-edition/records/erdos269.md": "sha256:e1cf7d2e5666de1f92267f5cebfb3372fc59ab411dfdb0c4b8c0155117f1664e",
     "docs/reading-edition/records/erdos68.md": "sha256:a55fc05c420c652948917e305419453181673a09cf37de87e78b383562a89485"
   },
@@ -7979,36 +7979,10 @@
         {
           "candidates": [],
           "label": "res:strict-mixed-supports",
-          "ledger_comparator_status": "not_applicable",
-          "ledger_lean_status": "none",
-          "long_locations": [
-            {
-              "end_line": 921,
-              "label": null,
-              "line": 887,
-              "path": "paper/reasoning-parts/erdos257/a257_front.tex"
-            }
-          ],
-          "matches": [
-            {
-              "basis": "authored_correspondence",
-              "long_claim": null,
-              "rationale": "The long passage now repeats the short corollary’s union argument with both host hypotheses explicit and points to the existing mixed criterion. The differing printed and Lean constructions remain distinguished. The union argument depends on the short paper’s host-existence proposition; the printed host constructions have not been moved or independently reviewed here.",
-              "support": {
-                "availability": "located",
-                "kind": "ordinary_proof_text",
-                "locator": {
-                  "end_line": 921,
-                  "label": null,
-                  "line": 887,
-                  "path": "paper/reasoning-parts/erdos257/a257_front.tex"
-                },
-                "review_status": "Ordinary proof text transferred from the short paper; no independent review recorded.",
-                "sha256": "sha256:40acfeaf5af4e93798fe0af9687d0dab8a4b5707d673ccb905a2ab6189e56a79",
-                "validation": "text_presence_and_digest_only; proof_correctness_not_checked"
-              }
-            }
-          ],
+          "ledger_comparator_status": "pending",
+          "ledger_lean_status": "exact",
+          "long_locations": [],
+          "matches": [],
           "short_claim": "erdos-257-mersenne-support-subseries#res:strict-mixed-supports",
           "short_location": {
             "end_line": 795,
@@ -8016,7 +7990,7 @@
             "line": 789,
             "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
           },
-          "state": "authored_proof_text_linked",
+          "state": "unresolved",
           "statement_sha256": "sha256:ec8cba3f6409742197fa4fa63d81b4e71f2aba928597821a4600ea8cfa8c3f4a"
         },
         {
@@ -8205,6 +8179,39 @@
           }
         },
         {
+          "code": "stale_or_missing_proof",
+          "detail": "stale support span; text changed after correspondence review",
+          "long_location": {
+            "end": "The mixed implication itself is kernel-checked.",
+            "path": "paper/reasoning-parts/erdos257/a257_front.tex",
+            "selector": "between",
+            "sha256": "sha256:40acfeaf5af4e93798fe0af9687d0dab8a4b5707d673ccb905a2ab6189e56a79",
+            "start": "\\paragraph{Why the mixed criterion is strict.}\\label{record257:strict-mixed-proof}"
+          },
+          "severity": "error",
+          "short_claim": "erdos-257-mersenne-support-subseries#res:strict-mixed-supports",
+          "short_location": {
+            "end_line": 795,
+            "label": "res:strict-mixed-supports",
+            "line": 789,
+            "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
+          }
+        },
+        {
+          "code": "unresolved_short_long_link",
+          "detail": "No accepted complete evidence match or hash-bound authored proof link. This is a correspondence gap, not a finding that the mathematics is false or absent.",
+          "long_locations": [],
+          "long_record": "paper/257/erdos257-mersenne-reasoning-surface.tex",
+          "severity": "error",
+          "short_claim": "erdos-257-mersenne-support-subseries#res:strict-mixed-supports",
+          "short_location": {
+            "end_line": 795,
+            "label": "res:strict-mixed-supports",
+            "line": 789,
+            "path": "paper/257/erdos-257-mersenne-support-subseries.tex"
+          }
+        },
+        {
           "code": "short_proof_explained_long_link_open",
           "detail": "A hash-bound complete proof is retained in the short paper. No long-record correspondence is asserted by this disposition.",
           "severity": "warning",
@@ -8291,1539 +8298,1539 @@
         },
         {
           "location": {
-            "end_line": 1163,
+            "end_line": 1165,
             "label": "thm:geometry",
-            "line": 1156,
+            "line": 1158,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:geometry"
         },
         {
           "location": {
-            "end_line": 1174,
+            "end_line": 1176,
             "label": "thm:supported-dichotomy",
-            "line": 1165,
+            "line": 1167,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:supported-dichotomy"
         },
         {
           "location": {
-            "end_line": 1254,
+            "end_line": 1256,
             "label": "thm:greedy-survival",
-            "line": 1242,
+            "line": 1244,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:greedy-survival"
         },
         {
           "location": {
-            "end_line": 1409,
+            "end_line": 1411,
             "label": "prop:canon",
-            "line": 1388,
+            "line": 1390,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:canon"
         },
         {
           "location": {
-            "end_line": 1489,
+            "end_line": 1491,
             "label": "lem:collapse-mech",
-            "line": 1480,
+            "line": 1482,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:collapse-mech"
         },
         {
           "location": {
-            "end_line": 1497,
+            "end_line": 1499,
             "label": "prop:collapse",
-            "line": 1491,
+            "line": 1493,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:collapse"
         },
         {
           "location": {
-            "end_line": 1525,
+            "end_line": 1527,
             "label": "lem:sqrt-witness",
-            "line": 1519,
+            "line": 1521,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:sqrt-witness"
         },
         {
           "location": {
-            "end_line": 1565,
+            "end_line": 1567,
             "label": "prop:collapsed-list",
-            "line": 1542,
+            "line": 1544,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:collapsed-list"
         },
         {
           "location": {
-            "end_line": 1625,
+            "end_line": 1627,
             "label": "prop:local-void",
-            "line": 1601,
+            "line": 1603,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:local-void"
         },
         {
           "location": {
-            "end_line": 1653,
+            "end_line": 1655,
             "label": "prop:exponent-gap",
-            "line": 1638,
+            "line": 1640,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:exponent-gap"
         },
         {
           "location": {
-            "end_line": 1691,
+            "end_line": 1693,
             "label": "thm:one-sided",
-            "line": 1683,
+            "line": 1685,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:one-sided"
         },
         {
           "location": {
-            "end_line": 2171,
+            "end_line": 2173,
             "label": "thm:full-support",
-            "line": 2161,
+            "line": 2163,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:full-support"
         },
         {
           "location": {
-            "end_line": 2192,
+            "end_line": 2194,
             "label": "thm:purely-periodic-support",
-            "line": 2187,
+            "line": 2189,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:purely-periodic-support"
         },
         {
           "location": {
-            "end_line": 2201,
+            "end_line": 2203,
             "label": "thm:eventually-periodic-support",
-            "line": 2194,
+            "line": 2196,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:eventually-periodic-support"
         },
         {
           "location": {
-            "end_line": 2206,
+            "end_line": 2208,
             "label": "thm:residue-class-support",
-            "line": 2203,
+            "line": 2205,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:residue-class-support"
         },
         {
           "location": {
-            "end_line": 2212,
+            "end_line": 2214,
             "label": "thm:odd-support",
-            "line": 2208,
+            "line": 2210,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:odd-support"
         },
         {
           "location": {
-            "end_line": 2239,
+            "end_line": 2241,
             "label": "thm:topology",
-            "line": 2223,
+            "line": 2225,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:topology"
         },
         {
           "location": {
-            "end_line": 2252,
+            "end_line": 2254,
             "label": "thm:greedy-survival-record",
-            "line": 2241,
+            "line": 2243,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:greedy-survival-record"
         },
         {
           "location": {
-            "end_line": 2372,
+            "end_line": 2374,
             "label": "thm:master-identity",
-            "line": 2343,
+            "line": 2345,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:master-identity"
         },
         {
           "location": {
-            "end_line": 2407,
+            "end_line": 2409,
             "label": "thm:real-form",
-            "line": 2376,
+            "line": 2378,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:real-form"
         },
         {
           "location": {
-            "end_line": 2448,
+            "end_line": 2450,
             "label": "thm:dynamics",
-            "line": 2411,
+            "line": 2413,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:dynamics"
         },
         {
           "location": {
-            "end_line": 2589,
+            "end_line": 2591,
             "label": "thm:fatal-absorbing",
-            "line": 2583,
+            "line": 2585,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:fatal-absorbing"
         },
         {
           "location": {
-            "end_line": 2610,
+            "end_line": 2612,
             "label": "thm:seam-limit",
-            "line": 2598,
+            "line": 2600,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:seam-limit"
         },
         {
           "location": {
-            "end_line": 2655,
+            "end_line": 2657,
             "label": "thm:two-channel-cap",
-            "line": 2642,
+            "line": 2644,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:two-channel-cap"
         },
         {
           "location": {
-            "end_line": 2674,
+            "end_line": 2676,
             "label": "thm:second-channel",
-            "line": 2657,
+            "line": 2659,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:second-channel"
         },
         {
           "location": {
-            "end_line": 2689,
+            "end_line": 2691,
             "label": "thm:straddle-closed-set",
-            "line": 2676,
+            "line": 2678,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:straddle-closed-set"
         },
         {
           "location": {
-            "end_line": 2711,
+            "end_line": 2713,
             "label": "thm:largest-skip-late",
-            "line": 2691,
+            "line": 2693,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:largest-skip-late"
         },
         {
           "location": {
-            "end_line": 2721,
+            "end_line": 2723,
             "label": "thm:middle-producer-escape",
-            "line": 2713,
+            "line": 2715,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:middle-producer-escape"
         },
         {
           "location": {
-            "end_line": 2741,
+            "end_line": 2743,
             "label": "thm:middle-allright-defect",
-            "line": 2728,
+            "line": 2730,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:middle-allright-defect"
         },
         {
           "location": {
-            "end_line": 2761,
+            "end_line": 2763,
             "label": "thm:two-sided-dyadic",
-            "line": 2743,
+            "line": 2745,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:two-sided-dyadic"
         },
         {
           "location": {
-            "end_line": 2795,
+            "end_line": 2797,
             "label": "thm:upper-reset-band",
-            "line": 2783,
+            "line": 2785,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:upper-reset-band"
         },
         {
           "location": {
-            "end_line": 2809,
+            "end_line": 2811,
             "label": "thm:mobius-centred-nonneg",
-            "line": 2797,
+            "line": 2799,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:mobius-centred-nonneg"
         },
         {
           "location": {
-            "end_line": 2825,
+            "end_line": 2827,
             "label": "thm:sqrt-bound-route",
-            "line": 2811,
+            "line": 2813,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:sqrt-bound-route"
         },
         {
           "location": {
-            "end_line": 2848,
+            "end_line": 2850,
             "label": "thm:frozen-margin",
-            "line": 2827,
+            "line": 2829,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:frozen-margin"
         },
         {
           "location": {
-            "end_line": 2856,
+            "end_line": 2858,
             "label": "thm:full-support-catalogue",
-            "line": 2850,
+            "line": 2852,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:full-support-catalogue"
         },
         {
           "location": {
-            "end_line": 2862,
+            "end_line": 2864,
             "label": "thm:pairwise-coprime",
-            "line": 2858,
+            "line": 2860,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:pairwise-coprime"
         },
         {
           "location": {
-            "end_line": 2878,
+            "end_line": 2880,
             "label": "thm:weighted-coeff-engine",
-            "line": 2864,
+            "line": 2866,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:weighted-coeff-engine"
         },
         {
           "location": {
-            "end_line": 2916,
+            "end_line": 2918,
             "label": "thm:lcm-gap-engine",
-            "line": 2909,
+            "line": 2911,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:lcm-gap-engine"
         },
         {
           "location": {
-            "end_line": 2931,
+            "end_line": 2933,
             "label": "thm:factorial-twopow-support",
-            "line": 2918,
+            "line": 2920,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:factorial-twopow-support"
         },
         {
           "location": {
-            "end_line": 2942,
+            "end_line": 2944,
             "label": "thm:multiples-support",
-            "line": 2933,
+            "line": 2935,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:multiples-support"
         },
         {
           "location": {
-            "end_line": 2962,
+            "end_line": 2964,
             "label": "thm:periodic-support",
-            "line": 2949,
+            "line": 2951,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:periodic-support"
         },
         {
           "location": {
-            "end_line": 2969,
+            "end_line": 2971,
             "label": "thm:eventually-periodic",
-            "line": 2964,
+            "line": 2966,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:eventually-periodic"
         },
         {
           "location": {
-            "end_line": 2977,
+            "end_line": 2979,
             "label": "thm:residue-odd",
-            "line": 2971,
+            "line": 2973,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:residue-odd"
         },
         {
           "location": {
-            "end_line": 3000,
+            "end_line": 3002,
             "label": "thm:signed-periodic",
-            "line": 2984,
+            "line": 2986,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:signed-periodic"
         },
         {
           "location": {
-            "end_line": 3027,
+            "end_line": 3029,
             "label": "thm:mersenne-channel-survival",
-            "line": 3013,
+            "line": 3015,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:mersenne-channel-survival"
         },
         {
           "location": {
-            "end_line": 3042,
+            "end_line": 3044,
             "label": "thm:mersenne-channel-growth",
-            "line": 3029,
+            "line": 3031,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:mersenne-channel-growth"
         },
         {
           "location": {
-            "end_line": 3121,
+            "end_line": 3123,
             "label": "thm:mobius-lambert-identity",
-            "line": 3106,
+            "line": 3108,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:mobius-lambert-identity"
         },
         {
           "location": {
-            "end_line": 3134,
+            "end_line": 3136,
             "label": "cor:negative-mobius-overshoot",
-            "line": 3123,
+            "line": 3125,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#cor:negative-mobius-overshoot"
         },
         {
           "location": {
-            "end_line": 3182,
+            "end_line": 3184,
             "label": "thm:half-skip-dichotomy",
-            "line": 3167,
+            "line": 3169,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:half-skip-dichotomy"
         },
         {
           "location": {
-            "end_line": 3197,
+            "end_line": 3199,
             "label": "thm:nine-way-hub",
-            "line": 3184,
+            "line": 3186,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:nine-way-hub"
         },
         {
           "location": {
-            "end_line": 3212,
+            "end_line": 3214,
             "label": "lem:eventually-right-impossible",
-            "line": 3204,
+            "line": 3206,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:eventually-right-impossible"
         },
         {
           "location": {
-            "end_line": 3235,
+            "end_line": 3237,
             "label": "lem:mersenne-tail-weight",
-            "line": 3214,
+            "line": 3216,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:mersenne-tail-weight"
         },
         {
           "location": {
-            "end_line": 3250,
+            "end_line": 3252,
             "label": "thm:greedy-survival-catalogue",
-            "line": 3237,
+            "line": 3239,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:greedy-survival-catalogue"
         },
         {
           "location": {
-            "end_line": 3272,
+            "end_line": 3274,
             "label": "lem:rank-step-trichotomy",
-            "line": 3252,
+            "line": 3254,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:rank-step-trichotomy"
         },
         {
           "location": {
-            "end_line": 3288,
+            "end_line": 3290,
             "label": "lem:fatal-gap-exclusion",
-            "line": 3274,
+            "line": 3276,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:fatal-gap-exclusion"
         },
         {
           "location": {
-            "end_line": 3298,
+            "end_line": 3300,
             "label": "lem:half-endpoint-kills",
-            "line": 3290,
+            "line": 3292,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:half-endpoint-kills"
         },
         {
           "location": {
-            "end_line": 3314,
+            "end_line": 3316,
             "label": "lem:straddle-agrees-greedy",
-            "line": 3300,
+            "line": 3302,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:straddle-agrees-greedy"
         },
         {
           "location": {
-            "end_line": 3331,
+            "end_line": 3333,
             "label": "thm:last-skip-iff-fatal",
-            "line": 3316,
+            "line": 3318,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:last-skip-iff-fatal"
         },
         {
           "location": {
-            "end_line": 3348,
+            "end_line": 3350,
             "label": "lem:seam-upper-or-middle",
-            "line": 3333,
+            "line": 3335,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:seam-upper-or-middle"
         },
         {
           "location": {
-            "end_line": 3365,
+            "end_line": 3367,
             "label": "lem:largest-false-rank-algebra",
-            "line": 3350,
+            "line": 3352,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:largest-false-rank-algebra"
         },
         {
           "location": {
-            "end_line": 3407,
+            "end_line": 3409,
             "label": "thm:critical-dyadic-band",
-            "line": 3385,
+            "line": 3387,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:critical-dyadic-band"
         },
         {
           "location": {
-            "end_line": 3422,
+            "end_line": 3424,
             "label": "thm:final-middle-cell",
-            "line": 3411,
+            "line": 3413,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:final-middle-cell"
         },
         {
           "location": {
-            "end_line": 3457,
+            "end_line": 3459,
             "label": "lem:skipped-endpoint-trichotomy",
-            "line": 3437,
+            "line": 3439,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:skipped-endpoint-trichotomy"
         },
         {
           "location": {
-            "end_line": 3480,
+            "end_line": 3482,
             "label": "lem:reverse-carry-word",
-            "line": 3459,
+            "line": 3461,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:reverse-carry-word"
         },
         {
           "location": {
-            "end_line": 3495,
+            "end_line": 3497,
             "label": "lem:linear-channel-nogo",
-            "line": 3482,
+            "line": 3484,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:linear-channel-nogo"
         },
         {
           "location": {
-            "end_line": 3528,
+            "end_line": 3530,
             "label": "thm:two-thirds-band",
-            "line": 3497,
+            "line": 3499,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:two-thirds-band"
         },
         {
           "location": {
-            "end_line": 3553,
+            "end_line": 3555,
             "label": "thm:sharp-fatal-gap",
-            "line": 3530,
+            "line": 3532,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:sharp-fatal-gap"
         },
         {
           "location": {
-            "end_line": 3568,
+            "end_line": 3570,
             "label": "lem:gap-mass-summability",
-            "line": 3555,
+            "line": 3557,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:gap-mass-summability"
         },
         {
           "location": {
-            "end_line": 3582,
+            "end_line": 3584,
             "label": "lem:half-divisor-unit-drop",
-            "line": 3570,
+            "line": 3572,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:half-divisor-unit-drop"
         },
         {
           "location": {
-            "end_line": 3597,
+            "end_line": 3599,
             "label": "thm:tempered-orbit-rigidity",
-            "line": 3584,
+            "line": 3586,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:tempered-orbit-rigidity"
         },
         {
           "location": {
-            "end_line": 3605,
+            "end_line": 3607,
             "label": "lem:tail-transfer",
-            "line": 3599,
+            "line": 3601,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:tail-transfer"
         },
         {
           "location": {
-            "end_line": 3620,
+            "end_line": 3622,
             "label": "lem:dyadic-excess-reformulation",
-            "line": 3607,
+            "line": 3609,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:dyadic-excess-reformulation"
         },
         {
           "location": {
-            "end_line": 3631,
+            "end_line": 3633,
             "label": "lem:denominator-sandwich",
-            "line": 3622,
+            "line": 3624,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:denominator-sandwich"
         },
         {
           "location": {
-            "end_line": 3649,
+            "end_line": 3651,
             "label": "lem:denominator-survival",
-            "line": 3633,
+            "line": 3635,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:denominator-survival"
         },
         {
           "location": {
-            "end_line": 3666,
+            "end_line": 3668,
             "label": "lem:mixed-prime-power-layer",
-            "line": 3651,
+            "line": 3653,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:mixed-prime-power-layer"
         },
         {
           "location": {
-            "end_line": 3722,
+            "end_line": 3724,
             "label": "prop:achievement-set-topology",
-            "line": 3707,
+            "line": 3709,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:achievement-set-topology"
         },
         {
           "location": {
-            "end_line": 3745,
+            "end_line": 3747,
             "label": "thm:master-dichotomy",
-            "line": 3724,
+            "line": 3726,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:master-dichotomy"
         },
         {
           "location": {
-            "end_line": 3789,
+            "end_line": 3791,
             "label": "thm:perturbed-family-maximality",
-            "line": 3774,
+            "line": 3776,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:perturbed-family-maximality"
         },
         {
           "location": {
-            "end_line": 3918,
+            "end_line": 3920,
             "label": "record:257bm-c1",
-            "line": 3904,
+            "line": 3906,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-c1"
         },
         {
           "location": {
-            "end_line": 3934,
+            "end_line": 3936,
             "label": "record:257bm-c2",
-            "line": 3920,
+            "line": 3922,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-c2"
         },
         {
           "location": {
-            "end_line": 3967,
+            "end_line": 3969,
             "label": "record:257bm-c3",
-            "line": 3938,
+            "line": 3940,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-c3"
         },
         {
           "location": {
-            "end_line": 3988,
+            "end_line": 3990,
             "label": "record:257bm-c4",
-            "line": 3973,
+            "line": 3975,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-c4"
         },
         {
           "location": {
-            "end_line": 3999,
+            "end_line": 4001,
             "label": "record:257bm-c5",
-            "line": 3990,
+            "line": 3992,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-c5"
         },
         {
           "location": {
-            "end_line": 4015,
+            "end_line": 4017,
             "label": "record:257bm-c6",
-            "line": 4001,
+            "line": 4003,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-c6"
         },
         {
           "location": {
-            "end_line": 4032,
+            "end_line": 4034,
             "label": "record:257bm-c6a",
-            "line": 4017,
+            "line": 4019,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-c6a"
         },
         {
           "location": {
-            "end_line": 4067,
+            "end_line": 4069,
             "label": "record:257bm-c6b",
-            "line": 4049,
+            "line": 4051,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-c6b"
         },
         {
           "location": {
-            "end_line": 4084,
+            "end_line": 4086,
             "label": "record:257bm-c7",
-            "line": 4071,
+            "line": 4073,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-c7"
         },
         {
           "location": {
-            "end_line": 4095,
+            "end_line": 4097,
             "label": "record:257bm-c8",
-            "line": 4086,
+            "line": 4088,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-c8"
         },
         {
           "location": {
-            "end_line": 4109,
+            "end_line": 4111,
             "label": "record:257bm-c9",
-            "line": 4097,
+            "line": 4099,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-c9"
         },
         {
           "location": {
-            "end_line": 4122,
+            "end_line": 4124,
             "label": "record:257bm-c10",
-            "line": 4111,
+            "line": 4113,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-c10"
         },
         {
           "location": {
-            "end_line": 4147,
+            "end_line": 4149,
             "label": "record:257bm-c11",
-            "line": 4132,
+            "line": 4134,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-c11"
         },
         {
           "location": {
-            "end_line": 4176,
+            "end_line": 4178,
             "label": "record:257bm-c12",
-            "line": 4163,
+            "line": 4165,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-c12"
         },
         {
           "location": {
-            "end_line": 4210,
+            "end_line": 4212,
             "label": "record:257bm-c14",
-            "line": 4194,
+            "line": 4196,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-c14"
         },
         {
           "location": {
-            "end_line": 4220,
+            "end_line": 4222,
             "label": "record:257bm-c15",
-            "line": 4212,
+            "line": 4214,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-c15"
         },
         {
           "location": {
-            "end_line": 4236,
+            "end_line": 4238,
             "label": "record:257rig-c16",
-            "line": 4225,
+            "line": 4227,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257rig-c16"
         },
         {
           "location": {
-            "end_line": 4263,
+            "end_line": 4265,
             "label": "record:257rig-c17",
-            "line": 4238,
+            "line": 4240,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257rig-c17"
         },
         {
           "location": {
-            "end_line": 4279,
+            "end_line": 4281,
             "label": "record:257rig-c18",
-            "line": 4266,
+            "line": 4268,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257rig-c18"
         },
         {
           "location": {
-            "end_line": 4310,
+            "end_line": 4312,
             "label": "record:257bm-c19",
-            "line": 4283,
+            "line": 4285,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-c19"
         },
         {
           "location": {
-            "end_line": 4322,
+            "end_line": 4324,
             "label": "record:257bm-c20",
-            "line": 4314,
+            "line": 4316,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-c20"
         },
         {
           "location": {
-            "end_line": 4343,
+            "end_line": 4345,
             "label": "record:257bm-i1a",
-            "line": 4332,
+            "line": 4334,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i1a"
         },
         {
           "location": {
-            "end_line": 4355,
+            "end_line": 4357,
             "label": "record:257bm-i1b",
-            "line": 4345,
+            "line": 4347,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i1b"
         },
         {
           "location": {
-            "end_line": 4368,
+            "end_line": 4370,
             "label": "record:257bm-i1c",
-            "line": 4357,
+            "line": 4359,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i1c"
         },
         {
           "location": {
-            "end_line": 4391,
+            "end_line": 4393,
             "label": "record:257bm-i5",
-            "line": 4383,
+            "line": 4385,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i5"
         },
         {
           "location": {
-            "end_line": 4437,
+            "end_line": 4439,
             "label": "record:257bm-i6",
-            "line": 4419,
+            "line": 4421,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i6"
         },
         {
           "location": {
-            "end_line": 4449,
+            "end_line": 4451,
             "label": "record:257bm-i7",
-            "line": 4441,
+            "line": 4443,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i7"
         },
         {
           "location": {
-            "end_line": 4486,
+            "end_line": 4488,
             "label": "record:257bm-i-rank2",
-            "line": 4479,
+            "line": 4481,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i-rank2"
         },
         {
           "location": {
-            "end_line": 4510,
+            "end_line": 4512,
             "label": "record:257bm-i9",
-            "line": 4506,
+            "line": 4508,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i9"
         },
         {
           "location": {
-            "end_line": 4517,
+            "end_line": 4519,
             "label": "record:257bm-i10",
-            "line": 4512,
+            "line": 4514,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i10"
         },
         {
           "location": {
-            "end_line": 4543,
+            "end_line": 4545,
             "label": "record:257bm-i11a",
-            "line": 4521,
+            "line": 4523,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i11a"
         },
         {
           "location": {
-            "end_line": 4557,
+            "end_line": 4559,
             "label": "record:257bm-i11b",
-            "line": 4545,
+            "line": 4547,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i11b"
         },
         {
           "location": {
-            "end_line": 4573,
+            "end_line": 4575,
             "label": "record:257bm-i11c",
-            "line": 4559,
+            "line": 4561,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i11c"
         },
         {
           "location": {
-            "end_line": 4589,
+            "end_line": 4591,
             "label": "record:257bm-i12",
-            "line": 4577,
+            "line": 4579,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i12"
         },
         {
           "location": {
-            "end_line": 4609,
+            "end_line": 4611,
             "label": "record:257bm-i2",
-            "line": 4600,
+            "line": 4602,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i2"
         },
         {
           "location": {
-            "end_line": 4623,
+            "end_line": 4625,
             "label": "record:257bm-i-t7",
-            "line": 4611,
+            "line": 4613,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i-t7"
         },
         {
           "location": {
-            "end_line": 4651,
+            "end_line": 4653,
             "label": "record:257bm-i-mob",
-            "line": 4642,
+            "line": 4644,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i-mob"
         },
         {
           "location": {
-            "end_line": 4664,
+            "end_line": 4666,
             "label": "record:257bm-i-bridge",
-            "line": 4653,
+            "line": 4655,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i-bridge"
         },
         {
           "location": {
-            "end_line": 4680,
+            "end_line": 4682,
             "label": "record:257rig-i2",
-            "line": 4671,
+            "line": 4673,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257rig-i2"
         },
         {
           "location": {
-            "end_line": 4694,
+            "end_line": 4696,
             "label": "record:257rig-i3",
-            "line": 4682,
+            "line": 4684,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257rig-i3"
         },
         {
           "location": {
-            "end_line": 4707,
+            "end_line": 4709,
             "label": "record:257rig-i4a",
-            "line": 4696,
+            "line": 4698,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257rig-i4a"
         },
         {
           "location": {
-            "end_line": 4717,
+            "end_line": 4719,
             "label": "record:257rig-i4b",
-            "line": 4709,
+            "line": 4711,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257rig-i4b"
         },
         {
           "location": {
-            "end_line": 4727,
+            "end_line": 4729,
             "label": "record:257rig-i5",
-            "line": 4719,
+            "line": 4721,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257rig-i5"
         },
         {
           "location": {
-            "end_line": 4754,
+            "end_line": 4756,
             "label": "record:257bm-i-cross2",
-            "line": 4740,
+            "line": 4742,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i-cross2"
         },
         {
           "location": {
-            "end_line": 4775,
+            "end_line": 4777,
             "label": "record:257hg-i6",
-            "line": 4758,
+            "line": 4760,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257hg-i6"
         },
         {
           "location": {
-            "end_line": 4789,
+            "end_line": 4791,
             "label": "record:257hg-i7",
-            "line": 4777,
+            "line": 4779,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257hg-i7"
         },
         {
           "location": {
-            "end_line": 4809,
+            "end_line": 4811,
             "label": "record:257hg-i2",
-            "line": 4800,
+            "line": 4802,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257hg-i2"
         },
         {
           "location": {
-            "end_line": 4859,
+            "end_line": 4861,
             "label": "record:257hg-i4",
-            "line": 4832,
+            "line": 4834,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257hg-i4"
         },
         {
           "location": {
-            "end_line": 4867,
+            "end_line": 4869,
             "label": "record:257hg-i5",
-            "line": 4861,
+            "line": 4863,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257hg-i5"
         },
         {
           "location": {
-            "end_line": 4885,
+            "end_line": 4887,
             "label": "record:257bm-i13",
-            "line": 4871,
+            "line": 4873,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i13"
         },
         {
           "location": {
-            "end_line": 4901,
+            "end_line": 4903,
             "label": "record:257bm-i14",
-            "line": 4887,
+            "line": 4889,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i14"
         },
         {
           "location": {
-            "end_line": 4922,
+            "end_line": 4924,
             "label": "record:257bm-i15",
-            "line": 4905,
+            "line": 4907,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i15"
         },
         {
           "location": {
-            "end_line": 4937,
+            "end_line": 4939,
             "label": "record:257bm-i16",
-            "line": 4924,
+            "line": 4926,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i16"
         },
         {
           "location": {
-            "end_line": 4948,
+            "end_line": 4950,
             "label": "record:257bm-i17",
-            "line": 4939,
+            "line": 4941,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-i17"
         },
         {
           "location": {
-            "end_line": 4974,
+            "end_line": 4976,
             "label": "record:257bm-k1",
-            "line": 4958,
+            "line": 4960,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-k1"
         },
         {
           "location": {
-            "end_line": 4994,
+            "end_line": 4996,
             "label": "record:257bm-k-dich",
-            "line": 4976,
+            "line": 4978,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-k-dich"
         },
         {
           "location": {
-            "end_line": 5016,
+            "end_line": 5018,
             "label": "record:257bm-k2",
-            "line": 4996,
+            "line": 4998,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-k2"
         },
         {
           "location": {
-            "end_line": 5046,
+            "end_line": 5048,
             "label": "record:257bm-k4",
-            "line": 5035,
+            "line": 5037,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-k4"
         },
         {
           "location": {
-            "end_line": 5075,
+            "end_line": 5077,
             "label": "record:257rig-k6",
-            "line": 5062,
+            "line": 5064,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257rig-k6"
         },
         {
           "location": {
-            "end_line": 5115,
+            "end_line": 5117,
             "label": "record:257bm-k9",
-            "line": 5105,
+            "line": 5107,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257bm-k9"
         },
         {
           "location": {
-            "end_line": 5149,
+            "end_line": 5151,
             "label": "record:257hg-k12",
-            "line": 5138,
+            "line": 5140,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#record:257hg-k12"
         },
         {
           "location": {
-            "end_line": 5172,
+            "end_line": 5174,
             "label": "prop:unsafe-middle-range-exactly-three",
-            "line": 5166,
+            "line": 5168,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:unsafe-middle-range-exactly-three"
         },
         {
           "location": {
-            "end_line": 5297,
+            "end_line": 5299,
             "label": "prop:finite-approximations-without-compatibility",
-            "line": 5292,
+            "line": 5294,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:finite-approximations-without-compatibility"
         },
         {
           "location": {
-            "end_line": 5434,
+            "end_line": 5436,
             "label": "prop:exact-lebesgue-measure-dichotomy",
-            "line": 5431,
+            "line": 5433,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:exact-lebesgue-measure-dichotomy"
         },
         {
           "location": {
-            "end_line": 5828,
+            "end_line": 5830,
             "label": "prop:one-orbit",
-            "line": 5819,
+            "line": 5821,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:one-orbit"
         },
         {
           "location": {
-            "end_line": 5842,
+            "end_line": 5844,
             "label": "lem:no-ties",
-            "line": 5838,
+            "line": 5840,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:no-ties"
         },
         {
           "location": {
-            "end_line": 5912,
+            "end_line": 5914,
             "label": "lem:tr-forced-greedy",
-            "line": 5905,
+            "line": 5907,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:tr-forced-greedy"
         },
         {
           "location": {
-            "end_line": 5918,
+            "end_line": 5920,
             "label": "lem:tr-parity",
-            "line": 5914,
+            "line": 5916,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:tr-parity"
         },
         {
           "location": {
-            "end_line": 5935,
+            "end_line": 5937,
             "label": "thm:tr-witness-exclusion",
-            "line": 5926,
+            "line": 5928,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:tr-witness-exclusion"
         },
         {
           "location": {
-            "end_line": 5964,
+            "end_line": 5966,
             "label": "cor:tr-half-lcm",
-            "line": 5958,
+            "line": 5960,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#cor:tr-half-lcm"
         },
         {
           "location": {
-            "end_line": 5986,
+            "end_line": 5988,
             "label": "lem:tr-mod12",
-            "line": 5981,
+            "line": 5983,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:tr-mod12"
         },
         {
           "location": {
-            "end_line": 6002,
+            "end_line": 6004,
             "label": "thm:tr-finite-decision",
-            "line": 5996,
+            "line": 5998,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:tr-finite-decision"
         },
         {
           "location": {
-            "end_line": 7071,
+            "end_line": 7073,
             "label": "thm:lower-bound-every-reset",
-            "line": 7054,
+            "line": 7056,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:lower-bound-every-reset"
         },
         {
           "location": {
-            "end_line": 7101,
+            "end_line": 7103,
             "label": "thm:one-sided-finite-decision-boundary",
-            "line": 7087,
+            "line": 7089,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:one-sided-finite-decision-boundary"
         },
         {
           "location": {
-            "end_line": 7298,
+            "end_line": 7300,
             "label": "prop:2adic-nogo",
-            "line": 7286,
+            "line": 7288,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:2adic-nogo"
         },
         {
           "location": {
-            "end_line": 7372,
+            "end_line": 7374,
             "label": "prop:upper-unconditional",
-            "line": 7359,
+            "line": 7361,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:upper-unconditional"
         },
         {
           "location": {
-            "end_line": 7422,
+            "end_line": 7424,
             "label": "thm:cd-neg3-impossible",
-            "line": 7374,
+            "line": 7376,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:cd-neg3-impossible"
         },
         {
           "location": {
-            "end_line": 7435,
+            "end_line": 7437,
             "label": "cor:cd-remaining",
-            "line": 7424,
+            "line": 7426,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#cor:cd-remaining"
         },
         {
           "location": {
-            "end_line": 7517,
+            "end_line": 7519,
             "label": "prop:finite-state-nogo",
-            "line": 7499,
+            "line": 7501,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:finite-state-nogo"
         },
         {
           "location": {
-            "end_line": 7533,
+            "end_line": 7535,
             "label": "prop:mobius-nogo",
-            "line": 7519,
+            "line": 7521,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:mobius-nogo"
         },
         {
           "location": {
-            "end_line": 7555,
+            "end_line": 7557,
             "label": "prop:finite-boolSupport-and-onesided",
-            "line": 7535,
+            "line": 7537,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:finite-boolSupport-and-onesided"
         },
         {
           "location": {
-            "end_line": 7585,
+            "end_line": 7587,
             "label": "prop:carry-survivor-extinction",
-            "line": 7557,
+            "line": 7559,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:carry-survivor-extinction"
         },
         {
           "location": {
-            "end_line": 7614,
+            "end_line": 7616,
             "label": "lem:scalar-localization",
-            "line": 7589,
+            "line": 7591,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:scalar-localization"
         },
         {
           "location": {
-            "end_line": 7629,
+            "end_line": 7631,
             "label": "cor:mersenne-height",
-            "line": 7616,
+            "line": 7618,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#cor:mersenne-height"
         },
         {
           "location": {
-            "end_line": 7668,
+            "end_line": 7670,
             "label": "prop:critical-band-index",
-            "line": 7653,
+            "line": 7655,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:critical-band-index"
         },
         {
           "location": {
-            "end_line": 7838,
+            "end_line": 7840,
             "label": "lem:odometer",
-            "line": 7820,
+            "line": 7822,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:odometer"
         },
         {
           "location": {
-            "end_line": 8290,
+            "end_line": 8292,
             "label": "lem:sqwitness",
-            "line": 8281,
+            "line": 8283,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#lem:sqwitness"
         },
         {
           "location": {
-            "end_line": 8407,
+            "end_line": 8409,
             "label": "prop:squarefree",
-            "line": 8398,
+            "line": 8400,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:squarefree"
         },
         {
           "location": {
-            "end_line": 8629,
+            "end_line": 8631,
             "label": "prop:cpgs-equiv",
-            "line": 8614,
+            "line": 8616,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:cpgs-equiv"
         },
         {
           "location": {
-            "end_line": 8649,
+            "end_line": 8651,
             "label": "prop:strip-equiv",
-            "line": 8634,
+            "line": 8636,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:strip-equiv"
         },
         {
           "location": {
-            "end_line": 9120,
+            "end_line": 9122,
             "label": "thm:257-logarithmic-counterexample",
-            "line": 9101,
+            "line": 9103,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#thm:257-logarithmic-counterexample"
         },
         {
           "location": {
-            "end_line": 9272,
+            "end_line": 9274,
             "label": "cor:257-logarithmic-separation",
-            "line": 9259,
+            "line": 9261,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#cor:257-logarithmic-separation"
         },
         {
           "location": {
-            "end_line": 9310,
+            "end_line": 9312,
             "label": "prop:257-logarithmic-initial-interval",
-            "line": 9304,
+            "line": 9306,
             "path": "paper/reasoning-parts/erdos257/a257_front.tex"
           },
           "long_claim": "erdos257-mersenne-reasoning-surface#prop:257-logarithmic-initial-interval"
@@ -10848,7 +10855,7 @@
             },
             {
               "id": "sec:reciprocal-support",
-              "line": 534,
+              "line": 535,
               "title": "Reciprocal-summable supports"
             },
             {
@@ -10858,7 +10865,7 @@
             },
             {
               "id": "sec:open",
-              "line": 745,
+              "line": 746,
               "title": "Integer quotients, approximation and further questions"
             }
           ],
@@ -10950,103 +10957,103 @@
           {
             "id": "sec:map",
             "level": 1,
-            "line": 500,
+            "line": 501,
             "title": "Limits of the small-displacement criterion"
           },
           {
             "id": "sec:separated-support-transfer",
             "level": 2,
-            "line": 524,
+            "line": 525,
             "title": "Algebraic bases on separated supports"
           },
           {
             "id": "sec:reciprocal-support",
             "level": 1,
-            "line": 534,
+            "line": 535,
             "title": "Reciprocal-summable supports"
           },
           {
             "id": "sec:period",
             "level": 1,
-            "line": 599,
+            "line": 600,
             "title": "Finite-support denominator periods"
           },
           {
             "id": "sec:rational-membership",
             "level": 1,
-            "line": 627,
+            "line": 628,
             "title": "Rational membership"
           },
           {
             "id": "sec:forced",
             "level": 2,
-            "line": 633,
+            "line": 634,
             "title": "Rational values and scaled tails"
           },
           {
             "id": "sec:geometry",
             "level": 2,
-            "line": 648,
+            "line": 649,
             "title": "The achievement set"
           },
           {
             "id": "sec:actual-repairs",
             "level": 2,
-            "line": 666,
+            "line": 667,
             "title": "The greedy recurrence"
           },
           {
             "id": "sec:open",
             "level": 1,
-            "line": 745,
+            "line": 746,
             "title": "Integer quotients, approximation and further questions"
           },
           {
             "id": "integer-quotients-for-121.",
             "level": 4,
-            "line": 751,
+            "line": 752,
             "title": "Integer quotients for 1/21."
           },
           {
             "id": "approximation-to-12-by-finite-supports.",
             "level": 4,
-            "line": 822,
+            "line": 823,
             "title": "Approximation to 1/2 by finite supports."
           },
           {
             "id": "finite-families-with-a-shared-prefix.",
             "level": 4,
-            "line": 862,
+            "line": 863,
             "title": "Finite families with a shared prefix."
           },
           {
             "id": "app:elementary-details",
             "level": 1,
-            "line": 930,
+            "line": 931,
             "title": "Elementary details used in the proofs"
           },
           {
             "id": "cyclotomic-prime-power-fact.",
             "level": 4,
-            "line": 934,
+            "line": 935,
             "title": "Cyclotomic prime-power fact."
           },
           {
             "id": "exact-scalar-cover-cost.",
             "level": 4,
-            "line": 949,
+            "line": 950,
             "title": "Exact scalar cover cost."
           },
           {
             "id": "the-cost-for-a-finite-set-of-divisors",
             "level": 2,
-            "line": 962,
+            "line": 963,
             "title": "The cost for a finite set of divisors"
           },
           {
             "id": "app:sources",
             "level": 1,
-            "line": 987,
+            "line": 988,
             "title": "Sources and formal verification"
           }
         ],
@@ -11057,12 +11064,12 @@
         "duplicate_passages": 0,
         "duplicates": 0,
         "explained_in_short": 5,
-        "linked_short_claims": 4,
+        "linked_short_claims": 3,
         "long_claims": 175,
-        "long_correspondence_open": 7,
+        "long_correspondence_open": 8,
         "possible_stale_passages": 0,
         "short_claims": 11,
-        "unresolved_short_claims": 2
+        "unresolved_short_claims": 3
       }
     },
     {
@@ -15784,17 +15791,17 @@
   "summary": {
     "duplicate_passages": 0,
     "duplicates": 0,
-    "evidence_lean_pin": "436f55ebdafa67e4af0fff79f621c13f2ded12bf",
+    "evidence_lean_pin": "74163c42aff9214b1199ff9bd5408721b78f0251",
     "explained_in_short": 36,
     "explicit_links": 8,
     "explicit_short_proof_dispositions": 45,
     "global_findings": 0,
-    "linked_short_claims": 28,
+    "linked_short_claims": 27,
     "long_claims": 612,
-    "long_correspondence_open": 49,
+    "long_correspondence_open": 50,
     "pairs": 8,
     "possible_stale_passages": 0,
     "short_claims": 77,
-    "unresolved_short_claims": 13
+    "unresolved_short_claims": 14
   }
 }

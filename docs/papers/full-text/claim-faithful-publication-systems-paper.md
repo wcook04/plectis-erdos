@@ -267,7 +267,7 @@ The repository’s proposed route from a local result to an upstream library inc
 
 ## Inventory and formal-support status
 
-The frozen inventory contains 689 paper occurrences, of which 640 have exact or specialising Lean support; 23 depend on a named input and 26 have no recorded Lean support. Of the 640 exact-or-specialising occurrences, 616 are recorded as compared and 24 as queued. These are occurrence counts, not counts of distinct theorems or independently reviewed proofs. Exact support matches the printed statement; specialising support yields it by specialization. Named-input entries retain an additional assumed result. An entry without Lean support may have an ordinary proof; neither of these last two groups is counted as fully covered.
+The frozen inventory contains 689 paper occurrences, of which 641 have exact or specialising Lean support; 23 depend on a named input and 25 have no recorded Lean support. Of the 641 exact-or-specialising occurrences, 616 are recorded as compared and 25 as queued. These are occurrence counts, not counts of distinct theorems or independently reviewed proofs. Exact support matches the printed statement; specialising support yields it by specialization. Named-input entries retain an additional assumed result. An entry without Lean support may have an ordinary proof; neither of these last two groups is counted as fully covered.
 
 <a id="historical-false-edit-trial"></a>
 
@@ -404,7 +404,7 @@ Both runs are recorded as compared. Palomar entries are prepared, not submitted;
 
 ## Interpret the recorded inventory
 
-The recorded inventory counts occurrences of paper statements, rather than distinct new theorems. Its 689 entries comprise 498 with exact-or-stronger formal support, 142 obtained by specialising a formal result, 23 linked to a named formal ingredient only, and 26 with no registered Lean support. The last two categories do not certify the whole paper statement.
+The recorded inventory counts occurrences of paper statements, rather than distinct new theorems. Its 689 entries comprise 499 with exact-or-stronger formal support, 142 obtained by specialising a formal result, 23 linked to a named formal ingredient only, and 25 with no registered Lean support. The last two categories do not certify the whole paper statement.
 
 The contribution journal records 7 rounds and 25 returned contributions at the recorded journal revision.[^3] Of the rounds, 2 are sealed, meaning no further arrivals are expected. Of the returns, 18 have been admitted for integration and 7 remain unreviewed; admission does not itself record integration. Earlier private-history rounds do not constitute a complete public journal.
 
