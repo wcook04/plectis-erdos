@@ -4,21 +4,21 @@
   "projection_not_authority": true,
   "proof_authority": "Lean source checked by the pinned Lean kernel",
   "argument_authority": "docs/claims.json::machine_readable_paper.argument_graph",
-  "source_fingerprint": "sha256:0152e16a5172b6421df56331fbec043d8979ea884ddc9f014a02d92497bea904",
+  "source_fingerprint": "sha256:0a42cbfe292ab1c17fe70390493187f3877bc42198b28a70614d903cbf6b618c",
   "summary": {
-    "module_count": 1903,
-    "declaration_count": 164639,
-    "theorem_like_count": 160373,
+    "module_count": 1904,
+    "declaration_count": 164664,
+    "theorem_like_count": 160394,
     "generated_certificate_declaration_count": 8171,
     "principal_claim_link_count": 478,
     "kind_counts": {
       "abbrev": 58,
-      "def": 4102,
+      "def": 4106,
       "inductive": 12,
       "instance": 14,
       "lemma": 1448,
       "structure": 80,
-      "theorem": 158925
+      "theorem": 158946
     }
   },
   "modules": [
@@ -8660,6 +8660,7 @@
         "ErdosProblems.Erdos1041.PaperStraightObstructions",
         "ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10",
         "ErdosProblems.Erdos1041.PaperSeparationCounterexample",
+        "ErdosProblems.Erdos1041.OutwardSlitDomain",
         "ErdosProblems.Erdos1049.RationalBaseContour",
         "ErdosProblems.Erdos243.PaperCompleteR7.Frontier",
         "ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect",
@@ -10739,6 +10740,16 @@
       "declaration_count": 8,
       "kind_counts": {
         "theorem": 8
+      }
+    },
+    {
+      "id": "ErdosProblems.Erdos1041.OutwardSlitDomain",
+      "path": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "imports": [],
+      "declaration_count": 25,
+      "kind_counts": {
+        "def": 4,
+        "theorem": 21
       }
     },
     {
@@ -206964,6 +206975,277 @@
       "generated_certificate": false,
       "claim_ids": [],
       "docstring": "If an existing forward trajectory converges in the plane, its limit is a root. No convergence or global existence is supplied by this theorem."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:57:domain",
+      "name": "domain",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 57,
+      "signature": "def domain {ι : Type*} (v : ι → ℂ) : Set ℂ",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Remove the part at or beyond each slit start. Intersecting these complete rays with the unit disc gives exactly the outward slits in the paper."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:60:zero_mem",
+      "name": "zero_mem",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 60,
+      "signature": "theorem zero_mem {ι : Type*} (v : ι → ℂ) (hv : ∀ i, v i ≠ 0) : (0 : ℂ) ∈ domain v",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:68:starConvex",
+      "name": "starConvex",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 68,
+      "signature": "theorem starConvex {ι : Type*} (v : ι → ℂ) (hv : ∀ i, v i ≠ 0) : StarConvex ℝ (0 : ℂ) (domain v)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "A contraction cannot enter an outward ray: if `b • z = s • v i`, then the original point is `(s / b) • v i`, with `s / b ≥ 1`."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:94:contractible",
+      "name": "contractible",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 94,
+      "signature": "theorem contractible {ι : Type*} (v : ι → ℂ) (hv : ∀ i, v i ≠ 0) : ContractibleSpace (domain v)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:98:simplyConnected",
+      "name": "simplyConnected",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 98,
+      "signature": "theorem simplyConnected {ι : Type*} (v : ι → ℂ) (hv : ∀ i, v i ≠ 0) : SimplyConnectedSpace (domain v)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:105:polynomial_finite_fiber",
+      "name": "polynomial_finite_fiber",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 105,
+      "signature": "theorem polynomial_finite_fiber (p : Polynomial ℂ) (hp : 0 < p.natDegree) (w : ℂ) : (p.eval ⁻¹' {w}).Finite",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Every fibre of a nonconstant polynomial is finite, including fibres over critical values. Nonconstancy is essential here."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:118:polynomial_isCoveringMapOn",
+      "name": "polynomial_isCoveringMapOn",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 118,
+      "signature": "theorem polynomial_isCoveringMapOn (p : Polynomial ℂ) (hp : 0 < p.natDegree) (s : Set ℂ) (hregular : ∀ z, p.eval z ∈ s → p.derivative.eval z ≠ 0) : IsCoveringMapOn p.eval s",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Properness of polynomial evaluation, finite fibres, and the inverse function theorem produce an actual covering over any set of regular values."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:131:polynomial_regular_over_domain",
+      "name": "polynomial_regular_over_domain",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 131,
+      "signature": "theorem polynomial_regular_over_domain {ι : Type*} (p : Polynomial ℂ) (v : ι → ℂ) (hcritical : ∀ z, p.derivative.eval z = 0 → ‖p.eval z‖ < 1 → ∃ i, p.eval z = v i) : ∀ z, p.eval z ∈ domain v → p.derivative.eval z ≠ 0",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Removing a slit starting at every critical value in the unit disc removes all ramification from its polynomial preimage. No separation of the critical values, and no simplicity assumption on critical points, is needed."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:142:polynomial_isCoveringMap",
+      "name": "polynomial_isCoveringMap",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 142,
+      "signature": "theorem polynomial_isCoveringMap {ι : Type*} (p : Polynomial ℂ) (hp : 0 < p.natDegree) (v : ι → ℂ) (hcritical : ∀ z, p.derivative.eval z = 0 → ‖p.eval z‖ < 1 → ∃ i, p.eval z = v i) : IsCoveringMap ((domain v).restrictPreimage p.eval)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The polynomial restricted to the preimage of the outward-slit domain is a covering map. This is a global preimage statement; selecting a lemniscate component and counting its sheets are separate obligations."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:153:polynomial_restrict_surjective",
+      "name": "polynomial_restrict_surjective",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 153,
+      "signature": "theorem polynomial_restrict_surjective {ι : Type*} (p : Polynomial ℂ) (hp : 0 < p.natDegree) (v : ι → ℂ) : Function.Surjective ((domain v).restrictPreimage p.eval)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Every value in the slit domain has a polynomial preimage in the restricted source. This supplies surjectivity separately from Mathlib's covering predicate, which also permits empty fibres."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:162:polynomial_fiber_ncard",
+      "name": "polynomial_fiber_ncard",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 162,
+      "signature": "theorem polynomial_fiber_ncard (p : Polynomial ℂ) (hp : 0 < p.natDegree) (w : ℂ) (hregular : ∀ z, p.eval z = w → p.derivative.eval z ≠ 0) : (p.eval ⁻¹' {w}).ncard = p.natDegree",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "A regular value of a degree-`n` complex polynomial has exactly `n` distinct preimages. The count is without multiplicity."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:190:unitDisc",
+      "name": "unitDisc",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 190,
+      "signature": "def unitDisc : Set ℂ",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The unit disc, as a value space. Components below are formed in its full polynomial preimage, so relative closedness does not assert closedness in ℂ."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:193:componentEval",
+      "name": "componentEval",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 193,
+      "signature": "def componentEval (p : Polynomial ℂ) (z : p.eval ⁻¹' unitDisc) : connectedComponent z → unitDisc",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Evaluation on one connected component of the strict unit sublevel."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:197:componentEval_continuous",
+      "name": "componentEval_continuous",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 197,
+      "signature": "theorem componentEval_continuous (p : Polynomial ℂ) (z : p.eval ⁻¹' unitDisc) : Continuous (componentEval p z)",
+      "generated_certificate": false,
+      "claim_ids": []
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:203:componentEval_isClosedMap",
+      "name": "componentEval_isClosedMap",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 203,
+      "signature": "theorem componentEval_isClosedMap (p : Polynomial ℂ) (z : p.eval ⁻¹' unitDisc) : IsClosedMap (componentEval p z)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "A component is relatively closed in the full preimage. Restricting the closed polynomial map twice therefore preserves closedness."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:211:componentEval_surjective",
+      "name": "componentEval_surjective",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 211,
+      "signature": "theorem componentEval_surjective (p : Polynomial ℂ) (hp : 0 < p.natDegree) (z : p.eval ⁻¹' unitDisc) : Function.Surjective (componentEval p z)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Every individual sublevel component maps onto the entire disc. Its image is nonempty and both open and closed in the connected value disc; a global algebraic-closure preimage witness would not establish this statement."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:233:componentEval_finite_fiber",
+      "name": "componentEval_finite_fiber",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 233,
+      "signature": "theorem componentEval_finite_fiber (p : Polynomial ℂ) (hp : 0 < p.natDegree) (z : p.eval ⁻¹' unitDisc) (w : unitDisc) : (componentEval p z ⁻¹' {w}).Finite",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Restricting to a component cannot introduce infinitely many fibre points. No equality with the global polynomial degree is asserted."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:250:componentEval_isCoveringMapOn",
+      "name": "componentEval_isCoveringMapOn",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 250,
+      "signature": "theorem componentEval_isCoveringMapOn (p : Polynomial ℂ) (hp : 0 < p.natDegree) (z : p.eval ⁻¹' unitDisc) (s : Set unitDisc) (hregular : ∀ e : connectedComponent z, componentEval p z e ∈ s → p.derivative.eval e.val.val ≠ 0) : IsCoveringMapOn (componentEval p z) s",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "The regular-value covering theorem with the paper's component-local hypothesis. Other components may have critical points over these same values."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:286:componentEval_slit_covering",
+      "name": "componentEval_slit_covering",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 286,
+      "signature": "theorem componentEval_slit_covering {ι : Type*} (p : Polynomial ℂ) (hp : 0 < p.natDegree) (z : p.eval ⁻¹' unitDisc) (v : ι → ℂ) (hcritical : ∀ e : connectedComponent z, p.derivative.eval e.val.val = 0 → ∃ i, p.eval e.val.val = v i) : IsCoveringMapOn (componentEval p z) {w | w.val ∈ domain v}",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Slits need cover only critical values attained by the selected component."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:297:isClosed_outwardRay",
+      "name": "isClosed_outwardRay",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 297,
+      "signature": "theorem isClosed_outwardRay (v : ℂ) (hv : v ≠ 0) : IsClosed {z : ℂ | ∃ s : ℝ, 1 ≤ s ∧ z = s • v}",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Each outward ray with a nonzero start is closed in the whole value plane."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:317:isOpen_domain",
+      "name": "isOpen_domain",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 317,
+      "signature": "theorem isOpen_domain {ι : Type*} [Finite ι] (v : ι → ℂ) (hv : ∀ i, v i ≠ 0) : IsOpen (domain v)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "For finitely many nonzero slit starts the remaining value domain is open. Finiteness is essential: infinitely many starts may accumulate at zero."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:330:existsUnique_root_branch",
+      "name": "existsUnique_root_branch",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 330,
+      "signature": "theorem existsUnique_root_branch {ι : Type*} [Finite ι] (p : Polynomial ℂ) (hp : 0 < p.natDegree) (v : ι → ℂ) (hv : ∀ i, v i ≠ 0) (hcritical : ∀ z, p.derivative.eval z = 0 → ‖p.eval z‖ < 1 → ∃ i, p.eval z = v i) (a : ℂ) (ha : p.eval a = 0) : ∃! F : C(domain v, p.eval ⁻¹' domain v), F ⟨0, zero_mem v hv⟩ = ⟨a,",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Every root determines a unique continuous inverse branch on the finite outward-slit domain. This proves branch existence, not yet the component-wise conformal sheet decomposition or the monodromy tree."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:343:domainInDisc",
+      "name": "domainInDisc",
+      "kind": "def",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 343,
+      "signature": "def domainInDisc {ι : Type*} (v : ι → ℂ) : C(domain v, unitDisc)",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Inclusion of the slit domain into the unit disc as a continuous map."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:349:component_has_root",
+      "name": "component_has_root",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 349,
+      "signature": "theorem component_has_root (p : Polynomial ℂ) (hp : 0 < p.natDegree) (z : p.eval ⁻¹' unitDisc) : ∃ a : connectedComponent z, p.eval a.val.val = 0",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Each connected sublevel component contains a root."
+    },
+    {
+      "id": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean:359:component_existsUnique_root_branch",
+      "name": "component_existsUnique_root_branch",
+      "kind": "theorem",
+      "module": "lean/ErdosProblems/Erdos1041/OutwardSlitDomain.lean",
+      "line": 359,
+      "signature": "theorem component_existsUnique_root_branch {ι : Type*} [Finite ι] (p : Polynomial ℂ) (hp : 0 < p.natDegree) (z : p.eval ⁻¹' unitDisc) (v : ι → ℂ) (hv : ∀ i, v i ≠ 0) (hcritical : ∀ e : connectedComponent z, p.derivative.eval e.val.val = 0 → ∃ i, p.eval e.val.val = v i) (a : connectedComponent z) (ha : p.eval a.val.val = 0) : ∃! F : C(domain v, connectedComponent z), F ⟨0, zero_mem v hv⟩ = a ∧ componentEval p z ∘ F = domainInDisc v",
+      "generated_certificate": false,
+      "claim_ids": [],
+      "docstring": "Each root in the selected component determines a unique continuous inverse branch there. Only critical values of that component are excluded. This does not assert a conformal sheet decomposition or a formula for its sheet count."
     },
     {
       "id": "lean/ErdosProblems/Erdos1041/PaperAnalyticTargets.lean:24:ConnectedAtMost",

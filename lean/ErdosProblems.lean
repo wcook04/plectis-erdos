@@ -34,6 +34,7 @@ import ErdosProblems.Erdos1041.PaperCubicFibres
 import ErdosProblems.Erdos1041.PaperStraightObstructions
 import ErdosProblems.Erdos1041.PaperPrimitiveCompletionR10
 import ErdosProblems.Erdos1041.PaperSeparationCounterexample
+import ErdosProblems.Erdos1041.OutwardSlitDomain
 import ErdosProblems.Erdos1049.RationalBaseContour
 import ErdosProblems.Erdos243.PaperCompleteR7.Frontier
 import ErdosProblems.Erdos243.PaperCompleteR7.LcmDefect
