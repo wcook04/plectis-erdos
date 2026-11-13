@@ -230,7 +230,7 @@ order without asking you to decode Lean declaration names first.
 
 ## Videos
 
-[Introduction](https://youtu.be/Yk_kUQUCylc) · Maths Map [short](https://youtu.be/HvaGqIEKygA) / [full](https://youtu.be/u4f-fk1o13k) · Erdős #257 [short](https://youtu.be/0obrJljG0bo) / [full](https://youtu.be/VUSHyYSf1Ak) · Maths funnel [short](https://youtu.be/viM1R0Iag6E) / [full](https://youtu.be/olGBykFAvUw).
+[Introduction](https://youtu.be/FwgaZYH2otY) · Maths Map [short](https://youtu.be/Dc6ogk9QlBE) / [full](https://youtu.be/u4f-fk1o13k) · Erdős #257 [short](https://youtu.be/MrC-pboGZ2k) / [full](https://youtu.be/VUSHyYSf1Ak) · Maths funnel [short](https://youtu.be/QIMDizV8u_I) / [full](https://youtu.be/qxwZiW2ZYTQ).
 
 The videos show private interfaces. Do not infer results from private or unreleased work.
 
