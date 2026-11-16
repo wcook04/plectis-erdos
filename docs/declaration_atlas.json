@@ -10,7 +10,7 @@
     "declaration_count": 164639,
     "theorem_like_count": 160373,
     "generated_certificate_declaration_count": 8171,
-    "principal_claim_link_count": 478,
+    "principal_claim_link_count": 483,
     "kind_counts": {
       "abbrev": 58,
       "def": 4102,
@@ -34543,7 +34543,9 @@
       "line": 6035,
       "signature": "theorem irrational_erdosSum_factorial_support (b : ℕ) (hb : 2 ≤ b) : Irrational (∑' k, (1 : ℝ) / ((b : ℝ) ^ (Nat.factorial (k + 1)) - 1))",
       "generated_certificate": false,
-      "claim_ids": [],
+      "claim_ids": [
+        "support_families"
+      ],
       "docstring": "**First infinite-support instance: factorial support.** For every base `b ≥ 2`, the infinite series `∑_{k≥0} 1 / (b ^ (k+1)! - 1)` is irrational. Stated in pure Mathlib vocabulary. The support `{n! : n ≥ 1}` is not pairwise coprime (each factorial divides the next), so this instance is outside the classical coprime-support family."
     },
     {
@@ -34554,7 +34556,9 @@
       "line": 6059,
       "signature": "theorem irrational_erdosSum_two_pow_support (b : ℕ) (hb : 2 ≤ b) : Irrational (∑' k, (1 : ℝ) / ((b : ℝ) ^ (2 ^ k) - 1))",
       "generated_certificate": false,
-      "claim_ids": [],
+      "claim_ids": [
+        "support_families"
+      ],
       "docstring": "**First infinite-support instance: geometric support.** For every base `b ≥ 2`, the infinite series `∑_{k≥0} 1 / (b ^ (2^k) - 1)` is irrational. The gap `2^k - lcm = 2^(k-1)` has bounded ratio to the lcm, so this instance is *not* reachable by a Liouville-number shortcut; the denominator-gap criterion handles it uniformly."
     },
     {
@@ -34565,9 +34569,7 @@
       "line": 6082,
       "signature": "theorem erdos257_family_factorial_instance : Irrational (∑' k, (1 : ℝ) / ((2 : ℝ) ^ (Nat.factorial (k + 1)) - 1))",
       "generated_certificate": false,
-      "claim_ids": [
-        "support_families"
-      ],
+      "claim_ids": [],
       "docstring": "**Erdős #257 family, factorial instance at base 2.** The literal series `∑ 1 / (2^(n!) - 1)` over the infinite support `A = {n! : n ≥ 1}` is irrational. This is an instance of the statement family of Erdős problem #257 (which asks the same for *every* infinite support); the universal problem remains open and is not claimed."
     },
     {
@@ -34578,9 +34580,7 @@
       "line": 6090,
       "signature": "theorem erdos257_family_two_pow_instance : Irrational (∑' k, (1 : ℝ) / ((2 : ℝ) ^ (2 ^ k) - 1))",
       "generated_certificate": false,
-      "claim_ids": [
-        "support_families"
-      ],
+      "claim_ids": [],
       "docstring": "**Erdős #257 family, geometric instance at base 2.** The literal series `∑ 1 / (2^(2^n) - 1)` over the infinite support `A = {2^n : n ≥ 0}` is irrational. An instance of the #257 statement family; the universal problem remains open and is not claimed."
     },
     {
@@ -35340,7 +35340,9 @@
       "line": 9103,
       "signature": "theorem irrational_erdosSupportSeries_multiples (b d : ℕ) (hb : 2 ≤ b) (hd : 1 ≤ d) : Irrational (erdosSupportSeries b {n : ℕ | d ∣ n})",
       "generated_certificate": false,
-      "claim_ids": [],
+      "claim_ids": [
+        "support_families"
+      ],
       "docstring": "**New support classes of Erdős #257: every multiples support.** For every base `b ≥ 2` and every `d ≥ 1`, the support series over `A = dℕ` is irrational — at `b = 2` these are the `A = dℕ` members of Erdős #257 itself. Proof: dilation to the full-support theorem at base `b^d`."
     },
     {
@@ -35793,7 +35795,9 @@
       "line": 11604,
       "signature": "theorem irrational_erdosSupportSeries_eventuallyPeriodic (b m N₀ : ℕ) (A : Set ℕ) (hb : 2 ≤ b) (hm : 0 < m) (hper : ∀ n : ℕ, N₀ ≤ n → (n + m ∈ A ↔ n ∈ A)) (hinf : A.Infinite) : Irrational (erdosSupportSeries b A)",
       "generated_certificate": false,
-      "claim_ids": [],
+      "claim_ids": [
+        "support_families"
+      ],
       "docstring": "**Eventually periodic support irrationality (wave-10 frontier theorem).** For every base `b ≥ 2`: an infinite support whose membership is `m`-periodic from some threshold `N₀` on has an irrational support series. The purely periodic shift `A_pure = {n : n + m·N₀ ∈ A}` agrees with `A` above the threshold, so the landed finite-prefix calculus transfers irrationality across the finite symmetric difference."
     },
     {
@@ -35804,7 +35808,9 @@
       "line": 11672,
       "signature": "theorem irrational_erdosSupportSeries_residueClass (b m c : ℕ) (hb : 2 ≤ b) (hm : 0 < m) : Irrational (erdosSupportSeries b {n : ℕ | n % m = c % m})",
       "generated_certificate": false,
-      "claim_ids": [],
+      "claim_ids": [
+        "support_families"
+      ],
       "docstring": "**Residue-class support irrationality**: for every base `b ≥ 2`, modulus `m ≥ 1`, and residue `c`, the series `∑_{n ≡ c (m)} 1/(b^n - 1)` is irrational."
     },
     {
@@ -35815,7 +35821,9 @@
       "line": 11686,
       "signature": "theorem irrational_erdosSupportSeries_odd (b : ℕ) (hb : 2 ≤ b) : Irrational (erdosSupportSeries b {n : ℕ | Odd n})",
       "generated_certificate": false,
-      "claim_ids": [],
+      "claim_ids": [
+        "support_families"
+      ],
       "docstring": "**Odd support irrationality**: `∑_{n odd} 1/(b^n - 1)` is irrational for every base `b ≥ 2` — the first support class with density strictly between `0` and `1` to land."
     },
     {
@@ -198272,7 +198280,9 @@
       "line": 39,
       "signature": "theorem erdos1041_no_short_variation_path : ¬ ∀ (n : ℕ) (p : ℂ[X]), n ≥ 2 → p.natDegree = n → p.Monic → p.rootSet ℂ ⊆ ball (0 : ℂ) 1 → ∃ (z₁ z₂ : ℂ) (h : ({z₁, z₂} : Multiset ℂ) ≤ p.roots) (γ : ℝ → ℂ), ContinuousOn γ (Set.Icc 0 1) ∧ γ 0 = z₁ ∧ γ 1 = z₂ ∧ (∀ τ ∈ Set.Icc (0 : ℝ) 1, ‖p.eval (γ τ)‖ < 1) ∧ eVariationOn γ (Set.Icc 0 1) < (2 : ℝ≥0∞)",
       "generated_certificate": false,
-      "claim_ids": [],
+      "claim_ids": [
+        "erdos_1041"
+      ],
       "docstring": "Negation of the repaired Formal Conjectures parent: there is no universal short connecting path of total variation `< 2` between two root occurrences, counted with multiplicity, in the strict unit lemniscate."
     },
     {
