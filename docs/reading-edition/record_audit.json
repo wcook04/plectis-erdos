@@ -3,7 +3,7 @@
   "global_findings": [],
   "input_sha256": {
     "docs/paper_lean_coverage.json": "sha256:4a8bd134b024e5d82b013056649267151fb5b7e526268669a079a117a6287aaa",
-    "docs/papers/corpus.json": "sha256:c9b5f7c8a7a2fe9bb143194603cc575600d0e338560d72633b8f3b875e70908a",
+    "docs/papers/corpus.json": "sha256:2147734a5b917e431a35a2a96792bfad29ca8136e23ec80954186d9a851aa3de",
     "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md": "sha256:485fc1d89029edcfcc5ba1a628700e9eafe153cf93df10f569826e95c8455ca1",
     "docs/papers/full-text/erdos-1049-rational-base-lambert.md": "sha256:9a68e578ac35c79fc3c1eb5757565a46bcacab3b65eca71ee8390d4fd5cfebf6",
     "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md": "sha256:3940ec6f92e386f6663a0761c72e4fed8bd31f7e624ba7967e5b906aacf5ede5",
