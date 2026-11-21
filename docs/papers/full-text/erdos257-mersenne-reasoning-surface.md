@@ -5290,7 +5290,7 @@ The dense branch as stated is *false*: an explicit, natural, divisor-dense suppo
 ``` math
 c_{A}(n)=2^{\omega(n)}-1,
 ```
-*which is odd for every $`n\ge2`$. Consequently neither the digitwise nor the carry-aware divisibility-first block-certificate schema has an instance at any even base.*
+*which is odd for every $`n\ge2`$. Consequently, at each even base, neither the digitwise nor the carry-aware divisibility-first block-certificate schema can supply certificates for every $`q>0`$.*
 
 </div>
 
