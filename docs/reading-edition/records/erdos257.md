@@ -208,7 +208,6 @@ These registered long assertions are not used by an accepted short-paper link. T
 - `thm:greedy-survival`: [paper/reasoning-parts/erdos257/a257_front.tex](../../../paper/reasoning-parts/erdos257/a257_front.tex#L1242-L1254) lines 1242-1254.
 - `prop:canon`: [paper/reasoning-parts/erdos257/a257_front.tex](../../../paper/reasoning-parts/erdos257/a257_front.tex#L1388-L1409) lines 1388-1409.
 - `lem:collapse-mech`: [paper/reasoning-parts/erdos257/a257_front.tex](../../../paper/reasoning-parts/erdos257/a257_front.tex#L1480-L1489) lines 1480-1489.
-- `prop:collapse`: [paper/reasoning-parts/erdos257/a257_front.tex](../../../paper/reasoning-parts/erdos257/a257_front.tex#L1491-L1497) lines 1491-1497.
 - `lem:sqrt-witness`: [paper/reasoning-parts/erdos257/a257_front.tex](../../../paper/reasoning-parts/erdos257/a257_front.tex#L1519-L1525) lines 1519-1525.
 - `prop:collapsed-list`: [paper/reasoning-parts/erdos257/a257_front.tex](../../../paper/reasoning-parts/erdos257/a257_front.tex#L1542-L1565) lines 1542-1565.
 - `prop:local-void`: [paper/reasoning-parts/erdos257/a257_front.tex](../../../paper/reasoning-parts/erdos257/a257_front.tex#L1601-L1625) lines 1601-1625.
