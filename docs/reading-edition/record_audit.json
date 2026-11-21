@@ -1,20 +1,9 @@
 {
   "boundary": "Checks registered asserting environments and registered claim spans. Unregistered prose assertions, mathematical equivalence, correctness of ordinary proofs, Lean compilation, Comparator replay and PDF freshness are not established by this audit.",
-  "global_findings": [
-    {
-      "code": "stale_or_uninventoried_statement",
-      "detail": "erdos257-mersenne-reasoning-surface#prop:squarefree (paper/reasoning-parts/erdos257/a257_front.tex:8398): the statement with this digest is no longer in paper/reasoning-parts/erdos257/a257_front.tex; the paper changed after the ledger was written (recount, then regenerate)",
-      "severity": "error"
-    },
-    {
-      "code": "stale_or_uninventoried_statement",
-      "detail": "paper/reasoning-parts/erdos257/a257_front.tex:8398 prop:squarefree: asserting environment without a ledger row (regenerate the ledger)",
-      "severity": "error"
-    }
-  ],
+  "global_findings": [],
   "input_sha256": {
-    "docs/paper_lean_coverage.json": "sha256:36d8bff48add2e5e64d1a1b7acc2bc689156e0c064777c8e0d2e58010fb49142",
-    "docs/papers/corpus.json": "sha256:067749374df98858678daa020a413c9e599d11b9a902bd6728c7ab4e7e804731",
+    "docs/paper_lean_coverage.json": "sha256:4a8bd134b024e5d82b013056649267151fb5b7e526268669a079a117a6287aaa",
+    "docs/papers/corpus.json": "sha256:62da32c2ce8c832cd4aca4e51df765d1166a122e55b83dc13061402454069903",
     "docs/papers/full-text/erdos-1041-lemniscate-newton-flow.md": "sha256:485fc1d89029edcfcc5ba1a628700e9eafe153cf93df10f569826e95c8455ca1",
     "docs/papers/full-text/erdos-1049-rational-base-lambert.md": "sha256:9a68e578ac35c79fc3c1eb5757565a46bcacab3b65eca71ee8390d4fd5cfebf6",
     "docs/papers/full-text/erdos-243-reciprocal-tail-rigidity.md": "sha256:3940ec6f92e386f6663a0761c72e4fed8bd31f7e624ba7967e5b906aacf5ede5",
@@ -28,11 +17,11 @@
     "docs/papers/full-text/erdos243-reciprocal-tail-reasoning-surface.md": "sha256:207826f3032688da020e9bb0eb4ef608e8c7632300a44734364809be911665b4",
     "docs/papers/full-text/erdos249-totient-reasoning-surface.md": "sha256:a8dfc3250a33fd0c0c0281b49960fc294c3d61a53d089e55e9911e26a601b8e2",
     "docs/papers/full-text/erdos251-prime-gap-reasoning-surface.md": "sha256:ddfc4be759b93827ea282e30285b97b40fc04b4598b1caf566da84f9f335c064",
-    "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md": "sha256:0342d02a39ee778b6bf14ad4a45747164f5128116f4cfde0d96bd35ff434f4ca",
+    "docs/papers/full-text/erdos257-mersenne-reasoning-surface.md": "sha256:4814db10a16a5b07b9efdb3fdd987caaf85bd1e4ddf86282803d4c6d292dae80",
     "docs/papers/full-text/erdos269-running-lcm-reasoning-surface.md": "sha256:2a882392b695457f8cbb79166cc990b20c744d496f972de5b4978c6c1c275b67",
     "docs/papers/full-text/erdos68-factorial-reasoning-surface.md": "sha256:4f5854cf808789d2bb8111724a69918766ccfe6b25afebc0e25ec63b7d072fb0",
     "docs/papers/paper_corpus_renderer.py": "sha256:0bd25eba944e333c6fe63756e3cc274bcc9561337f79079df7f4bcee4645028c",
-    "evidence/paper_evidence.json": "sha256:b8f0160a950998bc0a066c938f930046ccde6eda11cbaaad8a2f49f7634bdca7",
+    "evidence/paper_evidence.json": "sha256:ba369ea724e12e141f0ac42e84d750773548e053115f4551b9541bf75c3f892e",
     "lean/ErdosProblems/Erdos1041/Counterexample/Assembly.lean": "sha256:c6174888a3c59acf20f827b01a42bbffce05112eb7c7a3f30350dc1af0fb8f19",
     "lean/ErdosProblems/Erdos1041/Counterexample/HausdorffLength.lean": "sha256:069ea76e27304bd34e020cf8aab0fcc9200c495ff892127612e8afe571e3fcb4",
     "lean/ErdosProblems/Erdos1049/AllRow/Producer.lean": "sha256:d144b89024846b30a267eb4879b2cf9406c98d9602061b399094e4a1296a4e30",
@@ -86,7 +75,7 @@
     "paper/evidence/erdos243-reciprocal-tail-reasoning-surface.tex": "sha256:0104e889a8d89ec6b5c7921287e8d8fddc9f799fd9d620b1f8b3c2b5a3da5949",
     "paper/evidence/erdos249-totient-reasoning-surface.tex": "sha256:91d61a5d18554ffe705e1fdd27c1c77ba20fe6f82bd194990aa0f73097947fc8",
     "paper/evidence/erdos251-prime-gap-reasoning-surface.tex": "sha256:1d722846605b1bd9faaedd3a9034a8f33d36984f1d6826bccb4c0e722ee6284d",
-    "paper/evidence/erdos257-mersenne-reasoning-surface.tex": "sha256:bf3c18eda0925f862e304c5dbd2c356f110e8901fd23338e31d5cdbd9e268446",
+    "paper/evidence/erdos257-mersenne-reasoning-surface.tex": "sha256:15ae25a970b6947076fc505b40a86b2baf168771818137cbb7b5d8d88373e0aa",
     "paper/evidence/erdos269-running-lcm-reasoning-surface.tex": "sha256:f62bede753be77e31c5015dc5546ed26b63a49bdfb0931c7c552418a39063de4",
     "paper/evidence/erdos68-factorial-reasoning-surface.tex": "sha256:1a4adf5d82ec871f1b62e3b9af6d6e0c6470e6de5b5650392144acd526c84c85",
     "paper/problem-note-preamble.tex": "sha256:088d36d7ba3d3ee0cee2df99e8915927999698f19889f8ea0b8d55b3721ec778",
@@ -154,7 +143,7 @@
     "docs/reading-edition/records/erdos243.md": "sha256:78eff1ff1b734084914d4e5cc836e8c5ac8350968a9f618eae6299f745ffe0a6",
     "docs/reading-edition/records/erdos249.md": "sha256:17f07b24a181f6f491ec80a6308b06c57679c12610f75ca1a4f85742bc7a3f6a",
     "docs/reading-edition/records/erdos251.md": "sha256:12c0302b5da2ccbacd1c4a7f04c100ce7580550c0d754268b161c7d38e99afe6",
-    "docs/reading-edition/records/erdos257.md": "sha256:5d2f537653efed069f8d546e12c2e0bd49d798352d8af92a13ff3b1ff46fec80",
+    "docs/reading-edition/records/erdos257.md": "sha256:d6cb7f1c1cca9750ec5fce8cb3086bf426acb16665c6b0e0dfe2d4c4f0c4f6ec",
     "docs/reading-edition/records/erdos269.md": "sha256:e1cf7d2e5666de1f92267f5cebfb3372fc59ab411dfdb0c4b8c0155117f1664e",
     "docs/reading-edition/records/erdos68.md": "sha256:a55fc05c420c652948917e305419453181673a09cf37de87e78b383562a89485"
   },
@@ -9787,6 +9776,15 @@
         },
         {
           "location": {
+            "end_line": 8407,
+            "label": "prop:squarefree",
+            "line": 8398,
+            "path": "paper/reasoning-parts/erdos257/a257_front.tex"
+          },
+          "long_claim": "erdos257-mersenne-reasoning-surface#prop:squarefree"
+        },
+        {
+          "location": {
             "end_line": 8629,
             "label": "prop:cpgs-equiv",
             "line": 8614,
@@ -15790,7 +15788,7 @@
     "explained_in_short": 36,
     "explicit_links": 8,
     "explicit_short_proof_dispositions": 45,
-    "global_findings": 2,
+    "global_findings": 0,
     "linked_short_claims": 28,
     "long_claims": 612,
     "long_correspondence_open": 49,
