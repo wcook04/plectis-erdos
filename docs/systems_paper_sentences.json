@@ -9,7 +9,7 @@
       "start_line": 288,
       "end_line": 313,
       "kind": "source",
-      "sha256": "dc3986fdadf0e875ef95894e7cab1eb36f42dddfcf2bceb1eea588e556a3fd0b",
+      "sha256": "08a800d07fe36361cb0f545bd8d3e6247060552c11efa98356fadf02aade36fb",
       "excerpt_sha256": "cba8f15a6fd045c75bca3addd96b95c8d6e08ad69c35ac18a3bd8ef61824a3be",
       "custody_note": "Register line edit, 3 November 2026: prose of the short paper revised paragraph by paragraph with statements, hypotheses, displays and labels unchanged; this span was rebound to the same block of the revised file."
     },
@@ -19,7 +19,7 @@
       "start_line": 130,
       "end_line": 278,
       "kind": "source",
-      "sha256": "dc3986fdadf0e875ef95894e7cab1eb36f42dddfcf2bceb1eea588e556a3fd0b",
+      "sha256": "08a800d07fe36361cb0f545bd8d3e6247060552c11efa98356fadf02aade36fb",
       "excerpt_sha256": "4d04d56cfa237a0ea08e4237f42d23065dce38ace2a7e0a1c6b88836c7e9c7a5",
       "custody_note": "Register line edit, 3 November 2026: prose of the short paper revised paragraph by paragraph with statements, hypotheses, displays and labels unchanged; this span was rebound to the same block of the revised file."
     },
@@ -29,7 +29,7 @@
       "start_line": 943,
       "end_line": 971,
       "kind": "source",
-      "sha256": "dc3986fdadf0e875ef95894e7cab1eb36f42dddfcf2bceb1eea588e556a3fd0b",
+      "sha256": "08a800d07fe36361cb0f545bd8d3e6247060552c11efa98356fadf02aade36fb",
       "excerpt_sha256": "7291e9cd66ca622eea5b222401e5dd14e52d0bc11f46d1bf0221323b3627d696",
       "custody_note": "Register line edit, 3 November 2026: prose of the short paper revised paragraph by paragraph with statements, hypotheses, displays and labels unchanged; this span was rebound to the same block of the revised file."
     },
@@ -39,7 +39,7 @@
       "start_line": 76,
       "end_line": 92,
       "kind": "source",
-      "sha256": "dc3986fdadf0e875ef95894e7cab1eb36f42dddfcf2bceb1eea588e556a3fd0b",
+      "sha256": "08a800d07fe36361cb0f545bd8d3e6247060552c11efa98356fadf02aade36fb",
       "excerpt_sha256": "76093fcff9c86ff532b2182837e7c4e191e9806f477c420bc2602d706c643e17",
       "custody_note": "Register line edit, 3 November 2026: prose of the short paper revised paragraph by paragraph with statements, hypotheses, displays and labels unchanged; this span was rebound to the same block of the revised file."
     },
@@ -145,8 +145,8 @@
       "start_line": 1,
       "end_line": 36487,
       "kind": "supplied_snapshot",
-      "sha256": "d88735668a0483f52241135ea11922014eb761217effc219eaae9d713ed45e25",
-      "excerpt_sha256": "d88735668a0483f52241135ea11922014eb761217effc219eaae9d713ed45e25",
+      "sha256": "52da3844bdb9dc1bd351588f51cdf869d5523b0530c19a2716fe192ea241a568",
+      "excerpt_sha256": "52da3844bdb9dc1bd351588f51cdf869d5523b0530c19a2716fe192ea241a568",
       "custody_note": "Reviewed 10 October 2026: every attribution content field and cited excerpt digest is unchanged; only line_start/line_end coordinates moved after acknowledgement withdrawal and the consent-rule insertion. Regenerated 3 November 2026 by the corpus and attribution builders after the #257 register line edit; whole-file binding refreshed."
     },
     {
@@ -755,7 +755,7 @@
       "path": "paper/257/erdos-257-mersenne-support-subseries.tex",
       "start_line": 178,
       "end_line": 303,
-      "sha256": "dc3986fdadf0e875ef95894e7cab1eb36f42dddfcf2bceb1eea588e556a3fd0b",
+      "sha256": "08a800d07fe36361cb0f545bd8d3e6247060552c11efa98356fadf02aade36fb",
       "excerpt_sha256": "2ed67a1005c847ff5c6f061a15b6f64fed659f2ab79aa8d308fc35ba9dd6e6b6",
       "custody": "Current native public file inspected as source; no fresh execution.",
       "custody_note": "Register line edit, 3 November 2026: prose of the short paper revised paragraph by paragraph with statements, hypotheses, displays and labels unchanged; this span was rebound to the same block of the revised file."
@@ -866,7 +866,7 @@
       "path": "docs/research-commons/source-attributions.json",
       "start_line": 16125,
       "end_line": 16173,
-      "sha256": "d88735668a0483f52241135ea11922014eb761217effc219eaae9d713ed45e25",
+      "sha256": "52da3844bdb9dc1bd351588f51cdf869d5523b0530c19a2716fe192ea241a568",
       "excerpt_sha256": "8e826af82fe4e34d97e2987871af9dbcdac012c299aeca4bd95c0c6e87bf7d2c",
       "custody": "Public attribution inventory, marked bibliography_only. Used for feature attribution, not for its conflicting first-publication chronology. Direct claims are checked against the enclosed original v2 in this pass.",
       "custody_note": "Reviewed 10 October 2026: the cited excerpt is byte-identical to the starting public main; surrounding attribution coordinates changed."
@@ -895,7 +895,7 @@
       "start_line": 49,
       "end_line": 141,
       "kind": "source",
-      "sha256": "dc3986fdadf0e875ef95894e7cab1eb36f42dddfcf2bceb1eea588e556a3fd0b",
+      "sha256": "08a800d07fe36361cb0f545bd8d3e6247060552c11efa98356fadf02aade36fb",
       "excerpt_sha256": "27f5e56661c27b081e822035c6410cbcfb2982431a040680910d20cd6e3d76fe",
       "custody_note": "Register line edit, 3 November 2026: prose of the short paper revised paragraph by paragraph with statements, hypotheses, displays and labels unchanged; this span was rebound to the same block of the revised file."
     },
