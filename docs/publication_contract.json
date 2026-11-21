@@ -134,7 +134,7 @@
       "source_path": "paper/257/erdos257-mersenne-reasoning-surface.tex",
       "source_content_digest": "sha256:433c824c8b067da594531191409933245f9231ebfdc073f486a41ff3ef217cf1",
       "rendered_path": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
-      "rendered_content_digest": "sha256:aafa08ec631c442e826b963947e398520ff11dca6ee0ed0150eda5653eec93be",
+      "rendered_content_digest": "sha256:58ebe2ed0f7de06e22f51616159405b1cc3c25edf176502c303de2aed9970303",
       "authority_posture": "authored_claim_bounded_problem_reasoning_record_not_Lean_proof_authority",
       "claim_scope": "Claim-bounded reasoning record for Erdős Problem 257. It gives complete ordinary arguments and records Lean proofs of the finite-prime weighted criterion, its hereditary base-two-host/all-base consequence, the strengthened positive-cover criterion, the common-scale mixed weighted/cover criterion, and the reciprocal-summable-support corollary without pairwise coprimality. Each theorem retains its stated infinitude, positivity, weighted-mass, cover-majorant, scaled-cost, host-containment, and common-witness hypotheses as applicable. The named separating examples and their divergent-reciprocal calculations are ordinary mathematics and are not themselves replayed in Lean. The record separately retains checked finite-support and restricted achievement-set structure: no finite rank-at-least-two support represents 1/21, while the eventual affine-supercapacity regime survives. The universal, half-value, and 1/21 membership questions remain open.",
       "architecture_ref": "docs/claims.json::machine_readable_paper.publication_assembly.publication_architecture.retained_companions",

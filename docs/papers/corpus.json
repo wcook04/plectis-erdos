@@ -5469,8 +5469,8 @@
       ],
       "citations_rendered": 42,
       "local_pdf": "paper/257/erdos257-mersenne-reasoning-surface.pdf",
-      "pdf_sha256": "sha256:aafa08ec631c442e826b963947e398520ff11dca6ee0ed0150eda5653eec93be",
-      "pdf_byte_count": 835699,
+      "pdf_sha256": "sha256:58ebe2ed0f7de06e22f51616159405b1cc3c25edf176502c303de2aed9970303",
+      "pdf_byte_count": 835561,
       "first_pass": {
         "stated_by_the_paper": false,
         "provenance": "editorial selection for this guide",
