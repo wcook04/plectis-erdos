@@ -223,11 +223,11 @@ Each Challenge states the same proposition as the Lean declaration it targets, w
 
 ## Proposition 11.4 (Squarefree support: a limit of the certificate method, not an open value), page 131
 
-> *Let $`A=\{n\ge2:n\text{ is squarefree}\}`$. Then
+> *Let $`A=\{n\ge2:n\text{ is squarefree}\}`$. Then*
 > ``` math
 > c_{A}(n)=2^{\omega(n)}-1,
 > ```
-> which is odd for every $`n\ge2`$. Consequently neither the digitwise nor the carry-aware divisibility-first block-certificate schema has an instance at any even base.*
+> *which is odd for every $`n\ge2`$. Consequently, at each even base, neither the digitwise nor the carry-aware divisibility-first block-certificate schema can supply certificates for every $`q>0`$.*
 
 The Lean declaration below states this result.
 
