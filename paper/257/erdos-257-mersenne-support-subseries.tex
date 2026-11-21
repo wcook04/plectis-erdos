@@ -1624,7 +1624,12 @@ and the \href{https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde90
 \href{https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean\#L54}{injectivity} and
 \href{https://github.com/wcook04/plectis-erdos/blob/c91562bd574a387cde904481e609c7b4cacebb14/lean/ErdosProblems/Erdos257/MersenneSubseriesRigidity.lean\#L397}{measure dichotomy} for achievement sets. The
 formal proofs establish the stated theorems, and the printed arguments
-are ordinary proofs written for the reader. The calculation for
+are ordinary proofs written for the reader. Where the printed proofs pass
+from base two to an integer base through
+$\Delta_{b,A}(N)\le\Delta_{2,A}(N)$, which holds for every real $b\ge2$,
+the Lean proofs use the weaker comparison
+$\Delta_{b,A}(N)\le2\Delta_{2,A}(N)$ for integers $b\ge2$; it suffices,
+since the argument needs only displacements tending to zero. The calculation for
 $A_\star$, the construction with fresh primes,
 Corollary~\ref{res:strict-mixed-supports}, the signed extension of
 Theorem~\ref{res:period} and Theorem~\ref{res:one-over-twenty-one-frontier}
