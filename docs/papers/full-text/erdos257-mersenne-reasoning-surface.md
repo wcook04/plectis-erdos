@@ -919,7 +919,7 @@ The six conditions below are equivalent to half-membership. Their common reason 
 <div id="prop:collapse" class="prop">
 <p class="evidence-marks"><a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos257-mersenne-reasoning-surface/section-2.md#prop-collapse">Lean</a> · <a href="https://github.com/wcook04/plectis-erdos/blob/b4d9b60327e3c4d4cc50acb37e62268788cd77e0/evidence/erdos257-mersenne-reasoning-surface/section-2.md#prop-collapse-comparator">Comparator</a></p>
 
-**Proposition 17** (A cofinal carry bound). *If $`|\operatorname{ihc}(A,N)|\le C\sqrt{N+1}+C'`$ for arbitrarily large $`N`$, with fixed constants $`C,C'`$, then $`\delta=0`$. For the particular greedy support $`A=G`$ of $`1/2`$, a one-sided upper bound $`\operatorname{ihc}(G,N)\le C\sqrt{N+1}+C'`$ already suffices.*
+**Proposition 17** (A cofinal carry bound). *Let $`A \subseteq \mathbb{N}`$ with $`1 \notin A`$. If $`|\operatorname{ihc}(A,N)|\le C\sqrt{N+1}+C'`$ for arbitrarily large $`N`$, with fixed constants $`C,C'`$, then $`\delta=0`$. For the particular greedy support $`A=G`$ of $`1/2`$, a one-sided upper bound $`\operatorname{ihc}(G,N)\le C\sqrt{N+1}+C'`$ already suffices.*
 
 </div>
 
@@ -3830,7 +3830,7 @@ Table [1](#tab%3Ascale-ladder) records both the exact parameter ranges and the 
 | Closed-form Möbius–Lambert value $`\sum_{d\ge1}\mu(d)/(2^d-1)=1/2`$ (classical identity, cited). [`tsum_moebius_div_two_pow_sub_one_eq_half`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MersenneLambertLadder.lean#L587) | none (closed-form value) |
 | [detail note 2](#paper-table-note-f2306130f9df10c3) | one fixed candidate support $`N`$ |
 |  |  |
-| [detail note 3](#paper-table-note-2f66740488415eab) | $`\forall n\ge6`$, given a row at $`n`$: $`(\ldots)\lor\exists c\le n(\ldots)`$ |
+| [detail note 3](#paper-table-note-527e90d00cca7b92) | $`\forall n\ge6`$, given a row at $`n`$: $`(\ldots)\lor\exists c\le n(\ldots)`$ |
 | [detail note 4](#paper-table-note-d1d6bd83ed248875) | $`E\subseteq[2,n]`$, $`X_E(2)>1/2`$: $`\exists c\le n`$ |
 | [detail note 5](#paper-table-note-40bc8d2e4fbc6c9b) | $`1\le h\le16`$ (explicit bound) |
 | Truncation-rung ladder: $`\mathrm{HalfRung}(J)`$ proved for every $`3\le J\le22`$ via the finite decision procedure (§[8](#sec%3Afour-coordinates), Theorem [200](#thm%3Atr-finite-decision)); ordinary argument with exact computation ([working note](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/notes/truncation-rung-ladder-2026-07-24.md), [program](https://github.com/wcook04/plectis-erdos/blob/f757115e03bebe5c04431a147da559015c680a37/research/experiments/erdos257/check_truncation_rung_ladder.py)). | $`3\le J\le22`$ (finite table, exhaustive) |
@@ -3863,7 +3863,7 @@ Table [1](#tab%3Ascale-ladder) records both the exact parameter ranges and the 
 <a id="paper-table-note-f2306130f9df10c3"></a> **Detail note 2.** The one natural negative-Möbius candidate support overshoots: $`1/2 <
 \sum_{d\in N}1/(2^d-1)`$ for $`N=\{d\ge2:\mu(d)=-1\}`$. [`half_lt_tsum_negativeMobius`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/MobiusSignSupportNoGo.lean#L164)
 
-<a id="paper-table-note-2f66740488415eab"></a> **Detail note 3.** From an exact row, either repeated doubling is available or an exact row is obtained at some $`2c-2`$ with $`c\le n`$; these alternatives need not be disjoint. [`exactLocalMersenneHalfRow_double_or_recycle`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDichotomy.lean#L26)
+<a id="paper-table-note-527e90d00cca7b92"></a> **Detail note 3.** From an exact row, either an exact row is obtained at $`2n-1`$ or one is obtained at some $`2c-2`$ with $`4\le c\le n`$; these alternatives need not be disjoint. [`exactLocalMersenneHalfRow_double_or_recycle`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowDichotomy.lean#L26)
 
 <a id="paper-table-note-d1d6bd83ed248875"></a> **Detail note 4.** Every above-half bounded support recycles into a genuine exact row at some $`2c-2`$ with $`c\le n`$. [`exists_skippedCoreExactRow_of_value_above`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/Erdos249257/BooleanMobiusExactRowCrossing.lean#L155)
 
@@ -5382,7 +5382,7 @@ where $`\mathrm{Cert}(A)\Rightarrow \mathrm{Irrational}(X_{A}(2))`$ is already p
 ``` math
 \mathrm{O1'}\ :=\ \forall A,\ A\text{ infinite}\Longrightarrow \mathrm{Cert}(A).
 ```
-It would imply $`\mathrm{U257}`$, but the reduction loses information, and in fact $`\mathrm{O1'}`$ is false. For $`A=\{n\ge2:n\text{ squarefree}\}`$ the incidence is $`2^{\omega(n)}-1`$, which is odd for every $`n\ge2`$, so the digitwise certificate schema has no instance at any even base ([`ErdosProblems.Erdos257.not_exists_digitwise_certificates_squarefreeSupport`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean#L292)). The obstruction lies in the method, since Duverney–Tachiya prove the squarefree value irrational at every power-of-two base. Similarly, the divergence of $`\sum_p1/p`$ places the primes outside the pairwise-coprime theorem, while Tao–Teräväinen prove the base-$`2`$ prime-support value irrational. The universal target is therefore $`\mathrm{U257}`$ itself, and $`\mathrm{O1'}`$ is a rejected sufficient strengthening that gives no open normal form equivalent to it.
+It would imply $`\mathrm{U257}`$, but the reduction loses information, and in fact $`\mathrm{O1'}`$ is false. For $`A=\{n\ge2:n\text{ squarefree}\}`$ the incidence is $`2^{\omega(n)}-1`$, which is odd for every $`n\ge2`$, so at each even base the digitwise certificate schema cannot supply certificates for every $`q>0`$ ([`ErdosProblems.Erdos257.not_exists_digitwise_certificates_squarefreeSupport`](https://github.com/wcook04/plectis-erdos/blob/99f4bf47422abbd8757cbb22b50ba079d764d3a7/ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean#L292)). The obstruction lies in the method, since Duverney–Tachiya prove the squarefree value irrational at every power-of-two base. Similarly, the divergence of $`\sum_p1/p`$ places the primes outside the pairwise-coprime theorem, while Tao–Teräväinen prove the base-$`2`$ prime-support value irrational. The universal target is therefore $`\mathrm{U257}`$ itself, and $`\mathrm{O1'}`$ is a rejected sufficient strengthening that gives no open normal form equivalent to it.
 
 <a id="whether-one-half-is-represented"></a>
 
@@ -5607,7 +5607,7 @@ The table is read from left to right. There $`\Rightarrow`$ records an implicati
 | Infinitely many greedy skips (Proposition [278](#prop%3Acpgs-equiv)) | $`\Leftrightarrow`$ half-membership | open, equivalent condition |
 | Terminal-only strip (Prop. [279](#prop%3Astrip-equiv)) | $`\Leftrightarrow`$ half-membership | open, equivalent condition |
 | The centred square-root bound for $`G`$ | $`\Leftrightarrow`$ half-membership | open, equivalent condition |
-| Exact finite sums at unbounded depths | $`\Leftrightarrow`$ half-membership (Prop. [19](#prop%3Acollapsed-list)(c)); Lean proves $`\Rightarrow`$ | open, equivalent condition |
+| Exact finite sums at unbounded depths | $`\Leftrightarrow`$ half-membership (Prop. [19](#prop%3Acollapsed-list)(c)); Lean proves $`\Leftrightarrow`$ | open, equivalent condition |
 | Linear-width capacity band | $`\Rightarrow`$ exact sums at unbounded depths (Lean, given a lemma) | open |
 | The quotient condition on skipped greedy prefixes | $`\Rightarrow`$ exact sums at unbounded depths (Lean) | open; no strict comparison asserted |
 | Reset square-root bound | $`\Rightarrow`$ half-membership (Lean); no run-length equivalence asserted | open |
