@@ -66,8 +66,8 @@
       "path": "docs/papers/corpus.json",
       "start_line": 1,
       "end_line": 9540,
-      "sha256": "5aba8816be83da10c764dbc946491b80274dadb809e5f94cd6789d1022a87fca",
-      "excerpt_sha256": "5aba8816be83da10c764dbc946491b80274dadb809e5f94cd6789d1022a87fca",
+      "sha256": "50be69dee5df85501016d305e1e731f9c37b39bf1b38b5be7f412c6a1bbfb121",
+      "excerpt_sha256": "50be69dee5df85501016d305e1e731f9c37b39bf1b38b5be7f412c6a1bbfb121",
       "kind": "source",
       "custody_note": "Reviewed acknowledgement withdrawal on 10 October 2026: corpus source/PDF digests and generated section coordinates refreshed after withdrawing pending-consent personal acknowledgements. The inventory, paper roles, citation identities, mathematical claims and authority ceilings are unchanged. Reviewed GitHub paper-navigation repair on 10 October 2026: only generated section and first-pass line coordinates changed. The full paper inventory, manuscript/PDF hashes, published source pins, citation identities, paper roles, authority ceilings and both cited identification warrants are unchanged; no Lean or Comparator execution is claimed. Reviewed inline-label, table and source-preserving display-layout conversion on 10 October 2026: corpus changes are 206 section/first-pass line coordinates only. Inventory, source/PDF hashes, published pins, citation identities, roles, authority ceilings and both identification warrants remain unchanged; two source-backed #249 inequalities are restored in the Markdown, with no manuscript, proof or evidence promotion. Reviewed expository-paper registration on 11 October 2026: one row is added for erdos257-expository-sums-never-fractions (form 'Expository paper', class expository_paper), with its paper id, count and class added to the corpus header and taxonomy summary. The only other row that changed is the systems paper's own, whose source digest, PDF digest and PDF byte count moved because its generated registered-paper count went from 24 to 25. Every other row, citation identity, role, authority ceiling and both identification warrants are unchanged; no Lean or Comparator execution is claimed. Reviewed expository-paper revision on 17 October 2026: only the erdos257-expository-sums-never-fractions row changed, carrying the reviewed 12 October manuscript (title 'Why certain sums of 1/(2^n-1) are irrational', its citation text, source and PDF digests, PDF byte count, sections, first-pass and citation coordinates). The inventory, the registered-paper count of 25, every other row, citation identity, role, authority ceiling and both identification warrants are unchanged; no Lean or Comparator execution is claimed. Regenerated 3 November 2026 by the corpus and attribution builders after the #257 register line edit; whole-file binding refreshed."
     },
@@ -95,8 +95,8 @@
       "path": "docs/paper_lean_coverage.json",
       "start_line": 1,
       "end_line": 29162,
-      "sha256": "132c36881b9d10304bcfecdbfb73b6ed4d60db90b645203667ae93eeeff50127",
-      "excerpt_sha256": "132c36881b9d10304bcfecdbfb73b6ed4d60db90b645203667ae93eeeff50127",
+      "sha256": "36d8bff48add2e5e64d1a1b7acc2bc689156e0c064777c8e0d2e58010fb49142",
+      "excerpt_sha256": "36d8bff48add2e5e64d1a1b7acc2bc689156e0c064777c8e0d2e58010fb49142",
       "kind": "source",
       "custody_note": "Reviewed 10 October 2026 after acknowledgement withdrawal: exactly ten source coordinates and the coverage content digest changed; statement hashes, supports, all evidence statuses and counts are unchanged."
     },
@@ -106,8 +106,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "132c36881b9d10304bcfecdbfb73b6ed4d60db90b645203667ae93eeeff50127",
-      "excerpt_sha256": "132c36881b9d10304bcfecdbfb73b6ed4d60db90b645203667ae93eeeff50127",
+      "sha256": "36d8bff48add2e5e64d1a1b7acc2bc689156e0c064777c8e0d2e58010fb49142",
+      "excerpt_sha256": "36d8bff48add2e5e64d1a1b7acc2bc689156e0c064777c8e0d2e58010fb49142",
       "custody_note": "Reviewed 10 October 2026 after acknowledgement withdrawal: exactly ten source coordinates and the coverage content digest changed; statement hashes, supports, all evidence statuses and counts are unchanged."
     },
     {
@@ -116,8 +116,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "132c36881b9d10304bcfecdbfb73b6ed4d60db90b645203667ae93eeeff50127",
-      "excerpt_sha256": "132c36881b9d10304bcfecdbfb73b6ed4d60db90b645203667ae93eeeff50127",
+      "sha256": "36d8bff48add2e5e64d1a1b7acc2bc689156e0c064777c8e0d2e58010fb49142",
+      "excerpt_sha256": "36d8bff48add2e5e64d1a1b7acc2bc689156e0c064777c8e0d2e58010fb49142",
       "custody_note": "Reviewed 10 October 2026 after acknowledgement withdrawal: exactly ten source coordinates and the coverage content digest changed; statement hashes, supports, all evidence statuses and counts are unchanged."
     },
     {
@@ -126,8 +126,8 @@
       "start_line": 1,
       "end_line": 29162,
       "kind": "supplied_snapshot",
-      "sha256": "132c36881b9d10304bcfecdbfb73b6ed4d60db90b645203667ae93eeeff50127",
-      "excerpt_sha256": "132c36881b9d10304bcfecdbfb73b6ed4d60db90b645203667ae93eeeff50127",
+      "sha256": "36d8bff48add2e5e64d1a1b7acc2bc689156e0c064777c8e0d2e58010fb49142",
+      "excerpt_sha256": "36d8bff48add2e5e64d1a1b7acc2bc689156e0c064777c8e0d2e58010fb49142",
       "custody_note": "Reviewed 10 October 2026 after acknowledgement withdrawal: exactly ten source coordinates and the coverage content digest changed; statement hashes, supports, all evidence statuses and counts are unchanged."
     },
     {

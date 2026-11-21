@@ -1490,7 +1490,7 @@ where $\mathrm T(m)=\sum_{r\ge1}c_A(m+r)2^{-r}$.
 
 \begin{prop}[A cofinal carry bound]
 \label{prop:collapse}
-If $|\operatorname{ihc}(A,N)|\le C\sqrt{N+1}+C'$ for arbitrarily
+Let $A \subseteq \N$ with $1 \notin A$. If $|\operatorname{ihc}(A,N)|\le C\sqrt{N+1}+C'$ for arbitrarily
 large $N$, with fixed constants $C,C'$, then $\delta=0$.
 For the particular greedy support $A=G$ of $1/2$, a one-sided upper bound
 $\operatorname{ihc}(G,N)\le C\sqrt{N+1}+C'$ already suffices.
@@ -5659,7 +5659,7 @@ The one natural negative-M\"obius candidate support overshoots: $1/2 <
 \lean{half\_lt\_tsum\_negativeMobius}{MobiusSignSupportNoGo.lean:164}
 & one fixed candidate support $N$ \\
 \papertablehead\multicolumn{2}{l}{\emph{Finite ranges and witnesses bounded by the input}} \\
-From an exact row, either repeated doubling is available or an exact row is obtained at some $2c-2$ with $c\le n$; these alternatives need not be disjoint.
+From an exact row, either an exact row is obtained at $2n-1$ or one is obtained at some $2c-2$ with $4\le c\le n$; these alternatives need not be disjoint.
 \lean{exactLocalMersenneHalfRow\_double\_or\_recycle}{BooleanMobiusExactRowDichotomy.lean:26}
 & $\forall n\ge6$, given a row at $n$: $(\ldots)\lor\exists c\le n(\ldots)$ \\
 Every above-half bounded support recycles into a genuine exact row at some $2c-2$ with $c\le n$.
@@ -8571,8 +8571,8 @@ That theorem is universally quantified over $A$, and only its hypothesis is miss
 It would imply $\mathrm{U257}$, but the reduction loses information, and in fact
 $\mathrm{O1'}$ is false.  For
 $A=\{n\ge2:n\text{ squarefree}\}$ the incidence is
-$2^{\omega(n)}-1$, which is odd for every $n\ge2$, so the digitwise
-certificate schema has no instance at any even base
+$2^{\omega(n)}-1$, which is odd for every $n\ge2$, so at each even base the digitwise
+certificate schema cannot supply certificates for every $q>0$
 (\lean{ErdosProblems.Erdos257.not_exists_digitwise_certificates_squarefreeSupport}{ErdosProblems/Erdos257/SquarefreeSupportIncidence.lean:292}).
 The obstruction lies in the method, since
 Duverney--Tachiya prove the squarefree value irrational at every
@@ -8958,7 +8958,7 @@ $1/21$ membership & Equivalent to excluding the specified failure branch; would 
 Infinitely many greedy skips (Proposition~\ref{prop:cpgs-equiv}) & $\Leftrightarrow$ half-membership & open, equivalent condition \\
 Terminal-only strip (Prop.~\ref{prop:strip-equiv}) & $\Leftrightarrow$ half-membership & open, equivalent condition \\
 The centred square-root bound for $G$ & $\Leftrightarrow$ half-membership & open, equivalent condition \\
-Exact finite sums at unbounded depths & $\Leftrightarrow$ half-membership (Prop.~\ref{prop:collapsed-list}(c)); Lean proves $\Rightarrow$ & open, equivalent condition \\
+Exact finite sums at unbounded depths & $\Leftrightarrow$ half-membership (Prop.~\ref{prop:collapsed-list}(c)); Lean proves $\Leftrightarrow$ & open, equivalent condition \\
 Linear-width capacity band & $\Rightarrow$ exact sums at unbounded depths (Lean, given a lemma) & open \\
 The quotient condition on skipped greedy prefixes & $\Rightarrow$ exact sums at unbounded depths (Lean) & open; no strict comparison asserted \\
 Reset square-root bound & $\Rightarrow$ half-membership (Lean); no run-length equivalence asserted & open \\
